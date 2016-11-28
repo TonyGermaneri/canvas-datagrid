@@ -1,0 +1,8 @@
+{
+  "name": "canvas-datagrid",
+  "description": "Canvas based data grid",
+  "author": "tony.germaneri@gmail.com",
+  "version": "0.0.1",
+  "private": false,
+  "license": "BSD"
+}
