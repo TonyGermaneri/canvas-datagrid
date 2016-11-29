@@ -57,7 +57,7 @@ selectionBounds
 attributes
 style
 cellFormaters
-filterTypeMap
+filters
 resizeMode
 changes
 data

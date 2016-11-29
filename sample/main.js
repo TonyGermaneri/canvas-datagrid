@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.appendChild(parentNode2);
     document.body.style.background = 'darkblue';
     parentNode.style.height = '250px';
+    parentNode.style.marginBottom = '10px';
     parentNode2.style.height = '250px';
     // create grid
     grid = canvasDatagrid({
