@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var x,
             data = [],
             rows = 10000,
-            cols = ['Alpha', 'Beta', 'Charlie', 'Delta', 'Foxtrot', 'Golf', 'Hotel', 'Indigo', 'Juliet', 'Kilo', 'Lima', 'Mike', 'November', 'Oscar', 'Pappa', 'Quebec', 'Romeo', 'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'X-Ray', 'Yak', 'Zulu'];
+            cols = ['Alpha', 'Beta', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel', 'Indigo', 'Juliet', 'Kilo', 'Lima', 'Mike', 'November', 'Oscar', 'Pappa', 'Quebec', 'Romeo', 'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'X-Ray', 'Yak', 'Zulu'];
         function addRow(col, index) {
             data[x][col] = x + ':' + index;
         }
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.appendChild(parentNode);
     document.body.appendChild(parentNode2);
     document.body.style.background = 'darkblue';
-    parentNode.style.height = '250px';
+    parentNode.style.height = '750px';
     parentNode.style.marginBottom = '10px';
     parentNode2.style.height = '250px';
     // create grid
@@ -53,10 +53,10 @@ document.addEventListener('DOMContentLoaded', function () {
         showPerformance: true
     });
     grid.data = sampleData;
-    grid2 = canvasDatagrid({
-        name: 'sample2',
-        parentNode: parentNode2,
-        data: sampleData2,
-        showPerformance: true
-    });
+    // grid2 = canvasDatagrid({
+    //     name: 'sample2',
+    //     parentNode: parentNode2,
+    //     data: sampleData2,
+    //     showPerformance: true
+    // });
 });
