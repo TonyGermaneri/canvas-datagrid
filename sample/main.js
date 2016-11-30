@@ -31,21 +31,18 @@ document.addEventListener('DOMContentLoaded', function () {
         return data;
     }
     var parentNode,
-        parentNode2,
         grid,
-        grid2,
-        // generate sample data
-        sampleData = createSampleData(),
-        sampleData2 = createRandomSampleData();
-    // create parent node, add to the body
+        sampleData = createSampleData();
     parentNode = document.createElement('div');
-    parentNode2 = document.createElement('div');
     document.body.appendChild(parentNode);
-    document.body.appendChild(parentNode2);
-    document.body.style.background = 'darkblue';
-    parentNode.style.height = '750px';
-    parentNode.style.marginBottom = '10px';
-    parentNode2.style.height = '250px';
+    document.body.style.background = 'black';
+    document.body.style.margin = '0';
+    function resize() {
+        parentNode.style.height = window.innerHeight + 'px';
+        parentNode.style.width = window.innerWidth + 'px';
+    }
+    resize();
+    window.addEventListener('resize', resize);
     // create grid
     grid = canvasDatagrid({
         name: 'sample',
@@ -53,10 +50,4 @@ document.addEventListener('DOMContentLoaded', function () {
         showPerformance: true
     });
     grid.data = sampleData;
-    // grid2 = canvasDatagrid({
-    //     name: 'sample2',
-    //     parentNode: parentNode2,
-    //     data: sampleData2,
-    //     showPerformance: true
-    // });
 });
