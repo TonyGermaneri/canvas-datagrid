@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     'use strict';
     function createRandomSampleData() {
-        var rows = 10000, x, data = [], d, i, c,
+        var rows = 99999, x, data = [], d, i, c,
             r = 'Elend, eam, animal omittam an, has in, explicari principes. Elit, causae eleifend mea cu. No sed adipisci accusata, ei mea everti melius periculis. Ei quot audire pericula mea, qui ubique offendit no. Sint mazim mandamus duo ei. Sumo maiestatis id has, at animal reprehendunt definitionem cum, mei ne adhuc theophrastus.';
         c = r.split(' ');
         r = r.split(',');
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function createSampleData() {
         var x,
             data = [],
-            rows = 10000,
+            rows = 99999,
             cols = ['Alpha', 'Beta', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel', 'Indigo', 'Juliet', 'Kilo', 'Lima', 'Mike', 'November', 'Oscar', 'Pappa', 'Quebec', 'Romeo', 'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'X-Ray', 'Yak', 'Zulu'];
         function addRow(col, index) {
             data[x][col] = x + ':' + index;

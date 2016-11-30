@@ -3,7 +3,7 @@ canvas-grid
 
 Lightweight canvas based data grid.
 
-[Demo][https://tonygermaneri.github.io/canvas-datagrid/sample/index.html]
+[Demo](https://tonygermaneri.github.io/canvas-datagrid/sample/index.html)
 
 Instantiation
 =============
