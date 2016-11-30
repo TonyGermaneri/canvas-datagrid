@@ -16,6 +16,34 @@ Simple creation and data set
         data: data
     });
 
+cell
+====
+
+| Property | Description |
+|-----|------|
+| type | Can be `none`, `ew-resize`, `sw-resize`, or `cell`. |
+| item | A cell item. |
+
+item
+====
+
+| Property | Description |
+|-----|------|
+| type | Data type used by this cell as dictated by the column. |
+| style | Visual style of cell.  Can be any one of `cell`, `activeCell`, `headerCell`, `cornerCell`, or `headerRowCell`.  Prefix of each style name. |
+| x | The x coordinate of this cell on the canvas. |
+| y | The y coordinate of this cell on the canvas. |
+| hovered | When true, this cell is hovered. |
+| selected | When true, this cell is selected. |
+| width | Width of the cell on the canvas. |
+| height | Height of the cell on the canvas. |
+| data | The row of data this cell belongs to. |
+| header | The schema column this cell belongs to. |
+| columnIndex | The column index of the cell. |
+| rowIndex | The row index of the cell. |
+| value | The value of the cell. |
+
+
 Attributes
 ==========
 
@@ -166,9 +194,7 @@ Object that contains the properties listed in the style section.
 
 resizeMode
 ----------
-Represents the currently displayed resize cursor.
-
-changes
+Represents the currently displayed resize cursor.  Can be `ns-resize`, `ew-resize`, `pointer`, or `inherit`.
 
 cellFormaters
 -------------
@@ -285,17 +311,17 @@ findColumnMaxTextLength(name)
 -----------------------------
 Returns the maximum text width for a given column by column name.
 
-
 disposeContextMenu()
 --------------------
 Removes the context menu if it is present.
 
 getObjectAt(x, y)
 -----------------
-Gets the object at subjective pixel coordinate x and y.
+Gets the object at pixel coordinate x and y.
 
-Object has two properties.  `type` which is type of object.  Can be `none`, `ew-resize`, `sw-resize`, or `cell`.
-And `item` which is a reference to the cell (if any);
+Object has two properties.  .
+And `item` which is a reference to the cell (if any).  This is what the item property appears like.
+
 
 order(columnName, direction)
 ----------------------------
@@ -303,7 +329,7 @@ Sets the order of the data.
 
 draw()
 ------
-Redraws the grid.
+Redraws the grid.  No matter what the change, this is the only method required to refresh everything.
 
 selectArea()
 ------------
@@ -327,62 +353,243 @@ Sets the value of the filter.
 Events
 ======
 
-selectionchanged  selectedData, selections, selectionBounds
+selectionchanged
 ----------------
-Fires when the selection changes.
+Fires when the selection changes.  `e.preventDefault();` prevents the selection from changing.
 
-formatcellvalue ctx, value, row, header, cx, cy, data, schema
+| Argument | Description |
+|-----|------|
+| 0 | Selected data. |
+| 1 | Selections object.  2D matrix of selections. |
+| 2 | Rectangle object describing the selection bounds. |
+
+
+formatcellvalue
 ---------------
+Fired each time a value is drawn into a cell allowing you to format the value of the cell.
+The `string` value returned is the value used in the cell.  This does not however change the value in the data.
 
-rendercell ctx, d[header.name], d, header, data, schema, cx, cy
+This is for per cell formating.  If you want to format data types, see formatters for a much easier way.
+
+| Argument | Description |
+|-----|------|
+| 0 | Canvas context. |
+| 1 | Current value of the cell. |
+| 2 | Current row index. |
+| 3 | Current header object. |
+| 4 | The current cells x coordinate. |
+| 5 | The current cells y coordinate. |
+| 6 | All row data. |
+| 7 | Visible schema. |
+
+
+rendercell
 ----------
+Fired when a cell is drawn onto the canvas.  `e.preventDefault();` prevents the cell from being drawn.
 
-renderOrderByArrow tx, d[header.name], d, header, data, schema, cx, cy
+| Argument | Description |
+|-----|------|
+| 0 | Canvas context. |
+| 1 | Current cell value. |
+| 2 | Current row data. |
+| 3 | Current header object. |
+| 4 | All row data. |
+| 5 | Visible schema. |
+| 6 | The current cells x coordinate. |
+| 7 | The current cells y coordinate. |
+
+renderorderbyarrow
 ------------------
+Fires when the order by arrow is drawn onto the canvas.  This is the only way
+to completely replace the order arrow graphic.
 
-mousemove e, o.item.data
+| Argument | Description |
+|-----|------|
+| 0 | Canvas context. |
+| 1 | Current cell value. |
+| 2 | Current row data. |
+| 3 | Current header object. |
+| 4 | All row data. |
+| 5 | Visible schema. |
+| 6 | The current cells x coordinate. |
+| 7 | The current cells y coordinate. |
+
+
+mousemove
 ---------
+| Argument | Description |
+|-----|------|
+| 0 | Mouse event. |
+| 1 | Object under mouse. |
 
-contextmenu contextObject, menuItems, contextMenu
+
+contextmenu
 -----------
+Fires when a context menu is requested.  The menu item array can be altered to change what items appear on the menu.
 
-beforeendedit textarea.value, cell.value, abort, cell.data, textarea, cell
+| Argument | Description |
+|-----|------|
+| 0 | Mouse event. |
+| 1 | Object under mouse. |
+| 2 | Mutable list of menu items. |
+| 3 | Context menu html element. |
+
+You can add items to the context menu but they must conform to this object type.
+
+| Property | Description |
+|-----|------|
+| title | The title that will appear in the context menu.  If title is a `string` then the string will appear.  If title is a `HTMLElement` then it will be appended via `appendChild()` to the context menu row maintaining any events and references. |
+| onclick | Optional function to invoke when this context menu item is clicked.  Neglecting to call `e.stopPropagation();` in your function will result in the mouse event bubbling up to the canvas undesirably.|
+
+Removing all items from the list of menu items will cause the context menu to not appear.
+Calling `e.preventDefault();` will cause the context menu to not appear as well.
+
+beforeendedit
 -------------
-endedit textarea.value, abort, textarea, cell
--------
+Fires just before edit is complete giving you a chance to validate the input.
+`e.preventDefault();` will cause the edit to not end and row data will not be written back to the `data` array.
 
-beforebeginedit cell
+| Argument | Description |
+|-----|------|
+| 0 | New value. |
+| 1 | Original value. |
+| 2 | Mutable abort boolean. |
+| 3 | Row data. |
+| 4 | Textarea HTMLElement. |
+| 5 | Cell object. |
+
+
+endedit
+-------
+Fires when the edit has ended.  This event gives you a chance to abort the edit
+preserving original row data, or modify the value of the row data prior to being written.
+
+| Argument | Description |
+|-----|------|
+| 0 | New value. |
+| 1 | Mutable abort boolean. |
+| 2 | Textarea HTMLElement. |
+| 3 | Cell object. |
+
+
+beforebeginedit
 ---------------
+Fires before a edit cell has been created giving you a chance to abort it.
+`e.preventDefault();` will abort the edit cell from being created.
 
-beginedit cell, textarea
+| Argument | Description |
+|-----|------|
+| 0 | Cell object. |
+
+
+beginedit
 ---------
+Fires when an editor textarea has been created.
 
-click e, currentObject
+| Argument | Description |
+|-----|------|
+| 0 | Cell object. |
+| 1 | Textarea HTMLElement. |
+
+
+click
 -----
+Fires when the grid is clicked.
 
-resizecolumn x, y, resizingItem
+| Argument | Description |
+|-----|------|
+| 0 | Mouse event. |
+| 1 | Cell object. |
+
+
+resizecolumn
 ------------
+Fires when a column is about to be resized.
+`e.preventDefault();` will abort the resize.
 
-mousedown e, currentObject
+| Argument | Description |
+|-----|------|
+| 0 | x pixel position of the resize. |
+| 1 | y pixel position of the resize. |
+| 3 | y the mutable item to be resized. |
+
+
+mousedown
 ---------
+Fires when the mouse button is pressed down on the grid.
+`e.preventDefault();` will abort the default grid event.
 
-mouseup e, currentObject
+| Argument | Description |
+|-----|------|
+| 0 | Mouse event. |
+| 1 | Cell object. |
+
+mouseup
 -------
+Fires when the mouse button is pressed down on the grid.
+`e.preventDefault();` will abort the default grid event.
 
-keydown e, currentObject
--------
+| Argument | Description |
+|-----|------|
+| 0 | Mouse event. |
+| 1 | Cell object. |
 
-keyup e, currentObject
------
-
-keypress e, currentObject
---------
-
-resize height, width
-------
 
 dblclick e, currentObject
 --------
+Fires when the mouse button is double clicked on the grid.
+`e.preventDefault();` will abort the default grid event.
+Note that this will necessarily require 2*`mousedown`, 2*`mouseup` and 2*`click` events to fire prior to the double click.
+
+| Argument | Description |
+|-----|------|
+| 0 | Mouse event. |
+| 1 | Cell object. |
+
+
+keydown
+-------
+Fires when the keyboard button is pressed down on the grid.
+`e.preventDefault();` will abort the default grid event.
+
+| Argument | Description |
+|-----|------|
+| 0 | Key event. |
+| 1 | Cell object. |
+
+
+keyup
+-----
+Fires when the keyboard button is released on the grid.
+`e.preventDefault();` will abort the default grid event.
+
+| Argument | Description |
+|-----|------|
+| 0 | Key event. |
+| 1 | Cell object. |
+
+
+keypress
+--------
+Fires when the keyboard press is completed on the grid.
+`e.preventDefault();` will abort the default grid event.
+
+| Argument | Description |
+|-----|------|
+| 0 | Key event. |
+| 1 | Cell object. |
+
+
+resize
+------
+Fires when grid is being resized.
+`e.preventDefault();` will abort the resizing.
+
+| Argument | Description |
+|-----|------|
+| 0 | height. |
+| 1 | width. |
+
 
 Styles
 ==========
