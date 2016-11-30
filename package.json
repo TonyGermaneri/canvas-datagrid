@@ -1,8 +1,24 @@
 {
   "name": "canvas-datagrid",
+  "version": "0.9.0",
   "description": "Canvas based data grid",
-  "author": "tony.germaneri@gmail.com",
-  "version": "0.0.1",
-  "private": false,
-  "license": "BSD"
+  "main": "./lib/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TonyGermaneri/canvas-datagrid.git"
+  },
+  "keywords": [
+    "canvas",
+    "datagrid",
+    "grid"
+  ],
+  "author": "Tony Germaneri <Tony.Germaneri@gmail.com>",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/TonyGermaneri/canvas-datagrid/issues"
+  },
+  "homepage": "https://github.com/TonyGermaneri/canvas-datagrid#readme"
 }

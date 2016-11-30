@@ -1,5 +1,23 @@
 {
-  "name": "canvasGrid",
+  "name": "canvas-datagrid",
   "main": "lib/main.js",
-  "ignore": []
+  "version": "0.9.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "homepage": "https://github.com/TonyGermaneri/canvas-datagrid",
+  "authors": [
+    "Tony Germaneri <Tony.Germaneri@gmail.com>"
+  ],
+  "description": "Canvas based data grid",
+  "keywords": [
+    "Datagrid",
+    "grid",
+    "canvas"
+  ],
+  "license": "BSD"
 }
