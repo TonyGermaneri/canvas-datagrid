@@ -32,7 +32,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     var parentNode,
         grid,
-        sampleData = createSampleData();
+        sampleData = createSampleData(),
+        schema = Object.keys(sampleData[0]).map(function (col) {
+            return {
+                hidden: col === 'Delta',
+                name: col,
+                defaultValue: function (header) {
+                    return Date.now();
+                }
+            };
+        });
     parentNode = document.createElement('div');
     document.body.appendChild(parentNode);
     document.body.style.background = 'black';
@@ -50,6 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
         showPerformance: true
     });
     grid.data = sampleData;
+    grid.schema = schema;
     grid.addEventListener('rendercell', function (ctx, cell) {
         if (cell.selected || cell.active) { return; }
         if (cell.header.name === 'Beta' && cell.style !== 'headerCell') {
@@ -67,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
         grid.draw();
     });
     grid.addEventListener('selectionchanged', function (data, matrix, bounds) {
-        console.log(JSON.stringify(matrix));
+        console.log(JSON.stringify(data));
     });
     grid.addEventListener('contextmenu', function (e, cell, menuItems, contextMenu) {
         menuItems.push({
