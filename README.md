@@ -662,6 +662,7 @@ Styles
 ==========
 
     | Property | Default Value |
+    |-----|------|
     | filterTextPrefix | (filtered) |
     | editCellFontSize | 16px |
     | editCellFontFamily | sans-serif |
