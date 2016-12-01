@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
         grid.draw();
     });
     grid.addEventListener('selectionchanged', function (data, matrix, bounds) {
-        console.log(JSON.stringify(data));
+        console.log(JSON.stringify(bounds));
     });
     grid.addEventListener('contextmenu', function (e, cell, menuItems, contextMenu) {
         menuItems.push({

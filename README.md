@@ -680,8 +680,8 @@ Fires when grid is being resized.
 
 | Argument | Description |
 |-----|------|
-| 0 | height. |
-| 1 | width. |
+| e | height. |
+| cell | width. |
 
 
 Common Objects
@@ -700,6 +700,7 @@ A cell on the grid and all data associated with it.
 | y | The y coordinate of this cell on the canvas. |
 | hovered | When true, this cell is hovered. |
 | selected | When true, this cell is selected. |
+| active | When true, this cell is the active cell. |
 | width | Width of the cell on the canvas. |
 | height | Height of the cell on the canvas. |
 | data | The row of data this cell belongs to. |
