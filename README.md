@@ -21,10 +21,8 @@ Simple creation and data set.
 
 Attributes
 ==========
-
-Attributes can be set during instantiation or after
-by accessing `grid.attributes`.  If changed after instantiation some attributes
-require calling `grid.draw()` to see changes.
+Attributes can be set during instantiation or after by accessing `grid.attributes`.
+Changing an attribute will automatically call `draw`.
 
 showNewRow: true
 ----------------
@@ -87,7 +85,6 @@ allowRowResize: true
 ----------------
 When true, the user can resize the row headers increasing the height of the row.
 
-
 allowRowResizeFromCell: false 
 ----------------
 When true, the user can resize the height of the row from the border of the cell.
@@ -120,6 +117,12 @@ When true, row headers are shown.
 
 Properties
 ==========
+The difference between attributes and properties is that attributes
+are always getter/setters that can be passed during instantiation and
+that call `draw` and describe behaviors while properties are references
+to internal objects and function maps like `filters`.   You can change
+the sub-properties of the various properties, but the base property
+is immutable.
 
 changes
 -------
@@ -178,6 +181,7 @@ the style default.
 style
 -----
 Object that contains the properties listed in the style section.
+Changing a style will automatically call `draw`.
 
 resizeMode
 ----------
@@ -251,6 +255,8 @@ Each column object can have the following properties:
 | formatter | The formatter function used display this column.  If no function is provided, type will determine formatter.|
 | defaultValue | The default value of this column for new rows.  This is a function that takes the arguments `header` and `index` and must return a value for new default cells in this column.|
 
+Example schema:
+
     [
         {
             name: 'col1'
@@ -264,7 +270,7 @@ Each column object can have the following properties:
     ]
 
 Methods
-==========
+=======
 
 beginEditAt(x, y)
 -----------------
@@ -288,11 +294,11 @@ scrollIntoView(x, y)
 --------------------
 Scrolls the cell at cell x, row y into view if it is not already.
 
-gotoToCell(x, y)
+gotoCell(x, y)
 ------------------
 Scrolls to the cell at cell x, row y.
 
-gotoToRow(y)
+gotoRow(y)
 ------------
 Scrolls to the row y.
 
@@ -351,6 +357,13 @@ Sets the value of the filter.
 
 Events
 ======
+
+Events are subscribed to using `addEventListener` and unsubscribed from using `removeEventListener`.
+Some events have a first argument with the method `preventDefault`.  Calling `preventDefault` will
+prevent the default behavior from occurring.  For example, if you wanted to prevent the edit cell
+from appearing for some cells you can subscribe to the `beforebeginedit` event and call `e.preventDefault`
+when you want the cell to be read only.  Using events will give you the most granular control of appearance
+and behavior.
 
 selectionchanged
 ----------------
@@ -672,6 +685,10 @@ This object is returned by a number of events, methods and properties, and is pa
 
 Styles
 ==========
+Styles can be passed during instantiation or after.
+Changing a style will automatically call `draw`.
+
+    grid.style.cellBackgroundColor = 'burlywood';
 
 | Property | Default Value |
 |-----|------|
