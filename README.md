@@ -55,7 +55,7 @@ Alter the format (appearance only) of a data based on type.
 
 Reset all the data!
 
-    grid.data = {other: 'data'};
+    grid.data = [{other: 'data'}];
 
 Attributes
 ==========
