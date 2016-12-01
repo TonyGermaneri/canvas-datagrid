@@ -1,11 +1,11 @@
 Canvas Data Grid
 ================
 
-High performance lightweight canvas based data grid.
-Support for 10^6+ rows and 100's of columns.
-Extensible styling, filtering, formatting, resizing, selecting, and ordering.
-Rich API of events, methods and properties optimized for CRUD, reporting and work flow applications.
-Zero dependencies, very small code base, a single 73k (13k gziped) file.
+* High performance lightweight canvas based data grid.
+* Support for 10^6+ rows and 100's of columns.
+* Extensible styling, filtering, formatting, resizing, selecting, and ordering.
+* Rich API of events, methods and properties optimized for CRUD, reporting and work flow applications.
+* Zero dependencies, very small code base, a single 73k (13k gziped) file.
 
 [Demo](https://tonygermaneri.github.io/canvas-datagrid/sample/index.html)
 
@@ -22,11 +22,45 @@ Simple creation and data set.
         data: data
     });
 
+Check which cell the user clicked on.
+
+    grid.addEventListener('click', function (e, cell) {
+        console.log(cell.value);
+    });
+
+Check values when the selection has changed.
+
+    grid.addEventListener('selectionchanged', function (data, matrix, bounds) {
+        console.log(data);
+    });
+
+Alter the data after instantiation.
+
+    grid.data[0].col1 = 'blah';
+    grid.draw();
+
+Change the color of a cell based on value.
+
+    grid.addEventListener('rendercell', function (ctx, cell) {
+        if (cell.value === 'blah') {
+            ctx.fillStyle = 'red';
+        }
+    });
+
+Alter the format (appearance only) of a data based on type.
+
+    grid.cellFormatters.date = function (ctx, cell) {
+        return new Date(cell.value).toISOString();
+    };
+
+Reset all the data!
+
+    grid.data = {other: 'data'};
 
 Attributes
 ==========
-Attributes can be set during instantiation or after by accessing `grid.attributes`.
-Changing an attribute will automatically call `draw`.
+Attributes can be set during instantiation or after by setting `grid.attributes`.
+Setting an attribute will automatically call `draw`.
 
 showNewRow: true
 ----------------
@@ -75,7 +109,7 @@ When true, clicking on any cell will select the entire row that cell belongs to.
 autoResizeColumns: false 
 ----------------
 When true, all columns will be automatically resized to fit the data in them.
-Warning!  Expensive for large (>10k ~2 seconds) datasets.
+Warning!  Expensive for large (>100k ~2 seconds) datasets.
 
 allowRowHeaderResize: true 
 ----------------
@@ -122,11 +156,13 @@ When true, row headers are shown.
 Properties
 ==========
 The difference between attributes and properties is that attributes
-are always getter/setters that can be passed during instantiation and
-that call `draw` and describe behaviors while properties are references
-to internal objects and function maps like `filters`.   You can change
-the sub-properties of the various properties, but the base property
-is immutable.
+are always getter/setters attached to the `attributes` property.
+Attributes are the values that can be passed during instantiation.
+Setting an attribute will call `draw`.
+
+Properties are references to internal objects and function maps like `filters`.
+You can change the sub-properties of the various properties, but the base properties,
+with a few exceptions are immutable.
 
 changes
 -------
@@ -783,4 +819,4 @@ Changing a style will automatically call `draw`.
 | rowHeaderCellHoverColor | rgba(43, 48, 153, 1) |
 | rowHeaderCellHoverBackgroundColor | rgba(181, 201, 223, 1) |
 | rowHeaderCellSelectedColor | rgba(43, 48, 153, 1) |
-| rowHeaderCellSelectedBackgroundColor', 'rgba(182, 205, 250, 1)' |
+| rowHeaderCellSelectedBackgroundColor | rgba(182, 205, 250, 1) |
