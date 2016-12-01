@@ -50,4 +50,41 @@ document.addEventListener('DOMContentLoaded', function () {
         showPerformance: true
     });
     grid.data = sampleData;
+    grid.addEventListener('rendercell', function (ctx, cell) {
+        if (cell.selected || cell.active) { return; }
+        if (cell.header.name === 'Beta' && cell.style !== 'headerCell') {
+            ctx.fillStyle = 'lightgreen';
+        }
+        if (cell.rowIndex === 1 && cell.columnIndex === 0) {
+            ctx.fillStyle = 'lightyellow';
+        }
+        if (cell.rowIndex === 1 && cell.columnIndex === 1) {
+            ctx.strokeStyle = 'red';
+        }
+    });
+    grid.addEventListener('click', function (e, cell, menuItems, menuElement) {
+        grid.data[0].Alpha = 'Woah! ' + cell.value;
+        grid.draw();
+    });
+    grid.addEventListener('selectionchanged', function (data, matrix, bounds) {
+        console.log(JSON.stringify(matrix));
+    });
+    grid.addEventListener('contextmenu', function (e, cell, menuItems, contextMenu) {
+        menuItems.push({
+            title: 'Check out ' + cell.value,
+            onclick: function (e) {
+                alert('Yup, it\'s ' + cell.value);
+            }
+        });
+        var complexMenuElement = document.createElement('div'),
+            checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        complexMenuElement.innerHTML = 'Sample ';
+        complexMenuElement.appendChild(checkbox);
+        menuItems.push({
+            title: complexMenuElement
+        });
+        checkbox.onclick = function (e) { e.stopPropagation(); };
+    });
+    grid.draw();
 });
