@@ -1,5 +1,5 @@
-canvas-grid
------------
+Canvas Data Grid
+================
 
 Lightweight canvas based data grid.
 
@@ -11,7 +11,7 @@ Instantiation
 Works with require framework or without.
 If used without require, `canvasDataGrid` is declared in the global scope.
 
-Simple creation and data set
+Simple creation and data set.
 
     var grid = canvasDataGrid({
         parentNode: document.getElementById('blockElement'),
