@@ -3,10 +3,10 @@
 document.addEventListener('DOMContentLoaded', function () {
     'use strict';
     function createRandomSampleData() {
-        var rows = 99999, x, data = [], d, i, c,
+        var rows = Math.pow(10, 6), x, data = [], d, i, c,
             r = 'Elend, eam, animal omittam an, has in, explicari principes. Elit, causae eleifend mea cu. No sed adipisci accusata, ei mea everti melius periculis. Ei quot audire pericula mea, qui ubique offendit no. Sint mazim mandamus duo ei. Sumo maiestatis id has, at animal reprehendunt definitionem cum, mei ne adhuc theophrastus.';
-        c = r.split(' ');
-        r = r.split(',');
+        c = r.split(' ').map(function (i) { return i.trim(); });
+        r = r.split(',').map(function (i) { return i.trim(); });
         for (x = 0; x < rows; x += 1) {
             d = {};
             for (i = 0; i < r.length; i += 1) {
@@ -16,26 +16,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         return data;
     }
-    function createSampleData() {
-        var x,
-            data = [],
-            rows = 99999,
-            cols = ['Alpha', 'Beta', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel', 'Indigo', 'Juliet', 'Kilo', 'Lima', 'Mike', 'November', 'Oscar', 'Pappa', 'Quebec', 'Romeo', 'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'X-Ray', 'Yak', 'Zulu'];
-        function addRow(col, index) {
-            data[x][col] = x + ':' + index;
-        }
-        for (x = 0; x < rows; x += 1) {
-            data[x] = {};
-            cols.forEach(addRow);
-        }
-        return data;
-    }
     var parentNode,
         grid,
-        sampleData = createSampleData(),
+        sampleData = createRandomSampleData(),
         schema = Object.keys(sampleData[0]).map(function (col) {
             return {
-                hidden: col === 'Delta',
+                hidden: col === 'Elit',
                 name: col,
                 defaultValue: function (header) {
                     return Date.now();
@@ -62,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
     grid.schema = schema;
     grid.addEventListener('rendercell', function (ctx, cell) {
         if (cell.selected || cell.active) { return; }
-        if (cell.header.name === 'Beta' && cell.style !== 'headerCell') {
+        if (cell.header.name === 'Elit' && cell.style !== 'headerCell') {
             ctx.fillStyle = 'lightgreen';
         }
         if (cell.rowIndex === 1 && cell.columnIndex === 0) {
@@ -70,6 +56,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         if (cell.rowIndex === 1 && cell.columnIndex === 1) {
             ctx.strokeStyle = 'red';
+        }
+        if (cell.value === 'Elend') {
+            ctx.fillStyle = 'red';
         }
     });
     grid.addEventListener('click', function (e, cell, menuItems, menuElement) {
@@ -82,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
     grid.addEventListener('contextmenu', function (e, cell, menuItems, contextMenu) {
         menuItems.push({
             title: 'Check out ' + cell.value,
-            onclick: function (e) {
+            click: function (e) {
                 alert('Yup, it\'s ' + cell.value);
             }
         });

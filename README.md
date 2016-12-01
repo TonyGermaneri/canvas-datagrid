@@ -1,7 +1,11 @@
 Canvas Data Grid
 ================
 
-Lightweight canvas based data grid.
+High performance lightweight canvas based data grid.
+Support for 10^6+ rows and 100's of columns.
+Extensible styling, filtering, formatting, resizing, selecting, and ordering.
+Rich API of events, methods and properties optimized for CRUD, reporting and work flow applications.
+Zero dependencies, very small code base, a single 73k (13k gziped) file.
 
 [Demo](https://tonygermaneri.github.io/canvas-datagrid/sample/index.html)
 
@@ -465,7 +469,7 @@ You can add items to the context menu but they must conform to this object type.
 | Property | Description |
 |-----|------|
 | title | The title that will appear in the context menu.  If title is a `string` then the string will appear.  If title is a `HTMLElement` then it will be appended via `appendChild()` to the context menu row maintaining any events and references. |
-| onclick | Optional function to invoke when this context menu item is clicked.  Neglecting to call `e.stopPropagation();` in your function will result in the mouse event bubbling up to the canvas undesirably.|
+| click | Optional function to invoke when this context menu item is clicked.  Neglecting to call `e.stopPropagation();` in your function will result in the mouse event bubbling up to the canvas undesirably.|
 
 Removing all items from the list of menu items will cause the context menu to not appear.
 Calling `e.preventDefault();` will cause the context menu to not appear as well.
@@ -655,7 +659,7 @@ A cell on the grid and all data associated with it.
 | Property | Description |
 |-----|------|
 | type | Data type used by this cell as dictated by the column. |
-| style | Visual style of cell.  Can be any one of `cell`, `activeCell`, `headerCell`, `cornerCell`, or `headerRowCell`.  Prefix of each style name. |
+| style | Visual style of cell.  Can be any one of `cell`, `activeCell`, `headerCell`, `cornerCell`, or `rowHeaderCell`.  Prefix of each style name. |
 | x | The x coordinate of this cell on the canvas. |
 | y | The y coordinate of this cell on the canvas. |
 | hovered | When true, this cell is hovered. |
@@ -767,16 +771,16 @@ Changing a style will automatically call `draw`.
 | headerCellHoverColor | rgba(43, 48, 153, 1) |
 | headerCellHoverBackgroundColor | rgba(181, 201, 223, 1) |
 | headerRowWidth | 57 |
-| headerRowCellPaddingTop | 5 |
-| headerRowCellPaddingLeft | 5 |
-| headerRowCellPaddingRight | 7 |
-| headerRowCellHeight | 25 |
-| headerRowCellBorderWidth | 0.5 |
-| headerRowCellBorderColor | rgba(172, 175, 179, 1) |
-| headerRowCellFont | 16px sans-serif |
-| headerRowCellColor | rgba(50, 50, 50, 1) |
-| headerRowCellBackgroundColor | rgba(222, 227, 233, 1) |
-| headerRowCellHoverColor | rgba(43, 48, 153, 1) |
-| headerRowCellHoverBackgroundColor | rgba(181, 201, 223, 1) |
-| headerRowCellSelectedColor | rgba(43, 48, 153, 1) |
-| headerRowCellSelectedBackgroundColor', 'rgba(182, 205, 250, 1)' |
+| rowHeaderCellPaddingTop | 5 |
+| rowHeaderCellPaddingLeft | 5 |
+| rowHeaderCellPaddingRight | 7 |
+| rowHeaderCellHeight | 25 |
+| rowHeaderCellBorderWidth | 0.5 |
+| rowHeaderCellBorderColor | rgba(172, 175, 179, 1) |
+| rowHeaderCellFont | 16px sans-serif |
+| rowHeaderCellColor | rgba(50, 50, 50, 1) |
+| rowHeaderCellBackgroundColor | rgba(222, 227, 233, 1) |
+| rowHeaderCellHoverColor | rgba(43, 48, 153, 1) |
+| rowHeaderCellHoverBackgroundColor | rgba(181, 201, 223, 1) |
+| rowHeaderCellSelectedColor | rgba(43, 48, 153, 1) |
+| rowHeaderCellSelectedBackgroundColor', 'rgba(182, 205, 250, 1)' |
