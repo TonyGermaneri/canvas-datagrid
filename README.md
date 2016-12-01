@@ -121,6 +121,12 @@ When true, row headers are shown.
 Properties
 ==========
 
+changes
+-------
+Array of changes and additions made to the grid since last time data was loaded.
+The data property will change with changes as well, but this is a convince list of all the
+changes in one spot.  Calling `clearChangeLog` will clear this list.
+
 input
 -----
 Reference to the the edit cell when editing.  Undefined when not editing.
@@ -267,6 +273,12 @@ Begins editing at cell x, row y
 endEdit(abort)
 --------------
 Ends editing, optionally aborting the edit.
+
+clearChangeLog()
+----------------
+Clears the change log `grid.changes` that keeps track of changes to the data set.
+This does not undo changes or alter `grid.data` it is simply a convince array to
+keep track of changes made to the data.
 
 setActiveCell(x, y)
 -------------------
@@ -661,93 +673,93 @@ This object is returned by a number of events, methods and properties, and is pa
 Styles
 ==========
 
-    | Property | Default Value |
-    |-----|------|
-    | filterTextPrefix | (filtered) |
-    | editCellFontSize | 16px |
-    | editCellFontFamily | sans-serif |
-    | editCellPaddingLeft | 4.5 |
-    | contextMenuStyleSheet | false |
-    | contextMenuItemMargin | 2px |
-    | contextMenuItemBorderRadius | 3px |
-    | contextMenuLabelDisplay | inline-block |
-    | contextMenuLabelMinWidth | 75px |
-    | contextMenuHoverBackground | rgba(182, 205, 250, 1) |
-    | contextMenuColor | rgba(43, 48, 43, 1) |
-    | contextMenuHoverColor | rgba(43, 48, 153, 1) |
-    | contextMenuFontSize | 16px |
-    | contextMenuFontFamily | sans-serif |
-    | contextMenuBackground | rgba(222, 227, 233, 0.94) |
-    | contextMenuBorder | solid 1px rgba(158, 163, 169, 1) |
-    | contextMenuPadding | 2px |
-    | contextMenuBorderRadius | 3px |
-    | contextMenuOpacity | 0.98 |
-    | contextMenuFilterInvalidExpresion | rgba(237, 155, 156, 1) |
-    | contextMenuMarginTop | 0 |
-    | contextMenuMarginLeft | 5 |
-    | autosizePadding | 5 |
-    | minHeight | 250 |
-    | minRowHeight | 10 |
-    | minColumnWidth | 10 |
-    | columnWidth | 250 |
-    | backgroundColor | rgba(240, 240, 240, 1) |
-    | headerOrderByArrowHeight | 8 |
-    | headerOrderByArrowWidth | 13 |
-    | headerOrderByArrowColor | rgba(185, 185, 185, 1) |
-    | headerOrderByArrowBorderColor | rgba(195, 199, 202, 1) |
-    | headerOrderByArrowBorderWidth | 1 |
-    | headerOrderByArrowMarginRight | 5 |
-    | headerOrderByArrowMarginLeft | 0 |
-    | headerOrderByArrowMarginTop | 6 |
-    | cellHeight | 24 |
-    | cellFont | 16px sans-serif |
-    | cellPaddingTop | 5 |
-    | cellPaddingLeft | 5 |
-    | cellPaddingRight | 7 |
-    | cellAlignment | left |
-    | cellColor | rgba(0, 0, 0, 1) |
-    | cellBackgroundColor | rgba(240, 240, 240, 1) |
-    | cellHoverColor | rgba(0, 0, 0, 1) |
-    | cellHoverBackgroundColor | rgba(240, 240, 240, 1) |
-    | cellSelectedColor | rgba(43, 48, 153, 1) |
-    | cellSelectedBackgroundColor | rgba(182, 205, 250, 1) |
-    | cellBorderWidth | 0.5 |
-    | cellBorderColor | rgba(195, 199, 202, 1) |
-    | activeCellFont | 16px sans-serif |
-    | activeCellPaddingTop | 5 |
-    | activeCellPaddingLeft | 5 |
-    | activeCellPaddingRight | 7 |
-    | activeCellAlignment | left |
-    | activeCellColor | rgba(43, 48, 153, 1) |
-    | activeCellBackgroundColor | rgba(111, 160, 255, 1) |
-    | activeCellHoverColor | rgba(43, 48, 153, 1) |
-    | activeCellHoverBackgroundColor | rgba(110, 168, 255, 1) |
-    | activeCellSelectedColor | rgba(43, 48, 153, 1) |
-    | activeCellSelectedBackgroundColor | rgba(110, 168, 255, 1) |
-    | activeCellBorderWidth | 0.5 |
-    | activeCellBorderColor | rgba(151, 173, 190, 1) |
-    | headerCellPaddingTop | 5 |
-    | headerCellPaddingLeft | 5 |
-    | headerCellPaddingRight | 7 |
-    | headerCellHeight | 25 |
-    | headerCellBorderWidth | 0.5 |
-    | headerCellBorderColor | rgba(172, 175, 179, 1) |
-    | headerCellFont | 16px sans-serif |
-    | headerCellColor | rgba(50, 50, 50, 1) |
-    | headerCellBackgroundColor | rgba(222, 227, 233, 1) |
-    | headerCellHoverColor | rgba(43, 48, 153, 1) |
-    | headerCellHoverBackgroundColor | rgba(181, 201, 223, 1) |
-    | headerRowWidth | 57 |
-    | headerRowCellPaddingTop | 5 |
-    | headerRowCellPaddingLeft | 5 |
-    | headerRowCellPaddingRight | 7 |
-    | headerRowCellHeight | 25 |
-    | headerRowCellBorderWidth | 0.5 |
-    | headerRowCellBorderColor | rgba(172, 175, 179, 1) |
-    | headerRowCellFont | 16px sans-serif |
-    | headerRowCellColor | rgba(50, 50, 50, 1) |
-    | headerRowCellBackgroundColor | rgba(222, 227, 233, 1) |
-    | headerRowCellHoverColor | rgba(43, 48, 153, 1) |
-    | headerRowCellHoverBackgroundColor | rgba(181, 201, 223, 1) |
-    | headerRowCellSelectedColor | rgba(43, 48, 153, 1) |
-    | headerRowCellSelectedBackgroundColor', 'rgba(182, 205, 250, 1)' |
+| Property | Default Value |
+|-----|------|
+| filterTextPrefix | (filtered) |
+| editCellFontSize | 16px |
+| editCellFontFamily | sans-serif |
+| editCellPaddingLeft | 4.5 |
+| contextMenuStyleSheet | false |
+| contextMenuItemMargin | 2px |
+| contextMenuItemBorderRadius | 3px |
+| contextMenuLabelDisplay | inline-block |
+| contextMenuLabelMinWidth | 75px |
+| contextMenuHoverBackground | rgba(182, 205, 250, 1) |
+| contextMenuColor | rgba(43, 48, 43, 1) |
+| contextMenuHoverColor | rgba(43, 48, 153, 1) |
+| contextMenuFontSize | 16px |
+| contextMenuFontFamily | sans-serif |
+| contextMenuBackground | rgba(222, 227, 233, 0.94) |
+| contextMenuBorder | solid 1px rgba(158, 163, 169, 1) |
+| contextMenuPadding | 2px |
+| contextMenuBorderRadius | 3px |
+| contextMenuOpacity | 0.98 |
+| contextMenuFilterInvalidExpresion | rgba(237, 155, 156, 1) |
+| contextMenuMarginTop | 0 |
+| contextMenuMarginLeft | 5 |
+| autosizePadding | 5 |
+| minHeight | 250 |
+| minRowHeight | 10 |
+| minColumnWidth | 10 |
+| columnWidth | 250 |
+| backgroundColor | rgba(240, 240, 240, 1) |
+| headerOrderByArrowHeight | 8 |
+| headerOrderByArrowWidth | 13 |
+| headerOrderByArrowColor | rgba(185, 185, 185, 1) |
+| headerOrderByArrowBorderColor | rgba(195, 199, 202, 1) |
+| headerOrderByArrowBorderWidth | 1 |
+| headerOrderByArrowMarginRight | 5 |
+| headerOrderByArrowMarginLeft | 0 |
+| headerOrderByArrowMarginTop | 6 |
+| cellHeight | 24 |
+| cellFont | 16px sans-serif |
+| cellPaddingTop | 5 |
+| cellPaddingLeft | 5 |
+| cellPaddingRight | 7 |
+| cellAlignment | left |
+| cellColor | rgba(0, 0, 0, 1) |
+| cellBackgroundColor | rgba(240, 240, 240, 1) |
+| cellHoverColor | rgba(0, 0, 0, 1) |
+| cellHoverBackgroundColor | rgba(240, 240, 240, 1) |
+| cellSelectedColor | rgba(43, 48, 153, 1) |
+| cellSelectedBackgroundColor | rgba(182, 205, 250, 1) |
+| cellBorderWidth | 0.5 |
+| cellBorderColor | rgba(195, 199, 202, 1) |
+| activeCellFont | 16px sans-serif |
+| activeCellPaddingTop | 5 |
+| activeCellPaddingLeft | 5 |
+| activeCellPaddingRight | 7 |
+| activeCellAlignment | left |
+| activeCellColor | rgba(43, 48, 153, 1) |
+| activeCellBackgroundColor | rgba(111, 160, 255, 1) |
+| activeCellHoverColor | rgba(43, 48, 153, 1) |
+| activeCellHoverBackgroundColor | rgba(110, 168, 255, 1) |
+| activeCellSelectedColor | rgba(43, 48, 153, 1) |
+| activeCellSelectedBackgroundColor | rgba(110, 168, 255, 1) |
+| activeCellBorderWidth | 0.5 |
+| activeCellBorderColor | rgba(151, 173, 190, 1) |
+| headerCellPaddingTop | 5 |
+| headerCellPaddingLeft | 5 |
+| headerCellPaddingRight | 7 |
+| headerCellHeight | 25 |
+| headerCellBorderWidth | 0.5 |
+| headerCellBorderColor | rgba(172, 175, 179, 1) |
+| headerCellFont | 16px sans-serif |
+| headerCellColor | rgba(50, 50, 50, 1) |
+| headerCellBackgroundColor | rgba(222, 227, 233, 1) |
+| headerCellHoverColor | rgba(43, 48, 153, 1) |
+| headerCellHoverBackgroundColor | rgba(181, 201, 223, 1) |
+| headerRowWidth | 57 |
+| headerRowCellPaddingTop | 5 |
+| headerRowCellPaddingLeft | 5 |
+| headerRowCellPaddingRight | 7 |
+| headerRowCellHeight | 25 |
+| headerRowCellBorderWidth | 0.5 |
+| headerRowCellBorderColor | rgba(172, 175, 179, 1) |
+| headerRowCellFont | 16px sans-serif |
+| headerRowCellColor | rgba(50, 50, 50, 1) |
+| headerRowCellBackgroundColor | rgba(222, 227, 233, 1) |
+| headerRowCellHoverColor | rgba(43, 48, 153, 1) |
+| headerRowCellHoverBackgroundColor | rgba(181, 201, 223, 1) |
+| headerRowCellSelectedColor | rgba(43, 48, 153, 1) |
+| headerRowCellSelectedBackgroundColor', 'rgba(182, 205, 250, 1)' |
