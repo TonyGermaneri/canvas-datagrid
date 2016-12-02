@@ -68,8 +68,19 @@ Reset all the data!
 
 Attributes
 ==========
+Attributes are the values that you can pass
+
 Attributes can be set during instantiation or after by setting `grid.attributes`.
 Setting an attribute will automatically call `draw`.
+
+parentNode
+----------
+HTML element that will hold the grid.
+
+name
+----
+Optional value that will allow the saving of column height and row width settings to the browser's local store.
+This name should be unique to this grid.
 
 showNewRow: true
 ----------------
@@ -160,7 +171,18 @@ showRowHeaders: true
 ----------------
 When true, row headers are shown.
 
+schema
+------
+Sets the schema.  See schema property below.
 
+data: []
+----
+Sets the data. See data property below.
+
+style
+-----
+Sets all style values overriding all defaults.  Unless you're
+replacing 100% of the styles, don't use this property.  See style property below.
 
 Properties
 ==========
