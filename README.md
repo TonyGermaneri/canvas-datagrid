@@ -9,6 +9,15 @@ Canvas Data Grid
 
 [Demo](https://tonygermaneri.github.io/canvas-datagrid/sample/index.html)
 
+Browser limitations
+-------------------
+Some browsers (lookin at you Firefox) cannot have elements larger than a certain height.
+This height ends up being ~1.7^7px or around 700k rows if each row is the default of 24px tall.
+
+All browsers appear to break down somewhere around 10^6x7 rows.  It is unclear if it is a limitation
+of memory due to the dataset that is being created or a hard browser limit.
+Avoid loading greater than 10^6x7 rows.
+
 Instantiation
 =============
 

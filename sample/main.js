@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     'use strict';
     function createRandomSampleData() {
-        var rows = Math.pow(10, 6), x, data = [], d, i, c,
+        var rows = Math.pow(10, 5) * 7, x, data = [], d, i, c,
             r = 'Elend, eam, animal omittam an, has in, explicari principes. Elit, causae eleifend mea cu. No sed adipisci accusata, ei mea everti melius periculis. Ei quot audire pericula mea, qui ubique offendit no. Sint mazim mandamus duo ei. Sumo maiestatis id has, at animal reprehendunt definitionem cum, mei ne adhuc theophrastus.';
         c = r.split(' ').map(function (i) { return i.trim(); });
         r = r.split(',').map(function (i) { return i.trim(); });
@@ -46,6 +46,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     grid.data = sampleData;
     grid.schema = schema;
+    grid.schema[0].width = 400;
+    grid.data[0].Elend = 'Welcome to canvas-dataGrid samples!';
+    grid.data[1].Elend = 'View the source of this page to see';
+    grid.data[2].Elend = 'how the cells and context menus were altered';
+    grid.data[2].Elend = 'in this example.';
     grid.addEventListener('rendercell', function (ctx, cell) {
         if (cell.selected || cell.active) { return; }
         if (cell.header.name === 'Elit' && cell.style !== 'headerCell') {
@@ -62,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
     grid.addEventListener('click', function (e, cell, menuItems, menuElement) {
-        grid.data[0].Alpha = 'Woah! ' + cell.value;
+        grid.data[4].Elend = 'Woah! ' + cell.value;
         grid.draw();
     });
     grid.addEventListener('selectionchanged', function (data, matrix, bounds) {
