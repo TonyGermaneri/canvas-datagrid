@@ -59,10 +59,10 @@ document.addEventListener('DOMContentLoaded', function () {
         if (cell.rowIndex === 1 && cell.columnIndex === 0) {
             ctx.fillStyle = 'lightyellow';
         }
-        if (cell.rowIndex === 1 && cell.columnIndex === 1) {
+        if (cell.rowIndex === 2 && cell.columnIndex === 0) {
             ctx.strokeStyle = 'red';
         }
-        if (cell.value === 'Elend') {
+        if (/Elend/.test(cell.value) && cell.style !== 'headerCell') {
             ctx.fillStyle = 'red';
         }
     });
