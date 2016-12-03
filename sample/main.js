@@ -33,8 +33,8 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.style.background = 'black';
     document.body.style.margin = '0';
     function resize() {
-        parentNode.style.height = window.innerHeight + 'px';
-        parentNode.style.width = window.innerWidth + 'px';
+        parentNode.style.height = window.innerHeight - 100 + 'px';
+        parentNode.style.width = window.innerWidth - 100  + 'px';
     }
     resize();
     window.addEventListener('resize', resize);
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
     grid.data[0].Elend = 'Welcome to canvas-dataGrid samples!';
     grid.data[1].Elend = 'View the source of this page to see';
     grid.data[2].Elend = 'how the cells and context menus were altered';
-    grid.data[2].Elend = 'in this example.';
+    grid.data[3].Elend = 'in this example.';
     grid.addEventListener('rendercell', function (ctx, cell) {
         if (cell.selected || cell.active) { return; }
         if (cell.header.name === 'Elit' && cell.style !== 'headerCell') {
