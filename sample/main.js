@@ -33,8 +33,8 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.style.background = 'black';
     document.body.style.margin = '0';
     function resize() {
-        parentNode.style.height = window.innerHeight - 100 + 'px';
-        parentNode.style.width = window.innerWidth - 100  + 'px';
+        parentNode.style.height = window.innerHeight + 'px';
+        parentNode.style.width = window.innerWidth  + 'px';
     }
     resize();
     window.addEventListener('resize', resize);
