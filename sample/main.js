@@ -63,7 +63,8 @@ document.addEventListener('DOMContentLoaded', function () {
             ctx.strokeStyle = 'red';
         }
         if (/Elend/.test(cell.value) && cell.style !== 'headerCell') {
-            ctx.fillStyle = 'red';
+            ctx.strokeStyle = 'red';
+            ctx.fillStyle = 'pink';
         }
     });
     grid.addEventListener('click', function (e, cell, menuItems, menuElement) {

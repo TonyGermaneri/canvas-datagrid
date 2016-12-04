@@ -852,3 +852,5 @@ Changing a style will automatically call `draw`.
 | rowHeaderCellHoverBackgroundColor | rgba(181, 201, 223, 1) |
 | rowHeaderCellSelectedColor | rgba(43, 48, 153, 1) |
 | rowHeaderCellSelectedBackgroundColor | rgba(182, 205, 250, 1) |
+| scrollBarWidth | 14 |
+| scrollDivOverlap | 1.6 |
