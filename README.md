@@ -9,14 +9,15 @@ Canvas Data Grid
 
 [Demo](https://tonygermaneri.github.io/canvas-datagrid/sample/index.html)
 
-Browser limitations
--------------------
-Some browsers (lookin at you Firefox) cannot have elements larger than a certain height.
-This height ends up being ~1.7^7px or around 700k rows if each row is the default of 24px tall.
+* [Instantiation](#instantiation)
+* [Attributes](#attributes)
+* [Properties](#properties)
+* [Methods](#methods)
+* [Events](#events)
+* [Common Objects](#common-objects)
+* [Styles](#styles)
+* [Browser limitations](#browser-limitations)
 
-All browsers appear to break down somewhere around 10^6x7 rows.  It is unclear if it is a limitation
-of memory due to the dataset that is being created or a hard browser limit.
-Avoid loading greater than 10^6x7 rows.
 
 Instantiation
 =============
@@ -31,7 +32,7 @@ Simple creation and data set.
         data: data
     });
 
-Check which cell the user clicked on.
+Check which [cell](#cell) the user clicked on.
 
     grid.addEventListener('click', function (e, cell) {
         console.log(cell.value);
@@ -68,10 +69,17 @@ Reset all the data!
 
 Attributes
 ==========
-Attributes are the values that you can pass
-
+Attributes are the basic properties set during instantiation.  Think of HTML attributes.
 Attributes can be set during instantiation or after by setting `grid.attributes`.
 Setting an attribute will automatically call `draw`.
+
+    var grid = canvasDataGrid({
+            // Every value here is an attribute
+        });
+
+    // all attributes can be accessed here after instantiation
+    grid.attributes
+
 
 parentNode
 ----------
@@ -85,7 +93,7 @@ This name should be unique to this grid.
 showNewRow: true
 ----------------
 When true, a row will appear at the bottom of the data set.  `schema[].defaultValue`
-will define a default value for each cell.  `defaultValue` can be a `string` or a
+will define a default value for each [cell](#cell).  `defaultValue` can be a `string` or a
 `function`.  When a function is used, the arguments `header` and `index` will be passed
 to the function.  The value returned by the function will be the value in the new cell.
 
@@ -195,6 +203,17 @@ Properties are references to internal objects and function maps like `filters`.
 You can change the sub-properties of the various properties, but the base properties,
 with a few exceptions are immutable.
 
+selectedRows
+------------
+Array of selected rows.  Looks just like the data you passed in, but filtered for the rows the user
+has cells selected in.  If any cell in the row is selected, all data for that row will appear in this array.
+
+selectedCells
+-------------
+Jagged array of cells that the user has selected.  Beware that because this is a jagged array, some indexes will be `null`.
+Besides the `null`s this data looks just like the data you passed in, but just the cells the user has selected.
+So if the user has selected cell 10 in a 10 column row, there will be 9 `null`s followed by the data from column 10.
+
 changes
 -------
 Array of changes and additions made to the grid since last time data was loaded.
@@ -236,7 +255,7 @@ Matrix array of selected cells.
 
 selectionBounds
 ---------------
-`rect` object, bounds of current selection.
+[rect](#rect) object, bounds of current selection.
 
 attributes
 ----------
@@ -274,7 +293,7 @@ Cell formatter function should contain the following arguments.
 | Argument | Description |
 |-----|------|
 | ctx | Canvas context. |
-| cell | Current cell. |
+| [cell](#cell) | Current cell. |
 
 Formatters must return a string value to be displayed in the cell.
 
@@ -340,6 +359,7 @@ Example schema:
         }
     ]
 
+
 Methods
 =======
 
@@ -350,6 +370,11 @@ Begins editing at cell x, row y
 endEdit(abort)
 --------------
 Ends editing, optionally aborting the edit.
+
+selectRow(rowIndex, toggleSelectMode, supressSelectionchangedEvent)
+-------------------------------------------------------------------
+Selects a row.  `toggleSelectMode` behaves as if you were holding control/command when you clicked the row.
+`supressSelectionchangedEvent` will prevent the `selectionchanged` event from firing.
 
 clearChangeLog()
 ----------------
@@ -383,7 +408,7 @@ Returns the number of pixels to scroll down to line up with row `rowIndex`.
 
 getSelectionBounds()
 --------------------
-Gets the bounds of current selection.  Returns a `rect` object.
+Gets the bounds of current selection.  Returns a [rect](#rect) object.
 
 fitColumnToValues(name)
 -----------------------
@@ -416,7 +441,7 @@ Redraws the grid.  No matter what the change, this is the only method required t
 
 selectArea()
 ------------
-Accepts a `rect` object that defines the desired selected area.
+Accepts a [rect](#rect) object that defines the desired selected area.
 
 getSchemaFromData()
 -------------------
@@ -466,16 +491,28 @@ You would only use this if you want to completely stop the cell from being drawn
 
 rendercell
 ----------
-Fires when a cell is drawn.  If you want to change colors, sizes, add content, etc. this is the event to attach to.
-Altering what is drawn by changing the cell object's height and width is allowed.  Drawing on the canvas is allowed.
-Altering the context of the canvas is allowed.
+Fires when a cell is drawn.  If you want to change colors, sizes this is the event to attach to.
+Changing the cell object's height and width is allowed.  Altering the context of the canvas is allowed.
+Drawing on the canvas will probably be drawn over by the cell.
 
     grid.addEventListener('rendercell', function (ctx, cell) { });
 
 | Argument | Description |
 |-----|------|
 | ctx | Canvas context. |
-| cell | Current cell. |
+| [cell](#cell) | Current cell. |
+
+afterrendercell
+---------------
+Fires just after a cell is drawn.  If you want to draw things in the cell, this is the event to attach to.
+Drawing on the canvas is allowed.  Altering the context of the canvas is allowed.
+
+    grid.addEventListener('afterrendercell', function (ctx, cell) { });
+
+| Argument | Description |
+|-----|------|
+| ctx | Canvas context. |
+| [cell](#cell) | Current cell. |
 
 rendertext
 ----------
@@ -490,7 +527,7 @@ You cannot alter the cell's height or width from this event, use `rendercell` ev
 | Argument | Description |
 |-----|------|
 | ctx | Canvas context. |
-| cell | Current cell. |
+| [cell](#cell) | Current cell. |
 
 
 renderorderbyarrow
@@ -503,7 +540,7 @@ to completely replace the order arrow graphic.  Call `e.preventDefault()` to sto
 | Argument | Description |
 |-----|------|
 | ctx | Canvas context. |
-| cell | Current cell. |
+| [cell](#cell) | Current cell. |
 
 
 mousemove
@@ -553,7 +590,7 @@ Fires just before edit is complete giving you a chance to validate the input.
 | value | New value. |
 | originalValue | Original value. |
 | abort | Abort edit function.  Call this function to abort the edit. |
-| cell | Cell object. |
+| [cell](#cell) | Cell object. |
 | textarea | Textarea or input HTMLElement depending on `attributes.multiLine`. |
 
 
@@ -568,7 +605,7 @@ preserving original row data, or modify the value of the row data prior to being
 |-----|------|
 | value | New value. |
 | abort | When true, the edit was aborted. |
-| cell | Cell object. |
+| [cell](#cell) | Cell object. |
 | textarea | Textarea HTMLElement. |
 
 
@@ -582,7 +619,7 @@ Fires before a edit cell has been created giving you a chance to abort it.
 
 | Argument | Description |
 |-----|------|
-| cell | Cell object. |
+| [cell](#cell) | Cell object. |
 
 
 beginedit
@@ -593,7 +630,7 @@ Fires when an editor textarea (or input) has been created.
 
 | Argument | Description |
 |-----|------|
-| cell | Cell object. |
+| [cell](#cell) | Cell object. |
 | textarea | Textarea HTMLElement. |
 
 
@@ -606,7 +643,7 @@ Fires when the grid is clicked.
 | Argument | Description |
 |-----|------|
 | e | Mouse event. |
-| cell | Cell object. |
+| [cell](#cell) | Cell object. |
 
 
 resizecolumn
@@ -620,7 +657,7 @@ Fires when a column is about to be resized.
 |-----|------|
 | x | x pixel position of the resize. |
 | y | y pixel position of the resize. |
-| cell | The mutable cell to be resized. |
+| [cell](#cell) | The mutable cell to be resized. |
 
 
 mousedown
@@ -633,7 +670,7 @@ Fires when the mouse button is pressed down on the grid.
 | Argument | Description |
 |-----|------|
 | e | Mouse event. |
-| cell | Cell object. |
+| [cell](#cell) | Cell object. |
 
 mouseup
 -------
@@ -645,7 +682,7 @@ Fires when the mouse button is pressed down on the grid.
 | Argument | Description |
 |-----|------|
 | e | Mouse event. |
-| cell | Cell object. |
+| [cell](#cell) | Cell object. |
 
 dblclick
 --------
@@ -658,7 +695,7 @@ Note that this will necessarily require 2*`mousedown`, 2*`mouseup` and 2*`click`
 | Argument | Description |
 |-----|------|
 | e | Mouse event. |
-| cell | Cell object. |
+| [cell](#cell) | Cell object. |
 
 
 keydown
@@ -671,7 +708,7 @@ Fires when the keyboard button is pressed down on the grid.
 | Argument | Description |
 |-----|------|
 | e | Key event. |
-| cell | Cell object. |
+| [cell](#cell) | Cell object. |
 
 
 keyup
@@ -684,7 +721,7 @@ Fires when the keyboard button is released on the grid.
 | Argument | Description |
 |-----|------|
 | e | Key event. |
-| cell | Cell object. |
+| [cell](#cell) | Cell object. |
 
 
 
@@ -698,7 +735,7 @@ Fires when the keyboard press is completed on the grid.
 | Argument | Description |
 |-----|------|
 | e | Key event. |
-| cell | Cell object. |
+| [cell](#cell) | Cell object. |
 
 
 
@@ -712,7 +749,7 @@ Fires when grid is being resized.
 | Argument | Description |
 |-----|------|
 | e | height. |
-| cell | width. |
+| [cell](#cell) | width. |
 
 
 Common Objects
@@ -734,6 +771,8 @@ A cell on the grid and all data associated with it.
 | active | When true, this cell is the active cell. |
 | width | Width of the cell on the canvas. |
 | height | Height of the cell on the canvas. |
+| userWidth | User set width of the cell on the canvas.  If undefined, the user has not set this column. |
+| userHeight | Height of the cell on the canvas.  If undefined, the user has not set this row. |
 | data | The row of data this cell belongs to. |
 | header | The schema column this cell belongs to. |
 | columnIndex | The column index of the cell. |
@@ -744,7 +783,7 @@ A cell on the grid and all data associated with it.
 rect
 ----
 
-A selection area represented by a `rect`.
+A selection area represented by a rectangle.
 This object is returned by a number of events, methods and properties, and is passed to the `selectArea` method.
 
 | Property | Description |
@@ -854,3 +893,12 @@ Changing a style will automatically call `draw`.
 | rowHeaderCellSelectedBackgroundColor | rgba(182, 205, 250, 1) |
 | scrollBarWidth | 14 |
 | scrollDivOverlap | 1.6 |
+
+Browser limitations
+-------------------
+Some browsers (lookin at you Firefox) cannot have elements larger than a certain height.
+This height ends up being ~1.7^7px or around 700k rows if each row is the default of 24px tall.
+
+All browsers appear to break down somewhere around 10^6x7 rows.  It is unclear if it is a limitation
+of memory due to the dataset that is being created or a hard browser limit.
+Avoid loading greater than 10^6x7 rows.
