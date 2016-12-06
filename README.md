@@ -542,6 +542,14 @@ to completely replace the order arrow graphic.  Call `e.preventDefault()` to sto
 | ctx | Canvas context. |
 | [cell](#cell) | Current cell. |
 
+ordercolumn
+-----------
+Fires when a column is reordered.
+
+| Argument | Description |
+|-----|------|
+| columnName | Name of the column. |
+| direction | Direction of the order. |
 
 mousemove
 ---------

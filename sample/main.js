@@ -2,8 +2,8 @@
 /*globals canvasDatagrid: false */
 document.addEventListener('DOMContentLoaded', function () {
     'use strict';
-    function createRandomSampleData() {
-        var rows = Math.pow(10, 5) * 7, x, data = [], d, i, c,
+    function createRandomSampleData(rows) {
+        var x, data = [], d, i, c,
             r = 'Elend, eam, animal omittam an, has in, explicari principes. Elit, causae eleifend mea cu. No sed adipisci accusata, ei mea everti melius periculis. Ei quot audire pericula mea, qui ubique offendit no. Sint mazim mandamus duo ei. Sumo maiestatis id has, at animal reprehendunt definitionem cum, mei ne adhuc theophrastus.';
         c = r.split(' ').map(function (i) { return i.trim(); });
         r = r.split(',').map(function (i) { return i.trim(); });
@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     var parentNode,
         grid,
-        sampleData = createRandomSampleData(),
+        sampleData = createRandomSampleData(Math.pow(10, 3) * 7),
+        //sampleData = createRandomSampleData(25),
         schema = Object.keys(sampleData[0]).map(function (col) {
             return {
                 hidden: col === 'Elit',
@@ -29,17 +30,18 @@ document.addEventListener('DOMContentLoaded', function () {
             };
         });
     parentNode = document.createElement('div');
+    parentNode.style.width = '90%';
     document.body.appendChild(parentNode);
     document.body.style.background = 'black';
-    document.body.style.margin = '0';
+    document.body.style.padding = '25px';
     function resize() {
-        parentNode.style.height = window.innerHeight + 'px';
-        parentNode.style.width = window.innerWidth  + 'px';
+        parentNode.style.height = window.innerHeight - 100 + 'px';
     }
     resize();
     window.addEventListener('resize', resize);
     // create grid
     grid = canvasDatagrid({
+        tree: true,
         name: 'sample',
         parentNode: parentNode,
         showPerformance: true
@@ -51,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
     grid.data[1].Elend = 'View the source of this page to see';
     grid.data[2].Elend = 'how the cells and context menus were altered';
     grid.data[3].Elend = 'in this example.';
+    //grid.data[2].eam = createRandomSampleData(400);
     grid.addEventListener('rendercell', function (ctx, cell) {
         if (cell.selected || cell.active) { return; }
         if (cell.header.name === 'Elit' && cell.style !== 'headerCell') {
@@ -67,8 +70,13 @@ document.addEventListener('DOMContentLoaded', function () {
             ctx.fillStyle = 'pink';
         }
     });
+    grid.addEventListener('expandtree', function (e) {
+        e.grid = {
+            data: createRandomSampleData(50)
+        };
+    });
     grid.addEventListener('click', function (e, cell, menuItems, menuElement) {
-        grid.data[4].Elend = 'Woah! ' + cell.value;
+        grid.data[4].Elend = 'Clicked value -> ' + (typeof cell.value === 'string' ? cell.value : 'Object');
         grid.draw();
     });
     grid.addEventListener('selectionchanged', function (data, matrix, bounds) {
@@ -92,4 +100,5 @@ document.addEventListener('DOMContentLoaded', function () {
         checkbox.onclick = function (e) { e.stopPropagation(); };
     });
     grid.draw();
+    window.grid = grid;
 });
