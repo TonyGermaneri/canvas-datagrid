@@ -69,10 +69,12 @@ document.addEventListener('DOMContentLoaded', function () {
             ctx.fillStyle = 'pink';
         }
     });
-    grid.addEventListener('expandtree', function (grid, data, rowIndex) {
+    function expandTree(grid, data, rowIndex) {
         grid.data = createRandomSampleData(50);
-        grid.attributes.showRowHeaders = false;
-    });
+        grid.attributes.tree = true;
+        grid.addEventListener('expandtree', expandTree);
+    }
+    grid.addEventListener('expandtree', expandTree);
     grid.addEventListener('click', function (e, cell, menuItems, menuElement) {
         grid.data[4].Elend = 'Clicked value -> ' + (typeof cell.value === 'string' ? cell.value : 'Object');
         grid.draw();
