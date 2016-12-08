@@ -18,8 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     var parentNode,
         grid,
-        sampleData = createRandomSampleData(Math.pow(10, 3) * 7),
-        //sampleData = createRandomSampleData(25),
+        sampleData = createRandomSampleData(Math.pow(10, 5)),
         schema = Object.keys(sampleData[0]).map(function (col) {
             return {
                 hidden: col === 'Elit',
@@ -53,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
     grid.data[1].Elend = 'View the source of this page to see';
     grid.data[2].Elend = 'how the cells and context menus were altered';
     grid.data[3].Elend = 'in this example.';
-    //grid.data[2].eam = createRandomSampleData(400);
+    grid.data[2].eam = createRandomSampleData(400);
     grid.addEventListener('rendercell', function (ctx, cell) {
         if (cell.selected || cell.active) { return; }
         if (cell.header.name === 'Elit' && cell.style !== 'headerCell') {
@@ -70,10 +69,9 @@ document.addEventListener('DOMContentLoaded', function () {
             ctx.fillStyle = 'pink';
         }
     });
-    grid.addEventListener('expandtree', function (e) {
-        e.grid = {
-            data: createRandomSampleData(50)
-        };
+    grid.addEventListener('expandtree', function (grid, data, rowIndex) {
+        grid.data = createRandomSampleData(50);
+        grid.attributes.showRowHeaders = false;
     });
     grid.addEventListener('click', function (e, cell, menuItems, menuElement) {
         grid.data[4].Elend = 'Clicked value -> ' + (typeof cell.value === 'string' ? cell.value : 'Object');

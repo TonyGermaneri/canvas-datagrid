@@ -1,11 +1,11 @@
 Canvas Data Grid
 ================
 
-* High performance lightweight canvas based data grid.
+* High performance lightweight hierarchal canvas based data grid.
 * Support for 10^6+ rows and 100's of columns.
 * Extensible styling, filtering, formatting, resizing, selecting, and ordering.
 * Rich API of events, methods and properties optimized for CRUD, reporting and work flow applications.
-* Zero dependencies, very small code base, a single 73k (13k gziped) file.
+* Zero dependencies, very small code base, a single 94k (16k gziped) file.
 
 [Demo](https://tonygermaneri.github.io/canvas-datagrid/sample/index.html)
 
@@ -63,7 +63,13 @@ Alter the format (appearance only) of a data based on type.
         return new Date(cell.value).toISOString();
     };
 
-Reset all the data!
+Add a tree view
+    grid.attributes.tree = true;
+    grid.addEventListener('expandtree', function (e) {
+        e.grid.data = [{My: 'Other Data'}];
+    });
+
+Change all the data!
 
     grid.data = [{other: 'data'}];
 
@@ -89,6 +95,16 @@ name
 ----
 Optional value that will allow the saving of column height and row width settings to the browser's local store.
 This name should be unique to this grid.
+
+tree: false
+-----------
+When true, an arrow will be drawn on each row that when clicked raises the `expandtree` event
+for that row and creates an inner grid.
+
+childGridAttributes
+-------------------
+Attributes used for cell grids.  These child grids are different than the tree grids.
+See the data property for more information about cell grids.
 
 showNewRow: true
 ----------------
@@ -326,6 +342,10 @@ Data must be an array of objects that conform to a schema.
         {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}
     ]
 
+Data values can be any primitive type.  However if a cell value is another data array,
+a child grid will be rendered into the cell.  This child grid is different than a
+tree view grid and uses the `childGridAttributes` attribute for properties and styling.
+
 schema
 ------
 Schema is optional.  Schema is an array of column objects.
@@ -360,8 +380,69 @@ Example schema:
     ]
 
 
+scrollHeight
+------------
+The total number of pixels that can be scrolled down.
+
+scrollWidth
+-----------
+The total number of pixels that can be scrolled to the left.
+
+scrollTop
+---------
+The number of pixels that have been scrolled down.
+
+scrollLeft
+----------
+The number of pixels that have been scrolled to the left.
+
+offsetTop
+---------
+The offset top of the grid.
+
+offsetLeft
+----------
+The offset left of the grid.
+
+parentNode
+----------
+The grid's parent HTML node.
+
+isChildGrid
+-----------
+When true, this grid is a child grid of another grid.
+
+openChildren
+------------
+List of open child grids by internal unique row id.
+
+childGrids
+----------
+Child grids in this grid organized by internal unique row id.
+
+parentGrid
+----------
+If this grid is a child grid, this is the grids parent.
+
+canvas
+------
+The canvas element drawn onto for this grid.
+
+
 Methods
 =======
+
+toggleTree(rowIndex)
+--------------------
+Toggles the given row index's child table on/off.
+
+expandTree(rowIndex)
+--------------------
+Expands the given row index's child table.
+
+expandTree(rowIndex)
+--------------------
+Collapses the given row index's child table.
 
 beginEditAt(x, y)
 -----------------
@@ -473,6 +554,36 @@ Fires when the selection changes.
 | matrix | Selections object.  2D matrix of selections. |
 | bounds | `Rectangle` object describing the selection bounds. |
 
+expandtree
+----------
+Fires when the user clicks on the "drill in" arrow.  When the arrow is clicked a new
+grid is created and nested inside of the row.  The grid, the row data and row index are passed
+to the event listener.  From here you can manipulate the inner grid.  A grid is not disposed
+when the tree is collapsed, just hidden, but grids are not created until the arrow is clicked.
+
+| Argument | Description |
+|-----|------|
+| e | event. |
+| e.rowIndex | The row index that was expanded. |
+| e.data | The row's data. |
+| e.grid | New, or if reopened existing, grid. |
+
+collapsetree
+------------
+Fires when the user click the "drill in" arrow on a row that is already expanded.
+
+| Argument | Description |
+|-----|------|
+| e | event. |
+| e.rowIndex | The row index that was collapsed. |
+| e.data | The row's data. |
+| e.grid | Grid that is being collapsed. |
+
+scroll
+------
+Fires when the user scrolls the grid.
+
+
 beforerendercell
 ----------------
 Fired just before a cell is drawn onto the canvas.  `e.preventDefault();` prevents the cell from being drawn.
@@ -542,9 +653,37 @@ to completely replace the order arrow graphic.  Call `e.preventDefault()` to sto
 | ctx | Canvas context. |
 | [cell](#cell) | Current cell. |
 
+
+rendertreearrow
+---------------
+Fires when the tree arrow is drawn onto the canvas.  This is the only way
+to completely replace the tree arrow graphic.  Call `e.preventDefault()` to stop the default arrow from being drawn.
+
+    grid.addEventListener('rendertreearrow', function (ctx, cell) { });
+
+| Argument | Description |
+|-----|------|
+| ctx | Canvas context. |
+| [cell](#cell) | Current cell. |
+
+rendercellgrid
+--------------
+Fires when a cell grid is instantiated.  Allows you to alter the cell data grid.
+Only fires once per grid.
+
+    grid.addEventListener('rendercellgrid', function (ctx, cell) { });
+
+| Argument | Description |
+|-----|------|
+| ctx | Canvas context. |
+| [cell](#cell) | Current cell. |
+| grid | Cell data grid. |
+
 ordercolumn
 -----------
 Fires when a column is reordered.
+
+    grid.addEventListener('rendercellgrid', function (columnName, direction) { });
 
 | Argument | Description |
 |-----|------|
@@ -811,6 +950,18 @@ Changing a style will automatically call `draw`.
 
 | Property | Default Value |
 |-----|------|
+| maxEllipsisLength | 250 |
+| treeGridHeight | 250 |
+| treeArrowHeight | 8 |
+| treeArrowWidth | 13 |
+| treeArrowColor | rgba(155, 155, 155, 1) |
+| treeArrowBorderColor | rgba(195, 199, 202, 1) |
+| treeArrowBorderWidth | 1 |
+| treeArrowMarginRight | 5 |
+| treeArrowMarginLeft | 0 |
+| treeArrowMarginTop | 6 |
+| scrollBarWidth | 14 |
+| scrollDivOverlap | 0.7 |
 | filterTextPrefix | (filtered) |
 | editCellFontSize | 16px |
 | editCellFontFamily | sans-serif |
