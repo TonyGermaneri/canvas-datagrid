@@ -59,7 +59,7 @@ Change the color of a cell based on value.
 
 Alter the format (appearance only) of a data based on type.
 
-    grid.cellFormatters.date = function (ctx, cell) {
+    grid.formatters.date = function (ctx, cell) {
         return new Date(cell.value).toISOString();
     };
 
@@ -293,18 +293,18 @@ resizeMode
 ----------
 Represents the currently displayed resize cursor.  Can be `ns-resize`, `ew-resize`, `pointer`, or `inherit`.
 
-cellFormaters
--------------
-Object that contains a list of formatters for displaying text.
+formatters
+----------
+Object that contains a list of formatting functions for displaying text.
 The properties in this object match the `schema[].type` property.
 For example, if the schema for a given column was of the type `date`
-the grid would look for a formatter called `cellFormatters.date`
+the grid would look for a formatter called `formatters.date`
 if a formatter cannot be found for a given data type a warning will
 be logged and the string formatter will be used.
 
 Cell formatter function should contain the following arguments.
 
-    cellFormatters.date = function (ctx, cell) { return new Date(cell.value).toISOString(); }
+    grid.formatters.date = function (ctx, cell) { return new Date(cell.value).toISOString(); }
 
 | Argument | Description |
 |-----|------|
@@ -312,6 +312,30 @@ Cell formatter function should contain the following arguments.
 | [cell](#cell) | Current cell. |
 
 Formatters must return a string value to be displayed in the cell.
+
+sorters
+-------
+Object that contains a list of sorting functions for sorting columns.
+
+| Argument | Description |
+|-----|------|
+| columnName | Name of the column to be sorted. |
+| direction | `asc` or `desc` for ascending or descending. |
+
+Sorter function must return a sort function.
+This function will be used in the [native sort method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).
+
+Example sorter:
+
+    grid.sorters.number = function (columnName, direction) {
+        var asc = direction === 'asc';
+        return function (a, b) {
+            if (asc) {
+                return a[columnName] - b[columnName];
+            }
+            return b[columnName] - a[columnName];
+        };
+    };
 
 filters
 -------
