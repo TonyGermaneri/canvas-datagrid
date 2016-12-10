@@ -101,6 +101,12 @@ tree: false
 When true, an arrow will be drawn on each row that when clicked raises the `expandtree` event
 for that row and creates an inner grid.
 
+treeHorizontalScroll: true
+--------------------
+When true, expanded child grids will scroll horizontally with the parent columns.  When false,
+when scrolling horizontally child grids will remain stationary.  This does not impact
+vertical scrolling behavior.
+
 childGridAttributes
 -------------------
 Attributes used for cell grids.  These child grids are different than the tree grids.
@@ -444,6 +450,14 @@ childGrids
 ----------
 Child grids in this grid organized by internal unique row id.
 
+height
+------
+Gets or sets the height of the grid.
+
+width
+------
+Gets or sets the width of the grid.
+
 parentGrid
 ----------
 If this grid is a child grid, this is the grids parent.
@@ -456,6 +470,33 @@ The canvas element drawn onto for this grid.
 Methods
 =======
 
+insertColumn(column, index)
+----------------------
+Inserts a new column before the specified index
+into the schema.  See [schema](#schema).
+
+deleteColumn(index)
+-------------------
+Deletes a column from the schema at the specified index.
+
+addColumn(column)
+-------------------
+Adds a new column into the schema.  See [schema](#schema-1).
+
+addRow(d)
+---------
+Adds a new row of data to the grid.
+Row data should probably look somewhat like the schema.
+
+insertRow(d)
+------------
+Inserts a new row of data to the grid before the specified index.
+Row data should probably look somewhat like the schema.
+
+deleteRow(index)
+----------------
+Deletes the row at the specified index.
+
 toggleTree(rowIndex)
 --------------------
 Toggles the given row index's child table on/off.
@@ -464,8 +505,8 @@ expandTree(rowIndex)
 --------------------
 Expands the given row index's child table.
 
-expandTree(rowIndex)
---------------------
+collapseTree(rowIndex)
+----------------------
 Collapses the given row index's child table.
 
 beginEditAt(x, y)
@@ -553,7 +594,7 @@ getSchemaFromData()
 Returns schema with auto generated schema based on data structure.
 
 setFilterValue(column, value)
-----------------------------
+-----------------------------
 Sets the value of the filter.
 
 Events
