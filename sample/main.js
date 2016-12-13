@@ -52,16 +52,19 @@ document.addEventListener('DOMContentLoaded', function () {
     grid.data[1].Elend = 'View the source of this page to see';
     grid.data[2].Elend = 'how the cells and context menus were altered';
     grid.data[3].Elend = 'in this example.';
-    grid.data[2].eam = createRandomSampleData(400);
+    
+    grid.data[0].eam = 'Click here to toggle a grid in a cell';
+    grid.data[1].eam = 'Click here to toggle a grid in a row';
+
     grid.addEventListener('rendercell', function (ctx, cell) {
         if (cell.selected || cell.active) { return; }
         if (cell.header.name === 'Elit' && cell.style !== 'headerCell') {
             ctx.fillStyle = 'lightgreen';
         }
-        if (cell.rowIndex === 1 && cell.columnIndex === 0) {
+        if (cell.rowIndex === 1 && cell.columnIndex === 2) {
             ctx.fillStyle = 'lightyellow';
         }
-        if (cell.rowIndex === 2 && cell.columnIndex === 0) {
+        if (cell.rowIndex === 2 && cell.columnIndex === 2) {
             ctx.strokeStyle = 'red';
         }
         if (/Elend/.test(cell.value) && cell.style !== 'headerCell') {
@@ -78,6 +81,17 @@ document.addEventListener('DOMContentLoaded', function () {
     grid.addEventListener('click', function (e, cell, menuItems, menuElement) {
         grid.data[4].Elend = 'Clicked value -> ' + (typeof cell.value === 'string' ? cell.value : 'Object');
         grid.draw();
+        if (cell.rowIndex === 0 && cell.columnIndex === 1) {
+            if (Array.isArray(grid.data[6].eam)) {
+                grid.data[6].eam = 'blah';
+                grid.resetRowHeights();
+            } else {
+                grid.data[6].eam = createRandomSampleData(400);
+            }
+            grid.draw();
+        } else if (cell.rowIndex === 1 && cell.columnIndex === 1) {
+            grid.toggleTree(1);
+        }
     });
     grid.addEventListener('selectionchanged', function (data, matrix, bounds) {
         console.log(JSON.stringify(bounds));

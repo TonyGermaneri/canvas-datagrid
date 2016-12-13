@@ -101,7 +101,7 @@ tree: false
 When true, an arrow will be drawn on each row that when clicked raises the `expandtree` event
 for that row and creates an inner grid.
 
-treeHorizontalScroll: true
+treeHorizontalScroll: false
 --------------------
 When true, expanded child grids will scroll horizontally with the parent columns.  When false,
 when scrolling horizontally child grids will remain stationary.  This does not impact
@@ -470,8 +470,26 @@ The canvas element drawn onto for this grid.
 Methods
 =======
 
+setRowHeight(index, height)
+---------------------------
+Sets the height of the given row index.
+
+setColumnWidth(index, width)
+----------------------------
+Sets the column width of the given column index.
+
+resetColumnWidths()
+-------------------
+Removes any changes to the width of the columns due to user or api interaction,
+setting them back to the schema or style default.
+
+resetRowHeights()
+-------------------
+Removes any changes to the height of the rows due to user or api interaction,
+setting them back to the schema or style default.
+
 insertColumn(column, index)
-----------------------
+---------------------------
 Inserts a new column before the specified index
 into the schema.  See [schema](#schema).
 
