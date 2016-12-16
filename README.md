@@ -69,8 +69,8 @@ Alter the format (appearance only) of a data based on type.
 Add a tree view
 
     grid.attributes.tree = true;
-    grid.addEventListener('expandtree', function (e) {
-        e.grid.data = [{My: 'Other Data'}];
+    grid.addEventListener('expandtree', function (grid, data, rowIndex) {
+        grid.data = [{My: 'Other Data'}];
     });
 
 Change all the data!
@@ -509,12 +509,12 @@ addColumn(column)
 -------------------
 Adds a new column into the schema.  See [schema](#schema-1).
 
-addRow(d)
+addRow(data)
 ---------
 Adds a new row of data to the grid.
 Row data should probably look somewhat like the schema.
 
-insertRow(d)
+insertRow(data, index)
 ------------
 Inserts a new row of data to the grid before the specified index.
 Row data should probably look somewhat like the schema.
@@ -652,23 +652,25 @@ grid is created and nested inside of the row.  The grid, the row data and row in
 to the event listener.  From here you can manipulate the inner grid.  A grid is not disposed
 when the tree is collapsed, just hidden, but grids are not created until the arrow is clicked.
 
+    grid.addEventListener('expandtree', function (grid, data, rowIndex) { });
+
 | Argument | Description |
 |-----|------|
-| e | event. |
-| e.rowIndex | The row index that was expanded. |
-| e.data | The row's data. |
-| e.grid | New, or if reopened existing, grid. |
+| grid | New, or if reopened existing, grid. |
+| data | The row's data. |
+| rowIndex | The row index that was expanded. |
 
 collapsetree
 ------------
 Fires when the user click the "drill in" arrow on a row that is already expanded.
 
+    grid.addEventListener('collapsetree', function (grid, data, rowIndex) { });
+
 | Argument | Description |
 |-----|------|
-| e | event. |
-| e.rowIndex | The row index that was collapsed. |
-| e.data | The row's data. |
-| e.grid | Grid that is being collapsed. |
+| grid | New, or if reopened existing, grid. |
+| data | The row's data. |
+| rowIndex | The row index that was expanded. |
 
 scroll
 ------
