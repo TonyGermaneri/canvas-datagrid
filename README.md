@@ -1,13 +1,13 @@
 Canvas Data Grid
 ================
 
+[Demo](https://tonygermaneri.github.io/canvas-datagrid/sample/index.html)
+
 * High performance lightweight hierarchal canvas based data grid.
 * Support for 10^6+ rows and 100's of columns.
 * Extensible styling, filtering, formatting, resizing, selecting, and ordering.
 * Rich API of events, methods and properties optimized for CRUD, reporting and work flow applications.
 * Zero dependencies, very small code base, a single 94k (16k gziped) file.
-
-[Demo](https://tonygermaneri.github.io/canvas-datagrid/sample/index.html)
 
 * [Instantiation](#instantiation)
 * [Attributes](#attributes)
@@ -29,7 +29,10 @@ Simple creation and data set.
 
     var grid = canvasDataGrid({
         parentNode: document.getElementById('blockElement'),
-        data: data
+        data: [
+            {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},
+            {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}
+        ]
     });
 
 Check which [cell](#cell) the user clicked on.
@@ -64,6 +67,7 @@ Alter the format (appearance only) of a data based on type.
     };
 
 Add a tree view
+
     grid.attributes.tree = true;
     grid.addEventListener('expandtree', function (e) {
         e.grid.data = [{My: 'Other Data'}];
@@ -131,6 +135,10 @@ When true, moving the active cell with keystrokes will also change the selection
 multiLine: true 
 ----------------
 When true, edit cells will be textareas, when false edit cells will be inputs.
+
+globalRowResize: false
+----------------------
+When true, resizing a row will resize all rows to the same height.  Questionable compatibility with hierarchical views.
 
 editable: true 
 ----------------
@@ -1135,6 +1143,7 @@ Changing a style will automatically call `draw`.
 | rowHeaderCellSelectedBackgroundColor | rgba(182, 205, 250, 1) |
 | scrollBarWidth | 14 |
 | scrollDivOverlap | 1.6 |
+| cellAutoResizePadding | 13 |
 
 Browser limitations
 -------------------
