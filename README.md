@@ -633,6 +633,7 @@ from appearing for some cells you can subscribe to the `beforebeginedit` event a
 when you want the cell to be read only.  Using events will give you the most granular control of appearance
 and behavior.
 
+
 selectionchanged
 ----------------
 Fires when the selection changes.
@@ -676,6 +677,21 @@ scroll
 ------
 Fires when the user scrolls the grid.
 
+datachanged
+-----------
+Fires when the data setter is set.
+
+| Argument | Description |
+|-----|------|
+| data | Data. |
+
+schemachanged
+-------------
+Fires when the schema setter is set.
+
+| Argument | Description |
+|-----|------|
+| schema | Schema. |
 
 beforerendercell
 ----------------
