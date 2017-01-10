@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // make the body look dark and brooding
     document.body.style.background = 'black';
     // add some space around the sides to show this object can play nicely on a real web page.
-    document.body.style.padding = '25px';
+    document.body.style.padding = '20px 0 50px 20px';
     // set the height of the object relative to the height of the window
     function resize() {
         parentNode.style.height = window.innerHeight - 100 + 'px';

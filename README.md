@@ -4,12 +4,14 @@ Canvas Data Grid
 [Demo](https://tonygermaneri.github.io/canvas-datagrid/sample/index.html)
 
 * High performance lightweight hierarchal canvas based data grid.
-* Support for 10^6+ rows and 100's of columns.
+* Support for millions of rows and hundreds of columns.
 * Extensible styling, filtering, formatting, resizing, selecting, and ordering.
 * Rich API of events, methods and properties optimized for CRUD, reporting and work flow applications.
 * Zero dependencies, very small code base, a single 94k (16k gziped) file.
 
+* [Installation](#installation)
 * [Instantiation](#instantiation)
+* [Extending](#extending)
 * [Attributes](#attributes)
 * [Properties](#properties)
 * [Methods](#methods)
@@ -18,6 +20,24 @@ Canvas Data Grid
 * [Styles](#styles)
 * [Browser limitations](#browser-limitations)
 
+Installation
+============
+You can install canvas-datagrid one of three ways:
+
+1. Download the [source](https://raw.githubusercontent.com/TonyGermaneri/canvas-datagrid/master/lib/main.js) file from github.
+2. Use bower
+
+    bower install canvas-datagrid
+
+3. Use npm
+
+    npm install canvas-datagrid
+
+Place the single source file `./lib/main.js` in your web page using
+a script tag that points to the source or the require framework.
+
+If you do not use the require framework a function will
+be added to the global scope of the web page called `canvasDatagrid`.
 
 Instantiation
 =============
@@ -28,7 +48,7 @@ If used without require, `canvasDataGrid` is declared in the global scope.
 Simple creation and data set.
 
     var grid = canvasDataGrid({
-        parentNode: document.getElementById('blockElement'),
+        parentNode: document.getElementById('myHtmlElement'),
         data: [
             {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},
             {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}
@@ -47,9 +67,10 @@ Check values when the selection has changed.
         console.log(data);
     });
 
-Alter the data after instantiation.
+You can alter the data after instantiation.
 
     grid.data[0].col1 = 'blah';
+    // gota call draw after setting data this way.
     grid.draw();
 
 Change the color of a cell based on value.
@@ -66,7 +87,7 @@ Alter the format (appearance only) of a data based on type.
         return new Date(cell.value).toISOString();
     };
 
-Add a tree view
+Add a tree view.
 
     grid.attributes.tree = true;
     grid.addEventListener('expandtree', function (grid, data, rowIndex) {
@@ -76,6 +97,121 @@ Add a tree view
 Change all the data!
 
     grid.data = [{other: 'data'}];
+
+Extending
+=========
+canvas-datagrid can be extended in many ways.  This section covers all of the
+methods of extending the canvas.
+
+Extending the visual appearance
+-------------------------------
+All visual elements of the canvas are dependent on the values of the style object.
+You can change the dimensions and appearance of any element of the grid.
+
+This example changes the fill style of the cell when the cell is a certain value.
+
+    grid.addEventListener('rendercell', function (ctx, cell) {
+        if (cell.header.name === 'MyStatusCell' && /blah/.test(cell.value)) {
+            ctx.fillStyle = '#AEEDCF';
+        }
+    });
+
+For a complete list of all style properties visit the [styles](#styles) section.
+
+Extending behavior by drawing on the canvas
+-------------------------------------------
+Extending behavior is done using event handlers just like a regular HTML element.
+You can alter the content of a rendered cell by attaching to such an event handler.
+Below is an example of drawing an image into a cell:
+
+This example attaches to two events. `rendertext` to prevent the rendering of text into the cell...
+
+    grid.addEventListener('rendertext', function (ctx, cell) {
+        if (cell.rowIndex > -1) {
+            if (cell.header.name === 'MyImageColumnName') {
+                cell.formattedValue = cell.value ? '' : 'No Image';
+            }
+        }
+    });
+
+... and `afterrendercell` to draw an image into the cell after the background and borders are drawn.
+Because the image is loaded asynchronously, you need to attach to the load even to actually draw
+the image.
+
+    var imgs = {};
+    grid.addEventListener('afterrendercell', function (ctx, cell) {
+        var i, contextGrid = this;
+        if (cell.header.name === 'MyImageColumnName'
+                && cell.value && cell.rowIndex > -1) {
+            if (!imgs[cell.value]) {
+                i = imgs[cell.value] = new Image();
+                i.src = cell.value;
+                i.onload = function () {
+                    i.targetHeight = cell.height;
+                    i.targetWidth = cell.height * (i.width / i.height);
+                    contextGrid.draw();
+                };
+                return;
+            }
+            i = imgs[cell.value];
+            if (i.width !== 0) {
+                ctx.drawImage(i, cell.x, cell.y, i.targetWidth, i.targetHeight);
+            }
+        }
+    });
+
+Extending the context menu
+--------------------------
+You can add or remove items from the context menu, or stop it from appearing.
+In the following example, a context menu item is added:
+
+        grid.addEventListener('contextmenu', function (e, cell, items) {
+            items.push({
+                title: 'Process selected row(s)',
+                click: function () {
+                    // cell.value contains the cell's value
+                    // cell.data contains the row values
+                    myProcess(cell.value, cell.data);
+                }
+            });
+        });
+
+The `title` property can be an HTML node reference instead of a string.
+The `click` property is optional.  See [contextmenu](#contextmenu) complete information.
+
+Extending the behavior of the canvas by formatting data
+-------------------------------------------------------
+You can format the data in your cells without altering the data in two ways.
+
+The first and fastest method is grid formatters.
+Grid formatters allow you to define what happens to a type of data.
+Data type is defined in the [schema](#schema) that you can optionally pass to describe your data.
+
+This method is slightly faster due to the O(1) hash map employed in the value formatters.
+
+In the following example the type `date` is given a formatter function.
+
+    grid.formatters.date = function (ctx, cell) {
+        return new Date(cell.value).toISOString();
+    };
+
+The return value of the formatter function will be displayed in the cell instead of the value
+in the data without altering the data.
+
+The second method is the `rendertext` event.  By subscribing to the `rendertext` event listener
+we can intercept the value in the context of the [cell](#cell) being drawn and alter it.
+
+This method is slightly slower due to the O(n) loop employed in the event handler class.
+
+This method is not dependent on values in the schema.  This methods overrides `grid.formatters`.
+
+    grid.addEventListener('rendertext', function (ctx, cell) {
+        if (cell.rowIndex > -1) {
+            if (cell.header.name === 'MyDateColumnName') {
+                cell.formattedValue = new Date(cell.value).toISOString();
+            }
+        }
+    });
 
 Attributes
 ==========
@@ -1060,6 +1196,7 @@ Changing a style will automatically call `draw`.
 | Property | Default Value |
 |-----|------|
 | maxEllipsisLength | 250 |
+| treeArrowClickRadius | 5 |
 | treeGridHeight | 250 |
 | treeArrowHeight | 8 |
 | treeArrowWidth | 13 |

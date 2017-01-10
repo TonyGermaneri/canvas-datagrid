@@ -1,6 +1,6 @@
 {
   "name": "canvas-datagrid",
-  "version": "0.9.23",
+  "version": "0.9.24",
   "description": "Canvas based data grid",
   "main": "./lib/main.js",
   "scripts": {
@@ -15,7 +15,11 @@
     "data",
     "datagrid",
     "grid",
-    "data-grid"
+    "data-grid",
+    "data-table",
+    "table",
+    "datatable",
+    "spreadsheet"
   ],
   "author": "Tony Germaneri <Tony.Germaneri@gmail.com>",
   "license": "BSD-3-Clause",

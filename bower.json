@@ -1,7 +1,7 @@
 {
   "name": "canvas-datagrid",
   "main": "lib/main.js",
-  "version": "0.9.23",
+  "version": "0.9.24",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -15,9 +15,15 @@
   ],
   "description": "Canvas based data grid",
   "keywords": [
-    "Datagrid",
+    "canvas",
+    "data",
+    "datagrid",
     "grid",
-    "canvas"
+    "data-grid",
+    "data-table",
+    "table",
+    "datatable",
+    "spreadsheet"
   ],
   "license": "BSD"
 }
