@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
         sampleData,
         schema;
     // create sample data.  Argument passed here is the number of sample rows to generate
-    sampleData = createRandomSampleData(Math.pow(10, 5));
+    sampleData = createRandomSampleData(100000);
     // create a sample schema by looking at the sample data headers
     schema = Object.keys(sampleData[0]).map(function (col) {
         return {
@@ -62,7 +62,10 @@ document.addEventListener('DOMContentLoaded', function () {
         // the node to add this grid to
         parentNode: parentNode,
         // this shows how long it took to draw.  Draw happens anytime you move your mouse or do anything else with the grid.  Good performance is between 3-30ms.
-        showPerformance: true
+        showPerformance: true,
+        childGridAttributes: {
+            showPerformance: true
+        }
     });
     // set the data, this can be done during instantiation as well
     grid.data = sampleData;
@@ -97,7 +100,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // when the expand tree button is clicked this function runs
     function expandTree(grid, data, rowIndex) {
         // this is the data for the inner grid
-        grid.data = createRandomSampleData(50);
+        grid.data = createRandomSampleData(1000);
+        grid.showPerformance = true;
         grid.attributes.tree = true;
         // give this inner grid the same expand tree function allowing for infinite trees in the demo
         grid.addEventListener('expandtree', expandTree);
@@ -113,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 grid.data[6].eam = 'blah';
                 grid.resetRowHeights();
             } else {
-                grid.data[6].eam = createRandomSampleData(400);
+                grid.data[6].eam = createRandomSampleData(1000);
             }
             grid.draw();
         } else if (cell.rowIndex === 1 && cell.columnIndex === 1) {

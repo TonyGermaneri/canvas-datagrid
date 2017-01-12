@@ -1,10 +1,9 @@
 Canvas Data Grid
 ================
 
-[Demo](https://tonygermaneri.github.io/canvas-datagrid/sample/index.html)
-
+* [Demo](https://tonygermaneri.github.io/canvas-datagrid/sample/index.html)
 * High performance lightweight hierarchal canvas based data grid.
-* Support for millions of rows and hundreds of columns.
+* Support for millions of rows and columns.
 * Extensible styling, filtering, formatting, resizing, selecting, and ordering.
 * Rich API of events, methods and properties optimized for CRUD, reporting and work flow applications.
 * Zero dependencies, very small code base, a single 94k (16k gziped) file.
@@ -18,7 +17,6 @@ Canvas Data Grid
 * [Events](#events)
 * [Common Objects](#common-objects)
 * [Styles](#styles)
-* [Browser limitations](#browser-limitations)
 
 Installation
 ============
@@ -34,9 +32,9 @@ You can install canvas-datagrid one of three ways:
     npm install canvas-datagrid
 
 Place the single source file `./lib/main.js` in your web page using
-a script tag that points to the source or the require framework.
+a script tag that points to the source or use a require framework.
 
-If you do not use the require framework a function will
+If you do not use a require framework a function will
 be added to the global scope of the web page called `canvasDatagrid`.
 
 Instantiation
@@ -1297,14 +1295,15 @@ Changing a style will automatically call `draw`.
 | rowHeaderCellSelectedColor | rgba(43, 48, 153, 1) |
 | rowHeaderCellSelectedBackgroundColor | rgba(182, 205, 250, 1) |
 | scrollBarWidth | 14 |
-| scrollDivOverlap | 1.6 |
 | cellAutoResizePadding | 13 |
-
-Browser limitations
--------------------
-Some browsers (lookin at you Firefox) cannot have elements larger than a certain height.
-This height ends up being ~1.7^7px or around 700k rows if each row is the default of 24px tall.
-
-All browsers appear to break down somewhere around 10^6x7 rows.  It is unclear if it is a limitation
-of memory due to the dataset that is being created or a hard browser limit.
-Avoid loading greater than 10^6x7 rows.
+| scrollBarBackgroundColor | rgba(240, 240, 240, 1) |
+| scrollBarBoxColor | rgba(192, 192, 192, 1) |
+| scrollBarActiveColor | rgba(125, 125, 125, 1) |
+| scrollBarBoxWidth | 8 |
+| scrollBarBoxMargin | 2 |
+| scrollBarBoxBorderRadius | 3 |
+| scrollBarBorderColor | rgba(202, 202, 202, 1) |
+| scrollBarBorderWidth | 0.5 |
+| scrollBarWidth | 10 |
+| scrollBarCornerBorderColor | rgba(202, 202, 202, 1) |
+| scrollBarCornerBackground | rgba(240, 240, 240, 1) |
