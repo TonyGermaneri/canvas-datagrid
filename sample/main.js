@@ -22,12 +22,12 @@ document.addEventListener('DOMContentLoaded', function () {
         sampleData,
         schema;
     // create sample data.  Argument passed here is the number of sample rows to generate
-    sampleData = createRandomSampleData(100000);
+    sampleData = createRandomSampleData(70);
     // create a sample schema by looking at the sample data headers
     schema = Object.keys(sampleData[0]).map(function (col) {
         return {
             // hide one of the columns
-            hidden: col === 'Elit',
+            hidden: col === 'eam',
             // name the columns to link them to the data.  you can use `col.title` to show a human readable value.
             name: col,
             // set the default value of new rows that are added to the data, this can be a function or string.
