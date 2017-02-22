@@ -61,8 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // name of this specific instance, optional, used to store size preferences in the browser's local store.
         name: 'sample',
         // the node to add this grid to
-        parentNode: parentNode,
-        rowSelectionMode: true
+        parentNode: parentNode
     });
     // set the data, this can be done during instantiation as well
     grid.data = sampleData;
