@@ -327,6 +327,10 @@ showPerformance: false
 ----------------
 When true, the amount of time taken to draw the grid is shown.
 
+debug: false
+----------------
+When true, debug info will be drawn on top of the grid.
+
 borderResizeZone: 10 
 ----------------
 Number of pixels in total around a border that count as resize zones.
@@ -1230,7 +1234,7 @@ Changing a style will automatically call `draw`.
 | contextMenuMarginLeft | 5 |
 | autosizePadding | 5 |
 | minHeight | 250 |
-| minRowHeight | 10 |
+| minRowHeight | 24 |
 | minColumnWidth | 10 |
 | columnWidth | 250 |
 | backgroundColor | rgba(240, 240, 240, 1) |
@@ -1307,3 +1311,4 @@ Changing a style will automatically call `draw`.
 | scrollBarWidth | 10 |
 | scrollBarCornerBorderColor | rgba(202, 202, 202, 1) |
 | scrollBarCornerBackground | rgba(240, 240, 240, 1) |
+| scrollBarBoxMinSize | 15 |
