@@ -2,7 +2,7 @@
 /*globals canvasDatagrid: false */
 document.addEventListener('DOMContentLoaded', function () {
     'use strict';
-    // function for creating sample data
+    // function for creating sample data (ignore this)
     function createRandomSampleData(rows) {
         var x, data = [], d, i, c,
             r = 'Elend, eam, animal omittam an, has in, explicari principes. Elit, causae eleifend mea cu. No sed adipisci accusata, ei mea everti melius periculis. Ei quot audire pericula mea, qui ubique offendit no. Sint mazim mandamus duo ei. Sumo maiestatis id has, at animal reprehendunt definitionem cum, mei ne adhuc theophrastus.';
@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         return data;
     }
+    // beginning of the sample page
     var parentNode,
         grid,
         sampleData,
@@ -27,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
     schema = Object.keys(sampleData[0]).map(function (col) {
         return {
             // hide one of the columns
-            hidden: col === 'eam',
+            hidden: /causae/.test(col),
             // name the columns to link them to the data.  you can use `col.title` to show a human readable value.
             name: col,
             // set the default value of new rows that are added to the data, this can be a function or string.
@@ -45,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // make the body look dark and brooding
     document.body.style.background = 'black';
     // add some space around the sides to show this object can play nicely on a real web page.
-    document.body.style.padding = '20px 0 50px 20px';
+    document.body.style.padding = '7px 0 50px 7px';
     // set the height of the object relative to the height of the window
     function resize() {
         parentNode.style.height = window.innerHeight - 100 + 'px';
@@ -61,11 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
         name: 'sample',
         // the node to add this grid to
         parentNode: parentNode,
-        // this shows how long it took to draw.  Draw happens anytime you move your mouse or do anything else with the grid.  Good performance is between 3-30ms.
-        showPerformance: true,
-        childGridAttributes: {
-            showPerformance: true
-        }
+        rowSelectionMode: true
     });
     // set the data, this can be done during instantiation as well
     grid.data = sampleData;
@@ -80,6 +77,8 @@ document.addEventListener('DOMContentLoaded', function () {
     grid.data[3].Elend = 'in this example.';
     grid.data[0].eam = 'Click here to toggle a grid in a cell';
     grid.data[1].eam = 'Click here to toggle a grid in a row';
+    grid.data[2].eam = 'Click here to toggle debug info';
+    grid.data[3].eam = 'Click here to toggle performance info';
     // change the appearance of cells based on their values
     grid.addEventListener('rendercell', function (ctx, cell) {
         if (cell.selected || cell.active) { return; }
@@ -101,7 +100,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function expandTree(grid, data, rowIndex) {
         // this is the data for the inner grid
         grid.data = createRandomSampleData(1000);
-        grid.showPerformance = true;
         grid.attributes.tree = true;
         // give this inner grid the same expand tree function allowing for infinite trees in the demo
         grid.addEventListener('expandtree', expandTree);
@@ -112,16 +110,20 @@ document.addEventListener('DOMContentLoaded', function () {
     grid.addEventListener('click', function (e, cell, menuItems, menuElement) {
         grid.data[4].Elend = 'Clicked value -> ' + (typeof cell.value === 'string' ? cell.value : 'Object');
         grid.draw();
-        if (cell.rowIndex === 0 && cell.columnIndex === 1) {
-            if (Array.isArray(grid.data[6].eam)) {
-                grid.data[6].eam = 'blah';
+        if (/toggle a grid in a cell/.test(cell.value)) {
+            if (Array.isArray(grid.data[6][grid.schema[0].name])) {
+                grid.data[6][grid.schema[0].name] = 'blah';
                 grid.resetRowHeights();
             } else {
-                grid.data[6].eam = createRandomSampleData(1000);
+                grid.data[6][grid.schema[0].name] = createRandomSampleData(1000);
             }
             grid.draw();
-        } else if (cell.rowIndex === 1 && cell.columnIndex === 1) {
+        } else if (/toggle a grid in a row/.test(cell.value)) {
             grid.toggleTree(1);
+        } else if (/toggle debug info/.test(cell.value)) {
+            grid.attributes.debug = !grid.attributes.debug;
+        } else if (/toggle performance info/.test(cell.value)) {
+            grid.attributes.showPerformance = !grid.attributes.showPerformance;
         }
     });
     // show information about the selection dimensions
