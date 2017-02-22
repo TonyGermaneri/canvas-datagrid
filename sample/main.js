@@ -21,9 +21,10 @@ document.addEventListener('DOMContentLoaded', function () {
     var parentNode,
         grid,
         sampleData,
+        rows = 100,
         schema;
     // create sample data.  Argument passed here is the number of sample rows to generate
-    sampleData = createRandomSampleData(70);
+    sampleData = createRandomSampleData(rows);
     // create a sample schema by looking at the sample data headers
     schema = Object.keys(sampleData[0]).map(function (col) {
         return {
@@ -70,14 +71,18 @@ document.addEventListener('DOMContentLoaded', function () {
     // set the default width of a column in the schema
     grid.schema[0].width = 400;
     // set the values of the data.  Setting values this way will not redraw the grid, you must call draw() to see changes.
-    grid.data[0].Elend = 'Welcome to canvas-dataGrid samples!';
-    grid.data[1].Elend = 'View the source of this page to see';
-    grid.data[2].Elend = 'how the cells and context menus were altered';
-    grid.data[3].Elend = 'in this example.';
-    grid.data[0].eam = 'Click here to toggle a grid in a cell';
-    grid.data[1].eam = 'Click here to toggle a grid in a row';
-    grid.data[2].eam = 'Click here to toggle debug info';
-    grid.data[3].eam = 'Click here to toggle performance info';
+    function setWelcomeMessage() {
+        grid.data[0].Elend = 'Welcome to canvas-dataGrid samples!';
+        grid.data[1].Elend = 'View the source of this page to see';
+        grid.data[2].Elend = 'how the cells and context menus were altered';
+        grid.data[3].Elend = 'in this example.';
+        grid.data[0].eam = 'Click here to toggle a grid in a cell';
+        grid.data[1].eam = 'Click here to toggle a grid in a row';
+        grid.data[2].eam = 'Click here to toggle debug info';
+        grid.data[3].eam = 'Click here to toggle performance info';
+        grid.data[4].eam = 'Click here to add 10000 rows at ' + rows + ' rows now';
+    }
+    setWelcomeMessage();
     // change the appearance of cells based on their values
     grid.addEventListener('rendercell', function (ctx, cell) {
         if (cell.selected || cell.active) { return; }
@@ -123,6 +128,10 @@ document.addEventListener('DOMContentLoaded', function () {
             grid.attributes.debug = !grid.attributes.debug;
         } else if (/toggle performance info/.test(cell.value)) {
             grid.attributes.showPerformance = !grid.attributes.showPerformance;
+        } else if (/add 10000 rows/.test(cell.value)) {
+            rows += 10000;
+            grid.data = createRandomSampleData(rows);
+            setWelcomeMessage();
         }
     });
     // show information about the selection dimensions
