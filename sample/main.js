@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var parentNode,
         grid,
         sampleData,
-        rows = 100,
+        rows = 1000,
         schema;
     // create sample data.  Argument passed here is the number of sample rows to generate
     sampleData = createRandomSampleData(rows);
@@ -62,7 +62,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // name of this specific instance, optional, used to store size preferences in the browser's local store.
         name: 'sample',
         // the node to add this grid to
-        parentNode: parentNode
+        parentNode: parentNode,
+        
     });
     // set the data, this can be done during instantiation as well
     grid.data = sampleData;
@@ -117,7 +118,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (/toggle a grid in a cell/.test(cell.value)) {
             if (Array.isArray(grid.data[6][grid.schema[0].name])) {
                 grid.data[6][grid.schema[0].name] = 'blah';
-                grid.resetRowHeights();
             } else {
                 grid.data[6][grid.schema[0].name] = createRandomSampleData(1000);
             }
