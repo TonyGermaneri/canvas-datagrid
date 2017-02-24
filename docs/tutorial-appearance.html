@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Tutorial: sorters</title>
+	<title>Documentation Tutorial: appearance</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -82,41 +82,54 @@
 <header>
     
 
-    <h2>sorters</h2>
+    <h2>appearance</h2>
 </header>
 
 <article>
-    <p>Object that contains a list of sorting functions for sorting columns.</p>
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>columnName</td>
-<td>Name of the column to be sorted.</td>
-</tr>
-<tr>
-<td>direction</td>
-<td><code>asc</code> or <code>desc</code> for ascending or descending.</td>
-</tr>
-</tbody>
-</table>
-<p>Sorter function must return a sort function.
-This function will be used in the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">native sort method</a>.</p>
-<p>Example sorter:</p>
-<pre class="prettyprint source"><code>grid.sorters.number = function (columnName, direction) {
-    var asc = direction === 'asc';
-    return function (a, b) {
-        if (asc) {
-            return a[columnName] - b[columnName];
+    <p>canvas-datagrid can be extended in many ways.  This section covers all of the
+methods of extending the canvas.</p>
+<h2>Extending the visual appearance</h2><p>All visual elements of the canvas are dependent on the values of the style object.
+You can change the dimensions and appearance of any element of the grid.</p>
+<p>This example changes the fill style of the cell when the cell is a certain value.</p>
+<pre class="prettyprint source"><code>grid.addEventListener('rendercell', function (ctx, cell) {
+    if (cell.header.name === 'MyStatusCell' && /blah/.test(cell.value)) {
+        ctx.fillStyle = '#AEEDCF';
+    }
+});</code></pre><p>For a complete list of all style properties visit the <a href="#styles">styles</a> section.</p>
+<h2>Drawing on the canvas</h2><p>Extending behavior is done using event handlers just like a regular HTML element.
+You can alter the content of a rendered cell by attaching to such an event handler.
+Below is an example of drawing an image into a cell:</p>
+<p>This example attaches to two events. <code>rendertext</code> to prevent the rendering of text into the cell...</p>
+<pre class="prettyprint source"><code>grid.addEventListener('rendertext', function (ctx, cell) {
+    if (cell.rowIndex > -1) {
+        if (cell.header.name === 'MyImageColumnName') {
+            cell.formattedValue = cell.value ? '' : 'No Image';
         }
-        return b[columnName] - a[columnName];
-    };
-};</code></pre>
+    }
+});</code></pre><p>... and <code>afterrendercell</code> to draw an image into the cell after the background and borders are drawn.
+Because the image is loaded asynchronously, you need to attach to the load even to actually draw
+the image.</p>
+<pre class="prettyprint source"><code>var imgs = {};
+grid.addEventListener('afterrendercell', function (ctx, cell) {
+    var i, contextGrid = this;
+    if (cell.header.name === 'MyImageColumnName'
+            && cell.value && cell.rowIndex > -1) {
+        if (!imgs[cell.value]) {
+            i = imgs[cell.value] = new Image();
+            i.src = cell.value;
+            i.onload = function () {
+                i.targetHeight = cell.height;
+                i.targetWidth = cell.height * (i.width / i.height);
+                contextGrid.draw();
+            };
+            return;
+        }
+        i = imgs[cell.value];
+        if (i.width !== 0) {
+            ctx.drawImage(i, cell.x, cell.y, i.targetWidth, i.targetHeight);
+        }
+    }
+});</code></pre>
 </article>
 
 </section>
