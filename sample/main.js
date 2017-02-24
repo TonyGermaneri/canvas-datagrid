@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     // show information about the selection dimensions
     grid.addEventListener('selectionchanged', function (data, matrix, bounds) {
-        console.log(JSON.stringify(bounds));
+        //console.log(JSON.stringify(bounds));
     });
     // create a sample context menu
     grid.addEventListener('contextmenu', function (e, cell, menuItems, contextMenu) {
