@@ -5,7 +5,7 @@
   "main": "./lib/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "rm -rf ./docs; jsdoc -d ./docs -c ./jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md -r ./lib"
+    "install": "rm -rf ./docs; jsdoc -u ./tutorials -d ./docs -c ./jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md -r ./lib"
   },
   "repository": {
     "type": "git",

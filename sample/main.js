@@ -40,17 +40,20 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     // create a node to add the grid to
     parentNode = document.createElement('div');
-    // give it some arbitrary css width, any will work, including the defaults
-    parentNode.style.width = '90%';
     // add it to the body
     document.body.appendChild(parentNode);
     // make the body look dark and brooding
     document.body.style.background = 'black';
-    // add some space around the sides to show this object can play nicely on a real web page.
-    document.body.style.padding = '7px 0 50px 7px';
+    document.body.style.padding = '0';
+    document.body.style.margin = '0';
+    parentNode.style.position = 'absolute';
+    parentNode.style.top = '0';
+    parentNode.style.left = '0';
+    document.body.style.overflow = 'hidden';
     // set the height of the object relative to the height of the window
     function resize() {
-        parentNode.style.height = window.innerHeight - 100 + 'px';
+        parentNode.style.height = window.innerHeight + 'px';
+        parentNode.style.width = window.innerWidth + 'px';
     }
     resize();
     // bind setting the height to the window's resize event
@@ -63,7 +66,6 @@ document.addEventListener('DOMContentLoaded', function () {
         name: 'sample',
         // the node to add this grid to
         parentNode: parentNode,
-        
     });
     // set the data, this can be done during instantiation as well
     grid.data = sampleData;
