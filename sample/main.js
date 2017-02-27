@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
         grid.data[5].Elend = 'Add 10000 rows. Currently: ' + rows;
         grid.data[6].Elend = 'Double click to edit data.';
         grid.data[7].Elend = 'Navigate with cursor keys.';
-        grid.data[8].Elend = 'Click the row arrows top open row grids.';
+        grid.data[8].Elend = 'Click the row arrows to open row grids.';
         grid.data[9].Elend = 'Support for millions of rows.';
         grid.data[10].Elend = 'Click a column to sort values.';
         grid.data[11].Elend = 'Resize rows or columns.';
