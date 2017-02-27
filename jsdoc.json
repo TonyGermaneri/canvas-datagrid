@@ -1,6 +1,6 @@
 {
     "templates": {
-        "theme": "slate",
+        "theme": "simplex",
         "syntaxTheme": "dark"
     }
 }

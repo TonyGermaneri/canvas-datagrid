@@ -1,6 +1,8 @@
 Canvas Data Grid
 ================
 
+[![NPM](https://nodei.co/npm/canvas-datagrid.png?downloads=true)](https://nodei.co/npm/canvas-datagrid/)
+
 * High performance lightweight hierarchal canvas based data grid.
 * Support for millions of rows and columns.
 * Extensible styling, filtering, formatting, resizing, selecting, and ordering.
@@ -43,3 +45,19 @@ If used without require, `canvasDataGrid` is declared in the global scope.
             {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}
         ]
     });
+
+Building documentation
+======================
+
+Although canvas-datagrid itself does not need to be built, if you are intrested in building
+the documentation for the project, you will need to run the following commands.
+
+
+Run npm install to get jsdoc and ink-docstrap.
+
+    npm install
+
+Build the docs
+
+    jsdoc -u ./tutorials -d ./docs -c ./jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md -r ./lib
+

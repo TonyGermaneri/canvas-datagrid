@@ -66,6 +66,8 @@ document.addEventListener('DOMContentLoaded', function () {
         name: 'sample',
         // the node to add this grid to
         parentNode: parentNode,
+        // allow a new row to be added
+        showNewRow: true
     });
     // set the data, this can be done during instantiation as well
     grid.data = sampleData;
@@ -75,32 +77,24 @@ document.addEventListener('DOMContentLoaded', function () {
     grid.schema[0].width = 400;
     // set the values of the data.  Setting values this way will not redraw the grid, you must call draw() to see changes.
     function setWelcomeMessage() {
-        grid.data[0].Elend = 'Welcome to canvas-dataGrid samples!';
-        grid.data[1].Elend = 'View the source of this page to see';
-        grid.data[2].Elend = 'how the cells and context menus were altered';
-        grid.data[3].Elend = 'in this example.';
-        grid.data[0].eam = 'Click here to toggle a grid in a cell';
-        grid.data[1].eam = 'Click here to toggle a grid in a row';
-        grid.data[2].eam = 'Click here to toggle debug info';
-        grid.data[3].eam = 'Click here to toggle performance info';
-        grid.data[4].eam = 'Click here to add 10000 rows at ' + rows + ' rows now';
+        grid.data[0].Elend = 'canvas-dataGrid demo.';
+        grid.data[1].Elend = 'Toggle a grid in a row.';
+        grid.data[2].Elend = 'Toggle a grid in a cell.';
+        grid.data[3].Elend = 'Toggle debug info.';
+        grid.data[4].Elend = 'Toggle performance info.';
+        grid.data[5].Elend = 'Add 10000 rows. Currently: ' + rows;
+        grid.data[6].Elend = 'Double click to edit data.';
+        grid.data[7].Elend = 'Navigate with cursor keys.';
+        grid.data[8].Elend = 'Click the row arrows top open row grids.';
+        grid.data[9].Elend = 'Support for millions of rows.';
+        grid.data[10].Elend = 'Click a column to sort values.';
+        grid.data[11].Elend = 'Resize rows or columns.';
     }
     setWelcomeMessage();
     // change the appearance of cells based on their values
     grid.addEventListener('rendercell', function (ctx, cell) {
-        if (cell.selected || cell.active) { return; }
-        if (cell.header.name === 'Elit' && cell.style !== 'headerCell') {
-            ctx.fillStyle = 'lightgreen';
-        }
-        if (cell.rowIndex === 1 && cell.columnIndex === 2) {
+        if (cell.header.name === 'Elend' && cell.rowIndex < 12 && cell.rowIndex > -1) {
             ctx.fillStyle = 'lightyellow';
-        }
-        if (cell.rowIndex === 2 && cell.columnIndex === 2) {
-            ctx.strokeStyle = 'red';
-        }
-        if (/Elend/.test(cell.value) && cell.style !== 'headerCell') {
-            ctx.strokeStyle = 'red';
-            ctx.fillStyle = 'pink';
         }
     });
     // when the expand tree button is clicked this function runs
@@ -108,29 +102,30 @@ document.addEventListener('DOMContentLoaded', function () {
         // this is the data for the inner grid
         grid.data = createRandomSampleData(1000);
         grid.attributes.tree = true;
-        // give this inner grid the same expand tree function allowing for infinite trees in the demo
-        grid.addEventListener('expandtree', expandTree);
     }
     // bind the above function
     grid.addEventListener('expandtree', expandTree);
     // check what was clicked on, change the contents of cells, expand trees, set cell grids
     grid.addEventListener('click', function (e, cell, menuItems, menuElement) {
-        grid.data[4].Elend = 'Clicked value -> ' + (typeof cell.value === 'string' ? cell.value : 'Object');
+        grid.data[0].Elend = 'Clicked value -> ' + (typeof cell.value === 'string' ? cell.value : 'Object');
         grid.draw();
-        if (/toggle a grid in a cell/.test(cell.value)) {
-            if (Array.isArray(grid.data[6][grid.schema[0].name])) {
-                grid.data[6][grid.schema[0].name] = 'blah';
+        if (/toggle a grid in a cell/i.test(cell.value)) {
+            if (Array.isArray(grid.data[2][grid.schema[1].name])) {
+                grid.data[2][grid.schema[1].name] = 'blah';
+                grid.setRowHeight(2, grid.style.rowHeight);
             } else {
-                grid.data[6][grid.schema[0].name] = createRandomSampleData(1000);
+                grid.data[2][grid.schema[1].name] = createRandomSampleData(1000);
+                grid.setRowHeight(2, 300);
+                grid.setColumnWidth(1, 400);
             }
             grid.draw();
-        } else if (/toggle a grid in a row/.test(cell.value)) {
+        } else if (/toggle a grid in a row/i.test(cell.value)) {
             grid.toggleTree(1);
-        } else if (/toggle debug info/.test(cell.value)) {
+        } else if (/toggle debug info/i.test(cell.value)) {
             grid.attributes.debug = !grid.attributes.debug;
-        } else if (/toggle performance info/.test(cell.value)) {
+        } else if (/toggle performance info/i.test(cell.value)) {
             grid.attributes.showPerformance = !grid.attributes.showPerformance;
-        } else if (/add 10000 rows/.test(cell.value)) {
+        } else if (/add 10000 rows/i.test(cell.value)) {
             rows += 10000;
             grid.data = createRandomSampleData(rows);
             setWelcomeMessage();
@@ -161,6 +156,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         checkbox.onclick = function (e) { e.stopPropagation(); };
     });
+    grid.setColumnWidth(2, 400);
     // redraw the grid with the grid.data values that have been changed
     grid.draw();
     // assign this grid instance to the global scope so people can play with it on the console.
