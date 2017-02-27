@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Documentation Tutorial: appearance</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.dark.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.simplex.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top ">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Documentation</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="canvasDataGrid.html">canvasDataGrid</a></li><li><a href="canvasDataGrid.cell.html">canvasDataGrid.cell</a></li><li><a href="canvasDataGrid.contextMenuItem.html">canvasDataGrid.contextMenuItem</a></li><li><a href="canvasDataGrid.rect.html">canvasDataGrid.rect</a></li><li><a href="canvasDataGrid.style.html">canvasDataGrid.style</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="canvasDataGrid.html#event:afterrendercell">canvasDataGrid#event:afterrendercell</a></li><li><a href="canvasDataGrid.html#event:beforebeginedit">canvasDataGrid#event:beforebeginedit</a></li><li><a href="canvasDataGrid.html#event:beforeendedit">canvasDataGrid#event:beforeendedit</a></li><li><a href="canvasDataGrid.html#event:beforerendercell">canvasDataGrid#event:beforerendercell</a></li><li><a href="canvasDataGrid.html#event:beginedit">canvasDataGrid#event:beginedit</a></li><li><a href="canvasDataGrid.html#event:cellmouseout">canvasDataGrid#event:cellmouseout</a></li><li><a href="canvasDataGrid.html#event:cellmouseover">canvasDataGrid#event:cellmouseover</a></li><li><a href="canvasDataGrid.html#event:click">canvasDataGrid#event:click</a></li><li><a href="canvasDataGrid.html#event:collapsetree">canvasDataGrid#event:collapsetree</a></li><li><a href="canvasDataGrid.html#event:contextmenu">canvasDataGrid#event:contextmenu</a></li><li><a href="canvasDataGrid.html#event:datachanged">canvasDataGrid#event:datachanged</a></li><li><a href="canvasDataGrid.html#event:dblclick">canvasDataGrid#event:dblclick</a></li><li><a href="canvasDataGrid.html#event:endedit">canvasDataGrid#event:endedit</a></li><li><a href="canvasDataGrid.html#event:expandtree">canvasDataGrid#event:expandtree</a></li><li><a href="canvasDataGrid.html#event:keydown">canvasDataGrid#event:keydown</a></li><li><a href="canvasDataGrid.html#event:keypress">canvasDataGrid#event:keypress</a></li><li><a href="canvasDataGrid.html#event:keyup">canvasDataGrid#event:keyup</a></li><li><a href="canvasDataGrid.html#event:mousedown">canvasDataGrid#event:mousedown</a></li><li><a href="canvasDataGrid.html#event:mousemove">canvasDataGrid#event:mousemove</a></li><li><a href="canvasDataGrid.html#event:mouseup">canvasDataGrid#event:mouseup</a></li><li><a href="canvasDataGrid.html#event:ordercolumn">canvasDataGrid#event:ordercolumn</a></li><li><a href="canvasDataGrid.html#event:rendercell">canvasDataGrid#event:rendercell</a></li><li><a href="canvasDataGrid.html#event:rendercellgrid">canvasDataGrid#event:rendercellgrid</a></li><li><a href="canvasDataGrid.html#event:renderorderbyarrow">canvasDataGrid#event:renderorderbyarrow</a></li><li><a href="canvasDataGrid.html#event:rendertext">canvasDataGrid#event:rendertext</a></li><li><a href="canvasDataGrid.html#event:rendertreearrow">canvasDataGrid#event:rendertreearrow</a></li><li><a href="canvasDataGrid.html#event:resize">canvasDataGrid#event:resize</a></li><li><a href="canvasDataGrid.html#event:resizecolumn">canvasDataGrid#event:resizecolumn</a></li><li><a href="canvasDataGrid.html#event:schemachanged">canvasDataGrid#event:schemachanged</a></li><li><a href="canvasDataGrid.html#event:scroll">canvasDataGrid#event:scroll</a></li><li><a href="canvasDataGrid.html#event:selectionchanged">canvasDataGrid#event:selectionchanged</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="tutorial-appearance.html">appearance</a></li><li><a href="tutorial-contextmenu.html">contextmenu</a></li><li><a href="tutorial-data.html">data</a></li><li><a href="tutorial-filters.html">filters</a></li><li><a href="tutorial-formatters.html">formatters</a></li><li><a href="tutorial-schema.html">schema</a></li><li><a href="tutorial-sorters.html">sorters</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			<section class="tutorial-section">
+
+<header>
+    
+
+    <h2>appearance</h2>
+</header>
+
+<article>
+    <p>canvas-datagrid can be extended in many ways.  This section covers all of the
+methods of extending the canvas.</p>
+<h2>Extending the visual appearance</h2><p>All visual elements of the canvas are dependent on the values of the style object.
+You can change the dimensions and appearance of any element of the grid.</p>
+<p>This example changes the fill style of the cell when the cell is a certain value.</p>
+<pre class="prettyprint source"><code>grid.addEventListener('rendercell', function (ctx, cell) {
+    if (cell.header.name === 'MyStatusCell' && /blah/.test(cell.value)) {
+        ctx.fillStyle = '#AEEDCF';
+    }
+});</code></pre><p>For a complete list of all style properties visit the <a href="#styles">styles</a> section.</p>
+<h2>Drawing on the canvas</h2><p>Extending behavior is done using event handlers just like a regular HTML element.
+You can alter the content of a rendered cell by attaching to such an event handler.
+Below is an example of drawing an image into a cell:</p>
+<p>This example attaches to two events. <code>rendertext</code> to prevent the rendering of text into the cell...</p>
+<pre class="prettyprint source"><code>grid.addEventListener('rendertext', function (ctx, cell) {
+    if (cell.rowIndex > -1) {
+        if (cell.header.name === 'MyImageColumnName') {
+            cell.formattedValue = cell.value ? '' : 'No Image';
+        }
+    }
+});</code></pre><p>... and <code>afterrendercell</code> to draw an image into the cell after the background and borders are drawn.
+Because the image is loaded asynchronously, you need to attach to the load even to actually draw
+the image.</p>
+<pre class="prettyprint source"><code>var imgs = {};
+grid.addEventListener('afterrendercell', function (ctx, cell) {
+    var i, contextGrid = this;
+    if (cell.header.name === 'MyImageColumnName'
+            && cell.value && cell.rowIndex > -1) {
+        if (!imgs[cell.value]) {
+            i = imgs[cell.value] = new Image();
+            i.src = cell.value;
+            i.onload = function () {
+                i.targetHeight = cell.height;
+                i.targetWidth = cell.height * (i.width / i.height);
+                contextGrid.draw();
+            };
+            return;
+        }
+        i = imgs[cell.value];
+        if (i.width !== 0) {
+            ctx.drawImage(i, cell.x, cell.y, i.targetWidth, i.targetHeight);
+        }
+    }
+});</code></pre>
+</article>
+
+</section>
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc </a>
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : false,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>
