@@ -13,6 +13,8 @@ Canvas Data Grid
 
 [Documentation](https://tonygermaneri.github.io/canvas-datagrid/docs/index.html)
 
+[GitHub](https://github.com/TonyGermaneri/canvas-datagrid)
+
 Installation
 ============
 You can install canvas-datagrid one of three ways:
