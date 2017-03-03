@@ -9,7 +9,7 @@ Canvas Data Grid
 * Rich API of events, methods and properties optimized for CRUD, reporting and work flow applications.
 * Zero dependencies, very small code base, a single 94k (16k gziped) file.
 
-[Demo](https://tonygermaneri.github.io/canvas-datagrid/sample/index.html)
+[Demo](https://tonygermaneri.github.io/canvas-datagrid/docs/tutorial-sample.html)
 
 [Documentation](https://tonygermaneri.github.io/canvas-datagrid/docs/index.html)
 
@@ -57,7 +57,7 @@ Run npm install to get jsdoc and ink-docstrap.
 
     npm install
 
-Build the docs
+Build the docs (Unix)
 
-    jsdoc -u ./tutorials -d ./docs -c ./jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md -r ./lib
+    jsdoc -u ./tutorials -d ./docs -c ./jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md -r ./lib; cp ./tutorials/*.js ./docs/
 
