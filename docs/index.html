@@ -47,7 +47,7 @@
 			<li class="dropdown">
 				<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="tutorial-appearance.html">appearance</a></li><li><a href="tutorial-contextmenu.html">contextmenu</a></li><li><a href="tutorial-data.html">data</a></li><li><a href="tutorial-filters.html">filters</a></li><li><a href="tutorial-formatters.html">formatters</a></li><li><a href="tutorial-schema.html">schema</a></li><li><a href="tutorial-sorters.html">sorters</a></li>
+					<li><a href="tutorial-appearance.html">appearance</a></li><li><a href="tutorial-contextmenu.html">contextmenu</a></li><li><a href="tutorial-data.html">data</a></li><li><a href="tutorial-filters.html">filters</a></li><li><a href="tutorial-formatters.html">formatters</a></li><li><a href="tutorial-sample.html">sample</a></li><li><a href="tutorial-schema.html">schema</a></li><li><a href="tutorial-sorters.html">sorters</a></li>
 				</ul>
 			</li>
 			
@@ -108,7 +108,7 @@
 <li>Rich API of events, methods and properties optimized for CRUD, reporting and work flow applications.</li>
 <li>Zero dependencies, very small code base, a single 94k (16k gziped) file.</li>
 </ul>
-<p><a href="https://tonygermaneri.github.io/canvas-datagrid/sample/index.html">Demo</a></p>
+<p><a href="https://tonygermaneri.github.io/canvas-datagrid/docs/tutorial-sample.html">Demo</a></p>
 <p><a href="https://tonygermaneri.github.io/canvas-datagrid/docs/index.html">Documentation</a></p>
 <h1>Installation</h1><p>You can install canvas-datagrid one of three ways:</p>
 <ol>
@@ -135,8 +135,8 @@ If used without require, <code>canvasDataGrid</code> is declared in the global s
 });</code></pre><h1>Building documentation</h1><p>Although canvas-datagrid itself does not need to be built, if you are intrested in building
 the documentation for the project, you will need to run the following commands.</p>
 <p>Run npm install to get jsdoc and ink-docstrap.</p>
-<pre class="prettyprint source"><code>npm install</code></pre><p>Build the docs</p>
-<pre class="prettyprint source"><code>jsdoc -u ./tutorials -d ./docs -c ./jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md -r ./lib</code></pre></article>
+<pre class="prettyprint source"><code>npm install</code></pre><p>Build the docs (Unix)</p>
+<pre class="prettyprint source"><code>jsdoc -u ./tutorials -d ./docs -c ./jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md -r ./lib; cp ./tutorials/*.js ./docs/</code></pre></article>
     </section>
 
 
