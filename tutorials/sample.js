@@ -398,7 +398,7 @@ document.addEventListener('DOMContentLoaded', function () {
             try {
                 eval(aceEditor.getValue());
             } catch (e) {
-                errorMessage.style.visibility = 'visible'
+                errorMessage.style.visibility = 'visible';
                 errorMessage.innerHTML = e.message;
             }
         };
