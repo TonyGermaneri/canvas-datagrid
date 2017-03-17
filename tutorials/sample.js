@@ -406,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function () {
         function resize() {
             editor.style.height = (window.innerHeight * 0.33) + 'px';
             gridParent.style.height = window.innerHeight
-                - topSide.offsetHeight - 30
+                - topSide.offsetHeight - 80
                 + 'px';
         }
         function toCodeSample(fn) {
