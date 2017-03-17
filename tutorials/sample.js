@@ -51,6 +51,20 @@ document.addEventListener('DOMContentLoaded', function () {
             grid.scrollIntoView(2, 200);
             grid.beginEditAt(2, 200);
         };
+        examples['Validate edited values before.'] = function () {
+            grid.addEventListener('beforeendedit', function (e, cell, newValue, oldValue, abortEdit, input) {
+                if (/\d+/.test(newValue)) {
+                    alert('NO DIGITS!');
+                    e.preventDefault();
+                }
+            });
+        };
+        examples['Add a row'] = function () {
+            grid.addRow({
+                'foo': 'a ' + new Date().toString(),
+                'bar': 'a ' + new Date().toString()
+            });
+        };
         examples['Set the width of a column'] = function () {
             grid.setColumnWidth(0, 60);
             grid.setColumnWidth(1, 200);
@@ -419,6 +433,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     var i = document.createElement('div'),
         n = document.getElementsByTagName('footer')[0];
+    if (!n) {
+        n = document.createElement('div');
+        document.body.appendChild(n);
+    }
     n.parentNode.insertBefore(i, n);
     createSample({
         parentNode: i
