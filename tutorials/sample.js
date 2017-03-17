@@ -1,5 +1,5 @@
-/*jslint browser: true, unparam: true*/
-/*globals canvasDatagrid: false */
+/*jslint browser: true, unparam: true, evil: true*/
+/*globals canvasDatagrid: false, ace: false, requestAnimationFrame: false, alert: false */
 document.addEventListener('DOMContentLoaded', function () {
     'use strict';
     // setup a page to view the samples in.
@@ -9,11 +9,13 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!args.parentNode) {
             throw new Error('Parent node required');
         }
-        var grid,
+        var aceEditor,
+            grid,
             execute = document.createElement('button'),
+            errorMessage = document.createElement('span'),
             sampleParent = document.createElement('div'),
-            leftSide = document.createElement('div'),
-            codesample = document.createElement('textarea'),
+            topSide = document.createElement('div'),
+            editor = document.createElement('div'),
             buttonsParent = document.createElement('div'),
             gridParent = document.createElement('div'),
             examples = {};
@@ -27,6 +29,9 @@ document.addEventListener('DOMContentLoaded', function () {
             grid = canvasDatagrid({
                 parentNode: gridParent
             });
+        };
+        examples['Toggle rowSelectionMode'] = function () {
+            grid.attributes.rowSelectionMode = !grid.attributes.rowSelectionMode;
         };
         examples['Add 10,000 random rows'] = function () {
             // create random data from a bunch of Latin words
@@ -47,11 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
         examples['Scroll to a cell'] = function () {
             grid.scrollIntoView(2, 200);
         };
-        examples['Edit a cell'] = function () {
-            grid.scrollIntoView(2, 200);
-            grid.beginEditAt(2, 200);
-        };
-        examples['Validate edited values before.'] = function () {
+        examples['Validate input.'] = function () {
             grid.addEventListener('beforeendedit', function (e, cell, newValue, oldValue, abortEdit, input) {
                 if (/\d+/.test(newValue)) {
                     alert('NO DIGITS!');
@@ -59,11 +60,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         };
-        examples['Add a row'] = function () {
-            grid.addRow({
-                'foo': 'a ' + new Date().toString(),
-                'bar': 'a ' + new Date().toString()
-            });
+        examples['Edit a cell'] = function () {
+            grid.scrollIntoView(2, 200);
+            grid.beginEditAt(2, 200);
         };
         examples['Set the width of a column'] = function () {
             grid.setColumnWidth(0, 60);
@@ -87,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
         examples['Set to just 1 row'] = function () {
             grid.data = [{Foo: 'bar'}];
         };
-        examples['Toggle allowing user to add new rows'] = function () {
+        examples['Allow new rows'] = function () {
             grid.attributes.showNewRow = !grid.attributes.showNewRow;
         };
         examples['Change a columns\'s title'] = function () {
@@ -110,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 'bar': 'a ' + new Date().toString()
             });
         };
-        examples['Draw a picture in a cell'] = function () {
+        examples['Draw a picture'] = function () {
             // place to store Image objects
             var imgs = {};
             // stop the cell from rendering text
@@ -174,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 grid.setRowHeight(index, 200);
             });
         };
-        examples['Change cell colors based on a value.'] = function () {
+        examples['Conditionally set colors.'] = function () {
             grid.addEventListener('rendercell', function (ctx, cell) {
                 if (cell.header.name === 'Ei' && /omittam/.test(cell.value)) {
                     ctx.fillStyle = '#AEEDCF';
@@ -187,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {Ei: 'pericula', melius: 'offendit'}
             ];
         };
-        examples['Format cell values without altering data.'] = function () {
+        examples['Format cell values.'] = function () {
             // in your schema, format is based on type
             grid.schema = [
                 {
@@ -213,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
         examples['Toggle performance data'] = function () {
             grid.attributes.showPerformance = !grid.attributes.showPerformance;
         };
-        examples['Open a tree and set data'] = function () {
+        examples['Open a tree'] = function () {
             grid.addEventListener('expandtree', function expandTree(grid, data, rowIndex) {
                 var x, y, d = [];
                 for (x = 0; x < 2000; x += 1) {
@@ -228,7 +227,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             grid.expandTree(2);
         };
-        examples['Allow users to open trees and set data.'] = function () {
+        examples['Allow users to open trees.'] = function () {
             grid.attributes.tree = true;
             grid.addEventListener('expandtree', function expandTree(grid, data, rowIndex) {
                 var x, y, d = [];
@@ -378,31 +377,37 @@ document.addEventListener('DOMContentLoaded', function () {
         // setup page
         args.parentNode.appendChild(sampleParent);
         buttonsParent.className = 'buttons';
-        leftSide.className = 'left-side';
-        codesample.className = 'code-sample';
+        topSide.className = 'top-side';
+        editor.setAttribute('id', 'editor');
+        editor.className = 'code-sample';
         gridParent.className = 'grid';
         execute.className = 'execute-button';
+        errorMessage.className = 'error-message';
         sampleParent.className = 'sample-parent';
-        leftSide.appendChild(codesample);
-        leftSide.appendChild(execute);
-        leftSide.appendChild(buttonsParent);
-        sampleParent.appendChild(leftSide);
+        topSide.appendChild(buttonsParent);
+        topSide.appendChild(execute);
+        topSide.appendChild(errorMessage);
+        topSide.appendChild(editor);
+        sampleParent.appendChild(topSide);
         sampleParent.appendChild(gridParent);
-        codesample.setAttribute('wrap', 'off');
+        aceEditor = ace.edit('editor');
+        aceEditor.getSession().setMode('ace/mode/javascript');
         execute.onclick = function () {
+            errorMessage.style.visibility = 'hidden';
+            errorMessage.innerHTML = '';
             try {
-                eval(codesample.value);
-                codesample.title = '';
-                codesample.classList.remove('execute-button-error');
+                eval(aceEditor.getValue());
             } catch (e) {
-                codesample.classList.add('execute-button-error');
-                codesample.title = e.message;
-                throw e;
+                errorMessage.style.visibility = 'visible'
+                errorMessage.innerHTML = e.message;
             }
         };
         // create a grid to share with all the functions
         function resize() {
-            gridParent.style.height = window.innerHeight - 80 + 'px';
+            editor.style.height = (window.innerHeight * 0.33) + 'px';
+            gridParent.style.height = window.innerHeight
+                - topSide.offsetHeight - 30
+                + 'px';
         }
         function toCodeSample(fn) {
             return ('            ' + fn.toString()).split('\n')
@@ -413,7 +418,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     return index !== 0;
                 }).join('\n');
         }
-        resize();
+        requestAnimationFrame(resize);
         // bind setting the height to the window's resize event
         window.addEventListener('resize', resize);
         Object.keys(examples).forEach(function (exampleKey) {
@@ -422,14 +427,15 @@ document.addEventListener('DOMContentLoaded', function () {
             buttonsParent.appendChild(button);
             button.innerHTML = exampleKey;
             button.onclick = function () {
-                // remove the wrapping function and remove the tabs
-                codesample.value = toCodeSample(example);
+                aceEditor.getSession().setValue(toCodeSample(example));
             };
         });
         examples['Create a new grid']();
         examples['Add 10,000 random rows']();
-        codesample.value = toCodeSample(examples['Create a new grid'])
-            + toCodeSample(examples['Add 10,000 random rows']);
+        aceEditor.getSession().setValue(
+            toCodeSample(examples['Create a new grid'])
+                + toCodeSample(examples['Add 10,000 random rows'])
+        );
     }
     var i = document.createElement('div'),
         n = document.getElementsByTagName('footer')[0];
@@ -442,9 +448,3 @@ document.addEventListener('DOMContentLoaded', function () {
         parentNode: i
     });
 });
-
-
-
-
-
-
