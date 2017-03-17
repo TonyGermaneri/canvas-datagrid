@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // setup a page to view the samples in.
     // This page should be kept vanilla css to not
     // conflict with docs styles
+    alert('hhooooolllaaa')
     function createSample(args) {
         if (!args.parentNode) {
             throw new Error('Parent node required');
@@ -13,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
             execute = document.createElement('button'),
             sampleParent = document.createElement('div'),
             leftSide = document.createElement('div'),
-            codesample = document.createElement('textarea'),
+            editor = document.createElement('div'),
             buttonsParent = document.createElement('div'),
             gridParent = document.createElement('div'),
             examples = {};
@@ -365,26 +366,20 @@ document.addEventListener('DOMContentLoaded', function () {
         args.parentNode.appendChild(sampleParent);
         buttonsParent.className = 'buttons';
         leftSide.className = 'left-side';
-        codesample.className = 'code-sample';
+        editor.setAttribute('id', 'editor');
+        editor.className = 'code-sample';
         gridParent.className = 'grid';
         execute.className = 'execute-button';
         sampleParent.className = 'sample-parent';
-        leftSide.appendChild(codesample);
+        leftSide.appendChild(editor);
         leftSide.appendChild(execute);
         leftSide.appendChild(buttonsParent);
         sampleParent.appendChild(leftSide);
         sampleParent.appendChild(gridParent);
-        codesample.setAttribute('wrap', 'off');
+        var editor = ace.edit('editor');
+        editor.getSession().setMode('ace/mode/javascript');
         execute.onclick = function () {
-            try {
-                eval(codesample.value);
-                codesample.title = '';
-                codesample.classList.remove('execute-button-error');
-            } catch (e) {
-                codesample.classList.add('execute-button-error');
-                codesample.title = e.message;
-                throw e;
-            }
+            eval(editor.getValue());
         };
         // create a grid to share with all the functions
         function resize() {
@@ -408,14 +403,13 @@ document.addEventListener('DOMContentLoaded', function () {
             buttonsParent.appendChild(button);
             button.innerHTML = exampleKey;
             button.onclick = function () {
-                // remove the wrapping function and remove the tabs
-                codesample.value = toCodeSample(example);
+                editor.getSession().setValue(toCodeSample(example));
             };
         });
         examples['Create a new grid']();
         examples['Add 10,000 random rows']();
-        codesample.value = toCodeSample(examples['Create a new grid'])
-            + toCodeSample(examples['Add 10,000 random rows']);
+        editor.getSession().setValue(
+            toCodeSample(examples['Create a new grid']) + toCodeSample(examples['Add 10,000 random rows']));
     }
     var i = document.createElement('div'),
         n = document.getElementsByTagName('footer')[0];
