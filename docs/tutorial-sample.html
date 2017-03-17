@@ -89,43 +89,52 @@
     <!doctype html>
 <head>
     <script src="../lib/main.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js"></script>
     <script src="./sample.js"></script>
     <style>
         .tutorial-section {
             display: none;
             visibility: hidden;
         }
+        .error-message {
+            visibility: hidden;
+            border: solid 1px #ccc;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 3px;
+            background: lightyellow;
+            font-family: sans-serif;
+            font-size: 0.7rem;
+            padding-left: 3px;
+            padding-right: 3px;
+        }
         .buttons {
-            margin-bottom: auto;
-            display: inline-block;
-            width: 96%;
-            margin-right: 10px;
-            padding-right: 10px;
+            margin-bottom: 10px;
             border: 1px solid #ccc;
-            overflow-y: scroll;
+            text-align: center;
+            background: #efefef;
+        }
+        .buttons button {
+            text-align: left;
+            width: 155px;
         }
         .execute-button {
-            display: block;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
         .execute-button:before {
             content: "Execute";
         }
-        .buttons button {
-            display: block;
-            width: 95%;
-            margin: auto;
-        }
         .grid {
             vertical-align: top;
             display: inline-block;
-            width: 62%;
+            width: 95%;
+            margin-left: 20px;
+            border: solid 1px #ccc;
         }
         .code-sample {
-            width: 97%;
-            margin-left: 2px;
-            height: 180px;
+            margin-bottom: 10px;
+            height: 260px;
+            border: solid 1px #ccc;
         }
         .execute-button-error {
             background: yellow;
@@ -133,10 +142,10 @@
         .execute-button-error:before {
             content: "Execution Error - Check Console";
         }
-        .left-side {
-            display: inline-block;
-            width: 35%;
+        .top-side {
+            width: 95%;
             margin-left: 20px;
+            display: inline-block;
         }
     </style>
 </head>
