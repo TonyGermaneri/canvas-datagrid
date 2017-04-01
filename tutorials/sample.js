@@ -30,6 +30,40 @@ document.addEventListener('DOMContentLoaded', function () {
                 parentNode: gridParent
             });
         };
+        examples['Create a spreadsheet'] = function () {
+            var x, y, d = [], i = '0123456789', a = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            function convertBase(src, srctable, desttable) {
+                var r, res, q, i,
+                    srclen = srctable.length,
+                    destlen = desttable.length,
+                    val = 0,
+                    numlen = src.length;
+                for (i = 0; i < numlen; i += 1) {
+                    val = val * srclen + srctable.indexOf(src.charAt(i));
+                }
+                if (val < 0) {
+                    return 0;
+                }
+                r = val % destlen;
+                res = desttable.charAt(r);
+                q = Math.floor(val / destlen);
+                while (q) {
+                    r = q % destlen;
+                    q = Math.floor(q / destlen);
+                    res = desttable.charAt(r) + res;
+                }
+                return res;
+            }
+            for (x = 0; x < 10000; x += 1) {
+                d[x] = {};
+                for (y = 0; y < 300; y += 1) {
+                    d[x][convertBase(y.toString(), i, a)] = '';
+                }
+            }
+            grid.data = d;
+            grid.attributes.debug = true;
+            grid.attributes.showPerformance = true;
+        };
         examples['Toggle rowSelectionMode'] = function () {
             grid.attributes.rowSelectionMode = !grid.attributes.rowSelectionMode;
         };
@@ -207,6 +241,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 {Ei: 'mea', Audire: new Date().getTime() },
                 {Ei: 'pericula', Audire: new Date().getTime() }
             ];
+        };
+        examples['Toggle debug data'] = function () {
+            grid.attributes.debug = !grid.attributes.debug;
         };
         examples['Toggle performance data'] = function () {
             grid.attributes.showPerformance = !grid.attributes.showPerformance;
@@ -429,12 +466,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 aceEditor.getSession().setValue(toCodeSample(example));
             };
         });
-        examples['Create a new grid']();
-        examples['Add 10,000 random rows']();
         aceEditor.getSession().setValue(
             toCodeSample(examples['Create a new grid'])
-                + toCodeSample(examples['Add 10,000 random rows'])
+                + toCodeSample(examples['Create a spreadsheet'])
         );
+        execute.dispatchEvent(new Event('click'));
     }
     var i = document.createElement('div'),
         n = document.getElementsByTagName('footer')[0];
