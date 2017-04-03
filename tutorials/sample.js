@@ -61,8 +61,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
             grid.data = d;
-            grid.attributes.debug = true;
-            grid.attributes.showPerformance = true;
         };
         examples['Toggle rowSelectionMode'] = function () {
             grid.attributes.rowSelectionMode = !grid.attributes.rowSelectionMode;
