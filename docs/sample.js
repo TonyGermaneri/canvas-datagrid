@@ -31,33 +31,23 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         };
         examples['Create a spreadsheet'] = function () {
-            var x, y, d = [], i = '0123456789', a = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            function convertBase(src, srctable, desttable) {
-                var r, res, q, i,
-                    srclen = srctable.length,
-                    destlen = desttable.length,
-                    val = 0,
-                    numlen = src.length;
-                for (i = 0; i < numlen; i += 1) {
-                    val = val * srclen + srctable.indexOf(src.charAt(i));
+            var x, y, d = [], n;
+            function colName(n) {
+                var ordA = 'a'.charCodeAt(0),
+                    ordZ = 'z'.charCodeAt(0),
+                    len = ordZ - ordA + 1,
+                    s = "";
+                while (n >= 0) {
+                    s = String.fromCharCode(n % len + ordA) + s;
+                    n = Math.floor(n / len) - 1;
                 }
-                if (val < 0) {
-                    return 0;
-                }
-                r = val % destlen;
-                res = desttable.charAt(r);
-                q = Math.floor(val / destlen);
-                while (q) {
-                    r = q % destlen;
-                    q = Math.floor(q / destlen);
-                    res = desttable.charAt(r) + res;
-                }
-                return res;
+                return s;
             }
             for (x = 0; x < 10000; x += 1) {
                 d[x] = {};
                 for (y = 0; y < 300; y += 1) {
-                    d[x][convertBase(y.toString(), i, a)] = '';
+                    n = colName(y).toUpperCase();
+                    d[x][n] = x * y;
                 }
             }
             grid.data = d;
@@ -452,7 +442,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     return index !== 0;
                 }).join('\n');
         }
-        requestAnimationFrame(resize);
         // bind setting the height to the window's resize event
         window.addEventListener('resize', resize);
         Object.keys(examples).forEach(function (exampleKey) {
@@ -469,6 +458,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 + toCodeSample(examples['Create a spreadsheet'])
         );
         execute.dispatchEvent(new Event('click'));
+        window.dispatchEvent(new Event('resize'));
+        // "duplicate" line here fix for ace editor resize
+        window.dispatchEvent(new Event('resize'));
     }
     var i = document.createElement('div'),
         n = document.getElementsByTagName('footer')[0];
