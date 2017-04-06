@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         };
         examples['Create a spreadsheet'] = function () {
-            var x, y, d = [];
+            var x, y, d = [], n;
             function colName(n) {
                 var ordA = 'a'.charCodeAt(0),
                     ordZ = 'z'.charCodeAt(0),
@@ -46,11 +46,11 @@ document.addEventListener('DOMContentLoaded', function () {
             for (x = 0; x < 10000; x += 1) {
                 d[x] = {};
                 for (y = 0; y < 300; y += 1) {
-                    d[x][colName(y).toUpperCase()] = '';
+                    n = colName(y).toUpperCase();
+                    d[x][n] = x * y;
                 }
             }
             grid.data = d;
-            grid.attributes.debug = true;
         };
         examples['Toggle rowSelectionMode'] = function () {
             grid.attributes.rowSelectionMode = !grid.attributes.rowSelectionMode;
@@ -443,7 +443,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     return index !== 0;
                 }).join('\n');
         }
-        requestAnimationFrame(resize);
         // bind setting the height to the window's resize event
         window.addEventListener('resize', resize);
         Object.keys(examples).forEach(function (exampleKey) {
@@ -460,6 +459,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 + toCodeSample(examples['Create a spreadsheet'])
         );
         execute.dispatchEvent(new Event('click'));
+        window.dispatchEvent(new Event('resize'));
+        // "duplicate" line here fix for ace editor resize
+        window.dispatchEvent(new Event('resize'));
     }
     var i = document.createElement('div'),
         n = document.getElementsByTagName('footer')[0];
