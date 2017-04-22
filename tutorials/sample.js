@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         };
         examples['Create a spreadsheet'] = function () {
+            // create a spreadsheet
             var x, y, d = [], n;
             function colName(n) {
                 var ordA = 'a'.charCodeAt(0),
