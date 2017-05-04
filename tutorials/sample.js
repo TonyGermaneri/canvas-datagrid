@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         var aceEditor,
             grid,
+            editorVisible = true,
+            toggleEditor = document.createElement('button'),
             execute = document.createElement('button'),
             errorMessage = document.createElement('span'),
             sampleParent = document.createElement('div'),
@@ -18,7 +20,21 @@ document.addEventListener('DOMContentLoaded', function () {
             editor = document.createElement('div'),
             buttonsParent = document.createElement('div'),
             gridParent = document.createElement('div'),
+            autoExecute = document.createElement('input'),
+            autoExecuteLabel = document.createElement('label'),
             examples = {};
+        function hide(a) {
+            a.forEach(function (e) {
+                e.style.display = 'none';
+                e.style.visibility = 'hidden';
+            });
+        }
+        function show(a) {
+            a.forEach(function (e) {
+                e.style.display = 'inherit';
+                e.style.visibility = 'visible';
+            });
+        }
         // --- examples section
         examples['Create a new grid'] = function () {
             // check if the old grid exists and remove it
@@ -254,7 +270,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
         examples['Allow users to open trees.'] = function () {
             grid.attributes.tree = true;
-            grid.addEventListener('expandtree', function expandTree(grid, data, rowIndex) {
+            function expandTree(treeGrid, data, rowIndex) {
                 var x, y, d = [];
                 for (x = 0; x < 2000; x += 1) {
                     d[x] = {};
@@ -262,8 +278,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         d[x][y] = y * x;
                     }
                 }
-                grid.data = d;
-            });
+                treeGrid.addEventListener('expandtree', expandTree);
+                treeGrid.attributes.tree = true;
+                treeGrid.data = d;
+            }
+            grid.addEventListener('expandtree', expandTree);
         };
         examples['Display unicode samples'] = function () {
             grid.data = [
@@ -402,6 +421,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // setup page
         args.parentNode.appendChild(sampleParent);
         buttonsParent.className = 'buttons';
+        toggleEditor.className = 'toggle-editor';
         topSide.className = 'top-side';
         editor.setAttribute('id', 'editor');
         editor.className = 'code-sample';
@@ -409,14 +429,36 @@ document.addEventListener('DOMContentLoaded', function () {
         execute.className = 'execute-button';
         errorMessage.className = 'error-message';
         sampleParent.className = 'sample-parent';
+        autoExecuteLabel.innerHTML = 'Auto Execute';
+        autoExecute.type = 'checkbox';
+        autoExecuteLabel.className = 'auto-execute-checkbox-label';
+        autoExecute.className = 'auto-execute-checkbox';
+        autoExecute.setAttribute('checked', true);
         topSide.appendChild(buttonsParent);
+        topSide.appendChild(toggleEditor);
         topSide.appendChild(execute);
+        topSide.appendChild(autoExecuteLabel);
+        topSide.appendChild(autoExecute);
         topSide.appendChild(errorMessage);
         topSide.appendChild(editor);
         sampleParent.appendChild(topSide);
         sampleParent.appendChild(gridParent);
         aceEditor = ace.edit('editor');
         aceEditor.getSession().setMode('ace/mode/javascript');
+        toggleEditor.onclick = function () {
+            editorVisible = !editorVisible;
+            var i = [autoExecute, autoExecuteLabel, editor, execute];
+            if (editorVisible) {
+                show(i);
+                editor.style.display = 'block';
+                toggleEditor.innerHTML = 'Editor &#x21F1';
+            } else {
+                hide(i);
+                toggleEditor.innerHTML = 'Editor &#x21F2';
+            }
+            aceEditor.resize();
+            window.dispatchEvent(new Event('resize'));
+        };
         execute.onclick = function () {
             errorMessage.style.visibility = 'hidden';
             errorMessage.innerHTML = '';
@@ -452,12 +494,16 @@ document.addEventListener('DOMContentLoaded', function () {
             button.innerHTML = exampleKey;
             button.onclick = function () {
                 aceEditor.getSession().setValue(toCodeSample(example));
+                if (autoExecute.getAttribute('checked') === "true") {
+                    execute.dispatchEvent(new Event('click'));
+                }
             };
         });
         aceEditor.getSession().setValue(
             toCodeSample(examples['Create a new grid'])
                 + toCodeSample(examples['Create a spreadsheet'])
         );
+        toggleEditor.dispatchEvent(new Event('click'));
         execute.dispatchEvent(new Event('click'));
         window.dispatchEvent(new Event('resize'));
         // "duplicate" line here fix for ace editor resize
