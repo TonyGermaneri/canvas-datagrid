@@ -418,6 +418,22 @@ document.addEventListener('DOMContentLoaded', function () {
             setInterval(grid.draw, 500);
             grid.draw();
         };
+        examples['Multiple filters'] = function () {
+            var x, data = [], d, i, c,
+                r = 'The, quick, brown, fox, jumps, over, the, lazy, dog';
+            grid.data = [];
+            c = r.split(' ').map(function (i) { return i.trim(); });
+            r = r.split(',').map(function (i) { return i.trim(); });
+            for (x = 0; x < 100; x += 1) {
+                d = {};
+                for (i = 0; i < r.length; i += 1) {
+                    d[r[i]] = c[Math.floor(Math.random() * 1000) % (c.length - 1)].slice(0, -1);
+                }
+                data.push(d);
+            }
+            // add the data to the grid
+            grid.data = data.concat(grid.data);
+        }
         // --- end of examples section
         // setup page
         args.parentNode.appendChild(sampleParent);
