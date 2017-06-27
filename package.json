@@ -1,6 +1,6 @@
 {
   "name": "canvas-datagrid",
-  "version": "0.11.4",
+  "version": "0.11.6",
   "description": "Canvas based data grid",
   "main": "./lib/main.js",
   "repository": {
@@ -19,6 +19,17 @@
     "spreadsheet"
   ],
   "author": "Tony Germaneri <Tony.Germaneri@gmail.com>",
+  "contributors": [
+    {
+      "url": "https://github.com/TonyGermaneri/canvas-datagrid/graphs/contributors"
+    }
+  ],
+  "maintainers": [
+    {
+      "name": "Tony Germaneri",
+      "email": "Tony.Germaneri@gmail.com"
+    }
+  ],
   "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/TonyGermaneri/canvas-datagrid/issues"
