@@ -284,6 +284,24 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             grid.addEventListener('expandtree', expandTree);
         };
+        examples['Multiple filters'] = function () {
+            var x, data = [], d, i, c,
+                r = 'The,quick,brown,fox,jumps,over,the,lazy,dog';
+            grid.data = [];
+            c = r.split(',').map(function (i) { return i.trim(); });
+            r = r.split(',').map(function (i) { return i.trim(); });
+            for (x = 0; x < 10000; x += 1) {
+                d = {};
+                for (i = 0; i < r.length; i += 1) {
+                    d[r[i]] = c[Math.floor(Math.random() * 1000) % (c.length - 1)];
+                }
+                data.push(d);
+            }
+            // add the data to the grid
+            grid.data = data.concat(grid.data);
+            grid.setFilter('quick', /the/i);
+            grid.setFilter('brown', 'quick');
+        };
         examples['Display unicode samples'] = function () {
             grid.data = [
                 {'Block': 'Basic Latin', 'Sample': '! " # $ % & \' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ? @ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z [ \\ ] ^ _ ` a b c d e f g h i j k l m n o p q r s t u v w x y z { | } ~'},

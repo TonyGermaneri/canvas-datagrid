@@ -5782,7 +5782,159 @@ Warning, can be slow on very large record sets (1m records ~3-5 seconds on an i7
             
 <hr>
 <dt>
-    <h4 class="name" id="order"><span class="type-signature"></span>order(columnName, direction)</h4>
+    <h4 class="name" id="isCellVisible"><span class="type-signature"></span>isCellVisible(cell)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Checks if a cell is currently visible.
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>cell</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">cell</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The cell to check for.  Alternatively you can pass an object { x: <x-index>, y: <y-index> }.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    when true, the cell is visible, when false the cell is not currently drawn.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="order"><span class="type-signature"></span>order(columnName, direction, dontSetStorageData)</h4>
     
     
 </dt>
@@ -5867,6 +6019,30 @@ Warning, can be slow on very large record sets (1m records ~3-5 seconds on an i7
             
 
             <td class="description last">`asc` for ascending or `desc` for descending.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>dontSetStorageData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Don't store this setting for future use.</td>
         </tr>
 
     
