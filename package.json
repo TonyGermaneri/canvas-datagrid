@@ -3,6 +3,11 @@
   "version": "0.11.6",
   "description": "Canvas based data grid",
   "main": "./lib/main.js",
+  "scripts": {
+    "build-docs": "./node_modules/.bin/jsdoc -u ./tutorials -d ./docs -c ./jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md -r ./lib; cp ./tutorials/*.js ./docs/",
+    "postinstall": "npm run-script build",
+    "build": ""
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TonyGermaneri/canvas-datagrid.git"
@@ -36,7 +41,8 @@
   },
   "homepage": "https://github.com/TonyGermaneri/canvas-datagrid#readme",
   "devDependencies": {
-    "ink-docstrap": "https://github.com/TonyGermaneri/docstrap.git",
-    "jsdoc": "^3.4.3"
+    "ink-docstrap": "git+ssh://git@github.com:TonyGermaneri/docstrap.git#v1.2.2",
+    "jsdoc": "^3.4.3",
+    "webpack": "^3.0.0"
   }
 }

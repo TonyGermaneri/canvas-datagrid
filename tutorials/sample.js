@@ -60,9 +60,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 return s;
             }
-            for (x = 0; x < 10000; x += 1) {
+            for (x = 0; x < 60; x += 1) {
                 d[x] = {};
-                for (y = 0; y < 300; y += 1) {
+                for (y = 0; y < 20; y += 1) {
                     n = colName(y).toUpperCase();
                     d[x][n] = x * y;
                 }
@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function () {
             grid.attributes.tree = true;
             function expandTree(treeGrid, data, rowIndex) {
                 var x, y, d = [];
-                for (x = 0; x < 2000; x += 1) {
+                for (x = 0; x < 50; x += 1) {
                     d[x] = {};
                     for (y = 0; y < 20; y += 1) {
                         d[x][y] = y * x;
@@ -521,6 +521,7 @@ document.addEventListener('DOMContentLoaded', function () {
         aceEditor.getSession().setValue(
             toCodeSample(examples['Create a new grid'])
                 + toCodeSample(examples['Create a spreadsheet'])
+                + toCodeSample(examples['Allow users to open trees.'])
         );
         toggleEditor.dispatchEvent(new Event('click'));
         execute.dispatchEvent(new Event('click'));
