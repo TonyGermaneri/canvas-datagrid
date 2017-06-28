@@ -60,9 +60,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 return s;
             }
-            for (x = 0; x < 60; x += 1) {
+            for (x = 0; x < 10000; x += 1) {
                 d[x] = {};
-                for (y = 0; y < 20; y += 1) {
+                for (y = 0; y < 50; y += 1) {
                     n = colName(y).toUpperCase();
                     d[x][n] = x * y;
                 }
@@ -463,6 +463,7 @@ document.addEventListener('DOMContentLoaded', function () {
         sampleParent.appendChild(topSide);
         sampleParent.appendChild(gridParent);
         aceEditor = ace.edit('editor');
+        aceEditor.$blockScrolling = Infinity;
         aceEditor.getSession().setMode('ace/mode/javascript');
         toggleEditor.onclick = function () {
             editorVisible = !editorVisible;
@@ -521,7 +522,6 @@ document.addEventListener('DOMContentLoaded', function () {
         aceEditor.getSession().setValue(
             toCodeSample(examples['Create a new grid'])
                 + toCodeSample(examples['Create a spreadsheet'])
-                + toCodeSample(examples['Allow users to open trees.'])
         );
         toggleEditor.dispatchEvent(new Event('click'));
         execute.dispatchEvent(new Event('click'));
