@@ -106,38 +106,38 @@
 <li>Support for millions of rows and columns.</li>
 <li>Extensible styling, filtering, formatting, resizing, selecting, and ordering.</li>
 <li>Rich API of events, methods and properties optimized for CRUD, reporting and work flow applications.</li>
-<li>Zero dependencies, very small code base, a single 94k (16k gziped) file.</li>
+<li>Zero dependencies, very small code base, distributed as a single 77k (19k gziped) file.</li>
 </ul>
 <p><a href="https://tonygermaneri.github.io/canvas-datagrid/docs/tutorial-sample.html">Demo</a></p>
+<p><a href="https://tonygermaneri.github.io/canvas-datagrid/dist/canvas-datagrid.js">Download</a></p>
 <p><a href="https://tonygermaneri.github.io/canvas-datagrid/docs/index.html">Documentation</a></p>
 <p><a href="https://github.com/TonyGermaneri/canvas-datagrid">GitHub</a></p>
 <h1>Installation</h1><p>You can install canvas-datagrid one of three ways:</p>
 <ol>
-<li>Download the <a href="https://raw.githubusercontent.com/TonyGermaneri/canvas-datagrid/master/lib/main.js">source</a> file from github.</li>
-<li><p>Use bower</p>
-<p> bower install canvas-datagrid</p>
-</li>
+<li>Download the <a href="https://tonygermaneri.github.io/canvas-datagrid/dist/canvas-datagrid.js">source</a> file from github.</li>
 <li><p>Use npm</p>
 <p> npm install canvas-datagrid</p>
 </li>
+<li><p>Use bower</p>
+<p> bower install canvas-datagrid</p>
+</li>
 </ol>
-<p>Place the single source file <code>./lib/main.js</code> in your web page using
-a script tag that points to the source or use a require framework.</p>
-<p>If you do not use a require framework a function will
+<p>Place the single source file <code>./dist/canvas-datagrid.js</code> in your web page using
+a script tag that points to the source or use webpack.</p>
+<p>If you do not use a webpack a function will
 be added to the global scope of the web page called <code>canvasDatagrid</code>.</p>
-<h1>Getting started</h1><p>Works with require framework or without.
-If used without require, <code>canvasDataGrid</code> is declared in the global scope.</p>
+<h1>Getting started</h1><p>Works with webpack or without.
+If used without webpack, <code>canvasDataGrid</code> is declared in the global scope.</p>
 <pre class="prettyprint source"><code>var grid = canvasDataGrid({
     parentNode: document.getElementById('myHtmlElement'),
     data: [
         {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},
         {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}
     ]
-});</code></pre><h1>Building documentation</h1><p>Although canvas-datagrid itself does not need to be built, if you are intrested in building
-the documentation for the project, you will need to run the following commands.</p>
-<p>Run npm install to get jsdoc and ink-docstrap.</p>
-<pre class="prettyprint source"><code>npm install</code></pre><p>Build the docs (Unix)</p>
-<pre class="prettyprint source"><code>jsdoc -u ./tutorials -d ./docs -c ./jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md -r ./lib; cp ./tutorials/*.js ./docs/</code></pre></article>
+});</code></pre><h1>Building</h1><p>To build production version.</p>
+<pre class="prettyprint source"><code>npm install</code></pre><p>To build debug version</p>
+<pre class="prettyprint source"><code>npm run-script build-dev</code></pre><p>To build documentation</p>
+<pre class="prettyprint source"><code>npm run-script build-docs</code></pre></article>
     </section>
 
 
