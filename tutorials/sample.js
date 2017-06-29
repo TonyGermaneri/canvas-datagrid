@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             for (x = 0; x < 10000; x += 1) {
                 d[x] = {};
-                for (y = 0; y < 300; y += 1) {
+                for (y = 0; y < 50; y += 1) {
                     n = colName(y).toUpperCase();
                     d[x][n] = x * y;
                 }
@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function () {
             grid.attributes.tree = true;
             function expandTree(treeGrid, data, rowIndex) {
                 var x, y, d = [];
-                for (x = 0; x < 2000; x += 1) {
+                for (x = 0; x < 50; x += 1) {
                     d[x] = {};
                     for (y = 0; y < 20; y += 1) {
                         d[x][y] = y * x;
@@ -462,6 +462,7 @@ document.addEventListener('DOMContentLoaded', function () {
         sampleParent.appendChild(topSide);
         sampleParent.appendChild(gridParent);
         aceEditor = ace.edit('editor');
+        aceEditor.$blockScrolling = Infinity;
         aceEditor.getSession().setMode('ace/mode/javascript');
         toggleEditor.onclick = function () {
             editorVisible = !editorVisible;
