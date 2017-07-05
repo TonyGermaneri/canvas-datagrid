@@ -482,12 +482,12 @@ document.addEventListener('DOMContentLoaded', function () {
         execute.onclick = function () {
             errorMessage.style.visibility = 'hidden';
             errorMessage.innerHTML = '';
-            try {
+//            try {
                 eval(aceEditor.getValue());
-            } catch (e) {
-                errorMessage.style.visibility = 'visible';
-                errorMessage.innerHTML = e.message;
-            }
+            // } catch (e) {
+            //     errorMessage.style.visibility = 'visible';
+            //     errorMessage.innerHTML = e.message;
+            // }
         };
         // create a grid to share with all the functions
         function resize() {
