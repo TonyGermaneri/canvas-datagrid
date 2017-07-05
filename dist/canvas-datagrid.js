@@ -1,1 +1,4024 @@
-!function(e){function t(o){if(r[o])return r[o].exports;var l=r[o]={i:o,l:!1,exports:{}};return e[o].call(l.exports,l,l.exports,t),l.l=!0,l.exports}var r={};t.m=e,t.c=r,t.d=function(e,r,o){t.o(e,r)||Object.defineProperty(e,r,{configurable:!1,enumerable:!0,get:o})},t.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(r,"a",r),r},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=0)}([function(e,t,r){var o,l;o=[r(1),r(2),r(3),r(4),r(5),r(6),r(7)],void 0!==(l=function(){"use strict";function e(r){r=r||{};var o={};return o.args=r,o.createGrid=e,o.orders={rows:[],columns:[]},o.hasFocus=!1,o.activeCell={columnIndex:0,rowIndex:0},o.storageName="canvasDataGrid",o.invalidSearchExpClass="canvas-datagrid-invalid-search-regExp",o.uniqueId="_canvasDataGridUniqueId",o.orderBy=o.uniqueId,o.orderDirection="asc",o.columnFilters={},o.filters={},o.ellipsisCache={},o.scrollBox={},o.visibleRows=[],o.sizes={rows:{},columns:{},trees:{}},o.currentFilter=function(){return!0},o.selections=[],o.hovers={},o.attributes={},o.style={},o.intf={},o.formatters={},o.sorters={},o.schemaHashes={},o.events={},o.uId=0,o.changes=[],o.scrollIndexTop=0,o.scrollPixelTop=0,o.scrollIndexLeft=0,o.scrollPixelLeft=0,o.childGrids={},o.openChildren={},o.scrollModes=["vertical-scroll-box","vertical-scroll-top","vertical-scroll-bottom","horizontal-scroll-box","horizontal-scroll-right","horizontal-scroll-left"],o.mouse={x:0,y:0},o.getSelectedData=function(e){var t=[],r=o.getSchema(),l=o.data.length;return o.selections.forEach(function(n,i){i!==l&&(t[i]={},e?r.forEach(function(e){t[i][e.name]=o.data[i][e.name]}):n.forEach(function(e){-1!==e&&(t[i][r[e].name]=o.data[i][r[e].name])}))}),t},o.scrollOffset=function(e){for(var t=0,r=0;e.parentNode;)"canvas-datagrid-tree"!==e.nodeType&&"canvas-datagrid-cell"!==e.nodeType&&(t-=e.scrollLeft,r-=e.scrollTop),e=e.parentNode;return{left:t,top:r}},o.position=function(e,t){for(var r,l,n=0,i=0,s=e;e.offsetParent;)n+=e.offsetLeft,i+=e.offsetTop,r=e.offsetHeight,l=e.offsetWidth,e=e.offsetParent;return t?{left:n,top:i,height:r,width:l}:(e=s,s=o.scrollOffset(e),{left:n+s.left,top:i+s.top,height:r,width:l})},o.getLayerPos=function(e){var t=o.canvas.getBoundingClientRect(),r={x:e.clientX-t.left,y:e.clientY-t.top};return o.isChildGrid&&(r.x-=o.canvasOffsetLeft,r.y-=o.canvasOffsetTop),{x:r.x,y:r.y}},o.fillArray=function(e,t,r){r=r||1;var o,l=[];for(o=e;o<=t;o+=r)l[o]=o;return l},o.getHeaderCellHeight=function(){return o.sizes.rows[-1]||o.style.headerCellHeight},o.getHeaderCellWidth=function(){return o.attributes.showRowHeaders?o.sizes.columns.cornerCell||o.style.headerRowWidth:0},o.setStorageData=function(){o.attributes.saveAppearance&&localStorage.setItem(o.storageName+"-"+o.attributes.name,JSON.stringify({sizes:{rows:o.sizes.rows,columns:o.sizes.columns},orders:{rows:o.orders.rows,columns:o.orders.columns},orderBy:o.orderBy,orderDirection:o.orderDirection}))},o.getSchema=function(){return o.schema||o.tempSchema},o.createColumnOrders=function(){var e=o.getSchema();o.orders.columns=o.fillArray(0,e.length-1)},o.createRowOrders=function(){o.orders.rows=o.fillArray(0,o.data.length-1)},o.getVisibleSchema=function(){return o.getSchema().filter(function(e){return!e.hidden})},o.createNewRowData=function(){o.newRow={},o.newRow[o.uniqueId]=o.uId,o.uId+=1,o.getSchema().forEach(function(e,t){var r=e.defaultValue||"";"function"==typeof r&&(r=r.apply(o.intf,[e,t])),o.newRow[e.name]=r})},o.addEllipsis=function(e,t){var r,l,n=o.style.cellPaddingRight+o.style.cellPaddingLeft;if(o.ellipsisCache[e]&&o.ellipsisCache[e][t])return o.ellipsisCache[e][t];if(o.ctx.measureText(e).width+n<t)r=e;else for(r=e.substring(0,1),l=1;t>o.ctx.measureText(r).width+n;)l+=1,r=e.substring(0,l)+"...";return o.ellipsisCache[e]=o.ellipsisCache[e]||{},o.ellipsisCache[e][t]=r,r},o.getSchemaNameHash=function(e){for(var t=0;o.schemaHashes[e];)t+=1,e+=t;return e},o.filter=function(e){var t=o.filters[e];return t||void 0===e||(console.warn("Cannot find filter for type %s, falling back to substring match.",e),t=o.filters.string),t},o.getBestGuessDataType=function(e){var t,r,l=o.data.length;for(r=0;r<l;r+=1)if(-1!==[null,void 0].indexOf(o.data[r][e]))return t=typeof o.data[r],"object"===t?"string":t;return"string"},o.drawChildGrids=function(){Object.keys(o.childGrids).forEach(function(e){o.childGrids[e].draw()})},o.resizeChildGrids=function(){Object.keys(o.childGrids).forEach(function(e){o.childGrids[e].resize()})},o.getClippingRect=function(e){var t=o.position(o.parentNode),r=o.position(e),l={x:0,y:0,h:0,w:0},n={x:-1/0,y:-1/0,h:1/0,w:1/0},i=o.getHeaderCellHeight(),s=o.getHeaderCellWidth();return l.h=t.top+t.height-e.offsetTop-o.style.scrollBarWidth,l.w=t.left+t.width-e.offsetLeft-o.style.scrollBarWidth,l.x=t.left+-1*r.left+s,l.y=t.top+-1*r.top+i,{x:l.x>n.x?l.x:n.x,y:l.y>n.y?l.y:n.y,h:l.h<n.h?l.h:n.h,w:l.w<n.w?l.w:n.w}},o.clipElement=function(e){var t=o.getClippingRect(e);t.w<0&&(t.w=0),t.h<0&&(t.h=0),e.style.clip="rect("+t.y+"px,"+t.w+"px,"+t.h+"px,"+t.x+"px)"},o.autoScrollZone=function(e,t,r,l){var n,i=o.getHeaderCellWidth(),s=o.getHeaderCellHeight();t>o.width-o.attributes.selectionScrollZone&&t<o.width&&(o.scrollBox.scrollLeft+=o.attributes.selectionScrollIncrement,n=!0),r>o.height-o.attributes.selectionScrollZone&&r<o.height&&(o.scrollBox.scrollTop+=o.attributes.selectionScrollIncrement,n=!0),t-o.attributes.selectionScrollZone-i<0&&(o.scrollBox.scrollLeft-=o.attributes.selectionScrollIncrement,n=!0),r-o.attributes.selectionScrollZone-s<0&&(o.scrollBox.scrollTop-=o.attributes.selectionScrollIncrement,n=!0),n&&!l&&o.currentCell&&-1!==o.currentCell.columnIndex&&(o.scrollTimer=setTimeout(o.mousemove,o.attributes.scrollRepeatRate,e))},o.refreshFromOrigialData=function(){o.data=o.originalData.filter(function(e){return!0})},o.validateColumn=function(e,t){if(!e.name)throw new Error("A column must contain at least a name.");if(t.filter(function(t){return t.name===e.name}).length>0)throw new Error("A column with the name "+e.name+" already exists and cannot be added again.");return!0},o.setDefaults=function(e,t,r,o){e[r]=void 0===t[r]?o:t[r]},o.setAttributes=function(){o.defaults.attributes.forEach(function(e){o.setDefaults(o.attributes,r,e[0],e[1])})},o.setStyle=function(){o.defaults.styles.forEach(function(e){o.setDefaults(o.style,r.style||{},e[0],e[1])})},o.autosize=function(e){o.getVisibleSchema().forEach(function(t){t.name!==e&&void 0!==e||o.fitColumnToValues(t.name)}),o.fitColumnToValues("cornerCell")},o.dispose=function(){!o.isChildGrid&&o.canvas&&o.canvas.parentNode&&o.canvas.parentNode.removeChild(o.canvas),o.eventParent.removeEventListener("mouseup",o.mouseup,!1),o.eventParent.removeEventListener("mousedown",o.mousedown,!1),o.eventParent.removeEventListener("dblclick",o.dblclick,!1),o.eventParent.removeEventListener("click",o.click,!1),o.eventParent.removeEventListener("mousemove",o.mousemove),o.eventParent.removeEventListener("mousewheel",o.scrollWheel,!1),o.canvas.removeEventListener("contextmenu",o.contextmenu,!1),o.canvas.removeEventListener("copy",o.copy),o.controlInput.removeEventListener("keypress",o.keypress,!1),o.controlInput.removeEventListener("keyup",o.keyup,!1),o.controlInput.removeEventListener("keydown",o.keydown,!1),window.removeEventListener("resize",o.resize),o.observer&&o.observer.disconnect&&o.observer.disconnect()},o.tryLoadStoredOrders=function(){var e;o.storedSettings&&"object"==typeof o.storedSettings.orders&&(o.storedSettings.orders.rows.length>=o.data.length&&(o.orders.rows=o.storedSettings.orders.rows),e=o.getSchema(),o.orders.columns=o.storedSettings.orders.columns,e.forEach(function(e,t){-1===o.orders.columns.indexOf(t)&&o.orders.columns.push(t)}),o.orderBy=void 0===o.storedSettings.orderBy?o.uniqueId:o.storedSettings.orderBy,o.orderDirection=void 0===o.storedSettings.orderDirection?o.uniqueId:o.storedSettings.orderDirection,o.getHeaderByName(o.orderBy)&&o.orderDirection&&o.order(o.orderBy,o.orderDirection))},o.init=function(){if(o.setAttributes(),o.setStyle(),o.initScrollBox(),o.setDom(),o.intf.type="canvas-datagrid",o.intf.addEventListener=o.addEventListener,o.intf.removeEventListener=o.removeEventListener,o.intf.dispatchEvent=o.dispatchEvent,o.intf.dispose=o.dispose,o.intf.appendTo=o.appendTo,o.intf.filters=o.filters,o.intf.sorters=o.sorters,o.intf.autosize=o.autosize,o.intf.beginEditAt=o.beginEditAt,o.intf.endEdit=o.endEdit,o.intf.setActiveCell=o.setActiveCell,o.intf.scrollIntoView=o.scrollIntoView,o.intf.clearChangeLog=o.clearChangeLog,o.intf.gotoCell=o.gotoCell,o.intf.gotoRow=o.gotoRow,o.intf.findColumnScrollLeft=o.findColumnScrollLeft,o.intf.findRowScrollTop=o.findRowScrollTop,o.intf.fitColumnToValues=o.fitColumnToValues,o.intf.findColumnMaxTextLength=o.findColumnMaxTextLength,o.intf.disposeContextMenu=o.disposeContextMenu,o.intf.getCellAt=o.getCellAt,o.intf.isCellVisible=o.isCellVisible,o.intf.order=o.order,o.intf.draw=o.draw,o.intf.selectArea=o.selectArea,o.intf.clipElement=o.clipElement,o.intf.getSchemaFromData=o.getSchemaFromData,o.intf.setFilter=o.setFilter,o.intf.selectRow=o.selectRow,o.intf.parentGrid=o.parentGrid,o.intf.toggleTree=o.toggleTree,o.intf.expandTree=o.expandTree,o.intf.collapseTree=o.collapseTree,o.intf.canvas=o.canvas,o.intf.context=o.ctx,o.intf.insertRow=o.insertRow,o.intf.deleteRow=o.deleteRow,o.intf.addRow=o.addRow,o.intf.insertColumn=o.insertColumn,o.intf.deleteColumn=o.deleteColumn,o.intf.addColumn=o.addColumn,o.intf.getClippingRect=o.getClippingRect,o.intf.setRowHeight=o.setRowHeight,o.intf.setColumnWidth=o.setColumnWidth,o.intf.resetColumnWidths=o.resetColumnWidths,o.intf.resetRowHeights=o.resetRowHeights,o.intf.resize=o.resize,o.intf.drawChildGrids=o.drawChildGrids,Object.keys(o.style).forEach(function(e){Object.defineProperty(o.intf.style,e,{get:function(){return o.style[e]},set:function(t){o.style[e]=t,o.draw(!0)}})}),Object.keys(o.attributes).forEach(function(e){Object.defineProperty(o.intf.attributes,e,{get:function(){return o.attributes[e]},set:function(t){o.attributes[e]=t,o.draw(!0)}})}),o.filters.string=function(e,t){if(!t)return!0;var r;o.invalidFilterRegEx=void 0;try{r=new RegExp(t,"ig")}catch(e){return void(o.invalidFilterRegEx=e)}return r.test(e)},o.filters.number=function(e,t){return!t||e===t},o.attributes.name&&o.attributes.saveAppearance){if(o.storedSettings=localStorage.getItem(o.storageName+"-"+o.attributes.name),o.storedSettings)try{o.storedSettings=JSON.parse(o.storedSettings)}catch(e){console.warn("could not read settings from localStore",e),o.storedSettings=void 0}o.storedSettings&&"object"==typeof o.storedSettings.sizes&&(o.sizes.rows=o.storedSettings.sizes.rows,o.sizes.columns=o.storedSettings.sizes.columns,["trees","columns","rows"].forEach(function(e){o.sizes[e]||(o.sizes[e]={})}))}r.data&&(o.intf.data=r.data),r.schema&&(o.intf.schema=r.schema),o.data||(o.intf.data=[]),o.resize(!0)},t.forEach(function(e){e(o)}),o.init(),o.intf}var t=Array.prototype.slice.call(arguments);return window&&!window.canvasDatagrid&&(window.canvasDatagrid=e),e}.apply(t,o))&&(e.exports=l)},function(e,t,r){var o,l;o=[],void 0!==(l=function(){"use strict";return function(e){function t(t,r){return t+=e.canvasOffsetLeft,r+=e.canvasOffsetTop,e.ctx.fillStyle=e.style.headerOrderByArrowColor,e.ctx.strokeStyle=e.style.headerOrderByArrowBorderColor,e.ctx.beginPath(),t+=e.style.headerOrderByArrowMarginLeft,r+=e.style.headerOrderByArrowMarginTop,"asc"===e.orderDirection?(e.ctx.moveTo(t,r),e.ctx.lineTo(t+e.style.headerOrderByArrowWidth,r),e.ctx.lineTo(t+.5*e.style.headerOrderByArrowWidth,r+e.style.headerOrderByArrowHeight),e.ctx.moveTo(t,r)):(e.ctx.lineTo(t,r+e.style.headerOrderByArrowHeight),e.ctx.lineTo(t+e.style.headerOrderByArrowWidth,r+e.style.headerOrderByArrowHeight),e.ctx.lineTo(t+.5*e.style.headerOrderByArrowWidth,r),e.ctx.lineTo(t,r+e.style.headerOrderByArrowHeight)),e.ctx.stroke(),e.ctx.fill(),e.style.headerOrderByArrowMarginLeft+e.style.headerOrderByArrowWidth+e.style.headerOrderByArrowMarginRight}function r(t,r,o){return r+=e.canvasOffsetLeft,o+=e.canvasOffsetTop,e.ctx.fillStyle=e.style.treeArrowColor,e.ctx.strokeStyle=e.style.treeArrowBorderColor,e.ctx.beginPath(),r+=e.style.treeArrowMarginLeft,o+=e.style.treeArrowMarginTop,e.openChildren[t.data[e.uniqueId]]?(e.ctx.moveTo(r,o),e.ctx.lineTo(r+e.style.treeArrowWidth,o),e.ctx.lineTo(r+.5*e.style.treeArrowWidth,o+e.style.treeArrowHeight),e.ctx.moveTo(r,o)):(e.ctx.lineTo(r,o),e.ctx.lineTo(r+e.style.treeArrowHeight,o+.5*e.style.treeArrowWidth),e.ctx.lineTo(r,o+e.style.treeArrowWidth),e.ctx.lineTo(r,o)),e.ctx.stroke(),e.ctx.fill(),e.style.treeArrowMarginLeft+e.style.treeArrowWidth+e.style.treeArrowMarginRight}function o(t,r,o,l,n){t+=e.canvasOffsetLeft,r+=e.canvasOffsetTop;var i=t+o,s=r+l;e.ctx.beginPath(),e.ctx.moveTo(t+n,r),e.ctx.lineTo(i-n,r),e.ctx.quadraticCurveTo(i,r,i,r+n),e.ctx.lineTo(i,r+l-n),e.ctx.quadraticCurveTo(i,s,i-n,s),e.ctx.lineTo(t+n,s),e.ctx.quadraticCurveTo(t,s,t,s-n),e.ctx.lineTo(t,r+n),e.ctx.quadraticCurveTo(t,r,t+n,r)}function l(t,r,o,l){t+=e.canvasOffsetLeft,r+=e.canvasOffsetTop,e.ctx.fillRect(t,r,o,l)}function n(t,r,o,l){t+=e.canvasOffsetLeft,r+=e.canvasOffsetTop,e.ctx.strokeRect(t,r,o,l)}function i(t,r,o){r+=e.canvasOffsetLeft,o+=e.canvasOffsetTop,e.ctx.fillText(t,r,o)}function s(t,r){e.ctx.beginPath(),{t:function(){e.ctx.moveTo(t.x+e.canvasOffsetLeft,t.y+e.canvasOffsetTop),e.ctx.lineTo(t.x+e.canvasOffsetLeft+t.width,t.y+e.canvasOffsetTop)},r:function(){e.ctx.moveTo(t.x+e.canvasOffsetLeft+t.width,t.y+e.canvasOffsetTop),e.ctx.lineTo(t.x+e.canvasOffsetLeft+t.width,t.y+e.canvasOffsetTop+t.height)},b:function(){e.ctx.moveTo(t.x+e.canvasOffsetLeft,t.y+e.canvasOffsetTop+t.height),e.ctx.lineTo(t.x+e.canvasOffsetLeft+t.width,t.y+e.canvasOffsetTop+t.height)},l:function(){e.ctx.moveTo(t.x+e.canvasOffsetLeft,t.y+e.canvasOffsetTop),e.ctx.lineTo(t.x+e.canvasOffsetLeft,t.y+e.canvasOffsetTop+t.height)}}[r](),e.ctx.stroke()}e.draw=function(a){function d(a,d,c){return function(u,g,x){var m,C,I,S=u.style||"cell",T=e.selections[c]&&-1!==e.selections[c].indexOf(x),z=e.hovers[a[e.uniqueId]]&&-1!==e.hovers[a[e.uniqueId]].indexOf(x),R=e.activeCell.rowIndex===c&&e.activeCell.columnIndex===x,H=Array.isArray(a[u.name]),k=!(e.orders.rows[e.activeCell.rowIndex]!==c&&e.orders.columns[e.activeCell.columnIndex]!==x||-1!==x&&-1!==c),W=e.formatters[u.type||"string"],A=0,j=0,D=e.sizes.columns["rowHeaderCell"===S?"cornerCell":u[e.uniqueId]]||u.width;if("headerCellCap"===S&&(D=O-B),void 0===D&&(D=e.style.columnWidth),B+D+h<0&&(B+=D+h),R&&(S="activeCell"),-1===e.visibleRows.indexOf(d)&&-1===["headerCell","cornerCell"].indexOf(S)&&e.visibleRows.push(d),I=e.dispatchEvent("formatcellvalue",[e.ctx,a[u.name],a,u,p,y],e.intf),!e.dispatchEvent("beforerendercell",[{},e.ctx,a[u.name],a,u,p,y],e.intf))return p=B,y=b,"cornerCell"===S?(p=0,y=0):"rowHeaderCell"===S?p=0:"headerCell"===S&&(y=0),C={type:H?"canvas-datagrid-cell":u.type,style:S,nodeType:"canvas-datagrid-cell",x:p,y:y,offsetTop:e.canvasOffsetTop,offsetLeft:e.canvasOffsetLeft,scrollTop:e.scrollBox.scrollTop,scrollLeft:e.scrollBox.scrollLeft,active:!0===R,hovered:!0===z,selected:!0===T,width:D,height:P,offsetWidth:D,offsetHeight:P,parentNode:e.intf.parentNode,offsetParent:e.intf.parentNode,data:a,isHeader:/headerCell|cornerCell/.test(S),isRowHeader:"rowHeaderCell"===S,rowOpen:v,header:u,columnIndex:x,rowIndex:c,sortColumnIndex:g,sortRowIndex:d,isGrid:H,gridId:(e.attributes.name||"")+a[e.uniqueId]+":"+u[e.uniqueId],parentGrid:e.intf,value:"headerCell"===S?u.title||u.name:a[u.name]},C.userHeight=C.isHeader?e.sizes.rows[-1]:w,C.userWidth=C.isHeader?e.sizes.columns.cornerCell:e.sizes.columns[u[e.uniqueId]],C[e.uniqueId]=a[e.uniqueId],e.visibleCells.unshift(C),e.ctx.fillStyle=e.style[S+"BackgroundColor"],e.ctx.strokeStyle=e.style[S+"BorderColor"],e.ctx.lineWidth=e.style[S+"BorderWidth"],z&&(e.ctx.fillStyle=e.style[S+"HoverBackgroundColor"],e.ctx.strokeStyle=e.style[S+"HoverBorderColor"]),T&&(e.ctx.fillStyle=e.style[S+"SelectedBackgroundColor"],e.ctx.strokeStyle=e.style[S+"SelectedBorderColor"]),k&&(e.ctx.fillStyle=e.style[S+"ActiveBackgroundColor"]),e.dispatchEvent("rendercell",[e.ctx,C],e.intf),C.isGrid&&(C.height!==w&&(C.height=w||e.style.cellHeightWithChildGrid,f=!0),C.width=e.sizes.columns[u[e.uniqueId]]||e.style.cellWidthWithChildGrid),v&&!C.isRowHeader&&(C.height=e.sizes.rows[L[e.uniqueId]]||e.style.cellHeight),C.isGrid||(l(p,y,C.width,C.height),n(p,y,C.width,C.height)),e.ctx.save(),o(C.x,C.y,C.width,C.height,0),e.ctx.clip(),e.dispatchEvent("afterrendercell",[e.ctx,C],e.intf),C.height===P||v&&!C.isRowHeader||(e.sizes.rows["headerCell"===S?-1:a[e.uniqueId]]=C.height,f=!0),C.width!==D&&(e.sizes.columns[u[e.uniqueId]]=C.width,f=!0),"rowHeaderCell"===S&&e.attributes.tree&&(e.dispatchEvent("rendertreearrow",[{},e.ctx,C],e.intf)||(j=r(C,e.style[S+"PaddingLeft"],y,0))),(e.attributes.showRowNumbers&&"rowHeaderCell"===S||"rowHeaderCell"!==S)&&(C.isGrid?(e.childGrids[C.gridId]||(m=e.args.childGridAttributes||e.args,m.name=e.attributes.saveAppearance?C.gridId:void 0,m.parentNode=C,m.data=a[u.name],e.childGrids[C.gridId]=e.createGrid(m),e.dispatchEvent("rendercellgrid",[e.ctx,C,e.childGrids[C.gridId]],e.intf),f=!0),C.grid=e.childGrids[C.gridId],C.grid.parentNode=C,C.grid.visible=!0,C.grid.draw()):(e.childGrids[C.gridId]&&(e.childGrids[C.gridId].parentNode.offsetHeight=0),e.ctx.font=e.style[S+"Font"],I=void 0!==I?I:W?W(e.ctx,C):"",void 0!==I||W||(I="",console.warn("canvas-datagrid: I don't know how to format a "+u.type+" add a cellFormater")),"headerCell"===S&&e.orderBy===u.name&&(e.dispatchEvent("renderorderbyarrow",[{},e.ctx,C],e.intf)||(A=t(p+e.style[S+"PaddingLeft"],0))),e.ctx.fillStyle=e.style[S+"Color"],z&&(e.ctx.fillStyle=e.style[S+"HoverColor"]),T&&(e.ctx.fillStyle=e.style[S+"SelectedColor"]),k&&(e.ctx.fillStyle=e.style[S+"ActiveColor"]),e.columnFilters&&void 0!==e.columnFilters[I]&&"headerCell"===S&&(I=e.style.filterTextPrefix+I),C.formattedValue=(void 0!==I&&null!==I?I:"").toString(),e.dispatchEvent("rendertext",[e.ctx,C],e.intf),i(e.addEllipsis(C.formattedValue,C.width-e.style[S+"PaddingRight"]-A-e.style.autosizePadding),j+A+p+e.style[S+"PaddingLeft"],y-.5*C.height+e.style[S+"PaddingTop"]+C.height))),R&&!e.attributes.rowSelectionMode&&(E=C,e.ctx.lineWidth=e.style.activeCellOverlayBorderWidth,e.ctx.strokeStyle=e.style.activeCellOverlayBorderColor,n(E.x,E.y,E.width,E.height)),T&&(e.ctx.lineWidth=e.style.selectionOverlayBorderWidth,e.ctx.strokeStyle=e.style.selectionOverlayBorderColor,C.selected&&"rowHeaderCell"!==C.style&&(e.selections[C.rowIndex-1]&&-1!==e.selections[C.rowIndex-1].indexOf(C.columnIndex)&&0!==C.rowIndex||C.isHeader||s(C,"t"),e.selections[C.rowIndex]&&C.columnIndex!==M.length-1&&-1!==e.selections[C.rowIndex].indexOf(C.columnIndex+1)||s(C,"r"),e.selections[C.rowIndex+1]&&-1!==e.selections[C.rowIndex+1].indexOf(C.columnIndex)||s(C,"b"),e.selections[C.rowIndex]&&0!==C.columnIndex&&-1!==e.selections[C.rowIndex].indexOf(C.columnIndex-1)||s(C,"l"))),e.ctx.restore(),B+=C.width+h,C.width}}function c(t,r,o){var l;e.attributes.showRowHeaders&&(B=0,g={rowHeaderCell:r+1},g[e.uniqueId]=t[e.uniqueId],l={name:"rowHeaderCell",width:e.style.headerRowWidth,style:"rowHeaderCell",type:"string",data:t[e.uniqueId],index:-1},l[e.uniqueId]=t[e.uniqueId],d(g,r,o)(l,-1,-1))}function u(t,r){var o,l,i,s,a=M.length;if(b-2*P>S)return!1;if(L=e.data[t],v=e.openChildren[L[e.uniqueId]],i=e.sizes.rows[L[e.uniqueId]]||e.style.cellHeight,l=v?e.sizes.trees[L[e.uniqueId]]:0,w=i+l,b<-1*w)return!1;for(e.attributes.showRowHeaders&&(B+=k),P=w,s=e.scrollIndexLeft;s<a&&(o=e.orders.columns[s],!((B+=d(L,t,r)(M[o],o,s))>e.width));s+=1);return c(L,t,r),P=w,B=-1*e.scrollBox.scrollLeft+e.scrollPixelLeft,m=e.childGrids[L[e.uniqueId]],t!==e.data.length&&v?(m.visible=!0,m.parentNode={offsetTop:b+i+e.canvasOffsetTop,offsetLeft:B+k-1+e.canvasOffsetLeft,offsetHeight:l,offsetWidth:e.width-k-e.style.scrollBarWidth-1,offsetParent:e.intf.parentNode,parentNode:e.intf.parentNode,style:e.style,nodeType:"canvas-datagrid-tree",scrollTop:e.scrollBox.scrollTop,scrollLeft:e.scrollBox.scrollLeft,rowIndex:t},e.visibleCells.unshift({rowIndex:B,columnIndex:0,y:m.parentNode.offsetTop,x:m.parentNode.offsetLeft,height:m.parentNode.offsetHeight,width:m.parentNode.offsetWidth,style:"tree-grid",type:m.parentNode.nodeType}),m.draw()):m&&(m.parentNode.offsetHeight=0,delete e.sizes.trees[L[e.uniqueId]]),e.attributes.rowSelectionMode&&e.activeCell&&e.activeCell.rowIndex===t&&(e.ctx.lineWidth=e.style.activeCellOverlayBorderWidth,e.ctx.strokeStyle=e.style.activeCellOverlayBorderColor,n(0,b,e.getHeaderWidth(),w)),b+=P+h,!0}if(e.isChildGrid||e.height&&e.width){if(e.isChildGrid&&a)return void requestAnimationFrame(e.parentGrid.draw);if(!1!==e.intf.visible){var f,h,g,x,p,y,m,v,w,C,b,B,I,S,O,M,T,L,E,z=e.data.length,R=e.currentCell||{},H=e.getHeaderCellHeight(),k=e.getHeaderCellWidth(),P=e.style.cellHeight;e.data.length>e.orders.rows.length&&e.createRowOrders(),e.ctx.save(),function(){e.attributes.showPerformance&&(x=performance.now()),h=2*e.style.cellBorderWidth,e.visibleRows=[],M=e.getVisibleSchema(),e.visibleCells=[],e.canvasOffsetTop=e.isChildGrid?e.parentNode.offsetTop:0,e.canvasOffsetLeft=e.isChildGrid?e.parentNode.offsetLeft:0,S=e.height,O=e.width,e.isChildGrid||e.ctx.scale(window.devicePixelRatio,window.devicePixelRatio)}(),function(){o(0,0,O,S,0),e.ctx.clip(),e.ctx.fillStyle=e.style.backgroundColor,l(0,0,O,S)}(),function(){var t,r,o,l=M.length;for(B=-1*e.scrollBox.scrollLeft+e.scrollPixelLeft,b=-1*e.scrollBox.scrollTop+H+e.scrollPixelTop,T=e.scrollIndexTop;T<z&&(r=e.orders.rows[T],u(r,T));T+=1);if(e.attributes.showNewRow){for(e.attributes.showRowHeaders&&(B+=k),w=P=e.style.cellHeight,v=!1,t=e.scrollIndexLeft;t<l&&(o=e.orders.columns[t],!((B+=d(e.newRow,e.data.length,e.data.length)(M[o],o,t))>e.width+e.scrollBox.scrollLeft));t+=1);c(e.newRow,e.data.length,e.data.length)}}(),function(){var t,r,o,l,n,i=M.length;if(e.attributes.showHeaders){for(B=-1*e.scrollBox.scrollLeft+e.scrollPixelLeft,e.attributes.showRowHeaders&&(B+=k),b=0,P=e.getHeaderCellHeight(),o=e.scrollIndexLeft;o<i&&(r=e.orders.columns[o],n=M[r],t={title:n.title,name:n.name,width:n.width,style:"headerCell",type:"string",index:o,order:r},l={headerCell:n.title||n.name},l[e.uniqueId]="h"+n[e.uniqueId],t[e.uniqueId]=n[e.uniqueId],!((B+=d(l,-1,-1)(t,o,r))>e.width+e.scrollBox.scrollLeft));o+=1);B<O&&(I={name:"",width:e.style.scrollBarWidth,style:"headerCellCap",type:"string",index:M.length},I[e.uniqueId]="headerCell",d({endCap:""},-1,-1)(I,-1,-1)),e.attributes.showRowHeaders&&(C={cornerCell:""},C[e.uniqueId]="cornerCell",B=0,I={name:"cornerCell",width:e.style.headerRowWidth,style:"cornerCell",type:"string",index:-1},I[e.uniqueId]="cornerCell",d(C,-1,-1)(I,-1,-1))}}(),function(){if(e.reorderObject){var t={height:e.reorderObject.height,width:e.reorderObject.width,x:e.reorderObject.x+e.reorderObject.dragOffset.x,y:e.reorderObject.y+e.reorderObject.dragOffset.y},r={width:O,heigth:S,x:0,y:0};e.ctx.fillStyle=e.style.reorderMarkerBackgroundColor,e.ctx.lineWidth=e.style.reorderMarkerBorderWidth,e.ctx.strokeStyle=e.style.reorderMarkerBorderColor,"row-reorder"===e.dragMode?(t.width=O,t.x=0,r.width=O,r.y=e.currentCell.y,l(t.x,t.y,t.width,t.height),n(t.x,t.y,t.width,t.height),e.ctx.lineWidth=e.style.reorderMarkerIndexBorderWidth,e.ctx.strokeStyle=e.style.reorderMarkerIndexBorderColor,e.currentCell.rowIndex!==e.reorderObject.rowIndex&&e.currentCell.rowIndex-1!==e.reorderObject.rowIndex&&s(r,"t")):"column-reorder"===e.dragMode&&e.reorderObject&&(t.height=S,t.y=0,r.height=S,r.x=e.currentCell.x,l(t.x,t.y,t.width,t.height),n(t.x,t.y,t.width,t.height),e.ctx.lineWidth=e.style.reorderMarkerIndexBorderWidth,e.ctx.strokeStyle=e.style.reorderMarkerIndexBorderColor,e.currentCell.columnIndex!==e.reorderObject.columnIndex&&e.currentCell.columnIndex-1!==e.reorderObject.columnIndex&&s(r,"l"))}}(),function(){var t={x:0,y:0,height:0,width:0,style:"vertical-scroll-bar"},r={x:0,y:0,height:0,width:0,style:"horizontal-scroll-bar"},i={x:0,y:0,height:0,width:0,style:"vertical-scroll-box"},s={x:0,y:0,height:0,width:0,style:"horizontal-scroll-box"},a={x:0,y:0,height:0,width:0,style:"scroll-box-corner"},d=2*e.style.scrollBarBoxMargin,c=.5*e.style.scrollBarBoxMargin;e.ctx.strokeStyle=e.style.scrollBarBorderColor,e.ctx.lineWidth=e.style.scrollBarBorderWidth,t.x+=O-e.style.scrollBarWidth-e.style.scrollBarBorderWidth-c,t.y+=H,t.width=e.style.scrollBarWidth+e.style.scrollBarBorderWidth+c,t.height=S-H-e.style.scrollBarWidth-c-d,e.ctx.fillStyle=e.style.scrollBarBackgroundColor,l(t.x,t.y,t.width,t.height+d),n(t.x,t.y,t.width,t.height+d),i.x=t.x+e.style.scrollBarBoxMargin,i.y=H+e.style.scrollBarBoxMargin+(t.height-e.scrollBox.scrollBoxHeight)*(e.scrollBox.scrollTop/e.scrollBox.scrollHeight),i.width=e.style.scrollBarBoxWidth,i.height=e.scrollBox.scrollBoxHeight,e.ctx.fillStyle=e.style.scrollBarBoxColor,/vertical/.test(R.context)&&(e.ctx.fillStyle=e.style.scrollBarActiveColor),i.width<t.width&&(o(i.x,i.y,i.width,i.height,e.style.scrollBarBoxBorderRadius),e.ctx.stroke(),e.ctx.fill()),r.x+=k,r.y+=S-e.style.scrollBarWidth-c,r.width=O-e.style.scrollBarWidth-k-c-d,r.height=e.style.scrollBarWidth+e.style.scrollBarBorderWidth+c,e.ctx.fillStyle=e.style.scrollBarBackgroundColor,l(r.x,r.y,r.width+d,r.height),n(r.x,r.y,r.width+d,r.height),s.y=r.y+e.style.scrollBarBoxMargin,s.x=k+e.style.scrollBarBoxMargin+(r.width-e.scrollBox.scrollBoxWidth)*(e.scrollBox.scrollLeft/e.scrollBox.scrollWidth),s.width=e.scrollBox.scrollBoxWidth,s.height=e.style.scrollBarBoxWidth,e.ctx.fillStyle=e.style.scrollBarBoxColor,/horizontal/.test(R.context)&&(e.ctx.fillStyle=e.style.scrollBarActiveColor),s.width<r.width&&(o(s.x,s.y,s.width,s.height,e.style.scrollBarBoxBorderRadius),e.ctx.stroke(),e.ctx.fill()),e.ctx.strokeStyle=e.style.scrollBarCornerBorderColor,e.ctx.fillStyle=e.style.scrollBarCornerBackground,a.x=r.x+r.width+d,a.y=t.y+t.height+d,a.width=e.style.scrollBarWidth+e.style.scrollBarBorderWidth,a.height=e.style.scrollBarWidth+e.style.scrollBarBorderWidth,o(a.x,a.y,a.width,a.height,0),e.ctx.stroke(),e.ctx.fill(),e.visibleCells.unshift(t),e.visibleCells.unshift(i),e.visibleCells.unshift(r),e.visibleCells.unshift(s),e.visibleCells.unshift(a),e.scrollBox.bar={v:t,h:r},e.scrollBox.box={v:i,h:s}}(),f&&e.resize(!0),function(){e.ctx.lineWidth=e.style.gridBorderWidth,e.ctx.strokeStyle=e.style.gridBorderColor,n(0,0,e.width,e.height)}(),function(){e.attributes.showPerformance&&(e.ctx.fillStyle="black",x=(performance.now()-x).toFixed(2)+"ms",e.ctx.font="23px sans-serif",i(x,O-O/5,S-S/10)),e.attributes.debug&&(e.ctx.font="14px sans-serif",x="scrollLeft: %s, scrollTop: %s, topIndex: %s, topPixel: %s, leftIndex: %s, leftPixel: %s,\noffsetLeft: %s, offsetTop: %s, w: %s, h: %s, x: %s, y: %s,\nvisible entities: %s, focus: %s, dragMode: %s\ncontext: %s".replace("%s",e.scrollBox.scrollLeft).replace("%s",e.scrollBox.scrollTop).replace("%s",e.scrollIndexTop).replace("%s",e.scrollPixelTop).replace("%s",e.scrollIndexLeft).replace("%s",e.scrollPixelLeft).replace("%s",e.canvasOffsetLeft).replace("%s",e.canvasOffsetTop).replace("%s",e.width).replace("%s",e.height).replace("%s",e.mouse.x).replace("%s",e.mouse.y).replace("%s",e.visibleCells.length).replace("%s",e.hasFocus).replace("%s",e.dragMode).replace("%s",e.currentCell?"(x: %s, y: %s, ox: %s, oy: %s, context: %s, dragContext: %s, style: %s, type: %s)".replace("%s",e.currentCell.columnIndex).replace("%s",e.currentCell.rowIndex).replace("%s",e.currentCell.sortColumnIndex).replace("%s",e.currentCell.sortRowIndex).replace("%s",e.currentCell.context).replace("%s",e.currentCell.dragContext).replace("%s",e.currentCell.style).replace("%s",e.currentCell.type):""),x.split("\n").forEach(function(t,r){e.ctx.fillStyle="rgba(255, 255, 255, 0.8)",l(70,39+15*r,e.ctx.measureText(t).width+20,15),e.ctx.fillStyle="rgba(0, 0, 0, 1)",i(t,80,52+15*r)}))}(),e.ctx.restore()}}}}}.apply(t,o))&&(e.exports=l)},function(e,t,r){var o,l;o=[],void 0!==(l=function(){"use strict";return function(e){e.stopPropagation=function(e){e.stopPropagation()},e.addEventListener=function(t,r){e.events[t]=e.events[t]||[],e.events[t].unshift(r)},e.removeEventListener=function(t,r){(e.events[t]||[]).forEach(function(o,l){r===o&&e.events[t].splice(l,1)})},e.dispatchEvent=function(t,r,o){function l(){n=!0}r=r||{},o=o||e.intf;var n;if(e.events[t])return e.events[t].forEach(function(e){r[0].preventDefault=l,e.apply(o,r)}),n},e.resize=function(t){var r,o,l=2*e.style.cellBorderWidth,n=2*e.style.headerCellBorderWidth,i=e.getHeaderCellHeight(),s=e.getHeaderCellWidth();return e.isChildGrid?(e.height=e.parentNode.offsetHeight,e.width=e.parentNode.offsetWidth):(e.height=e.parentDOMNode.offsetHeight-e.style.scrollBarBoxMargin,e.width=e.parentDOMNode.offsetWidth-e.style.scrollBarBoxMargin,e.parentNode=e.parentDOMNode,e.canvas.height=e.height*window.devicePixelRatio,e.canvas.width=e.width*window.devicePixelRatio,e.canvas.style.height=e.height+"px",e.canvas.style.width=e.width+"px",e.canvasOffsetTop=0,e.canvasOffsetLeft=0),r=e.data.reduce(function(t,r){return t+(e.sizes.rows[r[e.uniqueId]]||e.style.cellHeight)+(e.sizes.trees[r[e.uniqueId]]||0)+l},0)||0,o=e.getVisibleSchema().reduce(function(t,r){return r.hidden?t:t+(e.sizes.columns[r[e.uniqueId]]||r.width||e.style.columnWidth)+l},0)||0,e.attributes.showNewRow&&(r+=e.style.cellHeight+l),e.scrollBox.width=e.width-s,e.scrollBox.height=e.height-i-n,e.scrollBox.top=i+n,e.scrollBox.left=s,e.scrollBox.scrollHeight=r+e.style.scrollBarWidth-e.scrollBox.height,e.scrollBox.scrollWidth=o+e.style.scrollBarWidth-e.scrollBox.width,e.scrollBox.widthBoxRatio=(e.scrollBox.width-15)/(e.scrollBox.scrollWidth+e.scrollBox.width-15),e.scrollBox.scrollBoxWidth=e.scrollBox.width*e.scrollBox.widthBoxRatio-e.style.scrollBarWidth,e.scrollBox.heightBoxRatio=(e.scrollBox.height-30)/(e.scrollBox.scrollHeight+(e.scrollBox.height-30)),e.scrollBox.scrollBoxHeight=e.scrollBox.height*e.scrollBox.heightBoxRatio-e.style.scrollBarWidth,e.scrollBox.scrollBoxWidth=Math.max(e.scrollBox.scrollBoxWidth,e.style.scrollBarBoxMinSize),e.scrollBox.scrollBoxHeight=Math.max(e.scrollBox.scrollBoxHeight,e.style.scrollBarBoxMinSize),e.page=e.visibleRows.length-3-e.attributes.pageUpDownOverlap,t&&e.draw(!0),e.dispatchEvent("resize",[{}],e.intf),!0},e.scroll=function(t){var r,o=e.getVisibleSchema(),l=2*e.style.cellBorderWidth;for(e.scrollIndexTop=0,e.scrollPixelTop=0,e.scrollIndexLeft=0,e.scrollPixelLeft=0;e.scrollPixelTop<e.scrollBox.scrollTop&&e.scrollIndexTop<e.data.length;)e.scrollPixelTop+=(e.sizes.rows[e.data[e.scrollIndexTop][e.uniqueId]]||e.style.cellHeight)+(e.sizes.trees[e.data[e.scrollIndexTop][e.uniqueId]]||0)+l,e.scrollIndexTop+=1;for(;e.scrollPixelLeft<e.scrollBox.scrollLeft&&e.scrollIndexLeft<o.length;)e.scrollPixelLeft+=e.sizes.columns[o[e.scrollIndexLeft][e.uniqueId]]||o[e.scrollIndexLeft].width,e.scrollIndexLeft+=1;e.data.length>0&&(e.scrollIndexLeft=Math.max(e.scrollIndexLeft-1,0),e.scrollPixelLeft=Math.max(e.scrollPixelLeft-(e.sizes.columns[o[e.scrollIndexLeft][e.uniqueId]]||o[e.scrollIndexLeft].width),0),e.scrollIndexTop=Math.max(e.scrollIndexTop-1,0),e.scrollPixelTop=Math.max(e.scrollPixelTop-(e.sizes.rows[e.data[e.scrollIndexTop][e.uniqueId]]||e.style.cellHeight)-(e.sizes.trees[e.data[e.scrollIndexTop][e.uniqueId]]||0),0)),e.ellipsisCache={},e.draw(!0),e.input&&(r=e.position(e.parentNode,!0),e.input.style.top=r.top+e.scrollEdit.inputTop+(e.scrollEdit.scrollTop-e.scrollBox.scrollTop)+"px",e.input.style.left=r.left+e.scrollEdit.inputLeft+(e.scrollEdit.scrollLeft-e.scrollBox.scrollLeft)+"px",e.clipElement(e.input)),e.dispatchEvent("scroll",[{top:e.scrollBox.scrollTop,left:e.scrollBox.scrollLeft}],e.intf)},e.mousemove=function(t){if(!e.contextMenu&&!e.input){e.mouse=e.getLayerPos(t);var r,o,l,n,i,s=t.controlKey||t.metaKey||e.attributes.persistantSelectionMode,a=e.getSchema(),d=e.mouse.x,c=e.mouse.y;if(clearTimeout(e.scrollTimer),!e.dispatchEvent("mousemove",[t,n],e.intf)&&(e.isInGrid({x:d,y:c})||(e.hasFocus=!1),n=e.getCellAt(d,c),n&&e.currentCell&&(e.currentCell.rowIndex!==n.rowIndex||e.currentCell.columnIndex!==n.columnIndex)&&(e.cellBoundaryCrossed=!0,e.dispatchEvent("cellmouseover",[t,n],e.intf),e.dispatchEvent("cellmouseout",[t,e.currentCell],e.intf)),e.currentCell=n,e.hasFocus)){if(e.hovers={},!e.draggingItem&&n&&-1===e.scrollModes.indexOf(n.context)&&(e.dragItem=n,e.dragMode=n.dragContext,e.canvas.style.cursor=n.context,"cell"===n.context&&n.data&&(e.canvas.style.cursor="pointer",e.hovers[n.data[e.uniqueId]]=[n.rowIndex]),(e.selecting||e.reorderObject)&&"cell"===n.context&&n.data)){if(l=e.getSelectionBounds(),i={x:Math.abs(e.dragStart.x-d),y:Math.abs(e.dragStart.y-c)},-1!==e.dragStartObject.columnIndex&&t.shiftKey&&(e.dragStartObject={rowIndex:e.activeCell.rowIndex,columnIndex:e.activeCell.columnIndex}),o={top:Math.min(e.dragStartObject.rowIndex,n.rowIndex),left:Math.min(e.dragStartObject.columnIndex,n.columnIndex),bottom:Math.max(e.dragStartObject.rowIndex,n.rowIndex),right:Math.max(e.dragStartObject.columnIndex,n.columnIndex)},-1===e.dragStartObject.columnIndex&&(o.left=-1,o.right=a.length-1,o.top=Math.min(l.top,n.rowIndex),o.bottom=Math.max(l.bottom,n.rowIndex)),e.dragStartObject.rowIndex===n.rowIndex&&e.dragStartObject.columnIndex===n.columnIndex||(e.ignoreNextClick=!0),(e.cellBoundaryCrossed||0===i.x&&0===i.y||e.attributes.rowSelectionMode)&&(e.attributes.rowSelectionMode||-1===e.dragStartObject.columnIndex?e.selectRow(n.rowIndex,s,!0):!e.dragAddToSelection&&n.rowIndex?e.selections[n.rowIndex]&&-1!==e.selections[n.rowIndex].indexOf(n.columnIndex)&&e.selections[n.rowIndex].splice(e.selections[n.rowIndex].indexOf(n.columnIndex),1):(e.selections[n.rowIndex]=e.selections[n.rowIndex]||[],-1===e.selections[n.rowIndex].indexOf(n.columnIndex)&&e.selections[n.rowIndex].push(n.columnIndex))),!(e.selectionBounds&&o.top===e.selectionBounds.top&&o.left===e.selectionBounds.left&&o.bottom===e.selectionBounds.bottom&&o.right===e.selectionBounds.right||s))if(e.selections=[],l=o,e.attributes.rowSelectionMode)for(r=l.top;r<=l.bottom;r+=1)e.selectRow(r,!0,!0);else e.selectArea(l,!0);e.autoScrollZone(t,d,c,s)}e.cellBoundaryCrossed=!1,e.draw(!0)}}},e.endEdit=function(t){function r(){t=!0}var o=e.input.editCell,l=o.rowIndex;if(e.dispatchEvent("beforeendedit",[{},o,e.input.value,o.value,r,e.input],e.intf))return!1;if(e.input.value!==o.value&&!t){if(e.changes[l]=e.changes[l]||{},e.changes[l][o.header.name]=e.input.value,o.data[o.header.name]=e.input.value,l===e.data.length){if(e.dispatchEvent("newrow",[e.input.value,o.value,t,o,e.input],e.intf))return!1;e.uId+=1,e.addRow(o.data),e.createNewRowData()}e.draw(!0)}return document.body.removeChild(e.input),e.controlInput.focus(),e.dispatchEvent("endedit",[{},o,e.input.value,t,e.input],e.intf),e.input=void 0,!0},e.beginEditAt=function(t,r){function o(){var o=e.position(e.parentNode,!0);i=e.visibleCells.filter(function(e){return e.columnIndex===t&&e.rowIndex===r})[0],l=i.y+e.style.cellBorderWidth,n=i.x+e.style.cellBorderWidth,e.scrollEdit={scrollTop:e.scrollBox.scrollTop,scrollLeft:e.scrollBox.scrollLeft,inputTop:l,inputLeft:n},e.input=document.createElement(e.attributes.multiLine?"textarea":"input"),document.body.appendChild(e.input),e.input.className="canvas-datagrid-edit-input",e.input.style.position="absolute",e.input.style.top=o.top-1+l+"px",e.input.style.left=o.left-1+n+"px",e.input.style.height=i.height-2*e.style.cellBorderWidth+"px",e.input.style.width=i.width-2*e.style.cellBorderWidth-e.style.cellPaddingLeft+"px",e.input.style.zIndex="2",e.input.value=i.value,e.input.editCell=i,e.clipElement(e.input),e.input.focus(),e.input.addEventListener("click",e.stopPropagation),e.input.addEventListener("dblclick",e.stopPropagation),e.input.addEventListener("mouseup",e.stopPropagation),e.input.addEventListener("mousedown",e.stopPropagation),e.input.addEventListener("keydown",function(t){var r=i.columnIndex,o=i.rowIndex;if(27===t.keyCode)e.endEdit(!0),e.draw(!0);else if(13===t.keyCode)e.endEdit(),e.draw(!0);else if(9===t.keyCode){if(t.preventDefault(),!e.endEdit())return;t.shiftKey?r-=1:r+=1,r<0&&(r=s.length-1,o-=1),r>s.length-1&&(r=0,o+=1),o<0&&(o=e.data.length-1),o>e.data.length-1&&(o=0),e.beginEditAt(r,o)}})}if(e.attributes.editable){var l,n,i,s=e.getVisibleSchema();if(i=e.visibleCells.filter(function(e){return e.columnIndex===t&&e.rowIndex===r})[0],e.dispatchEvent("beforebeginedit",[{},i],e.intf))return!1;e.scrollIntoView(t,r),e.setActiveCell(t,r),requestAnimationFrame(o),e.dispatchEvent("beginedit",[i,e.input],e.intf)}},e.click=function(t){function r(){l&&e.dispatchEvent("selectionchanged",[e.getSelectedData(),e.selections,e.selectionBounds],e.intf)}var o,l,n=t.controlKey||t.metaKey||e.attributes.persistantSelectionMode,i=e.getLayerPos(t);if(e.currentCell=e.getCellAt(i.x,i.y),void 0===e.currentCell.grid){if(e.input&&e.endEdit(),e.ignoreNextClick)return void(e.ignoreNextClick=!1);if(o=e.currentCell,!e.dispatchEvent("click",[t,e.currentCell],e.intf)&&e.hasFocus){if("cell"===e.currentCell.context){if("cornerCell"===e.currentCell.style)return e.order(e.uniqueId,"asc"),e.setFilter(),void r();if("headerCell"===e.currentCell.style)return e.orderBy===o.header.name?e.orderDirection="asc"===e.orderDirection?"desc":"asc":e.orderDirection="asc",e.order(o.header.name,e.orderDirection),void r();if(-1!==["rowHeaderCell","headerCell"].indexOf(e.currentCell.style)||n||e.setActiveCell(o.columnIndex,o.rowIndex),e.selections[o.rowIndex]=e.selections[o.rowIndex]||[],e.attributes.rowSelectionMode||"rowHeaderCell"===e.currentCell.style){if("rowHeaderCell"===e.currentCell.style&&e.attributes.tree&&i.x>0&&i.x-e.currentCell.x<e.style.treeArrowWidth+e.style.treeArrowMarginLeft+e.style.treeArrowMarginRight+e.style.treeArrowClickRadius&&i.y-e.currentCell.y<e.style.treeArrowHeight+e.style.treeArrowMarginTop+e.style.treeArrowClickRadius&&i.y>0)return void e.toggleTree(o.rowIndex);l=!0,e.selectRow(o.rowIndex,n,!0)}t.shiftKey&&!n&&(e.selectionBounds=e.getSelectionBounds(),e.selectArea(void 0,!1))}r(),e.draw(!0)}}},e.dragResizeColumn=function(t){var r,o,l;return r=e.getLayerPos(t),o=e.resizingStartingWidth+r.x-e.dragStart.x,l=e.resizingStartingHeight+r.y-e.dragStart.y,o<e.style.minColumnWidth&&(o=e.style.minColumnWidth),l<e.style.minRowHeight&&(l=e.style.minRowHeight),!e.dispatchEvent("resizecolumn",[{},o,l,e.draggingItem],e.intf)&&(e.scrollBox.scrollLeft>e.scrollBox.scrollWidth-e.attributes.resizeScrollZone&&"ew-resize"===e.dragMode&&(e.resize(!0),e.scrollBox.scrollLeft+=o),"ew-resize"===e.dragMode?(e.sizes.columns["rowHeaderCell"===e.draggingItem.header.style?"cornerCell":e.draggingItem.header[e.uniqueId]]=o,-1!==["rowHeaderCell","cornerCell"].indexOf(e.draggingItem.header.style)&&e.resize(!0),void e.resizeChildGrids()):"ns-resize"===e.dragMode?(e.draggingItem.rowOpen?e.sizes.trees[e.draggingItem.data[e.uniqueId]]=l:e.attributes.globalRowResize?e.style.cellHeight=l:e.sizes.rows[e.draggingItem.data[e.uniqueId]]=l,e.dispatchEvent("resizerow",[l],e.intf),void e.resizeChildGrids()):void(e.ellipsisCache={}))},e.stopDragResize=function(){e.resize(),document.body.removeEventListener("mousemove",e.dragResizeColumn,!1),document.body.removeEventListener("mouseup",e.stopDragResize,!1),e.setStorageData(),e.draw(!0),e.ignoreNextClick=!0},e.scrollGrid=function(t){var r=e.getLayerPos(t);return e.scrollMode=e.getCellAt(r.x,r.y).context,"horizontal-scroll-box"===e.scrollMode&&"horizontal-scroll-box"!==e.scrollStartMode?(e.scrollStartMode="horizontal-scroll-box",e.dragStart=r,e.scrollStart.left=e.scrollBox.scrollLeft,void clearTimeout(e.scrollTimer)):"vertical-scroll-box"===e.scrollMode&&"vertical-scroll-box"!==e.scrollStartMode?(e.scrollStartMode="vertical-scroll-box",e.dragStart=r,e.scrollStart.top=e.scrollBox.scrollTop,void clearTimeout(e.scrollTimer)):("vertical-scroll-box"===e.scrollStartMode&&"vertical-scroll-box"!==e.scrollMode&&(e.scrollMode="vertical-scroll-box"),"horizontal-scroll-box"===e.scrollStartMode&&"horizontal-scroll-box"!==e.scrollMode&&(e.scrollMode="horizontal-scroll-box"),clearTimeout(e.scrollTimer),void(-1!==e.scrollModes.indexOf(e.scrollMode)&&("vertical-scroll-box"===e.scrollMode?e.scrollBox.scrollTop=e.scrollStart.top+(r.y-e.dragStart.y)/e.scrollBox.heightBoxRatio:"vertical-scroll-top"===e.scrollMode?(e.scrollBox.scrollTop-=e.page*e.style.cellHeight,e.scrollTimer=setTimeout(e.scrollGrid,e.attributes.scrollRepeatRate,t)):"vertical-scroll-bottom"===e.scrollMode&&(e.scrollBox.scrollTop+=e.page*e.style.cellHeight,e.scrollTimer=setTimeout(e.scrollGrid,e.attributes.scrollRepeatRate,t)),"horizontal-scroll-box"===e.scrollMode?e.scrollBox.scrollLeft=e.scrollStart.left+(r.x-e.dragStart.x)/e.scrollBox.widthBoxRatio:"horizontal-scroll-right"===e.scrollMode?(e.scrollBox.scrollLeft+=e.attributes.selectionScrollIncrement,e.scrollTimer=setTimeout(e.scrollGrid,e.attributes.scrollRepeatRate,t)):"horizontal-scroll-left"===e.scrollMode&&(e.scrollBox.scrollLeft-=e.attributes.selectionScrollIncrement,e.scrollTimer=setTimeout(e.scrollGrid,e.attributes.scrollRepeatRate,t)))))},e.stopScrollGrid=function(){clearTimeout(e.scrollTimer),document.body.removeEventListener("mousemove",e.scrollGrid,!1)},e.dragReorder=function(t){var r,o,l;r=e.getLayerPos(t),o=r.x-e.dragStart.x,l=r.y-e.dragStart.y,(e.attributes.allowColumnReordering||"column-reorder"!==e.dragMode)&&(e.attributes.allowRowReordering||"row-reorder"!==e.dragMode)&&(e.dispatchEvent("reordering",[t,e.dragStartObject,e.currentCell,e.dragMode],e.intf)||(Math.abs(o)>e.attributes.reorderDeadZone||Math.abs(l)>e.attributes.reorderDeadZone)&&(e.reorderObject=e.dragStartObject,e.reorderTarget=e.currentCell,e.reorderObject.dragOffset={x:o,y:l},e.autoScrollZone(t,r.x,r.x,!1)))},e.stopDragReorder=function(t){var r={"row-reorder":e.orders.rows,"column-reorder":e.orders.columns},o={"row-reorder":"rowIndex","column-reorder":"columnIndex"}[e.dragMode];document.body.removeEventListener("mousemove",e.dragReorder,!1),document.body.removeEventListener("mouseup",e.stopDragReorder,!1),e.reorderObject&&e.reorderTarget&&(e.ignoreNextClick=!0,e.reorderObject[o]===e.reorderTarget[o]||e.dispatchEvent("reorder",[t,e.reorderObject,e.reorderTarget,e.dragMode],e.intf)||(r[e.dragMode].splice(r[e.dragMode].indexOf(e.reorderObject[o]),1),r[e.dragMode].splice(r[e.dragMode].indexOf(e.reorderTarget[o]),0,e.reorderObject[o]),e.setStorageData())),e.reorderObject=void 0,e.reorderTarget=void 0,e.draw(!0)},e.mousedown=function(t){if(!e.dispatchEvent("mousedown",[t,e.currentCell],e.intf)&&e.hasFocus&&2!==t.button&&!e.input){var r=t.controlKey||t.metaKey;if(e.dragStart=e.getLayerPos(t),e.scrollStart={left:e.scrollBox.scrollLeft,top:e.scrollBox.scrollTop},e.dragStartObject=e.getCellAt(e.dragStart.x,e.dragStart.y),e.dragAddToSelection=!e.dragStartObject.selected,r||t.shiftKey||/(vertical|horizontal)-scroll-(bar|box)/.test(e.dragStartObject.context)||(e.selections=[]),!e.dragStartObject.isGrid){if(-1!==e.scrollModes.indexOf(e.dragStartObject.context))return e.scrollMode=e.dragStartObject.context,e.scrollStartMode=e.dragStartObject.context,e.scrollGrid(t),document.body.addEventListener("mousemove",e.scrollGrid,!1),document.body.addEventListener("mouseup",e.stopScrollGrid,!1),void(e.ignoreNextClick=!0);if("cell"===e.dragMode)return e.selecting=!0,e.attributes.rowSelectionMode&&e.selectRow(e.dragStartObject.rowIndex,r,!0),e.mousemove(t);-1!==["ns-resize","ew-resize"].indexOf(e.dragMode)&&(e.draggingItem=e.dragItem,e.draggingItem.rowOpen?e.resizingStartingHeight=e.sizes.trees[e.draggingItem.data[e.uniqueId]]:e.resizingStartingHeight=e.sizes.rows[e.draggingItem.data[e.uniqueId]]||e.style.cellHeight,e.resizingStartingWidth=e.sizes.columns["rowHeaderCell"===e.draggingItem.header.style?"cornerCell":e.draggingItem.header[e.uniqueId]]||e.draggingItem.header.width,document.body.addEventListener("mousemove",e.dragResizeColumn,!1),document.body.addEventListener("mouseup",e.stopDragResize,!1)),-1!==["row-reorder","column-reorder"].indexOf(e.dragMode)&&(e.draggingItem=e.dragItem,document.body.addEventListener("mousemove",e.dragReorder,!1),document.body.addEventListener("mouseup",e.stopDragReorder,!1))}}},e.mouseup=function(t){clearTimeout(e.scrollTimer),e.cellBoundaryCrossed=!0,e.dispatchEvent("mouseup",[t,e.currentCell],e.intf),e.hasFocus&&(e.currentCell&&void 0!==e.currentCell.grid||e.ontextMenu||e.input||(e.selecting=void 0,e.draggingItem=void 0,e.dragStart&&e.isInGrid(e.dragStart)&&e.controlInput.focus(),e.dragStartObject=void 0,t.preventDefault()))},e.keydown=function(t){var r,o=e.activeCell.columnIndex,l=e.activeCell.rowIndex,n=t.controlKey||t.metaKey,i=e.data.length-1,s=e.getVisibleSchema().length-1;if(!e.dispatchEvent("keydown",[t,e.currentCell],e.intf)&&e.hasFocus){if(e.page=e.visibleRows.length-3-e.attributes.pageUpDownOverlap,e.attributes.showNewRow&&(i+=1),"Tab"===t.keyCode&&t.preventDefault(),40===t.keyCode?l+=1:38===t.keyCode?l-=1:37===t.keyCode||t.shiftKey&&9===t.keyCode?o-=1:39===t.keyCode||!t.shiftKey&&9===t.keyCode?o+=1:33===t.keyCode?(l-=e.page,t.preventDefault()):34===t.keyCode?(l+=e.page,t.preventDefault()):36===t.keyCode||n&&38===t.keyCode?l=0:35===t.keyCode||n&&40===t.keyCode?l=e.data.length-1:n&&39===t.keyCode?o=s:n&&37===t.keyCode&&(o=0),13===t.keyCode)return e.beginEditAt(o,l);if(32===t.keyCode){if(e.selections=[],e.selections[Math.max(l,0)]=[],e.selections[Math.max(l,0)].push(o),e.selectionBounds=e.getSelectionBounds(),e.attributes.rowSelectionMode)for(r=e.selectionBounds.top;r<=e.selectionBounds.bottom;r+=1)e.selectRow(r,n,!0);else e.selectArea(void 0,n);return t.preventDefault(),void e.draw(!0)}o<0&&(o=0),l>i&&(l=i),l<0&&(l=0),o>s&&(o=s),t.shiftKey&&-1!==[37,38,39,40].indexOf(t.keyCode)&&(e.selections[Math.max(l,0)]=e.selections[Math.max(l,0)]||[],e.selections[Math.max(l,0)].push(o),e.selectionBounds=e.getSelectionBounds(),e.selectArea(void 0,n),e.draw(!0)),o===e.activeCell.columnIndex&&l===e.activeCell.rowIndex||(e.scrollIntoView(o!==e.activeCell.columnIndex?o:void 0,l!==e.activeCell.rowIndex?l:void 0),e.setActiveCell(o,l),!t.shiftKey&&e.attributes.selectionFollowsActiveCell&&(n||(e.selections=[]),e.selections[l]=e.selections[l]||[],e.selections[l].push(o),e.dispatchEvent("selectionchanged",[e.getSelectedData(),e.selections,e.selectionBounds],e.intf)),e.draw(!0))}},e.keyup=function(t){e.dispatchEvent("keyup",[t,e.currentCell],e.intf)||e.hasFocus&&(e.controlInput.value="")},e.keypress=function(t){e.hasFocus&&e.dispatchEvent("keypress",[t,e.currentCell],e.intf)},e.dblclick=function(t){e.dispatchEvent("dblclick",[t,e.currentCell],e.intf)||e.hasFocus&&("ew-resize"===e.currentCell.context&&"headerCell"===e.currentCell.style?e.fitColumnToValues(e.currentCell.header.name):"ew-resize"===e.currentCell.context&&"cornerCell"===e.currentCell.style?e.autosize():-1!==["cell","activeCell"].indexOf(e.currentCell.style)&&e.beginEditAt(e.currentCell.columnIndex,e.currentCell.rowIndex))},e.scrollWheel=function(t){if(!e.dispatchEvent("mousewheel",[t,e.ctx],e.intf)){var r=e.scrollBox.scrollLeft,o=e.scrollBox.scrollTop;e.hasFocus&&(e.scrollBox.scrollTop-=t.wheelDeltaY,e.scrollBox.scrollLeft-=t.wheelDeltaX),o===e.scrollBox.scrollTop&&r===e.scrollBox.scrollLeft||t.preventDefault()}},e.copy=function(t){var r=[];e.getSelectedData().forEach(function(e){if(e){var t=[];Object.keys(e).forEach(function(r){t.push(e[r])}),t.join(","),r.push(t)}}),t.clipboardData.setData("text/plain",r.join("\n")),t.preventDefault()}}}.apply(t,o))&&(e.exports=l)},function(e,t,r){var o,l;o=[],void 0!==(l=function(){"use strict";return function(e){e.intf.blur=function(){e.hasFocus=!1},e.intf.focus=function(){e.hasFocus=!0,e.controlInput.focus()},Object.defineProperty(e.intf,"height",{get:function(){return e.parentNode.height},set:function(t){e.parentNode.height=t,e.resize(!0)}}),Object.defineProperty(e.intf,"width",{get:function(){return e.parentNode.width},set:function(t){e.parentNode.width=t,e.resize(!0)}}),Object.defineProperty(e.intf,"openChildren",{get:function(){return e.openChildren}}),Object.defineProperty(e.intf,"childGrids",{get:function(){return e.childGrids}}),Object.defineProperty(e.intf,"isChildGrid",{get:function(){return e.isChildGrid}}),Object.defineProperty(e.intf,"parentNode",{get:function(){return e.parentNode},set:function(t){e.parentNode=t}}),Object.defineProperty(e.intf,"offsetParent",{get:function(){return e.parentNode},set:function(t){e.parentNode=t}}),Object.defineProperty(e.intf,"offsetLeft",{get:function(){return e.parentNode.offsetLeft}}),Object.defineProperty(e.intf,"offsetTop",{get:function(){return e.parentNode.offsetTop}}),Object.defineProperty(e.intf,"scrollHeight",{get:function(){return e.scrollBox.scrollHeight}}),Object.defineProperty(e.intf,"scrollWidth",{get:function(){return e.scrollBox.scrollWidth}}),Object.defineProperty(e.intf,"scrollTop",{get:function(){return e.scrollBox.scrollTop},set:function(t){e.scrollBox.scrollTop=t}}),Object.defineProperty(e.intf,"scrollLeft",{get:function(){return e.scrollBox.scrollLeft},set:function(t){e.scrollBox.scrollLeft=t}}),Object.defineProperty(e.intf,"sizes",{get:function(){return e.sizes}}),Object.defineProperty(e.intf,"input",{get:function(){return e.input}}),Object.defineProperty(e.intf,"controlInput",{get:function(){return e.controlInput}}),Object.defineProperty(e.intf,"currentCell",{get:function(){return e.currentCell}}),Object.defineProperty(e.intf,"visibleCells",{get:function(){return e.visibleCells}}),Object.defineProperty(e.intf,"visibleRows",{get:function(){return e.visibleRows}}),Object.defineProperty(e.intf,"selections",{get:function(){return e.selections}}),Object.defineProperty(e.intf,"dragMode",{get:function(){return e.dragMode}}),Object.defineProperty(e.intf,"changes",{get:function(){return e.changes}}),e.intf.attributes={},e.intf.style={},e.intf.formatters=e.formatters,Object.defineProperty(e.intf,"selectionBounds",{get:function(){return e.getSelectionBounds()}}),Object.defineProperty(e.intf,"selectedRows",{get:function(){return e.getSelectedData(!0)}}),Object.defineProperty(e.intf,"selectedCells",{get:function(){return e.getSelectedData()}}),Object.defineProperty(e.intf,"visibleSchema",{get:function(){return e.getVisibleSchema().map(function(e){return e})}}),Object.defineProperty(e.intf,"schema",{get:function(){return e.getSchema()},set:function(t){if(!Array.isArray(t)||"object"!=typeof t[0])throw new Error("Schema must be an array of objects.");if(void 0===t[0].name)throw new Error("Expected schema to contain an object with at least a name property.");e.schema=t.map(function(t,r){return t.width=t.width||e.style.columnWidth,t[e.uniqueId]=e.getSchemaNameHash(t.name),t.filter=t.filter||e.filter(t.type),t.type=t.type||"string",t.index=r,t.columnIndex=r,t.rowIndex=-1,t}),e.tempSchema=void 0,e.createNewRowData(),e.createColumnOrders(),e.tryLoadStoredOrders(),e.resize(!0),e.dispatchEvent("schemachanged",[e.schema],e.intf)}}),Object.defineProperty(e.intf,"data",{get:function(){return e.data},set:function(t){if(!Array.isArray(t)||t.length>0&&"object"!=typeof t[0])throw new Error("Data must be an array of objects.");e.originalData=t.map(function(t){return t[e.uniqueId]=e.uId,e.uId+=1,t}),e.changes=[],e.data=e.originalData,!e.schema&&e.data.length>0&&(e.tempSchema=e.getSchemaFromData()),e.schema||0!==e.data.length||(e.tempSchema=[{name:""}],e.tempSchema[0][e.uniqueId]=e.getSchemaNameHash("")),e.tempSchema&&!e.schema&&(e.createColumnOrders(),e.tryLoadStoredOrders(),e.dispatchEvent("schemachanged",[e.tempSchema],e.intf)),e.createNewRowData(),e.attributes.autoResizeColumns&&e.data.length>0&&void 0===e.storedSettings&&e.autosize(),requestAnimationFrame(function(){e.fitColumnToValues("cornerCell")}),e.resize()||e.draw(!0),e.createRowOrders(),e.tryLoadStoredOrders(),e.dispatchEvent("datachanged",[e.data],e.intf)}})}}.apply(t,o))&&(e.exports=l)},function(e,t,r){var o,l;o=[],void 0!==(l=function(){"use strict";return function(e){e.contextmenu=function(t){if(e.hasFocus){if(e.contextMenu)return t.preventDefault(),e.disposeContextMenu();var r,o,l,n,i,s,a,d=t.preventDefault,c={};if(r=e.getLayerPos(t),o=e.getCellAt(r.x,r.y),void 0===o.grid){if(!o.header)return void t.preventDefault();s=e.columnFilters[o.header.name]||"",l=document.createElement("div"),n=document.createElement("div"),n.className="canvas-datagrid-context-menu-label",i=document.createElement("input"),n.innerHTML=e.attributes.filterOptionText+" "+o.header.name,l.appendChild(n),l.appendChild(i),e.contextMenu=document.createElement("div"),e.contextMenu.className="canvas-datagrid-context-menu",e.contextMenu.style.cursor="pointer",e.contextMenu.style.position="absolute",e.contextMenu.style.zIndex="3",i.value=s,a=[],e.attributes.showFilter&&(a.push({title:l}),Object.keys(e.columnFilters).length&&Object.keys(e.columnFilters).forEach(function(r){a.push({title:e.attributes.removeFilterOptionText.replace(/%s/g,r),click:function(){t.preventDefault(),e.setFilter(r,""),e.disposeContextMenu(),e.controlInput.focus()}})})),e.attributes.saveAppearance&&e.attributes.showClearSettingsOption&&(Object.keys(e.sizes.rows).length>0||Object.keys(e.sizes.columns).length>0)&&a.push({title:e.attributes.clearSettingsOptionText,click:function(t){t.preventDefault(),e.sizes.rows={},e.sizes.columns={},e.createRowOrders(),e.createColumnOrders(),e.storedSettings=void 0,e.dispatchEvent("resizecolumn",[e.style.columnWidth],e.intf),e.dispatchEvent("resizerow",[e.style.cellHeight],e.intf),e.setStorageData(),e.resize(!0),e.disposeContextMenu(),e.controlInput.focus()}}),e.attributes.allowSorting&&e.attributes.showOrderByOption&&(a.push({title:e.attributes.showOrderByOptionTextAsc.replace("%s",o.header.name),click:function(t){t.preventDefault(),e.order(o.header.name,"asc"),e.disposeContextMenu(),e.controlInput.focus()}}),a.push({title:e.attributes.showOrderByOptionTextDesc.replace("%s",o.header.name),click:function(t){t.preventDefault(),e.order(o.header.name,"desc"),e.disposeContextMenu(),e.controlInput.focus()}})),e.dispatchEvent("contextmenu",[t,o,a,e.contextMenu],e.intf)||a.length&&(a.forEach(function(t){var r=document.createElement("div");e.contextMenu.appendChild(r),"string"==typeof t.title?(r.className="canvas-datagrid-context-menu-item",r.innerHTML=t.title):r.appendChild(t.title),t.click&&r.addEventListener("click",function(r){t.click.apply(this,[r,o,e.disposeContextMenu]),r.preventDefault(),r.stopPropagation(),e.controlInput.focus()})}),i.addEventListener("dblclick",e.stopPropagation),i.addEventListener("click",e.stopPropagation),i.addEventListener("mousedown",e.stopPropagation),i.addEventListener("keyup",function(){e.setFilter(o.header.name,i.value),requestAnimationFrame(function(){i.classList.remove(e.invalidSearchExpClass),e.invalidFilterRegEx&&i.classList.add(e.invalidSearchExpClass)})}),document.body.addEventListener("click",e.disposeContextMenu),document.body.appendChild(e.contextMenu),c.x=t.clientX-e.style.contextMenuMarginLeft,c.y=t.clientY-e.style.contextMenuMarginTop,c.x+e.contextMenu.offsetWidth>document.documentElement.clientWidth&&(c.x=document.documentElement.clientWidth-e.contextMenu.offsetWidth),c.y+e.contextMenu.offsetHeight>document.documentElement.clientHeight&&(c.y=document.documentElement.clientHeight-e.contextMenu.offsetHeight),e.contextMenu.style.left=c.x+"px",e.contextMenu.style.top=c.y+"px",d.apply(t))}}},e.disposeContextMenu=function(t){function r(){e.contextMenu=void 0,e.canvas.cursor="pointer",document.body.removeEventListener("click",e.disposeContextMenu),document.body.removeEventListener("mouseup",r),document.body.removeEventListener("mousedown",r)}(!t||e.contextMenu&&e.contextMenu.parentNode&&!e.contextMenu.contains(t.target))&&(e.contextMenu.parentNode.removeChild(e.contextMenu),document.body.addEventListener("mouseup",r),document.body.addEventListener("mousedown",r))}}}.apply(t,o))&&(e.exports=l)},function(e,t,r){var o,l;o=[],void 0!==(l=function(){"use strict";return function(e){e.defaults={attributes:[["name",""],["tree",!1],["showNewRow",!1],["treeHorizontalScroll",!1],["saveAppearance",!0],["selectionFollowsActiveCell",!1],["multiLine",!1],["editable",!0],["allowColumnReordering",!0],["allowRowReordering",!1],["allowSorting",!0],["showFilter",!0],["globalRowResize",!1],["pageUpDownOverlap",1],["persistantSelectionMode",!1],["rowSelectionMode",!1],["autoResizeColumns",!1],["allowRowHeaderResize",!0],["allowColumnResize",!0],["allowRowResize",!0],["allowRowResizeFromCell",!1],["allowColumnResizeFromCell",!1],["showPerformance",!1],["debug",!1],["borderResizeZone",10],["showHeaders",!0],["showRowNumbers",!0],["showRowHeaders",!0],["scrollRepeatRate",75],["selectionScrollZone",20],["resizeScrollZone",20],["selectionScrollIncrement",20],["reorderDeadZone",3],["showClearSettingsOption",!0],["showOrderByOption",!0],["clearSettingsOptionText","Clear saved settings"],["showOrderByOptionTextAsc","Order by %s ascending"],["showOrderByOptionTextDesc","Order by %s descending"],["removeFilterOptionText","Remove filter on %s"],["filterOptionText","Filter"]],styles:[["scrollBarBackgroundColor","rgba(240, 240, 240, 1)"],["scrollBarBoxColor","rgba(192, 192, 192, 1)"],["scrollBarActiveColor","rgba(125, 125, 125, 1)"],["scrollBarBoxWidth",8],["scrollBarBoxMargin",2],["scrollBarBoxBorderRadius",3],["scrollBarBorderColor","rgba(202, 202, 202, 1)"],["scrollBarBorderWidth",.5],["scrollBarWidth",11],["scrollBarBoxMinSize",15],["scrollBarCornerBorderColor","rgba(202, 202, 202, 1)"],["scrollBarCornerBackground","rgba(240, 240, 240, 1)"],["treeArrowClickRadius",5],["treeGridHeight",250],["treeArrowHeight",8],["treeArrowWidth",13],["treeArrowColor","rgba(155, 155, 155, 1)"],["treeArrowBorderColor","rgba(195, 199, 202, 1)"],["treeArrowBorderWidth",1],["treeArrowMarginRight",5],["treeArrowMarginLeft",0],["treeArrowMarginTop",6],["filterTextPrefix","(filtered) "],["editCellFontSize","16px"],["editCellFontFamily","sans-serif"],["editCellPaddingLeft",4],["editCellBoxShadow","0 2px 5px rgba(0,0,0,0.4)"],["editCellBorder","solid 1px rgba(110, 168, 255, 1)"],["styleSheet",""],["contextMenuItemMargin","2px"],["contextMenuItemBorderRadius","3px"],["contextMenuLabelMargin","0 3px 0 0"],["contextMenuLabelDisplay","inline-block"],["contextMenuLabelMinWidth","75px"],["contextMenuLabelMaxWidth","700px"],["contextMenuHoverBackground","rgba(182, 205, 250, 1)"],["contextMenuColor","rgba(43, 48, 43, 1)"],["contextMenuHoverColor","rgba(43, 48, 153, 1)"],["contextMenuFontSize","16px"],["contextMenuFontFamily","sans-serif"],["contextMenuBackground","rgba(240, 240, 240, 1)"],["contextMenuBorder","solid 1px rgba(158, 163, 169, 1)"],["contextMenuPadding","2px"],["contextMenuBorderRadius","3px"],["contextMenuOpacity","0.98"],["contextMenuFilterInvalidExpresion","rgba(237, 155, 156, 1)"],["contextMenuMarginTop",0],["contextMenuMarginLeft",5],["autosizePadding",5],["autosizeHeaderCellPadding",8],["minHeight",24],["minRowHeight",24],["minColumnWidth",45],["columnWidth",250],["backgroundColor","rgba(240, 240, 240, 1)"],["headerOrderByArrowHeight",8],["headerOrderByArrowWidth",13],["headerOrderByArrowColor","rgba(155, 155, 155, 1)"],["headerOrderByArrowBorderColor","rgba(195, 199, 202, 1)"],["headerOrderByArrowBorderWidth",1],["headerOrderByArrowMarginRight",5],["headerOrderByArrowMarginLeft",0],["headerOrderByArrowMarginTop",6],["cellHeightWithChildGrid",150],["cellWidthWithChildGrid",250],["cellHeight",24],["cellFont","16px sans-serif"],["cellPaddingTop",5],["cellAutoResizePadding",13],["cellPaddingLeft",5],["cellPaddingRight",7],["cellAlignment","left"],["cellColor","rgba(0, 0, 0, 1)"],["cellBackgroundColor","rgba(255, 255, 255, 1)"],["cellHoverColor","rgba(0, 0, 0, 1)"],["cellHoverBackgroundColor","rgba(255, 255, 255, 1)"],["cellSelectedColor","rgba(0, 0, 0, 1)"],["cellSelectedBackgroundColor","rgba(236, 243, 255, 1)"],["cellBorderWidth",.25],["cellBorderColor","rgba(195, 199, 202, 1)"],["activeCellFont","16px sans-serif"],["activeCellPaddingTop",5],["activeCellPaddingLeft",5],["activeCellPaddingRight",7],["activeCellAlignment","left"],["activeCellColor","rgba(0, 0, 0, 1)"],["activeCellBackgroundColor","rgba(255, 255, 255, 1)"],["activeCellHoverColor","rgba(0, 0, 0, 1)"],["activeCellHoverBackgroundColor","rgba(255, 255, 255, 1)"],["activeCellSelectedColor","rgba(0, 0, 0, 1)"],["activeCellSelectedBackgroundColor","rgba(236, 243, 255, 1)"],["activeCellBorderWidth",.25],["activeCellBorderColor","rgba(110, 168, 255, 1)"],["headerCellPaddingTop",5],["headerCellPaddingLeft",5],["headerCellPaddingRight",7],["headerCellHeight",25],["headerCellBorderWidth",.25],["headerCellBorderColor","rgba(152, 152, 152, 1)"],["headerCellFont","16px sans-serif"],["headerCellColor","rgba(50, 50, 50, 1)"],["headerCellBackgroundColor","rgba(240, 240, 240, 1)"],["headerCellHoverColor","rgba(0, 0, 0, 1)"],["headerCellHoverBackgroundColor","rgba(235, 235, 235, 1)"],["headerCellActiveColor","rgba(0, 0, 0, 1)"],["headerCellActiveBackgroundColor","rgba(225, 225, 225, 1)"],["headerRowWidth",57],["rowHeaderCellPaddingTop",5],["rowHeaderCellPaddingLeft",5],["rowHeaderCellPaddingRight",5],["rowHeaderCellHeight",25],["rowHeaderCellBorderWidth",.25],["rowHeaderCellBorderColor","rgba(152, 152, 152, 1)"],["rowHeaderCellFont","16px sans-serif"],["rowHeaderCellColor","rgba(50, 50, 50, 1)"],["rowHeaderCellBackgroundColor","rgba(240, 240, 240, 1)"],["rowHeaderCellHoverColor","rgba(0, 0, 0, 1)"],["rowHeaderCellHoverBackgroundColor","rgba(235, 235, 235, 1)"],["rowHeaderCellSelectedColor","rgba(50, 50, 50, 1)"],["rowHeaderCellSelectedBackgroundColor","rgba(217, 217, 217, 1)"],["rowHeaderCellActiveColor","rgba(0, 0, 0, 1)"],["rowHeaderCellActiveBackgroundColor","rgba(225, 225, 225, 1)"],["activeCellOverlayBorderColor","rgba(66, 133, 244, 1)"],["activeCellOverlayBorderWidth",2],["selectionOverlayBorderColor","rgba(66, 133, 244, 1)"],["selectionOverlayBorderWidth",1.25],["reorderMarkerIndexBorderColor","rgba(66, 133, 244, 1)"],["reorderMarkerIndexBorderWidth",2.75],["reorderMarkerBackgroundColor","rgba(0, 0, 0, 0.1)"],["reorderMarkerBorderColor","rgba(0, 0, 0, 0.2)"],["reorderMarkerBorderWidth",1.25],["gridBorderColor","rgba(202, 202, 202, 1)"],["gridBorderWidth",1]]}}}.apply(t,o))&&(e.exports=l)},function(e,t,r){var o,l;o=[],void 0!==(l=function(){"use strict";return function(e){e.attachCss=function(){var t,r=[],o={"canvas-datagrid-canvas":{position:"absolute!important","z-index":"-1"},"canvas-datagrid-scrollBox":{position:"absolute!important",overflow:"auto!important","z-index":"1!important"},"canvas-datagrid":{position:"absolute!important",background:e.style.backgroundColor,"z-index":"1","box-sizing":"content-box!important",padding:"0!important"},"canvas-datagrid-control-input":{position:"fixed!important",top:"-5px",left:"-5px",border:"none!important",opacity:"0!important",cursor:"pointer!important",width:"1px",height:"1px"},"canvas-datagrid-edit-input":{"box-sizing":"content-box!important",outline:"none!important",margin:"0!important",padding:"0 0 0 "+e.style.editCellPaddingLeft+"px!important","font-size":e.style.editCellFontSize+"!important","font-family":e.style.editCellFontFamily+"!important","box-shadow":e.style.editCellBoxShadow,border:e.style.editCellBorder},"canvas-datagrid-context-menu-item":{margin:e.style.contextMenuItemMargin,"border-radius":e.style.contextMenuItemBorderRadius},"canvas-datagrid-context-menu-item:hover":{background:e.style.contextMenuHoverBackground,color:e.style.contextMenuHoverColor,margin:e.style.contextMenuItemMargin},"canvas-datagrid-context-menu-label":{margin:e.style.contextMenuLabelMargin,display:e.style.contextMenuLabelDisplay,"min-width":e.style.contextMenuLabelMinWidth,"max-width":e.style.contextMenuLabelMaxWidth},"canvas-datagrid-context-menu":{"font-family":e.style.contextMenuFontFamily,"font-size":e.style.contextMenuFontSize,background:e.style.contextMenuBackground,color:e.style.contextMenuColor,border:e.style.contextMenuBorder,padding:e.style.contextMenuPadding,"border-radius":e.style.contextMenuBorderRadius,opacity:e.style.contextMenuOpacity},"canvas-datagrid-invalid-search-regExp":{background:e.style.contextMenuFilterInvalidExpresion}};Object.keys(o).forEach(function(e){r.push("."+e+"{"),Object.keys(o[e]).forEach(function(t){r.push(t+":"+o[e][t]+";")}),r.push("}")}),document.getElementById(e.uniqueId)||(t=document.createElement("link"),t.id=e.uniqueId,t.rel="stylesheet",document.head.firstChild?document.head.insertBefore(t,document.head.firstChild):document.head.appendChild(t),t.href="data:text/css;base64,"+btoa(e.style.styleSheet||r.join("")))},e.appendTo=function(t){e.parentNode=t,e.height=e.parentNode.offsetHeight,e.width=e.parentNode.offsetWidth,e.parentNode&&/canvas-datagrid-(cell|tree)/.test(e.parentNode.nodeType)?(e.isChildGrid=!0,e.parentGrid=e.parentNode.parentGrid,e.ctx=e.parentGrid.context,e.canvas=e.parentGrid.canvas,e.controlInput=e.parentGrid.controlInput,e.eventParent=e.canvas,e.intf.offsetParent=e.parentNode):(e.controlInput=document.createElement("input"),e.controlInput.className="canvas-datagrid-control-input",e.isChildGrid=!1,e.parentDOMNode=e.parentNode,e.parentNode=e.parentDOMNode,e.canvas=document.createElement("canvas"),e.ctx=e.canvas.getContext("2d"),e.ctx.textBaseline="alphabetic",e.parentDOMNode.appendChild(e.canvas),e.parentDOMNode.appendChild(e.controlInput),e.eventParent=e.canvas),window.addEventListener("resize",e.resize),MutationObserver&&(e.observer=new MutationObserver(function(t){t.forEach(function(t){e.resize(!0)})}),[e.canvas.parentNode].forEach(function(t){e.observer.observe(t,{attributes:!0})})),e.eventParent.addEventListener("mouseup",e.mouseup,!1),e.eventParent.addEventListener("mousedown",e.mousedown,!1),e.eventParent.addEventListener("dblclick",e.dblclick,!1),e.eventParent.addEventListener("click",e.click,!1),e.eventParent.addEventListener("mousemove",e.mousemove),e.eventParent.addEventListener("mousewheel",e.scrollWheel,!1),e.canvas.addEventListener("contextmenu",e.contextmenu,!1),e.canvas.addEventListener("copy",e.copy),e.controlInput.addEventListener("keypress",e.keypress,!1),e.controlInput.addEventListener("keyup",e.keyup,!1),e.controlInput.addEventListener("keydown",e.keydown,!1)},e.setDom=function(){e.appendTo(e.args.parentNode),e.attachCss()},e.initScrollBox=function(){var t=0,r=0,o=0,l=0,n=0,i=0,s=20,a=20;Object.defineProperty(e.scrollBox,"scrollBoxHeight",{get:function(){return s},set:function(e){s=e}}),Object.defineProperty(e.scrollBox,"scrollBoxWidth",{get:function(){return a},set:function(e){a=e}}),Object.defineProperty(e.scrollBox,"height",{get:function(){return t},set:function(e){n<e&&(o=0),t=e}}),Object.defineProperty(e.scrollBox,"width",{get:function(){return r},set:function(e){r=e}}),Object.defineProperty(e.scrollBox,"scrollTop",{get:function(){return o},set:function(t){t<0&&(t=0),t>n&&(t=n),n<0&&(t=0),o=t,e.scroll()}}),Object.defineProperty(e.scrollBox,"scrollLeft",{get:function(){return l},set:function(t){t<0&&(t=0),t>i&&(t=i),i<0&&(t=0),l=t,e.scroll()}}),Object.defineProperty(e.scrollBox,"scrollHeight",{get:function(){return n},set:function(e){o>e&&(o=Math.max(e,0)),n<t&&(o=0),n=e}}),Object.defineProperty(e.scrollBox,"scrollWidth",{get:function(){return i},set:function(e){l>e&&(l=Math.max(e,0)),i=e}})}}}.apply(t,o))&&(e.exports=l)},function(e,t,r){var o,l;o=[],void 0!==(l=function(){"use strict";return function(e){e.insertColumn=function(t,r){var o=e.getSchema();if(o.length<r)throw new Error("Index is beyond the length of the schema.");e.validateColumn(t,o),e.intf.schema=o.splice(r,0,t)},e.deleteColumn=function(t){var r=e.getSchema();e.intf.schema=r.splice(t,1)},e.addColumn=function(t){var r=e.getSchema();e.validateColumn(t,r),r.push(t),e.intf.schema=r},e.deleteRow=function(t){e.originalData.splice(t,1),e.setFilter(),e.resize(!0)},e.insertRow=function(t,r){if(e.originalData.length<r)throw new Error("Index is beyond the length of the dataset.");e.originalData.splice(r,0,t),e.setFilter(),e.resize(!0)},e.addRow=function(t){e.originalData.push(t),e.setFilter(),e.resize(!0)},e.setRowHeight=function(t,r){e.sizes.rows[e.data[t][e.uniqueId]]=r,e.draw(!0)},e.setColumnWidth=function(t,r){var o=e.getSchema();e.sizes.columns[o[t][e.uniqueId]]=r,e.draw(!0)},e.resetColumnWidths=function(){e.sizes.columns={},e.draw(!0)},e.resetRowHeights=function(){e.sizes.rows={},e.draw(!0)},e.setFilter=function(t,r){function o(){e.refreshFromOrigialData(),Object.keys(e.columnFilters).forEach(function(r){var o=e.getHeaderByName(t);o&&(e.currentFilter=o.filter,e.data=e.data.filter(function(t){return e.currentFilter(t[r],e.columnFilters[r])}))}),e.resize(),e.draw(!0)}if(void 0===e.coulumn&&void 0===r)return o();!t||""!==r&&void 0!==r?e.columnFilters[t]=r:delete e.columnFilters[t],o()},e.findRowScrollTop=function(t){var r=0,o=0,l=e.data.length,n=2*e.style.cellBorderWidth;if(e.attributes.showNewRow||(l-=1),t>l)throw new Error("Impossible row index");for(;o<t;)r+=(e.sizes.rows[e.data[o][e.uniqueId]]||e.style.cellHeight)+n,o+=1;return r-(e.sizes.rows[e.data[t][e.uniqueId]]||e.style.cellHeight)},e.findColumnScrollLeft=function(t){var r=0,o=0,l=e.getSchema();if(t>l.length-1)throw new Error("Impossible column index");for(;o<t;)r+=e.sizes.columns[l[o][e.uniqueId]]||l[o].width,o+=1;return r},e.gotoCell=function(t,r){void 0!==t&&(e.scrollBox.scrollLeft=e.findColumnScrollLeft(t)),void 0!==r&&(e.scrollBox.scrollTop=e.findRowScrollTop(r))},e.gotoRow=function(t){e.gotoCell(0,t)},e.scrollIntoView=function(t,r){0===e.visibleCells.filter(function(o){return(o.rowIndex===r||void 0===r)&&(o.columnIndex===t||void 0===t)&&o.x>0&&o.y>0&&o.x+o.width<e.width&&o.y+o.height<e.height}).length&&e.gotoCell(t,r)},e.setActiveCell=function(t,r){e.activeCell={rowIndex:r,columnIndex:t}},e.selectRow=function(t,r,o){var l=e.getSchema();if(!1===e.dragAddToSelection&&e.selections[t]&&e.selections[t].length-1===l.length&&r)return void(e.selections[t]=[]);!0===e.dragAddToSelection&&(e.selections[t]=[],e.selections[t].push(-1),l.forEach(function(r){e.selections[t].push(r.index)})),o||e.dispatchEvent("selectionchanged",[e.getSelectedData(),e.selections,e.selectionBounds],e.intf)},e.collapseTree=function(t){var r=e.data[t][e.uniqueId];e.dispatchEvent("collapsetree",[e.childGrids[r],e.data[t],t],e.intf),e.openChildren[r].blur(),e.openChildren[r].dispose(),delete e.openChildren[r],delete e.sizes.trees[r],delete e.childGrids[r],e.dispatchEvent("resizerow",[e.style.cellHeight],e.intf),e.resize(!0),e.draw(!0)},e.expandTree=function(t){var r,o=e.getHeaderCellHeight(),l=e.sizes.columns.cornerCell||e.style.headerRowWidth,n=e.data[t][e.uniqueId],i=e.sizes.trees[n]||e.style.treeGridHeight;e.childGrids[n]||(r=grid({debug:e.attributes.debug,showPerformance:e.attributes.showPerformance,name:e.attributes.saveAppearance?e.attributes.name+"tree"+n:void 0,parentNode:{parentGrid:e.intf,nodeType:"canvas-datagrid-tree",offsetHeight:i,offsetWidth:e.width-l,header:{width:e.width-l},offsetLeft:l,offsetTop:o,offsetParent:e.intf.parentNode,parentNode:e.intf.parentNode,style:"tree",data:e.data[t]}}),e.childGrids[n]=r),r=e.childGrids[n],r.visible=!0,e.dispatchEvent("expandtree",[r,e.data[t],t],e.intf),e.openChildren[e.data[t][e.uniqueId]]=r,e.sizes.trees[e.data[t][e.uniqueId]]=i,e.dispatchEvent("resizerow",[e.style.cellHeight],e.intf),e.resize(!0),e.draw()},e.toggleTree=function(t){if(e.openChildren[e.data[t][e.uniqueId]])return e.collapseTree(t);e.expandTree(t)},e.getHeaderByName=function(t){var r,o=e.getSchema();for(r=0;r<o.length;r+=1)if(o[r].name===t)return o[r]},e.fitColumnToValues=function(t){e.sizes.columns["cornerCell"===t?t:e.getHeaderByName(t)[e.uniqueId]]=e.findColumnMaxTextLength(t),e.resize(),e.draw(!0)},e.isCellVisible=function(t){var r,o=e.visibleCells.length;for(r=0;r<o;r+=1)if(t.x===e.visibleCells[r].x&&t.y===e.visibleCells[r].y)return!0;return!1},e.order=function(t,r,o){var l,n=e.getSchema().filter(function(e){return e.name===t});if(e.orderBy=t,0===n.length)throw new Error("Cannot sort.  No such column name");l=e.sorters[n[0].type],l||void 0===n[0].type||console.warn('Cannot sort type "%s" falling back to string sort.',n[0].type),e.data=e.data.sort("function"==typeof l?l(t,r):e.sorters.string),e.dispatchEvent("ordercolumn",[t,r],e.intf),e.draw(!0),o||e.setStorageData()},e.isInGrid=function(t){return!(t.x<0||t.x>e.width||t.y<0||t.y>e.height)},e.getCellAt=function(t,r){var o,l,n=e.visibleCells.length;if(e.visibleCells&&e.visibleCells.length){if(e.hasFocus=!0,!(r<e.height&&r>0&&t<e.width&&t>0))return e.hasFocus=!1,{dragContext:"inherit",context:"inherit"};for(o=0;o<n;o+=1)if(l=e.visibleCells[o],l.x-e.style.cellBorderWidth<t&&l.x+l.width+e.style.cellBorderWidth>t&&l.y-e.style.cellBorderWidth<r&&l.y+l.height+e.style.cellBorderWidth>r)return/vertical-scroll-(bar|box)/.test(l.style)?(l.dragContext="vertical-scroll-box",l.context="vertical-scroll-box",r>e.scrollBox.box.v.y+e.scrollBox.scrollBoxHeight?(l.dragContext="vertical-scroll-bottom",l.context="vertical-scroll-bottom"):r<e.scrollBox.box.v.y&&(l.dragContext="vertical-scroll-top",l.context="vertical-scroll-top"),e.canvas.style.cursor="default",l):/horizontal-scroll-(bar|box)/.test(l.style)?(l.dragContext="horizontal-scroll-box",l.context="horizontal-scroll-box",t>e.scrollBox.box.h.x+e.scrollBox.scrollBoxWidth?(l.dragContext="horizontal-scroll-right",l.context="horizontal-scroll-right"):t<e.scrollBox.box.h.x&&(l.dragContext="horizontal-scroll-left",l.context="horizontal-scroll-left"),e.canvas.style.cursor="default",l):l.x+l.width-.4*e.attributes.borderResizeZone<t&&l.x+l.width+.6*e.attributes.borderResizeZone>t&&e.attributes.allowColumnResize&&(e.attributes.allowColumnResizeFromCell&&"cell"===l.style||"cell"!==l.style)&&(e.attributes.allowRowHeaderResize&&-1!==["rowHeaderCell","cornerCell"].indexOf(l.style)||-1===["rowHeaderCell","cornerCell"].indexOf(l.style))?(l.context="ew-resize",l.dragContext="ew-resize",l):l.y+l.height-.4*e.attributes.borderResizeZone<r&&l.y+l.height+.6*e.attributes.borderResizeZone>r&&e.attributes.allowRowResize&&(e.attributes.allowRowResizeFromCell&&"cell"===l.style||"cell"!==l.style)&&"headerCell"!==l.style?(l.context="ns-resize",l.dragContext="ns-resize",l):"headerCell"===l.style?(l.context="cell",l.dragContext="column-reorder",l):"rowHeaderCell"===l.style?(l.context="cell",l.dragContext="row-reorder",l):l.isGrid?(e.hasFocus=!1,l.dragContext="cell-grid",l.context="cell-grid",l):"tree-grid"===l.style?(e.hasFocus=!1,l.dragContext="tree",l.context="tree",l):(l.dragContext="cell",l.context="cell",l);return e.hasFocus=!1,{context:"inherit"}}},e.getSelectionBounds=function(){var t={x:1/0,y:1/0},r={x:-1/0,y:-1/0};return e.data.forEach(function(o,l){var n,i;e.selections[l]&&e.selections[l].length&&(t.y=l<t.y?l:t.y,r.y=l>r.y?l:r.y,n=Math.max.apply(null,e.selections[l]),i=Math.min.apply(null,e.selections[l]),t.x=i<t.x?i:t.x,r.x=n>r.x?n:r.x)}),{top:t.y,left:t.x,bottom:r.y,right:r.x}},e.getSchemaFromData=function(){return Object.keys(e.data[0]||{" ":""}).map(function(t,r){var o=e.getBestGuessDataType(t),l={name:t,title:t,width:e.style.columnWidth,index:r,type:o,filter:e.filter(o)};return t===e.uniqueId&&(l.hidden=!0),l[e.uniqueId]=e.getSchemaNameHash(t),l})},e.clearChangeLog=function(){e.changes=[]},e.selectArea=function(t,r){e.selectionBounds=t||e.selectionBounds;var o,l,n=e.getSchema();if(r||(e.selections=[]),e.selectionBounds.top<-1||e.selectionBounds.bottom>e.data.length||e.selectionBounds.left<-1||e.selectionBounds.right>n.length)throw new Error("Impossible selection area");for(o=e.selectionBounds.top;o<=e.selectionBounds.bottom;o+=1)for(e.selections[o]=[],l=e.selectionBounds.left;l<=e.selectionBounds.right;l+=1)-1===e.selections[o].indexOf(l)&&e.selections[o].push(l);e.dispatchEvent("selectionchanged",[e.getSelectedData(),e.selections,e.selectionBounds],e.intf)},e.findColumnMaxTextLength=function(t){var r=-1/0;return"cornerCell"===t?(e.ctx.font=e.style.rowHeaderCellFont,e.ctx.measureText((e.data.length+(e.attributes.showNewRow?1:0)).toString()).width+e.style.autosizePadding+e.style.autosizeHeaderCellPadding+e.style.rowHeaderCellPaddingRight+e.style.rowHeaderCellPaddingLeft+(e.attributes.tree?e.style.treeArrowWidth+e.style.treeArrowMarginLeft+e.style.treeArrowMarginRight:0)):(e.getSchema().forEach(function(o){if(o.name===t){e.ctx.font=e.style.headerCellFont;var l=e.ctx.measureText(o.title||o.name).width+e.style.headerCellPaddingRight+e.style.headerCellPaddingLeft;r=l>r?l:r}}),e.data.forEach(function(o){e.ctx.font=e.style.cellFont;var l=e.ctx.measureText(o[t]).width+e.style.cellPaddingRight+e.style.cellPaddingLeft+e.style.cellAutoResizePadding;r=l>r?l:r}),r)},e.getHeaderWidth=function(){return e.getVisibleSchema().reduce(function(e,t){return e+t.width},0)},e.formatters.string=function(e,t){return void 0!==t.value?t.value:""},e.formatters.rowHeaderCell=e.formatters.string,e.formatters.headerCell=e.formatters.string,e.formatters.number=e.formatters.string,e.formatters.int=e.formatters.string,e.sorters.string=function(e,t){var r="asc"===t;return function(t,o){return void 0===t[e]||null===t[e]?1:void 0===o[e]||null===o[e]?0:r?t[e].localeCompare?t[e].localeCompare(o[e]):1:o[e].localeCompare?o[e].localeCompare(t[e]):1}},e.sorters.number=function(e,t){var r="asc"===t;return function(t,o){return r?t[e]-o[e]:o[e]-t[e]}},e.sorters.date=function(e,t){var r="asc"===t;return function(t,o){return r?new Date(t[e]).getTime()-new Date(o[e]).getTime():new Date(o[e]).getTime()-new Date(t[e]).getTime()}}}}.apply(t,o))&&(e.exports=l)}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/*!*********************!*\
+  !*** ./lib/main.js ***!
+  \*********************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true*/
+/*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [
+    __webpack_require__(/*! ./draw */ 1),
+    __webpack_require__(/*! ./events */ 2),
+    __webpack_require__(/*! ./intf */ 3),
+    __webpack_require__(/*! ./contextMenu */ 4),
+    __webpack_require__(/*! ./defaults */ 5),
+    __webpack_require__(/*! ./dom */ 6),
+    __webpack_require__(/*! ./publicMethods */ 7)
+], __WEBPACK_AMD_DEFINE_RESULT__ = function context() {
+    'use strict';
+    var modules = Array.prototype.slice.call(arguments);
+    function grid(args) {
+        args = args || {};
+        var self = {};
+        self.args = args;
+        self.createGrid = grid;
+        self.orders = {
+            rows: [],
+            columns: []
+        };
+        self.hasFocus = false;
+        self.activeCell = {
+            columnIndex: 0,
+            rowIndex: 0
+        };
+        self.storageName = 'canvasDataGrid';
+        self.invalidSearchExpClass = 'canvas-datagrid-invalid-search-regExp';
+        self.uniqueId = '_canvasDataGridUniqueId';
+        self.orderBy = self.uniqueId;
+        self.orderDirection = 'asc';
+        self.columnFilters = {};
+        self.filters = {};
+        self.ellipsisCache = {};
+        self.scrollBox = {};
+        self.visibleRows = [];
+        self.sizes = {
+            rows: {},
+            columns: {},
+            trees: {}
+        };
+        self.currentFilter = function () {
+            return true;
+        };
+        self.selections = [];
+        self.hovers = {};
+        self.attributes = {};
+        self.style = {};
+        self.intf = {};
+        self.formatters = {};
+        self.sorters = {};
+        self.schemaHashes = {};
+        self.events = {};
+        self.uId = 0;
+        self.changes = [];
+        self.scrollIndexTop = 0;
+        self.scrollPixelTop = 0;
+        self.scrollIndexLeft = 0;
+        self.scrollPixelLeft = 0;
+        self.childGrids = {};
+        self.openChildren = {};
+        self.scrollModes = [
+            'vertical-scroll-box',
+            'vertical-scroll-top',
+            'vertical-scroll-bottom',
+            'horizontal-scroll-box',
+            'horizontal-scroll-right',
+            'horizontal-scroll-left'
+        ];
+        self.mouse = { x: 0, y: 0};
+        self.getSelectedData = function (expandToRow) {
+            var d = [], s = self.getSchema(), l = self.data.length;
+            self.selections.forEach(function (row, index) {
+                if (index === l) { return; }
+                d[index] = {};
+                if (expandToRow) {
+                    s.forEach(function (column) {
+                        d[index][column.name] = self.data[index][column.name];
+                    });
+                } else {
+                    row.forEach(function (col) {
+                        if (col === -1) { return; }
+                        d[index][s[col].name] = self.data[index][s[col].name];
+                    });
+                }
+            });
+            return d;
+        };
+        self.scrollOffset = function (e) {
+            var x = 0, y = 0;
+            while (e.parentNode) {
+                if (e.nodeType !== 'canvas-datagrid-tree'
+                        && e.nodeType !== 'canvas-datagrid-cell') {
+                    x -= e.scrollLeft;
+                    y -= e.scrollTop;
+                }
+                e = e.parentNode;
+            }
+            return {left: x, top: y};
+        };
+        self.position = function (e, ignoreScrollOffset) {
+            var x = 0, y = 0, s = e, h, w;
+            while (e.offsetParent) {
+                x += e.offsetLeft;
+                y += e.offsetTop;
+                h = e.offsetHeight;
+                w = e.offsetWidth;
+                e = e.offsetParent;
+            }
+            if (ignoreScrollOffset) {
+                return {left: x, top: y, height: h, width: w};
+            }
+            e = s;
+            s = self.scrollOffset(e);
+            return { left: x + s.left, top: y + s.top, height: h, width: w };
+        };
+        self.getLayerPos = function (e) {
+            var rect = self.canvas.getBoundingClientRect(),
+                pos = {
+                    x: e.clientX - rect.left,
+                    y: e.clientY - rect.top
+                };
+            if (self.isChildGrid) {
+                pos.x -= self.canvasOffsetLeft;
+                pos.y -= self.canvasOffsetTop;
+            }
+            return {
+                x: pos.x,
+                y: pos.y
+            };
+        };
+        self.fillArray = function (low, high, step) {
+            step = step || 1;
+            var i = [], x;
+            for (x = low; x <= high; x += step) {
+                i[x] = x;
+            }
+            return i;
+        };
+        self.getHeaderCellHeight = function () {
+            return self.sizes.rows[-1] || self.style.headerCellHeight;
+        };
+        self.getHeaderCellWidth = function () {
+            return self.attributes.showRowHeaders
+                ? (self.sizes.columns.cornerCell ||  self.style.headerRowWidth) : 0;
+        };
+        self.setStorageData = function () {
+            if (!self.attributes.saveAppearance) { return; }
+            localStorage.setItem(self.storageName + '-' + self.attributes.name, JSON.stringify({
+                sizes: {
+                    rows: self.sizes.rows,
+                    columns: self.sizes.columns
+                },
+                orders: {
+                    rows: self.orders.rows,
+                    columns: self.orders.columns
+                },
+                orderBy: self.orderBy,
+                orderDirection: self.orderDirection
+            }));
+        };
+        self.getSchema = function () {
+            return self.schema || self.tempSchema;
+        };
+        self.createColumnOrders = function () {
+            var s = self.getSchema();
+            self.orders.columns = self.fillArray(0, s.length - 1);
+        };
+        self.createRowOrders = function () {
+            self.orders.rows = self.fillArray(0, self.data.length - 1);
+        };
+        self.getVisibleSchema = function () {
+            return self.getSchema().filter(function (col) { return !col.hidden; });
+        };
+        self.createNewRowData = function () {
+            self.newRow = {};
+            self.newRow[self.uniqueId] = self.uId;
+            self.uId += 1;
+            self.getSchema().forEach(function forEachHeader(header, index) {
+                var d = header.defaultValue || '';
+                if (typeof d === 'function') {
+                    d = d.apply(self.intf, [header, index]);
+                }
+                self.newRow[header.name] = d;
+            });
+        };
+        self.addEllipsis = function (text, width) {
+            var o, i, c = self.style.cellPaddingRight + self.style.cellPaddingLeft;
+            if (self.ellipsisCache[text] && self.ellipsisCache[text][width]) {
+                return self.ellipsisCache[text][width];
+            }
+            if (self.ctx.measureText(text).width + c < width) {
+                o = text;
+            } else {
+                o = text.substring(0, 1);
+                i = 1;
+                while (width > (self.ctx.measureText(o).width + c)) {
+                    i += 1;
+                    o = text.substring(0, i) + "...";
+                }
+            }
+            self.ellipsisCache[text] = self.ellipsisCache[text] || {};
+            self.ellipsisCache[text][width] = o;
+            return o;
+        };
+        self.getSchemaNameHash = function (key) {
+            var n = 0;
+            while (self.schemaHashes[key]) {
+                n += 1;
+                key = key + n;
+            }
+            return key;
+        };
+        self.filter = function (type) {
+            var f = self.filters[type];
+            if (!f && type !== undefined) {
+                console.warn('Cannot find filter for type %s, falling back to substring match.', type);
+                f = self.filters.string;
+            }
+            return f;
+        };
+        self.getBestGuessDataType = function (columnName) {
+            var t, x, l = self.data.length;
+            for (x = 0; x < l; x += 1) {
+                if ([null, undefined].indexOf(self.data[x][columnName]) !== -1) {
+                    t = typeof self.data[x];
+                    return t === 'object' ? 'string' : t;
+                }
+            }
+            return 'string';
+        };
+        self.drawChildGrids = function () {
+            Object.keys(self.childGrids).forEach(function (gridKey) {
+                self.childGrids[gridKey].draw();
+            });
+        };
+        self.resizeChildGrids = function () {
+            Object.keys(self.childGrids).forEach(function (gridKey) {
+                self.childGrids[gridKey].resize();
+            });
+        };
+        self.getClippingRect = function (ele) {
+            var boundingRect = self.position(self.parentNode),
+                eleRect = self.position(ele),
+                clipRect = {
+                    x: 0,
+                    y: 0,
+                    h: 0,
+                    w: 0
+                },
+                parentRect = {
+                    x: -Infinity,
+                    y: -Infinity,
+                    h: Infinity,
+                    w: Infinity
+                },
+                headerCellHeight = self.getHeaderCellHeight(),
+                headerCellWidth = self.getHeaderCellWidth();
+            clipRect.h = boundingRect.top + boundingRect.height - ele.offsetTop - self.style.scrollBarWidth;
+            clipRect.w = boundingRect.left + boundingRect.width - ele.offsetLeft - self.style.scrollBarWidth;
+            clipRect.x = boundingRect.left + (eleRect.left * -1) + headerCellWidth;
+            clipRect.y = boundingRect.top + (eleRect.top * -1) + headerCellHeight;
+            return {
+                x: clipRect.x > parentRect.x ? clipRect.x : parentRect.x,
+                y: clipRect.y > parentRect.y ? clipRect.y : parentRect.y,
+                h: clipRect.h < parentRect.h ? clipRect.h : parentRect.h,
+                w: clipRect.w < parentRect.w ? clipRect.w : parentRect.w
+            };
+        };
+        self.clipElement = function (ele) {
+            var clipRect = self.getClippingRect(ele);
+            if (clipRect.w < 0) { clipRect.w = 0; }
+            if (clipRect.h < 0) { clipRect.h = 0; }
+            ele.style.clip = 'rect('
+                + clipRect.y + 'px,'
+                + clipRect.w + 'px,'
+                + clipRect.h + 'px,'
+                + clipRect.x + 'px'
+                + ')';
+            // INFO https://developer.mozilla.org/en-US/docs/Web/CSS/clip
+            // clip has been "deprecated" for clipPath.  Of course nothing but chrome
+            // supports clip path, so we'll keep using clip until someday clipPath becomes
+            // more widely support.  The code below works correctly, but setting clipPath and clip
+            // at the same time has undesirable results.
+            // ele.style.clipPath = 'polygon('
+            //     + clipRect.x + 'px ' + clipRect.y + 'px,'
+            //     + clipRect.x + 'px ' + clipRect.h + 'px,'
+            //     + clipRect.w + 'px ' + clipRect.h + 'px,'
+            //     + clipRect.w + 'px ' + clipRect.y + 'px'
+            //     + ')';
+        };
+        self.autoScrollZone = function (e, x, y, ctrl) {
+            var setTimer,
+                headerCellWidth = self.getHeaderCellWidth(),
+                headerCellHeight = self.getHeaderCellHeight();
+            if (x > self.width - self.attributes.selectionScrollZone && x < self.width) {
+                self.scrollBox.scrollLeft += self.attributes.selectionScrollIncrement;
+                setTimer = true;
+            }
+            if (y > self.height - self.attributes.selectionScrollZone && y < self.height) {
+                self.scrollBox.scrollTop += self.attributes.selectionScrollIncrement;
+                setTimer = true;
+            }
+            if (x - self.attributes.selectionScrollZone - headerCellWidth < 0) {
+                self.scrollBox.scrollLeft -= self.attributes.selectionScrollIncrement;
+                setTimer = true;
+            }
+            if (y - self.attributes.selectionScrollZone - headerCellHeight < 0) {
+                self.scrollBox.scrollTop -= self.attributes.selectionScrollIncrement;
+                setTimer = true;
+            }
+            if (setTimer && !ctrl && self.currentCell && self.currentCell.columnIndex !== -1) {
+                self.scrollTimer = setTimeout(self.mousemove, self.attributes.scrollRepeatRate, e);
+            }
+        };
+        self.refreshFromOrigialData = function () {
+            self.data = self.originalData.filter(function (row) {
+                return true;
+            });
+        };
+        self.validateColumn = function (c, s) {
+            if (!c.name) {
+                throw new Error('A column must contain at least a name.');
+            }
+            if (s.filter(function (i) { return i.name === c.name; }).length > 0) {
+                throw new Error('A column with the name '
+                    + c.name + ' already exists and cannot be added again.');
+            }
+            return true;
+        };
+        self.setDefaults = function (obj1, obj2, key, def) {
+            obj1[key] = obj2[key] === undefined ? def : obj2[key];
+        };
+        self.setAttributes = function () {
+            self.defaults.attributes.forEach(function eachAttribute(i) {
+                self.setDefaults(self.attributes, args, i[0], i[1]);
+            });
+        };
+        self.setStyle = function () {
+            self.defaults.styles.forEach(function eachStyle(i) {
+                self.setDefaults(self.style, args.style || {}, i[0], i[1]);
+            });
+        };
+        self.autosize = function (colName) {
+            self.getVisibleSchema().forEach(function (col) {
+                if (col.name === colName || colName === undefined) {
+                    self.fitColumnToValues(col.name);
+                }
+            });
+            self.fitColumnToValues('cornerCell');
+        };
+        self.dispose = function () {
+            if (!self.isChildGrid && self.canvas && self.canvas.parentNode) {
+                self.canvas.parentNode.removeChild(self.canvas);
+            }
+            self.eventParent.removeEventListener('mouseup', self.mouseup, false);
+            self.eventParent.removeEventListener('mousedown', self.mousedown, false);
+            self.eventParent.removeEventListener('dblclick', self.dblclick, false);
+            self.eventParent.removeEventListener('click', self.click, false);
+            self.eventParent.removeEventListener('mousemove', self.mousemove);
+            self.eventParent.removeEventListener('mousewheel', self.scrollWheel, false);
+            self.canvas.removeEventListener('contextmenu', self.contextmenu, false);
+            self.canvas.removeEventListener('copy', self.copy);
+            self.controlInput.removeEventListener('keypress', self.keypress, false);
+            self.controlInput.removeEventListener('keyup', self.keyup, false);
+            self.controlInput.removeEventListener('keydown', self.keydown, false);
+            window.removeEventListener('resize', self.resize);
+            if (self.observer && self.observer.disconnect) {
+                self.observer.disconnect();
+            }
+        };
+        self.tryLoadStoredOrders = function () {
+            var s;
+            if (self.storedSettings && typeof self.storedSettings.orders === 'object') {
+                if (self.storedSettings.orders.rows.length >= self.data.length) {
+                    self.orders.rows = self.storedSettings.orders.rows;
+                }
+                s = self.getSchema();
+                self.orders.columns = self.storedSettings.orders.columns;
+                s.forEach(function (h, i) {
+                    if (self.orders.columns.indexOf(i) === -1) {
+                        self.orders.columns.push(i);
+                    }
+                });
+                self.orderBy = self.storedSettings.orderBy === undefined
+                    ? self.uniqueId : self.storedSettings.orderBy;
+                self.orderDirection = self.storedSettings.orderDirection === undefined
+                    ? self.uniqueId : self.storedSettings.orderDirection;
+                if (self.getHeaderByName(self.orderBy) && self.orderDirection) {
+                    self.order(self.orderBy, self.orderDirection);
+                }
+            }
+        };
+        self.init = function () {
+            self.setAttributes();
+            self.setStyle();
+            self.initScrollBox();
+            self.setDom();
+            self.intf.type = 'canvas-datagrid';
+            self.intf.addEventListener = self.addEventListener;
+            self.intf.removeEventListener = self.removeEventListener;
+            self.intf.dispatchEvent = self.dispatchEvent;
+            self.intf.dispose = self.dispose;
+            self.intf.appendTo = self.appendTo;
+            self.intf.filters = self.filters;
+            self.intf.sorters = self.sorters;
+            self.intf.autosize = self.autosize;
+            self.intf.beginEditAt = self.beginEditAt;
+            self.intf.endEdit = self.endEdit;
+            self.intf.setActiveCell = self.setActiveCell;
+            self.intf.scrollIntoView = self.scrollIntoView;
+            self.intf.clearChangeLog = self.clearChangeLog;
+            self.intf.gotoCell = self.gotoCell;
+            self.intf.gotoRow = self.gotoRow;
+            self.intf.findColumnScrollLeft = self.findColumnScrollLeft;
+            self.intf.findRowScrollTop = self.findRowScrollTop;
+            self.intf.fitColumnToValues = self.fitColumnToValues;
+            self.intf.findColumnMaxTextLength = self.findColumnMaxTextLength;
+            self.intf.disposeContextMenu = self.disposeContextMenu;
+            self.intf.getCellAt = self.getCellAt;
+            self.intf.isCellVisible = self.isCellVisible;
+            self.intf.order = self.order;
+            self.intf.draw = self.draw;
+            self.intf.selectArea = self.selectArea;
+            self.intf.clipElement = self.clipElement;
+            self.intf.getSchemaFromData = self.getSchemaFromData;
+            self.intf.setFilter = self.setFilter;
+            self.intf.selectRow = self.selectRow;
+            self.intf.parentGrid = self.parentGrid;
+            self.intf.toggleTree = self.toggleTree;
+            self.intf.expandTree = self.expandTree;
+            self.intf.collapseTree = self.collapseTree;
+            self.intf.canvas = self.canvas;
+            self.intf.context = self.ctx;
+            self.intf.insertRow = self.insertRow;
+            self.intf.deleteRow = self.deleteRow;
+            self.intf.addRow = self.addRow;
+            self.intf.insertColumn = self.insertColumn;
+            self.intf.deleteColumn = self.deleteColumn;
+            self.intf.addColumn = self.addColumn;
+            self.intf.getClippingRect = self.getClippingRect;
+            self.intf.setRowHeight = self.setRowHeight;
+            self.intf.setColumnWidth = self.setColumnWidth;
+            self.intf.resetColumnWidths = self.resetColumnWidths;
+            self.intf.resetRowHeights = self.resetRowHeights;
+            self.intf.resize = self.resize;
+            self.intf.drawChildGrids = self.drawChildGrids;
+            Object.keys(self.style).forEach(function (key) {
+                Object.defineProperty(self.intf.style, key, {
+                    get: function () {
+                        return self.style[key];
+                    },
+                    set: function (value) {
+                        self.style[key] = value;
+                        self.draw(true);
+                    }
+                });
+            });
+            Object.keys(self.attributes).forEach(function (key) {
+                Object.defineProperty(self.intf.attributes, key, {
+                    get: function () {
+                        return self.attributes[key];
+                    },
+                    set: function (value) {
+                        self.attributes[key] = value;
+                        self.draw(true);
+                    }
+                });
+            });
+            self.filters.string = function (value, filterFor) {
+                if (!filterFor) { return true; }
+                var filterRegExp;
+                self.invalidFilterRegEx = undefined;
+                try {
+                    filterRegExp = new RegExp(filterFor, 'ig');
+                } catch (e) {
+                    self.invalidFilterRegEx = e;
+                    return;
+                }
+                return filterRegExp.test(value);
+            };
+            self.filters.number = function (value, filterFor) {
+                if (!filterFor) { return true; }
+                return value === filterFor;
+            };
+            if (self.attributes.name && self.attributes.saveAppearance) {
+                self.storedSettings = localStorage.getItem(self.storageName + '-' + self.attributes.name);
+                if (self.storedSettings) {
+                    try {
+                        self.storedSettings = JSON.parse(self.storedSettings);
+                    } catch (e) {
+                        console.warn('could not read settings from localStore', e);
+                        self.storedSettings = undefined;
+                    }
+                }
+                if (self.storedSettings) {
+                    if (typeof self.storedSettings.sizes === 'object') {
+                        self.sizes.rows = self.storedSettings.sizes.rows;
+                        self.sizes.columns = self.storedSettings.sizes.columns;
+                        ['trees', 'columns', 'rows'].forEach(function (i) {
+                            if (!self.sizes[i]) {
+                                self.sizes[i] = {};
+                            }
+                        });
+                    }
+                }
+            }
+            if (args.data) {
+                self.intf.data = args.data;
+            }
+            if (args.schema) {
+                self.intf.schema = args.schema;
+            }
+            if (!self.data) {
+                self.intf.data = [];
+            }
+            self.resize(true);
+        };
+        modules.forEach(function (module) {
+            module(self);
+        });
+        self.init();
+        return self.intf;
+    }
+    if (window && !window.canvasDatagrid) {
+        window.canvasDatagrid = grid;
+    }
+    return grid;
+}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ }),
+/* 1 */
+/*!*********************!*\
+  !*** ./lib/draw.js ***!
+  \*********************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true*/
+/*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+    'use strict';
+    return function (self) {
+        function drawOrderByArrow(x, y) {
+            x += self.canvasOffsetLeft;
+            y += self.canvasOffsetTop;
+            self.ctx.fillStyle = self.style.headerOrderByArrowColor;
+            self.ctx.strokeStyle = self.style.headerOrderByArrowBorderColor;
+            self.ctx.beginPath();
+            x = x + self.style.headerOrderByArrowMarginLeft;
+            y = y + self.style.headerOrderByArrowMarginTop;
+            if (self.orderDirection === 'asc') {
+                self.ctx.moveTo(x, y);
+                self.ctx.lineTo(x + self.style.headerOrderByArrowWidth, y);
+                self.ctx.lineTo(x + (self.style.headerOrderByArrowWidth * 0.5), y + self.style.headerOrderByArrowHeight);
+                self.ctx.moveTo(x, y);
+            } else {
+                self.ctx.lineTo(x, y + self.style.headerOrderByArrowHeight);
+                self.ctx.lineTo(x + self.style.headerOrderByArrowWidth, y + self.style.headerOrderByArrowHeight);
+                self.ctx.lineTo(x + (self.style.headerOrderByArrowWidth * 0.5), y);
+                self.ctx.lineTo(x, y + self.style.headerOrderByArrowHeight);
+            }
+            self.ctx.stroke();
+            self.ctx.fill();
+            return self.style.headerOrderByArrowMarginLeft
+                + self.style.headerOrderByArrowWidth
+                + self.style.headerOrderByArrowMarginRight;
+        }
+        function drawTreeArrow(cell, x, y) {
+            x += self.canvasOffsetLeft;
+            y += self.canvasOffsetTop;
+            self.ctx.fillStyle = self.style.treeArrowColor;
+            self.ctx.strokeStyle = self.style.treeArrowBorderColor;
+            self.ctx.beginPath();
+            x = x + self.style.treeArrowMarginLeft;
+            y = y + self.style.treeArrowMarginTop;
+            if (self.openChildren[cell.data[self.uniqueId]]) {
+                self.ctx.moveTo(x, y);
+                self.ctx.lineTo(x + self.style.treeArrowWidth, y);
+                self.ctx.lineTo(x + (self.style.treeArrowWidth * 0.5), y + self.style.treeArrowHeight);
+                self.ctx.moveTo(x, y);
+            } else {
+                self.ctx.lineTo(x, y);
+                self.ctx.lineTo(x + self.style.treeArrowHeight, y + (self.style.treeArrowWidth * 0.5));
+                self.ctx.lineTo(x, y + self.style.treeArrowWidth);
+                self.ctx.lineTo(x, y);
+            }
+            self.ctx.stroke();
+            self.ctx.fill();
+            return self.style.treeArrowMarginLeft
+                + self.style.treeArrowWidth
+                + self.style.treeArrowMarginRight;
+        }
+        function radiusRect(x, y, w, h, radius) {
+            x += self.canvasOffsetLeft;
+            y += self.canvasOffsetTop;
+            var r = x + w, b = y + h;
+            self.ctx.beginPath();
+            self.ctx.moveTo(x + radius, y);
+            self.ctx.lineTo(r - radius, y);
+            self.ctx.quadraticCurveTo(r, y, r, y + radius);
+            self.ctx.lineTo(r, y + h - radius);
+            self.ctx.quadraticCurveTo(r, b, r - radius, b);
+            self.ctx.lineTo(x + radius, b);
+            self.ctx.quadraticCurveTo(x, b, x, b - radius);
+            self.ctx.lineTo(x, y + radius);
+            self.ctx.quadraticCurveTo(x, y, x + radius, y);
+        }
+        function fillRect(x, y, w, h) {
+            x += self.canvasOffsetLeft;
+            y += self.canvasOffsetTop;
+            self.ctx.fillRect(x, y, w, h);
+        }
+        function strokeRect(x, y, w, h) {
+            x += self.canvasOffsetLeft;
+            y += self.canvasOffsetTop;
+            self.ctx.strokeRect(x, y, w, h);
+        }
+        function fillText(text, x, y) {
+            x += self.canvasOffsetLeft;
+            y += self.canvasOffsetTop;
+            self.ctx.fillText(text, x, y);
+        }
+        function addBorderLine(c, pos) {
+            self.ctx.beginPath();
+            var p = {
+                t: function () {
+                    self.ctx.moveTo(c.x + self.canvasOffsetLeft, c.y + self.canvasOffsetTop);
+                    self.ctx.lineTo(c.x + self.canvasOffsetLeft + c.width, c.y + self.canvasOffsetTop);
+                },
+                r: function () {
+                    self.ctx.moveTo(c.x + self.canvasOffsetLeft + c.width, c.y + self.canvasOffsetTop);
+                    self.ctx.lineTo(c.x + self.canvasOffsetLeft + c.width, c.y + self.canvasOffsetTop + c.height);
+                },
+                b: function () {
+                    self.ctx.moveTo(c.x + self.canvasOffsetLeft, c.y + self.canvasOffsetTop + c.height);
+                    self.ctx.lineTo(c.x + self.canvasOffsetLeft + c.width, c.y + self.canvasOffsetTop + c.height);
+                },
+                l: function () {
+                    self.ctx.moveTo(c.x + self.canvasOffsetLeft, c.y + self.canvasOffsetTop);
+                    self.ctx.lineTo(c.x + self.canvasOffsetLeft, c.y + self.canvasOffsetTop + c.height);
+                },
+            };
+            p[pos]();
+            self.ctx.stroke();
+        }
+        /**
+         * Redraws the grid. No matter what the change, this is the only method required to refresh everything.
+         * @memberof canvasDataGrid#
+         * @method
+         */
+        self.draw = function (internal) {
+            if (!self.isChildGrid && (!self.height || !self.width)) {
+                return;
+            }
+            if (self.isChildGrid && internal) {
+                requestAnimationFrame(self.parentGrid.draw);
+                return;
+            }
+            if (self.intf.visible === false) {
+                return;
+            }
+            // initial values
+            var checkScrollHeight, borderWidth, rowHeaderCell, p, cx, cy, treeGrid, rowOpen,
+                rowHeight, cornerCell, y, x, c, h, w, s, r, rd, aCell,
+                l = self.data.length,
+                u = self.currentCell || {},
+                headerCellHeight = self.getHeaderCellHeight(),
+                headerCellWidth = self.getHeaderCellWidth(),
+                cellHeight = self.style.cellHeight;
+            // if data length has changed, there is no way to know
+            if (self.data.length > self.orders.rows.length) {
+                self.createRowOrders();
+            }
+            function drawScrollBars() {
+                var v = {
+                        x: 0,
+                        y: 0,
+                        height: 0,
+                        width: 0,
+                        style: 'vertical-scroll-bar'
+                    },
+                    n = {
+                        x: 0,
+                        y: 0,
+                        height: 0,
+                        width: 0,
+                        style: 'horizontal-scroll-bar'
+                    },
+                    vb = {
+                        x: 0,
+                        y: 0,
+                        height: 0,
+                        width: 0,
+                        style: 'vertical-scroll-box'
+                    },
+                    nb = {
+                        x: 0,
+                        y: 0,
+                        height: 0,
+                        width: 0,
+                        style: 'horizontal-scroll-box'
+                    },
+                    co = {
+                        x: 0,
+                        y: 0,
+                        height: 0,
+                        width: 0,
+                        style: 'scroll-box-corner'
+                    },
+                    m = (self.style.scrollBarBoxMargin * 2),
+                    d = self.style.scrollBarBoxMargin * 0.5;
+                self.ctx.strokeStyle = self.style.scrollBarBorderColor;
+                self.ctx.lineWidth = self.style.scrollBarBorderWidth;
+                // vertical
+                v.x += w - self.style.scrollBarWidth - self.style.scrollBarBorderWidth - d;
+                v.y += headerCellHeight;
+                v.width = self.style.scrollBarWidth + self.style.scrollBarBorderWidth + d;
+                v.height = h - headerCellHeight - self.style.scrollBarWidth - d - m;
+                self.ctx.fillStyle = self.style.scrollBarBackgroundColor;
+                fillRect(v.x, v.y, v.width, v.height + m);
+                strokeRect(v.x, v.y, v.width, v.height + m);
+                // vertical box
+                vb.x = v.x + self.style.scrollBarBoxMargin;
+                vb.y = headerCellHeight + self.style.scrollBarBoxMargin
+                    + ((v.height - self.scrollBox.scrollBoxHeight)
+                        * (self.scrollBox.scrollTop / self.scrollBox.scrollHeight));
+                vb.width = self.style.scrollBarBoxWidth;
+                vb.height = self.scrollBox.scrollBoxHeight;
+                self.ctx.fillStyle = self.style.scrollBarBoxColor;
+                if (/vertical/.test(u.context)) {
+                    self.ctx.fillStyle = self.style.scrollBarActiveColor;
+                }
+                if (vb.width < v.width) {
+                    radiusRect(vb.x, vb.y, vb.width, vb.height, self.style.scrollBarBoxBorderRadius);
+                    self.ctx.stroke();
+                    self.ctx.fill();
+                }
+                // horizontal
+                n.x += headerCellWidth;
+                n.y += h - self.style.scrollBarWidth - d;
+                n.width = w - self.style.scrollBarWidth - headerCellWidth - d - m;
+                n.height = self.style.scrollBarWidth + self.style.scrollBarBorderWidth + d;
+                self.ctx.fillStyle = self.style.scrollBarBackgroundColor;
+                fillRect(n.x, n.y, n.width + m, n.height);
+                strokeRect(n.x, n.y, n.width + m, n.height);
+                // horizontal box
+                nb.y = n.y + self.style.scrollBarBoxMargin;
+                nb.x = headerCellWidth + self.style.scrollBarBoxMargin
+                    + ((n.width - self.scrollBox.scrollBoxWidth)
+                        * (self.scrollBox.scrollLeft / self.scrollBox.scrollWidth));
+                nb.width = self.scrollBox.scrollBoxWidth;
+                nb.height = self.style.scrollBarBoxWidth;
+                self.ctx.fillStyle = self.style.scrollBarBoxColor;
+                if (/horizontal/.test(u.context)) {
+                    self.ctx.fillStyle = self.style.scrollBarActiveColor;
+                }
+                if (nb.width < n.width) {
+                    radiusRect(nb.x, nb.y, nb.width, nb.height, self.style.scrollBarBoxBorderRadius);
+                    self.ctx.stroke();
+                    self.ctx.fill();
+                }
+                //corner
+                self.ctx.strokeStyle = self.style.scrollBarCornerBorderColor;
+                self.ctx.fillStyle = self.style.scrollBarCornerBackground;
+                co.x = n.x + n.width + m;
+                co.y = v.y + v.height + m;
+                co.width = self.style.scrollBarWidth + self.style.scrollBarBorderWidth;
+                co.height = self.style.scrollBarWidth + self.style.scrollBarBorderWidth;
+                radiusRect(co.x, co.y, co.width, co.height, 0);
+                self.ctx.stroke();
+                self.ctx.fill();
+                self.visibleCells.unshift(v);
+                self.visibleCells.unshift(vb);
+                self.visibleCells.unshift(n);
+                self.visibleCells.unshift(nb);
+                self.visibleCells.unshift(co);
+                self.scrollBox.bar = {
+                    v: v,
+                    h: n
+                };
+                self.scrollBox.box = {
+                    v: vb,
+                    h: nb
+                };
+            }
+            function drawCell(d, rowIndex, rowOrderIndex) {
+                return function drawEach(header, headerIndex, columnOrderIndex) {
+                    var cellStyle = header.style || 'cell',
+                        childGridAttributes,
+                        cell,
+                        selected = self.selections[rowOrderIndex] && self.selections[rowOrderIndex].indexOf(columnOrderIndex) !== -1,
+                        hovered = self.hovers[d[self.uniqueId]] && self.hovers[d[self.uniqueId]].indexOf(columnOrderIndex) !== -1,
+                        active = self.activeCell.rowIndex === rowOrderIndex && self.activeCell.columnIndex === columnOrderIndex,
+                        isGrid = Array.isArray(d[header.name]),
+                        activeHeader = (self.orders.rows[self.activeCell.rowIndex] === rowOrderIndex
+                                || self.orders.columns[self.activeCell.columnIndex] === columnOrderIndex)
+                            && (columnOrderIndex === -1 || rowOrderIndex === -1),
+                        val,
+                        f = self.formatters[header.type || 'string'],
+                        orderByArrowSize = 0,
+                        treeArrowSize = 0,
+                        cellWidth = self.sizes.columns[cellStyle  === 'rowHeaderCell'
+                            ? 'cornerCell' : header[self.uniqueId]] || header.width;
+                    if (cellStyle === 'headerCellCap') {
+                        cellWidth = w - x;
+                    }
+                    // if no data or schema are defined, a width is provided to the stub column
+                    if (cellWidth === undefined) {
+                        cellWidth = self.style.columnWidth;
+                    }
+                    if (x + cellWidth + borderWidth < 0) {
+                        x += cellWidth + borderWidth;
+                    }
+                    if (active) {
+                        cellStyle = 'activeCell';
+                    }
+                    if (self.visibleRows.indexOf(rowIndex) === -1
+                            && ['headerCell', 'cornerCell'].indexOf(cellStyle) === -1) {
+                        self.visibleRows.push(rowIndex);
+                    }
+                    val = self.dispatchEvent('formatcellvalue', [self.ctx, d[header.name], d, header, cx, cy], self.intf);
+                    if (!self.dispatchEvent('beforerendercell', [{}, self.ctx, d[header.name], d, header, cx, cy], self.intf)) {
+                        cx = x;
+                        cy = y;
+                        if (cellStyle === 'cornerCell') {
+                            cx = 0;
+                            cy = 0;
+                        } else if (cellStyle === 'rowHeaderCell') {
+                            cx = 0;
+                        } else if (cellStyle === 'headerCell') {
+                            cy = 0;
+                        }
+                        cell = {
+                            type: isGrid ? 'canvas-datagrid-cell' : header.type,
+                            style: cellStyle,
+                            nodeType: 'canvas-datagrid-cell',
+                            x: cx,
+                            y: cy,
+                            offsetTop: self.canvasOffsetTop,
+                            offsetLeft: self.canvasOffsetLeft,
+                            scrollTop: self.scrollBox.scrollTop,
+                            scrollLeft: self.scrollBox.scrollLeft,
+                            active: active === true,
+                            hovered: hovered === true,
+                            selected: selected === true,
+                            width: cellWidth,
+                            height: cellHeight,
+                            offsetWidth: cellWidth,
+                            offsetHeight: cellHeight,
+                            parentNode: self.intf.parentNode,
+                            offsetParent: self.intf.parentNode,
+                            data: d,
+                            isHeader: /headerCell|cornerCell/.test(cellStyle),
+                            isRowHeader: 'rowHeaderCell' === cellStyle,
+                            rowOpen: rowOpen,
+                            header: header,
+                            columnIndex: columnOrderIndex,
+                            rowIndex: rowOrderIndex,
+                            sortColumnIndex: headerIndex,
+                            sortRowIndex: rowIndex,
+                            isGrid: isGrid,
+                            gridId: (self.attributes.name || '') + d[self.uniqueId] + ':' + header[self.uniqueId],
+                            parentGrid: self.intf,
+                            value: cellStyle === 'headerCell'
+                                ? (header.title || header.name) : d[header.name]
+                        };
+                        cell.userHeight = cell.isHeader ? self.sizes.rows[-1] : rowHeight;
+                        cell.userWidth = cell.isHeader ? self.sizes.columns.cornerCell : self.sizes.columns[header[self.uniqueId]];
+                        cell[self.uniqueId] = d[self.uniqueId];
+                        self.visibleCells.unshift(cell);
+                        self.ctx.fillStyle = self.style[cellStyle + 'BackgroundColor'];
+                        self.ctx.strokeStyle = self.style[cellStyle + 'BorderColor'];
+                        self.ctx.lineWidth = self.style[cellStyle + 'BorderWidth'];
+                        if (hovered) {
+                            self.ctx.fillStyle = self.style[cellStyle + 'HoverBackgroundColor'];
+                            self.ctx.strokeStyle = self.style[cellStyle + 'HoverBorderColor'];
+                        }
+                        if (selected) {
+                            self.ctx.fillStyle = self.style[cellStyle + 'SelectedBackgroundColor'];
+                            self.ctx.strokeStyle = self.style[cellStyle + 'SelectedBorderColor'];
+                        }
+                        if (activeHeader) {
+                            self.ctx.fillStyle = self.style[cellStyle + 'ActiveBackgroundColor'];
+                        }
+                        self.dispatchEvent('rendercell', [self.ctx, cell], self.intf);
+                        if (cell.isGrid) {
+                            if (cell.height !== rowHeight) {
+                                cell.height = rowHeight || self.style.cellHeightWithChildGrid;
+                                checkScrollHeight = true;
+                            }
+                            cell.width = self.sizes.columns[header[self.uniqueId]] || self.style.cellWidthWithChildGrid;
+                        }
+                        if (rowOpen && !cell.isRowHeader) {
+                            cell.height = self.sizes.rows[rd[self.uniqueId]] || self.style.cellHeight;
+                        }
+                        if (!cell.isGrid) {
+                            fillRect(cx, cy, cell.width, cell.height);
+                            strokeRect(cx, cy, cell.width, cell.height);
+                        }
+                        self.ctx.save();
+                        radiusRect(cell.x, cell.y, cell.width, cell.height, 0);
+                        self.ctx.clip();
+                        self.dispatchEvent('afterrendercell', [self.ctx, cell], self.intf);
+                        if (cell.height !== cellHeight && !(rowOpen && !cell.isRowHeader)) {
+                            self.sizes.rows[cellStyle === 'headerCell' ? -1 : d[self.uniqueId]] = cell.height;
+                            checkScrollHeight = true;
+                        }
+                        if (cell.width !== cellWidth) {
+                            self.sizes.columns[header[self.uniqueId]] = cell.width;
+                            checkScrollHeight = true;
+                        }
+                        if (cellStyle === 'rowHeaderCell' && self.attributes.tree) {
+                            if (!self.dispatchEvent('rendertreearrow', [{}, self.ctx, cell], self.intf)) {
+                                treeArrowSize = drawTreeArrow(cell, self.style[cellStyle + 'PaddingLeft'], cy, 0);
+                            }
+                        }
+                        if ((self.attributes.showRowNumbers && cellStyle === 'rowHeaderCell')
+                                || cellStyle !== 'rowHeaderCell') {
+                            if (cell.isGrid) {
+                                if (!self.childGrids[cell.gridId]) {
+                                    childGridAttributes = self.args.childGridAttributes || self.args;
+                                    childGridAttributes.name = self.attributes.saveAppearance ? cell.gridId : undefined;
+                                    childGridAttributes.parentNode = cell;
+                                    childGridAttributes.data = d[header.name];
+                                    self.childGrids[cell.gridId] = self.createGrid(childGridAttributes);
+                                    self.dispatchEvent('rendercellgrid', [self.ctx, cell, self.childGrids[cell.gridId]], self.intf);
+                                    checkScrollHeight = true;
+                                }
+                                cell.grid = self.childGrids[cell.gridId];
+                                cell.grid.parentNode = cell;
+                                cell.grid.visible = true;
+                                cell.grid.draw();
+                            } else {
+                                if (self.childGrids[cell.gridId]) {
+                                    self.childGrids[cell.gridId].parentNode.offsetHeight = 0;
+                                }
+                                self.ctx.font = self.style[cellStyle + 'Font'];
+                                val = val !== undefined ? val : f
+                                    ? f(self.ctx, cell) : '';
+                                if (val === undefined && !f) {
+                                    val = '';
+                                    console.warn('canvas-datagrid: I don\'t know how to format a '
+                                        + header.type + ' add a cellFormater');
+                                }
+                                if (cellStyle === 'headerCell' && self.orderBy === header.name) {
+                                    if (!self.dispatchEvent('renderorderbyarrow', [{}, self.ctx, cell], self.intf)) {
+                                        orderByArrowSize = drawOrderByArrow(cx + self.style[cellStyle + 'PaddingLeft'], 0);
+                                    }
+                                }
+                                self.ctx.fillStyle = self.style[cellStyle + 'Color'];
+                                if (hovered) {
+                                    self.ctx.fillStyle = self.style[cellStyle + 'HoverColor'];
+                                }
+                                if (selected) {
+                                    self.ctx.fillStyle = self.style[cellStyle + 'SelectedColor'];
+                                }
+                                if (activeHeader) {
+                                    self.ctx.fillStyle = self.style[cellStyle + 'ActiveColor'];
+                                }
+                                if (self.columnFilters && self.columnFilters[val] !== undefined && cellStyle === 'headerCell') {
+                                    val = self.style.filterTextPrefix + val;
+                                }
+                                cell.formattedValue = ((val !== undefined && val !== null) ? val : '').toString();
+                                self.dispatchEvent('rendertext', [self.ctx, cell], self.intf);
+                                fillText(self.addEllipsis(cell.formattedValue, cell.width
+                                    - self.style[cellStyle + 'PaddingRight'] - orderByArrowSize - self.style.autosizePadding),
+                                    treeArrowSize + orderByArrowSize + cx + self.style[cellStyle + 'PaddingLeft'],
+                                    cy - (cell.height * 0.5) + self.style[cellStyle + 'PaddingTop'] + cell.height);
+                            }
+                        }
+                        if (active && !self.attributes.rowSelectionMode) {
+                            aCell = cell;
+                            self.ctx.lineWidth = self.style.activeCellOverlayBorderWidth;
+                            self.ctx.strokeStyle = self.style.activeCellOverlayBorderColor;
+                            strokeRect(aCell.x, aCell.y, aCell.width, aCell.height);
+                        }
+                        if (selected) {
+                            self.ctx.lineWidth = self.style.selectionOverlayBorderWidth;
+                            self.ctx.strokeStyle = self.style.selectionOverlayBorderColor;
+                            if (cell.selected && cell.style !== 'rowHeaderCell') {
+                                if ((!self.selections[cell.rowIndex - 1]
+                                        || self.selections[cell.rowIndex - 1].indexOf(cell.columnIndex) === -1
+                                        || cell.rowIndex === 0)
+                                        && !cell.isHeader) {
+                                    addBorderLine(cell, 't');
+                                }
+                                if (!self.selections[cell.rowIndex] || cell.columnIndex === s.length - 1
+                                        || self.selections[cell.rowIndex].indexOf(cell.columnIndex + 1) === -1) {
+                                    addBorderLine(cell, 'r');
+                                }
+                                if (!self.selections[cell.rowIndex + 1]
+                                        || self.selections[cell.rowIndex + 1].indexOf(cell.columnIndex) === -1) {
+                                    addBorderLine(cell, 'b');
+                                }
+                                if (!self.selections[cell.rowIndex] || cell.columnIndex === 0
+                                        || self.selections[cell.rowIndex].indexOf(cell.columnIndex - 1) === -1) {
+                                    addBorderLine(cell, 'l');
+                                }
+                            }
+                        }
+                        self.ctx.restore();
+                        x += cell.width + borderWidth;
+                        return cell.width;
+                    }
+                };
+            }
+            function drawHeaderRow() {
+                var d, g = s.length, i, o, headerCell, header;
+                if (self.attributes.showHeaders) {
+                    x = (self.scrollBox.scrollLeft * -1) + self.scrollPixelLeft;
+                    if (self.attributes.showRowHeaders) {
+                        x += headerCellWidth;
+                    }
+                    y = 0;
+                    // cell height might have changed during drawing
+                    cellHeight = self.getHeaderCellHeight();
+                    for (o = self.scrollIndexLeft; o < g; o += 1) {
+                        i = self.orders.columns[o];
+                        header = s[i];
+                        d = {
+                            title: header.title,
+                            name: header.name,
+                            width: header.width,
+                            style: 'headerCell',
+                            type: 'string',
+                            index: o,
+                            order: i
+                        };
+                        headerCell = {'headerCell': header.title || header.name};
+                        headerCell[self.uniqueId] = 'h' + header[self.uniqueId];
+                        d[self.uniqueId] = header[self.uniqueId];
+                        x += drawCell(headerCell, -1, -1)(d, o, i);
+                        if (x > self.width + self.scrollBox.scrollLeft) {
+                            break;
+                        }
+                    }
+                    // fill in the space right of the headers
+                    if (x < w) {
+                        c = {
+                            name: '',
+                            width: self.style.scrollBarWidth,
+                            style: 'headerCellCap',
+                            type: 'string',
+                            index: s.length
+                        };
+                        c[self.uniqueId] = 'headerCell';
+                        drawCell({endCap: ''}, -1, -1)(c, -1, -1);
+                    }
+                    // fill in the space left of the headers
+                    if (self.attributes.showRowHeaders) {
+                        cornerCell = {'cornerCell': '' };
+                        cornerCell[self.uniqueId] = 'cornerCell';
+                        x = 0;
+                        c = {
+                            name: 'cornerCell',
+                            width: self.style.headerRowWidth,
+                            style: 'cornerCell',
+                            type: 'string',
+                            index: -1
+                        };
+                        c[self.uniqueId] = 'cornerCell';
+                        drawCell(cornerCell, -1, -1)(c, -1, -1);
+                    }
+                }
+            }
+            function drawRowHeader(rowData, index, rowOrderIndex) {
+                var a;
+                if (self.attributes.showRowHeaders) {
+                    x = 0;
+                    rowHeaderCell = {'rowHeaderCell': index + 1 };
+                    rowHeaderCell[self.uniqueId] = rowData[self.uniqueId];
+                    a = {
+                        name: 'rowHeaderCell',
+                        width: self.style.headerRowWidth,
+                        style: 'rowHeaderCell',
+                        type: 'string',
+                        data: rowData[self.uniqueId],
+                        index: -1
+                    };
+                    a[self.uniqueId] = rowData[self.uniqueId];
+                    drawCell(rowHeaderCell, index, rowOrderIndex)(a, -1, -1);
+                }
+            }
+            function drawRow(r, d) {
+                var i, treeHeight, rowSansTreeHeight, o, g = s.length;
+                if (y - (cellHeight * 2) > h) {
+                    return false;
+                }
+                rd = self.data[r];
+                rowOpen = self.openChildren[rd[self.uniqueId]];
+                rowSansTreeHeight = self.sizes.rows[rd[self.uniqueId]] || self.style.cellHeight;
+                treeHeight = (rowOpen ? self.sizes.trees[rd[self.uniqueId]] : 0);
+                rowHeight = rowSansTreeHeight + treeHeight;
+                if (y < rowHeight * -1) {
+                    return false;
+                }
+                if (self.attributes.showRowHeaders) {
+                    x += headerCellWidth;
+                }
+                cellHeight = rowHeight;
+                for (o = self.scrollIndexLeft; o < g; o += 1) {
+                    i = self.orders.columns[o];
+                    x += drawCell(rd, r, d)(s[i], i, o);
+                    if (x > self.width) {
+                        break;
+                    }
+                }
+                drawRowHeader(rd, r, d);
+                // cell height might have changed during drawing
+                cellHeight = rowHeight;
+                x = (self.scrollBox.scrollLeft * -1) + self.scrollPixelLeft;
+                // don't draw a tree for the new row
+                treeGrid = self.childGrids[rd[self.uniqueId]];
+                if (r !== self.data.length && rowOpen) {
+                    treeGrid.visible = true;
+                    treeGrid.parentNode = {
+                        offsetTop: y + rowSansTreeHeight + self.canvasOffsetTop,
+                        offsetLeft: x + headerCellWidth - 1 + self.canvasOffsetLeft,
+                        offsetHeight: treeHeight,
+                        offsetWidth: self.width - headerCellWidth - self.style.scrollBarWidth - 1,
+                        offsetParent: self.intf.parentNode,
+                        parentNode: self.intf.parentNode,
+                        style: self.style,
+                        nodeType: 'canvas-datagrid-tree',
+                        scrollTop: self.scrollBox.scrollTop,
+                        scrollLeft: self.scrollBox.scrollLeft,
+                        rowIndex: r
+                    };
+                    self.visibleCells.unshift({
+                        rowIndex: x,
+                        columnIndex: 0,
+                        y: treeGrid.parentNode.offsetTop,
+                        x: treeGrid.parentNode.offsetLeft,
+                        height: treeGrid.parentNode.offsetHeight,
+                        width: treeGrid.parentNode.offsetWidth,
+                        style: 'tree-grid',
+                        type: treeGrid.parentNode.nodeType
+                    });
+                    treeGrid.draw();
+                } else if (treeGrid) {
+                    treeGrid.parentNode.offsetHeight = 0;
+                    delete self.sizes.trees[rd[self.uniqueId]];
+                }
+                if (self.attributes.rowSelectionMode
+                        && self.activeCell
+                        && self.activeCell.rowIndex === r) {
+                    self.ctx.lineWidth = self.style.activeCellOverlayBorderWidth;
+                    self.ctx.strokeStyle = self.style.activeCellOverlayBorderColor;
+                    strokeRect(0, y, self.getHeaderWidth(), rowHeight);
+                }
+                y += cellHeight + borderWidth;
+                return true;
+            }
+            function initDraw() {
+                if (self.attributes.showPerformance) {
+                    p = performance.now();
+                }
+                borderWidth = self.style.cellBorderWidth * 2;
+                self.visibleRows = [];
+                s = self.getVisibleSchema();
+                self.visibleCells = [];
+                self.canvasOffsetTop = self.isChildGrid ? self.parentNode.offsetTop : 0;
+                self.canvasOffsetLeft = self.isChildGrid ? self.parentNode.offsetLeft : 0;
+                h = self.height;
+                w = self.width;
+                if (!self.isChildGrid) {
+                    self.ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+                }
+            }
+            function drawBackground() {
+                radiusRect(0, 0, w, h, 0);
+                self.ctx.clip();
+                self.ctx.fillStyle = self.style.backgroundColor;
+                fillRect(0, 0, w, h);
+            }
+            function drawRows() {
+                var o, n, i, g = s.length;
+                x = (self.scrollBox.scrollLeft * -1) + self.scrollPixelLeft;
+                y = (self.scrollBox.scrollTop * -1) + headerCellHeight + self.scrollPixelTop;
+                for (r = self.scrollIndexTop; r < l; r += 1) {
+                    n = self.orders.rows[r];
+                    if (!drawRow(n, r)) {
+                        break;
+                    }
+                }
+                if (self.attributes.showNewRow) {
+                    if (self.attributes.showRowHeaders) {
+                        x += headerCellWidth;
+                    }
+                    rowHeight = cellHeight = self.style.cellHeight;
+                    rowOpen = false;
+                    for (o = self.scrollIndexLeft; o < g; o += 1) {
+                        i = self.orders.columns[o];
+                        x += drawCell(self.newRow, self.data.length, self.data.length)(s[i], i, o);
+                        if (x > self.width + self.scrollBox.scrollLeft) {
+                            break;
+                        }
+                    }
+                    drawRowHeader(self.newRow, self.data.length, self.data.length);
+                }
+            }
+            function drawReorderMarkers() {
+                if (!self.reorderObject) { return; }
+                var b = {
+                        height: self.reorderObject.height,
+                        width: self.reorderObject.width,
+                        x: self.reorderObject.x + self.reorderObject.dragOffset.x,
+                        y: self.reorderObject.y + self.reorderObject.dragOffset.y
+                    },
+                    m = {
+                        width: w,
+                        heigth: h,
+                        x: 0,
+                        y: 0
+                    };
+                self.ctx.fillStyle = self.style.reorderMarkerBackgroundColor;
+                self.ctx.lineWidth = self.style.reorderMarkerBorderWidth;
+                self.ctx.strokeStyle = self.style.reorderMarkerBorderColor;
+                if (self.dragMode === 'row-reorder') {
+                    b.width = w;
+                    b.x = 0;
+                    m.width = w;
+                    m.y = self.currentCell.y;
+                    fillRect(b.x, b.y, b.width, b.height);
+                    strokeRect(b.x, b.y, b.width, b.height);
+                    self.ctx.lineWidth = self.style.reorderMarkerIndexBorderWidth;
+                    self.ctx.strokeStyle = self.style.reorderMarkerIndexBorderColor;
+                    if (self.currentCell.rowIndex !== self.reorderObject.rowIndex
+                            && self.currentCell.rowIndex - 1 !== self.reorderObject.rowIndex) {
+                        addBorderLine(m, 't');
+                    }
+                } else if (self.dragMode === 'column-reorder' && self.reorderObject) {
+                    b.height = h;
+                    b.y = 0;
+                    m.height = h;
+                    m.x = self.currentCell.x;
+                    fillRect(b.x, b.y, b.width, b.height);
+                    strokeRect(b.x, b.y, b.width, b.height);
+                    self.ctx.lineWidth = self.style.reorderMarkerIndexBorderWidth;
+                    self.ctx.strokeStyle = self.style.reorderMarkerIndexBorderColor;
+                    if (self.currentCell.columnIndex !== self.reorderObject.columnIndex
+                            && self.currentCell.columnIndex - 1 !== self.reorderObject.columnIndex) {
+                        addBorderLine(m, 'l');
+                    }
+                }
+            }
+            function drawBorder() {
+                self.ctx.lineWidth = self.style.gridBorderWidth;
+                self.ctx.strokeStyle = self.style.gridBorderColor;
+                strokeRect(0, 0, self.width, self.height);
+            }
+            function drawDebug() {
+                if (self.attributes.showPerformance) {
+                    self.ctx.fillStyle = 'black';
+                    p = (performance.now() - p).toFixed(2) + 'ms';
+                    self.ctx.font = '23px sans-serif';
+                    fillText(p, w - (w / 5), h - (h / 10));
+                }
+                if (self.attributes.debug) {
+                    self.ctx.font = '14px sans-serif';
+                    p = ('scrollLeft: %s, scrollTop: %s, topIndex: %s, topPixel: %s, leftIndex: %s, leftPixel: %s,'
+                        + '\noffsetLeft: %s, offsetTop: %s, w: %s, h: %s, x: %s, y: %s,'
+                        + '\nvisible entities: %s, focus: %s, dragMode: %s,'
+                        + '\nanimationFrames: %s, touchDelta.x: %s, touchDelta.y: %s, '
+                        + '\nease.x: %s, ease.y: %s, ease.dx: %s, ease.dy: %s, ease.endX: %s, ease.endY: %s,'
+                        + '\nt: %s'
+                        + '\ncontext: %s')
+                        .replace('%s', self.scrollBox.scrollLeft)
+                        .replace('%s', self.scrollBox.scrollTop)
+                        .replace('%s', self.scrollIndexTop)
+                        .replace('%s', self.scrollPixelTop)
+                        .replace('%s', self.scrollIndexLeft)
+                        .replace('%s', self.scrollPixelLeft)
+                        .replace('%s', self.canvasOffsetLeft)
+                        .replace('%s', self.canvasOffsetTop)
+                        .replace('%s', self.width)
+                        .replace('%s', self.height)
+                        .replace('%s', self.mouse.x)
+                        .replace('%s', self.mouse.y)
+                        .replace('%s', self.visibleCells.length)
+                        .replace('%s', self.hasFocus)
+                        .replace('%s', self.dragMode)
+                        .replace('%s', self.animationFrames)
+                        .replace('%s', self.touchDelta.x.toFixed(2))
+                        .replace('%s', self.touchDelta.y.toFixed(2))
+                        .replace('%s', self.touchAnimateTo.x.toFixed(2))
+                        .replace('%s', self.touchAnimateTo.y.toFixed(2))
+                        .replace('%s', self.touchAnimateTo.dx.toFixed(2))
+                        .replace('%s', self.touchAnimateTo.dy.toFixed(2))
+                        .replace('%s', self.touchEndedAt.x.toFixed(2))
+                        .replace('%s', self.touchEndedAt.y.toFixed(2))
+                        .replace('%s', performance.now())
+                        .replace('%s', self.currentCell
+                            ? (('(x: %s, y: %s, ox: %s, oy: %s, context: %s, dragContext: %s, style: %s, type: %s)')
+                                .replace('%s', self.currentCell.columnIndex)
+                                .replace('%s', self.currentCell.rowIndex)
+                                .replace('%s', self.currentCell.sortColumnIndex)
+                                .replace('%s', self.currentCell.sortRowIndex)
+                                .replace('%s', self.currentCell.context)
+                                .replace('%s', self.currentCell.dragContext)
+                                .replace('%s', self.currentCell.style)
+                                .replace('%s', self.currentCell.type)) : '');
+                    p.split('\n').forEach(function (s, index) {
+                        self.ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                        fillRect(70, 39 + (index * 15), self.ctx.measureText(s).width + 20, 15);
+                        self.ctx.fillStyle = 'rgba(0, 0, 0, 1)';
+                        fillText(s, 80, 52 + (index * 15));
+                    });
+                }
+            }
+            self.ctx.save();
+            initDraw();
+            drawBackground();
+            drawRows();
+            drawHeaderRow();
+            drawReorderMarkers();
+            drawScrollBars();
+            if (checkScrollHeight) {
+                self.resize(true);
+            }
+            drawBorder();
+            drawDebug();
+            self.ctx.restore();
+        };
+    };
+}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ }),
+/* 2 */
+/*!***********************!*\
+  !*** ./lib/events.js ***!
+  \***********************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true*/
+/*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+    'use strict';
+    return function (self) {
+        self.touchDelta = {x: 0, y: 0};
+        self.touchAnimateTo = {x: 0, y: 0, dx: 0, dy: 0};
+        self.touchEndedAt = {x: 0, y: 0};
+        self.touchReleaseAnimationDuration = 1000;
+        self.touchReleaseAcceleration = 3;
+        self.touchDeadZone = 3;
+        self.touchDown = false;
+        self.touchingCell = false;
+        self.touchHaltAnimation = false;
+        self.animationFrames = 0;
+        self.touchSelectTimeMs = 1000;
+        self.getTouchPos = function (e) {
+            var rect = self.canvas.getBoundingClientRect(),
+                pos = {
+                    x: e.touches[0].clientX - rect.left,
+                    y: e.touches[0].clientY - rect.top
+                };
+            if (self.isChildGrid) {
+                pos.x -= self.canvasOffsetLeft;
+                pos.y -= self.canvasOffsetTop;
+            }
+            return {
+                x: pos.x,
+                y: pos.y
+            };
+        };
+        self.doubleTouchCell = function (e) {
+            //
+        };
+        self.touchCell = function (e) {
+            return function () {
+                var pos = self.getTouchPos(e);
+                // translate e into mouse event
+                if (Math.abs(self.touchDelta.x) + Math.abs(self.touchDelta.y) < self.touchDeadZone) {
+                    self.touchingCell = self.getCellAt(pos.x, pos.y);
+                    self.mousedown(e, pos);
+                }
+            };
+        };
+        self.touchstart = function (e) {
+            self.hasFocus = true;
+            self.touchDown = true;
+            self.stopPropagation(e);
+            e.preventDefault();
+            self.touchStart = self.getTouchPos(e);
+            self.touchScrollStart = {
+                x: self.scrollBox.scrollLeft,
+                y: self.scrollBox.scrollTop,
+                t: performance.now()
+            };
+            self.touchDelta = {x: 0, y: 0};
+            self.touchAnimateTo = {x: -1, y: -1, dx: 0, dy: 0};
+            clearInterval(self.touchTimeout);
+            self.touchTimeout = setTimeout(self.touchCell(e), self.touchSelectTimeMs);
+            self.touchHaltAnimation = true;
+            document.body.addEventListener('touchmove', self.touchmove, {passive: false});
+            document.body.addEventListener('touchend', self.touchend, false);
+            document.body.addEventListener('touchcancel', self.touchcancel, false);
+        };
+        self.easing = function (t, b, c, d) {
+            return c * (t / d) * t * t + b;
+        };
+        self.touchEndAnimation = function () {
+            var x,
+                y,
+                n = performance.now(),
+                tx,
+                ty;
+            self.touchAnimateTo.dx = self.touchAnimateTo.dx || (n + 1000) / 1000;
+            self.touchAnimateTo.dy = self.touchAnimateTo.dy || (n + 1000) / 1000;
+            tx = self.touchAnimateTo.dx - (n / 1000);
+            ty = self.touchAnimateTo.dy - (n / 1000);
+            if ((tx < 0 && ty < 0) || self.touchHaltAnimation) {
+                self.animationFrames = 0;
+                self.touchHaltAnimation = false;
+                self.touchAnimateTo = {x: -1, y: -1, dx: 0, dy: 0};
+                return;
+            }
+            self.animationFrames += 1;
+            x = self.easing(-tx, self.touchEndedAt.x, self.touchAnimateTo.x, self.touchAnimateTo.dx + 1);
+            y = self.easing(-ty, self.touchEndedAt.y, self.touchAnimateTo.y, self.touchAnimateTo.dy + 1);
+            self.scrollBox.scrollLeft = x;
+            self.scrollBox.scrollTop = y;
+            requestAnimationFrame(self.touchEndAnimation);
+        };
+        self.touchend = function (e) {
+            var n, xPPS, yPPS;
+            self.touchDown = false;
+            self.touchingCell = false;
+            document.body.removeEventListener('touchmove', self.touchmove, {passive: false});
+            document.body.removeEventListener('touchend', self.touchend, false);
+            document.body.removeEventListener('touchcancel', self.touchcancel, false);
+            self.touchEndedAt = {
+                x: self.scrollBox.scrollLeft,
+                y: self.scrollBox.scrollTop
+            };
+            n = performance.now();
+            xPPS = ((self.touchEndedAt.x - self.touchScrollStart.x) / (n - self.touchScrollStart.t)) * 1000;
+            yPPS = ((self.touchEndedAt.y - self.touchScrollStart.y) / (n - self.touchScrollStart.t)) * 1000;
+            self.touchAnimateTo = {
+                x: xPPS * self.touchReleaseAcceleration,
+                y: yPPS * self.touchReleaseAcceleration,
+                dx: 0,
+                dy: 0
+            };
+            self.touchHaltAnimation = false;
+            self.touchEndAnimation();
+        };
+        self.touchmove = function (e) {
+            var d = self.getTouchPos(e);
+            self.stopPropagation(e);
+            e.preventDefault();
+            self.touchDelta = {
+                x: d.x - self.touchStart.x,
+                y: d.y - self.touchStart.y
+            };
+            if (self.touchingCell) {
+                self.mousemove(e, d);
+            } else {
+                self.scrollBox.scrollLeft = self.touchScrollStart.x - self.touchDelta.x;
+                self.scrollBox.scrollTop = self.touchScrollStart.y - self.touchDelta.y + self.touchAnimateTo.x;
+            }
+        };
+        self.touchcancel = function (e) {
+            var d = self.getTouchPos(e);
+        };
+        self.stopPropagation = function (e) { e.stopPropagation(); };
+        self.addEventListener = function (ev, fn) {
+            self.events[ev] = self.events[ev] || [];
+            self.events[ev].unshift(fn);
+        };
+        self.removeEventListener = function (ev, fn) {
+            (self.events[ev] || []).forEach(function removeEachListener(sfn, idx) {
+                if (fn === sfn) {
+                    self.events[ev].splice(idx, 1);
+                }
+            });
+        };
+        self.dispatchEvent = function (ev, args, context) {
+            args = args || {};
+            context = context || self.intf;
+            var defaultPrevented;
+            function preventDefault() {
+                defaultPrevented = true;
+            }
+            if (!self.events[ev]) { return; }
+            self.events[ev].forEach(function dispatchEachEvent(fn) {
+                args[0].preventDefault = preventDefault;
+                fn.apply(context, args);
+            });
+            return defaultPrevented;
+        };
+        self.resize = function (drawAfterResize) {
+            var cellBorder = self.style.cellBorderWidth * 2,
+                headerCellBorder =  self.style.headerCellBorderWidth * 2,
+                scrollHeight,
+                scrollWidth,
+                headerCellHeight = self.getHeaderCellHeight(),
+                headerCellWidth = self.getHeaderCellWidth(),
+                // TODO: What the hell are these numbers!?  They are probably some value in the style.
+                scrollDragPositionOffsetY = 30,
+                scrollDragPositionOffsetX = 15;
+            if (self.isChildGrid) {
+                self.height = self.parentNode.offsetHeight;
+                self.width = self.parentNode.offsetWidth;
+            } else {
+                self.height = self.parentDOMNode.offsetHeight - self.style.scrollBarBoxMargin;
+                self.width = self.parentDOMNode.offsetWidth - self.style.scrollBarBoxMargin;
+                self.parentNode = self.parentDOMNode;
+                self.canvas.height = self.height * window.devicePixelRatio;
+                self.canvas.width = self.width * window.devicePixelRatio;
+                self.canvas.style.height = self.height + 'px';
+                self.canvas.style.width = self.width + 'px';
+                self.canvasOffsetTop = 0;
+                self.canvasOffsetLeft = 0;
+            }
+            scrollHeight = self.data.reduce(function reduceData(accumulator, row) {
+                return accumulator
+                    + (self.sizes.rows[row[self.uniqueId]] || self.style.cellHeight)
+                    + (self.sizes.trees[row[self.uniqueId]] || 0)
+                    + cellBorder;
+            }, 0) || 0;
+            scrollWidth = self.getVisibleSchema().reduce(function reduceSchema(accumulator, column) {
+                if (column.hidden) { return accumulator; }
+                return accumulator + (self.sizes.columns[column[self.uniqueId]] || column.width || self.style.columnWidth) + cellBorder;
+            }, 0) || 0;
+            if (self.attributes.showNewRow) {
+                scrollHeight += self.style.cellHeight + cellBorder;
+            }
+            self.scrollBox.width = self.width - headerCellWidth;
+            self.scrollBox.height = self.height - headerCellHeight - headerCellBorder;
+            self.scrollBox.top = headerCellHeight + headerCellBorder;
+            self.scrollBox.left = headerCellWidth;
+            self.scrollBox.scrollHeight = scrollHeight + self.style.scrollBarWidth - self.scrollBox.height;
+            self.scrollBox.scrollWidth = scrollWidth + self.style.scrollBarWidth - self.scrollBox.width;
+            self.scrollBox.widthBoxRatio = ((self.scrollBox.width - scrollDragPositionOffsetX)
+                / (self.scrollBox.scrollWidth + self.scrollBox.width - scrollDragPositionOffsetX));
+            self.scrollBox.scrollBoxWidth = self.scrollBox.width
+                * self.scrollBox.widthBoxRatio
+                - self.style.scrollBarWidth;
+            self.scrollBox.heightBoxRatio = ((self.scrollBox.height - scrollDragPositionOffsetY)
+                / (self.scrollBox.scrollHeight + (self.scrollBox.height - scrollDragPositionOffsetY)));
+            self.scrollBox.scrollBoxHeight = self.scrollBox.height
+                * self.scrollBox.heightBoxRatio
+                - self.style.scrollBarWidth;
+            self.scrollBox.scrollBoxWidth = Math.max(self.scrollBox.scrollBoxWidth, self.style.scrollBarBoxMinSize);
+            self.scrollBox.scrollBoxHeight = Math.max(self.scrollBox.scrollBoxHeight, self.style.scrollBarBoxMinSize);
+            self.page = self.visibleRows.length - 3 - self.attributes.pageUpDownOverlap;
+            if (drawAfterResize) {
+                self.draw(true);
+            }
+            self.dispatchEvent('resize', [{}], self.intf);
+            return true;
+        };
+        self.scroll = function (e) {
+            var pos,
+                s = self.getVisibleSchema(),
+                cellBorder = self.style.cellBorderWidth * 2;
+            self.scrollIndexTop = 0;
+            self.scrollPixelTop = 0;
+            self.scrollIndexLeft = 0;
+            self.scrollPixelLeft = 0;
+            while (self.scrollPixelTop < self.scrollBox.scrollTop && self.scrollIndexTop < self.data.length) {
+                self.scrollPixelTop +=
+                    (self.sizes.rows[self.data[self.scrollIndexTop][self.uniqueId]] || self.style.cellHeight)
+                    + (self.sizes.trees[self.data[self.scrollIndexTop][self.uniqueId]] || 0)
+                    + cellBorder;
+                self.scrollIndexTop += 1;
+            }
+            while (self.scrollPixelLeft < self.scrollBox.scrollLeft && self.scrollIndexLeft < s.length) {
+                self.scrollPixelLeft +=
+                    (self.sizes.columns[s[self.scrollIndexLeft][self.uniqueId]] || s[self.scrollIndexLeft].width);
+                self.scrollIndexLeft += 1;
+            }
+            if (self.data.length > 0) {
+                self.scrollIndexLeft = Math.max(self.scrollIndexLeft - 1, 0);
+                self.scrollPixelLeft = Math.max(self.scrollPixelLeft
+                    - (self.sizes.columns[s[self.scrollIndexLeft][self.uniqueId]] || s[self.scrollIndexLeft].width), 0);
+                self.scrollIndexTop = Math.max(self.scrollIndexTop - 1, 0);
+                self.scrollPixelTop = Math.max(self.scrollPixelTop
+                    - (self.sizes.rows[self.data[self.scrollIndexTop][self.uniqueId]] || self.style.cellHeight)
+                    - (self.sizes.trees[self.data[self.scrollIndexTop][self.uniqueId]] || 0), 0);
+            }
+            self.ellipsisCache = {};
+            self.draw(true);
+            if (self.input) {
+                pos = self.position(self.parentNode, true);
+                self.input.style.top = pos.top + self.scrollEdit.inputTop
+                    + (self.scrollEdit.scrollTop - self.scrollBox.scrollTop) + 'px';
+                self.input.style.left = pos.left + self.scrollEdit.inputLeft
+                    + (self.scrollEdit.scrollLeft - self.scrollBox.scrollLeft) + 'px';
+                self.clipElement(self.input);
+            }
+            self.dispatchEvent('scroll', [{top: self.scrollBox.scrollTop, left: self.scrollBox.scrollLeft }], self.intf);
+        };
+        self.mousemove = function (e, overridePos) {
+            if (self.contextMenu || self.input) {
+                return;
+            }
+            self.mouse = overridePos || self.getLayerPos(e);
+            var ctrl = (e.controlKey || e.metaKey || self.attributes.persistantSelectionMode),
+                i,
+                s = self.getSchema(),
+                dragBounds,
+                sBounds,
+                x = self.mouse.x,
+                y = self.mouse.y,
+                o,
+                delta;
+            clearTimeout(self.scrollTimer);
+            if (self.dispatchEvent('mousemove', [e, o], self.intf)) {
+                return;
+            }
+            if (!self.isInGrid({x: x, y: y})) {
+                self.hasFocus = false;
+            }
+            o = self.getCellAt(x, y);
+            if (o && self.currentCell && (self.currentCell.rowIndex !== o.rowIndex
+                    || self.currentCell.columnIndex !== o.columnIndex)) {
+                self.cellBoundaryCrossed = true;
+                self.dispatchEvent('cellmouseover', [e, o], self.intf);
+                self.dispatchEvent('cellmouseout', [e, self.currentCell], self.intf);
+            }
+            self.currentCell = o;
+            if (!self.hasFocus) {
+                return;
+            }
+            self.hovers = {};
+            if (!self.draggingItem
+                    && o
+                    && self.scrollModes.indexOf(o.context) === -1) {
+                self.dragItem = o;
+                self.dragMode = o.dragContext;
+                self.canvas.style.cursor = o.context;
+                if (o.context === 'cell' && o.data) {
+                    self.canvas.style.cursor = 'pointer';
+                    self.hovers[o.data[self.uniqueId]] = [o.rowIndex];
+                }
+                if ((self.selecting || self.reorderObject)
+                        && o.context === 'cell'
+                        && o.data) {
+                    sBounds = self.getSelectionBounds();
+                    delta = {
+                        x: Math.abs(self.dragStart.x - x),
+                        y: Math.abs(self.dragStart.y - y),
+                    };
+                    if (self.dragStartObject.columnIndex !== -1 && e.shiftKey) {
+                        self.dragStartObject = {
+                            rowIndex: self.activeCell.rowIndex,
+                            columnIndex: self.activeCell.columnIndex
+                        };
+                    }
+                    dragBounds = {
+                        top: Math.min(self.dragStartObject.rowIndex, o.rowIndex),
+                        left: Math.min(self.dragStartObject.columnIndex, o.columnIndex),
+                        bottom: Math.max(self.dragStartObject.rowIndex, o.rowIndex),
+                        right: Math.max(self.dragStartObject.columnIndex, o.columnIndex)
+                    };
+                    if (self.dragStartObject.columnIndex === -1) {
+                        dragBounds.left = -1;
+                        dragBounds.right = s.length - 1;
+                        dragBounds.top = Math.min(sBounds.top, o.rowIndex);
+                        dragBounds.bottom = Math.max(sBounds.bottom, o.rowIndex);
+                    }
+                    if (self.dragStartObject.rowIndex !== o.rowIndex
+                                || self.dragStartObject.columnIndex !== o.columnIndex) {
+                        self.ignoreNextClick = true;
+                    }
+                    if (self.cellBoundaryCrossed || (delta.x === 0 && delta.y === 0) || self.attributes.rowSelectionMode) {
+                        if (self.attributes.rowSelectionMode || self.dragStartObject.columnIndex === -1) {
+                            self.selectRow(o.rowIndex, ctrl, true);
+                        } else {
+                            if (!self.dragAddToSelection && o.rowIndex) {
+                                if (self.selections[o.rowIndex] && self.selections[o.rowIndex].indexOf(o.columnIndex) !== -1) {
+                                    self.selections[o.rowIndex].splice(self.selections[o.rowIndex].indexOf(o.columnIndex), 1);
+                                }
+                            } else {
+                                self.selections[o.rowIndex] = self.selections[o.rowIndex] || [];
+                                if (self.selections[o.rowIndex].indexOf(o.columnIndex) === -1) {
+                                    self.selections[o.rowIndex].push(o.columnIndex);
+                                }
+                            }
+                        }
+                    }
+                    if ((!self.selectionBounds || (dragBounds.top !== self.selectionBounds.top
+                            || dragBounds.left !== self.selectionBounds.left
+                            || dragBounds.bottom !== self.selectionBounds.bottom
+                            || dragBounds.right !== self.selectionBounds.right)) && !ctrl) {
+                        self.selections = [];
+                        sBounds = dragBounds;
+                        if (self.attributes.rowSelectionMode) {
+                            for (i = sBounds.top; i <= sBounds.bottom; i += 1) {
+                                self.selectRow(i, true, true);
+                            }
+                        } else {
+                            self.selectArea(sBounds, true);
+                        }
+                    }
+                    self.autoScrollZone(e, x, y, ctrl);
+                }
+            }
+            self.cellBoundaryCrossed = false;
+            self.draw(true);
+        };
+        /**
+         * Ends editing, optionally aborting the edit.
+         * @memberof canvasDataGrid#
+         * @method
+         * @param {boolean} abort When true, abort the edit.
+         */
+        self.endEdit = function (abort) {
+            var cell = self.input.editCell,
+                y = cell.rowIndex;
+            function abortEdit() {
+                abort = true;
+            }
+            if (self.dispatchEvent('beforeendedit', [{}, cell, self.input.value, cell.value,
+                    abortEdit, self.input], self.intf)) { return false; }
+            if (self.input.value !== cell.value && !abort) {
+                self.changes[y] = self.changes[y] || {};
+                self.changes[y][cell.header.name] = self.input.value;
+                cell.data[cell.header.name] = self.input.value;
+                if (y === self.data.length) {
+                    if (self.dispatchEvent('newrow', [self.input.value, cell.value,
+                            abort, cell, self.input], self.intf)) { return false; }
+                    self.uId += 1;
+                    self.addRow(cell.data);
+                    self.createNewRowData();
+                }
+                self.draw(true);
+            }
+            document.body.removeChild(self.input);
+            self.controlInput.focus();
+            self.dispatchEvent('endedit', [{}, cell, self.input.value, abort, self.input], self.intf);
+            self.input = undefined;
+            return true;
+        };
+        /**
+         * Begins editing at cell x, row y.
+         * @memberof canvasDataGrid#
+         * @method
+         * @param {number} x The column index of the cell to edit.
+         * @param {number} y The row index of the cell to edit.
+         */
+        self.beginEditAt = function (x, y) {
+            if (!self.attributes.editable) { return; }
+            var top, left, cell, s = self.getVisibleSchema();
+            cell = self.visibleCells.filter(function (vCell) {
+                return vCell.columnIndex === x && vCell.rowIndex === y;
+            })[0];
+            if (self.dispatchEvent('beforebeginedit', [{}, cell], self.intf)) { return false; }
+            self.scrollIntoView(x, y);
+            self.setActiveCell(x, y);
+            function postDraw() {
+                var pos = self.position(self.parentNode, true);
+                cell = self.visibleCells.filter(function (vCell) {
+                    return vCell.columnIndex === x && vCell.rowIndex === y;
+                })[0];
+                top = cell.y + self.style.cellBorderWidth;
+                left = cell.x + self.style.cellBorderWidth;
+                self.scrollEdit = {
+                    scrollTop: self.scrollBox.scrollTop,
+                    scrollLeft: self.scrollBox.scrollLeft,
+                    inputTop: top,
+                    inputLeft: left
+                };
+                self.input = document.createElement(self.attributes.multiLine ? 'textarea' : 'input');
+                document.body.appendChild(self.input);
+                self.input.className = 'canvas-datagrid-edit-input';
+                self.input.style.position = 'absolute';
+                self.input.style.top = pos.top - 1 + top + 'px';
+                self.input.style.left = pos.left - 1 + left + 'px';
+                self.input.style.height = cell.height - (self.style.cellBorderWidth * 2) + 'px';
+                self.input.style.width = cell.width - (self.style.cellBorderWidth * 2)
+                    - self.style.cellPaddingLeft + 'px';
+                self.input.style.zIndex = '2';
+                self.input.value = cell.value;
+                self.input.editCell = cell;
+                self.clipElement(self.input);
+                self.input.focus();
+                self.input.addEventListener('click', self.stopPropagation);
+                self.input.addEventListener('dblclick', self.stopPropagation);
+                self.input.addEventListener('mouseup', self.stopPropagation);
+                self.input.addEventListener('mousedown', self.stopPropagation);
+                self.input.addEventListener('keydown', function (e) {
+                    var nx = cell.columnIndex,
+                        ny = cell.rowIndex;
+                    // esc
+                    if (e.keyCode === 27) {
+                        self.endEdit(true);
+                        self.draw(true);
+                    // enter
+                    } else if (e.keyCode === 13) {
+                        self.endEdit();
+                        self.draw(true);
+                    } else if (e.keyCode === 9) {
+                        e.preventDefault();
+                        if (!self.endEdit()) {
+                            return;
+                        }
+                        if (e.shiftKey) {
+                            nx -= 1;
+                        } else {
+                            nx += 1;
+                        }
+                        if (nx < 0) {
+                            nx = s.length - 1;
+                            ny -= 1;
+                        }
+                        if (nx > s.length - 1) {
+                            nx = 0;
+                            ny += 1;
+                        }
+                        if (ny < 0) {
+                            ny = self.data.length - 1;
+                        }
+                        if (ny > self.data.length - 1) {
+                            ny = 0;
+                        }
+                        self.beginEditAt(nx, ny);
+                    }
+                });
+            }
+            requestAnimationFrame(postDraw);
+            self.dispatchEvent('beginedit', [cell, self.input], self.intf);
+        };
+        self.click = function (e, overridePos) {
+            var i,
+                selectionChanged,
+                ctrl = (e.controlKey || e.metaKey || self.attributes.persistantSelectionMode),
+                pos = overridePos || self.getLayerPos(e);
+            self.currentCell = self.getCellAt(pos.x, pos.y);
+            if (self.currentCell.grid !== undefined) {
+                return;
+            }
+            function checkSelectionChange() {
+                if (!selectionChanged) { return; }
+                self.dispatchEvent('selectionchanged',
+                    [self.getSelectedData(), self.selections, self.selectionBounds], self.intf);
+            }
+            if (self.input) {
+                self.endEdit();
+            }
+            if (self.ignoreNextClick) {
+                self.ignoreNextClick = false;
+                return;
+            }
+            i = self.currentCell;
+            if (self.dispatchEvent('click', [e, self.currentCell], self.intf)) { return; }
+            if (!self.hasFocus) {
+                return;
+            }
+            if (self.currentCell.context === 'cell') {
+                if (self.currentCell.style === 'cornerCell') {
+                    self.order(self.uniqueId, 'asc');
+                    self.setFilter();
+                    checkSelectionChange();
+                    return;
+                }
+                if (self.currentCell.style === 'headerCell') {
+                    if (self.orderBy === i.header.name) {
+                        self.orderDirection = self.orderDirection === 'asc' ? 'desc' : 'asc';
+                    } else {
+                        self.orderDirection = 'asc';
+                    }
+                    self.order(i.header.name, self.orderDirection);
+                    checkSelectionChange();
+                    return;
+                }
+                if (['rowHeaderCell', 'headerCell'].indexOf(self.currentCell.style) === -1 && !ctrl) {
+                    self.setActiveCell(i.columnIndex, i.rowIndex);
+                }
+                self.selections[i.rowIndex] = self.selections[i.rowIndex] || [];
+                if ((self.attributes.rowSelectionMode || self.currentCell.style === 'rowHeaderCell')) {
+                    if (self.currentCell.style === 'rowHeaderCell'
+                            && self.attributes.tree && pos.x > 0
+                            && pos.x - self.currentCell.x < self.style.treeArrowWidth
+                            + self.style.treeArrowMarginLeft
+                            + self.style.treeArrowMarginRight + self.style.treeArrowClickRadius
+                            && pos.y - self.currentCell.y < self.style.treeArrowHeight
+                            + self.style.treeArrowMarginTop + self.style.treeArrowClickRadius
+                            && pos.y > 0) {
+                        self.toggleTree(i.rowIndex);
+                        return;
+                    }
+                    selectionChanged = true;
+                    self.selectRow(i.rowIndex, ctrl, true);
+                }
+                if (e.shiftKey && !ctrl) {
+                    self.selectionBounds = self.getSelectionBounds();
+                    self.selectArea(undefined, false);
+                }
+            }
+            checkSelectionChange();
+            self.draw(true);
+        };
+        self.dragResizeColumn = function (e) {
+            var pos, x, y;
+            pos = self.getLayerPos(e);
+            x = self.resizingStartingWidth + pos.x - self.dragStart.x;
+            y = self.resizingStartingHeight + pos.y - self.dragStart.y;
+            if (x < self.style.minColumnWidth) {
+                x = self.style.minColumnWidth;
+            }
+            if (y < self.style.minRowHeight) {
+                y = self.style.minRowHeight;
+            }
+            if (self.dispatchEvent('resizecolumn', [{}, x, y, self.draggingItem], self.intf)) { return false; }
+            if (self.scrollBox.scrollLeft > self.scrollBox.scrollWidth - self.attributes.resizeScrollZone
+                    && self.dragMode === 'ew-resize') {
+                self.resize(true);
+                self.scrollBox.scrollLeft += x;
+            }
+            if (self.dragMode === 'ew-resize') {
+                self.sizes.columns[self.draggingItem.header.style === 'rowHeaderCell'
+                       ? 'cornerCell' : self.draggingItem.header[self.uniqueId]] = x;
+                if (['rowHeaderCell', 'cornerCell'].indexOf(self.draggingItem.header.style) !== -1) {
+                    self.resize(true);
+                }
+                self.resizeChildGrids();
+                return;
+            }
+            if (self.dragMode === 'ns-resize') {
+                if (self.draggingItem.rowOpen) {
+                    self.sizes.trees[self.draggingItem.data[self.uniqueId]] = y;
+                } else if (self.attributes.globalRowResize) {
+                    self.style.cellHeight = y;
+                } else {
+                    self.sizes.rows[self.draggingItem.data[self.uniqueId]] = y;
+                }
+                self.dispatchEvent('resizerow', [y], self.intf);
+                self.resizeChildGrids();
+                return;
+            }
+            self.ellipsisCache = {};
+        };
+        self.stopDragResize = function () {
+            self.resize();
+            document.body.removeEventListener('mousemove', self.dragResizeColumn, false);
+            document.body.removeEventListener('mouseup', self.stopDragResize, false);
+            self.setStorageData();
+            self.draw(true);
+            self.ignoreNextClick = true;
+        };
+        self.scrollGrid = function (e) {
+            var pos = self.getLayerPos(e);
+            self.scrollMode = self.getCellAt(pos.x, pos.y).context;
+            if (self.scrollMode === 'horizontal-scroll-box' && self.scrollStartMode !== 'horizontal-scroll-box') {
+                self.scrollStartMode = 'horizontal-scroll-box';
+                self.dragStart = pos;
+                self.scrollStart.left = self.scrollBox.scrollLeft;
+                clearTimeout(self.scrollTimer);
+                return;
+            }
+            if (self.scrollMode === 'vertical-scroll-box' && self.scrollStartMode !== 'vertical-scroll-box') {
+                self.scrollStartMode = 'vertical-scroll-box';
+                self.dragStart = pos;
+                self.scrollStart.top = self.scrollBox.scrollTop;
+                clearTimeout(self.scrollTimer);
+                return;
+            }
+            if (self.scrollStartMode === 'vertical-scroll-box'
+                    && self.scrollMode !== 'vertical-scroll-box') {
+                self.scrollMode = 'vertical-scroll-box';
+            }
+            if (self.scrollStartMode === 'horizontal-scroll-box'
+                    && self.scrollMode !== 'horizontal-scroll-box') {
+                self.scrollMode = 'horizontal-scroll-box';
+            }
+            clearTimeout(self.scrollTimer);
+            if (self.scrollModes.indexOf(self.scrollMode) === -1) {
+                return;
+            }
+            if (self.scrollMode === 'vertical-scroll-box') {
+                self.scrollBox.scrollTop = self.scrollStart.top + ((pos.y - self.dragStart.y)
+                    / self.scrollBox.heightBoxRatio);
+            } else if (self.scrollMode === 'vertical-scroll-top') {
+                self.scrollBox.scrollTop -= (self.page * self.style.cellHeight);
+                self.scrollTimer = setTimeout(self.scrollGrid, self.attributes.scrollRepeatRate, e);
+            } else if (self.scrollMode === 'vertical-scroll-bottom') {
+                self.scrollBox.scrollTop += (self.page * self.style.cellHeight);
+                self.scrollTimer = setTimeout(self.scrollGrid, self.attributes.scrollRepeatRate, e);
+            }
+            if (self.scrollMode === 'horizontal-scroll-box') {
+                self.scrollBox.scrollLeft = self.scrollStart.left + ((pos.x - self.dragStart.x)
+                    / self.scrollBox.widthBoxRatio);
+            } else if (self.scrollMode === 'horizontal-scroll-right') {
+                self.scrollBox.scrollLeft += self.attributes.selectionScrollIncrement;
+                self.scrollTimer = setTimeout(self.scrollGrid, self.attributes.scrollRepeatRate, e);
+            } else if (self.scrollMode === 'horizontal-scroll-left') {
+                self.scrollBox.scrollLeft -= self.attributes.selectionScrollIncrement;
+                self.scrollTimer = setTimeout(self.scrollGrid, self.attributes.scrollRepeatRate, e);
+            }
+        };
+        self.stopScrollGrid = function () {
+            clearTimeout(self.scrollTimer);
+            document.body.removeEventListener('mousemove', self.scrollGrid, false);
+        };
+        self.dragReorder = function (e) {
+            var pos, x, y;
+            pos = self.getLayerPos(e);
+            x = pos.x - self.dragStart.x;
+            y = pos.y - self.dragStart.y;
+            if (!self.attributes.allowColumnReordering && self.dragMode === 'column-reorder') {
+                return;
+            }
+            if (!self.attributes.allowRowReordering && self.dragMode === 'row-reorder') {
+                return;
+            }
+            if (self.dispatchEvent('reordering', [e, self.dragStartObject, self.currentCell, self.dragMode], self.intf)) {
+                return;
+            }
+            if (Math.abs(x) > self.attributes.reorderDeadZone || Math.abs(y) > self.attributes.reorderDeadZone) {
+                self.reorderObject = self.dragStartObject;
+                self.reorderTarget = self.currentCell;
+                self.reorderObject.dragOffset = {
+                    x: x,
+                    y: y
+                };
+                self.autoScrollZone(e, pos.x, pos.x, false);
+            }
+        };
+        self.stopDragReorder = function (e) {
+            var cr = {
+                    'row-reorder': self.orders.rows,
+                    'column-reorder': self.orders.columns
+                },
+                i = {
+                    'row-reorder': 'rowIndex',
+                    'column-reorder': 'columnIndex'
+                }[self.dragMode];
+            document.body.removeEventListener('mousemove', self.dragReorder, false);
+            document.body.removeEventListener('mouseup', self.stopDragReorder, false);
+            if (self.reorderObject
+                    && self.reorderTarget) {
+                self.ignoreNextClick = true;
+                if (self.reorderObject[i] !== self.reorderTarget[i]
+                        && !self.dispatchEvent('reorder', [e, self.reorderObject, self.reorderTarget, self.dragMode], self.intf)) {
+                    cr[self.dragMode].splice(cr[self.dragMode].indexOf(self.reorderObject[i]), 1);
+                    cr[self.dragMode].splice(cr[self.dragMode].indexOf(self.reorderTarget[i]), 0, self.reorderObject[i]);
+                    self.setStorageData();
+                }
+            }
+            self.reorderObject = undefined;
+            self.reorderTarget = undefined;
+            self.draw(true);
+        };
+        self.mousedown = function (e, overridePos) {
+            if (self.dispatchEvent('mousedown', [e, self.currentCell], self.intf)) { return; }
+            if (!self.hasFocus) {
+                return;
+            }
+            if (e.button === 2 || self.input) { return; }
+            var ctrl = (e.controlKey || e.metaKey);
+            self.dragStart = overridePos || self.getLayerPos(e);
+            self.scrollStart = {
+                left: self.scrollBox.scrollLeft,
+                top: self.scrollBox.scrollTop
+            };
+            self.dragStartObject = self.getCellAt(self.dragStart.x, self.dragStart.y);
+            self.dragAddToSelection = !self.dragStartObject.selected;
+            if (!ctrl && !e.shiftKey && !/(vertical|horizontal)-scroll-(bar|box)/
+                    .test(self.dragStartObject.context)) {
+                self.selections = [];
+            }
+            if (self.dragStartObject.isGrid) {
+                return;
+            }
+            if (self.scrollModes.indexOf(self.dragStartObject.context) !== -1) {
+                self.scrollMode = self.dragStartObject.context;
+                self.scrollStartMode = self.dragStartObject.context;
+                self.scrollGrid(e);
+                document.body.addEventListener('mousemove', self.scrollGrid, false);
+                document.body.addEventListener('mouseup', self.stopScrollGrid, false);
+                self.ignoreNextClick = true;
+                return;
+            }
+            if (self.dragMode === 'cell') {
+                self.selecting = true;
+                if (self.attributes.rowSelectionMode) {
+                    self.selectRow(self.dragStartObject.rowIndex, ctrl, true);
+                }
+                return self.mousemove(e);
+            }
+            if (['ns-resize', 'ew-resize'].indexOf(self.dragMode) !== -1) {
+                self.draggingItem = self.dragItem;
+                if (self.draggingItem.rowOpen) {
+                    self.resizingStartingHeight = self.sizes.trees[self.draggingItem.data[self.uniqueId]];
+                } else {
+                    self.resizingStartingHeight = self.sizes.rows[self.draggingItem.data[self.uniqueId]] || self.style.cellHeight;
+                }
+                self.resizingStartingWidth = self.sizes.columns[self.draggingItem.header.style === 'rowHeaderCell'
+                       ? 'cornerCell' : self.draggingItem.header[self.uniqueId]] || self.draggingItem.header.width;
+                document.body.addEventListener('mousemove', self.dragResizeColumn, false);
+                document.body.addEventListener('mouseup', self.stopDragResize, false);
+            }
+            if (['row-reorder', 'column-reorder'].indexOf(self.dragMode) !== -1) {
+                self.draggingItem = self.dragItem;
+                document.body.addEventListener('mousemove', self.dragReorder, false);
+                document.body.addEventListener('mouseup', self.stopDragReorder, false);
+            }
+        };
+        self.mouseup = function (e) {
+            clearTimeout(self.scrollTimer);
+            self.cellBoundaryCrossed = true;
+            self.dispatchEvent('mouseup', [e, self.currentCell], self.intf);
+            if (!self.hasFocus) {
+                return;
+            }
+            if (self.currentCell && self.currentCell.grid !== undefined) {
+                return;
+            }
+            if (self.ontextMenu || self.input) { return; }
+            self.selecting = undefined;
+            self.draggingItem = undefined;
+            if (self.dragStart && self.isInGrid(self.dragStart)) {
+                self.controlInput.focus();
+            }
+            self.dragStartObject = undefined;
+            e.preventDefault();
+        };
+        self.keydown = function (e) {
+            var i,
+                x = self.activeCell.columnIndex,
+                y = self.activeCell.rowIndex,
+                ctrl = (e.controlKey || e.metaKey),
+                last = self.data.length - 1,
+                cols = self.getVisibleSchema().length - 1;
+            if (self.dispatchEvent('keydown', [e, self.currentCell], self.intf)) { return; }
+            if (!self.hasFocus) {
+                return;
+            }
+            self.page = self.visibleRows.length - 3 - self.attributes.pageUpDownOverlap;
+            if (self.attributes.showNewRow) {
+                last += 1;
+            }
+            if (e.keyCode === 'Tab') {
+                e.preventDefault();
+            }
+            //ArrowDown
+            if (e.keyCode === 40) {
+                y += 1;
+            //ArrowUp
+            } else if (e.keyCode === 38) {
+                y -= 1;
+            //ArrowLeft Tab
+            } else if (e.keyCode === 37 || (e.shiftKey && e.keyCode === 9)) {
+                x -= 1;
+            //ArrowRight Tab
+            } else if (e.keyCode === 39 || (!e.shiftKey && e.keyCode === 9)) {
+                x += 1;
+            //PageUp
+            } else if (e.keyCode === 33) {
+                y -= self.page;
+                e.preventDefault();
+            //PageDown
+            } else if (e.keyCode === 34) {
+                y += self.page;
+                e.preventDefault();
+            //Home ArrowUp
+            } else if (e.keyCode === 36 || (ctrl && e.keyCode === 38)) {
+                y = 0;
+            //End ArrowDown
+            } else if (e.keyCode === 35 || (ctrl && e.keyCode === 40)) {
+                y = self.data.length - 1;
+            //ArrowRight
+            } else if (ctrl && e.keyCode === 39) {
+                x = cols;
+            //ArrowLeft
+            } else if (ctrl && e.keyCode === 37) {
+                x = 0;
+            }
+            //Enter
+            if (e.keyCode === 13) {
+                return self.beginEditAt(x, y);
+            }
+            //Space
+            if (e.keyCode === 32) {
+                self.selections = [];
+                self.selections[Math.max(y, 0)] = [];
+                self.selections[Math.max(y, 0)].push(x);
+                self.selectionBounds = self.getSelectionBounds();
+                if (self.attributes.rowSelectionMode) {
+                    for (i = self.selectionBounds.top; i <= self.selectionBounds.bottom; i += 1) {
+                        self.selectRow(i, ctrl, true);
+                    }
+                } else {
+                    self.selectArea(undefined, ctrl);
+                }
+                e.preventDefault();
+                self.draw(true);
+                return;
+            }
+            if (x < 0) {
+                x = 0;
+            }
+            if (y > last) {
+                y = last;
+            }
+            if (y < 0) {
+                y = 0;
+            }
+            if (x > cols) {
+                x = cols;
+            }
+            // Arrows
+            if (e.shiftKey && [37, 38, 39, 40].indexOf(e.keyCode) !== -1) {
+                self.selections[Math.max(y, 0)] = self.selections[Math.max(y, 0)] || [];
+                self.selections[Math.max(y, 0)].push(x);
+                self.selectionBounds = self.getSelectionBounds();
+                self.selectArea(undefined, ctrl);
+                self.draw(true);
+            }
+            if (x !== self.activeCell.columnIndex || y !== self.activeCell.rowIndex) {
+                self.scrollIntoView(x !== self.activeCell.columnIndex ? x : undefined, y !== self.activeCell.rowIndex ? y : undefined);
+                self.setActiveCell(x, y);
+                if (!e.shiftKey && self.attributes.selectionFollowsActiveCell) {
+                    if (!ctrl) {
+                        self.selections = [];
+                    }
+                    self.selections[y] = self.selections[y] || [];
+                    self.selections[y].push(x);
+                    self.dispatchEvent('selectionchanged', [self.getSelectedData(), self.selections, self.selectionBounds], self.intf);
+                }
+                self.draw(true);
+            }
+        };
+        self.keyup = function (e) {
+            if (self.dispatchEvent('keyup', [e, self.currentCell], self.intf)) { return; }
+            if (!self.hasFocus) {
+                return;
+            }
+            self.controlInput.value = '';
+        };
+        self.keypress = function (e) {
+            if (!self.hasFocus) {
+                return;
+            }
+            if (self.dispatchEvent('keypress', [e, self.currentCell], self.intf)) { return; }
+        };
+        self.dblclick = function (e) {
+            if (self.dispatchEvent('dblclick', [e, self.currentCell], self.intf)) { return; }
+            if (!self.hasFocus) {
+                return;
+            }
+            if (self.currentCell.context === 'ew-resize'
+                    && self.currentCell.style === 'headerCell') {
+                self.fitColumnToValues(self.currentCell.header.name);
+            } else if (self.currentCell.context === 'ew-resize'
+                    && self.currentCell.style === 'cornerCell') {
+                self.autosize();
+            } else if (['cell', 'activeCell'].indexOf(self.currentCell.style) !== -1) {
+                self.beginEditAt(self.currentCell.columnIndex, self.currentCell.rowIndex);
+            }
+        };
+        self.scrollWheel = function (e) {
+            if (self.dispatchEvent('mousewheel', [e, self.ctx], self.intf)) {
+                return;
+            }
+            var l = self.scrollBox.scrollLeft,
+                t = self.scrollBox.scrollTop;
+            if (self.hasFocus) {
+                self.scrollBox.scrollTop -= e.wheelDeltaY;
+                self.scrollBox.scrollLeft -= e.wheelDeltaX;
+            }
+            if (t !== self.scrollBox.scrollTop || l !== self.scrollBox.scrollLeft) {
+                e.preventDefault();
+            }
+        };
+        self.copy = function (e) {
+            var rows = [], sData = self.getSelectedData();
+            sData.forEach(function (row) {
+                if (row) {
+                    var r = [];
+                    Object.keys(row).forEach(function (key) {
+                        r.push(row[key]);
+                    });
+                    r.join(',');
+                    rows.push(r);
+                }
+            });
+            e.clipboardData.setData('text/plain', rows.join('\n'));
+            e.preventDefault();
+        };
+        return;
+    };
+}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ }),
+/* 3 */
+/*!*********************!*\
+  !*** ./lib/intf.js ***!
+  \*********************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true*/
+/*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+    'use strict';
+    return function (self) {
+        self.intf.blur = function () {
+            self.hasFocus = false;
+        };
+        self.intf.focus = function () {
+            self.hasFocus = true;
+            self.controlInput.focus();
+        };
+        Object.defineProperty(self.intf, 'height', {
+            get: function () {
+                return self.parentNode.height;
+            },
+            set: function (value) {
+                self.parentNode.height = value;
+                self.resize(true);
+            }
+        });
+        Object.defineProperty(self.intf, 'width', {
+            get: function () {
+                return self.parentNode.width;
+            },
+            set: function (value) {
+                self.parentNode.width = value;
+                self.resize(true);
+            }
+        });
+        Object.defineProperty(self.intf, 'openChildren', {
+            get: function () {
+                return self.openChildren;
+            }
+        });
+        Object.defineProperty(self.intf, 'childGrids', {
+            get: function () {
+                return self.childGrids;
+            }
+        });
+        Object.defineProperty(self.intf, 'isChildGrid', {
+            get: function () {
+                return self.isChildGrid;
+            }
+        });
+        Object.defineProperty(self.intf, 'parentNode', {
+            get: function () {
+                return self.parentNode;
+            },
+            set: function (value) {
+                self.parentNode = value;
+            }
+        });
+        Object.defineProperty(self.intf, 'offsetParent', {
+            get: function () {
+                return self.parentNode;
+            },
+            set: function (value) {
+                self.parentNode = value;
+            }
+        });
+        Object.defineProperty(self.intf, 'offsetLeft', {
+            get: function () {
+                return self.parentNode.offsetLeft;
+            }
+        });
+        Object.defineProperty(self.intf, 'offsetTop', {
+            get: function () {
+                return self.parentNode.offsetTop;
+            }
+        });
+        Object.defineProperty(self.intf, 'scrollHeight', {
+            get: function () {
+                return self.scrollBox.scrollHeight;
+            }
+        });
+        Object.defineProperty(self.intf, 'scrollWidth', {
+            get: function () {
+                return self.scrollBox.scrollWidth;
+            }
+        });
+        Object.defineProperty(self.intf, 'scrollTop', {
+            get: function () {
+                return self.scrollBox.scrollTop;
+            },
+            set: function (value) {
+                self.scrollBox.scrollTop = value;
+            }
+        });
+        Object.defineProperty(self.intf, 'scrollLeft', {
+            get: function () {
+                return self.scrollBox.scrollLeft;
+            },
+            set: function (value) {
+                self.scrollBox.scrollLeft = value;
+            }
+        });
+        Object.defineProperty(self.intf, 'sizes', {
+            get: function () {
+                return self.sizes;
+            }
+        });
+        Object.defineProperty(self.intf, 'input', {
+            get: function () {
+                return self.input;
+            }
+        });
+        Object.defineProperty(self.intf, 'controlInput', {
+            get: function () {
+                return self.controlInput;
+            }
+        });
+        Object.defineProperty(self.intf, 'currentCell', {
+            get: function () {
+                return self.currentCell;
+            }
+        });
+        Object.defineProperty(self.intf, 'visibleCells', {
+            get: function () {
+                return self.visibleCells;
+            }
+        });
+        Object.defineProperty(self.intf, 'visibleRows', {
+            get: function () {
+                return self.visibleRows;
+            }
+        });
+        Object.defineProperty(self.intf, 'selections', {
+            get: function () {
+                return self.selections;
+            }
+        });
+        Object.defineProperty(self.intf, 'dragMode', {
+            get: function () {
+                return self.dragMode;
+            }
+        });
+        Object.defineProperty(self.intf, 'changes', {
+            get: function () {
+                return self.changes;
+            }
+        });
+        self.intf.attributes = {};
+        self.intf.style = {};
+        self.intf.formatters = self.formatters;
+        Object.defineProperty(self.intf, 'selectionBounds', {
+            get: function () {
+                return self.getSelectionBounds();
+            }
+        });
+        Object.defineProperty(self.intf, 'selectedRows', {
+            get: function () {
+                return self.getSelectedData(true);
+            }
+        });
+        Object.defineProperty(self.intf, 'selectedCells', {
+            get: function () {
+                return self.getSelectedData();
+            }
+        });
+        Object.defineProperty(self.intf, 'visibleSchema', {
+            get: function () {
+                return self.getVisibleSchema().map(function eachDataRow(col) {
+                    return col;
+                });
+            }
+        });
+        Object.defineProperty(self.intf, 'schema', {
+            get: function schemaGetter() {
+                return self.getSchema();
+            },
+            set: function schemaSetter(value) {
+                if (!Array.isArray(value) || typeof value[0] !== 'object') {
+                    throw new Error('Schema must be an array of objects.');
+                }
+                if (value[0].name === undefined) {
+                    throw new Error('Expected schema to contain an object with at least a name property.');
+                }
+                self.schema = value.map(function eachSchemaColumn(column, index) {
+                    column.width = column.width || self.style.columnWidth;
+                    column[self.uniqueId] = self.getSchemaNameHash(column.name);
+                    column.filter = column.filter || self.filter(column.type);
+                    column.type = column.type || 'string';
+                    column.index = index;
+                    column.columnIndex = index;
+                    column.rowIndex = -1;
+                    return column;
+                });
+                self.tempSchema = undefined;
+                self.createNewRowData();
+                self.createColumnOrders();
+                self.tryLoadStoredOrders();
+                self.resize(true);
+                self.dispatchEvent('schemachanged', [self.schema], self.intf);
+            }
+        });
+        Object.defineProperty(self.intf, 'data', {
+            get: function dataGetter() {
+                return self.data;
+            },
+            set: function dataSetter(value) {
+                if (!Array.isArray(value)
+                        || (value.length > 0 && typeof value[0] !== 'object')) {
+                    throw new Error('Data must be an array of objects.');
+                }
+                self.originalData = value.map(function eachDataRow(row) {
+                    row[self.uniqueId] = self.uId;
+                    self.uId += 1;
+                    return row;
+                });
+                self.changes = [];
+                //TODO apply filter to incoming dataset
+                self.data = self.originalData;
+                if (!self.schema && self.data.length > 0) {
+                    self.tempSchema = self.getSchemaFromData();
+                }
+                if (!self.schema && self.data.length === 0) {
+                    self.tempSchema = [{name: ''}];
+                    self.tempSchema[0][self.uniqueId] = self.getSchemaNameHash('');
+                }
+                if (self.tempSchema && !self.schema) {
+                    self.createColumnOrders();
+                    self.tryLoadStoredOrders();
+                    self.dispatchEvent('schemachanged', [self.tempSchema], self.intf);
+                }
+                self.createNewRowData();
+                if (self.attributes.autoResizeColumns && self.data.length > 0
+                        && self.storedSettings === undefined) {
+                    self.autosize();
+                }
+                // width cannot be determined correctly until after inserted into the dom?
+                requestAnimationFrame(function () {
+                    self.fitColumnToValues('cornerCell');
+                });
+                if (!self.resize()) { self.draw(true); }
+                self.createRowOrders();
+                self.tryLoadStoredOrders();
+                self.dispatchEvent('datachanged', [self.data], self.intf);
+            }
+        });
+        return;
+    };
+}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ }),
+/* 4 */
+/*!****************************!*\
+  !*** ./lib/contextMenu.js ***!
+  \****************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true*/
+/*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+    'use strict';
+    return function (self) {
+        self.contextmenu = function (e) {
+            if (!self.hasFocus) {
+                return;
+            }
+            if (self.contextMenu) {
+                e.preventDefault();
+                return self.disposeContextMenu();
+            }
+            var oPreventDefault = e.preventDefault,
+                pos,
+                loc = {},
+                contextObject,
+                filterContainer,
+                filterLabel,
+                filterInput,
+                columnFilter,
+                menuItems;
+            pos = self.getLayerPos(e);
+            contextObject = self.getCellAt(pos.x, pos.y);
+            if (contextObject.grid !== undefined) {
+                return;
+            }
+            if (!contextObject.header) { e.preventDefault(); return; }
+            columnFilter = self.columnFilters[contextObject.header.name] || '';
+            filterContainer = document.createElement('div');
+            filterLabel = document.createElement('div');
+            filterLabel.className = 'canvas-datagrid-context-menu-label';
+            filterInput = document.createElement('input');
+            filterLabel.innerHTML = self.attributes.filterOptionText + ' ' + contextObject.header.name;
+            filterContainer.appendChild(filterLabel);
+            filterContainer.appendChild(filterInput);
+            self.contextMenu = document.createElement('div');
+            self.contextMenu.className = 'canvas-datagrid-context-menu';
+            self.contextMenu.style.cursor = 'pointer';
+            self.contextMenu.style.position = 'absolute';
+            self.contextMenu.style.zIndex = '3';
+            filterInput.value = columnFilter;
+            menuItems = [];
+            if (self.attributes.showFilter) {
+                menuItems.push({
+                    title: filterContainer
+                });
+                if (Object.keys(self.columnFilters).length) {
+                    Object.keys(self.columnFilters).forEach(function (cf) {
+                        menuItems.push({
+                            title: self.attributes.removeFilterOptionText.replace(/%s/g, cf),
+                            click: function removeFilterClick() {
+                                e.preventDefault();
+                                self.setFilter(cf, '');
+                                self.disposeContextMenu();
+                                self.controlInput.focus();
+                            }
+                        });
+                    });
+                }
+            }
+            if (self.attributes.saveAppearance && self.attributes.showClearSettingsOption
+                    && (Object.keys(self.sizes.rows).length > 0
+                        || Object.keys(self.sizes.columns).length > 0)) {
+                menuItems.push({
+                    title: self.attributes.clearSettingsOptionText,
+                    click: function (e) {
+                        e.preventDefault();
+                        self.sizes.rows = {};
+                        self.sizes.columns = {};
+                        self.createRowOrders();
+                        self.createColumnOrders();
+                        self.storedSettings = undefined;
+                        self.dispatchEvent('resizecolumn', [self.style.columnWidth], self.intf);
+                        self.dispatchEvent('resizerow', [self.style.cellHeight], self.intf);
+                        self.setStorageData();
+                        self.resize(true);
+                        self.disposeContextMenu();
+                        self.controlInput.focus();
+                    }
+                });
+            }
+            if (self.attributes.allowSorting && self.attributes.showOrderByOption) {
+                menuItems.push({
+                    title: self.attributes.showOrderByOptionTextAsc.replace('%s', contextObject.header.name),
+                    click: function (e) {
+                        e.preventDefault();
+                        self.order(contextObject.header.name, 'asc');
+                        self.disposeContextMenu();
+                        self.controlInput.focus();
+                    }
+                });
+                menuItems.push({
+                    title: self.attributes.showOrderByOptionTextDesc.replace('%s', contextObject.header.name),
+                    click: function (e) {
+                        e.preventDefault();
+                        self.order(contextObject.header.name, 'desc');
+                        self.disposeContextMenu();
+                        self.controlInput.focus();
+                    }
+                });
+            }
+            if (self.dispatchEvent('contextmenu', [e, contextObject, menuItems, self.contextMenu], self.intf)) { return; }
+            if (!menuItems.length) {
+                return;
+            }
+            menuItems.forEach(function (item) {
+                var row = document.createElement('div');
+                self.contextMenu.appendChild(row);
+                if (typeof item.title === 'string') {
+                    row.className = 'canvas-datagrid-context-menu-item';
+                    row.innerHTML = item.title;
+                } else {
+                    row.appendChild(item.title);
+                }
+                if (item.click) {
+                    row.addEventListener('click', function contextClickProxy(e) {
+                        item.click.apply(this, [e, contextObject, self.disposeContextMenu]);
+                        e.preventDefault();
+                        e.stopPropagation();
+                        self.controlInput.focus();
+                    });
+                }
+            });
+            filterInput.addEventListener('dblclick', self.stopPropagation);
+            filterInput.addEventListener('click', self.stopPropagation);
+            filterInput.addEventListener('mousedown', self.stopPropagation);
+            filterInput.addEventListener('keyup', function filterKeyUp() {
+                self.setFilter(contextObject.header.name, filterInput.value);
+                requestAnimationFrame(function filterRequestAnimationFrame() {
+                    filterInput.classList.remove(self.invalidSearchExpClass);
+                    if (self.invalidFilterRegEx) {
+                        filterInput.classList.add(self.invalidSearchExpClass);
+                    }
+                });
+            });
+            document.body.addEventListener('click', self.disposeContextMenu);
+            document.body.appendChild(self.contextMenu);
+            loc.x = e.clientX - self.style.contextMenuMarginLeft;
+            loc.y = e.clientY - self.style.contextMenuMarginTop;
+            if (loc.x + self.contextMenu.offsetWidth > document.documentElement.clientWidth) {
+                loc.x = document.documentElement.clientWidth - self.contextMenu.offsetWidth;
+            }
+            if (loc.y + self.contextMenu.offsetHeight > document.documentElement.clientHeight) {
+                loc.y = document.documentElement.clientHeight - self.contextMenu.offsetHeight;
+            }
+            self.contextMenu.style.left = loc.x + 'px';
+            self.contextMenu.style.top = loc.y + 'px';
+            oPreventDefault.apply(e);
+        };
+        /**
+         * Removes the context menu if it is present.
+         * @memberof canvasDataGrid#
+         * @method
+         */
+        self.disposeContextMenu = function (e) {
+            //TODO: there are most likely some bugs around removing the context menu.  Can't use grid on first click sometimes
+            function disp() {
+                self.contextMenu = undefined;
+                self.canvas.cursor = 'pointer';
+                document.body.removeEventListener('click', self.disposeContextMenu);
+                document.body.removeEventListener('mouseup', disp);
+                document.body.removeEventListener('mousedown', disp);
+            }
+            if (!e || (self.contextMenu
+                                && self.contextMenu.parentNode
+                                && !self.contextMenu.contains(e.target))) {
+                self.contextMenu.parentNode.removeChild(self.contextMenu);
+                document.body.addEventListener('mouseup', disp);
+                document.body.addEventListener('mousedown', disp);
+            }
+        };
+        return;
+    };
+}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ }),
+/* 5 */
+/*!*************************!*\
+  !*** ./lib/defaults.js ***!
+  \*************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true*/
+/*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+    'use strict';
+    return function (self) {
+        self.defaults = {
+            attributes: [
+                ['name', ''],
+                ['tree', false],
+                ['showNewRow', false],
+                ['treeHorizontalScroll', false],
+                ['saveAppearance', true],
+                ['selectionFollowsActiveCell', false],
+                ['multiLine', false],
+                ['editable', true],
+                ['allowColumnReordering', true],
+                ['allowRowReordering', false],
+                ['allowSorting', true],
+                ['showFilter', true],
+                ['globalRowResize', false],
+                ['pageUpDownOverlap', 1],
+                ['persistantSelectionMode', false],
+                ['rowSelectionMode', false],
+                ['autoResizeColumns', false],
+                ['allowRowHeaderResize', true],
+                ['allowColumnResize', true],
+                ['allowRowResize', true],
+                ['allowRowResizeFromCell', false],
+                ['allowColumnResizeFromCell', false],
+                ['showPerformance', false],
+                ['debug', false],
+                ['borderResizeZone', 10],
+                ['showHeaders', true],
+                ['showRowNumbers', true],
+                ['showRowHeaders', true],
+                ['scrollRepeatRate', 75],
+                ['selectionScrollZone', 20],
+                ['resizeScrollZone', 20],
+                ['selectionScrollIncrement', 20],
+                ['reorderDeadZone', 3],
+                ['showClearSettingsOption', true],
+                ['showOrderByOption', true],
+                ['clearSettingsOptionText', 'Clear saved settings'],
+                ['showOrderByOptionTextAsc', 'Order by %s ascending'],
+                ['showOrderByOptionTextDesc', 'Order by %s descending'],
+                ['removeFilterOptionText', 'Remove filter on %s'],
+                ['filterOptionText', 'Filter']
+            ],
+            styles: [
+                ['scrollBarBackgroundColor', 'rgba(240, 240, 240, 1)'],
+                ['scrollBarBoxColor', 'rgba(192, 192, 192, 1)'],
+                ['scrollBarActiveColor', 'rgba(125, 125, 125, 1)'],
+                ['scrollBarBoxWidth', 8],
+                ['scrollBarBoxMargin', 2],
+                ['scrollBarBoxBorderRadius', 3],
+                ['scrollBarBorderColor', 'rgba(202, 202, 202, 1)'],
+                ['scrollBarBorderWidth', 0.5],
+                ['scrollBarWidth', 11],
+                ['scrollBarBoxMinSize', 15],
+                ['scrollBarCornerBorderColor', 'rgba(202, 202, 202, 1)'],
+                ['scrollBarCornerBackground', 'rgba(240, 240, 240, 1)'],
+                ['treeArrowClickRadius', 5],
+                ['treeGridHeight', 250],
+                ['treeArrowHeight', 8],
+                ['treeArrowWidth', 13],
+                ['treeArrowColor', 'rgba(155, 155, 155, 1)'],
+                ['treeArrowBorderColor', 'rgba(195, 199, 202, 1)'],
+                ['treeArrowBorderWidth', 1],
+                ['treeArrowMarginRight', 5],
+                ['treeArrowMarginLeft', 0],
+                ['treeArrowMarginTop', 6],
+                ['filterTextPrefix', '(filtered) '],
+                ['editCellFontSize', '16px'],
+                ['editCellFontFamily', 'sans-serif'],
+                ['editCellPaddingLeft', 4],
+                ['editCellBoxShadow', '0 2px 5px rgba(0,0,0,0.4)'],
+                ['editCellBorder', 'solid 1px rgba(110, 168, 255, 1)'],
+                ['styleSheet', ''],
+                ['contextMenuItemMargin', '2px'],
+                ['contextMenuItemBorderRadius', '3px'],
+                ['contextMenuLabelMargin', '0 3px 0 0'],
+                ['contextMenuLabelDisplay', 'inline-block'],
+                ['contextMenuLabelMinWidth', '75px'],
+                ['contextMenuLabelMaxWidth', '700px'],
+                ['contextMenuHoverBackground', 'rgba(182, 205, 250, 1)'],
+                ['contextMenuColor', 'rgba(43, 48, 43, 1)'],
+                ['contextMenuHoverColor', 'rgba(43, 48, 153, 1)'],
+                ['contextMenuFontSize', '16px'],
+                ['contextMenuFontFamily', 'sans-serif'],
+                ['contextMenuBackground', 'rgba(240, 240, 240, 1)'],
+                ['contextMenuBorder', 'solid 1px rgba(158, 163, 169, 1)'],
+                ['contextMenuPadding', '2px'],
+                ['contextMenuBorderRadius', '3px'],
+                ['contextMenuOpacity', '0.98'],
+                ['contextMenuFilterInvalidExpresion', 'rgba(237, 155, 156, 1)'],
+                ['contextMenuMarginTop', 0],
+                ['contextMenuMarginLeft', 5],
+                ['autosizePadding', 5],
+                ['autosizeHeaderCellPadding', 8],
+                ['minHeight', 24],
+                ['minRowHeight', 24],
+                ['minColumnWidth', 45],
+                ['columnWidth', 250],
+                ['backgroundColor', 'rgba(240, 240, 240, 1)'],
+                ['headerOrderByArrowHeight', 8],
+                ['headerOrderByArrowWidth', 13],
+                ['headerOrderByArrowColor', 'rgba(155, 155, 155, 1)'],
+                ['headerOrderByArrowBorderColor', 'rgba(195, 199, 202, 1)'],
+                ['headerOrderByArrowBorderWidth', 1],
+                ['headerOrderByArrowMarginRight', 5],
+                ['headerOrderByArrowMarginLeft', 0],
+                ['headerOrderByArrowMarginTop', 6],
+                ['cellHeightWithChildGrid', 150],
+                ['cellWidthWithChildGrid', 250],
+                ['cellHeight', 24],
+                ['cellFont', '16px sans-serif'],
+                ['cellPaddingTop', 5],
+                ['cellAutoResizePadding', 13],
+                ['cellPaddingLeft', 5],
+                ['cellPaddingRight', 7],
+                ['cellAlignment', 'left'],
+                ['cellColor', 'rgba(0, 0, 0, 1)'],
+                ['cellBackgroundColor', 'rgba(255, 255, 255, 1)'],
+                ['cellHoverColor', 'rgba(0, 0, 0, 1)'],
+                ['cellHoverBackgroundColor', 'rgba(255, 255, 255, 1)'],
+                ['cellSelectedColor', 'rgba(0, 0, 0, 1)'],
+                ['cellSelectedBackgroundColor', 'rgba(236, 243, 255, 1)'],
+                ['cellBorderWidth', 0.25],
+                ['cellBorderColor', 'rgba(195, 199, 202, 1)'],
+                ['activeCellFont', '16px sans-serif'],
+                ['activeCellPaddingTop', 5],
+                ['activeCellPaddingLeft', 5],
+                ['activeCellPaddingRight', 7],
+                ['activeCellAlignment', 'left'],
+                ['activeCellColor', 'rgba(0, 0, 0, 1)'],
+                ['activeCellBackgroundColor', 'rgba(255, 255, 255, 1)'],
+                ['activeCellHoverColor', 'rgba(0, 0, 0, 1)'],
+                ['activeCellHoverBackgroundColor', 'rgba(255, 255, 255, 1)'],
+                ['activeCellSelectedColor', 'rgba(0, 0, 0, 1)'],
+                ['activeCellSelectedBackgroundColor', 'rgba(236, 243, 255, 1)'],
+                ['activeCellBorderWidth', 0.25],
+                ['activeCellBorderColor', 'rgba(110, 168, 255, 1)'],
+                ['headerCellPaddingTop', 5],
+                ['headerCellPaddingLeft', 5],
+                ['headerCellPaddingRight', 7],
+                ['headerCellHeight', 25],
+                ['headerCellBorderWidth', 0.25],
+                ['headerCellBorderColor', 'rgba(152, 152, 152, 1)'],
+                ['headerCellFont', '16px sans-serif'],
+                ['headerCellColor', 'rgba(50, 50, 50, 1)'],
+                ['headerCellBackgroundColor', 'rgba(240, 240, 240, 1)'],
+                ['headerCellHoverColor', 'rgba(0, 0, 0, 1)'],
+                ['headerCellHoverBackgroundColor', 'rgba(235, 235, 235, 1)'],
+                ['headerCellActiveColor', 'rgba(0, 0, 0, 1)'],
+                ['headerCellActiveBackgroundColor', 'rgba(225, 225, 225, 1)'],
+                ['headerRowWidth', 57],
+                ['rowHeaderCellPaddingTop', 5],
+                ['rowHeaderCellPaddingLeft', 5],
+                ['rowHeaderCellPaddingRight', 5],
+                ['rowHeaderCellHeight', 25],
+                ['rowHeaderCellBorderWidth', 0.25],
+                ['rowHeaderCellBorderColor', 'rgba(152, 152, 152, 1)'],
+                ['rowHeaderCellFont', '16px sans-serif'],
+                ['rowHeaderCellColor', 'rgba(50, 50, 50, 1)'],
+                ['rowHeaderCellBackgroundColor', 'rgba(240, 240, 240, 1)'],
+                ['rowHeaderCellHoverColor', 'rgba(0, 0, 0, 1)'],
+                ['rowHeaderCellHoverBackgroundColor', 'rgba(235, 235, 235, 1)'],
+                ['rowHeaderCellSelectedColor', 'rgba(50, 50, 50, 1)'],
+                ['rowHeaderCellSelectedBackgroundColor', 'rgba(217, 217, 217, 1)'],
+                ['rowHeaderCellActiveColor', 'rgba(0, 0, 0, 1)'],
+                ['rowHeaderCellActiveBackgroundColor', 'rgba(225, 225, 225, 1)'],
+                ['activeCellOverlayBorderColor', 'rgba(66, 133, 244, 1)'],
+                ['activeCellOverlayBorderWidth', 2],
+                ['selectionOverlayBorderColor', 'rgba(66, 133, 244, 1)'],
+                ['selectionOverlayBorderWidth', 1.25],
+                ['reorderMarkerIndexBorderColor', 'rgba(66, 133, 244, 1)'],
+                ['reorderMarkerIndexBorderWidth', 2.75],
+                ['reorderMarkerBackgroundColor', 'rgba(0, 0, 0, 0.1)'],
+                ['reorderMarkerBorderColor', 'rgba(0, 0, 0, 0.2)'],
+                ['reorderMarkerBorderWidth', 1.25],
+                ['gridBorderColor', 'rgba(202, 202, 202, 1)'],
+                ['gridBorderWidth', 1]
+            ]
+        };
+    };
+}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ }),
+/* 6 */
+/*!********************!*\
+  !*** ./lib/dom.js ***!
+  \********************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true*/
+/*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+    'use strict';
+    return function (self) {
+        self.attachCss = function () {
+            var styleSheet,
+                styleSheetBody = [],
+                css = {
+                    'canvas-datagrid-canvas': {
+                        position: 'absolute!important',
+                        'z-index': '-1'
+                    },
+                    'canvas-datagrid-scrollBox': {
+                        position: 'absolute!important',
+                        overflow: 'auto!important',
+                        'z-index': '1!important'
+                    },
+                    'canvas-datagrid': {
+                        position: 'absolute!important',
+                        background: self.style.backgroundColor,
+                        'z-index': '1',
+                        'box-sizing': 'content-box!important',
+                        padding: '0!important'
+                    },
+                    'canvas-datagrid-control-input': {
+                        position: 'fixed!important',
+                        top: '-5px',
+                        left: '-5px',
+                        border: 'none!important',
+                        opacity: '0!important',
+                        cursor: 'pointer!important',
+                        width: '1px',
+                        height: '1px'
+                    },
+                    'canvas-datagrid-edit-input': {
+                        'box-sizing': 'content-box!important',
+                        outline: 'none!important',
+                        margin: '0!important',
+                        padding: '0 0 0 ' + self.style.editCellPaddingLeft + 'px!important',
+                        'font-size': self.style.editCellFontSize + '!important',
+                        'font-family': self.style.editCellFontFamily + '!important',
+                        'box-shadow': self.style.editCellBoxShadow,
+                        border: self.style.editCellBorder
+                    },
+                    'canvas-datagrid-context-menu-item': {
+                        margin: self.style.contextMenuItemMargin,
+                        'border-radius': self.style.contextMenuItemBorderRadius
+                    },
+                    'canvas-datagrid-context-menu-item:hover': {
+                        background: self.style.contextMenuHoverBackground,
+                        color: self.style.contextMenuHoverColor,
+                        margin: self.style.contextMenuItemMargin
+                    },
+                    'canvas-datagrid-context-menu-label': {
+                        'margin': self.style.contextMenuLabelMargin,
+                        display: self.style.contextMenuLabelDisplay,
+                        'min-width': self.style.contextMenuLabelMinWidth,
+                        'max-width': self.style.contextMenuLabelMaxWidth,
+                    },
+                    'canvas-datagrid-context-menu': {
+                        'font-family': self.style.contextMenuFontFamily,
+                        'font-size': self.style.contextMenuFontSize,
+                        background: self.style.contextMenuBackground,
+                        color: self.style.contextMenuColor,
+                        border: self.style.contextMenuBorder,
+                        padding: self.style.contextMenuPadding,
+                        'border-radius': self.style.contextMenuBorderRadius,
+                        opacity: self.style.contextMenuOpacity
+                    },
+                    'canvas-datagrid-invalid-search-regExp': {
+                        background: self.style.contextMenuFilterInvalidExpresion
+                    }
+                };
+            Object.keys(css).forEach(function (className) {
+                styleSheetBody.push('.' + className + '{');
+                Object.keys(css[className]).forEach(function (propertyName) {
+                    styleSheetBody.push(propertyName + ':' + css[className][propertyName] + ';');
+                });
+                styleSheetBody.push('}');
+            });
+            if (document.getElementById(self.uniqueId)) {
+                return;
+            }
+            styleSheet = document.createElement('link');
+            styleSheet.id = self.uniqueId;
+            styleSheet.rel = 'stylesheet';
+            if (document.head.firstChild) {
+                document.head.insertBefore(styleSheet, document.head.firstChild);
+            } else {
+                document.head.appendChild(styleSheet);
+            }
+            styleSheet.href = 'data:text/css;base64,'
+                + btoa(self.style.styleSheet || styleSheetBody.join(''));
+        };
+        self.appendTo = function (n) {
+            self.parentNode = n;
+            self.height = self.parentNode.offsetHeight;
+            self.width = self.parentNode.offsetWidth;
+            if (self.parentNode && /canvas-datagrid-(cell|tree)/.test(self.parentNode.nodeType)) {
+                self.isChildGrid = true;
+                self.parentGrid = self.parentNode.parentGrid;
+                self.ctx = self.parentGrid.context;
+                self.canvas = self.parentGrid.canvas;
+                self.controlInput = self.parentGrid.controlInput;
+                self.eventParent = self.canvas;
+                self.intf.offsetParent = self.parentNode;
+            } else {
+                self.controlInput = document.createElement('input');
+                self.controlInput.className = 'canvas-datagrid-control-input';
+                self.isChildGrid = false;
+                self.parentDOMNode = self.parentNode;
+                self.parentNode = self.parentDOMNode;
+                self.canvas = document.createElement('canvas');
+                self.ctx = self.canvas.getContext('2d');
+                self.ctx.textBaseline = 'alphabetic';
+                self.parentDOMNode.appendChild(self.canvas);
+                self.parentDOMNode.appendChild(self.controlInput);
+                self.eventParent = self.canvas;
+            }
+            window.addEventListener('resize', self.resize);
+            if (MutationObserver) {
+                self.observer = new MutationObserver(function (mutations) {
+                    mutations.forEach(function (mutation) {
+                        self.resize(true);
+                    });
+                });
+                [self.canvas.parentNode].forEach(function (el) {
+                    self.observer.observe(el, { attributes: true });
+                });
+            }
+            self.eventParent.addEventListener('touchstart', self.touchstart, false);
+            self.eventParent.addEventListener('mouseup', self.mouseup, false);
+            self.eventParent.addEventListener('mousedown', self.mousedown, false);
+            self.eventParent.addEventListener('dblclick', self.dblclick, false);
+            self.eventParent.addEventListener('click', self.click, false);
+            self.eventParent.addEventListener('mousemove', self.mousemove);
+            self.eventParent.addEventListener('mousewheel', self.scrollWheel, false);
+            self.canvas.addEventListener('contextmenu', self.contextmenu, false);
+            self.canvas.addEventListener('copy', self.copy);
+            self.controlInput.addEventListener('keypress', self.keypress, false);
+            self.controlInput.addEventListener('keyup', self.keyup, false);
+            self.controlInput.addEventListener('keydown', self.keydown, false);
+        };
+        self.setDom = function () {
+            self.appendTo(self.args.parentNode);
+            self.attachCss();
+        };
+        self.initScrollBox = function () {
+            var sHeight = 0,
+                sWidth = 0,
+                scrollTop = 0,
+                scrollLeft = 0,
+                scrollHeight = 0,
+                scrollWidth = 0,
+                scrollBoxHeight = 20,
+                scrollBoxWidth = 20;
+            Object.defineProperty(self.scrollBox, 'scrollBoxHeight', {
+                get: function () {
+                    return scrollBoxHeight;
+                },
+                set: function (value) {
+                    scrollBoxHeight = value;
+                }
+            });
+            Object.defineProperty(self.scrollBox, 'scrollBoxWidth', {
+                get: function () {
+                    return scrollBoxWidth;
+                },
+                set: function (value) {
+                    scrollBoxWidth = value;
+                }
+            });
+            Object.defineProperty(self.scrollBox, 'height', {
+                get: function () {
+                    return sHeight;
+                },
+                set: function (value) {
+                    if (scrollHeight < value) {
+                        scrollTop = 0;
+                    }
+                    sHeight = value;
+                }
+            });
+            Object.defineProperty(self.scrollBox, 'width', {
+                get: function () {
+                    return sWidth;
+                },
+                set: function (value) {
+                    sWidth = value;
+                }
+            });
+            Object.defineProperty(self.scrollBox, 'scrollTop', {
+                get: function () {
+                    return scrollTop;
+                },
+                set: function (value) {
+                    if (value < 0) {
+                        value = 0;
+                    }
+                    if (value > scrollHeight) {
+                        value = scrollHeight;
+                    }
+                    if (scrollHeight < 0) {
+                        value = 0;
+                    }
+                    scrollTop = value;
+                    self.scroll();
+                }
+            });
+            Object.defineProperty(self.scrollBox, 'scrollLeft', {
+                get: function () {
+                    return scrollLeft;
+                },
+                set: function (value) {
+                    if (value < 0) {
+                        value = 0;
+                    }
+                    if (value > scrollWidth) {
+                        value = scrollWidth;
+                    }
+                    if (scrollWidth < 0) {
+                        value = 0;
+                    }
+                    scrollLeft = value;
+                    self.scroll();
+                }
+            });
+            Object.defineProperty(self.scrollBox, 'scrollHeight', {
+                get: function () {
+                    return scrollHeight;
+                },
+                set: function (value) {
+                    if (scrollTop > value) {
+                        scrollTop = Math.max(value, 0);
+                    }
+                    if (scrollHeight < sHeight) {
+                        scrollTop = 0;
+                    }
+                    scrollHeight = value;
+                }
+            });
+            Object.defineProperty(self.scrollBox, 'scrollWidth', {
+                get: function () {
+                    return scrollWidth;
+                },
+                set: function (value) {
+                    if (scrollLeft > value) {
+                        scrollLeft = Math.max(value, 0);
+                    }
+                    scrollWidth = value;
+                }
+            });
+        };
+    };
+}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ }),
+/* 7 */
+/*!******************************!*\
+  !*** ./lib/publicMethods.js ***!
+  \******************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true*/
+/*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+    'use strict';
+    return function (self) {
+        // all methods here are exposed by intf
+        // to users
+        /**
+         * Inserts a new column before the specified index into the schema.
+         * @see canvasDataGrid#schema
+         * @tutorial schema
+         * @memberof canvasDataGrid#
+         * @method
+         * @param {column} rowIndex The column to insert into the schema.
+         * @param {number} index The index of the row to insert before.
+         */
+        self.insertColumn = function (c, index) {
+            var s = self.getSchema();
+            if (s.length < index) {
+                throw new Error('Index is beyond the length of the schema.');
+            }
+            self.validateColumn(c, s);
+            self.intf.schema = s.splice(index, 0, c);
+        };
+        /**
+         * Deletes a column from the schema at the specified index.
+         * @memberof canvasDataGrid#
+         * @tutorial schema
+         * @method
+         * @param {number} index The index of the column to delete.
+         */
+        self.deleteColumn = function (index) {
+            var s = self.getSchema();
+            self.intf.schema = s.splice(index, 1);
+        };
+        /**
+         * Adds a new column into the schema.
+         * @see canvasDataGrid#schema
+         * @tutorial schema
+         * @memberof canvasDataGrid#
+         * @method
+         * @param {column} c The column to add to the schema.
+         */
+        self.addColumn = function (c) {
+            var s = self.getSchema();
+            self.validateColumn(c, s);
+            s.push(c);
+            self.intf.schema = s;
+        };
+        /**
+         * Deletes a row from the dataset at the specified index.
+         * @memberof canvasDataGrid#
+         * @method
+         * @param {number} index The index of the row to delete.
+         */
+        self.deleteRow = function (index) {
+            self.originalData.splice(index, 1);
+            self.setFilter();
+            self.resize(true);
+        };
+        /**
+         * Inserts a new row into the dataset before the specified index.
+         * @memberof canvasDataGrid#
+         * @method
+         * @param {object} d data.
+         * @param {number} index The index of the row to insert before.
+         */
+        self.insertRow = function (d, index) {
+            if (self.originalData.length < index) {
+                throw new Error('Index is beyond the length of the dataset.');
+            }
+            self.originalData.splice(index, 0, d);
+            self.setFilter();
+            self.resize(true);
+        };
+        /**
+         * Adds a new row into the dataset.
+         * @memberof canvasDataGrid#
+         * @method
+         * @param {object} d data.
+         */
+        self.addRow = function (d) {
+            self.originalData.push(d);
+            self.setFilter();
+            self.resize(true);
+        };
+        /**
+         * Sets the height of a given row by index number.
+         * @memberof canvasDataGrid#
+         * @method
+         * @param {number} rowIndex The index of the row to set.
+         * @param {number} height Height to set the row to.
+         */
+        self.setRowHeight = function (rowIndex, height) {
+            self.sizes.rows[self.data[rowIndex][self.uniqueId]] = height;
+            self.draw(true);
+        };
+        /**
+         * Sets the width of a given column by index number.
+         * @memberof canvasDataGrid#
+         * @method
+         * @param {number} colIndex The index of the column to set.
+         * @param {number} width Width to set the column to.
+         */
+        self.setColumnWidth = function (colIndex, width) {
+            var s = self.getSchema();
+            self.sizes.columns[s[colIndex][self.uniqueId]] = width;
+            self.draw(true);
+        };
+        /**
+         * Removes any changes to the width of the columns due to user or api interaction, setting them back to the schema or style default.
+         * @memberof canvasDataGrid#
+         * @tutorial schema
+         * @method
+         */
+        self.resetColumnWidths = function () {
+            self.sizes.columns = {};
+            self.draw(true);
+        };
+        /**
+         * Removes any changes to the height of the rows due to user or api interaction, setting them back to the schema or style default.
+         * @memberof canvasDataGrid#
+         * @tutorial schema
+         * @method
+         */
+        self.resetRowHeights = function () {
+            self.sizes.rows = {};
+            self.draw(true);
+        };
+        /**
+         * Sets the value of the filter.
+         * @memberof canvasDataGrid#
+         * @method
+         * @param {string} column Name of the column to filter.
+         * @param {string} value The value to filter for.
+         */
+        self.setFilter = function (column, value) {
+            function applyFilter() {
+                self.refreshFromOrigialData();
+                Object.keys(self.columnFilters).forEach(function (filter) {
+                    var header = self.getHeaderByName(column);
+                    if (!header) {
+                        return;
+                    }
+                    self.currentFilter = header.filter;
+                    self.data = self.data.filter(function (row) {
+                        return self.currentFilter(row[filter], self.columnFilters[filter]);
+                    });
+                });
+                self.resize();
+                self.draw(true);
+            }
+            if (self.coulumn === undefined && value === undefined) {
+                return applyFilter();
+            }
+            if (column && (value === '' || value === undefined)) {
+                delete self.columnFilters[column];
+            } else {
+                self.columnFilters[column] = value;
+            }
+            applyFilter();
+        };
+        /**
+         * Returns the number of pixels to scroll down to line up with row rowIndex.
+         * @memberof canvasDataGrid#
+         * @method
+         * @param {number} rowIndex The row index of the row to scroll find.
+         */
+        self.findRowScrollTop = function (rowIndex) {
+            var top = 0, x = 0, l = self.data.length,
+                cellBorder = self.style.cellBorderWidth * 2;
+            if (!self.attributes.showNewRow) {
+                l -= 1;
+            }
+            if (rowIndex > l) {
+                throw new Error('Impossible row index');
+            }
+            while (x < rowIndex) {
+                top += (self.sizes.rows[self.data[x][self.uniqueId]] || self.style.cellHeight) + cellBorder;
+                x += 1;
+            }
+            //TODO: This is not super accurate, causes pageUp/Dn to not move around right
+            return top - (self.sizes.rows[self.data[rowIndex][self.uniqueId]] || self.style.cellHeight);
+        };
+        /**
+         * Returns the number of pixels to scroll to the left to line up with column columnIndex.
+         * @memberof canvasDataGrid#
+         * @method
+         * @param {number} columnIndex The column index of the column to find.
+         */
+        self.findColumnScrollLeft = function (columnIndex) {
+            var left = 0, y = 0, s = self.getSchema(), l = s.length - 1;
+            if (columnIndex > l) {
+                throw new Error('Impossible column index');
+            }
+            while (y < columnIndex) {
+                left += self.sizes.columns[s[y][self.uniqueId]] || s[y].width;
+                y += 1;
+            }
+            return left;
+        };
+        /**
+         * Scrolls the cell at cell x, row y.
+         * @memberof canvasDataGrid#
+         * @method
+         * @param {number} x The column index of the cell to scroll to.
+         * @param {number} y The row index of the cell to scroll to.
+         */
+        self.gotoCell = function (x, y) {
+            if (x !== undefined) {
+                self.scrollBox.scrollLeft = self.findColumnScrollLeft(x);
+            }
+            if (y !== undefined) {
+                self.scrollBox.scrollTop = self.findRowScrollTop(y);
+            }
+        };
+        /**
+         * Scrolls the row y.
+         * @memberof canvasDataGrid#
+         * @method
+         * @param {number} y The row index of the cell to scroll to.
+         */
+        self.gotoRow = function (y) {
+            self.gotoCell(0, y);
+        };
+        /**
+         * Scrolls the cell at cell x, row y into view if it is not already.
+         * @memberof canvasDataGrid#
+         * @method
+         * @param {number} x The column index of the cell to scroll into view.
+         * @param {number} y The row index of the cell to scroll into view.
+         */
+        self.scrollIntoView = function (x, y) {
+            if (self.visibleCells.filter(function (cell) {
+                    return (cell.rowIndex === y || y === undefined)
+                        && (cell.columnIndex === x || x === undefined)
+                        && cell.x > 0
+                        && cell.y > 0
+                        && cell.x + cell.width < self.width
+                        && cell.y + cell.height < self.height;
+                }).length === 0) {
+                self.gotoCell(x, y);
+            }
+        };
+        /**
+         * Sets the active cell. Requires redrawing.
+         * @memberof canvasDataGrid#
+         * @method
+         * @param {number} x The column index of the cell to set active.
+         * @param {number} y The row index of the cell to set active.
+         */
+        self.setActiveCell = function (x, y) {
+            self.activeCell = {
+                rowIndex: y,
+                columnIndex: x
+            };
+        };
+        /**
+         * Selects a row.
+         * @memberof canvasDataGrid#
+         * @method
+         * @param {boolean} toggleSelectMode When true, behaves as if you were holding control/command when you clicked the row.
+         * @param {boolean} supressSelectionchangedEvent When true, prevents the selectionchanged event from firing.
+         */
+        self.selectRow = function (rowIndex, ctrl, supressEvent) {
+            var s = self.getSchema();
+            if (self.dragAddToSelection === false) {
+                if (self.selections[rowIndex] && self.selections[rowIndex].length - 1 === s.length) {
+                    if (ctrl) {
+                        self.selections[rowIndex] = [];
+                        return;
+                    }
+                }
+            }
+            if (self.dragAddToSelection === true) {
+                self.selections[rowIndex] = [];
+                self.selections[rowIndex].push(-1);
+                s.forEach(function (col) {
+                    self.selections[rowIndex].push(col.index);
+                });
+            }
+            if (supressEvent) { return; }
+            self.dispatchEvent('selectionchanged', [self.getSelectedData(), self.selections, self.selectionBounds], self.intf);
+        };
+        /**
+         * Collapse a tree grid by row index.
+         * @memberof canvasDataGrid#
+         * @method
+         * @param {number} index The index of the row to collapse.
+         */
+        self.collapseTree = function (rowIndex) {
+            var rowId = self.data[rowIndex][self.uniqueId];
+            self.dispatchEvent('collapsetree', [self.childGrids[rowId], self.data[rowIndex], rowIndex], self.intf);
+            self.openChildren[rowId].blur();
+            self.openChildren[rowId].dispose();
+            delete self.openChildren[rowId];
+            delete self.sizes.trees[rowId];
+            delete self.childGrids[rowId];
+            self.dispatchEvent('resizerow', [self.style.cellHeight], self.intf);
+            self.resize(true);
+            self.draw(true);
+        };
+        /**
+         * Expands a tree grid by row index.
+         * @memberof canvasDataGrid#
+         * @method
+         * @param {number} index The index of the row to expand.
+         */
+        self.expandTree = function (rowIndex) {
+            var headerCellHeight = self.getHeaderCellHeight(),
+                headerCellWidth = self.sizes.columns.cornerCell || self.style.headerRowWidth,
+                rowId = self.data[rowIndex][self.uniqueId],
+                h = self.sizes.trees[rowId] || self.style.treeGridHeight,
+                treeGrid;
+            if (!self.childGrids[rowId]) {
+                treeGrid = grid({
+                    debug: self.attributes.debug,
+                    showPerformance: self.attributes.showPerformance,
+                    name: self.attributes.saveAppearance
+                        ? self.attributes.name + 'tree' + rowId : undefined,
+                    parentNode: {
+                        parentGrid: self.intf,
+                        nodeType: 'canvas-datagrid-tree',
+                        offsetHeight: h,
+                        offsetWidth: self.width - headerCellWidth,
+                        header: { width: self.width - headerCellWidth },
+                        offsetLeft: headerCellWidth,
+                        offsetTop: headerCellHeight,
+                        offsetParent: self.intf.parentNode,
+                        parentNode: self.intf.parentNode,
+                        style: 'tree',
+                        data: self.data[rowIndex]
+                    }
+                });
+                self.childGrids[rowId] = treeGrid;
+            }
+            treeGrid = self.childGrids[rowId];
+            treeGrid.visible = true;
+            self.dispatchEvent('expandtree', [treeGrid, self.data[rowIndex], rowIndex], self.intf);
+            self.openChildren[self.data[rowIndex][self.uniqueId]] = treeGrid;
+            self.sizes.trees[self.data[rowIndex][self.uniqueId]] = h;
+            self.dispatchEvent('resizerow', [self.style.cellHeight], self.intf);
+            self.resize(true);
+            self.draw();
+        };
+        /**
+         * Toggles tree grid open and close by row index.
+         * @memberof canvasDataGrid#
+         * @method
+         * @param {number} index The index of the row to toggle.
+         */
+        self.toggleTree = function (rowIndex) {
+            var i = self.openChildren[self.data[rowIndex][self.uniqueId]];
+            if (i) {
+                return self.collapseTree(rowIndex);
+            }
+            self.expandTree(rowIndex);
+        };
+        /**
+         * Returns a header from the schema by name.
+         * @memberof canvasDataGrid#
+         * @tutorial schema
+         * @method
+         * @returns {header} header with the selected name, or undefined.
+         * @param {string} name The name of the column to resize.
+         */
+        self.getHeaderByName = function (name) {
+            var x, i = self.getSchema();
+            for (x = 0; x < i.length; x += 1) {
+                if (i[x].name === name) {
+                    return i[x];
+                }
+            }
+        };
+        /**
+         * Resizes a column to fit the longest value in the column. Call without a value to resize all columns.
+         * Warning, can be slow on very large record sets (1m records ~3-5 seconds on an i7).
+         * @memberof canvasDataGrid#
+         * @method
+         * @param {string} name The name of the column to resize.
+         */
+        self.fitColumnToValues = function (name) {
+            self.sizes.columns[name === 'cornerCell' ? name : self.getHeaderByName(name)[self.uniqueId]]
+                = self.findColumnMaxTextLength(name);
+            self.resize();
+            self.draw(true);
+        };
+        /**
+         * Checks if a cell is currently visible.
+         * @memberof canvasDataGrid#
+         * @method
+         * @returns {boolean} when true, the cell is visible, when false the cell is not currently drawn.
+         * @param {cell} cell The cell to check for.  Alternatively you can pass an object { x: <x-index>, y: <y-index> }.
+         */
+        self.isCellVisible = function (cell) {
+            var x, l = self.visibleCells.length;
+            for (x = 0; x < l; x += 1) {
+                if (cell.x === self.visibleCells[x].x && cell.y === self.visibleCells[x].y) {
+                    return true;
+                }
+            }
+            return false;
+        };
+        /**
+         * Sets the order of the data.
+         * @memberof canvasDataGrid#
+         * @method
+         * @returns {cell} cell at the selected location.
+         * @param {number} columnName Number of pixels from the left.
+         * @param {string} direction `asc` for ascending or `desc` for descending.
+         * @param {bool} dontSetStorageData Don't store this setting for future use.
+         */
+        self.order = function (columnName, direction, dontSetStorageData) {
+            var f,
+                c = self.getSchema().filter(function (col) {
+                    return col.name === columnName;
+                });
+            self.orderBy = columnName;
+            if (c.length === 0) {
+                throw new Error('Cannot sort.  No such column name');
+            }
+            f = self.sorters[c[0].type];
+            if (!f && c[0].type !== undefined) {
+                console.warn('Cannot sort type "%s" falling back to string sort.', c[0].type);
+            }
+            self.data = self.data.sort(typeof f === 'function' ? f(columnName, direction) : self.sorters.string);
+            self.dispatchEvent('ordercolumn', [columnName, direction], self.intf);
+            self.draw(true);
+            if (dontSetStorageData) { return; }
+            self.setStorageData();
+        };
+        self.isInGrid = function (e) {
+            if (e.x < 0
+                    || e.x > self.width
+                    || e.y < 0
+                    || e.y > self.height) {
+                return false;
+            }
+            return true;
+        };
+        /**
+         * Gets the cell at grid pixel coordinate x and y.
+         * @memberof canvasDataGrid#
+         * @method
+         * @returns {cell} cell at the selected location.
+         * @param {number} x Number of pixels from the left.
+         * @param {number} y Number of pixels from the top.
+         */
+        self.getCellAt = function (x, y) {
+            var i, l = self.visibleCells.length, cell;
+            if (!self.visibleCells || !self.visibleCells.length) { return; }
+            self.hasFocus = true;
+            if (!(y < self.height
+                && y > 0
+                && x < self.width
+                && x > 0)) {
+                self.hasFocus = false;
+                return {
+                    dragContext: 'inherit',
+                    context: 'inherit'
+                };
+            }
+            for (i = 0; i < l; i += 1) {
+                cell = self.visibleCells[i];
+                if (cell.x - self.style.cellBorderWidth < x
+                        && cell.x + cell.width + self.style.cellBorderWidth > x
+                        && cell.y - self.style.cellBorderWidth < y
+                        && cell.y + cell.height + self.style.cellBorderWidth > y) {
+                    if (/vertical-scroll-(bar|box)/.test(cell.style)) {
+                        cell.dragContext = 'vertical-scroll-box';
+                        cell.context = 'vertical-scroll-box';
+                        if (y > self.scrollBox.box.v.y + self.scrollBox.scrollBoxHeight) {
+                            cell.dragContext = 'vertical-scroll-bottom';
+                            cell.context = 'vertical-scroll-bottom';
+                        } else if (y < self.scrollBox.box.v.y) {
+                            cell.dragContext = 'vertical-scroll-top';
+                            cell.context = 'vertical-scroll-top';
+                        }
+                        self.canvas.style.cursor = 'default';
+                        return cell;
+                    }
+                    if (/horizontal-scroll-(bar|box)/.test(cell.style)) {
+                        cell.dragContext = 'horizontal-scroll-box';
+                        cell.context = 'horizontal-scroll-box';
+                        if (x > self.scrollBox.box.h.x + self.scrollBox.scrollBoxWidth) {
+                            cell.dragContext = 'horizontal-scroll-right';
+                            cell.context = 'horizontal-scroll-right';
+                        } else if (x < self.scrollBox.box.h.x) {
+                            cell.dragContext = 'horizontal-scroll-left';
+                            cell.context = 'horizontal-scroll-left';
+                        }
+                        self.canvas.style.cursor = 'default';
+                        return cell;
+                    }
+                    if (cell.x + cell.width - (self.attributes.borderResizeZone * 0.4) < x
+                            && cell.x + cell.width + (self.attributes.borderResizeZone * 0.6) > x
+                            && self.attributes.allowColumnResize
+                            && ((self.attributes.allowColumnResizeFromCell && cell.style === 'cell')
+                                || cell.style !== 'cell')
+                            && ((self.attributes.allowRowHeaderResize
+                                && ['rowHeaderCell', 'cornerCell'].indexOf(cell.style) !== -1)
+                                || ['rowHeaderCell', 'cornerCell'].indexOf(cell.style) === -1)) {
+                        cell.context = 'ew-resize';
+                        cell.dragContext = 'ew-resize';
+                        return cell;
+                    }
+                    if (cell.y + cell.height - (self.attributes.borderResizeZone * 0.4) < y
+                            && cell.y + cell.height + (self.attributes.borderResizeZone * 0.6) > y
+                            && self.attributes.allowRowResize
+                            && ((self.attributes.allowRowResizeFromCell && cell.style === 'cell')
+                                || cell.style !== 'cell')
+                            && cell.style !== 'headerCell') {
+                        cell.context = 'ns-resize';
+                        cell.dragContext = 'ns-resize';
+                        return cell;
+                    }
+                    if (cell.style === 'headerCell') {
+                        cell.context = 'cell';
+                        cell.dragContext = 'column-reorder';
+                        return cell;
+                    }
+                    if (cell.style === 'rowHeaderCell') {
+                        cell.context = 'cell';
+                        cell.dragContext = 'row-reorder';
+                        return cell;
+                    }
+                    if (cell.isGrid) {
+                        self.hasFocus = false;
+                        cell.dragContext = 'cell-grid';
+                        cell.context = 'cell-grid';
+                        return cell;
+                    }
+                    if (cell.style === 'tree-grid') {
+                        self.hasFocus = false;
+                        cell.dragContext = 'tree';
+                        cell.context = 'tree';
+                        return cell;
+                    }
+                    cell.dragContext = 'cell';
+                    cell.context = 'cell';
+                    return cell;
+                }
+            }
+            self.hasFocus = false;
+            return {
+                context: 'inherit'
+            };
+        };
+        /**
+         * Gets the bounds of current selection. 
+         * @returns {rect} selection.
+         * @memberof canvasDataGrid#
+         * @method
+         */
+        self.getSelectionBounds = function () {
+            var low = {x: Infinity, y: Infinity},
+                high = {x: -Infinity, y: -Infinity};
+            self.data.forEach(function (row, rowIndex) {
+                var maxCol, minCol;
+                if (self.selections[rowIndex] && self.selections[rowIndex].length) {
+                    low.y = rowIndex < low.y ? rowIndex : low.y;
+                    high.y = rowIndex > high.y ? rowIndex : high.y;
+                    maxCol = Math.max.apply(null, self.selections[rowIndex]);
+                    minCol = Math.min.apply(null, self.selections[rowIndex]);
+                    low.x = minCol < low.x ? minCol : low.x;
+                    high.x = maxCol > high.x ? maxCol : high.x;
+                }
+            });
+            return {
+                top: low.y,
+                left: low.x,
+                bottom: high.y,
+                right: high.x
+            };
+        };
+        /**
+         * Returns an auto generated schema based on data structure.
+         * @memberof canvasDataGrid#
+         * @method
+         * @tutorial schema
+         * @returns {schema} schema A schema based on the first item in the data array.
+         */
+        self.getSchemaFromData = function () {
+            return Object.keys(self.data[0] || {' ': ''}).map(function mapEachSchemaColumn(key, index) {
+                var type = self.getBestGuessDataType(key),
+                    i = {
+                        name: key,
+                        title: key,
+                        width: self.style.columnWidth,
+                        index: index,
+                        type: type,
+                        filter: self.filter(type)
+                    };
+                if (key === self.uniqueId) {
+                    i.hidden = true;
+                }
+                i[self.uniqueId] = self.getSchemaNameHash(key);
+                return i;
+            });
+        };
+        /**
+         * Clears the change log grid.changes that keeps track of changes to the data set.
+         * This does not undo changes or alter data it is simply a convince array to keep
+         * track of changes made to the data since last this method was called.
+         * @memberof canvasDataGrid#
+         * @method
+         */
+        self.clearChangeLog = function () {
+            self.changes = [];
+        };
+        /**
+         * Selects an area of the grid.
+         * @memberof canvasDataGrid#
+         * @method
+         * @param {rect} bounds A rect object representing the selected values.
+         */
+        self.selectArea = function (bounds, ctrl) {
+            self.selectionBounds = bounds || self.selectionBounds;
+            var x, y, s = self.getSchema();
+            if (!ctrl) {
+                self.selections = [];
+            }
+            if (self.selectionBounds.top < -1
+                    || self.selectionBounds.bottom > self.data.length
+                    || self.selectionBounds.left < -1
+                    || self.selectionBounds.right > s.length) {
+                throw new Error('Impossible selection area');
+            }
+            for (x = self.selectionBounds.top; x <= self.selectionBounds.bottom; x += 1) {
+                self.selections[x] = [];
+                for (y = self.selectionBounds.left; y <= self.selectionBounds.right; y += 1) {
+                    if (self.selections[x].indexOf(y) === -1) {
+                        self.selections[x].push(y);
+                    }
+                }
+            }
+            self.dispatchEvent('selectionchanged', [self.getSelectedData(), self.selections, self.selectionBounds], self.intf);
+        };
+        /**
+         * Returns the maximum text width for a given column by column name.
+         * @memberof canvasDataGrid#
+         * @method
+         * @returns {number} The number of pixels wide the maximum width value in the selected column.
+         * @param {string} name The name of the column to calculate the value's width of.
+         */
+        self.findColumnMaxTextLength = function (name) {
+            var m = -Infinity;
+            if (name === 'cornerCell') {
+                self.ctx.font = self.style.rowHeaderCellFont;
+                return self.ctx.measureText((self.data.length + (self.attributes.showNewRow ? 1 : 0)).toString()).width
+                    + self.style.autosizePadding + self.style.autosizeHeaderCellPadding
+                    + self.style.rowHeaderCellPaddingRight
+                    + self.style.rowHeaderCellPaddingLeft
+                    + (self.attributes.tree ? self.style.treeArrowWidth
+                        + self.style.treeArrowMarginLeft + self.style.treeArrowMarginRight : 0);
+            }
+            self.getSchema().forEach(function (col) {
+                if (col.name !== name) { return; }
+                self.ctx.font = self.style.headerCellFont;
+                var t = self.ctx.measureText(col.title || col.name).width
+                    + self.style.headerCellPaddingRight
+                    + self.style.headerCellPaddingLeft;
+                m = t > m ? t : m;
+            });
+            self.data.forEach(function (row) {
+                self.ctx.font = self.style.cellFont;
+                var t = self.ctx.measureText(row[name]).width
+                    + self.style.cellPaddingRight
+                    + self.style.cellPaddingLeft + self.style.cellAutoResizePadding;
+                m = t > m ? t : m;
+            });
+            return m;
+        };
+        /**
+         * Gets the total width of all header columns.
+         * @memberof canvasDataGrid#
+         * @method
+         */
+        self.getHeaderWidth = function () {
+            return self.getVisibleSchema().reduce(function (total, header) {
+                return total + header.width;
+            }, 0);
+        };
+        self.formatters.string = function cellFormatterString(ctx, cell) {
+            return cell.value !== undefined ? cell.value : '';
+        };
+        self.formatters.rowHeaderCell = self.formatters.string;
+        self.formatters.headerCell = self.formatters.string;
+        self.formatters.number = self.formatters.string;
+        self.formatters.int = self.formatters.string;
+        self.sorters.string = function (columnName, direction) {
+            var asc = direction === 'asc';
+            return function (a, b) {
+                if (a[columnName] === undefined || a[columnName] === null) {
+                    return 1;
+                }
+                if (b[columnName] === undefined || b[columnName] === null) {
+                    return 0;
+                }
+                if (asc) {
+                    if (!a[columnName].localeCompare) { return 1; }
+                    return a[columnName].localeCompare(b[columnName]);
+                }
+                if (!b[columnName].localeCompare) { return 1; }
+                return b[columnName].localeCompare(a[columnName]);
+            };
+        };
+        self.sorters.number = function (columnName, direction) {
+            var asc = direction === 'asc';
+            return function (a, b) {
+                if (asc) {
+                    return a[columnName] - b[columnName];
+                }
+                return b[columnName] - a[columnName];
+            };
+        };
+        self.sorters.date = function (columnName, direction) {
+            var asc = direction === 'asc';
+            return function (a, b) {
+                if (asc) {
+                    return new Date(a[columnName]).getTime()
+                        - new Date(b[columnName]).getTime();
+                }
+                return new Date(b[columnName]).getTime()
+                        - new Date(a[columnName]).getTime();
+            };
+        };
+    };
+}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ })
+/******/ ]);
+//# sourceMappingURL=nullmap
