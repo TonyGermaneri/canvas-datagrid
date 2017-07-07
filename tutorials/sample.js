@@ -442,6 +442,7 @@ document.addEventListener('DOMContentLoaded', function () {
         editor.className = 'code-sample';
         gridParent.className = 'grid';
         execute.className = 'execute-button';
+        execute.innerHTML = 'Execute';
         errorMessage.className = 'error-message';
         sampleParent.className = 'sample-parent';
         autoExecuteLabel.innerHTML = 'Auto Execute';
@@ -463,14 +464,22 @@ document.addEventListener('DOMContentLoaded', function () {
         aceEditor.getSession().setMode('ace/mode/javascript');
         toggleEditor.onclick = function () {
             editorVisible = !editorVisible;
-            var i = [autoExecute, autoExecuteLabel, editor, execute];
+            var i = [editor];
             if (editorVisible) {
                 show(i);
                 editor.style.display = 'block';
+                execute.style.display = 'inline-block';
+                autoExecuteLabel.style.display = 'inline-block';
+                autoExecute.style.display = 'inline-block';
                 buttonsParent.style.display = 'block';
                 toggleEditor.innerHTML = 'Examples &#x21F1';
             } else {
                 hide(i);
+                autoExecuteLabel.style.visibility = 'hidden';
+                autoExecute.style.visibility = 'hidden';
+                execute.style.display = 'none';
+                autoExecuteLabel.style.display = 'none';
+                autoExecute.style.display = 'none';
                 editor.style.display = 'none';
                 buttonsParent.style.display = 'none';
                 toggleEditor.innerHTML = 'Examples &#x21F2';
@@ -530,11 +539,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     var i = document.createElement('div'),
         n = document.getElementsByTagName('footer')[0];
-    if (!n) {
-        n = document.createElement('div');
-        document.body.appendChild(n);
+    document.body.appendChild(i);
+    if (n) {
+        n.parentNode.insertBefore(i, n);
+        document.body.style.overflow = 'hidden';
+        while (document.body.firstChild !== i) {
+            document.body.removeChild(document.body.firstChild);
+        }
     }
-    n.parentNode.insertBefore(i, n);
     createSample({
         parentNode: i
     });

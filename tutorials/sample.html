@@ -9,6 +9,7 @@
             min-height: 100%;
             padding: 0;
             margin: 0;
+            overflow-y: hidden;
         }
         .auto-execute-checkbox-label {
             font-family: sans-serif;
@@ -44,9 +45,6 @@
         .execute-button .toggle-editor {
             margin-bottom: 10px;
         }
-        .execute-button:before {
-            content: "Execute";
-        }
         .grid {
             vertical-align: top;
             display: inline-block;
@@ -55,7 +53,7 @@
         .code-sample {
             margin-bottom: 10px;
             height: 260px;
-            border: solid 1px #ccc;
+            outline: solid 1px #333;
         }
         .execute-button-error {
             background: yellow;
