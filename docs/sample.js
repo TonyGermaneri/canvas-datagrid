@@ -442,10 +442,7 @@ document.addEventListener('DOMContentLoaded', function () {
         editor.className = 'code-sample';
         gridParent.className = 'grid';
         execute.className = 'execute-button';
-<<<<<<< HEAD
-=======
         execute.innerHTML = 'Execute';
->>>>>>> master
         errorMessage.className = 'error-message';
         sampleParent.className = 'sample-parent';
         autoExecuteLabel.innerHTML = 'Auto Execute';
@@ -467,12 +464,6 @@ document.addEventListener('DOMContentLoaded', function () {
         aceEditor.getSession().setMode('ace/mode/javascript');
         toggleEditor.onclick = function () {
             editorVisible = !editorVisible;
-<<<<<<< HEAD
-            var i = [autoExecute, autoExecuteLabel, editor, execute];
-            if (editorVisible) {
-                show(i);
-                editor.style.display = 'block';
-=======
             var i = [editor];
             if (editorVisible) {
                 show(i);
@@ -480,19 +471,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 execute.style.display = 'inline-block';
                 autoExecuteLabel.style.display = 'inline-block';
                 autoExecute.style.display = 'inline-block';
->>>>>>> master
                 buttonsParent.style.display = 'block';
                 toggleEditor.innerHTML = 'Examples &#x21F1';
             } else {
                 hide(i);
-<<<<<<< HEAD
-=======
                 autoExecuteLabel.style.visibility = 'hidden';
                 autoExecute.style.visibility = 'hidden';
                 execute.style.display = 'none';
                 autoExecuteLabel.style.display = 'none';
                 autoExecute.style.display = 'none';
->>>>>>> master
                 editor.style.display = 'none';
                 buttonsParent.style.display = 'none';
                 toggleEditor.innerHTML = 'Examples &#x21F2';
@@ -552,13 +539,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     var i = document.createElement('div'),
         n = document.getElementsByTagName('footer')[0];
-<<<<<<< HEAD
-    if (!n) {
-        n = document.createElement('div');
-        document.body.appendChild(n);
-    }
-    n.parentNode.insertBefore(i, n);
-=======
     document.body.appendChild(i);
     if (n) {
         n.parentNode.insertBefore(i, n);
@@ -567,7 +547,6 @@ document.addEventListener('DOMContentLoaded', function () {
             document.body.removeChild(document.body.firstChild);
         }
     }
->>>>>>> master
     createSample({
         parentNode: i
     });
