@@ -250,9 +250,6 @@ document.addEventListener('DOMContentLoaded', function () {
         examples['Toggle debug data'] = function () {
             grid.attributes.debug = !grid.attributes.debug;
         };
-        examples['Toggle performance data'] = function () {
-            grid.attributes.showPerformance = !grid.attributes.showPerformance;
-        };
         examples['Open a tree'] = function () {
             grid.addEventListener('expandtree', function expandTree(grid, data, rowIndex) {
                 var x, y, d = [];
@@ -470,10 +467,13 @@ document.addEventListener('DOMContentLoaded', function () {
             if (editorVisible) {
                 show(i);
                 editor.style.display = 'block';
-                toggleEditor.innerHTML = 'Editor &#x21F1';
+                buttonsParent.style.display = 'block';
+                toggleEditor.innerHTML = 'Examples &#x21F1';
             } else {
                 hide(i);
-                toggleEditor.innerHTML = 'Editor &#x21F2';
+                editor.style.display = 'none';
+                buttonsParent.style.display = 'none';
+                toggleEditor.innerHTML = 'Examples &#x21F2';
             }
             aceEditor.resize();
             window.dispatchEvent(new Event('resize'));
@@ -481,18 +481,18 @@ document.addEventListener('DOMContentLoaded', function () {
         execute.onclick = function () {
             errorMessage.style.visibility = 'hidden';
             errorMessage.innerHTML = '';
-//            try {
+            try {
                 eval(aceEditor.getValue());
-            // } catch (e) {
-            //     errorMessage.style.visibility = 'visible';
-            //     errorMessage.innerHTML = e.message;
-            // }
+            } catch (e) {
+                errorMessage.style.visibility = 'visible';
+                errorMessage.innerHTML = e.message;
+            }
         };
         // create a grid to share with all the functions
         function resize() {
             editor.style.height = (window.innerHeight * 0.33) + 'px';
             gridParent.style.height = window.innerHeight
-                - topSide.offsetHeight - 80
+                - topSide.offsetHeight - 3
                 + 'px';
         }
         function toCodeSample(fn) {
