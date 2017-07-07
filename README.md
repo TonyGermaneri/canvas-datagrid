@@ -7,7 +7,7 @@ Canvas Data Grid
 * Support for millions of rows and columns.
 * Extensible styling, filtering, formatting, resizing, selecting, and ordering.
 * Rich API of events, methods and properties optimized for CRUD, reporting and work flow applications.
-* Zero dependencies, very small code base, distributed as a single 77k (19k gziped) file.
+* Zero dependencies, very small code base, distributed as a single ~80k (~20k gziped) file.
 
 [Demo](https://tonygermaneri.github.io/canvas-datagrid/docs/tutorial-sample.html)
 
