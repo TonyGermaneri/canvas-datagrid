@@ -186,7 +186,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
             });
-
             // add some images
             grid.data = [
                 {
