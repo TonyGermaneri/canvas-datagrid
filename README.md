@@ -1,11 +1,12 @@
 Canvas Data Grid
 ================
 
-[![NPM](https://nodei.co/npm/canvas-datagrid.png?downloads=true)](https://nodei.co/npm/canvas-datagrid/)
-
 * High performance lightweight hierarchal canvas based data grid.
 * Support for millions of rows and columns.
+* Support for touch based devices.
 * Extensible styling, filtering, formatting, resizing, selecting, and ordering.
+* Full documentation with live sample code.
+* Single canvas element supporting multiple nested tree or cell grids.
 * Rich API of events, methods and properties optimized for CRUD, reporting and work flow applications.
 * Zero dependencies, very small code base, distributed as a single ~80k (~20k gziped) file.
 
