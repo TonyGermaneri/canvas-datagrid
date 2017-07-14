@@ -148,6 +148,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 'bar': 'a ' + new Date().toString()
             });
         };
+        examples['Draw HTML'] = function () {
+            grid.addEventListener('afterrendercell', function (ctx, cell) {
+                if (cell.columnIndex === 1 && cell.rowIndex > -1) {
+                    cell.innerHTML = '<div style="display: inline-block; color: dodgerblue; font-size: 2em;">'
+                        + cell.value
+                        + '</div>'
+                        + '<div style="display: inline-block; margin: -20px -20px; filter: blur(5px); font-size: 2em;">'
+                        + cell.value
+                        + '</div>';
+                }
+            });
+        };
         examples['Draw a picture'] = function () {
             // place to store Image objects
             var imgs = {};
@@ -190,15 +202,15 @@ document.addEventListener('DOMContentLoaded', function () {
             // add some images
             grid.data = [
                 {
-                    image: 'https://cdn.pixabay.com/photo/2017/02/22/16/50/landscape-2089899_960_720.jpg',
+                    image: 'https://imgfly.me/content/images/system/home_cover_1487462088616_671176.jpg',
                     melius: 'causae'
                 },
                 {
-                    image: 'https://cdn.pixabay.com/photo/2013/08/26/09/24/field-175959_960_720.jpg',
+                    image: 'https://imgfly.me/content/images/system/home_cover_1487462024769_865e94.jpg',
                     melius: 'omittam'
                 },
                 {
-                    image: 'https://cdn.pixabay.com/photo/2014/08/26/15/15/country-lane-428039_960_720.jpg',
+                    image: 'https://imgfly.me/content/images/system/home_cover_1487462098680_a9930c.jpg',
                     melius: 'explicari'
                 },
                 {
