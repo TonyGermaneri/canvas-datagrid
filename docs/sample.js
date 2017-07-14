@@ -46,32 +46,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 parentNode: gridParent
             });
         };
-        examples['Create a spreadsheet'] = function () {
-            // create a spreadsheet
-            var x, y, d = [], n;
-            function colName(n) {
-                var ordA = 'a'.charCodeAt(0),
-                    ordZ = 'z'.charCodeAt(0),
-                    len = ordZ - ordA + 1,
-                    s = "";
-                while (n >= 0) {
-                    s = String.fromCharCode(n % len + ordA) + s;
-                    n = Math.floor(n / len) - 1;
-                }
-                return s;
-            }
-            for (x = 0; x < 10000; x += 1) {
-                d[x] = {};
-                for (y = 0; y < 50; y += 1) {
-                    n = colName(y).toUpperCase();
-                    d[x][n] = x * y;
-                }
-            }
-            grid.data = d;
-        };
-        examples['Toggle rowSelectionMode'] = function () {
-            grid.attributes.rowSelectionMode = !grid.attributes.rowSelectionMode;
-        };
         examples['Add 10,000 random rows'] = function () {
             // create random data from a bunch of Latin words
             var x, data = [], d, i, c,
@@ -88,12 +62,31 @@ document.addEventListener('DOMContentLoaded', function () {
             // add the data to the grid
             grid.data = data.concat(grid.data);
         };
+        examples['Detect clicks'] = function () {
+            grid.addEventListener('click', function (e) {
+                if (!e.cell) { return; }
+                console.log(e.cell.value);
+            });
+        };
+        examples['Detect cell over/out'] = function () {
+            grid.addEventListener('cellmouseover', function (e) {
+                if (!e.cell) { return; }
+                console.log(e.cell.value);
+            });
+            grid.addEventListener('cellmouseout', function (e) {
+                if (!e.cell) { return; }
+                console.log(e.cell.value);
+            });
+        };
+        examples['Toggle rowSelectionMode'] = function () {
+            grid.attributes.rowSelectionMode = !grid.attributes.rowSelectionMode;
+        };
         examples['Scroll to a cell'] = function () {
             grid.scrollIntoView(2, 200);
         };
         examples['Validate input.'] = function () {
-            grid.addEventListener('beforeendedit', function (e, cell, newValue, oldValue, abortEdit, input) {
-                if (/\d+/.test(newValue)) {
+            grid.addEventListener('beforeendedit', function (e) {
+                if (/\d+/.test(e.newValue)) {
                     alert('NO DIGITS!');
                     e.preventDefault();
                 }
@@ -148,28 +141,41 @@ document.addEventListener('DOMContentLoaded', function () {
                 'bar': 'a ' + new Date().toString()
             });
         };
+        examples['Draw HTML'] = function () {
+            grid.addEventListener('afterrendercell', function (e) {
+                if (e.cell.columnIndex === 1 && e.cell.rowIndex > -1) {
+                    e.cell.innerHTML = '<div style="display: inline-block; color: dodgerblue; font-size: 2em;">'
+                        + e.cell.value
+                        + '</div>'
+                        + '<div style="display: inline-block; margin: -20px -20px; filter: blur(5px); font-size: 2em;">'
+                        + e.cell.value
+                        + '</div>';
+                }
+            });
+            grid.draw();
+        };
         examples['Draw a picture'] = function () {
             // place to store Image objects
             var imgs = {};
             // stop the cell from rendering text
-            grid.addEventListener('rendertext', function (ctx, cell) {
-                if (cell.rowIndex > -1) {
-                    if (cell.header.name === 'image') {
-                        cell.formattedValue = cell.value ? '' : 'No Image';
+            grid.addEventListener('rendertext', function (e) {
+                if (e.cell.rowIndex > -1) {
+                    if (e.cell.header.name === 'image') {
+                        e.cell.formattedValue = e.cell.value ? '' : 'No Image';
                     }
                 }
             });
             // after the cell is rendered, draw on top of it
-            grid.addEventListener('afterrendercell', function (ctx, cell) {
+            grid.addEventListener('afterrendercell', function (e) {
                 var i, contextGrid = this;
-                if (cell.header.name === 'image'
-                        && cell.value && cell.rowIndex > -1) {
+                if (e.cell.header.name === 'image'
+                        && e.cell.value && e.cell.rowIndex > -1) {
                     // if we haven't already made an image for this, do it now
-                    if (!imgs[cell.value]) {
+                    if (!imgs[e.cell.value]) {
                         // create a new image object and store it in the imgs object
-                        i = imgs[cell.value] = new Image();
+                        i = imgs[e.cell.value] = new Image();
                         // get the image path from the cell's value
-                        i.src = cell.value;
+                        i.src = e.cell.value;
                         // when the image finally loads
                         // call draw() again to run the else path
                         i.onload = function () {
@@ -178,26 +184,26 @@ document.addEventListener('DOMContentLoaded', function () {
                         return;
                     }
                     // if we have an image already, draw it.
-                    i = imgs[cell.value];
+                    i = imgs[e.cell.value];
                     if (i.width !== 0) {
-                        i.targetHeight = cell.height;
-                        i.targetWidth = cell.height * (i.width / i.height);
-                        ctx.drawImage(i, cell.x, cell.y, i.targetWidth, i.targetHeight);
+                        i.targetHeight = e.cell.height;
+                        i.targetWidth = e.cell.height * (i.width / i.height);
+                        e.ctx.drawImage(i, e.cell.x, e.cell.y, i.targetWidth, i.targetHeight);
                     }
                 }
             });
             // add some images
             grid.data = [
                 {
-                    image: 'https://cdn.pixabay.com/photo/2017/02/22/16/50/landscape-2089899_960_720.jpg',
+                    image: 'https://imgfly.me/content/images/system/home_cover_1487462088616_671176.jpg',
                     melius: 'causae'
                 },
                 {
-                    image: 'https://cdn.pixabay.com/photo/2013/08/26/09/24/field-175959_960_720.jpg',
+                    image: 'https://imgfly.me/content/images/system/home_cover_1487462024769_865e94.jpg',
                     melius: 'omittam'
                 },
                 {
-                    image: 'https://cdn.pixabay.com/photo/2014/08/26/15/15/country-lane-428039_960_720.jpg',
+                    image: 'https://imgfly.me/content/images/system/home_cover_1487462098680_a9930c.jpg',
                     melius: 'explicari'
                 },
                 {
@@ -212,9 +218,9 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         };
         examples['Conditionally set colors.'] = function () {
-            grid.addEventListener('rendercell', function (ctx, cell) {
-                if (cell.header.name === 'Ei' && /omittam/.test(cell.value)) {
-                    ctx.fillStyle = '#AEEDCF';
+            grid.addEventListener('rendercell', function (e) {
+                if (e.cell.header.name === 'Ei' && /omittam/.test(e.cell.value)) {
+                    e.ctx.fillStyle = '#AEEDCF';
                 }
             });
             grid.data = [
@@ -251,7 +257,7 @@ document.addEventListener('DOMContentLoaded', function () {
             grid.attributes.debug = !grid.attributes.debug;
         };
         examples['Open a tree'] = function () {
-            grid.addEventListener('expandtree', function expandTree(grid, data, rowIndex) {
+            grid.addEventListener('expandtree', function expandTree(e) {
                 var x, y, d = [];
                 for (x = 0; x < 2000; x += 1) {
                     d[x] = {};
@@ -259,15 +265,15 @@ document.addEventListener('DOMContentLoaded', function () {
                         d[x][y] = y * x;
                     }
                 }
-                grid.data = d;
+                e.treeGrid.data = d;
                 // prevent repeated executions of this example code from blowing things up
-                grid.removeEventListener('expandtree', expandTree);
+                e.treeGrid.removeEventListener('expandtree', expandTree);
             });
             grid.expandTree(2);
         };
         examples['Allow users to open trees.'] = function () {
             grid.attributes.tree = true;
-            function expandTree(treeGrid, data, rowIndex) {
+            function expandTree(e) {
                 var x, y, d = [];
                 for (x = 0; x < 50; x += 1) {
                     d[x] = {};
@@ -275,9 +281,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         d[x][y] = y * x;
                     }
                 }
-                treeGrid.addEventListener('expandtree', expandTree);
-                treeGrid.attributes.tree = true;
-                treeGrid.data = d;
+                e.treeGrid.addEventListener('expandtree', expandTree);
+                e.treeGrid.attributes.tree = true;
+                e.treeGrid.data = d;
             }
             grid.addEventListener('expandtree', expandTree);
         };
@@ -411,6 +417,29 @@ document.addEventListener('DOMContentLoaded', function () {
             ];
             grid.setColumnWidth(1, 5000);
         };
+        examples['Create a spreadsheet'] = function () {
+            // create a spreadsheet
+            var x, y, d = [], n;
+            function colName(n) {
+                var ordA = 'a'.charCodeAt(0),
+                    ordZ = 'z'.charCodeAt(0),
+                    len = ordZ - ordA + 1,
+                    s = "";
+                while (n >= 0) {
+                    s = String.fromCharCode(n % len + ordA) + s;
+                    n = Math.floor(n / len) - 1;
+                }
+                return s;
+            }
+            for (x = 0; x < 10000; x += 1) {
+                d[x] = {};
+                for (y = 0; y < 50; y += 1) {
+                    n = colName(y).toUpperCase();
+                    d[x][n] = x * y;
+                }
+            }
+            grid.data = d;
+        };
         examples['Disco Mode'] = function () {
             // this is not a real mode, just for fun
             // you'll probably have to refresh the page to get rid of this timer
@@ -425,9 +454,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     + getRandomInt(25, 244) + ', '
                     + getRandomInt(0, 127) + ')';
             }
-            grid.addEventListener('rendercell', function (ctx, cell) {
-                ctx.fillStyle = getRandomColor();
-                ctx.strokeStyle = getRandomColor();
+            grid.addEventListener('rendercell', function (e) {
+                e.ctx.fillStyle = getRandomColor();
+                e.ctx.strokeStyle = getRandomColor();
             });
             setInterval(grid.draw, 500);
             grid.draw();
@@ -534,7 +563,7 @@ document.addEventListener('DOMContentLoaded', function () {
         toggleEditor.dispatchEvent(new Event('click'));
         execute.dispatchEvent(new Event('click'));
         window.dispatchEvent(new Event('resize'));
-        // "duplicate" line here fix for ace editor resize
+        // duplicate line here fix for ace editor resize
         window.dispatchEvent(new Event('resize'));
     }
     var i = document.createElement('div'),
