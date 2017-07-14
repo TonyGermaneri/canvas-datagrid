@@ -8,13 +8,13 @@ You can change the dimensions and appearance of any element of the grid.
 
 This example changes the fill style of the cell when the cell is a certain value.
 
-    grid.addEventListener('rendercell', function (ctx, cell) {
-        if (cell.header.name === 'MyStatusCell' && /blah/.test(cell.value)) {
-            ctx.fillStyle = '#AEEDCF';
+    grid.addEventListener('rendercell', function (e) {
+        if (e.cell.header.name === 'MyStatusCell' && /blah/.test(e.cell.value)) {
+            e.ctx.fillStyle = '#AEEDCF';
         }
     });
 
-For a complete list of all style properties visit the [styles](#styles) section.
+For a complete list of all style properties visit the [styles](https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDataGrid.style.html) section.
 
 Drawing on the canvas
 -------------------------------------------
@@ -24,10 +24,10 @@ Below is an example of drawing an image into a cell:
 
 This example attaches to two events. `rendertext` to prevent the rendering of text into the cell...
 
-    grid.addEventListener('rendertext', function (ctx, cell) {
-        if (cell.rowIndex > -1) {
-            if (cell.header.name === 'MyImageColumnName') {
-                cell.formattedValue = cell.value ? '' : 'No Image';
+    grid.addEventListener('rendertext', function (e) {
+        if (e.cell.rowIndex > -1) {
+            if (e.cell.header.name === 'MyImageColumnName') {
+                e.cell.formattedValue = e.cell.value ? '' : 'No Image';
             }
         }
     });
@@ -37,23 +37,23 @@ Because the image is loaded asynchronously, you need to attach to the load even 
 the image.
 
     var imgs = {};
-    grid.addEventListener('afterrendercell', function (ctx, cell) {
+    grid.addEventListener('afterrendercell', function (e) {
         var i, contextGrid = this;
-        if (cell.header.name === 'MyImageColumnName'
-                && cell.value && cell.rowIndex > -1) {
-            if (!imgs[cell.value]) {
-                i = imgs[cell.value] = new Image();
-                i.src = cell.value;
+        if (e.cell.header.name === 'MyImageColumnName'
+                && e.cell.value && e.cell.rowIndex > -1) {
+            if (!imgs[e.cell.value]) {
+                i = imgs[e.cell.value] = new Image();
+                i.src = e.cell.value;
                 i.onload = function () {
-                    i.targetHeight = cell.height;
-                    i.targetWidth = cell.height * (i.width / i.height);
+                    i.targetHeight = e.cell.height;
+                    i.targetWidth = e.cell.height * (i.width / i.height);
                     contextGrid.draw();
                 };
                 return;
             }
-            i = imgs[cell.value];
+            i = imgs[e.cell.value];
             if (i.width !== 0) {
-                ctx.drawImage(i, cell.x, cell.y, i.targetWidth, i.targetHeight);
+                ctx.drawImage(i, e.cell.x, e.cell.y, i.targetWidth, i.targetHeight);
             }
         }
     });
