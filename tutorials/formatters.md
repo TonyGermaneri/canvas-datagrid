@@ -2,7 +2,7 @@ You can format the data in your cells without altering the data in two ways.
 
 The first and fastest method is grid formatters.
 Grid formatters allow you to define what happens to a type of data.
-Data type is defined in the [schema](#schema) that you can optionally pass to describe your data.
+Data type is defined in the [schema](https://tonygermaneri.github.io/canvas-datagrid/docs/tutorial-schema.html) that you can optionally pass to describe your data.
 
 This method is slightly faster due to the O(1) hash map employed in the value formatters.
 
@@ -16,16 +16,16 @@ The return value of the formatter function will be displayed in the cell instead
 in the data without altering the data.
 
 The second method is the `rendertext` event.  By subscribing to the `rendertext` event listener
-we can intercept the value in the context of the [cell](#cell) being drawn and alter it.
+we can intercept the value in the context of the [cell](https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDataGrid.cell.html) being drawn and alter it.
 
 This method is slightly slower due to the O(n) loop employed in the event handler class.
 
 This method is not dependent on values in the schema.  This methods overrides `grid.formatters`.
 
-    grid.addEventListener('rendertext', function (ctx, cell) {
-        if (cell.rowIndex > -1) {
-            if (cell.header.name === 'MyDateColumnName') {
-                cell.formattedValue = new Date(cell.value).toISOString();
+    grid.addEventListener('rendertext', function (e) {
+        if (e.cell.rowIndex > -1) {
+            if (e.cell.header.name === 'MyDateColumnName') {
+                e.cell.formattedValue = new Date(e.cell.value).toISOString();
             }
         }
     });
@@ -46,6 +46,6 @@ Cell formatter function should contain the following arguments.
 | Argument | Description |
 |-----|------|
 | ctx | Canvas context. |
-| [cell](#cell) | Current cell. |
+| [cell](https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDataGrid.cell.html) | Current cell. |
 
 Formatters must return a string value to be displayed in the cell.
