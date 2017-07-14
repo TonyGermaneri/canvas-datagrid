@@ -89,7 +89,7 @@
     <p>You can format the data in your cells without altering the data in two ways.</p>
 <p>The first and fastest method is grid formatters.
 Grid formatters allow you to define what happens to a type of data.
-Data type is defined in the <a href="#schema">schema</a> that you can optionally pass to describe your data.</p>
+Data type is defined in the <a href="https://tonygermaneri.github.io/canvas-datagrid/docs/tutorial-schema.html">schema</a> that you can optionally pass to describe your data.</p>
 <p>This method is slightly faster due to the O(1) hash map employed in the value formatters.</p>
 <p>In the following example the type <code>date</code> is given a formatter function.</p>
 <pre class="prettyprint source"><code>grid.formatters.date = function (ctx, cell) {
@@ -97,13 +97,13 @@ Data type is defined in the <a href="#schema">schema</a> that you can optionally
 };</code></pre><p>The return value of the formatter function will be displayed in the cell instead of the value
 in the data without altering the data.</p>
 <p>The second method is the <code>rendertext</code> event.  By subscribing to the <code>rendertext</code> event listener
-we can intercept the value in the context of the <a href="#cell">cell</a> being drawn and alter it.</p>
+we can intercept the value in the context of the <a href="https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDataGrid.cell.html">cell</a> being drawn and alter it.</p>
 <p>This method is slightly slower due to the O(n) loop employed in the event handler class.</p>
 <p>This method is not dependent on values in the schema.  This methods overrides <code>grid.formatters</code>.</p>
-<pre class="prettyprint source"><code>grid.addEventListener('rendertext', function (ctx, cell) {
-    if (cell.rowIndex > -1) {
-        if (cell.header.name === 'MyDateColumnName') {
-            cell.formattedValue = new Date(cell.value).toISOString();
+<pre class="prettyprint source"><code>grid.addEventListener('rendertext', function (e) {
+    if (e.cell.rowIndex > -1) {
+        if (e.cell.header.name === 'MyDateColumnName') {
+            e.cell.formattedValue = new Date(e.cell.value).toISOString();
         }
     }
 });</code></pre><h1>formatters</h1><p>Object that contains a list of formatting functions for displaying text.
@@ -126,7 +126,7 @@ be logged and the string formatter will be used.</p>
 <td>Canvas context.</td>
 </tr>
 <tr>
-<td><a href="#cell">cell</a></td>
+<td><a href="https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDataGrid.cell.html">cell</a></td>
 <td>Current cell.</td>
 </tr>
 </tbody>

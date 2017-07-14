@@ -88,17 +88,17 @@
 <article>
     <p>You can add or remove items from the context menu, or stop it from appearing.
 In the following example, a context menu item is added:</p>
-<pre class="prettyprint source"><code>    grid.addEventListener('contextmenu', function (e, cell, items) {
-        items.push({
+<pre class="prettyprint source"><code>    grid.addEventListener('contextmenu', function (e) {
+        e.items.push({
             title: 'Process selected row(s)',
             click: function () {
-                // cell.value contains the cell's value
-                // cell.data contains the row values
-                myProcess(cell.value, cell.data);
+                // e.cell.value contains the cell's value
+                // e.cell.data contains the row values
+                myProcess(e.cell.value, e.cell.data);
             }
         });
     });</code></pre><p>The <code>title</code> property can be an HTML node reference instead of a string.
-The <code>click</code> property is optional.  See <a href="#contextmenu">contextmenu</a> complete information.</p>
+The <code>click</code> property is optional.  See <a href="https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDataGrid.contextMenuItem.html">contextmenu</a> complete information.</p>
 </article>
 
 </section>

@@ -91,42 +91,42 @@ methods of extending the canvas.</p>
 <h2>Extending the visual appearance</h2><p>All visual elements of the canvas are dependent on the values of the style object.
 You can change the dimensions and appearance of any element of the grid.</p>
 <p>This example changes the fill style of the cell when the cell is a certain value.</p>
-<pre class="prettyprint source"><code>grid.addEventListener('rendercell', function (ctx, cell) {
-    if (cell.header.name === 'MyStatusCell' && /blah/.test(cell.value)) {
-        ctx.fillStyle = '#AEEDCF';
+<pre class="prettyprint source"><code>grid.addEventListener('rendercell', function (e) {
+    if (e.cell.header.name === 'MyStatusCell' && /blah/.test(e.cell.value)) {
+        e.ctx.fillStyle = '#AEEDCF';
     }
-});</code></pre><p>For a complete list of all style properties visit the <a href="#styles">styles</a> section.</p>
+});</code></pre><p>For a complete list of all style properties visit the <a href="https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDataGrid.style.html">styles</a> section.</p>
 <h2>Drawing on the canvas</h2><p>Extending behavior is done using event handlers just like a regular HTML element.
 You can alter the content of a rendered cell by attaching to such an event handler.
 Below is an example of drawing an image into a cell:</p>
 <p>This example attaches to two events. <code>rendertext</code> to prevent the rendering of text into the cell...</p>
-<pre class="prettyprint source"><code>grid.addEventListener('rendertext', function (ctx, cell) {
-    if (cell.rowIndex > -1) {
-        if (cell.header.name === 'MyImageColumnName') {
-            cell.formattedValue = cell.value ? '' : 'No Image';
+<pre class="prettyprint source"><code>grid.addEventListener('rendertext', function (e) {
+    if (e.cell.rowIndex > -1) {
+        if (e.cell.header.name === 'MyImageColumnName') {
+            e.cell.formattedValue = e.cell.value ? '' : 'No Image';
         }
     }
 });</code></pre><p>... and <code>afterrendercell</code> to draw an image into the cell after the background and borders are drawn.
 Because the image is loaded asynchronously, you need to attach to the load even to actually draw
 the image.</p>
 <pre class="prettyprint source"><code>var imgs = {};
-grid.addEventListener('afterrendercell', function (ctx, cell) {
+grid.addEventListener('afterrendercell', function (e) {
     var i, contextGrid = this;
-    if (cell.header.name === 'MyImageColumnName'
-            && cell.value && cell.rowIndex > -1) {
-        if (!imgs[cell.value]) {
-            i = imgs[cell.value] = new Image();
-            i.src = cell.value;
+    if (e.cell.header.name === 'MyImageColumnName'
+            && e.cell.value && e.cell.rowIndex > -1) {
+        if (!imgs[e.cell.value]) {
+            i = imgs[e.cell.value] = new Image();
+            i.src = e.cell.value;
             i.onload = function () {
-                i.targetHeight = cell.height;
-                i.targetWidth = cell.height * (i.width / i.height);
+                i.targetHeight = e.cell.height;
+                i.targetWidth = e.cell.height * (i.width / i.height);
                 contextGrid.draw();
             };
             return;
         }
-        i = imgs[cell.value];
+        i = imgs[e.cell.value];
         if (i.width !== 0) {
-            ctx.drawImage(i, cell.x, cell.y, i.targetWidth, i.targetHeight);
+            ctx.drawImage(i, e.cell.x, e.cell.y, i.targetWidth, i.targetHeight);
         }
     }
 });</code></pre>
