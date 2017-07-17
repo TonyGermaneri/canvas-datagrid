@@ -907,7 +907,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
                 //corner
                 self.ctx.strokeStyle = self.style.scrollBarCornerBorderColor;
-                self.ctx.fillStyle = self.style.scrollBarCornerBackground;
+                self.ctx.fillStyle = self.style.scrollBarCornerBackgroundColor;
                 co.x = n.x + n.width + m;
                 co.y = v.y + v.height + m;
                 co.width = self.style.scrollBarWidth + self.style.scrollBarBorderWidth;
@@ -3065,7 +3065,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['scrollBarWidth', 11],
                 ['scrollBarBoxMinSize', 15],
                 ['scrollBarCornerBorderColor', 'rgba(202, 202, 202, 1)'],
-                ['scrollBarCornerBackground', 'rgba(240, 240, 240, 1)'],
+                ['scrollBarCornerBackgroundColor', 'rgba(240, 240, 240, 1)'],
                 ['treeArrowClickRadius', 5],
                 ['treeGridHeight', 250],
                 ['treeArrowHeight', 8],
