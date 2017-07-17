@@ -1,0 +1,83 @@
+<!doctype html>
+<head>
+    <script src="../dist/canvas-datagrid.debug.js"></script>
+    <script src="./styleLibrary.js"></script>
+    <script src="./styleBuilder.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+            min-height: 100%;
+            padding: 0;
+            margin: 0;
+            overflow-y: hidden;
+        }
+        .style-maker-title {
+            display: block;
+            padding: 3px;
+        }
+        .grid {
+            vertical-align: top;
+            display: inline-block;
+            width: 100%;
+        }
+        .style-maker-tr {
+            color: darkgray;
+            background: #333;
+        }
+        .style-maker-tdc {
+            outline: solid 1px #CCC;
+            cursor: pointer;
+        }
+        .style-maker-modal {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            text-align: center;
+        }
+        .style-maker-import-textarea {}
+        .style-maker-control {}
+        .style-maker-input {}
+        .style-maker-label {}
+        .style-maker-props {
+            overflow-y: auto;
+            height: calc(100% - 105px);
+        }
+        .style-maker, .style-maker-dialog {
+            position: absolute;
+            top: 4%;
+            right: 3%;
+            background: #555;
+            opacity: 0.98;
+            color: black;
+            font-family: sans-serif;
+            font-size: 0.8em;
+            padding: 4px;
+            border: outset 2px #777;
+            box-shadow: 3px 3px 5px #555;
+            height: 90%;
+        }
+        .style-maker-import-textarea {
+             height: 200px;
+             width: 396px;
+        }
+        .style-maker button, .style-maker-dialog button {
+            margin-left: 4px;
+            margin-bottom: 4px;
+        }
+        .style-maker-dialog {
+            height: 250px;
+            width: 450px;
+            margin: 30px auto;
+            color: darkgray;
+            background: #333;
+        }
+        .style-maker-prop-highlight {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+</body>

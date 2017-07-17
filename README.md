@@ -1,11 +1,13 @@
 Canvas Data Grid
 ================
 
-* High performance lightweight hierarchal canvas based data grid.
+* High performance hierarchal canvas based data grid.
 * Support for millions of rows and columns.
-* Support for touch based devices.
 * Extensible styling, filtering, formatting, resizing, selecting, and ordering.
+* Support for touch based devices.
 * Full documentation with live sample code.
+* Style builder with built in styles.
+* Per user styles, settings using localStorage.
 * Single canvas element supporting multiple nested tree or cell grids.
 * Rich API of events, methods and properties optimized for CRUD, reporting and work flow applications.
 * Zero dependencies, very small code base, distributed as a single ~80k (~20k gziped) file.
@@ -15,6 +17,8 @@ Canvas Data Grid
 [Download](https://tonygermaneri.github.io/canvas-datagrid/dist/canvas-datagrid.js)
 
 [Documentation](https://tonygermaneri.github.io/canvas-datagrid/docs/index.html)
+
+[Style Builder](https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html)
 
 [GitHub](https://github.com/TonyGermaneri/canvas-datagrid)
 
