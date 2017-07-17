@@ -197,7 +197,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             return {
                 x: pos.x,
-                y: pos.y
+                y: pos.y,
+                rect: rect
             };
         };
         self.fillArray = function (low, high, step) {
@@ -463,6 +464,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
         };
         self.init = function () {
+            var publicStyleKeyIntf = {};
             self.setAttributes();
             self.setStyle();
             self.initScrollBox();
@@ -517,15 +519,30 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.intf.resize = self.resize;
             self.intf.drawChildGrids = self.drawChildGrids;
             self.intf.style = {};
+            Object.keys(self.style).forEach(function (key) {
+                // unless this line is here, Object.keys() will not work on <instance>.style
+                publicStyleKeyIntf[key] = undefined;
+                Object.defineProperty(publicStyleKeyIntf, key, {
+                    get: function () {
+                        return self.style[key];
+                    },
+                    set: function (value) {
+                        self.style[key] = value;
+                        self.draw(true);
+                        self.dispatchEvent('stylechanged', {});
+                    }
+                });
+            });
             Object.defineProperty(self.intf, 'style', {
                 get: function () {
-                    return self.style;
+                    return publicStyleKeyIntf;
                 },
                 set: function (value) {
                     Object.keys(value).forEach(function (key) {
                         self.style[key] = value[key];
                     });
                     self.draw(true);
+                    self.dispatchEvent('stylechanged', {});
                 }
             });
             Object.keys(self.attributes).forEach(function (key) {
@@ -536,6 +553,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     set: function (value) {
                         self.attributes[key] = value;
                         self.draw(true);
+                        self.dispatchEvent('stylechanged', {});
                     }
                 });
             });
@@ -1296,7 +1314,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         && self.activeCell.rowIndex === r) {
                     self.ctx.lineWidth = self.style.activeCellOverlayBorderWidth;
                     self.ctx.strokeStyle = self.style.activeCellOverlayBorderColor;
-                    strokeRect(0, y, self.getHeaderWidth(), rowHeight);
+                    strokeRect(0, y, self.getHeaderWidth() + headerCellWidth, rowHeight);
                 }
                 y += cellHeight + borderWidth;
                 return true;
@@ -1496,7 +1514,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             return {
                 x: pos.x,
-                y: pos.y
+                y: pos.y,
+                rect: rect
             };
         };
         self.calculatePPS = function () {
@@ -1729,15 +1748,28 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.scrollBox.scrollBoxWidth = Math.max(self.scrollBox.scrollBoxWidth, self.style.scrollBarBoxMinSize);
             self.scrollBox.scrollBoxHeight = Math.max(self.scrollBox.scrollBoxHeight, self.style.scrollBarBoxMinSize);
             self.page = self.visibleRows.length - 3 - self.attributes.pageUpDownOverlap;
+            self.resizeEditInput();
             if (drawAfterResize) {
                 self.draw(true);
             }
             self.dispatchEvent('resize', {});
             return true;
         };
+        self.resizeEditInput = function () {
+            if (self.input) {
+                var pos = self.canvas.getBoundingClientRect(),
+                    bx2 = (self.style.cellBorderWidth * 2),
+                    cell = self.getVisibleCellByIndex(self.input.editCell.columnIndex, self.input.editCell.rowIndex)
+                        || {x: -100, y: -100, height: 0, width: 0};
+                self.input.style.left = pos.left + cell.x - self.style.cellBorderWidth + self.canvasOffsetLeft + 'px';
+                self.input.style.top = pos.top + cell.y - bx2 + self.canvasOffsetTop + 'px';
+                self.input.style.height = cell.height - bx2 - 1 + 'px';
+                self.input.style.width = cell.width - bx2 - self.style.cellPaddingLeft + 'px';
+                self.clipElement(self.input);
+            }
+        };
         self.scroll = function (e) {
-            var pos,
-                s = self.getVisibleSchema(),
+            var s = self.getVisibleSchema(),
                 cellBorder = self.style.cellBorderWidth * 2;
             self.scrollIndexTop = 0;
             self.scrollPixelTop = 0;
@@ -1766,14 +1798,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             self.ellipsisCache = {};
             self.draw(true);
-            if (self.input) {
-                pos = self.position(self.parentNode, true);
-                self.input.style.top = pos.top + self.scrollEdit.inputTop
-                    + (self.scrollEdit.scrollTop - self.scrollBox.scrollTop) + 'px';
-                self.input.style.left = pos.left + self.scrollEdit.inputLeft
-                    + (self.scrollEdit.scrollLeft - self.scrollBox.scrollLeft) + 'px';
-                self.clipElement(self.input);
-            }
+            //TODO: figure out why this has to be delayed for child grids
+            //BUG: scrolling event on 3rd level hierarchy fails to move input box
+            requestAnimationFrame(self.resizeEditInput);
             self.dispatchEvent('scroll', {top: self.scrollBox.scrollTop, left: self.scrollBox.scrollLeft});
         };
         self.mousemove = function (e, overridePos) {
@@ -1945,39 +1972,21 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          */
         self.beginEditAt = function (x, y) {
             if (!self.attributes.editable) { return; }
-            var top, left, cell, s = self.getVisibleSchema();
-            cell = self.visibleCells.filter(function (vCell) {
-                return vCell.columnIndex === x && vCell.rowIndex === y;
-            })[0];
+            var cell = self.getVisibleCellByIndex(x, y),
+                s = self.getVisibleSchema();
             if (self.dispatchEvent('beforebeginedit', {cell: cell})) { return false; }
             self.scrollIntoView(x, y);
             self.setActiveCell(x, y);
             function postDraw() {
-                var pos = self.position(self.parentNode, true);
-                cell = self.visibleCells.filter(function (vCell) {
-                    return vCell.columnIndex === x && vCell.rowIndex === y;
-                })[0];
-                top = cell.y + self.style.cellBorderWidth;
-                left = cell.x + self.style.cellBorderWidth;
-                self.scrollEdit = {
-                    scrollTop: self.scrollBox.scrollTop,
-                    scrollLeft: self.scrollBox.scrollLeft,
-                    inputTop: top,
-                    inputLeft: left
-                };
+                cell = self.getVisibleCellByIndex(x, y);
                 self.input = document.createElement(self.attributes.multiLine ? 'textarea' : 'input');
                 document.body.appendChild(self.input);
                 self.input.className = 'canvas-datagrid-edit-input';
                 self.input.style.position = 'absolute';
-                self.input.style.top = pos.top - 1 + top + 'px';
-                self.input.style.left = pos.left - 1 + left + 'px';
-                self.input.style.height = cell.height - (self.style.cellBorderWidth * 2) + 'px';
-                self.input.style.width = cell.width - (self.style.cellBorderWidth * 2)
-                    - self.style.cellPaddingLeft + 'px';
+                self.input.editCell = cell;
+                self.resizeEditInput();
                 self.input.style.zIndex = '2';
                 self.input.value = cell.value;
-                self.input.editCell = cell;
-                self.clipElement(self.input);
                 self.input.focus();
                 self.input.addEventListener('click', self.stopPropagation);
                 self.input.addEventListener('dblclick', self.stopPropagation);
@@ -2552,7 +2561,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         });
         Object.defineProperty(self.intf, 'childGrids', {
             get: function () {
-                return self.childGrids;
+                return Object.keys(self.childGrids).map(function (gridId) {
+                    return self.childGrids[gridId];
+                });
             }
         });
         Object.defineProperty(self.intf, 'isChildGrid', {
@@ -2920,8 +2931,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             });
             document.body.addEventListener('click', self.disposeContextMenu);
             document.body.appendChild(self.contextMenu);
-            loc.x = pos.x + self.style.contextMenuMarginLeft + self.canvasOffsetLeft;
-            loc.y = pos.y + self.style.contextMenuMarginTop + self.canvasOffsetTop;
+            loc.x = pos.x + self.style.contextMenuMarginLeft + self.canvasOffsetLeft + pos.rect.left;
+            loc.y = pos.y + self.style.contextMenuMarginTop + self.canvasOffsetTop + pos.rect.top;
             if (loc.x + self.contextMenu.offsetWidth > document.documentElement.clientWidth) {
                 loc.x = document.documentElement.clientWidth - self.contextMenu.offsetWidth;
             }
@@ -3300,6 +3311,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.observer.observe(el, { attributes: true });
                 });
             }
+            self.eventParent.addEventListener('scroll', self.resize, false);
             self.eventParent.addEventListener('touchstart', self.touchstart, false);
             self.eventParent.addEventListener('mouseup', self.mouseup, false);
             self.eventParent.addEventListener('mousedown', self.mousedown, false);
@@ -3900,6 +3912,19 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 return false;
             }
             return true;
+        };
+        /**
+         * Gets the cell at columnIndex and rowIndex.
+         * @memberof canvasDataGrid#
+         * @method
+         * @returns {cell} cell at the selected location.
+         * @param {number} x Column index.
+         * @param {number} y Row index.
+         */
+        self.getVisibleCellByIndex = function (x, y) {
+            return self.visibleCells.filter(function (c) {
+                return c.columnIndex === x && c.rowIndex === y;
+            })[0];
         };
         /**
          * Gets the cell at grid pixel coordinate x and y.
