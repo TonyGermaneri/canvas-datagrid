@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function drawTitleCanvas() {
         var x = 0,
             y = 0,
+            bWdith = 3,
             w,
             m,
             l,
@@ -46,9 +47,9 @@ document.addEventListener('DOMContentLoaded', function () {
             keys = Object.keys(grid.style).filter(function (key) { return /Color|Style/.test(key); }),
             borders = keys.filter(function (key) { return (/border/i).test(key); }),
             notBorders = keys.filter(function (key) { return !/border/i.test(key); });
-        l = ((titleCanvas.width / window.devicePixelRatio) - borders.length) / notBorders.length;
+        l = ((titleCanvas.width / window.devicePixelRatio) - (borders.length * bWdith)) / notBorders.length;
         keys.forEach(function (key) {
-            w = notBorders.indexOf(key) === -1 ? 1 : l;
+            w = notBorders.indexOf(key) === -1 ? bWdith : l;
             ctx.fillStyle = inputs[key].value;
             ctx.fillRect(x, y, w, 300);
             x += w;
@@ -89,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             return s;
         }, '{\n') + '\n}';
-        eval('childGrid.style = grid.style = ' + code + ';');
+        eval('grid.style = ' + code + ';');
         drawTitleCanvas();
         window.styleLibrary[inputs.name.value] = JSON.parse(code);
     }
@@ -152,7 +153,6 @@ document.addEventListener('DOMContentLoaded', function () {
         return function () {
             if (!/Color|Style/i.test(key)) { return; }
             grid.style[key] = inputs[key].value;
-            childGrid.style[key] = inputs[key].value;
         };
     }
     function showStyleItem(key) {
@@ -165,7 +165,6 @@ document.addEventListener('DOMContentLoaded', function () {
             g.addColorStop(0.75, 'rgba(255,255,255,1)');
             g.addColorStop(1, 'rgba(0,87,87,1)');
             grid.style[key] = g;
-            childGrid.style[key] = g;
             grid.draw();
         };
     }
@@ -194,8 +193,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 {top: 0, left: 6, right: 7, bottom: 3},
                 {top: 0, left: 7, right: 71, bottom: 44}
             ];
-            childGrid = e.treeGrid;
-            childGrid.attributes.rowSelectionMode = true;
+            e.treeGrid.addEventListener('click', selectStyleInput);
+            grid.addEventListener('stylechanged', function () {
+                e.treeGrid.style = grid.style;
+            });
         });
         // expand and select stuff to show as many colors as possible like a drunken peacock
         grid.expandTree(5);
@@ -211,6 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 input = document.createElement('input'),
                 label = document.createElement('label');
             tr.classList.add('style-maker-tr');
+            tdl.classList.add('style-maker-tdl');
             tdc.classList.add('style-maker-tdc');
             input.classList.add('style-maker-input');
             input.classList.add('style-maker-input-' + cTypes[key]);
@@ -238,6 +240,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 input.addEventListener('change', function () {
                     tdc.style.background = input.value;
                 });
+            } else {
+                tdl.addEventListener('click', function () { input.focus(); });
             }
             if (key === 'name') {
                 input.addEventListener('keyup', drawTitleCanvas);
@@ -277,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (styleLibSelect.value === 'default') { return; }
         delete window.styleLibrary[styleLibSelect.value];
         styleLibSelect.selectedIndex = styleLibSelect.selectedIndex - 1;
-        childGrid.style = grid.style = window.styleLibrary[styleLibSelect.value];
+        grid.style = window.styleLibrary[styleLibSelect.value];
         localStorage.setItem(storageKey, JSON.stringify(window.styleLibrary));
         fillStyle();
         drawTitleCanvas();
@@ -389,8 +393,8 @@ document.addEventListener('DOMContentLoaded', function () {
         titleCanvas.style.height = titleCanvasHeight + 'px';
         ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
         setTimeout(function () {
-            childGrid.addEventListener('click', selectStyleInput);
-            childGrid.selectArea({top: 0, left: 0, right: 4, bottom: 0});
+            grid.childGrids[0].attributes.rowSelectionMode = true;
+            grid.childGrids[0].selectArea({top: 0, left: 0, right: 4, bottom: 0});
         }, 50);
         setupDemoGrid();
         apply();
