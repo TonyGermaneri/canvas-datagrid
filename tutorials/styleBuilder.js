@@ -159,18 +159,11 @@ document.addEventListener('DOMContentLoaded', function () {
         return function () {
             if (!/Color|Style/i.test(key)) { return; }
             var g = ctx.createLinearGradient(0, 0, window.innerWidth, window.innerHeight);
-<<<<<<< HEAD
-            g.addColorStop(0, 'red');
-            g.addColorStop(0.5, 'gold');
-            g.addColorStop(1, 'red');
-            childGrid.style[key] = g;
-=======
             g.addColorStop(0, 'rgba(0,128,128,1)');
             g.addColorStop(0.25, 'rgba(255,255,255,1)');
             g.addColorStop(0.5, 'rgba(5,193,255,1)');
             g.addColorStop(0.75, 'rgba(255,255,255,1)');
             g.addColorStop(1, 'rgba(0,87,87,1)');
->>>>>>> master
             grid.style[key] = g;
             childGrid.style[key] = g;
             grid.draw();
