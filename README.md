@@ -22,6 +22,8 @@ Canvas Data Grid
 
 [GitHub](https://github.com/TonyGermaneri/canvas-datagrid)
 
+[npm](https://www.npmjs.com/package/canvas-datagrid)
+
 Installation
 ============
 You can install canvas-datagrid one of three ways:
