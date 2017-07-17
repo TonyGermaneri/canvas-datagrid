@@ -71,12 +71,70 @@ document.addEventListener('DOMContentLoaded', function () {
         examples['Detect cell over/out'] = function () {
             grid.addEventListener('cellmouseover', function (e) {
                 if (!e.cell) { return; }
-                console.log(e.cell.value);
+                grid.data[0][grid.schema[0].name] = 'Just came from '
+                    + e.cell.columnIndex + ', ' + e.cell.rowIndex;
+
             });
             grid.addEventListener('cellmouseout', function (e) {
                 if (!e.cell) { return; }
-                console.log(e.cell.value);
+                grid.data[1][grid.schema[0].name] = 'Just arrived at '
+                    + e.cell.columnIndex + ', ' + e.cell.rowIndex;
             });
+        };
+        examples['Alter runtime style'] = function () {
+            grid.style.headerCellBackgroundColor = 'dodgerblue';
+            grid.style.headerCellColor = 'white';
+        };
+        examples['Canvas fill styles'] = function () {
+            var gradient = grid.ctx.createLinearGradient(0, 0, 1300, 1300);
+            gradient.addColorStop(0, 'dodgerblue');
+            gradient.addColorStop(1, 'chartreuse');
+            grid.style.cellBackgroundColor = gradient;
+        };
+        examples['Animate Canvas fill styles'] = function () {
+            var m = 0, s, x, y;
+            function a() {
+                m += 1;
+                s = m;
+                x =  Math.sin(s * Math.PI / 180) * 140;
+                y =  0;
+                console.log(x, y);
+                var gradient = grid.ctx.createLinearGradient(0, 0, x, y);
+                gradient.addColorStop(0, 'dodgerblue');
+                gradient.addColorStop(0.5, 'goldenrod');
+                gradient.addColorStop(1, 'chartreuse');
+                grid.style.cellBackgroundColor = gradient;
+                grid.draw();
+                setTimeout(a, 30);
+            }
+            a();
+        };
+        examples['Alter startup styles'] = function () {
+            // check if the old grid exists and remove it
+            if (grid) {
+                grid.dispose();
+            }
+            // create a new grid
+            grid = canvasDatagrid({
+                parentNode: gridParent,
+                style: {
+                    cellBackgroundColor: 'navy',
+                    cellColor: 'wheat'
+                }
+            });
+            grid.data = [
+                {Ei: 'principes', melius: 'causae'},
+                {Ei: 'omittam', melius: 'audire'},
+                {Ei: 'mea', melius: 'quot'},
+                {Ei: 'pericula', melius: 'offendit'}
+            ];
+        };
+        examples['Replace style at runtime'] = function () {
+            // create a new grid
+            grid.style = {
+                cellBackgroundColor: 'burgundy',
+                cellColor: 'goldenrod'
+            };
         };
         examples['Toggle rowSelectionMode'] = function () {
             grid.attributes.rowSelectionMode = !grid.attributes.rowSelectionMode;
@@ -141,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 'bar': 'a ' + new Date().toString()
             });
         };
-        examples['Draw HTML'] = function () {
+        examples['Draw HTML via Event'] = function () {
             grid.addEventListener('afterrendercell', function (e) {
                 if (e.cell.columnIndex === 1 && e.cell.rowIndex > -1) {
                     e.cell.innerHTML = '<div style="display: inline-block; color: dodgerblue; font-size: 2em;">'
@@ -152,6 +210,14 @@ document.addEventListener('DOMContentLoaded', function () {
                         + '</div>';
                 }
             });
+            grid.draw();
+        };
+        examples['Draw HTML via data type'] = function () {
+            grid.schema = [{name: 'id', type: 'number'}, {name: 'offendit', type: 'html'}];
+            grid.data = [
+                {id: 0, offendit: 'number'},
+                {id: 0, offendit: 'number'},
+            ];
             grid.draw();
         };
         examples['Draw a picture'] = function () {

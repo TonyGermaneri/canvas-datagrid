@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Class: contextMenuItem</title>
+	<title>Documentation Tutorial: styleBuilder</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -74,243 +74,111 @@
 <div class="row">
 
 	
-	<div class="col-md-8">
+	<div class="col-md-12">
 	
 		<div id="main">
-			
-
-	<h1 class="page-title">Class: contextMenuItem</h1>
-<section>
+			<section class="tutorial-section">
 
 <header>
     
-        <h2>
-            <span class="ancestors"><a href="canvasDataGrid.html">canvasDataGrid</a>.</span>
-        
-        contextMenuItem
-        </h2>
-        
-    
+
+    <h2>styleBuilder</h2>
 </header>
 
-
 <article>
-    <div class="container-overview">
-    
-        
-<hr>
-<dt>
-    <h4 class="name" id="contextMenuItem"><span class="type-signature">&lt;abstract> </span> contextMenuItem()</h4>
-    
-    
-</dt>
-<dd>
+    <!doctype html>
+<head>
+    <script src="../dist/canvas-datagrid.debug.js"></script>
+    <script src="./styleLibrary.js"></script>
+    <script src="./styleBuilder.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+            min-height: 100%;
+            padding: 0;
+            margin: 0;
+            overflow-y: hidden;
+        }
+        .style-maker-title {
+            display: block;
+            padding: 3px;
+        }
+        .grid {
+            vertical-align: top;
+            display: inline-block;
+            width: 100%;
+        }
+        .style-maker-tr {
+            color: darkgray;
+            background: #333;
+        }
+        .style-maker-tdc {
+            outline: solid 1px #CCC;
+            cursor: pointer;
+        }
+        .style-maker-modal {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            text-align: center;
+        }
+        .style-maker-import-textarea {}
+        .style-maker-control {}
+        .style-maker-input {}
+        .style-maker-label {}
+        .style-maker-props {
+            overflow-y: auto;
+            height: calc(100% - 105px);
+        }
+        .style-maker, .style-maker-dialog {
+            position: absolute;
+            top: 4%;
+            right: 3%;
+            background: #555;
+            opacity: 0.98;
+            color: black;
+            font-family: sans-serif;
+            font-size: 0.8em;
+            padding: 4px;
+            border: outset 2px #777;
+            box-shadow: 3px 3px 5px #555;
+            height: 90%;
+        }
+        .style-maker-import-textarea {
+             height: 200px;
+             width: 396px;
+        }
+        .style-maker button, .style-maker-dialog button {
+            margin-left: 4px;
+            margin-bottom: 4px;
+        }
+        .style-maker-dialog {
+            height: 250px;
+            width: 450px;
+            margin: 30px auto;
+            color: darkgray;
+            background: #333;
+        }
+        .style-maker-prop-highlight {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+</body>
 
-    
-    <div class="description">
-        An item in the context menu.
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    <dl>
-
-<table class="props table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>Property</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Description</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>title</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The title that will appear in the context menu.  If title is a `string` then the string will appear.  If title is a `HTMLElement` then it will be appended via `appendChild()` to the context menu row maintaining any events and references.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>click</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Optional function to invoke when this context menu item is clicked.  Neglecting to call `e.stopPropagation();` in your function will result in the mouse event bubbling up to the canvas undesirably.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-</dl>
-
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
 </article>
 
 </section>
-
-
-
 
 		</div>
 	</div>
 
 	<div class="clearfix"></div>
 
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
-		</div>
 	
 
 </div>
