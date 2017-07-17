@@ -2503,7 +2503,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.copy = function (e) {
             if (self.dispatchEvent('copy', {NativeEvent: e})) { return; }
-            if (!self.hasFocus) { return; }
+            if (!self.hasFocus || !e.clipboardData) { return; }
             var rows = [], sData = self.getSelectedData();
             if (sData.length > 0) {
                 sData.forEach(function (row) {

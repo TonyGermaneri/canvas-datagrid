@@ -28,6 +28,13 @@ document.addEventListener('DOMContentLoaded', function () {
         titleCanvasWidth = 400,
         storageKey = 'canvas-datagrid-user-style-library',
         inputs = {};
+    function getStyleFromInputs() {
+        var s = {};
+        Object.keys(inputs).forEach(function (key) {
+            s[key] = inputs[key].value;
+        });
+        return s;
+    }
     function drawTitleCanvas() {
         var x = 0,
             y = 0,
@@ -145,16 +152,27 @@ document.addEventListener('DOMContentLoaded', function () {
         return function () {
             if (!/Color|Style/i.test(key)) { return; }
             grid.style[key] = inputs[key].value;
+            childGrid.style[key] = inputs[key].value;
         };
     }
     function showStyleItem(key) {
         return function () {
             if (!/Color|Style/i.test(key)) { return; }
             var g = ctx.createLinearGradient(0, 0, window.innerWidth, window.innerHeight);
+<<<<<<< HEAD
             g.addColorStop(0, 'red');
             g.addColorStop(0.5, 'gold');
             g.addColorStop(1, 'red');
+            childGrid.style[key] = g;
+=======
+            g.addColorStop(0, 'rgba(0,128,128,1)');
+            g.addColorStop(0.25, 'rgba(255,255,255,1)');
+            g.addColorStop(0.5, 'rgba(5,193,255,1)');
+            g.addColorStop(0.75, 'rgba(255,255,255,1)');
+            g.addColorStop(1, 'rgba(0,87,87,1)');
+>>>>>>> master
             grid.style[key] = g;
+            childGrid.style[key] = g;
             grid.draw();
         };
     }
@@ -215,11 +233,14 @@ document.addEventListener('DOMContentLoaded', function () {
             tr.appendChild(tdl);
             tr.appendChild(tdi);
             tdl.addEventListener('mouseover', showStyleItem(key));
-            tdl.addEventListener('mouseover', hideStyleItem(key));
+            tdl.addEventListener('mouseout', hideStyleItem(key));
+            input.addEventListener('mouseover', showStyleItem(key));
+            input.addEventListener('mouseout', hideStyleItem(key));
             if (/Color|Style/.test(key)) {
                 colorInputs[key] = tdc;
                 tr.appendChild(tdc);
                 tdc.style.background = input.value;
+                tdl.addEventListener('click', pickColor(key));
                 tdc.addEventListener('click', pickColor(key));
                 input.addEventListener('change', function () {
                     tdc.style.background = input.value;
@@ -232,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
     }
     styleLibSelect.onchange = function () {
-        var l = window.styleLibrary[this.value];
+        var l = window.styleLibrary[this.value] || window.defaultStyleLibrary[this.value];
         Object.keys(grid.style).forEach(function (key) {
             if (l && l[key] !== undefined) {
                 inputs[key].value = l[key];
@@ -244,9 +265,17 @@ document.addEventListener('DOMContentLoaded', function () {
         apply();
     };
     saveButton.onclick = function () {
-        var storedValues = JSON.parse(localStorage.getItem(storageKey));
-        storedValues[inputs.name.value] = window.styleLibrary[inputs.name.value];
-        localStorage.setItem(storageKey, JSON.stringify(window.styleLibrary));
+        if (inputs.name.value === 'default') { return; }
+        var storedValues;
+        try {
+            storedValues = JSON.parse(localStorage.getItem(storageKey)) || {};
+        } catch (e) {
+            console.warn('could not save JSON when reading from local store, local data removed.');
+            storedValues = {};
+        }
+        storedValues[inputs.name.value] = getStyleFromInputs();
+        window.styleLibrary = storedValues;
+        localStorage.setItem(storageKey, JSON.stringify(storedValues));
         fillStyle();
         styleLibSelect.value = inputs.name.value;
         drawTitleCanvas();
@@ -294,8 +323,10 @@ document.addEventListener('DOMContentLoaded', function () {
             cancelButton.dispatchEvent(new Event('click'));
             Object.keys(grid.style).forEach(function (key) {
                 grid.style[key] = style[key] || window.styleLibrary.default[key];
-                inputs[key] = grid.style[key];
+                inputs[key].value = grid.style[key];
             });
+            saveButton.dispatchEvent(new Event('click'));
+            drawTitleCanvas();
         };
         document.body.appendChild(modal);
     };
