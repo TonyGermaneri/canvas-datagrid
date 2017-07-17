@@ -145,6 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return function () {
             if (!/Color|Style/i.test(key)) { return; }
             grid.style[key] = inputs[key].value;
+            childGrid.style[key] = inputs[key].value;
         };
     }
     function showStyleItem(key) {
@@ -154,6 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
             g.addColorStop(0, 'red');
             g.addColorStop(0.5, 'gold');
             g.addColorStop(1, 'red');
+            childGrid.style[key] = g;
             grid.style[key] = g;
             grid.draw();
         };
