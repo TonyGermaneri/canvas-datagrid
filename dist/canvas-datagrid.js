@@ -2920,8 +2920,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             });
             document.body.addEventListener('click', self.disposeContextMenu);
             document.body.appendChild(self.contextMenu);
-            loc.x = pos.x + self.style.contextMenuMarginLeft;
-            loc.y = pos.y + self.style.contextMenuMarginTop;
+            loc.x = pos.x + self.style.contextMenuMarginLeft + self.canvasOffsetLeft;
+            loc.y = pos.y + self.style.contextMenuMarginTop + self.canvasOffsetTop;
             if (loc.x + self.contextMenu.offsetWidth > document.documentElement.clientWidth) {
                 loc.x = document.documentElement.clientWidth - self.contextMenu.offsetWidth;
             }
