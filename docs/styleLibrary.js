@@ -109,6 +109,8 @@ window.defaultStyleLibrary.dark = {
     "headerCellHoverBackgroundColor": "#5b6359",
     "headerCellActiveColor": "#bfc2be",
     "headerCellActiveBackgroundColor": "#61655e",
+    "cornerCellBorderColor": "rgba(202, 202, 202, 1)",
+    "cornerCellBackgroundColor": "#61655e",
     "headerRowWidth": 57,
     "rowHeaderCellPaddingTop": 5,
     "rowHeaderCellPaddingLeft": 5,

@@ -257,23 +257,25 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             });
         };
         self.addEllipsis = function (text, width) {
-            var o, i, c = self.style.cellPaddingRight + self.style.cellPaddingLeft;
+            var o, i, c = self.style.cellPaddingRight + self.style.cellPaddingLeft, w;
             if (self.ellipsisCache[text] && self.ellipsisCache[text][width]) {
                 return self.ellipsisCache[text][width];
             }
-            if (self.ctx.measureText(text).width + c < width) {
+            w = self.ctx.measureText(text).width;
+            if (w + c < width) {
                 o = text;
             } else {
                 o = text.substring(0, 1);
                 i = 1;
-                while (width > (self.ctx.measureText(o).width + c)) {
+                w = self.ctx.measureText(text).width;
+                while (width > w + c) {
                     i += 1;
                     o = text.substring(0, i) + "...";
                 }
             }
             self.ellipsisCache[text] = self.ellipsisCache[text] || {};
-            self.ellipsisCache[text][width] = o;
-            return o;
+            self.ellipsisCache[text][width] = { value: o, width: w };
+            return { value: o, width: w };
         };
         self.getSchemaNameHash = function (key) {
             var n = 0;
@@ -529,7 +531,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     set: function (value) {
                         self.style[key] = value;
                         self.draw(true);
-                        self.dispatchEvent('stylechanged', {});
+                        self.dispatchEvent('stylechanged', {name: key, value: value});
                     }
                 });
             });
@@ -542,7 +544,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         self.style[key] = value[key];
                     });
                     self.draw(true);
-                    self.dispatchEvent('stylechanged', {});
+                    self.dispatchEvent('stylechanged', {name: 'style', value: value});
                 }
             });
             Object.keys(self.attributes).forEach(function (key) {
@@ -553,7 +555,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     set: function (value) {
                         self.attributes[key] = value;
                         self.draw(true);
-                        self.dispatchEvent('stylechanged', {});
+                        self.dispatchEvent('attributechanged', {name: key, value: value[key]});
                     }
                 });
             });
@@ -1132,10 +1134,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                                 } else {
                                     cell.formattedValue = ((val !== undefined && val !== null) ? val : '').toString();
                                     self.dispatchEvent('rendertext', ev);
-                                    fillText(self.addEllipsis(cell.formattedValue, cell.width
-                                        - self.style[cellStyle + 'PaddingRight'] - orderByArrowSize - self.style.autosizePadding),
-                                        treeArrowSize + orderByArrowSize + cx + self.style[cellStyle + 'PaddingLeft'],
-                                        cy - (cell.height * 0.5) + self.style[cellStyle + 'PaddingTop'] + cell.height);
+                                    cell.text = self.addEllipsis(cell.formattedValue,
+                                        cell.width - self.style[cellStyle + 'PaddingRight']
+                                        - orderByArrowSize - self.style.autosizePadding);
+                                    cell.text.x = treeArrowSize + orderByArrowSize + cx + self.style[cellStyle + 'PaddingLeft'];
+                                    cell.text.y = cy - (cell.height * 0.5) + self.style[cellStyle + 'PaddingTop'] + cell.height;
+                                    fillText(cell.text.value, cell.text.x, cell.text.y);
                                 }
                             }
                         }
@@ -2269,6 +2273,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.draw(true);
         };
         self.mousedown = function (e, overridePos) {
+            self.lastMouseDownTarget = e.target;
             if (self.dispatchEvent('mousedown', {NativeEvent: e, cell: self.currentCell})) { return; }
             if (!self.hasFocus) {
                 return;
@@ -2326,20 +2331,20 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.mouseup = function (e) {
             clearTimeout(self.scrollTimer);
             self.cellBoundaryCrossed = true;
-            self.dispatchEvent('mouseup', {NativeEvent: e, cell: self.currentCell});
+            self.selecting = undefined;
+            self.draggingItem = undefined;
+            self.dragStartObject = undefined;
+            if (self.dispatchEvent('mouseup', {NativeEvent: e, cell: self.currentCell})) { return; }
             if (!self.hasFocus) {
                 return;
             }
             if (self.currentCell && self.currentCell.grid !== undefined) {
                 return;
             }
-            if (self.ontextMenu || self.input) { return; }
-            self.selecting = undefined;
-            self.draggingItem = undefined;
+            if (self.contextMenu || self.input) { return; }
             if (self.dragStart && self.isInGrid(self.dragStart)) {
                 self.controlInput.focus();
             }
-            self.dragStartObject = undefined;
             e.preventDefault();
         };
         self.keydown = function (e) {
@@ -3141,6 +3146,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['headerCellHoverBackgroundColor', 'rgba(235, 235, 235, 1)'],
                 ['headerCellActiveColor', 'rgba(0, 0, 0, 1)'],
                 ['headerCellActiveBackgroundColor', 'rgba(225, 225, 225, 1)'],
+                ['cornerCellBorderColor', 'rgba(202, 202, 202, 1)'],
+                ['cornerCellBackgroundColor', 'rgba(240, 240, 240, 1)'],
                 ['headerRowWidth', 57],
                 ['rowHeaderCellPaddingTop', 5],
                 ['rowHeaderCellPaddingLeft', 5],
@@ -3158,7 +3165,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['rowHeaderCellActiveColor', 'rgba(0, 0, 0, 1)'],
                 ['rowHeaderCellActiveBackgroundColor', 'rgba(225, 225, 225, 1)'],
                 ['activeCellOverlayBorderColor', 'rgba(66, 133, 244, 1)'],
-                ['activeCellOverlayBorderWidth', 2],
+                ['activeCellOverlayBorderWidth', 1.25],
                 ['selectionOverlayBorderColor', 'rgba(66, 133, 244, 1)'],
                 ['selectionOverlayBorderWidth', 1.25],
                 ['reorderMarkerIndexBorderColor', 'rgba(66, 133, 244, 1)'],
@@ -3300,6 +3307,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.parentDOMNode.appendChild(self.controlInput);
                 self.eventParent = self.canvas;
             }
+            self.controlInput.addEventListener('blur', function (e) {
+                if (e.target !== self.canvas) {
+                    self.hasFocus = false;
+                }
+            });
             window.addEventListener('resize', self.resize);
             if (MutationObserver) {
                 self.observer = new MutationObserver(function (mutations) {
