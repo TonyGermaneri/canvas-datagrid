@@ -2791,7 +2791,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
     'use strict';
     return function (self) {
         self.contextmenu = function (e, overridePos) {
-            if (!self.hasFocus) {
+            if (!self.hasFocus && e.target !== self.canvas) {
                 return;
             }
             if (self.contextMenu) {
