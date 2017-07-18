@@ -8,8 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
             tree: true,
             name: 'style-maker'
         }),
-        aTimers = {},
-        childGrid,
+        selectedKey,
         cTypes = {},
         props = document.createElement('div'),
         loadStyle = document.createElement('button'),
@@ -27,7 +26,11 @@ document.addEventListener('DOMContentLoaded', function () {
         titleCanvasHeight = 75,
         titleCanvasWidth = 400,
         storageKey = 'canvas-datagrid-user-style-library',
+        tdls = {},
         inputs = {};
+    function preventDefault(e) {
+        e.preventDefault();
+    }
     function getStyleFromInputs() {
         var s = {};
         Object.keys(inputs).forEach(function (key) {
@@ -50,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
         l = ((titleCanvas.width / window.devicePixelRatio) - (borders.length * bWdith)) / notBorders.length;
         keys.forEach(function (key) {
             w = notBorders.indexOf(key) === -1 ? bWdith : l;
-            ctx.fillStyle = inputs[key].value;
+            ctx.fillStyle = grid.style[key];
             ctx.fillRect(x, y, w, 300);
             x += w;
         });
@@ -153,20 +156,61 @@ document.addEventListener('DOMContentLoaded', function () {
         return function () {
             if (!/Color|Style/i.test(key)) { return; }
             grid.style[key] = inputs[key].value;
+            drawTitleCanvas();
         };
     }
     function showStyleItem(key) {
         return function () {
             if (!/Color|Style/i.test(key)) { return; }
-            var g = ctx.createLinearGradient(0, 0, window.innerWidth, window.innerHeight);
-            g.addColorStop(0, 'rgba(0,128,128,1)');
-            g.addColorStop(0.25, 'rgba(255,255,255,1)');
-            g.addColorStop(0.5, 'rgba(5,193,255,1)');
-            g.addColorStop(0.75, 'rgba(255,255,255,1)');
-            g.addColorStop(1, 'rgba(0,87,87,1)');
-            grid.style[key] = g;
+            grid.style[key] = '#00FF00';
+            drawTitleCanvas();
             grid.draw();
         };
+    }
+    function clearPropHighlight() {
+        Object.keys(inputs).forEach(function (key) {
+            tdls[key].classList.remove('style-maker-prop-highlight');
+        });
+    }
+    function selectStyleInput(e) {
+        var s = e.cell.selected ? 'cellSelected' : e.cell.style,
+            aKey = s + 'BackgroundColor',
+            cKey = s + 'Color',
+            oKey = s + 'BorderColor';
+        //TODO: add a lot more logic in here in selecting the relevant styles on click
+        console.log({style: e.cell.style, dragContext: e.cell.dragContext, context: e.cell.context});
+        e.preventDefault();
+        if (!s || /tree-grid/.test(e.cell.style)) { return; }
+        clearPropHighlight();
+        selectedKey = aKey;
+        if (/resize/.test(e.cell.dragContext)) {
+            selectedKey = oKey;
+        }
+        if (/rowHeader/.test(e.cell.style)) {
+            if (e.cell.text && e.x - e.cell.x - e.cell.text.width - (this.style.treeArrowWidth / 2) < 0) {
+                selectedKey = 'treeArrowColor';
+            }
+        }
+        if (e.cell.text && e.x - e.cell.x - e.cell.text.width + (/rowHeader/.test(e.cell.style) ? this.style.treeArrowWidth / 2 : 0) < 0) {
+            selectedKey = cKey;
+        }
+        if (/scroll/.test(e.cell.style)) {
+            selectedKey = 'scrollBarBackgroundColor';
+            if (/scroll-box/.test(e.cell.style)) {
+                selectedKey = 'scrollBarBoxBackgroundColor';
+            }
+            if (/scroll-box-corner/.test(e.cell.style)) {
+                selectedKey = 'scrollBarCornerBackgroundColor';
+            }
+        }
+        inputs[selectedKey].focus();
+        if (!tdls[selectedKey]) { return; }
+        tdls[selectedKey].classList.add('style-maker-prop-highlight');
+    }
+    function focusStyleInput(e) {
+        inputs[selectedKey].focus();
+        colorInputs[selectedKey].dispatchEvent(new Event('click'));
+        e.preventDefault();
     }
     function setupDemoGrid() {
         function createData(n) {
@@ -185,6 +229,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         // add various sorts of data to the grid
         grid.data = createData(20);
+        grid.attributes.allowRowResizeFromCell = true;
+        grid.attributes.allowColumnResizeFromCell = true;
         grid.addEventListener('expandtree', function (e) {
             e.treeGrid.data = [
                 {top: 0, left: 2, right: 8, bottom: 2},
@@ -193,7 +239,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 {top: 0, left: 6, right: 7, bottom: 3},
                 {top: 0, left: 7, right: 71, bottom: 44}
             ];
-            e.treeGrid.addEventListener('click', selectStyleInput);
+            e.treeGrid.addEventListener('click', focusStyleInput);
+            e.treeGrid.addEventListener('mousemove', selectStyleInput);
+            e.treeGrid.addEventListener('mousedown', preventDefault);
+            e.treeGrid.addEventListener('mouseup', preventDefault);
+            e.treeGrid.attributes.allowRowResizeFromCell = true;
+            e.treeGrid.attributes.allowColumnResizeFromCell = true;
             grid.addEventListener('stylechanged', function () {
                 e.treeGrid.style = grid.style;
             });
@@ -201,6 +252,11 @@ document.addEventListener('DOMContentLoaded', function () {
         // expand and select stuff to show as many colors as possible like a drunken peacock
         grid.expandTree(5);
         grid.selectArea({top: 0, left: 2, right: 8, bottom: 2});
+        grid.addEventListener('mousemove', selectStyleInput);
+        grid.addEventListener('click', focusStyleInput);
+        // prevent our friend from talking us down from the ledge
+        grid.addEventListener('mousedown', preventDefault);
+        grid.addEventListener('mouseup', preventDefault);
     }
     function createProps(keyReg, negList) {
         return function (key) {
@@ -212,6 +268,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 input = document.createElement('input'),
                 label = document.createElement('label');
             tr.classList.add('style-maker-tr');
+            tdl.classList.add('style-maker-tdl');
+            tdls[key] = tdl;
             tdl.classList.add('style-maker-tdl');
             tdc.classList.add('style-maker-tdc');
             input.classList.add('style-maker-input');
@@ -337,33 +395,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.execCommand('Copy');
         copyCode.clicked = false;
     };
-    function clearPropHighlight() {
-        Object.keys(inputs).forEach(function (key) {
-            inputs[key].classList.remove('style-maker-prop-highlight');
-        });
-    }
-    function selectStyleInput(e) {
-        var s = e.cell.style,
-            aKey = s + 'BackgroundColor',
-            cKey = s + 'Color',
-            oKey = s + 'Border',
-            selectedKey = aKey;
-        //TODO: add a lot more logic in here in selecting the relevant styles on click
-        if (!s || /tree-grid/.test(e.cell.style)) { return; }
-        clearPropHighlight();
-        if (e.NativeEvent.ctrlKey) {
-            selectedKey = cKey;
-        } else if (e.NativeEvent.shiftKey) {
-            selectedKey = oKey;
-        }
-        if (inputs[selectedKey]) {
-            inputs[selectedKey].focus();
-        }
-        [aKey, cKey, oKey].forEach(function (k) {
-            if (!inputs[k]) { return; }
-            inputs[k].classList.add('style-maker-prop-highlight');
-        });
-    }
     function init() {
         container.appendChild(titleCanvas);
         container.appendChild(styleLibSelect);
