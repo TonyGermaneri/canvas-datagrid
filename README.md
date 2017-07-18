@@ -14,11 +14,11 @@ Canvas Data Grid
 
 [Demo](https://tonygermaneri.github.io/canvas-datagrid/docs/tutorial-sample.html)
 
-[Download](https://tonygermaneri.github.io/canvas-datagrid/dist/canvas-datagrid.js)
+[Style Builder](https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html)
 
 [Documentation](https://tonygermaneri.github.io/canvas-datagrid/docs/index.html)
 
-[Style Builder](https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html)
+[Download](https://tonygermaneri.github.io/canvas-datagrid/dist/canvas-datagrid.js)
 
 [GitHub](https://github.com/TonyGermaneri/canvas-datagrid)
 
