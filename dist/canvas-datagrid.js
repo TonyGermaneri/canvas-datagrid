@@ -799,16 +799,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         }
         /**
          * Redraws the grid. No matter what the change, this is the only method required to refresh everything.
-<<<<<<< HEAD
-         * @memberof canvasDataGrid
-=======
-<<<<<<< Updated upstream
-         * @memberof canvasDataGrid#
-=======
          * @memberof canvasDataGrid
          * @name draw
->>>>>>> Stashed changes
->>>>>>> master
          * @method
          */
         self.draw = function (internal) {
@@ -1947,16 +1939,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Ends editing, optionally aborting the edit.
-<<<<<<< HEAD
-         * @memberof canvasDataGrid
-=======
-<<<<<<< Updated upstream
-         * @memberof canvasDataGrid#
-=======
          * @memberof canvasDataGrid
          * @name endEdit
->>>>>>> Stashed changes
->>>>>>> master
          * @method
          * @param {boolean} abort When true, abort the edit.
          */
@@ -2004,16 +1988,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Begins editing at cell x, row y.
-<<<<<<< HEAD
-         * @memberof canvasDataGrid
-=======
-<<<<<<< Updated upstream
-         * @memberof canvasDataGrid#
-=======
          * @memberof canvasDataGrid
          * @name beginEditAt
->>>>>>> Stashed changes
->>>>>>> master
          * @method
          * @param {number} x The column index of the cell to edit.
          * @param {number} y The row index of the cell to edit.
@@ -3000,13 +2976,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Removes the context menu if it is present.
-<<<<<<< HEAD
-         * @memberof canvasDataGrid
-=======
          * @memberof canvasDataGrid#
          * @memberof canvasDataGrid
          * @name disposeContextMenu
->>>>>>> master
          * @method
          */
         self.disposeContextMenu = function (e) {
@@ -3520,10 +3492,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @see canvasDataGrid#schema
          * @tutorial schema
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name insertColumn
->>>>>>> master
          * @method
          * @param {column} rowIndex The column to insert into the schema.
          * @param {number} index The index of the row to insert before.
@@ -3539,10 +3508,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Deletes a column from the schema at the specified index.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name deleteColumn
->>>>>>> master
          * @tutorial schema
          * @method
          * @param {number} index The index of the column to delete.
@@ -3556,10 +3522,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @see canvasDataGrid#schema
          * @tutorial schema
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name addColumn
->>>>>>> master
          * @method
          * @param {column} c The column to add to the schema.
          */
@@ -3572,10 +3535,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Deletes a row from the dataset at the specified index.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name deleteRow
->>>>>>> master
          * @method
          * @param {number} index The index of the row to delete.
          */
@@ -3587,10 +3547,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Inserts a new row into the dataset before the specified index.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name insertRow
->>>>>>> master
          * @method
          * @param {object} d data.
          * @param {number} index The index of the row to insert before.
@@ -3606,10 +3563,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Adds a new row into the dataset.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name addRow
->>>>>>> master
          * @method
          * @param {object} d data.
          */
@@ -3621,10 +3575,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Sets the height of a given row by index number.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name setRowHeight
->>>>>>> master
          * @method
          * @param {number} rowIndex The index of the row to set.
          * @param {number} height Height to set the row to.
@@ -3636,10 +3587,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Sets the width of a given column by index number.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name setColumnWidth
->>>>>>> master
          * @method
          * @param {number} colIndex The index of the column to set.
          * @param {number} width Width to set the column to.
@@ -3652,10 +3600,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Removes any changes to the width of the columns due to user or api interaction, setting them back to the schema or style default.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name resetColumnWidths
->>>>>>> master
          * @tutorial schema
          * @method
          */
@@ -3666,10 +3611,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Removes any changes to the height of the rows due to user or api interaction, setting them back to the schema or style default.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name resetRowHeights
->>>>>>> master
          * @tutorial schema
          * @method
          */
@@ -3680,10 +3622,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Sets the value of the filter.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name setFilter
->>>>>>> master
          * @method
          * @param {string} column Name of the column to filter.
          * @param {string} value The value to filter for.
@@ -3717,10 +3656,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Returns the number of pixels to scroll down to line up with row rowIndex.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name findRowScrollTop
->>>>>>> master
          * @method
          * @param {number} rowIndex The row index of the row to scroll find.
          */
@@ -3743,10 +3679,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Returns the number of pixels to scroll to the left to line up with column columnIndex.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name findColumnScrollLeft
->>>>>>> master
          * @method
          * @param {number} columnIndex The column index of the column to find.
          */
@@ -3764,10 +3697,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Scrolls the cell at cell x, row y.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name gotoCell
->>>>>>> master
          * @method
          * @param {number} x The column index of the cell to scroll to.
          * @param {number} y The row index of the cell to scroll to.
@@ -3783,10 +3713,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Scrolls the row y.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name gotoRow
->>>>>>> master
          * @method
          * @param {number} y The row index of the cell to scroll to.
          */
@@ -3796,10 +3723,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Scrolls the cell at cell x, row y into view if it is not already.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name scrollIntoView
->>>>>>> master
          * @method
          * @param {number} x The column index of the cell to scroll into view.
          * @param {number} y The row index of the cell to scroll into view.
@@ -3819,10 +3743,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Sets the active cell. Requires redrawing.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name setActiveCell
->>>>>>> master
          * @method
          * @param {number} x The column index of the cell to set active.
          * @param {number} y The row index of the cell to set active.
@@ -3836,10 +3757,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Selects a row.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name selectRow
->>>>>>> master
          * @method
          * @param {boolean} toggleSelectMode When true, behaves as if you were holding control/command when you clicked the row.
          * @param {boolean} supressSelectionchangedEvent When true, prevents the selectionchanged event from firing.
@@ -3871,10 +3789,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Collapse a tree grid by row index.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name collapseTree
->>>>>>> master
          * @method
          * @param {number} index The index of the row to collapse.
          */
@@ -3899,10 +3814,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Expands a tree grid by row index.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name expandTree
->>>>>>> master
          * @method
          * @param {number} index The index of the row to expand.
          */
@@ -3948,10 +3860,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Toggles tree grid open and close by row index.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name toggleTree
->>>>>>> master
          * @method
          * @param {number} index The index of the row to toggle.
          */
@@ -3965,10 +3874,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Returns a header from the schema by name.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name getHeaderByName
->>>>>>> master
          * @tutorial schema
          * @method
          * @returns {header} header with the selected name, or undefined.
@@ -3986,10 +3892,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * Resizes a column to fit the longest value in the column. Call without a value to resize all columns.
          * Warning, can be slow on very large record sets (1m records ~3-5 seconds on an i7).
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name fitColumnToValues
->>>>>>> master
          * @method
          * @param {string} name The name of the column to resize.
          */
@@ -4002,10 +3905,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Checks if a cell is currently visible.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name isCellVisible
->>>>>>> master
          * @method
          * @returns {boolean} when true, the cell is visible, when false the cell is not currently drawn.
          * @param {cell} cell The cell to check for.  Alternatively you can pass an object { x: <x-index>, y: <y-index> }.
@@ -4022,10 +3922,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Sets the order of the data.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name order
->>>>>>> master
          * @method
          * @returns {cell} cell at the selected location.
          * @param {number} columnName Number of pixels from the left.
@@ -4063,10 +3960,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Gets the cell at columnIndex and rowIndex.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name getVisibleCellByIndex
->>>>>>> master
          * @method
          * @returns {cell} cell at the selected location.
          * @param {number} x Column index.
@@ -4080,10 +3974,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Gets the cell at grid pixel coordinate x and y.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name getCellAt
->>>>>>> master
          * @method
          * @returns {cell} cell at the selected location.
          * @param {number} x Number of pixels from the left.
@@ -4199,10 +4090,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * Gets the bounds of current selection. 
          * @returns {rect} selection.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name getSelectionBounds
->>>>>>> master
          * @method
          */
         self.getSelectionBounds = function () {
@@ -4229,10 +4117,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Returns an auto generated schema based on data structure.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name getSchemaFromData
->>>>>>> master
          * @method
          * @tutorial schema
          * @returns {schema} schema A schema based on the first item in the data array.
@@ -4260,10 +4145,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * This does not undo changes or alter data it is simply a convince array to keep
          * track of changes made to the data since last this method was called.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name clearChangeLog
->>>>>>> master
          * @method
          */
         self.clearChangeLog = function () {
@@ -4272,10 +4154,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Selects an area of the grid.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name selectArea
->>>>>>> master
          * @method
          * @param {rect} bounds A rect object representing the selected values.
          */
@@ -4308,10 +4187,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Returns the maximum text width for a given column by column name.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name findColumnMaxTextLength
->>>>>>> master
          * @method
          * @returns {number} The number of pixels wide the maximum width value in the selected column.
          * @param {string} name The name of the column to calculate the value's width of.
@@ -4347,10 +4223,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Gets the total width of all header columns.
          * @memberof canvasDataGrid
-<<<<<<< HEAD
-=======
          * @name getHeaderWidth
->>>>>>> master
          * @method
          */
         self.getHeaderWidth = function () {
