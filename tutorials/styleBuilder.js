@@ -178,7 +178,6 @@ document.addEventListener('DOMContentLoaded', function () {
             cKey = s + 'Color',
             oKey = s + 'BorderColor';
         //TODO: add a lot more logic in here in selecting the relevant styles on click
-        console.log({style: e.cell.style, dragContext: e.cell.dragContext, context: e.cell.context});
         e.preventDefault();
         if (!s || /tree-grid/.test(e.cell.style)) { return; }
         clearPropHighlight();
@@ -203,11 +202,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 selectedKey = 'scrollBarCornerBackgroundColor';
             }
         }
-        inputs[selectedKey].focus();
         if (!tdls[selectedKey]) { return; }
+        inputs[selectedKey].focus();
         tdls[selectedKey].classList.add('style-maker-prop-highlight');
     }
     function focusStyleInput(e) {
+        if (!inputs[selectedKey]) { return; }
         inputs[selectedKey].focus();
         colorInputs[selectedKey].dispatchEvent(new Event('click'));
         e.preventDefault();
@@ -252,6 +252,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // expand and select stuff to show as many colors as possible like a drunken peacock
         grid.expandTree(5);
         grid.selectArea({top: 0, left: 2, right: 8, bottom: 2});
+        grid.selectArea({top: 11, left: 1, right: 2, bottom: 13}, true);
         grid.addEventListener('mousemove', selectStyleInput);
         grid.addEventListener('click', focusStyleInput);
         // prevent our friend from talking us down from the ledge
