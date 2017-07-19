@@ -46,7 +46,7 @@
   },
   "homepage": "https://github.com/TonyGermaneri/canvas-datagrid#readme",
   "devDependencies": {
-    "ink-docstrap": "git+ssh://git@github.com:TonyGermaneri/docstrap.git#v1.2.2",
+    "ink-docstrap": "git+ssh://git@github.com:TonyGermaneri/docstrap.git#v1.2.3",
     "jsdoc": "^3.4.3",
     "webpack": "^3.0.0"
   }
