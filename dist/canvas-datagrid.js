@@ -816,6 +816,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             // initial values
             var checkScrollHeight, borderWidth, rowHeaderCell, p, cx, cy, treeGrid, rowOpen,
                 rowHeight, cornerCell, y, x, c, h, w, s, r, rd, aCell,
+                selectionBorders = [],
+                rowHeaders = [],
                 l = self.data.length,
                 u = self.currentCell || {},
                 headerCellHeight = self.getHeaderCellHeight(),
@@ -1143,32 +1145,27 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                                 }
                             }
                         }
-                        if (active && !self.attributes.rowSelectionMode) {
+                        if (active) {
                             aCell = cell;
-                            self.ctx.lineWidth = self.style.activeCellOverlayBorderWidth;
-                            self.ctx.strokeStyle = self.style.activeCellOverlayBorderColor;
-                            strokeRect(aCell.x, aCell.y, aCell.width, aCell.height);
                         }
-                        self.ctx.lineWidth = self.style.selectionOverlayBorderWidth;
-                        self.ctx.strokeStyle = self.style.selectionOverlayBorderColor;
                         if (selected && cell.style !== 'rowHeaderCell') {
                             if ((!self.selections[cell.rowIndex - 1]
                                     || self.selections[cell.rowIndex - 1].indexOf(cell.columnIndex) === -1
                                     || cell.rowIndex === 0)
                                     && !cell.isHeader) {
-                                addBorderLine(cell, 't');
+                                selectionBorders.push([cell, 't']);
                             }
                             if (!self.selections[cell.rowIndex + 1]
                                     || self.selections[cell.rowIndex + 1].indexOf(cell.columnIndex) === -1) {
-                                addBorderLine(cell, 'b');
+                                selectionBorders.push([cell, 'b']);
                             }
                             if (!self.selections[cell.rowIndex] || cell.columnIndex === 0
                                     || self.selections[cell.rowIndex].indexOf(cell.columnIndex - 1) === -1) {
-                                addBorderLine(cell, 'l');
+                                selectionBorders.push([cell, 'l']);
                             }
                         } else if (self.selections[cell.rowIndex]
                                 && self.selections[cell.rowIndex].indexOf(cell.columnIndex - 1) !== -1) {
-                            addBorderLine(cell, 'l');
+                            selectionBorders.push([cell, 'l']);
                         }
                         self.ctx.restore();
                         x += cell.width + borderWidth;
@@ -1176,8 +1173,30 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     }
                 };
             }
-            function drawHeaderRow() {
+            function drawRowHeader(rowData, index, rowOrderIndex) {
+                var a;
+                if (self.attributes.showRowHeaders) {
+                    x = 0;
+                    rowHeaderCell = {'rowHeaderCell': index + 1 };
+                    rowHeaderCell[self.uniqueId] = rowData[self.uniqueId];
+                    a = {
+                        name: 'rowHeaderCell',
+                        width: self.style.headerRowWidth,
+                        style: 'rowHeaderCell',
+                        type: 'string',
+                        data: rowData[self.uniqueId],
+                        index: -1
+                    };
+                    a[self.uniqueId] = rowData[self.uniqueId];
+                    drawCell(rowHeaderCell, index, rowOrderIndex)(a, -1, -1);
+                }
+            }
+            function drawHeaders() {
                 var d, g = s.length, i, o, headerCell, header;
+                rowHeaders.forEach(function (hd) {
+                    y = hd[3];
+                    drawRowHeader(hd[0], hd[1], hd[2]);
+                });
                 if (self.attributes.showHeaders) {
                     x = (self.scrollBox.scrollLeft * -1) + self.scrollPixelLeft;
                     if (self.attributes.showRowHeaders) {
@@ -1235,24 +1254,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     }
                 }
             }
-            function drawRowHeader(rowData, index, rowOrderIndex) {
-                var a;
-                if (self.attributes.showRowHeaders) {
-                    x = 0;
-                    rowHeaderCell = {'rowHeaderCell': index + 1 };
-                    rowHeaderCell[self.uniqueId] = rowData[self.uniqueId];
-                    a = {
-                        name: 'rowHeaderCell',
-                        width: self.style.headerRowWidth,
-                        style: 'rowHeaderCell',
-                        type: 'string',
-                        data: rowData[self.uniqueId],
-                        index: -1
-                    };
-                    a[self.uniqueId] = rowData[self.uniqueId];
-                    drawCell(rowHeaderCell, index, rowOrderIndex)(a, -1, -1);
-                }
-            }
             function drawRow(r, d) {
                 var i, treeHeight, rowSansTreeHeight, o, g = s.length;
                 if (y - (cellHeight * 2) > h) {
@@ -1277,7 +1278,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         break;
                     }
                 }
-                drawRowHeader(rd, r, d);
+                rowHeaders.push([rd, r, d, y]);
                 // cell height might have changed during drawing
                 cellHeight = rowHeight;
                 x = (self.scrollBox.scrollLeft * -1) + self.scrollPixelLeft;
@@ -1313,18 +1314,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     treeGrid.parentNode.offsetHeight = 0;
                     delete self.sizes.trees[rd[self.uniqueId]];
                 }
-                if (self.attributes.rowSelectionMode
-                        && self.activeCell
-                        && self.activeCell.rowIndex === r) {
-                    self.ctx.lineWidth = self.style.activeCellOverlayBorderWidth;
-                    self.ctx.strokeStyle = self.style.activeCellOverlayBorderColor;
-                    strokeRect(0, y, self.getHeaderWidth() + headerCellWidth, rowHeight);
-                }
                 y += cellHeight + borderWidth;
                 return true;
             }
             function initDraw() {
-                borderWidth = self.style.cellBorderWidth * 2;
+                borderWidth = self.style.cellBorderWidth;
                 self.visibleRows = [];
                 s = self.getVisibleSchema();
                 self.visibleCells = [];
@@ -1365,7 +1359,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             break;
                         }
                     }
-                    drawRowHeader(self.newRow, self.data.length, self.data.length);
+                    rowHeaders.push([self.newRow, self.data.length, self.data.length, y]);
                 }
             }
             function drawReorderMarkers() {
@@ -1418,6 +1412,28 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.ctx.strokeStyle = self.style.gridBorderColor;
                 strokeRect(0, 0, self.width, self.height);
             }
+            function drawSelectionBorders() {
+                self.ctx.lineWidth = self.style.selectionOverlayBorderWidth;
+                self.ctx.strokeStyle = self.style.selectionOverlayBorderColor;
+                selectionBorders.forEach(function (c) {
+                    addBorderLine(c[0], c[1]);
+                });
+            }
+            function drawActiveCell() {
+                if (!aCell) { return; }
+                if (self.attributes.rowSelectionMode) {
+                    if (self.activeCell && self.activeCell.rowIndex === aCell.rowIndex) {
+                        self.ctx.lineWidth = self.style.activeCellOverlayBorderWidth;
+                        self.ctx.strokeStyle = self.style.activeCellOverlayBorderColor;
+                        strokeRect(0, aCell.y, self.getHeaderWidth() + headerCellWidth, rowHeight);
+                    }
+                } else {
+                    self.ctx.lineWidth = self.style.activeCellOverlayBorderWidth;
+                    self.ctx.strokeStyle = self.style.activeCellOverlayBorderColor;
+                    strokeRect(aCell.x, aCell.y, aCell.width, aCell.height);
+                }
+
+            }
             function drawDebug() {
                 perfCounters[drawCount % perfWindowSize] = performance.now() - p;
                 var d;
@@ -1465,7 +1481,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         fillRect(headerCellWidth, lh + (index * lh), 100, lh);
                         self.ctx.fillStyle = 'rgba(0, 0, 0, 1)';
                         fillText(m, headerCellWidth + 1, headerCellHeight + (index * lh));
-
                     });
                     self.ctx.restore();
                 }
@@ -1474,7 +1489,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             initDraw();
             drawBackground();
             drawRows();
-            drawHeaderRow();
+            drawSelectionBorders();
+            drawHeaders();
+            drawActiveCell();
             drawReorderMarkers();
             drawScrollBars();
             if (checkScrollHeight) {
@@ -1985,7 +2002,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 cell = self.getVisibleCellByIndex(x, y);
                 self.input = document.createElement(self.attributes.multiLine ? 'textarea' : 'input');
                 document.body.appendChild(self.input);
-                self.input.className = 'canvas-datagrid-edit-input';
+                self.createInlineStyle(self.input, 'canvas-datagrid-edit-input');
                 self.input.style.position = 'absolute';
                 self.input.editCell = cell;
                 self.resizeEditInput();
@@ -2335,7 +2352,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.draggingItem = undefined;
             self.dragStartObject = undefined;
             if (self.dispatchEvent('mouseup', {NativeEvent: e, cell: self.currentCell})) { return; }
-            if (!self.hasFocus) {
+            if (!self.hasFocus && e.target !== self.canvas) {
                 return;
             }
             if (self.currentCell && self.currentCell.grid !== undefined) {
@@ -2816,13 +2833,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             columnFilter = self.columnFilters[contextObject.header.name] || '';
             filterContainer = document.createElement('div');
             filterLabel = document.createElement('div');
-            filterLabel.className = 'canvas-datagrid-context-menu-label';
+            self.createInlineStyle(filterLabel, 'canvas-datagrid-context-menu-label');
             filterInput = document.createElement('input');
             filterLabel.innerHTML = self.attributes.filterOptionText + ' ' + contextObject.header.name;
             filterContainer.appendChild(filterLabel);
             filterContainer.appendChild(filterInput);
             self.contextMenu = document.createElement('div');
-            self.contextMenu.className = 'canvas-datagrid-context-menu';
+            self.createInlineStyle(self.contextMenu, 'canvas-datagrid-context-menu');
             self.contextMenu.style.cursor = 'pointer';
             self.contextMenu.style.position = 'absolute';
             self.contextMenu.style.zIndex = '3';
@@ -2908,7 +2925,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 var row = document.createElement('div');
                 self.contextMenu.appendChild(row);
                 if (typeof item.title === 'string') {
-                    row.className = 'canvas-datagrid-context-menu-item';
+                    self.createInlineStyle(row, 'canvas-datagrid-context-menu-item');
+                    row.addEventListener('mouseover', function () {
+                        self.createInlineStyle(row, 'canvas-datagrid-context-menu-item:hover');
+                    });
+                    row.addEventListener('mouseout', function () {
+                        self.createInlineStyle(row, 'canvas-datagrid-context-menu-item');
+                    });
                     row.innerHTML = item.title;
                 } else {
                     row.appendChild(item.title);
@@ -2963,6 +2986,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 document.body.removeEventListener('mousedown', disp);
                 document.body.removeEventListener('touchstart', disp);
                 document.body.removeEventListener('touchend', disp);
+                self.controlInput.focus();
             }
             if (!e || (self.contextMenu
                                 && self.contextMenu.parentNode
@@ -3068,7 +3092,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['editCellPaddingLeft', 4],
                 ['editCellBoxShadow', '0 2px 5px rgba(0,0,0,0.4)'],
                 ['editCellBorder', 'solid 1px rgba(110, 168, 255, 1)'],
-                ['styleSheet', ''],
                 ['contextMenuItemMargin', '2px'],
                 ['contextMenuItemBorderRadius', '3px'],
                 ['contextMenuLabelMargin', '0 3px 0 0'],
@@ -3086,7 +3109,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['contextMenuBorderRadius', '3px'],
                 ['contextMenuOpacity', '0.98'],
                 ['contextMenuFilterInvalidExpresion', 'rgba(237, 155, 156, 1)'],
-                ['contextMenuMarginTop', 15],
+                ['contextMenuMarginTop', -3],
                 ['contextMenuMarginLeft', 3],
                 ['autosizePadding', 5],
                 ['autosizeHeaderCellPadding', 8],
@@ -3165,9 +3188,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['rowHeaderCellActiveColor', 'rgba(0, 0, 0, 1)'],
                 ['rowHeaderCellActiveBackgroundColor', 'rgba(225, 225, 225, 1)'],
                 ['activeCellOverlayBorderColor', 'rgba(66, 133, 244, 1)'],
-                ['activeCellOverlayBorderWidth', 1.25],
+                ['activeCellOverlayBorderWidth', 1.50],
                 ['selectionOverlayBorderColor', 'rgba(66, 133, 244, 1)'],
-                ['selectionOverlayBorderWidth', 1.25],
+                ['selectionOverlayBorderWidth', 0.75],
                 ['reorderMarkerIndexBorderColor', 'rgba(66, 133, 244, 1)'],
                 ['reorderMarkerIndexBorderWidth', 2.75],
                 ['reorderMarkerBackgroundColor', 'rgba(0, 0, 0, 0.1)'],
@@ -3191,95 +3214,75 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
     'use strict';
     return function (self) {
-        self.attachCss = function () {
-            var styleSheet,
-                styleSheetBody = [],
-                css = {
-                    'canvas-datagrid-canvas': {
-                        position: 'absolute!important',
-                        'z-index': '-1'
-                    },
-                    'canvas-datagrid-scrollBox': {
-                        position: 'absolute!important',
-                        overflow: 'auto!important',
-                        'z-index': '1!important'
-                    },
-                    'canvas-datagrid': {
-                        position: 'absolute!important',
-                        background: self.style.backgroundColor,
-                        'z-index': '1',
-                        'box-sizing': 'content-box!important',
-                        padding: '0!important'
-                    },
-                    'canvas-datagrid-control-input': {
-                        position: 'fixed!important',
-                        top: '-5px',
-                        left: '-5px',
-                        border: 'none!important',
-                        opacity: '0!important',
-                        cursor: 'pointer!important',
-                        width: '1px',
-                        height: '1px'
-                    },
-                    'canvas-datagrid-edit-input': {
-                        'box-sizing': 'content-box!important',
-                        outline: 'none!important',
-                        margin: '0!important',
-                        padding: '0 0 0 ' + self.style.editCellPaddingLeft + 'px!important',
-                        'font-size': self.style.editCellFontSize + '!important',
-                        'font-family': self.style.editCellFontFamily + '!important',
-                        'box-shadow': self.style.editCellBoxShadow,
-                        border: self.style.editCellBorder
-                    },
-                    'canvas-datagrid-context-menu-item': {
-                        margin: self.style.contextMenuItemMargin,
-                        'border-radius': self.style.contextMenuItemBorderRadius
-                    },
-                    'canvas-datagrid-context-menu-item:hover': {
-                        background: self.style.contextMenuHoverBackground,
-                        color: self.style.contextMenuHoverColor,
-                        margin: self.style.contextMenuItemMargin
-                    },
-                    'canvas-datagrid-context-menu-label': {
-                        'margin': self.style.contextMenuLabelMargin,
-                        display: self.style.contextMenuLabelDisplay,
-                        'min-width': self.style.contextMenuLabelMinWidth,
-                        'max-width': self.style.contextMenuLabelMaxWidth,
-                    },
-                    'canvas-datagrid-context-menu': {
-                        'font-family': self.style.contextMenuFontFamily,
-                        'font-size': self.style.contextMenuFontSize,
-                        background: self.style.contextMenuBackground,
-                        color: self.style.contextMenuColor,
-                        border: self.style.contextMenuBorder,
-                        padding: self.style.contextMenuPadding,
-                        'border-radius': self.style.contextMenuBorderRadius,
-                        opacity: self.style.contextMenuOpacity
-                    },
-                    'canvas-datagrid-invalid-search-regExp': {
-                        background: self.style.contextMenuFilterInvalidExpresion
-                    }
-                };
-            Object.keys(css).forEach(function (className) {
-                styleSheetBody.push('.' + className + '{');
-                Object.keys(css[className]).forEach(function (propertyName) {
-                    styleSheetBody.push(propertyName + ':' + css[className][propertyName] + ';');
+        self.createInlineStyle = function (el, className) {
+            var css = {
+                'canvas-datagrid-canvas': {
+                    position: 'absolute',
+                    zIndex: '-1'
+                },
+                'canvas-datagrid': {
+                    position: 'absolute',
+                    background: self.style.backgroundColor,
+                    zIndex: '1',
+                    boxSizing: 'content-box',
+                    padding: '0'
+                },
+                'canvas-datagrid-control-input': {
+                    position: 'fixed',
+                    top: '-5px',
+                    left: '-5px',
+                    border: 'none',
+                    opacity: '0',
+                    cursor: 'pointer',
+                    width: '1px',
+                    height: '1px'
+                },
+                'canvas-datagrid-edit-input': {
+                    boxSizing: 'content-box',
+                    outline: 'none',
+                    margin: '0',
+                    padding: '0 0 0 ' + self.style.editCellPaddingLeft + 'px',
+                    fontSize: self.style.editCellFontSize,
+                    fontFamily: self.style.editCellFontFamily,
+                    boxShadow: self.style.editCellBoxShadow,
+                    border: self.style.editCellBorder
+                },
+                'canvas-datagrid-context-menu-item': {
+                    color: 'inherit',
+                    background: 'inherit',
+                    margin: self.style.contextMenuItemMargin,
+                    borderRadius: self.style.contextMenuItemBorderRadius
+                },
+                'canvas-datagrid-context-menu-item:hover': {
+                    background: self.style.contextMenuHoverBackground,
+                    color: self.style.contextMenuHoverColor
+                },
+                'canvas-datagrid-context-menu-label': {
+                    margin: self.style.contextMenuLabelMargin,
+                    display: self.style.contextMenuLabelDisplay,
+                    minWidth: self.style.contextMenuLabelMinWidth,
+                    maxWidth: self.style.contextMenuLabelMaxWidth,
+                },
+                'canvas-datagrid-context-menu': {
+                    fontFamily: self.style.contextMenuFontFamily,
+                    fontSize: self.style.contextMenuFontSize,
+                    background: self.style.contextMenuBackground,
+                    color: self.style.contextMenuColor,
+                    border: self.style.contextMenuBorder,
+                    padding: self.style.contextMenuPadding,
+                    borderRadius: self.style.contextMenuBorderRadius,
+                    opacity: self.style.contextMenuOpacity
+                },
+                'canvas-datagrid-invalid-search-regExp': {
+                    background: self.style.contextMenuFilterInvalidExpresion
+                }
+            };
+            if (css[className]) {
+                Object.keys(css[className]).map(function (prop) {
+                    el.style[prop] = css[className][prop];
                 });
-                styleSheetBody.push('}');
-            });
-            if (document.getElementById(self.uniqueId)) {
-                return;
             }
-            styleSheet = document.createElement('link');
-            styleSheet.id = self.uniqueId;
-            styleSheet.rel = 'stylesheet';
-            if (document.head.firstChild) {
-                document.head.insertBefore(styleSheet, document.head.firstChild);
-            } else {
-                document.head.appendChild(styleSheet);
-            }
-            styleSheet.href = 'data:text/css;base64,'
-                + btoa(self.style.styleSheet || styleSheetBody.join(''));
+            return;
         };
         self.appendTo = function (n) {
             self.parentNode = n;
@@ -3296,7 +3299,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             } else {
                 self.controlInput = document.createElement('input');
                 self.controlInput.onblur = self.blur;
-                self.controlInput.className = 'canvas-datagrid-control-input';
+                self.createInlineStyle(self.controlInput, 'canvas-datagrid-control-input');
                 self.isChildGrid = false;
                 self.parentDOMNode = self.parentNode;
                 self.parentNode = self.parentDOMNode;
@@ -3339,7 +3342,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.setDom = function () {
             self.appendTo(self.args.parentNode);
-            self.attachCss();
         };
         self.initScrollBox = function () {
             var sHeight = 0,
