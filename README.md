@@ -16,7 +16,7 @@ Canvas Data Grid
 
 [Style Builder](https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html)
 
-[Documentation](https://tonygermaneri.github.io/canvas-datagrid/docs/index.html)
+[Documentation](https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDataGrid.html)
 
 [Download](https://tonygermaneri.github.io/canvas-datagrid/dist/canvas-datagrid.js)
 

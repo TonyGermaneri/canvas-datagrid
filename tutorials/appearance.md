@@ -33,7 +33,7 @@ This example attaches to two events. `rendertext` to prevent the rendering of te
     });
 
 ... and `afterrendercell` to draw an image into the cell after the background and borders are drawn.
-Because the image is loaded asynchronously, you need to attach to the load even to actually draw
+Because the image is loaded asynchronously, you need to attach to the load event to actually draw
 the image.
 
     var imgs = {};

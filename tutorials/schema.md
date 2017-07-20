@@ -13,7 +13,7 @@ Each column object can have the following properties:
 | hidden | When true the column will be hidden. |
 | filter | The filter function to use to filter this column.  If no function is provided, type will determine filer. |
 | formatter | The formatter function used display this column.  If no function is provided, type will determine formatter.|
-| defaultValue | The default value of this column for new rows.  This is a function that takes the arguments `header` and `index` and must return a value for new default cells in this column.|
+| defaultValue | The default value of this column for new rows.  This is a function or a string.  When a function is used, it takes the arguments `header` and `index` and must return a value for new default cell value in this column.|
 
 Example schema:
 
