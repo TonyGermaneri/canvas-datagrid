@@ -107,7 +107,7 @@ Below is an example of drawing an image into a cell:</p>
         }
     }
 });</code></pre><p>... and <code>afterrendercell</code> to draw an image into the cell after the background and borders are drawn.
-Because the image is loaded asynchronously, you need to attach to the load even to actually draw
+Because the image is loaded asynchronously, you need to attach to the load event to actually draw
 the image.</p>
 <pre class="prettyprint source"><code>var imgs = {};
 grid.addEventListener('afterrendercell', function (e) {
