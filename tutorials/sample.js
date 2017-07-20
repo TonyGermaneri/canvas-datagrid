@@ -529,8 +529,13 @@ document.addEventListener('DOMContentLoaded', function () {
         };
         // --- end of examples section
         // setup page
+        // documentation site mangles the shit out of this page
+        // so a bunch of inline styles are required
         args.parentNode.appendChild(sampleParent);
         buttonsParent.className = 'buttons';
+        buttonsParent.style.textAlign = 'left';
+        buttonsParent.style.border = '1px solid #ccc';
+        buttonsParent.style.background = '#cfcfcf';
         toggleEditor.className = 'toggle-editor';
         topSide.className = 'top-side';
         editor.setAttribute('id', 'editor');
@@ -538,19 +543,31 @@ document.addEventListener('DOMContentLoaded', function () {
         gridParent.className = 'grid';
         execute.className = 'execute-button';
         execute.innerHTML = 'Execute';
+        execute.style.margin = '0';
+        toggleEditor.style.margin = '2px';
         errorMessage.className = 'error-message';
         sampleParent.className = 'sample-parent';
         autoExecuteLabel.innerHTML = 'Auto Execute';
         autoExecute.type = 'checkbox';
         autoExecuteLabel.className = 'auto-execute-checkbox-label';
+        autoExecuteLabel.style.margin = '0 3px 0 3px';
         autoExecute.className = 'auto-execute-checkbox';
+        buttonsParent.style.width = '20%';
+        editor.style.width = '80%';
+        // not the same size because ace isn't cooperative
+        buttonsParent.style.height = '285px';
+        editor.style.height = '260px';
+        buttonsParent.style.overflowY = 'scroll';
+        editor.style.display = 'inline-block';
+        buttonsParent.style.display = 'inline-block';
         autoExecute.setAttribute('checked', true);
-        topSide.appendChild(buttonsParent);
         topSide.appendChild(toggleEditor);
         topSide.appendChild(execute);
         topSide.appendChild(autoExecuteLabel);
         topSide.appendChild(autoExecute);
         topSide.appendChild(errorMessage);
+        topSide.appendChild(document.createElement('br'));
+        topSide.appendChild(buttonsParent);
         topSide.appendChild(editor);
         sampleParent.appendChild(topSide);
         sampleParent.appendChild(gridParent);
@@ -562,11 +579,13 @@ document.addEventListener('DOMContentLoaded', function () {
             var i = [editor];
             if (editorVisible) {
                 show(i);
-                editor.style.display = 'block';
+                editor.style.display = 'inline-block';
                 execute.style.display = 'inline-block';
                 autoExecuteLabel.style.display = 'inline-block';
                 autoExecute.style.display = 'inline-block';
-                buttonsParent.style.display = 'block';
+                autoExecute.style.visibility = 'visible';
+                autoExecuteLabel.style.visibility = 'visible';
+                buttonsParent.style.display = 'inline-block';
                 toggleEditor.innerHTML = 'Examples &#x21F1';
             } else {
                 hide(i);
@@ -596,7 +615,7 @@ document.addEventListener('DOMContentLoaded', function () {
         function resize() {
             editor.style.height = (window.innerHeight * 0.33) + 'px';
             gridParent.style.height = window.innerHeight
-                - topSide.offsetHeight - 3
+                - topSide.offsetHeight
                 + 'px';
         }
         function toCodeSample(fn) {
@@ -614,6 +633,8 @@ document.addEventListener('DOMContentLoaded', function () {
             var example = examples[exampleKey],
                 button = document.createElement('button');
             buttonsParent.appendChild(button);
+            button.style.display = 'block';
+            button.style.width = '100%';
             button.innerHTML = exampleKey;
             button.onclick = function () {
                 aceEditor.getSession().setValue(toCodeSample(example));
