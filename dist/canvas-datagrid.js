@@ -947,19 +947,22 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     var cellStyle = header.style || 'cell',
                         childGridAttributes,
                         cell,
+                        isHeader = /headerCell/.test(cellStyle),
+                        isCorner = /cornerCell/.test(cellStyle),
+                        isRowHeader = 'rowHeaderCell' === cellStyle,
                         selected = self.selections[rowOrderIndex] && self.selections[rowOrderIndex].indexOf(columnOrderIndex) !== -1,
                         hovered = self.hovers[d[self.uniqueId]] && self.hovers[d[self.uniqueId]].indexOf(columnOrderIndex) !== -1,
                         active = self.activeCell.rowIndex === rowOrderIndex && self.activeCell.columnIndex === columnOrderIndex,
                         isGrid = Array.isArray(d[header.name]),
                         activeHeader = (self.orders.rows[self.activeCell.rowIndex] === rowOrderIndex
                                 || self.orders.columns[self.activeCell.columnIndex] === columnOrderIndex)
-                            && (columnOrderIndex === -1 || rowOrderIndex === -1),
+                            && (columnOrderIndex === -1 || rowOrderIndex === -1)
+                            ? (isRowHeader ? 'activeRowHeaderCell' : 'activeHeaderCell') : false,
                         val,
                         f = self.formatters[header.type || 'string'],
                         orderByArrowSize = 0,
                         treeArrowSize = 0,
-                        cellWidth = self.sizes.columns[cellStyle  === 'rowHeaderCell'
-                            ? 'cornerCell' : header[self.uniqueId]] || header.width,
+                        cellWidth = self.sizes.columns[isRowHeader ? 'cornerCell' : header[self.uniqueId]] || header.width,
                         ev = {
                             value: d[header.name],
                             row: d,
@@ -978,8 +981,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     if (active) {
                         cellStyle = 'activeCell';
                     }
-                    if (self.visibleRows.indexOf(rowIndex) === -1
-                            && ['headerCell', 'cornerCell'].indexOf(cellStyle) === -1) {
+                    if (self.visibleRows.indexOf(rowIndex) === -1 && !isHeader) {
                         self.visibleRows.push(rowIndex);
                     }
                     val = self.dispatchEvent('formatcellvalue', ev);
@@ -989,9 +991,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         if (cellStyle === 'cornerCell') {
                             cx = 0;
                             cy = 0;
-                        } else if (cellStyle === 'rowHeaderCell') {
+                        } else if (isRowHeader) {
                             cx = 0;
-                        } else if (cellStyle === 'headerCell') {
+                        } else if (isHeader) {
                             cy = 0;
                         }
                         cell = {
@@ -1004,9 +1006,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             offsetLeft: self.canvasOffsetLeft,
                             scrollTop: self.scrollBox.scrollTop,
                             scrollLeft: self.scrollBox.scrollLeft,
-                            active: active === true,
-                            hovered: hovered === true,
-                            selected: selected === true,
+                            active: active || activeHeader,
+                            hovered: hovered,
+                            selected: selected,
                             width: cellWidth,
                             height: cellHeight,
                             offsetWidth: cellWidth,
@@ -1014,8 +1016,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             parentNode: self.intf.parentNode,
                             offsetParent: self.intf.parentNode,
                             data: d,
-                            isHeader: /headerCell|cornerCell/.test(cellStyle),
-                            isRowHeader: 'rowHeaderCell' === cellStyle,
+                            isCorner: isCorner,
+                            isHeader: isHeader,
+                            isRowHeader: isRowHeader,
                             rowOpen: rowOpen,
                             header: header,
                             columnIndex: columnOrderIndex,
@@ -1026,7 +1029,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             gridId: (self.attributes.name || '') + d[self.uniqueId] + ':' + header[self.uniqueId].name,
                             parentGrid: self.intf,
                             innerHTML: '',
-                            value: cellStyle === 'headerCell'
+                            activeHeader: activeHeader,
+                            value: isHeader
                                 ? (header.title || header.name) : d[header.name]
                         };
                         ev.cell = cell;
@@ -1046,7 +1050,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             self.ctx.strokeStyle = self.style[cellStyle + 'SelectedBorderColor'];
                         }
                         if (activeHeader) {
-                            self.ctx.fillStyle = self.style[cellStyle + 'ActiveBackgroundColor'];
+                            self.ctx.fillStyle = self.style[activeHeader + 'BackgroundColor'];
                         }
                         self.dispatchEvent('rendercell', ev);
                         if (cell.isGrid) {
@@ -1068,20 +1072,20 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         self.ctx.clip();
                         self.dispatchEvent('afterrendercell', ev);
                         if (cell.height !== cellHeight && !(rowOpen && !cell.isRowHeader)) {
-                            self.sizes.rows[cellStyle === 'headerCell' ? -1 : d[self.uniqueId]] = cell.height;
+                            self.sizes.rows[isHeader ? -1 : d[self.uniqueId]] = cell.height;
                             checkScrollHeight = true;
                         }
                         if (cell.width !== cellWidth) {
                             self.sizes.columns[header[self.uniqueId]] = cell.width;
                             checkScrollHeight = true;
                         }
-                        if (cellStyle === 'rowHeaderCell' && self.attributes.tree) {
+                        if (isRowHeader && self.attributes.tree) {
                             if (!self.dispatchEvent('rendertreearrow', ev)) {
                                 treeArrowSize = drawTreeArrow(cell, self.style[cellStyle + 'PaddingLeft'], cy, 0);
                             }
                         }
-                        if ((self.attributes.showRowNumbers && cellStyle === 'rowHeaderCell')
-                                || cellStyle !== 'rowHeaderCell') {
+                        if ((self.attributes.showRowNumbers && isRowHeader)
+                                || !isRowHeader) {
                             if (cell.isGrid) {
                                 if (!self.childGrids[cell.gridId]) {
                                     childGridAttributes = self.args.childGridAttributes || self.args;
@@ -1108,7 +1112,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                                     console.warn('canvas-datagrid: Unknown format '
                                         + header.type + ' add a cellFormater');
                                 }
-                                if (cellStyle === 'headerCell' && self.orderBy === header.name) {
+                                if (isHeader && self.orderBy === header.name) {
                                     if (!self.dispatchEvent('renderorderbyarrow', ev)) {
                                         orderByArrowSize = drawOrderByArrow(cx + self.style[cellStyle + 'PaddingLeft'], 0);
                                     }
@@ -1121,9 +1125,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                                     self.ctx.fillStyle = self.style[cellStyle + 'SelectedColor'];
                                 }
                                 if (activeHeader) {
-                                    self.ctx.fillStyle = self.style[cellStyle + 'ActiveColor'];
+                                    self.ctx.fillStyle = self.style[activeHeader + 'Color'];
                                 }
-                                if (self.columnFilters && self.columnFilters[val] !== undefined && cellStyle === 'headerCell') {
+                                if (self.columnFilters && self.columnFilters[val] !== undefined && isHeader) {
                                     val = self.style.filterTextPrefix + val;
                                 }
                                 if (cell.innerHTML || header.type === 'html') {
@@ -1149,7 +1153,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         if (active) {
                             aCell = cell;
                         }
-                        if (selected && cell.style !== 'rowHeaderCell') {
+                        if (selected && !isRowHeader) {
                             if ((!self.selections[cell.rowIndex - 1]
                                     || self.selections[cell.rowIndex - 1].indexOf(cell.columnIndex) === -1
                                     || cell.rowIndex === 0)
@@ -1194,9 +1198,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             function drawHeaders() {
                 var d, g = s.length, i, o, headerCell, header;
-                rowHeaders.forEach(function (hd) {
-                    y = hd[3];
-                    drawRowHeader(hd[0], hd[1], hd[2]);
+                rowHeaders.forEach(function (rArgs) {
+                    y = rArgs[3];
+                    cellHeight = rArgs[4];
+                    drawRowHeader(rArgs[0], rArgs[1], rArgs[2]);
                 });
                 if (self.attributes.showHeaders) {
                     x = (self.scrollBox.scrollLeft * -1) + self.scrollPixelLeft;
@@ -1279,7 +1284,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         break;
                     }
                 }
-                rowHeaders.push([rd, r, d, y]);
                 // cell height might have changed during drawing
                 cellHeight = rowHeight;
                 x = (self.scrollBox.scrollLeft * -1) + self.scrollPixelLeft;
@@ -1315,6 +1319,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     treeGrid.parentNode.offsetHeight = 0;
                     delete self.sizes.trees[rd[self.uniqueId]];
                 }
+                rowHeaders.push([rd, r, d, y, rowHeight]);
                 y += cellHeight + borderWidth;
                 return true;
             }
@@ -1360,7 +1365,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             break;
                         }
                     }
-                    rowHeaders.push([self.newRow, self.data.length, self.data.length, y]);
+                    rowHeaders.push([self.newRow, self.data.length, self.data.length, y, rowHeight]);
                 }
             }
             function drawReorderMarkers() {
@@ -3161,6 +3166,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['activeCellSelectedBackgroundColor', 'rgba(236, 243, 255, 1)'],
                 ['activeCellBorderWidth', 0.25],
                 ['activeCellBorderColor', 'rgba(110, 168, 255, 1)'],
+                ['activeHeaderCellColor', 'rgba(0, 0, 0, 1)'],
+                ['activeHeaderCellBackgroundColor', 'rgba(225, 225, 225, 1)'],
+                ['activeRowHeaderCellColor', 'rgba(0, 0, 0, 1)'],
+                ['activeRowHeaderCellBackgroundColor', 'rgba(225, 225, 225, 1)'],
+                ['activeCellOverlayBorderColor', 'rgba(66, 133, 244, 1)'],
+                ['activeCellOverlayBorderWidth', 1.50],
                 ['headerCellPaddingTop', 5],
                 ['headerCellPaddingLeft', 5],
                 ['headerCellPaddingRight', 7],
@@ -3172,8 +3183,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['headerCellBackgroundColor', 'rgba(240, 240, 240, 1)'],
                 ['headerCellHoverColor', 'rgba(0, 0, 0, 1)'],
                 ['headerCellHoverBackgroundColor', 'rgba(235, 235, 235, 1)'],
-                ['headerCellActiveColor', 'rgba(0, 0, 0, 1)'],
-                ['headerCellActiveBackgroundColor', 'rgba(225, 225, 225, 1)'],
                 ['cornerCellBorderColor', 'rgba(202, 202, 202, 1)'],
                 ['cornerCellBackgroundColor', 'rgba(240, 240, 240, 1)'],
                 ['headerRowWidth', 57],
@@ -3190,10 +3199,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['rowHeaderCellHoverBackgroundColor', 'rgba(235, 235, 235, 1)'],
                 ['rowHeaderCellSelectedColor', 'rgba(50, 50, 50, 1)'],
                 ['rowHeaderCellSelectedBackgroundColor', 'rgba(217, 217, 217, 1)'],
-                ['rowHeaderCellActiveColor', 'rgba(0, 0, 0, 1)'],
-                ['rowHeaderCellActiveBackgroundColor', 'rgba(225, 225, 225, 1)'],
-                ['activeCellOverlayBorderColor', 'rgba(66, 133, 244, 1)'],
-                ['activeCellOverlayBorderWidth', 1.50],
                 ['selectionOverlayBorderColor', 'rgba(66, 133, 244, 1)'],
                 ['selectionOverlayBorderWidth', 0.75],
                 ['reorderMarkerIndexBorderColor', 'rgba(66, 133, 244, 1)'],

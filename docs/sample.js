@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
         examples['Detect clicks'] = function () {
             grid.addEventListener('click', function (e) {
                 if (!e.cell) { return; }
-                console.log(e.cell.value);
+                grid.data[0][grid.schema[0].name] = 'Clicked on ' + e.cell.value;
             });
         };
         examples['Detect cell over/out'] = function () {
@@ -90,24 +90,6 @@ document.addEventListener('DOMContentLoaded', function () {
             gradient.addColorStop(0, 'dodgerblue');
             gradient.addColorStop(1, 'chartreuse');
             grid.style.cellBackgroundColor = gradient;
-        };
-        examples['Animate Canvas fill styles'] = function () {
-            var m = 0, s, x, y;
-            function a() {
-                m += 1;
-                s = m;
-                x =  Math.sin(s * Math.PI / 180) * 140;
-                y =  0;
-                console.log(x, y);
-                var gradient = grid.ctx.createLinearGradient(0, 0, x, y);
-                gradient.addColorStop(0, 'dodgerblue');
-                gradient.addColorStop(0.5, 'goldenrod');
-                gradient.addColorStop(1, 'chartreuse');
-                grid.style.cellBackgroundColor = gradient;
-                grid.draw();
-                setTimeout(a, 30);
-            }
-            a();
         };
         examples['Alter startup styles'] = function () {
             // check if the old grid exists and remove it
@@ -534,7 +516,6 @@ document.addEventListener('DOMContentLoaded', function () {
         args.parentNode.appendChild(sampleParent);
         buttonsParent.className = 'buttons';
         buttonsParent.style.textAlign = 'left';
-        buttonsParent.style.border = '1px solid #ccc';
         buttonsParent.style.background = '#cfcfcf';
         toggleEditor.className = 'toggle-editor';
         topSide.className = 'top-side';
@@ -556,10 +537,11 @@ document.addEventListener('DOMContentLoaded', function () {
         editor.style.width = '80%';
         // not the same size because ace isn't cooperative
         buttonsParent.style.height = '285px';
-        editor.style.height = '260px';
+        editor.style.height = '285px';
         buttonsParent.style.overflowY = 'scroll';
         editor.style.display = 'inline-block';
         buttonsParent.style.display = 'inline-block';
+        buttonsParent.style.verticalAlign = 'top';
         autoExecute.setAttribute('checked', true);
         topSide.appendChild(toggleEditor);
         topSide.appendChild(execute);
@@ -613,7 +595,6 @@ document.addEventListener('DOMContentLoaded', function () {
         };
         // create a grid to share with all the functions
         function resize() {
-            editor.style.height = (window.innerHeight * 0.33) + 'px';
             gridParent.style.height = window.innerHeight
                 - topSide.offsetHeight
                 + 'px';
@@ -635,6 +616,7 @@ document.addEventListener('DOMContentLoaded', function () {
             buttonsParent.appendChild(button);
             button.style.display = 'block';
             button.style.width = '100%';
+            button.style.textAlign = 'left';
             button.innerHTML = exampleKey;
             button.onclick = function () {
                 aceEditor.getSession().setValue(toCodeSample(example));
