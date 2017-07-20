@@ -30,8 +30,8 @@ This method is not dependent on values in the schema.  This methods overrides `g
         }
     });
 
-formatters
-==========
+formatters interface
+====================
 Object that contains a list of formatting functions for displaying text.
 The properties in this object match the `schema[].type` property.
 For example, if the schema for a given column was of the type `date`
