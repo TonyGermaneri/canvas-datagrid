@@ -10,12 +10,20 @@ document.addEventListener('DOMContentLoaded', function () {
         }),
         selectedKey,
         cTypes = {},
+        seaWolf = {
+            a: 'DC3522',
+            b: 'D9CB9E',
+            c: '374140',
+            d: '2A2C2B',
+            e: '1E1E20'
+        },
         props = document.createElement('div'),
         loadStyle = document.createElement('button'),
         copyCode = document.createElement('button'),
         saveButton = document.createElement('button'),
         deleteButton = document.createElement('button'),
         styleLibSelect = document.createElement('select'),
+        help = document.createElement('button'),
         titleCanvas = document.createElement('canvas'),
         ctx = titleCanvas.getContext('2d'),
         code,
@@ -174,9 +182,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     function selectStyleInput(e) {
         var s = e.cell.selected ? 'cellSelected' : e.cell.style,
-            aKey = s + 'BackgroundColor',
-            cKey = s + 'Color',
-            oKey = s + 'BorderColor';
+            a = e.cell.active ? 'active' : '',
+            aKey = a + s + 'BackgroundColor',
+            cKey = a + s + 'Color',
+            oKey = a + s + 'BorderColor';
         //TODO: add a lot more logic in here in selecting the relevant styles on click
         e.preventDefault();
         if (!s || /tree-grid/.test(e.cell.style)) { return; }
@@ -185,12 +194,12 @@ document.addEventListener('DOMContentLoaded', function () {
         if (/resize/.test(e.cell.dragContext)) {
             selectedKey = oKey;
         }
-        if (/rowHeader/.test(e.cell.style)) {
+        if (e.cell.isRowHeader) {
             if (e.cell.text && e.x - e.cell.x - e.cell.text.width - (this.style.treeArrowWidth / 2) < 0) {
                 selectedKey = 'treeArrowColor';
             }
         }
-        if (e.cell.text && e.x - e.cell.x - e.cell.text.width + (/rowHeader/.test(e.cell.style) ? this.style.treeArrowWidth / 2 : 0) < 0) {
+        if (e.cell.text && e.x - e.cell.x - e.cell.text.width + (e.cell.isRowHeader ? this.style.treeArrowWidth / 2 : 0) < 0) {
             selectedKey = cKey;
         }
         if (/scroll/.test(e.cell.style)) {
@@ -203,7 +212,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
         if (!tdls[selectedKey]) { return; }
-        inputs[selectedKey].focus();
         tdls[selectedKey].classList.add('style-maker-prop-highlight');
     }
     function focusStyleInput(e) {
@@ -321,7 +329,10 @@ document.addEventListener('DOMContentLoaded', function () {
         apply();
     };
     saveButton.onclick = function () {
-        if (inputs.name.value === 'default') { return; }
+        if (Object.keys(window.defaultStyleLibrary).indexOf(inputs.name) !== -1) {
+            alert('Cannot overwrite a default style, change style name.');
+            return;
+        }
         var storedValues;
         try {
             storedValues = JSON.parse(localStorage.getItem(storageKey)) || {};
@@ -337,7 +348,14 @@ document.addEventListener('DOMContentLoaded', function () {
         drawTitleCanvas();
     };
     deleteButton.onclick = function () {
-        if (styleLibSelect.value === 'default') { return; }
+        if (Object.keys(window.defaultStyleLibrary).indexOf(inputs.name) !== -1) {
+            alert('Cannot delete a default style.');
+            return;
+        }
+        if (!window.styleLibrary[styleLibSelect.value]) {
+            alert('Style does not exist');
+            return;
+        }
         delete window.styleLibrary[styleLibSelect.value];
         styleLibSelect.selectedIndex = styleLibSelect.selectedIndex - 1;
         grid.style = window.styleLibrary[styleLibSelect.value];
@@ -365,16 +383,42 @@ document.addEventListener('DOMContentLoaded', function () {
         dialog.appendChild(cancelButton);
         dialog.appendChild(importButton);
         modal.appendChild(dialog);
+        textarea.value = '{\n'
+            + '    "name": "New Style",\n'
+            + '    "accent": "#DC3522",\n'
+            + '    "text": "#D9CB9E",\n'
+            + '    "select": "#374140",\n'
+            + '    "cell": "#2A2C2B",\n'
+            + '    "background": "#1E1E20"\n'
+            + '}\n';
+        textarea.select();
         cancelButton.onclick = function () {
             document.body.removeChild(modal);
         };
         importButton.onclick = function () {
-            var style;
+            var style, t;
             try {
                 style = JSON.parse(textarea.value);
             } catch (e) {
                 message.innerHTML = '<span style="color: yellow;">Parse error.  Input must be valid JSON. Check console for specific error.</span>';
                 throw e;
+            }
+            if ([5, 6].indexOf(Object.keys(style).length) !== -1
+                    && style.accent !== undefined) {
+                // if this is a 5 or 6 key template, use template sea wolf replace
+                t = JSON.parse(JSON.stringify(window.defaultStyleLibrary['sea wolf']));
+                Object.keys(t).forEach(function (key) {
+                    if (t[key] && t[key].replace) {
+                        t[key] = t[key]
+                            .replace(/#DC3522/i, style.accent)
+                            .replace(/#D9CB9E/i, style.text)
+                            .replace(/#374140/i, style.select)
+                            .replace(/#2A2C2B/i, style.cell)
+                            .replace(/#1E1E20/i, style.background);
+                    }
+                });
+                t.name = style.name || 'New Style';
+                style = t;
             }
             cancelButton.dispatchEvent(new Event('click'));
             Object.keys(grid.style).forEach(function (key) {
@@ -403,6 +447,7 @@ document.addEventListener('DOMContentLoaded', function () {
         container.appendChild(copyCode);
         container.appendChild(loadStyle);
         container.appendChild(deleteButton);
+        container.appendChild(help);
         container.appendChild(props);
         window.styleLibrary.default = code;
         fillStyle();
@@ -418,6 +463,7 @@ document.addEventListener('DOMContentLoaded', function () {
         loadStyle.innerHTML = 'Import...';
         saveButton.innerHTML = 'Save';
         deleteButton.innerHTML = 'Delete';
+        help.innerHTML = '?';
         titleCanvas.className = 'style-maker-title';
         titleCanvas.height = titleCanvasHeight * window.devicePixelRatio;
         titleCanvas.width = titleCanvasWidth * window.devicePixelRatio;
