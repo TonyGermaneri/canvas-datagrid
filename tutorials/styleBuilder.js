@@ -10,13 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }),
         selectedKey,
         cTypes = {},
-        seaWolf = {
-            a: 'DC3522',
-            b: 'D9CB9E',
-            c: '374140',
-            d: '2A2C2B',
-            e: '1E1E20'
-        },
         props = document.createElement('div'),
         loadStyle = document.createElement('button'),
         copyCode = document.createElement('button'),
@@ -36,6 +29,75 @@ document.addEventListener('DOMContentLoaded', function () {
         storageKey = 'canvas-datagrid-user-style-library',
         tdls = {},
         inputs = {};
+    function createDialog() {
+        var modal = document.createElement('div'),
+            dialog = document.createElement('div'),
+            message = document.createElement('div'),
+            body = document.createElement('div'),
+            cancelButton = document.createElement('button'),
+            okButton = document.createElement('button');
+        modal.className = 'style-maker-modal';
+        dialog.className = 'style-maker-dialog';
+        okButton.innerHTML = 'Ok';
+        cancelButton.innerHTML = 'Cancel';
+        dialog.appendChild(message);
+        dialog.appendChild(body);
+        dialog.appendChild(cancelButton);
+        dialog.appendChild(okButton);
+        modal.appendChild(dialog);
+        cancelButton.onclick = function () {
+            document.body.removeChild(modal);
+        };
+        document.body.appendChild(modal);
+        dialog.body = body;
+        dialog.okButton = okButton;
+        dialog.cancelButton = cancelButton;
+        dialog.modal = modal;
+        dialog.message = message;
+        dialog.close = function () {
+            modal.remove();
+        };
+        [message, modal, cancelButton, okButton, body, dialog, modal].forEach(function (el) {
+            el.remove = function () {
+                if (el.parentNode) {
+                    el.parentNode.removeChild(el);
+                }
+                return dialog;
+            };
+        });
+        return dialog;
+    }
+    function showHelp() {
+        var dialog = createDialog();
+        dialog.okButton.onclick = dialog.close;
+        dialog.cancelButton.remove();
+        dialog.message.innerHTML =
+            '<h1>Canvas Datagrid Style Builder</h1>'
+            + '<h2>Selecting Colors</h2>'
+            + '<p>You can select colors by clicking on elements in the grid, or '
+            + 'selecting them from the style property list.  Hovering over '
+            + 'elements in the grid will highlight them in the property list'
+            + ' and vice versa.  Some elements cannot be hovered/clicked on, '
+            + 'for example activeCellBorder.  You\'ll need to select these colors'
+            + ' from the property list manually.  Some elements cannot be seen in the '
+            + 'example, such as cellHoverColor.  You\'ll need to interact with the sample '
+            + 'grid to see the color after setting it.  If you cannot see a color '
+            + 'in the example grid even after interacting with the grid, please report it as a bug.</p>'
+            + '<h2>Saving, importing, exporting, and deleting </h2>'
+            + '<p>You can save your styles.  They will be saved to your browser\'s local store'
+            + ' and will be available to other canvas datagrid instances you encounter'
+            + ' with with this browser.  You cannot overwrite default styles.</p>'
+            + '<p>You can export your styles by clicking the "Export To Clipboard" button.'
+            + '  The style will be saved to your clipboard as JSON text.</p>'
+            + '<p>You can import your styles as JSON.  You cannot overwrite default styles.  '
+            + 'Click "Import..." and paste'
+            + ' your JSON style in the text area then click the "Import" button.'
+            + '  You can import full styles, or truncated 5 color styles.  You can see'
+            + ' the truncated style format by clicking the import button.  You can see'
+            + ' the full style format by clicking the "Export To Clipboard" button.</p>'
+            + '<p>You can delete styles by selecting them in the drop down menu, then clicking delete.'
+            + '  You can only delete styles that you have saved.  You cannot delete default styles.</p>';
+    }
     function preventDefault(e) {
         e.preventDefault();
     }
@@ -366,23 +428,11 @@ document.addEventListener('DOMContentLoaded', function () {
         styleLibSelect.dispatchEvent(new Event('change'));
     };
     loadStyle.onclick = function () {
-        var modal = document.createElement('div'),
-            dialog = document.createElement('div'),
-            message = document.createElement('div'),
-            textarea = document.createElement('textarea'),
-            cancelButton = document.createElement('button'),
-            importButton = document.createElement('button');
-        modal.className = 'style-maker-modal';
-        dialog.className = 'style-maker-dialog';
-        textarea.className = 'style-maker-import-textarea';
-        message.innerHTML = 'Paste style JSON below, then click Import.';
-        importButton.innerHTML = 'Import';
-        cancelButton.innerHTML = 'Cancel';
-        dialog.appendChild(message);
-        dialog.appendChild(textarea);
-        dialog.appendChild(cancelButton);
-        dialog.appendChild(importButton);
-        modal.appendChild(dialog);
+        var textarea = document.createElement('textarea'),
+            dialog = createDialog();
+        dialog.message.innerHTML = 'Paste style JSON below, then click Import.';
+        dialog.body.appendChild(textarea);
+        dialog.okButton.innerHTML = 'Import';
         textarea.value = '{\n'
             + '    "name": "New Style",\n'
             + '    "accent": "#DC3522",\n'
@@ -392,15 +442,13 @@ document.addEventListener('DOMContentLoaded', function () {
             + '    "background": "#1E1E20"\n'
             + '}\n';
         textarea.select();
-        cancelButton.onclick = function () {
-            document.body.removeChild(modal);
-        };
-        importButton.onclick = function () {
+        textarea.className = 'style-maker-import-textarea';
+        dialog.okButton.onclick = function () {
             var style, t;
             try {
                 style = JSON.parse(textarea.value);
             } catch (e) {
-                message.innerHTML = '<span style="color: yellow;">Parse error.  Input must be valid JSON. Check console for specific error.</span>';
+                dialog.message.innerHTML = '<span style="color: yellow;">Parse error.  Input must be valid JSON. Check console for specific error.</span>';
                 throw e;
             }
             if ([5, 6].indexOf(Object.keys(style).length) !== -1
@@ -420,7 +468,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 t.name = style.name || 'New Style';
                 style = t;
             }
-            cancelButton.dispatchEvent(new Event('click'));
+            dialog.cancelButton.dispatchEvent(new Event('click'));
             Object.keys(grid.style).forEach(function (key) {
                 grid.style[key] = style[key] || window.styleLibrary.default[key];
                 inputs[key].value = grid.style[key];
@@ -428,7 +476,6 @@ document.addEventListener('DOMContentLoaded', function () {
             saveButton.dispatchEvent(new Event('click'));
             drawTitleCanvas();
         };
-        document.body.appendChild(modal);
     };
     document.addEventListener('copy', function (e) {
         if (!copyCode.clicked) { return; }
@@ -449,6 +496,7 @@ document.addEventListener('DOMContentLoaded', function () {
         container.appendChild(deleteButton);
         container.appendChild(help);
         container.appendChild(props);
+        help.onclick = showHelp;
         window.styleLibrary.default = code;
         fillStyle();
         styleLibSelect.value = 'default';
