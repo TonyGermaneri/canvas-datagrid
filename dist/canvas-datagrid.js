@@ -411,7 +411,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.eventParent.removeEventListener('dblclick', self.dblclick, false);
             self.eventParent.removeEventListener('click', self.click, false);
             self.eventParent.removeEventListener('mousemove', self.mousemove);
-            self.eventParent.removeEventListener('mousewheel', self.scrollWheel, false);
+            self.eventParent.removeEventListener('wheel', self.scrollWheel, false);
             self.canvas.removeEventListener('contextmenu', self.contextmenu, false);
             self.canvas.removeEventListener('copy', self.copy);
             self.controlInput.removeEventListener('keypress', self.keypress, false);
@@ -450,23 +450,27 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 end,
                 row,
                 column,
-                index;
-            self.ctx.save();
-            self.ctx.fillRect(0, 0, self.canvas.width, self.canvas.height);
-            self.ctx.textBaseline = 'top';
-            self.ctx.fillStyle = 'white';
-            self.ctx.font = fontStyle;
-            self.ctx.fillText('gM', 0, 0);
-            pixels = self.ctx.getImageData(0, 0, self.canvas.width, self.canvas.height).data;
+                index,
+                canvas = document.createElement('canvas'),
+                ctx = canvas.getContext('2d');
+            canvas.height = 5000;
+            canvas.width = 5000;
+            ctx.save();
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.textBaseline = 'top';
+            ctx.fillStyle = 'white';
+            ctx.font = fontStyle;
+            ctx.fillText('gM', 0, 0);
+            pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
             start = -1;
             end = -1;
-            for (row = 0; row < self.canvas.height; row += 1) {
-                for (column = 0; column < self.canvas.width; column += 1) {
-                    index = (row * self.canvas.width + column) * 4;
+            for (row = 0; row < canvas.height; row += 1) {
+                for (column = 0; column < canvas.width; column += 1) {
+                    index = (row * canvas.width + column) * 4;
                     if (pixels[index] === 0) {
-                        if (column === self.canvas.width - 1 && start !== -1) {
+                        if (column === canvas.width - 1 && start !== -1) {
                             end = row;
-                            row = self.canvas.height;
+                            row = canvas.height;
                             break;
                         }
                     } else {
@@ -477,7 +481,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     }
                 }
             }
-            self.ctx.restore();
+            ctx.restore();
             return end - start;
         };
         self.parseFont = function (key) {
@@ -618,22 +622,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             }
                         });
                     }
-                }
-            }
-            self.localStyleLibrary = localStorage.getItem(self.localStyleLibraryStorageKey);
-            if (self.localStyleLibrary !== null) {
-                try {
-                    self.localStyleLibrary = JSON.parse(self.localStyleLibrary);
-                } catch (e) {
-                    console.warn('could not read style settings from localStore', e);
-                    self.localStyleLibrary = {};
-                }
-                if (self.localStyleLibrary.default) {
-                    Object.keys(self.style).forEach(function (key) {
-                        self.intf.style[key] =
-                            self.localStyleLibrary.default[key] === undefined
-                                ? self.style[key] : self.localStyleLibrary.default[key];
-                    });
                 }
             }
             if (args.data) {
@@ -2578,15 +2566,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
         };
         self.scrollWheel = function (e) {
-            if (self.dispatchEvent('mousewheel', {NativeEvent: e})) {
+            if (self.dispatchEvent('wheel', {NativeEvent: e})) {
                 return;
             }
             self.touchHaltAnimation = true;
             var l = self.scrollBox.scrollLeft,
                 t = self.scrollBox.scrollTop;
             if (self.hasFocus) {
-                self.scrollBox.scrollTop -= e.wheelDeltaY;
-                self.scrollBox.scrollLeft -= e.wheelDeltaX;
+                self.scrollBox.scrollTop += e.deltaY;
+                self.scrollBox.scrollLeft += e.deltaX;
             }
             if (t !== self.scrollBox.scrollTop || l !== self.scrollBox.scrollLeft) {
                 e.preventDefault();
@@ -3418,7 +3406,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.eventParent.addEventListener('dblclick', self.dblclick, false);
             self.eventParent.addEventListener('click', self.click, false);
             self.eventParent.addEventListener('mousemove', self.mousemove);
-            self.eventParent.addEventListener('mousewheel', self.scrollWheel, false);
+            self.eventParent.addEventListener('wheel', self.scrollWheel, false);
             self.canvas.addEventListener('contextmenu', self.contextmenu, false);
             (self.isChildGrid ? self.parentGrid : document).addEventListener('copy', self.copy);
             self.controlInput.addEventListener('keypress', self.keypress, false);
