@@ -261,27 +261,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.newRow[header.name] = d;
             });
         };
-        self.addEllipsis = function (text, width) {
-            var o, i, c = self.style.cellPaddingRight + self.style.cellPaddingLeft, w;
-            if (self.ellipsisCache[text] && self.ellipsisCache[text][width]) {
-                return self.ellipsisCache[text][width];
-            }
-            w = self.ctx.measureText(text).width;
-            if (w + c < width) {
-                o = text;
-            } else {
-                o = text.substring(0, 1);
-                i = 1;
-                w = self.ctx.measureText(text).width;
-                while (width > w + c) {
-                    i += 1;
-                    o = text.substring(0, i) + "...";
-                }
-            }
-            self.ellipsisCache[text] = self.ellipsisCache[text] || {};
-            self.ellipsisCache[text][width] = { value: o, width: w };
-            return { value: o, width: w };
-        };
         self.getSchemaNameHash = function (key) {
             var n = 0;
             while (self.schemaHashes[key]) {
@@ -470,12 +449,54 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
             }
         };
+        self.getFontHeight = function getFontHeight(fontStyle) {
+            var pixels,
+                start,
+                end,
+                row,
+                column,
+                index;
+            self.ctx.save();
+            self.ctx.fillRect(0, 0, self.canvas.width, self.canvas.height);
+            self.ctx.textBaseline = 'top';
+            self.ctx.fillStyle = 'white';
+            self.ctx.font = fontStyle;
+            self.ctx.fillText('gM', 0, 0);
+            pixels = self.ctx.getImageData(0, 0, self.canvas.width, self.canvas.height).data;
+            start = -1;
+            end = -1;
+            for (row = 0; row < self.canvas.height; row += 1) {
+                for (column = 0; column < self.canvas.width; column += 1) {
+                    index = (row * self.canvas.width + column) * 4;
+                    if (pixels[index] === 0) {
+                        if (column === self.canvas.width - 1 && start !== -1) {
+                            end = row;
+                            row = self.canvas.height;
+                            break;
+                        }
+                    } else {
+                        if (start === -1) {
+                            start = row;
+                        }
+                        break;
+                    }
+                }
+            }
+            self.ctx.restore();
+            return end - start;
+        };
+        self.parseFont = function (key) {
+            if (/Font/.test(key)) {
+                self.style[key + 'Height'] = self.getFontHeight(self.style[key]);
+            }
+        };
         self.init = function () {
             var publicStyleKeyIntf = {};
             self.setAttributes();
             self.setStyle();
             self.initScrollBox();
             self.setDom();
+            Object.keys(self.style).forEach(self.parseFont);
             self.intf.type = 'canvas-datagrid';
             self.intf.addEventListener = self.addEventListener;
             self.intf.removeEventListener = self.removeEventListener;
@@ -534,6 +555,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         return self.style[key];
                     },
                     set: function (value) {
+                        self.parseFont(value);
                         self.style[key] = value;
                         self.draw(true);
                         self.dispatchEvent('stylechanged', {name: key, value: value});
@@ -546,6 +568,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 },
                 set: function (value) {
                     Object.keys(value).forEach(function (key) {
+                        self.parseFont(value);
                         self.style[key] = value[key];
                     });
                     self.draw(true);
@@ -672,15 +695,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.draw();
             }
         }
-        function drawHtml(html, x, y, w, h, columnIndex, rowIndex) {
-            var img;
-            x += self.canvasOffsetLeft;
-            y += self.canvasOffsetTop;
-            if (self.htmlImageCache[html]) {
-                img = self.htmlImageCache[html];
-                if (img.height !== h || img.width !== w) {
+        function drawHtml(cell) {
+            var img,
+                v = cell.innerHTML || cell.formattedValue,
+                x = cell.x + self.canvasOffsetLeft,
+                y = cell.y + self.canvasOffsetTop;
+            if (self.htmlImageCache[v]) {
+                img = self.htmlImageCache[v];
+                if (img.height !== cell.height || img.width !== cell.width) {
                     // height and width of the cell has changed, invalidate cache
-                    self.htmlImageCache[html] = undefined;
+                    self.htmlImageCache[v] = undefined;
                 } else {
                     if (!img.complete) {
                         return;
@@ -688,17 +712,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     return self.ctx.drawImage(img, x, y);
                 }
             }
-            img = new Image(w, h);
-            self.htmlImageCache[html] = img;
+            img = new Image(cell.width, cell.height);
+            self.htmlImageCache[v] = img;
             img.onload = function () {
                 self.ctx.drawImage(img, x, y);
                 drawOnAllImagesLoaded();
             };
             img.src = 'data:image/svg+xml;base64,' + btoa(
-                '<svg xmlns="http://www.w3.org/2000/svg" width="' + w + '" height="' + h + '">\n' +
+                '<svg xmlns="http://www.w3.org/2000/svg" width="' + cell.width + '" height="' + cell.height + '">\n' +
                     '<foreignObject class="node" x="0" y="0" width="100%" height="100%">\n' +
                     '<body xmlns="http://www.w3.org/1999/xhtml" style="margin:0;padding:0;">\n' +
-                    html + '\n' +
+                    v + '\n' +
                     '</body>' +
                     '</foreignObject>\n' +
                     '</svg>\n'
@@ -807,6 +831,52 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             p[pos]();
             self.ctx.stroke();
         }
+        function addEllipsis(text, width) {
+            var o, i, c, w = 0;
+            if (self.ellipsisCache[text] && self.ellipsisCache[text][width]) {
+                return self.ellipsisCache[text][width];
+            }
+            w = self.ctx.measureText(text).width;
+            if (w < width) {
+                o = text;
+            } else {
+                o = text.substring(0, 1);
+                i = 1;
+                // wow! a do while!  and I didn't intend to use one here
+                do {
+                    i += 1;
+                    o = text.substring(0, i) + '...';
+                    w = self.ctx.measureText(o).width;
+                } while (width > w);
+            }
+            self.ellipsisCache[text] = self.ellipsisCache[text] || {};
+            c = {value: o, width: w};
+            self.ellipsisCache[text][width] = c;
+            return c;
+        }
+        function drawText(cell) {
+            var paddingLeft = self.style[cell.style + 'PaddingLeft'],
+                paddingTop = self.style[cell.style + 'PaddingTop'],
+                paddingRight = self.style[cell.style + 'PaddingRight'],
+                paddingBottom = self.style[cell.style + 'PaddingBottom'],
+                vPos = paddingTop + cell.height - (cell.height * 0.5),
+                hPos = paddingLeft + cell.treeArrowWidth + cell.orderByArrowWidth;
+            cell.text = addEllipsis(cell.formattedValue, cell.width - paddingRight - paddingLeft);
+            cell.text.height = cell.fontHeight;
+            if (cell.horizontalAlignment === 'right') {
+                hPos = cell.width - cell.text.width - paddingRight;
+            } else if (cell.horizontalAlignment === 'center') {
+                hPos = (cell.width / 2) - (cell.text.width / 2);
+            }
+            if (cell.verticalAlignment === 'top') {
+                vPos = paddingTop + cell.text.height;
+            } else if (cell.verticalAlignment === 'bottom') {
+                vPos = cell.height - paddingBottom - cell.text.height;
+            }
+            cell.text.x = cell.x + hPos;
+            cell.text.y = cell.y + vPos;
+            fillText(cell.text.value, cell.text.x, cell.text.y);
+        }
         /**
          * Redraws the grid. No matter what the change, this is the only method required to refresh everything.
          * @memberof canvasDataGrid
@@ -818,7 +888,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 return;
             }
             if (self.isChildGrid && internal) {
-                requestAnimationFrame(self.parentGrid.draw);
+                self.parentGrid.draw();
                 return;
             }
             if (self.intf.visible === false) {
@@ -1012,6 +1082,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             nodeType: 'canvas-datagrid-cell',
                             x: cx,
                             y: cy,
+                            horizontalAlignment: self.style[cellStyle + 'HorizontalAlignment'],
+                            verticalAlignment: self.style[cellStyle + 'VerticalAlignment'],
                             offsetTop: self.canvasOffsetTop,
                             offsetLeft: self.canvasOffsetLeft,
                             scrollTop: self.scrollBox.scrollTop,
@@ -1114,14 +1186,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                                 if (self.childGrids[cell.gridId]) {
                                     self.childGrids[cell.gridId].parentNode.offsetHeight = 0;
                                 }
-                                self.ctx.font = self.style[cellStyle + 'Font'];
-                                val = val !== undefined ? val : f
-                                    ? f(self.ctx, cell) : '';
-                                if (val === undefined && !f) {
-                                    val = '';
-                                    console.warn('canvas-datagrid: Unknown format '
-                                        + header.type + ' add a cellFormater');
-                                }
                                 if (isHeader && self.orderBy === header.name) {
                                     if (!self.dispatchEvent('renderorderbyarrow', ev)) {
                                         orderByArrowSize = drawOrderByArrow(cx + self.style[cellStyle + 'PaddingLeft'], 0);
@@ -1137,26 +1201,27 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                                 if (activeHeader) {
                                     self.ctx.fillStyle = self.style[activeHeader + 'Color'];
                                 }
+                                self.ctx.font = self.style[cellStyle + 'Font'];
+                                cell.fontHeight = self.style[cellStyle + 'FontHeight'];
+                                cell.treeArrowWidth = treeArrowSize;
+                                cell.orderByArrowWidth = orderByArrowSize;
+                                val = val !== undefined ? val : f
+                                    ? f(self.ctx, cell) : '';
+                                if (val === undefined && !f) {
+                                    val = '';
+                                    console.warn('canvas-datagrid: Unknown format '
+                                        + header.type + ' add a cellFormater');
+                                }
+                                cell.formattedValue = ((val !== undefined && val !== null) ? val : '').toString();
                                 if (self.columnFilters && self.columnFilters[val] !== undefined && isHeader) {
                                     val = self.style.filterTextPrefix + val;
                                 }
-                                if (cell.innerHTML || header.type === 'html') {
-                                    drawHtml(cell.innerHTML || val,
-                                        cell.x,
-                                        cell.y,
-                                        cell.width,
-                                        cell.height,
-                                        cell.columnIndex,
-                                        cell.rowIndex);
-                                } else {
-                                    cell.formattedValue = ((val !== undefined && val !== null) ? val : '').toString();
-                                    self.dispatchEvent('rendertext', ev);
-                                    cell.text = self.addEllipsis(cell.formattedValue,
-                                        cell.width - self.style[cellStyle + 'PaddingRight']
-                                        - orderByArrowSize - self.style.autosizePadding);
-                                    cell.text.x = treeArrowSize + orderByArrowSize + cx + self.style[cellStyle + 'PaddingLeft'];
-                                    cell.text.y = cy - (cell.height * 0.5) + self.style[cellStyle + 'PaddingTop'] + cell.height;
-                                    fillText(cell.text.value, cell.text.x, cell.text.y);
+                                if (!self.dispatchEvent('rendertext', ev)) {
+                                    if (cell.innerHTML || header.type === 'html') {
+                                        drawHtml(cell);
+                                    } else {
+                                        drawText(cell);
+                                    }
                                 }
                             }
                         }
@@ -2044,7 +2109,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         self.endEdit(true);
                         self.draw(true);
                     // enter
-                    } else if (e.keyCode === 13) {
+                    } else if (e.keyCode === 13
+                            && (!self.attributes.multiLine
+                                || (self.attributes.multiLine && e.shiftKey))) {
                         self.endEdit();
                         self.draw(true);
                     } else if (e.keyCode === 9) {
@@ -3103,141 +3170,149 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['showCopy', true]
             ],
             styles: [
-                ['name', 'default'],
-                ['scrollBarBackgroundColor', 'rgba(240, 240, 240, 1)'],
-                ['scrollBarBoxColor', 'rgba(192, 192, 192, 1)'],
-                ['scrollBarActiveColor', 'rgba(125, 125, 125, 1)'],
-                ['scrollBarBoxWidth', 8],
-                ['scrollBarBoxMargin', 2],
-                ['scrollBarBoxBorderRadius', 3],
-                ['scrollBarBorderColor', 'rgba(202, 202, 202, 1)'],
-                ['scrollBarBorderWidth', 0.5],
-                ['scrollBarWidth', 11],
-                ['scrollBarBoxMinSize', 15],
-                ['scrollBarCornerBorderColor', 'rgba(202, 202, 202, 1)'],
-                ['scrollBarCornerBackgroundColor', 'rgba(240, 240, 240, 1)'],
-                ['treeArrowClickRadius', 5],
-                ['treeGridHeight', 250],
-                ['treeArrowHeight', 8],
-                ['treeArrowWidth', 13],
-                ['treeArrowColor', 'rgba(155, 155, 155, 1)'],
-                ['treeArrowBorderColor', 'rgba(195, 199, 202, 1)'],
-                ['treeArrowBorderWidth', 1],
-                ['treeArrowMarginRight', 5],
-                ['treeArrowMarginLeft', 0],
-                ['treeArrowMarginTop', 6],
-                ['filterTextPrefix', '(filtered) '],
-                ['editCellFontSize', '16px'],
-                ['editCellFontFamily', 'sans-serif'],
-                ['editCellPaddingLeft', 4],
-                ['editCellBoxShadow', '0 2px 5px rgba(0,0,0,0.4)'],
-                ['editCellBorder', 'solid 1px rgba(110, 168, 255, 1)'],
-                ['contextMenuItemMargin', '2px'],
-                ['contextMenuItemBorderRadius', '3px'],
-                ['contextMenuLabelMargin', '0 3px 0 0'],
-                ['contextMenuLabelDisplay', 'inline-block'],
-                ['contextMenuLabelMinWidth', '75px'],
-                ['contextMenuLabelMaxWidth', '700px'],
-                ['contextMenuHoverBackground', 'rgba(182, 205, 250, 1)'],
-                ['contextMenuColor', 'rgba(43, 48, 43, 1)'],
-                ['contextMenuHoverColor', 'rgba(43, 48, 153, 1)'],
-                ['contextMenuFontSize', '16px'],
-                ['contextMenuFontFamily', 'sans-serif'],
-                ['contextMenuBackground', 'rgba(240, 240, 240, 1)'],
-                ['contextMenuBorder', 'solid 1px rgba(158, 163, 169, 1)'],
-                ['contextMenuPadding', '2px'],
-                ['contextMenuBorderRadius', '3px'],
-                ['contextMenuOpacity', '0.98'],
-                ['contextMenuFilterInvalidExpresion', 'rgba(237, 155, 156, 1)'],
-                ['contextMenuMarginTop', -3],
-                ['contextMenuMarginLeft', 3],
-                ['autosizePadding', 5],
-                ['autosizeHeaderCellPadding', 8],
-                ['minHeight', 24],
-                ['minRowHeight', 24],
-                ['minColumnWidth', 45],
-                ['columnWidth', 250],
-                ['backgroundColor', 'rgba(240, 240, 240, 1)'],
-                ['headerOrderByArrowHeight', 8],
-                ['headerOrderByArrowWidth', 13],
-                ['headerOrderByArrowColor', 'rgba(155, 155, 155, 1)'],
-                ['headerOrderByArrowBorderColor', 'rgba(195, 199, 202, 1)'],
-                ['headerOrderByArrowBorderWidth', 1],
-                ['headerOrderByArrowMarginRight', 5],
-                ['headerOrderByArrowMarginLeft', 0],
-                ['headerOrderByArrowMarginTop', 6],
-                ['cellHeightWithChildGrid', 150],
-                ['cellWidthWithChildGrid', 250],
-                ['cellHeight', 24],
-                ['cellFont', '16px sans-serif'],
-                ['cellPaddingTop', 5],
-                ['cellAutoResizePadding', 13],
-                ['cellPaddingLeft', 5],
-                ['cellPaddingRight', 7],
-                ['cellAlignment', 'left'],
-                ['cellColor', 'rgba(0, 0, 0, 1)'],
-                ['cellBackgroundColor', 'rgba(255, 255, 255, 1)'],
-                ['cellHoverColor', 'rgba(0, 0, 0, 1)'],
-                ['cellHoverBackgroundColor', 'rgba(255, 255, 255, 1)'],
-                ['cellSelectedColor', 'rgba(0, 0, 0, 1)'],
-                ['cellSelectedBackgroundColor', 'rgba(236, 243, 255, 1)'],
-                ['cellBorderWidth', 0.25],
-                ['cellBorderColor', 'rgba(195, 199, 202, 1)'],
-                ['activeCellFont', '16px sans-serif'],
-                ['activeCellPaddingTop', 5],
-                ['activeCellPaddingLeft', 5],
-                ['activeCellPaddingRight', 7],
-                ['activeCellAlignment', 'left'],
-                ['activeCellColor', 'rgba(0, 0, 0, 1)'],
                 ['activeCellBackgroundColor', 'rgba(255, 255, 255, 1)'],
-                ['activeCellHoverColor', 'rgba(0, 0, 0, 1)'],
-                ['activeCellHoverBackgroundColor', 'rgba(255, 255, 255, 1)'],
-                ['activeCellSelectedColor', 'rgba(0, 0, 0, 1)'],
-                ['activeCellSelectedBackgroundColor', 'rgba(236, 243, 255, 1)'],
-                ['activeCellBorderWidth', 0.25],
                 ['activeCellBorderColor', 'rgba(110, 168, 255, 1)'],
-                ['activeHeaderCellColor', 'rgba(0, 0, 0, 1)'],
-                ['activeHeaderCellBackgroundColor', 'rgba(225, 225, 225, 1)'],
-                ['activeRowHeaderCellColor', 'rgba(0, 0, 0, 1)'],
-                ['activeRowHeaderCellBackgroundColor', 'rgba(225, 225, 225, 1)'],
+                ['activeCellBorderWidth', 0.25],
+                ['activeCellColor', 'rgba(0, 0, 0, 1)'],
+                ['activeCellFont', '16px sans-serif'],
+                ['activeCellHoverBackgroundColor', 'rgba(255, 255, 255, 1)'],
+                ['activeCellHoverColor', 'rgba(0, 0, 0, 1)'],
                 ['activeCellOverlayBorderColor', 'rgba(66, 133, 244, 1)'],
                 ['activeCellOverlayBorderWidth', 1.50],
-                ['headerCellPaddingTop', 5],
+                ['activeCellPaddingBottom', 5],
+                ['activeCellPaddingLeft', 5],
+                ['activeCellPaddingRight', 7],
+                ['activeCellPaddingTop', 5],
+                ['activeCellSelectedBackgroundColor', 'rgba(236, 243, 255, 1)'],
+                ['activeCellSelectedColor', 'rgba(0, 0, 0, 1)'],
+                ['activeHeaderCellBackgroundColor', 'rgba(225, 225, 225, 1)'],
+                ['activeHeaderCellColor', 'rgba(0, 0, 0, 1)'],
+                ['activeRowHeaderCellBackgroundColor', 'rgba(225, 225, 225, 1)'],
+                ['activeRowHeaderCellColor', 'rgba(0, 0, 0, 1)'],
+                ['autosizeHeaderCellPadding', 8],
+                ['autosizePadding', 5],
+                ['backgroundColor', 'rgba(240, 240, 240, 1)'],
+                ['cellAutoResizePadding', 13],
+                ['cellBackgroundColor', 'rgba(255, 255, 255, 1)'],
+                ['cellBorderColor', 'rgba(195, 199, 202, 1)'],
+                ['cellBorderWidth', 0.25],
+                ['cellColor', 'rgba(0, 0, 0, 1)'],
+                ['cellFont', '16px sans-serif'],
+                ['cellHeight', 24],
+                ['cellHeightWithChildGrid', 150],
+                ['cellHorizontalAlignment', 'left'],
+                ['cellHoverBackgroundColor', 'rgba(255, 255, 255, 1)'],
+                ['cellHoverColor', 'rgba(0, 0, 0, 1)'],
+                ['cellPaddingBottom', 5],
+                ['cellPaddingLeft', 5],
+                ['cellPaddingRight', 7],
+                ['cellPaddingTop', 5],
+                ['cellSelectedBackgroundColor', 'rgba(236, 243, 255, 1)'],
+                ['cellSelectedColor', 'rgba(0, 0, 0, 1)'],
+                ['cellVerticalAlignment', 'center'],
+                ['cellWidthWithChildGrid', 250],
+                ['columnWidth', 250],
+                ['contextMenuBackground', 'rgba(240, 240, 240, 1)'],
+                ['contextMenuBorder', 'solid 1px rgba(158, 163, 169, 1)'],
+                ['contextMenuBorderRadius', '3px'],
+                ['contextMenuColor', 'rgba(43, 48, 43, 1)'],
+                ['contextMenuFilterInvalidExpresion', 'rgba(237, 155, 156, 1)'],
+                ['contextMenuFontFamily', 'sans-serif'],
+                ['contextMenuFontSize', '16px'],
+                ['contextMenuHoverBackground', 'rgba(182, 205, 250, 1)'],
+                ['contextMenuHoverColor', 'rgba(43, 48, 153, 1)'],
+                ['contextMenuItemBorderRadius', '3px'],
+                ['contextMenuItemMargin', '2px'],
+                ['contextMenuLabelDisplay', 'inline-block'],
+                ['contextMenuLabelMargin', '0 3px 0 0'],
+                ['contextMenuLabelMaxWidth', '700px'],
+                ['contextMenuLabelMinWidth', '75px'],
+                ['contextMenuMarginLeft', 3],
+                ['contextMenuMarginTop', -3],
+                ['contextMenuOpacity', '0.98'],
+                ['contextMenuPadding', '2px'],
+                ['cornerCellBackgroundColor', 'rgba(240, 240, 240, 1)'],
+                ['cornerCellBorderColor', 'rgba(202, 202, 202, 1)'],
+                ['editCellBorder', 'solid 1px rgba(110, 168, 255, 1)'],
+                ['editCellBoxShadow', '0 2px 5px rgba(0,0,0,0.4)'],
+                ['editCellFontFamily', 'sans-serif'],
+                ['editCellFontSize', '16px'],
+                ['editCellPaddingLeft', 4],
+                ['filterTextPrefix', '(filtered) '],
+                ['gridBorderColor', 'rgba(202, 202, 202, 1)'],
+                ['gridBorderWidth', 1],
+                ['headerCellBackgroundColor', 'rgba(240, 240, 240, 1)'],
+                ['headerCellBorderColor', 'rgba(152, 152, 152, 1)'],
+                ['headerCellBorderWidth', 0.25],
+                ['headerCellColor', 'rgba(50, 50, 50, 1)'],
+                ['headerCellFont', '16px sans-serif'],
+                ['headerCellHeight', 25],
+                ['headerCellHorizontalAlignment', 'left'],
+                ['headerCellHoverBackgroundColor', 'rgba(235, 235, 235, 1)'],
+                ['headerCellHoverColor', 'rgba(0, 0, 0, 1)'],
+                ['headerCellPaddingBottom', 5],
                 ['headerCellPaddingLeft', 5],
                 ['headerCellPaddingRight', 7],
-                ['headerCellHeight', 25],
-                ['headerCellBorderWidth', 0.25],
-                ['headerCellBorderColor', 'rgba(152, 152, 152, 1)'],
-                ['headerCellFont', '16px sans-serif'],
-                ['headerCellColor', 'rgba(50, 50, 50, 1)'],
-                ['headerCellBackgroundColor', 'rgba(240, 240, 240, 1)'],
-                ['headerCellHoverColor', 'rgba(0, 0, 0, 1)'],
-                ['headerCellHoverBackgroundColor', 'rgba(235, 235, 235, 1)'],
-                ['cornerCellBorderColor', 'rgba(202, 202, 202, 1)'],
-                ['cornerCellBackgroundColor', 'rgba(240, 240, 240, 1)'],
+                ['headerCellPaddingTop', 5],
+                ['headerCellVerticalAlignment', 'center'],
+                ['headerOrderByArrowBorderColor', 'rgba(195, 199, 202, 1)'],
+                ['headerOrderByArrowBorderWidth', 1],
+                ['headerOrderByArrowColor', 'rgba(155, 155, 155, 1)'],
+                ['headerOrderByArrowHeight', 8],
+                ['headerOrderByArrowMarginLeft', 0],
+                ['headerOrderByArrowMarginRight', 5],
+                ['headerOrderByArrowMarginTop', 6],
+                ['headerOrderByArrowWidth', 13],
                 ['headerRowWidth', 57],
-                ['rowHeaderCellPaddingTop', 5],
-                ['rowHeaderCellPaddingLeft', 5],
-                ['rowHeaderCellPaddingRight', 5],
-                ['rowHeaderCellHeight', 25],
-                ['rowHeaderCellBorderWidth', 0.25],
-                ['rowHeaderCellBorderColor', 'rgba(152, 152, 152, 1)'],
-                ['rowHeaderCellFont', '16px sans-serif'],
-                ['rowHeaderCellColor', 'rgba(50, 50, 50, 1)'],
-                ['rowHeaderCellBackgroundColor', 'rgba(240, 240, 240, 1)'],
-                ['rowHeaderCellHoverColor', 'rgba(0, 0, 0, 1)'],
-                ['rowHeaderCellHoverBackgroundColor', 'rgba(235, 235, 235, 1)'],
-                ['rowHeaderCellSelectedColor', 'rgba(50, 50, 50, 1)'],
-                ['rowHeaderCellSelectedBackgroundColor', 'rgba(217, 217, 217, 1)'],
-                ['selectionOverlayBorderColor', 'rgba(66, 133, 244, 1)'],
-                ['selectionOverlayBorderWidth', 0.75],
-                ['reorderMarkerIndexBorderColor', 'rgba(66, 133, 244, 1)'],
-                ['reorderMarkerIndexBorderWidth', 2.75],
+                ['minColumnWidth', 45],
+                ['minHeight', 24],
+                ['minRowHeight', 24],
+                ['name', 'default'],
                 ['reorderMarkerBackgroundColor', 'rgba(0, 0, 0, 0.1)'],
                 ['reorderMarkerBorderColor', 'rgba(0, 0, 0, 0.2)'],
                 ['reorderMarkerBorderWidth', 1.25],
-                ['gridBorderColor', 'rgba(202, 202, 202, 1)'],
-                ['gridBorderWidth', 1]
+                ['reorderMarkerIndexBorderColor', 'rgba(66, 133, 244, 1)'],
+                ['reorderMarkerIndexBorderWidth', 2.75],
+                ['rowHeaderCellBackgroundColor', 'rgba(240, 240, 240, 1)'],
+                ['rowHeaderCellBorderColor', 'rgba(152, 152, 152, 1)'],
+                ['rowHeaderCellBorderWidth', 0.25],
+                ['rowHeaderCellColor', 'rgba(50, 50, 50, 1)'],
+                ['rowHeaderCellFont', '16px sans-serif'],
+                ['rowHeaderCellHeight', 25],
+                ['rowHeaderCellHorizontalAlignment', 'left'],
+                ['rowHeaderCellHoverBackgroundColor', 'rgba(235, 235, 235, 1)'],
+                ['rowHeaderCellHoverColor', 'rgba(0, 0, 0, 1)'],
+                ['rowHeaderCellPaddingBottom', 5],
+                ['rowHeaderCellPaddingLeft', 5],
+                ['rowHeaderCellPaddingRight', 5],
+                ['rowHeaderCellPaddingTop', 5],
+                ['rowHeaderCellSelectedBackgroundColor', 'rgba(217, 217, 217, 1)'],
+                ['rowHeaderCellSelectedColor', 'rgba(50, 50, 50, 1)'],
+                ['rowHeaderCellVerticalAlignment', 'center'],
+                ['scrollBarActiveColor', 'rgba(125, 125, 125, 1)'],
+                ['scrollBarBackgroundColor', 'rgba(240, 240, 240, 1)'],
+                ['scrollBarBorderColor', 'rgba(202, 202, 202, 1)'],
+                ['scrollBarBorderWidth', 0.5],
+                ['scrollBarBoxBorderRadius', 3],
+                ['scrollBarBoxColor', 'rgba(192, 192, 192, 1)'],
+                ['scrollBarBoxMargin', 2],
+                ['scrollBarBoxMinSize', 15],
+                ['scrollBarBoxWidth', 8],
+                ['scrollBarCornerBackgroundColor', 'rgba(240, 240, 240, 1)'],
+                ['scrollBarCornerBorderColor', 'rgba(202, 202, 202, 1)'],
+                ['scrollBarWidth', 11],
+                ['selectionOverlayBorderColor', 'rgba(66, 133, 244, 1)'],
+                ['selectionOverlayBorderWidth', 0.75],
+                ['treeArrowBorderColor', 'rgba(195, 199, 202, 1)'],
+                ['treeArrowBorderWidth', 1],
+                ['treeArrowClickRadius', 5],
+                ['treeArrowColor', 'rgba(155, 155, 155, 1)'],
+                ['treeArrowHeight', 8],
+                ['treeArrowMarginLeft', 0],
+                ['treeArrowMarginRight', 5],
+                ['treeArrowMarginTop', 6],
+                ['treeArrowWidth', 13],
+                ['treeGridHeight', 250]
             ]
         };
     };
