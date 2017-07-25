@@ -751,7 +751,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 c = c.substring(0, c.length - 4) + '});';
                 hiddenFormsItems = {
                     html: '<div id="grid"></div>',
-                    css: '#grid { height; 100%; }',
+                    css: '#grid { height: 300px; }',
                     js: c,
                     title: msg[0],
                     description: msg[1] || msg[0],
