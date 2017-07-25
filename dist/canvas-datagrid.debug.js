@@ -1801,8 +1801,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.height = self.parentNode.offsetHeight;
                 self.width = self.parentNode.offsetWidth;
             } else {
-                self.height = self.parentDOMNode.offsetHeight - self.style.scrollBarBoxMargin;
-                self.width = self.parentDOMNode.offsetWidth - self.style.scrollBarBoxMargin;
+                self.height = self.parentDOMNode.offsetHeight - (self.style.scrollBarBoxMargin * 2);
+                self.width = self.parentDOMNode.offsetWidth - (self.style.scrollBarBoxMargin * 2);
                 self.parentNode = self.parentDOMNode;
                 self.canvas.height = self.height * window.devicePixelRatio;
                 self.canvas.width = self.width * window.devicePixelRatio;
