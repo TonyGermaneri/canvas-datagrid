@@ -1250,6 +1250,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         index: -1
                     };
                     a[self.uniqueId] = rowData[self.uniqueId];
+                    rowOpen = self.openChildren[rowData[self.uniqueId]];
                     drawCell(rowHeaderCell, index, rowOrderIndex)(a, -1, -1);
                 }
             }
