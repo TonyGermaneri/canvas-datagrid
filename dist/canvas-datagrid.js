@@ -444,7 +444,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
             }
         };
-        self.getFontHeight = function getFontHeight(fontStyle) {
+        self.getFontHeight = function (fontStyle) {
+            return parseFloat(fontStyle, 10);
+        };
+        self.getFontHeightLong = function (fontStyle) {
             var pixels,
                 start,
                 end,
