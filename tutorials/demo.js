@@ -1,5 +1,6 @@
 /*jslint browser: true*/
 /*globals canvasDatagrid: false*/
+var data;
 document.addEventListener('DOMContentLoaded', function () {
     'use strict';
     var grid = canvasDatagrid({
@@ -12,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     return;
 });
-var data = [
+data = [
     {"entity": "AFGHANISTAN", "currency": "Afghani", "alphabeticCode": "AFN", "numericCode": "971", "minorUnit": "2", "fund": ""},
     {"entity": "ÅLAND ISLANDS", "currency": "Euro", "alphabeticCode": "EUR", "numericCode": "978", "minorUnit": "2", "fund": ""},
     {"entity": "ALBANIA", "currency": "Lek", "alphabeticCode": "ALL", "numericCode": "008", "minorUnit": "2", "fund": ""},
