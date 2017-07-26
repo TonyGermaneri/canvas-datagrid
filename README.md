@@ -12,11 +12,13 @@ Canvas Data Grid
 * Rich API of events, methods and properties optimized for CRUD, reporting and work flow applications.
 * Zero dependencies, very small code base, distributed as a single ~80k (~20k gziped) file.
 
-[Demo](https://tonygermaneri.github.io/canvas-datagrid/docs/tutorial-sample.html)
+[Demo](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html)
 
 [Style Builder](https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html)
 
 [Documentation](https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDataGrid.html)
+
+[Tutorials](https://tonygermaneri.github.io/canvas-datagrid/docs/tutorial-sample.html)
 
 [Download](https://tonygermaneri.github.io/canvas-datagrid/dist/canvas-datagrid.js)
 
