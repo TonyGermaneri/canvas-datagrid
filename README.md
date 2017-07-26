@@ -49,7 +49,7 @@ Getting started
 ===============
 
 Works with webpack or without.
-If used without webpack, `canvasDataGrid` is declared in the global scope.
+If used without webpack, `canvasDatagrid` is declared in the global scope.
 
     var grid = canvasDatagrid({
         parentNode: document.getElementById('myHtmlElement'),
