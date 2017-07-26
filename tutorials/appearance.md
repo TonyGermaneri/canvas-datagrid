@@ -53,7 +53,7 @@ the image.
             }
             i = imgs[e.cell.value];
             if (i.width !== 0) {
-                ctx.drawImage(i, e.cell.x, e.cell.y, i.targetWidth, i.targetHeight);
+                e.ctx.drawImage(i, e.cell.x, e.cell.y, i.targetWidth, i.targetHeight);
             }
         }
     });
