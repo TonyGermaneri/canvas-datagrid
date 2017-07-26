@@ -215,11 +215,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             return i;
         };
         self.getHeaderCellHeight = function () {
+            if (!self.attributes.showColumnHeaders) { return 0; }
             return self.sizes.rows[-1] || self.style.headerCellHeight;
         };
         self.getHeaderCellWidth = function () {
-            return self.attributes.showRowHeaders
-                ? (self.sizes.columns.cornerCell ||  self.style.headerRowWidth) : 0;
+            if (!self.attributes.showRowHeaders) { return 0; }
+            return self.sizes.columns.cornerCell || self.style.headerRowWidth;
         };
         self.setStorageData = function () {
             if (!self.attributes.saveAppearance) { return; }
@@ -1271,7 +1272,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     cellHeight = rArgs[4];
                     drawRowHeader(rArgs[0], rArgs[1], rArgs[2]);
                 });
-                if (self.attributes.showHeaders) {
+                if (self.attributes.showColumnHeaders) {
                     x = (self.scrollBox.scrollLeft * -1) + self.scrollPixelLeft;
                     if (self.attributes.showRowHeaders) {
                         x += headerCellWidth;
@@ -3139,7 +3140,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['allowColumnResizeFromCell', false],
                 ['debug', false],
                 ['borderResizeZone', 10],
-                ['showHeaders', true],
+                ['showColumnHeaders', true],
                 ['showRowNumbers', true],
                 ['showRowHeaders', true],
                 ['scrollRepeatRate', 75],
