@@ -487,6 +487,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
             }
             ctx.restore();
+            console.log(end - start);
             return end - start;
         };
         self.parseFont = function (key) {

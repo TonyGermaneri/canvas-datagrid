@@ -761,6 +761,15 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             li.appendChild(tocA);
             a.name = msg[0];
+            window.addEventListener('scroll', function () {
+                var b = a.getBoundingClientRect();
+                if (b.top > 0 && form.offsetHeight - b.top > 0) {
+                    tocA.classList.add('sample-selected');
+                    window.history.replaceState({}, msg[0], tocA.href);
+                } else {
+                    tocA.classList.remove('sample-selected');
+                }
+            });
             tocA.innerHTML = msg[0];
             tocA.title = msg[1] || msg[0];
             tocA.href = '#' + msg[0];
@@ -820,4 +829,5 @@ document.addEventListener('DOMContentLoaded', function () {
     createSample({
         parentNode: i
     });
+    window.dispatchEvent(new Event('scroll'));
 });
