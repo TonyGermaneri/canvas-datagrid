@@ -50,14 +50,136 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             grid.addEventListener('cellmouseover', function (e) {
                 if (!e.cell) { return; }
-                grid.data[0][grid.schema[0].name] = 'Just came from '
+                grid.data[0][grid.schema[0].name] = 'Just arrived at '
                     + e.cell.columnIndex + ', ' + e.cell.rowIndex;
 
             });
             grid.addEventListener('cellmouseout', function (e) {
                 if (!e.cell) { return; }
-                grid.data[1][grid.schema[0].name] = 'Just arrived at '
+                grid.data[1][grid.schema[0].name] = 'Just came from '
                     + e.cell.columnIndex + ', ' + e.cell.rowIndex;
+            });
+        };
+        examples['Set filter function'] = function (parentNode) {
+            var grid = canvasDatagrid({
+                parentNode: parentNode,
+                data: [
+                    {col1: 'foo', col2: 0, col3: 'a'},
+                    {col1: 'bar', col2: 1, col3: 'b'},
+                    {col1: 'baz', col2: 2, col3: 'c'}
+                ]
+            });
+            grid.schema = [{name: 'id', type: 'number'}, {name: 'offendit', type: 'string'}];
+            grid.data = [
+                {id: 0, offendit: 'foo'},
+                {id: 1, offendit: 'bar'},
+                {id: 2, offendit: 'baz'},
+            ];
+            grid.filters.number = function (value, filterFor) {
+                if (!filterFor) { return true; }
+                console.log('number filter executed');
+                return value === filterFor;
+            };
+            grid.setFilter('id', 1);
+        };
+        examples['Set simple context menu'] = function (parentNode) {
+            var grid = canvasDatagrid({
+                parentNode: parentNode,
+                data: [
+                    {col1: 'foo', col2: 0, col3: 'a'},
+                    {col1: 'bar', col2: 1, col3: 'b'},
+                    {col1: 'baz', col2: 2, col3: 'c'}
+                ]
+            });
+            grid.addEventListener('contextmenu', function (e) {
+                e.items.push({
+                    title: 'Select all',
+                    click: function (ev) {
+                        grid.selectArea({
+                            top: 0,
+                            bottom: grid.data.length - 1,
+                            left: 0,
+                            right: grid.schema.length - 1
+                        });
+                        grid.draw();
+                    }
+                });
+                e.items.push({
+                    title: 'Hierarchal items',
+                    items: [
+                        {
+                            title: 'Draw "' + e.cell.value + '"" in row 1 column 1',
+                            click: function (ev) {
+                                grid.data[0].col1 = e.cell.value;
+                                grid.draw();
+                            }
+                        }
+                    ]
+                });
+                e.items.push({
+                    title: 'You have '
+                        + grid.selectedRows.filter(function (row) { return !!row; }).length
+                        + ' rows selected'
+                });
+            });
+        };
+        examples['Remove context menu items'] = function (parentNode) {
+            var grid = canvasDatagrid({
+                parentNode: parentNode,
+                data: [
+                    {col1: 'foo', col2: 0, col3: 'a'},
+                    {col1: 'bar', col2: 1, col3: 'b'},
+                    {col1: 'baz', col2: 2, col3: 'c'}
+                ]
+            });
+            grid.addEventListener('contextmenu', function (e) {
+                e.items.splice(0, e.items.length);
+                e.items.push({
+                    title: 'Just me now'
+                });
+            });
+        };
+        examples['Create complex context menu'] = function (parentNode) {
+            var content = document.createElement('div'),
+                upButton = document.createElement('button'),
+                downButton = document.createElement('button'),
+                grid = canvasDatagrid({
+                    parentNode: parentNode,
+                    data: [
+                        {col1: 'foo', col2: 0, col3: 'a'},
+                        {col1: 'bar', col2: 1, col3: 'b'},
+                        {col1: 'baz', col2: 2, col3: 'c'},
+                        {col1: 'foo', col2: 0, col3: 'a'},
+                        {col1: 'bar', col2: 1, col3: 'b'},
+                        {col1: 'baz', col2: 2, col3: 'c'},
+                        {col1: 'foo', col2: 0, col3: 'a'},
+                        {col1: 'bar', col2: 1, col3: 'b'},
+                        {col1: 'baz', col2: 2, col3: 'c'},
+                        {col1: 'foo', col2: 0, col3: 'a'},
+                        {col1: 'bar', col2: 1, col3: 'b'},
+                        {col1: 'baz', col2: 2, col3: 'c'}
+                    ]
+                });
+            content.appendChild(upButton);
+            content.appendChild(downButton);
+            upButton.innerHTML = 'Scroll Up';
+            downButton.innerHTML = 'Scroll Down';
+            upButton.addEventListener('click', function (e) {
+                grid.scrollTop -= 10;
+                e.stopPropagation();
+            });
+            downButton.addEventListener('click', function (e) {
+                grid.scrollTop += 10;
+                e.stopPropagation();
+            });
+            content.addEventListener('click', function (e) {
+                e.stopPropagation();
+            });
+            grid.addEventListener('contextmenu', function (e) {
+                e.items.splice(0, e.items.length);
+                e.items.push({
+                    title: content
+                });
             });
         };
         examples['Alter runtime style'] = function (parentNode) {
@@ -85,6 +207,7 @@ document.addEventListener('DOMContentLoaded', function () {
             gradient.addColorStop(0, 'dodgerblue');
             gradient.addColorStop(1, 'chartreuse');
             grid.style.cellBackgroundColor = gradient;
+            grid.style.backgroundColor = gradient;
         };
         examples['Alter startup styles'] = function (parentNode) {
             var grid = canvasDatagrid({
@@ -106,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {Ei: 'pericula', melius: 'offendit'}
             ];
         };
-        examples['Replace style at runtime'] = function (parentNode) {
+        examples['Replace all styles at runtime'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 data: [
@@ -137,14 +260,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 data: [
                     {col1: 'foo', col2: 0, col3: 'a'},
                     {col1: 'bar', col2: 1, col3: 'b'},
+                    {col1: 'baz', col2: 2, col3: 'c'},
+                    {col1: 'foo', col2: 0, col3: 'a'},
+                    {col1: 'bar', col2: 1, col3: 'b'},
+                    {col1: 'baz', col2: 2, col3: 'c'},
+                    {col1: 'foo', col2: 0, col3: 'a'},
+                    {col1: 'bar', col2: 1, col3: 'b'},
+                    {col1: 'baz', col2: 2, col3: 'c'},
+                    {col1: 'foo', col2: 0, col3: 'a'},
+                    {col1: 'bar', col2: 1, col3: 'b'},
                     {col1: 'baz', col2: 2, col3: 'c'}
                 ]
             });
             grid.scrollIntoView(2, 2);
         };
-        examples['Validate input.'] = function (parentNode) {
+        examples['Validate input'] = function (parentNode) {
             var grid = canvasDatagrid({
-                parentNode: parentNode
+                parentNode: parentNode,
+                data: [
+                    {col1: 'foo', col2: 'a', col3: 'a'},
+                    {col1: 'bar', col2: 'b', col3: 'b'},
+                    {col1: 'baz', col2: 'c', col3: 'c'}
+                ]
             });
             grid.addEventListener('beforeendedit', function (e) {
                 if (/\d+/.test(e.newValue)) {
@@ -159,11 +296,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 data: [
                     {col1: 'foo', col2: 0, col3: 'a'},
                     {col1: 'bar', col2: 1, col3: 'b'},
+                    {col1: 'baz', col2: 2, col3: 'c'},
+                    {col1: 'foo', col2: 0, col3: 'a'},
+                    {col1: 'bar', col2: 1, col3: 'b'},
+                    {col1: 'baz', col2: 2, col3: 'c'},
+                    {col1: 'foo', col2: 0, col3: 'a'},
+                    {col1: 'bar', col2: 1, col3: 'b'},
+                    {col1: 'baz', col2: 2, col3: 'c'},
+                    {col1: 'foo', col2: 0, col3: 'a'},
+                    {col1: 'bar', col2: 1, col3: 'b'},
                     {col1: 'baz', col2: 2, col3: 'c'}
                 ]
             });
-            grid.scrollIntoView(2, 2);
-            grid.beginEditAt(2, 2);
+            grid.scrollIntoView(8, 2);
+            grid.beginEditAt(8, 2);
         };
         examples['Set the width of a column'] = function (parentNode) {
             var grid = canvasDatagrid({
@@ -415,7 +561,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // add the data to the grid
             grid.data = data.concat(grid.data);
         };
-        examples['Conditionally set colors.'] = function (parentNode) {
+        examples['Conditionally set colors'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode
             });
@@ -431,7 +577,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {Ei: 'pericula', melius: 'offendit'}
             ];
         };
-        examples['Format cell values.'] = function (parentNode) {
+        examples['Format cell values'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode
             });
@@ -463,6 +609,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 data: [
                     {col1: 'foo', col2: 0, col3: 'a'},
                     {col1: 'bar', col2: 1, col3: 'b'},
+                    {col1: 'baz', col2: 2, col3: 'c'},
+                    {col1: 'foo', col2: 0, col3: 'a'},
+                    {col1: 'bar', col2: 1, col3: 'b'},
+                    {col1: 'baz', col2: 2, col3: 'c'},
+                    {col1: 'foo', col2: 0, col3: 'a'},
+                    {col1: 'bar', col2: 1, col3: 'b'},
+                    {col1: 'baz', col2: 2, col3: 'c'},
+                    {col1: 'foo', col2: 0, col3: 'a'},
+                    {col1: 'bar', col2: 1, col3: 'b'},
                     {col1: 'baz', col2: 2, col3: 'c'}
                 ]
             });
@@ -490,7 +645,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             grid.expandTree(2);
         };
-        examples['Allow users to open trees.'] = function (parentNode) {
+        examples['Allow users to open trees'] = function (parentNode) {
             function createData() {
                 var x, y, d = [];
                 for (x = 0; x < 2000; x += 1) {
@@ -680,6 +835,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     d[x][n] = x * y;
                 }
             }
+            grid.style.headerCellHorizontalAlignment = 'center';
             grid.data = d;
         };
         examples['Disco Mode'] = function (parentNode) {
