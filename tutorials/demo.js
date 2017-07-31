@@ -6,6 +6,31 @@ document.addEventListener('DOMContentLoaded', function () {
     var grid = canvasDatagrid({
         parentNode: document.body,
         data: data,
+        schema: [
+            {
+                name: 'entity',
+                title: 'Entity',
+                format: function (cell) {
+                    return cell.value;
+                }
+            },
+            {
+                name: 'currency',
+                title: 'Currency'
+            },
+            {
+                name: 'alphabeticCode',
+                title: 'Alphabetic Code'
+            },
+            {
+                name: 'numericCode',
+                title: 'Numeric Code'
+            },
+            {
+                name: 'minorUnit',
+                title: 'Minor Unit'
+            },
+        ],
         tree: true
     });
     grid.addEventListener('expandtree', function (e) {

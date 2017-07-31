@@ -136,7 +136,19 @@ window.defaultStyleLibrary['sea wolf'] = {
     "reorderMarkerBorderColor": "#dc3522",
     "reorderMarkerBorderWidth": 1.25,
     "gridBorderColor": "#2a2c2b",
-    "gridBorderWidth": 1
+    "gridBorderWidth": 1,
+    "childContextMenuMarginLeft": -5,
+    "childContextMenuMarginTop": 0,
+    "childContextMenuArrowHTML": "&#x25BA;",
+    "childContextMenuArrowColor": "rgba(43, 48, 43, 1)",
+    "contextMenuChildArrowFontSize": "12px",
+    "editCellColor": "black",
+    "editCellBackgroundColor": "white",
+    "contextFilterButtonBorder": "solid 1px rgba(158, 163, 169, 1)",
+    "contextFilterButtonBorderRadius": "3px",
+    "autocompleteBottomMargin": 60,
+    "contextMenuWindowMargin": 6,
+    "contextFilterButtonHTML": "&#x25BC;"
 };
 window.defaultStyleLibrary.dark = {
     "name": "dark",
@@ -273,5 +285,17 @@ window.defaultStyleLibrary.dark = {
     "reorderMarkerBorderColor": "rgba(0, 0, 0, 0.2)",
     "reorderMarkerBorderWidth": 1.25,
     "gridBorderColor": "#505050",
-    "gridBorderWidth": 1
+    "gridBorderWidth": 1,
+    "childContextMenuMarginLeft": -5,
+    "childContextMenuMarginTop": 0,
+    "childContextMenuArrowHTML": "&#x25BA;",
+    "childContextMenuArrowColor": "rgba(43, 48, 43, 1)",
+    "contextMenuChildArrowFontSize": "12px",
+    "editCellColor": "black",
+    "editCellBackgroundColor": "white",
+    "contextFilterButtonBorder": "solid 1px rgba(158, 163, 169, 1)",
+    "contextFilterButtonBorderRadius": "3px",
+    "autocompleteBottomMargin": 60,
+    "contextMenuWindowMargin": 6,
+    "contextFilterButtonHTML": "&#x25BC;"
 };

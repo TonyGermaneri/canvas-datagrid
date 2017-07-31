@@ -1,7 +1,7 @@
 {
   "name": "canvas-datagrid",
   "main": "lib/main.js",
-  "version": "0.12.6",
+  "version": "0.12.7",
   "ignore": [
     "**/.*",
     "node_modules",
