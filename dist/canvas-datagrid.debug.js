@@ -4048,7 +4048,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     if (!header) {
                         return;
                     }
-                    self.currentFilter = header.filter;
+                    self.currentFilter = header.filter || self.filter(column.type || 'string');
                     self.data = self.data.filter(function (row) {
                         return self.currentFilter(row[filter], self.columnFilters[filter]);
                     });
