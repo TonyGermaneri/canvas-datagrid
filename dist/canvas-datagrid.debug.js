@@ -3016,11 +3016,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 };
             }
             function init() {
-                var loc = {};
+                var loc = {},
+                    s = self.scrollOffset(self.canvas);
                 createItems();
                 self.createInlineStyle(container, 'canvas-datagrid-context-menu');
-                loc.x = pos.left;
-                loc.y = pos.top;
+                loc.x = pos.left - s.left;
+                loc.y = pos.top - s.top;
                 loc.height = 0;
                 zIndexTop += 1;
                 container.style.position = 'absolute';
@@ -3314,8 +3315,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     NativeEvent: e,
                     cell: self.getCellAt(pos.x, pos.y),
                     items: items
-                },
-                s = self.scrollOffset(self.canvas);
+                };
             addDefaultContextMenuItem(ev);
             if (self.dispatchEvent('contextmenu', ev)) {
                 return;
@@ -3324,8 +3324,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.disposeContextMenu();
             }
             self.contextMenu = createContextMenu(ev, {
-                left: pos.x + pos.rect.left + self.style.contextMenuMarginLeft + self.canvasOffsetLeft - s.left,
-                top: pos.y + pos.rect.top + self.style.contextMenuMarginTop + self.canvasOffsetTop - s.top,
+                left: pos.x + pos.rect.left + self.style.contextMenuMarginLeft + self.canvasOffsetLeft,
+                top: pos.y + pos.rect.top + self.style.contextMenuMarginTop + self.canvasOffsetTop,
                 right: ev.cell.width + ev.cell.x + pos.rect.left,
                 bottom: ev.cell.height + ev.cell.y + pos.rect.top,
                 height: ev.cell.height,
