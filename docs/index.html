@@ -115,29 +115,27 @@
 <h1>Installation</h1><p>You can install canvas-datagrid one of three ways:</p>
 <ol>
 <li>Download the <a href="https://tonygermaneri.github.io/canvas-datagrid/dist/canvas-datagrid.js">source</a> file from github.</li>
-<li><p>Use npm</p>
-<p> npm install canvas-datagrid</p>
-</li>
-<li><p>Use bower</p>
-<p> bower install canvas-datagrid</p>
-</li>
+<li>Use npm</li>
 </ol>
-<p>Place the single source file <code>./dist/canvas-datagrid.js</code> in your web page using
+<pre class="prettyprint source lang-shell"><code>npm install canvas-datagrid</code></pre><ol>
+<li>Use bower</li>
+</ol>
+<pre class="prettyprint source lang-shell"><code>bower install canvas-datagrid</code></pre><p>Place the single source file <code>./dist/canvas-datagrid.js</code> in your web page using
 a script tag that points to the source or use webpack.</p>
 <p>If you do not use a webpack a function will
 be added to the global scope of the web page called <code>canvasDatagrid</code>.</p>
 <h1>Getting started</h1><p>Works with webpack or without.
 If used without webpack, <code>canvasDatagrid</code> is declared in the global scope.</p>
-<pre class="prettyprint source"><code>var grid = canvasDatagrid({
+<pre class="prettyprint source lang-javascript"><code>var grid = canvasDatagrid({
     parentNode: document.getElementById('myHtmlElement'),
     data: [
         {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},
         {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}
     ]
 });</code></pre><h1>Building</h1><p>To build production version.</p>
-<pre class="prettyprint source"><code>npm install</code></pre><p>To build debug version</p>
-<pre class="prettyprint source"><code>npm run-script build-dev</code></pre><p>To build documentation</p>
-<pre class="prettyprint source"><code>npm run-script build-docs</code></pre></article>
+<pre class="prettyprint source lang-shell"><code>npm install</code></pre><p>To build debug version</p>
+<pre class="prettyprint source lang-shell"><code>npm run-script build-dev</code></pre><p>To build documentation</p>
+<pre class="prettyprint source lang-shell"><code>npm run-script build-docs</code></pre></article>
     </section>
 
 
