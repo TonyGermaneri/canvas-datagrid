@@ -33,11 +33,15 @@ You can install canvas-datagrid one of three ways:
 1. Download the [source](https://tonygermaneri.github.io/canvas-datagrid/dist/canvas-datagrid.js) file from github.
 2. Use npm
 
-    npm install canvas-datagrid
+```shell
+npm install canvas-datagrid
+```
 
 3. Use bower
 
-    bower install canvas-datagrid
+```shell
+bower install canvas-datagrid
+```
 
 Place the single source file `./dist/canvas-datagrid.js` in your web page using
 a script tag that points to the source or use webpack.
@@ -51,25 +55,33 @@ Getting started
 Works with webpack or without.
 If used without webpack, `canvasDatagrid` is declared in the global scope.
 
-    var grid = canvasDatagrid({
-        parentNode: document.getElementById('myHtmlElement'),
-        data: [
-            {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},
-            {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}
-        ]
-    });
+```javascript
+var grid = canvasDatagrid({
+    parentNode: document.getElementById('myHtmlElement'),
+    data: [
+        {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},
+        {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}
+    ]
+});
+```
 
 Building
 ========
 
 To build production version.
 
-    npm install
+```shell
+npm install
+```
 
 To build debug version
 
-    npm run-script build-dev
+```shell
+npm run-script build-dev
+```
 
 To build documentation
 
-    npm run-script build-docs
+```shell
+npm run-script build-docs
+```
