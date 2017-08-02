@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var item = document.createElement('div'),
                 getDataButton = document.createElement('button'),
                 urlInput = document.createElement('input');
-            getDataButton.innerHTML = 'GET';
+            getDataButton.innerHTML = 'Get Open Data';
             getDataButton.onclick = function () {
                 loadDataSet(urlInput.value);
             };
@@ -36,8 +36,18 @@ document.addEventListener('DOMContentLoaded', function () {
             item.appendChild(urlInput);
             item.appendChild(getDataButton);
             e.items.push({
+                title: 'Get JSON data set links by clicking here (data.gov)',
+                click: function () {
+                    window.open('https://catalog.data.gov/dataset?page=1', '_blank');
+                }
+            });
+            e.items.push({
+                title: 'Then paste the JSON links below then click the button'
+            });
+            e.items.push({
                 title: item
             });
+
         });
         xhr.addEventListener('progress', function (e) {
             grid.data = [{ status: 'Loading data ' + e.loaded + '...'}];
