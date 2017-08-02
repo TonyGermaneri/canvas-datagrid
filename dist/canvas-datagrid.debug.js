@@ -3677,7 +3677,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     margin: self.style.contextMenuLabelMargin,
                     display: self.style.contextMenuLabelDisplay,
                     minWidth: self.style.contextMenuLabelMinWidth,
-                    maxWidth: self.style.contextMenuLabelMaxWidth,
+                    maxWidth: self.style.contextMenuLabelMaxWidth
                 },
                 'canvas-datagrid-context-menu': {
                     lineHeight: 'normal',
