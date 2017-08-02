@@ -875,10 +875,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (!self.isChildGrid && (!self.height || !self.width)) {
                 return;
             }
-            if (self.isChildGrid && internal) {
-                self.parentGrid.draw();
-                return;
-            }
+            // if something asked a child to draw, ask the parent to draw, unless it was the parent that asked... then.. idk... stack overflow!
+            // if (self.isChildGrid && internal) {
+            //     self.parentGrid.draw();
+            //     return;
+            // }
             if (self.intf.visible === false) {
                 return;
             }
@@ -1072,8 +1073,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             y: cy,
                             horizontalAlignment: self.style[cellStyle + 'HorizontalAlignment'],
                             verticalAlignment: self.style[cellStyle + 'VerticalAlignment'],
-                            offsetTop: self.canvasOffsetTop,
-                            offsetLeft: self.canvasOffsetLeft,
+                            offsetTop: self.canvasOffsetTop + cy,
+                            offsetLeft: self.canvasOffsetLeft + cx,
                             scrollTop: self.scrollBox.scrollTop,
                             scrollLeft: self.scrollBox.scrollLeft,
                             active: active || activeHeader,
@@ -2777,6 +2778,36 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         });
         self.intf.attributes = {};
         self.intf.formatters = self.formatters;
+        self.normalizeDataset = function (data) {
+            if (!Array.isArray(data)) {
+                throw new Error('Data must be an array of objects or arrays.');
+            }
+            if ((typeof data[0] === 'object' && data[0] !== null)
+                            || (Array.isArray(data) && data.length === 0)) {
+                return data;
+            }
+            if (Array.isArray(data)) {
+                if (!Array.isArray(data[0])) {
+                    //array of something?  throw it all into 1 row!
+                    data = [data];
+                }
+                // find the longest length
+                var max = 0, d = [];
+                data.forEach(function (row) {
+                    max = Math.max(max, row.length);
+                });
+                // map against length indexes
+                data.forEach(function (row, index) {
+                    var x;
+                    d[index] = {};
+                    for (x = 0; x < max; x += 1) {
+                        d[index][self.integerToAlpha(x).toUpperCase()] = row[x] || null;
+                    }
+                });
+                return d;
+            }
+            throw new Error('Unsupported data type.  Must be an array of arrays or an array of objects.');
+        };
         Object.defineProperty(self.intf, 'selectionBounds', {
             get: function () {
                 return self.getSelectionBounds();
@@ -2838,12 +2869,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 return self.data;
             },
             set: function dataSetter(value) {
-                if (!Array.isArray(value)
-                        || (value.length > 0 && typeof value[0] !== 'object')) {
-                    throw new Error('Data must be an array of objects.');
-                }
-                self.dataGroup = {};
-                self.originalData = value.map(function eachDataRow(row) {
+                self.originalData = self.normalizeDataset(value).map(function eachDataRow(row) {
                     row[self.uniqueId] = self.uId;
                     self.uId += 1;
                     return row;
@@ -3906,6 +3932,24 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
     return function (self) {
         // all methods here are exposed by intf
         // to users
+        /**
+         * Converts a integer into a letter A - ZZZZZ...
+         * @memberof canvasDataGrid
+         * @name integerToAlpha
+         * @method
+         * @param {column} n The number to convert.
+         */
+        self.integerToAlpha = function (n) {
+            var ordA = 'a'.charCodeAt(0),
+                ordZ = 'z'.charCodeAt(0),
+                len = ordZ - ordA + 1,
+                s = '';
+            while (n >= 0) {
+                s = String.fromCharCode(n % len + ordA) + s;
+                n = Math.floor(n / len) - 1;
+            }
+            return s;
+        };
         /**
          * Inserts a new column before the specified index into the schema.
          * @see canvasDataGrid#schema
