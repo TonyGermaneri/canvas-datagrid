@@ -3,6 +3,7 @@
 var data;
 document.addEventListener('DOMContentLoaded', function () {
     'use strict';
+    var searchUrl = window.location.search.substring(3);
     function isNoiseData(name) {
         // get rid of fields that we don't care about
         return ['sid', 'id', 'position', 'created_at',
@@ -58,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function () {
             e.items.push({
                 title: item
             });
-
         });
         xhr.addEventListener('progress', function (e) {
             grid.data = [{ status: 'Loading data ' + e.loaded + '...'}];
@@ -72,8 +72,9 @@ document.addEventListener('DOMContentLoaded', function () {
         xhr.open('GET', url);
         xhr.send();
     }
-    if (window.location.search.length > 3) {
-        loadDataSet(window.location.search.substring(3));
+    if (searchUrl.length > 3) {
+        // work encoded or not, for lazy people who can't be bothered encoding stuff
+        loadDataSet(/%3A/.test(searchUrl) ? decodeURIComponent(searchUrl) : searchUrl);
     } else {
         loadDataSet('https://data.cityofchicago.org/api/views/xzkq-xp2w/rows.json?accessType=DOWNLOAD');
     }
