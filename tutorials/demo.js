@@ -34,7 +34,8 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.innerHTML = '';
         var xhr = new XMLHttpRequest(),
             grid = canvasDatagrid({
-                parentNode: document.body
+                parentNode: document.body,
+                globalRowResize: true
             });
         grid.addEventListener('contextmenu', function (e) {
             var item = document.createElement('div'),
