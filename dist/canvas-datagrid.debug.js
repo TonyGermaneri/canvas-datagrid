@@ -831,25 +831,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.ctx.stroke();
         }
         function addEllipsis(text, width) {
-            var o, i, c, w = 0;
+            var c, w = 0;
             if (self.ellipsisCache[text] && self.ellipsisCache[text][width]) {
                 return self.ellipsisCache[text][width];
             }
+            //TODO Add ellipsis back when there is a fast way to do it
             w = self.ctx.measureText(text).width;
-            if (w < width) {
-                o = text;
-            } else {
-                o = text.substring(0, 1);
-                i = 1;
-                // wow! a do while!  and I didn't intend to use one here
-                do {
-                    i += 1;
-                    o = text.substring(0, i) + '...';
-                    w = self.ctx.measureText(o).width;
-                } while (width > w);
-            }
             self.ellipsisCache[text] = self.ellipsisCache[text] || {};
-            c = {value: o, width: w};
+            c = {value: text, width: w};
             self.ellipsisCache[text][width] = c;
             return c;
         }
@@ -3600,7 +3589,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     lineHeight: 'normal',
                     fontWeight: 'normal',
                     fontFamily: self.style.contextMenuFontFamily,
-                    fontSize: self.style.contextMenuFontSize,
+                    fontSize: self.style.contextMenuFontSize
                 },
                 'canvas-datagrid-context-child-arrow': {
                     cssFloat: 'right',
@@ -3624,7 +3613,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 },
                 'canvas-datagrid-autocomplete-item': {
                     background: self.style.contextMenuBackground,
-                    color: self.style.contextMenuColor,
+                    color: self.style.contextMenuColor
                 },
                 'canvas-datagrid-autocomplete-item:hover': {
                     background: self.style.contextMenuHoverBackground,
