@@ -1,12 +1,12 @@
 {
   "name": "canvas-datagrid",
-  "version": "0.12.12",
+  "version": "0.12.13",
   "description": "Canvas based data grid",
   "main": "./lib/main.js",
   "scripts": {
     "build-docs": "./node_modules/.bin/jsdoc -u ./tutorials -d ./docs -c ./jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md -r ./lib; cp ./tutorials/*.js ./docs/",
     "postinstall": "npm run-script build",
-    "build-gh-pages": "git checkout gh-pages; git merge master; npm install; npm run-script build-dev; npm run-script build-docs",
+    "build-gh-pages": "git checkout gh-pages; git merge master; npm install; npm run-script build-docs",
     "build-watch": "./node_modules/.bin/webpack --watch -d --entry=./lib/main.js --output-path=./dist --output-filename=canvas-datagrid.debug.js --devtool source-map --output-source-map-filename='canvas-datagrid.map'",
     "build-dev": "./node_modules/.bin/webpack -d --entry=./lib/main.js --output-path=./dist --output-filename=canvas-datagrid.debug.js --devtool source-map --output-source-map-filename='canvas-datagrid.map'",
     "build": "./node_modules/.bin/webpack --entry=./lib/main.js --output-path=./dist --output-filename=canvas-datagrid.js --devtool source-map --output-source-map-filename='canvas-datagrid.map'"
