@@ -3,16 +3,24 @@
 var data;
 document.addEventListener('DOMContentLoaded', function () {
     'use strict';
+    var searchUrl = window.location.search.substring(3);
+    function isNoiseData(name) {
+        // get rid of fields that we don't care about
+        return ['sid', 'id', 'position', 'created_at',
+                    'created_meta', 'updated_at',
+                    'updated_meta', 'meta'].indexOf(name) !== -1;
+    }
     function parseOpenData(openData) {
-        var data, schema;
-        schema = openData.meta.view.columns;
+        var data, schema = [];
+        openData.meta.view.columns.forEach(function (column) {
+            if (isNoiseData(column.name)) {
+                column.hidden = true;
+            }
+            schema.push(column);
+        });
         data = openData.data.map(function (row) {
             var r = {};
             schema.forEach(function (column, index) {
-                // get rid of fields that we don't care about
-                if (['sid', 'id', 'position', 'created_at',
-                        'created_meta', 'updated_at',
-                        'updated_meta', 'meta'].indexOf(column.name) !== -1) { return; }
                 r[column.name] = row[index];
             });
             return r;
@@ -51,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function () {
             e.items.push({
                 title: item
             });
-
         });
         xhr.addEventListener('progress', function (e) {
             grid.data = [{ status: 'Loading data ' + e.loaded + '...'}];
@@ -65,5 +72,10 @@ document.addEventListener('DOMContentLoaded', function () {
         xhr.open('GET', url);
         xhr.send();
     }
-    loadDataSet('https://data.cityofchicago.org/api/views/xzkq-xp2w/rows.json?accessType=DOWNLOAD');
+    if (searchUrl.length > 3) {
+        // work encoded or not, for lazy people who can't be bothered encoding stuff
+        loadDataSet(/%3A/.test(searchUrl) ? decodeURIComponent(searchUrl) : searchUrl);
+    } else {
+        loadDataSet('https://data.cityofchicago.org/api/views/xzkq-xp2w/rows.json?accessType=DOWNLOAD');
+    }
 });
