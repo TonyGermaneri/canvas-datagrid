@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', function () {
         data = openData.data.map(function (row) {
             var r = {};
             schema.forEach(function (column, index) {
+                // get rid of fields that we don't care about
+                if (['sid', 'id', 'position', 'created_at',
+                        'created_meta', 'updated_at',
+                        'updated_meta', 'meta'].indexOf(column.name) !== -1) { return; }
                 r[column.name] = row[index];
             });
             return r;
