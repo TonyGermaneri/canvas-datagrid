@@ -10,8 +10,11 @@ document.addEventListener('DOMContentLoaded', function () {
             throw new Error('Parent node required');
         }
         var examples = {},
+            title = document.createElement('h1'),
             toc = document.createElement('ul');
+        title.innerHTML = 'Tutorials';
         toc.className = 'samples-toc';
+        args.parentNode.appendChild(title);
         args.parentNode.appendChild(toc);
         // --- examples section
         examples['Create a new grid'] = function (parentNode) {

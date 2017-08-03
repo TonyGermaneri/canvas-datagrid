@@ -4,16 +4,16 @@ Canvas Data Grid
 * High performance hierarchal canvas based data grid.
 * Support for millions of rows and columns.
 * Extensible styling, filtering, formatting, resizing, selecting, and ordering.
-* Support for touch based devices.
-* Style builder with built in styles.
-* Per user styles, settings using localStorage.
+* Support for touch devices (phones and tablets).
+* Built in and custom styles.
+* Per-user styles, settings using localStorage.
 * Single canvas element supporting multiple nested tree or cell grids.
 * Rich API of events, methods and properties optimized for CRUD, reporting and work flow applications.
 * Zero dependencies, very small code base, distributed as a single ~80k (~20k gziped) file.
 
 [Demo](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html)
 
-[Style Builder](https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html)
+[Make your own custom styles](https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html)
 
 [Documentation](https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDataGrid.html)
 
