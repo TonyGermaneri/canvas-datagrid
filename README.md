@@ -6,6 +6,7 @@ Canvas Data Grid
 * Extensible styling, filtering, formatting, resizing, selecting, and ordering.
 * Support for touch devices (phones and tablets).
 * Built in and custom styles.
+* Hierarchal context menu.
 * Per-user styles, settings using localStorage.
 * Single canvas element supporting multiple nested tree or cell grids.
 * Rich API of events, methods and properties optimized for CRUD, reporting and work flow applications.
@@ -65,10 +66,10 @@ var grid = canvasDatagrid({
     ]
 });
 ```
-<details>
+
 Building
 ========
-
+<details>
 To build production version.
 
 ```shell
