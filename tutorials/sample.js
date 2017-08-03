@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
         args.parentNode.appendChild(toc);
         title.marginLeft = '10px';
         // --- examples section
-        examples['Create a new grid'] = function (parentNode) {
+        examples['Create a new grid|A grid is created and data is set in one command.  Data can be an array of objects, an array of arrays or a mixed array of objects, arrays and primitives.'] = function (parentNode) {
             // create a new grid
             var grid = canvasDatagrid({
                 parentNode: parentNode,
@@ -29,7 +29,72 @@ document.addEventListener('DOMContentLoaded', function () {
                 ]
             });
         };
-        examples['Detect clicks'] = function (parentNode) {
+        examples['Set data after instantiation|A grid is created, then data is set afterwards.  You can set data using <i>grid.data = &lt;data&gt;;</i> at anytime.  Data can be an array of objects, an array of arrays or a mixed array of objects, arrays and primitives.'] = function (parentNode) {
+            // create a new grid
+            var grid = canvasDatagrid({
+                parentNode: parentNode
+            });
+            grid.data = [
+                {col1: 'foo', col2: 0, col3: 'a'},
+                {col1: 'bar', col2: 1, col3: 'b'},
+                {col1: 'baz', col2: 2, col3: 'c'}
+            ];
+        };
+        examples['Format data|Data is formatted using the data type setting in the schema.  The data type is mapped to the `grid.formatters` object.  In the following example col2 is data type `date` which will format data using the `grid.formatters.date` function.  By default the string formatter is used to format all data.  This method of formatting is faster than using the <i>rendertext</i> event.'] = function (parentNode) {
+            var grid = canvasDatagrid({
+                parentNode: parentNode,
+                data: [
+                    {col1: 'foo', col2: 1501744914661, col3: 'a'},
+                    {col1: 'bar', col2: 1301744914661, col3: 'b'},
+                    {col1: 'baz', col2: 1401744914661, col3: 'c'}
+                ],
+                schema: [
+                    {
+                        name: 'col1'
+                    },
+                    {
+                        name: 'col2',
+                        type: 'date'
+                    },
+                    {
+                        name: 'col3'
+                    },
+                ]
+            });
+            grid.formatters.date = function (e) {
+                return new Date(e.cell.value).toISOString();
+            };
+        };
+        examples['Format data using rendertext event|Attach to the <i>rendertext</i> event.'] = function (parentNode) {
+            var grid = canvasDatagrid({
+                parentNode: parentNode,
+                data: [
+                    {col1: 'foo', col2: 1501744914661, col3: 'a'},
+                    {col1: 'bar', col2: 1301744914661, col3: 'b'},
+                    {col1: 'baz', col2: 1401744914661, col3: 'c'}
+                ],
+                schema: [
+                    {
+                        name: 'col1'
+                    },
+                    {
+                        name: 'col2',
+                        type: 'date'
+                    },
+                    {
+                        name: 'col3'
+                    },
+                ]
+            });
+            grid.addEventListener('rendertext', function (e) {
+                if (e.cell.rowIndex > -1) {
+                    if (e.cell.header.name === 'col2') {
+                        e.cell.formattedValue = new Date(e.cell.value).toISOString();
+                    }
+                }
+            });
+        };
+        examples['Detect clicks|Detect which cell was clicked using the <i>click</i> event.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 data: [
@@ -43,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 grid.data[0][grid.schema[0].name] = 'Clicked on ' + e.cell.value;
             });
         };
-        examples['Detect cell over/out'] = function (parentNode) {
+        examples['Detect cell over/out|Detect when a cell has been entered using <i>cellmouseover</i> and <i>cellmouseout</i> events.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 data: [
@@ -64,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     + e.cell.columnIndex + ', ' + e.cell.rowIndex;
             });
         };
-        examples['Set filter function'] = function (parentNode) {
+        examples['Set filter function|By default, the filter is a RegExp string, you can alter this per data type by adding a function to the object <i>grid.filters.&lt;type&gt;</i>.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 data: [
@@ -86,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function () {
             };
             grid.setFilter('id', 1);
         };
-        examples['Simple context menu'] = function (parentNode) {
+        examples['Simple context menu|Add your own items to the context menu.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 data: [
@@ -110,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             });
         };
-        examples['Hierarchal context menus'] = function (parentNode) {
+        examples['Hierarchal context menus|Add hierarchal items to the context menu.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 data: [
@@ -146,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             });
         };
-        examples['Remove context menu items'] = function (parentNode) {
+        examples['Remove context menu items|You can mutate the existing items in the context menu.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 data: [
@@ -162,7 +227,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             });
         };
-        examples['Create complex context menu'] = function (parentNode) {
+        examples['Create complex context menu|If you set the value of title to a HTML element reference, you can add complex functionality to the context menu.  To prevent the context menu from closing call <i>e.stopPropagation</i> on the object clicked on.'] = function (parentNode) {
             var content = document.createElement('div'),
                 upButton = document.createElement('button'),
                 downButton = document.createElement('button'),
@@ -205,7 +270,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             });
         };
-        examples['Alter runtime style'] = function (parentNode) {
+        examples['Alter runtime style|Change styles after the grid has been instantiated.  All styles can be changed at any time.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 data: [
@@ -217,7 +282,7 @@ document.addEventListener('DOMContentLoaded', function () {
             grid.style.headerCellBackgroundColor = 'dodgerblue';
             grid.style.headerCellColor = 'white';
         };
-        examples['Canvas fill styles'] = function (parentNode) {
+        examples['Canvas fill styles|An example of using complex fill styles on the canvas.'] = function (parentNode) {
             var grid = canvasDatagrid({
                     parentNode: parentNode,
                     data: [
@@ -232,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function () {
             grid.style.cellBackgroundColor = gradient;
             grid.style.backgroundColor = gradient;
         };
-        examples['Alter startup styles'] = function (parentNode) {
+        examples['Alter startup styles|Change the styles during instantiation.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 style: {
@@ -252,7 +317,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 {Ei: 'pericula', melius: 'offendit'}
             ];
         };
-        examples['Replace all styles at runtime'] = function (parentNode) {
+        examples['Replace all styles at runtime|Replace the entire style object at runtime.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 data: [
@@ -266,7 +331,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 cellColor: 'goldenrod'
             };
         };
-        examples['Toggle rowSelectionMode'] = function (parentNode) {
+        examples['Toggle rowSelectionMode|Prevents the selection of individual cells forcing the row to become selected.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 data: [
@@ -297,7 +362,23 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             grid.scrollIntoView(2, 2);
         };
-        examples['Validate input'] = function (parentNode) {
+        examples['Conditionally set colors|Change styles during the <i>rendercell</i> event.'] = function (parentNode) {
+            var grid = canvasDatagrid({
+                parentNode: parentNode
+            });
+            grid.addEventListener('rendercell', function (e) {
+                if (e.cell.header.name === 'Ei' && /omittam/.test(e.cell.value)) {
+                    e.ctx.fillStyle = '#AEEDCF';
+                }
+            });
+            grid.data = [
+                {Ei: 'principes', melius: 'causae'},
+                {Ei: 'omittam', melius: 'audire'},
+                {Ei: 'mea', melius: 'quot'},
+                {Ei: 'pericula', melius: 'offendit'}
+            ];
+        };
+        examples['Validate input|In this example, by using the <i>beforeendedit</i> event you can prevent digits from being entered.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 data: [
@@ -313,7 +394,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         };
-        examples['Edit a cell'] = function (parentNode) {
+        examples['Edit a cell|Use the interface to focus a cell, then begin editing a cell.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 data: [
@@ -346,7 +427,7 @@ document.addEventListener('DOMContentLoaded', function () {
             grid.setColumnWidth(0, 60);
             grid.setColumnWidth(1, 200);
         };
-        examples['Order by a column'] = function (parentNode) {
+        examples['Order by a column|By providing the order method with a column name and order (default ascending) you can change the sort order.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 data: [
@@ -357,7 +438,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             grid.order(grid.schema[0].name, 'asc');
         };
-        examples['Select an area'] = function (parentNode) {
+        examples['Select an area|Select an area of the grid using a <i>rect</i> object.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 data: [
@@ -380,7 +461,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             grid.draw();
         };
-        examples['Remove all rows'] = function (parentNode) {
+        examples['Remove all rows|Just get rid of all the data.  It is silly data anyway.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 data: [
@@ -391,7 +472,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             grid.data = [];
         };
-        examples['Set to just 1 row'] = function (parentNode) {
+        examples['Allow new rows|Allow the input of new rows at the bottom of the grid.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 data: [
@@ -400,18 +481,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     {col1: 'baz', col2: 2, col3: 'c'}
                 ]
             });
-            grid.data = [{Foo: 'bar'}];
-        };
-        examples['Allow new rows'] = function (parentNode) {
-            var grid = canvasDatagrid({
-                parentNode: parentNode,
-                data: [
-                    {col1: 'foo', col2: 0, col3: 'a'},
-                    {col1: 'bar', col2: 1, col3: 'b'},
-                    {col1: 'baz', col2: 2, col3: 'c'}
-                ]
-            });
-            grid.attributes.showNewRow = !grid.attributes.showNewRow;
+            grid.attributes.showNewRow = true;
         };
         examples['Change a columns\'s title'] = function (parentNode) {
             var grid = canvasDatagrid({
@@ -425,7 +495,7 @@ document.addEventListener('DOMContentLoaded', function () {
             grid.schema[0].title = 'foo';
             grid.draw();
         };
-        examples['Add a column'] = function (parentNode) {
+        examples['Add a column|There is also an insert version of this function.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 data: [
@@ -443,7 +513,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 name: 'bar'
             });
         };
-        examples['Add a row'] = function (parentNode) {
+        examples['Add a row|There is also an insert version of this function.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 data: [
@@ -458,7 +528,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 col3: 'a ' + new Date().toString()
             });
         };
-        examples['Draw HTML via Event'] = function (parentNode) {
+        examples['Draw HTML via Event|This draws HTML into an SVG object, takes a picture of it and caches it into the grid, then draws it into the cell.  In other words, it works, but it\'s slow.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 data: [
@@ -479,7 +549,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             grid.draw();
         };
-        examples['Draw HTML via data type'] = function (parentNode) {
+        examples['Draw HTML via data type|This draws HTML into an SVG object, takes a picture of it and caches it into the grid, then draws it into the cell.  In other words, it works, but it\'s slow.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 data: [
@@ -495,7 +565,77 @@ document.addEventListener('DOMContentLoaded', function () {
             ];
             grid.draw();
         };
-        examples['Draw a picture'] = function (parentNode) {
+        examples['Open a tree|Open a tree grid on a specific row.  Use the <i>expandtree</i> event to control the data and settings of the tree grid.'] = function (parentNode) {
+            function createData() {
+                var x, y, d = [];
+                for (x = 0; x < 2000; x += 1) {
+                    d[x] = {};
+                    for (y = 0; y < 20; y += 1) {
+                        d[x][y] = y * x;
+                    }
+                }
+                return d;
+            }
+            var grid = canvasDatagrid({
+                parentNode: parentNode,
+                data: createData()
+            });
+            grid.addEventListener('expandtree', function expandTree(e) {
+                e.treeGrid.data = createData();
+                // prevent repeated executions of this example code from blowing things up
+                e.treeGrid.removeEventListener('expandtree', expandTree);
+            });
+            grid.expandTree(2);
+        };
+        examples['Allow users to open trees|Allows users to open trees.  Use the <i>expandtree</i> event to control the data and settings of the tree grid.'] = function (parentNode) {
+            function createData() {
+                var x, y, d = [];
+                for (x = 0; x < 2000; x += 1) {
+                    d[x] = {};
+                    for (y = 0; y < 20; y += 1) {
+                        d[x][y] = y * x;
+                    }
+                }
+                return d;
+            }
+            var grid = canvasDatagrid({
+                parentNode: parentNode,
+                data: createData()
+            });
+            grid.attributes.tree = true;
+            function expandTree(e) {
+                e.treeGrid.addEventListener('expandtree', expandTree);
+                e.treeGrid.attributes.tree = true;
+                e.treeGrid.data = createData();
+            }
+            grid.addEventListener('expandtree', expandTree);
+        };
+        examples['Multiple filters|Create filters on more than one column at a time.'] = function (parentNode) {
+            var grid = canvasDatagrid({
+                    parentNode: parentNode
+                }),
+                x,
+                data = [],
+                d,
+                i,
+                c,
+                r = 'The,quick,brown,fox,jumps,over,the,lazy,dog';
+            grid.data = [];
+            c = r.split(',').map(function (i) { return i.trim(); });
+            r = r.split(',').map(function (i) { return i.trim(); });
+            for (x = 0; x < 10000; x += 1) {
+                d = {};
+                for (i = 0; i < r.length; i += 1) {
+                    d[r[i]] = c[Math.floor(Math.random() * 1000) % (c.length - 1)];
+                }
+                data.push(d);
+            }
+            // add the data to the grid
+            grid.data = data.concat(grid.data);
+            grid.setFilter('quick', /the/i);
+            grid.setFilter('brown', 'quick');
+        };
+        examples['Draw a picture|Draw a picture into a cell.  First hook into <i>rendertext</i> to show the text "No Image" text if there is no image.  Then hook into <i>afterrendercell</i> to actually create an image element, hook into the image load event and draw the image once it\'s loaded.'] = function (parentNode) {
             var grid = canvasDatagrid({
                     parentNode: parentNode
                 }),
@@ -561,72 +701,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 grid.setRowHeight(index, 200);
             });
         };
-        examples['Add 10,000 random rows'] = function (parentNode) {
-            // create random data from a bunch of Latin words
-            var grid = canvasDatagrid({
-                    parentNode: parentNode
-                }),
-                x,
-                data = [],
-                d,
-                i,
-                c,
-                r = 'Elend, eam, animal omittam an, has in, explicari principes. Elit, causae eleifend mea cu. No sed adipisci accusata, ei mea everti melius periculis. Ei quot audire pericula mea, qui ubique offendit no. Sint mazim mandamus duo ei. Sumo maiestatis id has, at animal reprehendunt definitionem cum, mei ne adhuc theophrastus.';
-            c = r.split(' ').map(function (i) { return i.trim(); });
-            r = r.split(',').map(function (i) { return i.trim(); });
-            for (x = 0; x < 10000; x += 1) {
-                d = {};
-                for (i = 0; i < r.length; i += 1) {
-                    d[r[i]] = c[Math.floor(Math.random() * 1000) % (c.length - 1)];
-                }
-                data.push(d);
-            }
-            // add the data to the grid
-            grid.data = data.concat(grid.data);
-        };
-        examples['Conditionally set colors'] = function (parentNode) {
-            var grid = canvasDatagrid({
-                parentNode: parentNode
-            });
-            grid.addEventListener('rendercell', function (e) {
-                if (e.cell.header.name === 'Ei' && /omittam/.test(e.cell.value)) {
-                    e.ctx.fillStyle = '#AEEDCF';
-                }
-            });
-            grid.data = [
-                {Ei: 'principes', melius: 'causae'},
-                {Ei: 'omittam', melius: 'audire'},
-                {Ei: 'mea', melius: 'quot'},
-                {Ei: 'pericula', melius: 'offendit'}
-            ];
-        };
-        examples['Format cell values'] = function (parentNode) {
-            var grid = canvasDatagrid({
-                parentNode: parentNode
-            });
-            // in your schema, format is based on type
-            grid.schema = [
-                {
-                    name: 'Ei'
-                },
-                {
-                    name: 'Audire',
-                    type: 'date',
-                }
-            ];
-            // set the formatter function for the type date
-            grid.formatters.date = function (ctx, cell) {
-                return new Date(cell.value).toISOString();
-            };
-            // add some fake data
-            grid.data = [
-                {Ei: 'principes', Audire: new Date().getTime() },
-                {Ei: 'omittam', Audire: new Date().getTime() },
-                {Ei: 'mea', Audire: new Date().getTime() },
-                {Ei: 'pericula', Audire: new Date().getTime() }
-            ];
-        };
-        examples['Toggle debug data'] = function (parentNode) {
+        examples['Toggle debug data|Show fun debugging information.  What are all these numbers?  File a bug ticket to find out!'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 data: [
@@ -646,77 +721,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             grid.attributes.debug = !grid.attributes.debug;
         };
-        examples['Open a tree'] = function (parentNode) {
-            function createData() {
-                var x, y, d = [];
-                for (x = 0; x < 2000; x += 1) {
-                    d[x] = {};
-                    for (y = 0; y < 20; y += 1) {
-                        d[x][y] = y * x;
-                    }
-                }
-                return d;
-            }
-            var grid = canvasDatagrid({
-                parentNode: parentNode,
-                data: createData()
-            });
-            grid.addEventListener('expandtree', function expandTree(e) {
-                e.treeGrid.data = createData();
-                // prevent repeated executions of this example code from blowing things up
-                e.treeGrid.removeEventListener('expandtree', expandTree);
-            });
-            grid.expandTree(2);
-        };
-        examples['Allow users to open trees'] = function (parentNode) {
-            function createData() {
-                var x, y, d = [];
-                for (x = 0; x < 2000; x += 1) {
-                    d[x] = {};
-                    for (y = 0; y < 20; y += 1) {
-                        d[x][y] = y * x;
-                    }
-                }
-                return d;
-            }
-            var grid = canvasDatagrid({
-                parentNode: parentNode,
-                data: createData()
-            });
-            grid.attributes.tree = true;
-            function expandTree(e) {
-                e.treeGrid.addEventListener('expandtree', expandTree);
-                e.treeGrid.attributes.tree = true;
-                e.treeGrid.data = createData();
-            }
-            grid.addEventListener('expandtree', expandTree);
-        };
-        examples['Multiple filters'] = function (parentNode) {
-            var grid = canvasDatagrid({
-                    parentNode: parentNode
-                }),
-                x,
-                data = [],
-                d,
-                i,
-                c,
-                r = 'The,quick,brown,fox,jumps,over,the,lazy,dog';
-            grid.data = [];
-            c = r.split(',').map(function (i) { return i.trim(); });
-            r = r.split(',').map(function (i) { return i.trim(); });
-            for (x = 0; x < 10000; x += 1) {
-                d = {};
-                for (i = 0; i < r.length; i += 1) {
-                    d[r[i]] = c[Math.floor(Math.random() * 1000) % (c.length - 1)];
-                }
-                data.push(d);
-            }
-            // add the data to the grid
-            grid.data = data.concat(grid.data);
-            grid.setFilter('quick', /the/i);
-            grid.setFilter('brown', 'quick');
-        };
-        examples['Display unicode samples'] = function (parentNode) {
+        examples['Display unicode samples|Unicode works if it is properly encoded using \\u escape sequences.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode
             });
@@ -831,7 +836,7 @@ document.addEventListener('DOMContentLoaded', function () {
             ];
             grid.setColumnWidth(1, 5000);
         };
-        examples['Create a spreadsheet'] = function (parentNode) {
+        examples['Create a spreadsheet|It\'s just like excel, but without all the useful parts.'] = function (parentNode) {
             // create a spreadsheet
             var grid = canvasDatagrid({
                     parentNode: parentNode
@@ -861,7 +866,30 @@ document.addEventListener('DOMContentLoaded', function () {
             grid.style.headerCellHorizontalAlignment = 'center';
             grid.data = d;
         };
-        examples['Disco Mode'] = function (parentNode) {
+        examples['Add 10,000 random rows|Because why not?'] = function (parentNode) {
+            // create random data from a bunch of Latin words
+            var grid = canvasDatagrid({
+                    parentNode: parentNode
+                }),
+                x,
+                data = [],
+                d,
+                i,
+                c,
+                r = 'Elend, eam, animal omittam an, has in, explicari principes. Elit, causae eleifend mea cu. No sed adipisci accusata, ei mea everti melius periculis. Ei quot audire pericula mea, qui ubique offendit no. Sint mazim mandamus duo ei. Sumo maiestatis id has, at animal reprehendunt definitionem cum, mei ne adhuc theophrastus.';
+            c = r.split(' ').map(function (i) { return i.trim(); });
+            r = r.split(',').map(function (i) { return i.trim(); });
+            for (x = 0; x < 10000; x += 1) {
+                d = {};
+                for (i = 0; i < r.length; i += 1) {
+                    d[r[i]] = c[Math.floor(Math.random() * 1000) % (c.length - 1)];
+                }
+                data.push(d);
+            }
+            // add the data to the grid
+            grid.data = data.concat(grid.data);
+        };
+        examples['Disco Mode|This is silly.  There is no way to stop it.'] = function (parentNode) {
             // this is not a real mode, just for fun
             // you'll probably have to refresh the page to get rid of this timer
             function createData() {
@@ -920,7 +948,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 evaluate = document.createElement('button'),
                 openInFiddle = document.createElement('button'),
                 error = document.createElement('p'),
-                outputTitle = document.createElement('p'),
+                outputTitle = document.createElement('div'),
                 aceEditor,
                 hiddenFormsItems;
             function updateCode() {
