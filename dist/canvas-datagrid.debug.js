@@ -1195,7 +1195,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                                 cell.treeArrowWidth = treeArrowSize;
                                 cell.orderByArrowWidth = orderByArrowSize;
                                 val = val !== undefined ? val : f
-                                    ? f(self.ctx, cell) : '';
+                                    ? f(ev) : '';
                                 if (val === undefined && !f) {
                                     val = '';
                                     console.warn('canvas-datagrid: Unknown format '
@@ -3156,7 +3156,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     var value = row[e.cell.header.name];
                     if (autoCompleteItems[value]) { return; }
                     autoCompleteItems[value] = {
-                        title: self.formatters[e.cell.header.type || 'string'](null, { value: value }),
+                        title: self.formatters[e.cell.header.type || 'string']({ cell: { value: value }}),
                         click: function (e) {
                             filterInput.value = value;
                             e.stopPropagation();
@@ -4694,8 +4694,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 return total + header.width;
             }, 0);
         };
-        self.formatters.string = function cellFormatterString(ctx, cell) {
-            return cell.value !== undefined ? cell.value : '';
+        self.formatters.string = function cellFormatterString(e) {
+            return e.cell.value !== undefined ? e.cell.value : '';
         };
         self.formatters.rowHeaderCell = self.formatters.string;
         self.formatters.headerCell = self.formatters.string;

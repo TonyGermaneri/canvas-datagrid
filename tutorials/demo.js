@@ -37,32 +37,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 parentNode: document.body,
                 globalRowResize: true
             });
-        grid.addEventListener('contextmenu', function (e) {
-            var item = document.createElement('div'),
-                getDataButton = document.createElement('button'),
-                urlInput = document.createElement('input');
-            getDataButton.innerHTML = 'Get Open Data';
-            getDataButton.onclick = function () {
-                loadDataSet(urlInput.value);
-            };
-            item.addEventListener('click', function (e) { e.stopPropagation(); });
-            item.appendChild(urlInput);
-            item.appendChild(getDataButton);
-            e.items.push({
-                title: 'Get JSON data set links by clicking here (data.gov)',
-                click: function () {
-                    window.open('https://catalog.data.gov/dataset?page=1', '_blank');
-                }
-            });
-            e.items.push({
-                title: 'Then paste the JSON links below then click the button'
-            });
-            e.items.push({
-                title: item
-            });
-        });
         xhr.addEventListener('progress', function (e) {
-            grid.data = [{ status: 'Loading data ' + e.loaded + '...'}];
+            grid.data = [{ status: 'Loading data: ' + e.loaded + ' of ' + e.total + ' bytes...'}];
         });
         xhr.addEventListener('load', function (e) {
             grid.data = [{ status: 'Loading data ' + e.loaded + '...'}];

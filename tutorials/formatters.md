@@ -8,8 +8,8 @@ This method is slightly faster due to the O(1) hash map employed in the value fo
 
 In the following example the type `date` is given a formatter function.
 
-    grid.formatters.date = function (ctx, cell) {
-        return new Date(cell.value).toISOString();
+    grid.formatters.date = function (e) {
+        return new Date(e.cell.value).toISOString();
     };
 
 The return value of the formatter function will be displayed in the cell instead of the value
@@ -41,11 +41,6 @@ be logged and the string formatter will be used.
 
 Cell formatter function should contain the following arguments.
 
-    grid.formatters.date = function (ctx, cell) { return new Date(cell.value).toISOString(); }
-
-| Argument | Description |
-|-----|------|
-| ctx | Canvas context. |
-| [cell](https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDataGrid.cell.html) | Current cell. |
+    grid.formatters.date = function (e) { return new Date(e.cell.value).toISOString(); }
 
 Formatters must return a string value to be displayed in the cell.
