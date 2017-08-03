@@ -129,6 +129,40 @@ document.addEventListener('DOMContentLoaded', function () {
                     + e.cell.columnIndex + ', ' + e.cell.rowIndex;
             });
         };
+        examples['Get data via XHR function.|Fetch data from data.gov and parse the JSON.'] = function (parentNode) {
+            var xhr = new XMLHttpRequest(),
+                grid = canvasDatagrid({
+                    parentNode: parentNode
+                });
+            function parseOpenData(openData) {
+                var data, schema = [];
+                openData.meta.view.columns.forEach(function (column) {
+                    schema.push(column);
+                });
+                data = openData.data.map(function (row) {
+                    var r = {};
+                    schema.forEach(function (column, index) {
+                        r[column.name] = row[index];
+                    });
+                    return r;
+                });
+                return {
+                    data: data,
+                    schema: schema
+                };
+            }
+            xhr.addEventListener('progress', function (e) {
+                grid.data = [{ status: 'Loading data: ' + e.loaded + ' of ' + (e.total ? e.total : 'unknown') + ' bytes...'}];
+            });
+            xhr.addEventListener('load', function (e) {
+                grid.data = [{ status: 'Loading data ' + e.loaded + '...'}];
+                var openData = parseOpenData(JSON.parse(this.responseText));
+                grid.schema = openData.schema;
+                grid.data = openData.data;
+            });
+            xhr.open('GET', 'https://data.cityofchicago.org/api/views/xzkq-xp2w/rows.json?accessType=DOWNLOAD');
+            xhr.send();
+        };
         examples['Set filter function|By default, the filter is a RegExp string, you can alter this per data type by adding a function to the object <i>grid.filters.&lt;type&gt;</i>.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
