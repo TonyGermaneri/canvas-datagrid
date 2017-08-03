@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
         toc.className = 'samples-toc';
         args.parentNode.appendChild(title);
         args.parentNode.appendChild(toc);
+        title.marginLeft = '10px';
         // --- examples section
         examples['Create a new grid'] = function (parentNode) {
             // create a new grid
@@ -85,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
             };
             grid.setFilter('id', 1);
         };
-        examples['Set simple context menu'] = function (parentNode) {
+        examples['Simple context menu'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 data: [
@@ -107,11 +108,30 @@ document.addEventListener('DOMContentLoaded', function () {
                         grid.draw();
                     }
                 });
+            });
+        };
+        examples['Hierarchal context menus'] = function (parentNode) {
+            var grid = canvasDatagrid({
+                parentNode: parentNode,
+                data: [
+                    {col1: 'foo', col2: 0, col3: 'a'},
+                    {col1: 'bar', col2: 1, col3: 'b'},
+                    {col1: 'baz', col2: 2, col3: 'c'}
+                ]
+            });
+            grid.addEventListener('contextmenu', function (e) {
                 e.items.push({
-                    title: 'Hierarchal items',
+                    title: 'Top level item',
                     items: [
                         {
-                            title: 'Draw "' + e.cell.value + '"" in row 1 column 1',
+                            title: 'Child item #1',
+                            click: function (ev) {
+                                grid.data[0].col1 = e.cell.value;
+                                grid.draw();
+                            }
+                        },
+                        {
+                            title: 'Child item #2',
                             click: function (ev) {
                                 grid.data[0].col1 = e.cell.value;
                                 grid.draw();
@@ -970,6 +990,7 @@ document.addEventListener('DOMContentLoaded', function () {
             parentNode.className = 'sample-grid';
             aceEditor = ace.edit(editor.id);
             aceEditor.$blockScrolling = Infinity;
+            aceEditor.setTheme("ace/theme/monokai");
             aceEditor.getSession().setMode('ace/mode/javascript');
             aceEditor.getSession().setValue(toCodeSample(examples[exampleKey]));
             updateCode();
