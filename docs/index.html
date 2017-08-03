@@ -97,45 +97,53 @@
 <li>High performance hierarchal canvas based data grid.</li>
 <li>Support for millions of rows and columns.</li>
 <li>Extensible styling, filtering, formatting, resizing, selecting, and ordering.</li>
-<li>Support for touch based devices.</li>
-<li>Full documentation with live sample code.</li>
-<li>Style builder with built in styles.</li>
-<li>Per user styles, settings using localStorage.</li>
+<li>Support for touch devices (phones and tablets).</li>
+<li>Built in and custom styles.</li>
+<li>Per-user styles, settings using localStorage.</li>
 <li>Single canvas element supporting multiple nested tree or cell grids.</li>
 <li>Rich API of events, methods and properties optimized for CRUD, reporting and work flow applications.</li>
 <li>Zero dependencies, very small code base, distributed as a single ~80k (~20k gziped) file.</li>
 </ul>
 <p><a href="https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html">Demo</a></p>
-<p><a href="https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html">Style Builder</a></p>
+<p><a href="https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html">Make your own custom styles</a></p>
 <p><a href="https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDataGrid.html">Documentation</a></p>
 <p><a href="https://tonygermaneri.github.io/canvas-datagrid/docs/tutorial-sample.html">Tutorials</a></p>
-<p><a href="https://tonygermaneri.github.io/canvas-datagrid/dist/canvas-datagrid.js">Download</a></p>
-<p><a href="https://github.com/TonyGermaneri/canvas-datagrid">GitHub</a></p>
-<p><a href="https://www.npmjs.com/package/canvas-datagrid">npm</a></p>
-<h1>Installation</h1><p>You can install canvas-datagrid one of three ways:</p>
-<ol>
-<li>Download the <a href="https://tonygermaneri.github.io/canvas-datagrid/dist/canvas-datagrid.js">source</a> file from github.</li>
-<li>Use npm</li>
-</ol>
-<pre class="prettyprint source lang-shell"><code>npm install canvas-datagrid</code></pre><ol>
-<li>Use bower</li>
-</ol>
+<p><a href="https://tonygermaneri.github.io/canvas-datagrid/dist/canvas-datagrid.js">Download latest version (minified)</a></p>
+<p><a href="https://github.com/TonyGermaneri/canvas-datagrid">Source Code</a></p>
+<h1>Installation</h1><pre class="prettyprint source lang-html"><code>&lt;script src=&quot;dist/canvas-datagrid.js&quot;>&lt;/script></code></pre><p>With <a href="https://www.npmjs.com/package/canvas-datagrid">npm</a></p>
+<pre class="prettyprint source lang-shell"><code>npm install canvas-datagrid</code></pre><p>With <a href="https://libraries.io/bower/canvas-datagrid">bower</a></p>
 <pre class="prettyprint source lang-shell"><code>bower install canvas-datagrid</code></pre><p>Place the single source file <code>./dist/canvas-datagrid.js</code> in your web page using
 a script tag that points to the source or use webpack.</p>
 <p>If you do not use a webpack a function will
 be added to the global scope of the web page called <code>canvasDatagrid</code>.</p>
 <h1>Getting started</h1><p>Works with webpack or without.
-If used without webpack, <code>canvasDatagrid</code> is declared in the global scope.</p>
+If used without webpack, <code>canvasDatagrid</code> is declared in the global scope.
+The container can be any block element.  <code>canvasDatagrid</code> generates its own canvas element.</p>
 <pre class="prettyprint source lang-javascript"><code>var grid = canvasDatagrid({
-    parentNode: document.getElementById('myHtmlElement'),
+    parentNode: document.getElementById('container'),
     data: [
         {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},
         {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}
     ]
-});</code></pre><h1>Building</h1><p>To build production version.</p>
-<pre class="prettyprint source lang-shell"><code>npm install</code></pre><p>To build debug version</p>
-<pre class="prettyprint source lang-shell"><code>npm run-script build-dev</code></pre><p>To build documentation</p>
-<pre class="prettyprint source lang-shell"><code>npm run-script build-docs</code></pre></article>
+});</code></pre><details>
+Building
+========
+
+To build production version.
+
+<code>shell
+npm install</code>
+
+To build debug version
+
+<code>shell
+npm run-script build-dev</code>
+
+To build documentation
+
+<code>shell
+npm run-script build-docs</code>
+</details></article>
     </section>
 
 
