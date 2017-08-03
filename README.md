@@ -5,7 +5,6 @@ Canvas Data Grid
 * Support for millions of rows and columns.
 * Extensible styling, filtering, formatting, resizing, selecting, and ordering.
 * Support for touch based devices.
-* Full documentation with live sample code.
 * Style builder with built in styles.
 * Per user styles, settings using localStorage.
 * Single canvas element supporting multiple nested tree or cell grids.
@@ -20,24 +19,25 @@ Canvas Data Grid
 
 [Tutorials](https://tonygermaneri.github.io/canvas-datagrid/docs/tutorial-sample.html)
 
-[Download](https://tonygermaneri.github.io/canvas-datagrid/dist/canvas-datagrid.js)
+[Download latest version (minified)](https://tonygermaneri.github.io/canvas-datagrid/dist/canvas-datagrid.js)
 
-[GitHub](https://github.com/TonyGermaneri/canvas-datagrid)
-
-[npm](https://www.npmjs.com/package/canvas-datagrid)
+[Source Code](https://github.com/TonyGermaneri/canvas-datagrid)
 
 Installation
 ============
-You can install canvas-datagrid one of three ways:
 
-1. Download the [source](https://tonygermaneri.github.io/canvas-datagrid/dist/canvas-datagrid.js) file from github.
-2. Use npm
+```html
+<script src="dist/canvas-datagrid.js"></script>
+```
+
+With [npm](https://www.npmjs.com/package/canvas-datagrid)
+
 
 ```shell
 npm install canvas-datagrid
 ```
 
-3. Use bower
+With [bower](https://libraries.io/bower/canvas-datagrid)
 
 ```shell
 bower install canvas-datagrid
@@ -54,17 +54,18 @@ Getting started
 
 Works with webpack or without.
 If used without webpack, `canvasDatagrid` is declared in the global scope.
+The container can be any block element.  `canvasDatagrid` generates its own canvas element.
 
 ```javascript
 var grid = canvasDatagrid({
-    parentNode: document.getElementById('myHtmlElement'),
+    parentNode: document.getElementById('container'),
     data: [
         {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},
         {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}
     ]
 });
 ```
-
+<details>
 Building
 ========
 
@@ -85,3 +86,4 @@ To build documentation
 ```shell
 npm run-script build-docs
 ```
+</details>
