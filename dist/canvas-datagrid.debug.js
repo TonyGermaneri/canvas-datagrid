@@ -3170,6 +3170,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 upArrow.addEventListener('mouseout', endHoverScroll('up'));
                 checkArrowVisibility();
             }
+            intf.parentGrid = self.intf;
             intf.parentContextMenu = parentContextMenu;
             intf.container = container;
             init();
