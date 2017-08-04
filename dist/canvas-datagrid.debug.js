@@ -3288,6 +3288,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.setFilter(e.cell.header.name, filterInput.value);
             });
             filterInput.addEventListener('keyup', createAutoCompleteContext);
+            filterInput.value = self.columnFilters[e.cell.header.name] || '';
             filterLabel.innerHTML = self.attributes.filterOptionText.replace(/%s/g, n);
             filterAutoCompleteButton.onclick = function () {
                 if (autoCompleteContext) {
