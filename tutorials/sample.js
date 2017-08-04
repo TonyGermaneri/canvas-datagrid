@@ -11,12 +11,23 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         var examples = {},
             title = document.createElement('h1'),
-            toc = document.createElement('ul');
+            aside = document.createElement('div'),
+            toc = document.createElement('ul'),
+            forms = document.createElement('div');
         title.innerHTML = 'Tutorials';
         toc.className = 'samples-toc';
-        args.parentNode.appendChild(title);
-        args.parentNode.appendChild(toc);
-        title.marginLeft = '10px';
+        aside.className = 'sample-aside';
+        forms.className = 'sample-content';
+        [args.parentNode].forEach(function (el) {
+            el.style.display = 'flex';
+            el.style.flexDirection = 'row';
+            el.style.flex = 'auto';
+        });
+        args.parentNode.appendChild(forms);
+        args.parentNode.appendChild(aside);
+        forms.appendChild(title);
+        aside.appendChild(toc);
+        title.style.marginLeft = '10px';
         // --- examples section
         examples['Create a new grid|A grid is created and data is set in one command.  Data can be an array of objects, an array of arrays or a mixed array of objects, arrays and primitives.'] = function (parentNode) {
             // create a new grid
@@ -1096,7 +1107,7 @@ document.addEventListener('DOMContentLoaded', function () {
             form.appendChild(parentNode);
             form.appendChild(hr);
             form.onsubmit = updateCode;
-            args.parentNode.appendChild(form);
+            forms.appendChild(form);
             editor.className = 'sample-editor';
             parentNode.className = 'sample-grid';
             aceEditor = ace.edit(editor.id);
