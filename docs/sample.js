@@ -291,7 +291,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             });
         };
-        examples['Asynchronous context items|Add items to the context menu asynchronously.'] = function (parentNode) {
+        examples['Context menu using a function for items|Instead of using an array, you can use a function that returns an array.'] = function (parentNode) {
+            var grid = canvasDatagrid({
+                parentNode: parentNode,
+                data: [
+                    {col1: 'foo', col2: 0, col3: 'a'},
+                    {col1: 'bar', col2: 1, col3: 'b'},
+                    {col1: 'baz', col2: 2, col3: 'c'}
+                ]
+            });
+            grid.addEventListener('contextmenu', function (e) {
+                e.items.push({
+                    title: 'Asynchronous child context menu item',
+                    items: function (callback) {
+                        return [{
+                            title: 'I was added via a function',
+                            click: function () { return; }
+                        }];
+                    }
+                });
+            });
+        };
+        examples['Asynchronous context items|Instead of an array, you can use a function that invokes a callback.  When you invoke the callback you pass an array to it to add items to the context menu asynchronously.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 data: [
@@ -1083,7 +1104,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             tocA.innerHTML = msg[0];
             tocA.title = msg[1] || msg[0];
-            tocA.href = '#' + msg[0];
+            tocA.href = '#' + encodeURIComponent(msg[0]);
             toc.appendChild(li);
             form.method = 'post';
             hr.className = 'example-hr';
