@@ -94,6 +94,32 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         };
+        examples['Use select instead of input for edits|When a column in the schema includes an <i>enum</i> property, a drop down menu will appear instead of the normal input or textarea.'] = function (parentNode) {
+            var grid = canvasDatagrid({
+                parentNode: parentNode,
+                schema: [
+                    {
+                        name: 'col1',
+                        enum: [
+                            ['foo', 'Foo'],
+                            ['bar', 'Bar'],
+                            ['baz', 'Baz']
+                        ]
+                    },
+                    {
+                        name: 'col2'
+                    },
+                    {
+                        name: 'col3'
+                    },
+                ],
+                data: [
+                    {col1: 'foo', col2: 0, col3: 'a'},
+                    {col1: 'bar', col2: 1, col3: 'b'},
+                    {col1: 'baz', col2: 2, col3: 'c'}
+                ]
+            });
+        };
         examples['Detect clicks|Detect which cell was clicked using the <i>click</i> event.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
@@ -135,10 +161,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     parentNode: parentNode
                 });
             function parseOpenData(openData) {
-                var data, schema = [];
-                openData.meta.view.columns.forEach(function (column) {
-                    schema.push(column);
-                });
+                var data, schema = openData.meta.view.columns;
                 data = openData.data.map(function (row) {
                     var r = {};
                     schema.forEach(function (column, index) {
@@ -152,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 };
             }
             xhr.addEventListener('progress', function (e) {
-                grid.data = [{ status: 'Loading data: ' + e.loaded + ' of ' + (e.total ? e.total : 'unknown') + ' bytes...'}];
+                grid.data = [{ status: 'Loading data: ' + e.loaded + ' of ' + (e.total || 'unknown') + ' bytes...'}];
             });
             xhr.addEventListener('load', function (e) {
                 grid.data = [{ status: 'Loading data ' + e.loaded + '...'}];
@@ -242,6 +265,29 @@ document.addEventListener('DOMContentLoaded', function () {
                     title: 'You have '
                         + grid.selectedRows.filter(function (row) { return !!row; }).length
                         + ' rows selected'
+                });
+            });
+        };
+        examples['Asynchronous context items|Add items to the context menu asynchronously.'] = function (parentNode) {
+            var grid = canvasDatagrid({
+                parentNode: parentNode,
+                data: [
+                    {col1: 'foo', col2: 0, col3: 'a'},
+                    {col1: 'bar', col2: 1, col3: 'b'},
+                    {col1: 'baz', col2: 2, col3: 'c'}
+                ]
+            });
+            grid.addEventListener('contextmenu', function (e) {
+                e.items.push({
+                    title: 'Asynchronous child context menu item',
+                    items: function (callback) {
+                        setTimeout(function () {
+                            callback([{
+                                title: 'I was added later',
+                                click: function () { return; }
+                            }]);
+                        }, 500);
+                    }
                 });
             });
         };
@@ -983,6 +1029,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 openInFiddle = document.createElement('button'),
                 error = document.createElement('p'),
                 outputTitle = document.createElement('div'),
+                hr = document.createElement('hr'),
                 aceEditor,
                 hiddenFormsItems;
             function updateCode() {
@@ -1016,6 +1063,7 @@ document.addEventListener('DOMContentLoaded', function () {
             tocA.href = '#' + msg[0];
             toc.appendChild(li);
             form.method = 'post';
+            hr.className = 'example-hr';
             form.className = 'example';
             outputTitle.innerHTML = 'Output';
             form.action = 'http://jsfiddle.net/api/post/library/pure/';
@@ -1046,6 +1094,7 @@ document.addEventListener('DOMContentLoaded', function () {
             form.appendChild(editor);
             form.appendChild(outputTitle);
             form.appendChild(parentNode);
+            form.appendChild(hr);
             form.onsubmit = updateCode;
             args.parentNode.appendChild(form);
             editor.className = 'sample-editor';

@@ -933,6 +933,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         y: 0,
                         height: 0,
                         width: 0,
+                        isCorner: true,
+                        isScrollBoxCorner: true,
                         style: 'scroll-box-corner'
                     },
                     m = (self.style.scrollBarBoxMargin * 2),
@@ -1089,6 +1091,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             data: d,
                             isCorner: isCorner,
                             isHeader: isHeader,
+                            isHeaderCellCap: !!header.isHeaderCellCap,
                             isRowHeader: isRowHeader,
                             rowOpen: rowOpen,
                             header: header,
@@ -1302,6 +1305,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             name: '',
                             width: self.style.scrollBarWidth,
                             style: 'headerCellCap',
+                            isHeaderCell: true,
+                            isHeaderCellCap: true,
                             type: 'string',
                             index: s.length
                         };
@@ -2073,13 +2078,51 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.beginEditAt = function (x, y) {
             if (!self.attributes.editable) { return; }
             var cell = self.getVisibleCellByIndex(x, y),
-                s = self.getVisibleSchema();
+                s = self.getVisibleSchema(),
+                enumItems;
             if (self.dispatchEvent('beforebeginedit', {cell: cell})) { return false; }
             self.scrollIntoView(x, y);
             self.setActiveCell(x, y);
             function postDraw() {
+                var mEv, option, valueInEnum;
                 cell = self.getVisibleCellByIndex(x, y);
-                self.input = document.createElement(self.attributes.multiLine ? 'textarea' : 'input');
+                if (cell.header.enum) {
+                    self.input = document.createElement('select');
+                    // add enums
+                    if (typeof cell.header.enum === 'function') {
+                        enumItems = cell.header.enum.apply(self.intf, [{cell: cell}]);
+                    } else if (Array.isArray(cell.header.enum)) {
+                        enumItems = cell.header.enum;
+                    }
+                    enumItems.forEach(function (e) {
+                        var i = document.createElement('option'),
+                            val,
+                            title;
+                        if (Array.isArray(e)) {
+                            val = e[0];
+                            title = e[1];
+                        } else {
+                            val = e;
+                            title = e;
+                        }
+                        if (val === cell.value) { valueInEnum = true; }
+                        i.value = val;
+                        i.innerHTML = title;
+                        self.input.appendChild(i);
+                    });
+                    if (!valueInEnum) {
+                        option = document.createElement('option');
+                        option.value = cell.value;
+                        option.innerHTML = cell.value;
+                        self.input.appendChild(option);
+                    }
+                    self.input.addEventListener('change', function () {
+                        self.endEdit();
+                        self.draw(true);
+                    });
+                } else {
+                    self.input = document.createElement(self.attributes.multiLine ? 'textarea' : 'input');
+                }
                 document.body.appendChild(self.input);
                 self.createInlineStyle(self.input, 'canvas-datagrid-edit-input');
                 self.input.style.position = 'absolute';
@@ -2637,7 +2680,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
     'use strict';
     return function (self) {
-        self.intf.blur = function () {
+        self.intf.blur = function (e) {
             self.hasFocus = false;
         };
         self.intf.focus = function () {
@@ -2931,37 +2974,62 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 downArrow = document.createElement('div'),
                 children = [],
                 selectedIndex = -1,
-                intf,
+                intf = {},
                 rect;
+            if (!Array.isArray(items)) { throw new Error('createContextMenu expects an array.'); }
             function createItems() {
                 items.forEach(function (item) {
                     var contextItemContainer = document.createElement('div'),
                         childMenuArrow;
                     function removeChildContext(e) {
                         if (e.relatedTarget === container
-                                || item.contextMenu.container === e.relatedTarget) { return; }
+                                || item.contextMenu.container === e.relatedTarget
+                                || childMenuArrow === e.relatedTarget
+                                || (contextItemContainer === e.relatedTarget)
+                                ) { return; }
                         item.contextMenu.dispose();
                         children.splice(children.indexOf(item.contextMenu), 1);
                         item.contextMenu = undefined;
                         contextItemContainer.removeEventListener('mouseout', removeChildContext);
                         container.removeEventListener('mouseout', removeChildContext);
                         contextItemContainer.setAttribute('contextOpen', '0');
+                        contextItemContainer.setAttribute('opening', '0');
                     }
-                    function createChildContext() {
-                        if (contextItemContainer.getAttribute('contextOpen') === '1') {
+                    function contextAddCallback(items) {
+                        // check yet again if the user hasn't moved off
+                        if (contextItemContainer.getAttribute('opening') !== '1' ||
+                                contextItemContainer.getAttribute('contextOpen') === '1') {
                             return;
                         }
                         var cPos = contextItemContainer.getBoundingClientRect();
-                        item.contextMenu = createContextMenu(ev, {
+                        cPos = {
                             left: cPos.left + self.style.childContextMenuMarginLeft + container.offsetWidth,
                             top: cPos.top + self.style.childContextMenuMarginTop,
                             bottom: cPos.bottom,
                             right: cPos.right,
-                        }, item.items, intf);
+                        };
+                        item.contextMenu = createContextMenu(ev, cPos, items, intf);
                         contextItemContainer.setAttribute('contextOpen', '1');
                         contextItemContainer.addEventListener('mouseout', removeChildContext);
                         container.addEventListener('mouseout', removeChildContext);
                         children.push(item.contextMenu);
+                    }
+                    function createChildContext() {
+                        var i;
+                        if (contextItemContainer.getAttribute('contextOpen') === '1') {
+                            return;
+                        }
+                        contextItemContainer.setAttribute('opening', '1');
+                        if (typeof item.items === 'function') {
+                            i  = item.items.apply(intf, [function (items) {
+                                contextAddCallback(items);
+                            }]);
+                            if (i !== undefined && Array.isArray(i)) {
+                                contextAddCallback(i);
+                            }
+                            return;
+                        }
+                        contextAddCallback(item.items);
                     }
                     function addItem(item) {
                         function addContent(content) {
@@ -2990,6 +3058,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             childMenuArrow.innerHTML = self.style.childContextMenuArrowHTML;
                             contextItemContainer.appendChild(childMenuArrow);
                             contextItemContainer.addEventListener('mouseover', createChildContext);
+                            contextItemContainer.addEventListener('mouseout', function () {
+                                contextItemContainer.setAttribute('opening', '0');
+                            });
                         }
                         if (item.click) {
                             contextItemContainer.addEventListener('click', function (ev) {
@@ -3099,23 +3170,20 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 upArrow.addEventListener('mouseout', endHoverScroll('up'));
                 checkArrowVisibility();
             }
+            intf.parentContextMenu = parentContextMenu;
+            intf.container = container;
             init();
-            intf = {
-                clickIndex: clickIndex,
-                rect: rect,
-                parentContextMenu: parentContextMenu,
-                container: container,
-                items: items,
-                children: children,
-                dispose: function () {
-                    clearTimeout(hoverScrollTimeout);
-                    children.forEach(function (c) {
-                        c.dispose();
-                    });
-                    [downArrow, upArrow, container].forEach(function (el) {
-                        if (el.parentNode) { el.parentNode.removeChild(el); }
-                    });
-                }
+            intf.clickIndex = clickIndex;
+            intf.rect = rect;
+            intf.items = items;
+            intf.dispose = function () {
+                clearTimeout(hoverScrollTimeout);
+                children.forEach(function (c) {
+                    c.dispose();
+                });
+                [downArrow, upArrow, container].forEach(function (el) {
+                    if (el.parentNode) { el.parentNode.removeChild(el); }
+                });
             };
             Object.defineProperty(intf, 'selectedIndex', {
                 get: function () {
@@ -3190,6 +3258,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             self.createInlineStyle(filterLabel, 'canvas-datagrid-context-menu-label');
             self.createInlineStyle(filterAutoCompleteButton, 'canvas-datagrid-context-menu-filter-button');
+            self.createInlineStyle(filterInput, 'canvas-datagrid-context-menu-filter-input');
             filterInput.onclick = self.disposeAutocomplete;
             filterInput.addEventListener('keydown', function (e) {
                 //down
@@ -3251,7 +3320,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
         }
         function addDefaultContextMenuItem(e) {
-            if (self.attributes.showFilter) {
+            var isNormalCell = !(e.cell.isBackground || e.cell.isHeaderCellCap
+                            || e.cell.isScrollBar || e.cell.isCorner || e.cell.isRowHeader);
+            if (self.attributes.showFilter && isNormalCell) {
                 createFilterContextMenuItems(e);
             }
             if (self.attributes.showCopy
@@ -3288,7 +3359,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     }
                 });
             }
-            if (self.attributes.allowSorting && self.attributes.showOrderByOption) {
+            if (self.attributes.allowSorting && self.attributes.showOrderByOption && isNormalCell) {
                 e.items.push({
                     title: self.attributes.showOrderByOptionTextAsc.replace('%s', e.cell.header.title || e.cell.header.name),
                     click: function (ev) {
@@ -3332,23 +3403,27 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     cell: self.getCellAt(pos.x, pos.y),
                     items: items
                 };
-            addDefaultContextMenuItem(ev);
+            if (!ev.cell.isGrid) {
+                addDefaultContextMenuItem(ev);
+            }
             if (self.dispatchEvent('contextmenu', ev)) {
                 return;
             }
-            if (self.contextMenu) {
-                self.disposeContextMenu();
+            if (!ev.cell.isGrid) {
+                if (self.contextMenu) {
+                    self.disposeContextMenu();
+                }
+                self.contextMenu = createContextMenu(ev, {
+                    left: pos.x + pos.rect.left + self.style.contextMenuMarginLeft + self.canvasOffsetLeft,
+                    top: pos.y + pos.rect.top + self.style.contextMenuMarginTop + self.canvasOffsetTop,
+                    right: ev.cell.width + ev.cell.x + pos.rect.left,
+                    bottom: ev.cell.height + ev.cell.y + pos.rect.top,
+                    height: ev.cell.height,
+                    width: ev.cell.width
+                }, items);
+                document.addEventListener('click', self.disposeContextMenu);
+                e.preventDefault();
             }
-            self.contextMenu = createContextMenu(ev, {
-                left: pos.x + pos.rect.left + self.style.contextMenuMarginLeft + self.canvasOffsetLeft,
-                top: pos.y + pos.rect.top + self.style.contextMenuMarginTop + self.canvasOffsetTop,
-                right: ev.cell.width + ev.cell.x + pos.rect.left,
-                bottom: ev.cell.height + ev.cell.y + pos.rect.top,
-                height: ev.cell.height,
-                width: ev.cell.width
-            }, items);
-            document.addEventListener('click', self.disposeContextMenu);
-            e.preventDefault();
         };
         return;
     };
@@ -3465,7 +3540,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['cellSelectedColor', 'rgba(0, 0, 0, 1)'],
                 ['cellVerticalAlignment', 'center'],
                 ['cellWidthWithChildGrid', 250],
-                ['childContextMenuMarginLeft', -5],
+                ['childContextMenuMarginLeft', -15],
                 ['childContextMenuMarginTop', 0],
                 ['childContextMenuArrowHTML', '&#x25BA;'],
                 ['childContextMenuArrowColor', 'rgba(43, 48, 43, 1)'],
@@ -3497,6 +3572,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['contextFilterButtonHTML', '&#x25BC;'],
                 ['contextFilterButtonBorder', 'solid 1px rgba(158, 163, 169, 1)'],
                 ['contextFilterButtonBorderRadius', '3px'],
+                ['contextMenuFilterButtonFontFamily', 'sans-serif'],
+                ['contextMenuFilterButtonFontSize', '10px'],
+                ['contextFilterInputBackground', 'rgba(255,255,255,1)'],
+                ['contextFilterInputColor', 'rgba(0,0,0,1)'],
+                ['contextFilterInputBorder', 'solid 1px rgba(158, 163, 169, 1)'],
+                ['contextFilterInputBorderRadius', '0'],
+                ['contextFilterInputFontFamily', 'sans-serif'],
+                ['contextFilterInputFontSize', '14px'],
                 ['cornerCellBackgroundColor', 'rgba(240, 240, 240, 1)'],
                 ['cornerCellBorderColor', 'rgba(202, 202, 202, 1)'],
                 ['editCellBorder', 'solid 1px rgba(110, 168, 255, 1)'],
@@ -3603,6 +3686,20 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
     return function (self) {
         self.createInlineStyle = function (el, className) {
             var css = {
+                'canvas-datagrid-context-menu-filter-input': {
+                    height: '19px',
+                    verticalAlign: 'bottom',
+                    marginLeft: '2px',
+                    padding: '0',
+                    background: self.style.contextFilterInputBackground,
+                    color: self.style.contextFilterInputColor,
+                    border: self.style.contextFilterInputBorder,
+                    borderRadius: self.style.contextFilterInputBorderRadius,
+                    lineHeight: 'normal',
+                    fontWeight: 'normal',
+                    fontFamily: self.style.contextFilterInputFontFamily,
+                    fontSize: self.style.contextFilterInputFontSize
+                },
                 'canvas-datagrid-context-menu-filter-button': {
                     height: '19px',
                     verticalAlign: 'bottom',
@@ -3614,8 +3711,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     borderRadius: self.style.contextFilterButtonBorderRadius,
                     lineHeight: 'normal',
                     fontWeight: 'normal',
-                    fontFamily: self.style.contextMenuFontFamily,
-                    fontSize: self.style.contextMenuFontSize
+                    fontFamily: self.style.contextMenuFilterButtonFontFamily,
+                    fontSize: self.style.contextMenuFilterButtonFontSize
                 },
                 'canvas-datagrid-context-child-arrow': {
                     cssFloat: 'right',
@@ -3677,12 +3774,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     padding: '0 0 0 ' + self.style.editCellPaddingLeft + 'px',
                     lineHeight: 'normal',
                     fontWeight: 'normal',
-                    fontFamily: self.style.contextMenuFontFamily,
-                    fontSize: self.style.contextMenuFontSize,
+                    fontFamily: self.style.editCellFontFamily,
+                    fontSize: self.style.editCellFontSize,
                     boxShadow: self.style.editCellBoxShadow,
                     border: self.style.editCellBorder,
                     color: self.style.editCellColor,
-                    background: self.style.editCellBackgroundColor
+                    background: self.style.editCellBackgroundColor,
+                    appearance: 'none',
+                    webkitAppearance: 'none',
+                    mozAppearance: 'none',
+                    borderRadius: '0'
                 },
                 'canvas-datagrid-context-menu-item': {
                     lineHeight: 'normal',
@@ -3743,7 +3844,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.intf.offsetParent = self.parentNode;
             } else {
                 self.controlInput = document.createElement('input');
-                self.controlInput.onblur = self.blur;
+                self.controlInput.onblur = self.intf.blur;
                 self.createInlineStyle(self.controlInput, 'canvas-datagrid-control-input');
                 self.isChildGrid = false;
                 self.parentDOMNode = self.parentNode;
@@ -4472,6 +4573,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     if (/vertical-scroll-(bar|box)/.test(cell.style)) {
                         cell.dragContext = 'vertical-scroll-box';
                         cell.context = 'vertical-scroll-box';
+                        cell.isScrollBar = true;
+                        cell.isVerticalScrollBar = true;
                         if (y > self.scrollBox.box.v.y + self.scrollBox.scrollBoxHeight) {
                             cell.dragContext = 'vertical-scroll-bottom';
                             cell.context = 'vertical-scroll-bottom';
@@ -4485,6 +4588,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     if (/horizontal-scroll-(bar|box)/.test(cell.style)) {
                         cell.dragContext = 'horizontal-scroll-box';
                         cell.context = 'horizontal-scroll-box';
+                        cell.isScrollBar = true;
+                        cell.isHorizontalScrollBar = true;
                         if (x > self.scrollBox.box.h.x + self.scrollBox.scrollBoxWidth) {
                             cell.dragContext = 'horizontal-scroll-right';
                             cell.context = 'horizontal-scroll-right';
@@ -4544,9 +4649,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     return cell;
                 }
             }
-            self.hasFocus = false;
+            self.hasFocus = true;
+            self.canvas.style.cursor = 'default';
             return {
-                context: 'inherit'
+                dragContext: 'background',
+                context: 'background',
+                style: 'background',
+                isBackground: true
             };
         };
         /**
