@@ -105,6 +105,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         };
+        examples['Use a textarea to edit cells instead of an input.'] = function (parentNode) {
+            var grid = canvasDatagrid({
+                parentNode: parentNode,
+                multiLine: true,
+                data: [
+                    {col1: 'foo\nbar', col2: 0, col3: 'a'},
+                    {col1: 'bar\nfoo\nbar', col2: 1, col3: 'b'},
+                    {col1: 'baz\nfoo\nbar', col2: 2, col3: 'c'}
+                ]
+            });
+            grid.style.cellHeight = 80;
+        };
         examples['Use select instead of input for edits|When a column in the schema includes an <i>enum</i> property, a drop down menu will appear instead of the normal input or textarea.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
