@@ -1,6 +1,10 @@
 Canvas Data Grid
 ================
 
+[Demo](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html)
+
+![canvas-datagrid](https://tonygermaneri.github.io/canvas-datagrid/images/datagrid1.png)
+
 * High performance hierarchal canvas based data grid.
 * Support for millions of rows and columns.
 * Extensible styling, filtering, formatting, resizing, selecting, and ordering.
@@ -12,8 +16,6 @@ Canvas Data Grid
 * Rich API of events, methods and properties optimized for CRUD, reporting and work flow applications.
 * Zero dependencies, very small code base, distributed as a single ~80k (~20k gziped) file.
 
-[Demo](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html)
-
 [Make your own custom styles](https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html)
 
 [Documentation](https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDataGrid.html)
@@ -23,6 +25,7 @@ Canvas Data Grid
 [Download latest version (minified)](https://tonygermaneri.github.io/canvas-datagrid/dist/canvas-datagrid.js)
 
 [Source Code](https://github.com/TonyGermaneri/canvas-datagrid)
+
 
 Installation
 ============
