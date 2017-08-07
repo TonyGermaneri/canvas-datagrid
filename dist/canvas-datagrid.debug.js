@@ -1,4 +1,14 @@
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["canvasDatagrid"] = factory();
+	else
+		root["canvasDatagrid"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -656,7 +666,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.init();
         return self.intf;
     }
-    if (window && !window.canvasDatagrid) {
+    if (window && !window.canvasDatagrid && !window.require) {
         window.canvasDatagrid = grid;
     }
     module.exports = grid;
@@ -1172,7 +1182,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                                 cell.grid = self.childGrids[cell.gridId];
                                 cell.grid.parentNode = cell;
                                 cell.grid.visible = true;
-                                cell.grid.draw();
+                                //cell.grid.resize(true);
                                 self.dispatchEvent('rendercellgrid', ev);
                             } else {
                                 if (self.childGrids[cell.gridId]) {
@@ -1808,15 +1818,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.height = self.parentNode.offsetHeight;
                 self.width = self.parentNode.offsetWidth;
             } else {
-                self.height = self.parentDOMNode.offsetHeight - (self.style.scrollBarBoxMargin * 2);
-                self.width = self.parentDOMNode.offsetWidth - (self.style.scrollBarBoxMargin * 2);
                 self.parentNode = self.parentDOMNode;
-                self.canvas.height = self.height * window.devicePixelRatio;
-                self.canvas.width = self.width * window.devicePixelRatio;
-                self.canvas.style.height = self.height + 'px';
-                self.canvas.style.width = self.width + 'px';
-                self.canvasOffsetTop = 0;
-                self.canvasOffsetLeft = 0;
+                if (!self.parentIsCanvas) {
+                    self.height = self.parentDOMNode.offsetHeight;
+                    self.width = self.parentDOMNode.offsetWidth;
+                    self.canvas.height = self.height * window.devicePixelRatio;
+                    self.canvas.width = self.width * window.devicePixelRatio;
+                    self.canvas.style.height = self.height + 'px';
+                    self.canvas.style.width = self.width + 'px';
+                }
+                self.canvasOffsetTop = self.args.canvasOffsetTop || 0;
+                self.canvasOffsetLeft = self.args.canvasOffsetLeft || 0;
             }
             scrollHeight = self.data.reduce(function reduceData(accumulator, row) {
                 return accumulator
@@ -2822,12 +2834,29 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.intf.attributes = {};
         self.intf.formatters = self.formatters;
         self.normalizeDataset = function (data) {
-            if (!Array.isArray(data)) {
-                throw new Error('Data must be an array of objects or arrays.');
+            var i, d, max;
+            if (data === null || data === '' || data === undefined) {
+                return [];
             }
             if ((typeof data[0] === 'object' && data[0] !== null)
                             || (Array.isArray(data) && data.length === 0)) {
                 return data;
+            }
+            if (typeof data === 'number'
+                    || typeof data === 'boolean'
+                    || data !== null) {
+                data = [{a: data}];
+            }
+            if (typeof data === 'function') {
+                i = data.apply(self.intf, [function (d) {
+                    self.normalizeDataset(d);
+                }]);
+                if (i) {
+                    self.normalizeDataset(i);
+                }
+            }
+            if (typeof data === 'object') {
+                data = [data];
             }
             if (Array.isArray(data)) {
                 if (!Array.isArray(data[0])) {
@@ -2835,7 +2864,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     data = [data];
                 }
                 // find the longest length
-                var max = 0, d = [];
+                max = 0;
+                d = [];
                 data.forEach(function (row) {
                     max = Math.max(max, row.length);
                 });
@@ -3170,6 +3200,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 upArrow.addEventListener('mouseout', endHoverScroll('up'));
                 checkArrowVisibility();
             }
+            intf.parentGrid = self.intf;
             intf.parentContextMenu = parentContextMenu;
             intf.container = container;
             init();
@@ -3850,11 +3881,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.isChildGrid = false;
                 self.parentDOMNode = self.parentNode;
                 self.parentNode = self.parentDOMNode;
-                self.canvas = document.createElement('canvas');
+                self.parentIsCanvas = /canvas/i.test(self.parentDOMNode.tagName);
+                if (self.parentIsCanvas) {
+                    self.canvas = self.parentDOMNode;
+                } else {
+                    self.canvas = document.createElement('canvas');
+                    self.parentDOMNode.appendChild(self.canvas);
+                }
                 self.ctx = self.canvas.getContext('2d');
                 self.ctx.textBaseline = 'alphabetic';
-                self.parentDOMNode.appendChild(self.canvas);
-                self.parentDOMNode.appendChild(self.controlInput);
+                document.body.appendChild(self.controlInput);
                 self.eventParent = self.canvas;
             }
             self.controlInput.addEventListener('blur', function (e) {
@@ -4856,4 +4892,5 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 
 /***/ })
 /******/ ]);
+});
 //# sourceMappingURL=canvas-datagrid.debug.map
