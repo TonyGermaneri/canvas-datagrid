@@ -10,10 +10,17 @@
             min-height: 100%;
         }
         .sample-aside {
-            width: 20%;
+            width: 270px;
+            position: fixed;
+            right: 0;
+            overflow-y: scroll;
+            top: 41px;
+            height: calc(100% - 41px);
+            order: 2;
         }
         .sample-content {
-            width: 80%;
+            width: calc(100% - 270px);
+            order: 1;
         }
         .sample-selected {
             text-decoration: underline;
@@ -24,9 +31,8 @@
             margin-bottom: 150px;
         }
         .samples-toc {
-            position: fixed;
-            overflow-y: auto;
-            height: 91%;
+            padding-top: 0;
+            margin: 0;
         }
         .example button {
             margin-right: 5px;
@@ -50,11 +56,20 @@
             border: solid 1px #ccc;
         }
         @media (max-width: 700px) {
-            .samples-toc {
-                position: inherit;
+            .sample-container {
+                flex-direction: column;
+                display: flex;
             }
-            .example {
-
+            .sample-aside {
+                width: 100%;
+                position: static;
+                order: 1;
+                overflow-y: hidden;
+            }
+            .sample-content {
+                width: 98%;
+                position: static;
+                order: 2;
             }
         }
     </style>

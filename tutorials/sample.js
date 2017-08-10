@@ -10,19 +10,14 @@ document.addEventListener('DOMContentLoaded', function () {
             throw new Error('Parent node required');
         }
         var examples = {},
-            title = document.createElement('h1'),
+            title = document.createElement('div'),
             aside = document.createElement('div'),
             toc = document.createElement('ul'),
             forms = document.createElement('div');
-        title.innerHTML = 'Tutorials';
+        title.innerHTML = '<h1>Tutorials</h1><br>The following tutorials demonstrate some of the basic features of canvas-datagrid.  Each tutorial is setup to display the grid in the box just below the tutorial code.  In the tutorial code <i>parentNode</i> is a reference to the box (<i>div { height: 300px; } </i>) just below the code.  You can modify and execute the code in each tutorial or open it up in JS Fiddle.';
         toc.className = 'samples-toc';
         aside.className = 'sample-aside';
         forms.className = 'sample-content';
-        [args.parentNode].forEach(function (el) {
-            el.style.display = 'flex';
-            el.style.flexDirection = 'row';
-            el.style.flex = 'auto';
-        });
         args.parentNode.appendChild(forms);
         args.parentNode.appendChild(aside);
         forms.appendChild(title);
@@ -403,8 +398,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     {col1: 'baz', col2: 2, col3: 'c'}
                 ]
             });
-            grid.style.headerCellBackgroundColor = 'dodgerblue';
-            grid.style.headerCellColor = 'white';
+            grid.style.columnHeaderCellBackgroundColor = 'dodgerblue';
+            grid.style.columnHeaderCellColor = 'white';
         };
         examples['Canvas fill styles|An example of using complex fill styles on the canvas.'] = function (parentNode) {
             var grid = canvasDatagrid({
@@ -987,7 +982,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     d[x][n] = x * y;
                 }
             }
-            grid.style.headerCellHorizontalAlignment = 'center';
+            grid.style.columnHeaderCellHorizontalAlignment = 'center';
             grid.data = d;
         };
         examples['Add 10,000 random rows|Because why not?'] = function (parentNode) {
@@ -1160,9 +1155,18 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
     var i = document.createElement('div');
+    i.className = 'sample-container';
     document.body.appendChild(i);
     createSample({
         parentNode: i
     });
     window.dispatchEvent(new Event('scroll'));
+    // remove jsdoc boilershit
+    (function () {
+        var c = document.querySelector('.container'),
+            d = document.querySelector('footer');
+        [c, d].forEach(function (el) {
+            //if (el && el.parentNode) { el.parentNode.removeChild(el); }
+        });
+    }());
 });
