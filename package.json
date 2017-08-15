@@ -1,6 +1,6 @@
 {
   "name": "canvas-datagrid",
-  "version": "0.14.2",
+  "version": "0.14.3",
   "description": "Canvas based data grid",
   "main": "./lib/main.js",
   "scripts": {
@@ -53,13 +53,14 @@
   },
   "homepage": "https://github.com/TonyGermaneri/canvas-datagrid#readme",
   "devDependencies": {
+    "async": "^2.5.0",
     "ink-docstrap": "git+ssh://git@github.com:TonyGermaneri/docstrap.git#v1.2.6",
-    "node-coveralls": "git@github.com:nickmerwin/node-coveralls.git",
     "istanbul": "^0.4.5",
     "jsdoc": "^3.4.3",
     "mocha": "^3.5.0",
     "mocha-phantomjs": "^4.1.0",
     "mocha-phantomjs-core": "^2.1.2",
+    "node-coveralls": "git@github.com:nickmerwin/node-coveralls.git",
     "phantomjs": "^2.1.7",
     "should": "^11.2.1",
     "webpack": "^3.0.0"
