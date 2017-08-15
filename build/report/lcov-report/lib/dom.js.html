@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for lib/dom.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">lib/</a> dom.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">80% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>48/60</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">50% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>7/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">70% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>7/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">80% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>48/60</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jslint browser: true, unparam: true, todo: true*/
+/*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
+define([], function () {
+    'use strict';
+    return function (self) {
+        self.createInlineStyle = function (el, className) {
+            var css = {
+                'canvas-datagrid-context-menu-filter-input': {
+                    height: '19px',
+                    verticalAlign: 'bottom',
+                    marginLeft: '2px',
+                    padding: '0',
+                    background: self.style.contextFilterInputBackground,
+                    color: self.style.contextFilterInputColor,
+                    border: self.style.contextFilterInputBorder,
+                    borderRadius: self.style.contextFilterInputBorderRadius,
+                    lineHeight: 'normal',
+                    fontWeight: 'normal',
+                    fontFamily: self.style.contextFilterInputFontFamily,
+                    fontSize: self.style.contextFilterInputFontSize
+                },
+                'canvas-datagrid-context-menu-filter-button': {
+                    height: '19px',
+                    verticalAlign: 'bottom',
+                    marginLeft: '2px',
+                    padding: '0',
+                    background: self.style.contextMenuBackground,
+                    color: self.style.contextMenuColor,
+                    border: self.style.contextFilterButtonBorder,
+                    borderRadius: self.style.contextFilterButtonBorderRadius,
+                    lineHeight: 'normal',
+                    fontWeight: 'normal',
+                    fontFamily: self.style.contextMenuFilterButtonFontFamily,
+                    fontSize: self.style.contextMenuFilterButtonFontSize
+                },
+                'canvas-datagrid-context-child-arrow': {
+                    cssFloat: 'right',
+                    color: self.style.childContextMenuArrowColor,
+                    fontSize: self.style.contextMenuChildArrowFontSize,
+                    fontFamily: self.style.contextMenuFontFamily,
+                    verticalAlign: 'middle'
+                },
+                'canvas-datagrid-autocomplete': {
+                    fontFamily: self.style.contextMenuFontFamily,
+                    fontSize: self.style.contextMenuFontSize,
+                    background: self.style.contextMenuBackground,
+                    color: self.style.contextMenuColor,
+                    border: self.style.contextMenuBorder,
+                    padding: self.style.contextMenuPadding,
+                    borderRadius: self.style.contextMenuBorderRadius,
+                    opacity: self.style.contextMenuOpacity,
+                    position: 'absolute',
+                    zIndex: 3,
+                    overflow: 'hidden'
+                },
+                'canvas-datagrid-autocomplete-item': {
+                    background: self.style.contextMenuBackground,
+                    color: self.style.contextMenuColor
+                },
+                'canvas-datagrid-autocomplete-item:hover': {
+                    background: self.style.contextMenuHoverBackground,
+                    color: self.style.contextMenuHoverColor
+                },
+                'canvas-datagrid-canvas': {
+                    position: 'absolute',
+                    zIndex: '-1'
+                },
+                'canvas-datagrid': {
+                    position: 'absolute',
+                    background: self.style.backgroundColor,
+                    zIndex: '1',
+                    boxSizing: 'content-box',
+                    padding: '0'
+                },
+                'canvas-datagrid-control-input': {
+                    position: 'fixed',
+                    top: '-5px',
+                    left: '-5px',
+                    border: 'none',
+                    opacity: '0',
+                    cursor: 'pointer',
+                    width: '1px',
+                    height: '1px',
+                    lineHeight: 'normal',
+                    fontWeight: 'normal',
+                    fontFamily: self.style.contextMenuFontFamily,
+                    fontSize: self.style.contextMenuFontSize
+                },
+                'canvas-datagrid-edit-input': {
+                    boxSizing: 'content-box',
+                    outline: 'none',
+                    margin: '0',
+                    padding: '0 0 0 ' + self.style.editCellPaddingLeft + 'px',
+                    lineHeight: 'normal',
+                    fontWeight: 'normal',
+                    fontFamily: self.style.editCellFontFamily,
+                    fontSize: self.style.editCellFontSize,
+                    boxShadow: self.style.editCellBoxShadow,
+                    border: self.style.editCellBorder,
+                    color: self.style.editCellColor,
+                    background: self.style.editCellBackgroundColor,
+                    appearance: 'none',
+                    webkitAppearance: 'none',
+                    mozAppearance: 'none',
+                    borderRadius: '0'
+                },
+                'canvas-datagrid-context-menu-item': {
+                    lineHeight: 'normal',
+                    fontWeight: 'normal',
+                    fontFamily: self.style.contextMenuFontFamily,
+                    fontSize: self.style.contextMenuFontSize,
+                    color: 'inherit',
+                    background: 'inherit',
+                    margin: self.style.contextMenuItemMargin,
+                    borderRadius: self.style.contextMenuItemBorderRadius,
+                    verticalAlign: 'middle'
+                },
+                'canvas-datagrid-context-menu-item:hover': {
+                    background: self.style.contextMenuHoverBackground,
+                    color: self.style.contextMenuHoverColor
+                },
+                'canvas-datagrid-context-menu-label': {
+                    margin: self.style.contextMenuLabelMargin,
+                    display: self.style.contextMenuLabelDisplay,
+                    minWidth: self.style.contextMenuLabelMinWidth,
+                    maxWidth: self.style.contextMenuLabelMaxWidth
+                },
+                'canvas-datagrid-context-menu': {
+                    lineHeight: 'normal',
+                    fontWeight: 'normal',
+                    fontFamily: self.style.contextMenuFontFamily,
+                    fontSize: self.style.contextMenuFontSize,
+                    background: self.style.contextMenuBackground,
+                    color: self.style.contextMenuColor,
+                    border: self.style.contextMenuBorder,
+                    padding: self.style.contextMenuPadding,
+                    borderRadius: self.style.contextMenuBorderRadius,
+                    opacity: self.style.contextMenuOpacity,
+                    overflow: 'hidden'
+                },
+                'canvas-datagrid-invalid-search-regExp': {
+                    background: self.style.contextMenuFilterInvalidExpresion
+                }
+            };
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (css[className]) {
+                Object.keys(css[className]).map(function (prop) {
+                    el.style[prop] = css[className][prop];
+                });
+            }
+            return;
+        };
+        self.appendTo = function (n) {
+            self.parentNode = n;
+            self.height = self.parentNode.offsetHeight;
+            self.width = self.parentNode.offsetWidth;
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.parentNode &amp;&amp; /canvas-datagrid-(cell|tree)/.test(self.parentNode.nodeType)) {
+<span class="cstat-no" title="statement not covered" >                self.isChildGrid = true;</span>
+<span class="cstat-no" title="statement not covered" >                self.parentGrid = self.parentNode.parentGrid;</span>
+<span class="cstat-no" title="statement not covered" >                self.ctx = self.parentGrid.context;</span>
+<span class="cstat-no" title="statement not covered" >                self.canvas = self.parentGrid.canvas;</span>
+<span class="cstat-no" title="statement not covered" >                self.controlInput = self.parentGrid.controlInput;</span>
+<span class="cstat-no" title="statement not covered" >                self.eventParent = self.canvas;</span>
+<span class="cstat-no" title="statement not covered" >                self.intf.offsetParent = self.parentNode;</span>
+            } else {
+                self.controlInput = document.createElement('input');
+                self.controlInput.onblur = self.intf.blur;
+                self.createInlineStyle(self.controlInput, 'canvas-datagrid-control-input');
+                self.isChildGrid = false;
+                self.parentDOMNode = self.parentNode;
+                self.parentNode = self.parentDOMNode;
+                self.parentIsCanvas = /canvas/i.test(self.parentDOMNode.tagName);
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (self.parentIsCanvas) {
+<span class="cstat-no" title="statement not covered" >                    self.canvas = self.parentDOMNode;</span>
+                } else {
+                    self.canvas = document.createElement('canvas');
+                    self.parentDOMNode.appendChild(self.canvas);
+                }
+                self.ctx = self.canvas.getContext('2d');
+                self.ctx.textBaseline = 'alphabetic';
+                document.body.appendChild(self.controlInput);
+                self.eventParent = self.canvas;
+            }
+            self.controlInput.addEventListener('blur', <span class="fstat-no" title="function not covered" >function (e) {</span>
+<span class="cstat-no" title="statement not covered" >                if (e.target !== self.canvas) {</span>
+<span class="cstat-no" title="statement not covered" >                    self.hasFocus = false;</span>
+                }
+            });
+            window.addEventListener('resize', self.resize);
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (MutationObserver) {
+                self.observer = new MutationObserver(<span class="fstat-no" title="function not covered" >function (mutations) {</span>
+<span class="cstat-no" title="statement not covered" >                    mutations.forEach(<span class="fstat-no" title="function not covered" >function (mutation) {</span></span>
+<span class="cstat-no" title="statement not covered" >                        self.resize(true);</span>
+                    });
+                });
+                [self.canvas.parentNode].forEach(function (el) {
+                    self.observer.observe(el, { attributes: true });
+                });
+            }
+            self.eventParent.addEventListener('scroll', self.resize, false);
+            self.eventParent.addEventListener('touchstart', self.touchstart, false);
+            self.eventParent.addEventListener('mouseup', self.mouseup, false);
+            self.eventParent.addEventListener('mousedown', self.mousedown, false);
+            self.eventParent.addEventListener('dblclick', self.dblclick, false);
+            self.eventParent.addEventListener('click', self.click, false);
+            self.eventParent.addEventListener('mousemove', self.mousemove);
+            self.eventParent.addEventListener('wheel', self.scrollWheel, false);
+            self.canvas.addEventListener('contextmenu', self.contextmenuEvent, false);
+            (self.isChildGrid ? <span class="branch-0 cbranch-no" title="branch not covered" >self.parentGrid </span>: document).addEventListener('copy', self.copy);
+            self.controlInput.addEventListener('keypress', self.keypress, false);
+            self.controlInput.addEventListener('keyup', self.keyup, false);
+            self.controlInput.addEventListener('keydown', self.keydown, false);
+        };
+        self.setDom = function () {
+            self.appendTo(self.args.parentNode);
+        };
+    };
+});
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Aug 14 2017 23:22:21 GMT-0700 (PDT)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
