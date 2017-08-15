@@ -4112,7 +4112,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          */
         self.assertPxColor = function (x, y, expected, callback) {
             var d = self.ctx.getImageData(x, y, 1, 1).data;
-            d = 'rgba(' + [d['0'], d['1'], d['2'], d['3']].join(', ') + ')';
+            d = 'rgb(' + [d['0'], d['1'], d['2']].join(', ') + ')';
             if (expected) {
                 if (d !== expected) {
                     throw new Error('Expected color ' + expected + ' but got color ' + d);
