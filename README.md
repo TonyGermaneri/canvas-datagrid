@@ -24,6 +24,8 @@ Canvas Data Grid
 
 [Download latest version (minified)](https://tonygermaneri.github.io/canvas-datagrid/dist/canvas-datagrid.js)
 
+[Test Coverage](https://tonygermaneri.github.io/canvas-datagrid/build/report/lcov-report/index.html)
+
 [Source Code](https://github.com/TonyGermaneri/canvas-datagrid)
 
 
@@ -70,8 +72,8 @@ var grid = canvasDatagrid({
 });
 ```
 
-Building
-========
+Building & Testing
+==================
 <details>
 To build production version.
 
@@ -89,5 +91,11 @@ To build documentation
 
 ```shell
 npm run-script build-docs
+```
+
+To run tests
+
+```shell
+npm test
 ```
 </details>
