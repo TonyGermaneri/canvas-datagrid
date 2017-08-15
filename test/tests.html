@@ -4,10 +4,19 @@
         <meta charset="utf-8">
         <title>Mocha Tests</title>
         <link href="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.css" rel="stylesheet" />
+        <style>
+            #coverage {
+                font: 20px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+                position: fixed;
+                right: 70px;
+                top: 0;
+            }
+        </style>
     </head>
     <body>
+        <a id="coverage" href="https://tonygermaneri.github.io/canvas-datagrid/build/report/lcov-report/index.html">Latest Coverage Report</a>
         <div id="mocha"></div>
-        <div id="grid"></div>
+        <div id="grid"><div></div></div>
         <script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
         <script>
             mocha.setup('bdd');
@@ -29,7 +38,11 @@
                 vertical-align: top;
             }
             #grid {
+                height: 80%;
                 margin-top: 70px;
+            }
+            #grid div {
+                height: 100px;
             }
         </style>
         
