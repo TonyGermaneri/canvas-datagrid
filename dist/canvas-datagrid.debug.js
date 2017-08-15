@@ -410,7 +410,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 if (/vertical/.test(u.context)) {
                     self.ctx.fillStyle = self.style.scrollBarActiveColor;
                 }
-                if (vb.width < v.width) {
+                if (vb.height < v.height) {
                     radiusRect(vb.x, vb.y, vb.width, vb.height, self.style.scrollBarBoxBorderRadius);
                     self.ctx.stroke();
                     self.ctx.fill();
@@ -1763,6 +1763,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.scrollGrid = function (e) {
             var pos = self.getLayerPos(e);
+            if (self.attributes.scrollPointerLock && self.pointerLockPosition
+                    && ['horizontal-scroll-box', 'vertical-scroll-box'].indexOf(self.scrollStartMode) !== -1) {
+                self.pointerLockPosition.x += e.movementX;
+                self.pointerLockPosition.y += e.movementY;
+                pos = self.pointerLockPosition;
+            }
             self.scrollMode = self.getCellAt(pos.x, pos.y).context;
             if (self.scrollMode === 'horizontal-scroll-box' && self.scrollStartMode !== 'horizontal-scroll-box') {
                 self.scrollStartMode = 'horizontal-scroll-box';
@@ -1813,6 +1819,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.stopScrollGrid = function () {
             clearTimeout(self.scrollTimer);
+            document.exitPointerLock();
             document.body.removeEventListener('mousemove', self.scrollGrid, false);
         };
         self.dragReorder = function (e) {
@@ -1900,6 +1907,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.scrollMode = self.dragStartObject.context;
                 self.scrollStartMode = self.dragStartObject.context;
                 self.scrollGrid(e);
+                if (self.attributes.scrollPointerLock
+                        && ['horizontal-scroll-box', 'vertical-scroll-box'].indexOf(self.scrollStartMode) !== -1) {
+                    self.pointerLockPosition = {
+                        x: self.dragStart.x,
+                        y: self.dragStart.y
+                    };
+                    self.canvas.requestPointerLock();
+                }
                 document.body.addEventListener('mousemove', self.scrollGrid, false);
                 document.body.addEventListener('mouseup', self.stopScrollGrid, false);
                 self.ignoreNextClick = true;
@@ -1967,8 +1982,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (e.keyCode === 'Tab') {
                 e.preventDefault();
             }
+            // ctrl + a
+            if (ctrl && e.keyCode === 65) {
+                self.selectAll();
             //ArrowDown
-            if (e.keyCode === 40) {
+            } else if (e.keyCode === 40) {
                 y += 1;
             //ArrowUp
             } else if (e.keyCode === 38) {
@@ -2986,6 +3004,128 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.dispatchEvent('datachanged', {data: self.data});
             }
         });
+        self.initScrollBox = function () {
+            var sHeight = 0,
+                sWidth = 0,
+                scrollTop = 0,
+                scrollLeft = 0,
+                scrollHeight = 0,
+                scrollWidth = 0,
+                scrollBoxHeight = 20,
+                scrollBoxWidth = 20;
+            function setScrollTop(value, preventScrollEvent) {
+                if (isNaN(value)) {
+                    throw new Error('ScrollTop value must be a number');
+                }
+                if (value < 0) {
+                    value = 0;
+                }
+                if (value > scrollHeight) {
+                    value = scrollHeight;
+                }
+                if (scrollHeight < 0) {
+                    value = 0;
+                }
+                scrollTop = value;
+                if (!preventScrollEvent) {
+                    self.scroll();
+                }
+            }
+            function setScrollLeft(value, preventScrollEvent) {
+                if (isNaN(value)) {
+                    throw new Error('ScrollLeft value must be a number');
+                }
+                if (value < 0) {
+                    value = 0;
+                }
+                if (value > scrollWidth) {
+                    value = scrollWidth;
+                }
+                if (scrollWidth < 0) {
+                    value = 0;
+                }
+                scrollLeft = value;
+                if (!preventScrollEvent) {
+                    self.scroll();
+                }
+            }
+            self.scrollBox.scrollTo = function (x, y) {
+                setScrollLeft(x, true);
+                setScrollTop(y);
+            };
+            Object.defineProperty(self.scrollBox, 'scrollBoxHeight', {
+                get: function () {
+                    return scrollBoxHeight;
+                },
+                set: function (value) {
+                    scrollBoxHeight = value;
+                }
+            });
+            Object.defineProperty(self.scrollBox, 'scrollBoxWidth', {
+                get: function () {
+                    return scrollBoxWidth;
+                },
+                set: function (value) {
+                    scrollBoxWidth = value;
+                }
+            });
+            Object.defineProperty(self.scrollBox, 'height', {
+                get: function () {
+                    return sHeight;
+                },
+                set: function (value) {
+                    if (scrollHeight < value) {
+                        scrollTop = 0;
+                    }
+                    sHeight = value;
+                }
+            });
+            Object.defineProperty(self.scrollBox, 'width', {
+                get: function () {
+                    return sWidth;
+                },
+                set: function (value) {
+                    sWidth = value;
+                }
+            });
+            Object.defineProperty(self.scrollBox, 'scrollTop', {
+                get: function () {
+                    return scrollTop;
+                },
+                set: setScrollTop
+            });
+            Object.defineProperty(self.scrollBox, 'scrollLeft', {
+                get: function () {
+                    return scrollLeft;
+                },
+                set: setScrollLeft
+            });
+            Object.defineProperty(self.scrollBox, 'scrollHeight', {
+                get: function () {
+                    return scrollHeight;
+                },
+                set: function (value) {
+                    if (scrollTop > value) {
+                        scrollTop = Math.max(value, 0);
+                    }
+                    if (scrollHeight < sHeight) {
+                        scrollTop = 0;
+                    }
+                    scrollHeight = value;
+                }
+            });
+            Object.defineProperty(self.scrollBox, 'scrollWidth', {
+                get: function () {
+                    return scrollWidth;
+                },
+                set: function (value) {
+                    if (scrollLeft > value) {
+                        scrollLeft = Math.max(value, 0);
+                    }
+                    scrollWidth = value;
+                }
+            });
+        };
         return;
     };
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
@@ -3537,12 +3677,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['touchScrollZone', 40],
                 ['copyText', 'Copy'],
                 ['showCopy', true],
-                ['columnHeaderClickBehavior', 'sort']
+                ['columnHeaderClickBehavior', 'sort'],
+                ['scrollPointerLock', true]
             ],
             styles: [
                 ['activeCellBackgroundColor', 'rgba(255, 255, 255, 1)'],
                 ['activeCellBorderColor', 'rgba(110, 168, 255, 1)'],
-                ['activeCellBorderWidth', 0.5],
+                ['activeCellBorderWidth', 0.25],
                 ['activeCellColor', 'rgba(0, 0, 0, 1)'],
                 ['activeCellFont', '16px sans-serif'],
                 ['activeCellHoverBackgroundColor', 'rgba(255, 255, 255, 1)'],
@@ -3685,7 +3826,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['scrollBarBackgroundColor', 'rgba(240, 240, 240, 1)'],
                 ['scrollBarBorderColor', 'rgba(202, 202, 202, 1)'],
                 ['scrollBarBorderWidth', 0.5],
-                ['scrollBarBoxBorderRadius', 3],
+                ['scrollBarBoxBorderRadius', 4.125],
                 ['scrollBarBoxColor', 'rgba(192, 192, 192, 1)'],
                 ['scrollBarBoxMargin', 2],
                 ['scrollBarBoxMinSize', 15],
@@ -3935,129 +4076,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.setDom = function () {
             self.appendTo(self.args.parentNode);
-        };
-        self.initScrollBox = function () {
-            var sHeight = 0,
-                sWidth = 0,
-                scrollTop = 0,
-                scrollLeft = 0,
-                scrollHeight = 0,
-                scrollWidth = 0,
-                scrollBoxHeight = 20,
-                scrollBoxWidth = 20;
-            function setScrollTop(value, preventScrollEvent) {
-                if (isNaN(value)) {
-                    throw new Error('ScrollTop value must be a number');
-                }
-                if (value < 0) {
-                    value = 0;
-                }
-                if (value > scrollHeight) {
-                    value = scrollHeight;
-                }
-                if (scrollHeight < 0) {
-                    value = 0;
-                }
-                scrollTop = value;
-                if (!preventScrollEvent) {
-                    self.scroll();
-                }
-            }
-            function setScrollLeft(value, preventScrollEvent) {
-                if (isNaN(value)) {
-                    throw new Error('ScrollLeft value must be a number');
-                }
-                if (value < 0) {
-                    value = 0;
-                }
-                if (value > scrollWidth) {
-                    value = scrollWidth;
-                }
-                if (scrollWidth < 0) {
-                    value = 0;
-                }
-                scrollLeft = value;
-                if (!preventScrollEvent) {
-                    self.scroll();
-                }
-            }
-            self.scrollBox.scrollTo = function (x, y) {
-
-                setScrollLeft(x, true);
-                setScrollTop(y);
-            };
-            Object.defineProperty(self.scrollBox, 'scrollBoxHeight', {
-                get: function () {
-                    return scrollBoxHeight;
-                },
-                set: function (value) {
-                    scrollBoxHeight = value;
-                }
-            });
-            Object.defineProperty(self.scrollBox, 'scrollBoxWidth', {
-                get: function () {
-                    return scrollBoxWidth;
-                },
-                set: function (value) {
-                    scrollBoxWidth = value;
-                }
-            });
-            Object.defineProperty(self.scrollBox, 'height', {
-                get: function () {
-                    return sHeight;
-                },
-                set: function (value) {
-                    if (scrollHeight < value) {
-                        scrollTop = 0;
-                    }
-                    sHeight = value;
-                }
-            });
-            Object.defineProperty(self.scrollBox, 'width', {
-                get: function () {
-                    return sWidth;
-                },
-                set: function (value) {
-                    sWidth = value;
-                }
-            });
-            Object.defineProperty(self.scrollBox, 'scrollTop', {
-                get: function () {
-                    return scrollTop;
-                },
-                set: setScrollTop
-            });
-            Object.defineProperty(self.scrollBox, 'scrollLeft', {
-                get: function () {
-                    return scrollLeft;
-                },
-                set: setScrollLeft
-            });
-            Object.defineProperty(self.scrollBox, 'scrollHeight', {
-                get: function () {
-                    return scrollHeight;
-                },
-                set: function (value) {
-                    if (scrollTop > value) {
-                        scrollTop = Math.max(value, 0);
-                    }
-                    if (scrollHeight < sHeight) {
-                        scrollTop = 0;
-                    }
-                    scrollHeight = value;
-                }
-            });
-            Object.defineProperty(self.scrollBox, 'scrollWidth', {
-                get: function () {
-                    return scrollWidth;
-                },
-                set: function (value) {
-                    if (scrollLeft > value) {
-                        scrollLeft = Math.max(value, 0);
-                    }
-                    scrollWidth = value;
-                }
-            });
         };
     };
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
@@ -4365,6 +4383,27 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 columnIndex: x
             };
         };
+        /**
+         * Selects every visible cell.
+         * @memberof canvasDataGrid
+         * @name selectAll
+         * @method
+         */
+        self.selectAll = function () {
+            self.selectArea({
+                top: 0,
+                left: 0,
+                right: self.getVisibleSchema().length - 1,
+                bottom: self.data.length - 1
+            });
+        };
+        /**
+         * Returns true if the selected columnIndex is selected on every row.
+         * @memberof canvasDataGrid
+         * @name isColumnSelected
+         * @method
+         * @param {number} columnIndex The column index to check.
+         */
         self.isColumnSelected = function (columnIndex) {
             var colIsSelected = true;
             self.data.forEach(function (row, rowIndex) {
@@ -4379,8 +4418,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @memberof canvasDataGrid
          * @name selectColumn
          * @method
-         * @param {number} columnIndex The row index to select.
+         * @param {number} columnIndex The column index to select.
          * @param {boolean} toggleSelectMode When true, behaves as if you were holding control/command when you clicked the column.
+         * @param {boolean} shift When true, behaves as if you were holding shift when you clicked the column.
          * @param {boolean} supressSelectionchangedEvent When true, prevents the selectionchanged event from firing.
          */
         self.selectColumn = function (columnIndex, ctrl, shift, supressEvent) {

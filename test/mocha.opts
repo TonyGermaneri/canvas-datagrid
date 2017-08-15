@@ -1,0 +1,6 @@
+--require should
+--ui bdd
+--reporter spec
+--timeout 20000
+--require blanket
+-R html-cov > coverage.html
