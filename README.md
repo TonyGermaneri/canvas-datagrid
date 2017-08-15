@@ -1,16 +1,15 @@
 Canvas Data Grid
 ================
 
-![coverage](https://coveralls.io/repos/github/TonyGermaneri/canvas-datagrid/badge.svg?branch=master)
-
 [Demo](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html)
 
 ![canvas-datagrid](https://tonygermaneri.github.io/canvas-datagrid/images/datagrid1.png)
 
-* High performance hierarchal canvas based data grid.
+![coverage](https://coveralls.io/repos/github/TonyGermaneri/canvas-datagrid/badge.svg?branch=master)
+
 * Support for millions of rows and columns.
-* Extensible styling, filtering, formatting, resizing, selecting, and ordering.
 * Support for touch devices (phones and tablets).
+* Extensible styling, filtering, formatting, resizing, selecting, and ordering.
 * Built in and custom styles.
 * Hierarchal context menu.
 * Per-user styles, settings using localStorage.
