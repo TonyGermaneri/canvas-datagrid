@@ -1,6 +1,8 @@
 Canvas Data Grid
 ================
 
+![coverage](https://coveralls.io/repos/github/TonyGermaneri/canvas-datagrid/badge.svg?branch=master)
+
 [Demo](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html)
 
 ![canvas-datagrid](https://tonygermaneri.github.io/canvas-datagrid/images/datagrid1.png)
