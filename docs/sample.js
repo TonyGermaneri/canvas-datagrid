@@ -531,8 +531,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     {col1: 'baz', col2: 2, col3: 'c'}
                 ]
             });
-            grid.scrollIntoView(8, 2);
-            grid.beginEditAt(8, 2);
+            grid.scrollIntoView(2, 3);
+            grid.beginEditAt(2, 3);
         };
         examples['Set the width of a column'] = function (parentNode) {
             var grid = canvasDatagrid({
@@ -982,6 +982,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     d[x][n] = x * y;
                 }
             }
+            grid.attributes.columnHeaderClickBehavior = 'select';
             grid.style.columnHeaderCellHorizontalAlignment = 'center';
             grid.data = d;
         };

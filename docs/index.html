@@ -93,7 +93,8 @@
 
 
     <section class="readme-section">
-        <article><h1>Canvas Data Grid</h1><p><a href="https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html">Demo</a></p>
+        <article><h1>Canvas Data Grid</h1><p><img src="https://coveralls.io/repos/github/TonyGermaneri/canvas-datagrid/badge.svg?branch=master" alt="coverage"></p>
+<p><a href="https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html">Demo</a></p>
 <p><img src="https://tonygermaneri.github.io/canvas-datagrid/images/datagrid1.png" alt="canvas-datagrid"></p>
 <ul>
 <li>High performance hierarchal canvas based data grid.</li>
@@ -111,7 +112,9 @@
 <p><a href="https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDataGrid.html">Documentation</a></p>
 <p><a href="https://tonygermaneri.github.io/canvas-datagrid/docs/tutorial-sample.html">Tutorials</a></p>
 <p><a href="https://tonygermaneri.github.io/canvas-datagrid/dist/canvas-datagrid.js">Download latest version (minified)</a></p>
+<p><a href="https://tonygermaneri.github.io/canvas-datagrid/test/tests.html">Tests</a></p>
 <p><a href="https://github.com/TonyGermaneri/canvas-datagrid">Source Code</a></p>
+<p><a href="https://tonygermaneri.github.io/canvas-datagrid/build/report/lcov-report/index.html">Latest Test Coverage</a></p>
 <h1>Installation</h1><pre class="prettyprint source lang-html"><code>&lt;script src=&quot;dist/canvas-datagrid.js&quot;>&lt;/script></code></pre><p>With <a href="https://www.npmjs.com/package/canvas-datagrid">npm</a></p>
 <pre class="prettyprint source lang-shell"><code>npm install canvas-datagrid</code></pre><p>With <a href="https://libraries.io/bower/canvas-datagrid">bower</a></p>
 <pre class="prettyprint source lang-shell"><code>bower install canvas-datagrid</code></pre><p>Place the single source file <code>./dist/canvas-datagrid.js</code> in your web page using
@@ -127,7 +130,7 @@ The container can be any block element.  <code>canvasDatagrid</code> generates i
         {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},
         {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}
     ]
-});</code></pre><h1>Building</h1><details>
+});</code></pre><h1>Building &amp; Testing</h1><details>
 To build production version.
 
 <code>shell
@@ -136,12 +139,17 @@ npm install</code>
 To build debug version
 
 <code>shell
-npm run-script build-dev</code>
+npm run build-dev</code>
 
 To build documentation
 
 <code>shell
-npm run-script build-docs</code>
+npm run build-docs</code>
+
+To run tests
+
+<code>shell
+npm test</code>
 </details></article>
     </section>
 

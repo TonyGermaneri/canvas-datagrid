@@ -1979,7 +1979,7 @@
             <td class="type">
             
                 
-<span class="param-type">boolean</span>
+<span class="param-type">string</span>
 
 
 
@@ -2007,6 +2007,86 @@
             
 
             <td class="description last">The text that appears on the context menu when copy is available.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>columnHeaderClickBehavior</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    sort
+                
+                </td>
+            
+
+            <td class="description last">Can be any of sort, select, none.  When sort is selected, left clicking a column header will result in sorting ascending, then sorting descending if already sorted by this column.  If select is selected then clicking a column header will result in the column becoming selected.  Holding control/command or shift will select multiple columns in this mode.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>scrollPointerLock</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last">When true, clicking on the scroll box to scroll will cause the mouse cursor to disappear to prevent it from exiting the area observable to the grid.</td>
         </tr>
 
     
@@ -3243,6 +3323,244 @@
             
 
             <td class="description last">data.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".assertPxColor">assertPxColor</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Used during testing to asertain a given pixel color on the canvas.
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The x coordinate of the pixel to check.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The y coordinate of the pixel to check.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>expected</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The expected joined rgba color string (e.g.: `rgba(225, 225, 225, 255)`).</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">method</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Callback method if any to be called 1 ms after the completion of this otherwise sync task.</td>
         </tr>
 
     
@@ -7071,6 +7389,84 @@ Warning, can be slow on very large record sets (1m records ~3-5 seconds on an i7
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".selectAll">selectAll</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Selects every visible cell.
+    </div>
+    
+
+    
+
+    
+
+    
     
 
     
