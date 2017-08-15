@@ -3,8 +3,8 @@
 (function () {
     'use strict';
     var c = {
-            white: 'rgba(255, 255, 255, 255)',
-            black: 'rgba(0, 0, 0, 255)'
+            white: 'rgb(255, 255, 255)',
+            black: 'rgb(0, 0, 0)'
         },
         smallData = [
             {col1: 'foo', col2: 0, col3: 'a'},
@@ -41,14 +41,14 @@
             });
             assertIf(grid.data.length !== 3,
                 'Expected to see data in the interface.');
-            grid.assertPxColor(160, 37, c.white, done);
+            grid.assertPxColor(100, 37, c.white, done);
         });
         it('Should set the cell color to black.', function (done) {
             var grid = g({
                 data: smallData
             });
             grid.style.activeCellBackgroundColor = c.black;
-            grid.assertPxColor(160, 37, c.black, done);
+            grid.assertPxColor(100, 37, c.black, done);
         });
     });
 }());
