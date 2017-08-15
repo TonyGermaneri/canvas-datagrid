@@ -2629,6 +2629,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.intf.resetRowHeights = self.resetRowHeights;
             self.intf.resize = self.resize;
             self.intf.drawChildGrids = self.drawChildGrids;
+            self.intf.assertPxColor = self.assertPxColor;
+            self.intf.integerToAlpha = self.integerToAlpha;
             self.intf.style = {};
             Object.keys(self.style).forEach(function (key) {
                 // unless this line is here, Object.keys() will not work on <instance>.style
@@ -4098,6 +4100,31 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
     return function (self) {
         // all methods here are exposed by intf
         // to users
+        /**
+         * Used during testing to asertain a given pixel color on the canvas.
+         * @memberof canvasDataGrid
+         * @name assertPxColor
+         * @method
+         * @param {number} x The x coordinate of the pixel to check.
+         * @param {number} x The y coordinate of the pixel to check.
+         * @param {string} [expected] The expected joined rgba color string (e.g.: `rgba(225, 225, 225, 255)`).
+         * @param {method} [callback] Callback method if any to be called 1 ms after the completion of this otherwise sync task.
+         */
+        self.assertPxColor = function (x, y, expected, callback) {
+            var d = self.ctx.getImageData(x, y, 1, 1).data;
+            d = 'rgba(' + [d['0'], d['1'], d['2'], d['3']].join(', ') + ')';
+            if (expected) {
+                if (d !== expected) {
+                    throw new Error('Expected color ' + expected + ' but got color ' + d);
+                }
+            }
+            if (callback) {
+                setTimeout(function () {
+                    callback();
+                }, 1);
+            }
+            return d;
+        };
         /**
          * Converts a integer into a letter A - ZZZZZ...
          * @memberof canvasDataGrid

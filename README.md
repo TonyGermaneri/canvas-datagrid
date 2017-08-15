@@ -26,10 +26,11 @@ Canvas Data Grid
 
 [Download latest version (minified)](https://tonygermaneri.github.io/canvas-datagrid/dist/canvas-datagrid.js)
 
-[Test Coverage](https://tonygermaneri.github.io/canvas-datagrid/build/report/lcov-report/index.html)
+[Tests](https://tonygermaneri.github.io/canvas-datagrid/test/tests.html)
 
 [Source Code](https://github.com/TonyGermaneri/canvas-datagrid)
 
+[Latest Test Coverage](https://tonygermaneri.github.io/canvas-datagrid/build/report/lcov-report/index.html)
 
 Installation
 ============
@@ -86,13 +87,13 @@ npm install
 To build debug version
 
 ```shell
-npm run-script build-dev
+npm run build-dev
 ```
 
 To build documentation
 
 ```shell
-npm run-script build-docs
+npm run build-docs
 ```
 
 To run tests
