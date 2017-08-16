@@ -1126,8 +1126,8 @@ document.addEventListener('DOMContentLoaded', function () {
             editor.id = 'e' + i;
             h2.innerHTML = msg[0];
             p.innerHTML = msg[1] || msg[0];
-            form.appendChild(h2);
             form.appendChild(a);
+            form.appendChild(h2);
             form.appendChild(p);
             form.appendChild(evaluate);
             form.appendChild(openInFiddle);
