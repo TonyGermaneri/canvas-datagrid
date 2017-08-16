@@ -1013,6 +1013,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.ctx.restore();
                 }
             }
+            function drawPxAssertions() {
+                if (self.pxAsserts && self.pxAsserts.length > 0) {
+                    self.pxAsserts.forEach(function (a) {
+                        self.ctx.fillStyle = 'chartreuse';
+                        fillRect(0, a[1], self.canvas.width, 1);
+                        fillRect(a[0], 0, 1, self.canvas.height);
+                        self.ctx.fillStyle = 'dodgerblue';
+                        fillRect(a[0] - 2, a[1] - 2, 5, 5);
+                    });
+                }
+            }
             self.ctx.save();
             initDraw();
             drawBackground();
@@ -1027,6 +1038,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             drawBorder();
             drawDebug();
+            drawPxAssertions();
+            if (self.dispatchEvent('afterdraw', {})) { return; }
             self.ctx.restore();
         };
     };
@@ -2631,6 +2644,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.intf.resize = self.resize;
             self.intf.drawChildGrids = self.drawChildGrids;
             self.intf.assertPxColor = self.assertPxColor;
+            self.intf.clearPxColorAssertions = self.clearPxColorAssertions;
             self.intf.integerToAlpha = self.integerToAlpha;
             self.intf.style = {};
             Object.keys(self.style).forEach(function (key) {
@@ -4102,29 +4116,55 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         // all methods here are exposed by intf
         // to users
         /**
-         * Used during testing to asertain a given pixel color on the canvas.
+         * Focuses on the grid.
+         * @memberof canvasDataGrid
+         * @name focus
+         * @method
+         */
+        self.focus = function () {
+            if (self.dispatchEvent('focus', {})) { return; }
+            self.hasFocus = true;
+        };
+        /**
+         * Used during testing to clear pixel assertions made with `canvasDatagrid.assertPxColor`.
+         * @memberof canvasDataGrid
+         * @name clearPxColorAssertions
+         * @method
+         */
+        self.clearPxColorAssertions = function () {
+            self.pxAsserts = undefined;
+        };
+        /**
+         * Used during testing to ascertain a given pixel color on the canvas.  Causes the draw function to display cross hairs indicating where the test was done.  Call `canvasDatagrid.clearPxColorAssertions()` to remove all pixel color assertions.
          * @memberof canvasDataGrid
          * @name assertPxColor
          * @method
          * @param {number} x The x coordinate of the pixel to check.
-         * @param {number} x The y coordinate of the pixel to check.
-         * @param {string} [expected] The expected joined rgba color string (e.g.: `rgba(225, 225, 225, 255)`).
-         * @param {method} [callback] Callback method if any to be called 1 ms after the completion of this otherwise sync task.
+         * @param {number} y The y coordinate of the pixel to check.
+         * @param {string} expected The expected joined rgba color string (e.g.: `rgba(225, 225, 225, 255)`).
+         * @param {method} callback Callback method to be called 10 ms after the completion of this otherwise sync task.
          */
         self.assertPxColor = function (x, y, expected, callback) {
-            var d = self.ctx.getImageData(x, y, 1, 1).data;
-            d = 'rgb(' + [d['0'], d['1'], d['2']].join(', ') + ')';
-            if (expected) {
-                if (d !== expected) {
-                    throw new Error('Expected color ' + expected + ' but got color ' + d);
+            var d, match, e;
+            function f() {
+                d = self.ctx.getImageData(x, y, 1, 1).data;
+                d = 'rgb(' + [d['0'], d['1'], d['2']].join(', ') + ')';
+                match = d === expected;
+                if (expected !== undefined) {
+                    e = new Error('Expected color ' + expected + ' but got color ' + d);
+                    self.pxAsserts = self.pxAsserts || [];
+                    self.pxAsserts.push([x, y]);
+                    if (callback) {
+                        return callback(expected && !match ? e : undefined);
+                    }
                 }
+                requestAnimationFrame(self.draw);
+                return d;
             }
-            if (callback) {
-                setTimeout(function () {
-                    callback();
-                }, 1);
+            if (!callback) {
+                return f();
             }
-            return d;
+            requestAnimationFrame(f);
         };
         /**
          * Converts a integer into a letter A - ZZZZZ...
