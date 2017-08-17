@@ -1020,7 +1020,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         fillRect(0, a[1], self.canvas.width, 1);
                         fillRect(a[0], 0, 1, self.canvas.height);
                         self.ctx.fillStyle = 'dodgerblue';
-                        fillRect(a[0] - 2, a[1] - 2, 5, 5);
+                        fillRect(a[0] - 1, a[1] - 1, 3, 3);
                     });
                 }
             }
@@ -1550,11 +1550,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (self.dispatchEvent('beforebeginedit', {cell: cell})) { return false; }
             self.scrollIntoView(x, y);
             self.setActiveCell(x, y);
+            if (cell.header.enum) {
+                self.input = document.createElement('select');
+            } else {
+                self.input = document.createElement(self.attributes.multiLine
+                    ? 'textarea' : 'input');
+            }
             function postDraw() {
-                var mEv, option, valueInEnum;
+                var option, valueInEnum;
                 cell = self.getVisibleCellByIndex(x, y);
                 if (cell.header.enum) {
-                    self.input = document.createElement('select');
                     // add enums
                     if (typeof cell.header.enum === 'function') {
                         enumItems = cell.header.enum.apply(self.intf, [{cell: cell}]);
@@ -1587,8 +1592,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         self.endEdit();
                         self.draw(true);
                     });
-                } else {
-                    self.input = document.createElement(self.attributes.multiLine ? 'textarea' : 'input');
                 }
                 document.body.appendChild(self.input);
                 self.createInlineStyle(self.input, 'canvas-datagrid-edit-input');
@@ -1643,7 +1646,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     }
                 });
             }
-            requestAnimationFrame(postDraw);
+            postDraw();
             self.dispatchEvent('beginedit', {cell: cell, input: self.input});
         };
         self.click = function (e, overridePos) {
@@ -2540,47 +2543,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.getFontHeight = function (fontStyle) {
             return parseFloat(fontStyle, 10);
-        };
-        self.getFontHeightLong = function (fontStyle) {
-            var pixels,
-                start,
-                end,
-                row,
-                column,
-                index,
-                canvas = document.createElement('canvas'),
-                ctx = canvas.getContext('2d');
-            canvas.height = 5000;
-            canvas.width = 5000;
-            ctx.save();
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.textBaseline = 'top';
-            ctx.fillStyle = 'white';
-            ctx.font = fontStyle;
-            ctx.fillText('gM', 0, 0);
-            pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-            start = -1;
-            end = -1;
-            for (row = 0; row < canvas.height; row += 1) {
-                for (column = 0; column < canvas.width; column += 1) {
-                    index = (row * canvas.width + column) * 4;
-                    if (pixels[index] === 0) {
-                        if (column === canvas.width - 1 && start !== -1) {
-                            end = row;
-                            row = canvas.height;
-                            break;
-                        }
-                    } else {
-                        if (start === -1) {
-                            start = row;
-                        }
-                        break;
-                    }
-                }
-            }
-            ctx.restore();
-            console.log(end - start);
-            return end - start;
         };
         self.parseFont = function (key) {
             if (/Font/.test(key)) {
@@ -3587,7 +3549,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             document.removeEventListener('click', self.disposeContextMenu);
             zIndexTop = 2;
             self.disposeAutocomplete();
-            self.contextMenu.dispose();
+            if (self.contextMenu) {
+                self.contextMenu.dispose();
+            }
             self.contextMenu = undefined;
         };
         self.contextmenuEvent = function (e, overridePos) {

@@ -1,8 +1,10 @@
 /*jslint browser: true*/
-/*globals describe: false, afterEach: false, after: false, it: false, canvasDatagrid: false, async: false*/
+/*globals describe: false, afterEach: false, beforeEach: false, after: false, it: false, canvasDatagrid: false, async: false*/
 (function () {
     'use strict';
-    var c = {
+    var blocks = '██████████████████',
+        c = {
+            b: 'rgb(0, 0, 255)',
             y: 'rgb(255, 255, 0)',
             fu: 'rgb(255, 0, 255)',
             white: 'rgb(255, 255, 255)',
@@ -13,6 +15,38 @@
             {col1: 'bar', col2: 1, col3: 'b'},
             {col1: 'baz', col2: 2, col3: 'c'}
         ];
+    function itoa(n) {
+        var ordA = 'a'.charCodeAt(0),
+            ordZ = 'z'.charCodeAt(0),
+            len = ordZ - ordA + 1,
+            s = '';
+        while (n >= 0) {
+            s = String.fromCharCode(n % len + ordA) + s;
+            n = Math.floor(n / len) - 1;
+        }
+        return s;
+    }
+    function makeData(r, c, dFn) {
+        var y, x, d = [];
+        for (y = 0; y < r; y += 1) {
+            d[y] = {};
+            for (x = 0; x < c; x += 1) {
+                d[y][itoa(x)] = dFn ? dFn(y, x) : '';
+            }
+        }
+        return d;
+    }
+    function cleanup(done) {
+        //HACK: this allows for DOM events to cool off?
+        setTimeout(done, 2);
+        var m = document.getElementById('mocha'),
+            gr = document.getElementById('grid');
+        m.scrollTop = m.scrollHeight;
+        gr.scrollTop = gr.scrollHeight;
+        if (this.currentTest && this.currentTest.grid) {
+            this.currentTest.grid.disposeContextMenu();
+        }
+    }
     function de(el, event, args) {
         var e = new Event(event);
         Object.keys(args).forEach(function (key) {
@@ -25,8 +59,39 @@
         args.keyCode = keyCode;
         de(el, 'keydown', args);
     }
-    function click(el, x, y) {
-        var p = el.getBoundingClientRect();
+    function bb(el) {
+        return el.getBoundingClientRect();
+    }
+    function mouseup(el, x, y, bbEl) {
+        var p = bb(bbEl || el);
+        de(el, 'mouseup', {clientX: x + p.left, clientY: y + p.top });
+    }
+    function mousemove(el, x, y, bbEl) {
+        var p = bb(bbEl || el);
+        de(el, 'mousemove', {clientX: x + p.left, clientY: y + p.top });
+    }
+    function mousedown(el, x, y, bbEl) {
+        var p = bb(bbEl || el);
+        de(el, 'mousedown', {clientX: x + p.left, clientY: y + p.top });
+    }
+    function contextmenu(el, x, y, bbEl) {
+        var p = bb(bbEl || el);
+        de(el, 'contextmenu', {clientX: x + p.left, clientY: y + p.top });
+    }
+    function touchstart(el, x, y, bbEl) {
+        var p = bb(bbEl || el);
+        de(el, 'touchstart', {touches: [{clientX: x + p.left, clientY: y + p.top }]});
+    }
+    function touchend(el, x, y, bbEl) {
+        var p = bb(bbEl || el);
+        de(el, 'touchend', {touches: [{clientX: x + p.left, clientY: y + p.top }]});
+    }
+    function touchmove(el, x, y, bbEl) {
+        var p = bb(bbEl || el);
+        de(el, 'touchmove', {touches: [{clientX: x + p.left, clientY: y + p.top }]});
+    }
+    function click(el, x, y, bbEl) {
+        var p = bb(bbEl || el);
         de(el, 'click', {clientX: x + p.left, clientY: y + p.top });
     }
     function g(args) {
@@ -39,21 +104,28 @@
         d.className = 'grid-container';
         t.className = 'grid-test-title';
         t.innerHTML = args.test.title;
-        setTimeout(function () {
-            if (args.test.state === 'failed') {
-                t.classList.add('grid-test-failed');
-            } else if (args.test.state === 'passed') {
-                t.classList.add('grid-test-passed');
-            }
-            grid.draw();
-        }, 2000);
+        function poll() {
+            setTimeout(function () {
+                if (args.test.state === 'failed') {
+                    t.classList.add('grid-test-failed');
+                    grid.draw();
+                } else if (args.test.state === 'passed') {
+                    t.classList.add('grid-test-passed');
+                    grid.draw();
+                } else {
+                    poll();
+                }
+            }, 10);
+        }
+        poll();
         delete args.testTitle;
         a.appendChild(t);
         a.appendChild(d);
-        i.insertBefore(a, i.firstChild);
+        i.appendChild(a);
         args = args || {};
         args.parentNode = d;
         grid = canvasDatagrid(args);
+        args.test.grid = grid;
         return grid;
     }
     function assertIf(cond, msg) {
@@ -64,6 +136,15 @@
         if (cond) { return new Error(msg); }
     }
     describe('canvas-datagrid', function () {
+        after(function (done) {
+            // git rid of lingering artifacts from the run
+            mouseup(document.body, 1, 1);
+            mouseup(document.body, 1, 1);
+            click(document.body, 1, 1);
+            done();
+        });
+        beforeEach(cleanup);
+        afterEach(cleanup);
         describe('Integration Tests', function () {
             describe('Instantiation', function () {
                 it('Should create an instance of datagrid', function (done) {
@@ -117,6 +198,88 @@
                     });
                 });
             });
+            describe('Context menu', function () {
+                it('Should produce a context menu', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.addEventListener('contextmenu', function (e) {
+                        setTimeout(function () {
+                            done(assertIf(!document.body.contains(e.items[0].title), 'Expected context menu to exist in the body and be visible.'));
+                        }, 1);
+                    });
+                    contextmenu(grid.canvas, 60, 37);
+                });
+                it('Clicking Order by asc should order the selected column asc', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.addEventListener('contextmenu', function (e) {
+                        setTimeout(function () {
+                            //HACK: refine asc context menu item to click it
+                            e.items[0].title.parentNode.parentNode.childNodes[1].dispatchEvent(new Event('click'));
+                            done(assertIf(grid.data[0].col1 !== 'bar',
+                                'Expected the content to be reordered asc.'));
+                        }, 1);
+                    });
+                    contextmenu(grid.canvas, 60, 37);
+                });
+                it('Clicking Order by desc should order the selected column desc', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.addEventListener('contextmenu', function (e) {
+                        setTimeout(function () {
+                            //HACK: refine desc context menu item to click it
+                            e.items[0].title.parentNode.parentNode.childNodes[2].dispatchEvent(new Event('click'));
+                            done(assertIf(grid.data[0].col1 !== 'foo',
+                                'Expected the content to be reordered desc.'));
+                        }, 1);
+                    });
+                    contextmenu(grid.canvas, 60, 37);
+                });
+            });
+            describe('Touch', function () {
+                it('Touch and drag should scroll the grid', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    setTimeout(function () {
+                        grid.focus();
+                        touchstart(grid.canvas, 200, 37);
+                        touchmove(document.body, 90, 37, grid.canvas);
+                        setTimeout(function () {
+                            // simulate very slow movement of humans
+                            touchmove(document.body, 60, 37, grid.canvas);
+                            touchend(document.body, 60, 37, grid.canvas);
+                            done(assertIf(grid.scrollLeft === 0,
+                                'Expected the grid to scroll some.'));
+                        }, 200);
+                    }, 1);
+                });
+                it('Touch and drag on the scroll bar should engage fast scrolling', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: makeData(30, 500)
+                    });
+                    setTimeout(function () {
+                        grid.focus();
+                        touchstart(grid.canvas, 50, 113);
+                        touchmove(document.body, 50, 113, grid.canvas);
+                        setTimeout(function () {
+                            // simulate very slow movement of humans
+                            touchmove(document.body, 100, 113, grid.canvas);
+                            touchend(document.body, 100, 113, grid.canvas);
+                            done(assertIf(grid.scrollLeft < 400,
+                                'Expected the scroll bar to be further along.'));
+                        }, 200);
+                    }, 1);
+                });
+            });
             describe('Formatters', function () {
                 it('Should format values using formating functions', function (done) {
                     var grid = g({
@@ -125,7 +288,7 @@
                         schema: [{name: 'd', type: 's'}]
                     });
                     grid.formatters.s = function () {
-                        return '██████████████████';
+                        return blocks;
                     };
                     grid.assertPxColor(90, 32, c.black, done);
                 });
@@ -172,7 +335,21 @@
                     grid.assertPxColor(40, 60, c.y, done);
                 });
                 //TODO: treeHorizontalScroll
-                //TODO: saveAppearance
+                it('Should NOT store JSON view state data when saveAppearance is false.', function (done) {
+                    var n = 'a' + (new Date().getTime()),
+                        k = 'canvasDataGrid-' + n,
+                        grid = g({
+                            test: this.test,
+                            data: smallData,
+                            name: n,
+                            saveAppearance: false
+                        });
+                    grid.order('col1');
+                    assertIf(JSON.parse(localStorage.getItem(k)),
+                        'Expected storage item %s.', n);
+                    localStorage.removeItem(k);
+                    done();
+                });
                 it('Selection should follow active cell with selectionFollowsActiveCell true', function (done) {
                     var grid = g({
                         test: this.test,
@@ -199,7 +376,187 @@
                     keydown(grid.controlInput, 40);
                     done(assertIf(grid.selectedRows.length === 0, 'Expected selection to not follow active cell'));
                 });
+                it('Should use a textarea to edit when multiLine is true', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        multiLine: true,
+                        data: smallData
+                    });
+                    grid.beginEditAt(0, 0);
+                    done(assertIf(grid.input.tagName !== 'TEXTAREA', 'Expected a textarea here'));
+                    grid.endEdit();
+                });
+                it('Should use an input to edit when multiLine is false', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.beginEditAt(0, 0);
+                    done(assertIf(grid.input.tagName !== 'INPUT', 'Expected an input here'));
+                    grid.endEdit();
+                });
+                it('Should not be editable when editable is false', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData,
+                        editable: false
+                    });
+                    click(grid.canvas, 60, 37);
+                    keydown(grid.controlInput, 13);
+                    done(assertIf(grid.input !== undefined, 'Expected no input when UI enters edit mode.'));
+                });
+                it('Should be editable when editable is true', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    click(grid.canvas, 60, 37);
+                    keydown(grid.controlInput, 13);
+                    done(assertIf(grid.input === undefined, 'Expected an input when UI enters edit mode.'));
+                    grid.endEdit();
+                });
+                it('Should allow column reordering when allowColumnReordering is true', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData,
+                        style: {
+                            columnWidth: 50
+                        }
+                    });
+                    setTimeout(function () {
+                        grid.focus();
+                        mousemove(grid.canvas, 67, 10);
+                        mousedown(grid.canvas, 67, 10);
+                        mousemove(grid.canvas, 200, 10, grid.canvas);
+                        mousemove(document.body, 200, 10, grid.canvas);
+                        mouseup(document.body, 200, 10, grid.canvas);
+                        grid.draw();
+                        grid.addEventListener('click', function (e) {
+                            done(assertIf(e.cell.value !== 0, 'Expected to see the value from column 2 here.'));
+                        });
+                        // lib intentionally ignoring next click - required to make the ux work as desired
+                        click(grid.canvas, 60, 37);
+                        click(grid.canvas, 60, 37);
+                    }, 1);
+                });
+                it('Should draw column reorder markers when allowColumnReordering is true and reordering', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData,
+                        style: {
+                            columnWidth: 50,
+                            reorderMarkerBackgroundColor: c.y,
+                            reorderMarkerBorderWidth: 4,
+                            reorderMarkerBorderColor: c.fu,
+                            reorderMarkerIndexBorderColor: c.b,
+                            reorderMarkerIndexBorderWidth: 4
+                        }
+                    });
+                    setTimeout(function () {
+                        grid.focus();
+                        mousemove(grid.canvas, 67, 10);
+                        mousedown(grid.canvas, 67, 10);
+                        mousemove(grid.canvas, 180, 10, grid.canvas);
+                        mousemove(document.body, 180, 10, grid.canvas);
+                        grid.assertPxColor(160, 10, c.y, function (err) {
+                            if (err) { return done(err); }
+                            grid.assertPxColor(145, 90, c.fu, function (err) {
+                                if (err) { return done(err); }
+                                grid.assertPxColor(132, 50, c.b, done);
+                            });
+                        });
+                        grid.draw();
+                    }, 10);
+                });
+                it('Should allow row reordering when allowRowReordering is true', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData,
+                        allowRowReordering: true,
+                        style: {
+                            columnWidth: 50
+                        }
+                    });
+                    setTimeout(function () {
+                        grid.focus();
+                        mousemove(grid.canvas, 10, 37);
+                        mousedown(grid.canvas, 10, 37);
+                        mousemove(grid.canvas, 10, 75, grid.canvas);
+                        mousemove(document.body, 10, 75, grid.canvas);
+                        mouseup(document.body, 10, 75, grid.canvas);
+                        grid.draw();
+                        grid.addEventListener('click', function (e) {
+                            done(assertIf(e.cell.value !== 'bar', 'Expected to see the value from row 2 here.'));
+                        });
+                        // lib intentionally ignoring next click - required to make the ux work as desired
+                        click(grid.canvas, 60, 37);
+                        click(grid.canvas, 60, 37);
+                    }, 1);
+                });
+                it('Should draw row reorder markers when allowRowReordering is true and reordering', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData,
+                        allowRowReordering: true,
+                        style: {
+                            columnWidth: 50,
+                            reorderMarkerBackgroundColor: c.y,
+                            reorderMarkerBorderWidth: 4,
+                            reorderMarkerBorderColor: c.fu,
+                            reorderMarkerIndexBorderColor: c.b,
+                            reorderMarkerIndexBorderWidth: 4
+                        }
+                    });
+                    setTimeout(function () {
+                        grid.focus();
+                        mousemove(grid.canvas, 10, 37);
+                        mousedown(grid.canvas, 10, 37);
+                        mousemove(grid.canvas, 10, 75, grid.canvas);
+                        mousemove(document.body, 10, 75, grid.canvas);
+                        grid.assertPxColor(10, 74, c.b, function (err) {
+                            if (err) { return done(err); }
+                            grid.assertPxColor(20, 63, c.fu, function (err) {
+                                if (err) { return done(err); }
+                                grid.assertPxColor(30, 69, c.y, done);
+                            });
+                        });
+                        grid.draw();
+                    }, 10);
+                });
+                it('The context menu filter should not show up when showFilter is false', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData,
+                        showFilter: false
+                    });
+                    grid.addEventListener('contextmenu', function (e) {
+                        setTimeout(function () {
+                            done(assertIf(e.items.length !== 2,
+                                'Expected to only see two items in the context menu at this point.'));
+                        }, 1);
+                    });
+                    contextmenu(grid.canvas, 60, 37);
+                });
+                it('The context menu filter should show up when showFilter is true', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData,
+                        showFilter: true
+                    });
+                    grid.addEventListener('contextmenu', function (e) {
+                        setTimeout(function () {
+                            done(assertIf(e.items.length !== 3,
+                                'Expected to only see two items in the context menu at this point.'));
+                        }, 1);
+                    });
+                    contextmenu(grid.canvas, 60, 37);
+                });
             });
         });
     });
 }());
+                // it('Should create an instance of datagrid', function (done) {
+                //     var grid = g({test: this.test});
+                //     assertIf(!grid, 'Expected a grid instance, instead got something false');
+                //     done();
+                // });
