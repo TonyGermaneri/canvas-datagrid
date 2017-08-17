@@ -31,6 +31,8 @@ Canvas Data Grid
 
 [Latest Test Coverage](https://tonygermaneri.github.io/canvas-datagrid/build/report/lcov-report/index.html)
 
+[Coveralls](https://coveralls.io/github/TonyGermaneri/canvas-datagrid)
+
 Installation
 ============
 
