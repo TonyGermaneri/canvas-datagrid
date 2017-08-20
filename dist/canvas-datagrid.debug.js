@@ -1013,17 +1013,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.ctx.restore();
                 }
             }
-            function drawPxAssertions() {
-                if (self.pxAsserts && self.pxAsserts.length > 0) {
-                    self.pxAsserts.forEach(function (a) {
-                        self.ctx.fillStyle = 'chartreuse';
-                        fillRect(0, a[1], self.canvas.width, 1);
-                        fillRect(a[0], 0, 1, self.canvas.height);
-                        self.ctx.fillStyle = 'dodgerblue';
-                        fillRect(a[0] - 1, a[1] - 1, 3, 3);
-                    });
-                }
-            }
             self.ctx.save();
             initDraw();
             drawBackground();
@@ -1038,7 +1027,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             drawBorder();
             drawDebug();
-            drawPxAssertions();
             if (self.dispatchEvent('afterdraw', {})) { return; }
             self.ctx.restore();
         };
@@ -1836,7 +1824,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.stopScrollGrid = function () {
             clearTimeout(self.scrollTimer);
-            document.exitPointerLock();
+            if (document.exitPointerLock) {
+                document.exitPointerLock();
+            }
             document.body.removeEventListener('mousemove', self.scrollGrid, false);
         };
         self.dragReorder = function (e) {
@@ -2336,16 +2326,19 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.getVisibleSchema = function () {
             return self.getSchema().filter(function (col) { return !col.hidden; });
         };
+        self.applyDefaultValue = function (row, header) {
+            var d = header.defaultValue || '';
+            if (typeof d === 'function') {
+                d = d.apply(self.intf, [header]);
+            }
+            row[header.name] = d;
+        };
         self.createNewRowData = function () {
             self.newRow = {};
             self.newRow[self.uniqueId] = self.uId;
             self.uId += 1;
-            self.getSchema().forEach(function forEachHeader(header, index) {
-                var d = header.defaultValue || '';
-                if (typeof d === 'function') {
-                    d = d.apply(self.intf, [header, index]);
-                }
-                self.newRow[header.name] = d;
+            self.getSchema().forEach(function forEachHeader(header) {
+                self.applyDefaultValue(self.newRow, header);
             });
         };
         self.getSchemaNameHash = function (key) {
@@ -2624,6 +2617,18 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     }
                 });
             });
+            /**
+             * When true, the grid is has focus.
+             * @memberof canvasDataGrid
+             * @name hasFocus
+             * @property
+             * @readonly
+             */
+            Object.defineProperty(self.intf, 'hasFocus', {
+                get: function () {
+                    return self.hasFocus;
+                }
+            });
             Object.defineProperty(self.intf, 'style', {
                 get: function () {
                     return publicStyleKeyIntf;
@@ -2698,9 +2703,21 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             self.resize(true);
         };
+        /**
+         * Removes focus from the grid.
+         * @memberof canvasDataGrid
+         * @name blur
+         * @method
+         */
         self.intf.blur = function (e) {
             self.hasFocus = false;
         };
+        /**
+         * Focuses on the grid.
+         * @memberof canvasDataGrid
+         * @name focus
+         * @method
+         */
         self.intf.focus = function () {
             self.hasFocus = true;
             self.controlInput.focus();
@@ -2840,28 +2857,32 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.intf.attributes = {};
         self.intf.formatters = self.formatters;
         self.normalizeDataset = function (data) {
-            var i, d, max;
+            var i, d, max, syncFnInvoked;
             if (data === null || data === '' || data === undefined) {
                 return [];
             }
-            if ((typeof data[0] === 'object' && data[0] !== null)
+            if (typeof data === 'string'
+                    || typeof data === 'number'
+                    || typeof data === 'boolean') {
+                data = [{'0': data}];
+            }
+            if ((!Array.isArray(data[0]) && typeof data[0] === 'object')
                             || (Array.isArray(data) && data.length === 0)) {
                 return data;
             }
-            if (typeof data === 'number'
-                    || typeof data === 'boolean'
-                    || data !== null) {
-                data = [{a: data}];
-            }
             if (typeof data === 'function') {
                 i = data.apply(self.intf, [function (d) {
+                    if (syncFnInvoked) {
+                        console.warn('Detected a callback to the data setter function after the same function already returned a value synchronously.');
+                    }
                     self.normalizeDataset(d);
                 }]);
                 if (i) {
+                    syncFnInvoked = true;
                     self.normalizeDataset(i);
                 }
             }
-            if (typeof data === 'object') {
+            if (!Array.isArray(data) && typeof data === 'object') {
                 data = [data];
             }
             if (Array.isArray(data)) {
@@ -2880,12 +2901,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     var x;
                     d[index] = {};
                     for (x = 0; x < max; x += 1) {
-                        d[index][self.integerToAlpha(x).toUpperCase()] = row[x] || null;
+                        d[index][x] = row[x] || null;
                     }
                 });
                 return d;
             }
-            throw new Error('Unsupported data type.  Must be an array of arrays or an array of objects.');
+            throw new Error('Unsupported data type.  Must be an array of arrays or an array of objects, function or string.');
         };
         Object.defineProperty(self.intf, 'selectionBounds', {
             get: function () {
@@ -2945,7 +2966,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         });
         Object.defineProperty(self.intf, 'data', {
             get: function dataGetter() {
-                return self.data;
+                return self.data.map(function (row) {
+                    delete row[self.uniqueId];
+                    return row;
+                });
             },
             set: function dataSetter(value) {
                 self.originalData = self.normalizeDataset(value).map(function eachDataRow(row) {
@@ -4080,57 +4104,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         // all methods here are exposed by intf
         // to users
         /**
-         * Focuses on the grid.
-         * @memberof canvasDataGrid
-         * @name focus
-         * @method
-         */
-        self.focus = function () {
-            if (self.dispatchEvent('focus', {})) { return; }
-            self.hasFocus = true;
-        };
-        /**
-         * Used during testing to clear pixel assertions made with `canvasDatagrid.assertPxColor`.
-         * @memberof canvasDataGrid
-         * @name clearPxColorAssertions
-         * @method
-         */
-        self.clearPxColorAssertions = function () {
-            self.pxAsserts = undefined;
-        };
-        /**
-         * Used during testing to ascertain a given pixel color on the canvas.  Causes the draw function to display cross hairs indicating where the test was done.  Call `canvasDatagrid.clearPxColorAssertions()` to remove all pixel color assertions.
-         * @memberof canvasDataGrid
-         * @name assertPxColor
-         * @method
-         * @param {number} x The x coordinate of the pixel to check.
-         * @param {number} y The y coordinate of the pixel to check.
-         * @param {string} expected The expected joined rgba color string (e.g.: `rgba(225, 225, 225, 255)`).
-         * @param {method} callback Callback method to be called 10 ms after the completion of this otherwise sync task.
-         */
-        self.assertPxColor = function (x, y, expected, callback) {
-            var d, match, e;
-            function f() {
-                d = self.ctx.getImageData(x, y, 1, 1).data;
-                d = 'rgb(' + [d['0'], d['1'], d['2']].join(', ') + ')';
-                match = d === expected;
-                if (expected !== undefined) {
-                    e = new Error('Expected color ' + expected + ' but got color ' + d);
-                    self.pxAsserts = self.pxAsserts || [];
-                    self.pxAsserts.push([x, y]);
-                    if (callback) {
-                        return callback(expected && !match ? e : undefined);
-                    }
-                }
-                requestAnimationFrame(self.draw);
-                return d;
-            }
-            if (!callback) {
-                return f();
-            }
-            requestAnimationFrame(f);
-        };
-        /**
          * Converts a integer into a letter A - ZZZZZ...
          * @memberof canvasDataGrid
          * @name integerToAlpha
@@ -4155,8 +4128,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @memberof canvasDataGrid
          * @name insertColumn
          * @method
-         * @param {column} rowIndex The column to insert into the schema.
-         * @param {number} index The index of the row to insert before.
+         * @param {column} c The column to insert into the schema.
+         * @param {number} index The index of the column to insert before.
          */
         self.insertColumn = function (c, index) {
             var s = self.getSchema();
@@ -4164,7 +4137,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 throw new Error('Index is beyond the length of the schema.');
             }
             self.validateColumn(c, s);
-            self.intf.schema = s.splice(index, 0, c);
+            s.splice(index, 0, c);
+            self.data.forEach(function (row) {
+                self.applyDefaultValue(row, c);
+            });
+            self.intf.schema = s;
         };
         /**
          * Deletes a column from the schema at the specified index.
@@ -4176,7 +4153,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          */
         self.deleteColumn = function (index) {
             var s = self.getSchema();
-            self.intf.schema = s.splice(index, 1);
+            // remove data matching this column name from data
+            self.data.forEach(function (row) {
+                delete row[s[index].name];
+            });
+            s.splice(index, 1);
+            self.intf.schema = s;
         };
         /**
          * Adds a new column into the schema.
@@ -4191,6 +4173,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             var s = self.getSchema();
             self.validateColumn(c, s);
             s.push(c);
+            self.data.forEach(function (row) {
+                self.applyDefaultValue(row, c);
+            });
             self.intf.schema = s;
         };
         /**
@@ -4218,6 +4203,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 throw new Error('Index is beyond the length of the dataset.');
             }
             self.originalData.splice(index, 0, d);
+            self.getSchema().forEach(function (c) {
+                if (d[c.name] === undefined) {
+                    self.applyDefaultValue(self.originalData[index], c);
+                }
+            });
             self.setFilter();
             self.resize(true);
         };
@@ -4230,6 +4220,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          */
         self.addRow = function (d) {
             self.originalData.push(d);
+            self.getSchema().forEach(function (c) {
+                if (d[c.name] === undefined) {
+                    self.applyDefaultValue(self.originalData[self.originalData.length - 1], c);
+                }
+            });
             self.setFilter();
             self.resize(true);
         };
@@ -4882,7 +4877,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 var type = self.getBestGuessDataType(key),
                     i = {
                         name: key,
-                        title: key,
+                        title: isNaN(parseInt(key, 10)) ? key : self.integerToAlpha(key).toUpperCase(),
                         width: self.style.columnWidth,
                         index: index,
                         type: type,
