@@ -80,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var dialog = createDialog();
         dialog.okButton.onclick = dialog.close;
         dialog.cancelButton.remove();
+        dialog.message.className = 'style-maker-help-message';
         dialog.message.innerHTML =
             '<h1>Canvas Datagrid Style Builder</h1>'
             + '<h2>Selecting Colors</h2>'
@@ -92,7 +93,8 @@ document.addEventListener('DOMContentLoaded', function () {
             + 'example, such as cellHoverColor.  You\'ll need to interact with the sample '
             + 'grid to see the color after setting it.  If you cannot see a color '
             + 'in the example grid even after interacting with the grid, please report it as a bug.</p>'
-            + '<h2>Saving, importing, exporting, and deleting </h2>'
+            + '<h2>Creating, saving, importing, exporting, and deleting </h2>'
+            + '<p>You can create new styles by clicking "New..." and selecting a 5 color style and clicking the "Create Style" button.</p>'
             + '<p>You can save your styles.  They will be saved to your browser\'s local store'
             + ' and will be available to other canvas datagrid instances you encounter'
             + ' with with this browser.  You cannot overwrite default styles.</p>'
@@ -525,19 +527,24 @@ document.addEventListener('DOMContentLoaded', function () {
             if (key === 'name') { return; }
             var c = document.createElement('div'),
                 title = document.createElement('div'),
+                cInput = document.createElement('input'),
                 cBox = document.createElement('div');
             c.className = 'style-maker-new-color-container';
             title.className = 'style-maker-new-color-title';
             cBox.className = 'style-maker-new-color-box';
+            cInput.className = 'style-maker-new-color-input';
             cBox.style.background = shortStyle[key];
             sStyle[key] = shortStyle[key];
             cBox.onclick = pickColor(function () { return cBox.style.backgroundColor; },
                 function (i) {
                     cBox.style.backgroundColor = i.value;
                     sStyle[key] = i.value;
+                    cInput.value = i.value;
                 });
+            cInput.value = shortStyle[key];
             title.innerHTML = key;
             c.appendChild(cBox);
+            c.appendChild(cInput);
             c.appendChild(title);
             dialog.appendChild(c);
         });
