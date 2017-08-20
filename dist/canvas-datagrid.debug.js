@@ -4311,6 +4311,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 });
                 self.resize();
                 self.draw(true);
+                self.scroll();
             }
             if (self.coulumn === undefined && value === undefined) {
                 return applyFilter();
