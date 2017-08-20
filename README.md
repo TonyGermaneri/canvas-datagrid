@@ -5,17 +5,17 @@ Canvas Data Grid
 
 ![canvas-datagrid](https://tonygermaneri.github.io/canvas-datagrid/images/datagrid1.png)
 
-[![Coverage Status](https://coveralls.io/repos/github/TonyGermaneri/canvas-datagrid/badge.svg?branch=master&build=1439)](https://coveralls.io/github/TonyGermaneri/canvas-datagrid?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/TonyGermaneri/canvas-datagrid/badge.svg?branch=master&build=1469)](https://coveralls.io/github/TonyGermaneri/canvas-datagrid?branch=master)
 
-* Support for millions of rows and columns.
+* Support for millions of contiguous rows and columns without paging or loading.
 * Support for touch devices (phones and tablets).
 * Extensible styling, filtering, formatting, resizing, selecting, and ordering.
 * Built in and custom styles.
-* Hierarchal context menu.
 * Per-user styles, settings using localStorage.
 * Single canvas element supporting multiple nested tree or cell grids.
 * Rich API of events, methods and properties optimized for CRUD, reporting and work flow applications.
 * Zero dependencies, very small code base, distributed as a single ~80k (~20k gziped) file.
+* Hierarchal context menu.
 
 [Make your own custom styles](https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html)
 
