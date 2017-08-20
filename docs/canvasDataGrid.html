@@ -3390,206 +3390,6 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".assertPxColor">assertPxColor</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Used during testing to ascertain a given pixel color on the canvas.  Causes the draw function to display cross hairs indicating where the test was done.  Call `canvasDatagrid.clearPxColorAssertions()` to remove all pixel color assertions.
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>x</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The x coordinate of the pixel to check.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>y</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The y coordinate of the pixel to check.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>expected</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The expected joined rgba color string (e.g.: `rgba(225, 225, 225, 255)`).</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>callback</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">method</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Callback method to be called 10 ms after the completion of this otherwise sync task.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
     <h4 class="name" id=".beginEditAt">beginEditAt</h4>
     
     
@@ -3742,7 +3542,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".clearChangeLog">clearChangeLog</h4>
+    <h4 class="name" id=".blur">blur</h4>
     
     
 </dt>
@@ -3750,9 +3550,7 @@
 
     
     <div class="description">
-        Clears the change log grid.changes that keeps track of changes to the data set.
-This does not undo changes or alter data it is simply a convince array to keep
-track of changes made to the data since last this method was called.
+        Removes focus from the grid.
     </div>
     
 
@@ -3822,7 +3620,7 @@ track of changes made to the data since last this method was called.
             
 <hr>
 <dt>
-    <h4 class="name" id=".clearPxColorAssertions">clearPxColorAssertions</h4>
+    <h4 class="name" id=".clearChangeLog">clearChangeLog</h4>
     
     
 </dt>
@@ -3830,7 +3628,9 @@ track of changes made to the data since last this method was called.
 
     
     <div class="description">
-        Used during testing to clear pixel assertions made with `canvasDatagrid.assertPxColor`.
+        Clears the change log grid.changes that keeps track of changes to the data set.
+This does not undo changes or alter data it is simply a convince array to keep
+track of changes made to the data since last this method was called.
     </div>
     
 
@@ -6363,7 +6163,7 @@ Warning, can be slow on very large record sets (1m records ~3-5 seconds on an i7
 
         <tr>
             
-                <td class="name"><code>rowIndex</code></td>
+                <td class="name"><code>c</code></td>
             
 
             <td class="type">
@@ -6404,7 +6204,7 @@ Warning, can be slow on very large record sets (1m records ~3-5 seconds on an i7
 
             
 
-            <td class="description last">The index of the row to insert before.</td>
+            <td class="description last">The index of the column to insert before.</td>
         </tr>
 
     
