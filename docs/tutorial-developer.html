@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Tutorial: styleBuilder</title>
+	<title>Documentation Tutorial: developer</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,112 +72,17 @@
 		<div id="main">
 			<!doctype html>
 <head>
+    <!-- this file is for developing in a sandbox on a local machine -->
     <script src="../dist/canvas-datagrid.debug.js"></script>
-    <script src="./styleLibrary.js"></script>
-    <script src="./styleBuilder.js"></script>
+    <script src="./developer.js"></script>
+    <meta name="viewport" content="width=device-width">
     <style>
         html, body {
             height: 100%;
             min-height: 100%;
-            padding: 0;
             margin: 0;
-            overflow-y: hidden;
-        }
-        .style-maker-title {
-            display: block;
-            padding: 3px;
-        }
-        .grid {
-            vertical-align: top;
-            display: inline-block;
-            width: 100%;
-        }
-        .style-maker-tr {
-            color: darkgray;
-            background: #333;
-            cursor: pointer;
-        }
-        .style-maker-tdl {
-            padding-left: 3px;
-        }
-        .style-maker-tdl:hover {
-            background: #888;
-        }
-        .style-maker-tdc {
-            outline: solid 1px #CCC;
-            cursor: pointer;
-        }
-        .style-maker-modal {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.75);
-            text-align: center;
-        }
-        .style-maker-import-textarea {}
-        .style-maker-control {}
-        .style-maker-input {}
-        .style-maker-label {
-            cursor: pointer;
-        }
-        .style-maker-props {
-            overflow-y: auto;
-            height: calc(100% - 105px);
-        }
-        .style-maker, .style-maker-dialog {
-            position: absolute;
-            top: 4%;
-            right: 3%;
-            background: #555;
-            opacity: 0.98;
-            color: black;
-            font-family: sans-serif;
-            font-size: 0.8em;
-            padding: 4px;
-            border: outset 2px #777;
-            box-shadow: 3px 3px 5px #555;
-        }
-        .style-maker {
-            height: 90%;
-        }
-        .style-maker-import-textarea {
-             height: 200px;
-             width: 396px;
-        }
-        .style-maker button, .style-maker-dialog button {
-            margin-left: 4px;
-            margin-bottom: 4px;
-        }
-        .style-maker-dialog {
-            width: 450px;
-            margin: 30px auto;
-            color: darkgray;
-            background: #333;
-        }
-        .style-maker-prop-highlight {
-            background: #6ca5ff;
-            color: #000000;
-        }
-        .style-maker-new-color-container {
-            display: inline-block;
-            margin: 7px;
-        }
-        .style-maker-new-color-input {
-            width: 70px;
-        }
-        .style-maker-new-color-box {
-            width: 75px;
-            height: 75px;
-            cursor: pointer;
-        }
-        .style-maker-help-message {
-            text-align: left;
-            padding: 10px;
-        }
-        .style-maker-help-message h1, .style-maker-help-message h2 {
-            text-align: center;
+            padding: 0;
+            overflow: hidden;
         }
     </style>
 </head>

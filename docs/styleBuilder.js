@@ -2,7 +2,15 @@
 /*globals Event: true, canvasDatagrid: false, ace: false, requestAnimationFrame: false, alert: false */
 document.addEventListener('DOMContentLoaded', function () {
     'use strict';
-    var container = document.createElement('div'),
+    var shortStyle = {
+            name: "New Style",
+            accent: "#DC3522",
+            text: "#D9CB9E",
+            select: "#374140",
+            cell: "#2A2C2B",
+            background: "#1E1E20"
+        },
+        container = document.createElement('div'),
         grid = canvasDatagrid({
             parentNode: document.body,
             tree: true,
@@ -13,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
         props = document.createElement('div'),
         loadStyle = document.createElement('button'),
         copyCode = document.createElement('button'),
+        newButton = document.createElement('button'),
         saveButton = document.createElement('button'),
         deleteButton = document.createElement('button'),
         styleLibSelect = document.createElement('select'),
@@ -25,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
         colorInputs = {},
         fontSize = 60,
         titleCanvasHeight = 75,
-        titleCanvasWidth = 400,
+        titleCanvasWidth = 430,
         storageKey = 'canvas-datagrid-user-style-library',
         tdls = {},
         inputs = {};
@@ -71,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var dialog = createDialog();
         dialog.okButton.onclick = dialog.close;
         dialog.cancelButton.remove();
+        dialog.message.className = 'style-maker-help-message';
         dialog.message.innerHTML =
             '<h1>Canvas Datagrid Style Builder</h1>'
             + '<h2>Selecting Colors</h2>'
@@ -83,7 +93,8 @@ document.addEventListener('DOMContentLoaded', function () {
             + 'example, such as cellHoverColor.  You\'ll need to interact with the sample '
             + 'grid to see the color after setting it.  If you cannot see a color '
             + 'in the example grid even after interacting with the grid, please report it as a bug.</p>'
-            + '<h2>Saving, importing, exporting, and deleting </h2>'
+            + '<h2>Creating, saving, importing, exporting, and deleting </h2>'
+            + '<p>You can create new styles by clicking "New..." and selecting a 5 color style and clicking the "Create Style" button.</p>'
             + '<p>You can save your styles.  They will be saved to your browser\'s local store'
             + ' and will be available to other canvas datagrid instances you encounter'
             + ' with with this browser.  You cannot overwrite default styles.</p>'
@@ -121,6 +132,8 @@ document.addEventListener('DOMContentLoaded', function () {
             borders = keys.filter(function (key) { return (/border/i).test(key); }),
             notBorders = keys.filter(function (key) { return !/border/i.test(key); });
         l = ((titleCanvas.width / window.devicePixelRatio) - (borders.length * bWdith)) / notBorders.length;
+        ctx.fillStyle = 'black';
+        ctx.fillRect(x, y, titleCanvas.width, 300);
         keys.forEach(function (key) {
             w = notBorders.indexOf(key) === -1 ? bWdith : l;
             ctx.fillStyle = grid.style[key];
@@ -153,6 +166,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     function apply() {
         code = Object.keys(grid.style).reduce(function (s, key, index) {
+            var ignoreKey = key.indexOf('FontFamilyHeight') !== -1;
+            if (ignoreKey) { return s; }
             if (typeof grid.style[key] === 'number') {
                 s += '    "' + key + '": ' + inputs[key].value;
             } else {
@@ -167,32 +182,28 @@ document.addEventListener('DOMContentLoaded', function () {
         drawTitleCanvas();
         window.styleLibrary[inputs.name.value] = JSON.parse(code);
     }
-    function pickColor(key) {
+    function pickColor(getColor, onchange) {
         return function () {
-            var tdc = this, i = document.createElement('input');
-            i.value = inputs[key].value;
+            var v = getColor(), i = document.createElement('input');
+            function c() { onchange(i); }
+            i.value = v;
             i.type = 'color';
             i.style.position = 'absolute';
             i.style.top = '-100px';
             i.style.left = '-100px';
             document.body.appendChild(i);
             i.focus();
-            if (/rgb/.test(inputs[key].value)) {
-                i.value = rgbToHex(inputs[key].value);
+            if (/rgb/.test(v)) {
+                i.value = rgbToHex(v);
             } else {
-                i.value = inputs[key].value;
+                i.value = v;
             }
-            function a() {
-                inputs[key].value = i.value;
-                tdc.style.background = i.value;
-                apply();
-            }
-            i.addEventListener('input', a);
-            i.addEventListener('change', a);
+            i.addEventListener('input', c);
+            i.addEventListener('change', c);
             i.click();
         };
     }
-    function fillStyle() {
+    function fillStyle(el) {
         styleLibSelect.innerHTML = '';
         var er, userLib = localStorage.getItem(storageKey);
         try {
@@ -329,15 +340,39 @@ document.addEventListener('DOMContentLoaded', function () {
         grid.addEventListener('mousedown', preventDefault);
         grid.addEventListener('mouseup', preventDefault);
     }
+    function getStyleFromShortStyle(style) {
+        // if this is a 5 or 6 key template, use template sea wolf replace
+        var t = JSON.parse(JSON.stringify(window.defaultStyleLibrary['sea wolf']));
+        Object.keys(t).forEach(function (key) {
+            if (t[key] && t[key].replace) {
+                t[key] = t[key]
+                    .replace(/#DC3522/i, style.accent)
+                    .replace(/#D9CB9E/i, style.text)
+                    .replace(/#374140/i, style.select)
+                    .replace(/#2A2C2B/i, style.cell)
+                    .replace(/#1E1E20/i, style.background);
+            }
+        });
+        return t;
+    }
     function createProps(keyReg, negList) {
         return function (key) {
-            if ((negList && keyReg.test(key)) || (!negList && !keyReg.test(key))) { return; }
+            if ((negList && keyReg.test(key))
+                    || (!negList && !keyReg.test(key)) || key.indexOf(('FontFamilyHeight')) !== -1) { return; }
             var tr = document.createElement('tr'),
                 tdi = document.createElement('td'),
                 tdl = document.createElement('td'),
                 tdc = document.createElement('td'),
                 input = document.createElement('input'),
                 label = document.createElement('label');
+            function pickerCallback(i) {
+                inputs[key].value = i.value;
+                tdc.style.background = i.value;
+                apply();
+            }
+            function getColorKey() {
+                return grid.style[key];
+            }
             tr.classList.add('style-maker-tr');
             tdl.classList.add('style-maker-tdl');
             tdls[key] = tdl;
@@ -350,6 +385,9 @@ document.addEventListener('DOMContentLoaded', function () {
             label.innerHTML = key;
             input.value = grid.style[key];
             input.onchange = apply;
+            input.addEventListener('copy', function (e) {
+                e.stopPropagation();
+            });
             inputs[key] = input;
             tdl.appendChild(label);
             tdi.appendChild(input);
@@ -364,8 +402,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 colorInputs[key] = tdc;
                 tr.appendChild(tdc);
                 tdc.style.background = input.value;
-                tdl.addEventListener('click', pickColor(key));
-                tdc.addEventListener('click', pickColor(key));
+                tdl.addEventListener('click', pickColor(getColorKey, pickerCallback));
+                tdc.addEventListener('click', pickColor(getColorKey, pickerCallback));
                 input.addEventListener('change', function () {
                     tdc.style.background = input.value;
                 });
@@ -405,7 +443,7 @@ document.addEventListener('DOMContentLoaded', function () {
         storedValues[inputs.name.value] = getStyleFromInputs();
         window.styleLibrary = storedValues;
         localStorage.setItem(storageKey, JSON.stringify(storedValues));
-        fillStyle();
+        fillStyle(styleLibSelect);
         styleLibSelect.value = inputs.name.value;
         drawTitleCanvas();
     };
@@ -422,7 +460,7 @@ document.addEventListener('DOMContentLoaded', function () {
         styleLibSelect.selectedIndex = styleLibSelect.selectedIndex - 1;
         grid.style = window.styleLibrary[styleLibSelect.value];
         localStorage.setItem(storageKey, JSON.stringify(window.styleLibrary));
-        fillStyle();
+        fillStyle(styleLibSelect);
         drawTitleCanvas();
         styleLibSelect.value = grid.style.name;
         styleLibSelect.dispatchEvent(new Event('change'));
@@ -433,18 +471,14 @@ document.addEventListener('DOMContentLoaded', function () {
         dialog.message.innerHTML = 'Paste style JSON below, then click Import.';
         dialog.body.appendChild(textarea);
         dialog.okButton.innerHTML = 'Import';
-        textarea.value = '{\n'
-            + '    "name": "New Style",\n'
-            + '    "accent": "#DC3522",\n'
-            + '    "text": "#D9CB9E",\n'
-            + '    "select": "#374140",\n'
-            + '    "cell": "#2A2C2B",\n'
-            + '    "background": "#1E1E20"\n'
-            + '}\n';
+        textarea.value = JSON.stringify(shortStyle, null, '\t');
         textarea.select();
         textarea.className = 'style-maker-import-textarea';
+        textarea.addEventListener('copy', function (e) {
+            e.stopPropagation();
+        });
         dialog.okButton.onclick = function () {
-            var style, t;
+            var style;
             try {
                 style = JSON.parse(textarea.value);
             } catch (e) {
@@ -454,19 +488,9 @@ document.addEventListener('DOMContentLoaded', function () {
             if ([5, 6].indexOf(Object.keys(style).length) !== -1
                     && style.accent !== undefined) {
                 // if this is a 5 or 6 key template, use template sea wolf replace
-                t = JSON.parse(JSON.stringify(window.defaultStyleLibrary['sea wolf']));
-                Object.keys(t).forEach(function (key) {
-                    if (t[key] && t[key].replace) {
-                        t[key] = t[key]
-                            .replace(/#DC3522/i, style.accent)
-                            .replace(/#D9CB9E/i, style.text)
-                            .replace(/#374140/i, style.select)
-                            .replace(/#2A2C2B/i, style.cell)
-                            .replace(/#1E1E20/i, style.background);
-                    }
+                style = getStyleFromShortStyle({
+                    name: style.name || 'New Style'
                 });
-                t.name = style.name || 'New Style';
-                style = t;
             }
             dialog.cancelButton.dispatchEvent(new Event('click'));
             Object.keys(grid.style).forEach(function (key) {
@@ -487,9 +511,66 @@ document.addEventListener('DOMContentLoaded', function () {
         document.execCommand('Copy');
         copyCode.clicked = false;
     };
+    newButton.onclick = function () {
+        var sTitle = document.createElement('span'),
+            sStyle = {},
+            name = document.createElement('input'),
+            dialog = createDialog();
+        dialog.cancelButton.remove();
+        dialog.message.innerHTML = 'To get started, select a name and 5 colors.<br><br>';
+        sTitle.innerHTML = 'Name&nbsp;&nbsp;';
+        name.value = 'New Style';
+        dialog.appendChild(sTitle);
+        dialog.appendChild(name);
+        dialog.appendChild(document.createElement('br'));
+        Object.keys(shortStyle).forEach(function (key) {
+            if (key === 'name') { return; }
+            var c = document.createElement('div'),
+                title = document.createElement('div'),
+                cInput = document.createElement('input'),
+                cBox = document.createElement('div');
+            c.className = 'style-maker-new-color-container';
+            title.className = 'style-maker-new-color-title';
+            cBox.className = 'style-maker-new-color-box';
+            cInput.className = 'style-maker-new-color-input';
+            cBox.style.background = shortStyle[key];
+            sStyle[key] = shortStyle[key];
+            cBox.onclick = pickColor(function () { return cBox.style.backgroundColor; },
+                function (i) {
+                    cInput.value = i.value;
+                });
+            cInput.value = shortStyle[key];
+            cInput.addEventListener('change', function () {
+                cBox.style.backgroundColor = cInput.value;
+                sStyle[key] = cInput.value;
+            });
+            title.innerHTML = key;
+            c.appendChild(cBox);
+            c.appendChild(cInput);
+            c.appendChild(title);
+            dialog.appendChild(c);
+        });
+        dialog.appendChild(dialog.cancelButton);
+        dialog.appendChild(dialog.okButton);
+        dialog.okButton.innerHTML = 'Create Style';
+        dialog.okButton.onclick = function () {
+            grid.style = getStyleFromShortStyle(sStyle);
+            grid.style.name = name.value;
+            Object.keys(grid.style).forEach(function (key) {
+                if (key.indexOf('FontFamilyHeight') !== -1) { return; }
+                inputs[key].value = grid.style[key];
+                if (/Color|Style/i.test(key)) {
+                    colorInputs[key].style.background = grid.style[key];
+                }
+            });
+            drawTitleCanvas();
+            dialog.close();
+        };
+    };
     function init() {
         container.appendChild(titleCanvas);
         container.appendChild(styleLibSelect);
+        container.appendChild(newButton);
         container.appendChild(saveButton);
         container.appendChild(copyCode);
         container.appendChild(loadStyle);
@@ -498,7 +579,7 @@ document.addEventListener('DOMContentLoaded', function () {
         container.appendChild(props);
         help.onclick = showHelp;
         window.styleLibrary.default = code;
-        fillStyle();
+        fillStyle(styleLibSelect);
         styleLibSelect.value = 'default';
         Object.keys(grid.style).sort().forEach(createProps(/^name$/));
         Object.keys(grid.style).sort().forEach(createProps(/Color|Style/));
@@ -508,6 +589,7 @@ document.addEventListener('DOMContentLoaded', function () {
         props.appendChild(table);
         document.body.appendChild(container);
         copyCode.innerHTML = 'Export To Clipboard';
+        newButton.innerHTML = 'New...';
         loadStyle.innerHTML = 'Import...';
         saveButton.innerHTML = 'Save';
         deleteButton.innerHTML = 'Delete';
