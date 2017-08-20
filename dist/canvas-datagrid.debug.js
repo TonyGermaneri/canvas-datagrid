@@ -475,7 +475,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         selected = self.selections[rowOrderIndex] && self.selections[rowOrderIndex].indexOf(columnOrderIndex) !== -1,
                         hovered = self.hovers[d[self.uniqueId]] && self.hovers[d[self.uniqueId]].indexOf(columnOrderIndex) !== -1,
                         active = self.activeCell.rowIndex === rowOrderIndex && self.activeCell.columnIndex === columnOrderIndex,
-                        isGrid = typeof d[header.name] === 'object',
+                        isGrid = typeof d[header.name] === 'object' && d[header.name] !== null && d[header.name] !== undefined,
                         activeHeader = (self.orders.rows[self.activeCell.rowIndex] === rowOrderIndex
                                 || self.orders.columns[self.activeCell.columnIndex] === columnOrderIndex)
                             && (columnOrderIndex === -1 || rowOrderIndex === -1)
