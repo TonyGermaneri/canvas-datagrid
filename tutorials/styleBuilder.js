@@ -537,11 +537,13 @@ document.addEventListener('DOMContentLoaded', function () {
             sStyle[key] = shortStyle[key];
             cBox.onclick = pickColor(function () { return cBox.style.backgroundColor; },
                 function (i) {
-                    cBox.style.backgroundColor = i.value;
-                    sStyle[key] = i.value;
                     cInput.value = i.value;
                 });
             cInput.value = shortStyle[key];
+            cInput.addEventListener('change', function () {
+                cBox.style.backgroundColor = cInput.value;
+                sStyle[key] = cInput.value;
+            });
             title.innerHTML = key;
             c.appendChild(cBox);
             c.appendChild(cInput);
