@@ -2620,8 +2620,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             /**
              * When true, the grid is has focus.
              * @memberof canvasDataGrid
-             * @name hasFocus
-             * @property
+             * @property hasFocus
              * @readonly
              */
             Object.defineProperty(self.intf, 'hasFocus', {
