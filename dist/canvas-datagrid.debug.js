@@ -326,11 +326,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (!self.isChildGrid && (!self.height || !self.width)) {
                 return;
             }
-            // if something asked a child to draw, ask the parent to draw, unless it was the parent that asked... then.. idk... stack overflow!
-            // if (self.isChildGrid && internal) {
-            //     self.parentGrid.draw();
-            //     return;
-            // }
+            if (self.isChildGrid && internal) {
+                requestAnimationFrame(self.parentGrid.draw);
+                return;
+            }
             if (self.intf.visible === false) {
                 return;
             }
@@ -476,7 +475,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         selected = self.selections[rowOrderIndex] && self.selections[rowOrderIndex].indexOf(columnOrderIndex) !== -1,
                         hovered = self.hovers[d[self.uniqueId]] && self.hovers[d[self.uniqueId]].indexOf(columnOrderIndex) !== -1,
                         active = self.activeCell.rowIndex === rowOrderIndex && self.activeCell.columnIndex === columnOrderIndex,
-                        isGrid = Array.isArray(d[header.name]),
+                        isGrid = typeof d[header.name] === 'object',
                         activeHeader = (self.orders.rows[self.activeCell.rowIndex] === rowOrderIndex
                                 || self.orders.columns[self.activeCell.columnIndex] === columnOrderIndex)
                             && (columnOrderIndex === -1 || rowOrderIndex === -1)
@@ -619,12 +618,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                                     childGridAttributes.parentNode = cell;
                                     childGridAttributes.data = d[header.name];
                                     self.childGrids[cell.gridId] = self.createGrid(childGridAttributes);
+                                    self.sizes.rows[rd[self.uniqueId]]
+                                        = self.sizes.rows[rd[self.uniqueId]] || self.style.cellGridHeight;
                                     checkScrollHeight = true;
                                 }
                                 cell.grid = self.childGrids[cell.gridId];
                                 cell.grid.parentNode = cell;
                                 cell.grid.visible = true;
-                                //cell.grid.resize(true);
+                                cell.grid.draw();
                                 self.dispatchEvent('rendercellgrid', ev);
                             } else {
                                 if (self.childGrids[cell.gridId]) {
@@ -2542,6 +2543,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.style[key + 'Height'] = self.getFontHeight(self.style[key]);
             }
         };
+        self.initProp = function (propName) {
+            if (!self.args[propName]) { return; }
+            Object.keys(self.args[propName]).forEach(function (key) {
+                self[propName][key] = self.args[propName][key];
+            });
+        };
         self.init = function () {
             var publicStyleKeyIntf = {};
             self.setAttributes();
@@ -2691,16 +2698,21 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     }
                 }
             }
+            ['formatters', 'filters', 'sorters'].forEach(self.initProp);
             if (self.args.data) {
                 self.intf.data = self.args.data;
-            }
-            if (self.args.schema) {
-                self.intf.schema = self.args.schema;
             }
             if (!self.data) {
                 self.intf.data = [];
             }
-            self.resize(true);
+            if (self.args.schema) {
+                self.intf.schema = self.args.schema;
+            }
+            if (self.isChildGrid) {
+                requestAnimationFrame(function () { self.resize(true); });
+            } else {
+                self.resize(true);
+            }
         };
         /**
          * Removes focus from the grid.
@@ -2865,6 +2877,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     || typeof data === 'boolean') {
                 data = [{'0': data}];
             }
+            if (!Array.isArray(data) && typeof data === 'object') {
+                data = [data];
+            }
             if ((!Array.isArray(data[0]) && typeof data[0] === 'object')
                             || (Array.isArray(data) && data.length === 0)) {
                 return data;
@@ -2996,11 +3011,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         && self.storedSettings === undefined) {
                     self.autosize();
                 }
-                // width cannot be determined correctly until after inserted into the dom?
-                requestAnimationFrame(function () {
-                    self.fitColumnToValues('cornerCell');
-                });
-                if (!self.resize()) { self.draw(true); }
+                self.fitColumnToValues('cornerCell', true);
+                if (!self.resize() || !self.isChildGrid) { self.draw(true); }
                 self.createRowOrders();
                 self.tryLoadStoredOrders();
                 self.dispatchEvent('datachanged', {data: self.data});
@@ -3470,7 +3482,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.setFilter(e.cell.header.name, filterInput.value);
             });
             filterInput.addEventListener('keyup', createAutoCompleteContext);
-            filterInput.value = self.columnFilters[e.cell.header.name] || '';
+            filterInput.value = e.cell.header ? self.columnFilters[e.cell.header.name] || '' : '';
             filterLabel.innerHTML = self.attributes.filterOptionText.replace(/%s/g, n);
             filterAutoCompleteButton.onclick = function () {
                 if (autoCompleteContext) {
@@ -3504,7 +3516,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         }
         function addDefaultContextMenuItem(e) {
             var isNormalCell = !(e.cell.isBackground || e.cell.isHeaderCellCap
-                            || e.cell.isScrollBar || e.cell.isCorner || e.cell.isRowHeader);
+                    || e.cell.isScrollBar || e.cell.isCorner || e.cell.isRowHeader)
+                    && e.cell.header;
             if (self.attributes.showFilter && isNormalCell) {
                 createFilterContextMenuItems(e);
             }
@@ -3714,6 +3727,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['cellBorderWidth', 0.5],
                 ['cellColor', 'rgba(0, 0, 0, 1)'],
                 ['cellFont', '16px sans-serif'],
+                ['cellGridHeight', 250],
                 ['cellHeight', 24],
                 ['cellHeightWithChildGrid', 150],
                 ['cellHorizontalAlignment', 'left'],
@@ -4637,11 +4651,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @method
          * @param {string} name The name of the column to resize.
          */
-        self.fitColumnToValues = function (name) {
+        self.fitColumnToValues = function (name, internal) {
             self.sizes.columns[name === 'cornerCell' ? name : self.getHeaderByName(name)[self.uniqueId]]
                 = self.findColumnMaxTextLength(name);
-            self.resize();
-            self.draw(true);
+            if (!internal) {
+                self.resize();
+                self.draw(true);
+            }
         };
         /**
          * Checks if a cell is currently visible.
