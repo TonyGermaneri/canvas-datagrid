@@ -228,7 +228,7 @@
                             data: smallData
                         }),
                         styleKeys = Object.keys(grid.style),
-                        eventCount = -1;
+                        eventCount = 0;
                     grid.addEventListener('beforedraw', function () {
                         eventCount += 1;
                     });
@@ -425,7 +425,9 @@
                         }
                     });
                     grid.setColumnWidth(0, 10);
-                    assertPxColor(grid, 35, 78, c.y, done);
+                    setTimeout(function () {
+                        assertPxColor(grid, 35, 78, c.y, done);
+                    }, 1);
                 });
                 it('Reset row height', function (done) {
                     var grid = g({
@@ -453,7 +455,7 @@
                     });
                     grid.setColumnWidth(0, 10);
                     grid.resetColumnWidths();
-                    assertPxColor(grid, 300, 80, c.y, done);
+                    assertPxColor(grid, 340, 80, c.y, done);
                 });
             });
             describe('Context menu', function () {
@@ -477,12 +479,12 @@
                     grid.addEventListener('contextmenu', function (e) {
                         setTimeout(function () {
                             //HACK: refine asc context menu item to click it
-                            e.items[0].title.parentNode.parentNode.childNodes[1].dispatchEvent(new Event('click'));
+                            e.items[0].title.parentNode.parentNode.childNodes[2].dispatchEvent(new Event('click'));
                             done(assertIf(grid.data[0].col1 !== 'bar',
                                 'Expected the content to be reordered asc.'));
                         }, 1);
                     });
-                    contextmenu(grid.canvas, 60, 37);
+                    contextmenu(grid.canvas, 100, 37);
                 });
                 it('Clicking Order by desc should order the selected column desc', function (done) {
                     var grid = g({
@@ -492,7 +494,7 @@
                     grid.addEventListener('contextmenu', function (e) {
                         setTimeout(function () {
                             //HACK: refine desc context menu item to click it
-                            e.items[0].title.parentNode.parentNode.childNodes[2].dispatchEvent(new Event('click'));
+                            e.items[0].title.parentNode.parentNode.childNodes[3].dispatchEvent(new Event('click'));
                             done(assertIf(grid.data[0].col1 !== 'foo',
                                 'Expected the content to be reordered desc.'));
                         }, 1);
@@ -501,7 +503,7 @@
                 });
             });
             describe('Scroll box with scrollPointerLock false', function () {
-                it('Scroll vertically via box drag', function (done) {
+                it('Scroll horizontally via box drag', function (done) {
                     var grid = g({
                         test: this.test,
                         data: makeData(30, 500),
@@ -521,7 +523,7 @@
                         }, 200);
                     }, 1);
                 });
-                it('Scroll vertically right via margin click', function (done) {
+                it('Scroll horizontally right via margin click', function (done) {
                     var grid = g({
                         test: this.test,
                         data: makeData(30, 500),
@@ -538,7 +540,7 @@
                         }, 2000);
                     }, 1);
                 }).timeout(5000);
-                it('Scroll vertically left via margin click', function (done) {
+                it('Scroll horizontally left via margin click', function (done) {
                     var grid = g({
                         test: this.test,
                         data: makeData(30, 500),
@@ -557,7 +559,7 @@
                         }, 2000);
                     }, 1);
                 }).timeout(5000);
-                it('Scroll horizontally via box drag', function (done) {
+                it('Scroll vertically via box drag', function (done) {
                     var grid = g({
                         test: this.test,
                         data: makeData(30, 500),
@@ -577,7 +579,7 @@
                         }, 200);
                     }, 1);
                 });
-                it('Scroll horizontally down via margin click', function (done) {
+                it('Scroll vertically down via margin click', function (done) {
                     var grid = g({
                         test: this.test,
                         data: makeData(30, 500),
@@ -594,7 +596,7 @@
                         }, 2000);
                     }, 1);
                 }).timeout(5000);
-                it('Scroll horizontally up via margin click', function (done) {
+                it('Scroll vertically up via margin click', function (done) {
                     var grid = g({
                         test: this.test,
                         data: makeData(30, 500),
@@ -656,11 +658,13 @@
                     var grid = g({
                         test: this.test,
                         data: [{d: ''}],
-                        schema: [{name: 'd', type: 's'}]
+                        schema: [{name: 'd', type: 's'}],
+                        formatters: {
+                            s: function () {
+                                return blocks;
+                            }
+                        }
                     });
-                    grid.formatters.s = function () {
-                        return blocks;
-                    };
                     assertPxColor(grid, 90, 32, c.black, done);
                 });
             });
@@ -902,7 +906,7 @@
                     });
                     grid.addEventListener('contextmenu', function (e) {
                         setTimeout(function () {
-                            done(assertIf(e.items.length !== 2,
+                            done(assertIf(e.items.length !== 3,
                                 'Expected to only see two items in the context menu at this point.'));
                         }, 1);
                     });
@@ -916,7 +920,7 @@
                     });
                     grid.addEventListener('contextmenu', function (e) {
                         setTimeout(function () {
-                            done(assertIf(e.items.length !== 3,
+                            done(assertIf(e.items.length !== 4,
                                 'Expected to only see two items in the context menu at this point.'));
                         }, 1);
                     });
