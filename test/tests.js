@@ -738,6 +738,164 @@
                         });
                     });
                 });
+                it('Should select a row', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.selectRow(0);
+                    grid.style.activeCellSelectedBackgroundColor = c.y;
+                    grid.style.cellSelectedBackgroundColor = c.y;
+                    grid.style.cellBackgroundColor = c.b;
+                    assertPxColor(grid, 90, 30, c.y, function (err) {
+                        if (err) { return done(err); }
+                        assertPxColor(grid, 360, 90, c.b, function (err) {
+                            if (err) { return done(err); }
+                            done(assertIf(grid.selectedRows.length !== 1,
+                                    'Expected data interface `selectedRows` 1 row.  It does not.'));
+                        });
+                    });
+                });
+                it('Should select a row, then add to the selection with control', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.selectRow(0);
+                    grid.selectRow(2, true);
+                    grid.style.activeCellSelectedBackgroundColor = c.y;
+                    grid.style.cellSelectedBackgroundColor = c.y;
+                    grid.style.cellBackgroundColor = c.b;
+                    assertPxColor(grid, 90, 30, c.y, function (err) {
+                        if (err) { return done(err); }
+                        assertPxColor(grid, 360, 90, c.y, function (err) {
+                            if (err) { return done(err); }
+                            done(assertIf(grid.selectedRows.filter(function (row) {
+                                return row[0] !== null;
+                            }).length !== 2, 'Expected data interface `selectedRows` 2 rows.  It does not.'));
+                        });
+                    });
+                });
+                it('Should select a row, then add to the selection with control, then remove it with control', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.selectRow(0);
+                    grid.selectRow(2, true);
+                    grid.selectRow(0, true);
+                    grid.style.activeCellSelectedBackgroundColor = c.y;
+                    grid.style.cellSelectedBackgroundColor = c.y;
+                    grid.style.cellBackgroundColor = c.b;
+                    assertPxColor(grid, 340, 30, c.b, function (err) {
+                        if (err) { return done(err); }
+                        assertPxColor(grid, 360, 90, c.y, function (err) {
+                            if (err) { return done(err); }
+                            done(assertIf(grid.selectedRows.filter(function (row) {
+                                return row !== null;
+                            }).length !== 1, 'Expected data interface `selectedRows` 1 row.  It does not.'));
+                        });
+                    });
+                });
+                it('Should select a range of rows by holding shift', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.selectRow(0);
+                    grid.selectRow(2, null, true);
+                    grid.style.activeCellSelectedBackgroundColor = c.y;
+                    grid.style.cellSelectedBackgroundColor = c.y;
+                    grid.style.cellBackgroundColor = c.b;
+                    assertPxColor(grid, 90, 30, c.y, function (err) {
+                        if (err) { return done(err); }
+                        assertPxColor(grid, 360, 90, c.y, function (err) {
+                            if (err) { return done(err); }
+                            done(assertIf(grid.selectedRows.filter(function (row) {
+                                return row !== null;
+                            }).length !== 3, 'Expected data interface `selectedRows` 1 row.  It does not.'));
+                        });
+                    });
+                });
+                it('Should select a column', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.selectColumn(0);
+                    grid.style.activeCellSelectedBackgroundColor = c.y;
+                    grid.style.cellSelectedBackgroundColor = c.y;
+                    grid.style.cellBackgroundColor = c.b;
+                    assertPxColor(grid, 90, 30, c.y, function (err) {
+                        if (err) { return done(err); }
+                        assertPxColor(grid, 360, 90, c.b, function (err) {
+                            if (err) { return done(err); }
+                            done(assertIf(grid.selectedRows.length !== smallData.length,
+                                    'Expected data interface `selectedRows` to contain all rows.  It does not.'));
+                        });
+                    });
+                });
+                it('Should select a column, then add a column to the selection.', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.selectColumn(0);
+                    grid.selectColumn(1, true);
+                    grid.style.activeCellSelectedBackgroundColor = c.y;
+                    grid.style.cellSelectedBackgroundColor = c.y;
+                    grid.style.cellBackgroundColor = c.b;
+                    assertPxColor(grid, 90, 30, c.y, function (err) {
+                        if (err) { return done(err); }
+                        assertPxColor(grid, 360, 90, c.y, function (err) {
+                            if (err) { return done(err); }
+                            done(assertIf(grid.selectedRows.length !== smallData.length,
+                                    'Expected data interface `selectedRows` to contain all rows.  It does not.'));
+                        });
+                    });
+                });
+                it('Should select a range of columns via shift.', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData,
+                        style: {
+                            columnWidth: 50
+                        }
+                    });
+                    grid.selectColumn(0);
+                    grid.selectColumn(2, false, true);
+                    grid.style.activeCellSelectedBackgroundColor = c.y;
+                    grid.style.cellSelectedBackgroundColor = c.y;
+                    grid.style.cellBackgroundColor = c.b;
+                    assertPxColor(grid, 70, 30, c.y, function (err) {
+                        if (err) { return done(err); }
+                        assertPxColor(grid, 170, 90, c.y, function (err) {
+                            if (err) { return done(err); }
+                            done(assertIf(grid.selectedRows.length !== smallData.length,
+                                    'Expected data interface `selectedRows` to contain all rows.  It does not.'));
+                        });
+                    });
+                });
+                it('Should select a column, then add to the column selection and immediately remove it', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.selectColumn(0);
+                    grid.selectColumn(1, true);
+                    grid.selectColumn(1, true);
+                    grid.style.activeCellSelectedBackgroundColor = c.y;
+                    grid.style.cellSelectedBackgroundColor = c.y;
+                    grid.style.cellBackgroundColor = c.b;
+                    assertPxColor(grid, 90, 30, c.y, function (err) {
+                        if (err) { return done(err); }
+                        assertPxColor(grid, 360, 90, c.b, function (err) {
+                            if (err) { return done(err); }
+                            done(assertIf(grid.selectedRows.length !== smallData.length,
+                                    'Expected data interface `selectedRows` to contain all rows.  It does not.'));
+                        });
+                    });
+                });
                 it('Should select an area when click and drag occurs', function (done) {
                     var grid = g({
                         test: this.test,

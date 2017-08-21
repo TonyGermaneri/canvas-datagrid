@@ -1443,7 +1443,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     }
                     if (self.cellBoundaryCrossed || (delta.x === 0 && delta.y === 0) || self.attributes.rowSelectionMode) {
                         if (self.attributes.rowSelectionMode || self.dragStartObject.columnIndex === -1) {
-                            self.selectRow(o.rowIndex, ctrl, true);
+                            self.selectRow(o.rowIndex, ctrl, null, true);
                         } else {
                             if (!self.dragAddToSelection && o.rowIndex) {
                                 if (self.selections[o.rowIndex] && self.selections[o.rowIndex].indexOf(o.columnIndex) !== -1) {
@@ -1465,7 +1465,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         sBounds = dragBounds;
                         if (self.attributes.rowSelectionMode) {
                             for (i = sBounds.top; i <= sBounds.bottom; i += 1) {
-                                self.selectRow(i, true, true);
+                                self.selectRow(i, true, null, true);
                             }
                         } else {
                             self.selectArea(sBounds, true);
@@ -1712,7 +1712,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         return;
                     }
                     selectionChanged = true;
-                    self.selectRow(i.rowIndex, ctrl, true);
+                    self.selectRow(i.rowIndex, ctrl, null, true);
                 }
                 if (e.shiftKey && !ctrl) {
                     self.selectionBounds = self.getSelectionBounds();
@@ -1934,7 +1934,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (self.dragMode === 'cell') {
                 self.selecting = true;
                 if (self.attributes.rowSelectionMode) {
-                    self.selectRow(self.dragStartObject.rowIndex, ctrl, true);
+                    self.selectRow(self.dragStartObject.rowIndex, ctrl, null, true);
                 }
                 return self.mousemove(e);
             }
@@ -2041,7 +2041,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.selectionBounds = self.getSelectionBounds();
                 if (self.attributes.rowSelectionMode) {
                     for (i = self.selectionBounds.top; i <= self.selectionBounds.bottom; i += 1) {
-                        self.selectRow(i, ctrl, true);
+                        self.selectRow(i, ctrl, null, true);
                     }
                 } else {
                     self.selectArea(undefined, ctrl);
@@ -2228,6 +2228,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             var d = [], s = self.getSchema(), l = self.data.length;
             self.selections.forEach(function (row, index) {
                 if (index === l) { return; }
+                if (row.length === 0) {
+                    d[index] = null;
+                    return;
+                }
                 d[index] = {};
                 if (expandToRow) {
                     s.forEach(function (column) {
@@ -2558,8 +2562,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.setStyle();
             self.initScrollBox();
             self.setDom();
+            self.type = 'canvas-datagrid';
             Object.keys(self.style).forEach(self.parseFont);
-            self.intf.type = 'canvas-datagrid';
+            self.intf.type = self.type;
             self.intf.addEventListener = self.addEventListener;
             self.intf.removeEventListener = self.removeEventListener;
             self.intf.dispatchEvent = self.dispatchEvent;
@@ -2607,6 +2612,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.intf.resetColumnWidths = self.resetColumnWidths;
             self.intf.resetRowHeights = self.resetRowHeights;
             self.intf.resize = self.resize;
+            self.intf.selectColumn = self.selectColumn;
+            self.intf.selectRow = self.selectRow;
             self.intf.selectAll = self.selectAll;
             self.intf.drawChildGrids = self.drawChildGrids;
             self.intf.assertPxColor = self.assertPxColor;
@@ -4501,12 +4508,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.activeCell.columnIndex = columnIndex;
                 self.activeCell.rowIndex = self.scrollIndexTop;
             }
-            if (self.dragAddToSelection === true) {
-                if (ctrl && self.isColumnSelected(columnIndex)) {
-                    removeCol(columnIndex);
-                } else {
-                    addCol(columnIndex);
-                }
+            if (ctrl && self.isColumnSelected(columnIndex)) {
+                removeCol(columnIndex);
+            } else {
+                addCol(columnIndex);
             }
             if (supressEvent) { return; }
             self.dispatchEvent('selectionchanged', {
@@ -4521,12 +4526,20 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @name selectRow
          * @method
          * @param {number} rowIndex The row index to select.
-         * @param {boolean} toggleSelectMode When true, behaves as if you were holding control/command when you clicked the row.
+         * @param {boolean} ctrl When true, behaves as if you were holding control/command when you clicked the row.
+         * @param {boolean} shift When true, behaves as if you were holding shift when you clicked the row.
          * @param {boolean} supressSelectionchangedEvent When true, prevents the selectionchanged event from firing.
          */
-        self.selectRow = function (rowIndex, ctrl, supressEvent) {
-            var s = self.getSchema();
-            if (self.dragAddToSelection === false) {
+        self.selectRow = function (rowIndex, ctrl, shift, supressEvent) {
+            var x, st, en, s = self.getSchema();
+            function addRow(ri) {
+                self.selections[ri] = [];
+                self.selections[ri].push(-1);
+                s.forEach(function (col) {
+                    self.selections[ri].push(col.index);
+                });
+            }
+            if (self.dragAddToSelection === false || self.dragObject === undefined) {
                 if (self.selections[rowIndex] && self.selections[rowIndex].length - 1 === s.length) {
                     if (ctrl) {
                         self.selections[rowIndex] = [];
@@ -4534,12 +4547,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     }
                 }
             }
-            if (self.dragAddToSelection === true) {
-                self.selections[rowIndex] = [];
-                self.selections[rowIndex].push(-1);
-                s.forEach(function (col) {
-                    self.selections[rowIndex].push(col.index);
-                });
+            if (self.dragAddToSelection === true || self.dragObject === undefined) {
+                if (shift && self.dragObject === undefined) {
+                    if (!self.activeCell) { return; }
+                    st = Math.min(self.activeCell.rowIndex, rowIndex);
+                    en = Math.max(self.activeCell.rowIndex, rowIndex);
+                    for (x = st; en >= x; x += 1) {
+                        addRow(x);
+                    }
+                } else {
+                    addRow(rowIndex);
+                }
             }
             if (supressEvent) { return; }
             self.dispatchEvent('selectionchanged', {
