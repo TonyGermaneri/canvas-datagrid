@@ -1307,6 +1307,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.scrollBox.scrollBoxHeight = Math.max(self.scrollBox.scrollBoxHeight, self.style.scrollBarBoxMinSize);
             self.page = self.visibleRows.length - 3 - self.attributes.pageUpDownOverlap;
             self.resizeEditInput();
+            self.scroll(true);
             if (drawAfterResize) {
                 self.draw(true);
             }
@@ -1327,7 +1328,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.clipElement(self.input);
             }
         };
-        self.scroll = function (e) {
+        self.scroll = function (e, dontDraw) {
             var s = self.getVisibleSchema(),
                 cellBorder = self.style.cellBorderWidth * 2;
             self.scrollIndexTop = 0;
@@ -1356,7 +1357,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     - (self.sizes.trees[self.data[self.scrollIndexTop][self.uniqueId]] || 0), 0);
             }
             self.ellipsisCache = {};
-            self.draw(true);
+            if (!dontDraw) {
+                self.draw(true);
+            }
             //TODO: figure out why this has to be delayed for child grids
             //BUG: scrolling event on 3rd level hierarchy fails to move input box
             requestAnimationFrame(self.resizeEditInput);
@@ -2604,6 +2607,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.intf.resetColumnWidths = self.resetColumnWidths;
             self.intf.resetRowHeights = self.resetRowHeights;
             self.intf.resize = self.resize;
+            self.intf.selectAll = self.selectAll;
             self.intf.drawChildGrids = self.drawChildGrids;
             self.intf.assertPxColor = self.assertPxColor;
             self.intf.clearPxColorAssertions = self.clearPxColorAssertions;
@@ -4312,7 +4316,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.resize();
                 self.draw(true);
             }
-            if (self.coulumn === undefined && value === undefined) {
+            if (column === undefined && value === undefined) {
+                self.columnFilters = {};
                 return applyFilter();
             }
             if (column && (value === '' || value === undefined)) {

@@ -347,6 +347,24 @@
                     done(assertIf(grid.schema[1].name !== 'f' || grid.data[0].f !== 'g',
                         'Expected to see a specific column here, it is not here.'));
                 });
+                it('Should throw an error if insertColumn is passed a bad index', function (done) {
+                    var e, grid = g({
+                        test: this.test,
+                        data: [{d: '', e: ''}],
+                        schema: [{name: 'd'}, {name: 'e'}]
+                    });
+                    try {
+                        grid.insertColumn({
+                            name: 'f',
+                            defaultValue: 'g'
+                        }, 5000);
+                    } catch (er) {
+                        e = er;
+                    } finally {
+                        done(assertIf(e === undefined,
+                            'Expected insertColumn to throw an error.'));
+                    }
+                });
                 it('Delete column', function (done) {
                     var grid = g({
                             test: this.test,
@@ -391,6 +409,21 @@
                     grid.insertRow({d: '6'}, 1);
                     done(assertIf(grid.data[2].d !== '3' || grid.data[1].e !== 10,
                         'Expected to see a specific row here, it is not here.'));
+                });
+                it('Should throw an error if insertRow is passed a bad index', function (done) {
+                    var e, grid = g({
+                        test: this.test,
+                        data: [{d: '', e: ''}],
+                        schema: [{name: 'd'}, {name: 'e'}]
+                    });
+                    try {
+                        grid.insertRow({d: '6'}, 5000);
+                    } catch (er) {
+                        e = er;
+                    } finally {
+                        done(assertIf(e === undefined,
+                            'Expected insertRow to throw an error.'));
+                    }
                 });
                 it('Delete row', function (done) {
                     var grid = g({
@@ -666,6 +699,134 @@
                         }
                     });
                     assertPxColor(grid, 90, 32, c.black, done);
+                });
+            });
+            describe('Selections', function () {
+                it('Should select all', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.selectAll();
+                    grid.style.activeCellSelectedBackgroundColor = c.y;
+                    grid.style.cellSelectedBackgroundColor = c.y;
+                    assertPxColor(grid, 90, 30, c.y, function (err) {
+                        if (err) { return done(err); }
+                        assertPxColor(grid, 360, 90, c.y, function (err) {
+                            if (err) { return done(err); }
+                            done(assertIf(grid.selectedRows.length !== smallData.length,
+                                    'Expected data interface `selectedRows` to contain all rows.  It does not.'));
+                        });
+                    });
+                });
+                it('Should select an area when click and drag occurs', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.style.activeCellSelectedBackgroundColor = c.y;
+                    grid.style.cellSelectedBackgroundColor = c.y;
+                    grid.style.cellBackgroundColor = c.fu;
+                    setTimeout(function () {
+                        grid.focus();
+                        mousemove(grid.canvas, 67, 30);
+                        mousedown(grid.canvas, 67, 30);
+                        mousemove(grid.canvas, 320, 65, grid.canvas);
+                        mousemove(document.body, 320, 65, grid.canvas);
+                        mouseup(document.body, 320, 65, grid.canvas);
+                        mouseup(grid.canvas, 320, 65, grid.canvas);
+                        click(grid.canvas, 320, 65);
+                        assertPxColor(grid, 67, 30, c.y, function (err) {
+                            if (err) { return done(err); }
+                            assertPxColor(grid, 350, 65, c.y, function (err) {
+                                if (err) { return done(err); }
+                                assertPxColor(grid, 360, 80, c.fu, function (err) {
+                                    if (err) { return done(err); }
+                                    done(assertIf(grid.selectedRows.length !== smallData.length - 1,
+                                            'Expected data interface `selectedRows` to contain all but one rows.  It does not.'));
+                                });
+                            });
+                        });
+                    }, 1);
+                });
+                it('Should remove a cell from selection when holding control and clicking a selected cell', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.style.activeCellSelectedBackgroundColor = c.y;
+                    grid.style.cellHoverBackgroundColor = c.b;
+                    grid.style.cellSelectedBackgroundColor = c.y;
+                    grid.style.cellBackgroundColor = c.fu;
+                    setTimeout(function () {
+                        var p = bb(grid.canvas);
+                        grid.focus();
+                        mousemove(grid.canvas, 67, 30);
+                        mousedown(grid.canvas, 67, 30);
+                        mousemove(grid.canvas, 320, 65, grid.canvas);
+                        mousemove(document.body, 320, 65, grid.canvas);
+                        mouseup(document.body, 320, 65, grid.canvas);
+                        mouseup(grid.canvas, 320, 65, grid.canvas);
+                        click(grid.canvas, 320, 65);
+                        // ctrl click
+                        de(grid.canvas, 'mousemove', {clientX: 320 + p.left, clientY: 65 + p.top, controlKey: true });
+                        de(grid.canvas, 'mousedown', {clientX: 320 + p.left, clientY: 65 + p.top, controlKey: true });
+                        de(document.body, 'mouseup', {clientX: 320 + p.left, clientY: 65 + p.top, controlKey: true });
+                        de(grid.canvas, 'mouseup', {clientX: 320 + p.left, clientY: 65 + p.top, controlKey: true });
+                        assertPxColor(grid, 67, 30, c.y, function (err) {
+                            if (err) { return done(err); }
+                            assertPxColor(grid, 350, 65, c.b, function (err) {
+                                if (err) { return done(err); }
+                                assertPxColor(grid, 360, 80, c.fu, function (err) {
+                                    if (err) { return done(err); }
+                                    done(assertIf(grid.selectedRows.length !== smallData.length - 1
+                                        && grid.selectedRows[1].col2 === undefined,
+                                            'Expected data interface `selectedRows` to contain row 1 col1 and col2, row 2 col 1.  It does not.'));
+                                });
+                            });
+                        });
+                    }, 1);
+                });
+            });
+            describe('Filters', function () {
+                it('Should filter for given value', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{d: 'abcd'}, {d: 'edfg'}]
+                    });
+                    grid.setFilter('d', 'edfg');
+                    done(assertIf(grid.data.length === 0 && grid.data[0].d === 'edfg',
+                            'Expected filter to remove all but 1 row.'));
+                });
+                it('Should remove all filters', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{d: 'abcd', e: 'qwert'}, {d: 'edfg', e: 'asdfg'}]
+                    });
+                    grid.setFilter('d', 'edfg');
+                    grid.setFilter('e', 'asdfg');
+                    grid.setFilter();
+                    done(assertIf(grid.data.length !== 2, 'Expected to see all the records return.'));
+                });
+                it('Should remove a specific filter by passing empty string', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{d: 'abcd', e: 'qwert'}, {d: 'edfg', e: 'asdfg'}]
+                    });
+                    grid.setFilter('d', 'edfg');
+                    grid.setFilter('e', 'asdfg');
+                    grid.setFilter('e', '');
+                    done(assertIf(grid.data.length !== 1, 'Expected to see 1 of the records.'));
+                });
+                it('Should remove a specific filter by passing undefined', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{d: 'abcd', e: 'qwert'}, {d: 'edfg', e: 'asdfg'}]
+                    });
+                    grid.setFilter('d', 'edfg');
+                    grid.setFilter('e', 'asdfg');
+                    grid.setFilter('e');
+                    done(assertIf(grid.data.length !== 1, 'Expected to see 1 of the records.'));
                 });
             });
             describe('Attributes', function () {
