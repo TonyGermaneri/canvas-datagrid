@@ -2,7 +2,14 @@
 /*globals Event: false, describe: false, afterEach: false, beforeEach: false, after: false, it: false, canvasDatagrid: false, async: false, requestAnimationFrame: false*/
 (function () {
     'use strict';
-    var blocks = '██████████████████',
+    var kks = {
+            up: 38,
+            down: 40,
+            enter: 13,
+            tab: 9,
+            esc: 27
+        },
+        blocks = '██████████████████',
         c = {
             b: 'rgb(0, 0, 255)',
             y: 'rgb(255, 255, 0)',
@@ -511,15 +518,14 @@
                     });
                     grid.addEventListener('contextmenu', function (e) {
                         setTimeout(function () {
-                            //HACK: refine asc context menu item to click it
-                            e.items[0].title.parentNode.parentNode.childNodes[2].dispatchEvent(new Event('click'));
+                            e.items[2].contextItemContainer.dispatchEvent(new Event('click'));
                             done(assertIf(grid.data[0].col1 !== 'bar',
                                 'Expected the content to be reordered asc.'));
                         }, 1);
                     });
                     contextmenu(grid.canvas, 100, 37);
                 });
-                it('Create a child context menu and scroll up and down using mouseover events', function (done) {
+                it('Create a child context menu and scroll up and down using mouseover events, then exit menu', function (done) {
                     var d = [], x, grid = g({
                         test: this.test,
                         data: smallData
@@ -546,13 +552,155 @@
                                     e.items[4].contextMenu.upArrow.dispatchEvent(new Event('mouseout'));
                                     err = assertIf(e.items[4].contextMenu.container.scrollTop !== 0);
                                     if (err) { return done(err); }
-                                    done();
+                                    setTimeout(function () {
+                                        e.items[4].contextItemContainer.dispatchEvent(new Event('mouseout'));
+                                        done(assertIf(e.items[4].contextMenu !== undefined,
+                                            'expected child context menu to be gone.'));
+                                    }, 100);
                                 }, 1500);
                             }, 1000);
                         }, 1);
                     });
                     contextmenu(grid.canvas, 60, 37);
                 }).timeout(5000);
+                it('Autocomplete should appear when a value is entered into the filter input', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.addEventListener('contextmenu', function (e) {
+                        setTimeout(function () {
+                            //HACK: get to filter input element in context menu
+                            var i = e.items[0].title.children[1];
+                            i.value = 'f';
+                            i.dispatchEvent(new Event('keyup'));
+                            done(assertIf(document.body.lastChild.childNodes.length === 1
+                                    && document.body.lastChild.firstChild.innerHTML !== 'foo',
+                                'Expected the autocomplete to be the most recent item added to body and expected it to only contain "foo"'));
+                        }, 1);
+                    });
+                    contextmenu(grid.canvas, 100, 37);
+                });
+                it('Autocomplete keys should key down and filter', function (done) {
+                    var err,
+                        grid = g({
+                            test: this.test,
+                            data: smallData
+                        });
+                    grid.addEventListener('contextmenu', function (e) {
+                        setTimeout(function () {
+                            //HACK: get to filter input element in context menu
+                            var i = e.items[0].title.children[1];
+                            i.value = 'b';
+                            i.dispatchEvent(new Event('keyup'));
+                            ['down', 'enter'].forEach(function (kk) {
+                                var ev = new Event('keydown');
+                                ev.keyCode = kks[kk];
+                                i.dispatchEvent(ev);
+                                if (kk === 'enter') {
+                                    err = assertIf(grid.data[0].col1 !== 'baz', 'Expected key combination to filter for baz');
+                                }
+                            });
+                            done(err);
+                        }, 1);
+                    });
+                    contextmenu(grid.canvas, 100, 37);
+                });
+                it('Autocomplete keys should key down, key up and filter', function (done) {
+                    var err,
+                        grid = g({
+                            test: this.test,
+                            data: smallData
+                        });
+                    grid.addEventListener('contextmenu', function (e) {
+                        setTimeout(function () {
+                            //HACK: get to filter input element in context menu
+                            var i = e.items[0].title.children[1];
+                            i.value = 'b';
+                            i.dispatchEvent(new Event('keyup'));
+                            ['down', 'up', 'enter'].forEach(function (kk) {
+                                var ev = new Event('keydown');
+                                ev.keyCode = kks[kk];
+                                i.dispatchEvent(ev);
+                                if (kk === 'enter') {
+                                    err = assertIf(grid.data[0].col1 !== 'bar', 'Expected key combination to filter for bar');
+                                }
+                            });
+                            done(err);
+                        }, 1);
+                    });
+                    contextmenu(grid.canvas, 100, 37);
+                });
+                it('Autocomplete keys should key tab', function (done) {
+                    var err,
+                        grid = g({
+                            test: this.test,
+                            data: smallData
+                        });
+                    grid.addEventListener('contextmenu', function (e) {
+                        setTimeout(function () {
+                            //HACK: get to filter input element in context menu
+                            var i = e.items[0].title.children[1];
+                            i.value = 'f';
+                            i.dispatchEvent(new Event('keyup'));
+                            ['tab'].forEach(function (kk) {
+                                var ev = new Event('keydown');
+                                ev.keyCode = kks[kk];
+                                i.dispatchEvent(ev);
+                                if (kk === 'tab') {
+                                    err = assertIf(grid.data[0].col1 !== 'foo', 'Expected key combination to filter for bar');
+                                }
+                            });
+                            done(err);
+                        }, 1);
+                    });
+                    contextmenu(grid.canvas, 100, 37);
+                });
+                it('Autocomplete keys should key esc', function (done) {
+                    var err,
+                        grid = g({
+                            test: this.test,
+                            data: smallData
+                        });
+                    grid.addEventListener('contextmenu', function (e) {
+                        setTimeout(function () {
+                            //HACK: get to filter input element in context menu
+                            var i = e.items[0].title.children[1];
+                            i.value = 'f';
+                            i.dispatchEvent(new Event('keyup'));
+                            ['esc'].forEach(function (kk) {
+                                var ev = new Event('keydown');
+                                ev.keyCode = kks[kk];
+                                i.dispatchEvent(ev);
+                                if (kk === 'esc') {
+                                    err = assertIf(grid.data[0].col1 !== 'foo', 'Expected key combination to filter for bar');
+                                }
+                            });
+                            done(err);
+                        }, 1);
+                    });
+                    contextmenu(grid.canvas, 100, 37);
+                });
+                it('Should store JSON view state data, then clear it once clear settings is clicked.', function (done) {
+                    var n = 'a' + (new Date().getTime()),
+                        k = 'canvasDataGrid-' + n,
+                        grid = g({
+                            test: this.test,
+                            data: smallData,
+                            name: n
+                        });
+                    grid.order('col1');
+                    grid.addEventListener('contextmenu', function (e) {
+                        setTimeout(function () {
+                            var err, i = localStorage.getItem(k);
+                            e.items[1].contextItemContainer.dispatchEvent(new Event('click'));
+                            err = assertIf(localStorage.getItem(k) === i, 'expected storage values to differ');
+                            localStorage.removeItem(k);
+                            done(err);
+                        }, 1);
+                    });
+                    contextmenu(grid.canvas, 100, 37);
+                });
             });
             describe('Scroll box with scrollPointerLock false', function () {
                 it('Scroll horizontally via box drag', function (done) {
@@ -1036,6 +1184,25 @@
                     });
                     grid.style.treeArrowColor = c.fu;
                     click(grid.canvas, 7, 37);
+                });
+                it('Should be able to close tree grids.', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        tree: true,
+                        data: smallData
+                    });
+                    grid.addEventListener('expandtree', function (e) {
+                        var err = assertIf(e.treeGrid === undefined, 'Expected a grid here.');
+                        if (err) { return done(err); }
+                        e.treeGrid.style.cornerCellBackgroundColor = c.y;
+                    });
+                    grid.style.treeArrowColor = c.fu;
+                    grid.style.cellBackgroundColor = c.b;
+                    click(grid.canvas, 7, 37);
+                    click(grid.canvas, 7, 37);
+                    setTimeout(function () {
+                        assertPxColor(grid, 130, 60, c.b, done);
+                    }, 2);
                 });
                 it('Should display a new row', function (done) {
                     var grid = g({
