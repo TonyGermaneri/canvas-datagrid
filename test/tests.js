@@ -1,5 +1,5 @@
 /*jslint browser: true*/
-/*globals describe: false, afterEach: false, beforeEach: false, after: false, it: false, canvasDatagrid: false, async: false, requestAnimationFrame: false*/
+/*globals Event: false, describe: false, afterEach: false, beforeEach: false, after: false, it: false, canvasDatagrid: false, async: false, requestAnimationFrame: false*/
 (function () {
     'use strict';
     var blocks = '██████████████████',
@@ -519,21 +519,40 @@
                     });
                     contextmenu(grid.canvas, 100, 37);
                 });
-                it('Clicking Order by desc should order the selected column desc', function (done) {
-                    var grid = g({
+                it('Create a child context menu and scroll up and down using mouseover events', function (done) {
+                    var d = [], x, grid = g({
                         test: this.test,
                         data: smallData
                     });
+                    for (x = 0; x < 100; x += 1) {
+                        d.push({
+                            title: x
+                        });
+                    }
                     grid.addEventListener('contextmenu', function (e) {
+                        e.items.push({
+                            title: 'child menu',
+                            items: d
+                        });
                         setTimeout(function () {
-                            //HACK: refine desc context menu item to click it
-                            e.items[0].title.parentNode.parentNode.childNodes[3].dispatchEvent(new Event('click'));
-                            done(assertIf(grid.data[0].col1 !== 'foo',
-                                'Expected the content to be reordered desc.'));
+                            e.items[4].contextItemContainer.dispatchEvent(new Event('mouseover'));
+                            e.items[4].contextMenu.downArrow.dispatchEvent(new Event('mouseover'));
+                            setTimeout(function () {
+                                var err = assertIf(e.items[4].contextMenu.container.scrollTop === 0);
+                                if (err) { return done(err); }
+                                e.items[4].contextMenu.downArrow.dispatchEvent(new Event('mouseout'));
+                                e.items[4].contextMenu.upArrow.dispatchEvent(new Event('mouseover'));
+                                setTimeout(function () {
+                                    e.items[4].contextMenu.upArrow.dispatchEvent(new Event('mouseout'));
+                                    err = assertIf(e.items[4].contextMenu.container.scrollTop !== 0);
+                                    if (err) { return done(err); }
+                                    done();
+                                }, 1500);
+                            }, 1000);
                         }, 1);
                     });
                     contextmenu(grid.canvas, 60, 37);
-                });
+                }).timeout(5000);
             });
             describe('Scroll box with scrollPointerLock false', function () {
                 it('Scroll horizontally via box drag', function (done) {

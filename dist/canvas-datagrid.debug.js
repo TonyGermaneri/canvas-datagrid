@@ -3374,6 +3374,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             intf.clickIndex = clickIndex;
             intf.rect = rect;
             intf.items = items;
+            intf.upArrow = upArrow;
+            intf.downArrow = downArrow;
             intf.dispose = function () {
                 clearTimeout(hoverScrollTimeout);
                 children.forEach(function (c) {
