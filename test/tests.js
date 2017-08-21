@@ -868,6 +868,39 @@
                     assertPxColor(grid, 90, 32, c.black, done);
                 });
             });
+            describe('Sorters', function () {
+                it('Should sort a string, should handle null and undefined', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{a: 'a'}, {a: 'b'}, {a: 'c'}, {a: 'd'}, {a: null}, {a: undefined}],
+                        schema: [{name: 'a', type: 'string'}]
+                    });
+                    grid.order('a', 'desc');
+                    done(assertIf(grid.data[0].a !== 'd', 'expected to see sort by string desc'));
+                });
+                it('Should sort numbers', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{a: 0}, {a: 1}, {a: 2}, {a: 3}, {a: 4}, {a: 5}],
+                        schema: [{name: 'a', type: 'number'}]
+                    });
+                    grid.order('a', 'desc');
+                    done(assertIf(grid.data[0].a !== 5, 'expected to see sort by number desc'));
+                });
+                it('Should sort date', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{a: 1503307131397}, {a: 1503307132397},
+                            {a: 1503307133397}, {a: 1503307134397}, {a: 1503307135397}, {a: 1503307136397}],
+                        schema: [{name: 'a', type: 'date'}]
+                    });
+                    grid.formatters.date =  function (e) {
+                        return new Date(e.cell.value).toISOString();
+                    };
+                    grid.order('a', 'desc');
+                    done(assertIf(grid.data[0].a !== 1503307136397, 'expected to see sort by date desc'));
+                });
+            });
             describe('Selections', function () {
                 it('Should select all', function (done) {
                     var grid = g({
