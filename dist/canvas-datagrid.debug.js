@@ -1445,7 +1445,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         if (self.attributes.rowSelectionMode || self.dragStartObject.columnIndex === -1) {
                             self.selectRow(o.rowIndex, ctrl, null, true);
                         } else {
-                            if (!self.dragAddToSelection && o.rowIndex) {
+                            if (!self.dragAddToSelection && o.rowIndex !== undefined) {
                                 if (self.selections[o.rowIndex] && self.selections[o.rowIndex].indexOf(o.columnIndex) !== -1) {
                                     self.selections[o.rowIndex].splice(self.selections[o.rowIndex].indexOf(o.columnIndex), 1);
                                 }
