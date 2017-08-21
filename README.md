@@ -5,7 +5,7 @@ Canvas Data Grid
 
 ![canvas-datagrid](https://tonygermaneri.github.io/canvas-datagrid/images/datagrid1.png)
 
-[![Coverage Status](https://coveralls.io/repos/github/TonyGermaneri/canvas-datagrid/badge.svg?branch=master&build=1494)](https://coveralls.io/github/TonyGermaneri/canvas-datagrid?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/TonyGermaneri/canvas-datagrid/badge.svg?branch=master&build=1517)](https://coveralls.io/github/TonyGermaneri/canvas-datagrid?branch=master)
 
 * Support for millions of contiguous rows and columns without paging or loading.
 * Support for touch devices (phones and tablets).
