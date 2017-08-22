@@ -2,7 +2,7 @@
 /*globals Event: false, describe: false, afterEach: false, beforeEach: false, after: false, it: false, canvasDatagrid: false, async: false, requestAnimationFrame: false*/
 (function () {
     'use strict';
-    var kks = {
+    var kcs = {
             up: 38,
             down: 40,
             enter: 13,
@@ -595,7 +595,7 @@
                             i.dispatchEvent(new Event('keyup'));
                             ['down', 'enter'].forEach(function (kk) {
                                 var ev = new Event('keydown');
-                                ev.keyCode = kks[kk];
+                                ev.keyCode = kcs[kk];
                                 i.dispatchEvent(ev);
                                 if (kk === 'enter') {
                                     err = assertIf(grid.data[0].col1 !== 'baz', 'Expected key combination to filter for baz');
@@ -620,7 +620,7 @@
                             i.dispatchEvent(new Event('keyup'));
                             ['down', 'up', 'enter'].forEach(function (kk) {
                                 var ev = new Event('keydown');
-                                ev.keyCode = kks[kk];
+                                ev.keyCode = kcs[kk];
                                 i.dispatchEvent(ev);
                                 if (kk === 'enter') {
                                     err = assertIf(grid.data[0].col1 !== 'bar', 'Expected key combination to filter for bar');
@@ -645,7 +645,7 @@
                             i.dispatchEvent(new Event('keyup'));
                             ['tab'].forEach(function (kk) {
                                 var ev = new Event('keydown');
-                                ev.keyCode = kks[kk];
+                                ev.keyCode = kcs[kk];
                                 i.dispatchEvent(ev);
                                 if (kk === 'tab') {
                                     err = assertIf(grid.data[0].col1 !== 'foo', 'Expected key combination to filter for bar');
@@ -670,7 +670,7 @@
                             i.dispatchEvent(new Event('keyup'));
                             ['esc'].forEach(function (kk) {
                                 var ev = new Event('keydown');
-                                ev.keyCode = kks[kk];
+                                ev.keyCode = kcs[kk];
                                 i.dispatchEvent(ev);
                                 if (kk === 'esc') {
                                     err = assertIf(grid.data[0].col1 !== 'foo', 'Expected key combination to filter for bar');
@@ -850,6 +850,184 @@
                             done(assertIf(grid.scrollLeft < 400,
                                 'Expected the scroll bar to be further along.'));
                         }, 200);
+                    }, 1);
+                });
+            });
+            describe('Editing', function () {
+                it('Begin editing, end editing', function (done) {
+                    var ev,
+                        err,
+                        editInput,
+                        grid = g({
+                            test: this.test,
+                            data: [{d: ''}]
+                        });
+                    grid.beginEditAt(0, 0);
+                    editInput = document.body.lastChild;
+                    err = assertIf(editInput.tagName !== 'INPUT', 'Expected an input to have appeared');
+                    if (err) { return done(err); }
+                    ev = new Event('keydown');
+                    ev.keyCode = kcs.esc;
+                    grid.addEventListener('endedit', function () {
+                        done();
+                    });
+                    editInput.dispatchEvent(ev);
+                });
+                it('Begin editing, enter a value, end editing', function (done) {
+                    var ev,
+                        editInput,
+                        grid = g({
+                            test: this.test,
+                            data: [{d: ''}]
+                        });
+                    grid.beginEditAt(0, 0);
+                    editInput = document.body.lastChild;
+                    ev = new Event('keydown');
+                    ev.keyCode = kcs.enter;
+                    editInput.value = 'blah';
+                    grid.addEventListener('endedit', function (e) {
+                        done(assertIf(grid.data[0].d !== 'blah', 'Expected value to be in data'));
+                    });
+                    editInput.dispatchEvent(ev);
+                });
+                it('Begin editing, enter a value, end editing, abort before ending.', function (done) {
+                    var ev,
+                        editInput,
+                        grid = g({
+                            test: this.test,
+                            data: [{d: ''}]
+                        });
+                    grid.beginEditAt(0, 0);
+                    editInput = document.body.lastChild;
+                    ev = new Event('keydown');
+                    ev.keyCode = kcs.enter;
+                    editInput.value = 'blah';
+                    grid.addEventListener('beforeendedit', function (e) {
+                        e.abort();
+                        done(assertIf(grid.data[0].d === 'blah', 'Expected value to be in data'));
+                    });
+                    editInput.dispatchEvent(ev);
+                });
+                it('Begin editing a select with short definition.', function (done) {
+                    var editInput,
+                        grid = g({
+                            test: this.test,
+                            data: [{d: ''}],
+                            schema: [{name: 'd', enum: ['a', 'b', 'c']}]
+                        });
+                    grid.beginEditAt(0, 0);
+                    editInput = document.body.lastChild;
+                    done(assertIf(editInput.childNodes.length === 3
+                            && editInput.tagName !== 'SELECT', 'Expected an input to have appeared'));
+                });
+                it('Begin editing a select with standard definition.', function (done) {
+                    var editInput,
+                        grid = g({
+                            test: this.test,
+                            data: [{d: ''}],
+                            schema: [{name: 'd', enum: [['a', 'A'], ['b', 'B'], ['c', 'C']]}]
+                        });
+                    grid.beginEditAt(0, 0);
+                    editInput = document.body.lastChild;
+                    done(assertIf(editInput.childNodes[0].innerHTML === 'A'
+                            && editInput.childNodes.length === 3
+                            && editInput.tagName !== 'SELECT', 'Expected an input to have appeared'));
+                });
+            });
+            describe('Resize', function () {
+                it('Resize a column.', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData,
+                        style: {
+                            columnWidth: 50
+                        }
+                    });
+                    grid.addEventListener('rendercell', function (e) {
+                        if (e.cell.columnIndex === 0) {
+                            e.ctx.fillStyle = c.b;
+                        }
+                    });
+                    setTimeout(function () {
+                        grid.focus();
+                        marker(grid, 81, 10);
+                        mousemove(grid.canvas, 81, 10);
+                        mousedown(grid.canvas, 81, 10);
+                        mousemove(grid.canvas, 120, 10, grid.canvas);
+                        mousemove(document.body, 120, 10, grid.canvas);
+                        mouseup(document.body, 120, 10, grid.canvas);
+                        assertPxColor(grid, 100, 36, c.b, done);
+                    }, 1);
+                });
+                it('Resize a column from a cell.', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData,
+                        allowColumnResizeFromCell: true,
+                        style: {
+                            columnWidth: 50
+                        }
+                    });
+                    grid.addEventListener('rendercell', function (e) {
+                        if (e.cell.columnIndex === 0) {
+                            e.ctx.fillStyle = c.b;
+                        }
+                    });
+                    setTimeout(function () {
+                        grid.focus();
+                        mousemove(grid.canvas, 80, 36);
+                        mousedown(grid.canvas, 80, 36);
+                        mousemove(grid.canvas, 120, 36, grid.canvas);
+                        mousemove(document.body, 120, 36, grid.canvas);
+                        mouseup(document.body, 120, 36, grid.canvas);
+                        assertPxColor(grid, 110, 36, c.b, done);
+                    }, 1);
+                });
+                it('Resize a row.', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData,
+                        style: {
+                            columnWidth: 50
+                        }
+                    });
+                    grid.addEventListener('rendercell', function (e) {
+                        if (e.cell.columnIndex === -1 && e.cell.rowIndex === 0) {
+                            e.ctx.fillStyle = c.b;
+                        }
+                    });
+                    setTimeout(function () {
+                        grid.focus();
+                        mousemove(grid.canvas, 10, 49);
+                        mousedown(grid.canvas, 10, 49);
+                        mousemove(grid.canvas, 10, 100, grid.canvas);
+                        mousemove(document.body, 10, 100, grid.canvas);
+                        mouseup(document.body, 10, 100, grid.canvas);
+                        assertPxColor(grid, 10, 90, c.b, done);
+                    }, 1);
+                });
+                it('Resize a row from a cell.', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData,
+                        allowColumnResizeFromCell: true,
+                        style: {
+                            columnWidth: 50
+                        }
+                    });
+                    grid.addEventListener('rendercell', function (e) {
+                        if (e.cell.columnIndex === -1 && e.cell.rowIndex === 0) {
+                            e.ctx.fillStyle = c.b;
+                        }
+                    });
+                    setTimeout(function () {
+                        grid.focus();
+                        mousemove(grid.canvas, 40, 49);
+                        mousedown(grid.canvas, 40, 49);
+                        mousemove(grid.canvas, 40, 100, grid.canvas);
+                        mousemove(document.body, 40, 100, grid.canvas);
+                        mouseup(document.body, 40, 100, grid.canvas);
+                        assertPxColor(grid, 10, 90, c.b, done);
                     }, 1);
                 });
             });
