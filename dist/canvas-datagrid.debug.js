@@ -1977,7 +1977,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     if (row) {
                         var r = [];
                         Object.keys(row).forEach(function (key) {
-                            r.push(row[key]);
+                            r.push('"' + row[key].replace(/"/g, '""') + '"');
                         });
                         r.join(',');
                         rows.push(r);
@@ -2456,6 +2456,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.intf.assertPxColor = self.assertPxColor;
             self.intf.clearPxColorAssertions = self.clearPxColorAssertions;
             self.intf.integerToAlpha = self.integerToAlpha;
+            self.intf.copy = self.copy;
             self.intf.style = {};
             Object.keys(self.style).forEach(function (key) {
                 // unless this line is here, Object.keys() will not work on <instance>.style
@@ -3897,6 +3898,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         if (ny > self.data.length - 1) {
                             ny = 0;
                         }
+                        self.scrollIntoView(nx, ny);
                         self.beginEditAt(nx, ny);
                     }
                 });

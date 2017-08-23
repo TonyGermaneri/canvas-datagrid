@@ -149,9 +149,16 @@
         var p = bb(bbEl || el);
         de(el, 'touchmove', {touches: [{clientX: x + p.left, clientY: y + p.top }]});
     }
-    function click(el, x, y, bbEl) {
+    function click(el, x, y, bbEl, ev) {
         var p = bb(bbEl || el);
-        de(el, 'click', {clientX: x + p.left, clientY: y + p.top });
+        ev = ev || {};
+        ev.clientX = x + p.left;
+        ev.clientY = y + p.top;
+        de(el, 'click', ev);
+    }
+    function dblclick(el, x, y, bbEl) {
+        var p = bb(bbEl || el);
+        de(el, 'dblclick', {clientX: x + p.left, clientY: y + p.top });
     }
     function g(args) {
         var grid,
@@ -824,6 +831,32 @@
                         }, 2000);
                     }, 1);
                 }).timeout(5000);
+                it('Scroll horizontally via wheel', function (done) {
+                    var ev, grid = g({
+                        test: this.test,
+                        data: makeData(30, 500)
+                    });
+                    grid.focus();
+                    ev = new Event('wheel');
+                    ev.deltaX = 10;
+                    ev.deltaY = 0;
+                    grid.canvas.dispatchEvent(ev);
+                    done(assertIf(grid.scrollLeft < 1,
+                         'Expected the scroll bar to be further along.'));
+                });
+                it('Scroll vertically via wheel', function (done) {
+                    var ev, grid = g({
+                        test: this.test,
+                        data: makeData(30, 500)
+                    });
+                    grid.focus();
+                    ev = new Event('wheel');
+                    ev.deltaX = 0;
+                    ev.deltaY = 10;
+                    grid.canvas.dispatchEvent(ev);
+                    done(assertIf(grid.scrollTop < 1,
+                         'Expected the scroll bar to be further along.'));
+                });
             });
             describe('Touch', function () {
                 it('Touch and drag should scroll the grid vertically and horizontally', function (done) {
@@ -982,6 +1015,105 @@
                     done(assertIf(editInput.childNodes[0].innerHTML === 'A'
                             && editInput.childNodes.length === 3
                             && editInput.tagName !== 'SELECT', 'Expected an input to have appeared'));
+                    grid.endEdit();
+                });
+                it('Begin editing by double clicking a cell.', function (done) {
+                    var editInput,
+                        grid = g({
+                            test: this.test,
+                            data: [{d: ''}]
+                        });
+                    mousemove(grid.canvas, 45, 37);
+                    mousedown(grid.canvas, 45, 37);
+                    mouseup(grid.canvas, 45, 37);
+                    mousedown(grid.canvas, 45, 37);
+                    mouseup(grid.canvas, 45, 37);
+                    dblclick(grid.canvas, 45, 37);
+                    editInput = document.body.lastChild;
+                    done(assertIf(editInput.tagName !== 'INPUT', 'Expected an input to have appeared'));
+                    grid.endEdit();
+                });
+                it('Should copy a value onto the simulated clipboard.', function (done) {
+                    var grid = g({
+                            test: this.test,
+                            data: [
+                                {d: 'Text with, a comma 1', e: 'Text that has no comma in in 1'},
+                                {d: 'Text with, a comma 2', e: 'Text that has no comma in in 2'}
+                            ]
+                        });
+                    grid.selectAll();
+                    grid.focus();
+                    setTimeout(function () {
+                        grid.copy({
+                            clipboardData: {
+                                setData: function (mime, data) {
+                                    done(assertIf(mime !== 'text/plain'
+                                        || data.indexOf('Text with') === -1, 'Expected data from the grid to be placed into the fake clipboard.'));
+                                }
+                            }
+                        });
+                    }, 1);
+                });
+                it('Begin editing, tab to next cell', function (done) {
+                    var ev,
+                        err,
+                        editInput,
+                        grid = g({
+                            test: this.test,
+                            data: smallData
+                        });
+                    grid.beginEditAt(0, 0);
+                    editInput = document.body.lastChild;
+                    ev = new Event('keydown');
+                    ev.keyCode = kcs.tab;
+                    editInput.dispatchEvent(ev);
+                    grid.addEventListener('endedit', function (e) {
+                        if (e.cell.columnIndex === 1) {
+                            done();
+                        }
+                    });
+                    grid.endEdit();
+                });
+                it('Begin editing, shift tab to very last cell', function (done) {
+                    var ev,
+                        err,
+                        editInput,
+                        grid = g({
+                            test: this.test,
+                            data: smallData
+                        });
+                    grid.beginEditAt(0, 0);
+                    editInput = document.body.lastChild;
+                    ev = new Event('keydown');
+                    ev.shiftKey = true;
+                    ev.keyCode = kcs.tab;
+                    grid.addEventListener('endedit', function (e) {
+                        if (e.cell.columnIndex === 2 && e.cell.rowIndex === 2) {
+                            done();
+                        }
+                    });
+                    editInput.dispatchEvent(ev);
+                    grid.endEdit();
+                });
+                it('Begin editing, tab to next row by hitting tab three times', function (done) {
+                    var ev,
+                        err,
+                        editInput,
+                        grid = g({
+                            test: this.test,
+                            data: smallData
+                        });
+                    grid.beginEditAt(0, 0);
+                    grid.addEventListener('endedit', function (e) {
+                        if (e.cell.columnIndex === 0 && e.cell.rowIndex === 0) {
+                            done();
+                        }
+                    });
+                    ev = new Event('keydown');
+                    ev.keyCode = kcs.tab;
+                    document.body.lastChild.dispatchEvent(ev);
+                    document.body.lastChild.dispatchEvent(ev);
+                    document.body.lastChild.dispatchEvent(ev);
                     grid.endEdit();
                 });
             });
@@ -1770,7 +1902,7 @@
                 it('Should allow column reordering when allowColumnReordering is true', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData,
+                        data: makeData(3, 3, function (y, x) { return x + ':' + y; }),
                         style: {
                             columnWidth: 50
                         }
@@ -1784,7 +1916,7 @@
                         mouseup(document.body, 200, 10, grid.canvas);
                         grid.draw();
                         grid.addEventListener('click', function (e) {
-                            done(assertIf(e.cell.value !== 0, 'Expected to see the value from column 2 here.'));
+                            done(assertIf(e.cell.value !== '1:0', 'Expected to see the value from column 2 here, instead saw %n.', e.cell.value));
                         });
                         // lib intentionally ignoring next click - required to make the ux work as desired
                         click(grid.canvas, 60, 37);
@@ -1903,7 +2035,7 @@
                     });
                     contextmenu(grid.canvas, 60, 37);
                 });
-                it('Clicking the corner cell will return dataset to original sort order.', function (done) {
+                it('Clicking the corner cell will return dataset to original sort order and filter settings.', function (done) {
                     var grid = g({
                         test: this.test,
                         data: makeData(10, 10, function (x) { return x; }),
@@ -1919,7 +2051,7 @@
                         done(assertIf(grid.data[0].a !== 0, 'Expected data to be sorted.'));
                     }, 1);
                 });
-                it('Clicking a header cell with columnHeaderClickBehavior set to sort', function (done) {
+                it('Clicking a header cell with columnHeaderClickBehavior set to sort should sort the column asc', function (done) {
                     var grid = g({
                         test: this.test,
                         data: smallData,
@@ -1930,7 +2062,54 @@
                     click(grid.canvas, 40, 12);
                     done(assertIf(grid.data[0].col1 !== 'bar', 'Expected data to be sorted.'));
                 });
-
+                it('Clicking a header cell with columnHeaderClickBehavior set to select should select the column', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData,
+                        columnHeaderClickBehavior: 'select'
+                    });
+                    marker(grid, 40, 12);
+                    mousemove(grid.canvas, 40, 12);
+                    click(grid.canvas, 40, 12);
+                    done(assertIf(grid.selectedRows.length !== 3
+                        || grid.selectedCells[0].col2 !== undefined, 'Expected every row to be selected.'));
+                });
+                it('Clicking a header cell with columnHeaderClickBehavior set to select then clicking another with ctrl held should add to the selection', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData,
+                        columnHeaderClickBehavior: 'select',
+                        style: {
+                            columnWidth: 50
+                        }
+                    });
+                    marker(grid, 40, 12);
+                    mousemove(grid.canvas, 40, 12);
+                    click(grid.canvas, 40, 12);
+                    mousemove(grid.canvas, 175, 12);
+                    click(grid.canvas, 175, 12, null, {controlKey: true});
+                    done(assertIf(grid.selectedRows.length !== 3
+                        || grid.selectedCells[0].col2 !== undefined
+                        || grid.selectedCells[0].col3 !== 'a', 'Expected every row to be selected and column 2 to not be selected.'));
+                });
+                it('Clicking a header cell with columnHeaderClickBehavior set to select then clicking another with shift held should add a range to the selection', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: makeData(3, 3, function (y, x) { return x + ':' + y; }),
+                        columnHeaderClickBehavior: 'select',
+                        style: {
+                            columnWidth: 50
+                        }
+                    });
+                    marker(grid, 40, 12);
+                    mousemove(grid.canvas, 40, 12);
+                    click(grid.canvas, 40, 12);
+                    mousemove(grid.canvas, 175, 12);
+                    click(grid.canvas, 175, 12, null, {shiftKey: true});
+                    done(assertIf(grid.selectedRows.length !== 3
+                        || grid.selectedCells[0].c !== '2:0'
+                        || grid.selectedCells[0].b !== '1:0', 'Expected everything to be selected.'));
+                });
             });
         });
     });
