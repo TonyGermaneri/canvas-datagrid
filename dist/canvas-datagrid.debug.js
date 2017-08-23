@@ -2734,7 +2734,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (!Array.isArray(data) && typeof data === 'object') {
                 data = [data];
             }
-            if ((!Array.isArray(data[0]) && typeof data[0] === 'object')
+            if ((!Array.isArray(data[0]) && typeof data[0] === 'object' && data[0] !== null)
                             || (Array.isArray(data) && data.length === 0)) {
                 return data;
             }
@@ -2769,7 +2769,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     var x;
                     d[index] = {};
                     for (x = 0; x < max; x += 1) {
-                        d[index][x] = row[x] || null;
+                        d[index][x] = row[x];
                     }
                 });
                 return d;
