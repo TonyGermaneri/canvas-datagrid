@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     'use strict';
     var grid = canvasDatagrid({
         parentNode: document.body,
+        columnHeaderClickBehavior: 'select',
         tree: true
     });
     // grid.data = [

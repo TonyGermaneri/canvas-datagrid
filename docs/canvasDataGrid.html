@@ -6997,6 +6997,8 @@ Warning, can be slow on very large record sets (1m records ~3-5 seconds on an i7
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
         
 
@@ -7023,6 +7025,14 @@ Warning, can be slow on very large record sets (1m records ~3-5 seconds on an i7
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
@@ -7047,10 +7057,52 @@ Warning, can be slow on very large record sets (1m records ~3-5 seconds on an i7
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
             <td class="description last">`asc` for ascending or `desc` for descending.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>sortFunction</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">When defined, override the default sorting method defined in the column's schema and use this one.</td>
         </tr>
 
     
@@ -7070,6 +7122,16 @@ Warning, can be slow on very large record sets (1m records ~3-5 seconds on an i7
             
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -7961,7 +8023,7 @@ Warning, can be slow on very large record sets (1m records ~3-5 seconds on an i7
 
         <tr>
             
-                <td class="name"><code>toggleSelectMode</code></td>
+                <td class="name"><code>ctrl</code></td>
             
 
             <td class="type">
@@ -7979,6 +8041,30 @@ Warning, can be slow on very large record sets (1m records ~3-5 seconds on an i7
             
 
             <td class="description last">When true, behaves as if you were holding control/command when you clicked the row.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>shift</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">When true, behaves as if you were holding shift when you clicked the row.</td>
         </tr>
 
     
