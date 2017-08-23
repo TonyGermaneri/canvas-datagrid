@@ -538,6 +538,7 @@ document.addEventListener('DOMContentLoaded', function () {
             cBox.onclick = pickColor(function () { return cBox.style.backgroundColor; },
                 function (i) {
                     cInput.value = i.value;
+                    cInput.dispatchEvent(new Event('change'));
                 });
             cInput.value = shortStyle[key];
             cInput.addEventListener('change', function () {
