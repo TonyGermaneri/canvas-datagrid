@@ -1217,6 +1217,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.touchcancel = function (e) {
             if (self.dispatchEvent('touchcancel', {NativeEvent: e, cell: self.currentCell})) { return; }
             if (!self.hasFocus) { return; }
+            self.touchend(e);
             touchingCell = false;
             document.body.removeEventListener('touchmove', self.touchmove, {passive: false});
             document.body.removeEventListener('touchend', self.touchend, false);
@@ -1477,170 +1478,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.cellBoundaryCrossed = false;
             self.draw(true);
         };
-        /**
-         * Ends editing, optionally aborting the edit.
-         * @memberof canvasDataGrid
-         * @name endEdit
-         * @method
-         * @param {boolean} abort When true, abort the edit.
-         */
-        self.endEdit = function (abort) {
-            var cell = self.input.editCell,
-                y = cell.rowIndex;
-            function abortEdit() {
-                abort = true;
-            }
-            if (self.dispatchEvent('beforeendedit', {
-                    cell: cell,
-                    newValue: self.input.value,
-                    oldValue: cell.value,
-                    abort: abortEdit,
-                    input: self.input
-                })) { return false; }
-            if (self.input.value !== cell.value && !abort) {
-                self.changes[y] = self.changes[y] || {};
-                self.changes[y][cell.header.name] = self.input.value;
-                cell.data[cell.header.name] = self.input.value;
-                if (y === self.data.length) {
-                    if (self.dispatchEvent('newrow', {
-                            value: self.input.value,
-                            defaultValue: cell.value,
-                            aborted: abort,
-                            cell: cell,
-                            input: self.input
-                        })) { return false; }
-                    self.uId += 1;
-                    self.addRow(cell.data);
-                    self.createNewRowData();
-                }
-                self.draw(true);
-            }
-            document.body.removeChild(self.input);
-            self.controlInput.focus();
-            self.dispatchEvent('endedit', {
-                cell: cell,
-                value: self.input.value,
-                aborted: abort,
-                input: self.input
-            });
-            self.input = undefined;
-            return true;
-        };
-        /**
-         * Begins editing at cell x, row y.
-         * @memberof canvasDataGrid
-         * @name beginEditAt
-         * @method
-         * @param {number} x The column index of the cell to edit.
-         * @param {number} y The row index of the cell to edit.
-         */
-        self.beginEditAt = function (x, y) {
-            if (!self.attributes.editable) { return; }
-            var cell = self.getVisibleCellByIndex(x, y),
-                s = self.getVisibleSchema(),
-                enumItems;
-            if (self.dispatchEvent('beforebeginedit', {cell: cell})) { return false; }
-            self.scrollIntoView(x, y);
-            self.setActiveCell(x, y);
-            if (cell.header.enum) {
-                self.input = document.createElement('select');
-            } else {
-                self.input = document.createElement(self.attributes.multiLine
-                    ? 'textarea' : 'input');
-            }
-            function postDraw() {
-                var option, valueInEnum;
-                cell = self.getVisibleCellByIndex(x, y);
-                if (cell.header.enum) {
-                    // add enums
-                    if (typeof cell.header.enum === 'function') {
-                        enumItems = cell.header.enum.apply(self.intf, [{cell: cell}]);
-                    } else if (Array.isArray(cell.header.enum)) {
-                        enumItems = cell.header.enum;
-                    }
-                    enumItems.forEach(function (e) {
-                        var i = document.createElement('option'),
-                            val,
-                            title;
-                        if (Array.isArray(e)) {
-                            val = e[0];
-                            title = e[1];
-                        } else {
-                            val = e;
-                            title = e;
-                        }
-                        if (val === cell.value) { valueInEnum = true; }
-                        i.value = val;
-                        i.innerHTML = title;
-                        self.input.appendChild(i);
-                    });
-                    if (!valueInEnum) {
-                        option = document.createElement('option');
-                        option.value = cell.value;
-                        option.innerHTML = cell.value;
-                        self.input.appendChild(option);
-                    }
-                    self.input.addEventListener('change', function () {
-                        self.endEdit();
-                        self.draw(true);
-                    });
-                }
-                document.body.appendChild(self.input);
-                self.createInlineStyle(self.input, 'canvas-datagrid-edit-input');
-                self.input.style.position = 'absolute';
-                self.input.editCell = cell;
-                self.resizeEditInput();
-                self.input.style.zIndex = '2';
-                self.input.value = cell.value;
-                self.input.focus();
-                self.input.addEventListener('click', self.stopPropagation);
-                self.input.addEventListener('dblclick', self.stopPropagation);
-                self.input.addEventListener('mouseup', self.stopPropagation);
-                self.input.addEventListener('mousedown', self.stopPropagation);
-                self.input.addEventListener('keydown', function (e) {
-                    var nx = cell.columnIndex,
-                        ny = cell.rowIndex;
-                    // esc
-                    if (e.keyCode === 27) {
-                        self.endEdit(true);
-                        self.draw(true);
-                    // enter
-                    } else if (e.keyCode === 13
-                            && (!self.attributes.multiLine
-                                || (self.attributes.multiLine && e.shiftKey))) {
-                        self.endEdit();
-                        self.draw(true);
-                    } else if (e.keyCode === 9) {
-                        e.preventDefault();
-                        if (!self.endEdit()) {
-                            return;
-                        }
-                        if (e.shiftKey) {
-                            nx -= 1;
-                        } else {
-                            nx += 1;
-                        }
-                        if (nx < 0) {
-                            nx = s.length - 1;
-                            ny -= 1;
-                        }
-                        if (nx > s.length - 1) {
-                            nx = 0;
-                            ny += 1;
-                        }
-                        if (ny < 0) {
-                            ny = self.data.length - 1;
-                        }
-                        if (ny > self.data.length - 1) {
-                            ny = 0;
-                        }
-                        self.beginEditAt(nx, ny);
-                    }
-                });
-            }
-            postDraw();
-            self.dispatchEvent('beginedit', {cell: cell, input: self.input});
-        };
         self.click = function (e, overridePos) {
             var i,
                 selectionChanged,
@@ -1672,7 +1509,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             if (self.currentCell.context === 'cell') {
                 if (self.currentCell.style === 'cornerCell') {
-                    self.order(self.uniqueId, 'asc');
+                    self.order(self.uniqueId, 'asc', self.sorters.number);
                     self.setFilter();
                     checkSelectionChange();
                     return;
@@ -1990,7 +1827,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (self.attributes.showNewRow) {
                 last += 1;
             }
-            if (e.keyCode === 'Tab') {
+            if (e.keyCode === 9) {
                 e.preventDefault();
             }
             // ctrl + a
@@ -2634,6 +2471,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         self.dispatchEvent('stylechanged', {name: key, value: value});
                     }
                 });
+            });
+            Object.defineProperty(self.intf, 'activeCell', {
+                get: function () {
+                    return self.activeCell;
+                }
             });
             /**
              * When true, the grid is has focus.
@@ -3898,6 +3740,170 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
     'use strict';
     return function (self) {
+        /**
+         * Ends editing, optionally aborting the edit.
+         * @memberof canvasDataGrid
+         * @name endEdit
+         * @method
+         * @param {boolean} abort When true, abort the edit.
+         */
+        self.endEdit = function (abort) {
+            var cell = self.input.editCell,
+                y = cell.rowIndex;
+            function abortEdit() {
+                abort = true;
+            }
+            if (self.dispatchEvent('beforeendedit', {
+                    cell: cell,
+                    newValue: self.input.value,
+                    oldValue: cell.value,
+                    abort: abortEdit,
+                    input: self.input
+                })) { return false; }
+            if (self.input.value !== cell.value && !abort) {
+                self.changes[y] = self.changes[y] || {};
+                self.changes[y][cell.header.name] = self.input.value;
+                cell.data[cell.header.name] = self.input.value;
+                if (y === self.data.length) {
+                    if (self.dispatchEvent('newrow', {
+                            value: self.input.value,
+                            defaultValue: cell.value,
+                            aborted: abort,
+                            cell: cell,
+                            input: self.input
+                        })) { return false; }
+                    self.uId += 1;
+                    self.addRow(cell.data);
+                    self.createNewRowData();
+                }
+                self.draw(true);
+            }
+            document.body.removeChild(self.input);
+            self.controlInput.focus();
+            self.dispatchEvent('endedit', {
+                cell: cell,
+                value: self.input.value,
+                aborted: abort,
+                input: self.input
+            });
+            self.input = undefined;
+            return true;
+        };
+        /**
+         * Begins editing at cell x, row y.
+         * @memberof canvasDataGrid
+         * @name beginEditAt
+         * @method
+         * @param {number} x The column index of the cell to edit.
+         * @param {number} y The row index of the cell to edit.
+         */
+        self.beginEditAt = function (x, y) {
+            if (!self.attributes.editable) { return; }
+            var cell = self.getVisibleCellByIndex(x, y),
+                s = self.getVisibleSchema(),
+                enumItems;
+            if (self.dispatchEvent('beforebeginedit', {cell: cell})) { return false; }
+            self.scrollIntoView(x, y);
+            self.setActiveCell(x, y);
+            if (cell.header.enum) {
+                self.input = document.createElement('select');
+            } else {
+                self.input = document.createElement(self.attributes.multiLine
+                    ? 'textarea' : 'input');
+            }
+            function postDraw() {
+                var option, valueInEnum;
+                cell = self.getVisibleCellByIndex(x, y);
+                if (cell.header.enum) {
+                    // add enums
+                    if (typeof cell.header.enum === 'function') {
+                        enumItems = cell.header.enum.apply(self.intf, [{cell: cell}]);
+                    } else if (Array.isArray(cell.header.enum)) {
+                        enumItems = cell.header.enum;
+                    }
+                    enumItems.forEach(function (e) {
+                        var i = document.createElement('option'),
+                            val,
+                            title;
+                        if (Array.isArray(e)) {
+                            val = e[0];
+                            title = e[1];
+                        } else {
+                            val = e;
+                            title = e;
+                        }
+                        if (val === cell.value) { valueInEnum = true; }
+                        i.value = val;
+                        i.innerHTML = title;
+                        self.input.appendChild(i);
+                    });
+                    if (!valueInEnum) {
+                        option = document.createElement('option');
+                        option.value = cell.value;
+                        option.innerHTML = cell.value;
+                        self.input.appendChild(option);
+                    }
+                    self.input.addEventListener('change', function () {
+                        self.endEdit();
+                        self.draw(true);
+                    });
+                }
+                document.body.appendChild(self.input);
+                self.createInlineStyle(self.input, 'canvas-datagrid-edit-input');
+                self.input.style.position = 'absolute';
+                self.input.editCell = cell;
+                self.resizeEditInput();
+                self.input.style.zIndex = '2';
+                self.input.value = cell.value;
+                self.input.focus();
+                self.input.addEventListener('click', self.stopPropagation);
+                self.input.addEventListener('dblclick', self.stopPropagation);
+                self.input.addEventListener('mouseup', self.stopPropagation);
+                self.input.addEventListener('mousedown', self.stopPropagation);
+                self.input.addEventListener('keydown', function (e) {
+                    var nx = cell.columnIndex,
+                        ny = cell.rowIndex;
+                    // esc
+                    if (e.keyCode === 27) {
+                        self.endEdit(true);
+                        self.draw(true);
+                    // enter
+                    } else if (e.keyCode === 13
+                            && (!self.attributes.multiLine
+                                || (self.attributes.multiLine && e.shiftKey))) {
+                        self.endEdit();
+                        self.draw(true);
+                    } else if (e.keyCode === 9) {
+                        e.preventDefault();
+                        if (!self.endEdit()) {
+                            return;
+                        }
+                        if (e.shiftKey) {
+                            nx -= 1;
+                        } else {
+                            nx += 1;
+                        }
+                        if (nx < 0) {
+                            nx = s.length - 1;
+                            ny -= 1;
+                        }
+                        if (nx > s.length - 1) {
+                            nx = 0;
+                            ny += 1;
+                        }
+                        if (ny < 0) {
+                            ny = self.data.length - 1;
+                        }
+                        if (ny > self.data.length - 1) {
+                            ny = 0;
+                        }
+                        self.beginEditAt(nx, ny);
+                    }
+                });
+            }
+            postDraw();
+            self.dispatchEvent('beginedit', {cell: cell, input: self.input});
+        };
         self.createInlineStyle = function (el, className) {
             var css = {
                 'canvas-datagrid-context-menu-filter-input': {
@@ -4709,9 +4715,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @returns {cell} cell at the selected location.
          * @param {number} columnName Number of pixels from the left.
          * @param {string} direction `asc` for ascending or `desc` for descending.
-         * @param {bool} dontSetStorageData Don't store this setting for future use.
+         * @param {function} [sortFunction] When defined, override the default sorting method defined in the column's schema and use this one.
+         * @param {bool} [dontSetStorageData] Don't store this setting for future use.
          */
-        self.order = function (columnName, direction, dontSetStorageData) {
+        self.order = function (columnName, direction, sortFunction, dontSetStorageData) {
             var f,
                 c = self.getSchema().filter(function (col) {
                     return col.name === columnName;
@@ -4720,7 +4727,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (c.length === 0) {
                 throw new Error('Cannot sort.  No such column name');
             }
-            f = self.sorters[c[0].type];
+            f = sortFunction || self.sorters[c[0].type];
             if (!f && c[0].type !== undefined) {
                 console.warn('Cannot sort type "%s" falling back to string sort.', c[0].type);
             }

@@ -5,8 +5,14 @@
     var kcs = {
             up: 38,
             down: 40,
+            left: 37,
+            right: 39,
             enter: 13,
             tab: 9,
+            space: 32,
+            pgup: 33,
+            pgdown: 34,
+            a: 65,
             esc: 27
         },
         blocks = '██████████████████',
@@ -134,6 +140,10 @@
     function touchend(el, x, y, bbEl) {
         var p = bb(bbEl || el);
         de(el, 'touchend', {touches: [{clientX: x + p.left, clientY: y + p.top }]});
+    }
+    function touchcancel(el, x, y, bbEl) {
+        var p = bb(bbEl || el);
+        de(el, 'touchcancel', {touches: [{clientX: x + p.left, clientY: y + p.top }]});
     }
     function touchmove(el, x, y, bbEl) {
         var p = bb(bbEl || el);
@@ -816,7 +826,7 @@
                 }).timeout(5000);
             });
             describe('Touch', function () {
-                it('Touch and drag should scroll the grid', function (done) {
+                it('Touch and drag should scroll the grid vertically and horizontally', function (done) {
                     var grid = g({
                         test: this.test,
                         data: smallData
@@ -827,8 +837,8 @@
                         touchmove(document.body, 90, 37, grid.canvas);
                         setTimeout(function () {
                             // simulate very slow movement of humans
-                            touchmove(document.body, 60, 37, grid.canvas);
-                            touchend(document.body, 60, 37, grid.canvas);
+                            touchmove(document.body, 60, 66, grid.canvas);
+                            touchend(document.body, 60, 66, grid.canvas);
                             done(assertIf(grid.scrollLeft === 0,
                                 'Expected the grid to scroll some.'));
                         }, 200);
@@ -850,6 +860,45 @@
                             done(assertIf(grid.scrollLeft < 400,
                                 'Expected the scroll bar to be further along.'));
                         }, 200);
+                    }, 1);
+                });
+                it('Touch and hold should start selecting, moving should select until touchend', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    setTimeout(function () {
+                        grid.focus();
+                        touchstart(grid.canvas, 200, 37);
+                        setTimeout(function () {
+                            // simulate very slow movement of humans
+                            grid.focus();
+                            touchmove(document.body, 320, 90, grid.canvas);
+                            touchend(document.body, 320, 90, grid.canvas);
+                            setTimeout(function () {
+                                done(assertIf(grid.selectedRows.length !== 3,
+                                    'Expected all rows to become selected.'));
+                            }, 1);
+                        }, 1000);
+                    }, 1);
+                });
+                it('Touch start should be cancel-able', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    setTimeout(function () {
+                        grid.focus();
+                        touchstart(grid.canvas, 200, 37);
+                        setTimeout(function () {
+                            // simulate very slow movement of humans
+                            grid.focus();
+                            touchcancel(document.body, 320, 90, grid.canvas);
+                            setTimeout(function () {
+                                done(assertIf(grid.selectedRows.length !== 1,
+                                    'Expected 1 row to be selected.'));
+                            }, 1);
+                        }, 1000);
                     }, 1);
                 });
             });
@@ -919,6 +968,7 @@
                     editInput = document.body.lastChild;
                     done(assertIf(editInput.childNodes.length === 3
                             && editInput.tagName !== 'SELECT', 'Expected an input to have appeared'));
+                    grid.endEdit();
                 });
                 it('Begin editing a select with standard definition.', function (done) {
                     var editInput,
@@ -932,6 +982,217 @@
                     done(assertIf(editInput.childNodes[0].innerHTML === 'A'
                             && editInput.childNodes.length === 3
                             && editInput.tagName !== 'SELECT', 'Expected an input to have appeared'));
+                    grid.endEdit();
+                });
+            });
+            describe('Key navigation', function () {
+                it('Arrow down should move active cell down one', function (done) {
+                    var ev, grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.focus();
+                    ev = new Event('keydown');
+                    ev.keyCode = kcs.down;
+                    grid.controlInput.dispatchEvent(ev);
+                    done(assertIf(grid.activeCell.rowIndex !== 1, 'Expected the active cell to move.'));
+                });
+                it('Arrow right should move active cell right one', function (done) {
+                    var ev, grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.focus();
+                    ev = new Event('keydown');
+                    ev.keyCode = kcs.right;
+                    grid.controlInput.dispatchEvent(ev);
+                    done(assertIf(grid.activeCell.columnIndex !== 1, 'Expected the active cell to move.'));
+                });
+                it('Arrow right, then left should move active cell right one, then left one', function (done) {
+                    var ev, grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.focus();
+                    ev = new Event('keydown');
+                    ev.keyCode = kcs.right;
+                    grid.controlInput.dispatchEvent(ev);
+                    ev = new Event('keydown');
+                    ev.keyCode = kcs.left;
+                    grid.controlInput.dispatchEvent(ev);
+                    done(assertIf(grid.activeCell.columnIndex !== 0, 'Expected the active cell to move.'));
+                });
+                it('Arrow down, then up should move active cell down one, then up one', function (done) {
+                    var ev, grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.focus();
+                    ev = new Event('keydown');
+                    ev.keyCode = kcs.down;
+                    grid.controlInput.dispatchEvent(ev);
+                    ev = new Event('keydown');
+                    ev.keyCode = kcs.up;
+                    grid.controlInput.dispatchEvent(ev);
+                    done(assertIf(grid.activeCell.columnIndex !== 0, 'Expected the active cell to move.'));
+                });
+                it('Shift and Arrow down should add the selection down one', function (done) {
+                    var ev, grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.focus();
+                    ev = new Event('keydown');
+                    ev.keyCode = kcs.space;
+                    grid.controlInput.dispatchEvent(ev);
+                    ev = new Event('keydown');
+                    ev.shiftKey = true;
+                    ev.keyCode = kcs.down;
+                    grid.controlInput.dispatchEvent(ev);
+                    done(assertIf(grid.selectedRows.length !== 2, 'Expected the active cell to move.'));
+                });
+                it('Shift and Arrow right should add the selection right one', function (done) {
+                    var ev, grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.focus();
+                    ev = new Event('keydown');
+                    ev.keyCode = kcs.space;
+                    grid.controlInput.dispatchEvent(ev);
+                    ev = new Event('keydown');
+                    ev.shiftKey = true;
+                    ev.keyCode = kcs.right;
+                    grid.controlInput.dispatchEvent(ev);
+                    done(assertIf(grid.selectedRows.length !== 1 || grid.selections[0].col3 !== undefined, 'Expected the active cell to move.'));
+                });
+                it('Shift and Arrow left should add the selection to the left one', function (done) {
+                    var ev, grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.focus();
+                    ev = new Event('keydown');
+                    ev.keyCode = kcs.space;
+                    grid.controlInput.dispatchEvent(ev);
+                    ev = new Event('keydown');
+                    ev.shiftKey = true;
+                    ev.keyCode = kcs.right;
+                    grid.controlInput.dispatchEvent(ev);
+                    ev = new Event('keydown');
+                    ev.shiftKey = true;
+                    ev.keyCode = kcs.left;
+                    grid.controlInput.dispatchEvent(ev);
+                    done(assertIf(grid.selectedRows.length !== 1 || grid.selections[0].col3 !== undefined, 'Expected the active cell to move.'));
+                });
+                it('Shift and Arrow up should add the selection up one', function (done) {
+                    var ev, grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.focus();
+                    ev = new Event('keydown');
+                    ev.keyCode = kcs.space;
+                    grid.controlInput.dispatchEvent(ev);
+                    ev = new Event('keydown');
+                    ev.shiftKey = true;
+                    ev.keyCode = kcs.down;
+                    grid.controlInput.dispatchEvent(ev);
+                    ev = new Event('keydown');
+                    ev.shiftKey = true;
+                    ev.keyCode = kcs.up;
+                    grid.controlInput.dispatchEvent(ev);
+                    done(assertIf(grid.selectedRows.length !== 2 || grid.selections[0].col2 !== undefined, 'Expected the active cell to move.'));
+                });
+                it('Shift tab should behave like left arrow', function (done) {
+                    var ev, grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.focus();
+                    ev = new Event('keydown');
+                    ev.keyCode = kcs.right;
+                    grid.controlInput.dispatchEvent(ev);
+                    ev = new Event('keydown');
+                    ev.keyCode = kcs.tab;
+                    ev.shiftKey = true;
+                    grid.controlInput.dispatchEvent(ev);
+                    done(assertIf(grid.activeCell.columnIndex !== 0, 'Expected the active cell to move.'));
+                });
+                it('Tab should behave like right arrow', function (done) {
+                    var ev, grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.focus();
+                    ev = new Event('keydown');
+                    ev.keyCode = kcs.tab;
+                    grid.controlInput.dispatchEvent(ev);
+                    done(assertIf(grid.activeCell.columnIndex !== 1, 'Expected the active cell to move.'));
+                });
+                it('Tab should behave like right arrow', function (done) {
+                    var ev, grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.focus();
+                    ev = new Event('keydown');
+                    ev.keyCode = kcs.tab;
+                    grid.controlInput.dispatchEvent(ev);
+                    done(assertIf(grid.activeCell.columnIndex !== 1, 'Expected the active cell to move.'));
+                });
+                it('Keyup and keypress', function (done) {
+                    var ev, grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.focus();
+                    grid.addEventListener('keyup', function () {
+                        grid.addEventListener('keypress', function () {
+                            done();
+                        });
+                        ev = new Event('keypress');
+                        grid.controlInput.dispatchEvent(ev);
+                    });
+                    ev = new Event('keyup');
+                    grid.controlInput.dispatchEvent(ev);
+                });
+                it('Page down should move down a page', function (done) {
+                    var ev, grid = g({
+                        test: this.test,
+                        data: makeData(50, 50)
+                    });
+                    grid.focus();
+                    ev = new Event('keydown');
+                    ev.keyCode = kcs.pgdown;
+                    grid.controlInput.dispatchEvent(ev);
+                    done(assertIf(grid.activeCell.rowIndex !== 3, 'Expected the active cell to move.'));
+                });
+                it('Page up should move up a page', function (done) {
+                    var ev, grid = g({
+                        test: this.test,
+                        data: makeData(50, 50)
+                    });
+                    grid.focus();
+                    ev = new Event('keydown');
+                    ev.keyCode = kcs.pgdown;
+                    grid.controlInput.dispatchEvent(ev);
+                    ev = new Event('keydown');
+                    ev.keyCode = kcs.pgup;
+                    grid.controlInput.dispatchEvent(ev);
+                    done(assertIf(grid.activeCell.rowIndex !== 0, 'Expected the active cell to move.'));
+                });
+                it('Space select just the active cell', function (done) {
+                    var ev, grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    grid.focus();
+                    grid.selectAll();
+                    ev = new Event('keydown');
+                    ev.keyCode = kcs.space;
+                    grid.controlInput.dispatchEvent(ev);
+                    done(assertIf(grid.selectedRows.length !== 1, 'Expected to see one row selected.'));
                 });
             });
             describe('Resize', function () {
@@ -1642,6 +1903,34 @@
                     });
                     contextmenu(grid.canvas, 60, 37);
                 });
+                it('Clicking the corner cell will return dataset to original sort order.', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: makeData(10, 10, function (x) { return x; }),
+                        columnHeaderClickBehavior: 'sort'
+                    });
+                    marker(grid, 60, 12);
+                    mousemove(grid.canvas, 60, 12);
+                    click(grid.canvas, 60, 12);
+                    setTimeout(function () {
+                        marker(grid, 12, 12);
+                        mousemove(grid.canvas, 12, 12);
+                        click(grid.canvas, 12, 12);
+                        done(assertIf(grid.data[0].a !== 0, 'Expected data to be sorted.'));
+                    }, 1);
+                });
+                it('Clicking a header cell with columnHeaderClickBehavior set to sort', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData,
+                        columnHeaderClickBehavior: 'sort'
+                    });
+                    marker(grid, 40, 12);
+                    mousemove(grid.canvas, 40, 12);
+                    click(grid.canvas, 40, 12);
+                    done(assertIf(grid.data[0].col1 !== 'bar', 'Expected data to be sorted.'));
+                });
+
             });
         });
     });
