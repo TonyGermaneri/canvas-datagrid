@@ -214,6 +214,10 @@
         afterEach(cleanup);
         describe('Integration Tests', function () {
             describe('Instantiation', function () {
+                it('Should be callable without arguments.', function (done) {
+                    canvasDatagrid();
+                    done();
+                });
                 it('Should create an instance of datagrid', function (done) {
                     var grid = g({test: this.test});
                     assertIf(!grid, 'Expected a grid instance, instead got something false');
@@ -236,6 +240,45 @@
                         'Expected to see data in the interface.');
                     assertPxColor(grid, 80, 32, c.white, done);
                 });
+            });
+            describe('Drawing', function () {
+                it('Should draw row selections.', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData,
+                        rowSelectionMode: true,
+                        style: {
+                            activeCellSelectedBackgroundColor: c.b,
+                            cellSelectedBackgroundColor: c.b
+                        }
+                    });
+                    mousemove(grid.canvas, 45, 37);
+                    mousedown(grid.canvas, 45, 37);
+                    mouseup(grid.canvas, 45, 37);
+                    assertPxColor(grid, 80, 37, c.b, done);
+                });
+                it('Should draw a debug message.', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData,
+                        debug: true
+                    });
+                    grid.style.activeCellBackgroundColor = c.b;
+                    mousemove(grid.canvas, 100, 113);
+                    assertPxColor(grid, 120, 32, 'rgb(204, 204, 255)', done);
+                });
+                // TODO: after phantomjs has been replaced, re-enable this test.
+                // phantom throws a nonsense error due to the way the data url is constructed in the html function
+                // it('Should draw HTML.', function (done) {
+                //     var grid = g({
+                //         test: this.test,
+                //         data: [{a: '<span style="background: ' + c.b + ';color: ' + c.b + '">blah</span>' }],
+                //         schema: [{name: 'a', type: 'html'}]
+                //     });
+                //     setTimeout(function () {
+                //         assertPxColor(grid, 50, 32, c.b, done);
+                //     }, 100);
+                // });
             });
             describe('Styles', function () {
                 it('Should set the active cell color to black.', function (done) {
@@ -340,6 +383,48 @@
                     done(assertIf(grid.data[0][0] !== false,
                         'Expected grid to be able to import and export this format'));
                 });
+                it('Pass a function to data', function (done) {
+                    var grid = g({
+                        test: this.test
+                    });
+                    grid.data = function () {
+                        return [
+                            {'a': 0, 'b': 1, 'c': 2},
+                            {'a': 4, 'b': 5, 'c': 6},
+                            {'a': 7, 'b': 8, 'c': 9}
+                        ];
+                    };
+                    done(assertIf(grid.data[0].a !== 0,
+                        'Expected grid to be able to import and export this format'));
+                });
+                it('Pass an async function to data', function (done) {
+                    var grid = g({
+                        test: this.test
+                    });
+                    grid.data = function (callback) {
+                        return callback([
+                            {'a': 0, 'b': 1, 'c': 2},
+                            {'a': 4, 'b': 5, 'c': 6},
+                            {'a': 7, 'b': 8, 'c': 9}
+                        ]);
+                    };
+                    done(assertIf(grid.data[0].a !== 0,
+                        'Expected grid to be able to import and export this format'));
+                });
+                it('Pass an async function to data', function (done) {
+                    var grid = g({
+                        test: this.test
+                    });
+                    grid.data = function (callback) {
+                        return callback([
+                            {'a': 0, 'b': 1, 'c': 2},
+                            {'a': 4, 'b': 5, 'c': 6},
+                            {'a': 7, 'b': 8, 'c': 9}
+                        ]);
+                    };
+                    done(assertIf(grid.data[0].a !== 0,
+                        'Expected grid to be able to import and export this format'));
+                });
             });
             describe('Public interface', function () {
                 it('Focus on the grid', function (done) {
@@ -370,6 +455,113 @@
                     }, 1);
                     done(assertIf(grid.schema[1].name !== 'f' || grid.data[0].f !== 'g',
                         'Expected to see a specific column here, it is not here.'));
+                });
+                it('Use a function as a default value', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{d: '', e: ''}],
+                        schema: [{name: 'd'}, {name: 'e'}]
+                    });
+                    grid.insertColumn({
+                        name: 'f',
+                        defaultValue: function () { return 'g'; }
+                    }, 1);
+                    done(assertIf(grid.schema[1].name !== 'f' || grid.data[0].f !== 'g',
+                        'Expected to see a specific column here, it is not here.'));
+                });
+                it('Autosize a column', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{d: '123456', e: '123456'}]
+                    });
+                    grid.addEventListener('rendercell', function (e) {
+                        if (e.cell.columnIndex === 1) {
+                            e.ctx.fillStyle = c.b;
+                        }
+                    });
+                    grid.autosize('d');
+                    assertPxColor(grid, 200, 32, c.b, done);
+                });
+                it('Autosize all columns', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{d: '123456', e: '123456'}],
+                        style: {
+                            backgroundColor: c.b
+                        }
+                    });
+                    grid.autosize();
+                    assertPxColor(grid, 220, 32, c.b, done);
+                });
+                it('Add a style to the style setter', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{d: '123456', e: '123456'}]
+                    });
+                    grid.style.backgroundColor = c.b;
+                    assertPxColor(grid, 200, 70, c.b, done);
+                });
+                it('Add an attribute to the attribute setter', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{d: '123456', e: '123456'}]
+                    });
+                    grid.addEventListener('attributechanged', function (e) {
+                        done(assertIf(grid.attributes.name !== 'blah', 'expected name to be blah'));
+                    });
+                    grid.attributes.name = 'blah';
+                });
+                it('Get visible schema', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{d: '123456', e: '123456'}]
+                    });
+                    done(assertIf(grid.visibleSchema[0].name !== 'd', 'Expected schema to be returned'));
+                });
+                it('Get visible rows', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{d: '123456', e: '123456'}]
+                    });
+                    done(assertIf(grid.visibleRows.length === 1, 'Expected 1 row to be returned'));
+                });
+                it('Get visible cells', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{d: '123456', e: '123456'}]
+                    });
+                    done(assertIf(grid.visibleCells.length === 2, 'Expected 2 cells to be returned'));
+                });
+                it('Get current cell', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{d: '123456', e: '123456'}]
+                    });
+                    mousemove(grid.canvas, 45, 37);
+                    mousedown(grid.canvas, 45, 37);
+                    mouseup(grid.canvas, 45, 37);
+                    done(assertIf(grid.currentCell.rowIndex !== 0, 'Expected current cell to be rowIndex 0'));
+                });
+                it('Get offsetLeft of the parent node', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{d: '123456', e: '123456'}]
+                    });
+                    done(assertIf(grid.offsetLeft === 0, 'Expected offsetLeft to be > 0'));
+                });
+                it('Get offsetTop of the parent node', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{d: '123456', e: '123456'}]
+                    });
+                    done(assertIf(grid.offsetTop === 0, 'Expected offsetLeft to be > 0'));
+                });
+                it('Get the offsetParent node', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{d: '123456', e: '123456'}]
+                    });
+                    done(assertIf(grid.offsetParent === undefined, 'Expected a DOM node'));
                 });
                 it('Should throw an error if insertColumn is passed a bad index', function (done) {
                     var e, grid = g({
@@ -514,6 +706,73 @@
                     grid.resetColumnWidths();
                     assertPxColor(grid, 340, 80, c.y, done);
                 });
+                it('Inserting an impossible column index should throw an error', function (done) {
+                    var err, grid = g({
+                        test: this.test,
+                        data: [{d: '', e: ''}],
+                        schema: [{name: 'd'}, {name: 'e'}]
+                    });
+                    try {
+                        grid.insertColumn({
+                            name: 'f',
+                            defaultValue: 'g'
+                        }, 999);
+                    } catch (e) {
+                        err = e;
+                    }
+
+                    done(assertIf(!err, 'Expected to see an error.'));
+                });
+                it('Inserting an impossible row index should throw an error', function (done) {
+                    var err, grid = g({
+                        test: this.test,
+                        data: [{d: '', e: ''}],
+                        schema: [{name: 'd'}, {name: 'e'}]
+                    });
+                    try {
+                        grid.insertrow({
+                            d: 'f',
+                            e: 'g'
+                        }, 999);
+                    } catch (e) {
+                        err = e;
+                    }
+                    done(assertIf(!err, 'Expected to see an error.'));
+                });
+                it('Goto a specific row', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: makeData(30, 30)
+                    });
+                    grid.gotoRow(20);
+                    done(assertIf(grid.scrollTop < 1,
+                        'Expected scrollTop to be a little further along.'));
+                });
+                it('Fit column size to values', function (done) {
+                    var doneCalled, grid = g({
+                        test: this.test,
+                        data: makeData(30, 30, function (y, x) { return x + ':' + y; })
+                    });
+                    grid.fitColumnToValues('a');
+                    grid.addEventListener('rendercell', function (e) {
+                        if (e.cell.rowIndex === 0 && e.cell.columnIndex === 0) {
+                            if (doneCalled) { return; }
+                            doneCalled = true;
+                            done(assertIf(e.cell.width > 100,
+                                'Expected column to be a little narrower.'));
+                        }
+                    });
+                    grid.draw();
+                });
+                it('isCellVisible should return true when cell is visible, false when it is not', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: makeData(30, 30, function (y, x) { return x + ':' + y; })
+                    });
+                    done(assertIf(!grid.isCellVisible({x: 0, y: 0})
+                            || grid.isCellVisible({x: 0, y: 20}),
+                                'Expected column to be a little narrower.'));
+                });
             });
             describe('Context menu', function () {
                 it('Should produce a context menu', function (done) {
@@ -541,6 +800,84 @@
                         }, 1);
                     });
                     contextmenu(grid.canvas, 100, 37);
+                });
+                it('Should produce a context menu very wide requiring the context menu move to be fully visible', function (done) {
+                    var d = [], x, grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    for (x = 0; x < 100; x += 1) {
+                        d.push({
+                            title: 'veryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryverywide'
+                        });
+                    }
+                    grid.addEventListener('contextmenu', function (e) {
+                        e.items.push({
+                            title: 'Child menu',
+                            items: function () {
+                                return d;
+                            }
+                        });
+                        setTimeout(function () {
+                            e.items[4].contextItemContainer.dispatchEvent(new Event('mouseover'));
+                            setTimeout(function () {
+                                done(assertIf(!e.items[4].contextMenu.container, 'Expected child context menu.'));
+                            }, 1);
+                        }, 1);
+                    });
+                    contextmenu(grid.canvas, 60, 37);
+                });
+                it('Should create a child context menu using a function that returns items', function (done) {
+                    var d = [], x, grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    for (x = 0; x < 100; x += 1) {
+                        d.push({
+                            title: x
+                        });
+                    }
+                    grid.addEventListener('contextmenu', function (e) {
+                        e.items.push({
+                            title: 'Child menu',
+                            items: function () {
+                                return d;
+                            }
+                        });
+                        setTimeout(function () {
+                            e.items[4].contextItemContainer.dispatchEvent(new Event('mouseover'));
+                            setTimeout(function () {
+                                done(assertIf(!e.items[4].contextMenu.container, 'Expected child context menu.'));
+                            }, 1);
+                        }, 1);
+                    });
+                    contextmenu(grid.canvas, 60, 37);
+                });
+                it('Should create a child context menu using a function that uses a callback argument', function (done) {
+                    var d = [], x, grid = g({
+                        test: this.test,
+                        data: smallData
+                    });
+                    for (x = 0; x < 100; x += 1) {
+                        d.push({
+                            title: x
+                        });
+                    }
+                    grid.addEventListener('contextmenu', function (e) {
+                        e.items.push({
+                            title: 'Child menu',
+                            items: function (callback) {
+                                return callback(d);
+                            }
+                        });
+                        setTimeout(function () {
+                            e.items[4].contextItemContainer.dispatchEvent(new Event('mouseover'));
+                            setTimeout(function () {
+                                done(assertIf(!e.items[4].contextMenu.container, 'Expected child context menu.'));
+                            }, 1);
+                        }, 1);
+                    });
+                    contextmenu(grid.canvas, 60, 37);
                 });
                 it('Create a child context menu and scroll up and down using mouseover events, then exit menu', function (done) {
                     var d = [], x, grid = g({
@@ -757,6 +1094,24 @@
                         }, 2000);
                     }, 1);
                 }).timeout(5000);
+                it('Scroll horizontally right via margin click until box capture', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: makeData(30, 10),
+                        scrollPointerLock: false
+                    });
+                    setTimeout(function () {
+                        grid.focus();
+                        marker(grid, 90, 113);
+                        mousemove(grid.canvas, 90, 113);
+                        mousedown(grid.canvas, 90, 113);
+                        setTimeout(function () {
+                            mouseup(document.body, 90, 113, grid.canvas);
+                            done(assertIf(grid.scrollLeft < 1,
+                                 'Expected the scroll bar to be further along.'));
+                        }, 2000);
+                    }, 1);
+                }).timeout(5000);
                 it('Scroll horizontally left via margin click', function (done) {
                     var grid = g({
                         test: this.test,
@@ -808,6 +1163,24 @@
                         mousedown(grid.canvas, 393, 100);
                         setTimeout(function () {
                             mouseup(document.body, 393, 100, grid.canvas);
+                            done(assertIf(grid.scrollTop < 1,
+                                 'Expected the scroll bar to be further along.'));
+                        }, 2000);
+                    }, 1);
+                }).timeout(5000);
+                it('Scroll vertically down via margin click until box capture', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: makeData(30, 20),
+                        scrollPointerLock: false
+                    });
+                    setTimeout(function () {
+                        grid.focus();
+                        marker(grid, 393, 70);
+                        mousemove(grid.canvas, 393, 70);
+                        mousedown(grid.canvas, 393, 70);
+                        setTimeout(function () {
+                            mouseup(document.body, 393, 70, grid.canvas);
                             done(assertIf(grid.scrollTop < 1,
                                  'Expected the scroll bar to be further along.'));
                         }, 2000);
@@ -1808,6 +2181,18 @@
                         assertPxColor(grid, 130, 60, c.b, done);
                     }, 2);
                 });
+                it('Should render a cell grid.', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{a: [{b: 'c'}]}],
+                        style: {
+                            activeCellBackgroundColor: c.b
+                        }
+                    });
+                    setTimeout(function () {
+                        assertPxColor(grid, 130, 60, c.b, done);
+                    }, 2);
+                });
                 it('Should display a new row', function (done) {
                     var grid = g({
                         test: this.test,
@@ -1818,7 +2203,25 @@
                     assertIf(grid.data.length !== 1, 'Expected there to be exactly 1 row.');
                     assertPxColor(grid, 40, 60, c.y, done);
                 });
-                //TODO: treeHorizontalScroll
+                it('Should insert data into the new row', function (done) {
+                    var ev, editInput, grid = g({
+                        test: this.test,
+                        showNewRow: true,
+                        data: [{a: 'a'}]
+                    });
+                    ev = new Event('keydown');
+                    ev.keyCode = kcs.enter;
+                    grid.style.cellBackgroundColor = c.y;
+                    grid.beginEditAt(0, 1);
+                    editInput = document.body.lastChild;
+                    editInput.value = 'abcd';
+                    editInput.dispatchEvent(ev);
+                    assertPxColor(grid, 40, 90, c.y, function (err) {
+                        if (err) { return done(err); }
+                        done(assertIf(grid.data.length !== 2,
+                            'expected there to be exactly 3 row.'));
+                    });
+                });
                 it('Should NOT store JSON view state data when saveAppearance is false.', function (done) {
                     var n = 'a' + (new Date().getTime()),
                         k = 'canvasDataGrid-' + n,
@@ -1830,9 +2233,41 @@
                         });
                     grid.order('col1');
                     assertIf(JSON.parse(localStorage.getItem(k)),
-                        'Expected storage item %s.', n);
+                        'Expected no storage item %s.', n);
                     localStorage.removeItem(k);
                     done();
+                });
+                it('Should store JSON view state data and recall it.', function (done) {
+                    var n = 'a' + (new Date().getTime()),
+                        k = 'canvasDataGrid-' + n,
+                        a = {
+                            test: this.test,
+                            data: smallData,
+                            name: n,
+                            saveAppearance: true
+                        },
+                        grid = g(a);
+                    setTimeout(function () {
+                        grid.focus();
+                        marker(grid, 67, 10);
+                        mousemove(grid.canvas, 67, 10);
+                        mousedown(grid.canvas, 67, 10);
+                        mouseup(document.body, 67, 10, grid.canvas);
+                        click(grid.canvas, 67, 10);
+                        setTimeout(function () {
+                            // make the test look less ugly
+                            grid.parentNode.parentNode.parentNode.removeChild(grid.parentNode.parentNode);
+                            grid.dispose();
+                            setTimeout(function () {
+                                grid = g(a);
+                                localStorage.removeItem(k);
+                                setTimeout(function () {
+                                    done(assertIf(grid.data[0].col1 !== 'bar',
+                                        'Expected data to be ordered when new grid is created'));
+                                }, 1);
+                            }, 1);
+                        });
+                    }, 1);
                 });
                 it('Selection should follow active cell with selectionFollowsActiveCell true', function (done) {
                     var grid = g({
@@ -1921,6 +2356,37 @@
                         // lib intentionally ignoring next click - required to make the ux work as desired
                         click(grid.canvas, 60, 37);
                         click(grid.canvas, 60, 37);
+                    }, 1);
+                });
+                it('Should reverse column reordering when allowColumnReordering is true and clicked twice', function (done) {
+                    var n = 'a' + (new Date().getTime()),
+                        k = 'canvasDataGrid-' + n,
+                        a = {
+                            test: this.test,
+                            data: smallData,
+                            name: n,
+                            saveAppearance: true
+                        },
+                        grid = g(a);
+                    setTimeout(function () {
+                        grid.focus();
+                        marker(grid, 67, 10);
+                        mousemove(grid.canvas, 67, 10);
+                        mousedown(grid.canvas, 67, 10);
+                        mouseup(document.body, 67, 10, grid.canvas);
+                        click(grid.canvas, 67, 10);
+                        setTimeout(function () {
+                            mousemove(grid.canvas, 67, 10);
+                            mousedown(grid.canvas, 67, 10);
+                            mouseup(document.body, 67, 10, grid.canvas);
+                            click(grid.canvas, 67, 10);
+                            setTimeout(function () {
+                                setTimeout(function () {
+                                    done(assertIf(grid.data[0].col1 !== 'foo',
+                                        'Expected data to be ordered when new grid is created'));
+                                }, 1);
+                            }, 1);
+                        });
                     }, 1);
                 });
                 it('Should draw column reorder markers when allowColumnReordering is true and reordering', function (done) {
