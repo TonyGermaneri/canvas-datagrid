@@ -2027,6 +2027,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.ellipsisCache = {};
         self.scrollBox = {};
         self.visibleRows = [];
+        /**
+         * Used internally to keep track of sizes of row, columns and child grids.
+         * @memberof canvasDataGrid
+         * @property sizes
+         * @readonly
+         */
         self.sizes = {
             rows: {},
             columns: {},
@@ -2492,14 +2498,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             Object.defineProperty(self.intf, 'style', {
                 get: function () {
                     return publicStyleKeyIntf;
-                },
-                set: function (value) {
-                    Object.keys(value).forEach(function (key) {
-                        self.parseFont(value);
-                        self.style[key] = value[key];
-                    });
-                    self.draw(true);
-                    self.dispatchEvent('stylechanged', {name: 'style', value: value});
                 }
             });
             Object.keys(self.attributes).forEach(function (key) {
@@ -2721,10 +2719,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         });
         self.intf.attributes = {};
         self.intf.formatters = self.formatters;
-        self.normalizeDataset = function (data) {
+        self.normalizeDataset = function (data, callback) {
             var i, d, max, syncFnInvoked;
             if (data === null || data === '' || data === undefined) {
-                return [];
+                return callback([]);
             }
             if (typeof data === 'string'
                     || typeof data === 'number'
@@ -2736,19 +2734,20 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             if ((!Array.isArray(data[0]) && typeof data[0] === 'object' && data[0] !== null)
                             || (Array.isArray(data) && data.length === 0)) {
-                return data;
+                return callback(data);
             }
             if (typeof data === 'function') {
                 i = data.apply(self.intf, [function (d) {
                     if (syncFnInvoked) {
                         console.warn('Detected a callback to the data setter function after the same function already returned a value synchronously.');
                     }
-                    self.normalizeDataset(d);
+                    self.normalizeDataset(d, callback);
                 }]);
                 if (i) {
                     syncFnInvoked = true;
-                    self.normalizeDataset(i);
+                    self.normalizeDataset(i, callback);
                 }
+                return;
             }
             if (!Array.isArray(data) && typeof data === 'object') {
                 data = [data];
@@ -2772,7 +2771,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         d[index][x] = row[x];
                     }
                 });
-                return d;
+                return callback(d);
             }
             throw new Error('Unsupported data type.  Must be an array of arrays or an array of objects, function or string.');
         };
@@ -2840,36 +2839,38 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 });
             },
             set: function dataSetter(value) {
-                self.originalData = self.normalizeDataset(value).map(function eachDataRow(row) {
-                    row[self.uniqueId] = self.uId;
-                    self.uId += 1;
-                    return row;
-                });
-                self.changes = [];
-                //TODO apply filter to incoming dataset
-                self.data = self.originalData;
-                if (!self.schema && self.data.length > 0) {
-                    self.tempSchema = self.getSchemaFromData();
-                }
-                if (!self.schema && self.data.length === 0) {
-                    self.tempSchema = [{name: ''}];
-                    self.tempSchema[0][self.uniqueId] = self.getSchemaNameHash('');
-                }
-                if (self.tempSchema && !self.schema) {
-                    self.createColumnOrders();
+                self.normalizeDataset(value, function (d) {
+                    self.originalData = d.map(function eachDataRow(row) {
+                        row[self.uniqueId] = self.uId;
+                        self.uId += 1;
+                        return row;
+                    });
+                    self.changes = [];
+                    //TODO apply filter to incoming dataset
+                    self.data = self.originalData;
+                    if (!self.schema && self.data.length > 0) {
+                        self.tempSchema = self.getSchemaFromData();
+                    }
+                    if (!self.schema && self.data.length === 0) {
+                        self.tempSchema = [{name: ''}];
+                        self.tempSchema[0][self.uniqueId] = self.getSchemaNameHash('');
+                    }
+                    if (self.tempSchema && !self.schema) {
+                        self.createColumnOrders();
+                        self.tryLoadStoredOrders();
+                        self.dispatchEvent('schemachanged', {schema: self.tempSchema});
+                    }
+                    self.createNewRowData();
+                    if (self.attributes.autoResizeColumns && self.data.length > 0
+                            && self.storedSettings === undefined) {
+                        self.autosize();
+                    }
+                    self.fitColumnToValues('cornerCell', true);
+                    if (!self.resize() || !self.isChildGrid) { self.draw(true); }
+                    self.createRowOrders();
                     self.tryLoadStoredOrders();
-                    self.dispatchEvent('schemachanged', {schema: self.tempSchema});
-                }
-                self.createNewRowData();
-                if (self.attributes.autoResizeColumns && self.data.length > 0
-                        && self.storedSettings === undefined) {
-                    self.autosize();
-                }
-                self.fitColumnToValues('cornerCell', true);
-                if (!self.resize() || !self.isChildGrid) { self.draw(true); }
-                self.createRowOrders();
-                self.tryLoadStoredOrders();
-                self.dispatchEvent('datachanged', {data: self.data});
+                    self.dispatchEvent('datachanged', {data: self.data});
+                });
             }
         });
         self.initScrollBox = function () {
@@ -3099,7 +3100,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         }
                         addContent(item.title);
                         item.contextItemContainer = contextItemContainer;
-                        if (item.items && item.items.length > 0) {
+                        if ((item.items && item.items.length > 0) || typeof item.items === 'function') {
                             childMenuArrow = document.createElement('div');
                             self.createInlineStyle(childMenuArrow, 'canvas-datagrid-context-child-arrow');
                             childMenuArrow.innerHTML = self.style.childContextMenuArrowHTML;
@@ -4053,9 +4054,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             return;
         };
         self.appendTo = function (n) {
-            self.parentNode = n;
-            self.height = self.parentNode.offsetHeight;
-            self.width = self.parentNode.offsetWidth;
+            self.parentNode = n || document.createElement('canvas');
+            self.height = self.parentNode;
+            self.width = self.parentNode;
             if (self.parentNode && /canvas-datagrid-(cell|tree)/.test(self.parentNode.nodeType)) {
                 self.isChildGrid = true;
                 self.parentGrid = self.parentNode.parentGrid;
@@ -4096,6 +4097,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     });
                 });
                 [self.canvas.parentNode].forEach(function (el) {
+                    if (!el) { return; }
                     self.observer.observe(el, { attributes: true });
                 });
             }
