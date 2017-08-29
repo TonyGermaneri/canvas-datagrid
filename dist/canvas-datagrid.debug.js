@@ -2498,6 +2498,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             Object.defineProperty(self.intf, 'style', {
                 get: function () {
                     return publicStyleKeyIntf;
+                },
+                set: function (value) {
+                    Object.keys(value).forEach(function (key) {
+                        self.parseFont(value);
+                        self.style[key] = value[key];
+                    });
+                    self.draw(true);
+                    self.dispatchEvent('stylechanged', {name: 'style', value: value});
                 }
             });
             Object.keys(self.attributes).forEach(function (key) {
