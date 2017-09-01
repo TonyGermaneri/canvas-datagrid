@@ -1,6 +1,6 @@
 {
   "name": "canvas-datagrid",
-  "version": "0.14.13",
+  "version": "0.14.14",
   "description": "Canvas based data grid",
   "main": "./lib/main.js",
   "scripts": {
@@ -59,6 +59,7 @@
     "mocha": "^3.5.0",
     "mocha-phantomjs": "^4.1.0",
     "mocha-phantomjs-core": "^2.1.2",
+    "mocha-phantomjs-istanbul": "0.0.2",
     "node-coveralls": "git@github.com:nickmerwin/node-coveralls.git",
     "phantomjs": "^2.1.7",
     "should": "^11.2.1",
