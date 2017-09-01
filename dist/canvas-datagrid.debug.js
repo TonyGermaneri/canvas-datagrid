@@ -1783,7 +1783,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.resizingStartingHeight = self.sizes.rows[self.draggingItem.data[self.uniqueId]] || self.style.cellHeight;
                 }
                 self.resizingStartingWidth = self.sizes.columns[self.draggingItem.header.style === 'rowHeaderCell'
-                       ? 'cornerCell' : self.draggingItem.header[self.uniqueId]] || self.draggingItem.header.width;
+                       ? 'cornerCell' : self.draggingItem.header[self.uniqueId]] || self.draggingItem.width;
                 document.body.addEventListener('mousemove', self.dragResizeColumn, false);
                 document.body.addEventListener('mouseup', self.stopDragResize, false);
             }
@@ -1830,8 +1830,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (e.keyCode === 9) {
                 e.preventDefault();
             }
+            // esc
+            if (e.keyCode === 27) {
+                self.selections = [];
+                self.draw(true);
             // ctrl + a
-            if (ctrl && e.keyCode === 65) {
+            } else if (ctrl && e.keyCode === 65) {
                 self.selectAll();
             //ArrowDown
             } else if (e.keyCode === 40) {
@@ -2370,12 +2374,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.orders.rows = self.storedSettings.orders.rows;
                 }
                 s = self.getSchema();
-                self.orders.columns = self.storedSettings.orders.columns;
-                s.forEach(function (h, i) {
-                    if (self.orders.columns.indexOf(i) === -1) {
-                        self.orders.columns.push(i);
-                    }
-                });
+                if (self.storedSettings.orders.columns.length === s.length) {
+                    self.orders.columns = self.storedSettings.orders.columns;
+                }
                 self.orderBy = self.storedSettings.orderBy === undefined
                     ? self.uniqueId : self.storedSettings.orderBy;
                 self.orderDirection = self.storedSettings.orderDirection === undefined
@@ -2856,7 +2857,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.changes = [];
                     //TODO apply filter to incoming dataset
                     self.data = self.originalData;
-                    if (!self.schema && self.data.length > 0) {
+                    if (!self.schema) {
                         self.tempSchema = self.getSchemaFromData();
                     }
                     if (!self.schema && self.data.length === 0) {
@@ -4535,7 +4536,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.dispatchEvent('selectionchanged', {
                 selectedData: self.getSelectedData(),
                 selections: self.selections,
-                selectionBounds: self.selectionBounds
+                selectionBounds: self.getSelectionBounds()
             });
         };
         /**
