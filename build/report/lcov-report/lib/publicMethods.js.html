@@ -25,9 +25,9 @@
         <span class='fraction'>378/400</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">87.07% </span>
+        <span class="strong">87.45% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>229/263</span>
+        <span class='fraction'>230/263</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">98.57% </span>
@@ -1753,20 +1753,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">155×</span>
-<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-yes">31×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">23×</span>
-<span class="cline-any cline-yes">63×</span>
-<span class="cline-any cline-yes">63×</span>
-<span class="cline-any cline-yes">20×</span>
-<span class="cline-any cline-yes">20×</span>
-<span class="cline-any cline-yes">20×</span>
-<span class="cline-any cline-yes">20×</span>
-<span class="cline-any cline-yes">20×</span>
-<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-yes">87×</span>
+<span class="cline-any cline-yes">87×</span>
+<span class="cline-any cline-yes">44×</span>
+<span class="cline-any cline-yes">44×</span>
+<span class="cline-any cline-yes">44×</span>
+<span class="cline-any cline-yes">44×</span>
+<span class="cline-any cline-yes">44×</span>
+<span class="cline-any cline-yes">44×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-yes">31×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1782,21 +1782,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">155×</span>
+<span class="cline-any cline-yes">165×</span>
+<span class="cline-any cline-yes">5227×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5227×</span>
 <span class="cline-any cline-yes">150×</span>
-<span class="cline-any cline-yes">5212×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5212×</span>
-<span class="cline-any cline-yes">150×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5212×</span>
-<span class="cline-any cline-yes">5212×</span>
+<span class="cline-any cline-yes">5227×</span>
+<span class="cline-any cline-yes">5227×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1891,7 +1891,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">155×</span>
-<span class="cline-any cline-yes">19388×</span>
+<span class="cline-any cline-yes">19417×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">155×</span>
 <span class="cline-any cline-yes">155×</span>
@@ -2332,7 +2332,7 @@ define([], function () {
             self.dispatchEvent('selectionchanged', {
                 selectedData: self.getSelectedData(),
                 selections: self.selections,
-                selectionBounds: self.selectionBounds
+                selectionBounds: self.getSelectionBounds()
             });
         };
         /**
@@ -2729,7 +2729,7 @@ define([], function () {
          * @returns {schema} schema A schema based on the first item in the data array.
          */
         self.getSchemaFromData = function () {
-            return Object.keys(self.data[0] || <span class="branch-1 cbranch-no" title="branch not covered" >{' ': ''})</span>.map(function mapEachSchemaColumn(key, index) {
+            return Object.keys(self.data[0] || {' ': ''}).map(function mapEachSchemaColumn(key, index) {
                 var type = self.getBestGuessDataType(key),
                     i = {
                         name: key,
@@ -2890,7 +2890,7 @@ define([], function () {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Aug 29 2017 00:03:32 GMT-0700 (PDT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Aug 31 2017 22:25:13 GMT-0700 (PDT)
 </div>
 </div>
 <script src="../prettify.js"></script>
