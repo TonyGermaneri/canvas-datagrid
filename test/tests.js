@@ -246,7 +246,7 @@
                     var grid = g({
                         test: this.test,
                         data: smallData,
-                        rowSelectionMode: true,
+                        selectionMode: 'row',
                         style: {
                             activeCellSelectedBackgroundColor: c.b,
                             cellSelectedBackgroundColor: c.b
@@ -1213,6 +1213,7 @@
                     ev = new Event('wheel');
                     ev.deltaX = 10;
                     ev.deltaY = 0;
+                    ev.deltaMode = 0;
                     grid.canvas.dispatchEvent(ev);
                     done(assertIf(grid.scrollLeft < 1,
                          'Expected the scroll bar to be further along.'));
@@ -1226,6 +1227,21 @@
                     ev = new Event('wheel');
                     ev.deltaX = 0;
                     ev.deltaY = 10;
+                    ev.deltaMode = 0;
+                    grid.canvas.dispatchEvent(ev);
+                    done(assertIf(grid.scrollTop < 1,
+                         'Expected the scroll bar to be further along.'));
+                });
+                it('Scroll vertically via wheel honoring deltaMode 0x01 DOM_DELTA_LINE', function (done) {
+                    var ev, grid = g({
+                        test: this.test,
+                        data: makeData(30, 500)
+                    });
+                    grid.focus();
+                    ev = new Event('wheel');
+                    ev.deltaX = 0;
+                    ev.deltaY = 1;
+                    ev.deltaMode = 1;
                     grid.canvas.dispatchEvent(ev);
                     done(assertIf(grid.scrollTop < 1,
                          'Expected the scroll bar to be further along.'));
@@ -1245,8 +1261,10 @@
                             // simulate very slow movement of humans
                             touchmove(document.body, 60, 66, grid.canvas);
                             touchend(document.body, 60, 66, grid.canvas);
-                            done(assertIf(grid.scrollLeft === 0,
-                                'Expected the grid to scroll some.'));
+                            setTimeout(function () {
+                                done(assertIf(grid.scrollLeft === 0,
+                                    'Expected the grid to scroll some.'));
+                            }, 1500);
                         }, 200);
                     }, 1);
                 });
@@ -2129,6 +2147,23 @@
                     grid.setFilter('e', 'asdfg');
                     grid.setFilter('e');
                     done(assertIf(grid.data.length !== 1, 'Expected to see 1 of the records.'));
+                });
+                it('Should use RegExp as a filter', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{d: 'abcd'}, {d: 'edfg'}]
+                    });
+                    grid.setFilter('d', '/\\w/');
+                    done(assertIf(grid.data.length === 0 && grid.data[0].d === 'edfg',
+                            'Expected to see a row after a RegExp value.'));
+                });
+                it('Should tolerate RegExp errors', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{d: 'abcd'}, {d: 'edfg'}]
+                    });
+                    grid.setFilter('d', '/{1}/');
+                    done();
                 });
             });
             describe('Attributes', function () {
