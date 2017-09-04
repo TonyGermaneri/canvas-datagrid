@@ -210,7 +210,7 @@
                 </td>
             
 
-            <td class="description last">HTML element that will hold the grid.  This element must have a height, the canvas will match itself to this element's dimensions.</td>
+            <td class="description last">HTML element that will hold the grid.  This block element must have a height, canvas-datagrid will add a canvas itself and will match itself to this element's dimensions.  It will resize itself on window.resize events, and DOM mutation.  But you may need to invoke canvas-datagrid.resize() manually if you find it does not maintain size in your use case.</td>
         </tr>
 
     
@@ -335,7 +335,7 @@
 
         <tr>
             
-                <td class="name"><code>childGridAttributes</code></td>
+                <td class="name"><code>cellGridAttributes</code></td>
             
 
             <td class="type">
@@ -566,7 +566,7 @@
                 </td>
             
 
-            <td class="description last">When true, resizing a row will resize all rows to the same height. Questionable compatibility with hierarchical views.</td>
+            <td class="description last">When true, resizing a row will resize all rows to the same height.</td>
         </tr>
 
     
@@ -606,7 +606,7 @@
                 </td>
             
 
-            <td class="description last">When true cells can be edited. When false, grid is read only to the user.</td>
+            <td class="description last">When true, cells can be edited. When false, grid is read only to the user.</td>
         </tr>
 
     
@@ -853,7 +853,7 @@
 
         <tr>
             
-                <td class="name"><code>rowSelectionMode</code></td>
+                <td class="name"><code>selectionMode</code></td>
             
 
             <td class="type">
@@ -881,12 +881,12 @@
             
                 <td class="default">
                 
-                    false
+                    'cell'
                 
                 </td>
             
 
-            <td class="description last">When true, clicking on any cell will select the entire row that cell belongs to.</td>
+            <td class="description last">Can be 'cell', or 'row'.  This setting dictates what will be selected when the user clicks a cell.  The cell, or the entire row respectively.</td>
         </tr>
 
     
@@ -1721,7 +1721,7 @@
             
                 <td class="default">
                 
-                    1000
+                    2000
                 
                 </td>
             
@@ -1761,7 +1761,7 @@
             
                 <td class="default">
                 
-                    30
+                    90
                 
                 </td>
             
@@ -1921,7 +1921,7 @@
             
                 <td class="default">
                 
-                    40
+                    30
                 
                 </td>
             
@@ -2166,7 +2166,7 @@
                 </td>
             
 
-            <td class="description last">Sets selected values in filters.</td>
+            <td class="description last">Sets selected values in filters.  See <a href="tutorial-filters.html">filters</a>.</td>
         </tr>
 
     
@@ -2206,7 +2206,7 @@
                 </td>
             
 
-            <td class="description last">Sets selected values in sorters.</td>
+            <td class="description last">Sets selected values in sorters.  See <a href="tutorial-sorters.html">sorters</a>.</td>
         </tr>
 
     
@@ -2246,7 +2246,7 @@
                 </td>
             
 
-            <td class="description last">Sets selected values in formatters.</td>
+            <td class="description last">Sets selected values in formatters.  See <a href="tutorial-formatters.html">formatters</a>.</td>
         </tr>
 
     
@@ -2381,7 +2381,7 @@
 
             
 
-            <td class="description last">Reference to the the edit cell when editing.  Undefined when not editing.</td>
+            <td class="description last">Reference to the the edit cell when editing.  Undefined when not editing.  When editing, this DOM element is superimposed over the cell being edited and is fully visible.</td>
         </tr>
 
     
@@ -2405,7 +2405,7 @@
 
             
 
-            <td class="description last">Input used for key controls on the grid.  Any clicks on the grid will cause this input to be focused.  This input is hidden behind the canvas.</td>
+            <td class="description last">Input used for key controls on the grid.  Any clicks on the grid will cause this input to be focused.  This input is hidden above the top left corner of the browser window.</td>
         </tr>
 
     
@@ -2429,7 +2429,7 @@
 
             
 
-            <td class="description last">Convenience object that represents the object that the mouse moved over last.</td>
+            <td class="description last">Cell that the mouse moved over last.</td>
         </tr>
 
     
@@ -2562,7 +2562,7 @@
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type">rect</span>
 
 
 
@@ -2573,7 +2573,7 @@
 
             
 
-            <td class="description last">object, bounds of current selection.</td>
+            <td class="description last">Bounds of current selection.</td>
         </tr>
 
     
@@ -2597,7 +2597,7 @@
 
             
 
-            <td class="description last">Object that contains the properties listed in the attributes section.</td>
+            <td class="description last">Object that contains the properties listed in the attributes section.  These properties can be used at runtime to alter attributes set during instantiation.  See the attributes section for full documentation.</td>
         </tr>
 
     
@@ -2693,7 +2693,7 @@
 
             
 
-            <td class="description last">Object that contains a list of formatting functions for displaying text.  The properties in this object match the `schema[].type` property.  For example, if the schema for a given column was of the type `date` the grid would look for a formatter called `formatters.date` if a formatter cannot be found for a given data type a warning will be logged and the string formatter will be used. Formatters must return a string value to be displayed in the cell.</td>
+            <td class="description last">Object that contains formatting functions for displaying text.  The properties in this object match the `schema[].type` property.  For example, if the schema for a given column was of the type `date` the grid would look for a formatter called `formatters.date` if a formatter cannot be found for a given data type a warning will be logged and the string formatter will be used. Formatters must return a string value to be displayed in the cell.  See <a href="tutorial-formatters.html">formatters</a>.</td>
         </tr>
 
     
@@ -2717,7 +2717,7 @@
 
             
 
-            <td class="description last">Object that contains a list of sorting functions for sorting columns.</td>
+            <td class="description last">Object that contains a list of sorting functions for sorting columns.   See <a href="tutorial-sorters.html">sorters</a>.</td>
         </tr>
 
     
@@ -2741,7 +2741,7 @@
 
             
 
-            <td class="description last">Object that contains a list of filters for filtering data.  The properties in this object match the `schema[].type` property.  For example, if the schema for a given column was of the type `date` the grid would look for a filter called `filters.date` if a filter cannot be found for a given data type a warning will be logged and the string/RegExp filter will be used.</td>
+            <td class="description last">Object that contains a list of filters for filtering data.  The properties in this object match the `schema[].type` property.  For example, if the schema for a given column was of the type `date` the grid would look for a filter called `filters.date` if a filter cannot be found for a given data type a warning will be logged and the string/RegExp filter will be used.   See <a href="tutorial-filters.html">filters</a>.</td>
         </tr>
 
     
@@ -2765,7 +2765,7 @@
 
             
 
-            <td class="description last">This is how data is set in the grid.  Data must be an array of objects that conform to a schema.  Data values can be any primitive type.  However if a cell value is another data array, a child grid will be rendered into the cell.  This child grid is different than a tree view grid and uses the `childGridAttributes` attribute for properties and styling.</td>
+            <td class="description last">This is how data is set in the grid.  Data must be an array of objects that conform to a schema.  Data values can be any primitive type.  However if a cell value is another data array, an inner grid will be rendered into the cell.  This "cell grid" is different than a "tree grid" (the sort you drill in with a row header arrow) and uses the `cellGridAttributes` attribute for properties and styling. See <a href="tutorial-data.html">data</a>.</td>
         </tr>
 
     
@@ -2789,7 +2789,7 @@
 
             
 
-            <td class="description last">Schema is optional.  Schema is an array of column objects.  If no schema is provided one will be generated from the data, in that case all data will be assumed to be string data.</td>
+            <td class="description last">Schema is optional.  Schema is an array of column objects.  If no schema is provided one will be generated from the data, in that case all data will be assumed to be string data. See <a href="tutorial-schema.html">schema</a>.</td>
         </tr>
 
     
@@ -2861,7 +2861,7 @@
 
             
 
-            <td class="description last">The number of pixels that have been scrolled down.</td>
+            <td class="description last">The current position of the vertical scroll bar in pixels.</td>
         </tr>
 
     
@@ -2885,7 +2885,7 @@
 
             
 
-            <td class="description last">The number of pixels that have been scrolled to the left.</td>
+            <td class="description last">The current position of the horizontal scroll bar in pixels.</td>
         </tr>
 
     
@@ -2981,7 +2981,7 @@
 
             
 
-            <td class="description last">When true, this grid is a child grid of another grid.</td>
+            <td class="description last">When true, this grid is a child grid of another grid.  Meaning, it appears as a tree grid or a cell grid of another parent grid.</td>
         </tr>
 
     
@@ -3176,9 +3176,11 @@
 	<dt class="tag-see method-doc-label method-doc-details-label">See:</dt>
 	<dd class="tag-see">
 		<ul>
+			<li><a href="https://github.com/TonyGermaneri/canvas-datagrid">https://github.com/TonyGermaneri/canvas-datagrid</a></li>
+			
 			<li><a href="https://tonygermaneri.github.io/canvas-datagrid/docs/tutorial-sample.html">https://tonygermaneri.github.io/canvas-datagrid/docs/tutorial-sample.html</a></li>
 			
-			<li><a href="https://github.com/TonyGermaneri/canvas-datagrid">https://github.com/TonyGermaneri/canvas-datagrid</a></li>
+			<li><a href="https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html">https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html</a></li>
 			</ul>
 	</dd>
 	
