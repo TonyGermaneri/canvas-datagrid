@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">87.42% </span>
+        <span class="strong">86.65% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>278/318</span>
+        <span class='fraction'>279/322</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">79.19% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>137/173</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">85.19% </span>
+        <span class="strong">82.14% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>46/54</span>
+        <span class='fraction'>46/56</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">88.39% </span>
+        <span class="strong">87.58% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>274/310</span>
+        <span class='fraction'>275/314</span>
       </div>
     </div>
   </div>
@@ -528,7 +528,13 @@
 483
 484
 485
-486</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+486
+487
+488
+489
+490
+491
+492</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -642,25 +648,25 @@
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">412×</span>
-<span class="cline-any cline-yes">385×</span>
+<span class="cline-any cline-yes">402×</span>
+<span class="cline-any cline-yes">375×</span>
 <span class="cline-any cline-yes">27×</span>
 <span class="cline-any cline-yes">27×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">412×</span>
+<span class="cline-any cline-yes">402×</span>
 <span class="cline-any cline-yes">20×</span>
-<span class="cline-any cline-yes">392×</span>
+<span class="cline-any cline-yes">382×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">392×</span>
+<span class="cline-any cline-yes">382×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">52×</span>
-<span class="cline-any cline-yes">387×</span>
-<span class="cline-any cline-yes">387×</span>
-<span class="cline-any cline-yes">386×</span>
-<span class="cline-any cline-yes">386×</span>
-<span class="cline-any cline-yes">386×</span>
+<span class="cline-any cline-yes">377×</span>
+<span class="cline-any cline-yes">377×</span>
+<span class="cline-any cline-yes">376×</span>
+<span class="cline-any cline-yes">376×</span>
+<span class="cline-any cline-yes">376×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -980,6 +986,12 @@
 <span class="cline-any cline-yes">158×</span>
 <span class="cline-any cline-yes">14×</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">14×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1466,6 +1478,12 @@ define([], function () {
             <span class="missing-if-branch" title="if path not taken" >I</span>if (!self.hasFocus &amp;&amp; e.target !== self.canvas) {
 <span class="cstat-no" title="statement not covered" >                return;</span>
             }
+<span class="fstat-no" title="function not covered" >            function createDiposeEvent() {</span>
+<span class="cstat-no" title="statement not covered" >                requestAnimationFrame(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >                    document.addEventListener('click', self.disposeContextMenu);</span>
+<span class="cstat-no" title="statement not covered" >                    document.removeEventListener('mouseup', createDiposeEvent);</span>
+                });
+            }
             var items = [],
                 pos = overridePos || self.getLayerPos(e, true),
                 ev = {
@@ -1491,7 +1509,7 @@ define([], function () {
                     height: ev.cell.height,
                     width: ev.cell.width
                 }, items);
-                document.addEventListener('click', self.disposeContextMenu);
+                document.addEventListener('mouseup', createDiposeEvent);
                 e.preventDefault();
             }
         };
@@ -1504,7 +1522,7 @@ define([], function () {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 04 2017 01:56:57 GMT-0700 (PDT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 04 2017 02:39:38 GMT-0700 (PDT)
 </div>
 </div>
 <script src="../prettify.js"></script>
