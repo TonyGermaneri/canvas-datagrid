@@ -1,6 +1,6 @@
 {
   "name": "canvas-datagrid",
-  "version": "0.14.16",
+  "version": "0.14.17",
   "description": "Canvas based data grid",
   "main": "./lib/main.js",
   "scripts": {

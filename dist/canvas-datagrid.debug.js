@@ -2551,7 +2551,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     }
                     return filterRegExp.test(value);
                 }
-                return value.toString ? value.toString().indexOf(filterFor) !== -1 : false;
+                return value.toString ? value.toString().toLocaleUpperCase()
+                    .indexOf(filterFor.toLocaleUpperCase()) !== -1 : false;
             };
             self.filters.number = function (value, filterFor) {
                 if (!filterFor) { return true; }
