@@ -466,7 +466,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             function drawCell(d, rowIndex, rowOrderIndex) {
                 return function drawEach(header, headerIndex, columnOrderIndex) {
                     var cellStyle = header.style || 'cell',
-                        childGridAttributes,
+                        cellGridAttributes,
                         cell,
                         isHeader = /HeaderCell/.test(cellStyle),
                         isCorner = /cornerCell/.test(cellStyle),
@@ -613,11 +613,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                                 || !isRowHeader) {
                             if (cell.isGrid) {
                                 if (!self.childGrids[cell.gridId]) {
-                                    childGridAttributes = self.args.childGridAttributes || self.args;
-                                    childGridAttributes.name = self.attributes.saveAppearance ? cell.gridId : undefined;
-                                    childGridAttributes.parentNode = cell;
-                                    childGridAttributes.data = d[header.name];
-                                    self.childGrids[cell.gridId] = self.createGrid(childGridAttributes);
+                                    cellGridAttributes = self.args.cellGridAttributes || self.args;
+                                    cellGridAttributes.name = self.attributes.saveAppearance ? cell.gridId : undefined;
+                                    cellGridAttributes.parentNode = cell;
+                                    cellGridAttributes.data = d[header.name];
+                                    self.childGrids[cell.gridId] = self.createGrid(cellGridAttributes);
                                     self.sizes.rows[rd[self.uniqueId]]
                                         = self.sizes.rows[rd[self.uniqueId]] || self.style.cellGridHeight;
                                     checkScrollHeight = true;
@@ -950,7 +950,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             function drawActiveCell() {
                 if (!aCell) { return; }
-                if (self.attributes.rowSelectionMode) {
+                if (self.rowSelectionMode) {
                     if (self.activeCell && self.activeCell.rowIndex === aCell.rowIndex) {
                         self.ctx.lineWidth = self.style.activeCellOverlayBorderWidth;
                         self.ctx.strokeStyle = self.style.activeCellOverlayBorderColor;
@@ -961,7 +961,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.ctx.strokeStyle = self.style.activeCellOverlayBorderColor;
                     strokeRect(aCell.x, aCell.y, aCell.width, aCell.height);
                 }
-
             }
             function drawDebug() {
                 perfCounters[drawCount % perfWindowSize] = performance.now() - p;
@@ -975,20 +974,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         + 'ms (' +
                         perfCounters.map(function (a) { return a.toFixed(1); }).join(', ') + ')';
                     d.htmlImages = Object.keys(self.htmlImageCache).length;
-                    d.scrollLeft = self.scrollBox.scrollLeft;
-                    d.scrollTop = self.scrollBox.scrollTop;
-                    d.scrollIndexTop = self.scrollIndexTop;
-                    d.scrollPixelTop = self.scrollPixelTop;
-                    d.scrollIndexLeft = self.scrollIndexLeft;
-                    d.scrollPixelLeft = self.scrollPixelLeft;
-                    d.canvasOffsetLeft = self.canvasOffsetLeft;
-                    d.canvasOffsetTop = self.canvasOffsetTop;
-                    d.width = self.width;
-                    d.height = self.height;
-                    d.mousex = self.mouse.x;
-                    d.mousey = self.mouse.y;
-                    d.touchx = !self.touchStart ? 0 : self.touchStart.x;
-                    d.touchy = !self.touchStart ? 0 : self.touchStart.y;
+                    d.scrollBox = self.scrollBox.toString();
+                    d.scrollIndex = '{"top": ' + self.scrollIndexTop + ', "left": ' + self.scrollIndexLeft + '}';
+                    d.scrollPixel = '{"top": ' + self.scrollPixelTop + ', "left": ' + self.scrollPixelLeft + '}';
+                    d.canvasOffset = '{"top": ' + self.canvasOffsetTop + ', "left": ' + self.canvasOffsetLeft + '}';
+                    d.pointerLockPosition =  self.pointerLockPosition ?
+                            self.pointerLockPosition.x + ', ' + self.pointerLockPosition.y : '';
+                    d.size = '{"width": ' + self.width + ', "height": ' + self.height + '}';
+                    d.mouse = '{"x": ' + self.mouse.x + ', "y": ' + self.mouse.y + '}';
+                    d.touch = !self.touchStart
+                        ? '' : '{"x": ' + self.touchStart.x + ', "y": ' + self.touchStart.y + "}";
                     d.entities = self.visibleCells.length;
                     d.hasFocus = self.hasFocus;
                     d.dragMode = self.dragMode;
@@ -1007,7 +1002,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         var m = key + ': ' + d[key],
                             lh = 14;
                         self.ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-                        fillRect(columnHeaderCellWidth, lh + (index * lh), 100, lh);
+                        fillRect(columnHeaderCellWidth, lh + (index * lh), 800, lh);
                         self.ctx.fillStyle = 'rgba(0, 0, 0, 1)';
                         fillText(m, columnHeaderCellWidth + 1, rowHeaderCellHeight + (index * lh));
                     });
@@ -1442,8 +1437,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                                 || self.dragStartObject.columnIndex !== o.columnIndex) {
                         self.ignoreNextClick = true;
                     }
-                    if (self.cellBoundaryCrossed || (delta.x === 0 && delta.y === 0) || self.attributes.rowSelectionMode) {
-                        if (self.attributes.rowSelectionMode || self.dragStartObject.columnIndex === -1) {
+                    if (self.cellBoundaryCrossed || (delta.x === 0 && delta.y === 0) || self.rowSelectionMode) {
+                        if (self.rowSelectionMode || self.dragStartObject.columnIndex === -1) {
                             self.selectRow(o.rowIndex, ctrl, null, true);
                         } else {
                             if (!self.dragAddToSelection && o.rowIndex !== undefined) {
@@ -1464,7 +1459,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             || dragBounds.right !== self.selectionBounds.right)) && !ctrl) {
                         self.selections = [];
                         sBounds = dragBounds;
-                        if (self.attributes.rowSelectionMode) {
+                        if (self.rowSelectionMode) {
                             for (i = sBounds.top; i <= sBounds.bottom; i += 1) {
                                 self.selectRow(i, true, null, true);
                             }
@@ -1536,7 +1531,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.setActiveCell(i.columnIndex, i.rowIndex);
                 }
                 self.selections[i.rowIndex] = self.selections[i.rowIndex] || [];
-                if ((self.attributes.rowSelectionMode || self.currentCell.style === 'rowHeaderCell')) {
+                if ((self.rowSelectionMode || self.currentCell.style === 'rowHeaderCell')) {
                     if (self.currentCell.style === 'rowHeaderCell'
                             && self.attributes.tree && pos.x > 0
                             && pos.x - self.currentCell.x < self.style.treeArrowWidth
@@ -1613,6 +1608,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     && ['horizontal-scroll-box', 'vertical-scroll-box'].indexOf(self.scrollStartMode) !== -1) {
                 self.pointerLockPosition.x += e.movementX;
                 self.pointerLockPosition.y += e.movementY;
+                self.pointerLockPosition.x = Math.min(self.width - self.style.scrollBarWidth, Math.max(0, self.pointerLockPosition.x));
+                self.pointerLockPosition.y = Math.min(self.height - self.style.scrollBarWidth, Math.max(0, self.pointerLockPosition.y));
                 pos = self.pointerLockPosition;
             }
             self.scrollMode = self.getCellAt(pos.x, pos.y).context;
@@ -1770,7 +1767,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             if (self.dragMode === 'cell') {
                 self.selecting = true;
-                if (self.attributes.rowSelectionMode) {
+                if (self.rowSelectionMode) {
                     self.selectRow(self.dragStartObject.rowIndex, ctrl, null, true);
                 }
                 return self.mousemove(e);
@@ -1880,7 +1877,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.selections[Math.max(y, 0)] = [];
                 self.selections[Math.max(y, 0)].push(x);
                 self.selectionBounds = self.getSelectionBounds();
-                if (self.attributes.rowSelectionMode) {
+                if (self.rowSelectionMode) {
                     for (i = self.selectionBounds.top; i <= self.selectionBounds.bottom; i += 1) {
                         self.selectRow(i, ctrl, null, true);
                     }
@@ -1958,15 +1955,27 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
         };
         self.scrollWheel = function (e) {
+            var l,
+                t,
+                deltaX = e.deltaX === undefined ? e.NativeEvent.deltaX : e.deltaX,
+                deltaY = e.deltaY === undefined ? e.NativeEvent.deltaY : e.deltaY,
+                deltaMode = e.deltaMode === undefined ? e.NativeEvent.deltaMode : e.deltaMode;
             if (self.dispatchEvent('wheel', {NativeEvent: e})) {
                 return;
             }
+            e = e.NativeEvent || e;
             self.touchHaltAnimation = true;
-            var l = self.scrollBox.scrollLeft,
-                t = self.scrollBox.scrollTop;
+            l = self.scrollBox.scrollLeft;
+            t = self.scrollBox.scrollTop;
             if (self.hasFocus) {
-                self.scrollBox.scrollTop += e.deltaY;
-                self.scrollBox.scrollLeft += e.deltaX;
+                //BUG Issue 42: https://github.com/TonyGermaneri/canvas-datagrid/issues/42
+                //https://stackoverflow.com/questions/20110224/what-is-the-height-of-a-line-in-a-wheel-event-deltamode-dom-delta-line
+                if (deltaMode === 1) {
+                    // line mode = 17 pixels per line
+                    deltaY = deltaY * 17;
+                }
+                self.scrollBox.scrollTop += deltaY;
+                self.scrollBox.scrollLeft += deltaX;
             }
             if (t !== self.scrollBox.scrollTop || l !== self.scrollBox.scrollLeft) {
                 e.preventDefault();
@@ -1981,7 +1990,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     if (row) {
                         var r = [];
                         Object.keys(row).forEach(function (key) {
-                            r.push('"' + row[key].replace(/"/g, '""') + '"');
+                            if (row[key].replace) {
+                                return r.push('"' + row[key].replace(/"/g, '""') + '"');
+                            }
+                            r.push(row[key]);
                         });
                         r.join(',');
                         rows.push(r);
@@ -2072,7 +2084,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         ];
         self.mouse = { x: 0, y: 0};
         self.getSelectedData = function (expandToRow) {
-            var d = [], s = self.getSchema(), l = self.data.length;
+            var d = [], s = self.getVisibleSchema(), l = self.data.length;
             self.selections.forEach(function (row, index) {
                 if (index === l) { return; }
                 if (row.length === 0) {
@@ -2086,7 +2098,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     });
                 } else {
                     row.forEach(function (col) {
-                        if (col === -1) { return; }
+                        if (col === -1 || !s[col]) { return; }
                         d[index][s[col].name] = self.data[index][s[col].name];
                     });
                 }
@@ -2465,6 +2477,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.intf.integerToAlpha = self.integerToAlpha;
             self.intf.copy = self.copy;
             self.intf.style = {};
+            self.rowSelectionMode = self.args.selectionMode === 'row';
+            self.columnSelectionMode = self.args.selectionMode === 'column';
             Object.keys(self.style).forEach(function (key) {
                 // unless this line is here, Object.keys() will not work on <instance>.style
                 publicStyleKeyIntf[key] = undefined;
@@ -2522,16 +2536,22 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 });
             });
             self.filters.string = function (value, filterFor) {
-                if (!filterFor) { return true; }
-                var filterRegExp;
+                var filterRegExp,
+                    regEnd = /\/(i|g|m)*$/,
+                    pattern = regEnd.exec(filterFor),
+                    flags = pattern ? pattern[0].substring(1) : '',
+                    flagLength = flags.length;
                 self.invalidFilterRegEx = undefined;
-                try {
-                    filterRegExp = new RegExp(filterFor, 'ig');
-                } catch (e) {
-                    self.invalidFilterRegEx = e;
-                    return;
+                if (filterFor.substring(0, 1) === '/' && pattern) {
+                    try {
+                        filterRegExp = new RegExp(filterFor.substring(1, filterFor.length - (flagLength + 1)), flags);
+                    } catch (e) {
+                        self.invalidFilterRegEx = e;
+                        return;
+                    }
+                    return filterRegExp.test(value);
                 }
-                return filterRegExp.test(value);
+                return value.toString ? value.toString().indexOf(filterFor) !== -1 : false;
             };
             self.filters.number = function (value, filterFor) {
                 if (!filterFor) { return true; }
@@ -2927,6 +2947,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.scroll();
                 }
             }
+            self.scrollBox.toString = function () {
+                return '{"width": ' + scrollWidth
+                    + ', "height": ' + scrollHeight
+                    + ', "left": ' + scrollLeft
+                    + ', "top": ' + scrollTop + '}';
+            };
             self.scrollBox.scrollTo = function (x, y) {
                 setScrollLeft(x, true);
                 setScrollTop(y);
@@ -3278,9 +3304,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 n = e.cell && e.cell.header ? e.cell.header.title || e.cell.header.name : '',
                 autoCompleteItems,
                 iRect;
+            function checkRegExpErrorState() {
+                filterInput.style.background = self.style.contextFilterInputBackground;
+                filterInput.style.color = self.style.contextFilterInputColor;
+                if (self.invalidFilterRegEx) {
+                    filterInput.style.background = self.style.contextFilterInvalidRegExpBackground;
+                    filterInput.style.color = self.style.contextFilterInvalidRegExpColor;
+                }
+            }
             function fillAutoComplete() {
                 autoCompleteItems = {};
-                self.data.forEach(function (row) {
+                self.data.filter(function (d, i) { return i < self.attributes.maxAutoCompleteItems; }).forEach(function (row) {
                     var value = row[e.cell.header.name];
                     if (autoCompleteItems[value]) { return; }
                     autoCompleteItems[value] = {
@@ -3319,6 +3353,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.createInlineStyle(filterLabel, 'canvas-datagrid-context-menu-label');
             self.createInlineStyle(filterAutoCompleteButton, 'canvas-datagrid-context-menu-filter-button');
             self.createInlineStyle(filterInput, 'canvas-datagrid-context-menu-filter-input');
+            checkRegExpErrorState();
             filterInput.onclick = self.disposeAutocomplete;
             filterInput.addEventListener('keydown', function (e) {
                 //down
@@ -3348,6 +3383,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.setFilter(e.cell.header.name, filterInput.value);
             });
             filterInput.addEventListener('keyup', createAutoCompleteContext);
+            ['focus', 'blur', 'keydown', 'keyup', 'change'].forEach(function (en) {
+                filterInput.addEventListener(en, checkRegExpErrorState);
+            });
             filterInput.value = e.cell.header ? self.columnFilters[e.cell.header.name] || '' : '';
             filterLabel.innerHTML = self.attributes.filterOptionText.replace(/%s/g, n);
             filterAutoCompleteButton.onclick = function () {
@@ -3527,6 +3565,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['pageUpDownOverlap', 1],
                 ['persistantSelectionMode', false],
                 ['rowSelectionMode', false],
+                ['selectionMode', 'cell'],
                 ['autoResizeColumns', false],
                 ['allowRowHeaderResize', true],
                 ['allowColumnResize', true],
@@ -3553,15 +3592,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['removeFilterOptionText', 'Remove filter on %s'],
                 ['filterOptionText', 'Filter %s'],
                 ['filterTextPrefix', '(filtered) '],
-                ['touchReleaseAnimationDurationMs', 1000],
-                ['touchReleaseAcceleration', 30],
+                ['touchReleaseAnimationDurationMs', 2000],
+                ['touchReleaseAcceleration', 90],
                 ['touchDeadZone', 3],
                 ['touchSelectTimeMs', 800],
-                ['touchScrollZone', 40],
+                ['touchScrollZone', 30],
                 ['copyText', 'Copy'],
                 ['showCopy', true],
                 ['columnHeaderClickBehavior', 'sort'],
-                ['scrollPointerLock', true]
+                ['scrollPointerLock', true],
+                ['maxAutoCompleteItems', 200]
             ],
             styles: [
                 ['activeCellBackgroundColor', 'rgba(255, 255, 255, 1)'],
@@ -3635,6 +3675,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['contextFilterInputColor', 'rgba(0,0,0,1)'],
                 ['contextFilterInputFontFamily', 'sans-serif'],
                 ['contextFilterInputFontSize', '14px'],
+                ['contextFilterInvalidRegExpBackground', 'rgba(180, 6, 1, 1)'],
+                ['contextFilterInvalidRegExpColor', 'rgba(255, 255, 255, 1)'],
                 ['contextMenuArrowColor', 'rgba(43, 48, 43, 1)'],
                 ['contextMenuArrowDownHTML', '&#x25BC;'],
                 ['contextMenuArrowUpHTML', '&#x25B2;'],
