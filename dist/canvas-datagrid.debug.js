@@ -1990,7 +1990,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     if (row) {
                         var r = [];
                         Object.keys(row).forEach(function (key) {
-                            if (row[key].replace) {
+                            if (row[key] !== null
+                                    && row[key] !== false
+                                    && row[key] !== undefined
+                                    && row[key].replace) {
                                 return r.push('"' + row[key].replace(/"/g, '""') + '"');
                             }
                             r.push(row[key]);
