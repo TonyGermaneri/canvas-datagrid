@@ -3498,6 +3498,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (!self.hasFocus && e.target !== self.canvas) {
                 return;
             }
+            function createDiposeEvent() {
+                requestAnimationFrame(function () {
+                    document.addEventListener('click', self.disposeContextMenu);
+                    document.removeEventListener('mouseup', createDiposeEvent);
+                });
+            }
             var items = [],
                 pos = overridePos || self.getLayerPos(e, true),
                 ev = {
@@ -3523,7 +3529,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     height: ev.cell.height,
                     width: ev.cell.width
                 }, items);
-                document.addEventListener('click', self.disposeContextMenu);
+                document.addEventListener('mouseup', createDiposeEvent);
                 e.preventDefault();
             }
         };
@@ -3600,7 +3606,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['copyText', 'Copy'],
                 ['showCopy', true],
                 ['columnHeaderClickBehavior', 'sort'],
-                ['scrollPointerLock', true],
+                ['scrollPointerLock', false],
                 ['maxAutoCompleteItems', 200]
             ],
             styles: [
