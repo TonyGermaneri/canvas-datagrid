@@ -950,7 +950,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             function drawActiveCell() {
                 if (!aCell) { return; }
-                if (self.rowSelectionMode) {
+                if (self.attributes.selectionMode === 'row') {
                     if (self.activeCell && self.activeCell.rowIndex === aCell.rowIndex) {
                         self.ctx.lineWidth = self.style.activeCellOverlayBorderWidth;
                         self.ctx.strokeStyle = self.style.activeCellOverlayBorderColor;
@@ -1096,12 +1096,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.touchStart = self.getTouchPos(e);
             startingCell = self.getCellAt(self.touchStart.x, self.touchStart.y, true);
             if (self.dispatchEvent('touchstart', {NativeEvent: e, cell: self.startingCell})) { return; }
-            if (!self.hasFocus) { return; }
             self.stopPropagation(e);
             e.preventDefault();
-            if (e.touches.length === 2) {
-                return self.contextmenu(e, self.touchStart);
-            }
             self.touchScrollStart = {
                 scrollLeft: self.scrollBox.scrollLeft,
                 scrollTop: self.scrollBox.scrollTop,
@@ -1437,8 +1433,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                                 || self.dragStartObject.columnIndex !== o.columnIndex) {
                         self.ignoreNextClick = true;
                     }
-                    if (self.cellBoundaryCrossed || (delta.x === 0 && delta.y === 0) || self.rowSelectionMode) {
-                        if (self.rowSelectionMode || self.dragStartObject.columnIndex === -1) {
+                    if (self.cellBoundaryCrossed || (delta.x === 0 && delta.y === 0) || (self.attributes.selectionMode === 'row')) {
+                        if ((self.attributes.selectionMode === 'row') || self.dragStartObject.columnIndex === -1) {
                             self.selectRow(o.rowIndex, ctrl, null, true);
                         } else {
                             if (!self.dragAddToSelection && o.rowIndex !== undefined) {
@@ -1459,7 +1455,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             || dragBounds.right !== self.selectionBounds.right)) && !ctrl) {
                         self.selections = [];
                         sBounds = dragBounds;
-                        if (self.rowSelectionMode) {
+                        if (self.attributes.selectionMode === 'row') {
                             for (i = sBounds.top; i <= sBounds.bottom; i += 1) {
                                 self.selectRow(i, true, null, true);
                             }
@@ -1531,7 +1527,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.setActiveCell(i.columnIndex, i.rowIndex);
                 }
                 self.selections[i.rowIndex] = self.selections[i.rowIndex] || [];
-                if ((self.rowSelectionMode || self.currentCell.style === 'rowHeaderCell')) {
+                if (((self.attributes.selectionMode === 'row') || self.currentCell.style === 'rowHeaderCell')) {
                     if (self.currentCell.style === 'rowHeaderCell'
                             && self.attributes.tree && pos.x > 0
                             && pos.x - self.currentCell.x < self.style.treeArrowWidth
@@ -1767,7 +1763,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             if (self.dragMode === 'cell') {
                 self.selecting = true;
-                if (self.rowSelectionMode) {
+                if (self.attributes.selectionMode === 'row') {
                     self.selectRow(self.dragStartObject.rowIndex, ctrl, null, true);
                 }
                 return self.mousemove(e);
@@ -1877,7 +1873,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.selections[Math.max(y, 0)] = [];
                 self.selections[Math.max(y, 0)].push(x);
                 self.selectionBounds = self.getSelectionBounds();
-                if (self.rowSelectionMode) {
+                if (self.attributes.selectionMode === 'row') {
                     for (i = self.selectionBounds.top; i <= self.selectionBounds.bottom; i += 1) {
                         self.selectRow(i, ctrl, null, true);
                     }
@@ -2480,8 +2476,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.intf.integerToAlpha = self.integerToAlpha;
             self.intf.copy = self.copy;
             self.intf.style = {};
-            self.rowSelectionMode = self.args.selectionMode === 'row';
-            self.columnSelectionMode = self.args.selectionMode === 'column';
             Object.keys(self.style).forEach(function (key) {
                 // unless this line is here, Object.keys() will not work on <instance>.style
                 publicStyleKeyIntf[key] = undefined;

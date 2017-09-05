@@ -35,11 +35,13 @@
             '#4575b4',
             '#313695'
         ],
-        smallData = [
-            {col1: 'foo', col2: 0, col3: 'a'},
-            {col1: 'bar', col2: 1, col3: 'b'},
-            {col1: 'baz', col2: 2, col3: 'c'}
-        ];
+        smallData = function () {
+            return [
+                {col1: 'foo', col2: 0, col3: 'a'},
+                {col1: 'bar', col2: 1, col3: 'b'},
+                {col1: 'baz', col2: 2, col3: 'c'}
+            ];
+        };
     function itoa(n) {
         var ordA = 'a'.charCodeAt(0),
             ordZ = 'z'.charCodeAt(0),
@@ -233,7 +235,7 @@
                 it('Should create a grid and set data, data should be visible.', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.style.activeCellBackgroundColor = c.white;
                     assertIf(grid.data.length !== 3,
@@ -245,7 +247,7 @@
                 it('Should draw row selections.', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData,
+                        data: smallData(),
                         selectionMode: 'row',
                         style: {
                             activeCellSelectedBackgroundColor: c.b,
@@ -260,7 +262,7 @@
                 it('Should draw a debug message.', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData,
+                        data: smallData(),
                         debug: true
                     });
                     grid.style.activeCellBackgroundColor = c.b;
@@ -284,7 +286,7 @@
                 it('Should set the active cell color to black.', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.style.activeCellBackgroundColor = c.black;
                     assertPxColor(grid, 100, 32, c.black, done);
@@ -292,7 +294,7 @@
                 it('Each style setter should call draw 1 time.', function (done) {
                     var grid = g({
                             test: this.test,
-                            data: smallData
+                            data: smallData()
                         }),
                         styleKeys = Object.keys(grid.style),
                         eventCount = 0;
@@ -430,7 +432,7 @@
                 it('Focus on the grid', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.focus();
                     done(assertIf(!grid.hasFocus, 'Expected the grid to have focus'));
@@ -438,7 +440,7 @@
                 it('Blur the grid', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.blur();
                     done(assertIf(grid.hasFocus, 'Expected the grid to not have focus'));
@@ -586,7 +588,7 @@
                             test: this.test,
                             data: [{d: '', e: ''}]
                         }),
-                        n = Object.keys(smallData[0])[0];
+                        n = Object.keys(smallData()[0])[0];
                     grid.deleteColumn(0);
                     done(assertIf(Object.keys(grid.data[0])[0] === n || grid.schema[0].name === n,
                         'Expected to see column 0 deleted, but it appears to still be there.'));
@@ -653,7 +655,7 @@
                 it('Set row height', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.addEventListener('rendercell', function (e) {
                         if (e.cell.rowIndex === 0) {
@@ -666,7 +668,7 @@
                 it('Set column width', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.addEventListener('rendercell', function (e) {
                         if (e.cell.columnIndex === 0) {
@@ -681,7 +683,7 @@
                 it('Reset row height', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.addEventListener('rendercell', function (e) {
                         if (e.cell.rowIndex !== 0) {
@@ -695,7 +697,7 @@
                 it('Reset column width', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.addEventListener('rendercell', function (e) {
                         if (e.cell.columnIndex === 1) {
@@ -778,7 +780,7 @@
                 it('Should produce a context menu', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.addEventListener('contextmenu', function (e) {
                         setTimeout(function () {
@@ -790,7 +792,7 @@
                 it('Clicking Order by asc should order the selected column asc', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.addEventListener('contextmenu', function (e) {
                         setTimeout(function () {
@@ -804,7 +806,7 @@
                 it('Should produce a context menu very wide requiring the context menu move to be fully visible', function (done) {
                     var d = [], x, grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     for (x = 0; x < 100; x += 1) {
                         d.push({
@@ -830,7 +832,7 @@
                 it('Should create a child context menu using a function that returns items', function (done) {
                     var d = [], x, grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     for (x = 0; x < 100; x += 1) {
                         d.push({
@@ -856,7 +858,7 @@
                 it('Should create a child context menu using a function that uses a callback argument', function (done) {
                     var d = [], x, grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     for (x = 0; x < 100; x += 1) {
                         d.push({
@@ -882,7 +884,7 @@
                 it('Create a child context menu and scroll up and down using mouseover events, then exit menu', function (done) {
                     var d = [], x, grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     for (x = 0; x < 100; x += 1) {
                         d.push({
@@ -920,7 +922,7 @@
                 it('Autocomplete should appear when a value is entered into the filter input', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.addEventListener('contextmenu', function (e) {
                         setTimeout(function () {
@@ -939,7 +941,7 @@
                     var err,
                         grid = g({
                             test: this.test,
-                            data: smallData
+                            data: smallData()
                         });
                     grid.addEventListener('contextmenu', function (e) {
                         setTimeout(function () {
@@ -964,7 +966,7 @@
                     var err,
                         grid = g({
                             test: this.test,
-                            data: smallData
+                            data: smallData()
                         });
                     grid.addEventListener('contextmenu', function (e) {
                         setTimeout(function () {
@@ -989,7 +991,7 @@
                     var err,
                         grid = g({
                             test: this.test,
-                            data: smallData
+                            data: smallData()
                         });
                     grid.addEventListener('contextmenu', function (e) {
                         setTimeout(function () {
@@ -1014,7 +1016,7 @@
                     var err,
                         grid = g({
                             test: this.test,
-                            data: smallData
+                            data: smallData()
                         });
                     grid.addEventListener('contextmenu', function (e) {
                         setTimeout(function () {
@@ -1040,7 +1042,7 @@
                         k = 'canvasDataGrid-' + n,
                         grid = g({
                             test: this.test,
-                            data: smallData,
+                            data: smallData(),
                             name: n
                         });
                     grid.order('col1');
@@ -1251,7 +1253,7 @@
                 it('Touch and drag should scroll the grid vertically and horizontally', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     setTimeout(function () {
                         grid.focus();
@@ -1267,6 +1269,31 @@
                             }, 1500);
                         }, 200);
                     }, 1);
+                });
+                it('Touch and drag should scroll the inner grid', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData(),
+                        tree: true
+                    });
+                    grid.addEventListener('expandtree', function (e) {
+                        setTimeout(function () {
+                            grid.focus();
+                            touchstart(grid.canvas, 200, 80);
+                            touchmove(document.body, 90, 80, grid.canvas);
+                            setTimeout(function () {
+                                // simulate very slow movement of humans
+                                touchmove(document.body, 60, 80, grid.canvas);
+                                touchend(document.body, 60, 80, grid.canvas);
+                                setTimeout(function () {
+                                    done(assertIf(e.treeGrid.scrollLeft === 0,
+                                        'Expected the grid to scroll some.'));
+                                }, 1500);
+                            }, 200);
+                        }, 1);
+                        e.treeGrid.data = [{a: 'b', c: 'd', e: 'f', g: 'h'}];
+                    });
+                    grid.expandTree(0);
                 });
                 it('Touch and drag on the scroll bar should engage fast scrolling', function (done) {
                     var grid = g({
@@ -1289,7 +1316,7 @@
                 it('Touch and hold should start selecting, moving should select until touchend', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     setTimeout(function () {
                         grid.focus();
@@ -1306,10 +1333,107 @@
                         }, 1000);
                     }, 1);
                 });
+                it('Touch and touch again within the touchDeadZone should begin editing', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: makeData(10, 10)
+                    });
+                    setTimeout(function () {
+                        touchstart(grid.canvas, 200, 37);
+                        setTimeout(function () {
+                            touchend(document.body, 200, 37, grid.canvas);
+                            done(assertIf(grid.input === undefined,
+                                    'Expected an edit input.'));
+                            setTimeout(function () { keydown(grid.input, 13); }, 200);
+                        }, 500);
+                    }, 500);
+                });
+                it('Touch an inactive cell should set it active', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: makeData(10, 10)
+                    });
+                    setTimeout(function () {
+                        grid.focus();
+                        touchstart(grid.canvas, 200, 72);
+                        setTimeout(function () {
+                            // simulate very slow movement of humans
+                            grid.focus();
+                            touchmove(document.body, 200, 72, grid.canvas);
+                            touchend(document.body, 200, 72, grid.canvas);
+                            setTimeout(function () {
+                                done(assertIf(grid.activeCell.rowIndex === 1,
+                                    'Expected rowIndex 1 to be selected.'));
+                            }, 1);
+                        }, 1000);
+                    }, 1);
+                });
+                it('Use touchstart event to prevent touch events using e.preventDefault.', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData()
+                    });
+                    grid.addEventListener('touchstart', function (e) { return e.preventDefault(); });
+                    setTimeout(function () {
+                        grid.focus();
+                        touchstart(grid.canvas, 200, 37);
+                        setTimeout(function () {
+                            // simulate very slow movement of humans
+                            grid.focus();
+                            touchmove(document.body, 320, 90, grid.canvas);
+                            touchend(document.body, 320, 90, grid.canvas);
+                            setTimeout(function () {
+                                done(assertIf(grid.scrollLeft !== 0,
+                                    'Expected no movement.'));
+                            }, 1);
+                        }, 1000);
+                    }, 1);
+                });
+                it('Use touchend event to prevent touch events using e.preventDefault.', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData()
+                    });
+                    grid.addEventListener('touchend', function (e) { return e.preventDefault(); });
+                    setTimeout(function () {
+                        grid.focus();
+                        touchstart(grid.canvas, 200, 37);
+                        setTimeout(function () {
+                            // simulate very slow movement of humans
+                            grid.focus();
+                            touchmove(document.body, 320, 90, grid.canvas);
+                            touchend(document.body, 320, 90, grid.canvas);
+                            setTimeout(function () {
+                                done(assertIf(grid.scrollLeft !== 0,
+                                    'Expected no movement.'));
+                            }, 1);
+                        }, 1000);
+                    }, 1);
+                });
+                it('Touch and hold should not start selecting or moving if very little movement before touchEnd', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData()
+                    });
+                    setTimeout(function () {
+                        grid.focus();
+                        touchstart(grid.canvas, 200, 37);
+                        setTimeout(function () {
+                            // simulate very slow movement of humans
+                            grid.focus();
+                            touchmove(document.body, 200, 38, grid.canvas);
+                            touchend(document.body, 200, 38, grid.canvas);
+                            setTimeout(function () {
+                                done(assertIf(grid.scrollLeft !== 0,
+                                    'Expected no movement.'));
+                            }, 1);
+                        }, 1000);
+                    }, 1);
+                });
                 it('Touch start should be cancel-able', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     setTimeout(function () {
                         grid.focus();
@@ -1451,7 +1575,7 @@
                         editInput,
                         grid = g({
                             test: this.test,
-                            data: smallData
+                            data: smallData()
                         });
                     grid.beginEditAt(0, 0);
                     editInput = document.body.lastChild;
@@ -1471,7 +1595,7 @@
                         editInput,
                         grid = g({
                             test: this.test,
-                            data: smallData
+                            data: smallData()
                         });
                     grid.beginEditAt(0, 0);
                     editInput = document.body.lastChild;
@@ -1492,7 +1616,7 @@
                         editInput,
                         grid = g({
                             test: this.test,
-                            data: smallData
+                            data: smallData()
                         });
                     grid.beginEditAt(0, 0);
                     grid.addEventListener('endedit', function (e) {
@@ -1512,7 +1636,7 @@
                 it('Arrow down should move active cell down one', function (done) {
                     var ev, grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.focus();
                     ev = new Event('keydown');
@@ -1523,7 +1647,7 @@
                 it('Arrow right should move active cell right one', function (done) {
                     var ev, grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.focus();
                     ev = new Event('keydown');
@@ -1534,7 +1658,7 @@
                 it('Arrow right, then left should move active cell right one, then left one', function (done) {
                     var ev, grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.focus();
                     ev = new Event('keydown');
@@ -1548,7 +1672,7 @@
                 it('Arrow down, then up should move active cell down one, then up one', function (done) {
                     var ev, grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.focus();
                     ev = new Event('keydown');
@@ -1562,7 +1686,7 @@
                 it('Shift and Arrow down should add the selection down one', function (done) {
                     var ev, grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.focus();
                     ev = new Event('keydown');
@@ -1577,7 +1701,7 @@
                 it('Shift and Arrow right should add the selection right one', function (done) {
                     var ev, grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.focus();
                     ev = new Event('keydown');
@@ -1592,7 +1716,7 @@
                 it('Shift and Arrow left should add the selection to the left one', function (done) {
                     var ev, grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.focus();
                     ev = new Event('keydown');
@@ -1611,7 +1735,7 @@
                 it('Shift and Arrow up should add the selection up one', function (done) {
                     var ev, grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.focus();
                     ev = new Event('keydown');
@@ -1630,7 +1754,7 @@
                 it('Shift tab should behave like left arrow', function (done) {
                     var ev, grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.focus();
                     ev = new Event('keydown');
@@ -1645,7 +1769,7 @@
                 it('Tab should behave like right arrow', function (done) {
                     var ev, grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.focus();
                     ev = new Event('keydown');
@@ -1656,7 +1780,7 @@
                 it('Tab should behave like right arrow', function (done) {
                     var ev, grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.focus();
                     ev = new Event('keydown');
@@ -1667,7 +1791,7 @@
                 it('Keyup and keypress', function (done) {
                     var ev, grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.focus();
                     grid.addEventListener('keyup', function () {
@@ -1708,7 +1832,7 @@
                 it('Space select just the active cell', function (done) {
                     var ev, grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.focus();
                     grid.selectAll();
@@ -1722,7 +1846,7 @@
                 it('Resize a column.', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData,
+                        data: smallData(),
                         style: {
                             columnWidth: 50
                         }
@@ -1746,7 +1870,7 @@
                 it('Resize a column from a cell.', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData,
+                        data: smallData(),
                         allowColumnResizeFromCell: true,
                         style: {
                             columnWidth: 50
@@ -1770,7 +1894,7 @@
                 it('Resize a row.', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData,
+                        data: smallData(),
                         style: {
                             columnWidth: 50
                         }
@@ -1793,7 +1917,7 @@
                 it('Resize a row from a cell.', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData,
+                        data: smallData(),
                         allowColumnResizeFromCell: true,
                         style: {
                             columnWidth: 50
@@ -1867,7 +1991,7 @@
                 it('Should select all', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.selectAll();
                     grid.style.activeCellSelectedBackgroundColor = c.y;
@@ -1876,15 +2000,74 @@
                         if (err) { return done(err); }
                         assertPxColor(grid, 360, 90, c.y, function (err) {
                             if (err) { return done(err); }
-                            done(assertIf(grid.selectedRows.length !== smallData.length,
+                            done(assertIf(grid.selectedRows.length !== smallData().length,
                                     'Expected data interface `selectedRows` to contain all rows.  It does not.'));
                         });
                     });
                 });
+                it('Should select all via ctrl/cmnd a', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData()
+                    });
+                    grid.focus();
+                    de(grid.controlInput, 'keydown', {keyCode: 65, controlKey: true });
+                    setTimeout(function () {
+                        grid.style.activeCellSelectedBackgroundColor = c.y;
+                        grid.style.cellSelectedBackgroundColor = c.y;
+                        assertPxColor(grid, 90, 30, c.y, function (err) {
+                            if (err) { return done(err); }
+                            assertPxColor(grid, 360, 90, c.y, function (err) {
+                                if (err) { return done(err); }
+                                done(assertIf(grid.selectedRows.length !== smallData().length,
+                                        'Expected data interface `selectedRows` to contain all rows.  It does not.'));
+                            });
+                        });
+                    }, 100);
+                });
+                it('Selection keystrokes should do nothing if the grid is not focused.', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData()
+                    });
+                    de(grid.controlInput, 'keydown', {keyCode: 65, controlKey: true });
+                    setTimeout(function () {
+                        grid.style.activeCellBackgroundColor = c.b;
+                        grid.style.cellBackgroundColor = c.b;
+                        assertPxColor(grid, 90, 30, c.b, function (err) {
+                            if (err) { return done(err); }
+                            assertPxColor(grid, 360, 90, c.b, function (err) {
+                                if (err) { return done(err); }
+                                done(assertIf(grid.selectedRows.length === 1,
+                                        'Expected just the first row to be selected'));
+                            });
+                        });
+                    }, 100);
+                });
+                it('Should de-select all via esc', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData()
+                    });
+                    grid.focus();
+                    de(grid.controlInput, 'keydown', {keyCode: 27});
+                    setTimeout(function () {
+                        grid.style.activeCellBackgroundColor = c.y;
+                        grid.style.cellBackgroundColor = c.y;
+                        assertPxColor(grid, 90, 30, c.y, function (err) {
+                            if (err) { return done(err); }
+                            assertPxColor(grid, 360, 90, c.y, function (err) {
+                                if (err) { return done(err); }
+                                done(assertIf(grid.selectedRows.length !== 0,
+                                        'Expected data interface `selectedRows` to contain no rows.'));
+                            });
+                        });
+                    }, 100);
+                });
                 it('Should select a row', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.selectRow(0);
                     grid.style.activeCellSelectedBackgroundColor = c.y;
@@ -1902,7 +2085,7 @@
                 it('Should select a row, then add to the selection with control', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.selectRow(0);
                     grid.selectRow(2, true);
@@ -1922,7 +2105,7 @@
                 it('Should select a row, then add to the selection with control, then remove it with control', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.selectRow(0);
                     grid.selectRow(2, true);
@@ -1943,7 +2126,7 @@
                 it('Should select a range of rows by holding shift', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.selectRow(0);
                     grid.selectRow(2, null, true);
@@ -1963,7 +2146,7 @@
                 it('Should select a column', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.selectColumn(0);
                     grid.style.activeCellSelectedBackgroundColor = c.y;
@@ -1973,7 +2156,7 @@
                         if (err) { return done(err); }
                         assertPxColor(grid, 360, 90, c.b, function (err) {
                             if (err) { return done(err); }
-                            done(assertIf(grid.selectedRows.length !== smallData.length,
+                            done(assertIf(grid.selectedRows.length !== smallData().length,
                                     'Expected data interface `selectedRows` to contain all rows.  It does not.'));
                         });
                     });
@@ -1981,7 +2164,7 @@
                 it('Should select a column, then add a column to the selection.', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.selectColumn(0);
                     grid.selectColumn(1, true);
@@ -1992,7 +2175,7 @@
                         if (err) { return done(err); }
                         assertPxColor(grid, 360, 90, c.y, function (err) {
                             if (err) { return done(err); }
-                            done(assertIf(grid.selectedRows.length !== smallData.length,
+                            done(assertIf(grid.selectedRows.length !== smallData().length,
                                     'Expected data interface `selectedRows` to contain all rows.  It does not.'));
                         });
                     });
@@ -2000,7 +2183,7 @@
                 it('Should select a range of columns via shift.', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData,
+                        data: smallData(),
                         style: {
                             columnWidth: 50
                         }
@@ -2014,7 +2197,7 @@
                         if (err) { return done(err); }
                         assertPxColor(grid, 170, 90, c.y, function (err) {
                             if (err) { return done(err); }
-                            done(assertIf(grid.selectedRows.length !== smallData.length,
+                            done(assertIf(grid.selectedRows.length !== smallData().length,
                                     'Expected data interface `selectedRows` to contain all rows.  It does not.'));
                         });
                     });
@@ -2022,7 +2205,7 @@
                 it('Should select a column, then add to the column selection and immediately remove it', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.selectColumn(0);
                     grid.selectColumn(1, true);
@@ -2034,7 +2217,7 @@
                         if (err) { return done(err); }
                         assertPxColor(grid, 360, 90, c.b, function (err) {
                             if (err) { return done(err); }
-                            done(assertIf(grid.selectedRows.length !== smallData.length,
+                            done(assertIf(grid.selectedRows.length !== smallData().length,
                                     'Expected data interface `selectedRows` to contain all rows.  It does not.'));
                         });
                     });
@@ -2042,7 +2225,7 @@
                 it('Should select an area when click and drag occurs', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.style.activeCellSelectedBackgroundColor = c.y;
                     grid.style.cellSelectedBackgroundColor = c.y;
@@ -2062,7 +2245,7 @@
                                 if (err) { return done(err); }
                                 assertPxColor(grid, 360, 80, c.fu, function (err) {
                                     if (err) { return done(err); }
-                                    done(assertIf(grid.selectedRows.length !== smallData.length - 1,
+                                    done(assertIf(grid.selectedRows.length !== smallData().length - 1,
                                             'Expected data interface `selectedRows` to contain all but one rows.  It does not.'));
                                 });
                             });
@@ -2072,7 +2255,7 @@
                 it('Should remove a cell from selection when holding control and clicking a selected cell', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.style.activeCellSelectedBackgroundColor = c.y;
                     grid.style.cellHoverBackgroundColor = c.b;
@@ -2099,7 +2282,7 @@
                                 if (err) { return done(err); }
                                 assertPxColor(grid, 360, 80, c.fu, function (err) {
                                     if (err) { return done(err); }
-                                    done(assertIf(grid.selectedRows.length !== smallData.length - 1
+                                    done(assertIf(grid.selectedRows.length !== smallData().length - 1
                                         && grid.selectedRows[1].col2 === undefined,
                                             'Expected data interface `selectedRows` to contain row 1 col1 and col2, row 2 col 1.  It does not.'));
                                 });
@@ -2172,7 +2355,7 @@
                         k = 'canvasDataGrid-' + n,
                         grid = g({
                             test: this.test,
-                            data: smallData,
+                            data: smallData(),
                             name: n
                         });
                     grid.order('col1');
@@ -2185,7 +2368,7 @@
                     var grid = g({
                         test: this.test,
                         tree: true,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.addEventListener('expandtree', function (e) {
                         assertIf(e.treeGrid === undefined, 'Expected a grid here.');
@@ -2201,7 +2384,7 @@
                     var grid = g({
                         test: this.test,
                         tree: true,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.addEventListener('expandtree', function (e) {
                         var err = assertIf(e.treeGrid === undefined, 'Expected a grid here.');
@@ -2262,7 +2445,7 @@
                         k = 'canvasDataGrid-' + n,
                         grid = g({
                             test: this.test,
-                            data: smallData,
+                            data: smallData(),
                             name: n,
                             saveAppearance: false
                         });
@@ -2277,7 +2460,7 @@
                         k = 'canvasDataGrid-' + n,
                         a = {
                             test: this.test,
-                            data: smallData,
+                            data: smallData(),
                             name: n,
                             saveAppearance: true
                         },
@@ -2334,7 +2517,7 @@
                     var grid = g({
                         test: this.test,
                         multiLine: true,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.beginEditAt(0, 0);
                     done(assertIf(grid.input.tagName !== 'TEXTAREA', 'Expected a textarea here'));
@@ -2343,7 +2526,7 @@
                 it('Should use an input to edit when multiLine is false', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     grid.beginEditAt(0, 0);
                     done(assertIf(grid.input.tagName !== 'INPUT', 'Expected an input here'));
@@ -2352,7 +2535,7 @@
                 it('Should not be editable when editable is false', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData,
+                        data: smallData(),
                         editable: false
                     });
                     click(grid.canvas, 60, 37);
@@ -2362,7 +2545,7 @@
                 it('Should be editable when editable is true', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData
+                        data: smallData()
                     });
                     click(grid.canvas, 60, 37);
                     keydown(grid.controlInput, 13);
@@ -2398,7 +2581,7 @@
                         k = 'canvasDataGrid-' + n,
                         a = {
                             test: this.test,
-                            data: smallData,
+                            data: smallData(),
                             name: n,
                             saveAppearance: true
                         },
@@ -2427,7 +2610,7 @@
                 it('Should draw column reorder markers when allowColumnReordering is true and reordering', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData,
+                        data: smallData(),
                         style: {
                             columnWidth: 50,
                             reorderMarkerBackgroundColor: c.y,
@@ -2456,7 +2639,7 @@
                 it('Should allow row reordering when allowRowReordering is true', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData,
+                        data: smallData(),
                         allowRowReordering: true,
                         style: {
                             columnWidth: 50
@@ -2464,11 +2647,12 @@
                     });
                     setTimeout(function () {
                         grid.focus();
+                        marker(grid, 10, 37);
                         mousemove(grid.canvas, 10, 37);
                         mousedown(grid.canvas, 10, 37);
-                        mousemove(grid.canvas, 10, 75, grid.canvas);
-                        mousemove(document.body, 10, 75, grid.canvas);
-                        mouseup(document.body, 10, 75, grid.canvas);
+                        mousemove(grid.canvas, 10, 90, grid.canvas);
+                        mousemove(document.body, 10, 90, grid.canvas);
+                        mouseup(document.body, 10, 90, grid.canvas);
                         grid.draw();
                         grid.addEventListener('click', function (e) {
                             done(assertIf(e.cell.value !== 'bar', 'Expected to see the value from row 2 here.'));
@@ -2481,7 +2665,7 @@
                 it('Should draw row reorder markers when allowRowReordering is true and reordering', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData,
+                        data: smallData(),
                         allowRowReordering: true,
                         style: {
                             columnWidth: 50,
@@ -2496,13 +2680,13 @@
                         grid.focus();
                         mousemove(grid.canvas, 10, 37);
                         mousedown(grid.canvas, 10, 37);
-                        mousemove(grid.canvas, 10, 75, grid.canvas);
-                        mousemove(document.body, 10, 75, grid.canvas);
+                        mousemove(grid.canvas, 10, 90, grid.canvas);
+                        mousemove(document.body, 10, 90, grid.canvas);
                         assertPxColor(grid, 10, 74, c.b, function (err) {
                             if (err) { return done(err); }
-                            assertPxColor(grid, 20, 63, c.fu, function (err) {
+                            assertPxColor(grid, 20, 103, c.fu, function (err) {
                                 if (err) { return done(err); }
-                                assertPxColor(grid, 30, 69, c.y, done);
+                                assertPxColor(grid, 30, 90, c.y, done);
                             });
                         });
                         grid.draw();
@@ -2511,7 +2695,7 @@
                 it('The context menu filter should not show up when showFilter is false', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData,
+                        data: smallData(),
                         showFilter: false
                     });
                     grid.addEventListener('contextmenu', function (e) {
@@ -2525,7 +2709,7 @@
                 it('The context menu filter should show up when showFilter is true', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData,
+                        data: smallData(),
                         showFilter: true
                     });
                     grid.addEventListener('contextmenu', function (e) {
@@ -2555,7 +2739,7 @@
                 it('Clicking a header cell with columnHeaderClickBehavior set to sort should sort the column asc', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData,
+                        data: smallData(),
                         columnHeaderClickBehavior: 'sort'
                     });
                     marker(grid, 40, 12);
@@ -2566,7 +2750,7 @@
                 it('Clicking a header cell with columnHeaderClickBehavior set to select should select the column', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData,
+                        data: smallData(),
                         columnHeaderClickBehavior: 'select'
                     });
                     marker(grid, 40, 12);
@@ -2578,7 +2762,7 @@
                 it('Clicking a header cell with columnHeaderClickBehavior set to select then clicking another with ctrl held should add to the selection', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: smallData,
+                        data: smallData(),
                         columnHeaderClickBehavior: 'select',
                         style: {
                             columnWidth: 50
