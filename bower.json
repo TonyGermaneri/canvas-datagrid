@@ -15,7 +15,6 @@
   ],
   "description": "Canvas based data grid",
   "keywords": [
-    "canvas",
     "data",
     "datagrid",
     "grid",
@@ -23,9 +22,7 @@
     "data-table",
     "table",
     "datatable",
-    "spreadsheet",
-    "javascript",
-    "html5"
+    "spreadsheet"
   ],
   "license": "BSD"
 }

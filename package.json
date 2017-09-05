@@ -23,7 +23,6 @@
     "url": "git+https://github.com/TonyGermaneri/canvas-datagrid.git"
   },
   "keywords": [
-    "canvas",
     "data",
     "datagrid",
     "grid",
@@ -31,9 +30,7 @@
     "data-table",
     "table",
     "datatable",
-    "spreadsheet",
-    "javascript",
-    "html5"
+    "spreadsheet"
   ],
   "author": "Tony Germaneri <Tony.Germaneri@gmail.com>",
   "contributors": [
