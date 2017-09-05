@@ -33,7 +33,7 @@
 			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="canvasDataGrid.html">canvasDataGrid</a></li><li><a href="canvasDataGrid.cell.html">canvasDataGrid.cell</a></li><li><a href="canvasDataGrid.contextMenuItem.html">canvasDataGrid.contextMenuItem</a></li><li><a href="canvasDataGrid.rect.html">canvasDataGrid.rect</a></li><li><a href="canvasDataGrid.style.html">canvasDataGrid.style</a></li>
+					<li><a href="canvasDataGrid.html">canvasDataGrid</a></li><li><a href="canvasDataGrid.cell.html">canvasDataGrid.cell</a></li><li><a href="canvasDataGrid.contextMenuItem.html">canvasDataGrid.contextMenuItem</a></li><li><a href="canvasDataGrid.header.html">canvasDataGrid.header</a></li><li><a href="canvasDataGrid.rect.html">canvasDataGrid.rect</a></li><li><a href="canvasDataGrid.style.html">canvasDataGrid.style</a></li>
 				</ul>
 			</li>
 			
@@ -70,12 +70,12 @@
 	<div class="col-md-12">
 	
 		<div id="main">
-			<p>You can format the data in your cells without altering the data in two ways.</p>
+			<h1>Formatters</h1><p>You can format the data in your cells without altering the data in two ways.</p>
 <p>The first and fastest method is grid formatters.
-Grid formatters allow you to define what happens to a type of data.
+Grid formatters allow you to pass your values though a function to format them as they are drawn onto the grid.
 Data type is defined in the <a href="https://tonygermaneri.github.io/canvas-datagrid/docs/tutorial-schema.html">schema</a> that you can optionally pass to describe your data.</p>
 <p>This method is slightly faster due to the O(1) hash map employed in the value formatters.</p>
-<p>In the following example the type <code>date</code> is given a formatter function.</p>
+<p>In the following example, the type <code>date</code> is given a formatter function.</p>
 <pre class="prettyprint source"><code>grid.formatters.date = function (e) {
     return new Date(e.cell.value).toISOString();
 };</code></pre><p>The return value of the formatter function will be displayed in the cell instead of the value

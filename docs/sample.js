@@ -446,11 +446,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 ]
             });
             grid.style = {
-                cellBackgroundColor: 'burgundy',
+                cellBackgroundColor: 'darkred',
                 cellColor: 'goldenrod'
             };
         };
-        examples['Toggle rowSelectionMode|Prevents the selection of individual cells forcing the row to become selected.'] = function (parentNode) {
+        examples['Selection Mode Row|Prevents the selection of individual cells forcing the row to become selected.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
                 data: [
@@ -459,7 +459,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     {col1: 'baz', col2: 2, col3: 'c'}
                 ]
             });
-            grid.attributes.rowSelectionMode = !grid.attributes.rowSelectionMode;
+            grid.attributes.selectionMode = 'row';
         };
         examples['Scroll to a cell'] = function (parentNode) {
             var grid = canvasDatagrid({

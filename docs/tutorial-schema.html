@@ -33,7 +33,7 @@
 			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="canvasDataGrid.html">canvasDataGrid</a></li><li><a href="canvasDataGrid.cell.html">canvasDataGrid.cell</a></li><li><a href="canvasDataGrid.contextMenuItem.html">canvasDataGrid.contextMenuItem</a></li><li><a href="canvasDataGrid.rect.html">canvasDataGrid.rect</a></li><li><a href="canvasDataGrid.style.html">canvasDataGrid.style</a></li>
+					<li><a href="canvasDataGrid.html">canvasDataGrid</a></li><li><a href="canvasDataGrid.cell.html">canvasDataGrid.cell</a></li><li><a href="canvasDataGrid.contextMenuItem.html">canvasDataGrid.contextMenuItem</a></li><li><a href="canvasDataGrid.header.html">canvasDataGrid.header</a></li><li><a href="canvasDataGrid.rect.html">canvasDataGrid.rect</a></li><li><a href="canvasDataGrid.style.html">canvasDataGrid.style</a></li>
 				</ul>
 			</li>
 			
@@ -70,10 +70,11 @@
 	<div class="col-md-12">
 	
 		<div id="main">
-			<p>Schema is optional.  Schema is an array of column objects.
+			<h1>Schema</h1><p>Schema is optional.  Schema is an array of header objects.
+This documentation will use the term header and column interchangeably.
 If no schema is provided one will be generated from the
 data, in that case all data will be assumed to be string data.</p>
-<p>Each column object can have the following properties:</p>
+<p>Each header object can have the following properties:</p>
 <table>
 <thead>
 <tr>

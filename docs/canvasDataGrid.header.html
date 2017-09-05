@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Tutorial: developer</title>
+	<title>Documentation Class: header</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -67,33 +67,390 @@
 <div class="row">
 
 	
-	<div class="col-md-12">
+	<div class="col-md-8">
 	
 		<div id="main">
-			<!doctype html>
-<head>
-    <!-- this file is for developing in a sandbox on a local machine -->
-    <script src="../dist/canvas-datagrid.debug.js"></script>
-    <script src="./developer.js"></script>
-    <meta name="viewport" content="width=device-width">
-    <style>
-        html, body {
-            height: 100%;
-            min-height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-    </style>
-</head>
-<body>
-</body>
+			
+
+	<h1 class="page-title">Class: header</h1>
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="canvasDataGrid.html">canvasDataGrid</a>.</span>
+        
+        header
+        </h2>
+        
+    
+</header>
+
+
+<article>
+    <div class="container-overview">
+    
+        
+<hr>
+<dt>
+    <h4 class="name" id="header">header</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        A header that describes the data in a column.  The term header and column are used interchangeably in this documentation.  The canvasDataGrid#schema is an array of <a href="canvasDataGrid.header.html">canvasDataGrid.header</a>.
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    <dl>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The name of the header.  This must match the property name of an object in the canvasDataGrid#data array.  This is the only required property of a <a href="canvasDataGrid.header.html">canvasDataGrid.header</a>.  This value will appear at the top of the column unless canvasDataGrid.header#title is defined.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The data type of this header.  This value should match properties in canvasDataGrid#formatters, canvasDataGrid#filters, {canvasDataGrid.sorters} to take full advantage of formatting, sorting and filtering when not defining these properties within this header.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The value that is actually displayed to the user at the top of the column.  If no value is present, canvasDataGrid.header#name will be used instead.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>width</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The mutable width of this column in pixels.  The user can override this value if canvasDataGrid#attributes.allowColumnResizing is set to `true`.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>hidden</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">When true, the column will not be included in the visible schema.  This means selection, copy, and drawing functions will not display this column or values from this column.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>filter</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A <a href="canvasDataGrid.html#.filter">canvasDataGrid.filter</a> function that defines how filters will work against data in this column.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>formatter</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A <a href="canvasDataGrid.html#.formatter">canvasDataGrid.formatter</a> function that defines how data will be formatted when drawn onto cells belonging to this column.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>sorter</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A <a href="canvasDataGrid.html#.sorter">canvasDataGrid.sorter</a> function that defines how data will sorted within this column.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>defaultValue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+|
+
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The default value of this column for new rows.  This can be a function or string.  When using a string, this string value will be used in the new cell.  When using a function, it must return a string, which will be used in the new cell.  The arguments passed to this function are: argument[0] = <a href="canvasDataGrid.header.html">canvasDataGrid.header</a>, argument[1] = row index.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</dl>
+
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
 
 		</div>
 	</div>
 
 	<div class="clearfix"></div>
 
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
 	
 
 </div>

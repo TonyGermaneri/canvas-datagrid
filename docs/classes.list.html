@@ -33,7 +33,7 @@
 			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="canvasDataGrid.html">canvasDataGrid</a></li><li><a href="canvasDataGrid.cell.html">canvasDataGrid.cell</a></li><li><a href="canvasDataGrid.contextMenuItem.html">canvasDataGrid.contextMenuItem</a></li><li><a href="canvasDataGrid.rect.html">canvasDataGrid.rect</a></li><li><a href="canvasDataGrid.style.html">canvasDataGrid.style</a></li>
+					<li><a href="canvasDataGrid.html">canvasDataGrid</a></li><li><a href="canvasDataGrid.cell.html">canvasDataGrid.cell</a></li><li><a href="canvasDataGrid.contextMenuItem.html">canvasDataGrid.contextMenuItem</a></li><li><a href="canvasDataGrid.header.html">canvasDataGrid.header</a></li><li><a href="canvasDataGrid.rect.html">canvasDataGrid.rect</a></li><li><a href="canvasDataGrid.style.html">canvasDataGrid.style</a></li>
 				</ul>
 			</li>
 			
@@ -149,6 +149,9 @@
             <dd></dd>
         
             <dt><a href="canvasDataGrid.contextMenuItem.html">contextMenuItem</a></dt>
+            <dd></dd>
+        
+            <dt><a href="canvasDataGrid.header.html">header</a></dt>
             <dd></dd>
         
             <dt><a href="canvasDataGrid.rect.html">rect</a></dt>
@@ -10178,232 +10181,6 @@ to completely replace the tree arrow graphic.  Call `e.preventDefault()` to stop
 
     
     <div class="description">
-        Fires when the a touch event ends.
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>e</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Event object.
-                <h6 class="method-params-label method-subparams-label">Properties</h6>
-                
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>ctx</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Canvas context.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>NativeEvent</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Native touchend event.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cell</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="canvasDataGrid.cell.html">canvasDataGrid.cell</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Cell object.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="event:touchend">touchend</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
         Fires when the a touch move event occurs.
     </div>
     
@@ -10524,6 +10301,232 @@ to completely replace the tree arrow graphic.  Call `e.preventDefault()` to stop
             
 
             <td class="description last">Native touchmove event.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cell</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="canvasDataGrid.cell.html">canvasDataGrid.cell</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Cell object.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="event:touchend">touchend</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Fires when the a touch event ends.
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>e</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Event object.
+                <h6 class="method-params-label method-subparams-label">Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>ctx</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Canvas context.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>NativeEvent</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Native touchend event.</td>
         </tr>
 
     

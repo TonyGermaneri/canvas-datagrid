@@ -33,7 +33,7 @@
 			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="canvasDataGrid.html">canvasDataGrid</a></li><li><a href="canvasDataGrid.cell.html">canvasDataGrid.cell</a></li><li><a href="canvasDataGrid.contextMenuItem.html">canvasDataGrid.contextMenuItem</a></li><li><a href="canvasDataGrid.rect.html">canvasDataGrid.rect</a></li><li><a href="canvasDataGrid.style.html">canvasDataGrid.style</a></li>
+					<li><a href="canvasDataGrid.html">canvasDataGrid</a></li><li><a href="canvasDataGrid.cell.html">canvasDataGrid.cell</a></li><li><a href="canvasDataGrid.contextMenuItem.html">canvasDataGrid.contextMenuItem</a></li><li><a href="canvasDataGrid.header.html">canvasDataGrid.header</a></li><li><a href="canvasDataGrid.rect.html">canvasDataGrid.rect</a></li><li><a href="canvasDataGrid.style.html">canvasDataGrid.style</a></li>
 				</ul>
 			</li>
 			
@@ -207,7 +207,7 @@
 
             
 
-            <td class="description last">The x coordinate of this cell on the canvas.</td>
+            <td class="description last">The x coordinate of this cell on the grid.</td>
         </tr>
 
     
@@ -231,7 +231,151 @@
 
             
 
-            <td class="description last">The y coordinate of this cell on the canvas.</td>
+            <td class="description last">The y coordinate of this cell on the grid.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>nodeType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Always 'canvas-datagrid-cell'.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>offsetTop</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The y coordinate of this cell on the grid canvas.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>offsetLeft</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The x coordinate of this cell on the grid canvas.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>scrollTop</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The scrollTop value of the scrollBox.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>scrollLeft</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The scrollLeft value of the scrollBox.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>rowOpen</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">When true, this row is a tree grid enabled cell and the tree is in the open state.</td>
         </tr>
 
     
@@ -502,6 +646,54 @@
 
         <tr>
             
+                <td class="name"><code>sortColumnIndex</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The column index of the cell after the user has reordered it.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>sortRowIndex</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The column index of the cell after the user has reordered it.</td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>value</code></td>
             
 
@@ -550,6 +742,78 @@
 
         <tr>
             
+                <td class="name"><code>isHeaderCellCap</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">When true, the cell is the cap at the right side end of the header cells.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>parentGrid</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="canvasDataGrid.html">canvasDataGrid</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The grid to which this cell belongs.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gridId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">If this cell contains a grid, this is the grids unique id.</td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>isGrid</code></td>
             
 
@@ -575,6 +839,30 @@
         <tr>
             
                 <td class="name"><code>isHeader</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">When true, the cell is a column or row header.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isColumnHeader</code></td>
             
 
             <td class="type">
@@ -646,6 +934,30 @@
 
         <tr>
             
+                <td class="name"><code>activeHeader</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">When true, the cell is an active header cell, meaning the active cell is in the same row or column.</td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>horizontalAlignment</code></td>
             
 
@@ -711,7 +1023,7 @@
 
             
 
-            <td class="description last">HTML, if any, in the cell.</td>
+            <td class="description last">HTML, if any, in the cell.  If set, HTML will be rendered into the cell.</td>
         </tr>
 
     
