@@ -1,8 +1,12 @@
-Schema is optional.  Schema is an array of column objects.
+Schema
+======
+
+Schema is optional.  Schema is an array of header objects.
+This documentation will use the term header and column interchangeably.
 If no schema is provided one will be generated from the
 data, in that case all data will be assumed to be string data.
 
-Each column object can have the following properties:
+Each header object can have the following properties:
 
 | Property | Description |
 |-----|------|

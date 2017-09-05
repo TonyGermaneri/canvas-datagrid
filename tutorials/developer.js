@@ -7,8 +7,13 @@ document.addEventListener('DOMContentLoaded', function () {
     var grid = canvasDatagrid({
         name: 'blah',
         parentNode: document.body,
-        showNewRow: false
+        tree: true,
+        selectionMode: 'row'
     });
+    grid.addEventListener('expandtree', function (e) {
+        e.treeGrid.data = [{a: 'b', c: 'd', e: 'f', g: 'h'}];
+    });
+    grid.data = [{a: 'b', c: 'd', e: 'f', g: 'h'}];
     // grid.data = [
     //     {a: 'a', b: [{c: 'd'}]},
     //     {a: 'a', b: [{c: [

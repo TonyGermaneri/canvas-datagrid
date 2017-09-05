@@ -1,3 +1,6 @@
+Sorters
+=======
+
 Object that contains a list of sorting functions for sorting columns.
 
 | Argument | Description |

@@ -1,12 +1,15 @@
+Formatters
+==========
+
 You can format the data in your cells without altering the data in two ways.
 
 The first and fastest method is grid formatters.
-Grid formatters allow you to define what happens to a type of data.
+Grid formatters allow you to pass your values though a function to format them as they are drawn onto the grid.
 Data type is defined in the [schema](https://tonygermaneri.github.io/canvas-datagrid/docs/tutorial-schema.html) that you can optionally pass to describe your data.
 
 This method is slightly faster due to the O(1) hash map employed in the value formatters.
 
-In the following example the type `date` is given a formatter function.
+In the following example, the type `date` is given a formatter function.
 
     grid.formatters.date = function (e) {
         return new Date(e.cell.value).toISOString();
