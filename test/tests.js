@@ -2682,7 +2682,7 @@
                         mousedown(grid.canvas, 10, 37);
                         mousemove(grid.canvas, 10, 90, grid.canvas);
                         mousemove(document.body, 10, 90, grid.canvas);
-                        assertPxColor(grid, 10, 76, c.b, function (err) {
+                        assertPxColor(grid, 10, 74, c.b, function (err) {
                             if (err) { return done(err); }
                             assertPxColor(grid, 20, 103, c.fu, function (err) {
                                 if (err) { return done(err); }

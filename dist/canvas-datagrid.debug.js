@@ -1096,12 +1096,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.touchStart = self.getTouchPos(e);
             startingCell = self.getCellAt(self.touchStart.x, self.touchStart.y, true);
             if (self.dispatchEvent('touchstart', {NativeEvent: e, cell: self.startingCell})) { return; }
-            if (!self.hasFocus) { return; }
             self.stopPropagation(e);
             e.preventDefault();
-            if (e.touches.length === 2) {
-                return self.contextmenu(e, self.touchStart);
-            }
             self.touchScrollStart = {
                 scrollLeft: self.scrollBox.scrollLeft,
                 scrollTop: self.scrollBox.scrollTop,
@@ -3642,7 +3638,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['cellColor', 'rgba(0, 0, 0, 1)'],
                 ['cellFont', '16px sans-serif'],
                 ['cellGridHeight', 250],
-                ['cellHeight', 25],
+                ['cellHeight', 24],
                 ['cellHeightWithChildGrid', 150],
                 ['cellHorizontalAlignment', 'left'],
                 ['cellHoverBackgroundColor', 'rgba(255, 255, 255, 1)'],
