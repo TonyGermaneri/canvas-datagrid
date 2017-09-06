@@ -1436,6 +1436,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             yPPS = 0,
             touchingCell = false,
             startingCell = false,
+            scrollTimeout,
             animationFrames = 0;
         self.getTouchPos = function (e) {
             var rect = self.canvas.getBoundingClientRect(),
@@ -2343,26 +2344,31 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 deltaX = e.deltaX === undefined ? e.NativeEvent.deltaX : e.deltaX,
                 deltaY = e.deltaY === undefined ? e.NativeEvent.deltaY : e.deltaY,
                 deltaMode = e.deltaMode === undefined ? e.NativeEvent.deltaMode : e.deltaMode;
-            if (self.dispatchEvent('wheel', {NativeEvent: e})) {
+            if (scrollTimeout) {
                 return;
             }
-            e = e.NativeEvent || e;
-            self.touchHaltAnimation = true;
-            l = self.scrollBox.scrollLeft;
-            t = self.scrollBox.scrollTop;
-            if (self.hasFocus) {
-                //BUG Issue 42: https://github.com/TonyGermaneri/canvas-datagrid/issues/42
-                //https://stackoverflow.com/questions/20110224/what-is-the-height-of-a-line-in-a-wheel-event-deltamode-dom-delta-line
-                if (deltaMode === 1) {
-                    // line mode = 17 pixels per line
-                    deltaY = deltaY * 17;
+            scrollTimeout = setTimeout(function () {
+                if (self.dispatchEvent('wheel', {NativeEvent: e})) {
+                    return;
                 }
-                self.scrollBox.scrollTop += deltaY;
-                self.scrollBox.scrollLeft += deltaX;
-            }
-            if (t !== self.scrollBox.scrollTop || l !== self.scrollBox.scrollLeft) {
-                e.preventDefault();
-            }
+                e = e.NativeEvent || e;
+                self.touchHaltAnimation = true;
+                l = self.scrollBox.scrollLeft;
+                t = self.scrollBox.scrollTop;
+                if (self.hasFocus) {
+                    //BUG Issue 42: https://github.com/TonyGermaneri/canvas-datagrid/issues/42
+                    //https://stackoverflow.com/questions/20110224/what-is-the-height-of-a-line-in-a-wheel-event-deltamode-dom-delta-line
+                    if (deltaMode === 1) {
+                        // line mode = 17 pixels per line
+                        deltaY = deltaY * 17;
+                    }
+                    self.scrollBox.scrollTo(deltaX + l, deltaY + t);
+                }
+                if (t !== self.scrollBox.scrollTop || l !== self.scrollBox.scrollLeft) {
+                    e.preventDefault();
+                }
+                scrollTimeout = undefined;
+            }, 1);
         };
         self.copy = function (e) {
             if (self.dispatchEvent('copy', {NativeEvent: e})) { return; }
@@ -4292,8 +4298,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
             });
             window.addEventListener('resize', self.resize);
-            if (MutationObserver) {
-                self.observer = new MutationObserver(function (mutations) {
+            if (window.MutationObserver) {
+                self.observer = new window.MutationObserver(function (mutations) {
                     mutations.forEach(function (mutation) {
                         self.resize(true);
                     });
