@@ -7,6 +7,8 @@ Canvas Data Grid
 
 [![Coverage Status](https://coveralls.io/repos/github/TonyGermaneri/canvas-datagrid/badge.svg?branch=master&build=1610)](https://coveralls.io/github/TonyGermaneri/canvas-datagrid?branch=master)
 
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/TonyGermaneri/canvas-datagrid)
+
 * Support for millions of contiguous rows and columns without paging or loading.
 * Support for touch devices (phones and tablets).
 * Extensible styling, filtering, formatting, resizing, selecting, and ordering.
