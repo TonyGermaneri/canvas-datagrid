@@ -83,8 +83,19 @@ var grid = canvasDatagrid({
 Using web component
 -------------------
 
+<!--
+```
+<custom-element-demo>
+  <template>
+    <script src="https://tonygermaneri.github.io/canvas-datagrid/dist/canvas-datagrid.debug.js"></script>
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+
 ```html
-    <canvas-data-grid data='[{"a": 0, "b": 1}]' style="background-color: lightblue;" selectionmode="row"></canvas-data-grid>
+    <canvas-data-grid data='[{"a": 0, "b": 1}]'></canvas-data-grid>
 ```
 
 Building & Testing
