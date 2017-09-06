@@ -18,7 +18,7 @@ canvas-datagrid
 * Built in and custom styles.
 * Per-user styles, settings using localStorage.
 * Single canvas element supporting multiple nested tree or cell grids.
-* Rich API of events, methods and properties optimized for CRUD, reporting and work flow applications.
+* Rich API of events, methods and properties using the familiar W3C interface.
 * Zero dependencies, very small code base, distributed as a single ~80k (~20k gziped) file.
 * Hierarchal context menu.
 
