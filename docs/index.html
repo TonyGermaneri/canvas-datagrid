@@ -95,11 +95,12 @@
     <section class="readme-section">
         <article><h1>Canvas Data Grid</h1><p><a href="https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html">Demo</a></p>
 <p><img src="https://tonygermaneri.github.io/canvas-datagrid/images/datagrid1.png" alt="canvas-datagrid"></p>
-<p><a href="https://coveralls.io/github/TonyGermaneri/canvas-datagrid?branch=master"><img src="https://coveralls.io/repos/github/TonyGermaneri/canvas-datagrid/badge.svg?branch=master&amp;build=1574" alt="Coverage Status"></a></p>
+<p><a href="https://coveralls.io/github/TonyGermaneri/canvas-datagrid?branch=master"><img src="https://coveralls.io/repos/github/TonyGermaneri/canvas-datagrid/badge.svg?branch=master&amp;build=1610" alt="Coverage Status"></a></p>
 <ul>
 <li>Support for millions of contiguous rows and columns without paging or loading.</li>
 <li>Support for touch devices (phones and tablets).</li>
 <li>Extensible styling, filtering, formatting, resizing, selecting, and ordering.</li>
+<li>W3C ES5 web component.</li>
 <li>Built in and custom styles.</li>
 <li>Per-user styles, settings using localStorage.</li>
 <li>Single canvas element supporting multiple nested tree or cell grids.</li>
@@ -121,16 +122,16 @@
 a script tag that points to the source or use webpack.</p>
 <p>If you do not use a webpack a function will
 be added to the global scope of the web page called <code>canvasDatagrid</code>.</p>
-<h1>Getting started</h1><p>Works with webpack or without.
+<h1>Getting started</h1><p>Works <a href="https://tonygermaneri.github.io/canvas-datagrid/tutorials/amdDemo.html">with webpack</a>, <a href="https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html">without webpack</a> or as a <a href="https://tonygermaneri.github.io/canvas-datagrid/tutorials/webcomponentDemo.html">web component</a>.
 If used without webpack, <code>canvasDatagrid</code> is declared in the global scope.
-The container can be any block element.  <code>canvasDatagrid</code> generates its own canvas element.</p>
-<pre class="prettyprint source lang-javascript"><code>var grid = canvasDatagrid({
+The container can be any block element.  <code>canvasDatagrid</code> generates its own canvas element in <a href="https://www.w3.org/TR/shadow-dom/">Shadow DOM</a> when available.</p>
+<h2>Using pure JavaScript</h2><pre class="prettyprint source lang-javascript"><code>var grid = canvasDatagrid({
     parentNode: document.getElementById('container'),
     data: [
         {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},
         {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}
     ]
-});</code></pre><h1>Building &amp; Testing</h1><details>
+});</code></pre><h2>Using web component</h2><pre class="prettyprint source lang-html"><code>    &lt;canvas-data-grid data='[{&quot;a&quot;: 0, &quot;b&quot;: 1}]' style=&quot;background-color: lightblue;&quot; selectionmode=&quot;row&quot;>&lt;/canvas-data-grid></code></pre><h1>Building &amp; Testing</h1><details>
 To build production version.
 
 <code>shell

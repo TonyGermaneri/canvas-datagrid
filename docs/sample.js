@@ -602,6 +602,15 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             grid.attributes.showNewRow = true;
         };
+        examples['Create a web component grid'] = function (parentNode) {
+            var grid = document.createElement('canvas-data-grid');
+            parentNode.appendChild(grid);
+            grid.data = [
+                {col1: 'foo', col2: 0, col3: 'a'},
+                {col1: 'bar', col2: 1, col3: 'b'},
+                {col1: 'baz', col2: 2, col3: 'c'}
+            ];
+        };
         examples['Change a columns\'s title'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,

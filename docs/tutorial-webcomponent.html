@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Tutorial: amdDemo</title>
+	<title>Documentation Tutorial: webcomponent</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -70,22 +70,14 @@
 	<div class="col-md-12">
 	
 		<div id="main">
-			<html>
-    <head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.js" data-main="amdDemo.js"></script>
-        <style>
-            html, body {
-                height: 100%;
-                min-height: 100%;
-                margin: 0;
-                padding: 0;
-                overflow: hidden;
-            }
-        </style>
-    </head>
-    <body></body>
-</html>
-
+			<h1>Web Component</h1><p>The grid can be instantiated as a web component.</p>
+<pre class="prettyprint source lang-html"><code>    &lt;canvas-data-grid>&lt;/canvas-data-grid></code></pre><p>To set data, add a data attribute.</p>
+<pre class="prettyprint source lang-html"><code>    &lt;canvas-data-grid data='[{&quot;a&quot;: 0, &quot;b&quot;: 1}]'>&lt;/canvas-data-grid></code></pre><p>To set attributes add attributes.</p>
+<pre class="prettyprint source lang-html"><code>    &lt;canvas-data-grid data='[{&quot;a&quot;: 0, &quot;b&quot;: 1}]' selectionmode='row'>&lt;/canvas-data-grid></code></pre><p>To alter styles, add a style attribute.  To conform better to HTML conventions styles can be hyphenated, hyphenated with a custom <code>-cdg</code> prefix, or used in camelCase.
+For example, all of these are valid for the style property <code>active-cell-color</code>: <code>activeCellColor</code>, <code>-cdg-active-cell-color</code>, and <code>active-cell-color</code>.
+Your debugging tools might tell you that some of these style properties are unrecognized, but they will work none the less and are fully editable from within your debugging tool's element inspector.</p>
+<pre class="prettyprint source lang-html"><code>    &lt;canvas-data-grid data='[{&quot;a&quot;: 0, &quot;b&quot;: 1}]' style='background-color: red; cell-background-color: tan;'>&lt;/canvas-data-grid></code></pre><p>You can still access the grid as you would expect and the interface for the web component instance is the same as the module loaded or globally scoped version.  The web component version has additional properties that come from inheriting the base HTTPElement class.</p>
+<p>For further reading about web components see: https://www.webcomponents.org/</p>
 		</div>
 	</div>
 

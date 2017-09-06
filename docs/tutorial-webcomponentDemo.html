@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Tutorial: amdDemo</title>
+	<title>Documentation Tutorial: webcomponentDemo</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -70,9 +70,11 @@
 	<div class="col-md-12">
 	
 		<div id="main">
-			<html>
+			<!doctype html>
+<html>
     <head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.js" data-main="amdDemo.js"></script>
+        <script src="../dist/canvas-datagrid.debug.js"></script>
+        <meta name="viewport" content="width=device-width">
         <style>
             html, body {
                 height: 100%;
@@ -83,7 +85,9 @@
             }
         </style>
     </head>
-    <body></body>
+    <body>
+        <canvas-data-grid data='[{"a": 0, "b": 1}]' style='background-color: lightblue;' selectionmode='row'></canvas-data-grid>
+    </body>
 </html>
 
 		</div>
