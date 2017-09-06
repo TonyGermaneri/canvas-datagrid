@@ -1348,16 +1348,18 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             function drawDebug() {
                 perfCounters[drawCount % perfWindowSize] = performance.now() - p;
-                var d;
+                var d, pAvg = (perfCounters.reduce(function (a, b) {
+                    return a + b;
+                }, 0) / perfCounters.length);
+                self.performance = pAvg;
                 if (self.attributes.debug) {
                     self.ctx.font = '11px sans-serif';
                     d = {};
-                    d.perf = (perfCounters.reduce(function (a, b) {
-                        return a + b;
-                    }, 0) / perfCounters.length).toFixed(1)
+                    d.perf = pAvg.toFixed(1)
                         + 'ms (' +
                         perfCounters.map(function (a) { return a.toFixed(1); }).join(', ') + ')';
                     d.htmlImages = Object.keys(self.htmlImageCache).length;
+                    d.wheelBuffer = '{"count": ' + self.wheelEventCount + ' "top": ' + self.wheelBufferY + ', "left": ' + self.wheelBufferX + '}';
                     d.scrollBox = self.scrollBox.toString();
                     d.scrollIndex = '{"top": ' + self.scrollIndexTop + ', "left": ' + self.scrollIndexLeft + '}';
                     d.scrollPixel = '{"top": ' + self.scrollPixelTop + ', "left": ' + self.scrollPixelLeft + '}';
@@ -1436,6 +1438,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             yPPS = 0,
             touchingCell = false,
             startingCell = false,
+            scrollTimeout,
             animationFrames = 0;
         self.getTouchPos = function (e) {
             var rect = self.canvas.getBoundingClientRect(),
@@ -2343,26 +2346,31 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 deltaX = e.deltaX === undefined ? e.NativeEvent.deltaX : e.deltaX,
                 deltaY = e.deltaY === undefined ? e.NativeEvent.deltaY : e.deltaY,
                 deltaMode = e.deltaMode === undefined ? e.NativeEvent.deltaMode : e.deltaMode;
-            if (self.dispatchEvent('wheel', {NativeEvent: e})) {
+            if (scrollTimeout) {
                 return;
             }
-            e = e.NativeEvent || e;
-            self.touchHaltAnimation = true;
-            l = self.scrollBox.scrollLeft;
-            t = self.scrollBox.scrollTop;
-            if (self.hasFocus) {
-                //BUG Issue 42: https://github.com/TonyGermaneri/canvas-datagrid/issues/42
-                //https://stackoverflow.com/questions/20110224/what-is-the-height-of-a-line-in-a-wheel-event-deltamode-dom-delta-line
-                if (deltaMode === 1) {
-                    // line mode = 17 pixels per line
-                    deltaY = deltaY * 17;
+            scrollTimeout = setTimeout(function () {
+                if (self.dispatchEvent('wheel', {NativeEvent: e})) {
+                    return;
                 }
-                self.scrollBox.scrollTop += deltaY;
-                self.scrollBox.scrollLeft += deltaX;
-            }
-            if (t !== self.scrollBox.scrollTop || l !== self.scrollBox.scrollLeft) {
-                e.preventDefault();
-            }
+                e = e.NativeEvent || e;
+                self.touchHaltAnimation = true;
+                l = self.scrollBox.scrollLeft;
+                t = self.scrollBox.scrollTop;
+                if (self.hasFocus) {
+                    //BUG Issue 42: https://github.com/TonyGermaneri/canvas-datagrid/issues/42
+                    //https://stackoverflow.com/questions/20110224/what-is-the-height-of-a-line-in-a-wheel-event-deltamode-dom-delta-line
+                    if (deltaMode === 1) {
+                        // line mode = 17 pixels per line
+                        deltaY = deltaY * 17;
+                    }
+                    self.scrollBox.scrollTo(deltaX + l, deltaY + t);
+                }
+                if (t !== self.scrollBox.scrollTop || l !== self.scrollBox.scrollLeft) {
+                    e.preventDefault();
+                }
+                scrollTimeout = undefined;
+            }, 1);
         };
         self.copy = function (e) {
             if (self.dispatchEvent('copy', {NativeEvent: e})) { return; }
@@ -2806,6 +2814,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.shadowRootParentElement = this.shadowRootParentElement;
             self.type = 'canvas-datagrid';
             Object.keys(self.style).forEach(self.parseFont);
+            self.performance = 0;
             self.intf.type = self.type;
             self.intf.addEventListener = self.addEventListener;
             self.intf.removeEventListener = self.removeEventListener;
@@ -4292,8 +4301,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
             });
             window.addEventListener('resize', self.resize);
-            if (MutationObserver) {
-                self.observer = new MutationObserver(function (mutations) {
+            if (window.MutationObserver) {
+                self.observer = new window.MutationObserver(function (mutations) {
                     mutations.forEach(function (mutation) {
                         self.resize(true);
                     });
