@@ -123,7 +123,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             try {
                 return JSON.parse(strData);
             } catch (e) {
-                throw new Error('Cannot read JSON data in canvas-data-grid data attribute.');
+                throw new Error('Cannot read JSON data in canvas-datagrid data attribute.');
             }
         },
         style: function (fullStyleString) {
@@ -146,7 +146,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             try {
                 return JSON.parse(strSchema);
             } catch (e) {
-                throw new Error('Cannot read JSON data in canvas-data-grid data attribute.');
+                throw new Error('Cannot read JSON data in canvas-datagrid schema attribute.');
             }
         },
         number: function (strNum) {
@@ -242,7 +242,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         window.canvasDatagrid = function (args) { return new Grid(args); };
     }
     if (window.customElements) {
-        window.customElements.define('canvas-data-grid', Grid);
+        window.customElements.define('canvas-datagrid', Grid);
     }
     module.exports = function grid(args) {
         args = args || {};
@@ -285,7 +285,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['globalRowResize', false],
                 ['pageUpDownOverlap', 1],
                 ['persistantSelectionMode', false],
-                ['rowSelectionMode', false],
                 ['selectionMode', 'cell'],
                 ['autoResizeColumns', false],
                 ['allowRowHeaderResize', true],
