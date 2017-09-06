@@ -1274,8 +1274,10 @@
                     ev.deltaY = 0;
                     ev.deltaMode = 0;
                     grid.canvas.dispatchEvent(ev);
-                    done(assertIf(grid.scrollLeft < 1,
-                         'Expected the scroll bar to be further along.'));
+                    setTimeout(function () {
+                        done(assertIf(grid.scrollLeft < 1,
+                             'Expected the scroll bar to be further along.'));
+                    }, 100);
                 });
                 it('Scroll vertically via wheel', function (done) {
                     var ev, grid = g({
@@ -1288,8 +1290,10 @@
                     ev.deltaY = 10;
                     ev.deltaMode = 0;
                     grid.canvas.dispatchEvent(ev);
-                    done(assertIf(grid.scrollTop < 1,
-                         'Expected the scroll bar to be further along.'));
+                    setTimeout(function () {
+                        done(assertIf(grid.scrollTop < 1,
+                             'Expected the scroll bar to be further along.'));
+                    }, 100);
                 });
                 it('Scroll vertically via wheel honoring deltaMode 0x01 DOM_DELTA_LINE', function (done) {
                     var ev, grid = g({
@@ -1302,8 +1306,10 @@
                     ev.deltaY = 1;
                     ev.deltaMode = 1;
                     grid.canvas.dispatchEvent(ev);
-                    done(assertIf(grid.scrollTop < 1,
-                         'Expected the scroll bar to be further along.'));
+                    setTimeout(function () {
+                        done(assertIf(grid.scrollTop < 1,
+                             'Expected the scroll bar to be further along.'));
+                    }, 100);
                 });
             });
             describe('Touch', function () {

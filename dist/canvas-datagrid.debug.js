@@ -1348,18 +1348,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             function drawDebug() {
                 perfCounters[drawCount % perfWindowSize] = performance.now() - p;
-                var d, pAvg = (perfCounters.reduce(function (a, b) {
-                    return a + b;
-                }, 0) / perfCounters.length);
-                self.performance = pAvg;
+                var d;
                 if (self.attributes.debug) {
                     self.ctx.font = '11px sans-serif';
                     d = {};
-                    d.perf = pAvg.toFixed(1)
+                    d.perf = (perfCounters.reduce(function (a, b) {
+                        return a + b;
+                    }, 0) / perfCounters.length).toFixed(1)
                         + 'ms (' +
                         perfCounters.map(function (a) { return a.toFixed(1); }).join(', ') + ')';
                     d.htmlImages = Object.keys(self.htmlImageCache).length;
-                    d.wheelBuffer = '{"count": ' + self.wheelEventCount + ' "top": ' + self.wheelBufferY + ', "left": ' + self.wheelBufferX + '}';
                     d.scrollBox = self.scrollBox.toString();
                     d.scrollIndex = '{"top": ' + self.scrollIndexTop + ', "left": ' + self.scrollIndexLeft + '}';
                     d.scrollPixel = '{"top": ' + self.scrollPixelTop + ', "left": ' + self.scrollPixelLeft + '}';
@@ -2814,7 +2812,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.shadowRootParentElement = this.shadowRootParentElement;
             self.type = 'canvas-datagrid';
             Object.keys(self.style).forEach(self.parseFont);
-            self.performance = 0;
             self.intf.type = self.type;
             self.intf.addEventListener = self.addEventListener;
             self.intf.removeEventListener = self.removeEventListener;
