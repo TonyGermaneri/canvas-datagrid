@@ -1,6 +1,6 @@
 {
   "name": "canvas-datagrid",
-  "version": "0.14.19",
+  "version": "0.15.0",
   "description": "Canvas based data grid",
   "main": "./lib/main.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "build-run-report": "./node_modules/.bin/istanbul report --root ./build --dir ./build/report --reporter text --reporter lcov",
     "coveralls": "echo '-- Requires token from https://coveralls.io/github/TonyGermaneri/canvas-datagrid set to env var COVERALLS_REPO_TOKEN --\n';export COVERALLS_SERVICE_NAME=cli;COVERALLS_SERVICE_JOB_ID=`cat build.txt`;cat ./build/report/lcov.info | ./node_modules/.bin/coveralls",
     "build": "echo \"$((`cat build.txt` + 1))\" > build.txt;./node_modules/.bin/webpack --output-library=canvasDatagrid --output-library-target=umd -p --entry=./lib/main.js --output-path=./dist --output-filename=canvas-datagrid.js --devtool source-map --output-source-map-filename='canvas-datagrid.map'",
-    "build-all": "npm test; npm run build; npm run build-dev"
+    "build-all": "npm run build-dev; npm run build; npm run build-instrument; npm run build-pack-instrument"
   },
   "repository": {
     "type": "git",
@@ -30,7 +30,9 @@
     "data-table",
     "table",
     "datatable",
-    "spreadsheet"
+    "spreadsheet",
+    "webcomponent",
+    "component"
   ],
   "author": "Tony Germaneri <Tony.Germaneri@gmail.com>",
   "contributors": [

@@ -5,11 +5,12 @@ Canvas Data Grid
 
 ![canvas-datagrid](https://tonygermaneri.github.io/canvas-datagrid/images/datagrid1.png)
 
-[![Coverage Status](https://coveralls.io/repos/github/TonyGermaneri/canvas-datagrid/badge.svg?branch=master&build=1574)](https://coveralls.io/github/TonyGermaneri/canvas-datagrid?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/TonyGermaneri/canvas-datagrid/badge.svg?branch=master&build=1610)](https://coveralls.io/github/TonyGermaneri/canvas-datagrid?branch=master)
 
 * Support for millions of contiguous rows and columns without paging or loading.
 * Support for touch devices (phones and tablets).
 * Extensible styling, filtering, formatting, resizing, selecting, and ordering.
+* W3C ES5 web component.
 * Built in and custom styles.
 * Per-user styles, settings using localStorage.
 * Single canvas element supporting multiple nested tree or cell grids.
@@ -62,9 +63,12 @@ be added to the global scope of the web page called `canvasDatagrid`.
 Getting started
 ===============
 
-Works with webpack or without.
+Works [with webpack](https://tonygermaneri.github.io/canvas-datagrid/tutorials/amdDemo.html), [without webpack](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html) or as a [web component](https://tonygermaneri.github.io/canvas-datagrid/tutorials/webcomponentDemo.html).
 If used without webpack, `canvasDatagrid` is declared in the global scope.
-The container can be any block element.  `canvasDatagrid` generates its own canvas element.
+The container can be any block element.  `canvasDatagrid` generates its own canvas element in [Shadow DOM](https://www.w3.org/TR/shadow-dom/) when available.
+
+Using pure JavaScript
+---------------------
 
 ```javascript
 var grid = canvasDatagrid({
@@ -74,6 +78,13 @@ var grid = canvasDatagrid({
         {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}
     ]
 });
+```
+
+Using web component
+-------------------
+
+```html
+    <canvas-data-grid data='[{"a": 0, "b": 1}]' style="background-color: lightblue;" selectionmode="row"></canvas-data-grid>
 ```
 
 Building & Testing

@@ -193,7 +193,15 @@
         i.insertBefore(a, i.firstChild);
         args = args || {};
         args.parentNode = d;
-        grid = canvasDatagrid(args);
+        if (args.component) {
+            grid = document.createElement('canvas-data-grid');
+            d.appendChild(grid);
+            Object.keys(args).forEach(function (arg) {
+                grid[arg] = args[arg];
+            });
+        } else {
+            grid = canvasDatagrid(args);
+        }
         args.test.grid = grid;
         return grid;
     }
@@ -243,6 +251,55 @@
                     assertPxColor(grid, 80, 32, c.white, done);
                 });
             });
+            if (window.customElements) {
+                describe('Web component', function () {
+                    it('Should create a web component, set a style', function (done) {
+                        var grid = g({
+                            test: this.test,
+                            data: smallData(),
+                            component: true
+                        });
+                        grid.style.activeCellBackgroundColor = c.white;
+                        assertIf(grid.data.length !== 3,
+                            'Expected to see data in the interface.');
+                        assertPxColor(grid, 80, 32, c.white, done);
+                    });
+                    it('Should create a web component and set a hyphenated style', function (done) {
+                        var grid = g({
+                            test: this.test,
+                            data: smallData(),
+                            component: true
+                        });
+                        grid.style['active-cell-background-color'] = c.white;
+                        assertIf(grid.data.length !== 3,
+                            'Expected to see data in the interface.');
+                        assertPxColor(grid, 80, 32, c.white, done);
+                    });
+                    it('Should create a web component and set a hyphenated style with a custom prefix', function (done) {
+                        var grid = g({
+                            test: this.test,
+                            data: smallData(),
+                            component: true
+                        });
+                        grid.style['-cdg-active-cell-background-color'] = c.white;
+                        assertIf(grid.data.length !== 3,
+                            'Expected to see data in the interface.');
+                        assertPxColor(grid, 80, 32, c.white, done);
+                    });
+                    it('Should create a web component and set a schema', function (done) {
+                        var grid = g({
+                            test: this.test,
+                            data: [{a: blocks}],
+                            component: true
+                        });
+                        grid.style.backgroundColor = c.white;
+                        grid.schema = [{name: 'a', width: 30}];
+                        assertIf(grid.data.length !== 1,
+                            'Expected to see data in the interface.');
+                        assertPxColor(grid, 80, 32, c.white, done);
+                    });
+                });
+            }
             describe('Drawing', function () {
                 it('Should draw row selections.', function (done) {
                     var grid = g({
@@ -2409,7 +2466,7 @@
                     });
                     setTimeout(function () {
                         assertPxColor(grid, 130, 60, c.b, done);
-                    }, 2);
+                    }, 5);
                 });
                 it('Should display a new row', function (done) {
                     var grid = g({

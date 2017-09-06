@@ -1,7 +1,7 @@
 {
   "name": "canvas-datagrid",
   "main": "lib/main.js",
-  "version": "0.14.19",
+  "version": "0.15.0",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -22,7 +22,9 @@
     "data-table",
     "table",
     "datatable",
-    "spreadsheet"
+    "spreadsheet",
+    "webcomponent",
+    "component"
   ],
   "license": "BSD"
 }
