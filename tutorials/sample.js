@@ -603,7 +603,7 @@ document.addEventListener('DOMContentLoaded', function () {
             grid.attributes.showNewRow = true;
         };
         examples['Create a web component grid'] = function (parentNode) {
-            var grid = document.createElement('canvas-data-grid');
+            var grid = document.createElement('canvas-datagrid');
             parentNode.appendChild(grid);
             grid.data = [
                 {col1: 'foo', col2: 0, col3: 'a'},

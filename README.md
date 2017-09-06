@@ -1,5 +1,5 @@
-Canvas Data Grid
-================
+canvas-datagrid
+---------------
 
 [Demo](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html)
 
@@ -98,7 +98,7 @@ Using web component
 -->
 
 ```html
-    <canvas-data-grid data='[{"a": 0, "b": 1}]'></canvas-data-grid>
+    <canvas-datagrid data='[{"a": 0, "b": 1}]'></canvas-datagrid>
 ```
 
 Building & Testing

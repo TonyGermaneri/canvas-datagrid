@@ -194,7 +194,7 @@
         args = args || {};
         args.parentNode = d;
         if (args.component) {
-            grid = document.createElement('canvas-data-grid');
+            grid = document.createElement('canvas-datagrid');
             d.appendChild(grid);
             Object.keys(args).forEach(function (arg) {
                 grid[arg] = args[arg];
