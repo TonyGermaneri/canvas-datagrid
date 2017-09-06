@@ -71,12 +71,12 @@
 	
 		<div id="main">
 			<h1>Web Component</h1><p>The grid can be instantiated as a web component.</p>
-<pre class="prettyprint source lang-html"><code>    &lt;canvas-data-grid>&lt;/canvas-data-grid></code></pre><p>To set data, add a data attribute.</p>
-<pre class="prettyprint source lang-html"><code>    &lt;canvas-data-grid data='[{&quot;a&quot;: 0, &quot;b&quot;: 1}]'>&lt;/canvas-data-grid></code></pre><p>To set attributes add attributes.</p>
-<pre class="prettyprint source lang-html"><code>    &lt;canvas-data-grid data='[{&quot;a&quot;: 0, &quot;b&quot;: 1}]' selectionmode='row'>&lt;/canvas-data-grid></code></pre><p>To alter styles, add a style attribute.  To conform better to HTML conventions styles can be hyphenated, hyphenated with a custom <code>-cdg</code> prefix, or used in camelCase.
+<pre class="prettyprint source lang-html"><code>    &lt;canvas-datagrid>&lt;/canvas-datagrid></code></pre><p>To set data, add a data attribute.</p>
+<pre class="prettyprint source lang-html"><code>    &lt;canvas-datagrid data='[{&quot;a&quot;: 0, &quot;b&quot;: 1}]'>&lt;/canvas-datagrid></code></pre><p>To set attributes add attributes.</p>
+<pre class="prettyprint source lang-html"><code>    &lt;canvas-datagrid data='[{&quot;a&quot;: 0, &quot;b&quot;: 1}]' selectionmode='row'>&lt;/canvas-datagrid></code></pre><p>To alter styles, add a style attribute.  To conform better to HTML conventions styles can be hyphenated, hyphenated with a custom <code>-cdg</code> prefix, or used in camelCase.
 For example, all of these are valid for the style property <code>active-cell-color</code>: <code>activeCellColor</code>, <code>-cdg-active-cell-color</code>, and <code>active-cell-color</code>.
 Your debugging tools might tell you that some of these style properties are unrecognized, but they will work none the less and are fully editable from within your debugging tool's element inspector.</p>
-<pre class="prettyprint source lang-html"><code>    &lt;canvas-data-grid data='[{&quot;a&quot;: 0, &quot;b&quot;: 1}]' style='background-color: red; cell-background-color: tan;'>&lt;/canvas-data-grid></code></pre><p>You can still access the grid as you would expect and the interface for the web component instance is the same as the module loaded or globally scoped version.  The web component version has additional properties that come from inheriting the base HTTPElement class.</p>
+<pre class="prettyprint source lang-html"><code>    &lt;canvas-datagrid data='[{&quot;a&quot;: 0, &quot;b&quot;: 1}]' style='background-color: red; cell-background-color: tan;'>&lt;/canvas-datagrid></code></pre><p>You can still access the grid as you would expect and the interface for the web component instance is the same as the module loaded or globally scoped version.  The web component version has additional properties that come from inheriting the base HTTPElement class.</p>
 <p>For further reading about web components see: https://www.webcomponents.org/</p>
 		</div>
 	</div>

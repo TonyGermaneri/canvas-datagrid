@@ -93,9 +93,12 @@
 
 
     <section class="readme-section">
-        <article><h1>Canvas Data Grid</h1><p><a href="https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html">Demo</a></p>
+        <article><h2>canvas-datagrid</h2><p><a href="https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html">Demo</a></p>
+<p><a href="https://coveralls.io/github/TonyGermaneri/canvas-datagrid?branch=master"><img src="https://coveralls.io/repos/github/TonyGermaneri/canvas-datagrid/badge.svg?branch=master&amp;build=1610" alt="Coverage Status"></a>
+<a href="https://www.webcomponents.org/element/TonyGermaneri/canvas-datagrid"><img src="https://img.shields.io/badge/webcomponents.org-published-blue.svg" alt="Published on webcomponents.org"></a>
+<a href="https://www.npmjs.com/package/canvas-datagrid"><img src="https://img.shields.io/npm/v/canvas-datagrid.svg" alt="NPM"></a>
+<a href="https://github.com/TonyGermaneri/canvas-datagrid/releases"><img src="https://img.shields.io/github/tag/TonyGermaneri/canvas-datagrid.svg" alt="Tag"></a></p>
 <p><img src="https://tonygermaneri.github.io/canvas-datagrid/images/datagrid1.png" alt="canvas-datagrid"></p>
-<p><a href="https://coveralls.io/github/TonyGermaneri/canvas-datagrid?branch=master"><img src="https://coveralls.io/repos/github/TonyGermaneri/canvas-datagrid/badge.svg?branch=master&amp;build=1610" alt="Coverage Status"></a></p>
 <ul>
 <li>Support for millions of contiguous rows and columns without paging or loading.</li>
 <li>Support for touch devices (phones and tablets).</li>
@@ -131,7 +134,17 @@ The container can be any block element.  <code>canvasDatagrid</code> generates i
         {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},
         {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}
     ]
-});</code></pre><h2>Using web component</h2><pre class="prettyprint source lang-html"><code>    &lt;canvas-data-grid data='[{&quot;a&quot;: 0, &quot;b&quot;: 1}]' style=&quot;background-color: lightblue;&quot; selectionmode=&quot;row&quot;>&lt;/canvas-data-grid></code></pre><h1>Building &amp; Testing</h1><details>
+});</code></pre><h2>Using web component</h2><!--
+```
+<custom-element-demo>
+  <template>
+    <script src="https://tonygermaneri.github.io/canvas-datagrid/dist/canvas-datagrid.debug.js"></script>
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+<pre class="prettyprint source lang-html"><code>    &lt;canvas-datagrid data='[{&quot;a&quot;: 0, &quot;b&quot;: 1}]'>&lt;/canvas-datagrid></code></pre><h1>Building &amp; Testing</h1><details>
 To build production version.
 
 <code>shell
