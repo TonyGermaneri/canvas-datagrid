@@ -38,7 +38,7 @@ canvas-datagrid
 [Coveralls](https://coveralls.io/github/TonyGermaneri/canvas-datagrid)
 
 Installation
-============
+------------
 
 ```html
 <script src="dist/canvas-datagrid.js"></script>
@@ -64,7 +64,7 @@ If you do not use a webpack a function will
 be added to the global scope of the web page called `canvasDatagrid`.
 
 Getting started
-===============
+---------------
 
 Works [with webpack](https://tonygermaneri.github.io/canvas-datagrid/tutorials/amdDemo.html), [without webpack](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html) or as a [web component](https://tonygermaneri.github.io/canvas-datagrid/tutorials/webcomponentDemo.html).
 If used without webpack, `canvasDatagrid` is declared in the global scope.
@@ -102,7 +102,7 @@ Using web component
 ```
 
 Building & Testing
-==================
+------------------
 <details>
 To build production version.
 
