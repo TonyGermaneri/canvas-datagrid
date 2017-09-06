@@ -1,11 +1,14 @@
-Canvas Data Grid
-================
+canvas-datagrid
+---------------
 
 [Demo](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html)
 
-![canvas-datagrid](https://tonygermaneri.github.io/canvas-datagrid/images/datagrid1.png)
-
 [![Coverage Status](https://coveralls.io/repos/github/TonyGermaneri/canvas-datagrid/badge.svg?branch=master&build=1610)](https://coveralls.io/github/TonyGermaneri/canvas-datagrid?branch=master)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/TonyGermaneri/canvas-datagrid)
+[![NPM](https://img.shields.io/npm/v/canvas-datagrid.svg)](https://www.npmjs.com/package/canvas-datagrid)
+[![Tag](https://img.shields.io/github/tag/TonyGermaneri/canvas-datagrid.svg)](https://github.com/TonyGermaneri/canvas-datagrid/releases)
+
+![canvas-datagrid](https://tonygermaneri.github.io/canvas-datagrid/images/datagrid1.png)
 
 * Support for millions of contiguous rows and columns without paging or loading.
 * Support for touch devices (phones and tablets).
@@ -95,7 +98,7 @@ Using web component
 -->
 
 ```html
-    <canvas-data-grid data='[{"a": 0, "b": 1}]'></canvas-data-grid>
+    <canvas-datagrid data='[{"a": 0, "b": 1}]'></canvas-datagrid>
 ```
 
 Building & Testing
