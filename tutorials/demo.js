@@ -1,7 +1,7 @@
 /*jslint browser: true*/
 /*globals canvasDatagrid: false*/
 var data;
-document.addEventListener('DOMContentLoaded', function () {
+function demo() {
     'use strict';
     var searchUrl = window.location.search.substring(3);
     function isNoiseData(name) {
@@ -36,8 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
             grid = canvasDatagrid({
                 parentNode: document.body,
                 globalRowResize: true,
-                scrollPointerLock: true,
-                debug: true
+                scrollPointerLock: !/edge|msie/i.test(window.navigator.userAgent)
             });
         xhr.addEventListener('progress', function (e) {
             grid.data = [{ status: 'Loading data: ' + e.loaded + ' of ' + e.total + ' bytes...'}];
@@ -57,4 +56,12 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         loadDataSet('https://data.cityofchicago.org/api/views/xzkq-xp2w/rows.json?accessType=DOWNLOAD');
     }
-});
+}
+if (document.addEventListener) {
+    document.addEventListener('DOMContentLoaded', demo);
+} else {
+    setTimeout(function () {
+        'use strict';
+        demo();
+    }, 500);
+}

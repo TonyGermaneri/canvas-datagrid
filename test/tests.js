@@ -841,7 +841,7 @@
                     });
                     grid.addEventListener('contextmenu', function (e) {
                         setTimeout(function () {
-                            done(assertIf(!document.body.contains(e.items[0].title), 'Expected context menu to exist in the body and be visible.'));
+                            done(assertIf(!grid.shadowRoot.contains(e.items[0].title), 'Expected context menu to exist in the body and be visible.'));
                         }, 1);
                     });
                     contextmenu(grid.canvas, 60, 37);

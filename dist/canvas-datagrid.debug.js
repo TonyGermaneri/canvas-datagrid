@@ -138,7 +138,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     console.warn('Unrecognized style directive', key);
                     return;
                 }
-                s[idef[0]] = typeMap[typeof idef[1]](val);
+                s[idef[0]] = typeMap[typeof idef[1]](val.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, ''));
             });
             return s;
         },
@@ -187,39 +187,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         });
         return attrs;
     }
-    Grid.observedAttributes = getObservableAttributes();
-    Grid.prototype = Object.create(HTMLElement.prototype);
-    Grid.prototype.disconnectedCallback = function () {
-        this.dispose();
-    };
-    Grid.prototype.attributeChangedCallback = function (attrName, oldVal, newVal) {
-        var j, s, intf = this;
-        if (attrName === 'style') {
-            j = typeMap.style(newVal);
-            s = intf.args.style ? JSON.parse(JSON.stringify(intf.args.style)) : {};
-            Object.keys(j).forEach(function (key) {
-                s[key] = j[key];
-            });
-            intf.args.style = s;
-            return;
-        }
-        if (attrName === 'data') {
-            intf.args.data = typeMap.data(newVal);
-            return;
-        }
-        if (attrName === 'schema') {
-            intf.args.schema = typeMap.schema(newVal);
-            return;
-        }
-        intf.attributes[attrName] = typeMap[typeof getDefaultItem('attributes', attrName)[1]](newVal);
-        return;
-    };
-    Grid.prototype.connectedCallback = function () {
+    function connectedCallback() {
         var intf = this, s;
         if (intf.initialized) { return; }
         intf.initialized = true;
-        intf.args.parentNode = intf.createShadowRoot();
-        intf.shadowRootParentElement = intf.parentElement;
+        intf.args.parentNode = intf;
         //HACK init() will secretly return the internal reference object.
         //since init is only run after instantiation in the component version
         //it won't work in the amd version and won't return self, so it is still
@@ -237,13 +209,47 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
             });
         });
-    };
+    }
+    function attributeChangedCallback(attrName, oldVal, newVal) {
+        var tfn, j, s, intf = this;
+        if (attrName === 'style') {
+            j = typeMap.style(newVal);
+            s = intf.args.style ? JSON.parse(JSON.stringify(intf.args.style)) : {};
+            Object.keys(j).forEach(function (key) {
+                s[key] = j[key];
+            });
+            intf.args.style = s;
+            return;
+        }
+        if (attrName === 'data') {
+            intf.args.data = typeMap.data(newVal);
+            return;
+        }
+        if (attrName === 'schema') {
+            intf.args.schema = typeMap.schema(newVal);
+            return;
+        }
+        tfn = typeMap[typeof getDefaultItem('attributes', attrName)[1]];
+        // trim incoming values
+        intf.attributes[attrName] = tfn(newVal);
+        return;
+    }
+    if (window.HTMLElement) {
+        Grid.prototype = Object.create(window.HTMLElement.prototype);
+    }
+    // export web component
+    if (window.customElements) {
+        Grid.observedAttributes = getObservableAttributes();
+        Grid.prototype.disconnectedCallback = function () { this.dispose(); };
+        Grid.prototype.attributeChangedCallback = attributeChangedCallback;
+        Grid.prototype.connectedCallback = connectedCallback;
+        window.customElements.define('canvas-datagrid', Grid);
+    }
+    // export global
     if (window && !window.canvasDatagrid && !window.require) {
         window.canvasDatagrid = function (args) { return new Grid(args); };
     }
-    if (window.customElements) {
-        window.customElements.define('canvas-datagrid', Grid);
-    }
+    // export amd loader
     module.exports = function grid(args) {
         args = args || {};
         args.component = false;
@@ -313,7 +319,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['filterOptionText', 'Filter %s'],
                 ['filterTextPrefix', '(filtered) '],
                 ['touchReleaseAnimationDurationMs', 2000],
-                ['touchReleaseAcceleration', 90],
+                ['touchReleaseAcceleration', 500],
                 ['touchDeadZone', 3],
                 ['touchSelectTimeMs', 800],
                 ['touchScrollZone', 30],
@@ -659,7 +665,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 l: function () {
                     self.ctx.moveTo(c.x + self.canvasOffsetLeft, c.y + self.canvasOffsetTop);
                     self.ctx.lineTo(c.x + self.canvasOffsetLeft, c.y + self.canvasOffsetTop + c.height);
-                },
+                }
             };
             p[pos]();
             self.ctx.stroke();
@@ -1436,7 +1442,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             yPPS = 0,
             touchingCell = false,
             startingCell = false,
-            scrollTimeout,
+            wheeling,
             animationFrames = 0;
         self.getTouchPos = function (e) {
             var rect = self.canvas.getBoundingClientRect(),
@@ -1460,7 +1466,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             touchSigma = {
                 scrollLeft: touchDelta.scrollLeft,
                 scrollTop: touchDelta.scrollTop,
-                t: performance.now() / 1000
+                t: performance.now() / 10
             };
         };
         self.touchCell = function (e) {
@@ -1499,7 +1505,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             clearTimeout(self.touchTimeout);
             clearInterval(self.touchCalcTimeout);
             self.touchTimeout = setTimeout(self.touchCell(e), self.attributes.touchSelectTimeMs);
-            self.touchCalcTimeout = setInterval(self.calculatePPS, 20);
+            self.touchCalcTimeout = setInterval(self.calculatePPS, 10);
             self.touchHaltAnimation = true;
             document.body.addEventListener('touchmove', self.touchmove, {passive: false});
             document.body.addEventListener('touchend', self.touchend, false);
@@ -1640,11 +1646,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.width = self.parentNode.offsetWidth;
             } else {
                 if (!self.parentIsCanvas) {
-                    self.height = self.parentDOMNode.offsetHeight;
-                    self.width = self.parentDOMNode.offsetWidth;
-                    if (self.isComponent) {
+                    if (self.shadowRootParentElement) {
                         self.height = self.shadowRootParentElement.offsetHeight;
                         self.width = self.shadowRootParentElement.offsetWidth;
+                    } else {
+                        self.height = self.parentDOMNode.offsetHeight;
+                        self.width = self.parentDOMNode.offsetWidth;
                     }
                     self.canvas.height = self.height * window.devicePixelRatio;
                     self.canvas.width = self.width * window.devicePixelRatio;
@@ -1741,7 +1748,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.draw(true);
             }
             //TODO: figure out why this has to be delayed for child grids
-            //BUG: scrolling event on 3rd level hierarchy fails to move input box
+            //BUG: wheeling event on 3rd level hierarchy fails to move input box
             requestAnimationFrame(self.resizeEditInput);
             self.dispatchEvent('scroll', {top: self.scrollBox.scrollTop, left: self.scrollBox.scrollLeft});
         };
@@ -1797,7 +1804,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     sBounds = self.getSelectionBounds();
                     delta = {
                         x: Math.abs(self.dragStart.x - x),
-                        y: Math.abs(self.dragStart.y - y),
+                        y: Math.abs(self.dragStart.y - y)
                     };
                     if (self.dragStartObject.columnIndex !== -1 && e.shiftKey) {
                         self.dragStartObject = {
@@ -2344,10 +2351,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 deltaX = e.deltaX === undefined ? e.NativeEvent.deltaX : e.deltaX,
                 deltaY = e.deltaY === undefined ? e.NativeEvent.deltaY : e.deltaY,
                 deltaMode = e.deltaMode === undefined ? e.NativeEvent.deltaMode : e.deltaMode;
-            if (scrollTimeout) {
+            if (wheeling) {
                 return;
             }
-            scrollTimeout = setTimeout(function () {
+            wheeling = setTimeout(function () {
                 if (self.dispatchEvent('wheel', {NativeEvent: e})) {
                     return;
                 }
@@ -2367,7 +2374,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 if (t !== self.scrollBox.scrollTop || l !== self.scrollBox.scrollLeft) {
                     e.preventDefault();
                 }
-                scrollTimeout = undefined;
+                wheeling = undefined;
             }, 1);
         };
         self.copy = function (e) {
@@ -2498,7 +2505,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.scrollOffset = function (e) {
             var x = 0, y = 0;
-            while (e.parentNode) {
+            while (e.parentNode && e.nodeName !== 'CANVAS-DATAGRID') {
                 if (e.nodeType !== 'canvas-datagrid-tree'
                         && e.nodeType !== 'canvas-datagrid-cell') {
                     x -= e.scrollLeft;
@@ -2510,7 +2517,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.position = function (e, ignoreScrollOffset) {
             var x = 0, y = 0, s = e, h, w;
-            while (e.offsetParent) {
+            while (e.offsetParent && e.nodeName !== 'CANVAS-DATAGRID') {
                 x += e.offsetLeft;
                 y += e.offsetTop;
                 h = e.offsetHeight;
@@ -2804,13 +2811,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             });
         };
         self.init = function () {
+            if (self.initialized) { return; }
             var publicStyleKeyIntf = {};
             self.setAttributes();
             self.setStyle();
             self.initScrollBox();
             self.setDom();
-            self.shadowRootParentElement = this.shadowRootParentElement;
             self.type = 'canvas-datagrid';
+            self.initialized = true;
+            self.pointerLockPosition = {x: 0, y: 0};
             Object.keys(self.style).forEach(self.parseFont);
             self.intf.type = self.type;
             self.intf.addEventListener = self.addEventListener;
@@ -2882,6 +2891,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         self.dispatchEvent('stylechanged', {name: key, value: value});
                     }
                 });
+            });
+            Object.defineProperty(self.intf, 'shadowRoot', {
+                get: function () {
+                    return self.shadowRoot;
+                }
             });
             Object.defineProperty(self.intf, 'activeCell', {
                 get: function () {
@@ -3044,17 +3058,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         Object.defineProperty(self.intf, 'parentNode', {
             get: function () {
                 return self.parentNode;
-            },
-            set: function (value) {
-                self.parentNode = value;
             }
         });
         Object.defineProperty(self.intf, 'offsetParent', {
             get: function () {
                 return self.parentNode;
-            },
-            set: function (value) {
-                self.parentNode = value;
             }
         });
         Object.defineProperty(self.intf, 'offsetLeft', {
@@ -3480,7 +3488,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             left: cPos.left + self.style.childContextMenuMarginLeft + container.offsetWidth,
                             top: cPos.top + self.style.childContextMenuMarginTop,
                             bottom: cPos.bottom,
-                            right: cPos.right,
+                            right: cPos.right
                         };
                         item.contextMenu = createContextMenu(ev, cPos, items, intf);
                         contextItemContainer.setAttribute('contextOpen', '1');
@@ -3551,7 +3559,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             function checkArrowVisibility() {
                 if (container.scrollTop > 0) {
-                    document.body.appendChild(upArrow);
+                    self.parentDOMNode.appendChild(upArrow);
                 } else if (upArrow.parentNode) {
                     upArrow.parentNode.removeChild(upArrow);
                 }
@@ -3559,7 +3567,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     downArrow.parentNode.removeChild(downArrow);
                 } else if (container.scrollHeight - container.offsetHeight > 0
                         && !(container.scrollTop >= container.scrollHeight - container.offsetHeight)) {
-                    document.body.appendChild(downArrow);
+                    self.parentDOMNode.appendChild(downArrow);
                 }
             }
             function startHoverScroll(type) {
@@ -3612,8 +3620,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 upArrow.innerHTML = self.style.contextMenuArrowUpHTML;
                 downArrow.innerHTML = self.style.contextMenuArrowDownHTML;
                 container.appendChild(upArrow);
-                document.body.appendChild(downArrow);
-                document.body.appendChild(container);
+                self.parentDOMNode.appendChild(downArrow);
+                self.parentDOMNode.appendChild(container);
                 rect = container.getBoundingClientRect();
                 if (rect.bottom > window.innerHeight && !(parentContextMenu && parentContextMenu.inputDropdown)) {
                     loc.y = window.innerHeight - container.offsetHeight;
@@ -3982,7 +3990,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
                 self.draw(true);
             }
-            document.body.removeChild(self.input);
+            self.parentDOMNode.removeChild(self.input);
             self.controlInput.focus();
             self.dispatchEvent('endedit', {
                 cell: cell,
@@ -4005,11 +4013,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (!self.attributes.editable) { return; }
             var cell = self.getVisibleCellByIndex(x, y),
                 s = self.getVisibleSchema(),
-                enumItems;
+                enumItems,
+                //HACK for IE10, does not like literal enum
+                enu = cell.header['enum'];
             if (self.dispatchEvent('beforebeginedit', {cell: cell})) { return false; }
             self.scrollIntoView(x, y);
             self.setActiveCell(x, y);
-            if (cell.header.enum) {
+            if (enu) {
                 self.input = document.createElement('select');
             } else {
                 self.input = document.createElement(self.attributes.multiLine
@@ -4018,12 +4028,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             function postDraw() {
                 var option, valueInEnum;
                 cell = self.getVisibleCellByIndex(x, y);
-                if (cell.header.enum) {
+                if (enu) {
                     // add enums
-                    if (typeof cell.header.enum === 'function') {
-                        enumItems = cell.header.enum.apply(self.intf, [{cell: cell}]);
-                    } else if (Array.isArray(cell.header.enum)) {
-                        enumItems = cell.header.enum;
+                    if (typeof enu === 'function') {
+                        enumItems = enu.apply(self.intf, [{cell: cell}]);
+                    } else if (Array.isArray(enu)) {
+                        enumItems = enu;
                     }
                     enumItems.forEach(function (e) {
                         var i = document.createElement('option'),
@@ -4052,7 +4062,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         self.draw(true);
                     });
                 }
-                document.body.appendChild(self.input);
+                self.parentDOMNode.appendChild(self.input);
                 self.createInlineStyle(self.input, 'canvas-datagrid-edit-input');
                 self.input.style.position = 'absolute';
                 self.input.editCell = cell;
@@ -4257,8 +4267,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.appendTo = function (n) {
             self.parentNode = n || document.createElement('canvas');
-            self.height = self.parentNode;
-            self.width = self.parentNode;
             if (self.parentNode && /canvas-datagrid-(cell|tree)/.test(self.parentNode.nodeType)) {
                 self.isChildGrid = true;
                 self.parentGrid = self.parentNode.parentGrid;
@@ -4276,17 +4284,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.parentNode = self.parentDOMNode;
                 self.parentIsCanvas = /^canvas$/i.test(self.parentDOMNode.tagName);
                 if (self.isComponent) {
-                    self.parentDOMNode = self.parentNode.host.parentNode;
+                    self.parentDOMNode = self.parentNode.parentElement;
                     self.canvas = document.createElement('canvas');
                     self.parentNode.appendChild(self.canvas);
                     self.parentNode.appendChild(self.controlInput);
                 } else if (self.parentIsCanvas) {
                     self.canvas = self.parentDOMNode;
-                    document.body.appendChild(self.controlInput);
+                    self.parentDOMNode.appendChild(self.controlInput);
                 } else {
                     self.canvas = document.createElement('canvas');
                     self.parentDOMNode.appendChild(self.canvas);
-                    document.body.appendChild(self.controlInput);
+                    self.parentDOMNode.appendChild(self.controlInput);
                 }
                 self.ctx = self.canvas.getContext('2d');
                 self.ctx.textBaseline = 'alphabetic';
@@ -4324,6 +4332,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.controlInput.addEventListener('keydown', self.keydown, false);
         };
         self.setDom = function () {
+            if (self.args.parentNode && self.args.parentNode.createShadowRoot) {
+                self.shadowRootParentElement = self.args.parentNode.parentElement;
+                self.shadowRoot = self.args.parentNode.createShadowRoot();
+                self.args.parentNode = self.shadowRoot;
+            }
             self.appendTo(self.args.parentNode);
         };
     };
