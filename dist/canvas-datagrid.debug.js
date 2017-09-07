@@ -2779,7 +2779,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.tryLoadStoredOrders = function () {
             var s;
-            if (self.storedSettings && typeof self.storedSettings.orders === 'object') {
+            if (self.storedSettings
+                    && typeof self.storedSettings.orders === 'object'
+                    && self.storedSettings.orders !== null) {
                 if (self.storedSettings.orders.rows.length >= self.data.length) {
                     self.orders.rows = self.storedSettings.orders.rows;
                 }
@@ -2940,6 +2942,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 });
             });
             self.filters.string = function (value, filterFor) {
+                value = String(value);
                 var filterRegExp,
                     regEnd = /\/(i|g|m)*$/,
                     pattern = regEnd.exec(filterFor),
@@ -2973,7 +2976,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     }
                 }
                 if (self.storedSettings) {
-                    if (typeof self.storedSettings.sizes === 'object') {
+                    if (typeof self.storedSettings.sizes === 'object'
+                            && self.storedSettings.sizes !== null) {
                         self.sizes.rows = self.storedSettings.sizes.rows;
                         self.sizes.columns = self.storedSettings.sizes.columns;
                         ['trees', 'columns', 'rows'].forEach(function (i) {
@@ -3058,6 +3062,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         Object.defineProperty(self.intf, 'parentNode', {
             get: function () {
                 return self.parentNode;
+            },
+            set: function (value) {
+                if (!self.isChildGrid) {
+                    throw new TypeError('Cannot set property parentNode which has only a getter');
+                }
+                self.parentNode = value;
             }
         });
         Object.defineProperty(self.intf, 'offsetParent', {
@@ -3515,6 +3525,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     }
                     function addItem(item) {
                         function addContent(content) {
+                            if (content === null) { return; }
                             if (typeof content === 'function') {
                                 return addContent(content(ev));
                             }
@@ -4274,7 +4285,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.canvas = self.parentGrid.canvas;
                 self.controlInput = self.parentGrid.controlInput;
                 self.eventParent = self.canvas;
-                self.intf.offsetParent = self.parentNode;
             } else {
                 self.controlInput = document.createElement('input');
                 self.controlInput.onblur = self.intf.blur;
@@ -4333,7 +4343,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.setDom = function () {
             if (self.args.parentNode && self.args.parentNode.createShadowRoot) {
-                self.shadowRootParentElement = self.args.parentNode.parentElement;
+                if (this.isComponent) {
+                    self.shadowRootParentElement = self.args.parentNode.parentElement;
+                } else {
+                    self.shadowRootParentElement = self.args.parentNode;
+                }
                 self.shadowRoot = self.args.parentNode.createShadowRoot();
                 self.args.parentNode = self.shadowRoot;
             }
