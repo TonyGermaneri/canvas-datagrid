@@ -36,7 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
             grid = canvasDatagrid({
                 parentNode: document.body,
                 globalRowResize: true,
-                scrollPointerLock: true
+                scrollPointerLock: true,
+                debug: true
             });
         xhr.addEventListener('progress', function (e) {
             grid.data = [{ status: 'Loading data: ' + e.loaded + ' of ' + e.total + ' bytes...'}];
