@@ -46,30 +46,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 {col1: 'baz', col2: 2, col3: 'c'}
             ];
         };
-        examples['Draw a sparkline based on row data.'] = function (parentNode) {
-            // create a new grid
-            var grid = canvasDatagrid({
-                parentNode: parentNode
-            });
-            function createRandomSeq(size, r) {
-                r = r || [];
-                while (r.length < size) {
-                    r.push(Math.random());
-                }
-                return r;
-            }
-            function pollData() {
-                setTimeout(function () {
-                    grid.data = [
-                        {col1: 'foo', col2: createRandomSeq(100, grid.data[1].col2)},
-                        {col1: 'bar', col2: createRandomSeq(100, grid.data[1].col2)},
-                        {col1: 'baz', col2: createRandomSeq(100, grid.data[1].col2)}
-                    ];
-                    pollData();
-                }, 250);
-            }
-            pollData();
-        };
         examples['Format data|Data is formatted using the data type setting in the schema.  The data type is mapped to the `grid.formatters` object.  In the following example col2 is data type `date` which will format data using the `grid.formatters.date` function.  By default the string formatter is used to format all data.  This method of formatting is faster than using the <i>rendertext</i> event.'] = function (parentNode) {
             var grid = canvasDatagrid({
                 parentNode: parentNode,
