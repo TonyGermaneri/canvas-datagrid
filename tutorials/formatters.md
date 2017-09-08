@@ -19,7 +19,7 @@ The return value of the formatter function will be displayed in the cell instead
 in the data without altering the data.
 
 The second method is the `rendertext` event.  By subscribing to the `rendertext` event listener
-we can intercept the value in the context of the [cell](https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDataGrid.cell.html) being drawn and alter it.
+we can intercept the value in the context of the [cell](https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDatagrid.cell.html) being drawn and alter it.
 
 This method is slightly slower due to the O(n) loop employed in the event handler class.
 

@@ -14,7 +14,7 @@ This example changes the fill style of the cell when the cell is a certain value
         }
     });
 
-For a complete list of all style properties visit the [styles](https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDataGrid.style.html) section.
+For a complete list of all style properties visit the [styles](https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDatagrid.style.html) section.
 
 Drawing on the canvas
 -------------------------------------------
