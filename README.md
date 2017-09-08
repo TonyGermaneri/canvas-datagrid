@@ -101,6 +101,18 @@ Using web component
     <canvas-datagrid data='[{"a": 0, "b": 1}]'></canvas-datagrid>
 ```
 
+More Demos
+----------
+
+* [Using AMD](https://tonygermaneri.github.io/canvas-datagrid/tutorials/amdDemo.html)
+
+* [Loading data with XHR](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html)
+
+* [Web component example](https://tonygermaneri.github.io/canvas-datagrid/tutorials/webcomponentDemo.html)
+
+* [Sparkline example](https://tonygermaneri.github.io/canvas-datagrid/tutorials/sparklineDemo.html)
+
+
 Building & Testing
 ------------------
 <details>
