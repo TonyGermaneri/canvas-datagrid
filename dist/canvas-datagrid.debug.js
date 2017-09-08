@@ -920,196 +920,197 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         self.visibleRows.push(rowIndex);
                     }
                     val = self.dispatchEvent('formatcellvalue', ev);
-                    if (!self.dispatchEvent('beforerendercell', ev)) {
-                        cx = x;
-                        cy = y;
-                        if (cellStyle === 'cornerCell') {
-                            cx = 0;
-                            cy = 0;
-                        } else if (isRowHeader) {
-                            cx = 0;
-                        } else if (isHeader) {
-                            cy = 0;
+                    cx = x;
+                    cy = y;
+                    if (cellStyle === 'cornerCell') {
+                        cx = 0;
+                        cy = 0;
+                    } else if (isRowHeader) {
+                        cx = 0;
+                    } else if (isHeader) {
+                        cy = 0;
+                    }
+                    cell = {
+                        type: isGrid ? 'canvas-datagrid-cell' : header.type,
+                        style: cellStyle,
+                        nodeType: 'canvas-datagrid-cell',
+                        x: cx,
+                        y: cy,
+                        horizontalAlignment: self.style[cellStyle + 'HorizontalAlignment'],
+                        verticalAlignment: self.style[cellStyle + 'VerticalAlignment'],
+                        offsetTop: self.canvasOffsetTop + cy,
+                        offsetLeft: self.canvasOffsetLeft + cx,
+                        scrollTop: self.scrollBox.scrollTop,
+                        scrollLeft: self.scrollBox.scrollLeft,
+                        active: active || activeHeader,
+                        hovered: hovered,
+                        selected: selected,
+                        width: cellWidth,
+                        height: cellHeight,
+                        offsetWidth: cellWidth,
+                        offsetHeight: cellHeight,
+                        parentNode: self.intf.parentNode,
+                        offsetParent: self.intf.parentNode,
+                        data: d,
+                        isCorner: isCorner,
+                        isHeader: isHeader,
+                        isColumnHeader: isColumnHeader,
+                        isHeaderCellCap: !!header.isHeaderCellCap,
+                        isRowHeader: isRowHeader,
+                        rowOpen: rowOpen,
+                        header: header,
+                        columnIndex: columnOrderIndex,
+                        rowIndex: rowOrderIndex,
+                        sortColumnIndex: headerIndex,
+                        sortRowIndex: rowIndex,
+                        isGrid: isGrid,
+                        gridId: (self.attributes.name || '') + d[self.uniqueId] + ':' + header[self.uniqueId],
+                        parentGrid: self.intf,
+                        innerHTML: '',
+                        activeHeader: activeHeader,
+                        value: isHeader && !isRowHeader ? (header.title || header.name) : d[header.name]
+                    };
+                    ev.cell = cell;
+                    cell.userHeight = cell.isHeader ? self.sizes.rows[-1] : rowHeight;
+                    cell.userWidth = cell.isHeader ? self.sizes.columns.cornerCell : self.sizes.columns[header[self.uniqueId]];
+                    cell[self.uniqueId] = d[self.uniqueId];
+                    self.visibleCells.unshift(cell);
+                    if (self.dispatchEvent('beforerendercell', ev)) { return; }
+                    self.ctx.fillStyle = self.style[cellStyle + 'BackgroundColor'];
+                    self.ctx.strokeStyle = self.style[cellStyle + 'BorderColor'];
+                    self.ctx.lineWidth = self.style[cellStyle + 'BorderWidth'];
+                    if (hovered) {
+                        self.ctx.fillStyle = self.style[cellStyle + 'HoverBackgroundColor'];
+                        self.ctx.strokeStyle = self.style[cellStyle + 'HoverBorderColor'];
+                    }
+                    if (selected) {
+                        self.ctx.fillStyle = self.style[cellStyle + 'SelectedBackgroundColor'];
+                        self.ctx.strokeStyle = self.style[cellStyle + 'SelectedBorderColor'];
+                    }
+                    if (activeHeader) {
+                        self.ctx.fillStyle = self.style[activeHeader + 'BackgroundColor'];
+                    }
+                    self.dispatchEvent('rendercell', ev);
+                    if (cell.isGrid) {
+                        if (cell.height !== rowHeight) {
+                            cell.height = rowHeight || self.style.cellHeightWithChildGrid;
+                            checkScrollHeight = true;
                         }
-                        cell = {
-                            type: isGrid ? 'canvas-datagrid-cell' : header.type,
-                            style: cellStyle,
-                            nodeType: 'canvas-datagrid-cell',
-                            x: cx,
-                            y: cy,
-                            horizontalAlignment: self.style[cellStyle + 'HorizontalAlignment'],
-                            verticalAlignment: self.style[cellStyle + 'VerticalAlignment'],
-                            offsetTop: self.canvasOffsetTop + cy,
-                            offsetLeft: self.canvasOffsetLeft + cx,
-                            scrollTop: self.scrollBox.scrollTop,
-                            scrollLeft: self.scrollBox.scrollLeft,
-                            active: active || activeHeader,
-                            hovered: hovered,
-                            selected: selected,
-                            width: cellWidth,
-                            height: cellHeight,
-                            offsetWidth: cellWidth,
-                            offsetHeight: cellHeight,
-                            parentNode: self.intf.parentNode,
-                            offsetParent: self.intf.parentNode,
-                            data: d,
-                            isCorner: isCorner,
-                            isHeader: isHeader,
-                            isColumnHeader: isColumnHeader,
-                            isHeaderCellCap: !!header.isHeaderCellCap,
-                            isRowHeader: isRowHeader,
-                            rowOpen: rowOpen,
-                            header: header,
-                            columnIndex: columnOrderIndex,
-                            rowIndex: rowOrderIndex,
-                            sortColumnIndex: headerIndex,
-                            sortRowIndex: rowIndex,
-                            isGrid: isGrid,
-                            gridId: (self.attributes.name || '') + d[self.uniqueId] + ':' + header[self.uniqueId],
-                            parentGrid: self.intf,
-                            innerHTML: '',
-                            activeHeader: activeHeader,
-                            value: isHeader && !isRowHeader ? (header.title || header.name) : d[header.name]
-                        };
-                        ev.cell = cell;
-                        cell.userHeight = cell.isHeader ? self.sizes.rows[-1] : rowHeight;
-                        cell.userWidth = cell.isHeader ? self.sizes.columns.cornerCell : self.sizes.columns[header[self.uniqueId]];
-                        cell[self.uniqueId] = d[self.uniqueId];
-                        self.visibleCells.unshift(cell);
-                        self.ctx.fillStyle = self.style[cellStyle + 'BackgroundColor'];
-                        self.ctx.strokeStyle = self.style[cellStyle + 'BorderColor'];
-                        self.ctx.lineWidth = self.style[cellStyle + 'BorderWidth'];
-                        if (hovered) {
-                            self.ctx.fillStyle = self.style[cellStyle + 'HoverBackgroundColor'];
-                            self.ctx.strokeStyle = self.style[cellStyle + 'HoverBorderColor'];
+                        cell.width = self.sizes.columns[header[self.uniqueId]] || self.style.cellWidthWithChildGrid;
+                    }
+                    if (rowOpen && !cell.isRowHeader) {
+                        cell.height = self.sizes.rows[rd[self.uniqueId]] || self.style.cellHeight;
+                    }
+                    if (!cell.isGrid) {
+                        fillRect(cx, cy, cell.width, cell.height);
+                        strokeRect(cx, cy, cell.width, cell.height);
+                    }
+                    self.ctx.save();
+                    radiusRect(cell.x, cell.y, cell.width, cell.height, 0);
+                    self.ctx.clip();
+                    self.dispatchEvent('afterrendercell', ev);
+                    if (cell.height !== cellHeight && !(rowOpen && !cell.isRowHeader)) {
+                        self.sizes.rows[isHeader ? -1 : d[self.uniqueId]] = cell.height;
+                        checkScrollHeight = true;
+                    }
+                    if (cell.width !== cellWidth) {
+                        self.sizes.columns[header[self.uniqueId]] = cell.width;
+                        checkScrollHeight = true;
+                    }
+                    if (isRowHeader && self.attributes.tree) {
+                        if (!self.dispatchEvent('rendertreearrow', ev)) {
+                            treeArrowSize = drawTreeArrow(cell, self.style[cellStyle + 'PaddingLeft'], cy, 0);
                         }
-                        if (selected) {
-                            self.ctx.fillStyle = self.style[cellStyle + 'SelectedBackgroundColor'];
-                            self.ctx.strokeStyle = self.style[cellStyle + 'SelectedBorderColor'];
-                        }
-                        if (activeHeader) {
-                            self.ctx.fillStyle = self.style[activeHeader + 'BackgroundColor'];
-                        }
-                        self.dispatchEvent('rendercell', ev);
-                        if (cell.isGrid) {
-                            if (cell.height !== rowHeight) {
-                                cell.height = rowHeight || self.style.cellHeightWithChildGrid;
+                    }
+                    if ((self.attributes.showRowNumbers && isRowHeader)
+                            || !isRowHeader) {
+                        if (cell.isGrid && !self.dispatchEvent('beforerendercellgrid', ev)) {
+                            if (!self.childGrids[cell.gridId]) {
+                                cellGridAttributes = self.args.cellGridAttributes || self.args;
+                                cellGridAttributes.name = self.attributes.saveAppearance ? cell.gridId : undefined;
+                                cellGridAttributes.parentNode = cell;
+                                cellGridAttributes.data = d[header.name];
+                                ev.cellGridAttributes = cellGridAttributes;
+                                if (self.dispatchEvent('beforecreatecellgrid', ev)) { return; }
+                                self.childGrids[cell.gridId] = self.createGrid(cellGridAttributes);
+                                self.sizes.rows[rd[self.uniqueId]]
+                                    = self.sizes.rows[rd[self.uniqueId]] || self.style.cellGridHeight;
                                 checkScrollHeight = true;
                             }
-                            cell.width = self.sizes.columns[header[self.uniqueId]] || self.style.cellWidthWithChildGrid;
-                        }
-                        if (rowOpen && !cell.isRowHeader) {
-                            cell.height = self.sizes.rows[rd[self.uniqueId]] || self.style.cellHeight;
-                        }
-                        if (!cell.isGrid) {
-                            fillRect(cx, cy, cell.width, cell.height);
-                            strokeRect(cx, cy, cell.width, cell.height);
-                        }
-                        self.ctx.save();
-                        radiusRect(cell.x, cell.y, cell.width, cell.height, 0);
-                        self.ctx.clip();
-                        self.dispatchEvent('afterrendercell', ev);
-                        if (cell.height !== cellHeight && !(rowOpen && !cell.isRowHeader)) {
-                            self.sizes.rows[isHeader ? -1 : d[self.uniqueId]] = cell.height;
-                            checkScrollHeight = true;
-                        }
-                        if (cell.width !== cellWidth) {
-                            self.sizes.columns[header[self.uniqueId]] = cell.width;
-                            checkScrollHeight = true;
-                        }
-                        if (isRowHeader && self.attributes.tree) {
-                            if (!self.dispatchEvent('rendertreearrow', ev)) {
-                                treeArrowSize = drawTreeArrow(cell, self.style[cellStyle + 'PaddingLeft'], cy, 0);
+                            cell.grid = self.childGrids[cell.gridId];
+                            cell.grid.parentNode = cell;
+                            cell.grid.visible = true;
+                            cell.grid.draw();
+                            self.dispatchEvent('rendercellgrid', ev);
+                        } else if (!cell.isGrid) {
+                            if (self.childGrids[cell.gridId]) {
+                                self.childGrids[cell.gridId].parentNode.offsetHeight = 0;
                             }
-                        }
-                        if ((self.attributes.showRowNumbers && isRowHeader)
-                                || !isRowHeader) {
-                            if (cell.isGrid) {
-                                if (!self.childGrids[cell.gridId]) {
-                                    cellGridAttributes = self.args.cellGridAttributes || self.args;
-                                    cellGridAttributes.name = self.attributes.saveAppearance ? cell.gridId : undefined;
-                                    cellGridAttributes.parentNode = cell;
-                                    cellGridAttributes.data = d[header.name];
-                                    self.childGrids[cell.gridId] = self.createGrid(cellGridAttributes);
-                                    self.sizes.rows[rd[self.uniqueId]]
-                                        = self.sizes.rows[rd[self.uniqueId]] || self.style.cellGridHeight;
-                                    checkScrollHeight = true;
+                            if (isHeader && self.orderBy === header.name) {
+                                if (!self.dispatchEvent('renderorderbyarrow', ev)) {
+                                    orderByArrowSize = drawOrderByArrow(cx + self.style[cellStyle + 'PaddingLeft'], 0);
                                 }
-                                cell.grid = self.childGrids[cell.gridId];
-                                cell.grid.parentNode = cell;
-                                cell.grid.visible = true;
-                                cell.grid.draw();
-                                self.dispatchEvent('rendercellgrid', ev);
-                            } else {
-                                if (self.childGrids[cell.gridId]) {
-                                    self.childGrids[cell.gridId].parentNode.offsetHeight = 0;
-                                }
-                                if (isHeader && self.orderBy === header.name) {
-                                    if (!self.dispatchEvent('renderorderbyarrow', ev)) {
-                                        orderByArrowSize = drawOrderByArrow(cx + self.style[cellStyle + 'PaddingLeft'], 0);
-                                    }
-                                }
-                                self.ctx.fillStyle = self.style[cellStyle + 'Color'];
-                                if (hovered) {
-                                    self.ctx.fillStyle = self.style[cellStyle + 'HoverColor'];
-                                }
-                                if (selected) {
-                                    self.ctx.fillStyle = self.style[cellStyle + 'SelectedColor'];
-                                }
-                                if (activeHeader) {
-                                    self.ctx.fillStyle = self.style[activeHeader + 'Color'];
-                                }
-                                self.ctx.font = self.style[cellStyle + 'Font'];
-                                cell.fontHeight = self.style[cellStyle + 'FontHeight'];
-                                cell.treeArrowWidth = treeArrowSize;
-                                cell.orderByArrowWidth = orderByArrowSize;
-                                val = val !== undefined ? val : f
-                                    ? f(ev) : '';
-                                if (val === undefined && !f) {
-                                    val = '';
-                                    console.warn('canvas-datagrid: Unknown format '
-                                        + header.type + ' add a cellFormater');
-                                }
-                                cell.formattedValue = ((val !== undefined && val !== null) ? val : '').toString();
-                                if (self.columnFilters && self.columnFilters[val] !== undefined && isHeader) {
-                                    cell.formattedValue = self.attributes.filterTextPrefix + val;
-                                }
-                                if (!self.dispatchEvent('rendertext', ev)) {
-                                    if (cell.innerHTML || header.type === 'html') {
-                                        drawHtml(cell);
-                                    } else {
-                                        drawText(cell);
-                                    }
+                            }
+                            self.ctx.fillStyle = self.style[cellStyle + 'Color'];
+                            if (hovered) {
+                                self.ctx.fillStyle = self.style[cellStyle + 'HoverColor'];
+                            }
+                            if (selected) {
+                                self.ctx.fillStyle = self.style[cellStyle + 'SelectedColor'];
+                            }
+                            if (activeHeader) {
+                                self.ctx.fillStyle = self.style[activeHeader + 'Color'];
+                            }
+                            self.ctx.font = self.style[cellStyle + 'Font'];
+                            cell.fontHeight = self.style[cellStyle + 'FontHeight'];
+                            cell.treeArrowWidth = treeArrowSize;
+                            cell.orderByArrowWidth = orderByArrowSize;
+                            val = val !== undefined ? val : f
+                                ? f(ev) : '';
+                            if (val === undefined && !f) {
+                                val = '';
+                                console.warn('canvas-datagrid: Unknown format '
+                                    + header.type + ' add a cellFormater');
+                            }
+                            cell.formattedValue = ((val !== undefined && val !== null) ? val : '').toString();
+                            if (self.columnFilters && self.columnFilters[val] !== undefined && isHeader) {
+                                cell.formattedValue = self.attributes.filterTextPrefix + val;
+                            }
+                            if (!self.dispatchEvent('rendertext', ev)) {
+                                if (cell.innerHTML || header.type === 'html') {
+                                    drawHtml(cell);
+                                } else {
+                                    drawText(cell);
                                 }
                             }
                         }
-                        if (active) {
-                            aCell = cell;
-                        }
-                        if (selected && !isRowHeader) {
-                            if ((!self.selections[cell.rowIndex - 1]
-                                    || self.selections[cell.rowIndex - 1].indexOf(cell.columnIndex) === -1
-                                    || cell.rowIndex === 0)
-                                    && !cell.isHeader) {
-                                selectionBorders.push([cell, 't']);
-                            }
-                            if (!self.selections[cell.rowIndex + 1]
-                                    || self.selections[cell.rowIndex + 1].indexOf(cell.columnIndex) === -1) {
-                                selectionBorders.push([cell, 'b']);
-                            }
-                            if (!self.selections[cell.rowIndex] || cell.columnIndex === 0
-                                    || self.selections[cell.rowIndex].indexOf(cell.columnIndex - 1) === -1) {
-                                selectionBorders.push([cell, 'l']);
-                            }
-                            if (!self.selections[cell.rowIndex] || cell.columnIndex === s.length
-                                    || self.selections[cell.rowIndex].indexOf(cell.columnIndex + 1) === -1) {
-                                selectionBorders.push([cell, 'r']);
-                            }
-                        }
-                        self.ctx.restore();
-                        x += cell.width + self.style.cellBorderWidth;
-                        return cell.width;
                     }
+                    if (active) {
+                        aCell = cell;
+                    }
+                    if (selected && !isRowHeader) {
+                        if ((!self.selections[cell.rowIndex - 1]
+                                || self.selections[cell.rowIndex - 1].indexOf(cell.columnIndex) === -1
+                                || cell.rowIndex === 0)
+                                && !cell.isHeader) {
+                            selectionBorders.push([cell, 't']);
+                        }
+                        if (!self.selections[cell.rowIndex + 1]
+                                || self.selections[cell.rowIndex + 1].indexOf(cell.columnIndex) === -1) {
+                            selectionBorders.push([cell, 'b']);
+                        }
+                        if (!self.selections[cell.rowIndex] || cell.columnIndex === 0
+                                || self.selections[cell.rowIndex].indexOf(cell.columnIndex - 1) === -1) {
+                            selectionBorders.push([cell, 'l']);
+                        }
+                        if (!self.selections[cell.rowIndex] || cell.columnIndex === s.length
+                                || self.selections[cell.rowIndex].indexOf(cell.columnIndex + 1) === -1) {
+                            selectionBorders.push([cell, 'r']);
+                        }
+                    }
+                    self.ctx.restore();
+                    x += cell.width + self.style.cellBorderWidth;
+                    return cell.width;
                 };
             }
             function drawRowHeader(rowData, index, rowOrderIndex) {
@@ -1218,6 +1219,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     i = self.orders.columns[o];
                     x += drawCell(rd, r, d)(s[i], i, o);
                     if (x > self.width) {
+                        self.scrollIndexRight = o;
+                        self.scrollPixelRight = x;
                         break;
                     }
                 }
@@ -1285,6 +1288,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 for (r = self.scrollIndexTop; r < l; r += 1) {
                     n = self.orders.rows[r];
                     if (!drawRow(n, r)) {
+                        self.scrollIndexBottom = r;
+                        self.scrollPixelBottom = y;
                         break;
                     }
                 }
@@ -2607,61 +2612,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.childGrids[gridKey].resize();
             });
         };
-        self.getClippingRect = function (ele) {
-            var boundingRect = self.position(self.parentNode),
-                eleRect = self.position(ele),
-                s = self.scrollOffset(self.canvas),
-                clipRect = {
-                    x: 0,
-                    y: 0,
-                    h: 0,
-                    w: 0
-                },
-                parentRect = {
-                    x: -Infinity,
-                    y: -Infinity,
-                    h: Infinity,
-                    w: Infinity
-                },
-                rowHeaderCellHeight = self.getRowHeaderCellHeight(),
-                columnHeaderCellWidth = self.getColumnHeaderCellWidth();
-            boundingRect.top -= s.top;
-            boundingRect.left -= s.left;
-            eleRect.top -= s.top;
-            eleRect.left -= s.left;
-            clipRect.h = boundingRect.top + boundingRect.height - ele.offsetTop - self.style.scrollBarWidth;
-            clipRect.w = boundingRect.left + boundingRect.width - ele.offsetLeft - self.style.scrollBarWidth;
-            clipRect.x = boundingRect.left + (eleRect.left * -1) + columnHeaderCellWidth;
-            clipRect.y = boundingRect.top + (eleRect.top * -1) + rowHeaderCellHeight;
-            return {
-                x: clipRect.x > parentRect.x ? clipRect.x : parentRect.x,
-                y: clipRect.y > parentRect.y ? clipRect.y : parentRect.y,
-                h: clipRect.h < parentRect.h ? clipRect.h : parentRect.h,
-                w: clipRect.w < parentRect.w ? clipRect.w : parentRect.w
-            };
-        };
-        self.clipElement = function (ele) {
-            var clipRect = self.getClippingRect(ele);
-            if (clipRect.w < 0) { clipRect.w = 0; }
-            if (clipRect.h < 0) { clipRect.h = 0; }
-            ele.style.clip = 'rect('
-                + clipRect.y + 'px,'
-                + clipRect.w + 'px,'
-                + clipRect.h + 'px,'
-                + clipRect.x + 'px'
-                + ')';
-            // INFO https://developer.mozilla.org/en-US/docs/Web/CSS/clip
-            // clip has been "deprecated" for clipPath.  Of course nothing but chrome
-            // supports clip path, so we'll keep using clip until someday clipPath becomes
-            // more widely support.  The code below works correctly, but setting clipPath and clip
-            // at the same time has undesirable results.
-            // ele.style.clipPath = 'polygon('
-            //     + clipRect.x + 'px ' + clipRect.y + 'px,'
-            //     + clipRect.x + 'px ' + clipRect.h + 'px,'
-            //     + clipRect.w + 'px ' + clipRect.h + 'px,'
-            //     + clipRect.w + 'px ' + clipRect.y + 'px'
-            //     + ')';
-        };
         self.autoScrollZone = function (e, x, y, ctrl) {
             var setTimer,
                 columnHeaderCellWidth = self.getColumnHeaderCellWidth(),
@@ -3178,6 +3128,26 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             throw new Error('Unsupported data type.  Must be an array of arrays or an array of objects, function or string.');
         };
+        Object.defineProperty(self.intf, 'scrollIndexRect', {
+            get: function () {
+                return {
+                    top: self.scrollIndexTop,
+                    right: self.scrollIndexRight,
+                    bottom: self.scrollIndexBottom,
+                    left: self.scrollIndexLeft
+                };
+            }
+        });
+        Object.defineProperty(self.intf, 'scrollPixelRect', {
+            get: function () {
+                return {
+                    top: self.scrollPixelTop,
+                    right: self.scrollPixelRight,
+                    bottom: self.scrollPixelBottom,
+                    left: self.scrollPixelLeft
+                };
+            }
+        });
         Object.defineProperty(self.intf, 'selectionBounds', {
             get: function () {
                 return self.getSelectionBounds();
@@ -3928,6 +3898,61 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
     'use strict';
     return function (self) {
+        self.getClippingRect = function (ele) {
+            var boundingRect = self.position(self.parentNode),
+                eleRect = self.position(ele),
+                s = self.scrollOffset(self.canvas),
+                clipRect = {
+                    x: 0,
+                    y: 0,
+                    h: 0,
+                    w: 0
+                },
+                parentRect = {
+                    x: -Infinity,
+                    y: -Infinity,
+                    h: Infinity,
+                    w: Infinity
+                },
+                rowHeaderCellHeight = self.getRowHeaderCellHeight(),
+                columnHeaderCellWidth = self.getColumnHeaderCellWidth();
+            boundingRect.top -= s.top;
+            boundingRect.left -= s.left;
+            eleRect.top -= s.top;
+            eleRect.left -= s.left;
+            clipRect.h = boundingRect.top + boundingRect.height - ele.offsetTop - self.style.scrollBarWidth;
+            clipRect.w = boundingRect.left + boundingRect.width - ele.offsetLeft - self.style.scrollBarWidth;
+            clipRect.x = boundingRect.left + (eleRect.left * -1) + columnHeaderCellWidth;
+            clipRect.y = boundingRect.top + (eleRect.top * -1) + rowHeaderCellHeight;
+            return {
+                x: clipRect.x > parentRect.x ? clipRect.x : parentRect.x,
+                y: clipRect.y > parentRect.y ? clipRect.y : parentRect.y,
+                h: clipRect.h < parentRect.h ? clipRect.h : parentRect.h,
+                w: clipRect.w < parentRect.w ? clipRect.w : parentRect.w
+            };
+        };
+        self.clipElement = function (ele) {
+            var clipRect = self.getClippingRect(ele);
+            if (clipRect.w < 0) { clipRect.w = 0; }
+            if (clipRect.h < 0) { clipRect.h = 0; }
+            ele.style.clip = 'rect('
+                + clipRect.y + 'px,'
+                + clipRect.w + 'px,'
+                + clipRect.h + 'px,'
+                + clipRect.x + 'px'
+                + ')';
+            // INFO https://developer.mozilla.org/en-US/docs/Web/CSS/clip
+            // clip has been "deprecated" for clipPath.  Of course nothing but chrome
+            // supports clip path, so we'll keep using clip until someday clipPath becomes
+            // more widely support.  The code below works correctly, but setting clipPath and clip
+            // at the same time has undesirable results.
+            // ele.style.clipPath = 'polygon('
+            //     + clipRect.x + 'px ' + clipRect.y + 'px,'
+            //     + clipRect.x + 'px ' + clipRect.h + 'px,'
+            //     + clipRect.w + 'px ' + clipRect.h + 'px,'
+            //     + clipRect.w + 'px ' + clipRect.y + 'px'
+            //     + ')';
+        };
         self.scrollOffset = function (e) {
             var x = 0, y = 0;
             while (e.parentNode && e.nodeName !== 'CANVAS-DATAGRID') {
@@ -4955,11 +4980,27 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * Checks if a cell is currently visible.
          * @memberof canvasDataGrid
          * @name isCellVisible
+         * @overload
          * @method
          * @returns {boolean} when true, the cell is visible, when false the cell is not currently drawn.
-         * @param {cell} cell The cell to check for.  Alternatively you can pass an object { x: <x-index>, y: <y-index> }.
+         * @param {number} columnIndex The column index of the cell to check.
+         * @param {number} rowIndex The row index of the cell to check.
          */
-        self.isCellVisible = function (cell) {
+        /**
+         * Checks if a cell is currently visible.
+         * @memberof canvasDataGrid
+         * @name isCellVisible
+         * @method
+         * @returns {boolean} when true, the cell is visible, when false the cell is not currently drawn.
+         * @param {cell} cell The cell to check for.  Alternatively you can pass an object { x: <x-pixel-value>, y: <y-pixel-value> }.
+         */
+        self.isCellVisible = function (cell, rowIndex) {
+            // overload
+            if (rowIndex !== undefined) {
+                return self.visibleCells.filter(function (c) {
+                    return c.columnIndex === cell && c.rowIndex === rowIndex;
+                }).length > 0;
+            }
             var x, l = self.visibleCells.length;
             for (x = 0; x < l; x += 1) {
                 if (cell.x === self.visibleCells[x].x && cell.y === self.visibleCells[x].y) {
@@ -5006,6 +5047,32 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 return false;
             }
             return true;
+        };
+        /**
+         * Checks if a given column is visible.
+         * @memberof canvasDataGrid
+         * @name isRowVisible
+         * @method
+         * @returns {boolean} When true, the row is visible.
+         * @param {number} rowIndex Row index.
+         */
+        self.isColumnVisible = function (columnIndex) {
+            return self.visibleCells.filter(function (c) {
+                return c.columnIndex === columnIndex;
+            }).length > 0;
+        };
+        /**
+         * Checks if a given row is visible.
+         * @memberof canvasDataGrid
+         * @name isRowVisible
+         * @method
+         * @returns {boolean} When true, the row is visible.
+         * @param {number} rowIndex Row index.
+         */
+        self.isRowVisible = function (rowIndex) {
+            return self.visibleCells.filter(function (c) {
+                return c.rowIndex === rowIndex;
+            }).length > 0;
         };
         /**
          * Gets the cell at columnIndex and rowIndex.
