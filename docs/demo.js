@@ -31,10 +31,9 @@ function demo() {
         };
     }
     function loadDataSet(url) {
-        document.body.innerHTML = '';
         var xhr = new XMLHttpRequest(),
             grid = canvasDatagrid({
-                parentNode: document.body,
+                parentNode: document.getElementById('grid'),
                 globalRowResize: true,
                 scrollPointerLock: !/edge|msie/i.test(window.navigator.userAgent)
             });
