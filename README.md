@@ -23,7 +23,7 @@ canvas-datagrid
 
 [Make your own custom styles](https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html)
 
-[Documentation](https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDataGrid.html)
+[Documentation](https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDatagrid.html)
 
 [Tutorials](https://tonygermaneri.github.io/canvas-datagrid/docs/tutorial-sample.html)
 
