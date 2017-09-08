@@ -842,7 +842,7 @@
                     });
                     grid.addEventListener('contextmenu', function (e) {
                         setTimeout(function () {
-                            done(assertIf(!((grid.shadowRoot || document.body) || document.body).contains(e.items[0].title), 'Expected context menu to exist in the body and be visible.'));
+                            done(assertIf(!document.body.contains(e.items[0].title), 'Expected context menu to exist in the body and be visible.'));
                         }, 1);
                     });
                     contextmenu(grid.canvas, 60, 37);
@@ -1524,7 +1524,7 @@
                             data: [{d: ''}]
                         });
                     grid.beginEditAt(0, 0);
-                    editInput = (grid.shadowRoot || document.body).lastChild;
+                    editInput = document.body.lastChild;
                     err = assertIf(editInput.tagName !== 'INPUT', 'Expected an input to have appeared');
                     if (err) { return done(err); }
                     ev = new Event('keydown');
@@ -1542,7 +1542,7 @@
                             data: [{d: ''}]
                         });
                     grid.beginEditAt(0, 0);
-                    editInput = (grid.shadowRoot || document.body).lastChild;
+                    editInput = document.body.lastChild;
                     ev = new Event('keydown');
                     ev.keyCode = kcs.enter;
                     editInput.value = 'blah';
@@ -1559,7 +1559,7 @@
                             data: [{d: ''}]
                         });
                     grid.beginEditAt(0, 0);
-                    editInput = (grid.shadowRoot || document.body).lastChild;
+                    editInput = document.body.lastChild;
                     ev = new Event('keydown');
                     ev.keyCode = kcs.enter;
                     editInput.value = 'blah';
@@ -1577,7 +1577,7 @@
                             schema: [{name: 'd', enum: ['a', 'b', 'c']}]
                         });
                     grid.beginEditAt(0, 0);
-                    editInput = (grid.shadowRoot || document.body).lastChild;
+                    editInput = document.body.lastChild;
                     done(assertIf(editInput.childNodes.length === 3
                             && editInput.tagName !== 'SELECT', 'Expected an input to have appeared'));
                     grid.endEdit();
@@ -1590,7 +1590,7 @@
                             schema: [{name: 'd', enum: [['a', 'A'], ['b', 'B'], ['c', 'C']]}]
                         });
                     grid.beginEditAt(0, 0);
-                    editInput = (grid.shadowRoot || document.body).lastChild;
+                    editInput = document.body.lastChild;
                     done(assertIf(editInput.childNodes[0].innerHTML === 'A'
                             && editInput.childNodes.length === 3
                             && editInput.tagName !== 'SELECT', 'Expected an input to have appeared'));
@@ -1608,7 +1608,7 @@
                     mousedown(grid.canvas, 45, 37);
                     mouseup(grid.canvas, 45, 37);
                     dblclick(grid.canvas, 45, 37);
-                    editInput = (grid.shadowRoot || document.body).lastChild;
+                    editInput = document.body.lastChild;
                     done(assertIf(editInput.tagName !== 'INPUT', 'Expected an input to have appeared'));
                     grid.endEdit();
                 });
@@ -1642,7 +1642,7 @@
                             data: smallData()
                         });
                     grid.beginEditAt(0, 0);
-                    editInput = (grid.shadowRoot || document.body).lastChild;
+                    editInput = document.body.lastChild;
                     ev = new Event('keydown');
                     ev.keyCode = kcs.tab;
                     editInput.dispatchEvent(ev);
@@ -1662,7 +1662,7 @@
                             data: smallData()
                         });
                     grid.beginEditAt(0, 0);
-                    editInput = (grid.shadowRoot || document.body).lastChild;
+                    editInput = document.body.lastChild;
                     ev = new Event('keydown');
                     ev.shiftKey = true;
                     ev.keyCode = kcs.tab;
@@ -2495,7 +2495,7 @@
                     ev.keyCode = kcs.enter;
                     grid.style.cellBackgroundColor = c.y;
                     grid.beginEditAt(0, 1);
-                    editInput = (grid.shadowRoot || document.body).lastChild;
+                    editInput = document.body.lastChild;
                     editInput.value = 'abcd';
                     editInput.dispatchEvent(ev);
                     assertPxColor(grid, 40, 90, c.y, function (err) {

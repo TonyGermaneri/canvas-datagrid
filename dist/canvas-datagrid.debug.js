@@ -70,198 +70,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/*!*********************!*\
-  !*** ./lib/main.js ***!
-  \*********************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true, evil: true*/
-/*globals Reflect: false, HTMLElement: true, define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [
-    __webpack_require__(/*! ./defaults */ 1),
-    __webpack_require__(/*! ./draw */ 2),
-    __webpack_require__(/*! ./events */ 3),
-    __webpack_require__(/*! ./intf */ 4),
-    __webpack_require__(/*! ./contextMenu */ 5),
-    __webpack_require__(/*! ./dom */ 6),
-    __webpack_require__(/*! ./publicMethods */ 7)
-], __WEBPACK_AMD_DEFINE_RESULT__ = function context(defaults) {
-    'use strict';
-    var modules = Array.prototype.slice.call(arguments),
-        typeMap;
-    function hyphenateProperty(prop, cust) {
-        var p = '';
-        Array.prototype.forEach.call(prop, function (char) {
-            if (char === char.toUpperCase()) {
-                p += '-' + char.toLowerCase();
-                return;
-            }
-            p += char;
-        });
-        return (cust ? '-cdg-' : '') + p;
-    }
-    function getDefaultItem(base, item) {
-        var i = {},
-            r;
-        defaults(i);
-        r = i.defaults[base].filter(function (i) {
-            return i[0].toLowerCase() === item.toLowerCase()
-                || hyphenateProperty(i[0]) === item.toLowerCase()
-                || hyphenateProperty(i[0], true) === item.toLowerCase();
-        })[0];
-        return r;
-    }
-    typeMap = {
-        data: function (strData) {
-            try {
-                return JSON.parse(strData);
-            } catch (e) {
-                throw new Error('Cannot read JSON data in canvas-datagrid data attribute.');
-            }
-        },
-        style: function (fullStyleString) {
-            var s = {};
-            fullStyleString.split(';').forEach(function (sd) {
-                if (!sd) { return; }
-                var i = sd.indexOf(':'),
-                    key = sd.substring(0, i),
-                    val = sd.substring(i + 1),
-                    idef = getDefaultItem('styles', key);
-                if (idef === undefined) {
-                    console.warn('Unrecognized style directive', key);
-                    return;
-                }
-                s[idef[0]] = typeMap[typeof idef[1]](val.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, ''));
-            });
-            return s;
-        },
-        schema: function (strSchema) {
-            try {
-                return JSON.parse(strSchema);
-            } catch (e) {
-                throw new Error('Cannot read JSON data in canvas-datagrid schema attribute.');
-            }
-        },
-        number: function (strNum) {
-            return parseInt(strNum, 10);
-        },
-        boolean: function (strBool) {
-            return (/true/i).test(strBool);
-        },
-        string: function (str) {
-            return str;
-        }
-    };
-    function Grid(args) {
-        args = args || {};
-        var self = {};
-        self.isComponent = args.component === undefined;
-        self.intf = self.isComponent ? eval('Reflect.construct(HTMLElement, [], new.target)') : {};
-        self.args = args;
-        self.createGrid = function grid(args) {
-            args.component = false;
-            return new Grid(args);
-        };
-        modules.forEach(function (module) {
-            module(self);
-        });
-        self.intf.args = self.args;
-        self.intf.init = self.init;
-        if (!self.isComponent) {
-            self.init();
-        }
-        return self.intf;
-    }
-    function getObservableAttributes() {
-        var i = {}, attrs = ['style', 'data', 'schema'];
-        defaults(i);
-        i.defaults.attributes.forEach(function (attr) {
-            attrs.push(attr[0].toLowerCase());
-        });
-        return attrs;
-    }
-    function connectedCallback() {
-        var intf = this, s;
-        if (intf.initialized) { return; }
-        intf.initialized = true;
-        intf.args.parentNode = intf;
-        //HACK init() will secretly return the internal reference object.
-        //since init is only run after instantiation in the component version
-        //it won't work in the amd version and won't return self, so it is still
-        //technically private since it's impossible to get at.
-        //this has to be done so intf setters can bet run and alter self without stack overflows
-        s = intf.init();
-        ['style', 'data', 'schema'].forEach(function (key) {
-            Object.defineProperty(intf.args, key, {
-                set: function (value) {
-                    s[key] = value;
-                    intf.draw();
-                },
-                get: function () {
-                    return s[key];
-                }
-            });
-        });
-    }
-    function attributeChangedCallback(attrName, oldVal, newVal) {
-        var tfn, j, s, intf = this;
-        if (attrName === 'style') {
-            j = typeMap.style(newVal);
-            s = intf.args.style ? JSON.parse(JSON.stringify(intf.args.style)) : {};
-            Object.keys(j).forEach(function (key) {
-                s[key] = j[key];
-            });
-            intf.args.style = s;
-            return;
-        }
-        if (attrName === 'data') {
-            intf.args.data = typeMap.data(newVal);
-            return;
-        }
-        if (attrName === 'schema') {
-            intf.args.schema = typeMap.schema(newVal);
-            return;
-        }
-        tfn = typeMap[typeof getDefaultItem('attributes', attrName)[1]];
-        // trim incoming values
-        intf.attributes[attrName] = tfn(newVal);
-        return;
-    }
-    if (window.HTMLElement) {
-        Grid.prototype = Object.create(window.HTMLElement.prototype);
-    }
-    // export web component
-    if (window.customElements) {
-        Grid.observedAttributes = getObservableAttributes();
-        Grid.prototype.disconnectedCallback = function () { this.dispose(); };
-        Grid.prototype.attributeChangedCallback = attributeChangedCallback;
-        Grid.prototype.connectedCallback = connectedCallback;
-        window.customElements.define('canvas-datagrid', Grid);
-    }
-    // export global
-    if (window && !window.canvasDatagrid && !window.require) {
-        window.canvasDatagrid = function (args) { return new Grid(args); };
-    }
-    // export amd loader
-    module.exports = function grid(args) {
-        args = args || {};
-        args.component = false;
-        return new Grid(args);
-    };
-    return module.exports;
-}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
-
-/***/ }),
-/* 1 */
 /*!*************************!*\
   !*** ./lib/defaults.js ***!
   \*************************/
@@ -506,7 +319,217 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 
 
 /***/ }),
+/* 1 */
+/*!*********************!*\
+  !*** ./lib/main.js ***!
+  \*********************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true, evil: true*/
+/*globals Reflect: false, HTMLElement: true, define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [
+    __webpack_require__(/*! ./component */ 2),
+    __webpack_require__(/*! ./defaults */ 0),
+    __webpack_require__(/*! ./draw */ 3),
+    __webpack_require__(/*! ./events */ 4),
+    __webpack_require__(/*! ./intf */ 5),
+    __webpack_require__(/*! ./contextMenu */ 6),
+    __webpack_require__(/*! ./dom */ 7),
+    __webpack_require__(/*! ./publicMethods */ 8)
+], __WEBPACK_AMD_DEFINE_RESULT__ = function context(component) {
+    'use strict';
+    component = component();
+    var modules = Array.prototype.slice.call(arguments);
+    function Grid(args) {
+        args = args || {};
+        var self = {};
+        self.isComponent = args.component === undefined;
+        self.intf = self.isComponent ? eval('Reflect.construct(HTMLElement, [], new.target)') : {};
+        self.args = args;
+        self.createGrid = function grid(args) {
+            args.component = false;
+            return new Grid(args);
+        };
+        modules.forEach(function (module) {
+            module(self);
+        });
+        self.intf.args = self.args;
+        self.intf.init = self.init;
+        if (!self.isComponent) {
+            self.init();
+        }
+        return self.intf;
+    }
+    if (window.HTMLElement) {
+        Grid.prototype = Object.create(window.HTMLElement.prototype);
+    }
+    // export web component
+    if (window.customElements) {
+        Grid.observedAttributes = component.getObservableAttributes();
+        Grid.prototype.disconnectedCallback = function () { this.dispose(); };
+        Grid.prototype.attributeChangedCallback = component.attributeChangedCallback;
+        Grid.prototype.connectedCallback = component.connectedCallback;
+        window.customElements.define('canvas-datagrid', Grid);
+    }
+    // export global
+    if (window && !window.canvasDatagrid && !window.require) {
+        window.canvasDatagrid = function (args) { return new Grid(args); };
+    }
+    // export amd loader
+    module.exports = function grid(args) {
+        args = args || {};
+        args.component = false;
+        return new Grid(args);
+    };
+    return module.exports;
+}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ }),
 /* 2 */
+/*!**************************!*\
+  !*** ./lib/component.js ***!
+  \**************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true*/
+/*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! ./defaults */ 0)], __WEBPACK_AMD_DEFINE_RESULT__ = function (defaults) {
+    'use strict';
+    return function (self) {
+        self = self || {};
+        var typeMap, component = {};
+        function hyphenateProperty(prop, cust) {
+            var p = '';
+            Array.prototype.forEach.call(prop, function (char) {
+                if (char === char.toUpperCase()) {
+                    p += '-' + char.toLowerCase();
+                    return;
+                }
+                p += char;
+            });
+            return (cust ? '-cdg-' : '') + p;
+        }
+        function getDefaultItem(base, item) {
+            var i = {},
+                r;
+            defaults(i);
+            r = i.defaults[base].filter(function (i) {
+                return i[0].toLowerCase() === item.toLowerCase()
+                    || hyphenateProperty(i[0]) === item.toLowerCase()
+                    || hyphenateProperty(i[0], true) === item.toLowerCase();
+            })[0];
+            return r;
+        }
+        typeMap = {
+            data: function (strData) {
+                try {
+                    return JSON.parse(strData);
+                } catch (e) {
+                    throw new Error('Cannot read JSON data in canvas-datagrid data attribute.');
+                }
+            },
+            style: function (fullStyleString) {
+                var s = {};
+                fullStyleString.split(';').forEach(function (sd) {
+                    if (!sd) { return; }
+                    var i = sd.indexOf(':'),
+                        key = sd.substring(0, i),
+                        val = sd.substring(i + 1),
+                        idef = getDefaultItem('styles', key);
+                    if (idef === undefined) {
+                        console.warn('Unrecognized style directive', key);
+                        return;
+                    }
+                    s[idef[0]] = typeMap[typeof idef[1]](val.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, ''));
+                });
+                return s;
+            },
+            schema: function (strSchema) {
+                try {
+                    return JSON.parse(strSchema);
+                } catch (e) {
+                    throw new Error('Cannot read JSON data in canvas-datagrid schema attribute.');
+                }
+            },
+            number: function (strNum) {
+                return parseInt(strNum, 10);
+            },
+            boolean: function (strBool) {
+                return (/true/i).test(strBool);
+            },
+            string: function (str) {
+                return str;
+            }
+        };
+        component.getObservableAttributes = function () {
+            var i = {}, attrs = ['style', 'data', 'schema'];
+            defaults(i);
+            i.defaults.attributes.forEach(function (attr) {
+                attrs.push(attr[0].toLowerCase());
+            });
+            return attrs;
+        };
+        component.connectedCallback = function () {
+            var intf = this, s;
+            if (intf.initialized) { return; }
+            intf.initialized = true;
+            intf.args.parentNode = intf;
+            //HACK init() will secretly return the internal reference object.
+            //since init is only run after instantiation in the component version
+            //it won't work in the amd version and won't return self, so it is still
+            //technically private since it's impossible to get at.
+            //this has to be done so intf setters can bet run and alter self without stack overflows
+            s = intf.init();
+            ['style', 'data', 'schema'].forEach(function (key) {
+                Object.defineProperty(intf.args, key, {
+                    set: function (value) {
+                        s[key] = value;
+                        intf.draw();
+                    },
+                    get: function () {
+                        return s[key];
+                    }
+                });
+            });
+        };
+        component.attributeChangedCallback = function (attrName, oldVal, newVal) {
+            var tfn, j, s, intf = this;
+            if (attrName === 'style') {
+                j = typeMap.style(newVal);
+                s = intf.args.style ? JSON.parse(JSON.stringify(intf.args.style)) : {};
+                Object.keys(j).forEach(function (key) {
+                    s[key] = j[key];
+                });
+                intf.args.style = s;
+                return;
+            }
+            if (attrName === 'data') {
+                intf.args.data = typeMap.data(newVal);
+                return;
+            }
+            if (attrName === 'schema') {
+                intf.args.schema = typeMap.schema(newVal);
+                return;
+            }
+            tfn = typeMap[typeof getDefaultItem('attributes', attrName)[1]];
+            // trim incoming values
+            intf.attributes[attrName] = tfn(newVal);
+            return;
+        };
+        self.component = component;
+        return component;
+    };
+}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+/***/ }),
+/* 3 */
 /*!*********************!*\
   !*** ./lib/draw.js ***!
   \*********************/
@@ -1422,7 +1445,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /*!***********************!*\
   !*** ./lib/events.js ***!
   \***********************/
@@ -1700,20 +1723,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             self.dispatchEvent('resize', {});
             return true;
-        };
-        self.resizeEditInput = function () {
-            if (self.input) {
-                var pos = self.canvas.getBoundingClientRect(),
-                    s = self.scrollOffset(self.canvas),
-                    bx2 = (self.style.cellBorderWidth * 2),
-                    cell = self.getVisibleCellByIndex(self.input.editCell.columnIndex, self.input.editCell.rowIndex)
-                        || {x: -100, y: -100, height: 0, width: 0};
-                self.input.style.left = pos.left + cell.x - self.style.cellBorderWidth + self.canvasOffsetLeft - s.left + 'px';
-                self.input.style.top = pos.top + cell.y - bx2 + self.canvasOffsetTop - s.top + 'px';
-                self.input.style.height = cell.height - bx2 - 1 + 'px';
-                self.input.style.width = cell.width - bx2 - self.style.cellPaddingLeft + 'px';
-                self.clipElement(self.input);
-            }
         };
         self.scroll = function (e, dontDraw) {
             var s = self.getVisibleSchema(),
@@ -2409,7 +2418,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /*!*********************!*\
   !*** ./lib/intf.js ***!
   \*********************/
@@ -2502,50 +2511,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
             });
             return d;
-        };
-        self.scrollOffset = function (e) {
-            var x = 0, y = 0;
-            while (e.parentNode && e.nodeName !== 'CANVAS-DATAGRID') {
-                if (e.nodeType !== 'canvas-datagrid-tree'
-                        && e.nodeType !== 'canvas-datagrid-cell') {
-                    x -= e.scrollLeft;
-                    y -= e.scrollTop;
-                }
-                e = e.parentNode;
-            }
-            return {left: x, top: y};
-        };
-        self.position = function (e, ignoreScrollOffset) {
-            var x = 0, y = 0, s = e, h, w;
-            while (e.offsetParent && e.nodeName !== 'CANVAS-DATAGRID') {
-                x += e.offsetLeft;
-                y += e.offsetTop;
-                h = e.offsetHeight;
-                w = e.offsetWidth;
-                e = e.offsetParent;
-            }
-            if (ignoreScrollOffset) {
-                return {left: x, top: y, height: h, width: w};
-            }
-            e = s;
-            s = self.scrollOffset(e);
-            return { left: x + s.left, top: y + s.top, height: h, width: w };
-        };
-        self.getLayerPos = function (e) {
-            var rect = self.canvas.getBoundingClientRect(),
-                pos = {
-                    x: e.clientX - rect.left,
-                    y: e.clientY - rect.top
-                };
-            if (self.isChildGrid) {
-                pos.x -= self.canvasOffsetLeft;
-                pos.y -= self.canvasOffsetTop;
-            }
-            return {
-                x: pos.x,
-                y: pos.y,
-                rect: rect
-            };
         };
         self.fillArray = function (low, high, step) {
             step = step || 1;
@@ -3446,7 +3411,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /*!****************************!*\
   !*** ./lib/contextMenu.js ***!
   \****************************/
@@ -3631,8 +3596,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 upArrow.innerHTML = self.style.contextMenuArrowUpHTML;
                 downArrow.innerHTML = self.style.contextMenuArrowDownHTML;
                 container.appendChild(upArrow);
-                self.parentDOMNode.appendChild(downArrow);
-                self.parentDOMNode.appendChild(container);
+                document.body.appendChild(downArrow);
+                document.body.appendChild(container);
                 rect = container.getBoundingClientRect();
                 if (rect.bottom > window.innerHeight && !(parentContextMenu && parentContextMenu.inputDropdown)) {
                     loc.y = window.innerHeight - container.offsetHeight;
@@ -3950,7 +3915,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /*!********************!*\
   !*** ./lib/dom.js ***!
   \********************/
@@ -3963,6 +3928,64 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
     'use strict';
     return function (self) {
+        self.scrollOffset = function (e) {
+            var x = 0, y = 0;
+            while (e.parentNode && e.nodeName !== 'CANVAS-DATAGRID') {
+                if (e.nodeType !== 'canvas-datagrid-tree'
+                        && e.nodeType !== 'canvas-datagrid-cell') {
+                    x -= e.scrollLeft;
+                    y -= e.scrollTop;
+                }
+                e = e.parentNode;
+            }
+            return {left: x, top: y};
+        };
+        self.resizeEditInput = function () {
+            if (self.input) {
+                var pos = self.canvas.getBoundingClientRect(),
+                    s = self.scrollOffset(self.canvas),
+                    bx2 = (self.style.cellBorderWidth * 2),
+                    cell = self.getVisibleCellByIndex(self.input.editCell.columnIndex, self.input.editCell.rowIndex)
+                        || {x: -100, y: -100, height: 0, width: 0};
+                self.input.style.left = pos.left + cell.x - self.style.cellBorderWidth + self.canvasOffsetLeft - s.left + 'px';
+                self.input.style.top = pos.top + cell.y - bx2 + self.canvasOffsetTop - s.top + 'px';
+                self.input.style.height = cell.height - bx2 - 1 + 'px';
+                self.input.style.width = cell.width - bx2 - self.style.cellPaddingLeft + 'px';
+                self.clipElement(self.input);
+            }
+        };
+        self.position = function (e, ignoreScrollOffset) {
+            var x = 0, y = 0, s = e, h, w;
+            while (e.offsetParent && e.nodeName !== 'CANVAS-DATAGRID') {
+                x += e.offsetLeft;
+                y += e.offsetTop;
+                h = e.offsetHeight;
+                w = e.offsetWidth;
+                e = e.offsetParent;
+            }
+            if (ignoreScrollOffset) {
+                return {left: x, top: y, height: h, width: w};
+            }
+            e = s;
+            s = self.scrollOffset(e);
+            return { left: x + s.left, top: y + s.top, height: h, width: w };
+        };
+        self.getLayerPos = function (e) {
+            var rect = self.canvas.getBoundingClientRect(),
+                pos = {
+                    x: e.clientX - rect.left,
+                    y: e.clientY - rect.top
+                };
+            if (self.isChildGrid) {
+                pos.x -= self.canvasOffsetLeft;
+                pos.y -= self.canvasOffsetTop;
+            }
+            return {
+                x: pos.x,
+                y: pos.y,
+                rect: rect
+            };
+        };
         /**
          * Ends editing, optionally aborting the edit.
          * @memberof canvasDataGrid
@@ -4001,7 +4024,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
                 self.draw(true);
             }
-            self.parentDOMNode.removeChild(self.input);
+            document.body.removeChild(self.input);
             self.controlInput.focus();
             self.dispatchEvent('endedit', {
                 cell: cell,
@@ -4026,7 +4049,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 s = self.getVisibleSchema(),
                 enumItems,
                 //HACK for IE10, does not like literal enum
-                enu = cell.header['enum'];
+                enu = cell.header['enum'],
+                option,
+                valueInEnum;
             if (self.dispatchEvent('beforebeginedit', {cell: cell})) { return false; }
             self.scrollIntoView(x, y);
             self.setActiveCell(x, y);
@@ -4036,98 +4061,94 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.input = document.createElement(self.attributes.multiLine
                     ? 'textarea' : 'input');
             }
-            function postDraw() {
-                var option, valueInEnum;
-                cell = self.getVisibleCellByIndex(x, y);
-                if (enu) {
-                    // add enums
-                    if (typeof enu === 'function') {
-                        enumItems = enu.apply(self.intf, [{cell: cell}]);
-                    } else if (Array.isArray(enu)) {
-                        enumItems = enu;
-                    }
-                    enumItems.forEach(function (e) {
-                        var i = document.createElement('option'),
-                            val,
-                            title;
-                        if (Array.isArray(e)) {
-                            val = e[0];
-                            title = e[1];
-                        } else {
-                            val = e;
-                            title = e;
-                        }
-                        if (val === cell.value) { valueInEnum = true; }
-                        i.value = val;
-                        i.innerHTML = title;
-                        self.input.appendChild(i);
-                    });
-                    if (!valueInEnum) {
-                        option = document.createElement('option');
-                        option.value = cell.value;
-                        option.innerHTML = cell.value;
-                        self.input.appendChild(option);
-                    }
-                    self.input.addEventListener('change', function () {
-                        self.endEdit();
-                        self.draw(true);
-                    });
+            cell = self.getVisibleCellByIndex(x, y);
+            if (enu) {
+                // add enums
+                if (typeof enu === 'function') {
+                    enumItems = enu.apply(self.intf, [{cell: cell}]);
+                } else if (Array.isArray(enu)) {
+                    enumItems = enu;
                 }
-                self.parentDOMNode.appendChild(self.input);
-                self.createInlineStyle(self.input, 'canvas-datagrid-edit-input');
-                self.input.style.position = 'absolute';
-                self.input.editCell = cell;
-                self.resizeEditInput();
-                self.input.style.zIndex = '2';
-                self.input.value = cell.value;
-                self.input.focus();
-                self.input.addEventListener('click', self.stopPropagation);
-                self.input.addEventListener('dblclick', self.stopPropagation);
-                self.input.addEventListener('mouseup', self.stopPropagation);
-                self.input.addEventListener('mousedown', self.stopPropagation);
-                self.input.addEventListener('keydown', function (e) {
-                    var nx = cell.columnIndex,
-                        ny = cell.rowIndex;
-                    // esc
-                    if (e.keyCode === 27) {
-                        self.endEdit(true);
-                        self.draw(true);
-                    // enter
-                    } else if (e.keyCode === 13
-                            && (!self.attributes.multiLine
-                                || (self.attributes.multiLine && e.shiftKey))) {
-                        self.endEdit();
-                        self.draw(true);
-                    } else if (e.keyCode === 9) {
-                        e.preventDefault();
-                        if (!self.endEdit()) {
-                            return;
-                        }
-                        if (e.shiftKey) {
-                            nx -= 1;
-                        } else {
-                            nx += 1;
-                        }
-                        if (nx < 0) {
-                            nx = s.length - 1;
-                            ny -= 1;
-                        }
-                        if (nx > s.length - 1) {
-                            nx = 0;
-                            ny += 1;
-                        }
-                        if (ny < 0) {
-                            ny = self.data.length - 1;
-                        }
-                        if (ny > self.data.length - 1) {
-                            ny = 0;
-                        }
-                        self.scrollIntoView(nx, ny);
-                        self.beginEditAt(nx, ny);
+                enumItems.forEach(function (e) {
+                    var i = document.createElement('option'),
+                        val,
+                        title;
+                    if (Array.isArray(e)) {
+                        val = e[0];
+                        title = e[1];
+                    } else {
+                        val = e;
+                        title = e;
                     }
+                    if (val === cell.value) { valueInEnum = true; }
+                    i.value = val;
+                    i.innerHTML = title;
+                    self.input.appendChild(i);
+                });
+                if (!valueInEnum) {
+                    option = document.createElement('option');
+                    option.value = cell.value;
+                    option.innerHTML = cell.value;
+                    self.input.appendChild(option);
+                }
+                self.input.addEventListener('change', function () {
+                    self.endEdit();
+                    self.draw(true);
                 });
             }
-            postDraw();
+            document.body.appendChild(self.input);
+            self.createInlineStyle(self.input, 'canvas-datagrid-edit-input');
+            self.input.style.position = 'absolute';
+            self.input.editCell = cell;
+            self.resizeEditInput();
+            self.input.style.zIndex = '2';
+            self.input.value = cell.value;
+            self.input.focus();
+            self.input.addEventListener('click', self.stopPropagation);
+            self.input.addEventListener('dblclick', self.stopPropagation);
+            self.input.addEventListener('mouseup', self.stopPropagation);
+            self.input.addEventListener('mousedown', self.stopPropagation);
+            self.input.addEventListener('keydown', function (e) {
+                var nx = cell.columnIndex,
+                    ny = cell.rowIndex;
+                // esc
+                if (e.keyCode === 27) {
+                    self.endEdit(true);
+                    self.draw(true);
+                // enter
+                } else if (e.keyCode === 13
+                        && (!self.attributes.multiLine
+                            || (self.attributes.multiLine && e.shiftKey))) {
+                    self.endEdit();
+                    self.draw(true);
+                } else if (e.keyCode === 9) {
+                    e.preventDefault();
+                    if (!self.endEdit()) {
+                        return;
+                    }
+                    if (e.shiftKey) {
+                        nx -= 1;
+                    } else {
+                        nx += 1;
+                    }
+                    if (nx < 0) {
+                        nx = s.length - 1;
+                        ny -= 1;
+                    }
+                    if (nx > s.length - 1) {
+                        nx = 0;
+                        ny += 1;
+                    }
+                    if (ny < 0) {
+                        ny = self.data.length - 1;
+                    }
+                    if (ny > self.data.length - 1) {
+                        ny = 0;
+                    }
+                    self.scrollIntoView(nx, ny);
+                    self.beginEditAt(nx, ny);
+                }
+            });
             self.dispatchEvent('beginedit', {cell: cell, input: self.input});
         };
         self.createInlineStyle = function (el, className) {
@@ -4263,7 +4284,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     padding: self.style.contextMenuPadding,
                     borderRadius: self.style.contextMenuBorderRadius,
                     opacity: self.style.contextMenuOpacity,
-                    overflow: 'hidden'
+                    overflow: 'hidden',
+                    whiteSpace: 'nowrap'
                 },
                 'canvas-datagrid-invalid-search-regExp': {
                     background: self.style.contextMenuFilterInvalidExpresion
@@ -4359,7 +4381,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /*!******************************!*\
   !*** ./lib/publicMethods.js ***!
   \******************************/
