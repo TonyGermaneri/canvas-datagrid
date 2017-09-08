@@ -81,7 +81,7 @@ Data type is defined in the <a href="https://tonygermaneri.github.io/canvas-data
 };</code></pre><p>The return value of the formatter function will be displayed in the cell instead of the value
 in the data without altering the data.</p>
 <p>The second method is the <code>rendertext</code> event.  By subscribing to the <code>rendertext</code> event listener
-we can intercept the value in the context of the <a href="https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDataGrid.cell.html">cell</a> being drawn and alter it.</p>
+we can intercept the value in the context of the <a href="https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDatagrid.cell.html">cell</a> being drawn and alter it.</p>
 <p>This method is slightly slower due to the O(n) loop employed in the event handler class.</p>
 <p>This method is not dependent on values in the schema.  This methods overrides <code>grid.formatters</code>.</p>
 <pre class="prettyprint source"><code>grid.addEventListener('rendertext', function (e) {
