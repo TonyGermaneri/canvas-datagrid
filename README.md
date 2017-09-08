@@ -3,7 +3,7 @@ canvas-datagrid
 
 [Demo](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html)
 
-[![Coverage Status](https://coveralls.io/repos/github/TonyGermaneri/canvas-datagrid/badge.svg?branch=master&build=1610)](https://coveralls.io/github/TonyGermaneri/canvas-datagrid?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/TonyGermaneri/canvas-datagrid/badge.svg?branch=master&build=1640)](https://coveralls.io/github/TonyGermaneri/canvas-datagrid?branch=master)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![NPM](https://img.shields.io/npm/v/canvas-datagrid.svg)](https://www.npmjs.com/package/canvas-datagrid)
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/TonyGermaneri/canvas-datagrid)
@@ -91,7 +91,7 @@ Using web component
 <custom-element-demo>
   <template>
     <script src="https://tonygermaneri.github.io/canvas-datagrid/dist/canvas-datagrid.debug.js"></script>
-    <next-code-block></next-code-block>
+    <div style="height: 300px;"><next-code-block></next-code-block></div>
   </template>
 </custom-element-demo>
 ```
