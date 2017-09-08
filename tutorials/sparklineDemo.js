@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     // create a new grid
     var grid = canvasDatagrid({
-        parentNode: document.body,
+        parentNode: document.getElementById('grid'),
         schema: [
             {name: 'col1', width: 220},
             {name: 'col2', width: 150},
