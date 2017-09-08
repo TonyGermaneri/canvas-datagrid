@@ -6,7 +6,7 @@
   "scripts": {
     "build-docs": "./node_modules/.bin/jsdoc -u ./tutorials -d ./docs -c ./jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md -r ./lib; cp ./tutorials/*.js ./docs/",
     "postinstall": "npm run-script build",
-    "build-gh-pages": "git checkout gh-pages; git merge master --no-edit; npm run build-docs; npm test; git add .; git commit -m 'rebuilt docs, tests.'; git push;",
+    "build-gh-pages": "git checkout gh-pages; git merge master --no-edit; npm run build-docs; npm test; git add .; git commit -m 'rebuilt docs, tests.'; git push; get checkout master",
     "build-watch": "./node_modules/.bin/webpack --output-library=canvasDatagrid --output-library-target=umd  --watch -d --entry=./lib/main.js --output-path=./dist --output-filename=canvas-datagrid.debug.js --devtool source-map --output-source-map-filename='canvas-datagrid.debug.map'",
     "build-dev": "./node_modules/.bin/webpack --output-library=canvasDatagrid --output-library-target=umd  -d --entry=./lib/main.js --output-path=./dist --output-filename=canvas-datagrid.debug.js --devtool source-map --output-source-map-filename='canvas-datagrid.debug.map'",
     "test": "npm run build-instrument;npm run build-pack-instrument;npm run build-run-test;npm run build-run-report",
