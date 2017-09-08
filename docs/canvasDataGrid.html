@@ -100,15 +100,15 @@
     
     <div class="description">
         Canvas Datagrid is a hierarchical canvas based web component.  The grid can be created in a number of ways.
-You can use the grid as a web component by using the tag `<canvas-datagrid></canvas-datagrid>` anywhere in your document.
+You can use the grid as a web component by using the tag `&lt;canvas-datagrid&gt;&lt;/canvas-datagrid&gt;` anywhere in your document.
 You can create the web component by running `var foo = document.createElement('canvas-datagrid')`.
 You can use the Webpack3 universal module loader by adding one of many module loaders to your application code.
 Here is an example using AMD module loader <a href="https://tonygermaneri.github.io/canvas-datagrid/tutorials/amdDemo.html">https://tonygermaneri.github.io/canvas-datagrid/tutorials/amdDemo.html</a>.
-You can also load the grid by invoking the global method `var foo = canvasDatagrid(<args>);`
+You can also load the grid by invoking the global method `var foo = canvasDatagrid(&lt;args&gt;);`
 If you create the grid using the non-web component model you can attach the grid to an existing canvas by passing the canvas in as the `parentNode` when you instantiate the grid.
 No matter how you create it, the grid will attempt to create a Shadow DOM element and attach a canvas within.
 Although the grid itself is pure canvas, there are some supporting elements of the grid that are HTMLElements.
-In order to overlap parts of the page that are not on the canvas, the context menu is a `<div>`.
+In order to overlap parts of the page that are not on the canvas, the context menu is a `&lt;div&gt;`.
 In order to support advanced key commands, copying, pasting as well as user customization outside of this library, the editing input/textarea is DOM.
 In order to capture keystrokes, a hidden input is placed outside of the visible area of the web page to capture keystroke and translate them into grid commands, such as cursor navigation.
 You can customize almost every behavior of the grid by subscribing to an event the event handler collection.  Most events have `e.preventDefault();` that will allow you to manipulate the grid's behavior on a very granular level.
@@ -939,7 +939,7 @@ Read the extensive tutorials section or view a demo and check out the source cod
                 </td>
             
 
-            <td class="description last">When true, all columns will be automatically resized to fit the data in them. Warning! Expensive for large (>100k ~2 seconds) datasets.</td>
+            <td class="description last">When true, all columns will be automatically resized to fit the data in them. Warning! Expensive for large (&gt;100k ~2 seconds) datasets.</td>
         </tr>
 
     
