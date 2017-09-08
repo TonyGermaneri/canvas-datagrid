@@ -66,6 +66,20 @@ document.addEventListener('DOMContentLoaded', function () {
             {name: 'col3', width: 300}
         ]
     });
+    grid.addEventListener('contextmenu', function (e) {
+        e.items.push({
+            title: 'View page source',
+            click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/sparklineDemo.html', 'src'); }
+        });
+        e.items.push({
+            title: 'View JS module',
+            click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/sparklineDemo.js', 'src'); }
+        });
+        e.items.push({
+            title: 'Go to main canvas-datagrid GitHub page',
+            click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid', 'src'); }
+        });
+    });
     grid.addEventListener('beforebeginedit', function (e) {
         e.preventDefault();
     });

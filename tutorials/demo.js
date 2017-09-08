@@ -37,6 +37,20 @@ function demo() {
                 globalRowResize: true,
                 scrollPointerLock: !/edge|msie/i.test(window.navigator.userAgent)
             });
+        grid.addEventListener('contextmenu', function (e) {
+            e.items.push({
+                title: 'View page source',
+                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/demo.html', 'src'); }
+            });
+            e.items.push({
+                title: 'View JS module',
+                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/demo.js', 'src'); }
+            });
+            e.items.push({
+                title: 'Go to main canvas-datagrid GitHub page',
+                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid', 'src'); }
+            });
+        });
         xhr.addEventListener('progress', function (e) {
             grid.data = [{ status: 'Loading data: ' + e.loaded + ' of ' + e.total + ' bytes...'}];
         });
