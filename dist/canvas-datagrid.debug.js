@@ -4388,7 +4388,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.parentIsCanvas = /^canvas$/i.test(self.parentDOMNode.tagName);
                 if (self.isComponent) {
                     self.shadowCss = document.createElement('style');
-                    self.shadowCss.innerHTML = ':host { display: block; padding: 0; margin: 0; }';
+                    self.shadowCss.innerHTML = ':host canvas { display:flex; flex-direction: column; padding: 0; margin: 0; }';
                     self.parentDOMNode = self.parentNode.parentElement;
                     self.canvas = document.createElement('canvas');
                     self.parentNode.appendChild(self.shadowCss);
@@ -4444,7 +4444,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 } else {
                     self.shadowRootParentElement = self.args.parentNode;
                 }
-                self.shadowRoot = self.intf.attachShadow({mode: self.args.debug ? 'open' : 'closed'});
+                self.shadowRoot = self.shadowRootParentElement.attachShadow({mode: self.args.debug ? 'open' : 'closed'});
                 self.args.parentNode = self.shadowRoot;
             }
             self.appendTo(self.args.parentNode);
