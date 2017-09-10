@@ -83,10 +83,23 @@
                 padding: 0;
                 overflow: hidden;
             }
+            .grid {
+                --cdg-height: 50%;
+            }
+            .grid2 {
+                --cdg-cell-color: red;
+                --cdg-cell-background-color: blue;
+                --cdg-background-color: blue;
+            }
         </style>
     </head>
     <body>
-        <canvas-datagrid data='[{"a": 0, "b": 1}]' style='background-color: lightblue;' selectionmode='row'></canvas-datagrid>
+        <canvas-datagrid data='[{"a": 0, "b": 1}]'
+            id="grid"
+            selectionmode="row"
+            class="grid"
+            ></canvas-datagrid>
+            <div style="height: 30px; width: 30px; background: red;"></div>
     </body>
 </html>
 

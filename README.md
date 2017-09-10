@@ -13,13 +13,13 @@ canvas-datagrid
 * Support for millions of contiguous rows and columns without paging or loading.
 * Support for touch devices (phones and tablets).
 * Extensible styling, filtering, formatting, resizing, selecting, and ordering.
-* W3C ES5 web component.
+* W3C ES5 web component, rich API of events, methods and properties using the familiar W3C interface.
+* Works with Firefox, IE11, Edge, Safari and Chrome.
 * Built in and custom styles.
 * Per-user styles, settings using localStorage.
-* Single canvas element supporting multiple nested tree or cell grids.
-* Rich API of events, methods and properties using the familiar W3C interface.
-* Zero dependencies, very small code base, distributed as a single ~80k (~20k gziped) file.
 * Hierarchal context menu.
+* Zero dependencies, very small code base, distributed as a single ~80k (~20k gziped) file.
+
 
 [Make your own custom styles](https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html)
 
