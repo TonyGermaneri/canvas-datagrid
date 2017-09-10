@@ -1,0 +1,2927 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for lib/intf.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">lib/</a> intf.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">89.98% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>503/559</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">82.89% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>189/228</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">82.44% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>108/131</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">90.68% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>496/547</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762
+763
+764
+765
+766
+767
+768
+769
+770
+771
+772
+773
+774
+775
+776
+777
+778
+779
+780
+781
+782
+783
+784
+785
+786
+787
+788
+789
+790
+791
+792
+793
+794
+795
+796
+797
+798
+799
+800
+801
+802
+803
+804
+805
+806
+807
+808
+809
+810
+811
+812
+813
+814
+815
+816
+817
+818
+819
+820
+821
+822
+823
+824
+825
+826
+827
+828
+829
+830
+831
+832
+833
+834
+835
+836
+837
+838
+839
+840
+841
+842
+843
+844
+845
+846
+847
+848
+849
+850
+851
+852
+853
+854
+855
+856
+857
+858
+859
+860
+861
+862
+863
+864
+865
+866
+867
+868
+869
+870
+871
+872
+873
+874
+875
+876
+877
+878
+879
+880
+881
+882
+883
+884
+885
+886
+887
+888
+889
+890
+891
+892
+893
+894
+895
+896
+897
+898
+899
+900
+901
+902
+903
+904
+905
+906
+907
+908
+909
+910
+911
+912
+913
+914
+915
+916
+917
+918
+919
+920
+921
+922
+923
+924
+925
+926
+927
+928
+929
+930
+931
+932
+933
+934
+935
+936
+937
+938
+939
+940
+941
+942
+943
+944
+945
+946
+947
+948
+949
+950
+951
+952
+953
+954
+955</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">76×</span>
+<span class="cline-any cline-yes">76×</span>
+<span class="cline-any cline-yes">149×</span>
+<span class="cline-any cline-yes">149×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">147×</span>
+<span class="cline-any cline-yes">147×</span>
+<span class="cline-any cline-yes">50×</span>
+<span class="cline-any cline-yes">148×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">97×</span>
+<span class="cline-any cline-yes">206×</span>
+<span class="cline-any cline-yes">184×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">76×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">540×</span>
+<span class="cline-any cline-yes">540×</span>
+<span class="cline-any cline-yes">540×</span>
+<span class="cline-any cline-yes">7698×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">540×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">4600×</span>
+<span class="cline-any cline-yes">4600×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">2528×</span>
+<span class="cline-any cline-yes">2528×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">4155×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">199×</span>
+<span class="cline-any cline-yes">199×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">341×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">140447×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">5830×</span>
+<span class="cline-any cline-yes">5830×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5830×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">199×</span>
+<span class="cline-any cline-yes">199×</span>
+<span class="cline-any cline-yes">199×</span>
+<span class="cline-any cline-yes">199×</span>
+<span class="cline-any cline-yes">5825×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">5839×</span>
+<span class="cline-any cline-yes">5839×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5839×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">5821×</span>
+<span class="cline-any cline-yes">5821×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5821×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">5788×</span>
+<span class="cline-any cline-yes">5788×</span>
+<span class="cline-any cline-yes">160781×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5785×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">25×</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">37296×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">8736×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">28560×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">377×</span>
+<span class="cline-any cline-yes">377×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">2184×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">28796×</span>
+<span class="cline-any cline-yes">2184×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">504×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30744×</span>
+<span class="cline-any cline-yes">30744×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">183×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">236×</span>
+<span class="cline-any cline-yes">236×</span>
+<span class="cline-any cline-yes">236×</span>
+<span class="cline-any cline-yes">236×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">420×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">8736×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">49×</span>
+<span class="cline-any cline-yes">49×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">49×</span>
+<span class="cline-any cline-yes">49×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">45×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">152×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">162×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">79×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">59×</span>
+<span class="cline-any cline-yes">59×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">49790×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">171×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">171×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">39×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">182×</span>
+<span class="cline-any cline-yes">182×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">182×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">182×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">182×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">178×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">904×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">35×</span>
+<span class="cline-any cline-yes">35×</span>
+<span class="cline-any cline-yes">35×</span>
+<span class="cline-any cline-yes">35×</span>
+<span class="cline-any cline-yes">35×</span>
+<span class="cline-any cline-yes">35×</span>
+<span class="cline-any cline-yes">35×</span>
+<span class="cline-any cline-yes">35×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">41×</span>
+<span class="cline-any cline-yes">95×</span>
+<span class="cline-any cline-yes">95×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">179×</span>
+<span class="cline-any cline-yes">179×</span>
+<span class="cline-any cline-yes">935×</span>
+<span class="cline-any cline-yes">935×</span>
+<span class="cline-any cline-yes">935×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">179×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">179×</span>
+<span class="cline-any cline-yes">179×</span>
+<span class="cline-any cline-yes">179×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">179×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">179×</span>
+<span class="cline-any cline-yes">179×</span>
+<span class="cline-any cline-yes">179×</span>
+<span class="cline-any cline-yes">179×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">179×</span>
+<span class="cline-any cline-yes">179×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">179×</span>
+<span class="cline-any cline-yes">179×</span>
+<span class="cline-any cline-yes">179×</span>
+<span class="cline-any cline-yes">179×</span>
+<span class="cline-any cline-yes">179×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">433×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">433×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">433×</span>
+<span class="cline-any cline-yes">404×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">433×</span>
+<span class="cline-any cline-yes">403×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">433×</span>
+<span class="cline-any cline-yes">433×</span>
+<span class="cline-any cline-yes">433×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">479×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">479×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">479×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">479×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">479×</span>
+<span class="cline-any cline-yes">479×</span>
+<span class="cline-any cline-yes">90×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-yes">389×</span>
+<span class="cline-any cline-yes">389×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4583×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">830×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4623×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">830×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1660×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">415×</span>
+<span class="cline-any cline-yes">386×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">415×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1660×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">415×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30988×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">57415×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2486×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">415×</span>
+<span class="cline-any cline-yes">350×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">415×</span>
+<span class="cline-any cline-yes">386×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">415×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2496×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">415×</span>
+<span class="cline-any cline-yes">118×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">415×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">168×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jslint browser: true, unparam: true, todo: true*/
+/*globals HTMLElement: false, Reflect: false, define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
+define([], function () {
+    'use strict';
+    return function (self, ctor) {
+        self.orders = {
+            rows: [],
+            columns: []
+        };
+        self.hasFocus = false;
+        self.activeCell = {
+            columnIndex: 0,
+            rowIndex: 0
+        };
+        self.storageName = 'canvasDataGrid';
+        self.invalidSearchExpClass = 'canvas-datagrid-invalid-search-regExp';
+        self.localStyleLibraryStorageKey = 'canvas-datagrid-user-style-library';
+        self.uniqueId = '_canvasDataGridUniqueId';
+        self.orderBy = self.uniqueId;
+        self.orderDirection = 'asc';
+        self.columnFilters = {};
+        self.filters = {};
+        self.frozenRows = [];
+        self.ellipsisCache = {};
+        self.scrollBox = {};
+        self.visibleRows = [];
+        /**
+         * Used internally to keep track of sizes of row, columns and child grids.
+         * @memberof canvasDatagrid
+         * @property sizes
+         * @readonly
+         */
+        self.sizes = {
+            rows: {},
+            columns: {},
+            trees: {}
+        };
+        self.currentFilter = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            return true;</span>
+        };
+        self.selections = [];
+        self.hovers = {};
+        self.attributes = {};
+        self.style = {};
+        self.formatters = {};
+        self.sorters = {};
+        self.schemaHashes = {};
+        self.events = {};
+        self.uId = 0;
+        self.changes = [];
+        self.scrollIndexTop = 0;
+        self.scrollPixelTop = 0;
+        self.scrollIndexLeft = 0;
+        self.scrollPixelLeft = 0;
+        self.childGrids = {};
+        self.openChildren = {};
+        self.scrollModes = [
+            'vertical-scroll-box',
+            'vertical-scroll-top',
+            'vertical-scroll-bottom',
+            'horizontal-scroll-box',
+            'horizontal-scroll-right',
+            'horizontal-scroll-left'
+        ];
+        self.mouse = { x: 0, y: 0};
+        self.getSelectedData = function (expandToRow) {
+            var d = [], s = self.getVisibleSchema(), l = self.data.length;
+            self.selections.forEach(function (row, index) {
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (index === l) { <span class="cstat-no" title="statement not covered" >return; </span>}
+                if (row.length === 0) {
+                    d[index] = null;
+                    return;
+                }
+                d[index] = {};
+                if (expandToRow) {
+                    s.forEach(function (column) {
+                        d[index][column.name] = self.data[index][column.name];
+                    });
+                } else {
+                    row.forEach(function (col) {
+                        if (col === -1 || !s[col]) { return; }
+                        d[index][s[col].name] = self.data[index][s[col].name];
+                    });
+                }
+            });
+            return d;
+        };
+        self.fillArray = function (low, high, step) {
+            step = step || 1;
+            var i = [], x;
+            for (x = low; x &lt;= high; x += step) {
+                i[x] = x;
+            }
+            return i;
+        };
+        self.getRowHeaderCellHeight = function () {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!self.attributes.showColumnHeaders) { <span class="cstat-no" title="statement not covered" >return 0; </span>}
+            return self.sizes.rows[-1] || self.style.columnHeaderCellHeight;
+        };
+        self.getColumnHeaderCellWidth = function () {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!self.attributes.showRowHeaders) { <span class="cstat-no" title="statement not covered" >return 0; </span>}
+            return self.sizes.columns.cornerCell || self.style.rowHeaderCellWidth;
+        };
+        self.setStorageData = function () {
+            if (!self.attributes.saveAppearance) { return; }
+            localStorage.setItem(self.storageName + '-' + self.attributes.name, JSON.stringify({
+                sizes: {
+                    rows: self.sizes.rows,
+                    columns: self.sizes.columns
+                },
+                orders: {
+                    rows: self.orders.rows,
+                    columns: self.orders.columns
+                },
+                orderBy: self.orderBy,
+                orderDirection: self.orderDirection
+            }));
+        };
+        self.getSchema = function () {
+            return self.schema || self.tempSchema;
+        };
+        self.createColumnOrders = function () {
+            var s = self.getSchema();
+            self.orders.columns = self.fillArray(0, s.length - 1);
+        };
+        self.createRowOrders = function () {
+            self.orders.rows = self.fillArray(0, self.data.length - 1);
+        };
+        self.getVisibleSchema = function () {
+            return self.getSchema().filter(function (col) { return !col.hidden; });
+        };
+        self.applyDefaultValue = function (row, header) {
+            var d = header.defaultValue || '';
+            if (typeof d === 'function') {
+                d = d.apply(self.intf, [header]);
+            }
+            row[header.name] = d;
+        };
+        self.createNewRowData = function () {
+            self.newRow = {};
+            self.newRow[self.uniqueId] = self.uId;
+            self.uId += 1;
+            self.getSchema().forEach(function forEachHeader(header) {
+                self.applyDefaultValue(self.newRow, header);
+            });
+        };
+        self.getSchemaNameHash = function (key) {
+            var n = 0;
+            while (self.schemaHashes[key]) {
+<span class="cstat-no" title="statement not covered" >                n += 1;</span>
+<span class="cstat-no" title="statement not covered" >                key = key + n;</span>
+            }
+            return key;
+        };
+        self.filter = function (type) {
+            var f = self.filters[type];
+            if (!f &amp;&amp; type !== undefined) {
+                console.warn('Cannot find filter for type %s, falling back to substring match.', type);
+                f = self.filters.string;
+            }
+            return f;
+        };
+        self.getBestGuessDataType = function (columnName) {
+            var t, x, l = self.data.length;
+            for (x = 0; x &lt; l; x += 1) {
+                if ([null, undefined].indexOf(self.data[x][columnName]) !== -1) {
+                    t = typeof self.data[x];
+                    return t === 'object' ? 'string' : <span class="branch-1 cbranch-no" title="branch not covered" >t;</span>
+                }
+            }
+            return 'string';
+        };
+        self.drawChildGrids = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            Object.keys(self.childGrids).forEach(<span class="fstat-no" title="function not covered" >function (gridKey) {</span></span>
+<span class="cstat-no" title="statement not covered" >                self.childGrids[gridKey].draw();</span>
+            });
+        };
+        self.resizeChildGrids = function () {
+            Object.keys(self.childGrids).forEach(<span class="fstat-no" title="function not covered" >function (gridKey) {</span>
+<span class="cstat-no" title="statement not covered" >                self.childGrids[gridKey].resize();</span>
+            });
+        };
+        self.autoScrollZone = function (e, x, y, ctrl) {
+            var setTimer,
+                columnHeaderCellWidth = self.getColumnHeaderCellWidth(),
+                rowHeaderCellHeight = self.getRowHeaderCellHeight();
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (x &gt; self.width - self.attributes.selectionScrollZone &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >x &lt; self.width)</span> {
+<span class="cstat-no" title="statement not covered" >                self.scrollBox.scrollLeft += self.attributes.selectionScrollIncrement;</span>
+<span class="cstat-no" title="statement not covered" >                setTimer = true;</span>
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (y &gt; self.height - self.attributes.selectionScrollZone &amp;&amp; y &lt; self.height) {
+<span class="cstat-no" title="statement not covered" >                self.scrollBox.scrollTop += self.attributes.selectionScrollIncrement;</span>
+<span class="cstat-no" title="statement not covered" >                setTimer = true;</span>
+            }
+            if (x - self.attributes.selectionScrollZone - columnHeaderCellWidth &lt; 0) {
+                self.scrollBox.scrollLeft -= self.attributes.selectionScrollIncrement;
+                setTimer = true;
+            }
+            if (y - self.attributes.selectionScrollZone - rowHeaderCellHeight &lt; 0) {
+                self.scrollBox.scrollTop -= self.attributes.selectionScrollIncrement;
+                setTimer = true;
+            }
+            if (setTimer &amp;&amp; !ctrl &amp;&amp; self.currentCell &amp;&amp; self.currentCell.columnIndex !== -1) {
+                self.scrollTimer = setTimeout(self.mousemove, self.attributes.scrollRepeatRate, e);
+            }
+        };
+        self.refreshFromOrigialData = function () {
+            self.data = self.originalData.filter(function (row) {
+                return true;
+            });
+        };
+        self.validateColumn = function (c, s) {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!c.name) {
+<span class="cstat-no" title="statement not covered" >                throw new Error('A column must contain at least a name.');</span>
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (s.filter(function (i) { return i.name === c.name; }).length &gt; 0) {
+<span class="cstat-no" title="statement not covered" >                throw new Error('A column with the name '</span>
+                    + c.name + ' already exists and cannot be added again.');
+            }
+            return true;
+        };
+        self.setDefaults = function (obj1, obj2, key, def) {
+            obj1[key] = obj2[key] === undefined ? def : obj2[key];
+        };
+        self.setAttributes = function () {
+            self.defaults.attributes.forEach(function eachAttribute(i) {
+                self.setDefaults(self.attributes, self.args, i[0], i[1]);
+            });
+        };
+        self.setStyle = function () {
+            self.defaults.styles.forEach(function eachStyle(i) {
+                self.setDefaults(self.style, self.args.style || {}, i[0], i[1]);
+            });
+        };
+        self.autosize = function (colName) {
+            self.getVisibleSchema().forEach(function (col) {
+                if (col.name === colName || colName === undefined) {
+                    self.fitColumnToValues(col.name);
+                }
+            });
+            self.fitColumnToValues('cornerCell');
+        };
+        self.dispose = function () {
+            if (!self.isChildGrid &amp;&amp; self.canvas &amp;&amp; self.canvas.parentNode) {
+                self.canvas.parentNode.removeChild(self.canvas);
+            }
+            self.eventParent.removeEventListener('mouseup', self.mouseup, false);
+            self.eventParent.removeEventListener('mousedown', self.mousedown, false);
+            self.eventParent.removeEventListener('dblclick', self.dblclick, false);
+            self.eventParent.removeEventListener('click', self.click, false);
+            self.eventParent.removeEventListener('mousemove', self.mousemove);
+            self.eventParent.removeEventListener('wheel', self.scrollWheel, false);
+            self.canvas.removeEventListener('contextmenu', self.contextmenu, false);
+            self.canvas.removeEventListener('copy', self.copy);
+            self.controlInput.removeEventListener('keypress', self.keypress, false);
+            self.controlInput.removeEventListener('keyup', self.keyup, false);
+            self.controlInput.removeEventListener('keydown', self.keydown, false);
+            window.removeEventListener('resize', self.resize);
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (self.observer &amp;&amp; self.observer.disconnect) {
+                self.observer.disconnect();
+            }
+        };
+        self.tryLoadStoredOrders = function () {
+            var s;
+            if (self.storedSettings
+                    &amp;&amp; typeof self.storedSettings.orders === 'object'
+                    &amp;&amp; self.storedSettings.orders !== null) {
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (self.storedSettings.orders.rows.length &gt;= self.data.length) {
+                    self.orders.rows = self.storedSettings.orders.rows;
+                }
+                s = self.getSchema();
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (self.storedSettings.orders.columns.length === s.length) {
+                    self.orders.columns = self.storedSettings.orders.columns;
+                }
+                self.orderBy = self.storedSettings.orderBy === undefined
+                    ? <span class="branch-0 cbranch-no" title="branch not covered" >self.uniqueId </span>: self.storedSettings.orderBy;
+                self.orderDirection = self.storedSettings.orderDirection === undefined
+                    ? <span class="branch-0 cbranch-no" title="branch not covered" >self.uniqueId </span>: self.storedSettings.orderDirection;
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (self.getHeaderByName(self.orderBy) &amp;&amp; self.orderDirection) {
+                    self.order(self.orderBy, self.orderDirection);
+                }
+            }
+        };
+        self.getFontHeight = function (fontStyle) {
+            return parseFloat(fontStyle, 10);
+        };
+        self.parseFont = function (key) {
+            if (/Font/.test(key)) {
+                self.style[key + 'Height'] = self.getFontHeight(self.style[key]);
+            }
+        };
+        self.initProp = function (propName) {
+            if (!self.args[propName]) { return; }
+            Object.keys(self.args[propName]).forEach(function (key) {
+                self[propName][key] = self.args[propName][key];
+            });
+        };
+        self.init = function () {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.initialized) { <span class="cstat-no" title="statement not covered" >return; </span>}
+            var publicStyleKeyIntf = {};
+            self.setAttributes();
+            self.setStyle();
+            self.initScrollBox();
+            self.setDom();
+            self.type = 'canvas-datagrid';
+            self.initialized = true;
+            self.pointerLockPosition = {x: 0, y: 0};
+            Object.keys(self.style).forEach(self.parseFont);
+            self.intf.type = self.type;
+            self.intf.addEventListener = self.addEventListener;
+            self.intf.removeEventListener = self.removeEventListener;
+            self.intf.dispatchEvent = self.dispatchEvent;
+            self.intf.dispose = self.dispose;
+            self.intf.appendTo = self.appendTo;
+            self.intf.filters = self.filters;
+            self.intf.sorters = self.sorters;
+            self.intf.autosize = self.autosize;
+            self.intf.beginEditAt = self.beginEditAt;
+            self.intf.endEdit = self.endEdit;
+            self.intf.setActiveCell = self.setActiveCell;
+            self.intf.scrollIntoView = self.scrollIntoView;
+            self.intf.clearChangeLog = self.clearChangeLog;
+            self.intf.gotoCell = self.gotoCell;
+            self.intf.gotoRow = self.gotoRow;
+            self.intf.findColumnScrollLeft = self.findColumnScrollLeft;
+            self.intf.findRowScrollTop = self.findRowScrollTop;
+            self.intf.fitColumnToValues = self.fitColumnToValues;
+            self.intf.findColumnMaxTextLength = self.findColumnMaxTextLength;
+            self.intf.disposeContextMenu = self.disposeContextMenu;
+            self.intf.getCellAt = self.getCellAt;
+            self.intf.isCellVisible = self.isCellVisible;
+            self.intf.order = self.order;
+            self.intf.draw = self.draw;
+            self.intf.selectArea = self.selectArea;
+            self.intf.clipElement = self.clipElement;
+            self.intf.getSchemaFromData = self.getSchemaFromData;
+            self.intf.setFilter = self.setFilter;
+            self.intf.selectRow = self.selectRow;
+            self.intf.parentGrid = self.parentGrid;
+            self.intf.toggleTree = self.toggleTree;
+            self.intf.expandTree = self.expandTree;
+            self.intf.collapseTree = self.collapseTree;
+            self.intf.canvas = self.canvas;
+            self.intf.context = self.ctx;
+            self.intf.insertRow = self.insertRow;
+            self.intf.deleteRow = self.deleteRow;
+            self.intf.addRow = self.addRow;
+            self.intf.insertColumn = self.insertColumn;
+            self.intf.deleteColumn = self.deleteColumn;
+            self.intf.addColumn = self.addColumn;
+            self.intf.getClippingRect = self.getClippingRect;
+            self.intf.setRowHeight = self.setRowHeight;
+            self.intf.setColumnWidth = self.setColumnWidth;
+            self.intf.resetColumnWidths = self.resetColumnWidths;
+            self.intf.resetRowHeights = self.resetRowHeights;
+            self.intf.resize = self.resize;
+            self.intf.selectColumn = self.selectColumn;
+            self.intf.selectRow = self.selectRow;
+            self.intf.selectAll = self.selectAll;
+            self.intf.drawChildGrids = self.drawChildGrids;
+            self.intf.assertPxColor = self.assertPxColor;
+            self.intf.clearPxColorAssertions = self.clearPxColorAssertions;
+            self.intf.integerToAlpha = self.integerToAlpha;
+            self.intf.copy = self.copy;
+            Object.keys(self.style).forEach(function (key) {
+                // unless this line is here, Object.keys() will not work on &lt;instance&gt;.style
+                publicStyleKeyIntf[key] = undefined;
+                Object.defineProperty(publicStyleKeyIntf, key, {
+                    get: function () {
+                        return self.style[key];
+                    },
+                    set: function (value) {
+                        self.parseFont(value);
+                        self.style[key] = value;
+                        self.draw(true);
+                        self.dispatchEvent('stylechanged', {name: key, value: value});
+                    }
+                });
+            });
+            Object.defineProperty(self.intf, 'shadowRoot', {
+                get: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                    return self.shadowRoot;</span>
+                }
+            });
+            Object.defineProperty(self.intf, 'activeCell', {
+                get: function () {
+                    return self.activeCell;
+                }
+            });
+            /**
+             * When true, the grid is has focus.
+             * @memberof canvasDatagrid
+             * @property hasFocus
+             * @readonly
+             */
+            Object.defineProperty(self.intf, 'hasFocus', {
+                get: function () {
+                    return self.hasFocus;
+                }
+            });
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (!self.args.component) {
+                Object.defineProperty(self.intf, 'style', {
+                    get: function () {
+                        return publicStyleKeyIntf;
+                    },
+                    set: <span class="fstat-no" title="function not covered" >function (value) {</span>
+<span class="cstat-no" title="statement not covered" >                        Object.keys(value).forEach(<span class="fstat-no" title="function not covered" >function (key) {</span></span>
+<span class="cstat-no" title="statement not covered" >                            self.parseFont(value);</span>
+<span class="cstat-no" title="statement not covered" >                            self.style[key] = value[key];</span>
+                        });
+<span class="cstat-no" title="statement not covered" >                        self.draw(true);</span>
+<span class="cstat-no" title="statement not covered" >                        self.dispatchEvent('stylechanged', {name: 'style', value: value});</span>
+                    }
+                });
+            }
+            Object.defineProperty(self.intf, 'attributes', { value: {}});
+            Object.keys(self.attributes).forEach(function (key) {
+                Object.defineProperty(self.intf.attributes, key, {
+                    get: function () {
+                        return self.attributes[key];
+                    },
+                    set: function (value) {
+                        self.attributes[key] = value;
+                        self.draw(true);
+                        self.dispatchEvent('attributechanged', {name: key, value: value[key]});
+                    }
+                });
+            });
+            self.filters.string = function (value, filterFor) {
+                value = String(value);
+                var filterRegExp,
+                    regEnd = /\/(i|g|m)*$/,
+                    pattern = regEnd.exec(filterFor),
+                    flags = pattern ? pattern[0].substring(1) : '',
+                    flagLength = flags.length;
+                self.invalidFilterRegEx = undefined;
+                if (filterFor.substring(0, 1) === '/' &amp;&amp; pattern) {
+                    try {
+                        filterRegExp = new RegExp(filterFor.substring(1, filterFor.length - (flagLength + 1)), flags);
+                    } catch (e) {
+                        self.invalidFilterRegEx = e;
+                        return;
+                    }
+                    return filterRegExp.test(value);
+                }
+                return value.toString ? value.toString().toLocaleUpperCase()
+                    .indexOf(filterFor.toLocaleUpperCase()) !== -1 : <span class="branch-1 cbranch-no" title="branch not covered" >false;</span>
+            };
+            self.filters.number = <span class="fstat-no" title="function not covered" >function (value, filterFor) {</span>
+<span class="cstat-no" title="statement not covered" >                if (!filterFor) { <span class="cstat-no" title="statement not covered" >return true; </span>}</span>
+<span class="cstat-no" title="statement not covered" >                return value === filterFor;</span>
+            };
+            if (self.attributes.name &amp;&amp; self.attributes.saveAppearance) {
+                self.storedSettings = localStorage.getItem(self.storageName + '-' + self.attributes.name);
+                if (self.storedSettings) {
+                    try {
+                        self.storedSettings = JSON.parse(self.storedSettings);
+                    } catch (e) {
+<span class="cstat-no" title="statement not covered" >                        console.warn('could not read settings from localStore', e);</span>
+<span class="cstat-no" title="statement not covered" >                        self.storedSettings = undefined;</span>
+                    }
+                }
+                if (self.storedSettings) {
+                    <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof self.storedSettings.sizes === 'object'
+                            &amp;&amp; self.storedSettings.sizes !== null) {
+                        self.sizes.rows = self.storedSettings.sizes.rows;
+                        self.sizes.columns = self.storedSettings.sizes.columns;
+                        ['trees', 'columns', 'rows'].forEach(function (i) {
+                            <span class="missing-if-branch" title="if path not taken" >I</span>if (!self.sizes[i]) {
+<span class="cstat-no" title="statement not covered" >                                self.sizes[i] = {};</span>
+                            }
+                        });
+                    }
+                }
+            }
+            ['formatters', 'filters', 'sorters'].forEach(self.initProp);
+            if (self.args.data) {
+                self.intf.data = self.args.data;
+            }
+            if (!self.data) {
+                self.intf.data = [];
+            }
+            if (self.args.schema) {
+                self.intf.schema = self.args.schema;
+            }
+            if (self.isChildGrid) {
+                requestAnimationFrame(function () { self.resize(true); });
+            } else {
+                self.resize(true);
+            }
+            return self;
+        };
+        /**
+         * Removes focus from the grid.
+         * @memberof canvasDatagrid
+         * @name blur
+         * @method
+         */
+        self.intf.blur = function (e) {
+            self.hasFocus = false;
+        };
+        /**
+         * Focuses on the grid.
+         * @memberof canvasDatagrid
+         * @name focus
+         * @method
+         */
+        self.intf.focus = function () {
+            self.hasFocus = true;
+            self.controlInput.focus();
+        };
+        Object.defineProperty(self.intf, 'height', {
+            get: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                return self.parentNode.height;</span>
+            },
+            set: <span class="fstat-no" title="function not covered" >function (value) {</span>
+<span class="cstat-no" title="statement not covered" >                self.parentNode.height = value;</span>
+<span class="cstat-no" title="statement not covered" >                self.resize(true);</span>
+            }
+        });
+        Object.defineProperty(self.intf, 'width', {
+            get: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                return self.parentNode.width;</span>
+            },
+            set: <span class="fstat-no" title="function not covered" >function (value) {</span>
+<span class="cstat-no" title="statement not covered" >                self.parentNode.width = value;</span>
+<span class="cstat-no" title="statement not covered" >                self.resize(true);</span>
+            }
+        });
+        Object.defineProperty(self.intf, 'openChildren', {
+            get: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                return self.openChildren;</span>
+            }
+        });
+        Object.defineProperty(self.intf, 'childGrids', {
+            get: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                return Object.keys(self.childGrids).map(<span class="fstat-no" title="function not covered" >function (gridId) {</span></span>
+<span class="cstat-no" title="statement not covered" >                    return self.childGrids[gridId];</span>
+                });
+            }
+        });
+        Object.defineProperty(self.intf, 'isChildGrid', {
+            get: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                return self.isChildGrid;</span>
+            }
+        });
+        Object.defineProperty(self.intf, 'parentNode', {
+            get: function () {
+                return self.parentNode;
+            },
+            set: function (value) {
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (!self.isChildGrid) {
+<span class="cstat-no" title="statement not covered" >                    throw new TypeError('Cannot set property parentNode which has only a getter');</span>
+                }
+                self.parentNode = value;
+            }
+        });
+        Object.defineProperty(self.intf, 'offsetParent', {
+            get: function () {
+                return self.parentNode;
+            }
+        });
+        Object.defineProperty(self.intf, 'offsetLeft', {
+            get: function () {
+                return self.parentNode.offsetLeft;
+            }
+        });
+        Object.defineProperty(self.intf, 'offsetTop', {
+            get: function () {
+                return self.parentNode.offsetTop;
+            }
+        });
+        Object.defineProperty(self.intf, 'scrollHeight', {
+            get: function () {
+                return self.scrollBox.scrollHeight;
+            }
+        });
+        Object.defineProperty(self.intf, 'scrollWidth', {
+            get: function () {
+                return self.scrollBox.scrollWidth;
+            }
+        });
+        Object.defineProperty(self.intf, 'scrollTop', {
+            get: function () {
+                return self.scrollBox.scrollTop;
+            },
+            set: function (value) {
+                self.scrollBox.scrollTop = value;
+            }
+        });
+        Object.defineProperty(self.intf, 'scrollLeft', {
+            get: function () {
+                return self.scrollBox.scrollLeft;
+            },
+            set: function (value) {
+                self.scrollBox.scrollLeft = value;
+            }
+        });
+        Object.defineProperty(self.intf, 'sizes', {
+            get: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                return self.sizes;</span>
+            }
+        });
+        Object.defineProperty(self.intf, 'input', {
+            get: function () {
+                return self.input;
+            }
+        });
+        Object.defineProperty(self.intf, 'controlInput', {
+            get: function () {
+                return self.controlInput;
+            }
+        });
+        Object.defineProperty(self.intf, 'currentCell', {
+            get: function () {
+                return self.currentCell;
+            }
+        });
+        Object.defineProperty(self.intf, 'visibleCells', {
+            get: function () {
+                return self.visibleCells;
+            }
+        });
+        Object.defineProperty(self.intf, 'visibleRows', {
+            get: function () {
+                return self.visibleRows;
+            }
+        });
+        Object.defineProperty(self.intf, 'selections', {
+            get: function () {
+                return self.selections;
+            }
+        });
+        Object.defineProperty(self.intf, 'dragMode', {
+            get: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                return self.dragMode;</span>
+            }
+        });
+        Object.defineProperty(self.intf, 'changes', {
+            get: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                return self.changes;</span>
+            }
+        });
+        self.intf.formatters = self.formatters;
+        self.normalizeDataset = function (data, callback) {
+            var i, d, max, syncFnInvoked;
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (data === null || data === '' || data === undefined) {
+<span class="cstat-no" title="statement not covered" >                return callback([]);</span>
+            }
+            if (typeof data === 'string'
+                    || typeof data === 'number'
+                    || typeof data === 'boolean') {
+                data = [{'0': data}];
+            }
+            if (!Array.isArray(data) &amp;&amp; typeof data === 'object') {
+                data = [data];
+            }
+            if ((!Array.isArray(data[0]) &amp;&amp; typeof data[0] === 'object' &amp;&amp; data[0] !== null)
+                            || (Array.isArray(data) &amp;&amp; data.length === 0)) {
+                return callback(data);
+            }
+            if (typeof data === 'function') {
+                i = data.apply(self.intf, [function (d) {
+                    <span class="missing-if-branch" title="if path not taken" >I</span>if (syncFnInvoked) {
+<span class="cstat-no" title="statement not covered" >                        console.warn('Detected a callback to the data setter function after the same function already returned a value synchronously.');</span>
+                    }
+                    self.normalizeDataset(d, callback);
+                }]);
+                if (i) {
+                    syncFnInvoked = true;
+                    self.normalizeDataset(i, callback);
+                }
+                return;
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!Array.isArray(data) &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >typeof data === 'object')</span> {
+<span class="cstat-no" title="statement not covered" >                data = [data];</span>
+            }
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (Array.isArray(data)) {
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (!Array.isArray(data[0])) {
+                    //array of something?  throw it all into 1 row!
+<span class="cstat-no" title="statement not covered" >                    data = [data];</span>
+                }
+                // find the longest length
+                max = 0;
+                d = [];
+                data.forEach(function (row) {
+                    max = Math.max(max, row.length);
+                });
+                // map against length indexes
+                data.forEach(function (row, index) {
+                    var x;
+                    d[index] = {};
+                    for (x = 0; x &lt; max; x += 1) {
+                        d[index][x] = row[x];
+                    }
+                });
+                return callback(d);
+            }
+<span class="cstat-no" title="statement not covered" >            throw new Error('Unsupported data type.  Must be an array of arrays or an array of objects, function or string.');</span>
+        };
+        Object.defineProperty(self.intf, 'frozenRows', {
+            get: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                return self.frozenRows;</span>
+            }
+        });
+        Object.defineProperty(self.intf, 'scrollIndexRect', {
+            get: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                return {</span>
+                    top: self.scrollIndexTop,
+                    right: self.scrollIndexRight,
+                    bottom: self.scrollIndexBottom,
+                    left: self.scrollIndexLeft
+                };
+            }
+        });
+        Object.defineProperty(self.intf, 'scrollPixelRect', {
+            get: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                return {</span>
+                    top: self.scrollPixelTop,
+                    right: self.scrollPixelRight,
+                    bottom: self.scrollPixelBottom,
+                    left: self.scrollPixelLeft
+                };
+            }
+        });
+        Object.defineProperty(self.intf, 'selectionBounds', {
+            get: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                return self.getSelectionBounds();</span>
+            }
+        });
+        Object.defineProperty(self.intf, 'selectedRows', {
+            get: function () {
+                return self.getSelectedData(true);
+            }
+        });
+        Object.defineProperty(self.intf, 'selectedCells', {
+            get: function () {
+                return self.getSelectedData();
+            }
+        });
+        Object.defineProperty(self.intf, 'visibleSchema', {
+            get: function () {
+                return self.getVisibleSchema().map(function eachDataRow(col) {
+                    return col;
+                });
+            }
+        });
+        Object.defineProperty(self.intf, 'ctx', {
+            get: function () {
+                return self.ctx;
+            }
+        });
+        Object.defineProperty(self.intf, 'schema', {
+            get: function schemaGetter() {
+                return self.getSchema();
+            },
+            set: function schemaSetter(value) {
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (!Array.isArray(value) || typeof value[0] !== 'object') {
+<span class="cstat-no" title="statement not covered" >                    throw new Error('Schema must be an array of objects.');</span>
+                }
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (value[0].name === undefined) {
+<span class="cstat-no" title="statement not covered" >                    throw new Error('Expected schema to contain an object with at least a name property.');</span>
+                }
+                self.schema = value.map(function eachSchemaColumn(column, index) {
+                    column.width = column.width || self.style.columnWidth;
+                    column[self.uniqueId] = self.getSchemaNameHash(column.name);
+                    column.filter = column.filter || self.filter(column.type);
+                    column.type = column.type || 'string';
+                    column.index = index;
+                    column.columnIndex = index;
+                    column.rowIndex = -1;
+                    return column;
+                });
+                self.tempSchema = undefined;
+                self.createNewRowData();
+                self.createColumnOrders();
+                self.tryLoadStoredOrders();
+                self.resize(true);
+                self.dispatchEvent('schemachanged', {schema: self.schema});
+            }
+        });
+        Object.defineProperty(self.intf, 'data', {
+            get: function dataGetter() {
+                return self.data.map(function (row) {
+                    delete row[self.uniqueId];
+                    return row;
+                });
+            },
+            set: function dataSetter(value) {
+                self.normalizeDataset(value, function (d) {
+                    self.originalData = d.map(function eachDataRow(row) {
+                        row[self.uniqueId] = self.uId;
+                        self.uId += 1;
+                        return row;
+                    });
+                    self.changes = [];
+                    //TODO apply filter to incoming dataset
+                    self.data = self.originalData;
+                    <span class="missing-if-branch" title="else path not taken" >E</span>if (!self.schema) {
+                        self.tempSchema = self.getSchemaFromData();
+                    }
+                    if (!self.schema &amp;&amp; self.data.length === 0) {
+                        self.tempSchema = [{name: ''}];
+                        self.tempSchema[0][self.uniqueId] = self.getSchemaNameHash('');
+                    }
+                    <span class="missing-if-branch" title="else path not taken" >E</span>if (self.tempSchema &amp;&amp; !self.schema) {
+                        self.createColumnOrders();
+                        self.tryLoadStoredOrders();
+                        self.dispatchEvent('schemachanged', {schema: self.tempSchema});
+                    }
+                    self.createNewRowData();
+                    <span class="missing-if-branch" title="if path not taken" >I</span>if (self.attributes.autoResizeColumns &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >self.data.length &gt; 0</span>
+                            &amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >self.storedSettings === undefined)</span> {
+<span class="cstat-no" title="statement not covered" >                        self.autosize();</span>
+                    }
+                    self.fitColumnToValues('cornerCell', true);
+                    if (!self.resize() || !self.isChildGrid) { self.draw(true); }
+                    self.createRowOrders();
+                    self.tryLoadStoredOrders();
+                    self.dispatchEvent('datachanged', {data: self.data});
+                });
+            }
+        });
+        self.initScrollBox = function () {
+            var sHeight = 0,
+                sWidth = 0,
+                scrollTop = 0,
+                scrollLeft = 0,
+                scrollHeight = 0,
+                scrollWidth = 0,
+                scrollBoxHeight = 20,
+                scrollBoxWidth = 20;
+            function setScrollTop(value, preventScrollEvent) {
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (isNaN(value)) {
+<span class="cstat-no" title="statement not covered" >                    throw new Error('ScrollTop value must be a number');</span>
+                }
+                if (value &lt; 0) {
+                    value = 0;
+                }
+                if (value &gt; scrollHeight) {
+                    value = scrollHeight;
+                }
+                if (scrollHeight &lt; 0) {
+                    value = 0;
+                }
+                scrollTop = value;
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (!preventScrollEvent) {
+                    self.scroll();
+                }
+            }
+            function setScrollLeft(value, preventScrollEvent) {
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (isNaN(value)) {
+<span class="cstat-no" title="statement not covered" >                    throw new Error('ScrollLeft value must be a number');</span>
+                }
+                if (value &lt; 0) {
+                    value = 0;
+                }
+                if (value &gt; scrollWidth) {
+                    value = scrollWidth;
+                }
+                if (scrollWidth &lt; 0) {
+                    value = 0;
+                }
+                scrollLeft = value;
+                if (!preventScrollEvent) {
+                    self.scroll();
+                }
+            }
+            self.scrollBox.toString = function () {
+                return '{"width": ' + scrollWidth
+                    + ', "height": ' + scrollHeight
+                    + ', "left": ' + scrollLeft
+                    + ', "top": ' + scrollTop + '}';
+            };
+            self.scrollBox.scrollTo = function (x, y) {
+                setScrollLeft(x, true);
+                setScrollTop(y);
+            };
+            Object.defineProperty(self.scrollBox, 'scrollBoxHeight', {
+                get: function () {
+                    return scrollBoxHeight;
+                },
+                set: function (value) {
+                    scrollBoxHeight = value;
+                }
+            });
+            Object.defineProperty(self.scrollBox, 'scrollBoxWidth', {
+                get: function () {
+                    return scrollBoxWidth;
+                },
+                set: function (value) {
+                    scrollBoxWidth = value;
+                }
+            });
+            Object.defineProperty(self.scrollBox, 'height', {
+                get: function () {
+                    return sHeight;
+                },
+                set: function (value) {
+                    if (scrollHeight &lt; value) {
+                        scrollTop = 0;
+                    }
+                    sHeight = value;
+                }
+            });
+            Object.defineProperty(self.scrollBox, 'width', {
+                get: function () {
+                    return sWidth;
+                },
+                set: function (value) {
+                    sWidth = value;
+                }
+            });
+            Object.defineProperty(self.scrollBox, 'scrollTop', {
+                get: function () {
+                    return scrollTop;
+                },
+                set: setScrollTop
+            });
+            Object.defineProperty(self.scrollBox, 'scrollLeft', {
+                get: function () {
+                    return scrollLeft;
+                },
+                set: setScrollLeft
+            });
+            Object.defineProperty(self.scrollBox, 'scrollHeight', {
+                get: function () {
+                    return scrollHeight;
+                },
+                set: function (value) {
+                    if (scrollTop &gt; value) {
+                        scrollTop = Math.max(value, 0);
+                    }
+                    if (scrollHeight &lt; sHeight) {
+                        scrollTop = 0;
+                    }
+                    scrollHeight = value;
+                }
+            });
+            Object.defineProperty(self.scrollBox, 'scrollWidth', {
+                get: function () {
+                    return scrollWidth;
+                },
+                set: function (value) {
+                    if (scrollLeft &gt; value) {
+                        scrollLeft = Math.max(value, 0);
+                    }
+                    scrollWidth = value;
+                }
+            });
+        };
+        return;
+    };
+});
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Sep 10 2017 11:23:18 GMT-0700 (PDT)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
