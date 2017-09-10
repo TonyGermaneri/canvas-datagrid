@@ -251,6 +251,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['editCellFontFamily', 'sans-serif'],
                 ['editCellFontSize', '16px'],
                 ['editCellPaddingLeft', 4],
+                ['height', 'auto'],
                 ['gridBorderColor', 'rgba(202, 202, 202, 1)'],
                 ['gridBorderWidth', 1],
                 ['columnHeaderOrderByArrowBorderColor', 'rgba(195, 199, 202, 1)'],
@@ -310,7 +311,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['treeArrowMarginRight', 5],
                 ['treeArrowMarginTop', 6],
                 ['treeArrowWidth', 13],
-                ['treeGridHeight', 250]
+                ['treeGridHeight', 250],
+                ['width', 'auto']
             ]
         };
     };
@@ -371,6 +373,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         Grid.prototype.disconnectedCallback = function () { this.dispose(); };
         Grid.prototype.attributeChangedCallback = component.attributeChangedCallback;
         Grid.prototype.connectedCallback = component.connectedCallback;
+        Grid.prototype.adoptedCallback = component.adoptedCallback;
         window.customElements.define('canvas-datagrid', Grid);
     }
     // export global
@@ -413,7 +416,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
                 p += char;
             });
-            return (cust ? '-cdg-' : '') + p;
+            return (cust ? '--cdg-' : '') + p;
         }
         function getDefaultItem(base, item) {
             var i = {},
@@ -426,6 +429,23 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             })[0];
             return r;
         }
+        function applyComponentStyle(intf, self, supressChangeAndDrawEvents) {
+            var cStyle = window.getComputedStyle(intf, null),
+                defs = {};
+            self.computedStyle = cStyle;
+            defaults(defs);
+            defs = defs.defaults.styles;
+            defs.forEach(function (def) {
+                var val = cStyle.getPropertyValue(hyphenateProperty(def[0], true));
+                if (val !== "") {
+                    self.style[def[0]] = typeMap[typeof def[1]](val, def[1]);
+                }
+            });
+            self.draw(true);
+            if (!supressChangeAndDrawEvents) {
+                self.dispatchEvent('stylechanged', intf.style);
+            }
+        }
         typeMap = {
             data: function (strData) {
                 try {
@@ -434,22 +454,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     throw new Error('Cannot read JSON data in canvas-datagrid data attribute.');
                 }
             },
-            style: function (fullStyleString) {
-                var s = {};
-                fullStyleString.split(';').forEach(function (sd) {
-                    if (!sd) { return; }
-                    var i = sd.indexOf(':'),
-                        key = sd.substring(0, i),
-                        val = sd.substring(i + 1),
-                        idef = getDefaultItem('styles', key);
-                    if (idef === undefined) {
-                        console.warn('Unrecognized style directive', key);
-                        return;
-                    }
-                    s[idef[0]] = typeMap[typeof idef[1]](val.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, ''));
-                });
-                return s;
-            },
             schema: function (strSchema) {
                 try {
                     return JSON.parse(strSchema);
@@ -457,8 +461,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     throw new Error('Cannot read JSON data in canvas-datagrid schema attribute.');
                 }
             },
-            number: function (strNum) {
-                return parseInt(strNum, 10);
+            number: function (strNum, def) {
+                var n = parseInt(strNum, 10);
+                return isNaN(n) ? def : n;
             },
             boolean: function (strBool) {
                 return (/true/i).test(strBool);
@@ -468,7 +473,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
         };
         component.getObservableAttributes = function () {
-            var i = {}, attrs = ['style', 'data', 'schema'];
+            var i = {}, attrs = ['data', 'schema'];
             defaults(i);
             i.defaults.attributes.forEach(function (attr) {
                 attrs.push(attr[0].toLowerCase());
@@ -485,7 +490,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             //it won't work in the amd version and won't return self, so it is still
             //technically private since it's impossible to get at.
             //this has to be done so intf setters can bet run and alter self without stack overflows
+            //intf.style.display = 'block';
             s = intf.init();
+            component.observe(intf, s);
+            applyComponentStyle(intf, s, true);
+            s.resize();
             ['style', 'data', 'schema'].forEach(function (key) {
                 Object.defineProperty(intf.args, key, {
                     set: function (value) {
@@ -498,15 +507,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 });
             });
         };
+        component.adoptedCallback = function () {
+            this.resize();
+        };
         component.attributeChangedCallback = function (attrName, oldVal, newVal) {
-            var tfn, j, s, intf = this;
+            var tfn, intf = this;
             if (attrName === 'style') {
-                j = typeMap.style(newVal);
-                s = intf.args.style ? JSON.parse(JSON.stringify(intf.args.style)) : {};
-                Object.keys(j).forEach(function (key) {
-                    s[key] = j[key];
-                });
-                intf.args.style = s;
                 return;
             }
             if (attrName === 'data') {
@@ -517,10 +523,26 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 intf.args.schema = typeMap.schema(newVal);
                 return;
             }
+            if (attrName === 'class' || attrName === 'className') {
+                return;
+            }
             tfn = typeMap[typeof getDefaultItem('attributes', attrName)[1]];
-            // trim incoming values
             intf.attributes[attrName] = tfn(newVal);
             return;
+        };
+        component.observe = function (intf, self) {
+            var observer;
+            if (!window.MutationObserver) { return; }
+            observer = new window.MutationObserver(function (mutations) {
+                Array.prototype.forEach.call(mutations, function (mutation) {
+                    if (mutation.attributeName === 'class'
+                            || mutation.attributeName === 'style') {
+                        applyComponentStyle(intf, self);
+                        return;
+                    }
+                });
+            });
+            observer.observe(intf, { characterData: true, childList: true, attributes: true, subtree: true });
         };
         self.component = component;
         return component;
@@ -730,7 +752,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         }
         /**
          * Redraws the grid. No matter what the change, this is the only method required to refresh everything.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name draw
          * @method
          */
@@ -1472,6 +1494,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             startingCell = false,
             wheeling,
             animationFrames = 0;
+        function calculateCssSize(sizeString, parentSize) {
+            var p;
+            if (sizeString === 'auto' || sizeString === '') { return parentSize; }
+            if (/%/.test(sizeString)) {
+                p = parseFloat(sizeString, 10);
+                return parentSize * (p * 0.01);
+            }
+            return parseFloat(sizeString, 10);
+        }
         self.getTouchPos = function (e) {
             var rect = self.canvas.getBoundingClientRect(),
                 pos = {
@@ -1659,6 +1690,27 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             });
             return defaultPrevented;
         };
+        self.resizeDomElement = function () {
+            if (!self.parentIsCanvas) {
+                if (self.shadowRootParentElement) {
+                    // shadow dom browsers
+                    self.width = calculateCssSize(self.style.width, self.shadowRootParentElement.offsetWidth);
+                    self.height = calculateCssSize(self.style.height, self.shadowRootParentElement.offsetHeight);
+                    // self.intf.style.width = self.height + 'px';
+                    // self.intf.style.height = self.height + 'px';
+                } else {
+                    // pre shadow dom browsers
+                    self.width = self.parentDOMNode.offsetWidth;
+                    self.height = self.parentDOMNode.offsetHeight;
+                }
+                self.canvas.style.width = self.width + 'px';
+                self.canvas.style.height = self.height + 'px';
+                self.canvas.width = self.width * window.devicePixelRatio;
+                self.canvas.height = self.height * window.devicePixelRatio;
+            }
+            self.canvasOffsetLeft = self.args.canvasOffsetLeft || 0;
+            self.canvasOffsetTop = self.args.canvasOffsetTop || 0;
+        };
         self.resize = function (drawAfterResize) {
             var cellBorder = self.style.cellBorderWidth * 2,
                 columnHeaderCellBorder =  self.style.columnHeaderCellBorderWidth * 2,
@@ -1670,24 +1722,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 scrollDragPositionOffsetY = 30,
                 scrollDragPositionOffsetX = 15;
             if (self.isChildGrid) {
-                self.height = self.parentNode.offsetHeight;
                 self.width = self.parentNode.offsetWidth;
+                self.height = self.parentNode.offsetHeight;
             } else {
-                if (!self.parentIsCanvas) {
-                    if (self.shadowRootParentElement) {
-                        self.height = self.shadowRootParentElement.offsetHeight;
-                        self.width = self.shadowRootParentElement.offsetWidth;
-                    } else {
-                        self.height = self.parentDOMNode.offsetHeight;
-                        self.width = self.parentDOMNode.offsetWidth;
-                    }
-                    self.canvas.height = self.height * window.devicePixelRatio;
-                    self.canvas.width = self.width * window.devicePixelRatio;
-                    self.canvas.style.height = self.height + 'px';
-                    self.canvas.style.width = self.width + 'px';
-                }
-                self.canvasOffsetTop = self.args.canvasOffsetTop || 0;
-                self.canvasOffsetLeft = self.args.canvasOffsetLeft || 0;
+                self.resizeDomElement();
             }
             scrollHeight = self.data.reduce(function reduceData(accumulator, row) {
                 return accumulator
@@ -2453,12 +2491,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.orderDirection = 'asc';
         self.columnFilters = {};
         self.filters = {};
+        self.frozenRows = [];
         self.ellipsisCache = {};
         self.scrollBox = {};
         self.visibleRows = [];
         /**
          * Used internally to keep track of sizes of row, columns and child grids.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @property sizes
          * @readonly
          */
@@ -2821,7 +2860,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             });
             /**
              * When true, the grid is has focus.
-             * @memberof canvasDataGrid
+             * @memberof canvasDatagrid
              * @property hasFocus
              * @readonly
              */
@@ -2830,19 +2869,21 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     return self.hasFocus;
                 }
             });
-            Object.defineProperty(self.intf, 'style', {
-                get: function () {
-                    return publicStyleKeyIntf;
-                },
-                set: function (value) {
-                    Object.keys(value).forEach(function (key) {
-                        self.parseFont(value);
-                        self.style[key] = value[key];
-                    });
-                    self.draw(true);
-                    self.dispatchEvent('stylechanged', {name: 'style', value: value});
-                }
-            });
+            if (!self.args.component) {
+                Object.defineProperty(self.intf, 'style', {
+                    get: function () {
+                        return publicStyleKeyIntf;
+                    },
+                    set: function (value) {
+                        Object.keys(value).forEach(function (key) {
+                            self.parseFont(value);
+                            self.style[key] = value[key];
+                        });
+                        self.draw(true);
+                        self.dispatchEvent('stylechanged', {name: 'style', value: value});
+                    }
+                });
+            }
             Object.defineProperty(self.intf, 'attributes', { value: {}});
             Object.keys(self.attributes).forEach(function (key) {
                 Object.defineProperty(self.intf.attributes, key, {
@@ -2922,7 +2963,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Removes focus from the grid.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name blur
          * @method
          */
@@ -2931,7 +2972,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Focuses on the grid.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name focus
          * @method
          */
@@ -3128,6 +3169,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             throw new Error('Unsupported data type.  Must be an array of arrays or an array of objects, function or string.');
         };
+        Object.defineProperty(self.intf, 'frozenRows', {
+            get: function () {
+                return self.frozenRows;
+            }
+        });
         Object.defineProperty(self.intf, 'scrollIndexRect', {
             get: function () {
                 return {
@@ -4013,7 +4059,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Ends editing, optionally aborting the edit.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name endEdit
          * @method
          * @param {boolean} abort When true, abort the edit.
@@ -4062,7 +4108,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Begins editing at cell x, row y.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name beginEditAt
          * @method
          * @param {number} x The column index of the cell to edit.
@@ -4341,8 +4387,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.parentNode = self.parentDOMNode;
                 self.parentIsCanvas = /^canvas$/i.test(self.parentDOMNode.tagName);
                 if (self.isComponent) {
+                    self.shadowCss = document.createElement('style');
+                    self.shadowCss.innerHTML = ':host { display: block; padding: 0; margin: 0; }';
                     self.parentDOMNode = self.parentNode.parentElement;
                     self.canvas = document.createElement('canvas');
+                    self.parentNode.appendChild(self.shadowCss);
                     self.parentNode.appendChild(self.canvas);
                     self.parentNode.appendChild(self.controlInput);
                 } else if (self.parentIsCanvas) {
@@ -4395,7 +4444,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 } else {
                     self.shadowRootParentElement = self.args.parentNode;
                 }
-                self.shadowRoot = self.args.parentNode.createShadowRoot();
+                self.shadowRoot = self.intf.attachShadow({mode: self.args.debug ? 'open' : 'closed'});
                 self.args.parentNode = self.shadowRoot;
             }
             self.appendTo(self.args.parentNode);
@@ -4423,7 +4472,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         // to users
         /**
          * Converts a integer into a letter A - ZZZZZ...
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name integerToAlpha
          * @method
          * @param {column} n The number to convert.
@@ -4441,9 +4490,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Inserts a new column before the specified index into the schema.
-         * @see canvasDataGrid#schema
+         * @see canvasDatagrid#schema
          * @tutorial schema
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name insertColumn
          * @method
          * @param {column} c The column to insert into the schema.
@@ -4463,7 +4512,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Deletes a column from the schema at the specified index.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name deleteColumn
          * @tutorial schema
          * @method
@@ -4480,9 +4529,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Adds a new column into the schema.
-         * @see canvasDataGrid#schema
+         * @see canvasDatagrid#schema
          * @tutorial schema
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name addColumn
          * @method
          * @param {column} c The column to add to the schema.
@@ -4498,7 +4547,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Deletes a row from the dataset at the specified index.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name deleteRow
          * @method
          * @param {number} index The index of the row to delete.
@@ -4510,7 +4559,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Inserts a new row into the dataset before the specified index.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name insertRow
          * @method
          * @param {object} d data.
@@ -4531,7 +4580,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Adds a new row into the dataset.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name addRow
          * @method
          * @param {object} d data.
@@ -4548,7 +4597,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Sets the height of a given row by index number.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name setRowHeight
          * @method
          * @param {number} rowIndex The index of the row to set.
@@ -4560,7 +4609,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Sets the width of a given column by index number.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name setColumnWidth
          * @method
          * @param {number} colIndex The index of the column to set.
@@ -4573,7 +4622,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Removes any changes to the width of the columns due to user or api interaction, setting them back to the schema or style default.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name resetColumnWidths
          * @tutorial schema
          * @method
@@ -4584,7 +4633,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Removes any changes to the height of the rows due to user or api interaction, setting them back to the schema or style default.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name resetRowHeights
          * @tutorial schema
          * @method
@@ -4595,7 +4644,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Sets the value of the filter.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name setFilter
          * @method
          * @param {string} column Name of the column to filter.
@@ -4630,7 +4679,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Returns the number of pixels to scroll down to line up with row rowIndex.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name findRowScrollTop
          * @method
          * @param {number} rowIndex The row index of the row to scroll find.
@@ -4653,7 +4702,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Returns the number of pixels to scroll to the left to line up with column columnIndex.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name findColumnScrollLeft
          * @method
          * @param {number} columnIndex The column index of the column to find.
@@ -4671,7 +4720,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Scrolls the cell at cell x, row y.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name gotoCell
          * @method
          * @param {number} x The column index of the cell to scroll to.
@@ -4687,7 +4736,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Scrolls the row y.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name gotoRow
          * @method
          * @param {number} y The row index of the cell to scroll to.
@@ -4697,7 +4746,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Scrolls the cell at cell x, row y into view if it is not already.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name scrollIntoView
          * @method
          * @param {number} x The column index of the cell to scroll into view.
@@ -4717,7 +4766,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Sets the active cell. Requires redrawing.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name setActiveCell
          * @method
          * @param {number} x The column index of the cell to set active.
@@ -4731,7 +4780,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Selects every visible cell.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name selectAll
          * @method
          */
@@ -4745,7 +4794,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Returns true if the selected columnIndex is selected on every row.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name isColumnSelected
          * @method
          * @param {number} columnIndex The column index to check.
@@ -4761,7 +4810,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Selects a column.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name selectColumn
          * @method
          * @param {number} columnIndex The column index to select.
@@ -4814,7 +4863,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Selects a row.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name selectRow
          * @method
          * @param {number} rowIndex The row index to select.
@@ -4860,7 +4909,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Collapse a tree grid by row index.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name collapseTree
          * @method
          * @param {number} index The index of the row to collapse.
@@ -4885,7 +4934,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Expands a tree grid by row index.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name expandTree
          * @method
          * @param {number} index The index of the row to expand.
@@ -4931,7 +4980,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Toggles tree grid open and close by row index.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name toggleTree
          * @method
          * @param {number} index The index of the row to toggle.
@@ -4945,7 +4994,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Returns a header from the schema by name.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name getHeaderByName
          * @tutorial schema
          * @method
@@ -4963,7 +5012,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Resizes a column to fit the longest value in the column. Call without a value to resize all columns.
          * Warning, can be slow on very large record sets (1m records ~3-5 seconds on an i7).
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name fitColumnToValues
          * @method
          * @param {string} name The name of the column to resize.
@@ -4978,7 +5027,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Checks if a cell is currently visible.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name isCellVisible
          * @overload
          * @method
@@ -4988,7 +5037,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          */
         /**
          * Checks if a cell is currently visible.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name isCellVisible
          * @method
          * @returns {boolean} when true, the cell is visible, when false the cell is not currently drawn.
@@ -5011,7 +5060,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Sets the order of the data.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name order
          * @method
          * @returns {cell} cell at the selected location.
@@ -5050,7 +5099,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Checks if a given column is visible.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name isRowVisible
          * @method
          * @returns {boolean} When true, the row is visible.
@@ -5063,7 +5112,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Checks if a given row is visible.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name isRowVisible
          * @method
          * @returns {boolean} When true, the row is visible.
@@ -5076,7 +5125,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Gets the cell at columnIndex and rowIndex.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name getVisibleCellByIndex
          * @method
          * @returns {cell} cell at the selected location.
@@ -5090,7 +5139,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Gets the cell at grid pixel coordinate x and y.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name getCellAt
          * @method
          * @returns {cell} cell at the selected location.
@@ -5214,7 +5263,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Gets the bounds of current selection. 
          * @returns {rect} selection.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name getSelectionBounds
          * @method
          */
@@ -5241,7 +5290,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Returns an auto generated schema based on data structure.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name getSchemaFromData
          * @method
          * @tutorial schema
@@ -5269,7 +5318,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * Clears the change log grid.changes that keeps track of changes to the data set.
          * This does not undo changes or alter data it is simply a convince array to keep
          * track of changes made to the data since last this method was called.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name clearChangeLog
          * @method
          */
@@ -5278,7 +5327,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Selects an area of the grid.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name selectArea
          * @method
          * @param {rect} bounds A rect object representing the selected values.
@@ -5311,7 +5360,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Returns the maximum text width for a given column by column name.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name findColumnMaxTextLength
          * @method
          * @returns {number} The number of pixels wide the maximum width value in the selected column.
@@ -5347,7 +5396,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Gets the total width of all header columns.
-         * @memberof canvasDataGrid
+         * @memberof canvasDatagrid
          * @name getHeaderWidth
          * @method
          */
