@@ -98,17 +98,20 @@ Using web component
 -->
 
 ```html
-    <canvas-datagrid data='[{"a": 0, "b": 1}]'></canvas-datagrid>
+    <canvas-datagrid style="--cdg-cell-color: darkblue;">[
+        {"col1": "row 1 column 1", "col2": "row 1 column 2", "col3": "row 1 column 3"},
+        {"col1": "row 2 column 1", "col2": "row 2 column 2", "col3": "row 2 column 3"}
+    ]</canvas-datagrid>
 ```
 
 More Demos
 ----------
 
-* [Using AMD](https://tonygermaneri.github.io/canvas-datagrid/tutorials/amdDemo.html)
+* [Web component example](https://tonygermaneri.github.io/canvas-datagrid/tutorials/webcomponentDemo.html)
+
+* [Using Webpack3: AMD](https://tonygermaneri.github.io/canvas-datagrid/tutorials/amdDemo.html)
 
 * [Loading data with XHR](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html)
-
-* [Web component example](https://tonygermaneri.github.io/canvas-datagrid/tutorials/webcomponentDemo.html)
 
 * [Sparkline example](https://tonygermaneri.github.io/canvas-datagrid/tutorials/sparklineDemo.html)
 
