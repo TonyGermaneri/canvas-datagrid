@@ -2784,10 +2784,10 @@
                     });
                     contextmenu(grid.canvas, 60, 37);
                 });
-                it('Clicking the corner cell will return dataset to original sort order and filter settings.', function (done) {
-                    var grid = g({
+                it('Clicking the corner cell will select all.', function (done) {
+                    var d = makeData(10, 10, function (x) { return x; }), grid = g({
                         test: this.test,
-                        data: makeData(10, 10, function (x) { return x; }),
+                        data: d,
                         columnHeaderClickBehavior: 'sort'
                     });
                     marker(grid, 60, 12);
@@ -2797,7 +2797,7 @@
                         marker(grid, 12, 12);
                         mousemove(grid.canvas, 12, 12);
                         click(grid.canvas, 12, 12);
-                        done(assertIf(grid.data[0].a !== 0, 'Expected data to be sorted.'));
+                        done(assertIf(grid.selectedRows.length !== d.length, 'Expected data to be sorted.'));
                     }, 1);
                 });
                 it('Clicking a header cell with columnHeaderClickBehavior set to sort should sort the column asc', function (done) {
