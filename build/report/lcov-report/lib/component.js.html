@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">15% </span>
+        <span class="strong">12.71% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>15/100</span>
+        <span class='fraction'>15/118</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">5.41% </span>
+        <span class="strong">4.08% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>2/37</span>
+        <span class='fraction'>2/49</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">8% </span>
+        <span class="strong">7.14% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/25</span>
+        <span class='fraction'>2/28</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">15.63% </span>
+        <span class="strong">13.27% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>15/96</span>
+        <span class='fraction'>15/113</span>
       </div>
     </div>
   </div>
@@ -205,7 +205,31 @@
 160
 161
 162
-163</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -290,6 +314,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -299,6 +324,10 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -334,6 +363,15 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">169×</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -356,13 +394,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">169×</span>
 <span class="cline-any cline-yes">169×</span>
@@ -418,7 +466,7 @@ define(['./defaults'], function (defaults) {
 <span class="cstat-no" title="statement not covered" >                try {</span>
 <span class="cstat-no" title="statement not covered" >                    return JSON.parse(strData);</span>
                 } catch (e) {
-<span class="cstat-no" title="statement not covered" >                    throw new Error('Cannot read JSON data in canvas-datagrid data attribute.');</span>
+<span class="cstat-no" title="statement not covered" >                    throw new Error('Cannot read JSON data in canvas-datagrid data.');</span>
                 }
             },
             schema: <span class="fstat-no" title="function not covered" >function (strSchema) {</span>
@@ -452,6 +500,7 @@ define(['./defaults'], function (defaults) {
 <span class="cstat-no" title="statement not covered" >            if (intf.initialized) { <span class="cstat-no" title="statement not covered" >return; </span>}</span>
 <span class="cstat-no" title="statement not covered" >            intf.initialized = true;</span>
 <span class="cstat-no" title="statement not covered" >            intf.args.parentNode = intf;</span>
+<span class="cstat-no" title="statement not covered" >            intf.args.attributes = intf.attributes;</span>
             //HACK init() will secretly return the internal reference object.
             //since init is only run after instantiation in the component version
             //it won't work in the amd version and won't return self, so it is still
@@ -461,6 +510,10 @@ define(['./defaults'], function (defaults) {
 <span class="cstat-no" title="statement not covered" >            s = intf.init();</span>
 <span class="cstat-no" title="statement not covered" >            component.observe(intf, s);</span>
 <span class="cstat-no" title="statement not covered" >            applyComponentStyle(intf, s, true);</span>
+<span class="cstat-no" title="statement not covered" >            Object.keys(intf.args.attributes).forEach(<span class="fstat-no" title="function not covered" >function (arg) {</span></span>
+<span class="cstat-no" title="statement not covered" >                if (intf.attributes[arg] === undefined) { <span class="cstat-no" title="statement not covered" >return; </span>}</span>
+<span class="cstat-no" title="statement not covered" >                intf.attributes[arg] = intf.args.attributes[arg];</span>
+            });
 <span class="cstat-no" title="statement not covered" >            s.resize();</span>
 <span class="cstat-no" title="statement not covered" >            ['style', 'data', 'schema'].forEach(<span class="fstat-no" title="function not covered" >function (key) {</span></span>
 <span class="cstat-no" title="statement not covered" >                Object.defineProperty(intf.args, key, {</span>
@@ -478,7 +531,7 @@ define(['./defaults'], function (defaults) {
 <span class="cstat-no" title="statement not covered" >            this.resize();</span>
         };
         component.attributeChangedCallback = <span class="fstat-no" title="function not covered" >function (attrName, oldVal, newVal) {</span>
-<span class="cstat-no" title="statement not covered" >            var tfn, intf = this;</span>
+<span class="cstat-no" title="statement not covered" >            var tfn, intf = this, def;</span>
 <span class="cstat-no" title="statement not covered" >            if (attrName === 'style') {</span>
 <span class="cstat-no" title="statement not covered" >                return;</span>
             }
@@ -493,8 +546,17 @@ define(['./defaults'], function (defaults) {
 <span class="cstat-no" title="statement not covered" >            if (attrName === 'class' || attrName === 'className') {</span>
 <span class="cstat-no" title="statement not covered" >                return;</span>
             }
-<span class="cstat-no" title="statement not covered" >            tfn = typeMap[typeof getDefaultItem('attributes', attrName)[1]];</span>
-<span class="cstat-no" title="statement not covered" >            intf.attributes[attrName] = tfn(newVal);</span>
+<span class="cstat-no" title="statement not covered" >            def = getDefaultItem('attributes', attrName);</span>
+<span class="cstat-no" title="statement not covered" >            if (def) {</span>
+<span class="cstat-no" title="statement not covered" >                tfn = typeMap[typeof def[1]];</span>
+<span class="cstat-no" title="statement not covered" >                intf.attributes[def[0]] = tfn(newVal);</span>
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (/^on/.test(attrName)) {</span>
+<span class="cstat-no" title="statement not covered" >                intf.addEventListener('on' + attrName, <span class="fstat-no" title="function not covered" >function (e) {</span></span>
+<span class="cstat-no" title="statement not covered" >                    eval(newVal);</span>
+                });
+            }
 <span class="cstat-no" title="statement not covered" >            return;</span>
         };
         component.observe = <span class="fstat-no" title="function not covered" >function (intf, self) {</span>
@@ -509,22 +571,32 @@ define(['./defaults'], function (defaults) {
              */
 <span class="cstat-no" title="statement not covered" >            intf.applyComponentStyle = self.applyComponentStyle;</span>
 <span class="cstat-no" title="statement not covered" >            observer = new window.MutationObserver(<span class="fstat-no" title="function not covered" >function (mutations) {</span></span>
-<span class="cstat-no" title="statement not covered" >                var checkInnerHTML;</span>
+<span class="cstat-no" title="statement not covered" >                var checkInnerHTML, checkStyle;</span>
 <span class="cstat-no" title="statement not covered" >                Array.prototype.forEach.call(mutations, <span class="fstat-no" title="function not covered" >function (mutation) {</span></span>
 <span class="cstat-no" title="statement not covered" >                    if (mutation.attributeName === 'class'</span>
                             || mutation.attributeName === 'style') {
 <span class="cstat-no" title="statement not covered" >                        self.applyComponentStyle();</span>
 <span class="cstat-no" title="statement not covered" >                        return;</span>
                     }
-<span class="cstat-no" title="statement not covered" >                    if (mutation.addedNodes.length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >                    if (mutation.target.parentNode.nodeName === 'STYLE') {</span>
+<span class="cstat-no" title="statement not covered" >                        checkStyle = true;</span>
+<span class="cstat-no" title="statement not covered" >                        return;</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    if (mutation.addedNodes.length &gt; 0 || mutation.type === 'characterData') {</span>
 <span class="cstat-no" title="statement not covered" >                        checkInnerHTML = true;</span>
                     }
                 });
+<span class="cstat-no" title="statement not covered" >                if (checkStyle) {</span>
+<span class="cstat-no" title="statement not covered" >                    intf.applyComponentStyle();</span>
+                }
 <span class="cstat-no" title="statement not covered" >                if (checkInnerHTML) {</span>
 <span class="cstat-no" title="statement not covered" >                    intf.data = typeMap.data(intf.innerHTML);</span>
                 }
             });
 <span class="cstat-no" title="statement not covered" >            observer.observe(intf, { characterData: true, childList: true, attributes: true, subtree: true });</span>
+<span class="cstat-no" title="statement not covered" >            Array.prototype.forEach.call(document.querySelectorAll('style'), <span class="fstat-no" title="function not covered" >function (el) {</span></span>
+<span class="cstat-no" title="statement not covered" >                observer.observe(el, { characterData: true, childList: true, attributes: true, subtree: true });</span>
+            });
         };
         self.component = component;
         return component;
@@ -535,7 +607,7 @@ define(['./defaults'], function (defaults) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Sep 10 2017 17:50:41 GMT-0700 (PDT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Sep 10 2017 23:03:41 GMT-0700 (PDT)
 </div>
 </div>
 <script src="../prettify.js"></script>

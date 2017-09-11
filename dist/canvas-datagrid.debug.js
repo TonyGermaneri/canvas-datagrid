@@ -1337,7 +1337,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     delete self.sizes.trees[rd[self.uniqueId]];
                 }
                 rowHeaders.push([rd, r, d, y, rowHeight]);
-                visibleRowHeights[r] = rowHeight;
+                self.visibleRowHeights[r] = rowHeight;
                 y += cellHeight + self.style.cellBorderWidth;
                 return true;
             }
@@ -2536,6 +2536,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             rows: [],
             columns: []
         };
+        self.visibleRowHeights = [];
         self.hasFocus = false;
         self.activeCell = {
             columnIndex: 0,

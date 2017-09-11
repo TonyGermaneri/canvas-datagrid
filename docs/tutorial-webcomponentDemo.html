@@ -85,21 +85,18 @@
             }
             .grid {
                 --cdg-height: 50%;
-            }
-            .grid2 {
                 --cdg-cell-color: red;
-                --cdg-cell-background-color: blue;
-                --cdg-background-color: blue;
+                --cdg-cell-background-color: lightyellow;
+                --cdg-active-cell-background-color: burlywood;
+                --cdg-background-color: lightblue;
             }
         </style>
     </head>
     <body>
-        <canvas-datagrid
-            id="grid"
-            selectionmode="row"
-            class="grid"
-            >[{"a": 0, "b": 1}]</canvas-datagrid>
-        <div style="height: 30px; width: 30px; background: red;"></div>
+        <canvas-datagrid class="grid" selectionmode="row" style="--cdg-cell-color: darkblue;">[
+            {"col1": "row 1 column 1", "col2": "row 1 column 2", "col3": "row 1 column 3"},
+            {"col1": "row 2 column 1", "col2": "row 2 column 2", "col3": "row 2 column 3"}
+        ]</canvas-datagrid>
     </body>
 </html>
 

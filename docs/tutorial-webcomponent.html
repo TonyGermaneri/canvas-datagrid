@@ -71,14 +71,32 @@
 	
 		<div id="main">
 			<h1>Web Component</h1><p>The grid can be instantiated as a web component.</p>
-<pre class="prettyprint source lang-html"><code>    &lt;canvas-datagrid>&lt;/canvas-datagrid></code></pre><p>To set data, add a data attribute.</p>
-<pre class="prettyprint source lang-html"><code>    &lt;canvas-datagrid data=&quot;[{&quot;a&quot;: 0, &quot;b&quot;: 1}]&quot;>&lt;/canvas-datagrid></code></pre><p>To set attributes add attributes.</p>
+<pre class="prettyprint source lang-html"><code>    &lt;canvas-datagrid>&lt;/canvas-datagrid></code></pre><p>To set data, add JSON between the open and close tags.</p>
+<pre class="prettyprint source lang-html"><code>        &lt;canvas-datagrid>[
+            {&quot;col1&quot;: &quot;row 1 column 1&quot;, &quot;col2&quot;: &quot;row 1 column 2&quot;, &quot;col3&quot;: &quot;row 1 column 3&quot;},
+            {&quot;col1&quot;: &quot;row 2 column 1&quot;, &quot;col2&quot;: &quot;row 2 column 2&quot;, &quot;col3&quot;: &quot;row 2 column 3&quot;}
+        ]&lt;/canvas-datagrid></code></pre><p>To set attributes, add attributes.  Attributes are not case sensitive when using HTML.  When using the same element in JavaScript however they are case sensitive.</p>
 <pre class="prettyprint source lang-html"><code>    &lt;canvas-datagrid selectionmode='row'>&lt;/canvas-datagrid></code></pre><p>Styles are declared as custom css properties prefixed with --cdg- and hyphenated rather than camelCase.
 For example, the style &quot;backgroundColor&quot; is set with &quot;--cdg-background-color&quot;.  The web component
 works with classes, css cascading, and in-line styles just like any other HTML element.</p>
-<p>When instantiating the grid using the Webpack loader or the global function canvasDatagrid, class support will not work.</p>
-<pre class="prettyprint source lang-html"><code>    &lt;canvas-datagrid data='[{&quot;a&quot;: 0, &quot;b&quot;: 1}]' style='--cdg-cell-background-color: tan;'>&lt;/canvas-datagrid></code></pre><p>You can still access the grid as you would expect and the interface for the web component instance is the same as the module loaded or globally scoped version.  The web component version has additional properties that come from inheriting the base HTTPElement class.</p>
+<p>Inline styles:</p>
+<pre class="prettyprint source lang-html"><code>        &lt;canvas-datagrid style=&quot;--cdg-background-color: lightblue;&quot;>[
+            {&quot;col1&quot;: &quot;row 1 column 1&quot;, &quot;col2&quot;: &quot;row 1 column 2&quot;, &quot;col3&quot;: &quot;row 1 column 3&quot;},
+            {&quot;col1&quot;: &quot;row 2 column 1&quot;, &quot;col2&quot;: &quot;row 2 column 2&quot;, &quot;col3&quot;: &quot;row 2 column 3&quot;}
+        ]&lt;/canvas-datagrid></code></pre><p>Class styles.</p>
+<pre class="prettyprint source lang-html"><code>        &lt;style>
+            .grid {
+                --cdg-background-color: lightblue;
+            }
+        &lt;/style>
+        &lt;canvas-datagrid class=&quot;grid&quot;>[
+            {&quot;col1&quot;: &quot;row 1 column 1&quot;, &quot;col2&quot;: &quot;row 1 column 2&quot;, &quot;col3&quot;: &quot;row 1 column 3&quot;},
+            {&quot;col1&quot;: &quot;row 2 column 1&quot;, &quot;col2&quot;: &quot;row 2 column 2&quot;, &quot;col3&quot;: &quot;row 2 column 3&quot;}
+        ]&lt;/canvas-datagrid></code></pre><p>You can still access the grid as you would expect and the interface for the web component instance is the same as the module loaded or globally scoped version.  The web component version has additional properties that come from inheriting the base HTTPElement class.</p>
 <p>For further reading about web components see: https://www.webcomponents.org/</p>
+<ul>
+<li>When instantiating the grid using the Webpack loader or the global function canvasDatagrid, class support will not work.</li>
+</ul>
 		</div>
 	</div>
 
