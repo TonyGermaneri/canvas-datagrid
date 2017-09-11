@@ -11,8 +11,9 @@ document.addEventListener('DOMContentLoaded', function () {
             background: "#1E1E20"
         },
         container = document.createElement('div'),
+        gridContainer = document.createElement('div'),
         grid = canvasDatagrid({
-            parentNode: document.body,
+            parentNode: gridContainer,
             tree: true,
             name: 'style-maker'
         }),
@@ -96,8 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
             + '<h2>Creating, saving, importing, exporting, and deleting </h2>'
             + '<p>You can create new styles by clicking "New..." and selecting a 5 color style and clicking the "Create Style" button.</p>'
             + '<p>You can save your styles.  They will be saved to your browser\'s local store'
-            + ' and will be available to other canvas datagrid instances you encounter'
-            + ' with with this browser.  You cannot overwrite default styles.</p>'
+            + ' to load back up later.  You cannot overwrite default styles.</p>'
             + '<p>You can export your styles by clicking the "Export To Clipboard" button.'
             + '  The style will be saved to your clipboard as JSON text.</p>'
             + '<p>You can import your styles as JSON.  You cannot overwrite default styles.  '
@@ -588,6 +588,8 @@ document.addEventListener('DOMContentLoaded', function () {
         container.className = 'style-maker';
         props.className = 'style-maker-props';
         props.appendChild(table);
+        gridContainer.style.height = '100%';
+        document.body.appendChild(gridContainer);
         document.body.appendChild(container);
         copyCode.innerHTML = 'Export To Clipboard';
         newButton.innerHTML = 'New...';
