@@ -3656,6 +3656,84 @@ Please report any problems with the documentation here <a href="https://github.c
             
 <hr>
 <dt>
+    <h4 class="name" id=".applyComponentStyle">applyComponentStyle</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Applies the computed css styles to the grid.  In some browsers, changing directives in attached style sheets does not automatically update the styles in this component.  It is necessary to call this method to update in these cases.
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
     <h4 class="name" id=".beginEditAt">beginEditAt</h4>
     
     
@@ -7205,13 +7283,13 @@ Warning, can be slow on very large record sets (1m records ~3-5 seconds on an i7
 
         <tr>
             
-                <td class="name"><code>cell</code></td>
+                <td class="name"><code>columnIndex</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">cell</span>
+<span class="param-type">number</span>
 
 
 
@@ -7222,7 +7300,31 @@ Warning, can be slow on very large record sets (1m records ~3-5 seconds on an i7
 
             
 
-            <td class="description last">The cell to check for.  Alternatively you can pass an object { x: <x-pixel-value>, y: <y-pixel-value> }.</td>
+            <td class="description last">The column index of the cell to check.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>rowIndex</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The row index of the cell to check.</td>
         </tr>
 
     
@@ -7357,13 +7459,13 @@ Warning, can be slow on very large record sets (1m records ~3-5 seconds on an i7
 
         <tr>
             
-                <td class="name"><code>columnIndex</code></td>
+                <td class="name"><code>cell</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">cell</span>
 
 
 
@@ -7374,31 +7476,7 @@ Warning, can be slow on very large record sets (1m records ~3-5 seconds on an i7
 
             
 
-            <td class="description last">The column index of the cell to check.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>rowIndex</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The row index of the cell to check.</td>
+            <td class="description last">The cell to check for.  Alternatively you can pass an object { x: <x-pixel-value>, y: <y-pixel-value> }.</td>
         </tr>
 
     
@@ -7626,7 +7704,7 @@ Warning, can be slow on very large record sets (1m records ~3-5 seconds on an i7
 
     
     <div class="description">
-        Checks if a given column is visible.
+        Checks if a given row is visible.
     </div>
     
 
@@ -7778,7 +7856,7 @@ Warning, can be slow on very large record sets (1m records ~3-5 seconds on an i7
 
     
     <div class="description">
-        Checks if a given row is visible.
+        Checks if a given column is visible.
     </div>
     
 

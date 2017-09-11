@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">16.48% </span>
+        <span class="strong">15% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>15/91</span>
+        <span class='fraction'>15/100</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">6.06% </span>
+        <span class="strong">5.41% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>2/33</span>
+        <span class='fraction'>2/37</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">8.33% </span>
+        <span class="strong">8% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/24</span>
+        <span class='fraction'>2/25</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">16.85% </span>
+        <span class="strong">15.63% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>15/89</span>
+        <span class='fraction'>15/96</span>
       </div>
     </div>
   </div>
@@ -190,7 +190,22 @@
 145
 146
 147
-148</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -324,12 +339,27 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -470,14 +500,29 @@ define(['./defaults'], function (defaults) {
         component.observe = <span class="fstat-no" title="function not covered" >function (intf, self) {</span>
 <span class="cstat-no" title="statement not covered" >            var observer;</span>
 <span class="cstat-no" title="statement not covered" >            if (!window.MutationObserver) { <span class="cstat-no" title="statement not covered" >return; </span>}</span>
+<span class="cstat-no" title="statement not covered" >            self.applyComponentStyle = <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >applyComponentStyle(intf, self); <span class="cstat-no" title="statement not covered" ></span>self.resize(); </span>};</span>
+            /**
+             * Applies the computed css styles to the grid.  In some browsers, changing directives in attached style sheets does not automatically update the styles in this component.  It is necessary to call this method to update in these cases.
+             * @memberof canvasDatagrid
+             * @name applyComponentStyle
+             * @method
+             */
+<span class="cstat-no" title="statement not covered" >            intf.applyComponentStyle = self.applyComponentStyle;</span>
 <span class="cstat-no" title="statement not covered" >            observer = new window.MutationObserver(<span class="fstat-no" title="function not covered" >function (mutations) {</span></span>
+<span class="cstat-no" title="statement not covered" >                var checkInnerHTML;</span>
 <span class="cstat-no" title="statement not covered" >                Array.prototype.forEach.call(mutations, <span class="fstat-no" title="function not covered" >function (mutation) {</span></span>
 <span class="cstat-no" title="statement not covered" >                    if (mutation.attributeName === 'class'</span>
                             || mutation.attributeName === 'style') {
-<span class="cstat-no" title="statement not covered" >                        applyComponentStyle(intf, self);</span>
+<span class="cstat-no" title="statement not covered" >                        self.applyComponentStyle();</span>
 <span class="cstat-no" title="statement not covered" >                        return;</span>
                     }
+<span class="cstat-no" title="statement not covered" >                    if (mutation.addedNodes.length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >                        checkInnerHTML = true;</span>
+                    }
                 });
+<span class="cstat-no" title="statement not covered" >                if (checkInnerHTML) {</span>
+<span class="cstat-no" title="statement not covered" >                    intf.data = typeMap.data(intf.innerHTML);</span>
+                }
             });
 <span class="cstat-no" title="statement not covered" >            observer.observe(intf, { characterData: true, childList: true, attributes: true, subtree: true });</span>
         };
@@ -490,7 +535,7 @@ define(['./defaults'], function (defaults) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Sep 10 2017 11:23:18 GMT-0700 (PDT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Sep 10 2017 17:50:41 GMT-0700 (PDT)
 </div>
 </div>
 <script src="../prettify.js"></script>
