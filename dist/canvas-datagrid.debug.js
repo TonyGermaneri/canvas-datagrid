@@ -533,14 +533,29 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         component.observe = function (intf, self) {
             var observer;
             if (!window.MutationObserver) { return; }
+            self.applyComponentStyle = function () { applyComponentStyle(intf, self); self.resize(); };
+            /**
+             * Applies the computed css styles to the grid.  In some browsers, changing directives in attached style sheets does not automatically update the styles in this component.  It is necessary to call this method to update in these cases.
+             * @memberof canvasDatagrid
+             * @name applyComponentStyle
+             * @method
+             */
+            intf.applyComponentStyle = self.applyComponentStyle;
             observer = new window.MutationObserver(function (mutations) {
+                var checkInnerHTML;
                 Array.prototype.forEach.call(mutations, function (mutation) {
                     if (mutation.attributeName === 'class'
                             || mutation.attributeName === 'style') {
-                        applyComponentStyle(intf, self);
+                        self.applyComponentStyle();
                         return;
                     }
+                    if (mutation.addedNodes.length > 0) {
+                        checkInnerHTML = true;
+                    }
                 });
+                if (checkInnerHTML) {
+                    intf.data = typeMap.data(intf.innerHTML);
+                }
             });
             observer.observe(intf, { characterData: true, childList: true, attributes: true, subtree: true });
         };
@@ -4444,7 +4459,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 } else {
                     self.shadowRootParentElement = self.args.parentNode;
                 }
-                self.shadowRoot = self.shadowRootParentElement.attachShadow({mode: self.args.debug ? 'open' : 'closed'});
+                self.shadowRoot = self.args.parentNode.attachShadow({mode: self.args.debug ? 'open' : 'closed'});
                 self.args.parentNode = self.shadowRoot;
             }
             self.appendTo(self.args.parentNode);
