@@ -451,7 +451,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 try {
                     return JSON.parse(strData);
                 } catch (e) {
-                    throw new Error('Cannot read JSON data in canvas-datagrid data attribute.');
+                    throw new Error('Cannot read JSON data in canvas-datagrid data.');
                 }
             },
             schema: function (strSchema) {
@@ -485,6 +485,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (intf.initialized) { return; }
             intf.initialized = true;
             intf.args.parentNode = intf;
+            intf.args.attributes = intf.attributes;
             //HACK init() will secretly return the internal reference object.
             //since init is only run after instantiation in the component version
             //it won't work in the amd version and won't return self, so it is still
@@ -494,6 +495,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             s = intf.init();
             component.observe(intf, s);
             applyComponentStyle(intf, s, true);
+            Object.keys(intf.args.attributes).forEach(function (arg) {
+                if (intf.attributes[arg] === undefined) { return; }
+                intf.attributes[arg] = intf.args.attributes[arg];
+            });
             s.resize();
             ['style', 'data', 'schema'].forEach(function (key) {
                 Object.defineProperty(intf.args, key, {
@@ -511,7 +516,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             this.resize();
         };
         component.attributeChangedCallback = function (attrName, oldVal, newVal) {
-            var tfn, intf = this;
+            var tfn, intf = this, def;
             if (attrName === 'style') {
                 return;
             }
@@ -526,8 +531,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (attrName === 'class' || attrName === 'className') {
                 return;
             }
-            tfn = typeMap[typeof getDefaultItem('attributes', attrName)[1]];
-            intf.attributes[attrName] = tfn(newVal);
+            def = getDefaultItem('attributes', attrName);
+            if (def) {
+                tfn = typeMap[typeof def[1]];
+                intf.attributes[def[0]] = tfn(newVal);
+                return;
+            }
+            if (/^on/.test(attrName)) {
+                intf.addEventListener('on' + attrName, function (e) {
+                    eval(newVal);
+                });
+            }
             return;
         };
         component.observe = function (intf, self) {
@@ -542,22 +556,32 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
              */
             intf.applyComponentStyle = self.applyComponentStyle;
             observer = new window.MutationObserver(function (mutations) {
-                var checkInnerHTML;
+                var checkInnerHTML, checkStyle;
                 Array.prototype.forEach.call(mutations, function (mutation) {
                     if (mutation.attributeName === 'class'
                             || mutation.attributeName === 'style') {
                         self.applyComponentStyle();
                         return;
                     }
-                    if (mutation.addedNodes.length > 0) {
+                    if (mutation.target.parentNode.nodeName === 'STYLE') {
+                        checkStyle = true;
+                        return;
+                    }
+                    if (mutation.addedNodes.length > 0 || mutation.type === 'characterData') {
                         checkInnerHTML = true;
                     }
                 });
+                if (checkStyle) {
+                    intf.applyComponentStyle();
+                }
                 if (checkInnerHTML) {
                     intf.data = typeMap.data(intf.innerHTML);
                 }
             });
             observer.observe(intf, { characterData: true, childList: true, attributes: true, subtree: true });
+            Array.prototype.forEach.call(document.querySelectorAll('style'), function (el) {
+                observer.observe(el, { characterData: true, childList: true, attributes: true, subtree: true });
+            });
         };
         self.component = component;
         return component;
@@ -771,6 +795,21 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @name draw
          * @method
          */
+         // r = literal row index
+         // rd = row data array
+         // i = user order index
+         // o = literal data index
+         // y = y drawing cursor
+         // x = x drawing cursor
+         // s = visible schema array
+         // cx = current x drawing cursor sub calculation var
+         // cy = current y drawing cursor sub calculation var
+         // a = static cell (like corner cell)
+         // p = perf counter
+         // l = data length
+         // u = current cell
+         // h = current height
+         // w = current width
         self.draw = function (internal) {
             if (self.dispatchEvent('beforedraw', {})) { return; }
             if (!self.isChildGrid && (!self.height || !self.width)) {
@@ -795,6 +834,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 cellHeight = self.style.cellHeight;
             drawCount += 1;
             p = performance.now();
+            self.visibleRowHeights = [];
             // if data length has changed, there is no way to know
             if (self.data.length > self.orders.rows.length) {
                 self.createRowOrders();
@@ -1297,6 +1337,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     delete self.sizes.trees[rd[self.uniqueId]];
                 }
                 rowHeaders.push([rd, r, d, y, rowHeight]);
+                visibleRowHeights[r] = rowHeight;
                 y += cellHeight + self.style.cellBorderWidth;
                 return true;
             }
@@ -1409,7 +1450,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     if (self.activeCell && self.activeCell.rowIndex === aCell.rowIndex) {
                         self.ctx.lineWidth = self.style.activeCellOverlayBorderWidth;
                         self.ctx.strokeStyle = self.style.activeCellOverlayBorderColor;
-                        strokeRect(0, aCell.y, self.getHeaderWidth() + columnHeaderCellWidth, rowHeight);
+                        strokeRect(0, aCell.y, self.getHeaderWidth() + columnHeaderCellWidth, self.visibleRowHeights[aCell.rowIndex]);
                     }
                 } else {
                     self.ctx.lineWidth = self.style.activeCellOverlayBorderWidth;
@@ -1644,7 +1685,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
         };
         self.touchmove = function (e) {
-            var d = self.getTouchPos(e);
+            var d = self.getTouchPos(e),
+                rowHeaderCellHeight = self.getRowHeaderCellHeight(),
+                columnHeaderCellWidth = self.getColumnHeaderCellWidth();
             if (self.dispatchEvent('touchmove', {NativeEvent: e, cell: self.currentCell})) { return; }
             self.stopPropagation(e);
             e.preventDefault();
@@ -1657,9 +1700,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 t: 0
             };
             if (/vertical-scroll-/.test(startingCell.style)) {
-                self.scrollBox.scrollTop = self.scrollBox.scrollHeight * (d.y / self.height);
+                self.scrollBox.scrollTop = self.scrollBox.scrollHeight * (d.y / (self.height - rowHeaderCellHeight));
             } else if (/horizontal-scroll-/.test(startingCell.style)) {
-                self.scrollBox.scrollLeft = self.scrollBox.scrollWidth * (d.x / self.width);
+                self.scrollBox.scrollLeft = self.scrollBox.scrollWidth * (d.x / (self.width - columnHeaderCellWidth));
             } else if (touchingCell) {
                 self.mousemove(e, d);
                 self.draw();
@@ -1962,8 +2005,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             if (self.currentCell.context === 'cell') {
                 if (self.currentCell.style === 'cornerCell') {
-                    self.order(self.uniqueId, 'asc', self.sorters.number);
-                    self.setFilter();
+                    self.selectAll();
+                    self.draw();
                     checkSelectionChange();
                     return;
                 }
@@ -2548,6 +2591,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             'horizontal-scroll-right',
             'horizontal-scroll-left'
         ];
+        self.componentL1Events = {};
+        self.eventNames = ['afterdraw', 'afterrendercell', 'attributechanged', 'beforebeginedit',
+            'beforecreatecellgrid', 'beforedraw', 'beforeendedit', 'beforerendercell', 'beforerendercellgrid',
+            'beginedit', 'cellmouseout', 'cellmouseover', 'click', 'collapsetree', 'contextmenu', 'copy',
+            'datachanged', 'dblclick', 'endedit', 'expandtree', 'formatcellvalue', 'keydown', 'keypress',
+            'keyup', 'mousedown', 'mousemove', 'mouseup', 'newrow', 'ordercolumn', 'rendercell', 'rendercellgrid',
+            'renderorderbyarrow', 'rendertext', 'rendertreearrow', 'reorder', 'reordering', 'resize',
+            'resizecolumn', 'resizerow', 'schemachanged', 'scroll', 'selectionchanged', 'stylechanged',
+            'touchcancel', 'touchend', 'touchmove', 'touchstart', 'wheel'];
         self.mouse = { x: 0, y: 0};
         self.getSelectedData = function (expandToRow) {
             var d = [], s = self.getVisibleSchema(), l = self.data.length;
@@ -3013,6 +3065,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.resize(true);
             }
         });
+        Object.defineProperty(self.intf, 'visibleRowHeights', {
+            get: function () {
+                return self.visibleRowHeights;
+            }
+        });
         Object.defineProperty(self.intf, 'openChildren', {
             get: function () {
                 return self.openChildren;
@@ -3184,6 +3241,19 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             throw new Error('Unsupported data type.  Must be an array of arrays or an array of objects, function or string.');
         };
+        self.eventNames.forEach(function (eventName) {
+            Object.defineProperty(self.intf, 'on' + eventName, {
+                get: function () {
+                    return self.componentL1Events[eventName];
+                },
+                set: function (value) {
+                    self.events[eventName] = [];
+                    self.componentL1Events[eventName] = value;
+                    if (!value) { return; }
+                    self.addEventListener(eventName, value);
+                }
+            });
+        });
         Object.defineProperty(self.intf, 'frozenRows', {
             get: function () {
                 return self.frozenRows;
