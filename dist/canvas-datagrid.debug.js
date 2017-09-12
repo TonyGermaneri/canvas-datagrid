@@ -1474,6 +1474,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     d.scrollIndex = '{"top": ' + self.scrollIndexTop + ', "left": ' + self.scrollIndexLeft + '}';
                     d.scrollPixel = '{"top": ' + self.scrollPixelTop + ', "left": ' + self.scrollPixelLeft + '}';
                     d.canvasOffset = '{"top": ' + self.canvasOffsetTop + ', "left": ' + self.canvasOffsetLeft + '}';
+                    d.touchPPS = '{"top": ' + self.yPPS + ', "left": ' + self.xPPS + '}';
                     d.pointerLockPosition =  self.pointerLockPosition ?
                             self.pointerLockPosition.x + ', ' + self.pointerLockPosition.y : '';
                     d.size = '{"width": ' + self.width + ', "height": ' + self.height + '}';
@@ -1544,8 +1545,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         var touchDelta = {x: 0, y: 0, scrollTop: 0, scrollLeft: 0},
             touchAnimateTo = {scrollLeft: 0, scrollTop: 0},
             touchSigma = {scrollLeft: 0, scrollTop: 0},
-            xPPS = 0,
-            yPPS = 0,
             touchingCell = false,
             startingCell = false,
             wheeling,
@@ -1576,12 +1575,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             };
         };
         self.calculatePPS = function () {
-            xPPS = ((touchDelta.scrollLeft - touchSigma.scrollLeft) / (touchDelta.t - touchSigma.t));
-            yPPS = ((touchDelta.scrollTop - touchSigma.scrollTop) / (touchDelta.t - touchSigma.t));
+            self.xPPS = ((touchDelta.scrollLeft - touchSigma.scrollLeft) / (touchDelta.t - touchSigma.t)) * 1000;
+            self.yPPS = ((touchDelta.scrollTop - touchSigma.scrollTop) / (touchDelta.t - touchSigma.t)) * 1000;
             touchSigma = {
                 scrollLeft: touchDelta.scrollLeft,
                 scrollTop: touchDelta.scrollTop,
-                t: performance.now() / 10
+                t: performance.now()
             };
         };
         self.touchCell = function (e) {
@@ -1620,7 +1619,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             clearTimeout(self.touchTimeout);
             clearInterval(self.touchCalcTimeout);
             self.touchTimeout = setTimeout(self.touchCell(e), self.attributes.touchSelectTimeMs);
-            self.touchCalcTimeout = setInterval(self.calculatePPS, 10);
+            self.touchCalcTimeout = setInterval(self.calculatePPS, 1);
             self.touchHaltAnimation = true;
             document.body.addEventListener('touchmove', self.touchmove, {passive: false});
             document.body.addEventListener('touchend', self.touchend, false);
@@ -1677,8 +1676,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             clearTimeout(self.touchTimeout);
             clearInterval(self.touchCalcTimeout);
             self.calculatePPS();
-            touchAnimateTo.scrollLeft = xPPS * self.attributes.touchReleaseAcceleration;
-            touchAnimateTo.scrollTop = yPPS * self.attributes.touchReleaseAcceleration;
+            touchAnimateTo.scrollLeft = self.xPPS * self.attributes.touchReleaseAcceleration;
+            touchAnimateTo.scrollTop = self.yPPS * self.attributes.touchReleaseAcceleration;
             self.touchHaltAnimation = false;
             if (animationFrames === 0 && !/-scroll-/.test(startingCell.style) && !dz) {
                 self.touchEndAnimation();
@@ -1687,7 +1686,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.touchmove = function (e) {
             var d = self.getTouchPos(e),
                 rowHeaderCellHeight = self.getRowHeaderCellHeight(),
-                columnHeaderCellWidth = self.getColumnHeaderCellWidth();
+                columnHeaderCellWidth = self.getColumnHeaderCellWidth(),
+                cHeight = self.height - rowHeaderCellHeight - self.style.scrollBarWidth,
+                cWidth = self.width - columnHeaderCellWidth - self.style.scrollBarWidth;
             if (self.dispatchEvent('touchmove', {NativeEvent: e, cell: self.currentCell})) { return; }
             self.stopPropagation(e);
             e.preventDefault();
@@ -1700,9 +1701,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 t: 0
             };
             if (/vertical-scroll-/.test(startingCell.style)) {
-                self.scrollBox.scrollTop = self.scrollBox.scrollHeight * (d.y / (self.height - rowHeaderCellHeight));
+                self.scrollBox.scrollTop = (self.scrollBox.scrollHeight) * ((d.y - rowHeaderCellHeight) / cHeight);
             } else if (/horizontal-scroll-/.test(startingCell.style)) {
-                self.scrollBox.scrollLeft = self.scrollBox.scrollWidth * (d.x / (self.width - columnHeaderCellWidth));
+                self.scrollBox.scrollLeft = (self.scrollBox.scrollWidth) * ((d.x - columnHeaderCellWidth) / cWidth);
             } else if (touchingCell) {
                 self.mousemove(e, d);
                 self.draw();
@@ -2243,7 +2244,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.dragStartObject = self.getCellAt(self.dragStart.x, self.dragStart.y);
             self.dragAddToSelection = !self.dragStartObject.selected;
             if (!ctrl && !e.shiftKey && !/(vertical|horizontal)-scroll-(bar|box)/
-                    .test(self.dragStartObject.context) && !self.currentCell.isColumnHeader) {
+                    .test(self.dragStartObject.context)
+                    && self.currentCell
+                    && !self.currentCell.isColumnHeader) {
                 self.selections = [];
             }
             if (self.dragStartObject.isGrid) {
@@ -2603,7 +2606,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             'touchcancel', 'touchend', 'touchmove', 'touchstart', 'wheel'];
         self.mouse = { x: 0, y: 0};
         self.getSelectedData = function (expandToRow) {
-            var d = [], s = self.getVisibleSchema(), l = self.data.length;
+            var d = [], s = self.getSchema(), l = self.data.length;
             self.selections.forEach(function (row, index) {
                 if (index === l) { return; }
                 if (row.length === 0) {
@@ -4492,6 +4495,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.ctx.textBaseline = 'alphabetic';
                 self.eventParent = self.canvas;
             }
+            self.controlInput.setAttribute('readonly', true);
             self.controlInput.addEventListener('blur', function (e) {
                 if (e.target !== self.canvas) {
                     self.hasFocus = false;
