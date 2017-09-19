@@ -122,10 +122,9 @@ function g() {
 
     // create a spreadsheet
     var grid = canvasDatagrid({
-            parentNode: document.getElementById('grid'),
-            debug: true
+            scrollPointerLock: true,
+            parentNode: document.getElementById('grid')
         }),
-        m = [],
         x,
         y,
         d = [],
@@ -150,7 +149,6 @@ function g() {
     }
     grid.attributes.columnHeaderClickBehavior = 'select';
     grid.style.columnHeaderCellHorizontalAlignment = 'center';
-    grid.debug = true;
     grid.data = d;
 
 
@@ -206,4 +204,4 @@ function g() {
     //grid.data = [null, "32.84057112200048", "-86.63186076199969", null, false];
 
 
-};
+}
