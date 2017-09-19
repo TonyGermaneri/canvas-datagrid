@@ -1,8 +1,13 @@
 <!doctype html>
 <head>
     <!-- this file is for developing in a sandbox on a local machine -->
-    <script src="../dist/canvas-datagrid.debug.js"></script>
     <script src="./developer.js"></script>
+    <script>
+        var s = document.createElement('script');
+        s.src = "../dist/canvas-datagrid.debug.js?cacheBust=" + +new Date();
+        s.onload = g;
+        document.head.appendChild(s);
+    </script>
     <meta name="viewport" content="width=device-width">
     <style>
         html, body {
@@ -29,6 +34,7 @@
     </style>
 </head>
 <body>
+<div class="grid" id="grid" style="height: 100%;"></div>
 <!--     <div class="n">
         <div class="grid" id="grid"></div>
     </div> -->

@@ -854,7 +854,7 @@
                     });
                     grid.addEventListener('contextmenu', function (e) {
                         setTimeout(function () {
-                            e.items[2].contextItemContainer.dispatchEvent(new Event('click'));
+                            e.items[4].contextItemContainer.dispatchEvent(new Event('click'));
                             done(assertIf(grid.data[0].col1 !== 'bar',
                                 'Expected the content to be reordered asc.'));
                         }, 1);
@@ -879,9 +879,9 @@
                             }
                         });
                         setTimeout(function () {
-                            e.items[4].contextItemContainer.dispatchEvent(new Event('mouseover'));
+                            e.items[6].contextItemContainer.dispatchEvent(new Event('mouseover'));
                             setTimeout(function () {
-                                done(assertIf(!e.items[4].contextMenu.container, 'Expected child context menu.'));
+                                done(assertIf(!e.items[6].contextMenu.container, 'Expected child context menu.'));
                             }, 1);
                         }, 1);
                     });
@@ -905,9 +905,9 @@
                             }
                         });
                         setTimeout(function () {
-                            e.items[4].contextItemContainer.dispatchEvent(new Event('mouseover'));
+                            e.items[6].contextItemContainer.dispatchEvent(new Event('mouseover'));
                             setTimeout(function () {
-                                done(assertIf(!e.items[4].contextMenu.container, 'Expected child context menu.'));
+                                done(assertIf(!e.items[6].contextMenu.container, 'Expected child context menu.'));
                             }, 1);
                         }, 1);
                     });
@@ -931,9 +931,9 @@
                             }
                         });
                         setTimeout(function () {
-                            e.items[4].contextItemContainer.dispatchEvent(new Event('mouseover'));
+                            e.items[6].contextItemContainer.dispatchEvent(new Event('mouseover'));
                             setTimeout(function () {
-                                done(assertIf(!e.items[4].contextMenu.container, 'Expected child context menu.'));
+                                done(assertIf(!e.items[6].contextMenu.container, 'Expected child context menu.'));
                             }, 1);
                         }, 1);
                     });
@@ -955,20 +955,20 @@
                             items: d
                         });
                         setTimeout(function () {
-                            e.items[4].contextItemContainer.dispatchEvent(new Event('mouseover'));
-                            e.items[4].contextMenu.downArrow.dispatchEvent(new Event('mouseover'));
+                            e.items[6].contextItemContainer.dispatchEvent(new Event('mouseover'));
+                            e.items[6].contextMenu.downArrow.dispatchEvent(new Event('mouseover'));
                             setTimeout(function () {
-                                var err = assertIf(e.items[4].contextMenu.container.scrollTop === 0);
+                                var err = assertIf(e.items[6].contextMenu.container.scrollTop === 0);
                                 if (err) { return done(err); }
-                                e.items[4].contextMenu.downArrow.dispatchEvent(new Event('mouseout'));
-                                e.items[4].contextMenu.upArrow.dispatchEvent(new Event('mouseover'));
+                                e.items[6].contextMenu.downArrow.dispatchEvent(new Event('mouseout'));
+                                e.items[6].contextMenu.upArrow.dispatchEvent(new Event('mouseover'));
                                 setTimeout(function () {
-                                    e.items[4].contextMenu.upArrow.dispatchEvent(new Event('mouseout'));
-                                    err = assertIf(e.items[4].contextMenu.container.scrollTop !== 0);
+                                    e.items[6].contextMenu.upArrow.dispatchEvent(new Event('mouseout'));
+                                    err = assertIf(e.items[6].contextMenu.container.scrollTop !== 0);
                                     if (err) { return done(err); }
                                     setTimeout(function () {
-                                        e.items[4].contextItemContainer.dispatchEvent(new Event('mouseout'));
-                                        done(assertIf(e.items[4].contextMenu !== undefined,
+                                        e.items[6].contextItemContainer.dispatchEvent(new Event('mouseout'));
+                                        done(assertIf(e.items[6].contextMenu !== undefined,
                                             'expected child context menu to be gone.'));
                                     }, 100);
                                 }, 1500);
@@ -1107,7 +1107,7 @@
                     grid.addEventListener('contextmenu', function (e) {
                         setTimeout(function () {
                             var err, i = localStorage.getItem(k);
-                            e.items[1].contextItemContainer.dispatchEvent(new Event('click'));
+                            e.items[3].contextItemContainer.dispatchEvent(new Event('click'));
                             err = assertIf(localStorage.getItem(k) === i, 'expected storage values to differ');
                             localStorage.removeItem(k);
                             done(err);
@@ -1377,61 +1377,6 @@
                         }, 200);
                     }, 1);
                 });
-                it('Touch and hold should start selecting, moving should select until touchend', function (done) {
-                    var grid = g({
-                        test: this.test,
-                        data: smallData()
-                    });
-                    setTimeout(function () {
-                        grid.focus();
-                        touchstart(grid.canvas, 200, 37);
-                        setTimeout(function () {
-                            // simulate very slow movement of humans
-                            grid.focus();
-                            touchmove(document.body, 320, 90, grid.canvas);
-                            touchend(document.body, 320, 90, grid.canvas);
-                            setTimeout(function () {
-                                done(assertIf(grid.selectedRows.length !== 3,
-                                    'Expected all rows to become selected.'));
-                            }, 1);
-                        }, 1000);
-                    }, 1);
-                });
-                it('Touch and touch again within the touchDeadZone should begin editing', function (done) {
-                    var grid = g({
-                        test: this.test,
-                        data: makeData(10, 10)
-                    });
-                    setTimeout(function () {
-                        touchstart(grid.canvas, 200, 37);
-                        setTimeout(function () {
-                            touchend(document.body, 200, 37, grid.canvas);
-                            done(assertIf(grid.input === undefined,
-                                    'Expected an edit input.'));
-                            setTimeout(function () { keydown(grid.input, 13); }, 200);
-                        }, 500);
-                    }, 500);
-                });
-                it('Touch an inactive cell should set it active', function (done) {
-                    var grid = g({
-                        test: this.test,
-                        data: makeData(10, 10)
-                    });
-                    setTimeout(function () {
-                        grid.focus();
-                        touchstart(grid.canvas, 200, 72);
-                        setTimeout(function () {
-                            // simulate very slow movement of humans
-                            grid.focus();
-                            touchmove(document.body, 200, 72, grid.canvas);
-                            touchend(document.body, 200, 72, grid.canvas);
-                            setTimeout(function () {
-                                done(assertIf(grid.activeCell.rowIndex === 1,
-                                    'Expected rowIndex 1 to be selected.'));
-                            }, 1);
-                        }, 1000);
-                    }, 1);
-                });
                 it('Use touchstart event to prevent touch events using e.preventDefault.', function (done) {
                     var grid = g({
                         test: this.test,
@@ -1490,25 +1435,6 @@
                             setTimeout(function () {
                                 done(assertIf(grid.scrollLeft !== 0,
                                     'Expected no movement.'));
-                            }, 1);
-                        }, 1000);
-                    }, 1);
-                });
-                it('Touch start should be cancel-able', function (done) {
-                    var grid = g({
-                        test: this.test,
-                        data: smallData()
-                    });
-                    setTimeout(function () {
-                        grid.focus();
-                        touchstart(grid.canvas, 200, 37);
-                        setTimeout(function () {
-                            // simulate very slow movement of humans
-                            grid.focus();
-                            touchcancel(document.body, 320, 90, grid.canvas);
-                            setTimeout(function () {
-                                done(assertIf(grid.selectedRows.length !== 1,
-                                    'Expected 1 row to be selected.'));
                             }, 1);
                         }, 1000);
                     }, 1);
@@ -2764,7 +2690,7 @@
                     });
                     grid.addEventListener('contextmenu', function (e) {
                         setTimeout(function () {
-                            done(assertIf(e.items.length !== 3,
+                            done(assertIf(e.items.length !== 5,
                                 'Expected to only see two items in the context menu at this point.'));
                         }, 1);
                     });
@@ -2778,7 +2704,7 @@
                     });
                     grid.addEventListener('contextmenu', function (e) {
                         setTimeout(function () {
-                            done(assertIf(e.items.length !== 4,
+                            done(assertIf(e.items.length !== 6,
                                 'Expected to only see two items in the context menu at this point.'));
                         }, 1);
                     });

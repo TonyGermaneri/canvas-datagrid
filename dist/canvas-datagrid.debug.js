@@ -112,6 +112,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['allowRowResizeFromCell', false],
                 ['allowColumnResizeFromCell', false],
                 ['debug', false],
+                ['showPerformance', false],
                 ['borderResizeZone', 10],
                 ['showColumnHeaders', true],
                 ['showRowNumbers', true],
@@ -129,13 +130,21 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['showOrderByOptionTextAsc', 'Order by %s ascending'],
                 ['showOrderByOptionTextDesc', 'Order by %s descending'],
                 ['removeFilterOptionText', 'Remove filter on %s'],
+                ['columnSelectorVisibleText', '\u2713'],
+                ['columnSelectorHiddenText', '&nbsp;&nbsp;&nbsp;'],
+                ['columnSelectorText', 'Add/Remove columns'],
+                ['hideColumnText', 'Hide %s'],
+                ['showColumnSelector', true],
                 ['filterOptionText', 'Filter %s'],
                 ['filterTextPrefix', '(filtered) '],
                 ['touchReleaseAnimationDurationMs', 2000],
-                ['touchReleaseAcceleration', 500],
+                ['touchReleaseAcceleration', 1000],
                 ['touchDeadZone', 3],
-                ['touchSelectTimeMs', 800],
-                ['touchScrollZone', 30],
+                ['touchContextMenuTimeMs', 800],
+                ['touchScrollZone', 20],
+                ['touchEasingMethod', 'easeOutQuad'],
+                ['scrollAnimationPPSThreshold', 0.75],
+                ['touchSelectHandleZone', 20],
                 ['copyText', 'Copy'],
                 ['showCopy', true],
                 ['columnHeaderClickBehavior', 'sort'],
@@ -312,6 +321,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['treeArrowMarginTop', 6],
                 ['treeArrowWidth', 13],
                 ['treeGridHeight', 250],
+                ['selectionHandleColor', 'rgba(66, 133, 244, 1)'],
+                ['selectionHandleBorderColor', 'rgba(255, 255, 255, 1)'],
+                ['selectionHandleSize', 8],
+                ['selectionHandleBorderWidth', 1.5],
+                ['selectionHandleType', 'square'],
                 ['width', 'auto']
             ]
         };
@@ -605,8 +619,34 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
     return function (self) {
         var perfCounters = [],
             drawCount = 0,
-            perfWindowSize = 20;
+            perfWindowSize = 300,
+            entityCount = [],
+            scrollDebugCounters = [],
+            touchPPSCounters = [];
         self.htmlImageCache = {};
+        function drawPerfLine(w, h, x, y, perfArr, arrIndex, max, color, useAbs) {
+            var i = w / perfArr.length,
+                r = h / max;
+            x += self.canvasOffsetLeft;
+            y += self.canvasOffsetTop;
+            self.ctx.beginPath();
+            self.ctx.moveTo(x, y + h);
+            perfArr.forEach(function (n) {
+                var val = (arrIndex === undefined ? n : n[arrIndex]),
+                    cx,
+                    cy;
+                if (useAbs) {
+                    val = Math.abs(val);
+                }
+                cx = x + i;
+                cy = y + h - (val * r);
+                self.ctx.lineTo(cx, cy);
+                x += i;
+            });
+            self.ctx.moveTo(x + w, y + h);
+            self.ctx.strokeStyle = color;
+            self.ctx.stroke();
+        }
         function drawOnAllImagesLoaded() {
             var loaded = true;
             Object.keys(self.htmlImageCache).forEach(function (html) {
@@ -731,6 +771,54 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             y += self.canvasOffsetTop;
             self.ctx.fillText(text, x, y);
         }
+        function fillCircle(x, y, r) {
+            x += self.canvasOffsetLeft;
+            y += self.canvasOffsetTop;
+            self.ctx.beginPath();
+            self.ctx.arc(x, y, r, 0, 2 * Math.PI);
+            self.ctx.fill();
+        }
+        function strokeCircle(x, y, r) {
+            x += self.canvasOffsetLeft;
+            y += self.canvasOffsetTop;
+            self.ctx.beginPath();
+            self.ctx.arc(x, y, r, 0, 2 * Math.PI);
+            self.ctx.stroke();
+        }
+        function fillHandle(x, y, r) {
+            if (self.style.selectionHandleType === 'circle') {
+                return fillCircle(x, y, r * 0.5);
+            }
+            fillRect(x - r * 0.5, y - r * 0.5, r, r);
+        }
+        function strokeHandle(x, y, r) {
+            if (self.style.selectionHandleType === 'circle') {
+                return strokeCircle(x, y, r * 0.5);
+            }
+            strokeRect(x - r * 0.5, y - r * 0.5, r, r);
+        }
+        function addselectionHandle(c, pos) {
+            var hw = self.style.selectionHandleSize,
+                p = {
+                    tr: function () {
+                        fillHandle(c.x + c.width, c.y, hw);
+                        strokeHandle(c.x + c.width, c.y, hw);
+                    },
+                    br: function () {
+                        fillHandle(c.x + c.width, c.y + c.height, hw);
+                        strokeHandle(c.x + c.width, c.y + c.height, hw);
+                    },
+                    tl: function () {
+                        fillHandle(c.x, c.y, hw);
+                        strokeHandle(c.x, c.y, hw);
+                    },
+                    bl: function () {
+                        fillHandle(c.x, c.y + c.height, hw);
+                        strokeHandle(c.x, c.y + c.height, hw);
+                    }
+                };
+            p[pos]();
+        }
         function addBorderLine(c, pos) {
             self.ctx.beginPath();
             var p = {
@@ -826,6 +914,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             var checkScrollHeight, rowHeaderCell, p, cx, cy, treeGrid, rowOpen,
                 rowHeight, cornerCell, y, x, c, h, w, s, r, rd, aCell,
                 selectionBorders = [],
+                selectionHandles = [],
                 rowHeaders = [],
                 l = self.data.length,
                 u = self.currentCell || {},
@@ -955,7 +1044,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             function drawCell(d, rowIndex, rowOrderIndex) {
                 return function drawEach(header, headerIndex, columnOrderIndex) {
-                    var cellStyle = header.style || 'cell',
+                    var selectionTop, selectionLeft, selectionBottom, selectionRight,
+                        cellStyle = header.style || 'cell',
                         cellGridAttributes,
                         cell,
                         isHeader = /HeaderCell/.test(cellStyle),
@@ -968,8 +1058,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         isGrid = typeof d[header.name] === 'object' && d[header.name] !== null && d[header.name] !== undefined,
                         activeHeader = (self.orders.rows[self.activeCell.rowIndex] === rowOrderIndex
                                 || self.orders.columns[self.activeCell.columnIndex] === columnOrderIndex)
-                            && (columnOrderIndex === -1 || rowOrderIndex === -1)
-                            ? (isRowHeader ? 'activeRowHeaderCell' : 'activeColumnHeaderCell') : false,
+                        && (columnOrderIndex === -1 || rowOrderIndex === -1)
+                        ? (isRowHeader ? 'activeRowHeaderCell' : 'activeColumnHeaderCell') : false,
                         val,
                         f = self.formatters[header.type || 'string'],
                         orderByArrowSize = 0,
@@ -1171,18 +1261,34 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                                 || cell.rowIndex === 0)
                                 && !cell.isHeader) {
                             selectionBorders.push([cell, 't']);
+                            selectionTop = true;
                         }
                         if (!self.selections[cell.rowIndex + 1]
                                 || self.selections[cell.rowIndex + 1].indexOf(cell.columnIndex) === -1) {
                             selectionBorders.push([cell, 'b']);
+                            selectionBottom = true;
                         }
                         if (!self.selections[cell.rowIndex] || cell.columnIndex === 0
                                 || self.selections[cell.rowIndex].indexOf(cell.columnIndex - 1) === -1) {
                             selectionBorders.push([cell, 'l']);
+                            selectionLeft = true;
                         }
                         if (!self.selections[cell.rowIndex] || cell.columnIndex === s.length
                                 || self.selections[cell.rowIndex].indexOf(cell.columnIndex + 1) === -1) {
                             selectionBorders.push([cell, 'r']);
+                            selectionRight = true;
+                        }
+                        if (selectionTop && selectionRight) {
+                            selectionHandles.push([cell, 'tr']);
+                        }
+                        if (selectionBottom && selectionRight) {
+                            selectionHandles.push([cell, 'br']);
+                        }
+                        if (selectionTop && selectionLeft) {
+                            selectionHandles.push([cell, 'tl']);
+                        }
+                        if (selectionBottom && selectionLeft) {
+                            selectionHandles.push([cell, 'bl']);
                         }
                     }
                     self.ctx.restore();
@@ -1444,6 +1550,26 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     addBorderLine(c[0], c[1]);
                 });
             }
+            function drawselectionHandles() {
+                if (self.mobile) {
+                    self.ctx.lineWidth = self.style.selectionHandleBorderWidth;
+                    self.ctx.strokeStyle = self.style.selectionHandleBorderColor;
+                    self.ctx.fillStyle = self.style.selectionHandleColor;
+                    selectionHandles.forEach(function (c) {
+                        addselectionHandle(c[0], c[1]);
+                        var az = self.attributes.touchSelectHandleZone / 2,
+                            ax = c[0].x + (c[1] === 'tl' || c[1] === 'bl' ? 0 : c[0].width) - az,
+                            ay = c[0].y + (c[1] === 'bl' || c[1] === 'br' ? c[0].height : 0) - az;
+                        self.visibleCells.unshift({
+                            x: ax,
+                            y: ay,
+                            height: self.style.selectionHandleSize + az,
+                            width: self.style.selectionHandleSize + az,
+                            style: 'selection-handle-' + c[1]
+                        });
+                    });
+                }
+            }
             function drawActiveCell() {
                 if (!aCell) { return; }
                 if (self.attributes.selectionMode === 'row') {
@@ -1458,58 +1584,92 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     strokeRect(aCell.x, aCell.y, aCell.width, aCell.height);
                 }
             }
-            function drawDebug() {
-                perfCounters[drawCount % perfWindowSize] = performance.now() - p;
-                var d;
-                if (self.attributes.debug) {
-                    self.ctx.font = '11px sans-serif';
-                    d = {};
-                    d.perf = (perfCounters.reduce(function (a, b) {
-                        return a + b;
-                    }, 0) / perfCounters.length).toFixed(1)
-                        + 'ms (' +
-                        perfCounters.map(function (a) { return a.toFixed(1); }).join(', ') + ')';
-                    d.htmlImages = Object.keys(self.htmlImageCache).length;
-                    d.scrollBox = self.scrollBox.toString();
-                    d.scrollIndex = '{"top": ' + self.scrollIndexTop + ', "left": ' + self.scrollIndexLeft + '}';
-                    d.scrollPixel = '{"top": ' + self.scrollPixelTop + ', "left": ' + self.scrollPixelLeft + '}';
-                    d.canvasOffset = '{"top": ' + self.canvasOffsetTop + ', "left": ' + self.canvasOffsetLeft + '}';
-                    d.pointerLockPosition =  self.pointerLockPosition ?
-                            self.pointerLockPosition.x + ', ' + self.pointerLockPosition.y : '';
-                    d.size = '{"width": ' + self.width + ', "height": ' + self.height + '}';
-                    d.mouse = '{"x": ' + self.mouse.x + ', "y": ' + self.mouse.y + '}';
-                    d.touch = !self.touchStart
-                        ? '' : '{"x": ' + self.touchStart.x + ', "y": ' + self.touchStart.y + "}";
-                    d.entities = self.visibleCells.length;
-                    d.hasFocus = self.hasFocus;
-                    d.dragMode = self.dragMode;
-                    if (self.currentCell) {
-                        d.columnIndex = self.currentCell.columnIndex;
-                        d.rowIndex = self.currentCell.rowIndex;
-                        d.sortColumnIndex = self.currentCell.sortColumnIndex;
-                        d.sortRowIndex = self.currentCell.sortRowIndex;
-                        d.context = self.currentCell.context;
-                        d.dragContext = self.currentCell.dragContext;
-                        d.style = self.currentCell.style;
-                        d.type = self.currentCell.type;
-                    }
-                    self.ctx.save();
-                    Object.keys(d).forEach(function (key, index) {
-                        var m = key + ': ' + d[key],
-                            lh = 14;
-                        self.ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-                        fillRect(columnHeaderCellWidth, lh + (index * lh), 800, lh);
-                        self.ctx.fillStyle = 'rgba(0, 0, 0, 1)';
-                        fillText(m, columnHeaderCellWidth + 1, rowHeaderCellHeight + (index * lh));
-                    });
-                    self.ctx.restore();
+            function drawPerfLines() {
+                if (!self.attributes.showPerformance) { return; }
+                var pw = self.width - columnHeaderCellWidth - self.style.scrollBarWidth,
+                    ph = self.height - rowHeaderCellHeight - self.style.scrollBarWidth;
+                if (scrollDebugCounters.length === 0) { scrollDebugCounters = self.fillArray(0, perfWindowSize, 1, function () { return [0, 0]; }); }
+                if (touchPPSCounters.length === 0) { touchPPSCounters = self.fillArray(0, perfWindowSize, 1, function () { return [0, 0]; }); }
+                if (entityCount.length === 0) { entityCount = self.fillArray(0, perfWindowSize, 1, 0); }
+                self.ctx.lineWidth = 0.5;
+                function dpl(perfArr, arrIndex, max, color, useAbs) {
+                    drawPerfLine(pw, ph, columnHeaderCellWidth, rowHeaderCellHeight, perfArr, arrIndex, max, color, useAbs);
                 }
+                [[scrollDebugCounters, 0, self.scrollBox.scrollHeight, 'fuchsia'],
+                    [scrollDebugCounters, 1, self.scrollBox.scrollWidth, 'green'],
+                    [perfCounters, undefined, 100, 'red'],
+                    [entityCount, undefined, 500, 'blue'],
+                    [touchPPSCounters, 0, 10000, 'orange', true],
+                    [touchPPSCounters, 1, 10000, 'purple', true]
+                    ].forEach(function (i) { dpl.apply(null, i); });
+                self.ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                entityCount.pop();
+                entityCount.unshift(self.visibleCells.length);
+                scrollDebugCounters.pop();
+                scrollDebugCounters.unshift([self.scrollBox.scrollTop, self.scrollBox.scrollLeft]);
+                touchPPSCounters.pop();
+                touchPPSCounters.unshift([self.yPPS, self.xPPS]);
+                self.ctx.fillStyle = 'rgba(0, 0, 0, 1)';
+                fillText('Red = Draw time, Blue = Entities, Fuchsia/Green = Scroll, Orange/Purple = Touch PPS', columnHeaderCellWidth + 300, rowHeaderCellHeight);
+            }
+            function drawDebug() {
+                var d;
+                if (self.attributes.showPerformance || self.attributes.debug) {
+                    if (perfCounters.length === 0) { perfCounters = self.fillArray(0, perfWindowSize, 1, 0); }
+                    perfCounters.pop();
+                    perfCounters.unshift(performance.now() - p);
+                }
+                if (!self.attributes.debug) { return; }
+                self.ctx.font = '11px sans-serif';
+                d = {};
+                d.perf = (perfCounters.reduce(function (a, b) {
+                    return a + b;
+                }, 0) / Math.min(drawCount, perfCounters.length)).toFixed(1);
+                d.htmlImages = Object.keys(self.htmlImageCache).length;
+                d.scrollBox = self.scrollBox.toString();
+                d.scrollIndex = 'x: ' + self.scrollIndexLeft + ', y: ' + self.scrollIndexTop;
+                d.scrollPixel = 'x: ' + self.scrollPixelLeft + ', y: ' + self.scrollPixelTop;
+                d.canvasOffset = 'x: ' + self.canvasOffsetLeft + ', y: ' + self.canvasOffsetTop;
+                d.touchDelta = 'x: ' + self.touchDelta.x + ', y: ' + self.touchDelta.y;
+                d.touchAnimateTo = 'x: ' + self.touchAnimateTo.x + ', y: ' + self.touchAnimateTo.y;
+                d.scrollAnimation = 'x: ' + self.scrollAnimation.x + ', y: ' + self.scrollAnimation.y;
+                d.touchPPS = 'x: ' + self.xPPS + ', y: ' + self.yPPS;
+                d.touchPPST = 'x: ' + self.xPPST + ', y: ' + self.yPPST;
+                d.touchDuration = self.touchDuration;
+                d.pointerLockPosition =  self.pointerLockPosition ?
+                        self.pointerLockPosition.x + ', ' + self.pointerLockPosition.y : '';
+                d.size = 'w: ' + self.width + ', h: ' + self.height;
+                d.mouse = 'x: ' + self.mouse.x + ', y: ' + self.mouse.y;
+                d.touch = !self.touchStart
+                    ? '' : 'x: ' + self.touchStart.x + ', y: ' + self.touchStart.y;
+                d.entities = self.visibleCells.length;
+                d.hasFocus = self.hasFocus;
+                d.dragMode = self.dragMode;
+                if (self.currentCell) {
+                    d.columnIndex = self.currentCell.columnIndex;
+                    d.rowIndex = self.currentCell.rowIndex;
+                    d.sortColumnIndex = self.currentCell.sortColumnIndex;
+                    d.sortRowIndex = self.currentCell.sortRowIndex;
+                    d.context = self.currentCell.context;
+                    d.dragContext = self.currentCell.dragContext;
+                    d.style = self.currentCell.style;
+                    d.type = self.currentCell.type;
+                }
+                Object.keys(d).forEach(function (key, index) {
+                    var m = key + ': ' + d[key],
+                        lh = 14;
+                    self.ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                    fillRect(columnHeaderCellWidth, lh + (index * lh), 800, lh);
+                    self.ctx.fillStyle = 'rgba(0, 0, 0, 1)';
+                    fillText(m, columnHeaderCellWidth + 1, rowHeaderCellHeight + (index * lh));
+                });
             }
             self.ctx.save();
             initDraw();
             drawBackground();
             drawRows();
             drawSelectionBorders();
+            drawselectionHandles();
             drawActiveCell();
             drawHeaders();
             drawReorderMarkers();
@@ -1519,6 +1679,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             drawBorder();
             drawDebug();
+            drawPerfLines();
             if (self.dispatchEvent('afterdraw', {})) { return; }
             self.ctx.restore();
         };
@@ -1536,20 +1697,18 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true*/
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true, plusplus: true*/
 /*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
     'use strict';
     return function (self) {
-        var touchDelta = {x: 0, y: 0, scrollTop: 0, scrollLeft: 0},
-            touchAnimateTo = {scrollLeft: 0, scrollTop: 0},
-            touchSigma = {scrollLeft: 0, scrollTop: 0},
-            xPPS = 0,
-            yPPS = 0,
-            touchingCell = false,
-            startingCell = false,
-            wheeling,
-            animationFrames = 0;
+        var wheeling,
+            touchTimerMs = 50,
+            touchScrollTimeout;
+        self.scrollAnimation = {};
+        self.touchDelta = {};
+        self.touchAnimateTo = {};
+        self.animationFrames = 0;
         function calculateCssSize(sizeString, parentSize) {
             var p;
             if (sizeString === 'auto' || sizeString === '') { return parentSize; }
@@ -1575,153 +1734,295 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 rect: rect
             };
         };
-        self.calculatePPS = function () {
-            xPPS = ((touchDelta.scrollLeft - touchSigma.scrollLeft) / (touchDelta.t - touchSigma.t));
-            yPPS = ((touchDelta.scrollTop - touchSigma.scrollTop) / (touchDelta.t - touchSigma.t));
-            touchSigma = {
-                scrollLeft: touchDelta.scrollLeft,
-                scrollTop: touchDelta.scrollTop,
-                t: performance.now() / 10
+        // shamelessly stolen from from https://gist.github.com/gre/1650294
+        self.easingFunctions = {
+            linear: function (t) { return t; },
+            easeInQuad: function (t) { return t * t; },
+            easeOutQuad: function (t) { return t * (2 - t); },
+            easeInOutQuad: function (t) { return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t; },
+            easeInCubic: function (t) { return t * t * t; },
+            easeOutCubic: function (t) { return (--t) * t * t + 1; },
+            easeInOutCubic: function (t) { return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1; },
+            easeInQuart: function (t) { return t * t * t * t; },
+            easeOutQuart: function (t) { return 1 - (--t) * t * t * t; },
+            easeInOutQuart: function (t) { return t < 0.5 ? 8 * t  * t  * t * t : 1 - 8 * (--t) * t * t * t; },
+            easeInQuint: function (t) { return t * t * t * t * t; },
+            easeOutQuint: function (t) { return 1 + (--t) * t *  t * t * t; },
+            easeInOutQuint: function (t) { return t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * (--t) * t * t * t * t; }
+        };
+        self.easing = function (t, b, c, d) {
+            return c * self.easingFunctions[self.attributes.touchEasingMethod](t / d) + b;
+        };
+        self.calculatePPSTimed = function () {
+            self.xPPST = -((self.touchDelta.x - self.touchSigmaTimed.x) / (self.touchDelta.t - self.touchSigmaTimed.t));
+            self.yPPST = -((self.touchDelta.y - self.touchSigmaTimed.y) / (self.touchDelta.t - self.touchSigmaTimed.t));
+            self.touchSigmaTimed = {
+                x: self.touchDelta.x,
+                y: self.touchDelta.y,
+                t: performance.now()
             };
+        };
+        self.calculatePPS = function () {
+            self.xPPS = -((self.touchDelta.x - self.touchSigma.x) / (self.touchDelta.t - self.touchSigma.t));
+            self.yPPS = -((self.touchDelta.y - self.touchSigma.y) / (self.touchDelta.t - self.touchSigma.t));
+            self.touchSigma = {
+                x: self.touchDelta.x,
+                y: self.touchDelta.y,
+                t: performance.now()
+            };
+        };
+        self.touchEndAnimation = function () {
+            if (!self.canvas || !self.scrollBox.scrollTo) { return requestAnimationFrame(self.touchEndAnimation); }
+            var n = performance.now(),
+                d = self.attributes.touchReleaseAnimationDurationMs,
+                t;
+            t = n - self.touchDelta.t;
+            self.animationFrames += 1;
+            self.scrollAnimation.x = self.easing(t, self.touchDelta.scrollLeft, self.touchAnimateTo.x, d);
+            self.scrollAnimation.y = self.easing(t, self.touchDelta.scrollTop, self.touchAnimateTo.y, d);
+            if (t > d || (self.scrollAnimation.y === self.scrollBox.scrollTop
+                    && self.scrollAnimation.x === self.scrollBox.scrollLeft) || self.stopAnimation) {
+                return;
+            }
+            self.scrollBox.scrollTo(self.scrollAnimation.x, self.scrollAnimation.y);
+            requestAnimationFrame(self.touchEndAnimation);
+        };
+        self.touchEditCell = function (cell) {
+            self.beginEditAt(cell.columnIndex, cell.rowIndex);
         };
         self.touchCell = function (e) {
             return function () {
-                clearInterval(self.touchCalcTimeout);
-                var pos = self.getTouchPos(e);
-                if (Math.abs(touchDelta.x) + Math.abs(touchDelta.y) < self.attributes.touchDeadZone) {
-                    touchingCell = self.getCellAt(pos.x, pos.y);
-                    self.mousemove(e, pos);
-                    self.mousedown(e, pos);
-                    self.mousemove(e, pos);
+                clearInterval(self.calculatePPSTimer);
+                var i, pos = self.getTouchPos(e);
+                if (Math.abs(self.touchDelta.x) + Math.abs(self.touchDelta.y) < self.attributes.touchDeadZone) {
+                    i = self.getCellAt(pos.x, pos.y);
+                    if (!i) { return; }
+                    if (self.touchingCell && self.touchingCell.rowIndex === i.rowIndex
+                            && self.touchingCell.columnIndex === i.columnIndex) {
+                        self.touchEditCell(i);
+                        return;
+                    }
+                    if (self.input) {
+                        self.endEdit();
+                    }
+                    self.touchingCell = i;
+                    self.selectArea({
+                        top: i.rowIndex,
+                        bottom: i.rowIndex,
+                        left: i.columnIndex,
+                        right: i.columnIndex
+                    });
                     self.draw();
                 }
             };
         };
         self.touchstart = function (e) {
-            touchingCell = false;
-            self.touchStart = self.getTouchPos(e);
-            startingCell = self.getCellAt(self.touchStart.x, self.touchStart.y, true);
-            if (self.dispatchEvent('touchstart', {NativeEvent: e, cell: self.startingCell})) { return; }
+            if (self.dispatchEvent('touchstart', {NativeEvent: e})) { return; }
+            self.disposeContextMenu();
+            clearInterval(self.calculatePPSTimer);
+            clearTimeout(self.touchContextTimeout);
+            self.touchStartEvent = e;
+            self.stopAnimation = true;
+            self.animationFrames = 0;
             self.stopPropagation(e);
             e.preventDefault();
+            self.touchStart = self.getTouchPos(e);
             self.touchScrollStart = {
+                x: self.scrollBox.scrollLeft,
+                y: self.scrollBox.scrollTop,
+                t: performance.now()
+            };
+            self.touchDelta = {
+                x: 0,
+                y: 0,
                 scrollLeft: self.scrollBox.scrollLeft,
                 scrollTop: self.scrollBox.scrollTop,
-                t: performance.now() / 1000
+                t: self.touchScrollStart.t
             };
-            touchDelta = {
-                x: self.touchStart.x,
-                y: self.touchStart.y,
-                scrollLeft: self.scrollBox.scrollLeft,
-                scrollTop: self.scrollBox.scrollTop,
-                t: 0
+            self.touchSigma = {
+                x: self.touchDelta.x,
+                y: self.touchDelta.y,
+                t: self.touchDelta.t
             };
-            self.touchmove(e);
-            clearTimeout(self.touchTimeout);
-            clearInterval(self.touchCalcTimeout);
-            self.touchTimeout = setTimeout(self.touchCell(e), self.attributes.touchSelectTimeMs);
-            self.touchCalcTimeout = setInterval(self.calculatePPS, 10);
-            self.touchHaltAnimation = true;
+            self.touchSigmaTimed = {
+                x: self.touchDelta.x,
+                y: self.touchDelta.y,
+                t: self.touchDelta.t
+            };
+            self.touchContextTimeout = setTimeout(function () {
+                self.contextmenuEvent(e, self.touchStart);
+            }, self.attributes.touchContextMenuTimeMs);
+            self.calculatePPSTimer = setInterval(self.calculatePPSTimed, touchTimerMs);
+            self.startingCell = self.getCellAt(self.touchStart.x, self.touchStart.y, true);
+            if (self.startingCell.isHeader) {
+                if (self.startingCell.isRowHeader) {
+                    self.selectArea({
+                        top: self.startingCell.rowIndex,
+                        bottom: self.startingCell.rowIndex,
+                        left: 0,
+                        right: self.getSchema().length - 1,
+                    });
+                    self.draw();
+                } else if (self.startingCell.isColumnHeader) {
+                    if (self.attributes.columnHeaderClickBehavior === 'sort') {
+                        if (self.orderBy === self.startingCell.header.name) {
+                            self.orderDirection = self.orderDirection === 'asc' ? 'desc' : 'asc';
+                        } else {
+                            self.orderDirection = 'asc';
+                        }
+                        self.order(self.startingCell.header.name, self.orderDirection);
+                    }
+                    if (self.attributes.columnHeaderClickBehavior === 'select') {
+                        self.selectArea({
+                            top: 0,
+                            bottom: self.data.length - 1,
+                            left: self.startingCell.columnIndex,
+                            right: self.startingCell.columnIndex,
+                        });
+                        self.draw();
+                    }
+                }
+                self.touchEndEvents(e);
+                return;
+            }
             document.body.addEventListener('touchmove', self.touchmove, {passive: false});
             document.body.addEventListener('touchend', self.touchend, false);
             document.body.addEventListener('touchcancel', self.touchcancel, false);
+            self.draw();
         };
-        self.easing = function (t, b, c, d) {
-            return c * (t / d) * (2 - t) + b;
+        self.touchSelect = function (cell, handleType) {
+            if (cell.rowIndex === undefined || cell.columnIndex === undefined) { return; }
+            self.touchSelecting = true;
+            var bounds = self.getSelectionBounds();
+            if (handleType === 'selection-handle-bl'
+                    && cell.rowIndex >= bounds.top
+                    && cell.columnIndex <= bounds.right) {
+                bounds.bottom = cell.rowIndex;
+                bounds.left = cell.columnIndex;
+            } else if (handleType === 'selection-handle-tl'
+                    && cell.rowIndex <= bounds.bottom
+                    && cell.columnIndex <= bounds.right) {
+                bounds.top = cell.rowIndex;
+                bounds.left = cell.columnIndex;
+            } else if (handleType === 'selection-handle-tr'
+                    && cell.rowIndex <= bounds.bottom
+                    && cell.columnIndex >= bounds.left) {
+                bounds.top = cell.rowIndex;
+                bounds.right = cell.columnIndex;
+            } else if (handleType === 'selection-handle-br'
+                    && cell.rowIndex >= bounds.top
+                    && cell.columnIndex >= bounds.left) {
+                bounds.bottom = cell.rowIndex;
+                bounds.right = cell.columnIndex;
+            }
+            if (self.attributes.selectionMode === 'row' || cell.rowIndex === -1) {
+                bounds.left = 0;
+                bounds.right = self.getSchema().length - 1;
+            } else {
+                bounds.left = Math.max(0, bounds.left);
+            }
+            self.selectArea(bounds);
+            self.draw();
         };
-        self.touchEndAnimation = function () {
-            if (!self.canvas || !self.scrollBox.scrollTo) { return requestAnimationFrame(self.touchEndAnimation); }
-            var x,
-                y,
-                n = performance.now() / 1000,
-                d = (self.attributes.touchReleaseAnimationDurationMs / 1000),
-                t;
-            touchDelta.t = touchDelta.t || n + d;
-            t = n - touchDelta.t + 1;
-            if (t > 1 || self.touchHaltAnimation || (animationFrames > 1000)) {
-                animationFrames = 0;
-                self.touchHaltAnimation = false;
-                touchAnimateTo = {scrollLeft: -1, scrollTop: -1};
+        self.touchmove = function (e) {
+            if (self.dispatchEvent('touchmove', {NativeEvent: e})) { return; }
+            clearTimeout(touchScrollTimeout);
+            clearTimeout(self.touchContextTimeout);
+            self.touchPosition = self.getTouchPos(e);
+            var rh = self.getRowHeaderCellHeight(),
+                cw = self.getColumnHeaderCellWidth(),
+                rScrollZone = self.width - self.style.scrollBarWidth - self.touchPosition.x < self.attributes.selectionScrollZone,
+                lScrollZone = self.touchPosition.x - cw < self.attributes.selectionScrollZone,
+                bScrollZone = self.height - self.style.scrollBarWidth - self.touchPosition.y < self.attributes.selectionScrollZone,
+                tScrollZone = self.touchPosition.y - rh < self.attributes.selectionScrollZone,
+                sbw = self.style.scrollBarWidth;
+            function touchScroll() {
+                var x = self.scrollBox.scrollLeft,
+                    y = self.scrollBox.scrollTop;
+                x += (rScrollZone ? self.attributes.selectionScrollIncrement : 0);
+                y += (bScrollZone ? self.attributes.selectionScrollIncrement : 0);
+                y -= (tScrollZone ? self.attributes.selectionScrollIncrement : 0);
+                x -= (lScrollZone ? self.attributes.selectionScrollIncrement : 0);
+                self.scrollBox.scrollTo(x, y);
+                touchScrollTimeout = setTimeout(touchScroll, self.attributes.scrollRepeatRate);
+            }
+            e.stopPropagation();
+            self.touchDelta = {
+                x: self.touchPosition.x - self.touchStart.x,
+                y: self.touchPosition.y - self.touchStart.y,
+                scrollLeft: self.scrollBox.scrollLeft,
+                scrollTop: self.scrollBox.scrollTop,
+                t: performance.now()
+            };
+            self.currentCell = self.getCellAt(self.touchPosition.x, self.touchPosition.y);
+            self.calculatePPS();
+            self.touchDuration = performance.now() - self.touchScrollStart.t;
+            self.stopAnimation = true;
+            self.animationFrames = 0;
+            if (self.touchSelecting && (rScrollZone || lScrollZone || tScrollZone || bScrollZone)) {
+                touchScroll();
+            }
+            if (/vertical-scroll-/.test(self.startingCell.style)) {
+                self.scrollBox.scrollTop = self.scrollBox.scrollHeight
+                    * ((self.touchPosition.y - rh - sbw) / (self.scrollBox.height - sbw - rh));
                 return;
             }
-            animationFrames += 1;
-            x = self.easing(t, touchDelta.scrollLeft, -touchAnimateTo.scrollLeft, d);
-            y = self.easing(t, touchDelta.scrollTop, -touchAnimateTo.scrollTop, d);
-            self.scrollBox.scrollTo(x, y);
-            requestAnimationFrame(self.touchEndAnimation);
+            if (/horizontal-scroll-/.test(self.startingCell.style)) {
+                self.scrollBox.scrollLeft = self.scrollBox.scrollWidth
+                    * ((self.touchPosition.x - cw - sbw) / (self.scrollBox.width - sbw - cw));
+                return;
+            }
+            if (/selection-handle-/.test(self.startingCell.style)) {
+                self.touchSelect(self.currentCell, self.startingCell.style);
+                return;
+            }
+            self.scrollBox.scrollTo(self.touchScrollStart.x - self.touchDelta.x,
+                self.touchScrollStart.y - self.touchDelta.y);
+            self.draw();
+        };
+        self.touchEndEvents = function (e) {
+            self.touchSelecting = false;
+            clearInterval(self.touchScrollTimeout);
+            clearInterval(self.touchContextTimeout);
+            clearInterval(self.calculatePPSTimer);
+            e.stopPropagation();
+            document.body.removeEventListener('touchmove', self.touchmove, {passive: false});
+            document.body.removeEventListener('touchend', self.touchend, false);
+            document.body.removeEventListener('touchcancel', self.touchcancel, false);
         };
         self.touchend = function (e) {
             if (self.dispatchEvent('touchend', {NativeEvent: e})) { return; }
-            var dz = Math.abs(touchDelta.x) + Math.abs(touchDelta.y) < self.attributes.touchDeadZone,
-                pos = {
-                    x: self.touchStart.x + touchDelta.x,
-                    y: self.touchStart.y + touchDelta.y
-                },
-                cell = self.getCellAt(pos.x, pos.y);
-            if (!self.hasFocus) { return; }
-            if (touchingCell) {
-                self.mouseup(e, self.touchStart);
-            } else if (dz) {
-                if (cell.active) {
-                    self.beginEditAt(cell.columnIndex, cell.rowIndex);
-                } else {
-                    self.mousedown(e, self.touchStart);
-                    self.mouseup(e, self.touchStart);
-                    self.click(e, self.touchStart);
-                }
+            var dz = Math.abs(self.touchDelta.x) + Math.abs(self.touchDelta.y) < self.attributes.touchDeadZone;
+            if (isNaN(self.xPPS)) {
+                self.xPPS = 0;
             }
-            touchingCell = false;
-            document.body.removeEventListener('touchmove', self.touchmove, {passive: false});
-            document.body.removeEventListener('touchend', self.touchend, false);
-            document.body.removeEventListener('touchcancel', self.touchcancel, false);
-            clearTimeout(self.touchTimeout);
-            clearInterval(self.touchCalcTimeout);
-            self.calculatePPS();
-            touchAnimateTo.scrollLeft = xPPS * self.attributes.touchReleaseAcceleration;
-            touchAnimateTo.scrollTop = yPPS * self.attributes.touchReleaseAcceleration;
-            self.touchHaltAnimation = false;
-            if (animationFrames === 0 && !/-scroll-/.test(startingCell.style) && !dz) {
+            if (isNaN(self.yPPS)) {
+                self.yPPS = 0;
+            }
+            if (isNaN(self.xPPST)) {
+                self.xPPST = 0;
+            }
+            if (isNaN(self.yPPST)) {
+                self.yPPST = 0;
+            }
+            self.touchAnimateTo.x = self.xPPS * self.attributes.touchReleaseAcceleration;
+            self.touchAnimateTo.y = self.yPPS * self.attributes.touchReleaseAcceleration;
+            self.calculatePPSTimed();
+            if (dz && !self.contextMenu) {
+                self.touchCell(self.touchStartEvent)();
+            } else if (self.animationFrames === 0
+                    && (Math.abs(self.xPPST) > self.attributes.scrollAnimationPPSThreshold
+                        || Math.abs(self.yPPST) > self.attributes.scrollAnimationPPSThreshold)
+                    && !/-scroll-/.test(self.startingCell.style)
+                    && !dz) {
+                self.stopAnimation = false;
                 self.touchEndAnimation();
             }
-        };
-        self.touchmove = function (e) {
-            var d = self.getTouchPos(e),
-                rowHeaderCellHeight = self.getRowHeaderCellHeight(),
-                columnHeaderCellWidth = self.getColumnHeaderCellWidth();
-            if (self.dispatchEvent('touchmove', {NativeEvent: e, cell: self.currentCell})) { return; }
-            self.stopPropagation(e);
-            e.preventDefault();
-            if (!self.hasFocus) { return; }
-            touchDelta = {
-                x: d.x - self.touchStart.x,
-                y: d.y - self.touchStart.y,
-                scrollLeft: self.scrollBox.scrollLeft,
-                scrollTop: self.scrollBox.scrollTop,
-                t: 0
-            };
-            if (/vertical-scroll-/.test(startingCell.style)) {
-                self.scrollBox.scrollTop = self.scrollBox.scrollHeight * (d.y / (self.height - rowHeaderCellHeight));
-            } else if (/horizontal-scroll-/.test(startingCell.style)) {
-                self.scrollBox.scrollLeft = self.scrollBox.scrollWidth * (d.x / (self.width - columnHeaderCellWidth));
-            } else if (touchingCell) {
-                self.mousemove(e, d);
-                self.draw();
-            } else {
-                if (animationFrames === 0) {
-                    self.scrollBox.scrollTo(self.touchScrollStart.scrollLeft - touchDelta.x,
-                        self.touchScrollStart.scrollTop - touchDelta.y);
-                }
-            }
+            self.touchEndEvents(e);
         };
         self.touchcancel = function (e) {
-            if (self.dispatchEvent('touchcancel', {NativeEvent: e, cell: self.currentCell})) { return; }
-            if (!self.hasFocus) { return; }
-            self.touchend(e);
-            touchingCell = false;
-            document.body.removeEventListener('touchmove', self.touchmove, {passive: false});
-            document.body.removeEventListener('touchend', self.touchend, false);
-            document.body.removeEventListener('touchcancel', self.touchcancel, false);
-            return;
+            if (self.dispatchEvent('touchcancel', {NativeEvent: e})) { return; }
+            self.touchEndEvents(e);
         };
         self.stopPropagation = function (e) { e.stopPropagation(); };
         self.addEventListener = function (ev, fn) {
@@ -2243,7 +2544,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.dragStartObject = self.getCellAt(self.dragStart.x, self.dragStart.y);
             self.dragAddToSelection = !self.dragStartObject.selected;
             if (!ctrl && !e.shiftKey && !/(vertical|horizontal)-scroll-(bar|box)/
-                    .test(self.dragStartObject.context) && !self.currentCell.isColumnHeader) {
+                    .test(self.dragStartObject.context)
+                    && self.currentCell
+                    && !self.currentCell.isColumnHeader) {
                 self.selections = [];
             }
             if (self.dragStartObject.isGrid) {
@@ -2603,7 +2906,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             'touchcancel', 'touchend', 'touchmove', 'touchstart', 'wheel'];
         self.mouse = { x: 0, y: 0};
         self.getSelectedData = function (expandToRow) {
-            var d = [], s = self.getVisibleSchema(), l = self.data.length;
+            var d = [], s = self.getSchema(), l = self.data.length;
             self.selections.forEach(function (row, index) {
                 if (index === l) { return; }
                 if (row.length === 0) {
@@ -2624,11 +2927,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             });
             return d;
         };
-        self.fillArray = function (low, high, step) {
+        self.fillArray = function (low, high, step, def) {
             step = step || 1;
             var i = [], x;
             for (x = low; x <= high; x += step) {
-                i[x] = x;
+                i[x] = def === undefined ? x : (typeof def === 'function' ? def(x) : def);
             }
             return i;
         };
@@ -2815,7 +3118,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     ? self.uniqueId : self.storedSettings.orderBy;
                 self.orderDirection = self.storedSettings.orderDirection === undefined
                     ? self.uniqueId : self.storedSettings.orderDirection;
-                if (self.getHeaderByName(self.orderBy) && self.orderDirection) {
+                if (self.orderBy !== self.uniqueId && self.getHeaderByName(self.orderBy) && self.orderDirection) {
                     self.order(self.orderBy, self.orderDirection);
                 }
             }
@@ -2843,6 +3146,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.setDom();
             self.type = 'canvas-datagrid';
             self.initialized = true;
+            self.mobile = /Mobile/i.test(window.navigator.userAgent);
             self.pointerLockPosition = {x: 0, y: 0};
             Object.keys(self.style).forEach(self.parseFont);
             self.intf.type = self.type;
@@ -3527,6 +3831,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
     'use strict';
     return function (self) {
         var zIndexTop = 2, hoverScrollTimeout, autoCompleteContext;
+        function applyContextItemStyle(contextItemContainer) {
+            self.createInlineStyle(contextItemContainer, 'canvas-datagrid-context-menu-item');
+            contextItemContainer.addEventListener('mouseover', function () {
+                self.createInlineStyle(contextItemContainer, 'canvas-datagrid-context-menu-item:hover');
+            });
+            contextItemContainer.addEventListener('mouseout', function () {
+                self.createInlineStyle(contextItemContainer, 'canvas-datagrid-context-menu-item');
+            });
+        }
         function createContextMenu(ev, pos, items, parentContextMenu) {
             var container = document.createElement('div'),
                 upArrow = document.createElement('div'),
@@ -3600,13 +3913,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                                 contextItemContainer.appendChild(content);
                                 return;
                             }
-                            self.createInlineStyle(contextItemContainer, 'canvas-datagrid-context-menu-item');
-                            contextItemContainer.addEventListener('mouseover', function () {
-                                self.createInlineStyle(contextItemContainer, 'canvas-datagrid-context-menu-item:hover');
-                            });
-                            contextItemContainer.addEventListener('mouseout', function () {
-                                self.createInlineStyle(contextItemContainer, 'canvas-datagrid-context-menu-item');
-                            });
+                            applyContextItemStyle(contextItemContainer);
                             contextItemContainer.innerHTML = content;
                             return;
                         }
@@ -3912,6 +4219,45 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         document.execCommand('copy');
                         self.disposeContextMenu();
                         self.controlInput.focus();
+                    }
+                });
+            }
+            if (self.attributes.showColumnSelector) {
+                e.items.push({
+                    title: self.attributes.columnSelectorText,
+                    items: function () {
+                        var d = [];
+                        self.getSchema().forEach(function (column) {
+                            function toggleColumnVisibility(e) {
+                                column.hidden = !column.hidden;
+                                e.preventDefault();
+                                self.stopPropagation(e);
+                                self.disposeContextMenu();
+                                self.draw();
+                            }
+                            var el = document.createElement('div');
+                            applyContextItemStyle(el);
+                            el.addEventListener('touchstart', toggleColumnVisibility);
+                            el.addEventListener('click', toggleColumnVisibility);
+                            el.innerHTML = (column.hidden ? self.attributes.columnSelectorHiddenText
+                                    : self.attributes.columnSelectorVisibleText)
+                                    + (column.title || column.name);
+                            d.push({
+                                title: el
+                            });
+                        });
+                        return d;
+                    }
+                });
+                e.items.push({
+                    title: self.attributes.hideColumnText
+                        .replace(/%s/ig, e.cell.header.title || e.cell.header.name),
+                    click: function (ev) {
+                        e.cell.header.hidden = true;
+                        ev.preventDefault();
+                        self.stopPropagation(ev);
+                        self.disposeContextMenu();
+                        setTimeout(self.draw, 10);
                     }
                 });
             }
@@ -4492,6 +4838,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.ctx.textBaseline = 'alphabetic';
                 self.eventParent = self.canvas;
             }
+            self.controlInput.setAttribute('readonly', true);
             self.controlInput.addEventListener('blur', function (e) {
                 if (e.target !== self.canvas) {
                     self.hasFocus = false;
@@ -5258,6 +5605,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         && cell.x + cell.width + self.style.cellBorderWidth > x
                         && cell.y - self.style.cellBorderWidth < y
                         && cell.y + cell.height + self.style.cellBorderWidth > y) {
+                    if (/selection-handle-/.test(cell.style)) {
+                        cell.dragContext = cell.style;
+                        cell.context = cell.style;
+                        return cell;
+                    }
                     if (/vertical-scroll-(bar|box)/.test(cell.style)) {
                         cell.dragContext = 'vertical-scroll-box';
                         cell.context = 'vertical-scroll-box';
