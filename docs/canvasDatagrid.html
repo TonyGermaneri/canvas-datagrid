@@ -1188,7 +1188,7 @@ Please report any problems with the documentation here <a href="https://github.c
                 </td>
             
 
-            <td class="description last">When true, the amount of time taken to draw the grid is shown.</td>
+            <td class="description last">When true, a graph showing performance is rendered.</td>
         </tr>
 
     
@@ -1783,7 +1783,7 @@ Please report any problems with the documentation here <a href="https://github.c
             
                 <td class="default">
                 
-                    90
+                    1000
                 
                 </td>
             
@@ -1829,86 +1829,6 @@ Please report any problems with the documentation here <a href="https://github.c
             
 
             <td class="description last">How many pixels a touch must move within `attributes.touchSelectTimeMs` to be considered scrolling rather than selecting.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>touchSelectTimeMs</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    800
-                
-                </td>
-            
-
-            <td class="description last">How many milliseconds of touching without moving greater than `attributes.touchDeadZone` before a touch is considered selecting instead of scrolling.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>touchSelectTimeMs</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    800
-                
-                </td>
-            
-
-            <td class="description last">How many milliseconds of touching without moving greater than `attributes.touchDeadZone` before a touch is considered selecting instead of scrolling.</td>
         </tr>
 
     
@@ -2109,6 +2029,366 @@ Please report any problems with the documentation here <a href="https://github.c
             
 
             <td class="description last">When true, clicking on the scroll box to scroll will cause the mouse cursor to disappear to prevent it from exiting the area observable to the grid.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>columnSelectorVisibleText</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    '&amp;nbsp;&amp;nbsp;&amp;nbsp&amp;nbsp;'
+                
+                </td>
+            
+
+            <td class="description last">When a column is hidden, this is the value to the left of the title in the column selector content menu.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>columnSelectorHiddenText</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    '\u2713'
+                
+                </td>
+            
+
+            <td class="description last">When a column is visible, this is the value to the left of the title in the column selector content menu.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>columnSelectorText</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'Add/remove columns'
+                
+                </td>
+            
+
+            <td class="description last">The text of the column selector context menu.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>hideColumnText</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'Hide %s'
+                
+                </td>
+            
+
+            <td class="description last">The text displayed on the hide column .</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>showColumnSelector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last">When true, the column selector context menu is visible.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>touchContextMenuTimeMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    800
+                
+                </td>
+            
+
+            <td class="description last">The length of time in milliseconds before a context menu appears on touch start within the touch dead zone.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>scrollAnimationPPSThreshold</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    0.75
+                
+                </td>
+            
+
+            <td class="description last">How many points per second must be achieved before touch animation occurs on touch release.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>touchSelectHandleZone</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    20
+                
+                </td>
+            
+
+            <td class="description last">Radius of pixels around touch select handles that touch select handles respond to.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>touchEasingMethod</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    easeOutQuad
+                
+                </td>
+            
+
+            <td class="description last">Animation easing method used for touch release animation.  Valid values are easeOutQuad, easeOutCubic, easeOutQuart, easeOutQuint.</td>
         </tr>
 
     
