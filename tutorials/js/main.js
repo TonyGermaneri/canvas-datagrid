@@ -2,7 +2,30 @@
 /*global tutorials: false, ace: false, files: false, reflection: false, marked: false */
 (function () {
     'use strict';
-    var topic;
+    var topic, tocLinks = [
+        ['#readme', 'Readme'],
+        ['#params', 'Parameters'],
+        ['#properties', 'Properties'],
+        ['#methods', 'Methods'],
+        ['#events', 'Events'],
+        ['#tutorials', 'Tutorials'],
+        ['#installation', 'Installation &amp; Getting Started'],
+        ['#building-testing', 'Building &amp; Testing'],
+        ['#more-demos', 'Demos'],
+        ['#ways-to-create-a-grid', 'Different ways to instantiate'],
+        ['#setting-and-getting-data', 'Getting and setting data'],
+        ['#schema', 'Setting a schema'],
+        ['#properties-attributes-parameters', 'About properties, attributes, and parameters.'],
+        ['#web-component', 'canvas-datagrid web component'],
+        ['#sorters', 'Sorter functions'],
+        ['#filters', 'Filter function'],
+        ['#formatters', 'Formatter function'],
+        ['#formatting-using-event-listeners', 'Formatting using event listeners'],
+        ['#extending-the-visual-appearance', 'Extending the visual appearance'],
+        ['#drawing-on-the-canvas', 'Drawing on the canvas'],
+        ['#supporting-dom-elements', 'Supporting DOM elements'],
+        ['#notes', 'Special Notes']
+    ];
     eval(files['tutorials.js']);
     marked.setOptions({
         gfm: true,
@@ -201,30 +224,13 @@
             syntaxExample.innerHTML = drawSyntax(i);
         }
         if (i.name === 'canvasDatagrid') {
-            heading.innerHTML = 'Table of Contents - API Documentation - Canvas Datagrid';
-            ce('li', 'topic-toc-item', toc).innerHTML = '<a href="#readme">Readme</a>';
-            ce('li', 'topic-toc-item', toc).innerHTML = '<a href="#params">Parameters</a>';
-            ce('li', 'topic-toc-item', toc).innerHTML = '<a href="#properties">Properties</a>';
-            ce('li', 'topic-toc-item', toc).innerHTML = '<a href="#methods">Methods</a>';
-            ce('li', 'topic-toc-item', toc).innerHTML = '<a href="#events">Events</a>';
-            ce('li', 'topic-toc-item', toc).innerHTML = '<a href="#tutorials">Tutorials</a>';
-            ce('li', 'topic-toc-item', toc).innerHTML = '<a href="#installation">Installation &amp; Getting Started</a>';
-            ce('li', 'topic-toc-item', toc).innerHTML = '<a href="#building-testing">Building &amp; Testing</a>';
-            ce('li', 'topic-toc-item', toc).innerHTML = '<a href="#more-demos">Demos</a>';
-            ce('li', 'topic-toc-item', toc).innerHTML = '<a href="#ways-to-create-a-grid">Different ways to instantiate</a>';
-            ce('li', 'topic-toc-item', toc).innerHTML = '<a href="#setting-and-getting-data">Getting and setting data</a>';
-            ce('li', 'topic-toc-item', toc).innerHTML = '<a href="#schema">Setting a schema</a>';
-            ce('li', 'topic-toc-item', toc).innerHTML = '<a href="#properties-attributes-parameters">About properties, attributes, and parameters.</a>';
-            ce('li', 'topic-toc-item', toc).innerHTML = '<a href="#web-component">canvas-datagrid web component</a>';
-            ce('li', 'topic-toc-item', toc).innerHTML = '<a href="#sorters">Sorter functions</a>';
-            ce('li', 'topic-toc-item', toc).innerHTML = '<a href="#filters">Filter function</a>';
-            ce('li', 'topic-toc-item', toc).innerHTML = '<a href="#formatters">Formatter function</a>';
-            ce('li', 'topic-toc-item', toc).innerHTML = '<a href="#formatting-using-event-listeners">Formatting using event listeners</a>';
-            ce('li', 'topic-toc-item', toc).innerHTML = '<a href="#extending-the-visual-appearance">Extending the visual appearance</a>';
-            ce('li', 'topic-toc-item', toc).innerHTML = '<a href="#drawing-on-the-canvas">Drawing on the canvas</a>';
-            ce('li', 'topic-toc-item', toc).innerHTML = '<a href="#supporting-dom-elements">Supporting DOM elements</a>';
-            ce('li', 'topic-toc-item', toc).innerHTML = '<a href="#notes">Special Notes</a>';
-            description.innerHTML += '<a name="readme"></a>';
+            heading.innerHTML = '<a name="toc"></a>Table of Contents';
+            heading.classList.remove('topic-heading');
+            heading.classList.add('topic-toc-heading');
+            tocLinks.forEach(function (la) {
+                ce('li', 'topic-toc-item', toc).innerHTML = '<a href="' + la[0] + '">' + la[1] + '</a>';
+            });
+            description.innerHTML += '<a name="readme"></a><h1 class="topic-heading">Readme</h1>';
             description.innerHTML += formatDocString(marked(files['README.md']));
         } else {
             description.innerHTML = marked(formatDocString(i.description));
@@ -333,8 +339,11 @@
         }
     }
     function drawHeader(parentNode) {
-        var header = ce('h1', 'header', parentNode);
-        header.innerHTML = 'API Documentation - Canvas Datagrid';
+        var header = ce('h1', 'header', parentNode),
+            tocLink = ce('a', 'top-link', parentNode);
+        tocLink.href = '#toc';
+        tocLink.innerHTML = '\u2191';
+        header.innerHTML = '<a href="https://github.com/TonyGermaneri/canvas-datagrid">API Documentation - Canvas Datagrid</a>';
     }
     function init(parentNode) {
         drawHeader(parentNode);
