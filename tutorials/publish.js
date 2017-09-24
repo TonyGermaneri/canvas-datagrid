@@ -12,12 +12,15 @@ exports.publish = function (data) {
     fs.mkdirSync(p + '/../docs/css');
     dirFiles = fs.readdirSync(p);
     dirFiles.forEach(function (file) {
+        if (/\.DS_Store/.test(file)) { return; }
         var f = path.join(p, file);
         if (fs.lstatSync(f).isDirectory()) { return; }
         files[file] = fs.readFileSync(f, {encoding: 'utf-8'});
     });
     files['README.md'] = fs.readFileSync(p + '/../README.md', {encoding: 'utf-8'});
-    s = 'window.reflection = ' + JSON.stringify(d, null, '    ')
+    s = 'window.reflection = ' + JSON.stringify(d.filter(function (a) {
+        return a.undocumented !== false;
+    }), null, '    ')
         + ';window.files = ' + JSON.stringify(files, null, '    ') + ';';
     fs.writeFileSync(p + '/../docs/js/reflection.js', s, 'utf8');
     cp(path.join(p, '/../node_modules/marked/lib/marked.js'), p + '/../docs/js/marked.js');
