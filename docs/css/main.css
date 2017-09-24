@@ -6,6 +6,8 @@
     --header-background: #2C3E50;
     --header-color: #C6C8C9;
     --header-accent: #2980B9;
+    --code-color: #333;
+    --code-background: #EEE;
 }
 body, html {
     background: var(--background);
@@ -27,9 +29,9 @@ a {
 
 }
 .toc-class-heading, .header {
-    box-shadow: 0px 4px 3px rgba(0,0,0,0.4),
-             0px 8px 13px rgba(0,0,0,0.1),
-             0px 18px 23px rgba(0,0,0,0.1);
+    box-shadow: 0px 3px 5px rgba(0,0,0,0.4),
+             0px 6px 13px rgba(0,0,0,0.1),
+             0px 18px 27px rgba(0,0,0,0.1);
 }
 .child-topic {
     margin: 15px;
@@ -96,10 +98,13 @@ a {
 .toc-member-item {
     padding-left: 10px;
 }
+.header a {
+    color: var(--header-color);
+    text-decoration: none;
+}
 .header {
     margin: 0;
     background: var(--header-background);
-    color: var(--header-color);
     padding-left: 10px;
     font-size: 19px;
     height: 23px;
@@ -243,6 +248,13 @@ a {
     display: none;
     padding: 5px;
 }
+.topic-toc-heading {
+    margin-left: 15px;
+    margin-top: 30px;
+}
+.topic-toc {
+    margin-bottom: 50px;
+}
 .jsfiddlelogo {
     background-image: url('data:image/png;base64,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');
     background-repeat: no-repeat;
@@ -250,9 +262,11 @@ a {
     background-position: 3px 3px;
     padding-left: 21px;
 }
-.topic-description code {
-    background: var(--background-color);
-    color: var(--accent);
+.topic-description pre {
+    background: var(--code-background);
+    color: var(--code-color);
+    padding: 5px;
+    border: solid 1px var(--accent);
 }
 .topic-description h2 {
     background: var(--accent);
@@ -276,7 +290,17 @@ a {
     border: solid 1px var(--accent);
     padding: 4px;
 }
+.top-link {
+    position: fixed;
+    left: 272px;
+    top: 23px;
+    text-decoration: none;
+    display: none;
+}
 @media (max-width: 815px) {
+    .top-link {
+        left: 2px;
+    }
     .toc {
         width: 0;
     }
