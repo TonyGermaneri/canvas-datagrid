@@ -21,6 +21,7 @@ exports.publish = function (data) {
         + ';window.files = ' + JSON.stringify(files, null, '    ') + ';';
     fs.writeFileSync(p + '/../docs/js/reflection.js', s, 'utf8');
     cp(path.join(p, '/../node_modules/marked/lib/marked.js'), p + '/../docs/js/marked.js');
+    cp(path.join(p, '/index.html'), p + '/../docs/index.html');
     cp(path.join(p, '/js/main.js'), p + '/../docs/js/main.js');
     cp(path.join(p, '/css/main.css'), p + '/../docs/css/main.css');
 };
