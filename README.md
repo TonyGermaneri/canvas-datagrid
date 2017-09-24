@@ -21,11 +21,11 @@ canvas-datagrid
 * Zero dependencies, very small code base, distributed as a single ~80k (~20k gziped) file.
 
 
-[Make your own custom styles](https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html)
+[Documentation](https://tonygermaneri.github.io/canvas-datagrid/docs/)
 
-[Documentation](https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDatagrid.html)
+[Tutorials](https://tonygermaneri.github.io/canvas-datagrid/docs/index.html#tutorials)
 
-[Tutorials](https://tonygermaneri.github.io/canvas-datagrid/docs/tutorial-sample.html)
+[Style Builder](https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html)
 
 [Download latest version (minified)](https://tonygermaneri.github.io/canvas-datagrid/dist/canvas-datagrid.js)
 
