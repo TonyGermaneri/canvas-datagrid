@@ -4,7 +4,7 @@
   "description": "Canvas based data grid",
   "main": "./lib/main.js",
   "scripts": {
-    "build-docs": "./node_modules/.bin/jsdoc -u ./tutorials -d ./docs -c ./jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md -r ./lib; cp ./tutorials/*.js ./docs/",
+    "build-docs": "rm -rf docs;./node_modules/.bin/jsdoc -r --template ./tutorials/ ./lib/",
     "postinstall": "npm run-script build",
     "build-gh-pages": "git checkout gh-pages; git merge master --no-edit; npm run build-docs; npm test; git add .; git commit -m 'rebuilt docs, tests.'; git push; git checkout master",
     "build-watch": "./node_modules/.bin/webpack --output-library=canvasDatagrid --output-library-target=umd  --watch -d --entry=./lib/main.js --output-path=./dist --output-filename=canvas-datagrid.debug.js --devtool source-map --output-source-map-filename='canvas-datagrid.debug.map'",
@@ -52,9 +52,9 @@
   },
   "homepage": "https://github.com/TonyGermaneri/canvas-datagrid#readme",
   "devDependencies": {
-    "ink-docstrap": "git+ssh://git@github.com:TonyGermaneri/docstrap.git#v1.2.6",
     "istanbul": "^0.4.5",
     "jsdoc": "^3.4.3",
+    "marked": "^0.3.6",
     "mocha": "^3.5.0",
     "mocha-phantomjs": "^4.1.0",
     "mocha-phantomjs-core": "^2.1.2",
