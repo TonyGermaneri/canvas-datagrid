@@ -3,15 +3,15 @@ canvas-datagrid
 
 [Demo](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html)
 
-[![Coverage Status](https://coveralls.io/repos/github/TonyGermaneri/canvas-datagrid/badge.svg?branch=master&build=1640)](https://coveralls.io/github/TonyGermaneri/canvas-datagrid?branch=master)
-[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
-[![NPM](https://img.shields.io/npm/v/canvas-datagrid.svg)](https://www.npmjs.com/package/canvas-datagrid)
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/TonyGermaneri/canvas-datagrid)
-
 ![canvas-datagrid](https://tonygermaneri.github.io/canvas-datagrid/images/datagrid1.png)
 
+[![Coverage Status](https://coveralls.io/repos/github/TonyGermaneri/canvas-datagrid/badge.svg?branch=master&build=1640)](https://coveralls.io/github/TonyGermaneri/canvas-datagrid?branch=master)
+[![NPM](https://img.shields.io/npm/v/canvas-datagrid.svg)](https://www.npmjs.com/package/canvas-datagrid)
+[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/TonyGermaneri/canvas-datagrid)
+
 * Support for millions of contiguous rows and columns without paging or loading.
-* Support for touch devices (phones and tablets).
+* Native support for touch devices (phones and tablets).
 * Extensible styling, filtering, formatting, resizing, selecting, and ordering.
 * W3C ES5 web component, rich API of events, methods and properties using the familiar W3C interface.
 * Works with Firefox, IE11, Edge, Safari and Chrome.
@@ -40,25 +40,20 @@ canvas-datagrid
 Installation
 ------------
 
-```html
-<script src="dist/canvas-datagrid.js"></script>
-```
-
 With [npm](https://www.npmjs.com/package/canvas-datagrid)
 
+    npm install canvas-datagrid
 
-```shell
-npm install canvas-datagrid
-```
 
 With [bower](https://libraries.io/bower/canvas-datagrid)
 
-```shell
-bower install canvas-datagrid
-```
+    bower install canvas-datagrid
+
 
 Place the single source file `./dist/canvas-datagrid.js` in your web page using
 a script tag that points to the source or use webpack.
+
+    <script src="dist/canvas-datagrid.js"></script>
 
 If you do not use a webpack a function will
 be added to the global scope of the web page called `canvasDatagrid`.
@@ -73,15 +68,15 @@ The container can be any block element.  `canvasDatagrid` generates its own canv
 Using pure JavaScript
 ---------------------
 
-```javascript
-var grid = canvasDatagrid({
-    parentNode: document.getElementById('container'),
-    data: [
-        {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},
-        {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}
-    ]
-});
-```
+
+    var grid = canvasDatagrid({
+        parentNode: document.getElementById('container'),
+        data: [
+            {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},
+            {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}
+        ]
+    });
+
 
 Using web component
 -------------------
@@ -97,12 +92,12 @@ Using web component
 ```
 -->
 
-```html
-    <canvas-datagrid style="--cdg-cell-color: darkblue;">[
+
+    <canvas-datagrid class="myGridStyle">[
         {"col1": "row 1 column 1", "col2": "row 1 column 2", "col3": "row 1 column 3"},
         {"col1": "row 2 column 1", "col2": "row 2 column 2", "col3": "row 2 column 3"}
     ]</canvas-datagrid>
-```
+
 
 More Demos
 ----------
@@ -118,28 +113,21 @@ More Demos
 
 Building & Testing
 ------------------
-<details>
+
 To build production version.
 
-```shell
-npm install
-```
+    npm install
 
 To build debug version
 
-```shell
-npm run build-dev
-```
+    npm run build-dev
 
 To build documentation
 
-```shell
-npm run build-docs
-```
+    npm run build-docs
 
 To run tests
 
-```shell
-npm test
-```
-</details>
+    npm test
+
+
