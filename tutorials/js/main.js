@@ -16,10 +16,10 @@
         ['#setting-and-getting-data', 'Getting and setting data'],
         ['#schema', 'Setting a schema'],
         ['#properties-attributes-parameters', 'About properties, attributes, and parameters.'],
-        ['#web-component', 'canvas-datagrid web component'],
+        ['#web-component', 'Web component'],
         ['#sorters', 'Sorter functions'],
-        ['#filters', 'Filter function'],
-        ['#formatters', 'Formatter function'],
+        ['#filters', 'Filter functions'],
+        ['#formatters', 'Formatter functions'],
         ['#formatting-using-event-listeners', 'Formatting using event listeners'],
         ['#extending-the-visual-appearance', 'Extending the visual appearance'],
         ['#drawing-on-the-canvas', 'Drawing on the canvas'],
@@ -113,7 +113,7 @@
                     memberLink = ce('a', 'toc-link', memberLi);
                 memberLink.href = '#' + getLink(member, i);
                 memberLink.innerHTML = member.name;
-                memberLink.name = 'toc_' + member.longname;
+                memberLink.id = 'toc_' + member.longname;
                 memberLink.title = member.description;
             });
         });
@@ -136,7 +136,7 @@
                 msg = tkey.split('|');
             memberLink.href = '#tutorial--' + encodeURIComponent(msg[0].replace(/ /g, '-'));
             memberLink.innerHTML = msg[0];
-            memberLink.name = 'toctutorial_' + msg[0];
+            memberLink.id = 'toctutorial_' + msg[0];
             memberLink.title = msg[1] || msg[0];
         });
     }
@@ -175,7 +175,7 @@
             }
             a = ce('a', 'member-anchor', name);
             description = ce('td', ['member-cell', 'member-description-cell'], tr);
-            a.name = getLink(member, parentMember);
+            a.id = getLink(member, parentMember);
             a.innerHTML = member.name;
             if (['params', 'properties'].indexOf(memberType) !== -1) {
                 type.innerHTML = member && member.type ? member.type.names.join() : '';
@@ -214,7 +214,7 @@
         description = ce('div', 'topic-description', parentNode);
         memberof = ce('div', 'topic-memberof', parentNode);
         if (!i) { heading.innerHTML = 'Topic not found'; return; }
-        an.name = getLink(i);
+        an.id = getLink(i);
         if (i.memberof) {
             // TODO fix this link
             memberof.innerHTML = 'Member of <a href="#canvasDatagrid">canvasDatagrid</a>';
@@ -224,13 +224,13 @@
             syntaxExample.innerHTML = drawSyntax(i);
         }
         if (i.name === 'canvasDatagrid') {
-            heading.innerHTML = '<a name="toc"></a>Table of Contents';
+            heading.innerHTML = '<a id="toc"></a>Table of Contents';
             heading.classList.remove('topic-heading');
             heading.classList.add('topic-toc-heading');
             tocLinks.forEach(function (la) {
                 ce('li', 'topic-toc-item', toc).innerHTML = '<a href="' + la[0] + '">' + la[1] + '</a>';
             });
-            description.innerHTML += '<a name="readme"></a><h1 class="topic-heading">Readme</h1>';
+            description.innerHTML += '<a id="readme"></a><h1 class="topic-heading">Readme</h1>';
             description.innerHTML += formatDocString(marked(files['README.md']));
         } else {
             description.innerHTML = marked(formatDocString(i.description));
@@ -243,7 +243,7 @@
             var n = memberType.toLowerCase(), tt;
             if (!i[n] || i[n].length === 0) {  return; }
             if (top) {
-                ce('a', null, parentNode).name = n;
+                ce('a', null, parentNode).id = n;
                 tt = ce('h3', 'member-heading', parentNode);
                 tt.innerHTML = memberType.replace('Params', 'Parameters &amp; Attributes');
             }
@@ -256,7 +256,7 @@
             drawMemberTable(i[n], n, parentNode, i);
         });
         if (i.name && top) {
-            ce('a', null, parentNode).name = 'tutorials';
+            ce('a', null, parentNode).id = 'tutorials';
             t = ce('h3', 'member-heading', parentNode);
             t.innerHTML = 'Tutorials';
             Object.keys(tutorials).forEach(function (tutorialKey) {
@@ -330,7 +330,7 @@
             });
             hash = getHash();
             if (hash) {
-                hashTarget = document.querySelector('a[name="' + hash
+                hashTarget = document.querySelector('a[id="' + hash
                     .replace('#canvasDatagrid#', '') + '"]');
                 if (hashTarget) {
                     hashTarget.scrollIntoView();
@@ -354,5 +354,15 @@
     }
     document.addEventListener('DOMContentLoaded', function () {
         init(document.body);
+        window.addEventListener('hashchange', function () {
+            var hashTarget, hash = getHash();
+            if (hash) {
+                hashTarget = document.querySelector('a[id="' + hash
+                    .replace('#canvasDatagrid#', '') + '"]');
+                if (hashTarget) {
+                    hashTarget.scrollIntoView();
+                }
+            }
+        }, false);
     });
 }());
