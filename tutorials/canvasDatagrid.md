@@ -34,12 +34,15 @@ When setting data using the data property, you can use many types.
 
 * As an array of objects.
 * As an array of arrays.
+* As an object.
 * As a jagged array of objects.
 * As a jagged array of arrays.
 * As a function that returns any of the above.
-* As a function that returns undefined, and passes any of the above to the callback argument.
+* As a function that returns undefined, and passes any of the above to the callback argument asynchronously.
 
 When using an array of arrays, the columns will be named like a spread sheet, A, B, C, through ZZZZ.
+
+When the value of a cell is an object or an array, a new grid will be drawn into the cell.
 
 Schema
 ------
