@@ -1552,7 +1552,7 @@
                         grid.copy({
                             clipboardData: {
                                 setData: function (mime, data) {
-                                    done(assertIf(mime !== 'text/plain'
+                                    done(assertIf(mime !== 'text/html'
                                         || data.indexOf('Text with') === -1, 'Expected data from the grid to be placed into the fake clipboard.'));
                                 }
                             }
@@ -1861,6 +1861,7 @@
                     var grid = g({
                         test: this.test,
                         data: smallData(),
+                        borderDragBehavior: 'resize',
                         allowColumnResizeFromCell: true,
                         style: {
                             columnWidth: 50
@@ -1908,7 +1909,8 @@
                     var grid = g({
                         test: this.test,
                         data: smallData(),
-                        allowColumnResizeFromCell: true,
+                        allowRowResizeFromCell: true,
+                        borderDragBehavior: 'resize',
                         style: {
                             columnWidth: 50
                         }
