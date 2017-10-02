@@ -2514,10 +2514,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (!self.hasFocus) {
                 return;
             }
-            // allow for the capture of clipboard data added to the input
-            setTimeout(function () {
-                //self.controlInput.value = '';
-            }, 5);
         };
         self.keypress = function (e) {
             if (!self.hasFocus) {
