@@ -1539,7 +1539,7 @@
                     grid.endEdit();
                 });
                 it('Should copy a value onto the simulated clipboard.', function (done) {
-                    var grid = g({
+                    var once, grid = g({
                             test: this.test,
                             data: [
                                 {d: 'Text with, a comma 1', e: 'Text that has no comma in in 1'},
@@ -1552,6 +1552,8 @@
                         grid.copy({
                             clipboardData: {
                                 setData: function (mime, data) {
+                                    if (once) { return; }
+                                    once = true;
                                     done(assertIf(mime !== 'text/html'
                                         || data.indexOf('Text with') === -1, 'Expected data from the grid to be placed into the fake clipboard.'));
                                 }

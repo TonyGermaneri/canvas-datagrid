@@ -2633,40 +2633,44 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.copy = function (e) {
             if (self.dispatchEvent('copy', {NativeEvent: e})) { return; }
             if (!self.hasFocus || !e.clipboardData) { return; }
-            var rows = [],
-                sData = self.getSelectedData(),
-                plain = ['text/csv', 'text/plain'].indexOf(self.attributes.clipboardMimeType) !== -1;
+            var t,
+                d,
+                rows = [],
+                trows = [],
+                sData = self.getSelectedData();
             function fCopyCell(d) {
-                if (plain) { return d; }
+                d = d === null || d === undefined ? '' : d;
                 return '<td>' + (typeof d === 'string' ? d.replace(/</g, '&lt;').replace(/>/g, '&gt;') : d) + '</td>';
             }
             if (sData.length > 0) {
                 sData.forEach(function (row) {
                     if (row) {
-                        var r = [];
+                        // r = array for HTML, rt = array for plain text
+                        var r = [],
+                            rt = [];
                         Object.keys(row).forEach(function (key) {
+                            // escape strings
                             if (row[key] !== null
                                     && row[key] !== false
                                     && row[key] !== undefined
                                     && row[key].replace) {
-                                if (plain) {
-                                    return r.push('"' + row[key].replace(/"/g, '""') + '"');
-                                }
-                                return r.push(fCopyCell(row[key]));
+                                rt.push('"' + row[key].replace(/"/g, '""') + '"');
+                                r.push(fCopyCell(row[key]));
+                                return;
                             }
+                            rt.push(row[key]);
                             r.push(fCopyCell(row[key]));
                         });
                         rows.push(r.join(''));
+                        trows.push(rt.join(','));
                     }
                 });
-                if (e.preventDefault) { e.preventDefault(); }
-                if (plain) {
-                    e.clipboardData.setData(self.attributes.clipboardMimeType, rows.join('\n'));
-                    return;
-                }
-                e.clipboardData.setData('text/html', '<table><tr>'
-                    + rows.join('</tr><tr>')
-                    + '</tr></table>');
+                d = '<table><tr>' + rows.join('</tr><tr>') + '</tr></table>';
+                t = trows.join('\n');
+                e.clipboardData.setData('text/html', d);
+                e.clipboardData.setData('text/plain', t);
+                e.clipboardData.setData('text/csv', t);
+                e.preventDefault();
             }
         };
         return;
