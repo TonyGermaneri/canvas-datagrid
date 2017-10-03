@@ -4041,7 +4041,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
     'use strict';
     return function (self) {
-        var zIndexTop = 2, hoverScrollTimeout, autoCompleteContext;
+        var zIndexTop = 9000, hoverScrollTimeout, autoCompleteContext;
         function applyContextItemStyle(contextItemContainer) {
             self.createInlineStyle(contextItemContainer, 'canvas-datagrid-context-menu-item');
             contextItemContainer.addEventListener('mouseover', function () {
@@ -4530,7 +4530,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.disposeContextMenu = function () {
             document.removeEventListener('click', self.disposeContextMenu);
-            zIndexTop = 2;
+            zIndexTop = 9000;
             self.disposeAutocomplete();
             if (self.contextMenu) {
                 self.contextMenu.dispose();
@@ -4921,7 +4921,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     borderRadius: self.style.contextMenuBorderRadius,
                     opacity: self.style.contextMenuOpacity,
                     position: 'absolute',
-                    zIndex: 3,
+                    zIndex: 9999,
                     overflow: 'hidden'
                 },
                 'canvas-datagrid-autocomplete-item': {
@@ -4937,7 +4937,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     zIndex: '-1'
                 },
                 'canvas-datagrid': {
-                    position: 'absolute',
                     display: 'block',
                     background: self.style.backgroundColor,
                     zIndex: '1',
