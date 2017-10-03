@@ -2614,17 +2614,26 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             return l;
         };
         self.paste = function (e) {
-            Array.prototype.forEach.call(e.clipboardData.items, function (dti) {
+            var d;
+            function getItem(dti) {
                 var type = dti.type;
-                if (!/^text\/(plain|csv|html)/.test(type)) {
-                    console.warn('Cannot paste type ' + type);
-                    return;
-                }
                 dti.getAsString(function (s) {
                     self.pasteItem(s, self.activeCell.columnIndex, self.activeCell.rowIndex, type);
                     self.draw();
                 });
-            });
+            }
+            d = Array.prototype.filter.call(e.clipboardData.items, function (dti) {
+                return dti.type === 'text/html';
+            })[0] || Array.prototype.filter(function (dti) {
+                return dti.type === 'text/csv';
+            })[0] || Array.prototype.filter(function (dti) {
+                return dti.type === 'text/plain';
+            })[0];
+            if (!d) {
+                console.warn('Cannot find supported clipboard data type.  Supported types are text/html, text/csv, text/plain.');
+                return;
+            }
+            getItem(d);
         };
         self.cut = function (e) {
             self.copy(e);
@@ -2633,40 +2642,44 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.copy = function (e) {
             if (self.dispatchEvent('copy', {NativeEvent: e})) { return; }
             if (!self.hasFocus || !e.clipboardData) { return; }
-            var rows = [],
-                sData = self.getSelectedData(),
-                plain = ['text/csv', 'text/plain'].indexOf(self.attributes.clipboardMimeType) !== -1;
+            var t,
+                d,
+                rows = [],
+                trows = [],
+                sData = self.getSelectedData();
             function fCopyCell(d) {
-                if (plain) { return d; }
+                d = d === null || d === undefined ? '' : d;
                 return '<td>' + (typeof d === 'string' ? d.replace(/</g, '&lt;').replace(/>/g, '&gt;') : d) + '</td>';
             }
             if (sData.length > 0) {
                 sData.forEach(function (row) {
                     if (row) {
-                        var r = [];
+                        // r = array for HTML, rt = array for plain text
+                        var r = [],
+                            rt = [];
                         Object.keys(row).forEach(function (key) {
+                            // escape strings
                             if (row[key] !== null
                                     && row[key] !== false
                                     && row[key] !== undefined
                                     && row[key].replace) {
-                                if (plain) {
-                                    return r.push('"' + row[key].replace(/"/g, '""') + '"');
-                                }
-                                return r.push(fCopyCell(row[key]));
+                                rt.push('"' + row[key].replace(/"/g, '""') + '"');
+                                r.push(fCopyCell(row[key]));
+                                return;
                             }
+                            rt.push(row[key]);
                             r.push(fCopyCell(row[key]));
                         });
                         rows.push(r.join(''));
+                        trows.push(rt.join(','));
                     }
                 });
-                if (e.preventDefault) { e.preventDefault(); }
-                if (plain) {
-                    e.clipboardData.setData(self.attributes.clipboardMimeType, rows.join('\n'));
-                    return;
-                }
-                e.clipboardData.setData('text/html', '<table><tr>'
-                    + rows.join('</tr><tr>')
-                    + '</tr></table>');
+                d = '<table><tr>' + rows.join('</tr><tr>') + '</tr></table>';
+                t = trows.join('\n');
+                e.clipboardData.setData('text/html', d);
+                e.clipboardData.setData('text/plain', t);
+                e.clipboardData.setData('text/csv', t);
+                e.preventDefault();
             }
         };
         return;
@@ -4028,7 +4041,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
     'use strict';
     return function (self) {
-        var zIndexTop = 2, hoverScrollTimeout, autoCompleteContext;
+        var zIndexTop = 9000, hoverScrollTimeout, autoCompleteContext;
         function applyContextItemStyle(contextItemContainer) {
             self.createInlineStyle(contextItemContainer, 'canvas-datagrid-context-menu-item');
             contextItemContainer.addEventListener('mouseover', function () {
@@ -4517,7 +4530,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.disposeContextMenu = function () {
             document.removeEventListener('click', self.disposeContextMenu);
-            zIndexTop = 2;
+            zIndexTop = 9000;
             self.disposeAutocomplete();
             if (self.contextMenu) {
                 self.contextMenu.dispose();
@@ -4908,7 +4921,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     borderRadius: self.style.contextMenuBorderRadius,
                     opacity: self.style.contextMenuOpacity,
                     position: 'absolute',
-                    zIndex: 3,
+                    zIndex: 9999,
                     overflow: 'hidden'
                 },
                 'canvas-datagrid-autocomplete-item': {
@@ -4924,7 +4937,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     zIndex: '-1'
                 },
                 'canvas-datagrid': {
-                    position: 'absolute',
                     display: 'block',
                     background: self.style.backgroundColor,
                     zIndex: '1',
