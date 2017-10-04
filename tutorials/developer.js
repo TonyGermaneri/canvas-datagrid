@@ -178,36 +178,74 @@ function g() {
 
 
     // create a spreadsheet
+    // var grid = canvasDatagrid({
+    //         borderDragBehavior: 'move',
+    //         showPaste: true,
+    //         parentNode: document.getElementById('grid')
+    //     }),
+    //     x,
+    //     y,
+    //     d = [],
+    //     n;
+    // function colName(n) {
+    //     var ordA = 'a'.charCodeAt(0),
+    //         ordZ = 'z'.charCodeAt(0),
+    //         len = ordZ - ordA + 1,
+    //         s = '';
+    //     while (n >= 0) {
+    //         s = String.fromCharCode(n % len + ordA) + s;
+    //         n = Math.floor(n / len) - 1;
+    //     }
+    //     return s;
+    // }
+    // for (x = 0; x < 10000; x += 1) {
+    //     d[x] = {};
+    //     for (y = 0; y < 50; y += 1) {
+    //         n = colName(y).toUpperCase();
+    //         d[x][n] = 'r: ' + x + ', c: ' + y;
+    //     }
+    // }
+    // grid.attributes.columnHeaderClickBehavior = 'select';
+    // grid.style.columnHeaderCellHorizontalAlignment = 'center';
+    // grid.data = d;
+
+
+
+
     var grid = canvasDatagrid({
-            borderDragBehavior: 'move',
-            showPaste: true,
-            parentNode: document.getElementById('grid')
-        }),
-        x,
-        y,
-        d = [],
-        n;
-    function colName(n) {
-        var ordA = 'a'.charCodeAt(0),
-            ordZ = 'z'.charCodeAt(0),
-            len = ordZ - ordA + 1,
-            s = '';
-        while (n >= 0) {
-            s = String.fromCharCode(n % len + ordA) + s;
-            n = Math.floor(n / len) - 1;
-        }
-        return s;
-    }
-    for (x = 0; x < 10000; x += 1) {
-        d[x] = {};
-        for (y = 0; y < 50; y += 1) {
-            n = colName(y).toUpperCase();
-            d[x][n] = 'r: ' + x + ', c: ' + y;
-        }
-    }
-    grid.attributes.columnHeaderClickBehavior = 'select';
-    grid.style.columnHeaderCellHorizontalAlignment = 'center';
-    grid.data = d;
+        parentNode: document.getElementById('grid'),
+        data: [
+            {col1: 'foo', col2: 0, col3: 'a'},
+            {col1: 'bar', col2: 1, col3: 'b'},
+            {col1: 'baz', col2: 2, col3: 'c'}
+        ]
+    });
+    grid.addEventListener('contextmenu', function (e) {
+        e.items.push({
+            title: 'Top level item',
+            items: [
+                {
+                    title: 'Child item #1',
+                    click: function (ev) {
+                        grid.data[0].col1 = e.cell.value;
+                        grid.draw();
+                    }
+                },
+                {
+                    title: 'Child item #2',
+                    click: function (ev) {
+                        grid.data[0].col1 = e.cell.value;
+                        grid.draw();
+                    }
+                }
+            ]
+        });
+        e.items.push({
+            title: 'You have '
+                + grid.selectedRows.filter(function (row) { return !!row; }).length
+                + ' rows selected'
+        });
+    });
 
 
 

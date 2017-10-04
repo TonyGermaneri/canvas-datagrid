@@ -203,8 +203,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['cellWidthWithChildGrid', 250],
                 ['childContextMenuArrowColor', 'rgba(43, 48, 43, 1)'],
                 ['childContextMenuArrowHTML', '&#x25BA;'],
-                ['childContextMenuMarginLeft', -15],
-                ['childContextMenuMarginTop', 0],
+                ['childContextMenuMarginLeft', -11],
+                ['childContextMenuMarginTop', -6],
                 ['columnHeaderCellBackgroundColor', 'rgba(240, 240, 240, 1)'],
                 ['columnHeaderCellBorderColor', 'rgba(152, 152, 152, 1)'],
                 ['columnHeaderCellBorderWidth', 0.25],
@@ -4063,6 +4063,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                                 || item.contextMenu.container === e.relatedTarget
                                 || childMenuArrow === e.relatedTarget
                                 || (contextItemContainer === e.relatedTarget)
+                                || item.contextMenu.container.contains(e.relatedTarget)
                                 ) { return; }
                         item.contextMenu.dispose();
                         children.splice(children.indexOf(item.contextMenu), 1);
