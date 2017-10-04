@@ -2569,7 +2569,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }, 1);
         };
         self.pasteItem = function (clipData, x, y, mimeType) {
-            var l, s = self.getSchema(), yi = y - 1, sel = [];
+            var l, s = self.getVisibleSchema(), yi = y - 1, sel = [];
             function normalizeRowData(importingRow, existingRow, offsetX, schema, mimeType, rowIndex) {
                 var r = existingRow;
                 if (!Array.isArray(importingRow) && importingRow !== null && typeof importingRow === 'object') {
@@ -3104,7 +3104,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             'touchcancel', 'touchend', 'touchmove', 'touchstart', 'wheel'];
         self.mouse = { x: 0, y: 0};
         self.getSelectedData = function (expandToRow) {
-            var d = [], s = self.getSchema(), l = self.data.length;
+            var d = [], s = expandToRow ? self.getSchema() : self.getVisibleSchema(), l = self.data.length;
             self.selections.forEach(function (row, index) {
                 if (index === l) { return; }
                 if (row.length === 0) {
@@ -3112,16 +3112,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     return;
                 }
                 d[index] = {};
-                if (expandToRow) {
-                    s.forEach(function (column) {
-                        d[index][column.name] = self.data[index][column.name];
-                    });
-                } else {
-                    row.forEach(function (col) {
-                        if (col === -1 || !s[col]) { return; }
-                        d[index][s[col].name] = self.data[index][s[col].name];
-                    });
-                }
+                row.forEach(function (col) {
+                    if (col === -1 || !s[col]) { return; }
+                    d[index][s[col].name] = self.data[index][s[col].name];
+                });
             });
             return d;
         };

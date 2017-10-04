@@ -34,7 +34,8 @@ function demo() {
         var xhr = new XMLHttpRequest(),
             grid = canvasDatagrid({
                 parentNode: document.getElementById('grid'),
-                globalRowResize: true
+                borderDragBehavior: 'move',
+                allowMovingSelection: true
             });
         grid.addEventListener('contextmenu', function (e) {
             e.items.push({
