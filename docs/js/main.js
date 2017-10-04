@@ -144,7 +144,7 @@
         return ('            ' + fn.toString()).split('\n')
             .map(function (i, index, arr) {
                 if (index === 0 || index === arr.length - 1) { return undefined; }
-                return i.replace(/^ {12}/, '');
+                return i.replace(/^ {4}/, '');
             }).filter(function (i, index) {
                 return index !== 0;
             }).join('\n');
@@ -307,12 +307,14 @@
                 tdescription.innerHTML = msg[1] || msg[0];
                 tutorialForm.onsubmit = function () {
                     var c = 'window.addEventListener(\'DOMContentLoaded\', function () {\n'
-                            + '    var parentNode = document.getElementById(\'grid\');\n'
-                            + '    ' + aceEditor.getValue().replace(/\n/g, '\n    ');
+                        + '    var parentNode = document.getElementById(\'grid\');\n'
+                        + '    ' + aceEditor.getValue().replace(/\n/g, '\n    ');
                     c = c.substring(0, c.length - 4) + '});';
                     hiddenFormItems.js.value = c;
                 };
                 executeButton.onclick = function () {
+                    tutorialForm.removeChild(gridParent);
+                    gridParent = ce('div', 'tutorial-grid', tutorialForm);
                     gridParent.innerHTML = '';
                     gridParent.style.height = '300px';
                     error.style.display = 'none';
