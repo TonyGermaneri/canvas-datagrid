@@ -119,10 +119,13 @@
         });
     }
     function drawToc(parentNode) {
-        var ct,
+        var ca,
+            ct,
             toc = ce('div', 'toc', parentNode),
             tocList = ce('ul', 'toc-list', toc),
             tutorialsUl;
+        ca = ce('a', null, toc);
+        ca.id = 'toc_tutorials';
         ct = ce('h2', 'toc-class-heading', toc);
         ct.style.marginBottom = '10px';
         ct.innerHTML = 'Tutorials';
@@ -136,7 +139,7 @@
                 msg = tkey.split('|');
             memberLink.href = '#tutorial--' + encodeURIComponent(msg[0].replace(/ /g, '-'));
             memberLink.innerHTML = msg[0];
-            memberLink.id = 'toctutorial_' + msg[0];
+            memberLink.id = 'toc_' + msg[0];
             memberLink.title = msg[1] || msg[0];
         });
     }
@@ -202,7 +205,7 @@
             }).join(', ') + ')';
     }
     function drawTopic(parentNode, longname) {
-        var t, top, i, syntaxExample, an, heading, description, memberof, toc, hash, hashTarget;
+        var t, top, i, syntaxExample, an, heading, description, memberof, toc, hash, hashTarget, hashTocTarget;
         i = getByLongName(longname);
         top = !i.memberof;
         if (!top) {
@@ -332,10 +335,15 @@
             });
             hash = getHash();
             if (hash) {
+                hashTocTarget = document.querySelector('a[id="toc_' + hash
+                    .replace('#canvasDatagrid#', '') + '"]');
                 hashTarget = document.querySelector('a[id="' + hash
                     .replace('#canvasDatagrid#', '') + '"]');
                 if (hashTarget) {
                     hashTarget.scrollIntoView();
+                }
+                if (hashTocTarget) {
+                    hashTocTarget.scrollIntoView();
                 }
             }
         }
@@ -357,10 +365,15 @@
     document.addEventListener('DOMContentLoaded', function () {
         init(document.body);
         window.addEventListener('hashchange', function () {
-            var hashTarget, hash = getHash();
+            var hashTocTarget, hashTarget, hash = getHash();
             if (hash) {
                 hashTarget = document.querySelector('a[id="' + hash
                     .replace('#canvasDatagrid#', '') + '"]');
+                hashTocTarget = document.querySelector('a[id="toc_' + hash
+                    .replace('#canvasDatagrid#', '') + '"]');
+                if (hashTocTarget) {
+                    hashTocTarget.scrollIntoView();
+                }
                 if (hashTarget) {
                     hashTarget.scrollIntoView();
                 }
