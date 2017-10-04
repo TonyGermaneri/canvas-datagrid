@@ -5776,7 +5776,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          */
         self.moveTo = function (sel, x, y) {
             var d = self.getSelectedData(),
-                s = self.getSchema(),
+                s = self.getVisibleSchema(),
                 l = sel.length,
                 xi,
                 yi = y - 1;

@@ -3,7 +3,12 @@
 var data;
 function demo() {
     'use strict';
-    var searchUrl = window.location.search.substring(3);
+    var searchUrl = window.location.search.substring(3),
+        typeMap = {
+            'text': 'string',
+            'money': 'number',
+            'number': 'number'
+        };
     function isNoiseData(name) {
         // get rid of fields that we don't care about
         return ['sid', 'id', 'position', 'created_at',
@@ -16,6 +21,7 @@ function demo() {
             if (isNoiseData(column.name)) {
                 column.hidden = true;
             }
+            column.type = typeMap[column.dataTypeName] || 'string';
             schema.push(column);
         });
         data = openData.data.map(function (row) {
@@ -35,7 +41,8 @@ function demo() {
             grid = canvasDatagrid({
                 parentNode: document.getElementById('grid'),
                 borderDragBehavior: 'move',
-                allowMovingSelection: true
+                allowMovingSelection: true,
+                columnHeaderClickBehavior: 'select'
             });
         grid.addEventListener('contextmenu', function (e) {
             e.items.push({
@@ -52,7 +59,7 @@ function demo() {
             });
         });
         xhr.addEventListener('progress', function (e) {
-            grid.data = [{ status: 'Loading data: ' + e.loaded + ' of ' + e.total + ' bytes...'}];
+            grid.data = [{ status: 'Loading data: ' + e.loaded + ' of ' + (e.total || 'unknown') + ' bytes...'}];
         });
         xhr.addEventListener('load', function (e) {
             grid.data = [{ status: 'Loading data ' + e.loaded + '...'}];
@@ -68,6 +75,8 @@ function demo() {
         loadDataSet(/%3A/.test(searchUrl) ? decodeURIComponent(searchUrl) : searchUrl);
     } else {
         loadDataSet('https://data.cityofchicago.org/api/views/xzkq-xp2w/rows.json?accessType=DOWNLOAD');
+        // inner join
+        // https://data.cityofchicago.org/api/views/pasx-mnuv/rows.json?accessType=DOWNLOAD
     }
 }
 if (document.addEventListener) {
