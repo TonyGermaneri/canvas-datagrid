@@ -68141,7 +68141,7 @@ window.reflection = [
         "meta": {
             "range": [
                 26872,
-                27915
+                27922
             ],
             "filename": "publicMethods.js",
             "lineno": 662,
@@ -68208,7 +68208,7 @@ window.reflection = [
         "meta": {
             "range": [
                 26969,
-                26989
+                26996
             ],
             "filename": "publicMethods.js",
             "lineno": 664,
@@ -68235,8 +68235,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27007,
-                27021
+                27014,
+                27028
             ],
             "filename": "publicMethods.js",
             "lineno": 665,
@@ -68263,8 +68263,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27039,
-                27041
+                27046,
+                27048
             ],
             "filename": "publicMethods.js",
             "lineno": 666,
@@ -68289,8 +68289,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27059,
-                27069
+                27066,
+                27076
             ],
             "filename": "publicMethods.js",
             "lineno": 667,
@@ -68317,8 +68317,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27324,
-                27360
+                27331,
+                27367
             ],
             "filename": "publicMethods.js",
             "lineno": 673,
@@ -68345,8 +68345,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27462,
-                27469
+                27469,
+                27476
             ],
             "filename": "publicMethods.js",
             "lineno": 677,
@@ -68374,8 +68374,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27487,
-                27497
+                27494,
+                27504
             ],
             "filename": "publicMethods.js",
             "lineno": 678,
@@ -68403,8 +68403,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27570,
-                27577
+                27577,
+                27584
             ],
             "filename": "publicMethods.js",
             "lineno": 680,
@@ -68432,8 +68432,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27819,
-                27868
+                27826,
+                27875
             ],
             "filename": "publicMethods.js",
             "lineno": 686,
@@ -68499,8 +68499,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                28190,
-                28387
+                28197,
+                28394
             ],
             "filename": "publicMethods.js",
             "lineno": 698,
@@ -68570,8 +68570,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                28659,
-                28844
+                28666,
+                28851
             ],
             "filename": "publicMethods.js",
             "lineno": 711,
@@ -68650,8 +68650,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                29167,
-                29365
+                29174,
+                29372
             ],
             "filename": "publicMethods.js",
             "lineno": 725,
@@ -68731,8 +68731,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                29847,
-                37945
+                29854,
+                37952
             ],
             "filename": "publicMethods.js",
             "lineno": 739,
@@ -68785,8 +68785,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                29915,
-                30745
+                29922,
+                30752
             ],
             "filename": "publicMethods.js",
             "lineno": 740,
@@ -68815,8 +68815,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                30762,
-                30768
+                30769,
+                30775
             ],
             "filename": "publicMethods.js",
             "lineno": 754,
@@ -68841,8 +68841,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                30786,
-                30849
+                30793,
+                30856
             ],
             "filename": "publicMethods.js",
             "lineno": 755,
@@ -68869,8 +68869,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                30867,
-                30923
+                30874,
+                30930
             ],
             "filename": "publicMethods.js",
             "lineno": 756,
@@ -68897,8 +68897,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                30941,
-                30942
+                30948,
+                30949
             ],
             "filename": "publicMethods.js",
             "lineno": 757,
@@ -68923,8 +68923,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                30960,
-                30988
+                30967,
+                30995
             ],
             "filename": "publicMethods.js",
             "lineno": 758,
@@ -68951,8 +68951,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31006,
-                31016
+                31013,
+                31023
             ],
             "filename": "publicMethods.js",
             "lineno": 759,
@@ -68977,8 +68977,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31034,
-                31092
+                31041,
+                31099
             ],
             "filename": "publicMethods.js",
             "lineno": 760,
@@ -69005,8 +69005,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31110,
-                31168
+                31117,
+                31175
             ],
             "filename": "publicMethods.js",
             "lineno": 761,
@@ -69033,8 +69033,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31186,
-                31190
+                31193,
+                31197
             ],
             "filename": "publicMethods.js",
             "lineno": 762,
@@ -69059,8 +69059,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31281,
-                31301
+                31288,
+                31308
             ],
             "filename": "publicMethods.js",
             "lineno": 764,
@@ -69087,8 +69087,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31441,
-                31462
+                31448,
+                31469
             ],
             "filename": "publicMethods.js",
             "lineno": 769,
@@ -69115,8 +69115,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31509,
-                31531
+                31516,
+                31538
             ],
             "filename": "publicMethods.js",
             "lineno": 771,
@@ -69141,8 +69141,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31553,
-                31571
+                31560,
+                31578
             ],
             "filename": "publicMethods.js",
             "lineno": 772,
@@ -69167,8 +69167,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31622,
-                31627
+                31629,
+                31634
             ],
             "filename": "publicMethods.js",
             "lineno": 775,
@@ -69196,8 +69196,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31636,
-                31642
+                31643,
+                31649
             ],
             "filename": "publicMethods.js",
             "lineno": 775,
@@ -69225,8 +69225,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31662,
-                31689
+                31669,
+                31696
             ],
             "filename": "publicMethods.js",
             "lineno": 776,
@@ -69254,8 +69254,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31806,
-                31819
+                31813,
+                31826
             ],
             "filename": "publicMethods.js",
             "lineno": 778,
@@ -69283,8 +69283,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31841,
-                31854
+                31848,
+                31861
             ],
             "filename": "publicMethods.js",
             "lineno": 779,
@@ -69312,8 +69312,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31876,
-                31894
+                31883,
+                31901
             ],
             "filename": "publicMethods.js",
             "lineno": 780,
@@ -69341,8 +69341,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31916,
-                31933
+                31923,
+                31940
             ],
             "filename": "publicMethods.js",
             "lineno": 781,
@@ -69370,8 +69370,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32332,
-                32361
+                32339,
+                32368
             ],
             "filename": "publicMethods.js",
             "lineno": 788,
@@ -69399,8 +69399,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32387,
-                32413
+                32394,
+                32420
             ],
             "filename": "publicMethods.js",
             "lineno": 789,
@@ -69428,8 +69428,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32570,
-                32610
+                32577,
+                32617
             ],
             "filename": "publicMethods.js",
             "lineno": 793,
@@ -69457,8 +69457,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32636,
-                32672
+                32643,
+                32679
             ],
             "filename": "publicMethods.js",
             "lineno": 794,
@@ -69486,8 +69486,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32698,
-                32721
+                32705,
+                32728
             ],
             "filename": "publicMethods.js",
             "lineno": 795,
@@ -69515,8 +69515,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32747,
-                32778
+                32754,
+                32785
             ],
             "filename": "publicMethods.js",
             "lineno": 796,
@@ -69544,8 +69544,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32899,
-                32942
+                32906,
+                32949
             ],
             "filename": "publicMethods.js",
             "lineno": 798,
@@ -69573,8 +69573,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32972,
-                33011
+                32979,
+                33018
             ],
             "filename": "publicMethods.js",
             "lineno": 799,
@@ -69602,8 +69602,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33106,
-                33146
+                33113,
+                33153
             ],
             "filename": "publicMethods.js",
             "lineno": 801,
@@ -69631,8 +69631,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33176,
-                33212
+                33183,
+                33219
             ],
             "filename": "publicMethods.js",
             "lineno": 802,
@@ -69660,8 +69660,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33264,
-                33300
+                33271,
+                33307
             ],
             "filename": "publicMethods.js",
             "lineno": 804,
@@ -69688,8 +69688,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33459,
-                33501
+                33466,
+                33508
             ],
             "filename": "publicMethods.js",
             "lineno": 808,
@@ -69717,8 +69717,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33527,
-                33565
+                33534,
+                33572
             ],
             "filename": "publicMethods.js",
             "lineno": 809,
@@ -69746,8 +69746,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33591,
-                33614
+                33598,
+                33621
             ],
             "filename": "publicMethods.js",
             "lineno": 810,
@@ -69775,8 +69775,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33640,
-                33673
+                33647,
+                33680
             ],
             "filename": "publicMethods.js",
             "lineno": 811,
@@ -69804,8 +69804,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33793,
-                33837
+                33800,
+                33844
             ],
             "filename": "publicMethods.js",
             "lineno": 813,
@@ -69833,8 +69833,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33867,
-                33907
+                33874,
+                33914
             ],
             "filename": "publicMethods.js",
             "lineno": 814,
@@ -69862,8 +69862,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34002,
-                34045
+                34009,
+                34052
             ],
             "filename": "publicMethods.js",
             "lineno": 816,
@@ -69891,8 +69891,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34075,
-                34114
+                34082,
+                34121
             ],
             "filename": "publicMethods.js",
             "lineno": 817,
@@ -69920,8 +69920,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34166,
-                34202
+                34173,
+                34209
             ],
             "filename": "publicMethods.js",
             "lineno": 819,
@@ -69948,8 +69948,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34283,
-                34307
+                34290,
+                34314
             ],
             "filename": "publicMethods.js",
             "lineno": 822,
@@ -69977,8 +69977,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34456,
-                34548
+                34463,
+                34555
             ],
             "filename": "publicMethods.js",
             "lineno": 824,
@@ -70006,8 +70006,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35151,
-                35177
+                35158,
+                35184
             ],
             "filename": "publicMethods.js",
             "lineno": 830,
@@ -70035,8 +70035,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35207,
-                35237
+                35214,
+                35244
             ],
             "filename": "publicMethods.js",
             "lineno": 831,
@@ -70064,8 +70064,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35419,
-                35449
+                35426,
+                35456
             ],
             "filename": "publicMethods.js",
             "lineno": 835,
@@ -70093,8 +70093,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35479,
-                35514
+                35486,
+                35521
             ],
             "filename": "publicMethods.js",
             "lineno": 836,
@@ -70122,8 +70122,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36095,
-                36121
+                36102,
+                36128
             ],
             "filename": "publicMethods.js",
             "lineno": 845,
@@ -70151,8 +70151,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36151,
-                36181
+                36158,
+                36188
             ],
             "filename": "publicMethods.js",
             "lineno": 846,
@@ -70180,8 +70180,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36360,
-                36390
+                36367,
+                36397
             ],
             "filename": "publicMethods.js",
             "lineno": 850,
@@ -70209,8 +70209,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36420,
-                36455
+                36427,
+                36462
             ],
             "filename": "publicMethods.js",
             "lineno": 851,
@@ -70238,8 +70238,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36631,
-                36652
+                36638,
+                36659
             ],
             "filename": "publicMethods.js",
             "lineno": 856,
@@ -70267,8 +70267,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36678,
-                36713
+                36685,
+                36720
             ],
             "filename": "publicMethods.js",
             "lineno": 857,
@@ -70296,8 +70296,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36856,
-                36877
+                36863,
+                36884
             ],
             "filename": "publicMethods.js",
             "lineno": 861,
@@ -70325,8 +70325,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36903,
-                36935
+                36910,
+                36942
             ],
             "filename": "publicMethods.js",
             "lineno": 862,
@@ -70354,8 +70354,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37059,
-                37080
+                37066,
+                37087
             ],
             "filename": "publicMethods.js",
             "lineno": 866,
@@ -70382,8 +70382,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37106,
-                37136
+                37113,
+                37143
             ],
             "filename": "publicMethods.js",
             "lineno": 867,
@@ -70411,8 +70411,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37162,
-                37188
+                37169,
+                37195
             ],
             "filename": "publicMethods.js",
             "lineno": 868,
@@ -70440,8 +70440,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37327,
-                37348
+                37334,
+                37355
             ],
             "filename": "publicMethods.js",
             "lineno": 872,
@@ -70468,8 +70468,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37374,
-                37399
+                37381,
+                37406
             ],
             "filename": "publicMethods.js",
             "lineno": 873,
@@ -70497,8 +70497,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37425,
-                37446
+                37432,
+                37453
             ],
             "filename": "publicMethods.js",
             "lineno": 874,
@@ -70526,8 +70526,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37527,
-                37552
+                37534,
+                37559
             ],
             "filename": "publicMethods.js",
             "lineno": 877,
@@ -70555,8 +70555,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37574,
-                37595
+                37581,
+                37602
             ],
             "filename": "publicMethods.js",
             "lineno": 878,
@@ -70584,8 +70584,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37674,
-                37694
+                37681,
+                37701
             ],
             "filename": "publicMethods.js",
             "lineno": 882,
@@ -70612,8 +70612,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37708,
-                37744
+                37715,
+                37751
             ],
             "filename": "publicMethods.js",
             "lineno": 883,
@@ -70640,8 +70640,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37783,
-                37808
+                37790,
+                37815
             ],
             "filename": "publicMethods.js",
             "lineno": 885,
@@ -70666,8 +70666,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37826,
-                37847
+                37833,
+                37854
             ],
             "filename": "publicMethods.js",
             "lineno": 886,
@@ -70692,8 +70692,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37865,
-                37884
+                37872,
+                37891
             ],
             "filename": "publicMethods.js",
             "lineno": 887,
@@ -70718,8 +70718,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37902,
-                37920
+                37909,
+                37927
             ],
             "filename": "publicMethods.js",
             "lineno": 888,
@@ -70772,8 +70772,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38158,
-                39091
+                38165,
+                39098
             ],
             "filename": "publicMethods.js",
             "lineno": 898,
@@ -70804,8 +70804,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38214,
-                38246
+                38221,
+                38253
             ],
             "filename": "publicMethods.js",
             "lineno": 899,
@@ -70832,8 +70832,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38221,
-                38232
+                38228,
+                38239
             ],
             "filename": "publicMethods.js",
             "lineno": 899,
@@ -70859,8 +70859,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38234,
-                38245
+                38241,
+                38252
             ],
             "filename": "publicMethods.js",
             "lineno": 899,
@@ -70886,8 +70886,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38264,
-                38299
+                38271,
+                38306
             ],
             "filename": "publicMethods.js",
             "lineno": 900,
@@ -70914,8 +70914,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38272,
-                38284
+                38279,
+                38291
             ],
             "filename": "publicMethods.js",
             "lineno": 900,
@@ -70941,8 +70941,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38286,
-                38298
+                38293,
+                38305
             ],
             "filename": "publicMethods.js",
             "lineno": 900,
@@ -70968,8 +70968,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38378,
-                38384
+                38385,
+                38391
             ],
             "filename": "publicMethods.js",
             "lineno": 902,
@@ -70994,8 +70994,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38386,
-                38392
+                38393,
+                38399
             ],
             "filename": "publicMethods.js",
             "lineno": 902,
@@ -71020,8 +71020,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38499,
-                38542
+                38506,
+                38549
             ],
             "filename": "publicMethods.js",
             "lineno": 904,
@@ -71049,8 +71049,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38564,
-                38610
+                38571,
+                38617
             ],
             "filename": "publicMethods.js",
             "lineno": 905,
@@ -71078,8 +71078,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38632,
-                38688
+                38639,
+                38695
             ],
             "filename": "publicMethods.js",
             "lineno": 906,
@@ -71107,8 +71107,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38710,
-                38766
+                38717,
+                38773
             ],
             "filename": "publicMethods.js",
             "lineno": 907,
@@ -71136,8 +71136,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38788,
-                38827
+                38795,
+                38834
             ],
             "filename": "publicMethods.js",
             "lineno": 908,
@@ -71165,8 +71165,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38849,
-                38891
+                38856,
+                38898
             ],
             "filename": "publicMethods.js",
             "lineno": 909,
@@ -71194,8 +71194,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38964,
-                38974
+                38971,
+                38981
             ],
             "filename": "publicMethods.js",
             "lineno": 913,
@@ -71220,8 +71220,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38992,
-                39003
+                38999,
+                39010
             ],
             "filename": "publicMethods.js",
             "lineno": 914,
@@ -71246,8 +71246,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39021,
-                39035
+                39028,
+                39042
             ],
             "filename": "publicMethods.js",
             "lineno": 915,
@@ -71272,8 +71272,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39053,
-                39066
+                39060,
+                39073
             ],
             "filename": "publicMethods.js",
             "lineno": 916,
@@ -71329,8 +71329,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39400,
-                40185
+                39407,
+                40192
             ],
             "filename": "publicMethods.js",
             "lineno": 927,
@@ -71359,8 +71359,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39487,
-                39494
+                39494,
+                39501
             ],
             "filename": "publicMethods.js",
             "lineno": 928,
@@ -71385,8 +71385,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39564,
-                39601
+                39571,
+                39608
             ],
             "filename": "publicMethods.js",
             "lineno": 929,
@@ -71413,8 +71413,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39623,
-                39968
+                39630,
+                39975
             ],
             "filename": "publicMethods.js",
             "lineno": 930,
@@ -71441,8 +71441,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39653,
-                39662
+                39660,
+                39669
             ],
             "filename": "publicMethods.js",
             "lineno": 931,
@@ -71468,8 +71468,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39688,
-                39766
+                39695,
+                39773
             ],
             "filename": "publicMethods.js",
             "lineno": 932,
@@ -71495,8 +71495,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39792,
-                39821
+                39799,
+                39828
             ],
             "filename": "publicMethods.js",
             "lineno": 933,
@@ -71522,8 +71522,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39847,
-                39859
+                39854,
+                39866
             ],
             "filename": "publicMethods.js",
             "lineno": 934,
@@ -71549,8 +71549,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39885,
-                39895
+                39892,
+                39902
             ],
             "filename": "publicMethods.js",
             "lineno": 935,
@@ -71576,8 +71576,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39921,
-                39946
+                39928,
+                39953
             ],
             "filename": "publicMethods.js",
             "lineno": 936,
@@ -71603,8 +71603,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40035,
-                40050
+                40042,
+                40057
             ],
             "filename": "publicMethods.js",
             "lineno": 939,
@@ -71632,8 +71632,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40086,
-                40132
+                40093,
+                40139
             ],
             "filename": "publicMethods.js",
             "lineno": 941,
@@ -71679,8 +71679,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40567,
-                40643
+                40574,
+                40650
             ],
             "filename": "publicMethods.js",
             "lineno": 953,
@@ -71709,8 +71709,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40615,
-                40632
+                40622,
+                40639
             ],
             "filename": "publicMethods.js",
             "lineno": 954,
@@ -71766,8 +71766,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40880,
-                42050
+                40887,
+                42057
             ],
             "filename": "publicMethods.js",
             "lineno": 963,
@@ -71804,8 +71804,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40936,
-                40989
+                40943,
+                40996
             ],
             "filename": "publicMethods.js",
             "lineno": 964,
@@ -71832,8 +71832,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41007,
-                41008
+                41014,
+                41015
             ],
             "filename": "publicMethods.js",
             "lineno": 965,
@@ -71858,8 +71858,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41010,
-                41011
+                41017,
+                41018
             ],
             "filename": "publicMethods.js",
             "lineno": 965,
@@ -71884,8 +71884,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41013,
-                41033
+                41020,
+                41040
             ],
             "filename": "publicMethods.js",
             "lineno": 965,
@@ -71912,8 +71912,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41076,
-                41096
+                41083,
+                41103
             ],
             "filename": "publicMethods.js",
             "lineno": 967,
@@ -71940,8 +71940,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41439,
-                41467
+                41446,
+                41474
             ],
             "filename": "publicMethods.js",
             "lineno": 975,
@@ -71969,8 +71969,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41503,
-                41509
+                41510,
+                41516
             ],
             "filename": "publicMethods.js",
             "lineno": 975,
@@ -71998,8 +71998,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41529,
-                41552
+                41536,
+                41559
             ],
             "filename": "publicMethods.js",
             "lineno": 976,
@@ -72026,8 +72026,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41575,
-                41604
+                41582,
+                41611
             ],
             "filename": "publicMethods.js",
             "lineno": 977,
@@ -72055,8 +72055,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41639,
-                41645
+                41646,
+                41652
             ],
             "filename": "publicMethods.js",
             "lineno": 977,
@@ -72084,8 +72084,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41888,
-                41924
+                41895,
+                41931
             ],
             "filename": "publicMethods.js",
             "lineno": 984,
@@ -72110,8 +72110,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41942,
-                41969
+                41949,
+                41976
             ],
             "filename": "publicMethods.js",
             "lineno": 985,
@@ -72136,8 +72136,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41987,
-                42024
+                41994,
+                42031
             ],
             "filename": "publicMethods.js",
             "lineno": 986,
@@ -72201,8 +72201,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42450,
-                43927
+                42457,
+                43934
             ],
             "filename": "publicMethods.js",
             "lineno": 997,
@@ -72235,8 +72235,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42515,
-                42528
+                42522,
+                42535
             ],
             "filename": "publicMethods.js",
             "lineno": 998,
@@ -72263,8 +72263,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42587,
-                42631
+                42594,
+                42638
             ],
             "filename": "publicMethods.js",
             "lineno": 1000,
@@ -72291,8 +72291,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43262,
-                43309
+                43269,
+                43316
             ],
             "filename": "publicMethods.js",
             "lineno": 1010,
@@ -72319,8 +72319,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43331,
-                43495
+                43338,
+                43502
             ],
             "filename": "publicMethods.js",
             "lineno": 1011,
@@ -72347,8 +72347,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43513,
-                43530
+                43520,
+                43537
             ],
             "filename": "publicMethods.js",
             "lineno": 1014,
@@ -72376,8 +72376,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43611,
-                43646
+                43618,
+                43653
             ],
             "filename": "publicMethods.js",
             "lineno": 1017,
@@ -72404,8 +72404,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43668,
-                43843
+                43675,
+                43850
             ],
             "filename": "publicMethods.js",
             "lineno": 1018,
@@ -72432,8 +72432,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43861,
-                43878
+                43868,
+                43885
             ],
             "filename": "publicMethods.js",
             "lineno": 1021,
@@ -72479,8 +72479,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44103,
-                44289
+                44110,
+                44296
             ],
             "filename": "publicMethods.js",
             "lineno": 1031,
@@ -72509,8 +72509,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44299,
-                44434
+                44306,
+                44441
             ],
             "filename": "publicMethods.js",
             "lineno": 1036,
@@ -72539,8 +72539,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44444,
-                44498
+                44451,
+                44505
             ],
             "filename": "publicMethods.js",
             "lineno": 1039,
@@ -72567,8 +72567,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44508,
-                44559
+                44515,
+                44566
             ],
             "filename": "publicMethods.js",
             "lineno": 1040,
@@ -72595,8 +72595,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44569,
-                44616
+                44576,
+                44623
             ],
             "filename": "publicMethods.js",
             "lineno": 1041,
@@ -72623,8 +72623,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44626,
-                44670
+                44633,
+                44677
             ],
             "filename": "publicMethods.js",
             "lineno": 1042,
@@ -72651,8 +72651,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44680,
-                44725
+                44687,
+                44732
             ],
             "filename": "publicMethods.js",
             "lineno": 1043,
@@ -72679,8 +72679,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44735,
-                45461
+                44742,
+                45468
             ],
             "filename": "publicMethods.js",
             "lineno": 1044,
@@ -72713,8 +72713,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44808,
-                44833
+                44815,
+                44840
             ],
             "filename": "publicMethods.js",
             "lineno": 1045,
@@ -72741,8 +72741,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45471,
-                45789
+                45478,
+                45796
             ],
             "filename": "publicMethods.js",
             "lineno": 1061,
@@ -72775,8 +72775,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45544,
-                45569
+                45551,
+                45576
             ],
             "filename": "publicMethods.js",
             "lineno": 1062,
@@ -72803,8 +72803,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45799,
-                46243
+                45806,
+                46250
             ],
             "filename": "publicMethods.js",
             "lineno": 1070,
@@ -72837,8 +72837,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45870,
-                45895
+                45877,
+                45902
             ],
             "filename": "publicMethods.js",
             "lineno": 1071,
@@ -77383,7 +77383,7 @@ window.reflection = [
     "canvasDatagrid.md": "Ways to create a grid\n---------------------\n\n* Web component by using the tag `&lt;canvas-datagrid&gt;&lt;/canvas-datagrid&gt;` anywhere in your document.\n* Web component by running `var foo = document.createElement('canvas-datagrid')`.\n* Webpack3 universal module loader by adding one of many module loaders to your application code.  <br>See example: {@link https://tonygermaneri.github.io/canvas-datagrid/tutorials/amdDemo.html}.\n* You can also load the grid by invoking the global method `var foo = canvasDatagrid(&lt;args&gt;);` <br>See example: {@link https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html}\n\nIf you create the grid using the non-web component model, you can attach the grid to an existing\ncanvas by passing the canvas in as the `parentNode` when you instantiate the grid.\n\nWith the exception of attaching to an existing canvas, the grid will attempt to create a Shadow DOM element and attach a canvas within.\n\nSetting and Getting Data\n------------------------\n\nYou can set data into the grid in a number of ways.  No matter how it is passed in, it is immediately converted into the native\nformat which is an array of objects that all contain the same properties.  E.g.:\n\n    [\n        {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},\n        {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}\n    ]\n\nWhen getting data, no matter how it was set, it will be returned in the native format above.\n\nData can be almost any type, the behavior of the grid will change slightly depending on how it is set.\n\n* Data can be set using the data property.\n* Data can be set using the web component data attribute.\n* Data can be set using the web component innerHTML attribute.\n\nWhen setting data using the data property, you can use many types.\n\n* As an array of objects.\n* As an array of arrays.\n* As an object.\n* As a jagged array of objects.\n* As a jagged array of arrays.\n* As a function that returns any of the above.\n* As a function that returns undefined, and passes any of the above to the callback argument asynchronously.\n\nWhen using an array of arrays, the columns will be named like a spread sheet, A, B, C, through ZZZZ.\n\nWhen the value of a cell is an object or an array, a new grid will be drawn into the cell.\n\nSchema\n------\n\nSchema is optional.  Schema is an array of header objects.\nThis documentation will use the term header and column interchangeably.\nIf no schema is provided one will be generated from the\ndata, in that case all data will be assumed to be string data.\n\nEach header object can have the following properties:\n\n| Property | Description |\n|-----|------|\n| name | The name of the column.  This is used to match with data and is the only required property. |\n| type | The data type of this column |\n| title | What will be displayed to the user.  If not present, name will be used. |\n| width | The default width in pixels of this column.|\n| hidden | When true the column will be hidden. |\n| filter | The filter function to use to filter this column.  If no function is provided, type will determine filer. |\n| formatter | The formatter function used display this column.  If no function is provided, type will determine formatter.|\n| defaultValue | The default value of this column for new rows.  This is a function or a string.  When a function is used, it takes the arguments `header` and `index` and must return a value for new default cell value in this column.|\n\nExample schema:\n\n    [\n        {\n            name: 'col1'\n        },\n        {\n            name: 'col2'\n        },\n        {\n            name: 'col3'\n        }\n    ]\n\nProperties, Attributes, & Parameters\n------------------------------------\n\n* Properties, attributes, and parameters represent different ways to change the values and behaviors of the grid.\nProperties can be accessed directly from the grid instance. E.g.:\n\n    myGrid.someProperty = 'Some Value';\n\n* Attributes can be access from the grid instance's attributes property.  E.g.:\n\n    myGrid.attributes.someAttribute = 'Some Value';\n\n* Attributes can also be set from the attribute list of the web component tag.  E.g.:\n\n    &lt;canvas-datagrid someattribute=\"Some Value\"&gt;&lt;/canvas-datagrid&gt;\n\n* Parameters are attributes that are passed in the arguments object during instantiation.  E.g.:\n\n    var myGrid = canvasDatagrid({someAttribute: 'Some Value'});\n\n\nWeb Component\n-------------\n\nThe grid can be instantiated as a web component.\n\n\n    <canvas-datagrid></canvas-datagrid>\n\n\nTo set data, add JSON between the open and close tags.\n\n\n        <canvas-datagrid>[\n            {\"col1\": \"row 1 column 1\", \"col2\": \"row 1 column 2\", \"col3\": \"row 1 column 3\"},\n            {\"col1\": \"row 2 column 1\", \"col2\": \"row 2 column 2\", \"col3\": \"row 2 column 3\"}\n        ]</canvas-datagrid>\n\n\nTo set attributes, add attributes.  Attributes are not case sensitive when using HTML.  When using the same element in JavaScript however they are case sensitive.\n\n    <canvas-datagrid selectionmode='row'></canvas-datagrid>\n\nStyles are declared as custom css properties prefixed with --cdg- and hyphenated rather than camelCase.\nFor example, the style \"backgroundColor\" is set with \"--cdg-background-color\".  The web component\nworks with classes, css cascading, and in-line styles just like any other HTML element.\n\nInline styles:\n\n        <canvas-datagrid style=\"--cdg-background-color: lightblue;\">[\n            {\"col1\": \"row 1 column 1\", \"col2\": \"row 1 column 2\", \"col3\": \"row 1 column 3\"},\n            {\"col1\": \"row 2 column 1\", \"col2\": \"row 2 column 2\", \"col3\": \"row 2 column 3\"}\n        ]</canvas-datagrid>\n\nClass styles.\n\n        <style>\n            .grid {\n                --cdg-background-color: lightblue;\n            }\n        </style>\n        <canvas-datagrid class=\"grid\">[\n            {\"col1\": \"row 1 column 1\", \"col2\": \"row 1 column 2\", \"col3\": \"row 1 column 3\"},\n            {\"col1\": \"row 2 column 1\", \"col2\": \"row 2 column 2\", \"col3\": \"row 2 column 3\"}\n        ]</canvas-datagrid>\n\nYou can still access the grid as you would expect and the interface for the web component instance is the same as the module loaded or globally scoped version.  The web component version has additional properties that come from inheriting the base HTTPElement class.\n\nFor further reading about web components see: https://www.webcomponents.org/\n\n* When instantiating the grid using the Webpack loader or the global function canvasDatagrid, class support will not work.\n\nSorters\n-------\n\nObject that contains a list of sorting functions for sorting columns.\n\n| Argument | Description |\n|-----|------|\n| columnName | Name of the column to be sorted. |\n| direction | `asc` or `desc` for ascending or descending. |\n\nSorter function must return a sort function.\nThis function will be used in the [native sort method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).\n\nExample sorter:\n\n    grid.sorters.number = function (columnName, direction) {\n        var asc = direction === 'asc';\n        return function (a, b) {\n            if (asc) {\n                return a[columnName] - b[columnName];\n            }\n            return b[columnName] - a[columnName];\n        };\n    };\n\nFilters\n-------\n\nObject that contains a list of filters for filtering data.\nThe properties in this object match the `schema[].type` property.\nFor example, if the schema for a given column was of the type `date`\nthe grid would look for a filter called `filters.date`\nif a filter cannot be found for a given data type a warning will\nbe logged and the string/RegExp filter will be used.\n\n    filters.number = function (value, filterFor) {\n        if (!filterFor) { return true; }\n        return value === filterFor;\n    };\n\nFormatters\n----------\n\nObject that contains a list of formatting functions for displaying text.\nThe properties in this object match the `schema[].type` property.\nFor example, if the schema for a given column was of the type `date`\nthe grid would look for a formatter called `formatters.date`\nif a formatter cannot be found for a given data type a warning will\nbe logged and the string formatter will be used.\n\nCell formatter function should contain the following arguments.\n\n    grid.formatters.date = function (e) { return new Date(e.cell.value).toISOString(); }\n\nFormatters must return a string value to be displayed in the cell.\n\n\nFormatting using event listeners\n--------------------------------\n\nYou can format the data in your cells without altering the data in two ways.\n\nThe first and fastest method is grid formatters.\nGrid formatters allow you to pass your values though a function to format them as they are drawn onto the grid.\nData type is defined in the [schema](https://tonygermaneri.github.io/canvas-datagrid/docs/tutorial-schema.html) that you can optionally pass to describe your data.\n\nThis method is slightly faster due to the O(1) hash map employed in the value formatters.\n\nIn the following example, the type `date` is given a formatter function.\n\n    grid.formatters.date = function (e) {\n        return new Date(e.cell.value).toISOString();\n    };\n\nThe return value of the formatter function will be displayed in the cell instead of the value\nin the data without altering the data.\n\nThe second method is the `rendertext` event.  By subscribing to the `rendertext` event listener\nwe can intercept the value in the context of the [cell](https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDatagrid.cell.html) being drawn and alter it.\n\nThis method is slightly slower due to the O(n) loop employed in the event handler class.\n\nThis method is not dependent on values in the schema.  This methods overrides `grid.formatters`.\n\n    grid.addEventListener('rendertext', function (e) {\n        if (e.cell.rowIndex > -1) {\n            if (e.cell.header.name === 'MyDateColumnName') {\n                e.cell.formattedValue = new Date(e.cell.value).toISOString();\n            }\n        }\n    });\n\nExtending the visual appearance\n-------------------------------\nAll visual elements of the canvas are dependent on the values of the style object.\nYou can change the dimensions and appearance of any element of the grid.\n\nThis example changes the fill style of the cell when the cell is a certain value.\n\n    grid.addEventListener('rendercell', function (e) {\n        if (e.cell.header.name === 'MyStatusCell' && /blah/.test(e.cell.value)) {\n            e.ctx.fillStyle = '#AEEDCF';\n        }\n    });\n\nDrawing on the canvas\n---------------------\nExtending behavior is done using event handlers just like a regular HTML element.\nYou can alter the content of a rendered cell by attaching to such an event handler.\nBelow is an example of drawing an image into a cell:\n\nThis example attaches to two events. `rendertext` to prevent the rendering of text into the cell...\n\n    grid.addEventListener('rendertext', function (e) {\n        if (e.cell.rowIndex > -1) {\n            if (e.cell.header.name === 'MyImageColumnName') {\n                e.cell.formattedValue = e.cell.value ? '' : 'No Image';\n            }\n        }\n    });\n\n... and `afterrendercell` to draw an image into the cell after the background and borders are drawn.\nBecause the image is loaded asynchronously, you need to attach to the load event to actually draw\nthe image.\n\n    var imgs = {};\n    grid.addEventListener('afterrendercell', function (e) {\n        var i, contextGrid = this;\n        if (e.cell.header.name === 'MyImageColumnName'\n                && e.cell.value && e.cell.rowIndex > -1) {\n            if (!imgs[e.cell.value]) {\n                i = imgs[e.cell.value] = new Image();\n                i.src = e.cell.value;\n                i.onload = function () {\n                    i.targetHeight = e.cell.height;\n                    i.targetWidth = e.cell.height * (i.width / i.height);\n                    contextGrid.draw();\n                };\n                return;\n            }\n            i = imgs[e.cell.value];\n            if (i.width !== 0) {\n                e.ctx.drawImage(i, e.cell.x, e.cell.y, i.targetWidth, i.targetHeight);\n            }\n        }\n    });\n\n\n\nSupporting DOM elements\n-----------------------\n\nAlthough the grid itself is pure canvas, there are some supporting elements of the grid that are HTMLElements.\n\n* In order to overlap parts of the page that are not on the canvas, the context menu is a `&lt;div&gt;`.\n* In order to support advanced key commands, copying, pasting as well as user customization outside of this library, the editing input/textarea is DOM.\n* A hidden input is placed outside of the visible area of the web page to capture keystroke and translate them into grid commands, such as cursor navigation.\n\nYou can customize almost every behavior of the grid by subscribing to an event in the event handler collection.\nMost events provide a `e.preventDefault();` method that will allow you to manipulate the grid's behavior on a very granular level.\n\nExamples of how to use many of the event handlers to change default grid behaviors can be found in the <a href=\"#tutorials\">tutorials</a> section.\n\nNotes\n-----\n\n* Throughout this document there are several words that will be used interchangeably.\n* Canvas Datagrid will also be referred to simply as \"grid\".\n* Column and header are used interchangeably.\n* Node, HTMLElement, DOM, DOM element, and element all refer to an HTML element or elements.\n* Firing, raising, invoking, and running, all refer to a function or event occurring.\n* Binding, subscribing, and listening all refer to using `&lt;element&gt;.addEventListener()` to subscribe to an event.\n* Inner grid, child grid, tree grid, cell grid all refer to one of two types of grids that render inside of other grids.  Cell grids are in a single cell, while tree grids span an entire row.\n* Drawing and rendering both refer to using low level methods to draw pixels onto the canvas, usually by invoking `canvasDatagrid.draw`.\n* This documentation is automatically generated and can be prone to omissions, bad links and errors.  Please report any problems with the documentation here {@link https://github.com/TonyGermaneri/canvas-datagrid/issues}.\n",
     "canvasDatagrid.style.md": "Setting Styles\n--------------\n\nStyles can be set during instantiation.\n\n    var grid = canvasDatagrid({\n            style: {\n                backgroundColor: 'red'\n            }\n        });\n\nStyles can be set after instantiation.\n\n    grid.style.backgroundColor = 'red';\n\nWhen using the web component, styles can be set as above, but also using standard CSS.\n\nWhen using standard CSS, style names are hyphenated, lower case, and prefixed with `--cdg-`.\n\n    <canvas-datagrid style=\"--cdg-background-color: red;\">[{\"my\": \"data\"}]</canvas-datagrid>\n\nWhen using the web component you can also use CSS classes and selectors as you would a native HTML element.\n    \n    <style>\n        .my-grid {\n            --cdg-background-color: red;\n        }\n    </style>\n\n    <canvas-datagrid class=\"my-grid\">[{\"my\": \"data\"}]</canvas-datagrid>\n\nYou can build your own styles using the <a href=\"https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html\">Style Builder</a>.\n",
     "demo.html": "<!doctype html>\n<html lang=\"en\">\n    <head>\n        <script src=\"../dist/canvas-datagrid.debug.js\"></script>\n        <script src=\"./demo.js\"></script>\n        <meta name=\"viewport\" content=\"width=device-width\">\n        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"/>\n        <style>\n            html, body {\n                height: 100%;\n                min-height: 100%;\n                margin: 0;\n                padding: 0;\n                overflow: hidden;\n            }\n            #grid {\n                height: 100%;\n                width: 100%;\n                min-height: 100%;\n            }\n        </style>\n    </head>\n    <body><div id=\"grid\"></div></body>\n</html>\n",
-    "demo.js": "/*jslint browser: true*/\n/*globals canvasDatagrid: false*/\nvar data;\nfunction demo() {\n    'use strict';\n    var searchUrl = window.location.search.substring(3);\n    function isNoiseData(name) {\n        // get rid of fields that we don't care about\n        return ['sid', 'id', 'position', 'created_at',\n                    'created_meta', 'updated_at',\n                    'updated_meta', 'meta'].indexOf(name) !== -1;\n    }\n    function parseOpenData(openData) {\n        var data, schema = [];\n        openData.meta.view.columns.forEach(function (column) {\n            if (isNoiseData(column.name)) {\n                column.hidden = true;\n            }\n            schema.push(column);\n        });\n        data = openData.data.map(function (row) {\n            var r = {};\n            schema.forEach(function (column, index) {\n                r[column.name] = row[index];\n            });\n            return r;\n        });\n        return {\n            data: data,\n            schema: schema\n        };\n    }\n    function loadDataSet(url) {\n        var xhr = new XMLHttpRequest(),\n            grid = canvasDatagrid({\n                parentNode: document.getElementById('grid'),\n                borderDragBehavior: 'move',\n                allowMovingSelection: true\n            });\n        grid.addEventListener('contextmenu', function (e) {\n            e.items.push({\n                title: 'View page source',\n                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/demo.html', 'src'); }\n            });\n            e.items.push({\n                title: 'View JS module',\n                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/demo.js', 'src'); }\n            });\n            e.items.push({\n                title: 'Go to main canvas-datagrid GitHub page',\n                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid', 'src'); }\n            });\n        });\n        xhr.addEventListener('progress', function (e) {\n            grid.data = [{ status: 'Loading data: ' + e.loaded + ' of ' + e.total + ' bytes...'}];\n        });\n        xhr.addEventListener('load', function (e) {\n            grid.data = [{ status: 'Loading data ' + e.loaded + '...'}];\n            var openData = parseOpenData(JSON.parse(this.responseText));\n            grid.schema = openData.schema;\n            grid.data = openData.data;\n        });\n        xhr.open('GET', url);\n        xhr.send();\n    }\n    if (searchUrl.length > 3) {\n        // work encoded or not, for lazy people who can't be bothered encoding stuff\n        loadDataSet(/%3A/.test(searchUrl) ? decodeURIComponent(searchUrl) : searchUrl);\n    } else {\n        loadDataSet('https://data.cityofchicago.org/api/views/xzkq-xp2w/rows.json?accessType=DOWNLOAD');\n    }\n}\nif (document.addEventListener) {\n    document.addEventListener('DOMContentLoaded', demo);\n} else {\n    setTimeout(function () {\n        'use strict';\n        demo();\n    }, 500);\n}\n",
+    "demo.js": "/*jslint browser: true*/\n/*globals canvasDatagrid: false*/\nvar data;\nfunction demo() {\n    'use strict';\n    var searchUrl = window.location.search.substring(3),\n        typeMap = {\n            'text': 'string',\n            'money': 'number',\n            'number': 'number'\n        };\n    function isNoiseData(name) {\n        // get rid of fields that we don't care about\n        return ['sid', 'id', 'position', 'created_at',\n                    'created_meta', 'updated_at',\n                    'updated_meta', 'meta'].indexOf(name) !== -1;\n    }\n    function parseOpenData(openData) {\n        var data, schema = [];\n        openData.meta.view.columns.forEach(function (column) {\n            if (isNoiseData(column.name)) {\n                column.hidden = true;\n            }\n            column.type = typeMap[column.dataTypeName] || 'string';\n            schema.push(column);\n        });\n        data = openData.data.map(function (row) {\n            var r = {};\n            schema.forEach(function (column, index) {\n                r[column.name] = row[index];\n            });\n            return r;\n        });\n        return {\n            data: data,\n            schema: schema\n        };\n    }\n    function loadDataSet(url) {\n        var xhr = new XMLHttpRequest(),\n            grid = canvasDatagrid({\n                parentNode: document.getElementById('grid'),\n                borderDragBehavior: 'move',\n                allowMovingSelection: true,\n                columnHeaderClickBehavior: 'select'\n            });\n        grid.addEventListener('contextmenu', function (e) {\n            e.items.push({\n                title: 'View page source',\n                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/demo.html', 'src'); }\n            });\n            e.items.push({\n                title: 'View JS module',\n                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/demo.js', 'src'); }\n            });\n            e.items.push({\n                title: 'Go to main canvas-datagrid GitHub page',\n                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid', 'src'); }\n            });\n        });\n        xhr.addEventListener('progress', function (e) {\n            grid.data = [{ status: 'Loading data: ' + e.loaded + ' of ' + (e.total || 'unknown') + ' bytes...'}];\n        });\n        xhr.addEventListener('load', function (e) {\n            grid.data = [{ status: 'Loading data ' + e.loaded + '...'}];\n            var openData = parseOpenData(JSON.parse(this.responseText));\n            grid.schema = openData.schema;\n            grid.data = openData.data;\n        });\n        xhr.open('GET', url);\n        xhr.send();\n    }\n    if (searchUrl.length > 3) {\n        // work encoded or not, for lazy people who can't be bothered encoding stuff\n        loadDataSet(/%3A/.test(searchUrl) ? decodeURIComponent(searchUrl) : searchUrl);\n    } else {\n        loadDataSet('https://data.cityofchicago.org/api/views/xzkq-xp2w/rows.json?accessType=DOWNLOAD');\n        // inner join\n        // https://data.cityofchicago.org/api/views/pasx-mnuv/rows.json?accessType=DOWNLOAD\n    }\n}\nif (document.addEventListener) {\n    document.addEventListener('DOMContentLoaded', demo);\n} else {\n    setTimeout(function () {\n        'use strict';\n        demo();\n    }, 500);\n}\n",
     "developer.html": "<!doctype html>\n<html>\n<head>\n    <!-- this file is for developing in a sandbox on a local machine -->\n    <script src=\"./developer.js\"></script>\n    <script>\n        var s = document.createElement('script');\n        s.src = \"../dist/canvas-datagrid.debug.js?cacheBust=\" + +new Date();\n        s.onload = g;\n        document.head.appendChild(s);\n    </script>\n    <meta name=\"viewport\" content=\"width=device-width\">\n    <style>\n        html, body {\n            height: 100%;\n            min-height: 100%;\n            margin: 0;\n            padding: 0;\n            overflow: hidden;\n        }\n/*        .n {\n            height: 300px;\n            width: 300px;\n            position: absolute;\n            top: 100px;\n            left: 100px;\n            overflow: scroll;\n        }\n        .grid {\n            margin: auto;\n            margin-top: 100px;\n            height: 500px;\n            width: 600px;\n        }*/\n    </style>\n</head>\n<body>\n<div class=\"grid\" id=\"grid\" style=\"height: 100%;\"></div>\n<!--     <div class=\"n\">\n        <div class=\"grid\" id=\"grid\"></div>\n    </div> -->\n   <!--  <canvas-datagrid\n        style=\"background-color: dodgerblue;\"\n        selectionmode=\"row\"\n        data='[{\"a\": 1, \"b\": 2}, {\"a\": 3, \"b\": 4}]'>\n    </canvas-datagrid> -->\n</body>\n</html>",
     "developer.js": "/*jslint browser: true*/\n/*globals canvasDatagrid: false*/\n/* this file is for developing in a sandbox on a local machine */\nfunction g() {\n    'use strict';\n    // var grid = document.createElement('canvas-datagrid');\n    // document.body.appendChild(grid);\n    // localStorage.setItem('canvasDataGrid-blah', '{\"sizes\":{\"rows\":{},\"columns\":{\"cornerCell\":67.6953125,\"localUrl\":124.44444444599999}},\"orders\":{\"rows\":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418,419,420,421,422,423,424,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440,441,442,443,444,445,446,447,448,449,450,451,452,453,454,455,456,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,480,481,482,483,484,485,486,487,488,489,490,491,492,493,494,495,496,497,498,499,500,501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,572,573,574,575,576,577,578,579,580,581,582,583,584,585,586,587,588,589,590,591,592,593,594,595,596,597,598,599,600,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633,634,635,636,637,638,639,640,641,642,643,644,645,646,647,648,649,650,651,652,653,654,655,656,657,658,659,660,661,662,663,664,665,666,667,668,669,670,671,672,673,674,675,676,677,678,679,680,681,682,683,684,685,686,687,688,689,690,691,692,693,694,695,696,697,698,699,700,701,702,703,704,705,706,707,708,709,710,711,712,713,714,715,716,717,718,719,720,721,722],\"columns\":[1,0,2,4,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]},\"orderBy\":\"_canvasDataGridUniqueId\",\"orderDirection\":\"asc\"}');\n    // function plotSparklineChart(cell, ctx) {\n    //     if (!cell.value) { return; }\n    //     var g,\n    //         gb,\n    //         x = 0,\n    //         m = Math.max.apply(null, cell.value),\n    //         a = cell.value.reduce(function (ac, c) { return ac + c; }, 0) / cell.value.length,\n    //         i = Math.min.apply(null, cell.value),\n    //         w = cell.width / cell.value.length,\n    //         r = cell.height / (m - (m * 0.1));\n    //     function line(n, c) {\n    //         ctx.beginPath();\n    //         ctx.lineWidth = 1;\n    //         ctx.strokeStyle = c;\n    //         ctx.moveTo(cell.x, cell.y + (n * r));\n    //         ctx.lineTo(cell.x + cell.width, cell.y + (n * r));\n    //         ctx.stroke();\n    //     }\n    //     ctx.save();\n    //     gb = ctx.createLinearGradient((cell.x + cell.width) / 2, cell.y, (cell.x + cell.width) / 2, cell.y + cell.height);\n    //     gb.addColorStop(0, a > 0.5 ? '#0C4B73' : '#A1680F');\n    //     gb.addColorStop(1, (cell.selected || cell.active) ? '#B3C3CC' : '#041724');\n    //     ctx.fillStyle = gb;\n    //     ctx.fillRect(cell.x, cell.y, cell.width, cell.height);\n    //     ctx.beginPath();\n    //     ctx.moveTo(cell.x, cell.y + cell.height);\n    //     cell.value.forEach(function (d) {\n    //         var cx = cell.x + w + x,\n    //             cy = cell.y + (d * r);\n    //         ctx.lineTo(cx, cy);\n    //         if (d === i || d === m) {\n    //             ctx.fillStyle = d === m ? 'green' : 'red';\n    //             ctx.fillRect(cx - 2, cy - 2, 5, 5);\n    //         }\n    //         x += w;\n    //     });\n    //     ctx.lineTo(cell.x + cell.width, cell.y + cell.height);\n    //     g = ctx.createLinearGradient((cell.x + cell.width) / 2, cell.y, (cell.x + cell.width) / 2, cell.y + cell.height);\n    //     g.addColorStop(0, '#0F5C8C');\n    //     g.addColorStop(1, '#499ABA');\n    //     ctx.fillStyle = g;\n    //     ctx.fill();\n    //     ctx.strokeStyle = '#0B466B';\n    //     ctx.stroke();\n    //     line(a, a > 0.5 ? 'green' : 'red');\n    //     cell.parentGrid.data[cell.rowIndex].col1 = 'Avg:' + a.toFixed(2) + '\\nMin: ' + i.toFixed(2) + '\\nMax: ' + m.toFixed(2);\n    //     ctx.restore();\n    // }\n    // function createRandomSeq(size, r) {\n    //     r = r || [];\n    //     while (r.length < size) {\n    //         r.push(Math.random());\n    //     }\n    //     return r;\n    // }\n    // // create a new grid\n    // var grid = canvasDatagrid({\n    //     parentNode: document.body,\n    //     schema: [\n    //         {name: 'col1', width: 220},\n    //         {name: 'col2', width: 150},\n    //         {name: 'col3', width: 300}\n    //     ]\n    // });\n    // grid.addEventListener('beforerendercell', function (e) {\n    //     if (/col2|col3/.test(e.header.name) && !e.cell.isHeader) {\n    //         e.cell.isGrid = false;\n    //     }\n    // });\n    // grid.addEventListener('rendertext', function (e) {\n    //     if (/col2|col3/.test(e.header.name) && !e.cell.isHeader) {\n    //         e.preventDefault();\n    //     }\n    //     if (!e.cell.isHeader && e.cell.value && e.cell.value.substring) {\n    //         e.ctx.fillStyle = parseFloat(e.cell.value.substring(4), 10) > 0.5 ? '#A1230F' : '#499A3D';\n    //     }\n    // });\n    // grid.addEventListener('afterrendercell', function (e) {\n    //     if (/col2|col3/.test(e.header.name) && !e.cell.isHeader) {\n    //         plotSparklineChart(e.cell, e.ctx);\n    //         e.preventDefault();\n    //     }\n    // });\n    // grid.data = function () {\n    //     var d = [], x = 0;\n    //     while (x < 2000) {\n    //         d.push({col1: '', col2: createRandomSeq(80), col3: createRandomSeq(100)});\n    //         x += 1;\n    //     }\n    //     return d;\n    // };\n    // function getData(fill) {\n    //     var a, x = grid.scrollIndexRect.top;\n    //     while (x < grid.scrollIndexRect.bottom + 2) {\n    //         if (fill || grid.isCellVisible(1, x)) {\n    //             a = grid.data[x].col2;\n    //             a.shift();\n    //             a.push(Math.random());\n    //             a = grid.data[x].col3;\n    //             a.shift();\n    //             a.push(Math.random());\n    //         }\n    //         x += 1;\n    //     }\n    //     grid.draw();\n    //     pollData();\n    // }\n    // function pollData() {\n    //     setTimeout(getData, 1000);\n    // }\n    // getData(true);\n\n\n\n\n\n    // var grid = canvasDatagrid({parentNode: document.getElementById('grid')});\n    // grid.attributes.debug = true;\n    // grid.data = dat;\n    // function dat() {\n    //     var x,\n    //         data = [],\n    //         d,\n    //         i,\n    //         c,\n    //         r = 'Elend, eam, animal omittam an, has in, explicari principes. Elit, causae eleifend mea cu. No sed adipisci accusata, ei mea everti melius periculis. Ei quot audire pericula mea, qui ubique offendit no. Sint mazim mandamus duo ei. Sumo maiestatis id has, at animal reprehendunt definitionem cum, mei ne adhuc theophrastus.';\n    //     c = r.split(' ').map(function (i) { return i.trim(); });\n    //     r = r.split(',').map(function (i) { return i.trim(); });\n    //     for (x = 0; x < 10000; x += 1) {\n    //         d = {};\n    //         for (i = 0; i < r.length; i += 1) {\n    //             d[r[i]] = c[Math.floor(Math.random() * 1000) % (c.length - 1)];\n    //         }\n    //         data.push(d);\n    //     }\n    //     return data;\n    // }\n    // grid.addEventListener('expandtree', function (e) {\n    //     e.treeGrid.data = dat();\n    // });\n    // // // add the data to the grid\n    // grid.data = dat();\n    // grid.addEventListener('expandtree', function (e) {\n    //     e.treeGrid.data = [{a: 'b', c: 'd', e: 'f', g: 'h'}];\n    // });\n    // grid.data = [{a: 'b', c: 'd', e: 'f', g: 'h'}];\n    // grid.data = [\n    //     {a: 'a', b: [{c: 'd'}]},\n    //     {a: 'a', b: [{c: [\n    //         {a: 'a', b: [{c: 'd'}]},\n    //         {a: 'a', b: [{c: 'd'}]},\n    //     ]}]},\n    // ];\n    // grid.data = [\n    //     {'a': 0, 'b': 1, 'c': 2},\n    //     {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},\n    //     {'a': 7, 'b': 8, 'c': 9}\n    // ];\n    // grid.addEventListener('expandtree', function (e) {\n    //     e.treeGrid.data = [\n    //         {'a': 0, 'b': 1, 'c': 2},\n    //         {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},\n    //         {'a': 7, 'b': 8, 'c': 9}\n    //     ];\n    // });\n    //grid.data = [null, \"32.84057112200048\", \"-86.63186076199969\", null, false];\n\n\n\n\n\n    // create a spreadsheet\n    var grid = canvasDatagrid({\n            borderDragBehavior: 'move',\n            showPaste: true,\n            parentNode: document.getElementById('grid')\n        }),\n        x,\n        y,\n        d = [],\n        n;\n    function colName(n) {\n        var ordA = 'a'.charCodeAt(0),\n            ordZ = 'z'.charCodeAt(0),\n            len = ordZ - ordA + 1,\n            s = '';\n        while (n >= 0) {\n            s = String.fromCharCode(n % len + ordA) + s;\n            n = Math.floor(n / len) - 1;\n        }\n        return s;\n    }\n    for (x = 0; x < 10000; x += 1) {\n        d[x] = {};\n        for (y = 0; y < 50; y += 1) {\n            n = colName(y).toUpperCase();\n            d[x][n] = 'r: ' + x + ', c: ' + y;\n        }\n    }\n    grid.attributes.columnHeaderClickBehavior = 'select';\n    grid.style.columnHeaderCellHorizontalAlignment = 'center';\n    grid.data = d;\n\n\n\n\n}",
     "index.html": "<!doctype html>\n<html>\n<head>\n    <title>API Documentation - Canvas Datagrid</title>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js\"></script>\n    <script src=\"../dist/canvas-datagrid.debug.js\"></script>\n    <script src=\"../docs/js/reflection.js\"></script>\n    <script src=\"../docs/js/marked.js\"></script>\n    <script src=\"./js/main.js\"></script>\n    <meta name=\"viewport\" content=\"width=device-width\">\n    <link rel=\"stylesheet\" href=\"./css/main.css\">\n</head>\n<body></body>\n</html>\n",
