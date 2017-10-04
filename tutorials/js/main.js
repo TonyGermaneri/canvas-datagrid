@@ -309,7 +309,7 @@
                 theading.innerHTML = msg[0];
                 tdescription.innerHTML = msg[1] || msg[0];
                 tutorialForm.onsubmit = function () {
-                    var c = 'window.addEventListener(\'DOMContentLoaded\', function () {\n'
+                    var c = 'window.addEventListener(\'load\', function () {\n'
                         + '    var parentNode = document.getElementById(\'grid\');\n'
                         + '    ' + aceEditor.getValue().replace(/\n/g, '\n    ');
                     c = c.substring(0, c.length - 4) + '});';
