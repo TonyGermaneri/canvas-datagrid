@@ -106,7 +106,7 @@ More Demos
 
 * [Using Webpack3: AMD](https://tonygermaneri.github.io/canvas-datagrid/tutorials/amdDemo.html)
 
-* [Using Webpack3: AMD](https://tonygermaneri.github.io/canvas-datagrid/tutorials/reactExample.html)
+* [Using React](https://tonygermaneri.github.io/canvas-datagrid/tutorials/reactExample.html)
 
 * [Loading data with XHR](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html)
 
