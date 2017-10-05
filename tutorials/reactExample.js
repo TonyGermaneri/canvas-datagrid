@@ -10,11 +10,10 @@ class CanvasDatagrid extends React.Component {
             } else if (this.grid[key]) {
                 this.grid[key] = this.props[key];
             }
-            
         });
     }
     componentWillUnmount() {
-
+        this.grid.dispose();
     }
     componentDidMount() {
         var args = {};
@@ -23,6 +22,6 @@ class CanvasDatagrid extends React.Component {
         this.grid = canvasDatagrid(args);
     }
     render() {
-        return React.createElement('div', {}, 'blah');
+        return React.createElement('div', {});
     }
 }
