@@ -47,11 +47,11 @@ class GenerateRandomDataButton extends React.Component {
                 data: this.state.data
             }),
             React.createElement('button', {
-                onClick: (e) => { this.onInputChange(getRandomData()); }
+                onClick: (e) => { this.setData(getRandomData()); }
             }, 'Generate Random Data')
         );
     }
-    onInputChange(data) {
+    setData(data) {
         this.setState({data});
     }
 }
