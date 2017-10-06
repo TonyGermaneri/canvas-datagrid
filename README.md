@@ -102,11 +102,11 @@ Using web component
 More Demos
 ----------
 
-* [Web component example](https://tonygermaneri.github.io/canvas-datagrid/tutorials/webcomponentDemo.html)
-
 * [Using Webpack3: AMD](https://tonygermaneri.github.io/canvas-datagrid/tutorials/amdDemo.html)
 
 * [Using React](https://tonygermaneri.github.io/canvas-datagrid/tutorials/reactExample.html)
+
+* [Web component example](https://tonygermaneri.github.io/canvas-datagrid/tutorials/webcomponentDemo.html)
 
 * [Loading data with XHR](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html)
 
