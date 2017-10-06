@@ -32,6 +32,29 @@ class CanvasDatagrid extends React.Component {
         return React.createElement('canvas-datagrid', {});
     }
 }
+class GenerateRandomDataButton extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { data: getRandomData() };
+    }
+    render() {
+        return React.createElement('div', {
+                style: {
+                    height: '300px'
+                }
+            },
+            React.createElement(CanvasDatagrid, {
+                data: this.state.data
+            }),
+            React.createElement('button', {
+                onClick: (e) => { this.onInputChange(getRandomData()); }
+            }, 'Generate Random Data')
+        );
+    }
+    onInputChange(data) {
+        this.setState({data});
+    }
+}
 function getRandomData() {
     return [{
         foo: Math.random(),
@@ -39,13 +62,5 @@ function getRandomData() {
         baz: Math.random()
     }];
 }
-var grid = React.createElement(CanvasDatagrid, {
-        style: {
-            backgroundColor: 'tan'
-        },
-        data: getRandomData(),
-        oncellmouseover: function (e) {
-            e.cell.value = Math.random()
-        }
-    });
+var grid = React.createElement(GenerateRandomDataButton, {});
 ReactDOM.render(grid, document.getElementById('root'));
