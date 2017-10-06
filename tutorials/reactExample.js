@@ -3,25 +3,49 @@ class CanvasDatagrid extends React.Component {
     constructor(props) {
         super(props);
     }
-    componentWillReceiveProps() {
+    updateAttributes(nextProps) {
         Object.keys(this.props).forEach(key => {
-            if (grid.attributes[key] !== undefined) {
-                this.grid.attributes[key] = this.props[key];
-            } else if (this.grid[key]) {
-                this.grid[key] = this.props[key];
+            if (!nextProps || this.props[key] !== nextProps[key]) {
+                if (this.grid.attributes[key] !== undefined) {
+                    this.grid.attributes[key] = nextProps ? nextProps[key] : this.props[key];
+                } else {
+                    this.grid[key] = nextProps ? nextProps[key] : this.props[key];
+                }
             }
         });
+    }
+    componentWillReceiveProps(nextProps) {
+        this.updateAttributes(nextProps);
+    }
+    shouldComponentUpdate() {
+        return false;
     }
     componentWillUnmount() {
         this.grid.dispose();
     }
     componentDidMount() {
         var args = {};
-        Object.keys(this.props).forEach(key => args[key] = this.props[key]);
-        args.parentNode = ReactDOM.findDOMNode(this);
-        this.grid = canvasDatagrid(args);
+        this.grid = ReactDOM.findDOMNode(this);
+        this.updateAttributes();
     }
     render() {
-        return React.createElement('div', {});
+        return React.createElement('canvas-datagrid', {});
     }
 }
+function getRandomData() {
+    return [{
+        foo: Math.random(),
+        bar: Math.random(),
+        baz: Math.random()
+    }];
+}
+var grid = React.createElement(CanvasDatagrid, {
+        style: {
+            backgroundColor: 'tan'
+        },
+        data: getRandomData(),
+        oncellmouseover: function (e) {
+            e.cell.value = Math.random()
+        }
+    });
+ReactDOM.render(grid, document.getElementById('root'));
