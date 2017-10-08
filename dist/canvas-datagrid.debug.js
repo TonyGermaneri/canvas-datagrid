@@ -3469,34 +3469,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     }
                 });
             });
-            /**
-             * The shadow root element.
-             * @memberof canvasDatagrid
-             * @property shadowRoot
-             * @readonly
-             */
             Object.defineProperty(self.intf, 'shadowRoot', {
                 get: function () {
                     return self.shadowRoot;
                 }
             });
-            /**
-             * Gets the active cell.
-             * @memberof canvasDatagrid
-             * @property activeCell
-             * @readonly
-             */
             Object.defineProperty(self.intf, 'activeCell', {
                 get: function () {
                     return self.activeCell;
                 }
             });
-            /**
-             * When true, the grid is has focus.
-             * @memberof canvasDatagrid
-             * @property hasFocus
-             * @readonly
-            */
             Object.defineProperty(self.intf, 'hasFocus', {
                 get: function () {
                     return self.hasFocus;
@@ -3613,11 +3595,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.hasFocus = true;
             self.controlInput.focus();
         };
-        /**
-         * The height of the element the grid is trying to match, usually the shadow DOM's parent element.
-         * @memberof canvasDatagrid
-         * @property height
-         */
         Object.defineProperty(self.intf, 'height', {
             get: function () {
                 return self.parentNode.height;
@@ -3627,11 +3604,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.resize(true);
             }
         });
-        /**
-         * The width of the element the grid is trying to match, usually the shadow DOM's parent element.
-         * @memberof canvasDatagrid
-         * @property width
-         */
         Object.defineProperty(self.intf, 'width', {
             get: function () {
                 return self.parentNode.width;
@@ -3641,34 +3613,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.resize(true);
             }
         });
-        /**
-         * The heights of the visible rows.
-         * @memberof canvasDatagrid
-         * @property visibleRowHeights
-         * @readonly
-         */
         Object.defineProperty(self.intf, 'visibleRowHeights', {
             get: function () {
                 return self.visibleRowHeights;
             }
         });
-        /**
-         * Array of open tree grids.
-         * @memberof canvasDatagrid
-         * @property openChildren
-         * @readonly
-         */
         Object.defineProperty(self.intf, 'openChildren', {
             get: function () {
                 return self.openChildren;
             }
         });
-        /**
-         * Array of instantiated child grids.
-         * @memberof canvasDatagrid
-         * @property childGrids
-         * @readonly
-         */
         Object.defineProperty(self.intf, 'childGrids', {
             get: function () {
                 return Object.keys(self.childGrids).map(function (gridId) {
@@ -3676,22 +3630,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 });
             }
         });
-        /**
-         * When true, this grid is within another grid.
-         * @memberof canvasDatagrid
-         * @property isChildGrid
-         * @readonly
-         */
         Object.defineProperty(self.intf, 'isChildGrid', {
             get: function () {
                 return self.isChildGrid;
             }
         });
-        /**
-         * The parent node of the canvas, usually the shadow DOM's parent element.
-         * @memberof canvasDatagrid
-         * @property parentNode
-         */
         Object.defineProperty(self.intf, 'parentNode', {
             get: function () {
                 return self.parentNode;
@@ -3703,66 +3646,31 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.parentNode = value;
             }
         });
-        /**
-         * The parent node of the grid, usually the shadow DOM's parent element.
-         * @memberof canvasDatagrid
-         * @property parentNode
-         * @readonly
-         */
         Object.defineProperty(self.intf, 'offsetParent', {
             get: function () {
                 return self.parentNode;
             }
         });
-        /**
-         * The offsetLeft of the shadow DOM's parent element.
-         * @memberof canvasDatagrid
-         * @property offsetLeft
-         * @readonly
-         */
         Object.defineProperty(self.intf, 'offsetLeft', {
             get: function () {
                 return self.parentNode.offsetLeft;
             }
         });
-        /**
-         * The offsetTop of the shadow DOM's parent element.
-         * @memberof canvasDatagrid
-         * @property offsetTop
-         * @readonly
-         */
         Object.defineProperty(self.intf, 'offsetTop', {
             get: function () {
                 return self.parentNode.offsetTop;
             }
         });
-        /**
-         * The scrollHeight of the grid.
-         * @memberof canvasDatagrid
-         * @property scrollHeight
-         * @readonly
-         */
         Object.defineProperty(self.intf, 'scrollHeight', {
             get: function () {
                 return self.scrollBox.scrollHeight;
             }
         });
-        /**
-         * The scrollWidth of the grid.
-         * @memberof canvasDatagrid
-         * @property scrollWidth
-         * @readonly
-         */
         Object.defineProperty(self.intf, 'scrollWidth', {
             get: function () {
                 return self.scrollBox.scrollWidth;
             }
         });
-        /**
-         * The scrollTop of the grid.
-         * @memberof canvasDatagrid
-         * @property scrollTop
-         */
         Object.defineProperty(self.intf, 'scrollTop', {
             get: function () {
                 return self.scrollBox.scrollTop;
@@ -3771,11 +3679,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.scrollBox.scrollTop = value;
             }
         });
-        /**
-         * The scrollLeft of the grid.
-         * @memberof canvasDatagrid
-         * @property scrollTop
-         */
         Object.defineProperty(self.intf, 'scrollLeft', {
             get: function () {
                 return self.scrollBox.scrollLeft;
@@ -3784,89 +3687,41 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.scrollBox.scrollLeft = value;
             }
         });
-        /**
-         * The arrays of widths in pixels of rows, columns and trees, provided a properties of each name respectively.
-         * @memberof canvasDatagrid
-         * @property sizes
-         * @readonly
-         */
         Object.defineProperty(self.intf, 'sizes', {
             get: function () {
                 return self.sizes;
             }
         });
-        /**
-         * The editing input, if any.
-         * @memberof canvasDatagrid
-         * @property input
-         * @readonly
-         */
         Object.defineProperty(self.intf, 'input', {
             get: function () {
                 return self.input;
             }
         });
-        /**
-         * The control input, used to capture key events.
-         * @memberof canvasDatagrid
-         * @property controlInput
-         * @readonly
-         */
         Object.defineProperty(self.intf, 'controlInput', {
             get: function () {
                 return self.controlInput;
             }
         });
-        /**
-         * The last cell the mouse was over.
-         * @memberof canvasDatagrid
-         * @property currentCell
-         * @readonly
-         */
         Object.defineProperty(self.intf, 'currentCell', {
             get: function () {
                 return self.currentCell;
             }
         });
-        /**
-         * Array of the visible cells.
-         * @memberof canvasDatagrid
-         * @property visibleCells
-         * @readonly
-         */
         Object.defineProperty(self.intf, 'visibleCells', {
             get: function () {
                 return self.visibleCells;
             }
         });
-        /**
-         * Array of the visible rows.
-         * @memberof canvasDatagrid
-         * @property visibleRows
-         * @readonly
-         */
         Object.defineProperty(self.intf, 'visibleRows', {
             get: function () {
                 return self.visibleRows;
             }
         });
-        /**
-         * Array of selections, described as a 2D array of row indexes and column indexes.  This is how the grid keeps track of selections internally.
-         * @memberof canvasDatagrid
-         * @property selections
-         * @readonly
-         */
         Object.defineProperty(self.intf, 'selections', {
             get: function () {
                 return self.selections;
             }
         });
-        /**
-         * The current drag mode of the grid, if any.
-         * @memberof canvasDatagrid
-         * @property dragMode
-         * @readonly
-         */
         Object.defineProperty(self.intf, 'dragMode', {
             get: function () {
                 return self.dragMode;
@@ -3958,12 +3813,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 return self.frozenRows;
             }
         });
-        /**
-         * Rect describing the view port of the virtual canvas in column and row indexes.
-         * @memberof canvasDatagrid
-         * @property scrollIndexRect
-         * @readonly
-         */
         Object.defineProperty(self.intf, 'scrollIndexRect', {
             get: function () {
                 return {
@@ -3974,12 +3823,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 };
             }
         });
-        /**
-         * Rect describing view port of the virtual canvas in pixels.
-         * @memberof canvasDatagrid
-         * @property scrollPixelRect
-         * @readonly
-         */
         Object.defineProperty(self.intf, 'scrollPixelRect', {
             get: function () {
                 return {
@@ -3990,45 +3833,21 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 };
             }
         });
-        /**
-         * Rect describing the selection's bounds.
-         * @memberof canvasDatagrid
-         * @property selectionBounds
-         * @readonly
-         */
         Object.defineProperty(self.intf, 'selectionBounds', {
             get: function () {
                 return self.getSelectionBounds();
             }
         });
-        /**
-         * Array of selected cells expanded to included all cells in the row.
-         * @memberof canvasDatagrid
-         * @property selectedRows
-         * @readonly
-         */
         Object.defineProperty(self.intf, 'selectedRows', {
             get: function () {
                 return self.getSelectedData(true);
             }
         });
-        /**
-         * Array of selected cells.
-         * @memberof canvasDatagrid
-         * @property selectedCells
-         * @readonly
-         */
         Object.defineProperty(self.intf, 'selectedCells', {
             get: function () {
                 return self.getSelectedData();
             }
         });
-        /**
-         * The currently visible schema.
-         * @memberof canvasDatagrid
-         * @property visibleSchema
-         * @readonly
-         */
         Object.defineProperty(self.intf, 'visibleSchema', {
             get: function () {
                 return self.getVisibleSchema().map(function eachDataRow(col) {
@@ -4036,12 +3855,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 });
             }
         });
-        /**
-         * The canvas's 2D rendering context.
-         * @memberof canvasDatagrid
-         * @property ctx
-         * @readonly
-         */
         Object.defineProperty(self.intf, 'ctx', {
             get: function () {
                 return self.ctx;
