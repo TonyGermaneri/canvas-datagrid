@@ -31,6 +31,9 @@
         gfm: true,
         tables: true
     });
+    function alpha(a, b) {
+        return a.name.localeCompare(b.name);
+    }
     function formatDocString(str) {
         str = str.replace(/\{@link +http([^\}]+)\}/ig, 'http$1');
         str = str.replace(/\{@link ([^\}]+)\}/ig, '<a href="#$1">$1</a>');
@@ -108,7 +111,7 @@
             if (!i[n] || i[n].length === 0) { return; }
             t = ce('li', 'toc-member-heading-li', parentList);
             t.innerHTML = '<h3 class="toc-member-heading">' + memberType + '</h3>';
-            i[n].forEach(function (member) {
+            i[n].sort(alpha).forEach(function (member) {
                 var memberLi = ce('li', 'toc-item', parentList),
                     memberLink = ce('a', 'toc-link', memberLi);
                 memberLink.href = '#' + getLink(member, i);
@@ -133,7 +136,7 @@
             drawTocClass(tocList, i);
         });
         tutorialsUl = ce('ul', 'toc-list', toc);
-        Object.keys(tutorials).forEach(function (tkey) {
+        Object.keys(tutorials).sort().forEach(function (tkey) {
             var memberLi = ce('li', 'toc-item', tutorialsUl),
                 memberLink = ce('a', 'toc-link', memberLi),
                 msg = tkey.split('|');
@@ -164,7 +167,7 @@
         headers[memberType].forEach(function (name) {
             ce('th', 'member-header-cell', trh).innerHTML = name;
         });
-        members.forEach(function (member) {
+        members.sort(alpha).forEach(function (member) {
             var tr, name, a, type, description, params, defaultValueCell, optional;
             tr = ce('tr', 'member-row', table);
             name = ce('td', ['member-cell', 'member-name-cell'], tr);
@@ -213,7 +216,7 @@
         }
         an = ce('a', 'topic-anchor', parentNode);
         heading = ce('h1', 'topic-heading', parentNode);
-        toc = ce('ul', 'topic-toc', parentNode);
+        toc = ce('ul', null, parentNode);
         description = ce('div', 'topic-description', parentNode);
         memberof = ce('div', 'topic-memberof', parentNode);
         if (!i) { heading.innerHTML = 'Topic not found'; return; }
@@ -227,6 +230,7 @@
             syntaxExample.innerHTML = drawSyntax(i);
         }
         if (i.name === 'canvasDatagrid') {
+            toc.classList.add('topic-toc');
             heading.innerHTML = '<a id="toc"></a>Table of Contents';
             heading.classList.remove('topic-heading');
             heading.classList.add('topic-toc-heading');
@@ -251,7 +255,7 @@
                 tt.innerHTML = memberType.replace('Params', 'Parameters &amp; Attributes');
             }
             if (['methods', 'events', 'classes'].indexOf(n) !== -1) {
-                i[n].forEach(function (m) {
+                i[n].sort(alpha).forEach(function (m) {
                     drawTopic(parentNode, m.longname);
                 });
                 return;
