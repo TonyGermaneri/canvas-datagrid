@@ -136,7 +136,7 @@
             drawTocClass(tocList, i);
         });
         tutorialsUl = ce('ul', 'toc-list', toc);
-        Object.keys(tutorials).sort().forEach(function (tkey) {
+        Object.keys(tutorials).forEach(function (tkey) {
             var memberLi = ce('li', 'toc-item', tutorialsUl),
                 memberLink = ce('a', 'toc-link', memberLi),
                 msg = tkey.split('|');
@@ -299,7 +299,7 @@
                 tutorialForm.method = 'post';
                 tutorialForm.action = 'http://jsfiddle.net/api/post/library/pure/';
                 tutorialForm.target = msg[0];
-                tan.name = 'tutorial--' + msg[0].replace(/ /g, '-');
+                tan.id = 'tutorial--' + msg[0].replace(/ /g, '-');
                 code.id = 'ace_' + Math.random();
                 fiddleButton.type = 'submit';
                 fiddleButton.innerHTML = 'JsFiddle';
