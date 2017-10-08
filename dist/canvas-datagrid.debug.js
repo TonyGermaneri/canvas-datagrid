@@ -2569,28 +2569,31 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (wheeling) {
                 return;
             }
-            wheeling = setTimeout(function () {
-                if (self.dispatchEvent('wheel', {NativeEvent: e})) {
-                    return;
+            if (self.dispatchEvent('wheel', {NativeEvent: e})) {
+                return;
+            }
+            e = e.NativeEvent || e;
+            self.touchHaltAnimation = true;
+            l = self.scrollBox.scrollLeft;
+            t = self.scrollBox.scrollTop;
+            if (self.hasFocus) {
+                //BUG Issue 42: https://github.com/TonyGermaneri/canvas-datagrid/issues/42
+                //https://stackoverflow.com/questions/20110224/what-is-the-height-of-a-line-in-a-wheel-event-deltamode-dom-delta-line
+                if (deltaMode === 1) {
+                    // line mode = 17 pixels per line
+                    deltaY = deltaY * 17;
                 }
-                e = e.NativeEvent || e;
-                self.touchHaltAnimation = true;
-                l = self.scrollBox.scrollLeft;
-                t = self.scrollBox.scrollTop;
-                if (self.hasFocus) {
-                    //BUG Issue 42: https://github.com/TonyGermaneri/canvas-datagrid/issues/42
-                    //https://stackoverflow.com/questions/20110224/what-is-the-height-of-a-line-in-a-wheel-event-deltamode-dom-delta-line
-                    if (deltaMode === 1) {
-                        // line mode = 17 pixels per line
-                        deltaY = deltaY * 17;
-                    }
+                if ((self.scrollBox.scrollTop < self.scrollBox.scrollHeight && deltaY > 0)
+                        || (self.scrollBox.scrollLeft < self.scrollBox.scrollWidth && deltaX > 0)
+                        || (self.scrollBox.scrollTop > 0 && deltaY < 0)
+                        || (self.scrollBox.scrollLeft > 0 && deltaX < 0)) {
+                    e.preventDefault(e);
+                }
+                wheeling = setTimeout(function () {
+                    wheeling = undefined;
                     self.scrollBox.scrollTo(deltaX + l, deltaY + t);
-                }
-                if (t !== self.scrollBox.scrollTop || l !== self.scrollBox.scrollLeft) {
-                    e.preventDefault();
-                }
-                wheeling = undefined;
-            }, 1);
+                }, 1);
+            }
         };
         self.pasteItem = function (clipData, x, y, mimeType) {
             var l, s = self.getVisibleSchema(), yi = y - 1, sel = [];
@@ -3363,6 +3366,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.setDom();
             self.type = 'canvas-datagrid';
             self.initialized = true;
+            self.ie = /Trident/.test(window.navigator.userAgent);
+            self.edge = /Edge/.test(window.navigator.userAgent);
             self.webKit = /WebKit/.test(window.navigator.userAgent);
             self.moz = /Gecko/.test(window.navigator.userAgent);
             self.webKit = /WebKit/.test(window.navigator.userAgent);
@@ -3399,14 +3404,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.intf.autosize = self.autosize;
             self.intf.beginEditAt = self.beginEditAt;
             self.intf.endEdit = self.endEdit;
-            /**
-             * Sets a cell active by cell and row index.
-             * @memberof canvasDatagrid
-             * @name setActiveCell
-             * @method
-             * @param {number} columnIndex The column index.
-             * @param {number} rowIndex The row index.
-             */
             self.intf.setActiveCell = self.setActiveCell;
             self.intf.forEachSelectedCell = self.forEachSelectedCell;
             self.intf.scrollIntoView = self.scrollIntoView;
@@ -5893,10 +5890,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         /**
          * Checks if a given column is visible.
          * @memberof canvasDatagrid
-         * @name isRowVisible
+         * @name isColumnVisible
          * @method
-         * @returns {boolean} When true, the row is visible.
-         * @param {number} rowIndex Row index.
+         * @returns {boolean} When true, the column is visible.
+         * @param {number} columnIndex Column index.
          */
         self.isColumnVisible = function (columnIndex) {
             return self.visibleCells.filter(function (c) {
