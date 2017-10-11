@@ -2771,7 +2771,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.touchAnimateTo = {};
         self.animationFrames = 0;
         self.getTouchPos = function (e, touchIndex) {
-            var t = touchIndex ? e.targetTouches[touchIndex] : e.touches[0],
+            var t = touchIndex ? e.touches[touchIndex] : e.touches[0],
                 rect = self.canvas.getBoundingClientRect(),
                 pos;
             if (!t) { return; }
@@ -2867,7 +2867,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         left: i.columnIndex,
                         right: i.columnIndex
                     });
-                    self.draw();
+                    self.draw(true);
                 }
             };
         };
@@ -2876,7 +2876,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.disposeContextMenu();
             clearInterval(self.calculatePPSTimer);
             clearTimeout(self.touchContextTimeout);
-            if (!self.hasFocus) { return; }
             self.touchStartEvent = e;
             self.stopAnimation = true;
             self.animationFrames = 0;
@@ -2915,6 +2914,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }, self.attributes.touchContextMenuTimeMs);
                 self.calculatePPSTimer = setInterval(self.calculatePPSTimed, touchTimerMs);
                 self.startingCell = self.getCellAt(self.touchStart.x, self.touchStart.y, true);
+                if (self.startingCell && (self.startingCell.isGrid || ['tree', 'inherit'].indexOf(self.startingCell.context) !== -1)) {
+                    self.hasFocus = false;
+                    return;
+                }
+                self.hasFocus = true;
                 if (self.startingCell.isHeader) {
                     if (self.startingCell.isRowHeader) {
                         self.selectArea({
@@ -2923,7 +2927,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             left: 0,
                             right: self.getSchema().length - 1,
                         });
-                        self.draw();
+                        self.draw(true);
                     } else if (self.startingCell.isColumnHeader) {
                         if (self.attributes.columnHeaderClickBehavior === 'sort') {
                             if (self.orderBy === self.startingCell.header.name) {
@@ -2940,7 +2944,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                                 left: self.startingCell.columnIndex,
                                 right: self.startingCell.columnIndex,
                             });
-                            self.draw();
+                            self.draw(true);
                         }
                     }
                     self.touchEndEvents(e);
@@ -2951,7 +2955,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             document.body.addEventListener('touchmove', self.touchmove, {passive: false});
             document.body.addEventListener('touchend', self.touchend, false);
             document.body.addEventListener('touchcancel', self.touchcancel, false);
-            self.draw();
+            self.draw(true);
         };
         self.touchSelect = function (cell, handleType) {
             if (cell.rowIndex === undefined || cell.columnIndex === undefined) { return; }
@@ -2985,7 +2989,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 bounds.left = Math.max(0, bounds.left);
             }
             self.selectArea(bounds);
-            self.draw();
+            self.draw(true);
         };
         self.touchmove = function (e) {
             var rh, cw, rScrollZone, lScrollZone, bScrollZone, tScrollZone, sbw, t1, t2;
@@ -3066,7 +3070,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             self.scrollBox.scrollTo(self.touchScrollStart.x - self.touchDelta.x,
                 self.touchScrollStart.y - self.touchDelta.y);
-            self.draw();
+            self.draw(true);
         };
         self.touchEndEvents = function (e) {
             self.zoomDeltaStart = undefined;
@@ -4953,6 +4957,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.input.editCell = cell;
             self.resizeEditInput();
             self.input.style.zIndex = '2';
+            self.input.style.fontSize = (parseInt(self.style.editCellFontSize, 10) * self.scale) + 'px';
             self.input.value = cell.value;
             self.input.focus();
             self.input.addEventListener('click', self.stopPropagation);
@@ -5093,7 +5098,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     lineHeight: 'normal',
                     fontWeight: 'normal',
                     fontFamily: self.style.editCellFontFamily,
-                    fontSize: self.style.editCellFontSize * self.scale,
+                    fontSize: self.style.editCellFontSize,
                     boxShadow: self.style.editCellBoxShadow,
                     border: self.style.editCellBorder,
                     color: self.style.editCellColor,
