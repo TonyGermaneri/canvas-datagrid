@@ -212,42 +212,58 @@ function g() {
 
 
 
-    var grid = canvasDatagrid({
-        parentNode: document.getElementById('grid'),
-        data: [
+    // var grid = canvasDatagrid({
+    //     parentNode: document.getElementById('grid'),
+    //     data: [
+    //         {col1: 'foo', col2: 0, col3: 'a'},
+    //         {col1: 'bar', col2: 1, col3: 'b'},
+    //         {col1: 'baz', col2: 2, col3: 'c'}
+    //     ]
+    // });
+    // grid.addEventListener('contextmenu', function (e) {
+    //     e.items.push({
+    //         title: 'Top level item',
+    //         items: [
+    //             {
+    //                 title: 'Child item #1',
+    //                 click: function (ev) {
+    //                     grid.data[0].col1 = e.cell.value;
+    //                     grid.draw();
+    //                 }
+    //             },
+    //             {
+    //                 title: 'Child item #2',
+    //                 click: function (ev) {
+    //                     grid.data[0].col1 = e.cell.value;
+    //                     grid.draw();
+    //                 }
+    //             }
+    //         ]
+    //     });
+    //     e.items.push({
+    //         title: 'You have '
+    //             + grid.selectedRows.filter(function (row) { return !!row; }).length
+    //             + ' rows selected'
+    //     });
+    // });
+
+
+    function smallData() {
+        return [
             {col1: 'foo', col2: 0, col3: 'a'},
             {col1: 'bar', col2: 1, col3: 'b'},
             {col1: 'baz', col2: 2, col3: 'c'}
-        ]
+        ];
+    }
+    var grid = canvasDatagrid({
+        parentNode:  document.getElementById('grid'),
+        data: smallData(),
+        tree: true
     });
-    grid.addEventListener('contextmenu', function (e) {
-        e.items.push({
-            title: 'Top level item',
-            items: [
-                {
-                    title: 'Child item #1',
-                    click: function (ev) {
-                        grid.data[0].col1 = e.cell.value;
-                        grid.draw();
-                    }
-                },
-                {
-                    title: 'Child item #2',
-                    click: function (ev) {
-                        grid.data[0].col1 = e.cell.value;
-                        grid.draw();
-                    }
-                }
-            ]
-        });
-        e.items.push({
-            title: 'You have '
-                + grid.selectedRows.filter(function (row) { return !!row; }).length
-                + ' rows selected'
-        });
+    grid.addEventListener('expandtree', function (e) {
+        e.treeGrid.data = [{a: 'b', c: 'd', e: 'f', g: 'h'}];
     });
-
-
+    grid.expandTree(0);
 
 
 }
