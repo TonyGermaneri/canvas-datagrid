@@ -25,9 +25,9 @@
         <span class='fraction'>142/249</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">36.59% </span>
+        <span class="strong">35.98% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>60/164</span>
+        <span class='fraction'>59/164</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">41.94% </span>
@@ -450,7 +450,7 @@
 <span class="cline-any cline-yes">164×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">506×</span>
+<span class="cline-any cline-yes">254×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -463,12 +463,12 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">164×</span>
-<span class="cline-any cline-yes">506×</span>
+<span class="cline-any cline-yes">254×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">164×</span>
-<span class="cline-any cline-yes">319×</span>
-<span class="cline-any cline-yes">319×</span>
-<span class="cline-any cline-yes">319×</span>
+<span class="cline-any cline-yes">316×</span>
+<span class="cline-any cline-yes">316×</span>
+<span class="cline-any cline-yes">316×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -484,20 +484,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">164×</span>
-<span class="cline-any cline-yes">253×</span>
-<span class="cline-any cline-yes">253×</span>
+<span class="cline-any cline-yes">127×</span>
+<span class="cline-any cline-yes">127×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">253×</span>
-<span class="cline-any cline-yes">253×</span>
-<span class="cline-any cline-yes">253×</span>
-<span class="cline-any cline-yes">253×</span>
-<span class="cline-any cline-yes">253×</span>
+<span class="cline-any cline-yes">127×</span>
+<span class="cline-any cline-yes">127×</span>
+<span class="cline-any cline-yes">127×</span>
+<span class="cline-any cline-yes">127×</span>
+<span class="cline-any cline-yes">127×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">251×</span>
-<span class="cline-any cline-yes">251×</span>
+<span class="cline-any cline-yes">126×</span>
+<span class="cline-any cline-yes">126×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">164×</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -778,8 +778,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -866,7 +866,7 @@ define([], function () {
             self.scrollAnimation.x = self.easing(t, self.touchDelta.scrollLeft, self.touchAnimateTo.x, d);
             self.scrollAnimation.y = self.easing(t, self.touchDelta.scrollTop, self.touchAnimateTo.y, d);
             if (t &gt; d || (self.scrollAnimation.y === self.scrollBox.scrollTop
-                    &amp;&amp; self.scrollAnimation.x === self.scrollBox.scrollLeft) || self.stopAnimation) {
+                    &amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >self.scrollAnimation.x === self.scrollBox.scrollLeft)</span> || self.stopAnimation) {
                 return;
             }
             self.scrollBox.scrollTo(self.scrollAnimation.x, self.scrollAnimation.y);
@@ -1044,8 +1044,8 @@ define([], function () {
 <span class="cstat-no" title="statement not covered" >                self.scale = self.startScale - (self.scaleDelta * self.attributes.touchZoomSensitivity);</span>
 <span class="cstat-no" title="statement not covered" >                self.scale = Math.min(Math.max(self.scale, self.attributes.touchZoomMin), self.attributes.touchZoomMax);</span>
 <span class="cstat-no" title="statement not covered" >                self.zoomAltered = true;</span>
+<span class="cstat-no" title="statement not covered" >                self.resize(true);</span>
 <span class="cstat-no" title="statement not covered" >                self.resizeChildGrids();</span>
-<span class="cstat-no" title="statement not covered" >                self.resize();</span>
 <span class="cstat-no" title="statement not covered" >                return;</span>
             }
             <span class="missing-if-branch" title="if path not taken" >I</span>if (self.zoomAltered) { <span class="cstat-no" title="statement not covered" >return; </span>}
@@ -1168,7 +1168,7 @@ define([], function () {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Oct 11 2017 01:35:45 GMT-0700 (PDT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Oct 11 2017 11:03:41 GMT-0700 (PDT)
 </div>
 </div>
 <script src="../prettify.js"></script>
