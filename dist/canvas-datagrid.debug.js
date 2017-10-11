@@ -1877,8 +1877,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             scrollHeight = self.data.reduce(function reduceData(accumulator, row) {
                 return accumulator
-                    + ((self.sizes.rows[row[self.uniqueId]] || ch)
-                                        + (self.sizes.trees[row[self.uniqueId]] || 0)  * self.scale)
+                    + (((self.sizes.rows[row[self.uniqueId]] || ch) + (self.sizes.trees[row[self.uniqueId]] || 0)) * self.scale)
                     + cellBorder;
             }, 0) || 0;
             scrollWidth = self.getVisibleSchema().reduce(function reduceSchema(accumulator, column) {
@@ -1916,7 +1915,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             return true;
         };
         self.scroll = function (e, dontDraw) {
-            //TODO: fix the small miscalculation at the beginning of the drag and the resulting iterative mess.
             var s = self.getVisibleSchema(),
                 cellBorder = self.style.cellBorderWidth * 2,
                 ch = self.style.cellHeight;
@@ -1942,9 +1940,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.scrollPixelLeft = Math.max(self.scrollPixelLeft
                     - ((self.sizes.columns[s[self.scrollIndexLeft][self.uniqueId]] || s[self.scrollIndexLeft].width) * self.scale), 0);
                 self.scrollIndexTop = Math.max(self.scrollIndexTop - 1, 0);
-                self.scrollPixelTop = Math.max(self.scrollPixelTop
+                self.scrollPixelTop = Math.max((self.scrollPixelTop
                     - ((self.sizes.rows[self.data[self.scrollIndexTop][self.uniqueId]] || ch)
-                    + (self.sizes.trees[self.data[self.scrollIndexTop][self.uniqueId]] || 0) * self.scale), 0);
+                    + (self.sizes.trees[self.data[self.scrollIndexTop][self.uniqueId]] || 0)) * self.scale), 0);
             }
             self.ellipsisCache = {};
             if (!dontDraw) {
@@ -3014,8 +3012,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.scale = self.startScale - (self.scaleDelta * self.attributes.touchZoomSensitivity);
                 self.scale = Math.min(Math.max(self.scale, self.attributes.touchZoomMin), self.attributes.touchZoomMax);
                 self.zoomAltered = true;
+                self.resize(true);
                 self.resizeChildGrids();
-                self.resize();
                 return;
             }
             if (self.zoomAltered) { return; }
