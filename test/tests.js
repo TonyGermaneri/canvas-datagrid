@@ -137,19 +137,19 @@
     }
     function touchstart(el, x, y, bbEl) {
         var p = bb(bbEl || el);
-        de(el, 'touchstart', {touches: [{clientX: x + p.left, clientY: y + p.top }]});
+        de(el, 'touchstart', {touches: [{clientX: x + p.left, clientY: y + p.top }], changedTouches: [{x: 0, y: 0}]});
     }
     function touchend(el, x, y, bbEl) {
         var p = bb(bbEl || el);
-        de(el, 'touchend', {touches: [{clientX: x + p.left, clientY: y + p.top }]});
+        de(el, 'touchend', {touches: [{clientX: x + p.left, clientY: y + p.top }], changedTouches: [{x: 0, y: 0}]});
     }
     function touchcancel(el, x, y, bbEl) {
         var p = bb(bbEl || el);
-        de(el, 'touchcancel', {touches: [{clientX: x + p.left, clientY: y + p.top }]});
+        de(el, 'touchcancel', {touches: [{clientX: x + p.left, clientY: y + p.top }], changedTouches: [{x: 0, y: 0}]});
     }
     function touchmove(el, x, y, bbEl) {
         var p = bb(bbEl || el);
-        de(el, 'touchmove', {touches: [{clientX: x + p.left, clientY: y + p.top }]});
+        de(el, 'touchmove', {touches: [{clientX: x + p.left, clientY: y + p.top }], changedTouches: [{x: 0, y: 0}]});
     }
     function click(el, x, y, bbEl, ev) {
         var p = bb(bbEl || el);
@@ -325,7 +325,7 @@
                     });
                     grid.style.activeCellBackgroundColor = c.b;
                     mousemove(grid.canvas, 100, 113);
-                    assertPxColor(grid, 120, 32, 'rgb(204, 204, 255)', done);
+                    assertPxColor(grid, 120, 10, 'rgb(90, 90, 90)', done);
                 });
                 // TODO: after phantomjs has been replaced, re-enable this test.
                 // phantom throws a nonsense error due to the way the data url is constructed in the html function
@@ -1342,7 +1342,7 @@
                     });
                     grid.addEventListener('expandtree', function (e) {
                         setTimeout(function () {
-                            grid.focus();
+                            e.treeGrid.focus();
                             touchstart(grid.canvas, 200, 80);
                             touchmove(document.body, 90, 80, grid.canvas);
                             setTimeout(function () {
@@ -2005,7 +2005,7 @@
                         data: smallData()
                     });
                     grid.focus();
-                    de(grid.controlInput, 'keydown', {keyCode: 65, controlKey: true });
+                    de(grid.controlInput, 'keydown', {keyCode: 65, ctrlKey: true });
                     setTimeout(function () {
                         grid.style.activeCellSelectedBackgroundColor = c.y;
                         grid.style.cellSelectedBackgroundColor = c.y;
@@ -2024,7 +2024,7 @@
                         test: this.test,
                         data: smallData()
                     });
-                    de(grid.controlInput, 'keydown', {keyCode: 65, controlKey: true });
+                    de(grid.controlInput, 'keydown', {keyCode: 65, ctrlKey: true });
                     setTimeout(function () {
                         grid.style.activeCellBackgroundColor = c.b;
                         grid.style.cellBackgroundColor = c.b;
@@ -2266,10 +2266,10 @@
                         mouseup(grid.canvas, 320, 65, grid.canvas);
                         click(grid.canvas, 320, 65);
                         // ctrl click
-                        de(grid.canvas, 'mousemove', {clientX: 320 + p.left, clientY: 65 + p.top, controlKey: true });
-                        de(grid.canvas, 'mousedown', {clientX: 320 + p.left, clientY: 65 + p.top, controlKey: true });
-                        de(document.body, 'mouseup', {clientX: 320 + p.left, clientY: 65 + p.top, controlKey: true });
-                        de(grid.canvas, 'mouseup', {clientX: 320 + p.left, clientY: 65 + p.top, controlKey: true });
+                        de(grid.canvas, 'mousemove', {clientX: 320 + p.left, clientY: 65 + p.top, ctrlKey: true });
+                        de(grid.canvas, 'mousedown', {clientX: 320 + p.left, clientY: 65 + p.top, ctrlKey: true });
+                        de(document.body, 'mouseup', {clientX: 320 + p.left, clientY: 65 + p.top, ctrlKey: true });
+                        de(grid.canvas, 'mouseup', {clientX: 320 + p.left, clientY: 65 + p.top, ctrlKey: true });
                         assertPxColor(grid, 67, 30, c.y, function (err) {
                             if (err) { return done(err); }
                             assertPxColor(grid, 350, 65, c.b, function (err) {
@@ -2766,7 +2766,7 @@
                     mousemove(grid.canvas, 40, 12);
                     click(grid.canvas, 40, 12);
                     mousemove(grid.canvas, 175, 12);
-                    click(grid.canvas, 175, 12, null, {controlKey: true});
+                    click(grid.canvas, 175, 12, null, {ctrlKey: true});
                     done(assertIf(grid.selectedRows.length !== 3
                         || grid.selectedCells[0].col2 !== undefined
                         || grid.selectedCells[0].col3 !== 'a', 'Expected every row to be selected and column 2 to not be selected.'));
