@@ -1581,7 +1581,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.ctx.lineWidth = self.style.reorderMarkerIndexBorderWidth;
                     self.ctx.strokeStyle = self.style.reorderMarkerIndexBorderColor;
                     if (self.currentCell.rowIndex !== self.reorderObject.rowIndex
-                            && self.currentCell.rowIndex - 1 !== self.reorderObject.rowIndex) {
+                            && self.currentCell.rowIndex - 1 !== self.reorderObject.rowIndex
+                            && self.currentCell.rowIndex > -1
+                            && self.currentCell.rowIndex < l) {
                         addBorderLine(m, 't');
                     }
                 } else if (self.dragMode === 'column-reorder' && self.reorderObject) {
@@ -1594,7 +1596,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.ctx.lineWidth = self.style.reorderMarkerIndexBorderWidth;
                     self.ctx.strokeStyle = self.style.reorderMarkerIndexBorderColor;
                     if (self.currentCell.columnIndex !== self.reorderObject.columnIndex
-                            && self.currentCell.columnIndex - 1 !== self.reorderObject.columnIndex) {
+                            && self.currentCell.columnIndex - 1 !== self.reorderObject.columnIndex
+                            && self.currentCell.columnIndex > -1
+                            && self.currentCell.columnIndex < s.length) {
                         addBorderLine(m, 'l');
                     }
                 }
@@ -2299,19 +2303,24 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }[self.dragMode];
             document.body.removeEventListener('mousemove', self.dragReorder, false);
             document.body.removeEventListener('mouseup', self.stopDragReorder, false);
-            if (self.reorderObject
-                    && self.reorderTarget) {
-                self.ignoreNextClick = true;
-                if (self.reorderObject[i] !== self.reorderTarget[i]
-                        && !self.dispatchEvent('reorder', {
-                            NativeEvent: e,
-                            source: self.reorderObject,
-                            target: self.reorderTarget,
-                            dragMode: self.dragMode
-                        })) {
-                    cr[self.dragMode].splice(cr[self.dragMode].indexOf(self.reorderObject[i]), 1);
-                    cr[self.dragMode].splice(cr[self.dragMode].indexOf(self.reorderTarget[i]), 0, self.reorderObject[i]);
-                    self.setStorageData();
+            if (!(self.reorderTarget.columnIndex < 0
+                    || self.getVisibleSchema().length > self.reorderTarget.columnIndex
+                    || self.reorderTarget.rowIndex < 0
+                    || self.reorderTarget.rowIndex > self.data.length)) {
+                if (self.reorderObject
+                        && self.reorderTarget) {
+                    self.ignoreNextClick = true;
+                    if (self.reorderObject[i] !== self.reorderTarget[i]
+                            && !self.dispatchEvent('reorder', {
+                                NativeEvent: e,
+                                source: self.reorderObject,
+                                target: self.reorderTarget,
+                                dragMode: self.dragMode
+                            })) {
+                        cr[self.dragMode].splice(cr[self.dragMode].indexOf(self.reorderObject[i]), 1);
+                        cr[self.dragMode].splice(cr[self.dragMode].indexOf(self.reorderTarget[i]), 0, self.reorderObject[i]);
+                        self.setStorageData();
+                    }
                 }
             }
             self.reorderObject = undefined;
