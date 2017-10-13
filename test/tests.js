@@ -2558,9 +2558,9 @@
                         grid.focus();
                         mousemove(grid.canvas, 67, 10);
                         mousedown(grid.canvas, 67, 10);
-                        mousemove(grid.canvas, 200, 10, grid.canvas);
-                        mousemove(document.body, 200, 10, grid.canvas);
-                        mouseup(document.body, 200, 10, grid.canvas);
+                        mousemove(grid.canvas, 150, 10, grid.canvas);
+                        mousemove(document.body, 150, 10, grid.canvas);
+                        mouseup(document.body, 150, 10, grid.canvas);
                         grid.draw();
                         grid.addEventListener('click', function (e) {
                             done(assertIf(e.cell.value !== '1:0', 'Expected to see the value from column 2 here, instead saw %n.', e.cell.value));
@@ -2624,7 +2624,7 @@
                             if (err) { return done(err); }
                             assertPxColor(grid, 145, 90, c.fu, function (err) {
                                 if (err) { return done(err); }
-                                assertPxColor(grid, 132, 50, c.b, done);
+                                assertPxColor(grid, 182, 50, c.b, done);
                             });
                         });
                         grid.draw();
