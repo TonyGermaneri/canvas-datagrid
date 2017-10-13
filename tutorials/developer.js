@@ -182,12 +182,16 @@ function g() {
             borderDragBehavior: 'move',
             showPaste: true,
             parentNode: document.getElementById('grid'),
-            snapToRow: true
+            snapToRow: true,
+            allowRowReordering: true,
+            debug: true,
+            showPerformance: true
         }),
         x,
         y,
         d = [],
         n;
+    grid.style.columnWidth = 70;
     function colName(n) {
         var ordA = 'a'.charCodeAt(0),
             ordZ = 'z'.charCodeAt(0),

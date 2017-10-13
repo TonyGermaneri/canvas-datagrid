@@ -1564,7 +1564,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     },
                     m = {
                         width: w,
-                        heigth: h,
+                        height: h,
                         x: 0,
                         y: 0
                     };
@@ -1575,6 +1575,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     b.width = w;
                     b.x = 0;
                     m.width = w;
+                    m.height = h;
                     m.y = self.currentCell.y;
                     fillRect(b.x, b.y, b.width, b.height);
                     strokeRect(b.x, b.y, b.width, b.height);
@@ -1590,16 +1591,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     b.height = h;
                     b.y = 0;
                     m.height = h;
+                    m.width = self.currentCell.width;
+                    m.y = 0;
                     m.x = self.currentCell.x;
                     fillRect(b.x, b.y, b.width, b.height);
                     strokeRect(b.x, b.y, b.width, b.height);
                     self.ctx.lineWidth = self.style.reorderMarkerIndexBorderWidth;
                     self.ctx.strokeStyle = self.style.reorderMarkerIndexBorderColor;
                     if (self.currentCell.columnIndex !== self.reorderObject.columnIndex
-                            && self.currentCell.columnIndex - 1 !== self.reorderObject.columnIndex
                             && self.currentCell.columnIndex > -1
                             && self.currentCell.columnIndex < s.length) {
-                        addBorderLine(m, 'l');
+                        addBorderLine(m, self.reorderTarget.sortColumnIndex > self.reorderObject.sortColumnIndex ? 'r' : 'l');
                     }
                 }
             }
@@ -1660,21 +1662,24 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 if (entityCount.length === 0) { entityCount = self.fillArray(0, perfWindowSize, 1, 0); }
                 self.ctx.lineWidth = 0.5;
                 function dpl(name, perfArr, arrIndex, max, color, useAbs, rowIndex) {
+                    var v;
                     drawPerfLine(pw, ph, px, py, perfArr, arrIndex, max, color, useAbs);
                     self.ctx.fillStyle = color;
                     fillRect(3 + px, py + 9 + (rowIndex * 11), 8, 8);
                     self.ctx.fillStyle = '#999999';
-                    fillText(name, 14 + px, py + 16 + (rowIndex * 11));
+                    v = arrIndex !== undefined ? perfArr[0][arrIndex] : perfArr[0];
+                    fillText(name + ' ' + (isNaN(v) ? 0 : v).toFixed(3), 14 + px, py + 16 + (rowIndex * 11));
                 }
+                self.ctx.textAlign = 'left';
                 self.ctx.font = '8px sans-serif';
                 self.ctx.fillStyle = 'rgba(29, 25, 26, 1.00)';
                 fillRect(px, py, pw, ph);
                 [['Scroll Height', scrollDebugCounters, 0, self.scrollBox.scrollHeight, 'rgba(248, 33, 103, 1.00)', false],
                     ['Scroll Width', scrollDebugCounters, 1, self.scrollBox.scrollWidth, 'rgba(66, 255, 27, 1.00)', false],
-                    ['Performance', perfCounters, undefined, 100, 'rgba(252, 255, 37, 1.00)', false],
-                    ['Entities', entityCount, undefined, 500, 'rgba(76, 231, 239, 1.00)', false],
-                    ['TouchPPSX', touchPPSCounters, 0, 10000, 'rgba(246, 102, 24, 1.00)', true],
-                    ['TouchPPSY', touchPPSCounters, 1, 10000, 'purple', true]
+                    ['Performance', perfCounters, undefined, 200, 'rgba(252, 255, 37, 1.00)', false],
+                    ['Entities', entityCount, undefined, 1500, 'rgba(76, 231, 239, 1.00)', false],
+                    ['TouchPPSX', touchPPSCounters, 0, 1000, 'rgba(246, 102, 24, 1.00)', true],
+                    ['TouchPPSY', touchPPSCounters, 1, 1000, 'purple', true]
                     ].forEach(function (i, index) {
                     i.push(index);
                     dpl.apply(null, i);
@@ -1701,6 +1706,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     return a + b;
                 }, 0) / Math.min(drawCount, perfCounters.length)).toFixed(1);
                 d.htmlImages = Object.keys(self.htmlImageCache).length;
+                d.reorderObject = 'x: ' + (self.reorderObject || {columnIndex: 0}).columnIndex + ', y: ' + (self.reorderObject || {rowIndex: 0}).rowIndex;
+                d.reorderTarget = 'x: ' + (self.reorderTarget || {columnIndex: 0}).columnIndex + ', y: ' + (self.reorderTarget || {rowIndex: 0}).rowIndex;
                 d.scale = self.scale;
                 d.startScale = self.startScale;
                 d.scaleDelta = self.scaleDelta;
@@ -1736,13 +1743,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     d.style = self.currentCell.style;
                     d.type = self.currentCell.type;
                 }
+                self.ctx.textAlign = 'right';
                 self.ctx.fillStyle = 'rgba(0, 0, 0, .60)';
                 fillRect(0, 0, self.width, self.height);
                 Object.keys(d).forEach(function (key, index) {
                     var m = key + ': ' + d[key],
                         lh = 14;
                     self.ctx.fillStyle = 'rgba(37, 254, 21, 1)';
-                    fillText(m, 8, 14 + (index * lh));
+                    fillText(m, w - 20, 140 + (index * lh));
                 });
             }
             self.ctx.save();
@@ -2283,7 +2291,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 return;
             }
             if (Math.abs(x) > self.attributes.reorderDeadZone || Math.abs(y) > self.attributes.reorderDeadZone) {
-                self.reorderObject = self.dragStartObject;
+                self.reorderObject = self.draggingItem;
                 self.reorderTarget = self.currentCell;
                 self.reorderObject.dragOffset = {
                     x: x,
@@ -2293,7 +2301,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
         };
         self.stopDragReorder = function (e) {
-            var cr = {
+            var oIndex,
+                tIndex,
+                cr = {
                     'row-reorder': self.orders.rows,
                     'column-reorder': self.orders.columns
                 },
@@ -2303,25 +2313,25 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }[self.dragMode];
             document.body.removeEventListener('mousemove', self.dragReorder, false);
             document.body.removeEventListener('mouseup', self.stopDragReorder, false);
-            if (!(self.reorderTarget.columnIndex < 0
-                    || self.getVisibleSchema().length > self.reorderTarget.columnIndex
-                    || self.reorderTarget.rowIndex < 0
-                    || self.reorderTarget.rowIndex > self.data.length)) {
-                if (self.reorderObject
-                        && self.reorderTarget) {
-                    self.ignoreNextClick = true;
-                    if (self.reorderObject[i] !== self.reorderTarget[i]
-                            && !self.dispatchEvent('reorder', {
-                                NativeEvent: e,
-                                source: self.reorderObject,
-                                target: self.reorderTarget,
-                                dragMode: self.dragMode
-                            })) {
-                        cr[self.dragMode].splice(cr[self.dragMode].indexOf(self.reorderObject[i]), 1);
-                        cr[self.dragMode].splice(cr[self.dragMode].indexOf(self.reorderTarget[i]), 0, self.reorderObject[i]);
-                        self.setStorageData();
-                    }
-                }
+            if (self.reorderObject
+                    && self.reorderTarget
+                    && ((self.dragMode === 'column-reorder' && self.reorderTarget.columnIndex > -1
+                        && self.reorderTarget.columnIndex < self.getVisibleSchema().length)
+                    || (self.dragMode === 'row-reorder' && self.reorderTarget.rowIndex > -1
+                        && self.reorderTarget.rowIndex < self.data.length))
+                    && self.reorderObject[i] !== self.reorderTarget[i]
+                    && !self.dispatchEvent('reorder', {
+                        NativeEvent: e,
+                        source: self.reorderObject,
+                        target: self.reorderTarget,
+                        dragMode: self.dragMode
+                    })) {
+                oIndex = cr[self.dragMode].indexOf(self.reorderObject[i]);
+                tIndex = cr[self.dragMode].indexOf(self.reorderTarget[i]);
+                self.ignoreNextClick = true;
+                cr[self.dragMode].splice(oIndex, 1);
+                cr[self.dragMode].splice(tIndex, 0, self.reorderObject[i]);
+                self.setStorageData();
             }
             self.reorderObject = undefined;
             self.reorderTarget = undefined;
@@ -2432,7 +2442,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 document.body.addEventListener('mouseup', self.stopDragResize, false);
             }
             if (['row-reorder', 'column-reorder'].indexOf(self.dragMode) !== -1) {
-                self.draggingItem = self.dragItem;
+                self.draggingItem = self.dragStartObject;
                 document.body.addEventListener('mousemove', self.dragReorder, false);
                 document.body.addEventListener('mouseup', self.stopDragReorder, false);
             }
