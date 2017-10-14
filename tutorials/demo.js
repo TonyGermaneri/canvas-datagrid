@@ -22,6 +22,12 @@ function demo() {
                 column.hidden = true;
             }
             column.type = typeMap[column.dataTypeName] || 'string';
+            if (/full or part-time/i.test(column.name)) {
+                column.enum = [['F', 'F'], ['P', 'P']];
+            }
+            if (/salary or hourly/i.test(column.name)) {
+                column.enum = [['Salary', 'Salary'], ['Hourly', 'Hourly']];
+            }
             schema.push(column);
         });
         data = openData.data.map(function (row) {
