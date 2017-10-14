@@ -19,6 +19,7 @@
         c = {
             b: 'rgb(0, 0, 255)',
             y: 'rgb(255, 255, 0)',
+            r: 'rgb(255, 0, 0)',
             fu: 'rgb(255, 0, 255)',
             white: 'rgb(255, 255, 255)',
             black: 'rgb(0, 0, 0)'
@@ -42,6 +43,11 @@
                 {col1: 'baz', col2: 2, col3: 'c'}
             ];
         };
+    function getC(v) {
+        return Object.keys(c).filter(function (k) {
+            return c[k] === v;
+        })[0] || v;
+    }
     function itoa(n) {
         var ordA = 'a'.charCodeAt(0),
             ordZ = 'z'.charCodeAt(0),
@@ -83,26 +89,32 @@
             grid.ctx.fillRect(x - 1, y - 1, 3, 3);
         });
     }
-    function assertPxColor(grid, x, y, expected, callback) {
+    function assertPxColorFn(grid, x, y, expected) {
         var d, match, e;
-        function f() {
-            d = grid.ctx.getImageData(x, y, 1, 1).data;
-            d = 'rgb(' + [d['0'], d['1'], d['2']].join(', ') + ')';
-            match = d === expected;
-            if (expected !== undefined) {
-                e = new Error('Expected color ' + expected + ' but got color ' + d);
-                if (callback) {
-                    marker(grid, x, y);
-                    return callback(expected && !match ? e : undefined);
+        return function (callback) {
+            function f() {
+                d = grid.ctx.getImageData(x, y, 1, 1).data;
+                d = 'rgb(' + [d['0'], d['1'], d['2']].join(', ') + ')';
+                match = d === expected;
+                if (expected !== undefined) {
+                    e = new Error('Expected color ' + getC(expected) + ' but got color ' + getC(d));
+                    if (expected && !match) { console.error(e); }
+                    if (callback) {
+                        marker(grid, x, y);
+                        return callback(expected && !match ? e : undefined);
+                    }
                 }
+                requestAnimationFrame(grid.draw);
+                return d;
             }
-            requestAnimationFrame(grid.draw);
-            return d;
-        }
-        if (!callback) {
-            return f();
-        }
-        requestAnimationFrame(f);
+            if (!callback) {
+                return f();
+            }
+            requestAnimationFrame(f);
+        };
+    }
+    function assertPxColor(grid, x, y, expected, callback) {
+        return assertPxColorFn(grid, x, y, expected)(callback);
     }
     function de(el, event, args) {
         var e = new Event(event);
@@ -2558,9 +2570,9 @@
                         grid.focus();
                         mousemove(grid.canvas, 67, 10);
                         mousedown(grid.canvas, 67, 10);
-                        mousemove(grid.canvas, 200, 10, grid.canvas);
-                        mousemove(document.body, 200, 10, grid.canvas);
-                        mouseup(document.body, 200, 10, grid.canvas);
+                        mousemove(grid.canvas, 140, 10, grid.canvas);
+                        mousemove(document.body, 140, 10, grid.canvas);
+                        mouseup(document.body, 140, 10, grid.canvas);
                         grid.draw();
                         grid.addEventListener('click', function (e) {
                             done(assertIf(e.cell.value !== '1:0', 'Expected to see the value from column 2 here, instead saw %n.', e.cell.value));
@@ -2607,9 +2619,9 @@
                         data: smallData(),
                         style: {
                             columnWidth: 50,
-                            reorderMarkerBackgroundColor: c.y,
+                            reorderMarkerBackgroundColor: c.r,
                             reorderMarkerBorderWidth: 4,
-                            reorderMarkerBorderColor: c.fu,
+                            reorderMarkerBorderColor: c.y,
                             reorderMarkerIndexBorderColor: c.b,
                             reorderMarkerIndexBorderWidth: 4
                         }
@@ -2620,12 +2632,12 @@
                         mousedown(grid.canvas, 67, 10);
                         mousemove(grid.canvas, 180, 10, grid.canvas);
                         mousemove(document.body, 180, 10, grid.canvas);
-                        assertPxColor(grid, 160, 10, c.y, function (err) {
-                            if (err) { return done(err); }
-                            assertPxColor(grid, 145, 90, c.fu, function (err) {
-                                if (err) { return done(err); }
-                                assertPxColor(grid, 132, 50, c.b, done);
-                            });
+                        async.parallel([
+                            assertPxColorFn(grid, 165, 30, c.r),
+                            assertPxColorFn(grid, 145, 10, c.y),
+                            assertPxColorFn(grid, 182, 50, c.b)
+                        ], function (err) {
+                            done(err);
                         });
                         grid.draw();
                     }, 10);
