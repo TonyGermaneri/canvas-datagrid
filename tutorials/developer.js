@@ -182,10 +182,8 @@ function g() {
             borderDragBehavior: 'move',
             showPaste: true,
             parentNode: document.getElementById('grid'),
-            snapToRow: true,
             allowRowReordering: true,
-            debug: true,
-            showPerformance: true
+            scrollPointerLock: true
         }),
         x,
         y,

@@ -284,6 +284,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['minColumnWidth', 45],
                 ['minHeight', 24],
                 ['minRowHeight', 24],
+                ['mobileEditInputHeight', 30],
+                ['mobileEditFontFamily', 'sans-serif'],
+                ['mobileEditFontSize', '16px'],
                 ['moveOverlayBorderWidth', 1],
                 ['moveOverlayBorderColor', 'rgba(66, 133, 244, 1)'],
                 ['moveOverlayBorderSegments', '12, 7'],
@@ -1713,7 +1716,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 d.scaleDelta = self.scaleDelta;
                 d.zoomDeltaStart = self.zoomDeltaStart;
                 d.touchLength = self.touchLength;
-                d.touches = 'y0: ' + (self.touchPosition || {y: 0}).y.toFixed(2) + ' y1: ' + (self.touchPosition1 || {y: 0}).y.toFixed(2);
+                d.touches = 'y0: ' + (self.touchPosition || {y: 0}).y + ' y1: ' + (self.touchPosition1 || {y: 0}).y;
                 d.scrollBox = self.scrollBox.toString();
                 d.scrollIndex = 'x: ' + self.scrollIndexLeft + ', y: ' + self.scrollIndexTop;
                 d.scrollPixel = 'x: ' + self.scrollPixelLeft + ', y: ' + self.scrollPixelTop;
@@ -4817,6 +4820,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     bx2 = (self.style.cellBorderWidth * 2),
                     cell = self.getVisibleCellByIndex(self.input.editCell.columnIndex, self.input.editCell.rowIndex)
                         || {x: -100, y: -100, height: 0, width: 0};
+                if (self.mobile) {
+                    self.input.style.left = '0';
+                    self.input.style.top = (self.height - self.style.mobileEditInputHeight) - bx2 - 1 + 'px';
+                    self.input.style.height = self.style.mobileEditInputHeight + 'px';
+                    self.input.style.width = self.width - bx2 - 1 + 'px';
+                    return;
+                }
                 self.input.style.left = pos.left + cell.x - self.style.cellBorderWidth + self.canvasOffsetLeft - s.left + 'px';
                 self.input.style.top = pos.top + cell.y - bx2 + self.canvasOffsetTop - s.top + 'px';
                 self.input.style.height = cell.height - bx2 - 1 + 'px';
@@ -4915,6 +4925,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          */
         self.beginEditAt = function (x, y) {
             if (!self.attributes.editable) { return; }
+            if (self.input) {
+                self.endEdit();
+            }
             var cell = self.getVisibleCellByIndex(x, y),
                 s = self.getVisibleSchema(),
                 enumItems,
@@ -4969,7 +4982,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 });
             }
             document.body.appendChild(self.input);
-            self.createInlineStyle(self.input, 'canvas-datagrid-edit-input');
+            self.createInlineStyle(self.input, self.mobile ? 'canvas-datagrid-edit-mobile-input' : 'canvas-datagrid-edit-input');
             self.input.style.position = 'absolute';
             self.input.editCell = cell;
             self.resizeEditInput();
@@ -5106,6 +5119,23 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     fontWeight: 'normal',
                     fontFamily: self.style.contextMenuFontFamily,
                     fontSize: self.style.contextMenuFontSize
+                },
+                'canvas-datagrid-edit-mobile-input': {
+                    boxSizing: 'content-box',
+                    outline: 'none',
+                    margin: '0',
+                    padding: '0 0 0 0',
+                    lineHeight: 'normal',
+                    fontWeight: 'normal',
+                    fontFamily: self.style.mobileEditFontFamily,
+                    fontSize: self.style.mobileEditFontSize,
+                    border: self.style.editCellBorder,
+                    color: self.style.editCellColor,
+                    background: self.style.editCellBackgroundColor,
+                    appearance: 'none',
+                    webkitAppearance: 'none',
+                    mozAppearance: 'none',
+                    borderRadius: '0'
                 },
                 'canvas-datagrid-edit-input': {
                     boxSizing: 'content-box',
