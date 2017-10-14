@@ -4086,10 +4086,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
             }
             self.scrollBox.toString = function () {
-                return '{"width": ' + scrollWidth.toFixed(3)
-                    + ', "height": ' + scrollHeight.toFixed(3)
-                    + ', "left": ' + scrollLeft.toFixed(3)
-                    + ', "top": ' + scrollTop.toFixed(3) + '}';
+                return '{"width": ' + scrollWidth
+                    + ', "height": ' + scrollHeight
+                    + ', "left": ' + scrollLeft
+                    + ', "top": ' + scrollTop + '}';
             };
             self.scrollBox.scrollTo = function (x, y, supressDrawEvent) {
                 setScrollLeft(x, true);
