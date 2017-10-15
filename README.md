@@ -13,7 +13,8 @@ canvas-datagrid
 * Support for millions of contiguous rows and columns without paging or loading.
 * Native support for touch devices (phones and tablets).
 * Extensible styling, filtering, formatting, resizing, selecting, and ordering.
-* W3C ES5 web component, rich API of events, methods and properties using the familiar W3C interface.
+* Easy to use W3C web component.
+* Rich API of events, methods and properties using the familiar DOM interface.
 * Works with Firefox, IE11, Edge, Safari and Chrome.
 * Built in and custom styles.
 * Per-user styles, settings using localStorage.

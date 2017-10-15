@@ -284,6 +284,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['minColumnWidth', 45],
                 ['minHeight', 24],
                 ['minRowHeight', 24],
+                ['mobileContextMenuMargin', 10],
                 ['mobileEditInputHeight', 30],
                 ['mobileEditFontFamily', 'sans-serif'],
                 ['mobileEditFontSize', '16px'],
@@ -3015,12 +3016,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             var rh, cw, rScrollZone, lScrollZone, bScrollZone, tScrollZone, sbw, t1, t2;
             if (self.dispatchEvent('touchmove', {NativeEvent: e})) { return; }
             clearTimeout(touchScrollTimeout);
-            clearTimeout(self.touchContextTimeout);
             if (e.changedTouches[0]) {
                 self.touchPosition = self.getTouchPos(e);
             }
             if (e.changedTouches[1]) {
                 self.touchPosition1 = self.getTouchPos(e, 1);
+            }
+            if (Math.abs(self.touchDelta.x) + Math.abs(self.touchDelta.y) > self.attributes.touchDeadZone) {
+                clearTimeout(self.touchContextTimeout);
             }
             if (e.touches.length === 2 && self.touchPosition && self.touchPosition1) {
                 t1 = self.touchPosition.y;
@@ -4190,7 +4193,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
     return function (self) {
         var zIndexTop = 9000, hoverScrollTimeout, autoCompleteContext;
         function applyContextItemStyle(contextItemContainer) {
-            self.createInlineStyle(contextItemContainer, 'canvas-datagrid-context-menu-item');
+            self.createInlineStyle(contextItemContainer, 'canvas-datagrid-context-menu-item' + (self.mobile ? '-mobile' : ''));
             contextItemContainer.addEventListener('mouseover', function () {
                 self.createInlineStyle(contextItemContainer, 'canvas-datagrid-context-menu-item:hover');
             });
@@ -4332,7 +4335,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 var loc = {},
                     s = self.scrollOffset(self.canvas);
                 createItems();
-                self.createInlineStyle(container, 'canvas-datagrid-context-menu');
+                self.createInlineStyle(container, 'canvas-datagrid-context-menu' + (self.mobile ? '-mobile' : ''));
                 loc.x = pos.left - s.left;
                 loc.y = pos.top - s.top;
                 loc.height = 0;
@@ -4350,6 +4353,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     container.style.maxHeight = window.innerHeight - loc.y - self.style.autocompleteBottomMargin + 'px';
                     container.style.minWidth = pos.width + 'px';
                     loc.y += pos.height;
+                }
+                if (self.mobile) {
+                    container.style.width = pos.width + 'px';
                 }
                 container.style.left = loc.x + 'px';
                 container.style.top = loc.y + 'px';
@@ -4476,7 +4482,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 });
             }
             function createAutoCompleteContext(ev) {
-                if (ev && [40, 38, 13, 9, 27].indexOf(ev.keyCode) !== -1) { return; }
+                if (ev && [40, 38, 13, 9].indexOf(ev.keyCode) !== -1) { return; }
                 fillAutoComplete();
                 iRect = filterInput.getBoundingClientRect();
                 if (autoCompleteContext) {
@@ -4697,7 +4703,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     document.removeEventListener('mouseup', createDiposeEvent);
                 });
             }
-            var items = [],
+            var contextPosition,
+                items = [],
                 pos = overridePos || self.getLayerPos(e, true),
                 ev = {
                     NativeEvent: e,
@@ -4714,14 +4721,19 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 if (self.contextMenu) {
                     self.disposeContextMenu();
                 }
-                self.contextMenu = createContextMenu(ev, {
+                contextPosition = {
                     left: pos.x + pos.rect.left + self.style.contextMenuMarginLeft + self.canvasOffsetLeft,
                     top: pos.y + pos.rect.top + self.style.contextMenuMarginTop + self.canvasOffsetTop,
                     right: ev.cell.width + ev.cell.x + pos.rect.left,
                     bottom: ev.cell.height + ev.cell.y + pos.rect.top,
                     height: ev.cell.height,
                     width: ev.cell.width
-                }, items);
+                };
+                if (self.mobile) {
+                    contextPosition.left = self.style.mobileContextMenuMargin + 'px';
+                    contextPosition.width = self.width - (self.style.mobileContextMenuMargin * 2) + 'px';
+                }
+                self.contextMenu = createContextMenu(ev, contextPosition, items);
                 document.addEventListener('mouseup', createDiposeEvent);
                 e.preventDefault();
             }
@@ -5155,6 +5167,18 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     mozAppearance: 'none',
                     borderRadius: '0'
                 },
+                'canvas-datagrid-context-menu-item-mobile': {
+                    display: 'inline-block',
+                    lineHeight: 'normal',
+                    fontWeight: 'normal',
+                    fontFamily: self.style.contextMenuFontFamily,
+                    fontSize: self.style.contextMenuFontSize,
+                    color: 'inherit',
+                    background: 'inherit',
+                    margin: self.style.contextMenuItemMargin,
+                    borderRadius: self.style.contextMenuItemBorderRadius,
+                    verticalAlign: 'middle'
+                },
                 'canvas-datagrid-context-menu-item': {
                     lineHeight: 'normal',
                     fontWeight: 'normal',
@@ -5175,6 +5199,19 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     display: self.style.contextMenuLabelDisplay,
                     minWidth: self.style.contextMenuLabelMinWidth,
                     maxWidth: self.style.contextMenuLabelMaxWidth
+                },
+                'canvas-datagrid-context-menu-mobile': {
+                    lineHeight: 'normal',
+                    fontWeight: 'normal',
+                    fontFamily: self.style.contextMenuFontFamily,
+                    fontSize: self.style.contextMenuFontSize,
+                    background: self.style.contextMenuBackground,
+                    color: self.style.contextMenuColor,
+                    border: self.style.contextMenuBorder,
+                    padding: self.style.contextMenuPadding,
+                    borderRadius: self.style.contextMenuBorderRadius,
+                    opacity: self.style.contextMenuOpacity,
+                    overflow: 'hidden'
                 },
                 'canvas-datagrid-context-menu': {
                     lineHeight: 'normal',

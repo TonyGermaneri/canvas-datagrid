@@ -1,7 +1,7 @@
 {
   "name": "canvas-datagrid",
-  "version": "0.16.15",
-  "description": "Canvas based data grid",
+  "version": "0.16.16",
+  "description": "Canvas based data grid web component.  Capable of displaying millions of contiguous hierarchical rows and columns without paging or loading, on a single canvas element.",
   "main": "./lib/main.js",
   "scripts": {
     "build-docs": "rm -rf docs;./node_modules/.bin/jsdoc -r --template ./tutorials/ ./lib/",
@@ -30,8 +30,6 @@
     "data-table",
     "table",
     "datatable",
-    "spreadsheet",
-    "webcomponent",
     "component"
   ],
   "author": "Tony Germaneri <Tony.Germaneri@gmail.com>",
