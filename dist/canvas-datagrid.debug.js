@@ -280,6 +280,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['editCellFontFamily', 'sans-serif'],
                 ['editCellFontSize', '16px'],
                 ['editCellPaddingLeft', 4],
+                ['frozenMarkerHoverColor', 'rgba(236, 243, 255, 1)'],
+                ['frozenMarkerHoverBorderColor', 'rgba(110, 168, 255, 1)'],
                 ['frozenMarkerActiveColor', 'rgba(236, 243, 255, 1)'],
                 ['frozenMarkerActiveBorderColor', 'rgba(110, 168, 255, 1)'],
                 ['frozenMarkerColor', 'rgba(222, 222, 222, 1)'],
@@ -940,7 +942,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 x = 0,
                 n = Math.min(self.frozenColumn, s.length);
             while (x < n) {
-                w += s[x].width;
+                w += s[self.orders.columns[x]].width;
                 x += 1;
             }
             return w;
@@ -1786,11 +1788,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             function drawFrozenMarkers() {
                 var my = self.lastFrozenRowPixel - self.style.frozenMarkerWidth - self.style.frozenMarkerBorderWidth,
-                    mx = self.lastFrozenColumnPixel - self.style.frozenMarkerWidth - self.style.frozenMarkerBorderWidth;
+                    mx = self.lastFrozenColumnPixel - self.style.frozenMarkerWidth - self.style.frozenMarkerBorderWidth,
+                    xHover = self.currentCell && self.currentCell.style === 'frozen-row-marker',
+                    yHover = self.currentCell && self.currentCell.style === 'frozen-column-marker';
                 self.ctx.lineWidth = self.style.frozenMarkerBorderWidth;
-                self.ctx.fillStyle = self.style.frozenMarkerColor;
-                self.ctx.strokeStyle = self.style.frozenMarkerBorderColor;
                 if (self.attributes.allowFreezingColumns) {
+                    self.ctx.fillStyle = yHover ? self.style.frozenMarkerHoverColor : self.style.frozenMarkerColor;
+                    self.ctx.strokeStyle = yHover ? self.style.frozenMarkerHoverBorderColor : self.style.frozenMarkerBorderColor;
                     fillRect(mx, 0, self.style.frozenMarkerWidth, self.height);
                     strokeRect(mx, 0, self.style.frozenMarkerWidth, self.height);
                     self.visibleCells.unshift({
@@ -1802,6 +1806,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     });
                 }
                 if (self.attributes.allowFreezingRows) {
+                    self.ctx.fillStyle = xHover ? self.style.frozenMarkerHoverColor : self.style.frozenMarkerColor;
+                    self.ctx.strokeStyle = xHover ? self.style.frozenMarkerHoverBorderColor : self.style.frozenMarkerBorderColor;
                     fillRect(0, my, self.width, self.style.frozenMarkerWidth);
                     strokeRect(0, my, self.width, self.style.frozenMarkerWidth);
                     self.visibleCells.unshift({
@@ -5192,6 +5198,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     ? 'textarea' : 'input');
             }
             cell = self.getVisibleCellByIndex(x, y);
+            //HACK on mobile devices sometimes edit can begin without the cell being in view, I don't know how.
+            if (!cell) { return; }
             if (enu) {
                 // add enums
                 if (typeof enu === 'function') {
