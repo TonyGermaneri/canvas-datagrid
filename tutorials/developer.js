@@ -183,7 +183,13 @@ function g() {
             showPaste: true,
             parentNode: document.getElementById('grid'),
             allowRowReordering: true,
-            scrollPointerLock: true
+            scrollPointerLock: false,
+            snapToRow: false,
+            debug: false,
+            showPerformance: false,
+            allowFreezingRows: true,
+            tree: false,
+            allowFreezingColumns: true
         }),
         x,
         y,
@@ -205,7 +211,7 @@ function g() {
         d[x] = {};
         for (y = 0; y < 50; y += 1) {
             n = colName(y).toUpperCase();
-            d[x][n] = '';
+            d[x][n] = (x + 1) + ', ' + n;
         }
     }
     grid.attributes.columnHeaderClickBehavior = 'select';

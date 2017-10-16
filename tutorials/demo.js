@@ -48,7 +48,9 @@ function demo() {
                 parentNode: document.getElementById('grid'),
                 borderDragBehavior: 'move',
                 allowMovingSelection: true,
-                columnHeaderClickBehavior: 'select'
+                columnHeaderClickBehavior: 'select',
+                allowFreezingRows: true,
+                allowFreezingColumns: true
             });
         grid.addEventListener('contextmenu', function (e) {
             e.items.push({
