@@ -92,8 +92,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['allowColumnReordering', true],
                 ['allowColumnResize', true],
                 ['allowColumnResizeFromCell', false],
-                ['allowFreezingRows', true],
-                ['allowFreezingColumns', true],
+                ['allowFreezingRows', false],
+                ['allowFreezingColumns', false],
                 ['allowMovingSelection', true],
                 ['allowRowHeaderResize', true],
                 ['allowRowReordering', false],
@@ -213,7 +213,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['childContextMenuMarginTop', -6],
                 ['columnHeaderCellBackgroundColor', 'rgba(240, 240, 240, 1)'],
                 ['columnHeaderCellBorderColor', 'rgba(172, 172, 172, 1)'],
-                ['columnHeaderCellBorderWidth', 1],
+                ['columnHeaderCellBorderWidth', 0.5],
                 ['columnHeaderCellColor', 'rgba(50, 50, 50, 1)'],
                 ['columnHeaderCellFont', '16px sans-serif'],
                 ['columnHeaderCellHeight', 25],
@@ -282,10 +282,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['editCellPaddingLeft', 4],
                 ['frozenMarkerActiveColor', 'rgba(236, 243, 255, 1)'],
                 ['frozenMarkerActiveBorderColor', 'rgba(110, 168, 255, 1)'],
-                ['frozenMarkerColor', 'rgba(202, 202, 202, 1)'],
+                ['frozenMarkerColor', 'rgba(222, 222, 222, 1)'],
                 ['frozenMarkerBorderColor', 'rgba(202, 202, 202, 1)'],
                 ['frozenMarkerBorderWidth', 1],
-                ['frozenMarkerWidth', 2],
+                ['frozenMarkerWidth', 1],
                 ['gridBorderColor', 'rgba(202, 202, 202, 1)'],
                 ['gridBorderWidth', 1],
                 ['height', 'auto'],
@@ -1505,7 +1505,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 rowSansTreeHeight = (self.sizes.rows[rd[self.uniqueId]] || self.style.cellHeight) * self.scale;
                 treeHeight = (rowOpen ? self.sizes.trees[rd[self.uniqueId]] : 0) * self.scale;
                 rowHeight = (rowSansTreeHeight + treeHeight);
-                if (y < rowHeight * -1) {
+                if (y < -rowHeight) {
                     return false;
                 }
                 if (self.attributes.showRowHeaders) {
@@ -1513,7 +1513,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
                 cellHeight = rowHeight;
                 if (self.attributes.allowFreezingColumns) {
-                    x += frozenColumnWidths + self.style.frozenMarkerWidth;
+                    x += frozenColumnWidths;
                 }
                 //draw normal columns
                 for (o = (self.scrollIndexLeft + self.frozenColumn); o < g; o += 1) {
@@ -1619,10 +1619,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
                 var o, n, i, g = s.length;
                 x = -self.scrollBox.scrollLeft + self.scrollPixelLeft + self.style.cellBorderWidth;
-                if (self.attributes.snapToRow) {
-                    y += self.style.cellBorderWidth;
-                } else {
-                    y += -self.scrollBox.scrollTop + self.scrollPixelTop + self.style.cellBorderWidth;
+                if (!self.attributes.snapToRow) {
+                    y += -self.scrollBox.scrollTop + self.scrollPixelTop;
                 }
                 for (r = self.frozenRow + self.scrollIndexTop; r < l; r += 1) {
                     n = self.orders.rows[r];
@@ -1985,8 +1983,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @memberof canvasDatagrid
          * @name addEventListener
          * @method
-         * @param {number} ev The name of the event to subscribe to.
-         * @param {number} fn The event procedure to execute when the event is raised.
+         * @param {string} ev The name of the event to subscribe to.
+         * @param {function} fn The event procedure to execute when the event is raised.
          */
         self.addEventListener = function (ev, fn) {
             self.events[ev] = self.events[ev] || [];
@@ -1997,8 +1995,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @memberof canvasDatagrid
          * @name removeEventListener
          * @method
-         * @param {number} ev The name of the event to unsubscribe from.
-         * @param {number} fn The event procedure to execute when the event is raised.
+         * @param {string} ev The name of the event to unsubscribe from.
+         * @param {function} fn The event procedure to execute when the event is raised.
          */
         self.removeEventListener = function (ev, fn) {
             (self.events[ev] || []).forEach(function removeEachListener(sfn, idx) {
@@ -2548,12 +2546,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.freezeMove = function (e) {
             if (self.dispatchEvent('freezemoving', {NativeEvent: e, cell: self.currentCell})) { return; }
             var pos = self.getLayerPos(e);
+            self.ignoreNextClick = true;
             self.freezeMarkerPosition = pos;
-            if (self.currentCell && self.currentCell.rowIndex && self.dragMode === 'frozen-row-marker') {
+            if (self.currentCell && self.currentCell.rowIndex !== undefined && self.dragMode === 'frozen-row-marker') {
                 self.scrollBox.scrollTop = 0;
                 self.frozenRow = self.currentCell.rowIndex + 1;
             }
-            if (self.currentCell && self.currentCell.rowIndex && self.dragMode === 'frozen-column-marker') {
+            if (self.currentCell && self.currentCell.columnIndex !== undefined && self.dragMode === 'frozen-column-marker') {
                 self.scrollBox.scrollLeft = 0;
                 self.frozenColumn = self.currentCell.columnIndex + 1;
             }
@@ -4131,11 +4130,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
             });
         });
-        /**
-         * The highest frozen row integer
-         * @memberof canvasDatagrid
-         * @property frozenRows
-         */
         Object.defineProperty(self.intf, 'frozenRow', {
             get: function () {
                 return self.frozenRow;
@@ -4150,11 +4144,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.frozenRow = val;
             }
         });
-         /**
-         * The highest frozen row integer
-         * @memberof canvasDatagrid
-         * @property frozenRows
-         */
         Object.defineProperty(self.intf, 'frozenColumn', {
             get: function () {
                 return self.frozenColumn;
