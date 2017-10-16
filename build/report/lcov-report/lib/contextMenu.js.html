@@ -1,0 +1,1730 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for lib/contextMenu.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">lib/</a> contextMenu.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">81.11% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>292/360</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">76.5% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>153/200</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">75.81% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>47/62</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">82.05% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>288/351</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">164×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">496×</span>
+<span class="cline-any cline-yes">496×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">496×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">511×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">511×</span>
+<span class="cline-any cline-yes">511×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">511×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">496×</span>
+<span class="cline-any cline-yes">496×</span>
+<span class="cline-any cline-yes">496×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">511×</span>
+<span class="cline-any cline-yes">511×</span>
+<span class="cline-any cline-yes">511×</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">511×</span>
+<span class="cline-any cline-yes">75×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">511×</span>
+<span class="cline-any cline-yes">511×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-yes">369×</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-yes">25×</span>
+<span class="cline-any cline-yes">374×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">374×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">58×</span>
+<span class="cline-any cline-yes">371×</span>
+<span class="cline-any cline-yes">371×</span>
+<span class="cline-any cline-yes">370×</span>
+<span class="cline-any cline-yes">370×</span>
+<span class="cline-any cline-yes">370×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">58×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">58×</span>
+<span class="cline-any cline-yes">58×</span>
+<span class="cline-any cline-yes">58×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">87×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">75×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">164×</span>
+<span class="cline-any cline-yes">169×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">164×</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">164×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">164×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jslint browser: true, unparam: true, todo: true*/
+/*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false, Event: false*/
+define([], function () {
+    'use strict';
+    return function (self) {
+        var zIndexTop = 9000, hoverScrollTimeout, autoCompleteContext;
+        function applyContextItemStyle(contextItemContainer) {
+            self.createInlineStyle(contextItemContainer, 'canvas-datagrid-context-menu-item' + (self.mobile ? <span class="branch-0 cbranch-no" title="branch not covered" >'-mobile' </span>: ''));
+            contextItemContainer.addEventListener('mouseover', function () {
+                self.createInlineStyle(contextItemContainer, 'canvas-datagrid-context-menu-item:hover');
+            });
+            contextItemContainer.addEventListener('mouseout', function () {
+                self.createInlineStyle(contextItemContainer, 'canvas-datagrid-context-menu-item');
+            });
+        }
+        function createContextMenu(ev, pos, items, parentContextMenu) {
+            var container = document.createElement('div'),
+                upArrow = document.createElement('div'),
+                downArrow = document.createElement('div'),
+                children = [],
+                selectedIndex = -1,
+                intf = {},
+                rect;
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!Array.isArray(items)) { <span class="cstat-no" title="statement not covered" >throw new Error('createContextMenu expects an array.'); </span>}
+            function createItems() {
+                items.forEach(function (item) {
+                    var contextItemContainer = document.createElement('div'),
+                        childMenuArrow;
+                    function removeChildContext(e) {
+                        <span class="missing-if-branch" title="if path not taken" >I</span>if (e.relatedTarget === container
+                                || item.contextMenu.container === e.relatedTarget
+                                || childMenuArrow === e.relatedTarget
+                                || (contextItemContainer === e.relatedTarget)
+                                || item.contextMenu.container.contains(e.relatedTarget)
+                                ) { <span class="cstat-no" title="statement not covered" >return; </span>}
+                        item.contextMenu.dispose();
+                        children.splice(children.indexOf(item.contextMenu), 1);
+                        item.contextMenu = undefined;
+                        contextItemContainer.removeEventListener('mouseout', removeChildContext);
+                        container.removeEventListener('mouseout', removeChildContext);
+                        contextItemContainer.setAttribute('contextOpen', '0');
+                        contextItemContainer.setAttribute('opening', '0');
+                    }
+                    function contextAddCallback(items) {
+                        // check yet again if the user hasn't moved off
+                        <span class="missing-if-branch" title="if path not taken" >I</span>if (contextItemContainer.getAttribute('opening') !== '1' ||
+                                contextItemContainer.getAttribute('contextOpen') === '1') {
+<span class="cstat-no" title="statement not covered" >                            return;</span>
+                        }
+                        var cPos = contextItemContainer.getBoundingClientRect();
+                        cPos = {
+                            left: cPos.left + self.style.childContextMenuMarginLeft + container.offsetWidth,
+                            top: cPos.top + self.style.childContextMenuMarginTop,
+                            bottom: cPos.bottom,
+                            right: cPos.right
+                        };
+                        item.contextMenu = createContextMenu(ev, cPos, items, intf);
+                        contextItemContainer.setAttribute('contextOpen', '1');
+                        contextItemContainer.addEventListener('mouseout', removeChildContext);
+                        container.addEventListener('mouseout', removeChildContext);
+                        children.push(item.contextMenu);
+                    }
+                    function createChildContext() {
+                        var i;
+                        <span class="missing-if-branch" title="if path not taken" >I</span>if (contextItemContainer.getAttribute('contextOpen') === '1') {
+<span class="cstat-no" title="statement not covered" >                            return;</span>
+                        }
+                        contextItemContainer.setAttribute('opening', '1');
+                        if (typeof item.items === 'function') {
+                            i  = item.items.apply(intf, [function (items) {
+                                contextAddCallback(items);
+                            }]);
+                            if (i !== undefined &amp;&amp; Array.isArray(i)) {
+                                contextAddCallback(i);
+                            }
+                            return;
+                        }
+                        contextAddCallback(item.items);
+                    }
+                    function addItem(item) {
+                        function addContent(content) {
+                            <span class="missing-if-branch" title="if path not taken" >I</span>if (content === null) { <span class="cstat-no" title="statement not covered" >return; </span>}
+                            <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof content === 'function') {
+<span class="cstat-no" title="statement not covered" >                                return addContent(content(ev));</span>
+                            }
+                            if (typeof content === 'object') {
+                                contextItemContainer.appendChild(content);
+                                return;
+                            }
+                            applyContextItemStyle(contextItemContainer);
+                            contextItemContainer.innerHTML = content;
+                            return;
+                        }
+                        addContent(item.title);
+                        item.contextItemContainer = contextItemContainer;
+                        if ((item.items &amp;&amp; item.items.length &gt; 0) || typeof item.items === 'function') {
+                            childMenuArrow = document.createElement('div');
+                            self.createInlineStyle(childMenuArrow, 'canvas-datagrid-context-child-arrow');
+                            childMenuArrow.innerHTML = self.style.childContextMenuArrowHTML;
+                            contextItemContainer.appendChild(childMenuArrow);
+                            contextItemContainer.addEventListener('mouseover', createChildContext);
+                            contextItemContainer.addEventListener('mouseout', function () {
+                                contextItemContainer.setAttribute('opening', '0');
+                            });
+                        }
+                        if (item.click) {
+                            contextItemContainer.addEventListener('click', function (ev) {
+                                item.click.apply(self, [ev]);
+                            });
+                        }
+                    }
+                    addItem(item);
+                    container.appendChild(contextItemContainer);
+                });
+            }
+            function clickIndex(idx) {
+                items[idx].contextItemContainer.dispatchEvent(new Event('click'));
+            }
+            function checkArrowVisibility() {
+                if (container.scrollTop &gt; 0) {
+                    self.parentDOMNode.appendChild(upArrow);
+                } else <span class="missing-if-branch" title="else path not taken" >E</span>if (upArrow.parentNode) {
+                    upArrow.parentNode.removeChild(upArrow);
+                }
+                if (container.scrollTop &gt;= container.scrollHeight - container.offsetHeight &amp;&amp; downArrow.parentNode) {
+                    downArrow.parentNode.removeChild(downArrow);
+                } else <span class="missing-if-branch" title="else path not taken" >E</span>if (container.scrollHeight - container.offsetHeight &gt; 0
+                        &amp;&amp; !(container.scrollTop &gt;= container.scrollHeight - container.offsetHeight)) {
+                    self.parentDOMNode.appendChild(downArrow);
+                }
+            }
+            function startHoverScroll(type) {
+                return function t() {
+                    var a = self.attributes.contextHoverScrollAmount;
+                    if (type === 'up' &amp;&amp; container.scrollTop === 0) { return; }
+                    <span class="missing-if-branch" title="if path not taken" >I</span>if (type === 'down' &amp;&amp; container.scrollTop === container.scrollHeight) { <span class="cstat-no" title="statement not covered" >return; </span>}
+                    container.scrollTop += (type === 'up' ? -a : a);
+                    hoverScrollTimeout = setTimeout(t, self.attributes.contextHoverScrollRateMs, type);
+                };
+            }
+            function endHoverScroll(type) {
+                return function () {
+                    clearTimeout(hoverScrollTimeout);
+                };
+            }
+            function init() {
+                var loc = {},
+                    s = self.scrollOffset(self.canvas);
+                createItems();
+                self.createInlineStyle(container, 'canvas-datagrid-context-menu' + (self.mobile ? <span class="branch-0 cbranch-no" title="branch not covered" >'-mobile' </span>: ''));
+                loc.x = pos.left - s.left;
+                loc.y = pos.top - s.top;
+                loc.height = 0;
+                zIndexTop += 1;
+                container.style.position = 'absolute';
+                upArrow.style.color = self.style.contextMenuArrowColor;
+                downArrow.style.color = self.style.contextMenuArrowColor;
+                [upArrow, downArrow].forEach(function (el) {
+                    el.style.textAlign = 'center';
+                    el.style.position = 'absolute';
+                    el.style.zIndex = zIndexTop + 1;
+                });
+                container.style.zIndex = zIndexTop;
+                if (parentContextMenu &amp;&amp; parentContextMenu.inputDropdown) {
+                    container.style.maxHeight = window.innerHeight - loc.y - self.style.autocompleteBottomMargin + 'px';
+                    container.style.minWidth = pos.width + 'px';
+                    loc.y += pos.height;
+                }
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (self.mobile) {
+<span class="cstat-no" title="statement not covered" >                    container.style.width = pos.width + 'px';</span>
+                }
+                container.style.left = loc.x + 'px';
+                container.style.top = loc.y + 'px';
+                container.addEventListener('scroll', checkArrowVisibility);
+                container.addEventListener('wheel', <span class="fstat-no" title="function not covered" >function (e) {</span>
+<span class="cstat-no" title="statement not covered" >                    if (self.hasFocus) {</span>
+<span class="cstat-no" title="statement not covered" >                        container.scrollTop += e.deltaY;</span>
+<span class="cstat-no" title="statement not covered" >                        container.scrollLeft += e.deltaX;</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    checkArrowVisibility();</span>
+                });
+                upArrow.innerHTML = self.style.contextMenuArrowUpHTML;
+                downArrow.innerHTML = self.style.contextMenuArrowDownHTML;
+                container.appendChild(upArrow);
+                document.body.appendChild(downArrow);
+                document.body.appendChild(container);
+                rect = container.getBoundingClientRect();
+                if (rect.bottom &gt; window.innerHeight &amp;&amp; !(parentContextMenu &amp;&amp; parentContextMenu.inputDropdown)) {
+                    loc.y = window.innerHeight - container.offsetHeight;
+                    if (loc.y &lt; 0) { loc.y = 0; }
+                    if (container.offsetHeight &gt; window.innerHeight) {
+                        container.style.height = window.innerHeight - self.style.contextMenuWindowMargin + 'px';
+                    }
+                }
+                if (rect.right &gt; window.innerWidth) {
+                    if (parentContextMenu) {
+                        loc.x = parentContextMenu.container.offsetLeft - container.offsetWidth;
+                    } else {
+                        loc.x = window.innerWidth - container.offsetWidth;
+                    }
+                }
+                container.style.left = loc.x + 'px';
+                container.style.top = loc.y + 'px';
+                rect = container.getBoundingClientRect();
+                upArrow.style.top = rect.top + 'px';
+                downArrow.style.top = rect.top + rect.height - downArrow.offsetHeight + 'px';
+                upArrow.style.left = rect.left + 'px';
+                downArrow.style.left = rect.left + 'px';
+                downArrow.style.width = container.offsetWidth + 'px';
+                upArrow.style.width = container.offsetWidth + 'px';
+                downArrow.addEventListener('mouseover', startHoverScroll('down'));
+                downArrow.addEventListener('mouseout', endHoverScroll('down'));
+                upArrow.addEventListener('mouseover', startHoverScroll('up'));
+                upArrow.addEventListener('mouseout', endHoverScroll('up'));
+                checkArrowVisibility();
+            }
+            intf.parentGrid = self.intf;
+            intf.parentContextMenu = parentContextMenu;
+            intf.container = container;
+            init();
+            intf.clickIndex = clickIndex;
+            intf.rect = rect;
+            intf.items = items;
+            intf.upArrow = upArrow;
+            intf.downArrow = downArrow;
+            intf.dispose = function () {
+                clearTimeout(hoverScrollTimeout);
+                children.forEach(function (c) {
+                    c.dispose();
+                });
+                [downArrow, upArrow, container].forEach(function (el) {
+                    if (el.parentNode) { el.parentNode.removeChild(el); }
+                });
+            };
+            Object.defineProperty(intf, 'selectedIndex', {
+                get: function () {
+                    return selectedIndex;
+                },
+                set: function (value) {
+                    <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof value !== 'number' || isNaN(value || !isFinite(value))) {
+<span class="cstat-no" title="statement not covered" >                        throw new Error('Context menu selected index must be a sane number.');</span>
+                    }
+                    selectedIndex = value;
+                    <span class="missing-if-branch" title="if path not taken" >I</span>if (selectedIndex &gt; items.length - 1) {
+<span class="cstat-no" title="statement not covered" >                        selectedIndex = items.length - 1;</span>
+                    }
+                    <span class="missing-if-branch" title="if path not taken" >I</span>if (selectedIndex &lt; 0) {
+<span class="cstat-no" title="statement not covered" >                        selectedIndex = 0;</span>
+                    }
+                    items.forEach(function (item, index) {
+                        if (index === selectedIndex) {
+                            return self.createInlineStyle(item.contextItemContainer, 'canvas-datagrid-context-menu-item:hover');
+                        }
+                        self.createInlineStyle(item.contextItemContainer, 'canvas-datagrid-context-menu-item');
+                    });
+                }
+            });
+            return intf;
+        }
+        function createFilterContextMenuItems(e) {
+            var filterContainer = document.createElement('div'),
+                filterLabel = document.createElement('div'),
+                filterAutoCompleteButton = document.createElement('button'),
+                filterInput = document.createElement('input'),
+                n = e.cell &amp;&amp; e.cell.header ? e.cell.header.title || <span class="branch-1 cbranch-no" title="branch not covered" >e.cell.header.name </span>: <span class="branch-1 cbranch-no" title="branch not covered" >'',</span>
+                autoCompleteItems,
+                iRect;
+            function checkRegExpErrorState() {
+                filterInput.style.background = self.style.contextFilterInputBackground;
+                filterInput.style.color = self.style.contextFilterInputColor;
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (self.invalidFilterRegEx) {
+<span class="cstat-no" title="statement not covered" >                    filterInput.style.background = self.style.contextFilterInvalidRegExpBackground;</span>
+<span class="cstat-no" title="statement not covered" >                    filterInput.style.color = self.style.contextFilterInvalidRegExpColor;</span>
+                }
+            }
+            function fillAutoComplete() {
+                autoCompleteItems = {};
+                self.data.filter(function (d, i) { return i &lt; self.attributes.maxAutoCompleteItems; }).forEach(function (row) {
+                    var value = row[e.cell.header.name];
+                    <span class="missing-if-branch" title="if path not taken" >I</span>if (autoCompleteItems[value]) { <span class="cstat-no" title="statement not covered" >return; </span>}
+                    autoCompleteItems[value] = {
+                        title: self.formatters[e.cell.header.type || <span class="branch-1 cbranch-no" title="branch not covered" >'string']</span>({ cell: { value: value }}),
+                        click: function (e) {
+                            filterInput.value = value;
+                            e.stopPropagation();
+                            filterInput.dispatchEvent(new Event('keyup'));
+                            self.disposeAutocomplete();
+                            return;
+                        }
+                    };
+                });
+                autoCompleteItems = Object.keys(autoCompleteItems).map(function (key) {
+                    return autoCompleteItems[key];
+                });
+            }
+            function createAutoCompleteContext(ev) {
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (ev &amp;&amp; [40, 38, 13, 9].indexOf(ev.keyCode) !== -1) { <span class="cstat-no" title="statement not covered" >return; </span>}
+                fillAutoComplete();
+                iRect = filterInput.getBoundingClientRect();
+                if (autoCompleteContext) {
+                    autoCompleteContext.dispose();
+                    autoCompleteContext = undefined;
+                }
+                autoCompleteContext = createContextMenu(e, {
+                    left: iRect.left,
+                    top: iRect.top,
+                    right: iRect.right,
+                    bottom: iRect.bottom,
+                    height: iRect.height,
+                    width: iRect.width
+                }, autoCompleteItems, {inputDropdown: true});
+                autoCompleteContext.selectedIndex = 0;
+            }
+            self.createInlineStyle(filterLabel, 'canvas-datagrid-context-menu-label');
+            self.createInlineStyle(filterAutoCompleteButton, 'canvas-datagrid-context-menu-filter-button');
+            self.createInlineStyle(filterInput, 'canvas-datagrid-context-menu-filter-input');
+            checkRegExpErrorState();
+            filterInput.onclick = self.disposeAutocomplete;
+            filterInput.addEventListener('keydown', function (e) {
+                //down
+                if (e.keyCode === 40) {
+                    autoCompleteContext.selectedIndex += 1;
+                }
+                //up
+                if (e.keyCode === 38) {
+                    autoCompleteContext.selectedIndex -= 1;
+                }
+                //enter
+                if (e.keyCode === 13) {
+                    autoCompleteContext.clickIndex(autoCompleteContext.selectedIndex);
+                    self.disposeContextMenu();
+                }
+                //tab
+                if (e.keyCode === 9) {
+                    autoCompleteContext.clickIndex(autoCompleteContext.selectedIndex);
+                    e.preventDefault();
+                }
+                //esc
+                if (e.keyCode === 27) {
+                    self.disposeContextMenu();
+                }
+            });
+            filterInput.addEventListener('keyup', function () {
+                self.setFilter(e.cell.header.name, filterInput.value);
+            });
+            filterInput.addEventListener('keyup', createAutoCompleteContext);
+            ['focus', 'blur', 'keydown', 'keyup', 'change'].forEach(function (en) {
+                filterInput.addEventListener(en, checkRegExpErrorState);
+            });
+            filterInput.value = e.cell.header ? self.columnFilters[e.cell.header.name] || '' : <span class="branch-1 cbranch-no" title="branch not covered" >'';</span>
+            filterLabel.innerHTML = self.attributes.filterOptionText.replace(/%s/g, n);
+            filterAutoCompleteButton.onclick = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                if (autoCompleteContext) {</span>
+<span class="cstat-no" title="statement not covered" >                    return self.disposeAutocomplete();</span>
+                }
+<span class="cstat-no" title="statement not covered" >                createAutoCompleteContext();</span>
+            };
+            filterAutoCompleteButton.innerHTML = self.style.contextFilterButtonHTML;
+            filterContainer.addEventListener('click', <span class="fstat-no" title="function not covered" >function (e) {</span>
+<span class="cstat-no" title="statement not covered" >                return e.stopPropagation();</span>
+            });
+            filterContainer.appendChild(filterLabel);
+            filterContainer.appendChild(filterInput);
+            filterContainer.appendChild(filterAutoCompleteButton);
+            e.items.push({
+                title: filterContainer
+            });
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (Object.keys(self.columnFilters).length) {
+<span class="cstat-no" title="statement not covered" >                Object.keys(self.columnFilters).forEach(<span class="fstat-no" title="function not covered" >function (cf) {</span></span>
+<span class="cstat-no" title="statement not covered" >                    var h = self.getHeaderByName(cf);</span>
+<span class="cstat-no" title="statement not covered" >                    e.items.push({</span>
+                        title: self.attributes.removeFilterOptionText.replace(/%s/g, h.title || h.name),
+                        click: <span class="fstat-no" title="function not covered" >function removeFilterClick(e) {</span>
+<span class="cstat-no" title="statement not covered" >                            e.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >                            self.setFilter(cf, '');</span>
+<span class="cstat-no" title="statement not covered" >                            self.controlInput.focus();</span>
+                        }
+                    });
+                });
+            }
+        }
+        function addDefaultContextMenuItem(e) {
+            var isNormalCell = !(e.cell.isBackground || e.cell.isHeaderCellCap
+                    || e.cell.isScrollBar || e.cell.isCorner || e.cell.isRowHeader)
+                    &amp;&amp; e.cell.header;
+            if (self.attributes.showFilter &amp;&amp; isNormalCell) {
+                createFilterContextMenuItems(e);
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.attributes.showCopy
+                    &amp;&amp; self.selections.reduce(<span class="fstat-no" title="function not covered" >function (p, r) {</span>
+<span class="cstat-no" title="statement not covered" >                        return p + r.length;</span>
+                    }, 0) &gt; 0) {
+<span class="cstat-no" title="statement not covered" >                e.items.push({</span>
+                    title: self.attributes.copyText,
+                    click: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                        document.execCommand('copy');</span>
+<span class="cstat-no" title="statement not covered" >                        self.disposeContextMenu();</span>
+<span class="cstat-no" title="statement not covered" >                        self.controlInput.focus();</span>
+                    }
+                });
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.attributes.showPaste &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >self.clipBoardData)</span> {
+<span class="cstat-no" title="statement not covered" >                e.items.push({</span>
+                    title: self.attributes.pasteText,
+                    click: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                        self.paste(self.clipBoardData, e.cell.columnIndex, e.cell.rowIndex);</span>
+<span class="cstat-no" title="statement not covered" >                        self.draw();</span>
+                    }
+                });
+            }
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (self.attributes.showColumnSelector) {
+                e.items.push({
+                    title: self.attributes.columnSelectorText,
+                    items: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                        var d = [];</span>
+<span class="cstat-no" title="statement not covered" >                        self.getSchema().forEach(<span class="fstat-no" title="function not covered" >function (column) {</span></span>
+<span class="fstat-no" title="function not covered" >                            function toggleColumnVisibility(e) {</span>
+<span class="cstat-no" title="statement not covered" >                                column.hidden = !column.hidden;</span>
+<span class="cstat-no" title="statement not covered" >                                e.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >                                self.stopPropagation(e);</span>
+<span class="cstat-no" title="statement not covered" >                                self.disposeContextMenu();</span>
+<span class="cstat-no" title="statement not covered" >                                self.draw();</span>
+                            }
+<span class="cstat-no" title="statement not covered" >                            var el = document.createElement('div');</span>
+<span class="cstat-no" title="statement not covered" >                            applyContextItemStyle(el);</span>
+<span class="cstat-no" title="statement not covered" >                            el.addEventListener('touchstart', toggleColumnVisibility);</span>
+<span class="cstat-no" title="statement not covered" >                            el.addEventListener('click', toggleColumnVisibility);</span>
+<span class="cstat-no" title="statement not covered" >                            el.innerHTML = (column.hidden ? self.attributes.columnSelectorHiddenText</span>
+                                    : self.attributes.columnSelectorVisibleText)
+                                    + (column.title || column.name);
+<span class="cstat-no" title="statement not covered" >                            d.push({</span>
+                                title: el
+                            });
+                        });
+<span class="cstat-no" title="statement not covered" >                        return d;</span>
+                    }
+                });
+                if (e.cell &amp;&amp; e.cell.header) {
+                    e.items.push({
+                        title: self.attributes.hideColumnText
+                            .replace(/%s/ig, e.cell.header.title || <span class="branch-1 cbranch-no" title="branch not covered" >e.cell.header.name)</span>,
+                        click: <span class="fstat-no" title="function not covered" >function (ev) {</span>
+<span class="cstat-no" title="statement not covered" >                            e.cell.header.hidden = true;</span>
+<span class="cstat-no" title="statement not covered" >                            ev.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >                            self.stopPropagation(ev);</span>
+<span class="cstat-no" title="statement not covered" >                            self.disposeContextMenu();</span>
+<span class="cstat-no" title="statement not covered" >                            setTimeout(self.draw, 10);</span>
+                        }
+                    });
+                }
+            }
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (self.attributes.saveAppearance &amp;&amp; self.attributes.showClearSettingsOption
+                    &amp;&amp; (Object.keys(self.sizes.rows).length &gt; 0
+                        || Object.keys(self.sizes.columns).length &gt; 0)) {
+                e.items.push({
+                    title: self.attributes.clearSettingsOptionText,
+                    click: function (e) {
+                        e.preventDefault();
+                        self.sizes.rows = {};
+                        self.sizes.columns = {};
+                        self.createRowOrders();
+                        self.createColumnOrders();
+                        self.storedSettings = undefined;
+                        self.dispatchEvent('resizecolumn', {columnWidth: self.style.columnWidth});
+                        self.dispatchEvent('resizerow', {cellHeight: self.style.cellHeight});
+                        self.setStorageData();
+                        self.resize(true);
+                        self.disposeContextMenu();
+                        self.controlInput.focus();
+                    }
+                });
+            }
+            if (self.attributes.allowSorting &amp;&amp; self.attributes.showOrderByOption &amp;&amp; isNormalCell) {
+                e.items.push({
+                    title: self.attributes.showOrderByOptionTextAsc.replace('%s', e.cell.header.title || <span class="branch-1 cbranch-no" title="branch not covered" >e.cell.header.name)</span>,
+                    click: function (ev) {
+                        ev.preventDefault();
+                        self.order(e.cell.header.name, 'asc');
+                        self.controlInput.focus();
+                    }
+                });
+                e.items.push({
+                    title: self.attributes.showOrderByOptionTextDesc.replace('%s', e.cell.header.title || <span class="branch-1 cbranch-no" title="branch not covered" >e.cell.header.name)</span>,
+                    click: <span class="fstat-no" title="function not covered" >function (ev) {</span>
+<span class="cstat-no" title="statement not covered" >                        ev.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >                        self.order(e.cell.header.name, 'desc');</span>
+<span class="cstat-no" title="statement not covered" >                        self.disposeContextMenu();</span>
+<span class="cstat-no" title="statement not covered" >                        self.controlInput.focus();</span>
+                    }
+                });
+            }
+        }
+        self.disposeAutocomplete = function () {
+            if (autoCompleteContext) {
+                autoCompleteContext.dispose();
+                autoCompleteContext = undefined;
+            }
+        };
+        self.disposeContextMenu = function () {
+            document.removeEventListener('click', self.disposeContextMenu);
+            zIndexTop = 9000;
+            self.disposeAutocomplete();
+            if (self.contextMenu) {
+                self.contextMenu.dispose();
+            }
+            self.contextMenu = undefined;
+        };
+        self.contextmenuEvent = function (e, overridePos) {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!self.hasFocus &amp;&amp; e.target !== self.canvas) {
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+<span class="fstat-no" title="function not covered" >            function createDiposeEvent() {</span>
+<span class="cstat-no" title="statement not covered" >                requestAnimationFrame(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >                    document.addEventListener('click', self.disposeContextMenu);</span>
+<span class="cstat-no" title="statement not covered" >                    document.removeEventListener('mouseup', createDiposeEvent);</span>
+                });
+            }
+            var contextPosition,
+                items = [],
+                pos = overridePos || self.getLayerPos(e, true),
+                ev = {
+                    NativeEvent: e,
+                    cell: self.getCellAt(pos.x, pos.y),
+                    items: items
+                };
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (!ev.cell.isGrid) {
+                addDefaultContextMenuItem(ev);
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.dispatchEvent('contextmenu', ev)) {
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (!ev.cell.isGrid) {
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (self.contextMenu) {
+<span class="cstat-no" title="statement not covered" >                    self.disposeContextMenu();</span>
+                }
+                contextPosition = {
+                    left: pos.x + pos.rect.left + self.style.contextMenuMarginLeft + self.canvasOffsetLeft,
+                    top: pos.y + pos.rect.top + self.style.contextMenuMarginTop + self.canvasOffsetTop,
+                    right: ev.cell.width + ev.cell.x + pos.rect.left,
+                    bottom: ev.cell.height + ev.cell.y + pos.rect.top,
+                    height: ev.cell.height,
+                    width: ev.cell.width
+                };
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (self.mobile) {
+<span class="cstat-no" title="statement not covered" >                    contextPosition.left = self.style.mobileContextMenuMargin + 'px';</span>
+<span class="cstat-no" title="statement not covered" >                    contextPosition.width = self.width - (self.style.mobileContextMenuMargin * 2) + 'px';</span>
+                }
+                self.contextMenu = createContextMenu(ev, contextPosition, items);
+                document.addEventListener('mouseup', createDiposeEvent);
+                e.preventDefault();
+            }
+        };
+        return;
+    };
+});
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Oct 16 2017 02:42:13 GMT-0700 (PDT)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
