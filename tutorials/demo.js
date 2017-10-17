@@ -51,7 +51,9 @@ function demo() {
                 columnHeaderClickBehavior: 'select',
                 allowFreezingRows: true,
                 allowFreezingColumns: true,
-                allowRowReordering: true
+                allowRowReordering: true,
+                tree: false,
+                debug: false
             });
         grid.addEventListener('contextmenu', function (e) {
             e.items.push({

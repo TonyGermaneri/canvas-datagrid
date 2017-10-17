@@ -2653,9 +2653,9 @@
                     });
                     setTimeout(function () {
                         grid.focus();
-                        marker(grid, 10, 37);
-                        mousemove(grid.canvas, 10, 37);
-                        mousedown(grid.canvas, 10, 37);
+                        marker(grid, 10, 32);
+                        mousemove(grid.canvas, 10, 29);
+                        mousedown(grid.canvas, 10, 29);
                         mousemove(grid.canvas, 10, 90, grid.canvas);
                         mousemove(document.body, 10, 90, grid.canvas);
                         mouseup(document.body, 10, 90, grid.canvas);
@@ -2664,8 +2664,8 @@
                             done(assertIf(e.cell.value !== 'bar', 'Expected to see the value from row 2 here.'));
                         });
                         // lib intentionally ignoring next click - required to make the ux work as desired
-                        click(grid.canvas, 60, 37);
-                        click(grid.canvas, 60, 37);
+                        click(grid.canvas, 60, 29);
+                        click(grid.canvas, 60, 29);
                     }, 1);
                 });
                 it('Should draw row reorder markers when allowRowReordering is true and reordering', function (done) {
@@ -2684,13 +2684,13 @@
                     });
                     setTimeout(function () {
                         grid.focus();
-                        mousemove(grid.canvas, 10, 37);
-                        mousedown(grid.canvas, 10, 37);
+                        mousemove(grid.canvas, 10, 29);
+                        mousedown(grid.canvas, 10, 29);
                         mousemove(grid.canvas, 10, 90, grid.canvas);
                         mousemove(document.body, 10, 90, grid.canvas);
-                        assertPxColor(grid, 10, 74, c.b, function (err) {
+                        assertPxColor(grid, 10, 98, c.b, function (err) {
                             if (err) { return done(err); }
-                            assertPxColor(grid, 20, 103, c.fu, function (err) {
+                            assertPxColor(grid, 10, 85, c.fu, function (err) {
                                 if (err) { return done(err); }
                                 assertPxColor(grid, 30, 90, c.y, done);
                             });
