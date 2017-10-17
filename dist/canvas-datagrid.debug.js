@@ -104,7 +104,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['borderDragBehavior', 'none'],
                 ['borderResizeZone', 10],
                 ['clearSettingsOptionText', 'Clear saved settings'],
-                ['clipboardMimeType', 'text/html'],
                 ['columnHeaderClickBehavior', 'sort'],
                 ['columnSelectorHiddenText', '&nbsp;&nbsp;&nbsp;'],
                 ['columnSelectorText', 'Add/Remove columns'],
@@ -127,6 +126,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['removeFilterOptionText', 'Remove filter on %s'],
                 ['reorderDeadZone', 3],
                 ['resizeScrollZone', 20],
+                ['rowGrabZoneSize', 5],
                 ['saveAppearance', true],
                 ['scrollAnimationPPSThreshold', 0.75],
                 ['scrollPointerLock', false],
@@ -270,7 +270,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['contextMenuMarginTop', -3],
                 ['contextMenuOpacity', '0.98'],
                 ['contextMenuPadding', '2px'],
-                ['contextMenuWindowMargin', 6],
+                ['contextMenuWindowMargin', 100],
                 ['cornerCellBackgroundColor', 'rgba(240, 240, 240, 1)'],
                 ['cornerCellBorderColor', 'rgba(202, 202, 202, 1)'],
                 ['editCellBackgroundColor', 'white'],
@@ -940,9 +940,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             var w = 0,
                 s = self.getVisibleSchema(),
                 x = 0,
-                n = Math.min(self.frozenColumn, s.length);
+                n = Math.min(self.frozenColumn, s.length),
+                column;
             while (x < n) {
-                w += s[self.orders.columns[x]].width;
+                column = s[self.orders.columns[x]];
+                w += ((self.sizes.columns[column[self.uniqueId]] || column.width || self.style.columnWidth) * self.scale);
                 x += 1;
             }
             return w;
@@ -1169,7 +1171,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     }
                 }
             }
-            function drawCell(d, rowIndex, rowOrderIndex) {
+            function drawCell(d, rowOrderIndex, rowIndex) {
                 return function drawEach(header, headerIndex, columnOrderIndex) {
                     var cellStyle = header.style || 'cell',
                         cellGridAttributes,
@@ -1443,7 +1445,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     cellHeight = rArgs[4];
                     if (rhIndex === self.frozenRow) {
                         self.ctx.save();
-                        radiusRect(0, self.lastFrozenRowPixel, self.width, self.height - self.lastFrozenRowPixel, 0);
+                        radiusRect(0, self.lastFrozenRowPixel - 1, self.width, self.height - self.lastFrozenRowPixel, 0);
                         self.ctx.clip();
                     }
                     drawRowHeader(rArgs[0], rArgs[1], rArgs[2]);
@@ -1561,12 +1563,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         rowIndex: r
                     };
                     self.visibleCells.unshift({
-                        rowIndex: x,
+                        rowIndex: r,
                         columnIndex: 0,
                         y: treeGrid.parentNode.offsetTop,
                         x: treeGrid.parentNode.offsetLeft,
-                        height: treeGrid.parentNode.offsetHeight,
-                        width: treeGrid.parentNode.offsetWidth,
+                        height: treeGrid.height,
+                        width: treeGrid.width,
                         style: 'tree-grid',
                         type: treeGrid.parentNode.nodeType
                     });
@@ -1680,17 +1682,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     b.width = w;
                     b.x = 0;
                     m.width = w;
-                    m.height = h;
+                    m.height = self.currentCell.height;
                     m.y = self.currentCell.y;
                     fillRect(b.x, b.y, b.width, b.height);
                     strokeRect(b.x, b.y, b.width, b.height);
                     self.ctx.lineWidth = self.style.reorderMarkerIndexBorderWidth;
                     self.ctx.strokeStyle = self.style.reorderMarkerIndexBorderColor;
                     if (self.currentCell.rowIndex !== self.reorderObject.rowIndex
-                            && self.currentCell.rowIndex - 1 !== self.reorderObject.rowIndex
                             && self.currentCell.rowIndex > -1
                             && self.currentCell.rowIndex < l) {
-                        addBorderLine(m, 't');
+                        addBorderLine(m, self.reorderTarget.sortRowIndex > self.reorderObject.sortRowIndex ? 'b' : 't');
                     }
                 } else if (self.dragMode === 'column-reorder' && self.reorderObject) {
                     b.height = h;
@@ -1872,13 +1873,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 touchPPSCounters.unshift([self.yPPS, self.xPPS]);
             }
             function drawDebug() {
+                self.ctx.save();
                 var d;
                 if (self.attributes.showPerformance || self.attributes.debug) {
                     if (perfCounters.length === 0) { perfCounters = self.fillArray(0, perfWindowSize, 1, 0); }
                     perfCounters.pop();
                     perfCounters.unshift(performance.now() - p);
                 }
-                if (!self.attributes.debug) { return; }
+                if (!self.attributes.debug) {
+                    self.ctx.restore();
+                    return;
+                }
                 self.ctx.font = '14px sans-serif';
                 d = {};
                 d.perf = (perfCounters.reduce(function (a, b) {
@@ -1931,6 +1936,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.ctx.fillStyle = 'rgba(37, 254, 21, 1)';
                     fillText(m, w - 20, 140 + (index * lh));
                 });
+                self.ctx.restore();
             }
             self.ctx.save();
             initDraw();
@@ -2068,10 +2074,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             } else {
                 self.resizeDomElement();
             }
-            scrollHeight = self.data.reduce(function reduceData(accumulator, row) {
+            scrollHeight = self.data.reduce(function reduceData(accumulator, row, rowIndex) {
                 return accumulator
                     + (((self.sizes.rows[row[self.uniqueId]] || ch) + (self.sizes.trees[row[self.uniqueId]] || 0)) * self.scale)
-                    + cellBorder;
+                    + cellBorder
+                    // HACK? if an expanded tree row is frozen it is necessary to add the tree row's height a second time.
+                    + (self.frozenRow > rowIndex ? (self.sizes.trees[row[self.uniqueId]] || 0) : 0);
             }, 0) || 0;
             scrollWidth = self.getVisibleSchema().reduce(function reduceSchema(accumulator, column) {
                 if (column.hidden) { return accumulator; }
@@ -2507,9 +2515,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         target: self.reorderTarget,
                         dragMode: self.dragMode
                     })) {
+                self.ignoreNextClick = true;
                 oIndex = cr[self.dragMode].indexOf(self.reorderObject[i]);
                 tIndex = cr[self.dragMode].indexOf(self.reorderTarget[i]);
-                self.ignoreNextClick = true;
                 cr[self.dragMode].splice(oIndex, 1);
                 cr[self.dragMode].splice(tIndex, 0, self.reorderObject[i]);
                 self.setStorageData();
@@ -4615,8 +4623,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 if (rect.bottom > window.innerHeight && !(parentContextMenu && parentContextMenu.inputDropdown)) {
                     loc.y = window.innerHeight - container.offsetHeight;
                     if (loc.y < 0) { loc.y = 0; }
-                    if (container.offsetHeight > window.innerHeight) {
+                    if (container.offsetHeight > window.innerHeight - self.style.contextMenuWindowMargin) {
                         container.style.height = window.innerHeight - self.style.contextMenuWindowMargin + 'px';
+                        loc.y += self.style.contextMenuWindowMargin * 0.5;
                     }
                 }
                 if (rect.right > window.innerWidth) {
@@ -4701,10 +4710,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
             }
             function fillAutoComplete() {
+                var count = 0;
                 autoCompleteItems = {};
-                self.data.filter(function (d, i) { return i < self.attributes.maxAutoCompleteItems; }).forEach(function (row) {
+                self.data.forEach(function (row) {
                     var value = row[e.cell.header.name];
-                    if (autoCompleteItems[value]) { return; }
+                    if (autoCompleteItems[value] || count > self.attributes.maxAutoCompleteItems) { return; }
+                    count += 1;
                     autoCompleteItems[value] = {
                         title: self.formatters[e.cell.header.type || 'string']({ cell: { value: value }}),
                         click: function (e) {
@@ -5409,7 +5420,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     borderRadius: '0'
                 },
                 'canvas-datagrid-context-menu-item-mobile': {
-                    display: 'inline-block',
                     lineHeight: 'normal',
                     fontWeight: 'normal',
                     fontFamily: self.style.contextMenuFontFamily,
@@ -5452,7 +5462,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     padding: self.style.contextMenuPadding,
                     borderRadius: self.style.contextMenuBorderRadius,
                     opacity: self.style.contextMenuOpacity,
-                    overflow: 'hidden'
+                    overflow: 'hidden',
+                    whiteSpace: 'nowrap'
                 },
                 'canvas-datagrid-context-menu': {
                     lineHeight: 'normal',
@@ -6470,6 +6481,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         }
                     }
                     if (['t', 'b'].indexOf(border) !== -1
+                            && cell.rowIndex > -1
                             && (self.attributes.allowRowResize || moveBorder)
                             && ((self.attributes.allowRowResizeFromCell && cell.isNormal) || !cell.isNormal || moveBorder)
                             && !cell.isColumnHeader) {
@@ -6490,8 +6502,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         return cell;
                     }
                     if (cell.style === 'rowHeaderCell') {
-                        cell.context = 'cell';
-                        cell.dragContext = 'row-reorder';
+                        if (self.attributes.rowGrabZoneSize + (cell.y - self.style.cellBorderWidth) < y) {
+                            cell.dragContext = 'cell';
+                            cell.context = 'cell';
+                        } else {
+                            cell.context = self.cursorGrab;
+                            cell.dragContext = 'row-reorder';
+                        }
                         return cell;
                     }
                     if (cell.isGrid) {
