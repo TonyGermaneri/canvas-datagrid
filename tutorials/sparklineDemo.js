@@ -7,10 +7,12 @@ document.addEventListener('DOMContentLoaded', function () {
         var g,
             gb,
             x = 0,
+            d = (cell.value[0] - cell.value[1]).toFixed(2),
             m = Math.max.apply(null, cell.value),
             a = cell.value.reduce(function (ac, c) { return ac + c; }, 0) / cell.value.length,
             i = Math.min.apply(null, cell.value),
             w = cell.width / cell.value.length,
+            ar = (d > 0 ? '\u25BC' : '\u25B2'),
             r = cell.height / (m - (m * 0.1));
         function line(n, c) {
             ctx.beginPath();
@@ -22,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         ctx.save();
         gb = ctx.createLinearGradient((cell.x + cell.width) / 2, cell.y, (cell.x + cell.width) / 2, cell.y + cell.height);
-        gb.addColorStop(0, a > 0.5 ? '#0C4B73' : '#A1680F');
+        gb.addColorStop(0, d >= 0 ? '#0C4B73' : '#A1680F');
         gb.addColorStop(1, (cell.selected || cell.active) ? '#B3C3CC' : '#041724');
         ctx.fillStyle = gb;
         ctx.fillRect(cell.x, cell.y, cell.width, cell.height);
@@ -46,8 +48,9 @@ document.addEventListener('DOMContentLoaded', function () {
         ctx.fill();
         ctx.strokeStyle = '#0B466B';
         ctx.stroke();
-        line(a, a > 0.5 ? 'green' : 'red');
-        cell.parentGrid.data[cell.rowIndex].col1 = 'Avg:' + a.toFixed(2) + '\nMin: ' + i.toFixed(2) + '\nMax: ' + m.toFixed(2);
+        line(a, d >= 0 ? 'green' : 'red');
+        cell.parentGrid.data[cell.rowIndex].col1 = (d === 0 ? ' ' : ar) + ' Diff: ' + d
+            + 'Avg:' + a.toFixed(2) + '\nMin: ' + i.toFixed(2) + '\nMax: ' + m.toFixed(2);
         ctx.restore();
     }
     function createRandomSeq(size, r) {
@@ -61,8 +64,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var grid = canvasDatagrid({
         parentNode: document.getElementById('grid'),
         schema: [
-            {name: 'col1', width: 220},
-            {name: 'col2', width: 150},
+            {name: 'col1', width: 330},
+            {name: 'col2', width: 300},
             {name: 'col3', width: 300}
         ]
     });
@@ -93,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault();
         }
         if (!e.cell.isHeader && e.cell.value && e.cell.value.substring) {
-            e.ctx.fillStyle = parseFloat(e.cell.value.substring(4), 10) > 0.5 ? '#A1230F' : '#499A3D';
+            e.ctx.fillStyle = /Diff: -/.test(e.cell.value) ? '#499A3D' : '#A1230F';
         }
     });
     grid.addEventListener('afterrendercell', function (e) {
