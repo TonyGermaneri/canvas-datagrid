@@ -2161,7 +2161,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.mouse = overridePos || self.getLayerPos(e);
             var ctrl = (e.ctrlKey || e.metaKey || self.attributes.persistantSelectionMode),
                 i,
-                s = self.getSchema(),
+                vs = self.getVisibleSchema(),
                 dragBounds,
                 sBounds,
                 x = self.mouse.x,
@@ -2222,7 +2222,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     };
                     if (self.dragStartObject.columnIndex === -1) {
                         dragBounds.left = -1;
-                        dragBounds.right = s.length - 1;
+                        dragBounds.right = vs.length - 1;
                         dragBounds.top = Math.min(sBounds.top, o.rowIndex);
                         dragBounds.bottom = Math.max(sBounds.bottom, o.rowIndex);
                     }
@@ -3175,7 +3175,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             top: self.startingCell.rowIndex,
                             bottom: self.startingCell.rowIndex,
                             left: 0,
-                            right: self.getSchema().length - 1,
+                            right: self.getVisibleSchema().length - 1,
                         });
                         self.draw(true);
                     } else if (self.startingCell.isColumnHeader) {
@@ -3525,7 +3525,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.orders.rows = self.fillArray(0, self.data.length - 1);
         };
         self.getVisibleSchema = function () {
-            return self.getSchema().filter(function (col) { return !col.hidden; });
+            return self.getSchema().filter(function (col) {
+                return !col.hidden && col.name !== self.uniqueId;
+            });
         };
         self.applyDefaultValue = function (row, header) {
             var d = header.defaultValue || '';
@@ -5615,7 +5617,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Inserts a new column before the specified index into the schema.
-         * @see canvasDatagrid#schema
          * @tutorial schema
          * @memberof canvasDatagrid
          * @name insertColumn
@@ -5654,7 +5655,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         /**
          * Adds a new column into the schema.
-         * @see canvasDatagrid#schema
          * @tutorial schema
          * @memberof canvasDatagrid
          * @name addColumn
@@ -6040,7 +6040,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @param {boolean} supressSelectionchangedEvent When true, prevents the selectionchanged event from firing.
          */
         self.selectRow = function (rowIndex, ctrl, shift, supressEvent) {
-            var x, st, en, s = self.getSchema();
+            var x, st, en, s = self.getVisibleSchema();
             function addRow(ri) {
                 self.selections[ri] = [];
                 self.selections[ri].push(-1);

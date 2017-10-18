@@ -209,7 +209,7 @@ function g() {
     }
     for (x = 0; x < 10000; x += 1) {
         d[x] = {};
-        for (y = 0; y < 50; y += 1) {
+        for (y = 0; y < 1; y += 1) {
             n = colName(y).toUpperCase();
             d[x][n] = (x + 1) + ', ' + n;
         }
