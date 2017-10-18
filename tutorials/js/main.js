@@ -371,10 +371,8 @@
         window.addEventListener('hashchange', function () {
             var hashTocTarget, hashTarget, hash = getHash();
             if (hash) {
-                hashTarget = document.querySelector('a[id="' + hash
-                    .replace('#canvasDatagrid#', '') + '"]');
-                hashTocTarget = document.querySelector('a[id="toc_' + hash
-                    .replace('#canvasDatagrid#', '') + '"]');
+                hashTarget = document.querySelector('*[id="' + hash.replace('#canvasDatagrid#', '') + '"]');
+                hashTocTarget = document.querySelector('*[id="toc_' + hash.replace('#canvasDatagrid#', '') + '"]');
                 if (hashTocTarget) {
                     hashTocTarget.scrollIntoView();
                 }
