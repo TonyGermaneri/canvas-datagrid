@@ -13,4 +13,4 @@ In the following example, a context menu item is added:
         });
 
 The `title` property can be an HTML node reference instead of a string.
-The `click` property is optional.  See [contextmenu](https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDatagrid.contextMenuItem.html) complete information.
+The `click` property is optional.  See [contextmenu](https://tonygermaneri.github.io/canvas-datagrid/docs/#tutorial--Simple-context-menu) complete information.
