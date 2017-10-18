@@ -7643,7 +7643,7 @@ window.reflection = [
         "___s": true
     },
     {
-        "comment": "/**\n * Hierarchical canvas based web component.\n * @class\n * @name canvasDatagrid\n * @see https://github.com/TonyGermaneri/canvas-datagrid\n * @see https://tonygermaneri.github.io/canvas-datagrid/docs/tutorial-sample.html\n * @see https://tonygermaneri.github.io/canvas-datagrid/docs/tutorial-webcomponent.html\n * @see https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html\n * @see https://tonygermaneri.github.io/canvas-datagrid/tutorials/amdDemo.html\n * @see https://tonygermaneri.github.io/canvas-datagrid/tutorials/webcomponentDemo.html\n * @see https://tonygermaneri.github.io/canvas-datagrid/tutorials/sparklineDemo.html\n * @author Tony Germaneri (TonyGermaneri@gmail.com)\n * @param {object} args Parameters for the grid.\n * @param {object} args.parentNode HTML element that will hold the grid.  This block element must have a height, canvas-datagrid will add a canvas itself and will match itself to this element's dimensions.  It will resize itself on window.resize events, and DOM mutation.  But you may need to invoke canvas-datagrid.resize() manually if you find it does not maintain size in your use case.\n * @param {object} [args.name] Optional value that will allow the saving of column height, row width, etc. to the browser's local store. This name should be unique to this grid.\n * @param {boolean} [args.tree=false] - When true, an arrow will be drawn on each row that when clicked raises the {@link canvasDatagrid.expandTree} event for that row and creates an inner grid.\n * @param {boolean} [args.treeHorizontalScroll=false] - When true, expanded child grids will scroll horizontally with the parent columns. When false, when scrolling horizontally child grids will remain stationary. This does not impact vertical scrolling behavior.\n * @param {object} [args.cellGridAttributes] - Attributes used for cell grids. These child grids are different than the tree grids. See the data property for more information about cell grids.\n * @param {boolean} [args.showNewRow=true] - When true, a row will appear at the bottom of the data set. schema[].defaultValue will define a default value for each cell. defaultValue can be a string or a function. When a function is used, the arguments header and index will be passed to the function. The value returned by the function will be the value in the new cell.\n * @param {boolean} [args.saveAppearance=true] - When true, and the attribute name is set, column and row sizes will be saved to the browser's localStore.\n * @param {boolean} [args.selectionFollowsActiveCell=false] - When true, moving the active cell with keystrokes will also change the selection.\n * @param {boolean} [args.multiLine=false] - When true, edit cells will be textareas, when false edit cells will be inputs.\n * @param {boolean} [args.globalRowResize=false] - When true, resizing a row will resize all rows to the same height.\n * @param {boolean} [args.editable=true] - When true, cells can be edited. When false, grid is read only to the user.\n * @param {string} [args.borderDragBehavior='none'] - Can be set to 'resize', 'move', or 'none'.  If set to 'move', `allowMovingSelection` should also be set true.  If set to 'resize', `allowRowResizeFromCell` and/or `allowColumnResizeFromCell` should be set true.\n * @param {boolean} [args.allowFreezingRows=false] - When true, the UI provides a drag-able cutter to freeze rows.\n * @param {boolean} [args.allowFreezingColumns=false] - When true, the UI provides a drag-able cutter to freeze columns.\n * @param {boolean} [args.allowColumnReordering=true] - When true columns can be reordered.\n * @param {boolean} [args.allowMovingSelection=false] - When true selected data can be moved by clicking and dragging on the border of the selection.\n * @param {boolean} [args.allowRowReordering=false] - When true rows can be reordered.\n * @param {boolean} [args.allowSorting=true] - Allow user to sort rows by clicking on column headers.\n * @param {boolean} [args.showFilter=true] - When true, filter will be an option in the context menu.\n * @param {number} [args.pageUpDownOverlap=1] - Amount of rows to overlap when pageup/pagedown is used.\n * @param {boolean} [args.persistantSelectionMode=false] - When true, selections will behave as if the command/control key is held down at all times.\n * @param {boolean} [args.selectionMode='cell'] - Can be 'cell', or 'row'.  This setting dictates what will be selected when the user clicks a cell.  The cell, or the entire row respectively.\n * @param {boolean} [args.autoResizeColumns=false] - When true, all columns will be automatically resized to fit the data in them. Warning! Expensive for large (&gt;100k ~2 seconds) datasets.\n * @param {boolean} [args.allowRowHeaderResize=true] - When true, the user can resize the width of the row headers.\n * @param {boolean} [args.allowColumnResize=true] - When true, the user can resize the width of the columns.\n * @param {boolean} [args.allowRowResize=true] - When true, the user can resize the row headers increasing the height of the row.\n * @param {boolean} [args.allowRowResizeFromCell=false] - When true, the user can resize the height of the row from the border of the cell.\n * @param {boolean} [args.allowColumnResizeFromCell=false] - When true, the user can resize the width of the column from the border of the cell.\n * @param {boolean} [args.showPerformance=false] - When true, a graph showing performance is rendered.\n * @param {boolean} [args.debug=false] - When true, debug info will be drawn on top of the grid.\n * @param {number} [args.borderResizeZone=10] - Number of pixels in total around a border that count as resize zones.\n * @param {boolean} [args.showColumnHeaders=true] - When true, headers are shown.\n * @param {boolean} [args.showRowNumbers=true] - When true, row numbers are shown in the row headers.\n * @param {boolean} [args.showRowHeaders=true] - When true, row headers are shown.\n * @param {boolean} [args.reorderDeadZone=3] - Number of pixels needed to move before column reordering occurs.\n * @param {boolean} [args.showClearSettingsOption=true] - Show an option on the context menu to clear saved settings.\n * @param {boolean} [args.clearSettingsOptionText='Clear saved settings'] - Text that appears on the clear settings option.\n * @param {boolean} [args.showOrderByOptionTextDesc='Order by %s ascending'] - Text that appears on the order by descending option.\n * @param {boolean} [args.showOrderByOptionTextAsc='Order by %s desc'] - Text that appears on the order by ascending option.\n * @param {boolean} [args.showOrderByOption=true] - Show an option on the context menu sort rows.\n * @param {boolean} [args.showPaste=false] - Show the paste option in the context menu when applicable.\n * @param {boolean} [args.schema=[]] - Sets the schema. See {@tutorial schema}.\n * @param {boolean} [args.data=[]] - Sets the data. See {@tutorial data}.\n * @param {boolean} [args.touchReleaseAnimationDurationMs=2000] - How long the ease animation runs after touch release.\n * @param {boolean} [args.touchReleaseAcceleration=1000] - How many times the detected pixel per inch touch swipe is multiplied on release.  Higher values mean more greater touch release movement.\n * @param {boolean} [args.touchDeadZone=3] - How many pixels a touch must move within `attributes.touchSelectTimeMs` to be considered scrolling rather than selecting.\n * @param {boolean} [args.touchScrollZone=30] - When touching, the scroll element hit boxes are increased by this number of pixels for easier touching.\n * @param {boolean} [args.showCopy=true] - When true, copy will appear on the context menu when it is available.\n * @param {string} [args.pasteText=Paste] - The text that appears on the context menu when paste is available.\n * @param {string} [args.copyText=Copy] - The text that appears on the context menu when copy is available.\n * @param {string} [args.columnHeaderClickBehavior=sort] - Can be any of sort, select, none.  When sort is selected, left clicking a column header will result in sorting ascending, then sorting descending if already sorted by this column.  If select is selected then clicking a column header will result in the column becoming selected.  Holding control/command or shift will select multiple columns in this mode.\n * @param {boolean} [args.scrollPointerLock=false] - When true, clicking on the scroll box to scroll will cause the mouse cursor to disappear to prevent it from exiting the area observable to the grid.\n * @param {string} [args.selectionHandleBehavior='none'] - When set to a value other than none a handle will appear in the lower right corner of the desktop version of the grid.  It does nothing but will be used in a future version of the grid.\n * @param {string} [args.columnSelectorVisibleText='&nbsp;&nbsp;&nbsp&nbsp;'] - When a column is hidden, this is the value to the left of the title in the column selector content menu.\n * @param {string} [args.columnSelectorHiddenText='\\u2713'] - When a column is visible, this is the value to the left of the title in the column selector content menu.\n * @param {string} [args.columnSelectorText='Add/remove columns'] - The text of the column selector context menu.\n * @param {string} [args.hideColumnText='Hide %s'] - The text displayed on the hide column .\n * @param {string} [args.showColumnSelector=true] - When true, the column selector context menu is visible.\n * @param {string} [args.touchContextMenuTimeMs=800] - The length of time in milliseconds before a context menu appears on touch start within the touch dead zone.\n * @param {string} [args.scrollAnimationPPSThreshold=0.75] - How many points per second must be achieved before touch animation occurs on touch release.\n * @param {string} [args.touchSelectHandleZone=20] - Radius of pixels around touch select handles that touch select handles respond to.\n * @param {string} [args.touchEasingMethod=easeOutQuad] - Animation easing method used for touch release animation.  Valid values are easeOutQuad, easeOutCubic, easeOutQuart, easeOutQuint.\n * @param {string} [args.snapToRow=false] - When true, scrolling snaps to the top row.\n * @param {string} [args.touchZoomSensitivity=0.005] - The scale at which \"pinch to zoom\" screen pixels are converted to scale values.\n * @param {string} [args.touchZoomMin=0.5] - The minimum zoom scale.\n * @param {string} [args.touchZoomMax=1.75] - The maximum zoom scale.\n * @param {canvasDatagrid.style} [args.style={}] - Sets selected values in style.\n * @param {canvasDatagrid.filter} [args.filters={}] - Sets selected values in filters.  See {@tutorial filters}.\n * @param {canvasDatagrid.sorter} [args.sorters={}] - Sets selected values in sorters.  See {@tutorial sorters}.\n * @param {canvasDatagrid.formatter} [args.formatters={}] - Sets selected values in formatters.  See {@tutorial formatters}.\n * @property {array} selectedRows - Selected rows.  Looks just like the data you passed in, but filtered for the rows the user has cells selected in.  If any cell in the row is selected, all data for that row will appear in this array.\n * @property {array} selectedCells - Jagged array of cells that the user has selected.  Beware that because this is a jagged array, some indexes will be `null`.  Besides the `null`s this data looks just like the data you passed in, but just the cells the user has selected.  So if the user has selected cell 10 in a 10 column row, there will be 9 `null`s followed by the data from column 10.\n * @property {array} changes - Array of changes and additions made to the grid since last time data was loaded.  The data property will change with changes as well, but this is a convince list of all the changes in one spot.  Calling `clearChangeLog` will clear this list.\n * @property {object} input - Reference to the the edit cell when editing.  Undefined when not editing.  When editing, this DOM element is superimposed over the cell being edited and is fully visible.\n * @property {object} controlInput - Input used for key controls on the grid.  Any clicks on the grid will cause this input to be focused.  This input is hidden above the top left corner of the browser window.\n * @property {canvasDatagrid.cell} currentCell - Cell that the mouse moved over last.\n * @property {number} height - Height of the grid.\n * @property {number} width - Width of the grid.\n * @property {array} visibleCells - Array of cell drawn.\n * @property {array} visibleRows - Array of visible row indexes.\n * @property {array} selections - Matrix array of selected cells.\n * @property {rect} selectionBounds - Bounds of current selection.\n * @property {object} attributes - Object that contains the properties listed in the attributes section.  These properties can be used at runtime to alter attributes set during instantiation.  See the attributes section for full documentation.\n * @property {object} sizes - Mutable object that contains `sizes.columns` and `sizes.rows` arrays.  These arrays control the sizes of the columns and rows.  If there is not an entry for the row or column index it will fall back to the style default.\n * @property {canvasDatagrid.style} style - Object that contains the properties listed in the style section.  Changing a style will automatically call `draw`.\n * @property {string} dragMode - Represents the currently displayed resize cursor.  Can be `ns-resize`, `ew-resize`, `pointer`, or `inherit`.\n * @property {canvasDatagrid.formatter} formatters - Object that contains formatting functions for displaying text.  The properties in this object match the `schema[].type` property.  For example, if the schema for a given column was of the type `date` the grid would look for a formatter called `formatters.date` if a formatter cannot be found for a given data type a warning will be logged and the string formatter will be used. Formatters must return a string value to be displayed in the cell.  See {@tutorial formatters}.\n * @property {canvasDatagrid.sorter} sorters - Object that contains a list of sorting functions for sorting columns.   See {@tutorial sorters}.\n * @property {canvasDatagrid.filter} filters - Object that contains a list of filters for filtering data.  The properties in this object match the `schema[].type` property.  For example, if the schema for a given column was of the type `date` the grid would look for a filter called `filters.date` if a filter cannot be found for a given data type a warning will be logged and the string/RegExp filter will be used.   See {@tutorial filters}.\n * @property {canvasDatagrid.data} data - This is how data is set in the grid.  Data must be an array of objects that conform to a schema.  Data values can be any primitive type.  However if a cell value is another data array, an inner grid will be rendered into the cell.  This \"cell grid\" is different than a \"tree grid\" (the sort you drill in with a row header arrow) and uses the `cellGridAttributes` attribute for properties and styling. See {@tutorial data}.\n * @property {canvasDatagrid.schema} schema - Schema is optional.  Schema is an array of {canvasDatagrid.header} objects.  If no schema is provided one will be generated from the data, in that case all data will be assumed to be string data. See {@tutorial schema}.\n * @property {number} scrollHeight - The total number of pixels that can be scrolled down.\n * @property {number} scrollWidth - The total number of pixels that can be scrolled to the left.\n * @property {number} scrollTop - The current position of the vertical scroll bar in pixels.\n * @property {number} scrollLeft - The current position of the horizontal scroll bar in pixels.\n * @property {number} offsetTop - The offset top of the grid.\n * @property {number} offsetLeft - The offset left of the grid.\n * @property {boolean} isChildGrid - When true, this grid is a child grid of another grid.  Meaning, it appears as a tree grid or a cell grid of another parent grid.\n * @property {boolean} openChildren - List of open child grids by internal unique row id.\n * @property {boolean} childGrids - Child grids in this grid organized by internal unique row id.\n * @property {canvasDatagrid} parentGrid - If this grid is a child grid, this is the grids parent.\n * @property {object} canvas - The canvas element drawn onto for this grid.\n * @property {HTMLElement} shadowRoot - The shadow root element.\n * @property {object} activeCell - Gets the active cell.  Consists of the properties rowIndex and columnIndex.\n * @property {boolean} hasFocus - When true, the grid is has focus.\n * @property {array} visibleRowHeights - The heights of the visible rows.\n * @property {boolean} isChildGrid - When true, this grid is within another grid.\n * @property {HTMLElement} parentNode - The parent node of the canvas, usually the shadow DOM's parent element.\n * @property {object} scrollIndexRect - Rect describing the view port of the virtual canvas in column and row indexes.  If you only want to do things to visible cells, this is a good property to check what the range of visible cells is.\n * @property {object} scrollPixelRect - Rect describing view port of the virtual canvas in pixels.\n * @property {number} frozenColumn - The highest frozen column index.  Setting a value higher than the possible visible columns will result in a range error.\n * @property {number} frozenRow - The highest frozen row index.  Setting a value higher than the possible visible rows will result in a range error.\n*/",
+        "comment": "/**\n * Hierarchical canvas based web component.\n * @class\n * @name canvasDatagrid\n * @see https://github.com/TonyGermaneri/canvas-datagrid\n * @see https://tonygermaneri.github.io/canvas-datagrid/docs/tutorial-sample.html\n * @see https://tonygermaneri.github.io/canvas-datagrid/docs/tutorial-webcomponent.html\n * @see https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html\n * @see https://tonygermaneri.github.io/canvas-datagrid/tutorials/amdDemo.html\n * @see https://tonygermaneri.github.io/canvas-datagrid/tutorials/webcomponentDemo.html\n * @see https://tonygermaneri.github.io/canvas-datagrid/tutorials/sparklineDemo.html\n * @author Tony Germaneri (TonyGermaneri@gmail.com)\n * @param {object} args Parameters for the grid.\n * @param {object} args.parentNode HTML element that will hold the grid.  This block element must have a height, canvas-datagrid will add a canvas itself and will match itself to this element's dimensions.  It will resize itself on window.resize events, and DOM mutation.  But you may need to invoke canvas-datagrid.resize() manually if you find it does not maintain size in your use case.  When using the non web component the parentNode can be a canvas.\n * @param {object} [args.name] Optional value that will allow the saving of column height, row width, etc. to the browser's local store. This name should be unique to this grid.\n * @param {boolean} [args.tree=false] - When true, an arrow will be drawn on each row that when clicked raises the See {@link canvasDatagrid#event:expandtree} event for that row and creates an inner grid.  See {@link tutorial--Allow-users-to-open-trees}.\n * @param {boolean} [args.treeHorizontalScroll=false] - When true, expanded child grids will scroll horizontally with the parent columns. When false, when scrolling horizontally child grids will remain stationary. This does not impact vertical scrolling behavior.\n * @param {object} [args.cellGridAttributes] - Attributes used for cell grids. These child grids are different than the tree grids. See the {@link canvasDatagrid.data} property for more information about cell grids.\n * @param {boolean} [args.showNewRow=true] - When true, a row will appear at the bottom of the data set. schema[].defaultValue will define a default value for each cell. defaultValue can be a string or a function. When a function is used, the arguments header and index will be passed to the function. The value returned by the function will be the value in the new cell.  See {@link canvasDatagrid.header.defaultValue}\n * @param {boolean} [args.saveAppearance=true] - When true, and the attribute name is set, column and row sizes will be saved to the browser's localStore.\n * @param {boolean} [args.selectionFollowsActiveCell=false] - When true, moving the active cell with keystrokes will also change the selection.\n * @param {boolean} [args.multiLine=false] - When true, edit cells will be textareas, when false edit cells will be inputs.  See {@link tutorial--Use-a-textarea-to-edit-cells-instead-of-an-input.}\n * @param {boolean} [args.globalRowResize=false] - When true, resizing a row will resize all rows to the same height.\n * @param {boolean} [args.editable=true] - When true, cells can be edited. When false, grid is read only to the user.\n * @param {string} [args.borderDragBehavior='none'] - Can be set to 'resize', 'move', or 'none'.  If set to 'move', `allowMovingSelection` should also be set true.  If set to 'resize', `allowRowResizeFromCell` and/or `allowColumnResizeFromCell` should be set true.\n * @param {boolean} [args.allowFreezingRows=false] - When true, the UI provides a drag-able cutter to freeze rows.\n * @param {boolean} [args.allowFreezingColumns=false] - When true, the UI provides a drag-able cutter to freeze columns.\n * @param {boolean} [args.allowColumnReordering=true] - When true columns can be reordered.\n * @param {boolean} [args.allowMovingSelection=false] - When true selected data can be moved by clicking and dragging on the border of the selection.\n * @param {boolean} [args.allowRowReordering=false] - When true rows can be reordered.\n * @param {boolean} [args.allowSorting=true] - Allow user to sort rows by clicking on column headers.\n * @param {boolean} [args.showFilter=true] - When true, filter will be an option in the context menu.\n * @param {number} [args.pageUpDownOverlap=1] - Amount of rows to overlap when pageup/pagedown is used.\n * @param {boolean} [args.persistantSelectionMode=false] - When true, selections will behave as if the command/control key is held down at all times.\n * @param {boolean} [args.selectionMode='cell'] - Can be 'cell', or 'row'.  This setting dictates what will be selected when the user clicks a cell.  The cell, or the entire row respectively.\n * @param {boolean} [args.autoResizeColumns=false] - When true, all columns will be automatically resized to fit the data in them. Warning! Expensive for large (&gt;100k ~2 seconds) datasets.\n * @param {boolean} [args.allowRowHeaderResize=true] - When true, the user can resize the width of the row headers.\n * @param {boolean} [args.allowColumnResize=true] - When true, the user can resize the width of the columns.\n * @param {boolean} [args.allowRowResize=true] - When true, the user can resize the row headers increasing the height of the row.\n * @param {boolean} [args.allowRowResizeFromCell=false] - When true, the user can resize the height of the row from the border of the cell.\n * @param {boolean} [args.allowColumnResizeFromCell=false] - When true, the user can resize the width of the column from the border of the cell.\n * @param {boolean} [args.showPerformance=false] - When true, a graph showing performance is rendered.\n * @param {boolean} [args.debug=false] - When true, debug info will be drawn on top of the grid.\n * @param {number} [args.borderResizeZone=10] - Number of pixels in total around a border that count as resize zones.\n * @param {boolean} [args.showColumnHeaders=true] - When true, headers are shown.\n * @param {boolean} [args.showRowNumbers=true] - When true, row numbers are shown in the row headers.\n * @param {boolean} [args.showRowHeaders=true] - When true, row headers are shown.\n * @param {boolean} [args.reorderDeadZone=3] - Number of pixels needed to move before column reordering occurs.\n * @param {boolean} [args.showClearSettingsOption=true] - Show an option on the context menu to clear saved settings.\n * @param {boolean} [args.clearSettingsOptionText='Clear saved settings'] - Text that appears on the clear settings option.\n * @param {boolean} [args.showOrderByOptionTextDesc='Order by %s ascending'] - Text that appears on the order by descending option.\n * @param {boolean} [args.showOrderByOptionTextAsc='Order by %s desc'] - Text that appears on the order by ascending option.\n * @param {boolean} [args.showOrderByOption=true] - Show an option on the context menu sort rows.\n * @param {boolean} [args.showPaste=false] - Show the paste option in the context menu when applicable.\n * @param {boolean} [args.schema=[]] - Sets the schema. See {@link canvasDatagrid.schema}.\n * @param {boolean} [args.data=[]] - Sets the data. See {@link canvasDatagrid.data}.\n * @param {boolean} [args.touchReleaseAnimationDurationMs=2000] - How long the ease animation runs after touch release.\n * @param {boolean} [args.touchReleaseAcceleration=1000] - How many times the detected pixel per inch touch swipe is multiplied on release.  Higher values mean more greater touch release movement.\n * @param {boolean} [args.touchDeadZone=3] - How many pixels a touch must move within `attributes.touchSelectTimeMs` to be considered scrolling rather than selecting.\n * @param {boolean} [args.touchScrollZone=30] - When touching, the scroll element hit boxes are increased by this number of pixels for easier touching.\n * @param {boolean} [args.showCopy=true] - When true, copy will appear on the context menu when it is available.\n * @param {string} [args.pasteText=Paste] - The text that appears on the context menu when paste is available.\n * @param {string} [args.copyText=Copy] - The text that appears on the context menu when copy is available.\n * @param {string} [args.columnHeaderClickBehavior=sort] - Can be any of sort, select, none.  When sort is selected, left clicking a column header will result in sorting ascending, then sorting descending if already sorted by this column.  If select is selected then clicking a column header will result in the column becoming selected.  Holding control/command or shift will select multiple columns in this mode.\n * @param {boolean} [args.scrollPointerLock=false] - When true, clicking on the scroll box to scroll will cause the mouse cursor to disappear to prevent it from exiting the area observable to the grid.\n * @param {string} [args.selectionHandleBehavior='none'] - When set to a value other than none a handle will appear in the lower right corner of the desktop version of the grid.  It does nothing but will be used in a future version of the grid.\n * @param {string} [args.columnSelectorVisibleText='&nbsp;&nbsp;&nbsp&nbsp;'] - When a column is hidden, this is the value to the left of the title in the column selector content menu.\n * @param {string} [args.columnSelectorHiddenText='\\u2713'] - When a column is visible, this is the value to the left of the title in the column selector content menu.\n * @param {string} [args.columnSelectorText='Add/remove columns'] - The text of the column selector context menu.\n * @param {string} [args.hideColumnText='Hide %s'] - The text displayed on the hide column .\n * @param {string} [args.showColumnSelector=true] - When true, the column selector context menu is visible.\n * @param {string} [args.touchContextMenuTimeMs=800] - The length of time in milliseconds before a context menu appears on touch start within the touch dead zone.\n * @param {string} [args.scrollAnimationPPSThreshold=0.75] - How many points per second must be achieved before touch animation occurs on touch release.\n * @param {string} [args.touchSelectHandleZone=20] - Radius of pixels around touch select handles that touch select handles respond to.\n * @param {string} [args.touchEasingMethod=easeOutQuad] - Animation easing method used for touch release animation.  Valid values are easeOutQuad, easeOutCubic, easeOutQuart, easeOutQuint.\n * @param {string} [args.snapToRow=false] - When true, scrolling snaps to the top row.\n * @param {string} [args.touchZoomSensitivity=0.005] - The scale at which \"pinch to zoom\" screen pixels are converted to scale values.\n * @param {string} [args.touchZoomMin=0.5] - The minimum zoom scale.\n * @param {string} [args.touchZoomMax=1.75] - The maximum zoom scale.\n * @param {canvasDatagrid.style} [args.style={}] - Sets selected values in style.\n * @param {canvasDatagrid.filter} [args.filters={}] - Sets selected values in filters.  See {@link canvasDatagrid.filters}.\n * @param {canvasDatagrid.sorter} [args.sorters={}] - Sets selected values in sorters.  See {@link canvasDatagrid.sorters}.\n * @param {canvasDatagrid.formatter} [args.formatters={}] - Sets selected values in formatters.  See {@link canvasDatagrid.formatters}.\n * @property {array} selectedRows - Selected rows.  Same as the `data` property but filtered for the rows the user has cells selected in.  If any cell in the row is selected, all data for that row will appear in this array.\n * @property {array} selectedCells - Jagged array of cells that the user has selected.  Beware that because this is a jagged array, some indexes will be `null`.  Besides the `null`s this data looks just like the data you passed in, but just the cells the user has selected.  So if the user has selected cell 10 in a 10 column row, there will be 9 `null`s followed by the data from column 10.\n * @property {array} changes - Array of changes and additions made to the grid since last time data was loaded.  The data property will change with changes as well, but this is a convince list of all the changes in one spot.  Calling `clearChangeLog` will clear this list.\n * @property {object} input - Reference to the the edit cell when editing.  Undefined when not editing.  When editing, this DOM element is superimposed over the cell being edited and is fully visible.\n * @property {object} controlInput - Input used for key controls on the grid.  Any clicks on the grid will cause this input to be focused.  This input is hidden above the top left corner of the browser window.\n * @property {canvasDatagrid.cell} currentCell - Cell that the mouse moved over last.\n * @property {number} height - Height of the grid.\n * @property {number} width - Width of the grid.\n * @property {array} visibleCells - Array of cell drawn.\n * @property {array} visibleRows - Array of visible row indexes.\n * @property {array} selections - Matrix array of selected cells.\n * @property {rect} selectionBounds - Bounds of current selection.\n * @property {object} attributes - Object that contains the properties listed in the attributes section.  These properties can be used at runtime to alter attributes set during instantiation.  See the See {@link canvasDatagrid.params} section for full documentation.\n * @property {object} sizes - Mutable object that contains `sizes.columns` and `sizes.rows` arrays.  These arrays control the sizes of the columns and rows.  If there is not an entry for the row or column index it will fall back to the style default.\n * @property {canvasDatagrid.style} style - Object that contains the properties listed in the style section.  Changing a style will automatically call `draw`.\n * @property {string} dragMode - Represents the currently displayed resize cursor.  Can be `ns-resize`, `ew-resize`, `pointer`, or `inherit`.\n * @property {canvasDatagrid.formatter} formatters - Object that contains formatting functions for displaying text.  The properties in this object match the `schema[].type` property.  For example, if the schema for a given column was of the type `date` the grid would look for a formatter called `formatters.date` if a formatter cannot be found for a given data type a warning will be logged and the string formatter will be used. Formatters must return a string value to be displayed in the cell.  See {@link canvasDatagrid.formatters}.\n * @property {canvasDatagrid.sorter} sorters - Object that contains a list of sorting functions for sorting columns.   See {@tutorial sorters}.\n * @property {canvasDatagrid.filter} filters - Object that contains a list of filters for filtering data.  The properties in this object match the `schema[].type` property.  For example, if the schema for a given column was of the type `date` the grid would look for a filter called `filters.date` if a filter cannot be found for a given data type a warning will be logged and the string/RegExp filter will be used.   See {@link canvasDatagrid.filters}.\n * @property {canvasDatagrid.data} data - This is how data is set in the grid.  Data must be an array of objects that conform to a schema.  Data values can be any primitive type.  However if a cell value is another data array, an inner grid will be rendered into the cell.  This \"cell grid\" is different than a \"tree grid\" (the sort you drill in with a row header arrow) and uses the `cellGridAttributes` attribute for properties and styling. See {@link canvasDatagrid.data}.\n * @property {canvasDatagrid.schema} schema - Schema is optional.  Schema is an array of {canvasDatagrid.header} objects.  If no schema is provided one will be generated from the data, in that case all data will be assumed to be string data. See {@link canvasDatagrid.schema}.\n * @property {number} scrollHeight - The total number of pixels that can be scrolled down.\n * @property {number} scrollWidth - The total number of pixels that can be scrolled to the left.\n * @property {number} scrollTop - The current position of the vertical scroll bar in pixels.\n * @property {number} scrollLeft - The current position of the horizontal scroll bar in pixels.\n * @property {number} offsetTop - The offset top of the grid.\n * @property {number} offsetLeft - The offset left of the grid.\n * @property {boolean} isChildGrid - When true, this grid is a child grid of another grid.  Meaning, it appears as a tree grid or a cell grid of another parent grid.\n * @property {boolean} openChildren - List of open child grids by internal unique row id.\n * @property {boolean} childGrids - Child grids in this grid organized by internal unique row id.\n * @property {canvasDatagrid} parentGrid - If this grid is a child grid, this is the grids parent.\n * @property {object} canvas - The canvas element drawn onto for this grid.\n * @property {HTMLElement} shadowRoot - The shadow root element.\n * @property {object} activeCell - Gets the active cell.  Consists of the properties rowIndex and columnIndex.\n * @property {boolean} hasFocus - When true, the grid is has focus.\n * @property {array} visibleRowHeights - The heights of the visible rows.\n * @property {boolean} isChildGrid - When true, this grid is within another grid.\n * @property {HTMLElement} parentNode - The parent node of the canvas, usually the shadow DOM's parent element.\n * @property {object} scrollIndexRect - Rect describing the view port of the virtual canvas in column and row indexes.  If you only want to do things to visible cells, this is a good property to check what the range of visible cells is.\n * @property {object} scrollPixelRect - Rect describing view port of the virtual canvas in pixels.\n * @property {number} frozenColumn - The highest frozen column index.  Setting a value higher than the possible visible columns will result in a range error.\n * @property {number} frozenRow - The highest frozen row index.  Setting a value higher than the possible visible rows will result in a range error.\n*/",
         "meta": {
             "filename": "docs.js",
             "lineno": 1,
@@ -7682,7 +7682,7 @@ window.reflection = [
                         "object"
                     ]
                 },
-                "description": "HTML element that will hold the grid.  This block element must have a height, canvas-datagrid will add a canvas itself and will match itself to this element's dimensions.  It will resize itself on window.resize events, and DOM mutation.  But you may need to invoke canvas-datagrid.resize() manually if you find it does not maintain size in your use case.",
+                "description": "HTML element that will hold the grid.  This block element must have a height, canvas-datagrid will add a canvas itself and will match itself to this element's dimensions.  It will resize itself on window.resize events, and DOM mutation.  But you may need to invoke canvas-datagrid.resize() manually if you find it does not maintain size in your use case.  When using the non web component the parentNode can be a canvas.",
                 "name": "args.parentNode"
             },
             {
@@ -7703,7 +7703,7 @@ window.reflection = [
                 },
                 "optional": true,
                 "defaultvalue": false,
-                "description": "When true, an arrow will be drawn on each row that when clicked raises the {@link canvasDatagrid.expandTree} event for that row and creates an inner grid.",
+                "description": "When true, an arrow will be drawn on each row that when clicked raises the See {@link canvasDatagrid#event:expandtree} event for that row and creates an inner grid.  See {@link tutorial--Allow-users-to-open-trees}.",
                 "name": "args.tree"
             },
             {
@@ -7724,7 +7724,7 @@ window.reflection = [
                     ]
                 },
                 "optional": true,
-                "description": "Attributes used for cell grids. These child grids are different than the tree grids. See the data property for more information about cell grids.",
+                "description": "Attributes used for cell grids. These child grids are different than the tree grids. See the {@link canvasDatagrid.data} property for more information about cell grids.",
                 "name": "args.cellGridAttributes"
             },
             {
@@ -7735,7 +7735,7 @@ window.reflection = [
                 },
                 "optional": true,
                 "defaultvalue": true,
-                "description": "When true, a row will appear at the bottom of the data set. schema[].defaultValue will define a default value for each cell. defaultValue can be a string or a function. When a function is used, the arguments header and index will be passed to the function. The value returned by the function will be the value in the new cell.",
+                "description": "When true, a row will appear at the bottom of the data set. schema[].defaultValue will define a default value for each cell. defaultValue can be a string or a function. When a function is used, the arguments header and index will be passed to the function. The value returned by the function will be the value in the new cell.  See {@link canvasDatagrid.header.defaultValue}",
                 "name": "args.showNewRow"
             },
             {
@@ -7768,7 +7768,7 @@ window.reflection = [
                 },
                 "optional": true,
                 "defaultvalue": false,
-                "description": "When true, edit cells will be textareas, when false edit cells will be inputs.",
+                "description": "When true, edit cells will be textareas, when false edit cells will be inputs.  See {@link tutorial--Use-a-textarea-to-edit-cells-instead-of-an-input.}",
                 "name": "args.multiLine"
             },
             {
@@ -8131,7 +8131,7 @@ window.reflection = [
                 },
                 "optional": true,
                 "defaultvalue": "[]",
-                "description": "Sets the schema. See {@tutorial schema}.",
+                "description": "Sets the schema. See {@link canvasDatagrid.schema}.",
                 "name": "args.schema"
             },
             {
@@ -8142,7 +8142,7 @@ window.reflection = [
                 },
                 "optional": true,
                 "defaultvalue": "[]",
-                "description": "Sets the data. See {@tutorial data}.",
+                "description": "Sets the data. See {@link canvasDatagrid.data}.",
                 "name": "args.data"
             },
             {
@@ -8417,7 +8417,7 @@ window.reflection = [
                 },
                 "optional": true,
                 "defaultvalue": "{}",
-                "description": "Sets selected values in filters.  See {@tutorial filters}.",
+                "description": "Sets selected values in filters.  See {@link canvasDatagrid.filters}.",
                 "name": "args.filters"
             },
             {
@@ -8428,7 +8428,7 @@ window.reflection = [
                 },
                 "optional": true,
                 "defaultvalue": "{}",
-                "description": "Sets selected values in sorters.  See {@tutorial sorters}.",
+                "description": "Sets selected values in sorters.  See {@link canvasDatagrid.sorters}.",
                 "name": "args.sorters"
             },
             {
@@ -8439,7 +8439,7 @@ window.reflection = [
                 },
                 "optional": true,
                 "defaultvalue": "{}",
-                "description": "Sets selected values in formatters.  See {@tutorial formatters}.",
+                "description": "Sets selected values in formatters.  See {@link canvasDatagrid.formatters}.",
                 "name": "args.formatters"
             }
         ],
@@ -8450,7 +8450,7 @@ window.reflection = [
                         "array"
                     ]
                 },
-                "description": "Selected rows.  Looks just like the data you passed in, but filtered for the rows the user has cells selected in.  If any cell in the row is selected, all data for that row will appear in this array.",
+                "description": "Selected rows.  Same as the `data` property but filtered for the rows the user has cells selected in.  If any cell in the row is selected, all data for that row will appear in this array.",
                 "name": "selectedRows"
             },
             {
@@ -8558,7 +8558,7 @@ window.reflection = [
                         "object"
                     ]
                 },
-                "description": "Object that contains the properties listed in the attributes section.  These properties can be used at runtime to alter attributes set during instantiation.  See the attributes section for full documentation.",
+                "description": "Object that contains the properties listed in the attributes section.  These properties can be used at runtime to alter attributes set during instantiation.  See the See {@link canvasDatagrid.params} section for full documentation.",
                 "name": "attributes"
             },
             {
@@ -8594,7 +8594,7 @@ window.reflection = [
                         "canvasDatagrid.formatter"
                     ]
                 },
-                "description": "Object that contains formatting functions for displaying text.  The properties in this object match the `schema[].type` property.  For example, if the schema for a given column was of the type `date` the grid would look for a formatter called `formatters.date` if a formatter cannot be found for a given data type a warning will be logged and the string formatter will be used. Formatters must return a string value to be displayed in the cell.  See {@tutorial formatters}.",
+                "description": "Object that contains formatting functions for displaying text.  The properties in this object match the `schema[].type` property.  For example, if the schema for a given column was of the type `date` the grid would look for a formatter called `formatters.date` if a formatter cannot be found for a given data type a warning will be logged and the string formatter will be used. Formatters must return a string value to be displayed in the cell.  See {@link canvasDatagrid.formatters}.",
                 "name": "formatters"
             },
             {
@@ -8612,7 +8612,7 @@ window.reflection = [
                         "canvasDatagrid.filter"
                     ]
                 },
-                "description": "Object that contains a list of filters for filtering data.  The properties in this object match the `schema[].type` property.  For example, if the schema for a given column was of the type `date` the grid would look for a filter called `filters.date` if a filter cannot be found for a given data type a warning will be logged and the string/RegExp filter will be used.   See {@tutorial filters}.",
+                "description": "Object that contains a list of filters for filtering data.  The properties in this object match the `schema[].type` property.  For example, if the schema for a given column was of the type `date` the grid would look for a filter called `filters.date` if a filter cannot be found for a given data type a warning will be logged and the string/RegExp filter will be used.   See {@link canvasDatagrid.filters}.",
                 "name": "filters"
             },
             {
@@ -8621,7 +8621,7 @@ window.reflection = [
                         "canvasDatagrid.data"
                     ]
                 },
-                "description": "This is how data is set in the grid.  Data must be an array of objects that conform to a schema.  Data values can be any primitive type.  However if a cell value is another data array, an inner grid will be rendered into the cell.  This \"cell grid\" is different than a \"tree grid\" (the sort you drill in with a row header arrow) and uses the `cellGridAttributes` attribute for properties and styling. See {@tutorial data}.",
+                "description": "This is how data is set in the grid.  Data must be an array of objects that conform to a schema.  Data values can be any primitive type.  However if a cell value is another data array, an inner grid will be rendered into the cell.  This \"cell grid\" is different than a \"tree grid\" (the sort you drill in with a row header arrow) and uses the `cellGridAttributes` attribute for properties and styling. See {@link canvasDatagrid.data}.",
                 "name": "data"
             },
             {
@@ -8630,7 +8630,7 @@ window.reflection = [
                         "canvasDatagrid.schema"
                     ]
                 },
-                "description": "Schema is optional.  Schema is an array of {canvasDatagrid.header} objects.  If no schema is provided one will be generated from the data, in that case all data will be assumed to be string data. See {@tutorial schema}.",
+                "description": "Schema is optional.  Schema is an array of {canvasDatagrid.header} objects.  If no schema is provided one will be generated from the data, in that case all data will be assumed to be string data. See {@link canvasDatagrid.schema}.",
                 "name": "schema"
             },
             {
@@ -8885,7 +8885,7 @@ window.reflection = [
         "___s": true
     },
     {
-        "comment": "/**\n * A formatting function.  Must be a member of (property of) {@link canvasDatagrid#formatters} and match a type from one of the {@link canvasDatagrid.header}s in {canvasDatagrid.schema}.\n * @abstract\n * @function\n * @name canvasDatagrid.formatter\n * @param {object} e - Formatting event object.\n * @param {canvasDatagrid.cell} e.cell - Cell being formatted.\n*/",
+        "comment": "/**\n * A formatting function.  Must be a member of (property of) {@link canvasDatagrid.formatters} and match a type from one of the {@link canvasDatagrid.header}s in {@link canvasDatagrid.schema}.\n * @abstract\n * @function\n * @name canvasDatagrid.formatter\n * @param {object} e - Formatting event object.\n * @param {canvasDatagrid.cell} e.cell - Cell being formatted.\n*/",
         "meta": {
             "filename": "docs.js",
             "lineno": 137,
@@ -8893,7 +8893,7 @@ window.reflection = [
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
         },
-        "description": "A formatting function.  Must be a member of (property of) {@link canvasDatagrid#formatters} and match a type from one of the {@link canvasDatagrid.header}s in {canvasDatagrid.schema}.",
+        "description": "A formatting function.  Must be a member of (property of) {@link canvasDatagrid.formatters} and match a type from one of the {@link canvasDatagrid.header}s in {@link canvasDatagrid.schema}.",
         "virtual": true,
         "kind": "function",
         "name": "formatter",
@@ -8924,7 +8924,7 @@ window.reflection = [
         "___s": true
     },
     {
-        "comment": "/**\n * A filter function.  Filter should return true when the value should be kept, and false if the value should be filtered out.  Must be a member of (property of) {canvasDatagrid.filters} and match a type from one of the {@link canvasDatagrid.header}s in {canvasDatagrid.schema}.\n * @abstract\n * @function\n * @name canvasDatagrid.filter\n * @param {string} value - The current value being checked.\n * @param {string} filterFor - The value being filtered against.\n*/",
+        "comment": "/**\n * A filter function.  Filter should return true when the value should be kept, and false if the value should be filtered out.  Must be a member of (property of) {canvasDatagrid.filters} and match a type from one of the {@link canvasDatagrid.header}s in {@link canvasDatagrid.schema}.\n * @abstract\n * @function\n * @name canvasDatagrid.filter\n * @param {string} value - The current value being checked.\n * @param {string} filterFor - The value being filtered against.\n*/",
         "meta": {
             "filename": "docs.js",
             "lineno": 145,
@@ -8932,7 +8932,7 @@ window.reflection = [
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
         },
-        "description": "A filter function.  Filter should return true when the value should be kept, and false if the value should be filtered out.  Must be a member of (property of) {canvasDatagrid.filters} and match a type from one of the {@link canvasDatagrid.header}s in {canvasDatagrid.schema}.",
+        "description": "A filter function.  Filter should return true when the value should be kept, and false if the value should be filtered out.  Must be a member of (property of) {canvasDatagrid.filters} and match a type from one of the {@link canvasDatagrid.header}s in {@link canvasDatagrid.schema}.",
         "virtual": true,
         "kind": "function",
         "name": "filter",
@@ -8963,7 +8963,7 @@ window.reflection = [
         "___s": true
     },
     {
-        "comment": "/**\n * A sorter function.  Must be a member of (property of) {@link canvasDatagrid#sorters} and match a type from one of the {@link canvasDatagrid.header}s in {@link canvasDatagrid#schema}.\n * @abstract\n * @function\n * @name canvasDatagrid.sorter\n * @param {string} columnName - Name of the column being sorted.\n * @param {string} direction - Direction of the column being sorted, either `asc` or `desc`.\n*/",
+        "comment": "/**\n * A sorter function.  Must be a member of (property of) {@link canvasDatagrid.sorters} and match a type from one of the {@link canvasDatagrid.header}s in {@link canvasDatagrid.schema}.\n * @abstract\n * @function\n * @name canvasDatagrid.sorter\n * @param {string} columnName - Name of the column being sorted.\n * @param {string} direction - Direction of the column being sorted, either `asc` or `desc`.\n*/",
         "meta": {
             "filename": "docs.js",
             "lineno": 153,
@@ -8971,7 +8971,7 @@ window.reflection = [
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
         },
-        "description": "A sorter function.  Must be a member of (property of) {@link canvasDatagrid#sorters} and match a type from one of the {@link canvasDatagrid.header}s in {@link canvasDatagrid#schema}.",
+        "description": "A sorter function.  Must be a member of (property of) {@link canvasDatagrid.sorters} and match a type from one of the {@link canvasDatagrid.header}s in {@link canvasDatagrid.schema}.",
         "virtual": true,
         "kind": "function",
         "name": "sorter",
@@ -9002,7 +9002,7 @@ window.reflection = [
         "___s": true
     },
     {
-        "comment": "/**\n * A header that describes the data in a column.  The term header and column are used interchangeably in this documentation.  The {@link canvasDatagrid#schema} is an array of {@link canvasDatagrid.header}.\n * @class\n * @name canvasDatagrid.header\n * @property {string} name - The name of the header.  This must match the property name of an object in the {@link canvasDatagrid#data} array.  This is the only required property of a {@link canvasDatagrid.header}.  This value will appear at the top of the column unless {@link canvasDatagrid.header#title} is defined.\n * @property {string} type - The data type of this header.  This value should match properties in {@link canvasDatagrid#formatters}, {@link canvasDatagrid#filters}, {canvasDatagrid.sorters} to take full advantage of formatting, sorting and filtering when not defining these properties within this header.\n * @property {string} title - The value that is actually displayed to the user at the top of the column.  If no value is present, {@link canvasDatagrid.header#name} will be used instead.\n * @property {number} width - The mutable width of this column in pixels.  The user can override this value if {@link canvasDatagrid#attributes.allowColumnResizing} is set to `true`.\n * @property {boolean} hidden - When true, the column will not be included in the visible schema.  This means selection, copy, and drawing functions will not display this column or values from this column.\n * @property {function} filter - A {@link canvasDatagrid.filter} function that defines how filters will work against data in this column.\n * @property {function} formatter - A {@link canvasDatagrid.formatter} function that defines how data will be formatted when drawn onto cells belonging to this column.\n * @property {function} sorter - A {@link canvasDatagrid.sorter} function that defines how data will sorted within this column.\n * @property {function|string} defaultValue - The default value of this column for new rows.  This can be a function or string.  When using a string, this string value will be used in the new cell.  When using a function, it must return a string, which will be used in the new cell.  The arguments passed to this function are: argument[0] = {@link canvasDatagrid.header}, argument[1] = row index.\n*/",
+        "comment": "/**\n * A header that describes the data in a column.  The term header and column are used interchangeably in this documentation.  The {@link canvasDatagrid.schema} is an array of {@link canvasDatagrid.header}.\n * @class\n * @name canvasDatagrid.header\n * @property {string} name - The name of the header.  This must match the property name of an object in the {@link canvasDatagrid.data} array.  This is the only required property of a {@link canvasDatagrid.header}.  This value will appear at the top of the column unless {@link canvasDatagrid.header.title} is defined.\n * @property {string} type - The data type of this header.  This value should match properties in {@link canvasDatagrid.formatters}, {@link canvasDatagrid.filters}, {@link canvasDatagrid.sorters} to take full advantage of formatting, sorting and filtering when not defining these properties within this header.\n * @property {string} title - The value that is actually displayed to the user at the top of the column.  If no value is present, {@link canvasDatagrid.header.name} will be used instead.\n * @property {number} width - The mutable width of this column in pixels.  The user can override this value if {@link canvasDatagrid.attributes.allowColumnResizing} is set to `true`.\n * @property {boolean} hidden - When true, the column will not be included in the visible schema.  This means selection, copy, and drawing functions will not display this column or values from this column.\n * @property {function} filter - A {@link canvasDatagrid.filter} function that defines how filters will work against data in this column.\n * @property {function} formatter - A {@link canvasDatagrid.formatter} function that defines how data will be formatted when drawn onto cells belonging to this column.\n * @property {function} sorter - A {@link canvasDatagrid.sorter} function that defines how data will sorted within this column.\n * @property {function|string} defaultValue - The default value of this column for new rows.  This can be a function or string.  When using a string, this string value will be used in the new cell.  When using a function, it must return a string, which will be used in the new cell.  The arguments passed to this function are: argument[0] = {@link canvasDatagrid.header}, argument[1] = row index.\n*/",
         "meta": {
             "filename": "docs.js",
             "lineno": 161,
@@ -9010,7 +9010,7 @@ window.reflection = [
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
         },
-        "description": "A header that describes the data in a column.  The term header and column are used interchangeably in this documentation.  The {@link canvasDatagrid#schema} is an array of {@link canvasDatagrid.header}.",
+        "description": "A header that describes the data in a column.  The term header and column are used interchangeably in this documentation.  The {@link canvasDatagrid.schema} is an array of {@link canvasDatagrid.header}.",
         "kind": "class",
         "name": "header",
         "properties": [
@@ -9020,7 +9020,7 @@ window.reflection = [
                         "string"
                     ]
                 },
-                "description": "The name of the header.  This must match the property name of an object in the {@link canvasDatagrid#data} array.  This is the only required property of a {@link canvasDatagrid.header}.  This value will appear at the top of the column unless {@link canvasDatagrid.header#title} is defined.",
+                "description": "The name of the header.  This must match the property name of an object in the {@link canvasDatagrid.data} array.  This is the only required property of a {@link canvasDatagrid.header}.  This value will appear at the top of the column unless {@link canvasDatagrid.header.title} is defined.",
                 "name": "name"
             },
             {
@@ -9029,7 +9029,7 @@ window.reflection = [
                         "string"
                     ]
                 },
-                "description": "The data type of this header.  This value should match properties in {@link canvasDatagrid#formatters}, {@link canvasDatagrid#filters}, {canvasDatagrid.sorters} to take full advantage of formatting, sorting and filtering when not defining these properties within this header.",
+                "description": "The data type of this header.  This value should match properties in {@link canvasDatagrid.formatters}, {@link canvasDatagrid.filters}, {@link canvasDatagrid.sorters} to take full advantage of formatting, sorting and filtering when not defining these properties within this header.",
                 "name": "type"
             },
             {
@@ -9038,7 +9038,7 @@ window.reflection = [
                         "string"
                     ]
                 },
-                "description": "The value that is actually displayed to the user at the top of the column.  If no value is present, {@link canvasDatagrid.header#name} will be used instead.",
+                "description": "The value that is actually displayed to the user at the top of the column.  If no value is present, {@link canvasDatagrid.header.name} will be used instead.",
                 "name": "title"
             },
             {
@@ -9047,7 +9047,7 @@ window.reflection = [
                         "number"
                     ]
                 },
-                "description": "The mutable width of this column in pixels.  The user can override this value if {@link canvasDatagrid#attributes.allowColumnResizing} is set to `true`.",
+                "description": "The mutable width of this column in pixels.  The user can override this value if {@link canvasDatagrid.attributes.allowColumnResizing} is set to `true`.",
                 "name": "width"
             },
             {
@@ -9104,7 +9104,7 @@ window.reflection = [
         "___s": true
     },
     {
-        "comment": "/**\n * A cell on the grid.\n * @abstract\n * @class\n * @name canvasDatagrid.cell\n * @property {string} type - Data type used by this cell as dictated by the column.\n * @property {string} style - Visual style of cell. Can be any one of cell, activeCell, columnHeaderCell, cornerCell, or rowHeaderCell. Prefix of each style name.\n * @property {number} x - The x coordinate of this cell on the grid.\n * @property {number} y - The y coordinate of this cell on the grid.\n * @property {string} nodeType - Always 'canvas-datagrid-cell'.\n * @property {number} offsetTop - The y coordinate of this cell on the grid canvas.\n * @property {number} offsetLeft - The x coordinate of this cell on the grid canvas.\n * @property {number} scrollTop - The scrollTop value of the scrollBox.\n * @property {number} scrollLeft - The scrollLeft value of the scrollBox.\n * @property {boolean} rowOpen - When true, this row is a tree grid enabled cell and the tree is in the open state.\n * @property {boolean} hovered - When true, this cell is hovered.\n * @property {boolean} selected - When true, this cell is selected.\n * @property {boolean} active - When true, this cell is the active cell.\n * @property {number} width - Width of the cell on the canvas.\n * @property {number} height - Height of the cell on the canvas.\n * @property {number} userWidth - User set width of the cell on the canvas. If undefined, the user has not set this column.\n * @property {number} userHeight - Height of the cell on the canvas. If undefined, the user has not set this row.\n * @property {object} data - The row of data this cell belongs to.\n * @property {header} header - The schema column this cell belongs to.\n * @property {number} columnIndex - The column index of the cell.\n * @property {number} rowIndex - The row index of the cell.\n * @property {number} sortColumnIndex - The column index of the cell after the user has reordered it.\n * @property {number} sortRowIndex - The column index of the cell after the user has reordered it.\n * @property {string} value - The value of the cell.\n * @property {string} formattedValue - The value after passing through any formatters.  See {@tutorial formatters}.\n * @property {boolean} isHeaderCellCap - When true, the cell is the cap at the right side end of the header cells.\n * @property {canvasDatagrid} parentGrid - The grid to which this cell belongs.\n * @property {string} gridId - If this cell contains a grid, this is the grids unique id.\n * @property {boolean} isGrid - When true, the cell is a grid.\n * @property {boolean} isHeader - When true, the cell is a column or row header.\n * @property {boolean} isColumnHeader - When true, the cell is a column header.\n * @property {boolean} isRowHeader - When true, the cell is a row header.\n * @property {boolean} isCorner - When true, the cell is the upper left corner cell.\n * @property {boolean} activeHeader - When true, the cell is an active header cell, meaning the active cell is in the same row or column.\n * @property {string} horizontalAlignment - The horizontal alignment of the cell.\n * @property {string} verticalAlignment - The vertical alignment of the cell.\n * @property {string} innerHTML - HTML, if any, in the cell.  If set, HTML will be rendered into the cell.\n * @property {object} text - The text object in the cell.\n * @property {object} text.x - The x coordinate of the text.\n * @property {object} text.y - The y coordinate of the text.\n * @property {object} text.width - The width of the text, including truncation and ellipsis.\n * @property {object} text.value - The value of the text, including truncation and ellipsis.\n*/",
+        "comment": "/**\n * A cell on the grid.\n * @abstract\n * @class\n * @name canvasDatagrid.cell\n * @property {string} type - Data type used by this cell as dictated by the column.\n * @property {string} style - Visual style of cell. Can be any one of cell, activeCell, columnHeaderCell, cornerCell, or rowHeaderCell. Prefix of each style name.\n * @property {number} x - The x coordinate of this cell on the grid.\n * @property {number} y - The y coordinate of this cell on the grid.\n * @property {string} nodeType - Always 'canvas-datagrid-cell'.\n * @property {number} offsetTop - The y coordinate of this cell on the grid canvas.\n * @property {number} offsetLeft - The x coordinate of this cell on the grid canvas.\n * @property {number} scrollTop - The scrollTop value of the scrollBox.\n * @property {number} scrollLeft - The scrollLeft value of the scrollBox.\n * @property {boolean} rowOpen - When true, this row is a tree grid enabled cell and the tree is in the open state.\n * @property {boolean} hovered - When true, this cell is hovered.\n * @property {boolean} selected - When true, this cell is selected.\n * @property {boolean} active - When true, this cell is the active cell.\n * @property {number} width - Width of the cell on the canvas.\n * @property {number} height - Height of the cell on the canvas.\n * @property {number} userWidth - User set width of the cell on the canvas. If undefined, the user has not set this column.\n * @property {number} userHeight - Height of the cell on the canvas. If undefined, the user has not set this row.\n * @property {object} data - The row of data this cell belongs to.\n * @property {header} header - The schema column this cell belongs to.\n * @property {number} columnIndex - The column index of the cell.\n * @property {number} rowIndex - The row index of the cell.\n * @property {number} sortColumnIndex - The column index of the cell after the user has reordered it.\n * @property {number} sortRowIndex - The column index of the cell after the user has reordered it.\n * @property {string} value - The value of the cell.\n * @property {string} formattedValue - The value after passing through any formatters.  See {@link canvasDatagrid.formatters}.\n * @property {boolean} isHeaderCellCap - When true, the cell is the cap at the right side end of the header cells.\n * @property {canvasDatagrid} parentGrid - The grid to which this cell belongs.\n * @property {string} gridId - If this cell contains a grid, this is the grids unique id.\n * @property {boolean} isGrid - When true, the cell is a grid.\n * @property {boolean} isHeader - When true, the cell is a column or row header.\n * @property {boolean} isColumnHeader - When true, the cell is a column header.\n * @property {boolean} isRowHeader - When true, the cell is a row header.\n * @property {boolean} isCorner - When true, the cell is the upper left corner cell.\n * @property {boolean} activeHeader - When true, the cell is an active header cell, meaning the active cell is in the same row or column.\n * @property {string} horizontalAlignment - The horizontal alignment of the cell.\n * @property {string} verticalAlignment - The vertical alignment of the cell.\n * @property {string} innerHTML - HTML, if any, in the cell.  If set, HTML will be rendered into the cell.\n * @property {object} text - The text object in the cell.\n * @property {object} text.x - The x coordinate of the text.\n * @property {object} text.y - The y coordinate of the text.\n * @property {object} text.width - The width of the text, including truncation and ellipsis.\n * @property {object} text.value - The value of the text, including truncation and ellipsis.\n*/",
         "meta": {
             "filename": "docs.js",
             "lineno": 175,
@@ -9339,7 +9339,7 @@ window.reflection = [
                         "string"
                     ]
                 },
-                "description": "The value after passing through any formatters.  See {@tutorial formatters}.",
+                "description": "The value after passing through any formatters.  See {@link canvasDatagrid.formatters}.",
                 "name": "formattedValue"
             },
             {
@@ -68420,7 +68420,7 @@ window.reflection = [
         "___s": true
     },
     {
-        "comment": "/**\n         * Inserts a new column before the specified index into the schema.\n         * @see canvasDatagrid#schema\n         * @tutorial schema\n         * @memberof canvasDatagrid\n         * @name insertColumn\n         * @method\n         * @param {column} c The column to insert into the schema.\n         * @param {number} index The index of the column to insert before.\n         */",
+        "comment": "/**\n         * Inserts a new column before the specified index into the schema.\n         * @tutorial schema\n         * @memberof canvasDatagrid\n         * @name insertColumn\n         * @method\n         * @param {column} c The column to insert into the schema.\n         * @param {number} index The index of the column to insert before.\n         */",
         "meta": {
             "filename": "publicMethods.js",
             "lineno": 26,
@@ -68429,9 +68429,6 @@ window.reflection = [
             "code": {}
         },
         "description": "Inserts a new column before the specified index into the schema.",
-        "see": [
-            "canvasDatagrid#schema"
-        ],
         "tutorials": [
             "schema"
         ],
@@ -68467,11 +68464,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                1300,
-                1736
+                1262,
+                1698
             ],
             "filename": "publicMethods.js",
-            "lineno": 36,
+            "lineno": 35,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -68502,11 +68499,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                1358,
-                1378
+                1320,
+                1340
             ],
             "filename": "publicMethods.js",
-            "lineno": 37,
+            "lineno": 36,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -68530,11 +68527,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                1705,
-                1725
+                1667,
+                1687
             ],
             "filename": "publicMethods.js",
-            "lineno": 46,
+            "lineno": 45,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -68558,7 +68555,7 @@ window.reflection = [
         "comment": "/**\n         * Deletes a column from the schema at the specified index.\n         * @memberof canvasDatagrid\n         * @name deleteColumn\n         * @tutorial schema\n         * @method\n         * @param {number} index The index of the column to delete.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 48,
+            "lineno": 47,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -68590,11 +68587,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                2019,
-                2340
+                1981,
+                2302
             ],
             "filename": "publicMethods.js",
-            "lineno": 56,
+            "lineno": 55,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -68624,11 +68621,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                2074,
-                2094
+                2036,
+                2056
             ],
             "filename": "publicMethods.js",
-            "lineno": 57,
+            "lineno": 56,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -68652,11 +68649,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                2309,
-                2329
+                2271,
+                2291
             ],
             "filename": "publicMethods.js",
-            "lineno": 63,
+            "lineno": 62,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -68677,18 +68674,15 @@ window.reflection = [
         "___s": true
     },
     {
-        "comment": "/**\n         * Adds a new column into the schema.\n         * @see canvasDatagrid#schema\n         * @tutorial schema\n         * @memberof canvasDatagrid\n         * @name addColumn\n         * @method\n         * @param {column} c The column to add to the schema.\n         */",
+        "comment": "/**\n         * Adds a new column into the schema.\n         * @tutorial schema\n         * @memberof canvasDatagrid\n         * @name addColumn\n         * @method\n         * @param {column} c The column to add to the schema.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 65,
+            "lineno": 64,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
         },
         "description": "Adds a new column into the schema.",
-        "see": [
-            "canvasDatagrid#schema"
-        ],
         "tutorials": [
             "schema"
         ],
@@ -68715,11 +68709,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                2630,
-                2916
+                2554,
+                2840
             ],
             "filename": "publicMethods.js",
-            "lineno": 74,
+            "lineno": 72,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -68749,11 +68743,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                2678,
-                2698
+                2602,
+                2622
             ],
             "filename": "publicMethods.js",
-            "lineno": 75,
+            "lineno": 73,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -68777,11 +68771,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                2885,
-                2905
+                2809,
+                2829
             ],
             "filename": "publicMethods.js",
-            "lineno": 81,
+            "lineno": 79,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -68805,7 +68799,7 @@ window.reflection = [
         "comment": "/**\n         * Deletes a row from the dataset at the specified index.\n         * @memberof canvasDatagrid\n         * @name deleteRow\n         * @method\n         * @param {number} index The index of the row to delete.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 83,
+            "lineno": 81,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -68834,11 +68828,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                3163,
-                3317
+                3087,
+                3241
             ],
             "filename": "publicMethods.js",
-            "lineno": 90,
+            "lineno": 88,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -68863,7 +68857,7 @@ window.reflection = [
         "comment": "/**\n         * Inserts a new row into the dataset before the specified index.\n         * @memberof canvasDatagrid\n         * @name insertRow\n         * @method\n         * @param {object} d data.\n         * @param {number} index The index of the row to insert before.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 95,
+            "lineno": 93,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -68901,11 +68895,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                3614,
-                4125
+                3538,
+                4049
             ],
             "filename": "publicMethods.js",
-            "lineno": 103,
+            "lineno": 101,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -68934,7 +68928,7 @@ window.reflection = [
         "comment": "/**\n         * Adds a new row into the dataset.\n         * @memberof canvasDatagrid\n         * @name addRow\n         * @method\n         * @param {object} d data.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 116,
+            "lineno": 114,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -68963,11 +68957,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                4317,
-                4684
+                4241,
+                4608
             ],
             "filename": "publicMethods.js",
-            "lineno": 123,
+            "lineno": 121,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -68995,7 +68989,7 @@ window.reflection = [
         "comment": "/**\n         * Sets the height of a given row by index number.\n         * @memberof canvasDatagrid\n         * @name setRowHeight\n         * @method\n         * @param {number} rowIndex The index of the row to set.\n         * @param {number} height Height to set the row to.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 133,
+            "lineno": 131,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -69033,11 +69027,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                4987,
-                5149
+                4911,
+                5073
             ],
             "filename": "publicMethods.js",
-            "lineno": 141,
+            "lineno": 139,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69066,11 +69060,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                5049,
-                5109
+                4973,
+                5033
             ],
             "filename": "publicMethods.js",
-            "lineno": 142,
+            "lineno": 140,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69094,7 +69088,7 @@ window.reflection = [
         "comment": "/**\n         * Sets the width of a given column by index number.\n         * @memberof canvasDatagrid\n         * @name setColumnWidth\n         * @method\n         * @param {number} colIndex The index of the column to set.\n         * @param {number} width Width to set the column to.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 145,
+            "lineno": 143,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -69132,11 +69126,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                5460,
-                5655
+                5384,
+                5579
             ],
             "filename": "publicMethods.js",
-            "lineno": 153,
+            "lineno": 151,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69166,11 +69160,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                5527,
-                5547
+                5451,
+                5471
             ],
             "filename": "publicMethods.js",
-            "lineno": 154,
+            "lineno": 152,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69194,11 +69188,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                5561,
-                5615
+                5485,
+                5539
             ],
             "filename": "publicMethods.js",
-            "lineno": 155,
+            "lineno": 153,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69222,7 +69216,7 @@ window.reflection = [
         "comment": "/**\n         * Removes any changes to the width of the columns due to user or api interaction, setting them back to the schema or style default.\n         * @memberof canvasDatagrid\n         * @name resetColumnWidths\n         * @tutorial schema\n         * @method\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 158,
+            "lineno": 156,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -69243,11 +69237,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                5948,
-                6062
+                5872,
+                5986
             ],
             "filename": "publicMethods.js",
-            "lineno": 165,
+            "lineno": 163,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69273,11 +69267,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                5999,
-                6022
+                5923,
+                5946
             ],
             "filename": "publicMethods.js",
-            "lineno": 166,
+            "lineno": 164,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69301,7 +69295,7 @@ window.reflection = [
         "comment": "/**\n         * Removes any changes to the height of the rows due to user or api interaction, setting them back to the schema or style default.\n         * @memberof canvasDatagrid\n         * @name resetRowHeights\n         * @tutorial schema\n         * @method\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 169,
+            "lineno": 167,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -69322,11 +69316,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                6351,
-                6460
+                6275,
+                6384
             ],
             "filename": "publicMethods.js",
-            "lineno": 176,
+            "lineno": 174,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69352,11 +69346,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                6400,
-                6420
+                6324,
+                6344
             ],
             "filename": "publicMethods.js",
-            "lineno": 177,
+            "lineno": 175,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69380,7 +69374,7 @@ window.reflection = [
         "comment": "/**\n         * Sets the value of the filter.\n         * @memberof canvasDatagrid\n         * @name setFilter\n         * @method\n         * @param {string} column Name of the column to filter.\n         * @param {string} value The value to filter for.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 180,
+            "lineno": 178,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -69418,11 +69412,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                6739,
-                7868
+                6663,
+                7792
             ],
             "filename": "publicMethods.js",
-            "lineno": 188,
+            "lineno": 186,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69453,11 +69447,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                6795,
-                7470
+                6719,
+                7394
             ],
             "filename": "publicMethods.js",
-            "lineno": 189,
+            "lineno": 187,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69484,11 +69478,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                6967,
-                7004
+                6891,
+                6928
             ],
             "filename": "publicMethods.js",
-            "lineno": 192,
+            "lineno": 190,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69512,11 +69506,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7115,
-                7189
+                7039,
+                7113
             ],
             "filename": "publicMethods.js",
-            "lineno": 196,
+            "lineno": 194,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69540,11 +69534,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7211,
-                7371
+                7135,
+                7295
             ],
             "filename": "publicMethods.js",
-            "lineno": 197,
+            "lineno": 195,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69568,11 +69562,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7550,
-                7573
+                7474,
+                7497
             ],
             "filename": "publicMethods.js",
-            "lineno": 205,
+            "lineno": 203,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69596,11 +69590,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7782,
-                7816
+                7706,
+                7740
             ],
             "filename": "publicMethods.js",
-            "lineno": 211,
+            "lineno": 209,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69624,7 +69618,7 @@ window.reflection = [
         "comment": "/**\n         * Returns the number of pixels to scroll down to line up with row rowIndex.\n         * @memberof canvasDatagrid\n         * @name findRowScrollTop\n         * @method\n         * @param {number} rowIndex The row index of the row to scroll find.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 215,
+            "lineno": 213,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -69653,11 +69647,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                8153,
-                8888
+                8077,
+                8812
             ],
             "filename": "publicMethods.js",
-            "lineno": 222,
+            "lineno": 220,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69688,11 +69682,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                8215,
-                8222
+                8139,
+                8146
             ],
             "filename": "publicMethods.js",
-            "lineno": 223,
+            "lineno": 221,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69716,11 +69710,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                8224,
-                8229
+                8148,
+                8153
             ],
             "filename": "publicMethods.js",
-            "lineno": 223,
+            "lineno": 221,
             "columnno": 25,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69744,11 +69738,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                8231,
-                8251
+                8155,
+                8175
             ],
             "filename": "publicMethods.js",
-            "lineno": 223,
+            "lineno": 221,
             "columnno": 32,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69772,11 +69766,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                8269,
-                8312
+                8193,
+                8236
             ],
             "filename": "publicMethods.js",
-            "lineno": 224,
+            "lineno": 222,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69800,11 +69794,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                8377,
-                8383
+                8301,
+                8307
             ],
             "filename": "publicMethods.js",
-            "lineno": 226,
+            "lineno": 224,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69829,11 +69823,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                8553,
-                8644
+                8477,
+                8568
             ],
             "filename": "publicMethods.js",
-            "lineno": 232,
+            "lineno": 230,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69858,11 +69852,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                8662,
-                8668
+                8586,
+                8592
             ],
             "filename": "publicMethods.js",
-            "lineno": 233,
+            "lineno": 231,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69887,7 +69881,7 @@ window.reflection = [
         "comment": "/**\n         * Returns the number of pixels to scroll to the left to line up with column columnIndex.\n         * @memberof canvasDatagrid\n         * @name findColumnScrollLeft\n         * @method\n         * @param {number} columnIndex The column index of the column to find.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 238,
+            "lineno": 236,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -69916,11 +69910,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                9192,
-                9616
+                9116,
+                9540
             ],
             "filename": "publicMethods.js",
-            "lineno": 245,
+            "lineno": 243,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69951,11 +69945,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                9261,
-                9269
+                9185,
+                9193
             ],
             "filename": "publicMethods.js",
-            "lineno": 246,
+            "lineno": 244,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69979,11 +69973,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                9271,
-                9276
+                9195,
+                9200
             ],
             "filename": "publicMethods.js",
-            "lineno": 246,
+            "lineno": 244,
             "columnno": 26,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70007,11 +70001,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                9278,
-                9298
+                9202,
+                9222
             ],
             "filename": "publicMethods.js",
-            "lineno": 246,
+            "lineno": 244,
             "columnno": 33,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70035,11 +70029,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                9300,
-                9316
+                9224,
+                9240
             ],
             "filename": "publicMethods.js",
-            "lineno": 246,
+            "lineno": 244,
             "columnno": 55,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70063,11 +70057,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                9481,
-                9542
+                9405,
+                9466
             ],
             "filename": "publicMethods.js",
-            "lineno": 251,
+            "lineno": 249,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70092,11 +70086,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                9560,
-                9566
+                9484,
+                9490
             ],
             "filename": "publicMethods.js",
-            "lineno": 252,
+            "lineno": 250,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70121,7 +70115,7 @@ window.reflection = [
         "comment": "/**\n         * Scrolls the cell at cell x, row y.\n         * @memberof canvasDatagrid\n         * @name gotoCell\n         * @method\n         * @param {number} x The column index of the cell to scroll to.\n         * @param {number} y The row index of the cell to scroll to.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 256,
+            "lineno": 254,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -70159,11 +70153,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                9918,
-                10202
+                9842,
+                10126
             ],
             "filename": "publicMethods.js",
-            "lineno": 264,
+            "lineno": 262,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70193,11 +70187,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                10003,
-                10059
+                9927,
+                9983
             ],
             "filename": "publicMethods.js",
-            "lineno": 266,
+            "lineno": 264,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70221,11 +70215,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                10126,
-                10177
+                10050,
+                10101
             ],
             "filename": "publicMethods.js",
-            "lineno": 269,
+            "lineno": 267,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70249,7 +70243,7 @@ window.reflection = [
         "comment": "/**\n         * Scrolls the row y.\n         * @memberof canvasDatagrid\n         * @name gotoRow\n         * @method\n         * @param {number} y The row index of the cell to scroll to.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 272,
+            "lineno": 270,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -70278,11 +70272,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                10415,
-                10487
+                10339,
+                10411
             ],
             "filename": "publicMethods.js",
-            "lineno": 279,
+            "lineno": 277,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70307,7 +70301,7 @@ window.reflection = [
         "comment": "/**\n         * Scrolls the cell at cell x, row y into view if it is not already.\n         * @memberof canvasDatagrid\n         * @name scrollIntoView\n         * @method\n         * @param {number} x The column index of the cell to scroll into view.\n         * @param {number} y The row index of the cell to scroll into view.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 282,
+            "lineno": 280,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -70345,11 +70339,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                10840,
-                11372
+                10764,
+                11296
             ],
             "filename": "publicMethods.js",
-            "lineno": 290,
+            "lineno": 288,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70378,7 +70372,7 @@ window.reflection = [
         "comment": "/**\n         * Sets the active cell. Requires redrawing.\n         * @memberof canvasDatagrid\n         * @name setActiveCell\n         * @method\n         * @param {number} x The column index of the cell to set active.\n         * @param {number} y The row index of the cell to set active.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 302,
+            "lineno": 300,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -70416,11 +70410,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11688,
-                11843
+                11612,
+                11767
             ],
             "filename": "publicMethods.js",
-            "lineno": 310,
+            "lineno": 308,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70449,11 +70443,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11739,
-                11832
+                11663,
+                11756
             ],
             "filename": "publicMethods.js",
-            "lineno": 311,
+            "lineno": 309,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70477,11 +70471,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11775,
-                11786
+                11699,
+                11710
             ],
             "filename": "publicMethods.js",
-            "lineno": 312,
+            "lineno": 310,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70504,11 +70498,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11804,
-                11818
+                11728,
+                11742
             ],
             "filename": "publicMethods.js",
-            "lineno": 313,
+            "lineno": 311,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70531,7 +70525,7 @@ window.reflection = [
         "comment": "/**\n         * Removes the selection.\n         * @memberof canvasDatagrid\n         * @name selectNone\n         * @param {boolean} dontDraw Suppress the draw method after the selection change.\n         * @method\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 316,
+            "lineno": 314,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -70560,11 +70554,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12084,
-                12452
+                12008,
+                12376
             ],
             "filename": "publicMethods.js",
-            "lineno": 323,
+            "lineno": 321,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70592,11 +70586,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12136,
-                12156
+                12060,
+                12080
             ],
             "filename": "publicMethods.js",
-            "lineno": 324,
+            "lineno": 322,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70620,11 +70614,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12227,
-                12263
+                12151,
+                12187
             ],
             "filename": "publicMethods.js",
-            "lineno": 326,
+            "lineno": 324,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70646,11 +70640,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12281,
-                12308
+                12205,
+                12232
             ],
             "filename": "publicMethods.js",
-            "lineno": 327,
+            "lineno": 325,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70672,11 +70666,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12326,
-                12363
+                12250,
+                12287
             ],
             "filename": "publicMethods.js",
-            "lineno": 328,
+            "lineno": 326,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70698,7 +70692,7 @@ window.reflection = [
         "comment": "/**\n         * Selects every visible cell.\n         * @memberof canvasDatagrid\n         * @name selectAll\n         * @param {boolean} dontDraw Suppress the draw method after the selection change.\n         * @method\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 333,
+            "lineno": 331,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -70727,11 +70721,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12697,
-                13007
+                12621,
+                12931
             ],
             "filename": "publicMethods.js",
-            "lineno": 340,
+            "lineno": 338,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70756,11 +70750,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12782,
-                12788
+                12706,
+                12712
             ],
             "filename": "publicMethods.js",
-            "lineno": 342,
+            "lineno": 340,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70782,11 +70776,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12806,
-                12813
+                12730,
+                12737
             ],
             "filename": "publicMethods.js",
-            "lineno": 343,
+            "lineno": 341,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70808,11 +70802,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12831,
-                12872
+                12755,
+                12796
             ],
             "filename": "publicMethods.js",
-            "lineno": 344,
+            "lineno": 342,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70834,11 +70828,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12890,
-                12918
+                12814,
+                12842
             ],
             "filename": "publicMethods.js",
-            "lineno": 345,
+            "lineno": 343,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70860,7 +70854,7 @@ window.reflection = [
         "comment": "/**\n         * Returns true if the selected columnIndex is selected on every row.\n         * @memberof canvasDatagrid\n         * @name isColumnSelected\n         * @method\n         * @param {number} columnIndex The column index to check.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 350,
+            "lineno": 348,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -70889,11 +70883,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                13274,
-                13666
+                13198,
+                13590
             ],
             "filename": "publicMethods.js",
-            "lineno": 357,
+            "lineno": 355,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70922,11 +70916,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                13339,
-                13359
+                13263,
+                13283
             ],
             "filename": "publicMethods.js",
-            "lineno": 358,
+            "lineno": 356,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70950,11 +70944,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                13566,
-                13587
+                13490,
+                13511
             ],
             "filename": "publicMethods.js",
-            "lineno": 361,
+            "lineno": 359,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70979,7 +70973,7 @@ window.reflection = [
         "comment": "/**\n         * Runs the defined method on each selected cell.\n         * @memberof canvasDatagrid\n         * @name forEachSelectedCell\n         * @method\n         * @param {number} fn The function to execute.  The signature of the function is: (data, rowIndex, columnName).\n         * @param {number} expandToRow When true the data in the array is expanded to the entire row.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 366,
+            "lineno": 364,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -71017,11 +71011,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                14072,
-                14699
+                13996,
+                14623
             ],
             "filename": "publicMethods.js",
-            "lineno": 374,
+            "lineno": 372,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71053,11 +71047,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                14144,
-                14150
+                14068,
+                14074
             ],
             "filename": "publicMethods.js",
-            "lineno": 375,
+            "lineno": 373,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71081,11 +71075,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                14152,
-                14212
+                14076,
+                14136
             ],
             "filename": "publicMethods.js",
-            "lineno": 375,
+            "lineno": 373,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71109,11 +71103,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                14214,
-                14234
+                14138,
+                14158
             ],
             "filename": "publicMethods.js",
-            "lineno": 375,
+            "lineno": 373,
             "columnno": 86,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71137,11 +71131,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                14401,
-                14416
+                14325,
+                14340
             ],
             "filename": "publicMethods.js",
-            "lineno": 379,
+            "lineno": 377,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71166,11 +71160,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                14480,
-                14493
+                14404,
+                14417
             ],
             "filename": "publicMethods.js",
-            "lineno": 382,
+            "lineno": 380,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71195,7 +71189,7 @@ window.reflection = [
         "comment": "/**\n         * Selects a column.\n         * @memberof canvasDatagrid\n         * @name selectColumn\n         * @method\n         * @param {number} columnIndex The column index to select.\n         * @param {boolean} toggleSelectMode When true, behaves as if you were holding control/command when you clicked the column.\n         * @param {boolean} shift When true, behaves as if you were holding shift when you clicked the column.\n         * @param {boolean} supressSelectionchangedEvent When true, prevents the selectionchanged event from firing.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 389,
+            "lineno": 387,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -71251,11 +71245,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                15274,
-                17125
+                15198,
+                17049
             ],
             "filename": "publicMethods.js",
-            "lineno": 399,
+            "lineno": 397,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71293,11 +71287,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                15362,
-                15363
+                15286,
+                15287
             ],
             "filename": "publicMethods.js",
-            "lineno": 400,
+            "lineno": 398,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71319,11 +71313,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                15365,
-                15366
+                15289,
+                15290
             ],
             "filename": "publicMethods.js",
-            "lineno": 400,
+            "lineno": 398,
             "columnno": 19,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71345,11 +71339,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                15368,
-                15369
+                15292,
+                15293
             ],
             "filename": "publicMethods.js",
-            "lineno": 400,
+            "lineno": 398,
             "columnno": 22,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71371,11 +71365,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                15383,
-                15731
+                15307,
+                15655
             ],
             "filename": "publicMethods.js",
-            "lineno": 401,
+            "lineno": 399,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71404,11 +71398,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                15485,
-                15544
+                15409,
+                15468
             ],
             "filename": "publicMethods.js",
-            "lineno": 403,
+            "lineno": 401,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71432,11 +71426,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                15744,
-                16135
+                15668,
+                16059
             ],
             "filename": "publicMethods.js",
-            "lineno": 409,
+            "lineno": 407,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71465,11 +71459,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                15849,
-                15908
+                15773,
+                15832
             ],
             "filename": "publicMethods.js",
-            "lineno": 411,
+            "lineno": 409,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71493,11 +71487,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16227,
-                16281
+                16151,
+                16205
             ],
             "filename": "publicMethods.js",
-            "lineno": 419,
+            "lineno": 417,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71522,11 +71516,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16299,
-                16353
+                16223,
+                16277
             ],
             "filename": "publicMethods.js",
-            "lineno": 420,
+            "lineno": 418,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71551,11 +71545,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16376,
-                16381
+                16300,
+                16305
             ],
             "filename": "publicMethods.js",
-            "lineno": 421,
+            "lineno": 419,
             "columnno": 21,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71580,11 +71574,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16390,
-                16396
+                16314,
+                16320
             ],
             "filename": "publicMethods.js",
-            "lineno": 421,
+            "lineno": 419,
             "columnno": 35,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71609,11 +71603,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16514,
-                16534
+                16438,
+                16458
             ],
             "filename": "publicMethods.js",
-            "lineno": 426,
+            "lineno": 424,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71637,11 +71631,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16552,
-                16593
+                16476,
+                16517
             ],
             "filename": "publicMethods.js",
-            "lineno": 427,
+            "lineno": 425,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71665,11 +71659,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16611,
-                16657
+                16535,
+                16581
             ],
             "filename": "publicMethods.js",
-            "lineno": 428,
+            "lineno": 426,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71693,11 +71687,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16958,
-                16994
+                16882,
+                16918
             ],
             "filename": "publicMethods.js",
-            "lineno": 437,
+            "lineno": 435,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71719,11 +71713,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                17012,
-                17039
+                16936,
+                16963
             ],
             "filename": "publicMethods.js",
-            "lineno": 438,
+            "lineno": 436,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71745,11 +71739,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                17057,
-                17099
+                16981,
+                17023
             ],
             "filename": "publicMethods.js",
-            "lineno": 439,
+            "lineno": 437,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71771,7 +71765,7 @@ window.reflection = [
         "comment": "/**\n         * Selects a row.\n         * @memberof canvasDatagrid\n         * @name selectRow\n         * @method\n         * @param {number} rowIndex The row index to select.\n         * @param {boolean} ctrl When true, behaves as if you were holding control/command when you clicked the row.\n         * @param {boolean} shift When true, behaves as if you were holding shift when you clicked the row.\n         * @param {boolean} supressSelectionchangedEvent When true, prevents the selectionchanged event from firing.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 442,
+            "lineno": 440,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -71827,11 +71821,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                17670,
-                19223
+                17594,
+                19147
             ],
             "filename": "publicMethods.js",
-            "lineno": 452,
+            "lineno": 450,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71867,11 +71861,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                17752,
-                17753
+                17676,
+                17677
             ],
             "filename": "publicMethods.js",
-            "lineno": 453,
+            "lineno": 451,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71893,11 +71887,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                17755,
-                17757
+                17679,
+                17681
             ],
             "filename": "publicMethods.js",
-            "lineno": 453,
+            "lineno": 451,
             "columnno": 19,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71919,11 +71913,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                17759,
-                17761
+                17683,
+                17685
             ],
             "filename": "publicMethods.js",
-            "lineno": 453,
+            "lineno": 451,
             "columnno": 23,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71945,11 +71939,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                17763,
-                17783
+                17687,
+                17707
             ],
             "filename": "publicMethods.js",
-            "lineno": 453,
+            "lineno": 451,
             "columnno": 27,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71973,11 +71967,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                17797,
-                18040
+                17721,
+                17964
             ],
             "filename": "publicMethods.js",
-            "lineno": 454,
+            "lineno": 452,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72007,11 +72001,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                17835,
-                17859
+                17759,
+                17783
             ],
             "filename": "publicMethods.js",
-            "lineno": 455,
+            "lineno": 453,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72035,11 +72029,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                18285,
-                18315
+                18209,
+                18239
             ],
             "filename": "publicMethods.js",
-            "lineno": 464,
+            "lineno": 462,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72063,11 +72057,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                18624,
-                18673
+                18548,
+                18597
             ],
             "filename": "publicMethods.js",
-            "lineno": 472,
+            "lineno": 470,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72092,11 +72086,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                18695,
-                18744
+                18619,
+                18668
             ],
             "filename": "publicMethods.js",
-            "lineno": 473,
+            "lineno": 471,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72121,11 +72115,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                18771,
-                18777
+                18695,
+                18701
             ],
             "filename": "publicMethods.js",
-            "lineno": 474,
+            "lineno": 472,
             "columnno": 25,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72150,11 +72144,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                18788,
-                18794
+                18712,
+                18718
             ],
             "filename": "publicMethods.js",
-            "lineno": 474,
+            "lineno": 472,
             "columnno": 42,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72179,11 +72173,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                19061,
-                19097
+                18985,
+                19021
             ],
             "filename": "publicMethods.js",
-            "lineno": 483,
+            "lineno": 481,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72205,11 +72199,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                19115,
-                19142
+                19039,
+                19066
             ],
             "filename": "publicMethods.js",
-            "lineno": 484,
+            "lineno": 482,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72231,11 +72225,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                19160,
-                19197
+                19084,
+                19121
             ],
             "filename": "publicMethods.js",
-            "lineno": 485,
+            "lineno": 483,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72257,7 +72251,7 @@ window.reflection = [
         "comment": "/**\n         * Collapse a tree grid by row index.\n         * @memberof canvasDatagrid\n         * @name collapseTree\n         * @method\n         * @param {number} index The index of the row to collapse.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 488,
+            "lineno": 486,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -72286,11 +72280,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                19455,
-                20157
+                19379,
+                20081
             ],
             "filename": "publicMethods.js",
-            "lineno": 495,
+            "lineno": 493,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72318,11 +72312,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                19513,
-                19555
+                19437,
+                19479
             ],
             "filename": "publicMethods.js",
-            "lineno": 496,
+            "lineno": 494,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72346,11 +72340,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                19622,
-                19655
+                19546,
+                19579
             ],
             "filename": "publicMethods.js",
-            "lineno": 498,
+            "lineno": 496,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72372,11 +72366,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                19673,
-                19698
+                19597,
+                19622
             ],
             "filename": "publicMethods.js",
-            "lineno": 499,
+            "lineno": 497,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72398,11 +72392,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                19716,
-                19734
+                19640,
+                19658
             ],
             "filename": "publicMethods.js",
-            "lineno": 500,
+            "lineno": 498,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72424,11 +72418,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                20038,
-                20071
+                19962,
+                19995
             ],
             "filename": "publicMethods.js",
-            "lineno": 508,
+            "lineno": 506,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72450,7 +72444,7 @@ window.reflection = [
         "comment": "/**\n         * Expands a tree grid by row index.\n         * @memberof canvasDatagrid\n         * @name expandTree\n         * @method\n         * @param {number} index The index of the row to expand.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 513,
+            "lineno": 511,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -72479,11 +72473,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                20384,
-                22259
+                20308,
+                22183
             ],
             "filename": "publicMethods.js",
-            "lineno": 520,
+            "lineno": 518,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72519,11 +72513,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                20440,
-                20491
+                20364,
+                20415
             ],
             "filename": "publicMethods.js",
-            "lineno": 521,
+            "lineno": 519,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72547,11 +72541,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                20509,
-                20595
+                20433,
+                20519
             ],
             "filename": "publicMethods.js",
-            "lineno": 522,
+            "lineno": 520,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72575,11 +72569,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                20613,
-                20655
+                20537,
+                20579
             ],
             "filename": "publicMethods.js",
-            "lineno": 523,
+            "lineno": 521,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72603,11 +72597,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                20673,
-                20729
+                20597,
+                20653
             ],
             "filename": "publicMethods.js",
-            "lineno": 524,
+            "lineno": 522,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72631,11 +72625,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                20747,
-                20755
+                20671,
+                20679
             ],
             "filename": "publicMethods.js",
-            "lineno": 525,
+            "lineno": 523,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72657,11 +72651,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                20816,
-                21723
+                20740,
+                21647
             ],
             "filename": "publicMethods.js",
-            "lineno": 527,
+            "lineno": 525,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72686,11 +72680,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                20865,
-                20893
+                20789,
+                20817
             ],
             "filename": "publicMethods.js",
-            "lineno": 528,
+            "lineno": 526,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72712,11 +72706,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                20915,
-                21027
+                20839,
+                20951
             ],
             "filename": "publicMethods.js",
-            "lineno": 529,
+            "lineno": 527,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72738,11 +72732,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                21049,
-                21704
+                20973,
+                21628
             ],
             "filename": "publicMethods.js",
-            "lineno": 531,
+            "lineno": 529,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72764,11 +72758,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                21087,
-                21108
+                21011,
+                21032
             ],
             "filename": "publicMethods.js",
-            "lineno": 532,
+            "lineno": 530,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72791,11 +72785,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                21134,
-                21166
+                21058,
+                21090
             ],
             "filename": "publicMethods.js",
-            "lineno": 533,
+            "lineno": 531,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72818,11 +72812,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                21192,
-                21207
+                21116,
+                21131
             ],
             "filename": "publicMethods.js",
-            "lineno": 534,
+            "lineno": 532,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72845,11 +72839,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                21233,
-                21280
+                21157,
+                21204
             ],
             "filename": "publicMethods.js",
-            "lineno": 535,
+            "lineno": 533,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72872,11 +72866,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                21306,
-                21359
+                21230,
+                21283
             ],
             "filename": "publicMethods.js",
-            "lineno": 536,
+            "lineno": 534,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72899,11 +72893,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                21316,
-                21357
+                21240,
+                21281
             ],
             "filename": "publicMethods.js",
-            "lineno": 536,
+            "lineno": 534,
             "columnno": 34,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72926,11 +72920,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                21385,
-                21418
+                21309,
+                21342
             ],
             "filename": "publicMethods.js",
-            "lineno": 537,
+            "lineno": 535,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72953,11 +72947,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                21444,
-                21474
+                21368,
+                21398
             ],
             "filename": "publicMethods.js",
-            "lineno": 538,
+            "lineno": 536,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -72980,11 +72974,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                21500,
-                21534
+                21424,
+                21458
             ],
             "filename": "publicMethods.js",
-            "lineno": 539,
+            "lineno": 537,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73007,11 +73001,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                21560,
-                21592
+                21484,
+                21516
             ],
             "filename": "publicMethods.js",
-            "lineno": 540,
+            "lineno": 538,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73034,11 +73028,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                21618,
-                21631
+                21542,
+                21555
             ],
             "filename": "publicMethods.js",
-            "lineno": 541,
+            "lineno": 539,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73061,11 +73055,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                21657,
-                21682
+                21581,
+                21606
             ],
             "filename": "publicMethods.js",
-            "lineno": 542,
+            "lineno": 540,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73088,11 +73082,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                21741,
-                21774
+                21665,
+                21698
             ],
             "filename": "publicMethods.js",
-            "lineno": 545,
+            "lineno": 543,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73116,11 +73110,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                21802,
-                21835
+                21726,
+                21759
             ],
             "filename": "publicMethods.js",
-            "lineno": 547,
+            "lineno": 545,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73145,11 +73139,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                21849,
-                21872
+                21773,
+                21796
             ],
             "filename": "publicMethods.js",
-            "lineno": 548,
+            "lineno": 546,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73174,11 +73168,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                21937,
-                21955
+                21861,
+                21879
             ],
             "filename": "publicMethods.js",
-            "lineno": 550,
+            "lineno": 548,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73200,11 +73194,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                21973,
-                21998
+                21897,
+                21922
             ],
             "filename": "publicMethods.js",
-            "lineno": 551,
+            "lineno": 549,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73226,11 +73220,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                22016,
-                22034
+                21940,
+                21958
             ],
             "filename": "publicMethods.js",
-            "lineno": 552,
+            "lineno": 550,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73252,11 +73246,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                22063,
-                22098
+                21987,
+                22022
             ],
             "filename": "publicMethods.js",
-            "lineno": 554,
+            "lineno": 552,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73280,11 +73274,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                22112,
-                22139
+                22036,
+                22063
             ],
             "filename": "publicMethods.js",
-            "lineno": 555,
+            "lineno": 553,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73308,11 +73302,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                22186,
-                22215
+                22110,
+                22139
             ],
             "filename": "publicMethods.js",
-            "lineno": 556,
+            "lineno": 554,
             "columnno": 45,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73334,7 +73328,7 @@ window.reflection = [
         "comment": "/**\n         * Toggles tree grid open and close by row index.\n         * @memberof canvasDatagrid\n         * @name toggleTree\n         * @method\n         * @param {number} index The index of the row to toggle.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 559,
+            "lineno": 557,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -73363,11 +73357,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                22499,
-                22749
+                22423,
+                22673
             ],
             "filename": "publicMethods.js",
-            "lineno": 566,
+            "lineno": 564,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73395,11 +73389,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                22555,
-                22612
+                22479,
+                22536
             ],
             "filename": "publicMethods.js",
-            "lineno": 567,
+            "lineno": 565,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73423,7 +73417,7 @@ window.reflection = [
         "comment": "/**\n         * Returns a header from the schema by name.\n         * @memberof canvasDatagrid\n         * @name getHeaderByName\n         * @tutorial schema\n         * @method\n         * @returns {header} header with the selected name, or undefined.\n         * @param {string} name The name of the column to resize.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 573,
+            "lineno": 571,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -73465,11 +73459,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                23092,
-                23338
+                23016,
+                23262
             ],
             "filename": "publicMethods.js",
-            "lineno": 582,
+            "lineno": 580,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73498,11 +73492,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                23149,
-                23150
+                23073,
+                23074
             ],
             "filename": "publicMethods.js",
-            "lineno": 583,
+            "lineno": 581,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73524,11 +73518,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                23152,
-                23172
+                23076,
+                23096
             ],
             "filename": "publicMethods.js",
-            "lineno": 583,
+            "lineno": 581,
             "columnno": 19,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73552,11 +73546,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                23191,
-                23196
+                23115,
+                23120
             ],
             "filename": "publicMethods.js",
-            "lineno": 584,
+            "lineno": 582,
             "columnno": 17,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73581,11 +73575,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                23212,
-                23218
+                23136,
+                23142
             ],
             "filename": "publicMethods.js",
-            "lineno": 584,
+            "lineno": 582,
             "columnno": 38,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73610,7 +73604,7 @@ window.reflection = [
         "comment": "/**\n         * Resizes a column to fit the longest value in the column. Call without a value to resize all columns.\n         * Warning, can be slow on very large record sets (1m records ~3-5 seconds on an i7).\n         * @memberof canvasDatagrid\n         * @name fitColumnToValues\n         * @method\n         * @param {string} name The name of the column to resize.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 590,
+            "lineno": 588,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -73639,11 +73633,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                23734,
-                24062
+                23658,
+                23986
             ],
             "filename": "publicMethods.js",
-            "lineno": 598,
+            "lineno": 596,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73672,11 +73666,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                23799,
-                23944
+                23723,
+                23868
             ],
             "filename": "publicMethods.js",
-            "lineno": 599,
+            "lineno": 597,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73700,7 +73694,7 @@ window.reflection = [
         "comment": "/**\n         * Checks if a cell is currently visible.\n         * @memberof canvasDatagrid\n         * @name isCellVisible\n         * @overload\n         * @method\n         * @returns {boolean} when true, the cell is visible, when false the cell is not currently drawn.\n         * @param {number} columnIndex The column index of the cell to check.\n         * @param {number} rowIndex The row index of the cell to check.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 606,
+            "lineno": 604,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -73755,7 +73749,7 @@ window.reflection = [
         "comment": "/**\n         * Checks if a cell is currently visible.\n         * @memberof canvasDatagrid\n         * @name isCellVisible\n         * @method\n         * @returns {boolean} when true, the cell is visible, when false the cell is not currently drawn.\n         * @param {cell} cell The cell to check for.  Alternatively you can pass an object { x: <x-pixel-value>, y: <y-pixel-value> }.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 616,
+            "lineno": 614,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -73794,11 +73788,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                24910,
-                25495
+                24834,
+                25419
             ],
             "filename": "publicMethods.js",
-            "lineno": 624,
+            "lineno": 622,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73829,11 +73823,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                25227,
-                25228
+                25151,
+                25152
             ],
             "filename": "publicMethods.js",
-            "lineno": 631,
+            "lineno": 629,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73855,11 +73849,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                25230,
-                25258
+                25154,
+                25182
             ],
             "filename": "publicMethods.js",
-            "lineno": 631,
+            "lineno": 629,
             "columnno": 19,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73883,11 +73877,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                25277,
-                25282
+                25201,
+                25206
             ],
             "filename": "publicMethods.js",
-            "lineno": 632,
+            "lineno": 630,
             "columnno": 17,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73912,11 +73906,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                25291,
-                25297
+                25215,
+                25221
             ],
             "filename": "publicMethods.js",
-            "lineno": 632,
+            "lineno": 630,
             "columnno": 31,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -73941,7 +73935,7 @@ window.reflection = [
         "comment": "/**\n         * Sets the order of the data.\n         * @memberof canvasDatagrid\n         * @name order\n         * @method\n         * @returns {cell} cell at the selected location.\n         * @param {number} columnName Number of pixels from the left.\n         * @param {string} direction `asc` for ascending or `desc` for descending.\n         * @param {function} [sortFunction] When defined, override the default sorting method defined in the column's schema and use this one.\n         * @param {bool} [dontSetStorageData] Don't store this setting for future use.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 639,
+            "lineno": 637,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -74009,11 +74003,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                26087,
-                27017
+                26011,
+                26941
             ],
             "filename": "publicMethods.js",
-            "lineno": 650,
+            "lineno": 648,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74048,11 +74042,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                26185,
-                26186
+                26109,
+                26110
             ],
             "filename": "publicMethods.js",
-            "lineno": 651,
+            "lineno": 649,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74074,11 +74068,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                26204,
-                26319
+                26128,
+                26243
             ],
             "filename": "publicMethods.js",
-            "lineno": 652,
+            "lineno": 650,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74102,11 +74096,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                26333,
-                26358
+                26257,
+                26282
             ],
             "filename": "publicMethods.js",
-            "lineno": 655,
+            "lineno": 653,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74130,11 +74124,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                26490,
-                26533
+                26414,
+                26457
             ],
             "filename": "publicMethods.js",
-            "lineno": 659,
+            "lineno": 657,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74159,11 +74153,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                26705,
-                26805
+                26629,
+                26729
             ],
             "filename": "publicMethods.js",
-            "lineno": 663,
+            "lineno": 661,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74187,11 +74181,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                26854,
-                26870
+                26778,
+                26794
             ],
             "filename": "publicMethods.js",
-            "lineno": 664,
+            "lineno": 662,
             "columnno": 47,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74213,11 +74207,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                26872,
-                26892
+                26796,
+                26816
             ],
             "filename": "publicMethods.js",
-            "lineno": 664,
+            "lineno": 662,
             "columnno": 65,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74239,11 +74233,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27027,
-                27275
+                26951,
+                27199
             ],
             "filename": "publicMethods.js",
-            "lineno": 669,
+            "lineno": 667,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74268,7 +74262,7 @@ window.reflection = [
         "comment": "/**\n         * Moves the current selection relative to the its current position.  Note: this method does not move the selected data, just the selection itself.\n         * @memberof canvasDatagrid\n         * @name moveSelection\n         * @method\n         * @param {number} offsetX The number of columns to offset the selection.\n         * @param {number} offsetY The number of rows to offset the selection.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 678,
+            "lineno": 676,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -74306,11 +74300,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27712,
-                28098
+                27636,
+                28022
             ],
             "filename": "publicMethods.js",
-            "lineno": 686,
+            "lineno": 684,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74341,11 +74335,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27779,
-                27787
+                27703,
+                27711
             ],
             "filename": "publicMethods.js",
-            "lineno": 687,
+            "lineno": 685,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74369,11 +74363,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27868,
-                27896
+                27792,
+                27820
             ],
             "filename": "publicMethods.js",
-            "lineno": 689,
+            "lineno": 687,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74398,11 +74392,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                28066,
-                28087
+                27990,
+                28011
             ],
             "filename": "publicMethods.js",
-            "lineno": 694,
+            "lineno": 692,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74426,7 +74420,7 @@ window.reflection = [
         "comment": "/**\n         * Moves data in the provided selection to another position in the grid.  Moving data off the edge of the schema (columns/x) will truncate data.\n         * @memberof canvasDatagrid\n         * @name moveTo\n         * @method\n         * @param {array} sel 2D array representing selected rows and columns.  `canvasDatagrid.selections` is in this format and can be used here.\n         * @param {number} x The column index to start inserting the selection at.\n         * @param {number} y The row index to start inserting the selection at.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 696,
+            "lineno": 694,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -74473,11 +74467,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                28675,
-                29725
+                28599,
+                29649
             ],
             "filename": "publicMethods.js",
-            "lineno": 705,
+            "lineno": 703,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74512,11 +74506,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                28728,
-                28754
+                28652,
+                28678
             ],
             "filename": "publicMethods.js",
-            "lineno": 706,
+            "lineno": 704,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74540,11 +74534,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                28772,
-                28799
+                28696,
+                28723
             ],
             "filename": "publicMethods.js",
-            "lineno": 707,
+            "lineno": 705,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74568,11 +74562,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                28817,
-                28831
+                28741,
+                28755
             ],
             "filename": "publicMethods.js",
-            "lineno": 708,
+            "lineno": 706,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74596,11 +74590,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                28849,
-                28851
+                28773,
+                28775
             ],
             "filename": "publicMethods.js",
-            "lineno": 709,
+            "lineno": 707,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74622,11 +74616,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                28869,
-                28879
+                28793,
+                28803
             ],
             "filename": "publicMethods.js",
-            "lineno": 710,
+            "lineno": 708,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74650,11 +74644,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                29134,
-                29170
+                29058,
+                29094
             ],
             "filename": "publicMethods.js",
-            "lineno": 716,
+            "lineno": 714,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74678,11 +74672,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                29272,
-                29279
+                29196,
+                29203
             ],
             "filename": "publicMethods.js",
-            "lineno": 720,
+            "lineno": 718,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74707,11 +74701,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                29297,
-                29307
+                29221,
+                29231
             ],
             "filename": "publicMethods.js",
-            "lineno": 721,
+            "lineno": 719,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74736,11 +74730,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                29380,
-                29387
+                29304,
+                29311
             ],
             "filename": "publicMethods.js",
-            "lineno": 723,
+            "lineno": 721,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74765,11 +74759,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                29629,
-                29678
+                29553,
+                29602
             ],
             "filename": "publicMethods.js",
-            "lineno": 729,
+            "lineno": 727,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74793,7 +74787,7 @@ window.reflection = [
         "comment": "/**\n         * Checks if a given column is visible.\n         * @memberof canvasDatagrid\n         * @name isColumnVisible\n         * @method\n         * @returns {boolean} When true, the column is visible.\n         * @param {number} columnIndex Column index.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 733,
+            "lineno": 731,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -74832,11 +74826,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                30012,
-                30209
+                29936,
+                30133
             ],
             "filename": "publicMethods.js",
-            "lineno": 741,
+            "lineno": 739,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74864,7 +74858,7 @@ window.reflection = [
         "comment": "/**\n         * Checks if a given row is visible.\n         * @memberof canvasDatagrid\n         * @name isRowVisible\n         * @method\n         * @returns {boolean} When true, the row is visible.\n         * @param {number} rowIndex Row index.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 746,
+            "lineno": 744,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -74903,11 +74897,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                30481,
-                30666
+                30405,
+                30590
             ],
             "filename": "publicMethods.js",
-            "lineno": 754,
+            "lineno": 752,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -74935,7 +74929,7 @@ window.reflection = [
         "comment": "/**\n         * Gets the cell at columnIndex and rowIndex.\n         * @memberof canvasDatagrid\n         * @name getVisibleCellByIndex\n         * @method\n         * @returns {cell} cell at the selected location.\n         * @param {number} x Column index.\n         * @param {number} y Row index.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 759,
+            "lineno": 757,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -74983,11 +74977,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                30989,
-                31187
+                30913,
+                31111
             ],
             "filename": "publicMethods.js",
-            "lineno": 768,
+            "lineno": 766,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75016,7 +75010,7 @@ window.reflection = [
         "comment": "/**\n         * Gets the cell at grid pixel coordinate x and y.  Author's note.  This function ties drawing and events together.  This is a very complex function and is core to the component.\n         * @memberof canvasDatagrid\n         * @name getCellAt\n         * @method\n         * @returns {cell} cell at the selected location.\n         * @param {number} x Number of pixels from the left.\n         * @param {number} y Number of pixels from the top.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 773,
+            "lineno": 771,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -75064,11 +75058,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31669,
-                40571
+                31593,
+                40495
             ],
             "filename": "publicMethods.js",
-            "lineno": 782,
+            "lineno": 780,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75118,11 +75112,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31737,
-                32567
+                31661,
+                32491
             ],
             "filename": "publicMethods.js",
-            "lineno": 783,
+            "lineno": 781,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75148,11 +75142,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32584,
-                32590
+                32508,
+                32514
             ],
             "filename": "publicMethods.js",
-            "lineno": 797,
+            "lineno": 795,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75174,11 +75168,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32608,
-                32671
+                32532,
+                32595
             ],
             "filename": "publicMethods.js",
-            "lineno": 798,
+            "lineno": 796,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75202,11 +75196,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32689,
-                32745
+                32613,
+                32669
             ],
             "filename": "publicMethods.js",
-            "lineno": 799,
+            "lineno": 797,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75230,11 +75224,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32763,
-                32764
+                32687,
+                32688
             ],
             "filename": "publicMethods.js",
-            "lineno": 800,
+            "lineno": 798,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75256,11 +75250,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32782,
-                32810
+                32706,
+                32734
             ],
             "filename": "publicMethods.js",
-            "lineno": 801,
+            "lineno": 799,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75284,11 +75278,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32828,
-                32838
+                32752,
+                32762
             ],
             "filename": "publicMethods.js",
-            "lineno": 802,
+            "lineno": 800,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75310,11 +75304,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32856,
-                32914
+                32780,
+                32838
             ],
             "filename": "publicMethods.js",
-            "lineno": 803,
+            "lineno": 801,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75338,11 +75332,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32932,
-                32990
+                32856,
+                32914
             ],
             "filename": "publicMethods.js",
-            "lineno": 804,
+            "lineno": 802,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75366,11 +75360,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33008,
-                33012
+                32932,
+                32936
             ],
             "filename": "publicMethods.js",
-            "lineno": 805,
+            "lineno": 803,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75392,11 +75386,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33103,
-                33123
+                33027,
+                33047
             ],
             "filename": "publicMethods.js",
-            "lineno": 807,
+            "lineno": 805,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75420,11 +75414,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33263,
-                33284
+                33187,
+                33208
             ],
             "filename": "publicMethods.js",
-            "lineno": 812,
+            "lineno": 810,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75448,11 +75442,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33331,
-                33353
+                33255,
+                33277
             ],
             "filename": "publicMethods.js",
-            "lineno": 814,
+            "lineno": 812,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75474,11 +75468,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33375,
-                33393
+                33299,
+                33317
             ],
             "filename": "publicMethods.js",
-            "lineno": 815,
+            "lineno": 813,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75500,11 +75494,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33444,
-                33449
+                33368,
+                33373
             ],
             "filename": "publicMethods.js",
-            "lineno": 818,
+            "lineno": 816,
             "columnno": 17,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75529,11 +75523,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33458,
-                33464
+                33382,
+                33388
             ],
             "filename": "publicMethods.js",
-            "lineno": 818,
+            "lineno": 816,
             "columnno": 31,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75558,11 +75552,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33484,
-                33511
+                33408,
+                33435
             ],
             "filename": "publicMethods.js",
-            "lineno": 819,
+            "lineno": 817,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75587,11 +75581,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33628,
-                33641
+                33552,
+                33565
             ],
             "filename": "publicMethods.js",
-            "lineno": 821,
+            "lineno": 819,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75616,11 +75610,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33663,
-                33676
+                33587,
+                33600
             ],
             "filename": "publicMethods.js",
-            "lineno": 822,
+            "lineno": 820,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75645,11 +75639,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33698,
-                33716
+                33622,
+                33640
             ],
             "filename": "publicMethods.js",
-            "lineno": 823,
+            "lineno": 821,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75674,11 +75668,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33738,
-                33755
+                33662,
+                33679
             ],
             "filename": "publicMethods.js",
-            "lineno": 824,
+            "lineno": 822,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75703,11 +75697,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34154,
-                34183
+                34078,
+                34107
             ],
             "filename": "publicMethods.js",
-            "lineno": 831,
+            "lineno": 829,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75732,11 +75726,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34209,
-                34236
+                34133,
+                34160
             ],
             "filename": "publicMethods.js",
-            "lineno": 832,
+            "lineno": 830,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75761,11 +75755,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34388,
-                34417
+                34312,
+                34341
             ],
             "filename": "publicMethods.js",
-            "lineno": 836,
+            "lineno": 834,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75790,11 +75784,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34443,
-                34470
+                34367,
+                34394
             ],
             "filename": "publicMethods.js",
-            "lineno": 837,
+            "lineno": 835,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75819,11 +75813,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34619,
-                34648
+                34543,
+                34572
             ],
             "filename": "publicMethods.js",
-            "lineno": 841,
+            "lineno": 839,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75848,11 +75842,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34674,
-                34700
+                34598,
+                34624
             ],
             "filename": "publicMethods.js",
-            "lineno": 842,
+            "lineno": 840,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75877,11 +75871,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34857,
-                34897
+                34781,
+                34821
             ],
             "filename": "publicMethods.js",
-            "lineno": 846,
+            "lineno": 844,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75906,11 +75900,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34923,
-                34959
+                34847,
+                34883
             ],
             "filename": "publicMethods.js",
-            "lineno": 847,
+            "lineno": 845,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75935,11 +75929,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34985,
-                35008
+                34909,
+                34932
             ],
             "filename": "publicMethods.js",
-            "lineno": 848,
+            "lineno": 846,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75964,11 +75958,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35034,
-                35065
+                34958,
+                34989
             ],
             "filename": "publicMethods.js",
-            "lineno": 849,
+            "lineno": 847,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -75993,11 +75987,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35186,
-                35229
+                35110,
+                35153
             ],
             "filename": "publicMethods.js",
-            "lineno": 851,
+            "lineno": 849,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76022,11 +76016,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35259,
-                35298
+                35183,
+                35222
             ],
             "filename": "publicMethods.js",
-            "lineno": 852,
+            "lineno": 850,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76051,11 +76045,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35393,
-                35433
+                35317,
+                35357
             ],
             "filename": "publicMethods.js",
-            "lineno": 854,
+            "lineno": 852,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76080,11 +76074,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35463,
-                35499
+                35387,
+                35423
             ],
             "filename": "publicMethods.js",
-            "lineno": 855,
+            "lineno": 853,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76109,11 +76103,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35551,
-                35587
+                35475,
+                35511
             ],
             "filename": "publicMethods.js",
-            "lineno": 857,
+            "lineno": 855,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76137,11 +76131,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35746,
-                35788
+                35670,
+                35712
             ],
             "filename": "publicMethods.js",
-            "lineno": 861,
+            "lineno": 859,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76166,11 +76160,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35814,
-                35852
+                35738,
+                35776
             ],
             "filename": "publicMethods.js",
-            "lineno": 862,
+            "lineno": 860,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76195,11 +76189,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35878,
-                35901
+                35802,
+                35825
             ],
             "filename": "publicMethods.js",
-            "lineno": 863,
+            "lineno": 861,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76224,11 +76218,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35927,
-                35960
+                35851,
+                35884
             ],
             "filename": "publicMethods.js",
-            "lineno": 864,
+            "lineno": 862,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76253,11 +76247,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36080,
-                36124
+                36004,
+                36048
             ],
             "filename": "publicMethods.js",
-            "lineno": 866,
+            "lineno": 864,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76282,11 +76276,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36154,
-                36194
+                36078,
+                36118
             ],
             "filename": "publicMethods.js",
-            "lineno": 867,
+            "lineno": 865,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76311,11 +76305,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36289,
-                36332
+                36213,
+                36256
             ],
             "filename": "publicMethods.js",
-            "lineno": 869,
+            "lineno": 867,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76340,11 +76334,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36362,
-                36401
+                36286,
+                36325
             ],
             "filename": "publicMethods.js",
-            "lineno": 870,
+            "lineno": 868,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76369,11 +76363,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36453,
-                36489
+                36377,
+                36413
             ],
             "filename": "publicMethods.js",
-            "lineno": 872,
+            "lineno": 870,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76397,11 +76391,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36570,
-                36594
+                36494,
+                36518
             ],
             "filename": "publicMethods.js",
-            "lineno": 875,
+            "lineno": 873,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76426,11 +76420,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36743,
-                36835
+                36667,
+                36759
             ],
             "filename": "publicMethods.js",
-            "lineno": 877,
+            "lineno": 875,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76455,11 +76449,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37438,
-                37464
+                37362,
+                37388
             ],
             "filename": "publicMethods.js",
-            "lineno": 883,
+            "lineno": 881,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76484,11 +76478,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37494,
-                37524
+                37418,
+                37448
             ],
             "filename": "publicMethods.js",
-            "lineno": 884,
+            "lineno": 882,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76513,11 +76507,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37706,
-                37736
+                37630,
+                37660
             ],
             "filename": "publicMethods.js",
-            "lineno": 888,
+            "lineno": 886,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76542,11 +76536,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37766,
-                37801
+                37690,
+                37725
             ],
             "filename": "publicMethods.js",
-            "lineno": 889,
+            "lineno": 887,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76571,11 +76565,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38432,
-                38458
+                38356,
+                38382
             ],
             "filename": "publicMethods.js",
-            "lineno": 899,
+            "lineno": 897,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76600,11 +76594,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38488,
-                38518
+                38412,
+                38442
             ],
             "filename": "publicMethods.js",
-            "lineno": 900,
+            "lineno": 898,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76629,11 +76623,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38697,
-                38727
+                38621,
+                38651
             ],
             "filename": "publicMethods.js",
-            "lineno": 904,
+            "lineno": 902,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76658,11 +76652,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38757,
-                38792
+                38681,
+                38716
             ],
             "filename": "publicMethods.js",
-            "lineno": 905,
+            "lineno": 903,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76687,11 +76681,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38968,
-                38989
+                38892,
+                38913
             ],
             "filename": "publicMethods.js",
-            "lineno": 910,
+            "lineno": 908,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76716,11 +76710,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39015,
-                39050
+                38939,
+                38974
             ],
             "filename": "publicMethods.js",
-            "lineno": 911,
+            "lineno": 909,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76745,11 +76739,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39304,
-                39329
+                39228,
+                39253
             ],
             "filename": "publicMethods.js",
-            "lineno": 916,
+            "lineno": 914,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76774,11 +76768,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39359,
-                39380
+                39283,
+                39304
             ],
             "filename": "publicMethods.js",
-            "lineno": 917,
+            "lineno": 915,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76803,11 +76797,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39443,
-                39473
+                39367,
+                39397
             ],
             "filename": "publicMethods.js",
-            "lineno": 919,
+            "lineno": 917,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76832,11 +76826,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39503,
-                39535
+                39427,
+                39459
             ],
             "filename": "publicMethods.js",
-            "lineno": 920,
+            "lineno": 918,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76861,11 +76855,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39685,
-                39706
+                39609,
+                39630
             ],
             "filename": "publicMethods.js",
-            "lineno": 925,
+            "lineno": 923,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76889,11 +76883,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39732,
-                39762
+                39656,
+                39686
             ],
             "filename": "publicMethods.js",
-            "lineno": 926,
+            "lineno": 924,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76918,11 +76912,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39788,
-                39814
+                39712,
+                39738
             ],
             "filename": "publicMethods.js",
-            "lineno": 927,
+            "lineno": 925,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76947,11 +76941,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39953,
-                39974
+                39877,
+                39898
             ],
             "filename": "publicMethods.js",
-            "lineno": 931,
+            "lineno": 929,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -76975,11 +76969,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40000,
-                40025
+                39924,
+                39949
             ],
             "filename": "publicMethods.js",
-            "lineno": 932,
+            "lineno": 930,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77004,11 +76998,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40051,
-                40072
+                39975,
+                39996
             ],
             "filename": "publicMethods.js",
-            "lineno": 933,
+            "lineno": 931,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77033,11 +77027,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40153,
-                40178
+                40077,
+                40102
             ],
             "filename": "publicMethods.js",
-            "lineno": 936,
+            "lineno": 934,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77062,11 +77056,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40200,
-                40221
+                40124,
+                40145
             ],
             "filename": "publicMethods.js",
-            "lineno": 937,
+            "lineno": 935,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77091,11 +77085,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40300,
-                40320
+                40224,
+                40244
             ],
             "filename": "publicMethods.js",
-            "lineno": 941,
+            "lineno": 939,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77119,11 +77113,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40334,
-                40370
+                40258,
+                40294
             ],
             "filename": "publicMethods.js",
-            "lineno": 942,
+            "lineno": 940,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77147,11 +77141,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40409,
-                40434
+                40333,
+                40358
             ],
             "filename": "publicMethods.js",
-            "lineno": 944,
+            "lineno": 942,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77173,11 +77167,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40452,
-                40473
+                40376,
+                40397
             ],
             "filename": "publicMethods.js",
-            "lineno": 945,
+            "lineno": 943,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77199,11 +77193,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40491,
-                40510
+                40415,
+                40434
             ],
             "filename": "publicMethods.js",
-            "lineno": 946,
+            "lineno": 944,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77225,11 +77219,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40528,
-                40546
+                40452,
+                40470
             ],
             "filename": "publicMethods.js",
-            "lineno": 947,
+            "lineno": 945,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77251,7 +77245,7 @@ window.reflection = [
         "comment": "/**\n         * Gets the bounds of current selection. \n         * @returns {rect} selection.\n         * @memberof canvasDatagrid\n         * @name getSelectionBounds\n         * @method\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 950,
+            "lineno": 948,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -77279,11 +77273,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40784,
-                41717
+                40708,
+                41641
             ],
             "filename": "publicMethods.js",
-            "lineno": 957,
+            "lineno": 955,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77311,11 +77305,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40840,
-                40872
+                40764,
+                40796
             ],
             "filename": "publicMethods.js",
-            "lineno": 958,
+            "lineno": 956,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77339,11 +77333,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40847,
-                40858
+                40771,
+                40782
             ],
             "filename": "publicMethods.js",
-            "lineno": 958,
+            "lineno": 956,
             "columnno": 23,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77366,11 +77360,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40860,
-                40871
+                40784,
+                40795
             ],
             "filename": "publicMethods.js",
-            "lineno": 958,
+            "lineno": 956,
             "columnno": 36,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77393,11 +77387,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40890,
-                40925
+                40814,
+                40849
             ],
             "filename": "publicMethods.js",
-            "lineno": 959,
+            "lineno": 957,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77421,11 +77415,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40898,
-                40910
+                40822,
+                40834
             ],
             "filename": "publicMethods.js",
-            "lineno": 959,
+            "lineno": 957,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77448,11 +77442,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40912,
-                40924
+                40836,
+                40848
             ],
             "filename": "publicMethods.js",
-            "lineno": 959,
+            "lineno": 957,
             "columnno": 38,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77475,11 +77469,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41004,
-                41010
+                40928,
+                40934
             ],
             "filename": "publicMethods.js",
-            "lineno": 961,
+            "lineno": 959,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77501,11 +77495,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41012,
-                41018
+                40936,
+                40942
             ],
             "filename": "publicMethods.js",
-            "lineno": 961,
+            "lineno": 959,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77527,11 +77521,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41125,
-                41168
+                41049,
+                41092
             ],
             "filename": "publicMethods.js",
-            "lineno": 963,
+            "lineno": 961,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77556,11 +77550,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41190,
-                41236
+                41114,
+                41160
             ],
             "filename": "publicMethods.js",
-            "lineno": 964,
+            "lineno": 962,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77585,11 +77579,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41258,
-                41314
+                41182,
+                41238
             ],
             "filename": "publicMethods.js",
-            "lineno": 965,
+            "lineno": 963,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77614,11 +77608,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41336,
-                41392
+                41260,
+                41316
             ],
             "filename": "publicMethods.js",
-            "lineno": 966,
+            "lineno": 964,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77643,11 +77637,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41414,
-                41453
+                41338,
+                41377
             ],
             "filename": "publicMethods.js",
-            "lineno": 967,
+            "lineno": 965,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77672,11 +77666,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41475,
-                41517
+                41399,
+                41441
             ],
             "filename": "publicMethods.js",
-            "lineno": 968,
+            "lineno": 966,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77701,11 +77695,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41590,
-                41600
+                41514,
+                41524
             ],
             "filename": "publicMethods.js",
-            "lineno": 972,
+            "lineno": 970,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77727,11 +77721,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41618,
-                41629
+                41542,
+                41553
             ],
             "filename": "publicMethods.js",
-            "lineno": 973,
+            "lineno": 971,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77753,11 +77747,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41647,
-                41661
+                41571,
+                41585
             ],
             "filename": "publicMethods.js",
-            "lineno": 974,
+            "lineno": 972,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77779,11 +77773,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41679,
-                41692
+                41603,
+                41616
             ],
             "filename": "publicMethods.js",
-            "lineno": 975,
+            "lineno": 973,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77805,7 +77799,7 @@ window.reflection = [
         "comment": "/**\n         * Returns an auto generated schema based on data structure.\n         * @memberof canvasDatagrid\n         * @name getSchemaFromData\n         * @method\n         * @tutorial schema\n         * @returns {schema} schema A schema based on the first item in the data array.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 978,
+            "lineno": 976,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -77836,11 +77830,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42026,
-                42811
+                41950,
+                42735
             ],
             "filename": "publicMethods.js",
-            "lineno": 986,
+            "lineno": 984,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77866,11 +77860,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42113,
-                42120
+                42037,
+                42044
             ],
             "filename": "publicMethods.js",
-            "lineno": 987,
+            "lineno": 985,
             "columnno": 48,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77892,11 +77886,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42190,
-                42227
+                42114,
+                42151
             ],
             "filename": "publicMethods.js",
-            "lineno": 988,
+            "lineno": 986,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77920,11 +77914,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42249,
-                42594
+                42173,
+                42518
             ],
             "filename": "publicMethods.js",
-            "lineno": 989,
+            "lineno": 987,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77948,11 +77942,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42279,
-                42288
+                42203,
+                42212
             ],
             "filename": "publicMethods.js",
-            "lineno": 990,
+            "lineno": 988,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -77975,11 +77969,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42314,
-                42392
+                42238,
+                42316
             ],
             "filename": "publicMethods.js",
-            "lineno": 991,
+            "lineno": 989,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78002,11 +77996,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42418,
-                42447
+                42342,
+                42371
             ],
             "filename": "publicMethods.js",
-            "lineno": 992,
+            "lineno": 990,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78029,11 +78023,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42473,
-                42485
+                42397,
+                42409
             ],
             "filename": "publicMethods.js",
-            "lineno": 993,
+            "lineno": 991,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78056,11 +78050,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42511,
-                42521
+                42435,
+                42445
             ],
             "filename": "publicMethods.js",
-            "lineno": 994,
+            "lineno": 992,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78083,11 +78077,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42547,
-                42572
+                42471,
+                42496
             ],
             "filename": "publicMethods.js",
-            "lineno": 995,
+            "lineno": 993,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78110,11 +78104,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42661,
-                42676
+                42585,
+                42600
             ],
             "filename": "publicMethods.js",
-            "lineno": 998,
+            "lineno": 996,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78139,11 +78133,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42712,
-                42758
+                42636,
+                42682
             ],
             "filename": "publicMethods.js",
-            "lineno": 1000,
+            "lineno": 998,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78168,7 +78162,7 @@ window.reflection = [
         "comment": "/**\n         * Clears the change log grid.changes that keeps track of changes to the data set.\n         * This does not undo changes or alter data it is simply a convince array to keep\n         * track of changes made to the data since last this method was called.\n         * @memberof canvasDatagrid\n         * @name clearChangeLog\n         * @method\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 1004,
+            "lineno": 1002,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -78186,11 +78180,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43193,
-                43269
+                43117,
+                43193
             ],
             "filename": "publicMethods.js",
-            "lineno": 1012,
+            "lineno": 1010,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78216,11 +78210,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43241,
-                43258
+                43165,
+                43182
             ],
             "filename": "publicMethods.js",
-            "lineno": 1013,
+            "lineno": 1011,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78244,7 +78238,7 @@ window.reflection = [
         "comment": "/**\n         * Selects an area of the grid.\n         * @memberof canvasDatagrid\n         * @name selectArea\n         * @method\n         * @param {rect} bounds A rect object representing the selected values.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 1015,
+            "lineno": 1013,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -78273,11 +78267,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43506,
-                44676
+                43430,
+                44600
             ],
             "filename": "publicMethods.js",
-            "lineno": 1022,
+            "lineno": 1020,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78311,11 +78305,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43562,
-                43615
+                43486,
+                43539
             ],
             "filename": "publicMethods.js",
-            "lineno": 1023,
+            "lineno": 1021,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78339,11 +78333,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43633,
-                43634
+                43557,
+                43558
             ],
             "filename": "publicMethods.js",
-            "lineno": 1024,
+            "lineno": 1022,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78365,11 +78359,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43636,
-                43637
+                43560,
+                43561
             ],
             "filename": "publicMethods.js",
-            "lineno": 1024,
+            "lineno": 1022,
             "columnno": 19,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78391,11 +78385,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43639,
-                43659
+                43563,
+                43583
             ],
             "filename": "publicMethods.js",
-            "lineno": 1024,
+            "lineno": 1022,
             "columnno": 22,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78419,11 +78413,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43702,
-                43722
+                43626,
+                43646
             ],
             "filename": "publicMethods.js",
-            "lineno": 1026,
+            "lineno": 1024,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78447,11 +78441,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44065,
-                44093
+                43989,
+                44017
             ],
             "filename": "publicMethods.js",
-            "lineno": 1034,
+            "lineno": 1032,
             "columnno": 17,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78476,11 +78470,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44129,
-                44135
+                44053,
+                44059
             ],
             "filename": "publicMethods.js",
-            "lineno": 1034,
+            "lineno": 1032,
             "columnno": 81,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78505,11 +78499,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44155,
-                44178
+                44079,
+                44102
             ],
             "filename": "publicMethods.js",
-            "lineno": 1035,
+            "lineno": 1033,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78533,11 +78527,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44201,
-                44230
+                44125,
+                44154
             ],
             "filename": "publicMethods.js",
-            "lineno": 1036,
+            "lineno": 1034,
             "columnno": 21,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78562,11 +78556,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44265,
-                44271
+                44189,
+                44195
             ],
             "filename": "publicMethods.js",
-            "lineno": 1036,
+            "lineno": 1034,
             "columnno": 85,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78591,11 +78585,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44514,
-                44550
+                44438,
+                44474
             ],
             "filename": "publicMethods.js",
-            "lineno": 1043,
+            "lineno": 1041,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78617,11 +78611,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44568,
-                44595
+                44492,
+                44519
             ],
             "filename": "publicMethods.js",
-            "lineno": 1044,
+            "lineno": 1042,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78643,11 +78637,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44613,
-                44650
+                44537,
+                44574
             ],
             "filename": "publicMethods.js",
-            "lineno": 1045,
+            "lineno": 1043,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78669,7 +78663,7 @@ window.reflection = [
         "comment": "/**\n         * Returns the maximum text width for a given column by column name.\n         * @memberof canvasDatagrid\n         * @name findColumnMaxTextLength\n         * @method\n         * @returns {number} The number of pixels wide the maximum width value in the selected column.\n         * @param {string} name The name of the column to calculate the value's width of.\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 1048,
+            "lineno": 1046,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -78708,11 +78702,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45076,
-                46553
+                45000,
+                46477
             ],
             "filename": "publicMethods.js",
-            "lineno": 1056,
+            "lineno": 1054,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78742,11 +78736,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45141,
-                45154
+                45065,
+                45078
             ],
             "filename": "publicMethods.js",
-            "lineno": 1057,
+            "lineno": 1055,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78770,11 +78764,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45213,
-                45257
+                45137,
+                45181
             ],
             "filename": "publicMethods.js",
-            "lineno": 1059,
+            "lineno": 1057,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78798,11 +78792,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45888,
-                45935
+                45812,
+                45859
             ],
             "filename": "publicMethods.js",
-            "lineno": 1069,
+            "lineno": 1067,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78826,11 +78820,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45957,
-                46121
+                45881,
+                46045
             ],
             "filename": "publicMethods.js",
-            "lineno": 1070,
+            "lineno": 1068,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78854,11 +78848,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46139,
-                46156
+                46063,
+                46080
             ],
             "filename": "publicMethods.js",
-            "lineno": 1073,
+            "lineno": 1071,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78883,11 +78877,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46237,
-                46272
+                46161,
+                46196
             ],
             "filename": "publicMethods.js",
-            "lineno": 1076,
+            "lineno": 1074,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78911,11 +78905,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46294,
-                46469
+                46218,
+                46393
             ],
             "filename": "publicMethods.js",
-            "lineno": 1077,
+            "lineno": 1075,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78939,11 +78933,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46487,
-                46504
+                46411,
+                46428
             ],
             "filename": "publicMethods.js",
-            "lineno": 1080,
+            "lineno": 1078,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -78968,7 +78962,7 @@ window.reflection = [
         "comment": "/**\n         * Gets the total width of all header columns.\n         * @memberof canvasDatagrid\n         * @name getHeaderWidth\n         * @method\n         */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 1084,
+            "lineno": 1082,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -78986,11 +78980,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46729,
-                46915
+                46653,
+                46839
             ],
             "filename": "publicMethods.js",
-            "lineno": 1090,
+            "lineno": 1088,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -79016,11 +79010,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46925,
-                47060
+                46849,
+                46984
             ],
             "filename": "publicMethods.js",
-            "lineno": 1095,
+            "lineno": 1093,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -79046,11 +79040,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47070,
-                47124
+                46994,
+                47048
             ],
             "filename": "publicMethods.js",
-            "lineno": 1098,
+            "lineno": 1096,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -79074,11 +79068,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47134,
-                47185
+                47058,
+                47109
             ],
             "filename": "publicMethods.js",
-            "lineno": 1099,
+            "lineno": 1097,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -79102,11 +79096,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47195,
-                47242
+                47119,
+                47166
             ],
             "filename": "publicMethods.js",
-            "lineno": 1100,
+            "lineno": 1098,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -79130,11 +79124,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47252,
-                47296
+                47176,
+                47220
             ],
             "filename": "publicMethods.js",
-            "lineno": 1101,
+            "lineno": 1099,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -79158,11 +79152,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47306,
-                47351
+                47230,
+                47275
             ],
             "filename": "publicMethods.js",
-            "lineno": 1102,
+            "lineno": 1100,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -79186,11 +79180,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47361,
-                48087
+                47285,
+                48011
             ],
             "filename": "publicMethods.js",
-            "lineno": 1103,
+            "lineno": 1101,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -79220,11 +79214,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47434,
-                47459
+                47358,
+                47383
             ],
             "filename": "publicMethods.js",
-            "lineno": 1104,
+            "lineno": 1102,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -79248,11 +79242,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48097,
-                48415
+                48021,
+                48339
             ],
             "filename": "publicMethods.js",
-            "lineno": 1120,
+            "lineno": 1118,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -79282,11 +79276,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48170,
-                48195
+                48094,
+                48119
             ],
             "filename": "publicMethods.js",
-            "lineno": 1121,
+            "lineno": 1119,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -79310,11 +79304,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48425,
-                48869
+                48349,
+                48793
             ],
             "filename": "publicMethods.js",
-            "lineno": 1129,
+            "lineno": 1127,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -79344,11 +79338,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48496,
-                48521
+                48420,
+                48445
             ],
             "filename": "publicMethods.js",
-            "lineno": 1130,
+            "lineno": 1128,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -84790,8 +84784,8 @@ window.reflection = [
 ];window.files = {
     "amdDemo.html": "<html>\n    <head>\n        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.js\" data-main=\"amdDemo.js\"></script>\n<!--\n\n    amdDemo.js can be found here:\n\n    https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/amdDemo.js\n\n-->\n        <style>\n            html, body {\n                height: 100%;\n                min-height: 100%;\n                margin: 0;\n                padding: 0;\n                overflow: hidden;\n            }\n            #grid {\n                height: 100%;\n                width: 100%;\n                min-height: 100%;\n            }\n        </style>\n    </head>\n    <body><div id=\"grid\"></div></body>\n</html>\n",
     "amdDemo.js": "/*jslint browser: true */\nrequire(['../dist/canvas-datagrid.debug.js'], function (dataGrid) {\n    'use strict';\n    var grid = dataGrid({\n        parentNode: document.getElementById('grid')\n    });\n    grid.addEventListener('contextmenu', function (e) {\n        e.items.push({\n            title: 'View page source',\n            click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/amdDemo.html', 'src'); }\n        });\n        e.items.push({\n            title: 'View JS module',\n            click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/amdDemo.js', 'src'); }\n        });\n        e.items.push({\n            title: 'Go to main canvas-datagrid GitHub page',\n            click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid', 'src'); }\n        });\n    });\n    grid.data = [{a: 0, b: 1, c: 2}];\n});\n",
-    "canvasDatagrid.contextMenuItem.md": "You can add or remove items from the context menu, or stop it from appearing.\nIn the following example, a context menu item is added:\n\n        grid.addEventListener('contextmenu', function (e) {\n            e.items.push({\n                title: 'Process selected row(s)',\n                click: function () {\n                    // e.cell.value contains the cell's value\n                    // e.cell.data contains the row values\n                    myProcess(e.cell.value, e.cell.data);\n                }\n            });\n        });\n\nThe `title` property can be an HTML node reference instead of a string.\nThe `click` property is optional.  See [contextmenu](https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDatagrid.contextMenuItem.html) complete information.\n",
-    "canvasDatagrid.md": "Ways to create a grid\n---------------------\n\n* Web component by using the tag `&lt;canvas-datagrid&gt;&lt;/canvas-datagrid&gt;` anywhere in your document.\n* Web component by running `var foo = document.createElement('canvas-datagrid')`.\n* Webpack3 universal module loader by adding one of many module loaders to your application code.  <br>See example: {@link https://tonygermaneri.github.io/canvas-datagrid/tutorials/amdDemo.html}.\n* You can also load the grid by invoking the global method `var foo = canvasDatagrid(&lt;args&gt;);` <br>See example: {@link https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html}\n\nIf you create the grid using the non-web component model, you can attach the grid to an existing\ncanvas by passing the canvas in as the `parentNode` when you instantiate the grid.\n\nWith the exception of attaching to an existing canvas, the grid will attempt to create a Shadow DOM element and attach a canvas within.\n\nSetting and Getting Data\n------------------------\n\nYou can set data into the grid in a number of ways.  No matter how it is passed in, it is immediately converted into the native\nformat which is an array of objects that all contain the same properties.  E.g.:\n\n    [\n        {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},\n        {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}\n    ]\n\nWhen getting data, no matter how it was set, it will be returned in the native format above.\n\nData can be almost any type, the behavior of the grid will change slightly depending on how it is set.\n\n* Data can be set using the data property.\n* Data can be set using the web component data attribute.\n* Data can be set using the web component innerHTML attribute.\n\nWhen setting data using the data property, you can use many types.\n\n* As an array of objects.\n* As an array of arrays.\n* As an object.\n* As a jagged array of objects.\n* As a jagged array of arrays.\n* As a function that returns any of the above.\n* As a function that returns undefined, and passes any of the above to the callback argument asynchronously.\n\nWhen using an array of arrays, the columns will be named like a spread sheet, A, B, C, through ZZZZ.\n\nWhen the value of a cell is an object or an array, a new grid will be drawn into the cell.\n\nSchema\n------\n\nSchema is optional.  Schema is an array of header objects.\nThis documentation will use the term header and column interchangeably.\nIf no schema is provided one will be generated from the\ndata, in that case all data will be assumed to be string data.\n\nEach header object can have the following properties:\n\n| Property | Description |\n|-----|------|\n| name | The name of the column.  This is used to match with data and is the only required property. |\n| type | The data type of this column |\n| title | What will be displayed to the user.  If not present, name will be used. |\n| width | The default width in pixels of this column.|\n| hidden | When true the column will be hidden. |\n| filter | The filter function to use to filter this column.  If no function is provided, type will determine filer. |\n| formatter | The formatter function used display this column.  If no function is provided, type will determine formatter.|\n| defaultValue | The default value of this column for new rows.  This is a function or a string.  When a function is used, it takes the arguments `header` and `index` and must return a value for new default cell value in this column.|\n\nExample schema:\n\n    [\n        {\n            name: 'col1'\n        },\n        {\n            name: 'col2'\n        },\n        {\n            name: 'col3'\n        }\n    ]\n\nProperties, Attributes, & Parameters\n------------------------------------\n\n* Properties, attributes, and parameters represent different ways to change the values and behaviors of the grid.\nProperties can be accessed directly from the grid instance. E.g.:\n\n    myGrid.someProperty = 'Some Value';\n\n* Attributes can be access from the grid instance's attributes property.  E.g.:\n\n    myGrid.attributes.someAttribute = 'Some Value';\n\n* Attributes can also be set from the attribute list of the web component tag.  E.g.:\n\n    &lt;canvas-datagrid someattribute=\"Some Value\"&gt;&lt;/canvas-datagrid&gt;\n\n* Parameters are attributes that are passed in the arguments object during instantiation.  E.g.:\n\n    var myGrid = canvasDatagrid({someAttribute: 'Some Value'});\n\n\nWeb Component\n-------------\n\nThe grid can be instantiated as a web component.\n\n\n    <canvas-datagrid></canvas-datagrid>\n\n\nTo set data, add JSON between the open and close tags.\n\n\n        <canvas-datagrid>[\n            {\"col1\": \"row 1 column 1\", \"col2\": \"row 1 column 2\", \"col3\": \"row 1 column 3\"},\n            {\"col1\": \"row 2 column 1\", \"col2\": \"row 2 column 2\", \"col3\": \"row 2 column 3\"}\n        ]</canvas-datagrid>\n\n\nTo set attributes, add attributes.  Attributes are not case sensitive when using HTML.  When using the same element in JavaScript however they are case sensitive.\n\n    <canvas-datagrid selectionmode='row'></canvas-datagrid>\n\nStyles are declared as custom css properties prefixed with --cdg- and hyphenated rather than camelCase.\nFor example, the style \"backgroundColor\" is set with \"--cdg-background-color\".  The web component\nworks with classes, css cascading, and in-line styles just like any other HTML element.\n\nInline styles:\n\n        <canvas-datagrid style=\"--cdg-background-color: lightblue;\">[\n            {\"col1\": \"row 1 column 1\", \"col2\": \"row 1 column 2\", \"col3\": \"row 1 column 3\"},\n            {\"col1\": \"row 2 column 1\", \"col2\": \"row 2 column 2\", \"col3\": \"row 2 column 3\"}\n        ]</canvas-datagrid>\n\nClass styles.\n\n        <style>\n            .grid {\n                --cdg-background-color: lightblue;\n            }\n        </style>\n        <canvas-datagrid class=\"grid\">[\n            {\"col1\": \"row 1 column 1\", \"col2\": \"row 1 column 2\", \"col3\": \"row 1 column 3\"},\n            {\"col1\": \"row 2 column 1\", \"col2\": \"row 2 column 2\", \"col3\": \"row 2 column 3\"}\n        ]</canvas-datagrid>\n\nYou can still access the grid as you would expect and the interface for the web component instance is the same as the module loaded or globally scoped version.  The web component version has additional properties that come from inheriting the base HTTPElement class.\n\nFor further reading about web components see: https://www.webcomponents.org/\n\n* When instantiating the grid using the Webpack loader or the global function canvasDatagrid, class support will not work.\n\nSorters\n-------\n\nObject that contains a list of sorting functions for sorting columns.\n\n| Argument | Description |\n|-----|------|\n| columnName | Name of the column to be sorted. |\n| direction | `asc` or `desc` for ascending or descending. |\n\nSorter function must return a sort function.\nThis function will be used in the [native sort method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).\n\nExample sorter:\n\n    grid.sorters.number = function (columnName, direction) {\n        var asc = direction === 'asc';\n        return function (a, b) {\n            if (asc) {\n                return a[columnName] - b[columnName];\n            }\n            return b[columnName] - a[columnName];\n        };\n    };\n\nFilters\n-------\n\nObject that contains a list of filters for filtering data.\nThe properties in this object match the `schema[].type` property.\nFor example, if the schema for a given column was of the type `date`\nthe grid would look for a filter called `filters.date`\nif a filter cannot be found for a given data type a warning will\nbe logged and the string/RegExp filter will be used.\n\n    filters.number = function (value, filterFor) {\n        if (!filterFor) { return true; }\n        return value === filterFor;\n    };\n\nFormatters\n----------\n\nObject that contains a list of formatting functions for displaying text.\nThe properties in this object match the `schema[].type` property.\nFor example, if the schema for a given column was of the type `date`\nthe grid would look for a formatter called `formatters.date`\nif a formatter cannot be found for a given data type a warning will\nbe logged and the string formatter will be used.\n\nCell formatter function should contain the following arguments.\n\n    grid.formatters.date = function (e) { return new Date(e.cell.value).toISOString(); }\n\nFormatters must return a string value to be displayed in the cell.\n\n\nFormatting using event listeners\n--------------------------------\n\nYou can format the data in your cells without altering the data in two ways.\n\nThe first and fastest method is grid formatters.\nGrid formatters allow you to pass your values though a function to format them as they are drawn onto the grid.\nData type is defined in the [schema](https://tonygermaneri.github.io/canvas-datagrid/docs/tutorial-schema.html) that you can optionally pass to describe your data.\n\nThis method is slightly faster due to the O(1) hash map employed in the value formatters.\n\nIn the following example, the type `date` is given a formatter function.\n\n    grid.formatters.date = function (e) {\n        return new Date(e.cell.value).toISOString();\n    };\n\nThe return value of the formatter function will be displayed in the cell instead of the value\nin the data without altering the data.\n\nThe second method is the `rendertext` event.  By subscribing to the `rendertext` event listener\nwe can intercept the value in the context of the [cell](https://tonygermaneri.github.io/canvas-datagrid/docs/canvasDatagrid.cell.html) being drawn and alter it.\n\nThis method is slightly slower due to the O(n) loop employed in the event handler class.\n\nThis method is not dependent on values in the schema.  This methods overrides `grid.formatters`.\n\n    grid.addEventListener('rendertext', function (e) {\n        if (e.cell.rowIndex > -1) {\n            if (e.cell.header.name === 'MyDateColumnName') {\n                e.cell.formattedValue = new Date(e.cell.value).toISOString();\n            }\n        }\n    });\n\nExtending the visual appearance\n-------------------------------\nAll visual elements of the canvas are dependent on the values of the style object.\nYou can change the dimensions and appearance of any element of the grid.\n\nThis example changes the fill style of the cell when the cell is a certain value.\n\n    grid.addEventListener('rendercell', function (e) {\n        if (e.cell.header.name === 'MyStatusCell' && /blah/.test(e.cell.value)) {\n            e.ctx.fillStyle = '#AEEDCF';\n        }\n    });\n\nDrawing on the canvas\n---------------------\nExtending behavior is done using event handlers just like a regular HTML element.\nYou can alter the content of a rendered cell by attaching to such an event handler.\nBelow is an example of drawing an image into a cell:\n\nThis example attaches to two events. `rendertext` to prevent the rendering of text into the cell...\n\n    grid.addEventListener('rendertext', function (e) {\n        if (e.cell.rowIndex > -1) {\n            if (e.cell.header.name === 'MyImageColumnName') {\n                e.cell.formattedValue = e.cell.value ? '' : 'No Image';\n            }\n        }\n    });\n\n... and `afterrendercell` to draw an image into the cell after the background and borders are drawn.\nBecause the image is loaded asynchronously, you need to attach to the load event to actually draw\nthe image.\n\n    var imgs = {};\n    grid.addEventListener('afterrendercell', function (e) {\n        var i, contextGrid = this;\n        if (e.cell.header.name === 'MyImageColumnName'\n                && e.cell.value && e.cell.rowIndex > -1) {\n            if (!imgs[e.cell.value]) {\n                i = imgs[e.cell.value] = new Image();\n                i.src = e.cell.value;\n                i.onload = function () {\n                    i.targetHeight = e.cell.height;\n                    i.targetWidth = e.cell.height * (i.width / i.height);\n                    contextGrid.draw();\n                };\n                return;\n            }\n            i = imgs[e.cell.value];\n            if (i.width !== 0) {\n                e.ctx.drawImage(i, e.cell.x, e.cell.y, i.targetWidth, i.targetHeight);\n            }\n        }\n    });\n\n\n\nSupporting DOM elements\n-----------------------\n\nAlthough the grid itself is pure canvas, there are some supporting elements of the grid that are HTMLElements.\n\n* In order to overlap parts of the page that are not on the canvas, the context menu is a `&lt;div&gt;`.\n* In order to support advanced key commands, copying, pasting as well as user customization outside of this library, the editing input/textarea is DOM.\n* A hidden input is placed outside of the visible area of the web page to capture keystroke and translate them into grid commands, such as cursor navigation.\n\nYou can customize almost every behavior of the grid by subscribing to an event in the event handler collection.\nMost events provide a `e.preventDefault();` method that will allow you to manipulate the grid's behavior on a very granular level.\n\nExamples of how to use many of the event handlers to change default grid behaviors can be found in the <a href=\"#tutorials\">tutorials</a> section.\n\nNotes\n-----\n\n* Throughout this document there are several words that will be used interchangeably.\n* Canvas Datagrid will also be referred to simply as \"grid\".\n* Column and header are used interchangeably.\n* Node, HTMLElement, DOM, DOM element, and element all refer to an HTML element or elements.\n* Firing, raising, invoking, and running, all refer to a function or event occurring.\n* Binding, subscribing, and listening all refer to using `&lt;element&gt;.addEventListener()` to subscribe to an event.\n* Inner grid, child grid, tree grid, cell grid all refer to one of two types of grids that render inside of other grids.  Cell grids are in a single cell, while tree grids span an entire row.\n* Drawing and rendering both refer to using low level methods to draw pixels onto the canvas, usually by invoking `canvasDatagrid.draw`.\n* This documentation is automatically generated and can be prone to omissions, bad links and errors.  Please report any problems with the documentation here {@link https://github.com/TonyGermaneri/canvas-datagrid/issues}.\n",
+    "canvasDatagrid.contextMenuItem.md": "You can add or remove items from the context menu, or stop it from appearing.\nIn the following example, a context menu item is added:\n\n        grid.addEventListener('contextmenu', function (e) {\n            e.items.push({\n                title: 'Process selected row(s)',\n                click: function () {\n                    // e.cell.value contains the cell's value\n                    // e.cell.data contains the row values\n                    myProcess(e.cell.value, e.cell.data);\n                }\n            });\n        });\n\nThe `title` property can be an HTML node reference instead of a string.\nThe `click` property is optional.  See [contextmenu](https://tonygermaneri.github.io/canvas-datagrid/docs/#tutorial--Simple-context-menu) complete information.\n",
+    "canvasDatagrid.md": "Ways to create a grid\n---------------------\n\n* Web component by using the tag `&lt;canvas-datagrid&gt;&lt;/canvas-datagrid&gt;` anywhere in your document.\n* Web component by running `var foo = document.createElement('canvas-datagrid')`.\n* Webpack3 universal module loader by adding one of many module loaders to your application code.  <br>See example: {@link https://tonygermaneri.github.io/canvas-datagrid/tutorials/amdDemo.html}.\n* You can also load the grid by invoking the global method `var foo = canvasDatagrid(&lt;args&gt;);` <br>See example: {@link https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html}\n\nIf you create the grid using the non-web component model, you can attach the grid to an existing\ncanvas by passing the canvas in as the `parentNode` when you instantiate the grid.\n\nWith the exception of attaching to an existing canvas, the grid will attempt to create a Shadow DOM element and attach a canvas within.\n\nSetting and Getting Data\n------------------------\n\nYou can set data into the grid in a number of ways.  No matter how it is passed in, it is immediately converted into the native\nformat which is an array of objects that all contain the same properties.  E.g.:\n\n    [\n        {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},\n        {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}\n    ]\n\nWhen getting data, no matter how it was set, it will be returned in the native format above.\n\nData can be almost any type, the behavior of the grid will change slightly depending on how it is set.\n\n* Data can be set using the data property.\n* Data can be set using the web component data attribute.\n* Data can be set using the web component innerHTML attribute.\n\nWhen setting data using the data property, you can use many types.\n\n* As an array of objects.\n* As an array of arrays.\n* As an object.\n* As a jagged array of objects.\n* As a jagged array of arrays.\n* As a function that returns any of the above.\n* As a function that returns undefined, and passes any of the above to the callback argument asynchronously.\n\nWhen using an array of arrays, the columns will be named like a spread sheet, A, B, C, through ZZZZ.\n\nWhen the value of a cell is an object or an array, a new grid will be drawn into the cell.\n\nSchema\n------\n\nSchema is optional.  Schema is an array of header objects.\nThis documentation will use the term header and column interchangeably.\nIf no schema is provided one will be generated from the\ndata, in that case all data will be assumed to be string data.\n\nEach header object can have the following properties:\n\n| Property | Description |\n|-----|------|\n| name | The name of the column.  This is used to match with data and is the only required property. |\n| type | The data type of this column |\n| title | What will be displayed to the user.  If not present, name will be used. |\n| width | The default width in pixels of this column.|\n| hidden | When true the column will be hidden. |\n| filter | The filter function to use to filter this column.  If no function is provided, type will determine filer. |\n| formatter | The formatter function used display this column.  If no function is provided, type will determine formatter.|\n| defaultValue | The default value of this column for new rows.  This is a function or a string.  When a function is used, it takes the arguments `header` and `index` and must return a value for new default cell value in this column.|\n\nExample schema:\n\n    [\n        {\n            name: 'col1'\n        },\n        {\n            name: 'col2'\n        },\n        {\n            name: 'col3'\n        }\n    ]\n\nProperties, Attributes, & Parameters\n------------------------------------\n\n* Properties, attributes, and parameters represent different ways to change the values and behaviors of the grid.\nProperties can be accessed directly from the grid instance. E.g.:\n\n    myGrid.someProperty = 'Some Value';\n\n* Attributes can be access from the grid instance's attributes property.  E.g.:\n\n    myGrid.attributes.someAttribute = 'Some Value';\n\n* Attributes can also be set from the attribute list of the web component tag.  E.g.:\n\n    &lt;canvas-datagrid someattribute=\"Some Value\"&gt;&lt;/canvas-datagrid&gt;\n\n* Parameters are attributes that are passed in the arguments object during instantiation.  E.g.:\n\n    var myGrid = canvasDatagrid({someAttribute: 'Some Value'});\n\n\nWeb Component\n-------------\n\nThe grid can be instantiated as a web component.\n\n\n    <canvas-datagrid></canvas-datagrid>\n\n\nTo set data, add JSON between the open and close tags.\n\n\n        <canvas-datagrid>[\n            {\"col1\": \"row 1 column 1\", \"col2\": \"row 1 column 2\", \"col3\": \"row 1 column 3\"},\n            {\"col1\": \"row 2 column 1\", \"col2\": \"row 2 column 2\", \"col3\": \"row 2 column 3\"}\n        ]</canvas-datagrid>\n\n\nTo set attributes, add attributes.  Attributes are not case sensitive when using HTML.  When using the same element in JavaScript however they are case sensitive.\n\n    <canvas-datagrid selectionmode='row'></canvas-datagrid>\n\nStyles are declared as custom css properties prefixed with --cdg- and hyphenated rather than camelCase.\nFor example, the style \"backgroundColor\" is set with \"--cdg-background-color\".  The web component\nworks with classes, css cascading, and in-line styles just like any other HTML element.\n\nInline styles:\n\n        <canvas-datagrid style=\"--cdg-background-color: lightblue;\">[\n            {\"col1\": \"row 1 column 1\", \"col2\": \"row 1 column 2\", \"col3\": \"row 1 column 3\"},\n            {\"col1\": \"row 2 column 1\", \"col2\": \"row 2 column 2\", \"col3\": \"row 2 column 3\"}\n        ]</canvas-datagrid>\n\nClass styles.\n\n        <style>\n            .grid {\n                --cdg-background-color: lightblue;\n            }\n        </style>\n        <canvas-datagrid class=\"grid\">[\n            {\"col1\": \"row 1 column 1\", \"col2\": \"row 1 column 2\", \"col3\": \"row 1 column 3\"},\n            {\"col1\": \"row 2 column 1\", \"col2\": \"row 2 column 2\", \"col3\": \"row 2 column 3\"}\n        ]</canvas-datagrid>\n\nYou can still access the grid as you would expect and the interface for the web component instance is the same as the module loaded or globally scoped version.  The web component version has additional properties that come from inheriting the base HTTPElement class.\n\nFor further reading about web components see: https://www.webcomponents.org/\n\n* When instantiating the grid using the Webpack loader or the global function canvasDatagrid, class support will not work.\n\nSorters\n-------\n\nObject that contains a list of sorting functions for sorting columns.\n\n| Argument | Description |\n|-----|------|\n| columnName | Name of the column to be sorted. |\n| direction | `asc` or `desc` for ascending or descending. |\n\nSorter function must return a sort function.\nThis function will be used in the [native sort method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).\n\nExample sorter:\n\n    grid.sorters.number = function (columnName, direction) {\n        var asc = direction === 'asc';\n        return function (a, b) {\n            if (asc) {\n                return a[columnName] - b[columnName];\n            }\n            return b[columnName] - a[columnName];\n        };\n    };\n\nFilters\n-------\n\nObject that contains a list of filters for filtering data.\nThe properties in this object match the `schema[].type` property.\nFor example, if the schema for a given column was of the type `date`\nthe grid would look for a filter called `filters.date`\nif a filter cannot be found for a given data type a warning will\nbe logged and the string/RegExp filter will be used.\n\n    filters.number = function (value, filterFor) {\n        if (!filterFor) { return true; }\n        return value === filterFor;\n    };\n\nFormatters\n----------\n\nObject that contains a list of formatting functions for displaying text.\nThe properties in this object match the `schema[].type` property.\nFor example, if the schema for a given column was of the type `date`\nthe grid would look for a formatter called `formatters.date`\nif a formatter cannot be found for a given data type a warning will\nbe logged and the string formatter will be used.\n\nCell formatter function should contain the following arguments.\n\n    grid.formatters.date = function (e) { return new Date(e.cell.value).toISOString(); }\n\nFormatters must return a string value to be displayed in the cell.\n\n\nFormatting using event listeners\n--------------------------------\n\nYou can format the data in your cells without altering the data in two ways.\n\nThe first and fastest method is grid formatters.\nGrid formatters allow you to pass your values though a function to format them as they are drawn onto the grid.\nData type is defined in the [schema](https://tonygermaneri.github.io/canvas-datagrid/docs/#schema) that you can optionally pass to describe your data.\n\nThis method is slightly faster due to the O(1) hash map employed in the value formatters.\n\nIn the following example, the type `date` is given a formatter function.\n\n    grid.formatters.date = function (e) {\n        return new Date(e.cell.value).toISOString();\n    };\n\nThe return value of the formatter function will be displayed in the cell instead of the value\nin the data without altering the data.\n\nThe second method is the `rendertext` event.  By subscribing to the `rendertext` event listener\nwe can intercept the value in the context of the [cell](https://tonygermaneri.github.io/canvas-datagrid/docs/#canvasDatagrid.cell) being drawn and alter it.\n\nThis method is slightly slower due to the O(n) loop employed in the event handler class.\n\nThis method is not dependent on values in the schema.  This methods overrides `grid.formatters`.\n\n    grid.addEventListener('rendertext', function (e) {\n        if (e.cell.rowIndex > -1) {\n            if (e.cell.header.name === 'MyDateColumnName') {\n                e.cell.formattedValue = new Date(e.cell.value).toISOString();\n            }\n        }\n    });\n\nExtending the visual appearance\n-------------------------------\nAll visual elements of the canvas are dependent on the values of the style object.\nYou can change the dimensions and appearance of any element of the grid.\n\nThis example changes the fill style of the cell when the cell is a certain value.\n\n    grid.addEventListener('rendercell', function (e) {\n        if (e.cell.header.name === 'MyStatusCell' && /blah/.test(e.cell.value)) {\n            e.ctx.fillStyle = '#AEEDCF';\n        }\n    });\n\nDrawing on the canvas\n---------------------\nExtending behavior is done using event handlers just like a regular HTML element.\nYou can alter the content of a rendered cell by attaching to such an event handler.\nBelow is an example of drawing an image into a cell:\n\nThis example attaches to two events. `rendertext` to prevent the rendering of text into the cell...\n\n    grid.addEventListener('rendertext', function (e) {\n        if (e.cell.rowIndex > -1) {\n            if (e.cell.header.name === 'MyImageColumnName') {\n                e.cell.formattedValue = e.cell.value ? '' : 'No Image';\n            }\n        }\n    });\n\n... and `afterrendercell` to draw an image into the cell after the background and borders are drawn.\nBecause the image is loaded asynchronously, you need to attach to the load event to actually draw\nthe image.\n\n    var imgs = {};\n    grid.addEventListener('afterrendercell', function (e) {\n        var i, contextGrid = this;\n        if (e.cell.header.name === 'MyImageColumnName'\n                && e.cell.value && e.cell.rowIndex > -1) {\n            if (!imgs[e.cell.value]) {\n                i = imgs[e.cell.value] = new Image();\n                i.src = e.cell.value;\n                i.onload = function () {\n                    i.targetHeight = e.cell.height;\n                    i.targetWidth = e.cell.height * (i.width / i.height);\n                    contextGrid.draw();\n                };\n                return;\n            }\n            i = imgs[e.cell.value];\n            if (i.width !== 0) {\n                e.ctx.drawImage(i, e.cell.x, e.cell.y, i.targetWidth, i.targetHeight);\n            }\n        }\n    });\n\n\n\nSupporting DOM elements\n-----------------------\n\nAlthough the grid itself is pure canvas, there are some supporting elements of the grid that are HTMLElements.\n\n* In order to overlap parts of the page that are not on the canvas, the context menu is a `&lt;div&gt;`.\n* In order to support advanced key commands, copying, pasting as well as user customization outside of this library, the editing input/textarea is DOM.\n* A hidden input is placed outside of the visible area of the web page to capture keystroke and translate them into grid commands, such as cursor navigation.\n\nYou can customize almost every behavior of the grid by subscribing to an event in the event handler collection.\nMost events provide a `e.preventDefault();` method that will allow you to manipulate the grid's behavior on a very granular level.\n\nExamples of how to use many of the event handlers to change default grid behaviors can be found in the <a href=\"#tutorials\">tutorials</a> section.\n\nNotes\n-----\n\n* Throughout this document there are several words that will be used interchangeably.\n* Canvas Datagrid will also be referred to simply as \"grid\".\n* Column and header are used interchangeably.\n* Node, HTMLElement, DOM, DOM element, and element all refer to an HTML element or elements.\n* Firing, raising, invoking, and running, all refer to a function or event occurring.\n* Binding, subscribing, and listening all refer to using `&lt;element&gt;.addEventListener()` to subscribe to an event.\n* Inner grid, child grid, tree grid, cell grid all refer to one of two types of grids that render inside of other grids.  Cell grids are in a single cell, while tree grids span an entire row.\n* Drawing and rendering both refer to using low level methods to draw pixels onto the canvas, usually by invoking `canvasDatagrid.draw`.\n* This documentation is automatically generated and can be prone to omissions, bad links and errors.  Please report any problems with the documentation here {@link https://github.com/TonyGermaneri/canvas-datagrid/issues}.\n",
     "canvasDatagrid.style.md": "Setting Styles\n--------------\n\nStyles can be set during instantiation.\n\n    var grid = canvasDatagrid({\n            style: {\n                backgroundColor: 'red'\n            }\n        });\n\nStyles can be set after instantiation.\n\n    grid.style.backgroundColor = 'red';\n\nWhen using the web component, styles can be set as above, but also using standard CSS.\n\nWhen using standard CSS, style names are hyphenated, lower case, and prefixed with `--cdg-`.\n\n    <canvas-datagrid style=\"--cdg-background-color: red;\">[{\"my\": \"data\"}]</canvas-datagrid>\n\nWhen using the web component you can also use CSS classes and selectors as you would a native HTML element.\n    \n    <style>\n        .my-grid {\n            --cdg-background-color: red;\n        }\n    </style>\n\n    <canvas-datagrid class=\"my-grid\">[{\"my\": \"data\"}]</canvas-datagrid>\n\nYou can build your own styles using the <a href=\"https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html\">Style Builder</a>.\n",
     "demo.html": "<!doctype html>\n<html lang=\"en\">\n    <head>\n        <script src=\"../dist/canvas-datagrid.debug.js\"></script>\n        <script src=\"./demo.js\"></script>\n        <meta name=\"viewport\" content=\"width=device-width\">\n        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"/>\n        <style>\n            html, body {\n                height: 100%;\n                min-height: 100%;\n                margin: 0;\n                padding: 0;\n                overflow: hidden;\n            }\n            #grid {\n                height: 100%;\n                width: 100%;\n                min-height: 100%;\n            }\n        </style>\n    </head>\n    <body><div id=\"grid\"></div></body>\n</html>\n",
     "demo.js": "/*jslint browser: true*/\n/*globals canvasDatagrid: false*/\nvar data;\nfunction demo() {\n    'use strict';\n    var searchUrl = window.location.search.substring(3),\n        typeMap = {\n            'text': 'string',\n            'money': 'number',\n            'number': 'number'\n        };\n    function isNoiseData(name) {\n        // get rid of fields that we don't care about\n        return ['sid', 'id', 'position', 'created_at',\n                    'created_meta', 'updated_at',\n                    'updated_meta', 'meta'].indexOf(name) !== -1;\n    }\n    function parseOpenData(openData) {\n        var data, schema = [];\n        openData.meta.view.columns.forEach(function (column) {\n            if (isNoiseData(column.name)) {\n                column.hidden = true;\n            }\n            column.type = typeMap[column.dataTypeName] || 'string';\n            if (/full or part-time/i.test(column.name)) {\n                column.enum = [['F', 'F'], ['P', 'P']];\n            }\n            if (/salary or hourly/i.test(column.name)) {\n                column.enum = [['Salary', 'Salary'], ['Hourly', 'Hourly']];\n            }\n            schema.push(column);\n        });\n        data = openData.data.map(function (row) {\n            var r = {};\n            schema.forEach(function (column, index) {\n                r[column.name] = row[index];\n            });\n            return r;\n        });\n        return {\n            data: data,\n            schema: schema\n        };\n    }\n    function loadDataSet(url) {\n        var xhr = new XMLHttpRequest(),\n            grid = canvasDatagrid({\n                parentNode: document.getElementById('grid'),\n                borderDragBehavior: 'move',\n                allowMovingSelection: true,\n                columnHeaderClickBehavior: 'select',\n                allowFreezingRows: true,\n                allowFreezingColumns: true,\n                allowRowReordering: true,\n                tree: false,\n                debug: false\n            });\n        grid.addEventListener('contextmenu', function (e) {\n            e.items.push({\n                title: 'View page source',\n                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/demo.html', 'src'); }\n            });\n            e.items.push({\n                title: 'View JS module',\n                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/demo.js', 'src'); }\n            });\n            e.items.push({\n                title: 'Go to main canvas-datagrid GitHub page',\n                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid', 'src'); }\n            });\n        });\n        xhr.addEventListener('progress', function (e) {\n            grid.data = [{ status: 'Loading data: ' + e.loaded + ' of ' + (e.total || 'unknown') + ' bytes...'}];\n        });\n        xhr.addEventListener('load', function (e) {\n            grid.data = [{ status: 'Loading data ' + e.loaded + '...'}];\n            var openData = parseOpenData(JSON.parse(this.responseText));\n            grid.schema = openData.schema;\n            grid.data = openData.data;\n        });\n        xhr.open('GET', url);\n        xhr.send();\n    }\n    if (searchUrl.length > 3) {\n        // work encoded or not, for lazy people who can't be bothered encoding stuff\n        loadDataSet(/%3A/.test(searchUrl) ? decodeURIComponent(searchUrl) : searchUrl);\n    } else {\n        loadDataSet('https://data.cityofchicago.org/api/views/xzkq-xp2w/rows.json?accessType=DOWNLOAD');\n        // inner join\n        // https://data.cityofchicago.org/api/views/pasx-mnuv/rows.json?accessType=DOWNLOAD\n    }\n}\nif (document.addEventListener) {\n    document.addEventListener('DOMContentLoaded', demo);\n} else {\n    setTimeout(function () {\n        'use strict';\n        demo();\n    }, 500);\n}\n",
