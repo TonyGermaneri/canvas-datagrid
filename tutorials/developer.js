@@ -184,9 +184,11 @@ function g() {
             parentNode: document.getElementById('grid'),
             allowRowReordering: true,
             scrollPointerLock: false,
+            showColumnHeaders: true,
+            showRowHeaders: true,
             snapToRow: false,
-            debug: true,
-            showPerformance: true,
+            debug: false,
+            showPerformance: false,
             allowFreezingRows: true,
             tree: false,
             allowFreezingColumns: true
@@ -216,6 +218,8 @@ function g() {
     }
     grid.attributes.columnHeaderClickBehavior = 'select';
     grid.style.columnHeaderCellHorizontalAlignment = 'center';
+    grid.style.borderCollapse = 'collapse';
+    grid.style.backgroundColor = '#FF00FF';
     grid.data = d;
 
 
