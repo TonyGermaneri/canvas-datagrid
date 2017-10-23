@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">71.3% </span>
+        <span class="strong">71.43% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>462/648</span>
+        <span class='fraction'>460/644</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">70.44% </span>
+        <span class="strong">70.34% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>398/565</span>
+        <span class='fraction'>396/563</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">60% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>33/55</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">73.21% </span>
+        <span class="strong">73.4% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>459/627</span>
+        <span class='fraction'>458/624</span>
       </div>
     </div>
   </div>
@@ -1064,11 +1064,7 @@
 1019
 1020
 1021
-1022
-1023
-1024
-1025
-1026</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+1022</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1120,11 +1116,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">164×</span>
-<span class="cline-any cline-yes">135916×</span>
+<span class="cline-any cline-yes">135878×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">135916×</span>
+<span class="cline-any cline-yes">135878×</span>
 <span class="cline-any cline-yes">1019×</span>
 <span class="cline-any cline-yes">1053×</span>
 <span class="cline-any cline-yes">1053×</span>
@@ -1227,10 +1223,10 @@
 <span class="cline-any cline-yes">325×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">911×</span>
-<span class="cline-any cline-yes">13593×</span>
+<span class="cline-any cline-yes">13591×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13593×</span>
+<span class="cline-any cline-yes">13591×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">911×</span>
 <span class="cline-any cline-yes">879×</span>
@@ -1366,14 +1362,12 @@
 <span class="cline-any cline-yes">24×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">24×</span>
 <span class="cline-any cline-yes">24×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">17×</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1432,8 +1426,6 @@
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6×</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1881,7 +1873,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">23×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">23×</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -2389,7 +2381,6 @@ define([], function () {
         };
         self.click = function (e, overridePos) {
             var i,
-                selectionChanged,
                 ctrl = (e.ctrlKey || e.metaKey || self.attributes.persistantSelectionMode),
                 pos = overridePos || self.getLayerPos(e);
             self.currentCell = self.getCellAt(pos.x, pos.y);
@@ -2397,8 +2388,7 @@ define([], function () {
 <span class="cstat-no" title="statement not covered" >                return;</span>
             }
             function checkSelectionChange() {
-                <span class="missing-if-branch" title="else path not taken" >E</span>if (!selectionChanged) { return; }
-<span class="cstat-no" title="statement not covered" >                self.dispatchEvent('selectionchanged', {</span>
+                self.dispatchEvent('selectionchanged', {
                     selectedData: self.getSelectedData(),
                     selections: self.selections,
                     selectionBounds: self.selectionBounds
@@ -2457,8 +2447,6 @@ define([], function () {
                         self.toggleTree(i.rowIndex);
                         return;
                     }
-<span class="cstat-no" title="statement not covered" >                    selectionChanged = true;</span>
-<span class="cstat-no" title="statement not covered" >                    self.selectRow(i.rowIndex, ctrl, null, true);</span>
                 }
                 <span class="missing-if-branch" title="if path not taken" >I</span>if (e.shiftKey &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >!ctrl)</span> {
 <span class="cstat-no" title="statement not covered" >                    self.selectionBounds = self.getSelectionBounds();</span>
@@ -2905,8 +2893,8 @@ define([], function () {
             <span class="missing-if-branch" title="if path not taken" >I</span>if (y &gt; last) {
 <span class="cstat-no" title="statement not covered" >                y = last;</span>
             }
-            if (y &lt; 0) {
-                y = 0;
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (y &lt; 0) {
+<span class="cstat-no" title="statement not covered" >                y = 0;</span>
             }
             <span class="missing-if-branch" title="if path not taken" >I</span>if (x &gt; cols) {
 <span class="cstat-no" title="statement not covered" >                x = cols;</span>
@@ -3124,7 +3112,7 @@ define([], function () {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Oct 22 2017 21:35:24 GMT-0700 (PDT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Oct 23 2017 01:21:38 GMT-0700 (PDT)
 </div>
 </div>
 <script src="../prettify.js"></script>
