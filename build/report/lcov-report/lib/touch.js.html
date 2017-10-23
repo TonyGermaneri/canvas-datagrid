@@ -452,7 +452,7 @@
 <span class="cline-any cline-yes">164×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">746×</span>
+<span class="cline-any cline-yes">748×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -465,12 +465,12 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">164×</span>
-<span class="cline-any cline-yes">746×</span>
+<span class="cline-any cline-yes">748×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">164×</span>
-<span class="cline-any cline-yes">153×</span>
-<span class="cline-any cline-yes">153×</span>
-<span class="cline-any cline-yes">153×</span>
+<span class="cline-any cline-yes">152×</span>
+<span class="cline-any cline-yes">152×</span>
+<span class="cline-any cline-yes">152×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -486,20 +486,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">164×</span>
-<span class="cline-any cline-yes">373×</span>
-<span class="cline-any cline-yes">373×</span>
+<span class="cline-any cline-yes">374×</span>
+<span class="cline-any cline-yes">374×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">373×</span>
-<span class="cline-any cline-yes">373×</span>
-<span class="cline-any cline-yes">373×</span>
-<span class="cline-any cline-yes">373×</span>
-<span class="cline-any cline-yes">373×</span>
+<span class="cline-any cline-yes">374×</span>
+<span class="cline-any cline-yes">374×</span>
+<span class="cline-any cline-yes">374×</span>
+<span class="cline-any cline-yes">374×</span>
+<span class="cline-any cline-yes">374×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">370×</span>
-<span class="cline-any cline-yes">370×</span>
+<span class="cline-any cline-yes">371×</span>
+<span class="cline-any cline-yes">371×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">164×</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -959,7 +959,7 @@ define([], function () {
                             top: self.startingCell.rowIndex,
                             bottom: self.startingCell.rowIndex,
                             left: 0,
-                            right: self.getSchema().length - 1,
+                            right: self.getVisibleSchema().length - 1,
                         });
 <span class="cstat-no" title="statement not covered" >                        self.draw(true);</span>
                     } else <span class="cstat-no" title="statement not covered" >if (self.startingCell.isColumnHeader) {</span>
@@ -1026,7 +1026,7 @@ define([], function () {
 <span class="cstat-no" title="statement not covered" >            self.draw(true);</span>
         };
         self.touchmove = function (e) {
-            var rh, cw, rScrollZone, lScrollZone, bScrollZone, tScrollZone, sbw, t1, t2;
+            var ch, rw, rScrollZone, lScrollZone, bScrollZone, tScrollZone, sbw, t1, t2;
             <span class="missing-if-branch" title="if path not taken" >I</span>if (self.dispatchEvent('touchmove', {NativeEvent: e})) { <span class="cstat-no" title="statement not covered" >return; </span>}
             clearTimeout(touchScrollTimeout);
             <span class="missing-if-branch" title="else path not taken" >E</span>if (e.changedTouches[0]) {
@@ -1057,12 +1057,12 @@ define([], function () {
             <span class="missing-if-branch" title="if path not taken" >I</span>if (self.zoomAltered) { <span class="cstat-no" title="statement not covered" >return; </span>}
             self.touchLength = 1;
             self.touchPosition = self.touchPosition || <span class="branch-1 cbranch-no" title="branch not covered" >self.touchPosition1;</span>
-            rh = self.getRowHeaderCellHeight();
-            cw = self.getColumnHeaderCellWidth();
+            ch = self.getColumnHeaderCellHeight();
+            rw = self.getRowHeaderCellWidth();
             rScrollZone = self.width - self.style.scrollBarWidth - self.touchPosition.x &lt; self.attributes.selectionScrollZone;
-            lScrollZone = self.touchPosition.x - cw &lt; self.attributes.selectionScrollZone;
+            lScrollZone = self.touchPosition.x - rw &lt; self.attributes.selectionScrollZone;
             bScrollZone = self.height - self.style.scrollBarWidth - self.touchPosition.y &lt; self.attributes.selectionScrollZone;
-            tScrollZone = self.touchPosition.y - rh &lt; self.attributes.selectionScrollZone;
+            tScrollZone = self.touchPosition.y - ch &lt; self.attributes.selectionScrollZone;
             sbw = self.style.scrollBarWidth;
 <span class="fstat-no" title="function not covered" >            function touchScroll() {</span>
 <span class="cstat-no" title="statement not covered" >                var x = self.scrollBox.scrollLeft,</span>
@@ -1092,12 +1092,12 @@ define([], function () {
             }
             <span class="missing-if-branch" title="if path not taken" >I</span>if (/vertical-scroll-/.test(self.startingCell.style)) {
 <span class="cstat-no" title="statement not covered" >                self.scrollBox.scrollTop = self.scrollBox.scrollHeight</span>
-                    * ((self.touchPosition.y - rh - sbw) / (self.scrollBox.height - sbw - rh));
+                    * ((self.touchPosition.y - ch - sbw) / (self.scrollBox.height - sbw - ch));
 <span class="cstat-no" title="statement not covered" >                return;</span>
             }
             if (/horizontal-scroll-/.test(self.startingCell.style)) {
                 self.scrollBox.scrollLeft = self.scrollBox.scrollWidth
-                    * ((self.touchPosition.x - cw - sbw) / (self.scrollBox.width - sbw - cw));
+                    * ((self.touchPosition.x - rw - sbw) / (self.scrollBox.width - sbw - rw));
                 return;
             }
             <span class="missing-if-branch" title="if path not taken" >I</span>if (/selection-handle-/.test(self.startingCell.style)) {
@@ -1174,7 +1174,7 @@ define([], function () {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Oct 16 2017 23:17:15 GMT-0700 (PDT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Oct 22 2017 21:35:24 GMT-0700 (PDT)
 </div>
 </div>
 <script src="../prettify.js"></script>
