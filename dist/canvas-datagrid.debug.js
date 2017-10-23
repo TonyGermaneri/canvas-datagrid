@@ -166,13 +166,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             styles: [
                 ['activeCellBackgroundColor', 'rgba(255, 255, 255, 1)'],
                 ['activeCellBorderColor', 'rgba(110, 168, 255, 1)'],
-                ['activeCellBorderWidth', 0.25],
+                ['activeCellBorderWidth', 1],
                 ['activeCellColor', 'rgba(0, 0, 0, 1)'],
                 ['activeCellFont', '16px sans-serif'],
                 ['activeCellHoverBackgroundColor', 'rgba(255, 255, 255, 1)'],
                 ['activeCellHoverColor', 'rgba(0, 0, 0, 1)'],
                 ['activeCellOverlayBorderColor', 'rgba(66, 133, 244, 1)'],
-                ['activeCellOverlayBorderWidth', 0.5],
+                ['activeCellOverlayBorderWidth', 1],
                 ['activeCellPaddingBottom', 5],
                 ['activeCellPaddingLeft', 5],
                 ['activeCellPaddingRight', 7],
@@ -187,10 +187,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['autosizeHeaderCellPadding', 8],
                 ['autosizePadding', 5],
                 ['backgroundColor', 'rgba(240, 240, 240, 1)'],
+                ['borderCollapse', 'collapse'],
                 ['cellAutoResizePadding', 13],
                 ['cellBackgroundColor', 'rgba(255, 255, 255, 1)'],
                 ['cellBorderColor', 'rgba(195, 199, 202, 1)'],
-                ['cellBorderWidth', 0.5],
+                ['cellBorderWidth', 1],
                 ['cellColor', 'rgba(0, 0, 0, 1)'],
                 ['cellFont', '16px sans-serif'],
                 ['cellGridHeight', 250],
@@ -213,7 +214,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['childContextMenuMarginTop', -6],
                 ['columnHeaderCellBackgroundColor', 'rgba(240, 240, 240, 1)'],
                 ['columnHeaderCellBorderColor', 'rgba(172, 172, 172, 1)'],
-                ['columnHeaderCellBorderWidth', 0.5],
+                ['columnHeaderCellBorderWidth', 1],
                 ['columnHeaderCellColor', 'rgba(50, 50, 50, 1)'],
                 ['columnHeaderCellFont', '16px sans-serif'],
                 ['columnHeaderCellHeight', 25],
@@ -285,9 +286,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['frozenMarkerActiveColor', 'rgba(236, 243, 255, 1)'],
                 ['frozenMarkerActiveBorderColor', 'rgba(110, 168, 255, 1)'],
                 ['frozenMarkerColor', 'rgba(222, 222, 222, 1)'],
-                ['frozenMarkerBorderColor', 'rgba(202, 202, 202, 1)'],
+                ['frozenMarkerBorderColor', 'rgba(168, 168, 168, 1)'],
                 ['frozenMarkerBorderWidth', 1],
-                ['frozenMarkerWidth', 1],
+                ['frozenMarkerWidth', 2],
                 ['gridBorderColor', 'rgba(202, 202, 202, 1)'],
                 ['gridBorderWidth', 1],
                 ['height', 'auto'],
@@ -342,7 +343,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['selectionHandleSize', 8],
                 ['selectionHandleType', 'square'],
                 ['selectionOverlayBorderColor', 'rgba(66, 133, 244, 1)'],
-                ['selectionOverlayBorderWidth', 0.75],
+                ['selectionOverlayBorderWidth', 1],
                 ['treeArrowBorderColor', 'rgba(195, 199, 202, 1)'],
                 ['treeArrowBorderWidth', 1],
                 ['treeArrowClickRadius', 5],
@@ -985,6 +986,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             // initial values
             var checkScrollHeight, rowHeaderCell, p, cx, cy, treeGrid, rowOpen,
                 rowHeight, cornerCell, y, x, c, h, w, s, r, rd, aCell,
+                bc = self.style.borderCollapse === 'collapse',
                 selectionBorders = [],
                 moveBorders = [],
                 selectionHandles = [],
@@ -992,8 +994,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 frozenColumnWidths = getFrozenColumnsWidth(),
                 l = self.data.length,
                 u = self.currentCell || {},
-                rowHeaderCellHeight = self.getRowHeaderCellHeight(),
-                columnHeaderCellWidth = self.getColumnHeaderCellWidth(),
+                columnHeaderCellHeight = self.getColumnHeaderCellHeight(),
+                rowHeaderCellWidth = self.getRowHeaderCellWidth(),
                 cellHeight = self.style.cellHeight;
             drawCount += 1;
             p = performance.now();
@@ -1046,15 +1048,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.ctx.lineWidth = self.style.scrollBarBorderWidth;
                 // vertical
                 v.x += w - self.style.scrollBarWidth - self.style.scrollBarBorderWidth - d;
-                v.y += rowHeaderCellHeight;
+                v.y += columnHeaderCellHeight;
                 v.width = self.style.scrollBarWidth + self.style.scrollBarBorderWidth + d;
-                v.height = h - rowHeaderCellHeight - self.style.scrollBarWidth - d - m;
+                v.height = h - columnHeaderCellHeight - self.style.scrollBarWidth - d - m;
                 self.ctx.fillStyle = self.style.scrollBarBackgroundColor;
                 fillRect(v.x, v.y, v.width, v.height + m);
                 strokeRect(v.x, v.y, v.width, v.height + m);
                 // vertical box
                 vb.x = v.x + self.style.scrollBarBoxMargin;
-                vb.y = rowHeaderCellHeight + self.style.scrollBarBoxMargin
+                vb.y = columnHeaderCellHeight + self.style.scrollBarBoxMargin
                     + ((v.height - self.scrollBox.scrollBoxHeight)
                         * (self.scrollBox.scrollTop / self.scrollBox.scrollHeight));
                 vb.width = self.style.scrollBarBoxWidth;
@@ -1069,16 +1071,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.ctx.fill();
                 }
                 // horizontal
-                n.x += columnHeaderCellWidth;
+                n.x += rowHeaderCellWidth;
                 n.y += h - self.style.scrollBarWidth - d;
-                n.width = w - self.style.scrollBarWidth - columnHeaderCellWidth - d - m;
+                n.width = w - self.style.scrollBarWidth - rowHeaderCellWidth - d - m;
                 n.height = self.style.scrollBarWidth + self.style.scrollBarBorderWidth + d;
                 self.ctx.fillStyle = self.style.scrollBarBackgroundColor;
                 fillRect(n.x, n.y, n.width + m, n.height);
                 strokeRect(n.x, n.y, n.width + m, n.height);
                 // horizontal box
                 nb.y = n.y + self.style.scrollBarBoxMargin;
-                nb.x = columnHeaderCellWidth + self.style.scrollBarBoxMargin
+                nb.x = rowHeaderCellWidth + self.style.scrollBarBoxMargin
                     + ((n.width - self.scrollBox.scrollBoxWidth)
                         * (self.scrollBox.scrollLeft / self.scrollBox.scrollWidth));
                 nb.width = self.scrollBox.scrollBoxWidth;
@@ -1392,7 +1394,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         createBorderOverlayArray(cell, moveBorders, 'move', self.moveOffset);
                     }
                     self.ctx.restore();
-                    x += cell.width + self.style.cellBorderWidth;
+                    x += cell.width + (bc ? 0 : self.style.cellBorderWidth);
                     return cell.width;
                 };
             }
@@ -1445,7 +1447,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     cellHeight = rArgs[4];
                     if (rhIndex === self.frozenRow) {
                         self.ctx.save();
-                        radiusRect(0, self.lastFrozenRowPixel - 1, self.width, self.height - self.lastFrozenRowPixel, 0);
+                        radiusRect(0, self.lastFrozenRowPixel, self.width, self.height - self.lastFrozenRowPixel, 0);
                         self.ctx.clip();
                     }
                     drawRowHeader(rArgs[0], rArgs[1], rArgs[2]);
@@ -1454,17 +1456,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 if (self.attributes.showColumnHeaders) {
                     x = -self.scrollBox.scrollLeft + self.scrollPixelLeft + self.style.columnHeaderCellBorderWidth;
                     if (self.attributes.showRowHeaders) {
-                        x += columnHeaderCellWidth;
+                        x += rowHeaderCellWidth;
                     }
                     x += frozenColumnWidths;
                     y = 0;
                     // cell height might have changed during drawing
-                    cellHeight = self.getRowHeaderCellHeight();
+                    cellHeight = self.getColumnHeaderCellHeight();
                     drawHeaderColumnRange(self.scrollIndexLeft + self.frozenColumn, g);
                     nonFrozenHeaderWidth = x;
                     x = self.style.columnHeaderCellBorderWidth;
                     if (self.attributes.showRowHeaders) {
-                        x += columnHeaderCellWidth;
+                        x += rowHeaderCellWidth;
                     }
                     drawHeaderColumnRange(0, self.frozenColumn);
                     // fill in the space right of the headers
@@ -1513,7 +1515,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     return false;
                 }
                 if (self.attributes.showRowHeaders) {
-                    x += columnHeaderCellWidth;
+                    x += rowHeaderCellWidth;
                 }
                 cellHeight = rowHeight;
                 if (self.attributes.allowFreezingColumns) {
@@ -1530,9 +1532,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     }
                 }
                 //draw frozen columns
-                x = self.style.cellBorderWidth;
+                x = 0;
                 if (self.attributes.showRowHeaders) {
-                    x += columnHeaderCellWidth;
+                    x += rowHeaderCellWidth;
                 }
                 for (o = 0; o < self.frozenColumn; o += 1) {
                     i = self.orders.columns[o];
@@ -1551,9 +1553,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     treeGrid.visible = true;
                     treeGrid.parentNode = {
                         offsetTop: y + rowSansTreeHeight + self.canvasOffsetTop,
-                        offsetLeft: columnHeaderCellWidth - 1 + self.canvasOffsetLeft,
+                        offsetLeft: rowHeaderCellWidth - 1 + self.canvasOffsetLeft,
                         offsetHeight: treeHeight,
-                        offsetWidth: self.width - columnHeaderCellWidth - self.style.scrollBarWidth - 1,
+                        offsetWidth: self.width - rowHeaderCellWidth - self.style.scrollBarWidth - 1,
                         offsetParent: self.intf.parentNode,
                         parentNode: self.intf.parentNode,
                         style: self.style,
@@ -1579,7 +1581,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
                 rowHeaders.push([rd, r, d, y, rowHeight]);
                 self.visibleRowHeights[r] = rowHeight;
-                y += cellHeight + self.style.cellBorderWidth;
+                y += cellHeight + (bc ? 0 : self.style.cellBorderWidth);
                 return true;
             }
             function initDraw() {
@@ -1603,7 +1605,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             function drawFrozenRows() {
                 var n, ln = Math.min(self.data.length, self.frozenRow);
                 x = -self.scrollBox.scrollLeft + self.scrollPixelLeft + self.style.cellBorderWidth;
-                y = rowHeaderCellHeight;
+                y = columnHeaderCellHeight;
                 for (r = 0; r < ln; r += 1) {
                     n = self.orders.rows[r];
                     if (!drawRow(n, r)) {
@@ -1611,7 +1613,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     }
                 }
                 if (self.attributes.allowFreezingRows) {
-                    y += self.style.frozenMarkerBorderWidth + self.style.frozenMarkerWidth;
+                    // HACK great, another stupid magic number.
+                    // Background will appear as a 0.5px artifact behind the row freeze bar without this hack
+                    y += self.style.frozenMarkerBorderWidth + self.style.frozenMarkerWidth - 0.4999999999;
                 }
                 self.lastFrozenRowPixel = y;
             }
@@ -1636,7 +1640,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
                 if (self.attributes.showNewRow) {
                     if (self.attributes.showRowHeaders) {
-                        x += columnHeaderCellWidth;
+                        x += rowHeaderCellWidth;
                     }
                     rowHeight = cellHeight = self.style.cellHeight;
                     rowOpen = false;
@@ -1778,7 +1782,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     if (self.activeCell && self.activeCell.rowIndex === aCell.rowIndex) {
                         self.ctx.lineWidth = self.style.activeCellOverlayBorderWidth;
                         self.ctx.strokeStyle = self.style.activeCellOverlayBorderColor;
-                        strokeRect(0, aCell.y, self.getHeaderWidth() + columnHeaderCellWidth, self.visibleRowHeights[aCell.rowIndex]);
+                        strokeRect(0, aCell.y, self.getHeaderWidth() + rowHeaderCellWidth, self.visibleRowHeights[aCell.rowIndex]);
                     }
                 } else {
                     self.ctx.lineWidth = self.style.activeCellOverlayBorderWidth;
@@ -1788,8 +1792,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.ctx.restore();
             }
             function drawFrozenMarkers() {
-                var my = self.lastFrozenRowPixel - self.style.frozenMarkerWidth - self.style.frozenMarkerBorderWidth,
-                    mx = self.lastFrozenColumnPixel - self.style.frozenMarkerWidth - self.style.frozenMarkerBorderWidth,
+                var my = self.lastFrozenRowPixel - self.style.frozenMarkerWidth,
+                    mx = self.lastFrozenColumnPixel - self.style.frozenMarkerBorderWidth,
                     xHover = self.currentCell && self.currentCell.style === 'frozen-row-marker',
                     yHover = self.currentCell && self.currentCell.style === 'frozen-column-marker';
                 self.ctx.lineWidth = self.style.frozenMarkerBorderWidth;
@@ -1835,7 +1839,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 if (!self.attributes.showPerformance) { return; }
                 var pw = 250,
                     px = self.width - pw - self.style.scrollBarWidth - (self.style.scrollBarBorderWidth * 2),
-                    py = rowHeaderCellHeight,
+                    py = columnHeaderCellHeight,
                     ph = 100;
                 if (scrollDebugCounters.length === 0) { scrollDebugCounters = self.fillArray(0, perfWindowSize, 1, function () { return [0, 0]; }); }
                 if (touchPPSCounters.length === 0) { touchPPSCounters = self.fillArray(0, perfWindowSize, 1, function () { return [0, 0]; }); }
@@ -1943,11 +1947,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             drawBackground();
             drawFrozenRows();
             drawRows();
-            drawSelectionBorders();
-            drawSelectionHandles();
             drawActiveCell();
             drawHeaders();
             drawFrozenMarkers();
+            drawSelectionBorders();
+            drawSelectionHandles();
             drawReorderMarkers();
             drawMoveMarkers();
             drawScrollBars();
@@ -2058,12 +2062,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.canvasOffsetTop = self.args.canvasOffsetTop || 0;
         };
         self.resize = function (drawAfterResize) {
-            var cellBorder = self.style.cellBorderWidth * 2,
-                columnHeaderCellBorder =  self.style.columnHeaderCellBorderWidth * 2,
+            var bm = self.style.borderCollapse === 'collapse' ? 1 : 2,
+                cellBorder = self.style.cellBorderWidth * bm,
+                columnHeaderCellBorder = self.style.columnHeaderCellBorderWidth * bm,
                 scrollHeight,
                 scrollWidth,
-                rowHeaderCellHeight = self.getRowHeaderCellHeight(),
-                columnHeaderCellWidth = self.getColumnHeaderCellWidth(),
+                columnHeaderCellHeight = self.getColumnHeaderCellHeight(),
+                rowHeaderCellWidth = self.getRowHeaderCellWidth(),
                 ch = self.style.cellHeight,
                 // TODO: What the hell are these numbers!?  They are probably some value in the style.
                 scrollDragPositionOffsetY = 30,
@@ -2088,10 +2093,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (self.attributes.showNewRow) {
                 scrollHeight += ch + cellBorder;
             }
-            self.scrollBox.width = self.width - columnHeaderCellWidth;
-            self.scrollBox.height = self.height - rowHeaderCellHeight - columnHeaderCellBorder;
-            self.scrollBox.top = rowHeaderCellHeight + columnHeaderCellBorder;
-            self.scrollBox.left = columnHeaderCellWidth;
+            self.scrollBox.width = self.width - rowHeaderCellWidth;
+            self.scrollBox.height = self.height - columnHeaderCellHeight - columnHeaderCellBorder;
+            self.scrollBox.top = columnHeaderCellHeight + columnHeaderCellBorder;
+            self.scrollBox.left = rowHeaderCellWidth;
             self.scrollBox.scrollHeight = scrollHeight + self.style.scrollBarWidth - self.scrollBox.height;
             self.scrollBox.scrollWidth = scrollWidth + self.style.scrollBarWidth - self.scrollBox.width;
             self.scrollBox.widthBoxRatio = ((self.scrollBox.width - scrollDragPositionOffsetX)
@@ -2116,8 +2121,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             return true;
         };
         self.scroll = function (e, dontDraw) {
-            var s = self.getVisibleSchema(),
-                cellBorder = self.style.cellBorderWidth * 2,
+            var bm = self.style.borderCollapse === 'collapse' ? 1 : 2,
+                s = self.getVisibleSchema(),
+                cellBorder = self.style.cellBorderWidth * bm,
                 ch = self.style.cellHeight;
             self.scrollIndexTop = 0;
             self.scrollPixelTop = 0;
@@ -3242,7 +3248,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.draw(true);
         };
         self.touchmove = function (e) {
-            var rh, cw, rScrollZone, lScrollZone, bScrollZone, tScrollZone, sbw, t1, t2;
+            var ch, rw, rScrollZone, lScrollZone, bScrollZone, tScrollZone, sbw, t1, t2;
             if (self.dispatchEvent('touchmove', {NativeEvent: e})) { return; }
             clearTimeout(touchScrollTimeout);
             if (e.changedTouches[0]) {
@@ -3273,12 +3279,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (self.zoomAltered) { return; }
             self.touchLength = 1;
             self.touchPosition = self.touchPosition || self.touchPosition1;
-            rh = self.getRowHeaderCellHeight();
-            cw = self.getColumnHeaderCellWidth();
+            ch = self.getColumnHeaderCellHeight();
+            rw = self.getRowHeaderCellWidth();
             rScrollZone = self.width - self.style.scrollBarWidth - self.touchPosition.x < self.attributes.selectionScrollZone;
-            lScrollZone = self.touchPosition.x - cw < self.attributes.selectionScrollZone;
+            lScrollZone = self.touchPosition.x - rw < self.attributes.selectionScrollZone;
             bScrollZone = self.height - self.style.scrollBarWidth - self.touchPosition.y < self.attributes.selectionScrollZone;
-            tScrollZone = self.touchPosition.y - rh < self.attributes.selectionScrollZone;
+            tScrollZone = self.touchPosition.y - ch < self.attributes.selectionScrollZone;
             sbw = self.style.scrollBarWidth;
             function touchScroll() {
                 var x = self.scrollBox.scrollLeft,
@@ -3308,12 +3314,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             if (/vertical-scroll-/.test(self.startingCell.style)) {
                 self.scrollBox.scrollTop = self.scrollBox.scrollHeight
-                    * ((self.touchPosition.y - rh - sbw) / (self.scrollBox.height - sbw - rh));
+                    * ((self.touchPosition.y - ch - sbw) / (self.scrollBox.height - sbw - ch));
                 return;
             }
             if (/horizontal-scroll-/.test(self.startingCell.style)) {
                 self.scrollBox.scrollLeft = self.scrollBox.scrollWidth
-                    * ((self.touchPosition.x - cw - sbw) / (self.scrollBox.width - sbw - cw));
+                    * ((self.touchPosition.x - rw - sbw) / (self.scrollBox.width - sbw - rw));
                 return;
             }
             if (/selection-handle-/.test(self.startingCell.style)) {
@@ -3491,11 +3497,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             return i;
         };
-        self.getRowHeaderCellHeight = function () {
+        self.getColumnHeaderCellHeight = function () {
             if (!self.attributes.showColumnHeaders) { return 0; }
-            return (self.sizes.rows[-1] || self.style.columnHeaderCellHeight) * self.scale;
+            return ((self.sizes.rows[-1] || self.style.columnHeaderCellHeight) * self.scale);
         };
-        self.getColumnHeaderCellWidth = function () {
+        self.getRowHeaderCellWidth = function () {
             if (!self.attributes.showRowHeaders) { return 0; }
             return (self.sizes.columns.cornerCell || self.style.rowHeaderCellWidth) * self.scale;
         };
@@ -3582,8 +3588,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.autoScrollZone = function (e, x, y, ctrl) {
             var setTimer,
-                columnHeaderCellWidth = self.getColumnHeaderCellWidth(),
-                rowHeaderCellHeight = self.getRowHeaderCellHeight();
+                rowHeaderCellWidth = self.getRowHeaderCellWidth(),
+                columnHeaderCellHeight = self.getColumnHeaderCellHeight();
             if (x > self.width - self.attributes.selectionScrollZone && x < self.width) {
                 self.scrollBox.scrollLeft += self.attributes.selectionScrollIncrement;
                 setTimer = true;
@@ -3592,11 +3598,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.scrollBox.scrollTop += self.attributes.selectionScrollIncrement;
                 setTimer = true;
             }
-            if (x - self.attributes.selectionScrollZone - columnHeaderCellWidth < 0) {
+            if (x - self.attributes.selectionScrollZone - rowHeaderCellWidth < 0) {
                 self.scrollBox.scrollLeft -= self.attributes.selectionScrollIncrement;
                 setTimer = true;
             }
-            if (y - self.attributes.selectionScrollZone - rowHeaderCellHeight < 0) {
+            if (y - self.attributes.selectionScrollZone - columnHeaderCellHeight < 0) {
                 self.scrollBox.scrollTop -= self.attributes.selectionScrollIncrement;
                 setTimer = true;
             }
@@ -4631,7 +4637,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     }
                 }
                 if (rect.right > window.innerWidth) {
-                    if (parentContextMenu) {
+                    if (parentContextMenu && parentContextMenu.container) {
                         loc.x = parentContextMenu.container.offsetLeft - container.offsetWidth;
                     } else {
                         loc.x = window.innerWidth - container.offsetWidth;
@@ -5026,16 +5032,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     h: Infinity,
                     w: Infinity
                 },
-                rowHeaderCellHeight = self.getRowHeaderCellHeight(),
-                columnHeaderCellWidth = self.getColumnHeaderCellWidth();
+                columnHeaderCellHeight = self.getColumnHeaderCellHeight(),
+                rowHeaderCellWidth = self.getRowHeaderCellWidth();
             boundingRect.top -= s.top;
             boundingRect.left -= s.left;
             eleRect.top -= s.top;
             eleRect.left -= s.left;
             clipRect.h = boundingRect.top + boundingRect.height - ele.offsetTop - self.style.scrollBarWidth;
             clipRect.w = boundingRect.left + boundingRect.width - ele.offsetLeft - self.style.scrollBarWidth;
-            clipRect.x = boundingRect.left + (eleRect.left * -1) + columnHeaderCellWidth;
-            clipRect.y = boundingRect.top + (eleRect.top * -1) + rowHeaderCellHeight;
+            clipRect.x = boundingRect.left + (eleRect.left * -1) + rowHeaderCellWidth;
+            clipRect.y = boundingRect.top + (eleRect.top * -1) + columnHeaderCellHeight;
             return {
                 x: clipRect.x > parentRect.x ? clipRect.x : parentRect.x,
                 y: clipRect.y > parentRect.y ? clipRect.y : parentRect.y,
@@ -6108,8 +6114,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @param {number} index The index of the row to expand.
          */
         self.expandTree = function (rowIndex) {
-            var rowHeaderCellHeight = self.getRowHeaderCellHeight(),
-                columnHeaderCellWidth = self.sizes.columns.cornerCell || self.style.rowHeaderCellWidth,
+            var columnHeaderCellHeight = self.getColumnHeaderCellHeight(),
+                rowHeaderCellWidth = self.sizes.columns.cornerCell || self.style.rowHeaderCellWidth,
                 rowId = self.data[rowIndex][self.uniqueId],
                 h = self.sizes.trees[rowId] || self.style.treeGridHeight,
                 treeGrid;
@@ -6122,10 +6128,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         parentGrid: self.intf,
                         nodeType: 'canvas-datagrid-tree',
                         offsetHeight: h,
-                        offsetWidth: self.width - columnHeaderCellWidth,
-                        header: { width: self.width - columnHeaderCellWidth },
-                        offsetLeft: columnHeaderCellWidth,
-                        offsetTop: rowHeaderCellHeight,
+                        offsetWidth: self.width - rowHeaderCellWidth,
+                        header: { width: self.width - rowHeaderCellWidth },
+                        offsetLeft: rowHeaderCellWidth,
+                        offsetTop: columnHeaderCellHeight,
                         offsetParent: self.intf.parentNode,
                         parentNode: self.intf.parentNode,
                         style: 'tree',

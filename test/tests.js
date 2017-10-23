@@ -1911,8 +1911,8 @@
                     });
                     setTimeout(function () {
                         grid.focus();
-                        mousemove(grid.canvas, 10, 49);
-                        mousedown(grid.canvas, 10, 49);
+                        mousemove(grid.canvas, 10, 48);
+                        mousedown(grid.canvas, 10, 48);
                         mousemove(grid.canvas, 10, 100, grid.canvas);
                         mousemove(document.body, 10, 100, grid.canvas);
                         mouseup(document.body, 10, 100, grid.canvas);
@@ -1936,8 +1936,8 @@
                     });
                     setTimeout(function () {
                         grid.focus();
-                        mousemove(grid.canvas, 40, 49);
-                        mousedown(grid.canvas, 40, 49);
+                        mousemove(grid.canvas, 40, 48);
+                        mousedown(grid.canvas, 40, 48);
                         mousemove(grid.canvas, 40, 100, grid.canvas);
                         mousemove(document.body, 40, 100, grid.canvas);
                         mouseup(document.body, 40, 100, grid.canvas);
