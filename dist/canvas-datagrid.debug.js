@@ -2274,7 +2274,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.click = function (e, overridePos) {
             var i,
-                selectionChanged,
                 ctrl = (e.ctrlKey || e.metaKey || self.attributes.persistantSelectionMode),
                 pos = overridePos || self.getLayerPos(e);
             self.currentCell = self.getCellAt(pos.x, pos.y);
@@ -2282,7 +2281,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 return;
             }
             function checkSelectionChange() {
-                if (!selectionChanged) { return; }
                 self.dispatchEvent('selectionchanged', {
                     selectedData: self.getSelectedData(),
                     selections: self.selections,
@@ -2342,8 +2340,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         self.toggleTree(i.rowIndex);
                         return;
                     }
-                    selectionChanged = true;
-                    self.selectRow(i.rowIndex, ctrl, null, true);
                 }
                 if (e.shiftKey && !ctrl) {
                     self.selectionBounds = self.getSelectionBounds();
@@ -5087,20 +5083,21 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (self.input) {
                 var pos = self.canvas.getBoundingClientRect(),
                     s = self.scrollOffset(self.canvas),
-                    bx2 = (self.style.cellBorderWidth * 2),
+                    bm = self.style.borderCollapse === 'collapse' ? 1 : 2,
+                    borderWidth = (self.style.cellBorderWidth * bm),
                     cell = self.getVisibleCellByIndex(self.input.editCell.columnIndex, self.input.editCell.rowIndex)
                         || {x: -100, y: -100, height: 0, width: 0};
                 if (self.mobile) {
                     self.input.style.left = '0';
-                    self.input.style.top = (self.height - self.style.mobileEditInputHeight) - bx2 - 1 + 'px';
+                    self.input.style.top = (self.height - self.style.mobileEditInputHeight) - borderWidth - 1 + 'px';
                     self.input.style.height = self.style.mobileEditInputHeight + 'px';
-                    self.input.style.width = self.width - bx2 - 1 + 'px';
+                    self.input.style.width = self.width - borderWidth - 1 + 'px';
                     return;
                 }
-                self.input.style.left = pos.left + cell.x - self.style.cellBorderWidth + self.canvasOffsetLeft - s.left + 'px';
-                self.input.style.top = pos.top + cell.y - bx2 + self.canvasOffsetTop - s.top + 'px';
-                self.input.style.height = cell.height - bx2 - 1 + 'px';
-                self.input.style.width = cell.width - bx2 - self.style.cellPaddingLeft + 'px';
+                self.input.style.left = pos.left + cell.x + self.canvasOffsetLeft - s.left + 'px';
+                self.input.style.top = pos.top + cell.y - borderWidth + self.canvasOffsetTop - s.top + 'px';
+                self.input.style.height = cell.height - borderWidth + 'px';
+                self.input.style.width = cell.width - self.style.cellPaddingLeft + 'px';
                 self.clipElement(self.input);
             }
         };
@@ -5817,7 +5814,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          */
         self.findRowScrollTop = function (rowIndex) {
             var top = 0, x = 0, l = self.data.length,
-                cellBorder = self.style.cellBorderWidth * 2;
+                bm = self.style.borderCollapse === 'collapse' ? 1 : 2,
+                cellBorder = self.style.cellBorderWidth * bm;
             if (!self.attributes.showNewRow) {
                 l -= 1;
             }
@@ -6050,8 +6048,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             function addRow(ri) {
                 self.selections[ri] = [];
                 self.selections[ri].push(-1);
-                s.forEach(function (col) {
-                    self.selections[ri].push(col.index);
+                s.forEach(function (col, index) {
+                    self.selections[ri].push(index);
                 });
             }
             if (self.dragAddToSelection === false || self.dragObject === undefined) {
