@@ -4960,14 +4960,20 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             var contextPosition,
                 items = [],
-                pos = overridePos || self.getLayerPos(e, true),
+                pos = overridePos || self.getLayerPos(e),
                 ev = {
                     NativeEvent: e,
                     cell: self.getCellAt(pos.x, pos.y),
                     items: items
-                };
+                },
+                st,
+                sl;
             if (!ev.cell.isGrid) {
                 addDefaultContextMenuItem(ev);
+            }
+            if (document.scrollingElement) {
+                sl = document.scrollingElement.scrollLeft;
+                st = document.scrollingElement.scrollTop;
             }
             if (self.dispatchEvent('contextmenu', ev)) {
                 return;
@@ -4977,8 +4983,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.disposeContextMenu();
                 }
                 contextPosition = {
-                    left: pos.x + pos.rect.left + self.style.contextMenuMarginLeft + self.canvasOffsetLeft,
-                    top: pos.y + pos.rect.top + self.style.contextMenuMarginTop + self.canvasOffsetTop,
+                    left: pos.x + sl + pos.rect.left + self.style.contextMenuMarginLeft + self.canvasOffsetLeft,
+                    top: pos.y + st + pos.rect.top + self.style.contextMenuMarginTop + self.canvasOffsetTop,
                     right: ev.cell.width + ev.cell.x + pos.rect.left,
                     bottom: ev.cell.height + ev.cell.y + pos.rect.top,
                     height: ev.cell.height,
@@ -5118,7 +5124,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             s = self.scrollOffset(e);
             return { left: x + s.left, top: y + s.top, height: h, width: w };
         };
-        self.getLayerPos = function (e, includeScrollingElement) {
+        self.getLayerPos = function (e) {
             var rect = self.canvas.getBoundingClientRect(),
                 pos = {
                     x: e.clientX - rect.left,
@@ -5127,10 +5133,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (self.isChildGrid) {
                 pos.x -= self.canvasOffsetLeft;
                 pos.y -= self.canvasOffsetTop;
-            }
-            if (document.scrollingElement && includeScrollingElement) {
-                pos.x += document.scrollingElement.scrollLeft;
-                pos.y += document.scrollingElement.scrollTop;
             }
             return {
                 x: pos.x,
