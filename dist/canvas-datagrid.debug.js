@@ -5117,8 +5117,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             s = self.scrollOffset(e);
             return { left: x + s.left, top: y + s.top, height: h, width: w };
         };
-        self.getLayerPos = function (e) {
-            var rect = self.canvas.getBoundingClientRect(),
+        self.getLayerPos = function (e, includeScrollOffset) {
+            var s,
+                rect = self.canvas.getBoundingClientRect(),
                 pos = {
                     x: e.clientX - rect.left,
                     y: e.clientY - rect.top
@@ -5126,6 +5127,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (self.isChildGrid) {
                 pos.x -= self.canvasOffsetLeft;
                 pos.y -= self.canvasOffsetTop;
+            }
+            if (includeScrollOffset) {
+                s = self.scrollOffset(self.shadowRootParentElement || self.args.parentNode);
+                pos.x -= s.left;
+                pos.y -= s.top;
             }
             return {
                 x: pos.x,
