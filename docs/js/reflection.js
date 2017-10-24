@@ -7026,7 +7026,7 @@ window.reflection = [
         "meta": {
             "range": [
                 26297,
-                28314
+                28534
             ],
             "filename": "contextMenu.js",
             "lineno": 511,
@@ -7047,6 +7047,8 @@ window.reflection = [
                 "items": "self.contextmenuEvent~items",
                 "pos": "self.contextmenuEvent~pos",
                 "ev": "self.contextmenuEvent~ev",
+                "st": "self.contextmenuEvent~st",
+                "sl": "self.contextmenuEvent~sl",
                 "contextPosition.left": "self.contextmenuEvent~contextPosition.left",
                 "contextPosition.width": "self.contextmenuEvent~contextPosition.width",
                 "self.contextMenu": "self.contextMenu"
@@ -7151,7 +7153,7 @@ window.reflection = [
         "meta": {
             "range": [
                 26816,
-                26862
+                26856
             ],
             "filename": "contextMenu.js",
             "lineno": 523,
@@ -7178,15 +7180,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                26880,
-                27029
+                26874,
+                27023
             ],
             "filename": "contextMenu.js",
             "lineno": 524,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100003923",
+                "id": "astnode100003922",
                 "name": "ev",
                 "type": "ObjectExpression",
                 "value": "{\"NativeEvent\":\"\",\"cell\":\"\",\"items\":\"\"}"
@@ -7206,15 +7208,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                26907,
-                26921
+                26901,
+                26915
             ],
             "filename": "contextMenu.js",
             "lineno": 525,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100003926",
+                "id": "astnode100003925",
                 "name": "NativeEvent",
                 "type": "Identifier",
                 "value": "e"
@@ -7233,15 +7235,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                26943,
-                26977
+                26937,
+                26971
             ],
             "filename": "contextMenu.js",
             "lineno": 526,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100003928",
+                "id": "astnode100003927",
                 "name": "cell",
                 "type": "CallExpression",
                 "value": ""
@@ -7260,15 +7262,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                26999,
-                27011
+                26993,
+                27005
             ],
             "filename": "contextMenu.js",
             "lineno": 527,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100003939",
+                "id": "astnode100003938",
                 "name": "items",
                 "type": "Identifier",
                 "value": "items"
@@ -7287,15 +7289,125 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27378,
-                27853
+                27041,
+                27043
             ],
             "filename": "contextMenu.js",
-            "lineno": 539,
+            "lineno": 529,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100003981",
+                "id": "astnode100003940",
+                "name": "st"
+            }
+        },
+        "undocumented": true,
+        "name": "st",
+        "longname": "self.contextmenuEvent~st",
+        "kind": "member",
+        "memberof": "self.contextmenuEvent",
+        "scope": "inner",
+        "params": [],
+        "___id": "T000002R000256",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                27061,
+                27063
+            ],
+            "filename": "contextMenu.js",
+            "lineno": 530,
+            "columnno": 16,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100003942",
+                "name": "sl"
+            }
+        },
+        "undocumented": true,
+        "name": "sl",
+        "longname": "self.contextmenuEvent~sl",
+        "kind": "member",
+        "memberof": "self.contextmenuEvent",
+        "scope": "inner",
+        "params": [],
+        "___id": "T000002R000257",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                27222,
+                27263
+            ],
+            "filename": "contextMenu.js",
+            "lineno": 535,
+            "columnno": 16,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100003962",
+                "name": "sl",
+                "type": "MemberExpression",
+                "funcscope": "self.contextmenuEvent",
+                "value": "document.scrollingElement.scrollLeft",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "sl",
+        "longname": "self.contextmenuEvent~sl",
+        "kind": "member",
+        "memberof": "self.contextmenuEvent",
+        "scope": "inner",
+        "___id": "T000002R000258",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                27281,
+                27321
+            ],
+            "filename": "contextMenu.js",
+            "lineno": 536,
+            "columnno": 16,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100003970",
+                "name": "st",
+                "type": "MemberExpression",
+                "funcscope": "self.contextmenuEvent",
+                "value": "document.scrollingElement.scrollTop",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "st",
+        "longname": "self.contextmenuEvent~st",
+        "kind": "member",
+        "memberof": "self.contextmenuEvent",
+        "scope": "inner",
+        "___id": "T000002R000259",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                27588,
+                28073
+            ],
+            "filename": "contextMenu.js",
+            "lineno": 545,
+            "columnno": 16,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100004005",
                 "name": "contextPosition",
                 "type": "ObjectExpression",
                 "funcscope": "self.contextmenuEvent",
@@ -7309,22 +7421,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.contextmenuEvent",
         "scope": "inner",
-        "___id": "T000002R000256",
+        "___id": "T000002R000260",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                27418,
-                27504
+                27628,
+                27719
             ],
             "filename": "contextMenu.js",
-            "lineno": 540,
+            "lineno": 546,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100003984",
+                "id": "astnode100004008",
                 "name": "left",
                 "type": "BinaryExpression",
                 "value": ""
@@ -7336,22 +7448,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.contextmenuEvent~contextPosition",
         "scope": "static",
-        "___id": "T000002R000257",
+        "___id": "T000002R000261",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                27526,
-                27608
+                27741,
+                27828
             ],
             "filename": "contextMenu.js",
-            "lineno": 541,
+            "lineno": 547,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100004004",
+                "id": "astnode100004030",
                 "name": "top",
                 "type": "BinaryExpression",
                 "value": ""
@@ -7363,22 +7475,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.contextmenuEvent~contextPosition",
         "scope": "static",
-        "___id": "T000002R000258",
+        "___id": "T000002R000262",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                27630,
-                27678
+                27850,
+                27898
             ],
             "filename": "contextMenu.js",
-            "lineno": 542,
+            "lineno": 548,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100004024",
+                "id": "astnode100004052",
                 "name": "right",
                 "type": "BinaryExpression",
                 "value": ""
@@ -7390,22 +7502,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.contextmenuEvent~contextPosition",
         "scope": "static",
-        "___id": "T000002R000259",
+        "___id": "T000002R000263",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                27700,
-                27749
+                27920,
+                27969
             ],
             "filename": "contextMenu.js",
-            "lineno": 543,
+            "lineno": 549,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100004042",
+                "id": "astnode100004070",
                 "name": "bottom",
                 "type": "BinaryExpression",
                 "value": ""
@@ -7417,22 +7529,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.contextmenuEvent~contextPosition",
         "scope": "static",
-        "___id": "T000002R000260",
+        "___id": "T000002R000264",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                27771,
-                27793
+                27991,
+                28013
             ],
             "filename": "contextMenu.js",
-            "lineno": 544,
+            "lineno": 550,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100004060",
+                "id": "astnode100004088",
                 "name": "height",
                 "type": "MemberExpression",
                 "value": "ev.cell.height"
@@ -7444,22 +7556,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.contextmenuEvent~contextPosition",
         "scope": "static",
-        "___id": "T000002R000261",
+        "___id": "T000002R000265",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                27815,
-                27835
+                28035,
+                28055
             ],
             "filename": "contextMenu.js",
-            "lineno": 545,
+            "lineno": 551,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100004066",
+                "id": "astnode100004094",
                 "name": "width",
                 "type": "MemberExpression",
                 "value": "ev.cell.width"
@@ -7471,22 +7583,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.contextmenuEvent~contextPosition",
         "scope": "static",
-        "___id": "T000002R000262",
+        "___id": "T000002R000266",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                27910,
-                27974
+                28130,
+                28194
             ],
             "filename": "contextMenu.js",
-            "lineno": 548,
+            "lineno": 554,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100004078",
+                "id": "astnode100004106",
                 "name": "contextPosition.left",
                 "type": "BinaryExpression",
                 "funcscope": "self.contextmenuEvent",
@@ -7500,22 +7612,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.contextmenuEvent~contextPosition",
         "scope": "static",
-        "___id": "T000002R000263",
+        "___id": "T000002R000267",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                27996,
-                28080
+                28216,
+                28300
             ],
             "filename": "contextMenu.js",
-            "lineno": 549,
+            "lineno": 555,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100004090",
+                "id": "astnode100004118",
                 "name": "contextPosition.width",
                 "type": "BinaryExpression",
                 "funcscope": "self.contextmenuEvent",
@@ -7529,22 +7641,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.contextmenuEvent~contextPosition",
         "scope": "static",
-        "___id": "T000002R000264",
+        "___id": "T000002R000268",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                28116,
-                28180
+                28336,
+                28400
             ],
             "filename": "contextMenu.js",
-            "lineno": 551,
+            "lineno": 557,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100004108",
+                "id": "astnode100004136",
                 "name": "self.contextMenu",
                 "type": "CallExpression",
                 "value": "",
@@ -7557,7 +7669,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000265",
+        "___id": "T000002R000269",
         "___s": true
     },
     {
@@ -7572,7 +7684,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100004145",
+                "id": "astnode100004173",
                 "name": "self.defaults",
                 "type": "ObjectExpression",
                 "value": "{\"attributes\":\"\",\"styles\":\"\"}",
@@ -7585,7 +7697,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000266",
+        "___id": "T000002R000270",
         "___s": true
     },
     {
@@ -7600,7 +7712,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100004150",
+                "id": "astnode100004178",
                 "name": "attributes",
                 "type": "ArrayExpression",
                 "value": "[\"[\\\"allowColumnReordering\\\",true]\",\"[\\\"allowColumnResize\\\",true]\",\"[\\\"allowColumnResizeFromCell\\\",false]\",\"[\\\"allowFreezingRows\\\",false]\",\"[\\\"allowFreezingColumns\\\",false]\",\"[\\\"allowMovingSelection\\\",true]\",\"[\\\"allowRowHeaderResize\\\",true]\",\"[\\\"allowRowReordering\\\",false]\",\"[\\\"allowRowResize\\\",true]\",\"[\\\"allowRowResizeFromCell\\\",false]\",\"[\\\"allowSorting\\\",true]\",\"[\\\"autoResizeColumns\\\",false]\",\"[\\\"borderDragBehavior\\\",\\\"none\\\"]\",\"[\\\"borderResizeZone\\\",10]\",\"[\\\"clearSettingsOptionText\\\",\\\"Clear saved settings\\\"]\",\"[\\\"columnHeaderClickBehavior\\\",\\\"sort\\\"]\",\"[\\\"columnSelectorHiddenText\\\",\\\"&nbsp;&nbsp;&nbsp;\\\"]\",\"[\\\"columnSelectorText\\\",\\\"Add/Remove columns\\\"]\",\"[\\\"columnSelectorVisibleText\\\",\\\"✓\\\"]\",\"[\\\"contextHoverScrollAmount\\\",2]\",\"[\\\"contextHoverScrollRateMs\\\",5]\",\"[\\\"copyText\\\",\\\"Copy\\\"]\",\"[\\\"debug\\\",false]\",\"[\\\"editable\\\",true]\",\"[\\\"filterOptionText\\\",\\\"Filter %s\\\"]\",\"[\\\"filterTextPrefix\\\",\\\"(filtered) \\\"]\",\"[\\\"globalRowResize\\\",false]\",\"[\\\"hideColumnText\\\",\\\"Hide %s\\\"]\",\"[\\\"maxAutoCompleteItems\\\",200]\",\"[\\\"multiLine\\\",false]\",\"[\\\"name\\\",\\\"\\\"]\",\"[\\\"pageUpDownOverlap\\\",1]\",\"[\\\"pasteText\\\",\\\"Paste\\\"]\",\"[\\\"persistantSelectionMode\\\",false]\",\"[\\\"removeFilterOptionText\\\",\\\"Remove filter on %s\\\"]\",\"[\\\"reorderDeadZone\\\",3]\",\"[\\\"resizeScrollZone\\\",20]\",\"[\\\"rowGrabZoneSize\\\",5]\",\"[\\\"saveAppearance\\\",true]\",\"[\\\"scrollAnimationPPSThreshold\\\",0.75]\",\"[\\\"scrollPointerLock\\\",false]\",\"[\\\"scrollRepeatRate\\\",75]\",\"[\\\"selectionFollowsActiveCell\\\",false]\",\"[\\\"selectionHandleBehavior\\\",\\\"none\\\"]\",\"[\\\"selectionMode\\\",\\\"cell\\\"]\",\"[\\\"selectionScrollIncrement\\\",20]\",\"[\\\"selectionScrollZone\\\",20]\",\"[\\\"showClearSettingsOption\\\",true]\",\"[\\\"showColumnHeaders\\\",true]\",\"[\\\"showColumnSelector\\\",true]\",\"[\\\"showCopy\\\",true]\",\"[\\\"showFilter\\\",true]\",\"[\\\"showNewRow\\\",false]\",\"[\\\"showOrderByOption\\\",true]\",\"[\\\"showOrderByOptionTextAsc\\\",\\\"Order by %s ascending\\\"]\",\"[\\\"showOrderByOptionTextDesc\\\",\\\"Order by %s descending\\\"]\",\"[\\\"showPaste\\\",false]\",\"[\\\"showPerformance\\\",false]\",\"[\\\"showRowHeaders\\\",true]\",\"[\\\"showRowNumbers\\\",true]\",\"[\\\"snapToRow\\\",false]\",\"[\\\"touchContextMenuTimeMs\\\",800]\",\"[\\\"touchDeadZone\\\",3]\",\"[\\\"touchEasingMethod\\\",\\\"easeOutQuad\\\"]\",\"[\\\"touchReleaseAcceleration\\\",1000]\",\"[\\\"touchReleaseAnimationDurationMs\\\",2000]\",\"[\\\"touchScrollZone\\\",20]\",\"[\\\"touchSelectHandleZone\\\",20]\",\"[\\\"touchZoomSensitivity\\\",0.005]\",\"[\\\"touchZoomMin\\\",0.5]\",\"[\\\"touchZoomMax\\\",1.75]\",\"[\\\"tree\\\",false]\",\"[\\\"treeHorizontalScroll\\\",false]\"]"
@@ -7612,7 +7724,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.defaults",
         "scope": "static",
-        "___id": "T000002R000267",
+        "___id": "T000002R000271",
         "___s": true
     },
     {
@@ -7627,7 +7739,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100004371",
+                "id": "astnode100004399",
                 "name": "styles",
                 "type": "ArrayExpression",
                 "value": "[\"[\\\"activeCellBackgroundColor\\\",\\\"rgba(255, 255, 255, 1)\\\"]\",\"[\\\"activeCellBorderColor\\\",\\\"rgba(110, 168, 255, 1)\\\"]\",\"[\\\"activeCellBorderWidth\\\",1]\",\"[\\\"activeCellColor\\\",\\\"rgba(0, 0, 0, 1)\\\"]\",\"[\\\"activeCellFont\\\",\\\"16px sans-serif\\\"]\",\"[\\\"activeCellHoverBackgroundColor\\\",\\\"rgba(255, 255, 255, 1)\\\"]\",\"[\\\"activeCellHoverColor\\\",\\\"rgba(0, 0, 0, 1)\\\"]\",\"[\\\"activeCellOverlayBorderColor\\\",\\\"rgba(66, 133, 244, 1)\\\"]\",\"[\\\"activeCellOverlayBorderWidth\\\",1]\",\"[\\\"activeCellPaddingBottom\\\",5]\",\"[\\\"activeCellPaddingLeft\\\",5]\",\"[\\\"activeCellPaddingRight\\\",7]\",\"[\\\"activeCellPaddingTop\\\",5]\",\"[\\\"activeCellSelectedBackgroundColor\\\",\\\"rgba(236, 243, 255, 1)\\\"]\",\"[\\\"activeCellSelectedColor\\\",\\\"rgba(0, 0, 0, 1)\\\"]\",\"[\\\"activeColumnHeaderCellBackgroundColor\\\",\\\"rgba(225, 225, 225, 1)\\\"]\",\"[\\\"activeColumnHeaderCellColor\\\",\\\"rgba(0, 0, 0, 1)\\\"]\",\"[\\\"activeRowHeaderCellBackgroundColor\\\",\\\"rgba(225, 225, 225, 1)\\\"]\",\"[\\\"activeRowHeaderCellColor\\\",\\\"rgba(0, 0, 0, 1)\\\"]\",\"[\\\"autocompleteBottomMargin\\\",60]\",\"[\\\"autosizeHeaderCellPadding\\\",8]\",\"[\\\"autosizePadding\\\",5]\",\"[\\\"backgroundColor\\\",\\\"rgba(240, 240, 240, 1)\\\"]\",\"[\\\"borderCollapse\\\",\\\"collapse\\\"]\",\"[\\\"cellAutoResizePadding\\\",13]\",\"[\\\"cellBackgroundColor\\\",\\\"rgba(255, 255, 255, 1)\\\"]\",\"[\\\"cellBorderColor\\\",\\\"rgba(195, 199, 202, 1)\\\"]\",\"[\\\"cellBorderWidth\\\",1]\",\"[\\\"cellColor\\\",\\\"rgba(0, 0, 0, 1)\\\"]\",\"[\\\"cellFont\\\",\\\"16px sans-serif\\\"]\",\"[\\\"cellGridHeight\\\",250]\",\"[\\\"cellHeight\\\",24]\",\"[\\\"cellHeightWithChildGrid\\\",150]\",\"[\\\"cellHorizontalAlignment\\\",\\\"left\\\"]\",\"[\\\"cellHoverBackgroundColor\\\",\\\"rgba(255, 255, 255, 1)\\\"]\",\"[\\\"cellHoverColor\\\",\\\"rgba(0, 0, 0, 1)\\\"]\",\"[\\\"cellPaddingBottom\\\",5]\",\"[\\\"cellPaddingLeft\\\",5]\",\"[\\\"cellPaddingRight\\\",7]\",\"[\\\"cellPaddingTop\\\",5]\",\"[\\\"cellSelectedBackgroundColor\\\",\\\"rgba(236, 243, 255, 1)\\\"]\",\"[\\\"cellSelectedColor\\\",\\\"rgba(0, 0, 0, 1)\\\"]\",\"[\\\"cellVerticalAlignment\\\",\\\"center\\\"]\",\"[\\\"cellWidthWithChildGrid\\\",250]\",\"[\\\"childContextMenuArrowColor\\\",\\\"rgba(43, 48, 43, 1)\\\"]\",\"[\\\"childContextMenuArrowHTML\\\",\\\"&#x25BA;\\\"]\",\"[\\\"childContextMenuMarginLeft\\\",-11]\",\"[\\\"childContextMenuMarginTop\\\",-6]\",\"[\\\"columnHeaderCellBackgroundColor\\\",\\\"rgba(240, 240, 240, 1)\\\"]\",\"[\\\"columnHeaderCellBorderColor\\\",\\\"rgba(172, 172, 172, 1)\\\"]\",\"[\\\"columnHeaderCellBorderWidth\\\",1]\",\"[\\\"columnHeaderCellColor\\\",\\\"rgba(50, 50, 50, 1)\\\"]\",\"[\\\"columnHeaderCellFont\\\",\\\"16px sans-serif\\\"]\",\"[\\\"columnHeaderCellHeight\\\",25]\",\"[\\\"columnHeaderCellHorizontalAlignment\\\",\\\"left\\\"]\",\"[\\\"columnHeaderCellHoverBackgroundColor\\\",\\\"rgba(235, 235, 235, 1)\\\"]\",\"[\\\"columnHeaderCellHoverColor\\\",\\\"rgba(0, 0, 0, 1)\\\"]\",\"[\\\"columnHeaderCellPaddingBottom\\\",5]\",\"[\\\"columnHeaderCellPaddingLeft\\\",5]\",\"[\\\"columnHeaderCellPaddingRight\\\",7]\",\"[\\\"columnHeaderCellPaddingTop\\\",5]\",\"[\\\"columnHeaderCellVerticalAlignment\\\",\\\"center\\\"]\",\"[\\\"columnHeaderOrderByArrowBorderColor\\\",\\\"rgba(195, 199, 202, 1)\\\"]\",\"[\\\"columnHeaderOrderByArrowBorderWidth\\\",1]\",\"[\\\"columnHeaderOrderByArrowColor\\\",\\\"rgba(155, 155, 155, 1)\\\"]\",\"[\\\"columnHeaderOrderByArrowHeight\\\",8]\",\"[\\\"columnHeaderOrderByArrowMarginLeft\\\",0]\",\"[\\\"columnHeaderOrderByArrowMarginRight\\\",5]\",\"[\\\"columnHeaderOrderByArrowMarginTop\\\",6]\",\"[\\\"columnHeaderOrderByArrowWidth\\\",13]\",\"[\\\"columnWidth\\\",250]\",\"[\\\"contextFilterButtonBorder\\\",\\\"solid 1px rgba(158, 163, 169, 1)\\\"]\",\"[\\\"contextFilterButtonBorderRadius\\\",\\\"3px\\\"]\",\"[\\\"contextFilterButtonHTML\\\",\\\"&#x25BC;\\\"]\",\"[\\\"contextFilterInputBackground\\\",\\\"rgba(255,255,255,1)\\\"]\",\"[\\\"contextFilterInputBorder\\\",\\\"solid 1px rgba(158, 163, 169, 1)\\\"]\",\"[\\\"contextFilterInputBorderRadius\\\",\\\"0\\\"]\",\"[\\\"contextFilterInputColor\\\",\\\"rgba(0,0,0,1)\\\"]\",\"[\\\"contextFilterInputFontFamily\\\",\\\"sans-serif\\\"]\",\"[\\\"contextFilterInputFontSize\\\",\\\"14px\\\"]\",\"[\\\"contextFilterInvalidRegExpBackground\\\",\\\"rgba(180, 6, 1, 1)\\\"]\",\"[\\\"contextFilterInvalidRegExpColor\\\",\\\"rgba(255, 255, 255, 1)\\\"]\",\"[\\\"contextMenuArrowColor\\\",\\\"rgba(43, 48, 43, 1)\\\"]\",\"[\\\"contextMenuArrowDownHTML\\\",\\\"&#x25BC;\\\"]\",\"[\\\"contextMenuArrowUpHTML\\\",\\\"&#x25B2;\\\"]\",\"[\\\"contextMenuBackground\\\",\\\"rgba(240, 240, 240, 1)\\\"]\",\"[\\\"contextMenuBorder\\\",\\\"solid 1px rgba(158, 163, 169, 1)\\\"]\",\"[\\\"contextMenuBorderRadius\\\",\\\"3px\\\"]\",\"[\\\"contextMenuChildArrowFontSize\\\",\\\"12px\\\"]\",\"[\\\"contextMenuColor\\\",\\\"rgba(43, 48, 43, 1)\\\"]\",\"[\\\"contextMenuFilterButtonFontFamily\\\",\\\"sans-serif\\\"]\",\"[\\\"contextMenuFilterButtonFontSize\\\",\\\"10px\\\"]\",\"[\\\"contextMenuFilterInvalidExpresion\\\",\\\"rgba(237, 155, 156, 1)\\\"]\",\"[\\\"contextMenuFontFamily\\\",\\\"sans-serif\\\"]\",\"[\\\"contextMenuFontSize\\\",\\\"16px\\\"]\",\"[\\\"contextMenuHoverBackground\\\",\\\"rgba(182, 205, 250, 1)\\\"]\",\"[\\\"contextMenuHoverColor\\\",\\\"rgba(43, 48, 153, 1)\\\"]\",\"[\\\"contextMenuItemBorderRadius\\\",\\\"3px\\\"]\",\"[\\\"contextMenuItemMargin\\\",\\\"2px\\\"]\",\"[\\\"contextMenuLabelDisplay\\\",\\\"inline-block\\\"]\",\"[\\\"contextMenuLabelMargin\\\",\\\"0 3px 0 0\\\"]\",\"[\\\"contextMenuLabelMaxWidth\\\",\\\"700px\\\"]\",\"[\\\"contextMenuLabelMinWidth\\\",\\\"75px\\\"]\",\"[\\\"contextMenuMarginLeft\\\",3]\",\"[\\\"contextMenuMarginTop\\\",-3]\",\"[\\\"contextMenuOpacity\\\",\\\"0.98\\\"]\",\"[\\\"contextMenuPadding\\\",\\\"2px\\\"]\",\"[\\\"contextMenuWindowMargin\\\",100]\",\"[\\\"cornerCellBackgroundColor\\\",\\\"rgba(240, 240, 240, 1)\\\"]\",\"[\\\"cornerCellBorderColor\\\",\\\"rgba(202, 202, 202, 1)\\\"]\",\"[\\\"editCellBackgroundColor\\\",\\\"white\\\"]\",\"[\\\"editCellBorder\\\",\\\"solid 1px rgba(110, 168, 255, 1)\\\"]\",\"[\\\"editCellBoxShadow\\\",\\\"0 2px 5px rgba(0,0,0,0.4)\\\"]\",\"[\\\"editCellColor\\\",\\\"black\\\"]\",\"[\\\"editCellFontFamily\\\",\\\"sans-serif\\\"]\",\"[\\\"editCellFontSize\\\",\\\"16px\\\"]\",\"[\\\"editCellPaddingLeft\\\",4]\",\"[\\\"frozenMarkerHoverColor\\\",\\\"rgba(236, 243, 255, 1)\\\"]\",\"[\\\"frozenMarkerHoverBorderColor\\\",\\\"rgba(110, 168, 255, 1)\\\"]\",\"[\\\"frozenMarkerActiveColor\\\",\\\"rgba(236, 243, 255, 1)\\\"]\",\"[\\\"frozenMarkerActiveBorderColor\\\",\\\"rgba(110, 168, 255, 1)\\\"]\",\"[\\\"frozenMarkerColor\\\",\\\"rgba(222, 222, 222, 1)\\\"]\",\"[\\\"frozenMarkerBorderColor\\\",\\\"rgba(168, 168, 168, 1)\\\"]\",\"[\\\"frozenMarkerBorderWidth\\\",1]\",\"[\\\"frozenMarkerWidth\\\",2]\",\"[\\\"gridBorderColor\\\",\\\"rgba(202, 202, 202, 1)\\\"]\",\"[\\\"gridBorderWidth\\\",1]\",\"[\\\"height\\\",\\\"auto\\\"]\",\"[\\\"minColumnWidth\\\",45]\",\"[\\\"minHeight\\\",24]\",\"[\\\"minRowHeight\\\",24]\",\"[\\\"mobileContextMenuMargin\\\",10]\",\"[\\\"mobileEditInputHeight\\\",30]\",\"[\\\"mobileEditFontFamily\\\",\\\"sans-serif\\\"]\",\"[\\\"mobileEditFontSize\\\",\\\"16px\\\"]\",\"[\\\"moveOverlayBorderWidth\\\",1]\",\"[\\\"moveOverlayBorderColor\\\",\\\"rgba(66, 133, 244, 1)\\\"]\",\"[\\\"moveOverlayBorderSegments\\\",\\\"12, 7\\\"]\",\"[\\\"name\\\",\\\"default\\\"]\",\"[\\\"reorderMarkerBackgroundColor\\\",\\\"rgba(0, 0, 0, 0.1)\\\"]\",\"[\\\"reorderMarkerBorderColor\\\",\\\"rgba(0, 0, 0, 0.2)\\\"]\",\"[\\\"reorderMarkerBorderWidth\\\",1.25]\",\"[\\\"reorderMarkerIndexBorderColor\\\",\\\"rgba(66, 133, 244, 1)\\\"]\",\"[\\\"reorderMarkerIndexBorderWidth\\\",2.75]\",\"[\\\"rowHeaderCellBackgroundColor\\\",\\\"rgba(240, 240, 240, 1)\\\"]\",\"[\\\"rowHeaderCellBorderColor\\\",\\\"rgba(200, 200, 200, 1)\\\"]\",\"[\\\"rowHeaderCellBorderWidth\\\",1]\",\"[\\\"rowHeaderCellColor\\\",\\\"rgba(50, 50, 50, 1)\\\"]\",\"[\\\"rowHeaderCellFont\\\",\\\"16px sans-serif\\\"]\",\"[\\\"rowHeaderCellHeight\\\",25]\",\"[\\\"rowHeaderCellHorizontalAlignment\\\",\\\"left\\\"]\",\"[\\\"rowHeaderCellHoverBackgroundColor\\\",\\\"rgba(235, 235, 235, 1)\\\"]\",\"[\\\"rowHeaderCellHoverColor\\\",\\\"rgba(0, 0, 0, 1)\\\"]\",\"[\\\"rowHeaderCellPaddingBottom\\\",5]\",\"[\\\"rowHeaderCellPaddingLeft\\\",5]\",\"[\\\"rowHeaderCellPaddingRight\\\",5]\",\"[\\\"rowHeaderCellPaddingTop\\\",5]\",\"[\\\"rowHeaderCellSelectedBackgroundColor\\\",\\\"rgba(217, 217, 217, 1)\\\"]\",\"[\\\"rowHeaderCellSelectedColor\\\",\\\"rgba(50, 50, 50, 1)\\\"]\",\"[\\\"rowHeaderCellVerticalAlignment\\\",\\\"center\\\"]\",\"[\\\"rowHeaderCellWidth\\\",57]\",\"[\\\"scrollBarActiveColor\\\",\\\"rgba(125, 125, 125, 1)\\\"]\",\"[\\\"scrollBarBackgroundColor\\\",\\\"rgba(240, 240, 240, 1)\\\"]\",\"[\\\"scrollBarBorderColor\\\",\\\"rgba(202, 202, 202, 1)\\\"]\",\"[\\\"scrollBarBorderWidth\\\",0.5]\",\"[\\\"scrollBarBoxBorderRadius\\\",4.125]\",\"[\\\"scrollBarBoxColor\\\",\\\"rgba(192, 192, 192, 1)\\\"]\",\"[\\\"scrollBarBoxMargin\\\",2]\",\"[\\\"scrollBarBoxMinSize\\\",15]\",\"[\\\"scrollBarBoxWidth\\\",8]\",\"[\\\"scrollBarCornerBackgroundColor\\\",\\\"rgba(240, 240, 240, 1)\\\"]\",\"[\\\"scrollBarCornerBorderColor\\\",\\\"rgba(202, 202, 202, 1)\\\"]\",\"[\\\"scrollBarWidth\\\",11]\",\"[\\\"selectionHandleBorderColor\\\",\\\"rgba(255, 255, 255, 1)\\\"]\",\"[\\\"selectionHandleBorderWidth\\\",1.5]\",\"[\\\"selectionHandleColor\\\",\\\"rgba(66, 133, 244, 1)\\\"]\",\"[\\\"selectionHandleSize\\\",8]\",\"[\\\"selectionHandleType\\\",\\\"square\\\"]\",\"[\\\"selectionOverlayBorderColor\\\",\\\"rgba(66, 133, 244, 1)\\\"]\",\"[\\\"selectionOverlayBorderWidth\\\",1]\",\"[\\\"treeArrowBorderColor\\\",\\\"rgba(195, 199, 202, 1)\\\"]\",\"[\\\"treeArrowBorderWidth\\\",1]\",\"[\\\"treeArrowClickRadius\\\",5]\",\"[\\\"treeArrowColor\\\",\\\"rgba(155, 155, 155, 1)\\\"]\",\"[\\\"treeArrowHeight\\\",8]\",\"[\\\"treeArrowMarginLeft\\\",0]\",\"[\\\"treeArrowMarginRight\\\",5]\",\"[\\\"treeArrowMarginTop\\\",6]\",\"[\\\"treeArrowWidth\\\",13]\",\"[\\\"treeGridHeight\\\",250]\",\"[\\\"width\\\",\\\"auto\\\"]\"]"
@@ -7639,7 +7751,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.defaults",
         "scope": "static",
-        "___id": "T000002R000268",
+        "___id": "T000002R000272",
         "___s": true
     },
     {
@@ -8825,7 +8937,7 @@ window.reflection = [
         ],
         "longname": "canvasDatagrid",
         "scope": "global",
-        "___id": "T000002R000269",
+        "___id": "T000002R000273",
         "___s": true
     },
     {
@@ -8881,7 +8993,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid.rect",
         "scope": "static",
-        "___id": "T000002R000270",
+        "___id": "T000002R000274",
         "___s": true
     },
     {
@@ -8920,7 +9032,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid.formatter",
         "scope": "static",
-        "___id": "T000002R000271",
+        "___id": "T000002R000275",
         "___s": true
     },
     {
@@ -8959,7 +9071,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid.filter",
         "scope": "static",
-        "___id": "T000002R000272",
+        "___id": "T000002R000276",
         "___s": true
     },
     {
@@ -8998,7 +9110,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid.sorter",
         "scope": "static",
-        "___id": "T000002R000273",
+        "___id": "T000002R000277",
         "___s": true
     },
     {
@@ -9100,7 +9212,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid.header",
         "scope": "static",
-        "___id": "T000002R000274",
+        "___id": "T000002R000278",
         "___s": true
     },
     {
@@ -9499,7 +9611,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid.cell",
         "scope": "static",
-        "___id": "T000002R000275",
+        "___id": "T000002R000279",
         "___s": true
     },
     {
@@ -11422,7 +11534,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid.style",
         "scope": "static",
-        "___id": "T000002R000276",
+        "___id": "T000002R000280",
         "___s": true
     },
     {
@@ -11487,7 +11599,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:selectionchanged",
         "scope": "instance",
-        "___id": "T000002R000277",
+        "___id": "T000002R000281",
         "___s": true
     },
     {
@@ -11552,7 +11664,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:expandtree",
         "scope": "instance",
-        "___id": "T000002R000278",
+        "___id": "T000002R000282",
         "___s": true
     },
     {
@@ -11617,7 +11729,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:collapsetree",
         "scope": "instance",
-        "___id": "T000002R000279",
+        "___id": "T000002R000283",
         "___s": true
     },
     {
@@ -11673,7 +11785,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:scroll",
         "scope": "instance",
-        "___id": "T000002R000280",
+        "___id": "T000002R000284",
         "___s": true
     },
     {
@@ -11720,7 +11832,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:datachanged",
         "scope": "instance",
-        "___id": "T000002R000281",
+        "___id": "T000002R000285",
         "___s": true
     },
     {
@@ -11767,7 +11879,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:schemachanged",
         "scope": "instance",
-        "___id": "T000002R000282",
+        "___id": "T000002R000286",
         "___s": true
     },
     {
@@ -11823,7 +11935,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:mousewheel",
         "scope": "instance",
-        "___id": "T000002R000283",
+        "___id": "T000002R000287",
         "___s": true
     },
     {
@@ -11879,7 +11991,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:copy",
         "scope": "instance",
-        "___id": "T000002R000284",
+        "___id": "T000002R000288",
         "___s": true
     },
     {
@@ -11953,7 +12065,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:beforerendercell",
         "scope": "instance",
-        "___id": "T000002R000285",
+        "___id": "T000002R000289",
         "___s": true
     },
     {
@@ -12045,7 +12157,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:rendercell",
         "scope": "instance",
-        "___id": "T000002R000286",
+        "___id": "T000002R000290",
         "___s": true
     },
     {
@@ -12137,7 +12249,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:afterrendercell",
         "scope": "instance",
-        "___id": "T000002R000287",
+        "___id": "T000002R000291",
         "___s": true
     },
     {
@@ -12229,7 +12341,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:rendertext",
         "scope": "instance",
-        "___id": "T000002R000288",
+        "___id": "T000002R000292",
         "___s": true
     },
     {
@@ -12330,7 +12442,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:renderorderbyarrow",
         "scope": "instance",
-        "___id": "T000002R000289",
+        "___id": "T000002R000293",
         "___s": true
     },
     {
@@ -12431,7 +12543,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:rendertreearrow",
         "scope": "instance",
-        "___id": "T000002R000290",
+        "___id": "T000002R000294",
         "___s": true
     },
     {
@@ -12523,7 +12635,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:rendercellgrid",
         "scope": "instance",
-        "___id": "T000002R000291",
+        "___id": "T000002R000295",
         "___s": true
     },
     {
@@ -12615,7 +12727,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:beforerendercellgrid",
         "scope": "instance",
-        "___id": "T000002R000292",
+        "___id": "T000002R000296",
         "___s": true
     },
     {
@@ -12716,7 +12828,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:beforecreatecellgrid",
         "scope": "instance",
-        "___id": "T000002R000293",
+        "___id": "T000002R000297",
         "___s": true
     },
     {
@@ -12772,7 +12884,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:ordercolumn",
         "scope": "instance",
-        "___id": "T000002R000294",
+        "___id": "T000002R000298",
         "___s": true
     },
     {
@@ -12819,7 +12931,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:mousemove",
         "scope": "instance",
-        "___id": "T000002R000295",
+        "___id": "T000002R000299",
         "___s": true
     },
     {
@@ -12902,7 +13014,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:contextmenu",
         "scope": "instance",
-        "___id": "T000002R000296",
+        "___id": "T000002R000300",
         "___s": true
     },
     {
@@ -12941,7 +13053,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid.contextMenuItem",
         "scope": "static",
-        "___id": "T000002R000297",
+        "___id": "T000002R000301",
         "___s": true
     },
     {
@@ -13033,7 +13145,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:beforeendedit",
         "scope": "instance",
-        "___id": "T000002R000298",
+        "___id": "T000002R000302",
         "___s": true
     },
     {
@@ -13107,7 +13219,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:endedit",
         "scope": "instance",
-        "___id": "T000002R000299",
+        "___id": "T000002R000303",
         "___s": true
     },
     {
@@ -13163,7 +13275,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:beforebeginedit",
         "scope": "instance",
-        "___id": "T000002R000300",
+        "___id": "T000002R000304",
         "___s": true
     },
     {
@@ -13219,7 +13331,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:beginedit",
         "scope": "instance",
-        "___id": "T000002R000301",
+        "___id": "T000002R000305",
         "___s": true
     },
     {
@@ -13275,7 +13387,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:touchstart",
         "scope": "instance",
-        "___id": "T000002R000302",
+        "___id": "T000002R000306",
         "___s": true
     },
     {
@@ -13331,7 +13443,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:touchend",
         "scope": "instance",
-        "___id": "T000002R000303",
+        "___id": "T000002R000307",
         "___s": true
     },
     {
@@ -13387,7 +13499,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:touchmove",
         "scope": "instance",
-        "___id": "T000002R000304",
+        "___id": "T000002R000308",
         "___s": true
     },
     {
@@ -13443,7 +13555,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:touchcancel",
         "scope": "instance",
-        "___id": "T000002R000305",
+        "___id": "T000002R000309",
         "___s": true
     },
     {
@@ -13490,7 +13602,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:click",
         "scope": "instance",
-        "___id": "T000002R000306",
+        "___id": "T000002R000310",
         "___s": true
     },
     {
@@ -13564,7 +13676,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:resizecolumn",
         "scope": "instance",
-        "___id": "T000002R000307",
+        "___id": "T000002R000311",
         "___s": true
     },
     {
@@ -13629,7 +13741,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:mousedown",
         "scope": "instance",
-        "___id": "T000002R000308",
+        "___id": "T000002R000312",
         "___s": true
     },
     {
@@ -13694,7 +13806,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:mouseup",
         "scope": "instance",
-        "___id": "T000002R000309",
+        "___id": "T000002R000313",
         "___s": true
     },
     {
@@ -13759,7 +13871,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:dblclick",
         "scope": "instance",
-        "___id": "T000002R000310",
+        "___id": "T000002R000314",
         "___s": true
     },
     {
@@ -13824,7 +13936,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:keydown",
         "scope": "instance",
-        "___id": "T000002R000311",
+        "___id": "T000002R000315",
         "___s": true
     },
     {
@@ -13889,7 +14001,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:keyup",
         "scope": "instance",
-        "___id": "T000002R000312",
+        "___id": "T000002R000316",
         "___s": true
     },
     {
@@ -13954,7 +14066,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:keypress",
         "scope": "instance",
-        "___id": "T000002R000313",
+        "___id": "T000002R000317",
         "___s": true
     },
     {
@@ -13992,7 +14104,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:resize",
         "scope": "instance",
-        "___id": "T000002R000314",
+        "___id": "T000002R000318",
         "___s": true
     },
     {
@@ -14039,7 +14151,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:cellmouseover",
         "scope": "instance",
-        "___id": "T000002R000315",
+        "___id": "T000002R000319",
         "___s": true
     },
     {
@@ -14086,7 +14198,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:cellmouseout",
         "scope": "instance",
-        "___id": "T000002R000316",
+        "___id": "T000002R000320",
         "___s": true
     },
     {
@@ -14151,7 +14263,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:stylechanged",
         "scope": "instance",
-        "___id": "T000002R000317",
+        "___id": "T000002R000321",
         "___s": true
     },
     {
@@ -14189,7 +14301,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:attributechanged",
         "scope": "instance",
-        "___id": "T000002R000318",
+        "___id": "T000002R000322",
         "___s": true
     },
     {
@@ -14272,7 +14384,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:reordering",
         "scope": "instance",
-        "___id": "T000002R000319",
+        "___id": "T000002R000323",
         "___s": true
     },
     {
@@ -14355,7 +14467,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:reorder",
         "scope": "instance",
-        "___id": "T000002R000320",
+        "___id": "T000002R000324",
         "___s": true
     },
     {
@@ -14393,7 +14505,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:beginmove",
         "scope": "instance",
-        "___id": "T000002R000321",
+        "___id": "T000002R000325",
         "___s": true
     },
     {
@@ -14431,7 +14543,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:moving",
         "scope": "instance",
-        "___id": "T000002R000322",
+        "___id": "T000002R000326",
         "___s": true
     },
     {
@@ -14469,7 +14581,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:endmove",
         "scope": "instance",
-        "___id": "T000002R000323",
+        "___id": "T000002R000327",
         "___s": true
     },
     {
@@ -14507,7 +14619,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:beginfreezemove",
         "scope": "instance",
-        "___id": "T000002R000324",
+        "___id": "T000002R000328",
         "___s": true
     },
     {
@@ -14545,7 +14657,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:freezemoving",
         "scope": "instance",
-        "___id": "T000002R000325",
+        "___id": "T000002R000329",
         "___s": true
     },
     {
@@ -14583,7 +14695,7 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "longname": "canvasDatagrid#event:endfreezemove",
         "scope": "instance",
-        "___id": "T000002R000326",
+        "___id": "T000002R000330",
         "___s": true
     },
     {
@@ -14598,7 +14710,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100004966",
+                "id": "astnode100004994",
                 "name": "self.getClippingRect",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -14629,7 +14741,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000327",
+        "___id": "T000002R000331",
         "___s": true
     },
     {
@@ -14644,7 +14756,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100004974",
+                "id": "astnode100005002",
                 "name": "boundingRect",
                 "type": "CallExpression",
                 "value": ""
@@ -14657,7 +14769,7 @@ window.reflection = [
         "memberof": "self.getClippingRect",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000328",
+        "___id": "T000002R000332",
         "___s": true
     },
     {
@@ -14672,7 +14784,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100004983",
+                "id": "astnode100005011",
                 "name": "eleRect",
                 "type": "CallExpression",
                 "value": ""
@@ -14685,7 +14797,7 @@ window.reflection = [
         "memberof": "self.getClippingRect",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000329",
+        "___id": "T000002R000333",
         "___s": true
     },
     {
@@ -14700,7 +14812,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100004990",
+                "id": "astnode100005018",
                 "name": "s",
                 "type": "CallExpression",
                 "value": ""
@@ -14713,7 +14825,7 @@ window.reflection = [
         "memberof": "self.getClippingRect",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000330",
+        "___id": "T000002R000334",
         "___s": true
     },
     {
@@ -14728,7 +14840,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100004999",
+                "id": "astnode100005027",
                 "name": "clipRect",
                 "type": "ObjectExpression",
                 "value": "{\"x\":0,\"y\":0,\"h\":0,\"w\":0}"
@@ -14741,7 +14853,7 @@ window.reflection = [
         "memberof": "self.getClippingRect",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000331",
+        "___id": "T000002R000335",
         "___s": true
     },
     {
@@ -14756,7 +14868,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005002",
+                "id": "astnode100005030",
                 "name": "x",
                 "type": "Literal",
                 "value": 0
@@ -14768,7 +14880,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getClippingRect~clipRect",
         "scope": "static",
-        "___id": "T000002R000332",
+        "___id": "T000002R000336",
         "___s": true
     },
     {
@@ -14783,7 +14895,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005004",
+                "id": "astnode100005032",
                 "name": "y",
                 "type": "Literal",
                 "value": 0
@@ -14795,7 +14907,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getClippingRect~clipRect",
         "scope": "static",
-        "___id": "T000002R000333",
+        "___id": "T000002R000337",
         "___s": true
     },
     {
@@ -14810,7 +14922,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005006",
+                "id": "astnode100005034",
                 "name": "h",
                 "type": "Literal",
                 "value": 0
@@ -14822,7 +14934,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getClippingRect~clipRect",
         "scope": "static",
-        "___id": "T000002R000334",
+        "___id": "T000002R000338",
         "___s": true
     },
     {
@@ -14837,7 +14949,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005008",
+                "id": "astnode100005036",
                 "name": "w",
                 "type": "Literal",
                 "value": 0
@@ -14849,7 +14961,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getClippingRect~clipRect",
         "scope": "static",
-        "___id": "T000002R000335",
+        "___id": "T000002R000339",
         "___s": true
     },
     {
@@ -14864,7 +14976,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005010",
+                "id": "astnode100005038",
                 "name": "parentRect",
                 "type": "ObjectExpression",
                 "value": "{\"x\":\"\",\"y\":\"\",\"h\":\"\",\"w\":\"\"}"
@@ -14877,7 +14989,7 @@ window.reflection = [
         "memberof": "self.getClippingRect",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000336",
+        "___id": "T000002R000340",
         "___s": true
     },
     {
@@ -14892,7 +15004,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005013",
+                "id": "astnode100005041",
                 "name": "x",
                 "type": "UnaryExpression",
                 "value": "-Infinity"
@@ -14904,7 +15016,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getClippingRect~parentRect",
         "scope": "static",
-        "___id": "T000002R000337",
+        "___id": "T000002R000341",
         "___s": true
     },
     {
@@ -14919,7 +15031,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005016",
+                "id": "astnode100005044",
                 "name": "y",
                 "type": "UnaryExpression",
                 "value": "-Infinity"
@@ -14931,7 +15043,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getClippingRect~parentRect",
         "scope": "static",
-        "___id": "T000002R000338",
+        "___id": "T000002R000342",
         "___s": true
     },
     {
@@ -14946,7 +15058,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005019",
+                "id": "astnode100005047",
                 "name": "h",
                 "type": "Identifier",
                 "value": "Infinity"
@@ -14958,7 +15070,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getClippingRect~parentRect",
         "scope": "static",
-        "___id": "T000002R000339",
+        "___id": "T000002R000343",
         "___s": true
     },
     {
@@ -14973,7 +15085,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005021",
+                "id": "astnode100005049",
                 "name": "w",
                 "type": "Identifier",
                 "value": "Infinity"
@@ -14985,7 +15097,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getClippingRect~parentRect",
         "scope": "static",
-        "___id": "T000002R000340",
+        "___id": "T000002R000344",
         "___s": true
     },
     {
@@ -15000,7 +15112,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005023",
+                "id": "astnode100005051",
                 "name": "columnHeaderCellHeight",
                 "type": "CallExpression",
                 "value": ""
@@ -15013,7 +15125,7 @@ window.reflection = [
         "memberof": "self.getClippingRect",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000341",
+        "___id": "T000002R000345",
         "___s": true
     },
     {
@@ -15028,7 +15140,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005029",
+                "id": "astnode100005057",
                 "name": "rowHeaderCellWidth",
                 "type": "CallExpression",
                 "value": ""
@@ -15041,7 +15153,7 @@ window.reflection = [
         "memberof": "self.getClippingRect",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000342",
+        "___id": "T000002R000346",
         "___s": true
     },
     {
@@ -15056,7 +15168,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005036",
+                "id": "astnode100005064",
                 "name": "boundingRect.top",
                 "type": "MemberExpression",
                 "funcscope": "self.getClippingRect",
@@ -15070,7 +15182,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getClippingRect~boundingRect",
         "scope": "static",
-        "___id": "T000002R000343",
+        "___id": "T000002R000347",
         "___s": true
     },
     {
@@ -15085,7 +15197,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005044",
+                "id": "astnode100005072",
                 "name": "boundingRect.left",
                 "type": "MemberExpression",
                 "funcscope": "self.getClippingRect",
@@ -15099,7 +15211,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getClippingRect~boundingRect",
         "scope": "static",
-        "___id": "T000002R000344",
+        "___id": "T000002R000348",
         "___s": true
     },
     {
@@ -15114,7 +15226,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005052",
+                "id": "astnode100005080",
                 "name": "eleRect.top",
                 "type": "MemberExpression",
                 "funcscope": "self.getClippingRect",
@@ -15128,7 +15240,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getClippingRect~eleRect",
         "scope": "static",
-        "___id": "T000002R000345",
+        "___id": "T000002R000349",
         "___s": true
     },
     {
@@ -15143,7 +15255,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005060",
+                "id": "astnode100005088",
                 "name": "eleRect.left",
                 "type": "MemberExpression",
                 "funcscope": "self.getClippingRect",
@@ -15157,7 +15269,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getClippingRect~eleRect",
         "scope": "static",
-        "___id": "T000002R000346",
+        "___id": "T000002R000350",
         "___s": true
     },
     {
@@ -15172,7 +15284,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005068",
+                "id": "astnode100005096",
                 "name": "clipRect.h",
                 "type": "BinaryExpression",
                 "funcscope": "self.getClippingRect",
@@ -15186,7 +15298,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getClippingRect~clipRect",
         "scope": "static",
-        "___id": "T000002R000347",
+        "___id": "T000002R000351",
         "___s": true
     },
     {
@@ -15201,7 +15313,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005090",
+                "id": "astnode100005118",
                 "name": "clipRect.w",
                 "type": "BinaryExpression",
                 "funcscope": "self.getClippingRect",
@@ -15215,7 +15327,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getClippingRect~clipRect",
         "scope": "static",
-        "___id": "T000002R000348",
+        "___id": "T000002R000352",
         "___s": true
     },
     {
@@ -15230,7 +15342,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005112",
+                "id": "astnode100005140",
                 "name": "clipRect.x",
                 "type": "BinaryExpression",
                 "funcscope": "self.getClippingRect",
@@ -15244,7 +15356,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getClippingRect~clipRect",
         "scope": "static",
-        "___id": "T000002R000349",
+        "___id": "T000002R000353",
         "___s": true
     },
     {
@@ -15259,7 +15371,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005129",
+                "id": "astnode100005157",
                 "name": "clipRect.y",
                 "type": "BinaryExpression",
                 "funcscope": "self.getClippingRect",
@@ -15273,7 +15385,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getClippingRect~clipRect",
         "scope": "static",
-        "___id": "T000002R000350",
+        "___id": "T000002R000354",
         "___s": true
     },
     {
@@ -15288,7 +15400,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005147",
+                "id": "astnode100005175",
                 "name": "x",
                 "type": "ConditionalExpression",
                 "value": ""
@@ -15299,7 +15411,7 @@ window.reflection = [
         "longname": "x",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000351",
+        "___id": "T000002R000355",
         "___s": true
     },
     {
@@ -15314,7 +15426,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005162",
+                "id": "astnode100005190",
                 "name": "y",
                 "type": "ConditionalExpression",
                 "value": ""
@@ -15325,7 +15437,7 @@ window.reflection = [
         "longname": "y",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000352",
+        "___id": "T000002R000356",
         "___s": true
     },
     {
@@ -15340,7 +15452,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005177",
+                "id": "astnode100005205",
                 "name": "h",
                 "type": "ConditionalExpression",
                 "value": ""
@@ -15351,7 +15463,7 @@ window.reflection = [
         "longname": "h",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000353",
+        "___id": "T000002R000357",
         "___s": true
     },
     {
@@ -15366,7 +15478,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005192",
+                "id": "astnode100005220",
                 "name": "w",
                 "type": "ConditionalExpression",
                 "value": ""
@@ -15377,7 +15489,7 @@ window.reflection = [
         "longname": "w",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000354",
+        "___id": "T000002R000358",
         "___s": true
     },
     {
@@ -15392,7 +15504,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005208",
+                "id": "astnode100005236",
                 "name": "self.clipElement",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -15412,7 +15524,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000355",
+        "___id": "T000002R000359",
         "___s": true
     },
     {
@@ -15427,7 +15539,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005216",
+                "id": "astnode100005244",
                 "name": "clipRect",
                 "type": "CallExpression",
                 "value": ""
@@ -15440,7 +15552,7 @@ window.reflection = [
         "memberof": "self.clipElement",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000356",
+        "___id": "T000002R000360",
         "___s": true
     },
     {
@@ -15455,7 +15567,7 @@ window.reflection = [
             "columnno": 34,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005231",
+                "id": "astnode100005259",
                 "name": "clipRect.w",
                 "type": "Literal",
                 "funcscope": "self.clipElement",
@@ -15469,7 +15581,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.clipElement~clipRect",
         "scope": "static",
-        "___id": "T000002R000357",
+        "___id": "T000002R000361",
         "___s": true
     },
     {
@@ -15484,7 +15596,7 @@ window.reflection = [
             "columnno": 34,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005244",
+                "id": "astnode100005272",
                 "name": "clipRect.h",
                 "type": "Literal",
                 "funcscope": "self.clipElement",
@@ -15498,7 +15610,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.clipElement~clipRect",
         "scope": "static",
-        "___id": "T000002R000358",
+        "___id": "T000002R000362",
         "___s": true
     },
     {
@@ -15513,7 +15625,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005250",
+                "id": "astnode100005278",
                 "name": "ele.style.clip",
                 "type": "BinaryExpression",
                 "value": "",
@@ -15526,7 +15638,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "ele.style",
         "scope": "static",
-        "___id": "T000002R000359",
+        "___id": "T000002R000363",
         "___s": true
     },
     {
@@ -15541,7 +15653,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005284",
+                "id": "astnode100005312",
                 "name": "self.scrollOffset",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -15560,7 +15672,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000360",
+        "___id": "T000002R000364",
         "___s": true
     },
     {
@@ -15575,7 +15687,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005292",
+                "id": "astnode100005320",
                 "name": "x",
                 "type": "Literal",
                 "value": 0
@@ -15588,7 +15700,7 @@ window.reflection = [
         "memberof": "self.scrollOffset",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000361",
+        "___id": "T000002R000365",
         "___s": true
     },
     {
@@ -15603,7 +15715,7 @@ window.reflection = [
             "columnno": 23,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005295",
+                "id": "astnode100005323",
                 "name": "y",
                 "type": "Literal",
                 "value": 0
@@ -15616,7 +15728,7 @@ window.reflection = [
         "memberof": "self.scrollOffset",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000362",
+        "___id": "T000002R000366",
         "___s": true
     },
     {
@@ -15631,7 +15743,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005323",
+                "id": "astnode100005351",
                 "name": "x",
                 "type": "MemberExpression",
                 "funcscope": "self.scrollOffset",
@@ -15645,7 +15757,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollOffset",
         "scope": "inner",
-        "___id": "T000002R000363",
+        "___id": "T000002R000367",
         "___s": true
     },
     {
@@ -15660,7 +15772,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005329",
+                "id": "astnode100005357",
                 "name": "y",
                 "type": "MemberExpression",
                 "funcscope": "self.scrollOffset",
@@ -15674,7 +15786,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollOffset",
         "scope": "inner",
-        "___id": "T000002R000364",
+        "___id": "T000002R000368",
         "___s": true
     },
     {
@@ -15689,7 +15801,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005335",
+                "id": "astnode100005363",
                 "name": "e",
                 "type": "MemberExpression",
                 "funcscope": "self.scrollOffset",
@@ -15703,7 +15815,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollOffset",
         "scope": "inner",
-        "___id": "T000002R000365",
+        "___id": "T000002R000369",
         "___s": true
     },
     {
@@ -15718,7 +15830,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005342",
+                "id": "astnode100005370",
                 "name": "left",
                 "type": "Identifier",
                 "value": "x"
@@ -15729,7 +15841,7 @@ window.reflection = [
         "longname": "left",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000366",
+        "___id": "T000002R000370",
         "___s": true
     },
     {
@@ -15744,7 +15856,7 @@ window.reflection = [
             "columnno": 29,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005344",
+                "id": "astnode100005372",
                 "name": "top",
                 "type": "Identifier",
                 "value": "y"
@@ -15755,7 +15867,7 @@ window.reflection = [
         "longname": "top",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000367",
+        "___id": "T000002R000371",
         "___s": true
     },
     {
@@ -15770,7 +15882,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005347",
+                "id": "astnode100005375",
                 "name": "self.resizeEditInput",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -15793,7 +15905,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000368",
+        "___id": "T000002R000372",
         "___s": true
     },
     {
@@ -15808,7 +15920,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005359",
+                "id": "astnode100005387",
                 "name": "pos",
                 "type": "CallExpression",
                 "value": ""
@@ -15821,7 +15933,7 @@ window.reflection = [
         "memberof": "self.resizeEditInput",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000369",
+        "___id": "T000002R000373",
         "___s": true
     },
     {
@@ -15836,7 +15948,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005367",
+                "id": "astnode100005395",
                 "name": "s",
                 "type": "CallExpression",
                 "value": ""
@@ -15849,7 +15961,7 @@ window.reflection = [
         "memberof": "self.resizeEditInput",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000370",
+        "___id": "T000002R000374",
         "___s": true
     },
     {
@@ -15864,7 +15976,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005376",
+                "id": "astnode100005404",
                 "name": "bm",
                 "type": "ConditionalExpression",
                 "value": ""
@@ -15877,7 +15989,7 @@ window.reflection = [
         "memberof": "self.resizeEditInput",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000371",
+        "___id": "T000002R000375",
         "___s": true
     },
     {
@@ -15892,7 +16004,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005388",
+                "id": "astnode100005416",
                 "name": "borderWidth",
                 "type": "BinaryExpression",
                 "value": ""
@@ -15905,7 +16017,7 @@ window.reflection = [
         "memberof": "self.resizeEditInput",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000372",
+        "___id": "T000002R000376",
         "___s": true
     },
     {
@@ -15920,7 +16032,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005397",
+                "id": "astnode100005425",
                 "name": "cell",
                 "type": "LogicalExpression",
                 "value": ""
@@ -15933,7 +16045,7 @@ window.reflection = [
         "memberof": "self.resizeEditInput",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000373",
+        "___id": "T000002R000377",
         "___s": true
     },
     {
@@ -15948,7 +16060,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005419",
+                "id": "astnode100005447",
                 "name": "x",
                 "type": "UnaryExpression",
                 "value": -100
@@ -15959,7 +16071,7 @@ window.reflection = [
         "longname": "x",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000374",
+        "___id": "T000002R000378",
         "___s": true
     },
     {
@@ -15974,7 +16086,7 @@ window.reflection = [
             "columnno": 37,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005422",
+                "id": "astnode100005450",
                 "name": "y",
                 "type": "UnaryExpression",
                 "value": -100
@@ -15985,7 +16097,7 @@ window.reflection = [
         "longname": "y",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000375",
+        "___id": "T000002R000379",
         "___s": true
     },
     {
@@ -16000,7 +16112,7 @@ window.reflection = [
             "columnno": 46,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005425",
+                "id": "astnode100005453",
                 "name": "height",
                 "type": "Literal",
                 "value": 0
@@ -16011,7 +16123,7 @@ window.reflection = [
         "longname": "height",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000376",
+        "___id": "T000002R000380",
         "___s": true
     },
     {
@@ -16026,7 +16138,7 @@ window.reflection = [
             "columnno": 57,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005427",
+                "id": "astnode100005455",
                 "name": "width",
                 "type": "Literal",
                 "value": 0
@@ -16037,7 +16149,7 @@ window.reflection = [
         "longname": "width",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000377",
+        "___id": "T000002R000381",
         "___s": true
     },
     {
@@ -16052,122 +16164,10 @@ window.reflection = [
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005435",
+                "id": "astnode100005463",
                 "name": "self.input.style.left",
                 "type": "Literal",
                 "value": "0",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "left",
-        "longname": "self.input.style.left",
-        "kind": "member",
-        "memberof": "self.input.style",
-        "scope": "static",
-        "___id": "T000002R000378",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                4041,
-                4137
-            ],
-            "filename": "dom.js",
-            "lineno": 83,
-            "columnno": 20,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100005445",
-                "name": "self.input.style.top",
-                "type": "BinaryExpression",
-                "value": "",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "top",
-        "longname": "self.input.style.top",
-        "kind": "member",
-        "memberof": "self.input.style",
-        "scope": "static",
-        "___id": "T000002R000379",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                4159,
-                4224
-            ],
-            "filename": "dom.js",
-            "lineno": 84,
-            "columnno": 20,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100005469",
-                "name": "self.input.style.height",
-                "type": "BinaryExpression",
-                "value": "",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "height",
-        "longname": "self.input.style.height",
-        "kind": "member",
-        "memberof": "self.input.style",
-        "scope": "static",
-        "___id": "T000002R000380",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                4246,
-                4306
-            ],
-            "filename": "dom.js",
-            "lineno": 85,
-            "columnno": 20,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100005485",
-                "name": "self.input.style.width",
-                "type": "BinaryExpression",
-                "value": "",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "width",
-        "longname": "self.input.style.width",
-        "kind": "member",
-        "memberof": "self.input.style",
-        "scope": "static",
-        "___id": "T000002R000381",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                4370,
-                4451
-            ],
-            "filename": "dom.js",
-            "lineno": 88,
-            "columnno": 16,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100005504",
-                "name": "self.input.style.left",
-                "type": "BinaryExpression",
-                "value": "",
                 "paramnames": []
             }
         },
@@ -16184,15 +16184,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                4469,
-                4560
+                4041,
+                4137
             ],
             "filename": "dom.js",
-            "lineno": 89,
-            "columnno": 16,
+            "lineno": 83,
+            "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005530",
+                "id": "astnode100005473",
                 "name": "self.input.style.top",
                 "type": "BinaryExpression",
                 "value": "",
@@ -16212,15 +16212,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                4578,
-                4636
+                4159,
+                4224
             ],
             "filename": "dom.js",
-            "lineno": 90,
-            "columnno": 16,
+            "lineno": 84,
+            "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005558",
+                "id": "astnode100005497",
                 "name": "self.input.style.height",
                 "type": "BinaryExpression",
                 "value": "",
@@ -16240,15 +16240,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                4654,
-                4725
+                4246,
+                4306
             ],
             "filename": "dom.js",
-            "lineno": 91,
-            "columnno": 16,
+            "lineno": 85,
+            "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005574",
+                "id": "astnode100005513",
                 "name": "self.input.style.width",
                 "type": "BinaryExpression",
                 "value": "",
@@ -16268,6 +16268,118 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
+                4370,
+                4451
+            ],
+            "filename": "dom.js",
+            "lineno": 88,
+            "columnno": 16,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100005532",
+                "name": "self.input.style.left",
+                "type": "BinaryExpression",
+                "value": "",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "left",
+        "longname": "self.input.style.left",
+        "kind": "member",
+        "memberof": "self.input.style",
+        "scope": "static",
+        "___id": "T000002R000386",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                4469,
+                4560
+            ],
+            "filename": "dom.js",
+            "lineno": 89,
+            "columnno": 16,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100005558",
+                "name": "self.input.style.top",
+                "type": "BinaryExpression",
+                "value": "",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "top",
+        "longname": "self.input.style.top",
+        "kind": "member",
+        "memberof": "self.input.style",
+        "scope": "static",
+        "___id": "T000002R000387",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                4578,
+                4636
+            ],
+            "filename": "dom.js",
+            "lineno": 90,
+            "columnno": 16,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100005586",
+                "name": "self.input.style.height",
+                "type": "BinaryExpression",
+                "value": "",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "height",
+        "longname": "self.input.style.height",
+        "kind": "member",
+        "memberof": "self.input.style",
+        "scope": "static",
+        "___id": "T000002R000388",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                4654,
+                4725
+            ],
+            "filename": "dom.js",
+            "lineno": 91,
+            "columnno": 16,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100005602",
+                "name": "self.input.style.width",
+                "type": "BinaryExpression",
+                "value": "",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "width",
+        "longname": "self.input.style.width",
+        "kind": "member",
+        "memberof": "self.input.style",
+        "scope": "static",
+        "___id": "T000002R000389",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
                 4806,
                 5422
             ],
@@ -16276,7 +16388,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005602",
+                "id": "astnode100005630",
                 "name": "self.position",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -16299,7 +16411,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000386",
+        "___id": "T000002R000390",
         "___s": true
     },
     {
@@ -16314,7 +16426,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005611",
+                "id": "astnode100005639",
                 "name": "x",
                 "type": "Literal",
                 "value": 0
@@ -16327,7 +16439,7 @@ window.reflection = [
         "memberof": "self.position",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000387",
+        "___id": "T000002R000391",
         "___s": true
     },
     {
@@ -16342,7 +16454,7 @@ window.reflection = [
             "columnno": 23,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005614",
+                "id": "astnode100005642",
                 "name": "y",
                 "type": "Literal",
                 "value": 0
@@ -16355,7 +16467,7 @@ window.reflection = [
         "memberof": "self.position",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000388",
+        "___id": "T000002R000392",
         "___s": true
     },
     {
@@ -16370,7 +16482,7 @@ window.reflection = [
             "columnno": 30,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005617",
+                "id": "astnode100005645",
                 "name": "s",
                 "type": "Identifier",
                 "value": "e"
@@ -16383,7 +16495,7 @@ window.reflection = [
         "memberof": "self.position",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000389",
+        "___id": "T000002R000393",
         "___s": true
     },
     {
@@ -16398,7 +16510,7 @@ window.reflection = [
             "columnno": 37,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005620",
+                "id": "astnode100005648",
                 "name": "h"
             }
         },
@@ -16409,7 +16521,7 @@ window.reflection = [
         "memberof": "self.position",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000390",
+        "___id": "T000002R000394",
         "___s": true
     },
     {
@@ -16424,7 +16536,7 @@ window.reflection = [
             "columnno": 40,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005622",
+                "id": "astnode100005650",
                 "name": "w"
             }
         },
@@ -16435,7 +16547,7 @@ window.reflection = [
         "memberof": "self.position",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000391",
+        "___id": "T000002R000395",
         "___s": true
     },
     {
@@ -16450,7 +16562,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005636",
+                "id": "astnode100005664",
                 "name": "x",
                 "type": "MemberExpression",
                 "funcscope": "self.position",
@@ -16464,7 +16576,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.position",
         "scope": "inner",
-        "___id": "T000002R000392",
+        "___id": "T000002R000396",
         "___s": true
     },
     {
@@ -16479,7 +16591,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005642",
+                "id": "astnode100005670",
                 "name": "y",
                 "type": "MemberExpression",
                 "funcscope": "self.position",
@@ -16493,7 +16605,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.position",
         "scope": "inner",
-        "___id": "T000002R000393",
+        "___id": "T000002R000397",
         "___s": true
     },
     {
@@ -16508,7 +16620,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005648",
+                "id": "astnode100005676",
                 "name": "h",
                 "type": "MemberExpression",
                 "funcscope": "self.position",
@@ -16522,7 +16634,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.position",
         "scope": "inner",
-        "___id": "T000002R000394",
+        "___id": "T000002R000398",
         "___s": true
     },
     {
@@ -16537,7 +16649,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005654",
+                "id": "astnode100005682",
                 "name": "w",
                 "type": "MemberExpression",
                 "funcscope": "self.position",
@@ -16551,7 +16663,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.position",
         "scope": "inner",
-        "___id": "T000002R000395",
+        "___id": "T000002R000399",
         "___s": true
     },
     {
@@ -16566,7 +16678,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005660",
+                "id": "astnode100005688",
                 "name": "e",
                 "type": "MemberExpression",
                 "funcscope": "self.position",
@@ -16580,7 +16692,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.position",
         "scope": "inner",
-        "___id": "T000002R000396",
+        "___id": "T000002R000400",
         "___s": true
     },
     {
@@ -16595,7 +16707,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005670",
+                "id": "astnode100005698",
                 "name": "left",
                 "type": "Identifier",
                 "value": "x"
@@ -16606,7 +16718,7 @@ window.reflection = [
         "longname": "left",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000397",
+        "___id": "T000002R000401",
         "___s": true
     },
     {
@@ -16621,7 +16733,7 @@ window.reflection = [
             "columnno": 33,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005672",
+                "id": "astnode100005700",
                 "name": "top",
                 "type": "Identifier",
                 "value": "y"
@@ -16632,7 +16744,7 @@ window.reflection = [
         "longname": "top",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000398",
+        "___id": "T000002R000402",
         "___s": true
     },
     {
@@ -16647,7 +16759,7 @@ window.reflection = [
             "columnno": 41,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005674",
+                "id": "astnode100005702",
                 "name": "height",
                 "type": "Identifier",
                 "value": "h"
@@ -16658,7 +16770,7 @@ window.reflection = [
         "longname": "height",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000399",
+        "___id": "T000002R000403",
         "___s": true
     },
     {
@@ -16673,7 +16785,7 @@ window.reflection = [
             "columnno": 52,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005676",
+                "id": "astnode100005704",
                 "name": "width",
                 "type": "Identifier",
                 "value": "w"
@@ -16684,7 +16796,7 @@ window.reflection = [
         "longname": "width",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000400",
+        "___id": "T000002R000404",
         "___s": true
     },
     {
@@ -16699,7 +16811,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005679",
+                "id": "astnode100005707",
                 "name": "e",
                 "type": "Identifier",
                 "funcscope": "self.position",
@@ -16713,7 +16825,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.position",
         "scope": "inner",
-        "___id": "T000002R000401",
+        "___id": "T000002R000405",
         "___s": true
     },
     {
@@ -16728,7 +16840,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005683",
+                "id": "astnode100005711",
                 "name": "s",
                 "type": "CallExpression",
                 "funcscope": "self.position",
@@ -16742,7 +16854,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.position",
         "scope": "inner",
-        "___id": "T000002R000402",
+        "___id": "T000002R000406",
         "___s": true
     },
     {
@@ -16757,7 +16869,7 @@ window.reflection = [
             "columnno": 21,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005692",
+                "id": "astnode100005720",
                 "name": "left",
                 "type": "BinaryExpression",
                 "value": ""
@@ -16768,7 +16880,7 @@ window.reflection = [
         "longname": "left",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000403",
+        "___id": "T000002R000407",
         "___s": true
     },
     {
@@ -16783,7 +16895,7 @@ window.reflection = [
             "columnno": 39,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005698",
+                "id": "astnode100005726",
                 "name": "top",
                 "type": "BinaryExpression",
                 "value": ""
@@ -16794,7 +16906,7 @@ window.reflection = [
         "longname": "top",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000404",
+        "___id": "T000002R000408",
         "___s": true
     },
     {
@@ -16809,7 +16921,7 @@ window.reflection = [
             "columnno": 55,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005704",
+                "id": "astnode100005732",
                 "name": "height",
                 "type": "Identifier",
                 "value": "h"
@@ -16820,7 +16932,7 @@ window.reflection = [
         "longname": "height",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000405",
+        "___id": "T000002R000409",
         "___s": true
     },
     {
@@ -16835,7 +16947,7 @@ window.reflection = [
             "columnno": 66,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005706",
+                "id": "astnode100005734",
                 "name": "width",
                 "type": "Identifier",
                 "value": "w"
@@ -16846,7 +16958,7 @@ window.reflection = [
         "longname": "width",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000406",
+        "___id": "T000002R000410",
         "___s": true
     },
     {
@@ -16854,19 +16966,18 @@ window.reflection = [
         "meta": {
             "range": [
                 5432,
-                6164
+                5928
             ],
             "filename": "dom.js",
             "lineno": 111,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005709",
+                "id": "astnode100005737",
                 "name": "self.getLayerPos",
                 "type": "FunctionExpression",
                 "paramnames": [
-                    "e",
-                    "includeScrollingElement"
+                    "e"
                 ]
             },
             "vars": {
@@ -16882,22 +16993,22 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000407",
+        "___id": "T000002R000411",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                5507,
-                5549
+                5482,
+                5524
             ],
             "filename": "dom.js",
             "lineno": 112,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005718",
+                "id": "astnode100005745",
                 "name": "rect",
                 "type": "CallExpression",
                 "value": ""
@@ -16910,22 +17021,22 @@ window.reflection = [
         "memberof": "self.getLayerPos",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000408",
+        "___id": "T000002R000412",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                5567,
-                5682
+                5542,
+                5657
             ],
             "filename": "dom.js",
             "lineno": 113,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005726",
+                "id": "astnode100005753",
                 "name": "pos",
                 "type": "ObjectExpression",
                 "value": "{\"x\":\"\",\"y\":\"\"}"
@@ -16938,118 +17049,6 @@ window.reflection = [
         "memberof": "self.getLayerPos",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000409",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                5595,
-                5619
-            ],
-            "filename": "dom.js",
-            "lineno": 114,
-            "columnno": 20,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100005729",
-                "name": "x",
-                "type": "BinaryExpression",
-                "value": ""
-            }
-        },
-        "undocumented": true,
-        "name": "x",
-        "longname": "self.getLayerPos~pos.x",
-        "kind": "member",
-        "memberof": "self.getLayerPos~pos",
-        "scope": "static",
-        "___id": "T000002R000410",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                5641,
-                5664
-            ],
-            "filename": "dom.js",
-            "lineno": 115,
-            "columnno": 20,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100005737",
-                "name": "y",
-                "type": "BinaryExpression",
-                "value": ""
-            }
-        },
-        "undocumented": true,
-        "name": "y",
-        "longname": "self.getLayerPos~pos.y",
-        "kind": "member",
-        "memberof": "self.getLayerPos~pos",
-        "scope": "static",
-        "___id": "T000002R000411",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                5736,
-                5766
-            ],
-            "filename": "dom.js",
-            "lineno": 118,
-            "columnno": 16,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100005751",
-                "name": "pos.x",
-                "type": "MemberExpression",
-                "funcscope": "self.getLayerPos",
-                "value": "self.canvasOffsetLeft",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "x",
-        "longname": "self.getLayerPos~pos.x",
-        "kind": "member",
-        "memberof": "self.getLayerPos~pos",
-        "scope": "static",
-        "___id": "T000002R000412",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                5784,
-                5813
-            ],
-            "filename": "dom.js",
-            "lineno": 119,
-            "columnno": 16,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100005759",
-                "name": "pos.y",
-                "type": "MemberExpression",
-                "funcscope": "self.getLayerPos",
-                "value": "self.canvasOffsetTop",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "y",
-        "longname": "self.getLayerPos~pos.y",
-        "kind": "member",
-        "memberof": "self.getLayerPos~pos",
-        "scope": "static",
         "___id": "T000002R000413",
         "___s": true
     },
@@ -17057,20 +17056,18 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                5917,
-                5962
+                5570,
+                5594
             ],
             "filename": "dom.js",
-            "lineno": 122,
-            "columnno": 16,
+            "lineno": 114,
+            "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005774",
-                "name": "pos.x",
-                "type": "MemberExpression",
-                "funcscope": "self.getLayerPos",
-                "value": "document.scrollingElement.scrollLeft",
-                "paramnames": []
+                "id": "astnode100005756",
+                "name": "x",
+                "type": "BinaryExpression",
+                "value": ""
             }
         },
         "undocumented": true,
@@ -17086,20 +17083,18 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                5980,
-                6024
+                5616,
+                5639
             ],
             "filename": "dom.js",
-            "lineno": 123,
-            "columnno": 16,
+            "lineno": 115,
+            "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100005784",
-                "name": "pos.y",
-                "type": "MemberExpression",
-                "funcscope": "self.getLayerPos",
-                "value": "document.scrollingElement.scrollTop",
-                "paramnames": []
+                "id": "astnode100005764",
+                "name": "y",
+                "type": "BinaryExpression",
+                "value": ""
             }
         },
         "undocumented": true,
@@ -17115,11 +17110,69 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                6077,
-                6085
+                5711,
+                5741
             ],
             "filename": "dom.js",
-            "lineno": 126,
+            "lineno": 118,
+            "columnno": 16,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100005778",
+                "name": "pos.x",
+                "type": "MemberExpression",
+                "funcscope": "self.getLayerPos",
+                "value": "self.canvasOffsetLeft",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "x",
+        "longname": "self.getLayerPos~pos.x",
+        "kind": "member",
+        "memberof": "self.getLayerPos~pos",
+        "scope": "static",
+        "___id": "T000002R000416",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                5759,
+                5788
+            ],
+            "filename": "dom.js",
+            "lineno": 119,
+            "columnno": 16,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100005786",
+                "name": "pos.y",
+                "type": "MemberExpression",
+                "funcscope": "self.getLayerPos",
+                "value": "self.canvasOffsetTop",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "y",
+        "longname": "self.getLayerPos~pos.y",
+        "kind": "member",
+        "memberof": "self.getLayerPos~pos",
+        "scope": "static",
+        "___id": "T000002R000417",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                5841,
+                5849
+            ],
+            "filename": "dom.js",
+            "lineno": 122,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17134,18 +17187,18 @@ window.reflection = [
         "longname": "x",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000416",
+        "___id": "T000002R000418",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6103,
-                6111
+                5867,
+                5875
             ],
             "filename": "dom.js",
-            "lineno": 127,
+            "lineno": 123,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17160,18 +17213,18 @@ window.reflection = [
         "longname": "y",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000417",
+        "___id": "T000002R000419",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6129,
-                6139
+                5893,
+                5903
             ],
             "filename": "dom.js",
-            "lineno": 128,
+            "lineno": 124,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17186,14 +17239,14 @@ window.reflection = [
         "longname": "rect",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000418",
+        "___id": "T000002R000420",
         "___s": true
     },
     {
         "comment": "/**\n         * Ends editing, optionally aborting the edit.\n         * @memberof canvasDatagrid\n         * @name endEdit\n         * @method\n         * @param {boolean} abort When true, abort the edit.\n         */",
         "meta": {
             "filename": "dom.js",
-            "lineno": 131,
+            "lineno": 127,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -17215,18 +17268,18 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.endEdit",
-        "___id": "T000002R000419",
+        "___id": "T000002R000421",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6394,
-                8056
+                6158,
+                7820
             ],
             "filename": "dom.js",
-            "lineno": 138,
+            "lineno": 134,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17254,18 +17307,18 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000420",
+        "___id": "T000002R000422",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6444,
-                6470
+                6208,
+                6234
             ],
             "filename": "dom.js",
-            "lineno": 139,
+            "lineno": 135,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17282,18 +17335,18 @@ window.reflection = [
         "memberof": "self.endEdit",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000421",
+        "___id": "T000002R000423",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6488,
-                6505
+                6252,
+                6269
             ],
             "filename": "dom.js",
-            "lineno": 140,
+            "lineno": 136,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17310,18 +17363,18 @@ window.reflection = [
         "memberof": "self.endEdit",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000422",
+        "___id": "T000002R000424",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6519,
-                6585
+                6283,
+                6349
             ],
             "filename": "dom.js",
-            "lineno": 141,
+            "lineno": 137,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17341,18 +17394,18 @@ window.reflection = [
         "memberof": "self.endEdit",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000423",
+        "___id": "T000002R000425",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6558,
-                6570
+                6322,
+                6334
             ],
             "filename": "dom.js",
-            "lineno": 142,
+            "lineno": 138,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17370,18 +17423,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.endEdit~abortEdit",
         "scope": "inner",
-        "___id": "T000002R000424",
+        "___id": "T000002R000426",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6660,
-                6670
+                6424,
+                6434
             ],
             "filename": "dom.js",
-            "lineno": 145,
+            "lineno": 141,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17396,18 +17449,18 @@ window.reflection = [
         "longname": "cell",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000425",
+        "___id": "T000002R000427",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6692,
-                6718
+                6456,
+                6482
             ],
             "filename": "dom.js",
-            "lineno": 146,
+            "lineno": 142,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17422,18 +17475,18 @@ window.reflection = [
         "longname": "newValue",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000426",
+        "___id": "T000002R000428",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6740,
-                6760
+                6504,
+                6524
             ],
             "filename": "dom.js",
-            "lineno": 147,
+            "lineno": 143,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17448,18 +17501,18 @@ window.reflection = [
         "longname": "oldValue",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000427",
+        "___id": "T000002R000429",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6782,
-                6798
+                6546,
+                6562
             ],
             "filename": "dom.js",
-            "lineno": 148,
+            "lineno": 144,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17474,18 +17527,18 @@ window.reflection = [
         "longname": "abort",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000428",
+        "___id": "T000002R000430",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6820,
-                6837
+                6584,
+                6601
             ],
             "filename": "dom.js",
-            "lineno": 149,
+            "lineno": 145,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17500,18 +17553,18 @@ window.reflection = [
         "longname": "input",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000429",
+        "___id": "T000002R000431",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6953,
-                6992
+                6717,
+                6756
             ],
             "filename": "dom.js",
-            "lineno": 152,
+            "lineno": 148,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17528,18 +17581,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000430",
+        "___id": "T000002R000432",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                7010,
-                7062
+                6774,
+                6826
             ],
             "filename": "dom.js",
-            "lineno": 153,
+            "lineno": 149,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17556,18 +17609,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000431",
+        "___id": "T000002R000433",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                7080,
-                7126
+                6844,
+                6890
             ],
             "filename": "dom.js",
-            "lineno": 154,
+            "lineno": 150,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17585,18 +17638,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.endEdit~cell",
         "scope": "static",
-        "___id": "T000002R000432",
+        "___id": "T000002R000434",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                7257,
-                7280
+                7021,
+                7044
             ],
             "filename": "dom.js",
-            "lineno": 157,
+            "lineno": 153,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17611,18 +17664,18 @@ window.reflection = [
         "longname": "value",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000433",
+        "___id": "T000002R000435",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                7310,
-                7334
+                7074,
+                7098
             ],
             "filename": "dom.js",
-            "lineno": 158,
+            "lineno": 154,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17637,18 +17690,18 @@ window.reflection = [
         "longname": "defaultValue",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000434",
+        "___id": "T000002R000436",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                7364,
-                7378
+                7128,
+                7142
             ],
             "filename": "dom.js",
-            "lineno": 159,
+            "lineno": 155,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17663,18 +17716,18 @@ window.reflection = [
         "longname": "aborted",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000435",
+        "___id": "T000002R000437",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                7408,
-                7418
+                7172,
+                7182
             ],
             "filename": "dom.js",
-            "lineno": 160,
+            "lineno": 156,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17689,18 +17742,18 @@ window.reflection = [
         "longname": "cell",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000436",
+        "___id": "T000002R000438",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                7448,
-                7465
+                7212,
+                7229
             ],
             "filename": "dom.js",
-            "lineno": 161,
+            "lineno": 157,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17715,18 +17768,18 @@ window.reflection = [
         "longname": "input",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000437",
+        "___id": "T000002R000439",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                7532,
-                7545
+                7296,
+                7309
             ],
             "filename": "dom.js",
-            "lineno": 163,
+            "lineno": 159,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17743,18 +17796,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000438",
+        "___id": "T000002R000440",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                7851,
-                7861
+                7615,
+                7625
             ],
             "filename": "dom.js",
-            "lineno": 172,
+            "lineno": 168,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17769,18 +17822,18 @@ window.reflection = [
         "longname": "cell",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000439",
+        "___id": "T000002R000441",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                7879,
-                7902
+                7643,
+                7666
             ],
             "filename": "dom.js",
-            "lineno": 173,
+            "lineno": 169,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17795,18 +17848,18 @@ window.reflection = [
         "longname": "value",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000440",
+        "___id": "T000002R000442",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                7920,
-                7934
+                7684,
+                7698
             ],
             "filename": "dom.js",
-            "lineno": 174,
+            "lineno": 170,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17821,18 +17874,18 @@ window.reflection = [
         "longname": "aborted",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000441",
+        "___id": "T000002R000443",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                7952,
-                7969
+                7716,
+                7733
             ],
             "filename": "dom.js",
-            "lineno": 175,
+            "lineno": 171,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17847,18 +17900,18 @@ window.reflection = [
         "longname": "input",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000442",
+        "___id": "T000002R000444",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                7998,
-                8020
+                7762,
+                7784
             ],
             "filename": "dom.js",
-            "lineno": 177,
+            "lineno": 173,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17875,14 +17928,14 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000443",
+        "___id": "T000002R000445",
         "___s": true
     },
     {
         "comment": "/**\n         * Begins editing at cell x, row y.\n         * @memberof canvasDatagrid\n         * @name beginEditAt\n         * @method\n         * @param {number} x The column index of the cell to edit.\n         * @param {number} y The row index of the cell to edit.\n         */",
         "meta": {
             "filename": "dom.js",
-            "lineno": 180,
+            "lineno": 176,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -17913,18 +17966,18 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.beginEditAt",
-        "___id": "T000002R000444",
+        "___id": "T000002R000446",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                8349,
-                13235
+                8113,
+                12999
             ],
             "filename": "dom.js",
-            "lineno": 188,
+            "lineno": 184,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17960,18 +18013,18 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000445",
+        "___id": "T000002R000447",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                8533,
-                8572
+                8297,
+                8336
             ],
             "filename": "dom.js",
-            "lineno": 193,
+            "lineno": 189,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -17988,18 +18041,18 @@ window.reflection = [
         "memberof": "self.beginEditAt",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000446",
+        "___id": "T000002R000448",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                8590,
-                8617
+                8354,
+                8381
             ],
             "filename": "dom.js",
-            "lineno": 194,
+            "lineno": 190,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18016,18 +18069,18 @@ window.reflection = [
         "memberof": "self.beginEditAt",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000447",
+        "___id": "T000002R000449",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                8635,
-                8644
+                8399,
+                8408
             ],
             "filename": "dom.js",
-            "lineno": 195,
+            "lineno": 191,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18042,18 +18095,18 @@ window.reflection = [
         "memberof": "self.beginEditAt",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000448",
+        "___id": "T000002R000450",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                8662,
-                8665
+                8426,
+                8429
             ],
             "filename": "dom.js",
-            "lineno": 196,
+            "lineno": 192,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18068,18 +18121,18 @@ window.reflection = [
         "memberof": "self.beginEditAt",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000449",
+        "___id": "T000002R000451",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                8683,
-                8689
+                8447,
+                8453
             ],
             "filename": "dom.js",
-            "lineno": 197,
+            "lineno": 193,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18094,18 +18147,18 @@ window.reflection = [
         "memberof": "self.beginEditAt",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000450",
+        "___id": "T000002R000452",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                8707,
-                8718
+                8471,
+                8482
             ],
             "filename": "dom.js",
-            "lineno": 198,
+            "lineno": 194,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18120,18 +18173,18 @@ window.reflection = [
         "memberof": "self.beginEditAt",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000451",
+        "___id": "T000002R000453",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                8840,
-                8865
+                8604,
+                8629
             ],
             "filename": "dom.js",
-            "lineno": 201,
+            "lineno": 197,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18149,18 +18202,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.beginEditAt",
         "scope": "inner",
-        "___id": "T000002R000452",
+        "___id": "T000002R000454",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                8922,
-                8932
+                8686,
+                8696
             ],
             "filename": "dom.js",
-            "lineno": 202,
+            "lineno": 198,
             "columnno": 55,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18175,18 +18228,18 @@ window.reflection = [
         "longname": "cell",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000453",
+        "___id": "T000002R000455",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9070,
-                9115
+                8834,
+                8879
             ],
             "filename": "dom.js",
-            "lineno": 206,
+            "lineno": 202,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18203,18 +18256,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000454",
+        "___id": "T000002R000456",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9154,
-                9259
+                8918,
+                9023
             ],
             "filename": "dom.js",
-            "lineno": 208,
+            "lineno": 204,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18231,18 +18284,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000455",
+        "___id": "T000002R000457",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9287,
-                9326
+                9051,
+                9090
             ],
             "filename": "dom.js",
-            "lineno": 211,
+            "lineno": 207,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18260,18 +18313,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.beginEditAt",
         "scope": "inner",
-        "___id": "T000002R000456",
+        "___id": "T000002R000458",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9596,
-                9644
+                9360,
+                9408
             ],
             "filename": "dom.js",
-            "lineno": 217,
+            "lineno": 213,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18289,18 +18342,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.beginEditAt",
         "scope": "inner",
-        "___id": "T000002R000457",
+        "___id": "T000002R000459",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9631,
-                9641
+                9395,
+                9405
             ],
             "filename": "dom.js",
-            "lineno": 217,
+            "lineno": 213,
             "columnno": 55,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18315,18 +18368,18 @@ window.reflection = [
         "longname": "cell",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000458",
+        "___id": "T000002R000460",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9715,
-                9730
+                9479,
+                9494
             ],
             "filename": "dom.js",
-            "lineno": 219,
+            "lineno": 215,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18344,18 +18397,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.beginEditAt",
         "scope": "inner",
-        "___id": "T000002R000459",
+        "___id": "T000002R000461",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9823,
-                9859
+                9587,
+                9623
             ],
             "filename": "dom.js",
-            "lineno": 222,
+            "lineno": 218,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18372,18 +18425,18 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000460",
+        "___id": "T000002R000462",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9885,
-                9888
+                9649,
+                9652
             ],
             "filename": "dom.js",
-            "lineno": 223,
+            "lineno": 219,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18398,18 +18451,18 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000461",
+        "___id": "T000002R000463",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9914,
-                9919
+                9678,
+                9683
             ],
             "filename": "dom.js",
-            "lineno": 224,
+            "lineno": 220,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18424,18 +18477,18 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000462",
+        "___id": "T000002R000464",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9989,
-                9999
+                9753,
+                9763
             ],
             "filename": "dom.js",
-            "lineno": 226,
+            "lineno": 222,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18453,18 +18506,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000463",
+        "___id": "T000002R000465",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                10025,
-                10037
+                9789,
+                9801
             ],
             "filename": "dom.js",
-            "lineno": 227,
+            "lineno": 223,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18482,18 +18535,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000464",
+        "___id": "T000002R000466",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                10092,
-                10099
+                9856,
+                9863
             ],
             "filename": "dom.js",
-            "lineno": 229,
+            "lineno": 225,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18511,18 +18564,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000465",
+        "___id": "T000002R000467",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                10125,
-                10134
+                9889,
+                9898
             ],
             "filename": "dom.js",
-            "lineno": 230,
+            "lineno": 226,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18540,18 +18593,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000466",
+        "___id": "T000002R000468",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                10204,
-                10222
+                9968,
+                9986
             ],
             "filename": "dom.js",
-            "lineno": 232,
+            "lineno": 228,
             "columnno": 46,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18569,18 +18622,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000467",
+        "___id": "T000002R000469",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                10246,
-                10259
+                10010,
+                10023
             ],
             "filename": "dom.js",
-            "lineno": 233,
+            "lineno": 229,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18598,18 +18651,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~i",
         "scope": "static",
-        "___id": "T000002R000468",
+        "___id": "T000002R000470",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                10281,
-                10300
+                10045,
+                10064
             ],
             "filename": "dom.js",
-            "lineno": 234,
+            "lineno": 230,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18627,18 +18680,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~i",
         "scope": "static",
-        "___id": "T000002R000469",
+        "___id": "T000002R000471",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                10425,
-                10466
+                10189,
+                10230
             ],
             "filename": "dom.js",
-            "lineno": 238,
+            "lineno": 234,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18656,18 +18709,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.beginEditAt",
         "scope": "inner",
-        "___id": "T000002R000470",
+        "___id": "T000002R000472",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                10488,
-                10513
+                10252,
+                10277
             ],
             "filename": "dom.js",
-            "lineno": 239,
+            "lineno": 235,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18685,18 +18738,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.beginEditAt~option",
         "scope": "static",
-        "___id": "T000002R000471",
+        "___id": "T000002R000473",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                10535,
-                10564
+                10299,
+                10328
             ],
             "filename": "dom.js",
-            "lineno": 240,
+            "lineno": 236,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18714,18 +18767,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.beginEditAt~option",
         "scope": "static",
-        "___id": "T000002R000472",
+        "___id": "T000002R000474",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11004,
-                11042
+                10768,
+                10806
             ],
             "filename": "dom.js",
-            "lineno": 250,
+            "lineno": 246,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18742,18 +18795,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.input.style",
         "scope": "static",
-        "___id": "T000002R000473",
+        "___id": "T000002R000475",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11056,
-                11082
+                10820,
+                10846
             ],
             "filename": "dom.js",
-            "lineno": 251,
+            "lineno": 247,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18770,18 +18823,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.input",
         "scope": "static",
-        "___id": "T000002R000474",
+        "___id": "T000002R000476",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11132,
-                11161
+                10896,
+                10925
             ],
             "filename": "dom.js",
-            "lineno": 253,
+            "lineno": 249,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18798,18 +18851,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.input.style",
         "scope": "static",
-        "___id": "T000002R000475",
+        "___id": "T000002R000477",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11175,
-                11266
+                10939,
+                11030
             ],
             "filename": "dom.js",
-            "lineno": 254,
+            "lineno": 250,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18826,18 +18879,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.input.style",
         "scope": "static",
-        "___id": "T000002R000476",
+        "___id": "T000002R000478",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11280,
-                11309
+                11044,
+                11073
             ],
             "filename": "dom.js",
-            "lineno": 255,
+            "lineno": 251,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18854,18 +18907,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.input",
         "scope": "static",
-        "___id": "T000002R000477",
+        "___id": "T000002R000479",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11726,
-                11747
+                11490,
+                11511
             ],
             "filename": "dom.js",
-            "lineno": 262,
+            "lineno": 258,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18882,18 +18935,18 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000478",
+        "___id": "T000002R000480",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11769,
-                11787
+                11533,
+                11551
             ],
             "filename": "dom.js",
-            "lineno": 263,
+            "lineno": 259,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18910,18 +18963,18 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000479",
+        "___id": "T000002R000481",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12448,
-                12455
+                12212,
+                12219
             ],
             "filename": "dom.js",
-            "lineno": 280,
+            "lineno": 276,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18939,18 +18992,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000480",
+        "___id": "T000002R000482",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12510,
-                12517
+                12274,
+                12281
             ],
             "filename": "dom.js",
-            "lineno": 282,
+            "lineno": 278,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18968,18 +19021,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000481",
+        "___id": "T000002R000483",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12599,
-                12616
+                12363,
+                12380
             ],
             "filename": "dom.js",
-            "lineno": 285,
+            "lineno": 281,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -18997,64 +19050,6 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000482",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                12642,
-                12649
-            ],
-            "filename": "dom.js",
-            "lineno": 286,
-            "columnno": 24,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100006605",
-                "name": "ny",
-                "type": "Literal",
-                "funcscope": "<anonymous>",
-                "value": 1,
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "ny",
-        "longname": "<anonymous>~ny",
-        "kind": "member",
-        "memberof": "<anonymous>",
-        "scope": "inner",
-        "___id": "T000002R000483",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                12742,
-                12748
-            ],
-            "filename": "dom.js",
-            "lineno": 289,
-            "columnno": 24,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100006618",
-                "name": "nx",
-                "type": "Literal",
-                "funcscope": "<anonymous>",
-                "value": 0,
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "nx",
-        "longname": "<anonymous>~nx",
-        "kind": "member",
-        "memberof": "<anonymous>",
-        "scope": "inner",
         "___id": "T000002R000484",
         "___s": true
     },
@@ -19062,15 +19057,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12774,
-                12781
+                12406,
+                12413
             ],
             "filename": "dom.js",
-            "lineno": 290,
+            "lineno": 282,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100006622",
+                "id": "astnode100006605",
                 "name": "ny",
                 "type": "Literal",
                 "funcscope": "<anonymous>",
@@ -19091,11 +19086,69 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12863,
-                12888
+                12506,
+                12512
             ],
             "filename": "dom.js",
-            "lineno": 293,
+            "lineno": 285,
+            "columnno": 24,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100006618",
+                "name": "nx",
+                "type": "Literal",
+                "funcscope": "<anonymous>",
+                "value": 0,
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "nx",
+        "longname": "<anonymous>~nx",
+        "kind": "member",
+        "memberof": "<anonymous>",
+        "scope": "inner",
+        "___id": "T000002R000486",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                12538,
+                12545
+            ],
+            "filename": "dom.js",
+            "lineno": 286,
+            "columnno": 24,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100006622",
+                "name": "ny",
+                "type": "Literal",
+                "funcscope": "<anonymous>",
+                "value": 1,
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "ny",
+        "longname": "<anonymous>~ny",
+        "kind": "member",
+        "memberof": "<anonymous>",
+        "scope": "inner",
+        "___id": "T000002R000487",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                12627,
+                12652
+            ],
+            "filename": "dom.js",
+            "lineno": 289,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19113,18 +19166,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000486",
+        "___id": "T000002R000488",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12989,
-                12995
+                12753,
+                12759
             ],
             "filename": "dom.js",
-            "lineno": 296,
+            "lineno": 292,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19142,18 +19195,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000487",
+        "___id": "T000002R000489",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13193,
-                13203
+                12957,
+                12967
             ],
             "filename": "dom.js",
-            "lineno": 302,
+            "lineno": 298,
             "columnno": 45,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19168,18 +19221,18 @@ window.reflection = [
         "longname": "cell",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000488",
+        "___id": "T000002R000490",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13205,
-                13222
+                12969,
+                12986
             ],
             "filename": "dom.js",
-            "lineno": 302,
+            "lineno": 298,
             "columnno": 57,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19194,18 +19247,18 @@ window.reflection = [
         "longname": "input",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000489",
+        "___id": "T000002R000491",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13245,
-                22383
+                13009,
+                22147
             ],
             "filename": "dom.js",
-            "lineno": 304,
+            "lineno": 300,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19228,18 +19281,18 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000490",
+        "___id": "T000002R000492",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13313,
-                22159
+                13077,
+                21923
             ],
             "filename": "dom.js",
-            "lineno": 305,
+            "lineno": 301,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19256,18 +19309,18 @@ window.reflection = [
         "memberof": "self.createInlineStyle",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000491",
+        "___id": "T000002R000493",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13337,
-                14058
+                13101,
+                13822
             ],
             "filename": "dom.js",
-            "lineno": 306,
+            "lineno": 302,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19283,18 +19336,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css",
         "scope": "static",
-        "___id": "T000002R000492",
+        "___id": "T000002R000494",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13404,
-                13418
+                13168,
+                13182
             ],
             "filename": "dom.js",
-            "lineno": 307,
+            "lineno": 303,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19310,18 +19363,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-filter-input\"",
         "scope": "static",
-        "___id": "T000002R000493",
+        "___id": "T000002R000495",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13440,
-                13463
+                13204,
+                13227
             ],
             "filename": "dom.js",
-            "lineno": 308,
+            "lineno": 304,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19337,18 +19390,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-filter-input\"",
         "scope": "static",
-        "___id": "T000002R000494",
+        "___id": "T000002R000496",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13485,
-                13502
+                13249,
+                13266
             ],
             "filename": "dom.js",
-            "lineno": 309,
+            "lineno": 305,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19364,18 +19417,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-filter-input\"",
         "scope": "static",
-        "___id": "T000002R000495",
+        "___id": "T000002R000497",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13524,
-                13536
+                13288,
+                13300
             ],
             "filename": "dom.js",
-            "lineno": 310,
+            "lineno": 306,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19391,18 +19444,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-filter-input\"",
         "scope": "static",
-        "___id": "T000002R000496",
+        "___id": "T000002R000498",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13558,
-                13609
+                13322,
+                13373
             ],
             "filename": "dom.js",
-            "lineno": 311,
+            "lineno": 307,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19418,18 +19471,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-filter-input\"",
         "scope": "static",
-        "___id": "T000002R000497",
+        "___id": "T000002R000499",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13631,
-                13672
+                13395,
+                13436
             ],
             "filename": "dom.js",
-            "lineno": 312,
+            "lineno": 308,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19445,18 +19498,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-filter-input\"",
         "scope": "static",
-        "___id": "T000002R000498",
+        "___id": "T000002R000500",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13694,
-                13737
+                13458,
+                13501
             ],
             "filename": "dom.js",
-            "lineno": 313,
+            "lineno": 309,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19472,18 +19525,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-filter-input\"",
         "scope": "static",
-        "___id": "T000002R000499",
+        "___id": "T000002R000501",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13759,
-                13814
+                13523,
+                13578
             ],
             "filename": "dom.js",
-            "lineno": 314,
+            "lineno": 310,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19499,18 +19552,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-filter-input\"",
         "scope": "static",
-        "___id": "T000002R000500",
+        "___id": "T000002R000502",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13836,
-                13856
+                13600,
+                13620
             ],
             "filename": "dom.js",
-            "lineno": 315,
+            "lineno": 311,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19526,18 +19579,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-filter-input\"",
         "scope": "static",
-        "___id": "T000002R000501",
+        "___id": "T000002R000503",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13878,
-                13898
+                13642,
+                13662
             ],
             "filename": "dom.js",
-            "lineno": 316,
+            "lineno": 312,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19553,18 +19606,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-filter-input\"",
         "scope": "static",
-        "___id": "T000002R000502",
+        "___id": "T000002R000504",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13920,
-                13971
+                13684,
+                13735
             ],
             "filename": "dom.js",
-            "lineno": 317,
+            "lineno": 313,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19580,18 +19633,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-filter-input\"",
         "scope": "static",
-        "___id": "T000002R000503",
+        "___id": "T000002R000505",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13993,
-                14040
+                13757,
+                13804
             ],
             "filename": "dom.js",
-            "lineno": 318,
+            "lineno": 314,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19607,18 +19660,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-filter-input\"",
         "scope": "static",
-        "___id": "T000002R000504",
+        "___id": "T000002R000506",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14076,
-                14796
+                13840,
+                14560
             ],
             "filename": "dom.js",
-            "lineno": 320,
+            "lineno": 316,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19634,18 +19687,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css",
         "scope": "static",
-        "___id": "T000002R000505",
+        "___id": "T000002R000507",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14144,
-                14158
+                13908,
+                13922
             ],
             "filename": "dom.js",
-            "lineno": 321,
+            "lineno": 317,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19661,18 +19714,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-filter-button\"",
         "scope": "static",
-        "___id": "T000002R000506",
+        "___id": "T000002R000508",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14180,
-                14203
+                13944,
+                13967
             ],
             "filename": "dom.js",
-            "lineno": 322,
+            "lineno": 318,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19688,18 +19741,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-filter-button\"",
         "scope": "static",
-        "___id": "T000002R000507",
+        "___id": "T000002R000509",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14225,
-                14242
+                13989,
+                14006
             ],
             "filename": "dom.js",
-            "lineno": 323,
+            "lineno": 319,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19715,18 +19768,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-filter-button\"",
         "scope": "static",
-        "___id": "T000002R000508",
+        "___id": "T000002R000510",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14264,
-                14276
+                14028,
+                14040
             ],
             "filename": "dom.js",
-            "lineno": 324,
+            "lineno": 320,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19742,18 +19795,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-filter-button\"",
         "scope": "static",
-        "___id": "T000002R000509",
+        "___id": "T000002R000511",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14298,
-                14342
+                14062,
+                14106
             ],
             "filename": "dom.js",
-            "lineno": 325,
+            "lineno": 321,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19769,18 +19822,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-filter-button\"",
         "scope": "static",
-        "___id": "T000002R000510",
+        "___id": "T000002R000512",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14364,
-                14398
+                14128,
+                14162
             ],
             "filename": "dom.js",
-            "lineno": 326,
+            "lineno": 322,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19796,18 +19849,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-filter-button\"",
         "scope": "static",
-        "___id": "T000002R000511",
+        "___id": "T000002R000513",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14420,
-                14464
+                14184,
+                14228
             ],
             "filename": "dom.js",
-            "lineno": 327,
+            "lineno": 323,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19823,18 +19876,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-filter-button\"",
         "scope": "static",
-        "___id": "T000002R000512",
+        "___id": "T000002R000514",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14486,
-                14542
+                14250,
+                14306
             ],
             "filename": "dom.js",
-            "lineno": 328,
+            "lineno": 324,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19850,18 +19903,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-filter-button\"",
         "scope": "static",
-        "___id": "T000002R000513",
+        "___id": "T000002R000515",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14564,
-                14584
+                14328,
+                14348
             ],
             "filename": "dom.js",
-            "lineno": 329,
+            "lineno": 325,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19877,18 +19930,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-filter-button\"",
         "scope": "static",
-        "___id": "T000002R000514",
+        "___id": "T000002R000516",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14606,
-                14626
+                14370,
+                14390
             ],
             "filename": "dom.js",
-            "lineno": 330,
+            "lineno": 326,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19904,18 +19957,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-filter-button\"",
         "scope": "static",
-        "___id": "T000002R000515",
+        "___id": "T000002R000517",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14648,
-                14704
+                14412,
+                14468
             ],
             "filename": "dom.js",
-            "lineno": 331,
+            "lineno": 327,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19931,18 +19984,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-filter-button\"",
         "scope": "static",
-        "___id": "T000002R000516",
+        "___id": "T000002R000518",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14726,
-                14778
+                14490,
+                14542
             ],
             "filename": "dom.js",
-            "lineno": 332,
+            "lineno": 328,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19958,18 +20011,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-filter-button\"",
         "scope": "static",
-        "___id": "T000002R000517",
+        "___id": "T000002R000519",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14814,
-                15159
+                14578,
+                14923
             ],
             "filename": "dom.js",
-            "lineno": 334,
+            "lineno": 330,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -19985,18 +20038,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css",
         "scope": "static",
-        "___id": "T000002R000518",
+        "___id": "T000002R000520",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14875,
-                14892
+                14639,
+                14656
             ],
             "filename": "dom.js",
-            "lineno": 335,
+            "lineno": 331,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20012,18 +20065,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-child-arrow\"",
         "scope": "static",
-        "___id": "T000002R000519",
+        "___id": "T000002R000521",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14914,
-                14958
+                14678,
+                14722
             ],
             "filename": "dom.js",
-            "lineno": 336,
+            "lineno": 332,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20039,18 +20092,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-child-arrow\"",
         "scope": "static",
-        "___id": "T000002R000520",
+        "___id": "T000002R000522",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14980,
-                15030
+                14744,
+                14794
             ],
             "filename": "dom.js",
-            "lineno": 337,
+            "lineno": 333,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20066,18 +20119,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-child-arrow\"",
         "scope": "static",
-        "___id": "T000002R000521",
+        "___id": "T000002R000523",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15052,
-                15096
+                14816,
+                14860
             ],
             "filename": "dom.js",
-            "lineno": 338,
+            "lineno": 334,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20093,18 +20146,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-child-arrow\"",
         "scope": "static",
-        "___id": "T000002R000522",
+        "___id": "T000002R000524",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15118,
-                15141
+                14882,
+                14905
             ],
             "filename": "dom.js",
-            "lineno": 339,
+            "lineno": 335,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20120,18 +20173,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-child-arrow\"",
         "scope": "static",
-        "___id": "T000002R000523",
+        "___id": "T000002R000525",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15177,
-                15841
+                14941,
+                15605
             ],
             "filename": "dom.js",
-            "lineno": 341,
+            "lineno": 337,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20147,18 +20200,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css",
         "scope": "static",
-        "___id": "T000002R000524",
+        "___id": "T000002R000526",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15231,
-                15275
+                14995,
+                15039
             ],
             "filename": "dom.js",
-            "lineno": 342,
+            "lineno": 338,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20174,18 +20227,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-autocomplete\"",
         "scope": "static",
-        "___id": "T000002R000525",
+        "___id": "T000002R000527",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15297,
-                15337
+                15061,
+                15101
             ],
             "filename": "dom.js",
-            "lineno": 343,
+            "lineno": 339,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20201,18 +20254,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-autocomplete\"",
         "scope": "static",
-        "___id": "T000002R000526",
+        "___id": "T000002R000528",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15359,
-                15403
+                15123,
+                15167
             ],
             "filename": "dom.js",
-            "lineno": 344,
+            "lineno": 340,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20228,18 +20281,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-autocomplete\"",
         "scope": "static",
-        "___id": "T000002R000527",
+        "___id": "T000002R000529",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15425,
-                15459
+                15189,
+                15223
             ],
             "filename": "dom.js",
-            "lineno": 345,
+            "lineno": 341,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20255,18 +20308,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-autocomplete\"",
         "scope": "static",
-        "___id": "T000002R000528",
+        "___id": "T000002R000530",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15481,
-                15517
+                15245,
+                15281
             ],
             "filename": "dom.js",
-            "lineno": 346,
+            "lineno": 342,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20282,18 +20335,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-autocomplete\"",
         "scope": "static",
-        "___id": "T000002R000529",
+        "___id": "T000002R000531",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15539,
-                15577
+                15303,
+                15341
             ],
             "filename": "dom.js",
-            "lineno": 347,
+            "lineno": 343,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20309,18 +20362,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-autocomplete\"",
         "scope": "static",
-        "___id": "T000002R000530",
+        "___id": "T000002R000532",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15599,
-                15647
+                15363,
+                15411
             ],
             "filename": "dom.js",
-            "lineno": 348,
+            "lineno": 344,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20336,18 +20389,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-autocomplete\"",
         "scope": "static",
-        "___id": "T000002R000531",
+        "___id": "T000002R000533",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15669,
-                15707
+                15433,
+                15471
             ],
             "filename": "dom.js",
-            "lineno": 349,
+            "lineno": 345,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20363,18 +20416,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-autocomplete\"",
         "scope": "static",
-        "___id": "T000002R000532",
+        "___id": "T000002R000534",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15729,
-                15749
+                15493,
+                15513
             ],
             "filename": "dom.js",
-            "lineno": 350,
+            "lineno": 346,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20390,18 +20443,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-autocomplete\"",
         "scope": "static",
-        "___id": "T000002R000533",
+        "___id": "T000002R000535",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15771,
-                15783
+                15535,
+                15547
             ],
             "filename": "dom.js",
-            "lineno": 351,
+            "lineno": 347,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20417,18 +20470,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-autocomplete\"",
         "scope": "static",
-        "___id": "T000002R000534",
+        "___id": "T000002R000536",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15805,
-                15823
+                15569,
+                15587
             ],
             "filename": "dom.js",
-            "lineno": 352,
+            "lineno": 348,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20444,18 +20497,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-autocomplete\"",
         "scope": "static",
-        "___id": "T000002R000535",
+        "___id": "T000002R000537",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15859,
-                16036
+                15623,
+                15800
             ],
             "filename": "dom.js",
-            "lineno": 354,
+            "lineno": 350,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20471,18 +20524,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css",
         "scope": "static",
-        "___id": "T000002R000536",
+        "___id": "T000002R000538",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15918,
-                15962
+                15682,
+                15726
             ],
             "filename": "dom.js",
-            "lineno": 355,
+            "lineno": 351,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20498,18 +20551,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-autocomplete-item\"",
         "scope": "static",
-        "___id": "T000002R000537",
+        "___id": "T000002R000539",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15984,
-                16018
+                15748,
+                15782
             ],
             "filename": "dom.js",
-            "lineno": 356,
+            "lineno": 352,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20525,18 +20578,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-autocomplete-item\"",
         "scope": "static",
-        "___id": "T000002R000538",
+        "___id": "T000002R000540",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16054,
-                16247
+                15818,
+                16011
             ],
             "filename": "dom.js",
-            "lineno": 358,
+            "lineno": 354,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20552,18 +20605,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css",
         "scope": "static",
-        "___id": "T000002R000539",
+        "___id": "T000002R000541",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16119,
-                16168
+                15883,
+                15932
             ],
             "filename": "dom.js",
-            "lineno": 359,
+            "lineno": 355,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20579,18 +20632,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-autocomplete-item:hover\"",
         "scope": "static",
-        "___id": "T000002R000540",
+        "___id": "T000002R000542",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16190,
-                16229
+                15954,
+                15993
             ],
             "filename": "dom.js",
-            "lineno": 360,
+            "lineno": 356,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20606,18 +20659,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-autocomplete-item:hover\"",
         "scope": "static",
-        "___id": "T000002R000541",
+        "___id": "T000002R000543",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16265,
-                16385
+                16029,
+                16149
             ],
             "filename": "dom.js",
-            "lineno": 362,
+            "lineno": 358,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20633,18 +20686,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css",
         "scope": "static",
-        "___id": "T000002R000542",
+        "___id": "T000002R000544",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16313,
-                16333
+                16077,
+                16097
             ],
             "filename": "dom.js",
-            "lineno": 363,
+            "lineno": 359,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20660,18 +20713,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-canvas\"",
         "scope": "static",
-        "___id": "T000002R000543",
+        "___id": "T000002R000545",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16355,
-                16367
+                16119,
+                16131
             ],
             "filename": "dom.js",
-            "lineno": 364,
+            "lineno": 360,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20687,18 +20740,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-canvas\"",
         "scope": "static",
-        "___id": "T000002R000544",
+        "___id": "T000002R000546",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16403,
-                16651
+                16167,
+                16415
             ],
             "filename": "dom.js",
-            "lineno": 366,
+            "lineno": 362,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20714,18 +20767,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css",
         "scope": "static",
-        "___id": "T000002R000545",
+        "___id": "T000002R000547",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16444,
-                16460
+                16208,
+                16224
             ],
             "filename": "dom.js",
-            "lineno": 367,
+            "lineno": 363,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20741,18 +20794,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid\"",
         "scope": "static",
-        "___id": "T000002R000546",
+        "___id": "T000002R000548",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16482,
-                16520
+                16246,
+                16284
             ],
             "filename": "dom.js",
-            "lineno": 368,
+            "lineno": 364,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20768,18 +20821,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid\"",
         "scope": "static",
-        "___id": "T000002R000547",
+        "___id": "T000002R000549",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16542,
-                16553
+                16306,
+                16317
             ],
             "filename": "dom.js",
-            "lineno": 369,
+            "lineno": 365,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20795,18 +20848,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid\"",
         "scope": "static",
-        "___id": "T000002R000548",
+        "___id": "T000002R000550",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16575,
-                16599
+                16339,
+                16363
             ],
             "filename": "dom.js",
-            "lineno": 370,
+            "lineno": 366,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20822,18 +20875,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid\"",
         "scope": "static",
-        "___id": "T000002R000549",
+        "___id": "T000002R000551",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16621,
-                16633
+                16385,
+                16397
             ],
             "filename": "dom.js",
-            "lineno": 371,
+            "lineno": 367,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20849,18 +20902,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid\"",
         "scope": "static",
-        "___id": "T000002R000550",
+        "___id": "T000002R000552",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16669,
-                17216
+                16433,
+                16980
             ],
             "filename": "dom.js",
-            "lineno": 373,
+            "lineno": 369,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20876,18 +20929,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css",
         "scope": "static",
-        "___id": "T000002R000551",
+        "___id": "T000002R000553",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16724,
-                16741
+                16488,
+                16505
             ],
             "filename": "dom.js",
-            "lineno": 374,
+            "lineno": 370,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20903,18 +20956,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-control-input\"",
         "scope": "static",
-        "___id": "T000002R000552",
+        "___id": "T000002R000554",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16763,
-                16774
+                16527,
+                16538
             ],
             "filename": "dom.js",
-            "lineno": 375,
+            "lineno": 371,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20930,18 +20983,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-control-input\"",
         "scope": "static",
-        "___id": "T000002R000553",
+        "___id": "T000002R000555",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16796,
-                16808
+                16560,
+                16572
             ],
             "filename": "dom.js",
-            "lineno": 376,
+            "lineno": 372,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20957,18 +21010,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-control-input\"",
         "scope": "static",
-        "___id": "T000002R000554",
+        "___id": "T000002R000556",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16830,
-                16844
+                16594,
+                16608
             ],
             "filename": "dom.js",
-            "lineno": 377,
+            "lineno": 373,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -20984,18 +21037,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-control-input\"",
         "scope": "static",
-        "___id": "T000002R000555",
+        "___id": "T000002R000557",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16866,
-                16878
+                16630,
+                16642
             ],
             "filename": "dom.js",
-            "lineno": 378,
+            "lineno": 374,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21011,18 +21064,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-control-input\"",
         "scope": "static",
-        "___id": "T000002R000556",
+        "___id": "T000002R000558",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16900,
-                16917
+                16664,
+                16681
             ],
             "filename": "dom.js",
-            "lineno": 379,
+            "lineno": 375,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21038,18 +21091,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-control-input\"",
         "scope": "static",
-        "___id": "T000002R000557",
+        "___id": "T000002R000559",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16939,
-                16951
+                16703,
+                16715
             ],
             "filename": "dom.js",
-            "lineno": 380,
+            "lineno": 376,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21065,18 +21118,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-control-input\"",
         "scope": "static",
-        "___id": "T000002R000558",
+        "___id": "T000002R000560",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16973,
-                16986
+                16737,
+                16750
             ],
             "filename": "dom.js",
-            "lineno": 381,
+            "lineno": 377,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21092,18 +21145,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-control-input\"",
         "scope": "static",
-        "___id": "T000002R000559",
+        "___id": "T000002R000561",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17008,
-                17028
+                16772,
+                16792
             ],
             "filename": "dom.js",
-            "lineno": 382,
+            "lineno": 378,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21119,18 +21172,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-control-input\"",
         "scope": "static",
-        "___id": "T000002R000560",
+        "___id": "T000002R000562",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17050,
-                17070
+                16814,
+                16834
             ],
             "filename": "dom.js",
-            "lineno": 383,
+            "lineno": 379,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21146,18 +21199,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-control-input\"",
         "scope": "static",
-        "___id": "T000002R000561",
+        "___id": "T000002R000563",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17092,
-                17136
+                16856,
+                16900
             ],
             "filename": "dom.js",
-            "lineno": 384,
+            "lineno": 380,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21173,18 +21226,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-control-input\"",
         "scope": "static",
-        "___id": "T000002R000562",
+        "___id": "T000002R000564",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17158,
-                17198
+                16922,
+                16962
             ],
             "filename": "dom.js",
-            "lineno": 385,
+            "lineno": 381,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21200,18 +21253,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-control-input\"",
         "scope": "static",
-        "___id": "T000002R000563",
+        "___id": "T000002R000565",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17234,
-                17999
+                16998,
+                17763
             ],
             "filename": "dom.js",
-            "lineno": 387,
+            "lineno": 383,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21227,18 +21280,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css",
         "scope": "static",
-        "___id": "T000002R000564",
+        "___id": "T000002R000566",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17293,
-                17317
+                17057,
+                17081
             ],
             "filename": "dom.js",
-            "lineno": 388,
+            "lineno": 384,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21254,18 +21307,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-mobile-input\"",
         "scope": "static",
-        "___id": "T000002R000565",
+        "___id": "T000002R000567",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17339,
-                17354
+                17103,
+                17118
             ],
             "filename": "dom.js",
-            "lineno": 389,
+            "lineno": 385,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21281,18 +21334,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-mobile-input\"",
         "scope": "static",
-        "___id": "T000002R000566",
+        "___id": "T000002R000568",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17376,
-                17387
+                17140,
+                17151
             ],
             "filename": "dom.js",
-            "lineno": 390,
+            "lineno": 386,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21308,18 +21361,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-mobile-input\"",
         "scope": "static",
-        "___id": "T000002R000567",
+        "___id": "T000002R000569",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17409,
-                17427
+                17173,
+                17191
             ],
             "filename": "dom.js",
-            "lineno": 391,
+            "lineno": 387,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21335,18 +21388,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-mobile-input\"",
         "scope": "static",
-        "___id": "T000002R000568",
+        "___id": "T000002R000570",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17449,
-                17469
+                17213,
+                17233
             ],
             "filename": "dom.js",
-            "lineno": 392,
+            "lineno": 388,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21362,18 +21415,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-mobile-input\"",
         "scope": "static",
-        "___id": "T000002R000569",
+        "___id": "T000002R000571",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17491,
-                17511
+                17255,
+                17275
             ],
             "filename": "dom.js",
-            "lineno": 393,
+            "lineno": 389,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21389,18 +21442,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-mobile-input\"",
         "scope": "static",
-        "___id": "T000002R000570",
+        "___id": "T000002R000572",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17533,
-                17576
+                17297,
+                17340
             ],
             "filename": "dom.js",
-            "lineno": 394,
+            "lineno": 390,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21416,18 +21469,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-mobile-input\"",
         "scope": "static",
-        "___id": "T000002R000571",
+        "___id": "T000002R000573",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17598,
-                17637
+                17362,
+                17401
             ],
             "filename": "dom.js",
-            "lineno": 395,
+            "lineno": 391,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21443,18 +21496,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-mobile-input\"",
         "scope": "static",
-        "___id": "T000002R000572",
+        "___id": "T000002R000574",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17659,
-                17692
+                17423,
+                17456
             ],
             "filename": "dom.js",
-            "lineno": 396,
+            "lineno": 392,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21470,18 +21523,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-mobile-input\"",
         "scope": "static",
-        "___id": "T000002R000573",
+        "___id": "T000002R000575",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17714,
-                17745
+                17478,
+                17509
             ],
             "filename": "dom.js",
-            "lineno": 397,
+            "lineno": 393,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21497,18 +21550,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-mobile-input\"",
         "scope": "static",
-        "___id": "T000002R000574",
+        "___id": "T000002R000576",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17767,
-                17813
+                17531,
+                17577
             ],
             "filename": "dom.js",
-            "lineno": 398,
+            "lineno": 394,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21524,18 +21577,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-mobile-input\"",
         "scope": "static",
-        "___id": "T000002R000575",
+        "___id": "T000002R000577",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17835,
-                17853
+                17599,
+                17617
             ],
             "filename": "dom.js",
-            "lineno": 399,
+            "lineno": 395,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21551,18 +21604,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-mobile-input\"",
         "scope": "static",
-        "___id": "T000002R000576",
+        "___id": "T000002R000578",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17875,
-                17899
+                17639,
+                17663
             ],
             "filename": "dom.js",
-            "lineno": 400,
+            "lineno": 396,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21578,18 +21631,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-mobile-input\"",
         "scope": "static",
-        "___id": "T000002R000577",
+        "___id": "T000002R000579",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17921,
-                17942
+                17685,
+                17706
             ],
             "filename": "dom.js",
-            "lineno": 401,
+            "lineno": 397,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21605,18 +21658,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-mobile-input\"",
         "scope": "static",
-        "___id": "T000002R000578",
+        "___id": "T000002R000580",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17964,
-                17981
+                17728,
+                17745
             ],
             "filename": "dom.js",
-            "lineno": 402,
+            "lineno": 398,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21632,18 +21685,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-mobile-input\"",
         "scope": "static",
-        "___id": "T000002R000579",
+        "___id": "T000002R000581",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                18017,
-                18871
+                17781,
+                18635
             ],
             "filename": "dom.js",
-            "lineno": 404,
+            "lineno": 400,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21659,18 +21712,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css",
         "scope": "static",
-        "___id": "T000002R000580",
+        "___id": "T000002R000582",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                18069,
-                18093
+                17833,
+                17857
             ],
             "filename": "dom.js",
-            "lineno": 405,
+            "lineno": 401,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21686,18 +21739,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-input\"",
         "scope": "static",
-        "___id": "T000002R000581",
+        "___id": "T000002R000583",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                18115,
-                18130
+                17879,
+                17894
             ],
             "filename": "dom.js",
-            "lineno": 406,
+            "lineno": 402,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21713,18 +21766,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-input\"",
         "scope": "static",
-        "___id": "T000002R000582",
+        "___id": "T000002R000584",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                18152,
-                18163
+                17916,
+                17927
             ],
             "filename": "dom.js",
-            "lineno": 407,
+            "lineno": 403,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21740,18 +21793,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-input\"",
         "scope": "static",
-        "___id": "T000002R000583",
+        "___id": "T000002R000585",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                18185,
-                18242
+                17949,
+                18006
             ],
             "filename": "dom.js",
-            "lineno": 408,
+            "lineno": 404,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21767,18 +21820,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-input\"",
         "scope": "static",
-        "___id": "T000002R000584",
+        "___id": "T000002R000586",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                18264,
-                18284
+                18028,
+                18048
             ],
             "filename": "dom.js",
-            "lineno": 409,
+            "lineno": 405,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21794,18 +21847,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-input\"",
         "scope": "static",
-        "___id": "T000002R000585",
+        "___id": "T000002R000587",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                18306,
-                18326
+                18070,
+                18090
             ],
             "filename": "dom.js",
-            "lineno": 410,
+            "lineno": 406,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21821,18 +21874,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-input\"",
         "scope": "static",
-        "___id": "T000002R000586",
+        "___id": "T000002R000588",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                18348,
-                18389
+                18112,
+                18153
             ],
             "filename": "dom.js",
-            "lineno": 411,
+            "lineno": 407,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21848,18 +21901,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-input\"",
         "scope": "static",
-        "___id": "T000002R000587",
+        "___id": "T000002R000589",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                18411,
-                18448
+                18175,
+                18212
             ],
             "filename": "dom.js",
-            "lineno": 412,
+            "lineno": 408,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21875,18 +21928,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-input\"",
         "scope": "static",
-        "___id": "T000002R000588",
+        "___id": "T000002R000590",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                18470,
-                18509
+                18234,
+                18273
             ],
             "filename": "dom.js",
-            "lineno": 413,
+            "lineno": 409,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21902,18 +21955,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-input\"",
         "scope": "static",
-        "___id": "T000002R000589",
+        "___id": "T000002R000591",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                18531,
-                18564
+                18295,
+                18328
             ],
             "filename": "dom.js",
-            "lineno": 414,
+            "lineno": 410,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21929,18 +21982,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-input\"",
         "scope": "static",
-        "___id": "T000002R000590",
+        "___id": "T000002R000592",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                18586,
-                18617
+                18350,
+                18381
             ],
             "filename": "dom.js",
-            "lineno": 415,
+            "lineno": 411,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21956,18 +22009,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-input\"",
         "scope": "static",
-        "___id": "T000002R000591",
+        "___id": "T000002R000593",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                18639,
-                18685
+                18403,
+                18449
             ],
             "filename": "dom.js",
-            "lineno": 416,
+            "lineno": 412,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -21983,18 +22036,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-input\"",
         "scope": "static",
-        "___id": "T000002R000592",
+        "___id": "T000002R000594",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                18707,
-                18725
+                18471,
+                18489
             ],
             "filename": "dom.js",
-            "lineno": 417,
+            "lineno": 413,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22010,18 +22063,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-input\"",
         "scope": "static",
-        "___id": "T000002R000593",
+        "___id": "T000002R000595",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                18747,
-                18771
+                18511,
+                18535
             ],
             "filename": "dom.js",
-            "lineno": 418,
+            "lineno": 414,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22037,18 +22090,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-input\"",
         "scope": "static",
-        "___id": "T000002R000594",
+        "___id": "T000002R000596",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                18793,
-                18814
+                18557,
+                18578
             ],
             "filename": "dom.js",
-            "lineno": 419,
+            "lineno": 415,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22064,18 +22117,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-input\"",
         "scope": "static",
-        "___id": "T000002R000595",
+        "___id": "T000002R000597",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                18836,
-                18853
+                18600,
+                18617
             ],
             "filename": "dom.js",
-            "lineno": 420,
+            "lineno": 416,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22091,18 +22144,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-edit-input\"",
         "scope": "static",
-        "___id": "T000002R000596",
+        "___id": "T000002R000598",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                18889,
-                19425
+                18653,
+                19189
             ],
             "filename": "dom.js",
-            "lineno": 422,
+            "lineno": 418,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22118,18 +22171,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css",
         "scope": "static",
-        "___id": "T000002R000597",
+        "___id": "T000002R000599",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                18955,
-                18975
+                18719,
+                18739
             ],
             "filename": "dom.js",
-            "lineno": 423,
+            "lineno": 419,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22145,18 +22198,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-item-mobile\"",
         "scope": "static",
-        "___id": "T000002R000598",
+        "___id": "T000002R000600",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                18997,
-                19017
+                18761,
+                18781
             ],
             "filename": "dom.js",
-            "lineno": 424,
+            "lineno": 420,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22172,18 +22225,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-item-mobile\"",
         "scope": "static",
-        "___id": "T000002R000599",
+        "___id": "T000002R000601",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                19039,
-                19083
+                18803,
+                18847
             ],
             "filename": "dom.js",
-            "lineno": 425,
+            "lineno": 421,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22199,18 +22252,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-item-mobile\"",
         "scope": "static",
-        "___id": "T000002R000600",
+        "___id": "T000002R000602",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                19105,
-                19145
+                18869,
+                18909
             ],
             "filename": "dom.js",
-            "lineno": 426,
+            "lineno": 422,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22226,18 +22279,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-item-mobile\"",
         "scope": "static",
-        "___id": "T000002R000601",
+        "___id": "T000002R000603",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                19167,
-                19183
+                18931,
+                18947
             ],
             "filename": "dom.js",
-            "lineno": 427,
+            "lineno": 423,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22253,18 +22306,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-item-mobile\"",
         "scope": "static",
-        "___id": "T000002R000602",
+        "___id": "T000002R000604",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                19205,
-                19226
+                18969,
+                18990
             ],
             "filename": "dom.js",
-            "lineno": 428,
+            "lineno": 424,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22280,18 +22333,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-item-mobile\"",
         "scope": "static",
-        "___id": "T000002R000603",
+        "___id": "T000002R000605",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                19248,
-                19288
+                19012,
+                19052
             ],
             "filename": "dom.js",
-            "lineno": 429,
+            "lineno": 425,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22307,18 +22360,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-item-mobile\"",
         "scope": "static",
-        "___id": "T000002R000604",
+        "___id": "T000002R000606",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                19310,
-                19362
+                19074,
+                19126
             ],
             "filename": "dom.js",
-            "lineno": 430,
+            "lineno": 426,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22334,18 +22387,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-item-mobile\"",
         "scope": "static",
-        "___id": "T000002R000605",
+        "___id": "T000002R000607",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                19384,
-                19407
+                19148,
+                19171
             ],
             "filename": "dom.js",
-            "lineno": 431,
+            "lineno": 427,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22361,18 +22414,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-item-mobile\"",
         "scope": "static",
-        "___id": "T000002R000606",
+        "___id": "T000002R000608",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                19443,
-                19972
+                19207,
+                19736
             ],
             "filename": "dom.js",
-            "lineno": 433,
+            "lineno": 429,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22388,18 +22441,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css",
         "scope": "static",
-        "___id": "T000002R000607",
+        "___id": "T000002R000609",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                19502,
-                19522
+                19266,
+                19286
             ],
             "filename": "dom.js",
-            "lineno": 434,
+            "lineno": 430,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22415,18 +22468,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-item\"",
         "scope": "static",
-        "___id": "T000002R000608",
+        "___id": "T000002R000610",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                19544,
-                19564
+                19308,
+                19328
             ],
             "filename": "dom.js",
-            "lineno": 435,
+            "lineno": 431,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22442,18 +22495,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-item\"",
         "scope": "static",
-        "___id": "T000002R000609",
+        "___id": "T000002R000611",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                19586,
-                19630
+                19350,
+                19394
             ],
             "filename": "dom.js",
-            "lineno": 436,
+            "lineno": 432,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22469,18 +22522,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-item\"",
         "scope": "static",
-        "___id": "T000002R000610",
+        "___id": "T000002R000612",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                19652,
-                19692
+                19416,
+                19456
             ],
             "filename": "dom.js",
-            "lineno": 437,
+            "lineno": 433,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22496,18 +22549,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-item\"",
         "scope": "static",
-        "___id": "T000002R000611",
+        "___id": "T000002R000613",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                19714,
-                19730
+                19478,
+                19494
             ],
             "filename": "dom.js",
-            "lineno": 438,
+            "lineno": 434,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22523,18 +22576,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-item\"",
         "scope": "static",
-        "___id": "T000002R000612",
+        "___id": "T000002R000614",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                19752,
-                19773
+                19516,
+                19537
             ],
             "filename": "dom.js",
-            "lineno": 439,
+            "lineno": 435,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22550,18 +22603,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-item\"",
         "scope": "static",
-        "___id": "T000002R000613",
+        "___id": "T000002R000615",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                19795,
-                19835
+                19559,
+                19599
             ],
             "filename": "dom.js",
-            "lineno": 440,
+            "lineno": 436,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22577,18 +22630,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-item\"",
         "scope": "static",
-        "___id": "T000002R000614",
+        "___id": "T000002R000616",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                19857,
-                19909
+                19621,
+                19673
             ],
             "filename": "dom.js",
-            "lineno": 441,
+            "lineno": 437,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22604,18 +22657,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-item\"",
         "scope": "static",
-        "___id": "T000002R000615",
+        "___id": "T000002R000617",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                19931,
-                19954
+                19695,
+                19718
             ],
             "filename": "dom.js",
-            "lineno": 442,
+            "lineno": 438,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22631,18 +22684,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-item\"",
         "scope": "static",
-        "___id": "T000002R000616",
+        "___id": "T000002R000618",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                19990,
-                20183
+                19754,
+                19947
             ],
             "filename": "dom.js",
-            "lineno": 444,
+            "lineno": 440,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22658,18 +22711,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css",
         "scope": "static",
-        "___id": "T000002R000617",
+        "___id": "T000002R000619",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                20055,
-                20104
+                19819,
+                19868
             ],
             "filename": "dom.js",
-            "lineno": 445,
+            "lineno": 441,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22685,18 +22738,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-item:hover\"",
         "scope": "static",
-        "___id": "T000002R000618",
+        "___id": "T000002R000620",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                20126,
-                20165
+                19890,
+                19929
             ],
             "filename": "dom.js",
-            "lineno": 446,
+            "lineno": 442,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22712,18 +22765,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-item:hover\"",
         "scope": "static",
-        "___id": "T000002R000619",
+        "___id": "T000002R000621",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                20201,
-                20519
+                19965,
+                20283
             ],
             "filename": "dom.js",
-            "lineno": 448,
+            "lineno": 444,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22739,18 +22792,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css",
         "scope": "static",
-        "___id": "T000002R000620",
+        "___id": "T000002R000622",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                20261,
-                20302
+                20025,
+                20066
             ],
             "filename": "dom.js",
-            "lineno": 449,
+            "lineno": 445,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22766,18 +22819,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-label\"",
         "scope": "static",
-        "___id": "T000002R000621",
+        "___id": "T000002R000623",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                20324,
-                20367
+                20088,
+                20131
             ],
             "filename": "dom.js",
-            "lineno": 450,
+            "lineno": 446,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22793,18 +22846,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-label\"",
         "scope": "static",
-        "___id": "T000002R000622",
+        "___id": "T000002R000624",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                20389,
-                20434
+                20153,
+                20198
             ],
             "filename": "dom.js",
-            "lineno": 451,
+            "lineno": 447,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22820,18 +22873,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-label\"",
         "scope": "static",
-        "___id": "T000002R000623",
+        "___id": "T000002R000625",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                20456,
-                20501
+                20220,
+                20265
             ],
             "filename": "dom.js",
-            "lineno": 452,
+            "lineno": 448,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22847,18 +22900,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-label\"",
         "scope": "static",
-        "___id": "T000002R000624",
+        "___id": "T000002R000626",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                20537,
-                21258
+                20301,
+                21022
             ],
             "filename": "dom.js",
-            "lineno": 454,
+            "lineno": 450,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22874,18 +22927,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css",
         "scope": "static",
-        "___id": "T000002R000625",
+        "___id": "T000002R000627",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                20598,
-                20618
+                20362,
+                20382
             ],
             "filename": "dom.js",
-            "lineno": 455,
+            "lineno": 451,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22901,18 +22954,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-mobile\"",
         "scope": "static",
-        "___id": "T000002R000626",
+        "___id": "T000002R000628",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                20640,
-                20660
+                20404,
+                20424
             ],
             "filename": "dom.js",
-            "lineno": 456,
+            "lineno": 452,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22928,18 +22981,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-mobile\"",
         "scope": "static",
-        "___id": "T000002R000627",
+        "___id": "T000002R000629",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                20682,
-                20726
+                20446,
+                20490
             ],
             "filename": "dom.js",
-            "lineno": 457,
+            "lineno": 453,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22955,18 +23008,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-mobile\"",
         "scope": "static",
-        "___id": "T000002R000628",
+        "___id": "T000002R000630",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                20748,
-                20788
+                20512,
+                20552
             ],
             "filename": "dom.js",
-            "lineno": 458,
+            "lineno": 454,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -22982,18 +23035,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-mobile\"",
         "scope": "static",
-        "___id": "T000002R000629",
+        "___id": "T000002R000631",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                20810,
-                20854
+                20574,
+                20618
             ],
             "filename": "dom.js",
-            "lineno": 459,
+            "lineno": 455,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23009,18 +23062,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-mobile\"",
         "scope": "static",
-        "___id": "T000002R000630",
+        "___id": "T000002R000632",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                20876,
-                20910
+                20640,
+                20674
             ],
             "filename": "dom.js",
-            "lineno": 460,
+            "lineno": 456,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23036,18 +23089,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-mobile\"",
         "scope": "static",
-        "___id": "T000002R000631",
+        "___id": "T000002R000633",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                20932,
-                20968
+                20696,
+                20732
             ],
             "filename": "dom.js",
-            "lineno": 461,
+            "lineno": 457,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23063,18 +23116,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-mobile\"",
         "scope": "static",
-        "___id": "T000002R000632",
+        "___id": "T000002R000634",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                20990,
-                21028
+                20754,
+                20792
             ],
             "filename": "dom.js",
-            "lineno": 462,
+            "lineno": 458,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23090,18 +23143,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-mobile\"",
         "scope": "static",
-        "___id": "T000002R000633",
+        "___id": "T000002R000635",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                21050,
-                21098
+                20814,
+                20862
             ],
             "filename": "dom.js",
-            "lineno": 463,
+            "lineno": 459,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23117,18 +23170,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-mobile\"",
         "scope": "static",
-        "___id": "T000002R000634",
+        "___id": "T000002R000636",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                21120,
-                21158
+                20884,
+                20922
             ],
             "filename": "dom.js",
-            "lineno": 464,
+            "lineno": 460,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23144,18 +23197,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-mobile\"",
         "scope": "static",
-        "___id": "T000002R000635",
+        "___id": "T000002R000637",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                21180,
-                21198
+                20944,
+                20962
             ],
             "filename": "dom.js",
-            "lineno": 465,
+            "lineno": 461,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23171,18 +23224,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-mobile\"",
         "scope": "static",
-        "___id": "T000002R000636",
+        "___id": "T000002R000638",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                21220,
-                21240
+                20984,
+                21004
             ],
             "filename": "dom.js",
-            "lineno": 466,
+            "lineno": 462,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23198,18 +23251,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu-mobile\"",
         "scope": "static",
-        "___id": "T000002R000637",
+        "___id": "T000002R000639",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                21276,
-                21990
+                21040,
+                21754
             ],
             "filename": "dom.js",
-            "lineno": 468,
+            "lineno": 464,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23225,18 +23278,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css",
         "scope": "static",
-        "___id": "T000002R000638",
+        "___id": "T000002R000640",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                21330,
-                21350
+                21094,
+                21114
             ],
             "filename": "dom.js",
-            "lineno": 469,
+            "lineno": 465,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23252,18 +23305,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu\"",
         "scope": "static",
-        "___id": "T000002R000639",
+        "___id": "T000002R000641",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                21372,
-                21392
+                21136,
+                21156
             ],
             "filename": "dom.js",
-            "lineno": 470,
+            "lineno": 466,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23279,18 +23332,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu\"",
         "scope": "static",
-        "___id": "T000002R000640",
+        "___id": "T000002R000642",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                21414,
-                21458
+                21178,
+                21222
             ],
             "filename": "dom.js",
-            "lineno": 471,
+            "lineno": 467,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23306,18 +23359,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu\"",
         "scope": "static",
-        "___id": "T000002R000641",
+        "___id": "T000002R000643",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                21480,
-                21520
+                21244,
+                21284
             ],
             "filename": "dom.js",
-            "lineno": 472,
+            "lineno": 468,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23333,18 +23386,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu\"",
         "scope": "static",
-        "___id": "T000002R000642",
+        "___id": "T000002R000644",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                21542,
-                21586
+                21306,
+                21350
             ],
             "filename": "dom.js",
-            "lineno": 473,
+            "lineno": 469,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23360,18 +23413,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu\"",
         "scope": "static",
-        "___id": "T000002R000643",
+        "___id": "T000002R000645",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                21608,
-                21642
+                21372,
+                21406
             ],
             "filename": "dom.js",
-            "lineno": 474,
+            "lineno": 470,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23387,18 +23440,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu\"",
         "scope": "static",
-        "___id": "T000002R000644",
+        "___id": "T000002R000646",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                21664,
-                21700
+                21428,
+                21464
             ],
             "filename": "dom.js",
-            "lineno": 475,
+            "lineno": 471,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23414,18 +23467,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu\"",
         "scope": "static",
-        "___id": "T000002R000645",
+        "___id": "T000002R000647",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                21722,
-                21760
+                21486,
+                21524
             ],
             "filename": "dom.js",
-            "lineno": 476,
+            "lineno": 472,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23441,18 +23494,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu\"",
         "scope": "static",
-        "___id": "T000002R000646",
+        "___id": "T000002R000648",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                21782,
-                21830
+                21546,
+                21594
             ],
             "filename": "dom.js",
-            "lineno": 477,
+            "lineno": 473,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23468,18 +23521,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu\"",
         "scope": "static",
-        "___id": "T000002R000647",
+        "___id": "T000002R000649",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                21852,
-                21890
+                21616,
+                21654
             ],
             "filename": "dom.js",
-            "lineno": 478,
+            "lineno": 474,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23495,18 +23548,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu\"",
         "scope": "static",
-        "___id": "T000002R000648",
+        "___id": "T000002R000650",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                21912,
-                21930
+                21676,
+                21694
             ],
             "filename": "dom.js",
-            "lineno": 479,
+            "lineno": 475,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23522,18 +23575,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu\"",
         "scope": "static",
-        "___id": "T000002R000649",
+        "___id": "T000002R000651",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                21952,
-                21972
+                21716,
+                21736
             ],
             "filename": "dom.js",
-            "lineno": 480,
+            "lineno": 476,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23549,18 +23602,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-context-menu\"",
         "scope": "static",
-        "___id": "T000002R000650",
+        "___id": "T000002R000652",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                22008,
-                22145
+                21772,
+                21909
             ],
             "filename": "dom.js",
-            "lineno": 482,
+            "lineno": 478,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23576,18 +23629,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css",
         "scope": "static",
-        "___id": "T000002R000651",
+        "___id": "T000002R000653",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                22071,
-                22127
+                21835,
+                21891
             ],
             "filename": "dom.js",
-            "lineno": 483,
+            "lineno": 479,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23603,18 +23656,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.createInlineStyle~css.\"canvas-datagrid-invalid-search-regExp\"",
         "scope": "static",
-        "___id": "T000002R000652",
+        "___id": "T000002R000654",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                22281,
-                22318
+                22045,
+                22082
             ],
             "filename": "dom.js",
-            "lineno": 488,
+            "lineno": 484,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23631,18 +23684,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "el",
         "scope": "static",
-        "___id": "T000002R000653",
+        "___id": "T000002R000655",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                22393,
-                26601
+                22157,
+                26365
             ],
             "filename": "dom.js",
-            "lineno": 493,
+            "lineno": 489,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23677,18 +23730,18 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000654",
+        "___id": "T000002R000656",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                22436,
-                22491
+                22200,
+                22255
             ],
             "filename": "dom.js",
-            "lineno": 494,
+            "lineno": 490,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23705,18 +23758,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000655",
+        "___id": "T000002R000657",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                22608,
-                22631
+                22372,
+                22395
             ],
             "filename": "dom.js",
-            "lineno": 496,
+            "lineno": 492,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23733,18 +23786,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000656",
+        "___id": "T000002R000658",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                22649,
-                22693
+                22413,
+                22457
             ],
             "filename": "dom.js",
-            "lineno": 497,
+            "lineno": 493,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23761,18 +23814,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000657",
+        "___id": "T000002R000659",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                22711,
-                22745
+                22475,
+                22509
             ],
             "filename": "dom.js",
-            "lineno": 498,
+            "lineno": 494,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23789,18 +23842,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000658",
+        "___id": "T000002R000660",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                22763,
-                22799
+                22527,
+                22563
             ],
             "filename": "dom.js",
-            "lineno": 499,
+            "lineno": 495,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23817,18 +23870,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000659",
+        "___id": "T000002R000661",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                22817,
-                22865
+                22581,
+                22629
             ],
             "filename": "dom.js",
-            "lineno": 500,
+            "lineno": 496,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23845,18 +23898,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000660",
+        "___id": "T000002R000662",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                22883,
-                22913
+                22647,
+                22677
             ],
             "filename": "dom.js",
-            "lineno": 501,
+            "lineno": 497,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23873,18 +23926,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000661",
+        "___id": "T000002R000663",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                22952,
-                23003
+                22716,
+                22767
             ],
             "filename": "dom.js",
-            "lineno": 503,
+            "lineno": 499,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23901,18 +23954,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000662",
+        "___id": "T000002R000664",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                23021,
-                23062
+                22785,
+                22826
             ],
             "filename": "dom.js",
-            "lineno": 504,
+            "lineno": 500,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23929,18 +23982,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.controlInput",
         "scope": "static",
-        "___id": "T000002R000663",
+        "___id": "T000002R000665",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                23172,
-                23196
+                22936,
+                22960
             ],
             "filename": "dom.js",
-            "lineno": 506,
+            "lineno": 502,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23957,18 +24010,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000664",
+        "___id": "T000002R000666",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                23214,
-                23250
+                22978,
+                23014
             ],
             "filename": "dom.js",
-            "lineno": 507,
+            "lineno": 503,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -23985,18 +24038,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000665",
+        "___id": "T000002R000667",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                23268,
-                23304
+                23032,
+                23068
             ],
             "filename": "dom.js",
-            "lineno": 508,
+            "lineno": 504,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -24013,18 +24066,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000666",
+        "___id": "T000002R000668",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                23322,
-                23388
+                23086,
+                23152
             ],
             "filename": "dom.js",
-            "lineno": 509,
+            "lineno": 505,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -24041,18 +24094,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000667",
+        "___id": "T000002R000669",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                23450,
-                23498
+                23214,
+                23262
             ],
             "filename": "dom.js",
-            "lineno": 511,
+            "lineno": 507,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -24069,18 +24122,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000668",
+        "___id": "T000002R000670",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                23520,
-                23626
+                23284,
+                23390
             ],
             "filename": "dom.js",
-            "lineno": 512,
+            "lineno": 508,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -24097,18 +24150,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.shadowCss",
         "scope": "static",
-        "___id": "T000002R000669",
+        "___id": "T000002R000671",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                23648,
-                23698
+                23412,
+                23462
             ],
             "filename": "dom.js",
-            "lineno": 513,
+            "lineno": 509,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -24125,62 +24178,6 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000670",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                23720,
-                23766
-            ],
-            "filename": "dom.js",
-            "lineno": 514,
-            "columnno": 20,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100007536",
-                "name": "self.canvas",
-                "type": "CallExpression",
-                "value": "",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "canvas",
-        "longname": "self.canvas",
-        "kind": "member",
-        "memberof": "self",
-        "scope": "static",
-        "___id": "T000002R000671",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                24033,
-                24065
-            ],
-            "filename": "dom.js",
-            "lineno": 519,
-            "columnno": 20,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100007581",
-                "name": "self.canvas",
-                "type": "MemberExpression",
-                "value": "self.parentDOMNode",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "canvas",
-        "longname": "self.canvas",
-        "kind": "member",
-        "memberof": "self",
-        "scope": "static",
         "___id": "T000002R000672",
         "___s": true
     },
@@ -24188,15 +24185,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                24183,
-                24229
+                23484,
+                23530
             ],
             "filename": "dom.js",
-            "lineno": 522,
+            "lineno": 510,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100007600",
+                "id": "astnode100007536",
                 "name": "self.canvas",
                 "type": "CallExpression",
                 "value": "",
@@ -24216,11 +24213,67 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                24473,
-                24512
+                23797,
+                23829
             ],
             "filename": "dom.js",
-            "lineno": 527,
+            "lineno": 515,
+            "columnno": 20,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100007581",
+                "name": "self.canvas",
+                "type": "MemberExpression",
+                "value": "self.parentDOMNode",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "canvas",
+        "longname": "self.canvas",
+        "kind": "member",
+        "memberof": "self",
+        "scope": "static",
+        "___id": "T000002R000674",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                23947,
+                23993
+            ],
+            "filename": "dom.js",
+            "lineno": 518,
+            "columnno": 20,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100007600",
+                "name": "self.canvas",
+                "type": "CallExpression",
+                "value": "",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "canvas",
+        "longname": "self.canvas",
+        "kind": "member",
+        "memberof": "self",
+        "scope": "static",
+        "___id": "T000002R000675",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                24237,
+                24276
+            ],
+            "filename": "dom.js",
+            "lineno": 523,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -24237,18 +24290,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000674",
+        "___id": "T000002R000676",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                24530,
-                24566
+                24294,
+                24330
             ],
             "filename": "dom.js",
-            "lineno": 528,
+            "lineno": 524,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -24265,18 +24318,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R000675",
+        "___id": "T000002R000677",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                24584,
-                24614
+                24348,
+                24378
             ],
             "filename": "dom.js",
-            "lineno": 529,
+            "lineno": 525,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -24293,18 +24346,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000676",
+        "___id": "T000002R000678",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                24830,
-                24851
+                24594,
+                24615
             ],
             "filename": "dom.js",
-            "lineno": 534,
+            "lineno": 530,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -24321,18 +24374,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000677",
+        "___id": "T000002R000679",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                25006,
-                25218
+                24770,
+                24982
             ],
             "filename": "dom.js",
-            "lineno": 539,
+            "lineno": 535,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -24349,18 +24402,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000678",
+        "___id": "T000002R000680",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                25374,
-                25390
+                25138,
+                25154
             ],
             "filename": "dom.js",
-            "lineno": 546,
+            "lineno": 542,
             "columnno": 48,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -24375,18 +24428,18 @@ window.reflection = [
         "longname": "attributes",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000679",
+        "___id": "T000002R000681",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                26611,
-                27205
+                26375,
+                26969
             ],
             "filename": "dom.js",
-            "lineno": 565,
+            "lineno": 561,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -24407,18 +24460,18 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000680",
+        "___id": "T000002R000682",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                26780,
-                26845
+                26544,
+                26609
             ],
             "filename": "dom.js",
-            "lineno": 568,
+            "lineno": 564,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -24435,18 +24488,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000681",
+        "___id": "T000002R000683",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                26892,
-                26943
+                26656,
+                26707
             ],
             "filename": "dom.js",
-            "lineno": 570,
+            "lineno": 566,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -24463,18 +24516,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000682",
+        "___id": "T000002R000684",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                26979,
-                27075
+                26743,
+                26839
             ],
             "filename": "dom.js",
-            "lineno": 572,
+            "lineno": 568,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -24491,18 +24544,18 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000683",
+        "___id": "T000002R000685",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                27032,
-                27073
+                26796,
+                26837
             ],
             "filename": "dom.js",
-            "lineno": 572,
+            "lineno": 568,
             "columnno": 69,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -24517,18 +24570,18 @@ window.reflection = [
         "longname": "mode",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000684",
+        "___id": "T000002R000686",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                27093,
-                27131
+                26857,
+                26895
             ],
             "filename": "dom.js",
-            "lineno": 573,
+            "lineno": 569,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -24545,7 +24598,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.args",
         "scope": "static",
-        "___id": "T000002R000685",
+        "___id": "T000002R000687",
         "___s": true
     },
     {
@@ -24573,7 +24626,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000686",
+        "___id": "T000002R000688",
         "___s": true
     },
     {
@@ -24601,7 +24654,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000687",
+        "___id": "T000002R000689",
         "___s": true
     },
     {
@@ -24629,7 +24682,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000688",
+        "___id": "T000002R000690",
         "___s": true
     },
     {
@@ -24657,7 +24710,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000689",
+        "___id": "T000002R000691",
         "___s": true
     },
     {
@@ -24685,7 +24738,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000690",
+        "___id": "T000002R000692",
         "___s": true
     },
     {
@@ -24713,7 +24766,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000691",
+        "___id": "T000002R000693",
         "___s": true
     },
     {
@@ -24741,7 +24794,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000692",
+        "___id": "T000002R000694",
         "___s": true
     },
     {
@@ -24787,7 +24840,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000693",
+        "___id": "T000002R000695",
         "___s": true
     },
     {
@@ -24815,7 +24868,7 @@ window.reflection = [
         "memberof": "<anonymous>~drawPerfLine",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000694",
+        "___id": "T000002R000696",
         "___s": true
     },
     {
@@ -24843,7 +24896,7 @@ window.reflection = [
         "memberof": "<anonymous>~drawPerfLine",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000695",
+        "___id": "T000002R000697",
         "___s": true
     },
     {
@@ -24872,7 +24925,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~drawPerfLine",
         "scope": "inner",
-        "___id": "T000002R000696",
+        "___id": "T000002R000698",
         "___s": true
     },
     {
@@ -24901,7 +24954,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~drawPerfLine",
         "scope": "inner",
-        "___id": "T000002R000697",
+        "___id": "T000002R000699",
         "___s": true
     },
     {
@@ -24929,7 +24982,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000698",
+        "___id": "T000002R000700",
         "___s": true
     },
     {
@@ -24955,7 +25008,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000699",
+        "___id": "T000002R000701",
         "___s": true
     },
     {
@@ -24981,7 +25034,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000700",
+        "___id": "T000002R000702",
         "___s": true
     },
     {
@@ -25010,7 +25063,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000701",
+        "___id": "T000002R000703",
         "___s": true
     },
     {
@@ -25039,7 +25092,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000702",
+        "___id": "T000002R000704",
         "___s": true
     },
     {
@@ -25068,7 +25121,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000703",
+        "___id": "T000002R000705",
         "___s": true
     },
     {
@@ -25097,7 +25150,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000704",
+        "___id": "T000002R000706",
         "___s": true
     },
     {
@@ -25125,7 +25178,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R000705",
+        "___id": "T000002R000707",
         "___s": true
     },
     {
@@ -25157,7 +25210,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000706",
+        "___id": "T000002R000708",
         "___s": true
     },
     {
@@ -25185,7 +25238,7 @@ window.reflection = [
         "memberof": "<anonymous>~drawOnAllImagesLoaded",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000707",
+        "___id": "T000002R000709",
         "___s": true
     },
     {
@@ -25214,7 +25267,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000708",
+        "___id": "T000002R000710",
         "___s": true
     },
     {
@@ -25254,7 +25307,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000709",
+        "___id": "T000002R000711",
         "___s": true
     },
     {
@@ -25280,7 +25333,7 @@ window.reflection = [
         "memberof": "<anonymous>~drawHtml",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000710",
+        "___id": "T000002R000712",
         "___s": true
     },
     {
@@ -25308,7 +25361,7 @@ window.reflection = [
         "memberof": "<anonymous>~drawHtml",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000711",
+        "___id": "T000002R000713",
         "___s": true
     },
     {
@@ -25336,7 +25389,7 @@ window.reflection = [
         "memberof": "<anonymous>~drawHtml",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000712",
+        "___id": "T000002R000714",
         "___s": true
     },
     {
@@ -25364,7 +25417,7 @@ window.reflection = [
         "memberof": "<anonymous>~drawHtml",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000713",
+        "___id": "T000002R000715",
         "___s": true
     },
     {
@@ -25393,7 +25446,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~drawHtml",
         "scope": "inner",
-        "___id": "T000002R000714",
+        "___id": "T000002R000716",
         "___s": true
     },
     {
@@ -25421,7 +25474,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000715",
+        "___id": "T000002R000717",
         "___s": true
     },
     {
@@ -25450,7 +25503,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~drawHtml",
         "scope": "inner",
-        "___id": "T000002R000716",
+        "___id": "T000002R000718",
         "___s": true
     },
     {
@@ -25478,7 +25531,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000717",
+        "___id": "T000002R000719",
         "___s": true
     },
     {
@@ -25506,7 +25559,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "<anonymous>~drawHtml~img",
         "scope": "static",
-        "___id": "T000002R000718",
+        "___id": "T000002R000720",
         "___s": true
     },
     {
@@ -25535,7 +25588,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~drawHtml~img",
         "scope": "static",
-        "___id": "T000002R000719",
+        "___id": "T000002R000721",
         "___s": true
     },
     {
@@ -25577,7 +25630,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000720",
+        "___id": "T000002R000722",
         "___s": true
     },
     {
@@ -25605,7 +25658,7 @@ window.reflection = [
         "memberof": "<anonymous>~drawOrderByArrow",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000721",
+        "___id": "T000002R000723",
         "___s": true
     },
     {
@@ -25633,7 +25686,7 @@ window.reflection = [
         "memberof": "<anonymous>~drawOrderByArrow",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000722",
+        "___id": "T000002R000724",
         "___s": true
     },
     {
@@ -25661,7 +25714,7 @@ window.reflection = [
         "memberof": "<anonymous>~drawOrderByArrow",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000723",
+        "___id": "T000002R000725",
         "___s": true
     },
     {
@@ -25689,7 +25742,7 @@ window.reflection = [
         "memberof": "<anonymous>~drawOrderByArrow",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000724",
+        "___id": "T000002R000726",
         "___s": true
     },
     {
@@ -25717,7 +25770,7 @@ window.reflection = [
         "memberof": "<anonymous>~drawOrderByArrow",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000725",
+        "___id": "T000002R000727",
         "___s": true
     },
     {
@@ -25746,7 +25799,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~drawOrderByArrow",
         "scope": "inner",
-        "___id": "T000002R000726",
+        "___id": "T000002R000728",
         "___s": true
     },
     {
@@ -25775,7 +25828,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~drawOrderByArrow",
         "scope": "inner",
-        "___id": "T000002R000727",
+        "___id": "T000002R000729",
         "___s": true
     },
     {
@@ -25803,7 +25856,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R000728",
+        "___id": "T000002R000730",
         "___s": true
     },
     {
@@ -25831,7 +25884,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R000729",
+        "___id": "T000002R000731",
         "___s": true
     },
     {
@@ -25860,7 +25913,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~drawOrderByArrow",
         "scope": "inner",
-        "___id": "T000002R000730",
+        "___id": "T000002R000732",
         "___s": true
     },
     {
@@ -25889,7 +25942,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~drawOrderByArrow",
         "scope": "inner",
-        "___id": "T000002R000731",
+        "___id": "T000002R000733",
         "___s": true
     },
     {
@@ -25932,7 +25985,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000732",
+        "___id": "T000002R000734",
         "___s": true
     },
     {
@@ -25960,7 +26013,7 @@ window.reflection = [
         "memberof": "<anonymous>~drawTreeArrow",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000733",
+        "___id": "T000002R000735",
         "___s": true
     },
     {
@@ -25988,7 +26041,7 @@ window.reflection = [
         "memberof": "<anonymous>~drawTreeArrow",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000734",
+        "___id": "T000002R000736",
         "___s": true
     },
     {
@@ -26016,7 +26069,7 @@ window.reflection = [
         "memberof": "<anonymous>~drawTreeArrow",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000735",
+        "___id": "T000002R000737",
         "___s": true
     },
     {
@@ -26044,7 +26097,7 @@ window.reflection = [
         "memberof": "<anonymous>~drawTreeArrow",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000736",
+        "___id": "T000002R000738",
         "___s": true
     },
     {
@@ -26072,7 +26125,7 @@ window.reflection = [
         "memberof": "<anonymous>~drawTreeArrow",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000737",
+        "___id": "T000002R000739",
         "___s": true
     },
     {
@@ -26101,7 +26154,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~drawTreeArrow",
         "scope": "inner",
-        "___id": "T000002R000738",
+        "___id": "T000002R000740",
         "___s": true
     },
     {
@@ -26130,7 +26183,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~drawTreeArrow",
         "scope": "inner",
-        "___id": "T000002R000739",
+        "___id": "T000002R000741",
         "___s": true
     },
     {
@@ -26158,7 +26211,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R000740",
+        "___id": "T000002R000742",
         "___s": true
     },
     {
@@ -26186,7 +26239,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R000741",
+        "___id": "T000002R000743",
         "___s": true
     },
     {
@@ -26215,7 +26268,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~drawTreeArrow",
         "scope": "inner",
-        "___id": "T000002R000742",
+        "___id": "T000002R000744",
         "___s": true
     },
     {
@@ -26244,7 +26297,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~drawTreeArrow",
         "scope": "inner",
-        "___id": "T000002R000743",
+        "___id": "T000002R000745",
         "___s": true
     },
     {
@@ -26284,7 +26337,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000744",
+        "___id": "T000002R000746",
         "___s": true
     },
     {
@@ -26313,7 +26366,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~radiusRect",
         "scope": "inner",
-        "___id": "T000002R000745",
+        "___id": "T000002R000747",
         "___s": true
     },
     {
@@ -26342,7 +26395,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~radiusRect",
         "scope": "inner",
-        "___id": "T000002R000746",
+        "___id": "T000002R000748",
         "___s": true
     },
     {
@@ -26370,7 +26423,7 @@ window.reflection = [
         "memberof": "<anonymous>~radiusRect",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000747",
+        "___id": "T000002R000749",
         "___s": true
     },
     {
@@ -26398,7 +26451,7 @@ window.reflection = [
         "memberof": "<anonymous>~radiusRect",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000748",
+        "___id": "T000002R000750",
         "___s": true
     },
     {
@@ -26435,7 +26488,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000749",
+        "___id": "T000002R000751",
         "___s": true
     },
     {
@@ -26464,7 +26517,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~fillRect",
         "scope": "inner",
-        "___id": "T000002R000750",
+        "___id": "T000002R000752",
         "___s": true
     },
     {
@@ -26493,7 +26546,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~fillRect",
         "scope": "inner",
-        "___id": "T000002R000751",
+        "___id": "T000002R000753",
         "___s": true
     },
     {
@@ -26530,7 +26583,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000752",
+        "___id": "T000002R000754",
         "___s": true
     },
     {
@@ -26559,7 +26612,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~strokeRect",
         "scope": "inner",
-        "___id": "T000002R000753",
+        "___id": "T000002R000755",
         "___s": true
     },
     {
@@ -26588,7 +26641,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~strokeRect",
         "scope": "inner",
-        "___id": "T000002R000754",
+        "___id": "T000002R000756",
         "___s": true
     },
     {
@@ -26624,7 +26677,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000755",
+        "___id": "T000002R000757",
         "___s": true
     },
     {
@@ -26653,7 +26706,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~fillText",
         "scope": "inner",
-        "___id": "T000002R000756",
+        "___id": "T000002R000758",
         "___s": true
     },
     {
@@ -26682,7 +26735,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~fillText",
         "scope": "inner",
-        "___id": "T000002R000757",
+        "___id": "T000002R000759",
         "___s": true
     },
     {
@@ -26718,7 +26771,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000758",
+        "___id": "T000002R000760",
         "___s": true
     },
     {
@@ -26747,7 +26800,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~fillCircle",
         "scope": "inner",
-        "___id": "T000002R000759",
+        "___id": "T000002R000761",
         "___s": true
     },
     {
@@ -26776,7 +26829,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~fillCircle",
         "scope": "inner",
-        "___id": "T000002R000760",
+        "___id": "T000002R000762",
         "___s": true
     },
     {
@@ -26812,7 +26865,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000761",
+        "___id": "T000002R000763",
         "___s": true
     },
     {
@@ -26841,7 +26894,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~strokeCircle",
         "scope": "inner",
-        "___id": "T000002R000762",
+        "___id": "T000002R000764",
         "___s": true
     },
     {
@@ -26870,7 +26923,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~strokeCircle",
         "scope": "inner",
-        "___id": "T000002R000763",
+        "___id": "T000002R000765",
         "___s": true
     },
     {
@@ -26900,7 +26953,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000764",
+        "___id": "T000002R000766",
         "___s": true
     },
     {
@@ -26932,7 +26985,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000765",
+        "___id": "T000002R000767",
         "___s": true
     },
     {
@@ -26964,7 +27017,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000766",
+        "___id": "T000002R000768",
         "___s": true
     },
     {
@@ -27000,7 +27053,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000767",
+        "___id": "T000002R000769",
         "___s": true
     },
     {
@@ -27028,7 +27081,7 @@ window.reflection = [
         "memberof": "<anonymous>~addselectionHandle",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000768",
+        "___id": "T000002R000770",
         "___s": true
     },
     {
@@ -27056,7 +27109,7 @@ window.reflection = [
         "memberof": "<anonymous>~addselectionHandle",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000769",
+        "___id": "T000002R000771",
         "___s": true
     },
     {
@@ -27082,7 +27135,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "<anonymous>~addselectionHandle~p",
         "scope": "static",
-        "___id": "T000002R000770",
+        "___id": "T000002R000772",
         "___s": true
     },
     {
@@ -27108,7 +27161,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "<anonymous>~addselectionHandle~p",
         "scope": "static",
-        "___id": "T000002R000771",
+        "___id": "T000002R000773",
         "___s": true
     },
     {
@@ -27134,7 +27187,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "<anonymous>~addselectionHandle~p",
         "scope": "static",
-        "___id": "T000002R000772",
+        "___id": "T000002R000774",
         "___s": true
     },
     {
@@ -27160,7 +27213,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "<anonymous>~addselectionHandle~p",
         "scope": "static",
-        "___id": "T000002R000773",
+        "___id": "T000002R000775",
         "___s": true
     },
     {
@@ -27195,7 +27248,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000774",
+        "___id": "T000002R000776",
         "___s": true
     },
     {
@@ -27223,7 +27276,7 @@ window.reflection = [
         "memberof": "<anonymous>~addBorderLine",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000775",
+        "___id": "T000002R000777",
         "___s": true
     },
     {
@@ -27249,7 +27302,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "<anonymous>~addBorderLine~p",
         "scope": "static",
-        "___id": "T000002R000776",
+        "___id": "T000002R000778",
         "___s": true
     },
     {
@@ -27275,7 +27328,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "<anonymous>~addBorderLine~p",
         "scope": "static",
-        "___id": "T000002R000777",
+        "___id": "T000002R000779",
         "___s": true
     },
     {
@@ -27301,7 +27354,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "<anonymous>~addBorderLine~p",
         "scope": "static",
-        "___id": "T000002R000778",
+        "___id": "T000002R000780",
         "___s": true
     },
     {
@@ -27327,7 +27380,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "<anonymous>~addBorderLine~p",
         "scope": "static",
-        "___id": "T000002R000779",
+        "___id": "T000002R000781",
         "___s": true
     },
     {
@@ -27364,7 +27417,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000780",
+        "___id": "T000002R000782",
         "___s": true
     },
     {
@@ -27390,7 +27443,7 @@ window.reflection = [
         "memberof": "<anonymous>~addEllipsis",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000781",
+        "___id": "T000002R000783",
         "___s": true
     },
     {
@@ -27418,7 +27471,7 @@ window.reflection = [
         "memberof": "<anonymous>~addEllipsis",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000782",
+        "___id": "T000002R000784",
         "___s": true
     },
     {
@@ -27447,7 +27500,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~addEllipsis",
         "scope": "inner",
-        "___id": "T000002R000783",
+        "___id": "T000002R000785",
         "___s": true
     },
     {
@@ -27475,7 +27528,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000784",
+        "___id": "T000002R000786",
         "___s": true
     },
     {
@@ -27504,7 +27557,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~addEllipsis",
         "scope": "inner",
-        "___id": "T000002R000785",
+        "___id": "T000002R000787",
         "___s": true
     },
     {
@@ -27531,7 +27584,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~addEllipsis~c",
         "scope": "static",
-        "___id": "T000002R000786",
+        "___id": "T000002R000788",
         "___s": true
     },
     {
@@ -27558,7 +27611,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~addEllipsis~c",
         "scope": "static",
-        "___id": "T000002R000787",
+        "___id": "T000002R000789",
         "___s": true
     },
     {
@@ -27586,7 +27639,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000788",
+        "___id": "T000002R000790",
         "___s": true
     },
     {
@@ -27628,7 +27681,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000789",
+        "___id": "T000002R000791",
         "___s": true
     },
     {
@@ -27656,7 +27709,7 @@ window.reflection = [
         "memberof": "<anonymous>~drawText",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000790",
+        "___id": "T000002R000792",
         "___s": true
     },
     {
@@ -27684,7 +27737,7 @@ window.reflection = [
         "memberof": "<anonymous>~drawText",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000791",
+        "___id": "T000002R000793",
         "___s": true
     },
     {
@@ -27712,7 +27765,7 @@ window.reflection = [
         "memberof": "<anonymous>~drawText",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000792",
+        "___id": "T000002R000794",
         "___s": true
     },
     {
@@ -27740,7 +27793,7 @@ window.reflection = [
         "memberof": "<anonymous>~drawText",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000793",
+        "___id": "T000002R000795",
         "___s": true
     },
     {
@@ -27768,7 +27821,7 @@ window.reflection = [
         "memberof": "<anonymous>~drawText",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000794",
+        "___id": "T000002R000796",
         "___s": true
     },
     {
@@ -27796,7 +27849,7 @@ window.reflection = [
         "memberof": "<anonymous>~drawText",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000795",
+        "___id": "T000002R000797",
         "___s": true
     },
     {
@@ -27824,7 +27877,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "cell",
         "scope": "static",
-        "___id": "T000002R000796",
+        "___id": "T000002R000798",
         "___s": true
     },
     {
@@ -27852,7 +27905,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "cell.text",
         "scope": "static",
-        "___id": "T000002R000797",
+        "___id": "T000002R000799",
         "___s": true
     },
     {
@@ -27881,7 +27934,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~drawText",
         "scope": "inner",
-        "___id": "T000002R000798",
+        "___id": "T000002R000800",
         "___s": true
     },
     {
@@ -27910,7 +27963,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~drawText",
         "scope": "inner",
-        "___id": "T000002R000799",
+        "___id": "T000002R000801",
         "___s": true
     },
     {
@@ -27939,7 +27992,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~drawText",
         "scope": "inner",
-        "___id": "T000002R000800",
+        "___id": "T000002R000802",
         "___s": true
     },
     {
@@ -27968,7 +28021,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~drawText",
         "scope": "inner",
-        "___id": "T000002R000801",
+        "___id": "T000002R000803",
         "___s": true
     },
     {
@@ -27996,7 +28049,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "cell.text",
         "scope": "static",
-        "___id": "T000002R000802",
+        "___id": "T000002R000804",
         "___s": true
     },
     {
@@ -28024,7 +28077,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "cell.text",
         "scope": "static",
-        "___id": "T000002R000803",
+        "___id": "T000002R000805",
         "___s": true
     },
     {
@@ -28059,7 +28112,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000804",
+        "___id": "T000002R000806",
         "___s": true
     },
     {
@@ -28087,7 +28140,7 @@ window.reflection = [
         "memberof": "<anonymous>~getFrozenColumnsWidth",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000805",
+        "___id": "T000002R000807",
         "___s": true
     },
     {
@@ -28115,7 +28168,7 @@ window.reflection = [
         "memberof": "<anonymous>~getFrozenColumnsWidth",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000806",
+        "___id": "T000002R000808",
         "___s": true
     },
     {
@@ -28143,7 +28196,7 @@ window.reflection = [
         "memberof": "<anonymous>~getFrozenColumnsWidth",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000807",
+        "___id": "T000002R000809",
         "___s": true
     },
     {
@@ -28171,7 +28224,7 @@ window.reflection = [
         "memberof": "<anonymous>~getFrozenColumnsWidth",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000808",
+        "___id": "T000002R000810",
         "___s": true
     },
     {
@@ -28197,7 +28250,7 @@ window.reflection = [
         "memberof": "<anonymous>~getFrozenColumnsWidth",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000809",
+        "___id": "T000002R000811",
         "___s": true
     },
     {
@@ -28226,7 +28279,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~getFrozenColumnsWidth",
         "scope": "inner",
-        "___id": "T000002R000810",
+        "___id": "T000002R000812",
         "___s": true
     },
     {
@@ -28255,7 +28308,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~getFrozenColumnsWidth",
         "scope": "inner",
-        "___id": "T000002R000811",
+        "___id": "T000002R000813",
         "___s": true
     },
     {
@@ -28284,7 +28337,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~getFrozenColumnsWidth",
         "scope": "inner",
-        "___id": "T000002R000812",
+        "___id": "T000002R000814",
         "___s": true
     },
     {
@@ -28302,7 +28355,7 @@ window.reflection = [
         "kind": "function",
         "scope": "static",
         "longname": "canvasDatagrid.draw",
-        "___id": "T000002R000813",
+        "___id": "T000002R000815",
         "___s": true
     },
     {
@@ -28384,7 +28437,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000814",
+        "___id": "T000002R000816",
         "___s": true
     },
     {
@@ -28410,7 +28463,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000815",
+        "___id": "T000002R000817",
         "___s": true
     },
     {
@@ -28436,7 +28489,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000816",
+        "___id": "T000002R000818",
         "___s": true
     },
     {
@@ -28462,7 +28515,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000817",
+        "___id": "T000002R000819",
         "___s": true
     },
     {
@@ -28488,7 +28541,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000818",
+        "___id": "T000002R000820",
         "___s": true
     },
     {
@@ -28514,7 +28567,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000819",
+        "___id": "T000002R000821",
         "___s": true
     },
     {
@@ -28540,7 +28593,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000820",
+        "___id": "T000002R000822",
         "___s": true
     },
     {
@@ -28566,7 +28619,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000821",
+        "___id": "T000002R000823",
         "___s": true
     },
     {
@@ -28592,7 +28645,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000822",
+        "___id": "T000002R000824",
         "___s": true
     },
     {
@@ -28618,7 +28671,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000823",
+        "___id": "T000002R000825",
         "___s": true
     },
     {
@@ -28644,7 +28697,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000824",
+        "___id": "T000002R000826",
         "___s": true
     },
     {
@@ -28670,7 +28723,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000825",
+        "___id": "T000002R000827",
         "___s": true
     },
     {
@@ -28696,7 +28749,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000826",
+        "___id": "T000002R000828",
         "___s": true
     },
     {
@@ -28722,7 +28775,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000827",
+        "___id": "T000002R000829",
         "___s": true
     },
     {
@@ -28748,7 +28801,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000828",
+        "___id": "T000002R000830",
         "___s": true
     },
     {
@@ -28774,7 +28827,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000829",
+        "___id": "T000002R000831",
         "___s": true
     },
     {
@@ -28800,7 +28853,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000830",
+        "___id": "T000002R000832",
         "___s": true
     },
     {
@@ -28826,7 +28879,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000831",
+        "___id": "T000002R000833",
         "___s": true
     },
     {
@@ -28852,7 +28905,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000832",
+        "___id": "T000002R000834",
         "___s": true
     },
     {
@@ -28880,7 +28933,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000833",
+        "___id": "T000002R000835",
         "___s": true
     },
     {
@@ -28908,7 +28961,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000834",
+        "___id": "T000002R000836",
         "___s": true
     },
     {
@@ -28936,7 +28989,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000835",
+        "___id": "T000002R000837",
         "___s": true
     },
     {
@@ -28964,7 +29017,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000836",
+        "___id": "T000002R000838",
         "___s": true
     },
     {
@@ -28992,7 +29045,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000837",
+        "___id": "T000002R000839",
         "___s": true
     },
     {
@@ -29020,7 +29073,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000838",
+        "___id": "T000002R000840",
         "___s": true
     },
     {
@@ -29048,7 +29101,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000839",
+        "___id": "T000002R000841",
         "___s": true
     },
     {
@@ -29076,7 +29129,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000840",
+        "___id": "T000002R000842",
         "___s": true
     },
     {
@@ -29104,7 +29157,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000841",
+        "___id": "T000002R000843",
         "___s": true
     },
     {
@@ -29132,7 +29185,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000842",
+        "___id": "T000002R000844",
         "___s": true
     },
     {
@@ -29160,7 +29213,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000843",
+        "___id": "T000002R000845",
         "___s": true
     },
     {
@@ -29189,7 +29242,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw",
         "scope": "inner",
-        "___id": "T000002R000844",
+        "___id": "T000002R000846",
         "___s": true
     },
     {
@@ -29218,7 +29271,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw",
         "scope": "inner",
-        "___id": "T000002R000845",
+        "___id": "T000002R000847",
         "___s": true
     },
     {
@@ -29246,7 +29299,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R000846",
+        "___id": "T000002R000848",
         "___s": true
     },
     {
@@ -29308,7 +29361,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000847",
+        "___id": "T000002R000849",
         "___s": true
     },
     {
@@ -29336,7 +29389,7 @@ window.reflection = [
         "memberof": "self.draw~drawScrollBars",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000848",
+        "___id": "T000002R000850",
         "___s": true
     },
     {
@@ -29363,7 +29416,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~v",
         "scope": "static",
-        "___id": "T000002R000849",
+        "___id": "T000002R000851",
         "___s": true
     },
     {
@@ -29390,7 +29443,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~v",
         "scope": "static",
-        "___id": "T000002R000850",
+        "___id": "T000002R000852",
         "___s": true
     },
     {
@@ -29417,7 +29470,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~v",
         "scope": "static",
-        "___id": "T000002R000851",
+        "___id": "T000002R000853",
         "___s": true
     },
     {
@@ -29444,7 +29497,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~v",
         "scope": "static",
-        "___id": "T000002R000852",
+        "___id": "T000002R000854",
         "___s": true
     },
     {
@@ -29471,7 +29524,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~v",
         "scope": "static",
-        "___id": "T000002R000853",
+        "___id": "T000002R000855",
         "___s": true
     },
     {
@@ -29499,7 +29552,7 @@ window.reflection = [
         "memberof": "self.draw~drawScrollBars",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000854",
+        "___id": "T000002R000856",
         "___s": true
     },
     {
@@ -29526,7 +29579,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~n",
         "scope": "static",
-        "___id": "T000002R000855",
+        "___id": "T000002R000857",
         "___s": true
     },
     {
@@ -29553,7 +29606,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~n",
         "scope": "static",
-        "___id": "T000002R000856",
+        "___id": "T000002R000858",
         "___s": true
     },
     {
@@ -29580,7 +29633,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~n",
         "scope": "static",
-        "___id": "T000002R000857",
+        "___id": "T000002R000859",
         "___s": true
     },
     {
@@ -29607,7 +29660,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~n",
         "scope": "static",
-        "___id": "T000002R000858",
+        "___id": "T000002R000860",
         "___s": true
     },
     {
@@ -29634,7 +29687,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~n",
         "scope": "static",
-        "___id": "T000002R000859",
+        "___id": "T000002R000861",
         "___s": true
     },
     {
@@ -29662,7 +29715,7 @@ window.reflection = [
         "memberof": "self.draw~drawScrollBars",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000860",
+        "___id": "T000002R000862",
         "___s": true
     },
     {
@@ -29689,7 +29742,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~vb",
         "scope": "static",
-        "___id": "T000002R000861",
+        "___id": "T000002R000863",
         "___s": true
     },
     {
@@ -29716,7 +29769,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~vb",
         "scope": "static",
-        "___id": "T000002R000862",
+        "___id": "T000002R000864",
         "___s": true
     },
     {
@@ -29743,7 +29796,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~vb",
         "scope": "static",
-        "___id": "T000002R000863",
+        "___id": "T000002R000865",
         "___s": true
     },
     {
@@ -29770,7 +29823,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~vb",
         "scope": "static",
-        "___id": "T000002R000864",
+        "___id": "T000002R000866",
         "___s": true
     },
     {
@@ -29797,7 +29850,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~vb",
         "scope": "static",
-        "___id": "T000002R000865",
+        "___id": "T000002R000867",
         "___s": true
     },
     {
@@ -29825,7 +29878,7 @@ window.reflection = [
         "memberof": "self.draw~drawScrollBars",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000866",
+        "___id": "T000002R000868",
         "___s": true
     },
     {
@@ -29852,7 +29905,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~nb",
         "scope": "static",
-        "___id": "T000002R000867",
+        "___id": "T000002R000869",
         "___s": true
     },
     {
@@ -29879,7 +29932,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~nb",
         "scope": "static",
-        "___id": "T000002R000868",
+        "___id": "T000002R000870",
         "___s": true
     },
     {
@@ -29906,7 +29959,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~nb",
         "scope": "static",
-        "___id": "T000002R000869",
+        "___id": "T000002R000871",
         "___s": true
     },
     {
@@ -29933,7 +29986,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~nb",
         "scope": "static",
-        "___id": "T000002R000870",
+        "___id": "T000002R000872",
         "___s": true
     },
     {
@@ -29960,7 +30013,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~nb",
         "scope": "static",
-        "___id": "T000002R000871",
+        "___id": "T000002R000873",
         "___s": true
     },
     {
@@ -29988,7 +30041,7 @@ window.reflection = [
         "memberof": "self.draw~drawScrollBars",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000872",
+        "___id": "T000002R000874",
         "___s": true
     },
     {
@@ -30015,7 +30068,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~co",
         "scope": "static",
-        "___id": "T000002R000873",
+        "___id": "T000002R000875",
         "___s": true
     },
     {
@@ -30042,7 +30095,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~co",
         "scope": "static",
-        "___id": "T000002R000874",
+        "___id": "T000002R000876",
         "___s": true
     },
     {
@@ -30069,7 +30122,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~co",
         "scope": "static",
-        "___id": "T000002R000875",
+        "___id": "T000002R000877",
         "___s": true
     },
     {
@@ -30096,7 +30149,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~co",
         "scope": "static",
-        "___id": "T000002R000876",
+        "___id": "T000002R000878",
         "___s": true
     },
     {
@@ -30123,7 +30176,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~co",
         "scope": "static",
-        "___id": "T000002R000877",
+        "___id": "T000002R000879",
         "___s": true
     },
     {
@@ -30150,7 +30203,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~co",
         "scope": "static",
-        "___id": "T000002R000878",
+        "___id": "T000002R000880",
         "___s": true
     },
     {
@@ -30177,7 +30230,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~co",
         "scope": "static",
-        "___id": "T000002R000879",
+        "___id": "T000002R000881",
         "___s": true
     },
     {
@@ -30205,7 +30258,7 @@ window.reflection = [
         "memberof": "self.draw~drawScrollBars",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000880",
+        "___id": "T000002R000882",
         "___s": true
     },
     {
@@ -30233,7 +30286,7 @@ window.reflection = [
         "memberof": "self.draw~drawScrollBars",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000881",
+        "___id": "T000002R000883",
         "___s": true
     },
     {
@@ -30261,7 +30314,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R000882",
+        "___id": "T000002R000884",
         "___s": true
     },
     {
@@ -30289,7 +30342,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R000883",
+        "___id": "T000002R000885",
         "___s": true
     },
     {
@@ -30318,7 +30371,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~v",
         "scope": "static",
-        "___id": "T000002R000884",
+        "___id": "T000002R000886",
         "___s": true
     },
     {
@@ -30347,7 +30400,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~v",
         "scope": "static",
-        "___id": "T000002R000885",
+        "___id": "T000002R000887",
         "___s": true
     },
     {
@@ -30376,7 +30429,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~v",
         "scope": "static",
-        "___id": "T000002R000886",
+        "___id": "T000002R000888",
         "___s": true
     },
     {
@@ -30405,7 +30458,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~v",
         "scope": "static",
-        "___id": "T000002R000887",
+        "___id": "T000002R000889",
         "___s": true
     },
     {
@@ -30433,7 +30486,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R000888",
+        "___id": "T000002R000890",
         "___s": true
     },
     {
@@ -30462,7 +30515,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~vb",
         "scope": "static",
-        "___id": "T000002R000889",
+        "___id": "T000002R000891",
         "___s": true
     },
     {
@@ -30491,7 +30544,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~vb",
         "scope": "static",
-        "___id": "T000002R000890",
+        "___id": "T000002R000892",
         "___s": true
     },
     {
@@ -30520,7 +30573,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~vb",
         "scope": "static",
-        "___id": "T000002R000891",
+        "___id": "T000002R000893",
         "___s": true
     },
     {
@@ -30549,7 +30602,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~vb",
         "scope": "static",
-        "___id": "T000002R000892",
+        "___id": "T000002R000894",
         "___s": true
     },
     {
@@ -30577,7 +30630,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R000893",
+        "___id": "T000002R000895",
         "___s": true
     },
     {
@@ -30605,7 +30658,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R000894",
+        "___id": "T000002R000896",
         "___s": true
     },
     {
@@ -30634,7 +30687,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~n",
         "scope": "static",
-        "___id": "T000002R000895",
+        "___id": "T000002R000897",
         "___s": true
     },
     {
@@ -30663,7 +30716,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~n",
         "scope": "static",
-        "___id": "T000002R000896",
+        "___id": "T000002R000898",
         "___s": true
     },
     {
@@ -30692,7 +30745,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~n",
         "scope": "static",
-        "___id": "T000002R000897",
+        "___id": "T000002R000899",
         "___s": true
     },
     {
@@ -30721,7 +30774,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~n",
         "scope": "static",
-        "___id": "T000002R000898",
+        "___id": "T000002R000900",
         "___s": true
     },
     {
@@ -30749,7 +30802,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R000899",
+        "___id": "T000002R000901",
         "___s": true
     },
     {
@@ -30778,7 +30831,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~nb",
         "scope": "static",
-        "___id": "T000002R000900",
+        "___id": "T000002R000902",
         "___s": true
     },
     {
@@ -30807,7 +30860,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~nb",
         "scope": "static",
-        "___id": "T000002R000901",
+        "___id": "T000002R000903",
         "___s": true
     },
     {
@@ -30836,7 +30889,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~nb",
         "scope": "static",
-        "___id": "T000002R000902",
+        "___id": "T000002R000904",
         "___s": true
     },
     {
@@ -30865,7 +30918,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~nb",
         "scope": "static",
-        "___id": "T000002R000903",
+        "___id": "T000002R000905",
         "___s": true
     },
     {
@@ -30893,7 +30946,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R000904",
+        "___id": "T000002R000906",
         "___s": true
     },
     {
@@ -30921,7 +30974,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R000905",
+        "___id": "T000002R000907",
         "___s": true
     },
     {
@@ -30949,7 +31002,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R000906",
+        "___id": "T000002R000908",
         "___s": true
     },
     {
@@ -30977,7 +31030,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R000907",
+        "___id": "T000002R000909",
         "___s": true
     },
     {
@@ -31006,7 +31059,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~co",
         "scope": "static",
-        "___id": "T000002R000908",
+        "___id": "T000002R000910",
         "___s": true
     },
     {
@@ -31035,7 +31088,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~co",
         "scope": "static",
-        "___id": "T000002R000909",
+        "___id": "T000002R000911",
         "___s": true
     },
     {
@@ -31064,7 +31117,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~co",
         "scope": "static",
-        "___id": "T000002R000910",
+        "___id": "T000002R000912",
         "___s": true
     },
     {
@@ -31093,7 +31146,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawScrollBars~co",
         "scope": "static",
-        "___id": "T000002R000911",
+        "___id": "T000002R000913",
         "___s": true
     },
     {
@@ -31121,7 +31174,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R000912",
+        "___id": "T000002R000914",
         "___s": true
     },
     {
@@ -31148,7 +31201,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox.bar",
         "scope": "static",
-        "___id": "T000002R000913",
+        "___id": "T000002R000915",
         "___s": true
     },
     {
@@ -31175,7 +31228,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox.bar",
         "scope": "static",
-        "___id": "T000002R000914",
+        "___id": "T000002R000916",
         "___s": true
     },
     {
@@ -31203,7 +31256,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R000915",
+        "___id": "T000002R000917",
         "___s": true
     },
     {
@@ -31230,7 +31283,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox.box",
         "scope": "static",
-        "___id": "T000002R000916",
+        "___id": "T000002R000918",
         "___s": true
     },
     {
@@ -31257,7 +31310,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox.box",
         "scope": "static",
-        "___id": "T000002R000917",
+        "___id": "T000002R000919",
         "___s": true
     },
     {
@@ -31290,7 +31343,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000918",
+        "___id": "T000002R000920",
         "___s": true
     },
     {
@@ -31318,7 +31371,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "cell",
         "scope": "static",
-        "___id": "T000002R000919",
+        "___id": "T000002R000921",
         "___s": true
     },
     {
@@ -31346,7 +31399,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "cell",
         "scope": "static",
-        "___id": "T000002R000920",
+        "___id": "T000002R000922",
         "___s": true
     },
     {
@@ -31374,7 +31427,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "cell",
         "scope": "static",
-        "___id": "T000002R000921",
+        "___id": "T000002R000923",
         "___s": true
     },
     {
@@ -31402,7 +31455,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "cell",
         "scope": "static",
-        "___id": "T000002R000922",
+        "___id": "T000002R000924",
         "___s": true
     },
     {
@@ -31440,7 +31493,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000923",
+        "___id": "T000002R000925",
         "___s": true
     },
     {
@@ -31469,7 +31522,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~createBorderOverlayArray",
         "scope": "inner",
-        "___id": "T000002R000924",
+        "___id": "T000002R000926",
         "___s": true
     },
     {
@@ -31495,7 +31548,7 @@ window.reflection = [
         "longname": "x",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000925",
+        "___id": "T000002R000927",
         "___s": true
     },
     {
@@ -31521,7 +31574,7 @@ window.reflection = [
         "longname": "y",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000926",
+        "___id": "T000002R000928",
         "___s": true
     },
     {
@@ -31549,7 +31602,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "cell",
         "scope": "static",
-        "___id": "T000002R000927",
+        "___id": "T000002R000929",
         "___s": true
     },
     {
@@ -31576,7 +31629,7 @@ window.reflection = [
         "longname": "cell[undefined]",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000928",
+        "___id": "T000002R000930",
         "___s": true
     },
     {
@@ -31603,7 +31656,7 @@ window.reflection = [
         "longname": "cell[undefined]",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000929",
+        "___id": "T000002R000931",
         "___s": true
     },
     {
@@ -31630,7 +31683,7 @@ window.reflection = [
         "longname": "cell[undefined]",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000930",
+        "___id": "T000002R000932",
         "___s": true
     },
     {
@@ -31657,7 +31710,7 @@ window.reflection = [
         "longname": "cell[undefined]",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000931",
+        "___id": "T000002R000933",
         "___s": true
     },
     {
@@ -31684,7 +31737,7 @@ window.reflection = [
         "longname": "cell[undefined]",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000932",
+        "___id": "T000002R000934",
         "___s": true
     },
     {
@@ -31711,7 +31764,7 @@ window.reflection = [
         "longname": "cell[undefined]",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000933",
+        "___id": "T000002R000935",
         "___s": true
     },
     {
@@ -31738,7 +31791,7 @@ window.reflection = [
         "longname": "cell[undefined]",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000934",
+        "___id": "T000002R000936",
         "___s": true
     },
     {
@@ -31765,7 +31818,7 @@ window.reflection = [
         "longname": "cell[undefined]",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R000935",
+        "___id": "T000002R000937",
         "___s": true
     },
     {
@@ -31800,7 +31853,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000936",
+        "___id": "T000002R000938",
         "___s": true
     },
     {
@@ -31828,7 +31881,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000937",
+        "___id": "T000002R000939",
         "___s": true
     },
     {
@@ -31854,7 +31907,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000938",
+        "___id": "T000002R000940",
         "___s": true
     },
     {
@@ -31880,7 +31933,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000939",
+        "___id": "T000002R000941",
         "___s": true
     },
     {
@@ -31908,7 +31961,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000940",
+        "___id": "T000002R000942",
         "___s": true
     },
     {
@@ -31936,7 +31989,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000941",
+        "___id": "T000002R000943",
         "___s": true
     },
     {
@@ -31964,7 +32017,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000942",
+        "___id": "T000002R000944",
         "___s": true
     },
     {
@@ -31992,7 +32045,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000943",
+        "___id": "T000002R000945",
         "___s": true
     },
     {
@@ -32020,7 +32073,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000944",
+        "___id": "T000002R000946",
         "___s": true
     },
     {
@@ -32048,7 +32101,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000945",
+        "___id": "T000002R000947",
         "___s": true
     },
     {
@@ -32076,7 +32129,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000946",
+        "___id": "T000002R000948",
         "___s": true
     },
     {
@@ -32104,7 +32157,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000947",
+        "___id": "T000002R000949",
         "___s": true
     },
     {
@@ -32132,7 +32185,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000948",
+        "___id": "T000002R000950",
         "___s": true
     },
     {
@@ -32158,7 +32211,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000949",
+        "___id": "T000002R000951",
         "___s": true
     },
     {
@@ -32186,7 +32239,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000950",
+        "___id": "T000002R000952",
         "___s": true
     },
     {
@@ -32214,7 +32267,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000951",
+        "___id": "T000002R000953",
         "___s": true
     },
     {
@@ -32242,7 +32295,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000952",
+        "___id": "T000002R000954",
         "___s": true
     },
     {
@@ -32270,7 +32323,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000953",
+        "___id": "T000002R000955",
         "___s": true
     },
     {
@@ -32298,7 +32351,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R000954",
+        "___id": "T000002R000956",
         "___s": true
     },
     {
@@ -32325,7 +32378,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~ev",
         "scope": "static",
-        "___id": "T000002R000955",
+        "___id": "T000002R000957",
         "___s": true
     },
     {
@@ -32352,7 +32405,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~ev",
         "scope": "static",
-        "___id": "T000002R000956",
+        "___id": "T000002R000958",
         "___s": true
     },
     {
@@ -32379,7 +32432,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~ev",
         "scope": "static",
-        "___id": "T000002R000957",
+        "___id": "T000002R000959",
         "___s": true
     },
     {
@@ -32408,7 +32461,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000958",
+        "___id": "T000002R000960",
         "___s": true
     },
     {
@@ -32437,7 +32490,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000959",
+        "___id": "T000002R000961",
         "___s": true
     },
     {
@@ -32466,7 +32519,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000960",
+        "___id": "T000002R000962",
         "___s": true
     },
     {
@@ -32495,7 +32548,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000961",
+        "___id": "T000002R000963",
         "___s": true
     },
     {
@@ -32524,7 +32577,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000962",
+        "___id": "T000002R000964",
         "___s": true
     },
     {
@@ -32553,7 +32606,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000963",
+        "___id": "T000002R000965",
         "___s": true
     },
     {
@@ -32582,7 +32635,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000964",
+        "___id": "T000002R000966",
         "___s": true
     },
     {
@@ -32611,7 +32664,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000965",
+        "___id": "T000002R000967",
         "___s": true
     },
     {
@@ -32640,7 +32693,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000966",
+        "___id": "T000002R000968",
         "___s": true
     },
     {
@@ -32669,7 +32722,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000967",
+        "___id": "T000002R000969",
         "___s": true
     },
     {
@@ -32698,7 +32751,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000968",
+        "___id": "T000002R000970",
         "___s": true
     },
     {
@@ -32727,7 +32780,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000969",
+        "___id": "T000002R000971",
         "___s": true
     },
     {
@@ -32756,7 +32809,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R000970",
+        "___id": "T000002R000972",
         "___s": true
     },
     {
@@ -32783,7 +32836,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000971",
+        "___id": "T000002R000973",
         "___s": true
     },
     {
@@ -32810,7 +32863,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000972",
+        "___id": "T000002R000974",
         "___s": true
     },
     {
@@ -32837,7 +32890,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000973",
+        "___id": "T000002R000975",
         "___s": true
     },
     {
@@ -32864,7 +32917,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000974",
+        "___id": "T000002R000976",
         "___s": true
     },
     {
@@ -32891,7 +32944,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000975",
+        "___id": "T000002R000977",
         "___s": true
     },
     {
@@ -32918,7 +32971,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000976",
+        "___id": "T000002R000978",
         "___s": true
     },
     {
@@ -32945,7 +32998,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000977",
+        "___id": "T000002R000979",
         "___s": true
     },
     {
@@ -32972,7 +33025,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000978",
+        "___id": "T000002R000980",
         "___s": true
     },
     {
@@ -32999,7 +33052,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000979",
+        "___id": "T000002R000981",
         "___s": true
     },
     {
@@ -33026,7 +33079,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000980",
+        "___id": "T000002R000982",
         "___s": true
     },
     {
@@ -33053,7 +33106,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000981",
+        "___id": "T000002R000983",
         "___s": true
     },
     {
@@ -33080,7 +33133,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000982",
+        "___id": "T000002R000984",
         "___s": true
     },
     {
@@ -33107,7 +33160,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000983",
+        "___id": "T000002R000985",
         "___s": true
     },
     {
@@ -33134,7 +33187,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000984",
+        "___id": "T000002R000986",
         "___s": true
     },
     {
@@ -33161,7 +33214,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000985",
+        "___id": "T000002R000987",
         "___s": true
     },
     {
@@ -33188,7 +33241,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000986",
+        "___id": "T000002R000988",
         "___s": true
     },
     {
@@ -33215,7 +33268,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000987",
+        "___id": "T000002R000989",
         "___s": true
     },
     {
@@ -33242,7 +33295,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000988",
+        "___id": "T000002R000990",
         "___s": true
     },
     {
@@ -33269,7 +33322,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000989",
+        "___id": "T000002R000991",
         "___s": true
     },
     {
@@ -33296,7 +33349,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000990",
+        "___id": "T000002R000992",
         "___s": true
     },
     {
@@ -33323,7 +33376,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000991",
+        "___id": "T000002R000993",
         "___s": true
     },
     {
@@ -33350,7 +33403,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000992",
+        "___id": "T000002R000994",
         "___s": true
     },
     {
@@ -33377,7 +33430,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000993",
+        "___id": "T000002R000995",
         "___s": true
     },
     {
@@ -33404,7 +33457,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000994",
+        "___id": "T000002R000996",
         "___s": true
     },
     {
@@ -33431,7 +33484,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000995",
+        "___id": "T000002R000997",
         "___s": true
     },
     {
@@ -33458,7 +33511,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000996",
+        "___id": "T000002R000998",
         "___s": true
     },
     {
@@ -33485,7 +33538,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000997",
+        "___id": "T000002R000999",
         "___s": true
     },
     {
@@ -33512,7 +33565,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000998",
+        "___id": "T000002R001000",
         "___s": true
     },
     {
@@ -33539,7 +33592,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R000999",
+        "___id": "T000002R001001",
         "___s": true
     },
     {
@@ -33566,7 +33619,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R001000",
+        "___id": "T000002R001002",
         "___s": true
     },
     {
@@ -33593,7 +33646,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R001001",
+        "___id": "T000002R001003",
         "___s": true
     },
     {
@@ -33620,7 +33673,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R001002",
+        "___id": "T000002R001004",
         "___s": true
     },
     {
@@ -33647,7 +33700,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R001003",
+        "___id": "T000002R001005",
         "___s": true
     },
     {
@@ -33674,7 +33727,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R001004",
+        "___id": "T000002R001006",
         "___s": true
     },
     {
@@ -33701,7 +33754,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R001005",
+        "___id": "T000002R001007",
         "___s": true
     },
     {
@@ -33728,7 +33781,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R001006",
+        "___id": "T000002R001008",
         "___s": true
     },
     {
@@ -33755,7 +33808,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R001007",
+        "___id": "T000002R001009",
         "___s": true
     },
     {
@@ -33782,7 +33835,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R001008",
+        "___id": "T000002R001010",
         "___s": true
     },
     {
@@ -33809,7 +33862,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R001009",
+        "___id": "T000002R001011",
         "___s": true
     },
     {
@@ -33838,7 +33891,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~ev",
         "scope": "static",
-        "___id": "T000002R001010",
+        "___id": "T000002R001012",
         "___s": true
     },
     {
@@ -33867,7 +33920,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R001011",
+        "___id": "T000002R001013",
         "___s": true
     },
     {
@@ -33896,7 +33949,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R001012",
+        "___id": "T000002R001014",
         "___s": true
     },
     {
@@ -33925,7 +33978,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R001013",
+        "___id": "T000002R001015",
         "___s": true
     },
     {
@@ -33953,7 +34006,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001014",
+        "___id": "T000002R001016",
         "___s": true
     },
     {
@@ -33981,7 +34034,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001015",
+        "___id": "T000002R001017",
         "___s": true
     },
     {
@@ -34009,7 +34062,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001016",
+        "___id": "T000002R001018",
         "___s": true
     },
     {
@@ -34037,7 +34090,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001017",
+        "___id": "T000002R001019",
         "___s": true
     },
     {
@@ -34065,7 +34118,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001018",
+        "___id": "T000002R001020",
         "___s": true
     },
     {
@@ -34093,7 +34146,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001019",
+        "___id": "T000002R001021",
         "___s": true
     },
     {
@@ -34121,7 +34174,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001020",
+        "___id": "T000002R001022",
         "___s": true
     },
     {
@@ -34149,7 +34202,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001021",
+        "___id": "T000002R001023",
         "___s": true
     },
     {
@@ -34178,7 +34231,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R001022",
+        "___id": "T000002R001024",
         "___s": true
     },
     {
@@ -34207,7 +34260,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R001023",
+        "___id": "T000002R001025",
         "___s": true
     },
     {
@@ -34236,7 +34289,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R001024",
+        "___id": "T000002R001026",
         "___s": true
     },
     {
@@ -34265,7 +34318,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R001025",
+        "___id": "T000002R001027",
         "___s": true
     },
     {
@@ -34293,7 +34346,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.sizes",
         "scope": "static",
-        "___id": "T000002R001026",
+        "___id": "T000002R001028",
         "___s": true
     },
     {
@@ -34322,7 +34375,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R001027",
+        "___id": "T000002R001029",
         "___s": true
     },
     {
@@ -34350,7 +34403,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.sizes",
         "scope": "static",
-        "___id": "T000002R001028",
+        "___id": "T000002R001030",
         "___s": true
     },
     {
@@ -34379,7 +34432,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R001029",
+        "___id": "T000002R001031",
         "___s": true
     },
     {
@@ -34408,7 +34461,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R001030",
+        "___id": "T000002R001032",
         "___s": true
     },
     {
@@ -34437,7 +34490,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R001031",
+        "___id": "T000002R001033",
         "___s": true
     },
     {
@@ -34466,7 +34519,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cellGridAttributes",
         "scope": "static",
-        "___id": "T000002R001032",
+        "___id": "T000002R001034",
         "___s": true
     },
     {
@@ -34495,7 +34548,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cellGridAttributes",
         "scope": "static",
-        "___id": "T000002R001033",
+        "___id": "T000002R001035",
         "___s": true
     },
     {
@@ -34524,7 +34577,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cellGridAttributes",
         "scope": "static",
-        "___id": "T000002R001034",
+        "___id": "T000002R001036",
         "___s": true
     },
     {
@@ -34553,7 +34606,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~ev",
         "scope": "static",
-        "___id": "T000002R001035",
+        "___id": "T000002R001037",
         "___s": true
     },
     {
@@ -34581,7 +34634,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001036",
+        "___id": "T000002R001038",
         "___s": true
     },
     {
@@ -34609,7 +34662,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.sizes",
         "scope": "static",
-        "___id": "T000002R001037",
+        "___id": "T000002R001039",
         "___s": true
     },
     {
@@ -34638,7 +34691,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R001038",
+        "___id": "T000002R001040",
         "___s": true
     },
     {
@@ -34667,7 +34720,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R001039",
+        "___id": "T000002R001041",
         "___s": true
     },
     {
@@ -34696,7 +34749,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R001040",
+        "___id": "T000002R001042",
         "___s": true
     },
     {
@@ -34725,7 +34778,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R001041",
+        "___id": "T000002R001043",
         "___s": true
     },
     {
@@ -34753,7 +34806,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.childGrids[undefined].parentNode",
         "scope": "static",
-        "___id": "T000002R001042",
+        "___id": "T000002R001044",
         "___s": true
     },
     {
@@ -34782,7 +34835,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R001043",
+        "___id": "T000002R001045",
         "___s": true
     },
     {
@@ -34810,7 +34863,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001044",
+        "___id": "T000002R001046",
         "___s": true
     },
     {
@@ -34838,7 +34891,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001045",
+        "___id": "T000002R001047",
         "___s": true
     },
     {
@@ -34866,7 +34919,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001046",
+        "___id": "T000002R001048",
         "___s": true
     },
     {
@@ -34894,7 +34947,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001047",
+        "___id": "T000002R001049",
         "___s": true
     },
     {
@@ -34922,7 +34975,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001048",
+        "___id": "T000002R001050",
         "___s": true
     },
     {
@@ -34951,7 +35004,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R001049",
+        "___id": "T000002R001051",
         "___s": true
     },
     {
@@ -34980,7 +35033,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R001050",
+        "___id": "T000002R001052",
         "___s": true
     },
     {
@@ -35009,7 +35062,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R001051",
+        "___id": "T000002R001053",
         "___s": true
     },
     {
@@ -35038,7 +35091,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R001052",
+        "___id": "T000002R001054",
         "___s": true
     },
     {
@@ -35067,7 +35120,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R001053",
+        "___id": "T000002R001055",
         "___s": true
     },
     {
@@ -35096,7 +35149,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R001054",
+        "___id": "T000002R001056",
         "___s": true
     },
     {
@@ -35125,7 +35178,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~cell",
         "scope": "static",
-        "___id": "T000002R001055",
+        "___id": "T000002R001057",
         "___s": true
     },
     {
@@ -35154,7 +35207,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R001056",
+        "___id": "T000002R001058",
         "___s": true
     },
     {
@@ -35183,7 +35236,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R001057",
+        "___id": "T000002R001059",
         "___s": true
     },
     {
@@ -35223,7 +35276,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001058",
+        "___id": "T000002R001060",
         "___s": true
     },
     {
@@ -35249,7 +35302,7 @@ window.reflection = [
         "memberof": "self.draw~drawRowHeader",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001059",
+        "___id": "T000002R001061",
         "___s": true
     },
     {
@@ -35278,7 +35331,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRowHeader",
         "scope": "inner",
-        "___id": "T000002R001060",
+        "___id": "T000002R001062",
         "___s": true
     },
     {
@@ -35307,7 +35360,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRowHeader",
         "scope": "inner",
-        "___id": "T000002R001061",
+        "___id": "T000002R001063",
         "___s": true
     },
     {
@@ -35334,7 +35387,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRowHeader~rowHeaderCell",
         "scope": "static",
-        "___id": "T000002R001062",
+        "___id": "T000002R001064",
         "___s": true
     },
     {
@@ -35363,7 +35416,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRowHeader~rowHeaderCell",
         "scope": "static",
-        "___id": "T000002R001063",
+        "___id": "T000002R001065",
         "___s": true
     },
     {
@@ -35392,7 +35445,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRowHeader",
         "scope": "inner",
-        "___id": "T000002R001064",
+        "___id": "T000002R001066",
         "___s": true
     },
     {
@@ -35419,7 +35472,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRowHeader~a",
         "scope": "static",
-        "___id": "T000002R001065",
+        "___id": "T000002R001067",
         "___s": true
     },
     {
@@ -35446,7 +35499,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRowHeader~a",
         "scope": "static",
-        "___id": "T000002R001066",
+        "___id": "T000002R001068",
         "___s": true
     },
     {
@@ -35473,7 +35526,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRowHeader~a",
         "scope": "static",
-        "___id": "T000002R001067",
+        "___id": "T000002R001069",
         "___s": true
     },
     {
@@ -35500,7 +35553,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRowHeader~a",
         "scope": "static",
-        "___id": "T000002R001068",
+        "___id": "T000002R001070",
         "___s": true
     },
     {
@@ -35527,7 +35580,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRowHeader~a",
         "scope": "static",
-        "___id": "T000002R001069",
+        "___id": "T000002R001071",
         "___s": true
     },
     {
@@ -35554,7 +35607,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRowHeader~a",
         "scope": "static",
-        "___id": "T000002R001070",
+        "___id": "T000002R001072",
         "___s": true
     },
     {
@@ -35583,7 +35636,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRowHeader~a",
         "scope": "static",
-        "___id": "T000002R001071",
+        "___id": "T000002R001073",
         "___s": true
     },
     {
@@ -35612,7 +35665,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRowHeader",
         "scope": "inner",
-        "___id": "T000002R001072",
+        "___id": "T000002R001074",
         "___s": true
     },
     {
@@ -35658,7 +35711,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001073",
+        "___id": "T000002R001075",
         "___s": true
     },
     {
@@ -35684,7 +35737,7 @@ window.reflection = [
         "memberof": "self.draw~drawHeaders",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001074",
+        "___id": "T000002R001076",
         "___s": true
     },
     {
@@ -35712,7 +35765,7 @@ window.reflection = [
         "memberof": "self.draw~drawHeaders",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001075",
+        "___id": "T000002R001077",
         "___s": true
     },
     {
@@ -35738,7 +35791,7 @@ window.reflection = [
         "memberof": "self.draw~drawHeaders",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001076",
+        "___id": "T000002R001078",
         "___s": true
     },
     {
@@ -35764,7 +35817,7 @@ window.reflection = [
         "memberof": "self.draw~drawHeaders",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001077",
+        "___id": "T000002R001079",
         "___s": true
     },
     {
@@ -35790,7 +35843,7 @@ window.reflection = [
         "memberof": "self.draw~drawHeaders",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001078",
+        "___id": "T000002R001080",
         "___s": true
     },
     {
@@ -35816,7 +35869,7 @@ window.reflection = [
         "memberof": "self.draw~drawHeaders",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001079",
+        "___id": "T000002R001081",
         "___s": true
     },
     {
@@ -35842,7 +35895,7 @@ window.reflection = [
         "memberof": "self.draw~drawHeaders",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001080",
+        "___id": "T000002R001082",
         "___s": true
     },
     {
@@ -35884,7 +35937,7 @@ window.reflection = [
         "memberof": "self.draw~drawHeaders",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001081",
+        "___id": "T000002R001083",
         "___s": true
     },
     {
@@ -35913,7 +35966,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~drawHeaderColumnRange",
         "scope": "inner",
-        "___id": "T000002R001082",
+        "___id": "T000002R001084",
         "___s": true
     },
     {
@@ -35942,7 +35995,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~drawHeaderColumnRange",
         "scope": "inner",
-        "___id": "T000002R001083",
+        "___id": "T000002R001085",
         "___s": true
     },
     {
@@ -35971,7 +36024,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~drawHeaderColumnRange",
         "scope": "inner",
-        "___id": "T000002R001084",
+        "___id": "T000002R001086",
         "___s": true
     },
     {
@@ -36000,7 +36053,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~drawHeaderColumnRange",
         "scope": "inner",
-        "___id": "T000002R001085",
+        "___id": "T000002R001087",
         "___s": true
     },
     {
@@ -36029,7 +36082,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~drawHeaderColumnRange",
         "scope": "inner",
-        "___id": "T000002R001086",
+        "___id": "T000002R001088",
         "___s": true
     },
     {
@@ -36058,7 +36111,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~drawHeaderColumnRange",
         "scope": "inner",
-        "___id": "T000002R001087",
+        "___id": "T000002R001089",
         "___s": true
     },
     {
@@ -36085,7 +36138,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~drawHeaderColumnRange~d",
         "scope": "static",
-        "___id": "T000002R001088",
+        "___id": "T000002R001090",
         "___s": true
     },
     {
@@ -36112,7 +36165,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~drawHeaderColumnRange~d",
         "scope": "static",
-        "___id": "T000002R001089",
+        "___id": "T000002R001091",
         "___s": true
     },
     {
@@ -36139,7 +36192,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~drawHeaderColumnRange~d",
         "scope": "static",
-        "___id": "T000002R001090",
+        "___id": "T000002R001092",
         "___s": true
     },
     {
@@ -36166,7 +36219,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~drawHeaderColumnRange~d",
         "scope": "static",
-        "___id": "T000002R001091",
+        "___id": "T000002R001093",
         "___s": true
     },
     {
@@ -36193,7 +36246,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~drawHeaderColumnRange~d",
         "scope": "static",
-        "___id": "T000002R001092",
+        "___id": "T000002R001094",
         "___s": true
     },
     {
@@ -36220,7 +36273,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~drawHeaderColumnRange~d",
         "scope": "static",
-        "___id": "T000002R001093",
+        "___id": "T000002R001095",
         "___s": true
     },
     {
@@ -36247,7 +36300,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~drawHeaderColumnRange~d",
         "scope": "static",
-        "___id": "T000002R001094",
+        "___id": "T000002R001096",
         "___s": true
     },
     {
@@ -36276,7 +36329,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~drawHeaderColumnRange",
         "scope": "inner",
-        "___id": "T000002R001095",
+        "___id": "T000002R001097",
         "___s": true
     },
     {
@@ -36303,7 +36356,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~drawHeaderColumnRange~columnHeaderCell",
         "scope": "static",
-        "___id": "T000002R001096",
+        "___id": "T000002R001098",
         "___s": true
     },
     {
@@ -36332,7 +36385,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~drawHeaderColumnRange~columnHeaderCell",
         "scope": "static",
-        "___id": "T000002R001097",
+        "___id": "T000002R001099",
         "___s": true
     },
     {
@@ -36361,7 +36414,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~drawHeaderColumnRange~d",
         "scope": "static",
-        "___id": "T000002R001098",
+        "___id": "T000002R001100",
         "___s": true
     },
     {
@@ -36390,7 +36443,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~drawHeaderColumnRange",
         "scope": "inner",
-        "___id": "T000002R001099",
+        "___id": "T000002R001101",
         "___s": true
     },
     {
@@ -36419,7 +36472,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R001100",
+        "___id": "T000002R001102",
         "___s": true
     },
     {
@@ -36448,7 +36501,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R001101",
+        "___id": "T000002R001103",
         "___s": true
     },
     {
@@ -36477,7 +36530,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders",
         "scope": "inner",
-        "___id": "T000002R001102",
+        "___id": "T000002R001104",
         "___s": true
     },
     {
@@ -36506,7 +36559,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders",
         "scope": "inner",
-        "___id": "T000002R001103",
+        "___id": "T000002R001105",
         "___s": true
     },
     {
@@ -36535,7 +36588,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders",
         "scope": "inner",
-        "___id": "T000002R001104",
+        "___id": "T000002R001106",
         "___s": true
     },
     {
@@ -36564,7 +36617,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders",
         "scope": "inner",
-        "___id": "T000002R001105",
+        "___id": "T000002R001107",
         "___s": true
     },
     {
@@ -36593,7 +36646,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders",
         "scope": "inner",
-        "___id": "T000002R001106",
+        "___id": "T000002R001108",
         "___s": true
     },
     {
@@ -36622,7 +36675,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders",
         "scope": "inner",
-        "___id": "T000002R001107",
+        "___id": "T000002R001109",
         "___s": true
     },
     {
@@ -36651,7 +36704,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders",
         "scope": "inner",
-        "___id": "T000002R001108",
+        "___id": "T000002R001110",
         "___s": true
     },
     {
@@ -36680,7 +36733,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders",
         "scope": "inner",
-        "___id": "T000002R001109",
+        "___id": "T000002R001111",
         "___s": true
     },
     {
@@ -36709,7 +36762,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders",
         "scope": "inner",
-        "___id": "T000002R001110",
+        "___id": "T000002R001112",
         "___s": true
     },
     {
@@ -36738,7 +36791,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders",
         "scope": "inner",
-        "___id": "T000002R001111",
+        "___id": "T000002R001113",
         "___s": true
     },
     {
@@ -36765,7 +36818,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~c",
         "scope": "static",
-        "___id": "T000002R001112",
+        "___id": "T000002R001114",
         "___s": true
     },
     {
@@ -36792,7 +36845,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~c",
         "scope": "static",
-        "___id": "T000002R001113",
+        "___id": "T000002R001115",
         "___s": true
     },
     {
@@ -36819,7 +36872,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~c",
         "scope": "static",
-        "___id": "T000002R001114",
+        "___id": "T000002R001116",
         "___s": true
     },
     {
@@ -36846,7 +36899,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~c",
         "scope": "static",
-        "___id": "T000002R001115",
+        "___id": "T000002R001117",
         "___s": true
     },
     {
@@ -36873,7 +36926,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~c",
         "scope": "static",
-        "___id": "T000002R001116",
+        "___id": "T000002R001118",
         "___s": true
     },
     {
@@ -36900,7 +36953,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~c",
         "scope": "static",
-        "___id": "T000002R001117",
+        "___id": "T000002R001119",
         "___s": true
     },
     {
@@ -36927,7 +36980,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~c",
         "scope": "static",
-        "___id": "T000002R001118",
+        "___id": "T000002R001120",
         "___s": true
     },
     {
@@ -36956,7 +37009,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~c",
         "scope": "static",
-        "___id": "T000002R001119",
+        "___id": "T000002R001121",
         "___s": true
     },
     {
@@ -36982,7 +37035,7 @@ window.reflection = [
         "longname": "endCap",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001120",
+        "___id": "T000002R001122",
         "___s": true
     },
     {
@@ -37011,7 +37064,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders",
         "scope": "inner",
-        "___id": "T000002R001121",
+        "___id": "T000002R001123",
         "___s": true
     },
     {
@@ -37038,7 +37091,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~cornerCell",
         "scope": "static",
-        "___id": "T000002R001122",
+        "___id": "T000002R001124",
         "___s": true
     },
     {
@@ -37067,7 +37120,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~cornerCell",
         "scope": "static",
-        "___id": "T000002R001123",
+        "___id": "T000002R001125",
         "___s": true
     },
     {
@@ -37096,7 +37149,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders",
         "scope": "inner",
-        "___id": "T000002R001124",
+        "___id": "T000002R001126",
         "___s": true
     },
     {
@@ -37125,7 +37178,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders",
         "scope": "inner",
-        "___id": "T000002R001125",
+        "___id": "T000002R001127",
         "___s": true
     },
     {
@@ -37152,7 +37205,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~c",
         "scope": "static",
-        "___id": "T000002R001126",
+        "___id": "T000002R001128",
         "___s": true
     },
     {
@@ -37179,7 +37232,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~c",
         "scope": "static",
-        "___id": "T000002R001127",
+        "___id": "T000002R001129",
         "___s": true
     },
     {
@@ -37206,7 +37259,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~c",
         "scope": "static",
-        "___id": "T000002R001128",
+        "___id": "T000002R001130",
         "___s": true
     },
     {
@@ -37233,7 +37286,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~c",
         "scope": "static",
-        "___id": "T000002R001129",
+        "___id": "T000002R001131",
         "___s": true
     },
     {
@@ -37260,7 +37313,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~c",
         "scope": "static",
-        "___id": "T000002R001130",
+        "___id": "T000002R001132",
         "___s": true
     },
     {
@@ -37289,7 +37342,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawHeaders~c",
         "scope": "static",
-        "___id": "T000002R001131",
+        "___id": "T000002R001133",
         "___s": true
     },
     {
@@ -37341,7 +37394,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001132",
+        "___id": "T000002R001134",
         "___s": true
     },
     {
@@ -37367,7 +37420,7 @@ window.reflection = [
         "memberof": "self.draw~drawRow",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001133",
+        "___id": "T000002R001135",
         "___s": true
     },
     {
@@ -37393,7 +37446,7 @@ window.reflection = [
         "memberof": "self.draw~drawRow",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001134",
+        "___id": "T000002R001136",
         "___s": true
     },
     {
@@ -37419,7 +37472,7 @@ window.reflection = [
         "memberof": "self.draw~drawRow",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001135",
+        "___id": "T000002R001137",
         "___s": true
     },
     {
@@ -37445,7 +37498,7 @@ window.reflection = [
         "memberof": "self.draw~drawRow",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001136",
+        "___id": "T000002R001138",
         "___s": true
     },
     {
@@ -37473,7 +37526,7 @@ window.reflection = [
         "memberof": "self.draw~drawRow",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001137",
+        "___id": "T000002R001139",
         "___s": true
     },
     {
@@ -37502,7 +37555,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow",
         "scope": "inner",
-        "___id": "T000002R001138",
+        "___id": "T000002R001140",
         "___s": true
     },
     {
@@ -37531,7 +37584,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow",
         "scope": "inner",
-        "___id": "T000002R001139",
+        "___id": "T000002R001141",
         "___s": true
     },
     {
@@ -37560,7 +37613,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow",
         "scope": "inner",
-        "___id": "T000002R001140",
+        "___id": "T000002R001142",
         "___s": true
     },
     {
@@ -37589,7 +37642,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow",
         "scope": "inner",
-        "___id": "T000002R001141",
+        "___id": "T000002R001143",
         "___s": true
     },
     {
@@ -37618,7 +37671,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow",
         "scope": "inner",
-        "___id": "T000002R001142",
+        "___id": "T000002R001144",
         "___s": true
     },
     {
@@ -37647,7 +37700,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow",
         "scope": "inner",
-        "___id": "T000002R001143",
+        "___id": "T000002R001145",
         "___s": true
     },
     {
@@ -37676,7 +37729,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow",
         "scope": "inner",
-        "___id": "T000002R001144",
+        "___id": "T000002R001146",
         "___s": true
     },
     {
@@ -37705,7 +37758,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow",
         "scope": "inner",
-        "___id": "T000002R001145",
+        "___id": "T000002R001147",
         "___s": true
     },
     {
@@ -37734,7 +37787,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow",
         "scope": "inner",
-        "___id": "T000002R001146",
+        "___id": "T000002R001148",
         "___s": true
     },
     {
@@ -37763,7 +37816,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow",
         "scope": "inner",
-        "___id": "T000002R001147",
+        "___id": "T000002R001149",
         "___s": true
     },
     {
@@ -37792,7 +37845,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow",
         "scope": "inner",
-        "___id": "T000002R001148",
+        "___id": "T000002R001150",
         "___s": true
     },
     {
@@ -37821,7 +37874,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow",
         "scope": "inner",
-        "___id": "T000002R001149",
+        "___id": "T000002R001151",
         "___s": true
     },
     {
@@ -37849,7 +37902,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001150",
+        "___id": "T000002R001152",
         "___s": true
     },
     {
@@ -37877,7 +37930,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001151",
+        "___id": "T000002R001153",
         "___s": true
     },
     {
@@ -37906,7 +37959,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow",
         "scope": "inner",
-        "___id": "T000002R001152",
+        "___id": "T000002R001154",
         "___s": true
     },
     {
@@ -37935,7 +37988,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow",
         "scope": "inner",
-        "___id": "T000002R001153",
+        "___id": "T000002R001155",
         "___s": true
     },
     {
@@ -37964,7 +38017,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow",
         "scope": "inner",
-        "___id": "T000002R001154",
+        "___id": "T000002R001156",
         "___s": true
     },
     {
@@ -37993,7 +38046,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow",
         "scope": "inner",
-        "___id": "T000002R001155",
+        "___id": "T000002R001157",
         "___s": true
     },
     {
@@ -38022,7 +38075,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow",
         "scope": "inner",
-        "___id": "T000002R001156",
+        "___id": "T000002R001158",
         "___s": true
     },
     {
@@ -38051,7 +38104,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow",
         "scope": "inner",
-        "___id": "T000002R001157",
+        "___id": "T000002R001159",
         "___s": true
     },
     {
@@ -38079,7 +38132,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001158",
+        "___id": "T000002R001160",
         "___s": true
     },
     {
@@ -38108,7 +38161,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow",
         "scope": "inner",
-        "___id": "T000002R001159",
+        "___id": "T000002R001161",
         "___s": true
     },
     {
@@ -38137,7 +38190,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow",
         "scope": "inner",
-        "___id": "T000002R001160",
+        "___id": "T000002R001162",
         "___s": true
     },
     {
@@ -38166,7 +38219,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow",
         "scope": "inner",
-        "___id": "T000002R001161",
+        "___id": "T000002R001163",
         "___s": true
     },
     {
@@ -38195,7 +38248,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow~treeGrid",
         "scope": "static",
-        "___id": "T000002R001162",
+        "___id": "T000002R001164",
         "___s": true
     },
     {
@@ -38224,7 +38277,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow~treeGrid",
         "scope": "static",
-        "___id": "T000002R001163",
+        "___id": "T000002R001165",
         "___s": true
     },
     {
@@ -38251,7 +38304,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow~treeGrid.parentNode",
         "scope": "static",
-        "___id": "T000002R001164",
+        "___id": "T000002R001166",
         "___s": true
     },
     {
@@ -38278,7 +38331,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow~treeGrid.parentNode",
         "scope": "static",
-        "___id": "T000002R001165",
+        "___id": "T000002R001167",
         "___s": true
     },
     {
@@ -38305,7 +38358,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow~treeGrid.parentNode",
         "scope": "static",
-        "___id": "T000002R001166",
+        "___id": "T000002R001168",
         "___s": true
     },
     {
@@ -38332,7 +38385,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow~treeGrid.parentNode",
         "scope": "static",
-        "___id": "T000002R001167",
+        "___id": "T000002R001169",
         "___s": true
     },
     {
@@ -38359,7 +38412,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow~treeGrid.parentNode",
         "scope": "static",
-        "___id": "T000002R001168",
+        "___id": "T000002R001170",
         "___s": true
     },
     {
@@ -38386,7 +38439,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow~treeGrid.parentNode",
         "scope": "static",
-        "___id": "T000002R001169",
+        "___id": "T000002R001171",
         "___s": true
     },
     {
@@ -38413,7 +38466,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow~treeGrid.parentNode",
         "scope": "static",
-        "___id": "T000002R001170",
+        "___id": "T000002R001172",
         "___s": true
     },
     {
@@ -38440,7 +38493,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow~treeGrid.parentNode",
         "scope": "static",
-        "___id": "T000002R001171",
+        "___id": "T000002R001173",
         "___s": true
     },
     {
@@ -38467,7 +38520,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow~treeGrid.parentNode",
         "scope": "static",
-        "___id": "T000002R001172",
+        "___id": "T000002R001174",
         "___s": true
     },
     {
@@ -38494,7 +38547,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow~treeGrid.parentNode",
         "scope": "static",
-        "___id": "T000002R001173",
+        "___id": "T000002R001175",
         "___s": true
     },
     {
@@ -38521,7 +38574,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow~treeGrid.parentNode",
         "scope": "static",
-        "___id": "T000002R001174",
+        "___id": "T000002R001176",
         "___s": true
     },
     {
@@ -38547,7 +38600,7 @@ window.reflection = [
         "longname": "rowIndex",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001175",
+        "___id": "T000002R001177",
         "___s": true
     },
     {
@@ -38573,7 +38626,7 @@ window.reflection = [
         "longname": "columnIndex",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001176",
+        "___id": "T000002R001178",
         "___s": true
     },
     {
@@ -38599,7 +38652,7 @@ window.reflection = [
         "longname": "y",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001177",
+        "___id": "T000002R001179",
         "___s": true
     },
     {
@@ -38625,7 +38678,7 @@ window.reflection = [
         "longname": "x",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001178",
+        "___id": "T000002R001180",
         "___s": true
     },
     {
@@ -38651,7 +38704,7 @@ window.reflection = [
         "longname": "height",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001179",
+        "___id": "T000002R001181",
         "___s": true
     },
     {
@@ -38677,7 +38730,7 @@ window.reflection = [
         "longname": "width",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001180",
+        "___id": "T000002R001182",
         "___s": true
     },
     {
@@ -38703,7 +38756,7 @@ window.reflection = [
         "longname": "style",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001181",
+        "___id": "T000002R001183",
         "___s": true
     },
     {
@@ -38729,7 +38782,7 @@ window.reflection = [
         "longname": "type",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001182",
+        "___id": "T000002R001184",
         "___s": true
     },
     {
@@ -38758,7 +38811,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow~treeGrid",
         "scope": "static",
-        "___id": "T000002R001183",
+        "___id": "T000002R001185",
         "___s": true
     },
     {
@@ -38786,7 +38839,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001184",
+        "___id": "T000002R001186",
         "___s": true
     },
     {
@@ -38815,7 +38868,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRow",
         "scope": "inner",
-        "___id": "T000002R001185",
+        "___id": "T000002R001187",
         "___s": true
     },
     {
@@ -38852,7 +38905,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001186",
+        "___id": "T000002R001188",
         "___s": true
     },
     {
@@ -38880,7 +38933,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001187",
+        "___id": "T000002R001189",
         "___s": true
     },
     {
@@ -38909,7 +38962,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~initDraw",
         "scope": "inner",
-        "___id": "T000002R001188",
+        "___id": "T000002R001190",
         "___s": true
     },
     {
@@ -38937,7 +38990,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001189",
+        "___id": "T000002R001191",
         "___s": true
     },
     {
@@ -38965,7 +39018,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001190",
+        "___id": "T000002R001192",
         "___s": true
     },
     {
@@ -38993,7 +39046,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001191",
+        "___id": "T000002R001193",
         "___s": true
     },
     {
@@ -39022,7 +39075,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~initDraw",
         "scope": "inner",
-        "___id": "T000002R001192",
+        "___id": "T000002R001194",
         "___s": true
     },
     {
@@ -39051,7 +39104,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~initDraw",
         "scope": "inner",
-        "___id": "T000002R001193",
+        "___id": "T000002R001195",
         "___s": true
     },
     {
@@ -39082,7 +39135,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001194",
+        "___id": "T000002R001196",
         "___s": true
     },
     {
@@ -39110,7 +39163,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001195",
+        "___id": "T000002R001197",
         "___s": true
     },
     {
@@ -39146,7 +39199,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001196",
+        "___id": "T000002R001198",
         "___s": true
     },
     {
@@ -39172,7 +39225,7 @@ window.reflection = [
         "memberof": "self.draw~drawFrozenRows",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001197",
+        "___id": "T000002R001199",
         "___s": true
     },
     {
@@ -39200,7 +39253,7 @@ window.reflection = [
         "memberof": "self.draw~drawFrozenRows",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001198",
+        "___id": "T000002R001200",
         "___s": true
     },
     {
@@ -39229,7 +39282,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawFrozenRows",
         "scope": "inner",
-        "___id": "T000002R001199",
+        "___id": "T000002R001201",
         "___s": true
     },
     {
@@ -39258,7 +39311,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawFrozenRows",
         "scope": "inner",
-        "___id": "T000002R001200",
+        "___id": "T000002R001202",
         "___s": true
     },
     {
@@ -39287,7 +39340,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawFrozenRows",
         "scope": "inner",
-        "___id": "T000002R001201",
+        "___id": "T000002R001203",
         "___s": true
     },
     {
@@ -39316,7 +39369,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawFrozenRows",
         "scope": "inner",
-        "___id": "T000002R001202",
+        "___id": "T000002R001204",
         "___s": true
     },
     {
@@ -39345,7 +39398,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawFrozenRows",
         "scope": "inner",
-        "___id": "T000002R001203",
+        "___id": "T000002R001205",
         "___s": true
     },
     {
@@ -39374,7 +39427,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawFrozenRows",
         "scope": "inner",
-        "___id": "T000002R001204",
+        "___id": "T000002R001206",
         "___s": true
     },
     {
@@ -39402,7 +39455,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001205",
+        "___id": "T000002R001207",
         "___s": true
     },
     {
@@ -39444,7 +39497,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001206",
+        "___id": "T000002R001208",
         "___s": true
     },
     {
@@ -39470,7 +39523,7 @@ window.reflection = [
         "memberof": "self.draw~drawRows",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001207",
+        "___id": "T000002R001209",
         "___s": true
     },
     {
@@ -39496,7 +39549,7 @@ window.reflection = [
         "memberof": "self.draw~drawRows",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001208",
+        "___id": "T000002R001210",
         "___s": true
     },
     {
@@ -39522,7 +39575,7 @@ window.reflection = [
         "memberof": "self.draw~drawRows",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001209",
+        "___id": "T000002R001211",
         "___s": true
     },
     {
@@ -39550,7 +39603,7 @@ window.reflection = [
         "memberof": "self.draw~drawRows",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001210",
+        "___id": "T000002R001212",
         "___s": true
     },
     {
@@ -39579,7 +39632,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRows",
         "scope": "inner",
-        "___id": "T000002R001211",
+        "___id": "T000002R001213",
         "___s": true
     },
     {
@@ -39608,7 +39661,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRows",
         "scope": "inner",
-        "___id": "T000002R001212",
+        "___id": "T000002R001214",
         "___s": true
     },
     {
@@ -39637,7 +39690,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRows",
         "scope": "inner",
-        "___id": "T000002R001213",
+        "___id": "T000002R001215",
         "___s": true
     },
     {
@@ -39666,7 +39719,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRows",
         "scope": "inner",
-        "___id": "T000002R001214",
+        "___id": "T000002R001216",
         "___s": true
     },
     {
@@ -39695,7 +39748,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRows",
         "scope": "inner",
-        "___id": "T000002R001215",
+        "___id": "T000002R001217",
         "___s": true
     },
     {
@@ -39723,7 +39776,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001216",
+        "___id": "T000002R001218",
         "___s": true
     },
     {
@@ -39751,7 +39804,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001217",
+        "___id": "T000002R001219",
         "___s": true
     },
     {
@@ -39780,7 +39833,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRows",
         "scope": "inner",
-        "___id": "T000002R001218",
+        "___id": "T000002R001220",
         "___s": true
     },
     {
@@ -39809,7 +39862,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRows",
         "scope": "inner",
-        "___id": "T000002R001219",
+        "___id": "T000002R001221",
         "___s": true
     },
     {
@@ -39838,7 +39891,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRows",
         "scope": "inner",
-        "___id": "T000002R001220",
+        "___id": "T000002R001222",
         "___s": true
     },
     {
@@ -39867,7 +39920,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRows",
         "scope": "inner",
-        "___id": "T000002R001221",
+        "___id": "T000002R001223",
         "___s": true
     },
     {
@@ -39896,7 +39949,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRows",
         "scope": "inner",
-        "___id": "T000002R001222",
+        "___id": "T000002R001224",
         "___s": true
     },
     {
@@ -39925,7 +39978,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRows",
         "scope": "inner",
-        "___id": "T000002R001223",
+        "___id": "T000002R001225",
         "___s": true
     },
     {
@@ -39954,7 +40007,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRows",
         "scope": "inner",
-        "___id": "T000002R001224",
+        "___id": "T000002R001226",
         "___s": true
     },
     {
@@ -39983,7 +40036,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawRows",
         "scope": "inner",
-        "___id": "T000002R001225",
+        "___id": "T000002R001227",
         "___s": true
     },
     {
@@ -40016,7 +40069,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001226",
+        "___id": "T000002R001228",
         "___s": true
     },
     {
@@ -40044,7 +40097,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001227",
+        "___id": "T000002R001229",
         "___s": true
     },
     {
@@ -40072,7 +40125,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001228",
+        "___id": "T000002R001230",
         "___s": true
     },
     {
@@ -40115,7 +40168,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001229",
+        "___id": "T000002R001231",
         "___s": true
     },
     {
@@ -40143,7 +40196,7 @@ window.reflection = [
         "memberof": "self.draw~drawReorderMarkers",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001230",
+        "___id": "T000002R001232",
         "___s": true
     },
     {
@@ -40170,7 +40223,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawReorderMarkers~b",
         "scope": "static",
-        "___id": "T000002R001231",
+        "___id": "T000002R001233",
         "___s": true
     },
     {
@@ -40197,7 +40250,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawReorderMarkers~b",
         "scope": "static",
-        "___id": "T000002R001232",
+        "___id": "T000002R001234",
         "___s": true
     },
     {
@@ -40224,7 +40277,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawReorderMarkers~b",
         "scope": "static",
-        "___id": "T000002R001233",
+        "___id": "T000002R001235",
         "___s": true
     },
     {
@@ -40251,7 +40304,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawReorderMarkers~b",
         "scope": "static",
-        "___id": "T000002R001234",
+        "___id": "T000002R001236",
         "___s": true
     },
     {
@@ -40279,7 +40332,7 @@ window.reflection = [
         "memberof": "self.draw~drawReorderMarkers",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001235",
+        "___id": "T000002R001237",
         "___s": true
     },
     {
@@ -40306,7 +40359,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawReorderMarkers~m",
         "scope": "static",
-        "___id": "T000002R001236",
+        "___id": "T000002R001238",
         "___s": true
     },
     {
@@ -40333,7 +40386,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawReorderMarkers~m",
         "scope": "static",
-        "___id": "T000002R001237",
+        "___id": "T000002R001239",
         "___s": true
     },
     {
@@ -40360,7 +40413,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawReorderMarkers~m",
         "scope": "static",
-        "___id": "T000002R001238",
+        "___id": "T000002R001240",
         "___s": true
     },
     {
@@ -40387,7 +40440,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawReorderMarkers~m",
         "scope": "static",
-        "___id": "T000002R001239",
+        "___id": "T000002R001241",
         "___s": true
     },
     {
@@ -40415,7 +40468,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001240",
+        "___id": "T000002R001242",
         "___s": true
     },
     {
@@ -40443,7 +40496,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001241",
+        "___id": "T000002R001243",
         "___s": true
     },
     {
@@ -40471,7 +40524,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001242",
+        "___id": "T000002R001244",
         "___s": true
     },
     {
@@ -40500,7 +40553,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawReorderMarkers~b",
         "scope": "static",
-        "___id": "T000002R001243",
+        "___id": "T000002R001245",
         "___s": true
     },
     {
@@ -40529,7 +40582,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawReorderMarkers~b",
         "scope": "static",
-        "___id": "T000002R001244",
+        "___id": "T000002R001246",
         "___s": true
     },
     {
@@ -40558,7 +40611,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawReorderMarkers~m",
         "scope": "static",
-        "___id": "T000002R001245",
+        "___id": "T000002R001247",
         "___s": true
     },
     {
@@ -40587,7 +40640,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawReorderMarkers~m",
         "scope": "static",
-        "___id": "T000002R001246",
+        "___id": "T000002R001248",
         "___s": true
     },
     {
@@ -40616,7 +40669,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawReorderMarkers~m",
         "scope": "static",
-        "___id": "T000002R001247",
+        "___id": "T000002R001249",
         "___s": true
     },
     {
@@ -40644,7 +40697,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001248",
+        "___id": "T000002R001250",
         "___s": true
     },
     {
@@ -40672,7 +40725,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001249",
+        "___id": "T000002R001251",
         "___s": true
     },
     {
@@ -40701,7 +40754,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawReorderMarkers~b",
         "scope": "static",
-        "___id": "T000002R001250",
+        "___id": "T000002R001252",
         "___s": true
     },
     {
@@ -40730,7 +40783,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawReorderMarkers~b",
         "scope": "static",
-        "___id": "T000002R001251",
+        "___id": "T000002R001253",
         "___s": true
     },
     {
@@ -40759,7 +40812,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawReorderMarkers~m",
         "scope": "static",
-        "___id": "T000002R001252",
+        "___id": "T000002R001254",
         "___s": true
     },
     {
@@ -40788,7 +40841,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawReorderMarkers~m",
         "scope": "static",
-        "___id": "T000002R001253",
+        "___id": "T000002R001255",
         "___s": true
     },
     {
@@ -40817,7 +40870,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawReorderMarkers~m",
         "scope": "static",
-        "___id": "T000002R001254",
+        "___id": "T000002R001256",
         "___s": true
     },
     {
@@ -40846,7 +40899,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawReorderMarkers~m",
         "scope": "static",
-        "___id": "T000002R001255",
+        "___id": "T000002R001257",
         "___s": true
     },
     {
@@ -40874,7 +40927,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001256",
+        "___id": "T000002R001258",
         "___s": true
     },
     {
@@ -40902,7 +40955,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001257",
+        "___id": "T000002R001259",
         "___s": true
     },
     {
@@ -40934,7 +40987,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001258",
+        "___id": "T000002R001260",
         "___s": true
     },
     {
@@ -40962,7 +41015,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001259",
+        "___id": "T000002R001261",
         "___s": true
     },
     {
@@ -40990,7 +41043,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001260",
+        "___id": "T000002R001262",
         "___s": true
     },
     {
@@ -41024,7 +41077,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001261",
+        "___id": "T000002R001263",
         "___s": true
     },
     {
@@ -41052,7 +41105,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001262",
+        "___id": "T000002R001264",
         "___s": true
     },
     {
@@ -41080,7 +41133,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001263",
+        "___id": "T000002R001265",
         "___s": true
     },
     {
@@ -41110,7 +41163,7 @@ window.reflection = [
         "memberof": "self.draw~drawSelectionBorders",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001264",
+        "___id": "T000002R001266",
         "___s": true
     },
     {
@@ -41144,7 +41197,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001265",
+        "___id": "T000002R001267",
         "___s": true
     },
     {
@@ -41172,7 +41225,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001266",
+        "___id": "T000002R001268",
         "___s": true
     },
     {
@@ -41200,7 +41253,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001267",
+        "___id": "T000002R001269",
         "___s": true
     },
     {
@@ -41228,7 +41281,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001268",
+        "___id": "T000002R001270",
         "___s": true
     },
     {
@@ -41256,7 +41309,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001269",
+        "___id": "T000002R001271",
         "___s": true
     },
     {
@@ -41284,7 +41337,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001270",
+        "___id": "T000002R001272",
         "___s": true
     },
     {
@@ -41312,7 +41365,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001271",
+        "___id": "T000002R001273",
         "___s": true
     },
     {
@@ -41338,7 +41391,7 @@ window.reflection = [
         "longname": "x",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001272",
+        "___id": "T000002R001274",
         "___s": true
     },
     {
@@ -41364,7 +41417,7 @@ window.reflection = [
         "longname": "y",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001273",
+        "___id": "T000002R001275",
         "___s": true
     },
     {
@@ -41390,7 +41443,7 @@ window.reflection = [
         "longname": "height",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001274",
+        "___id": "T000002R001276",
         "___s": true
     },
     {
@@ -41416,7 +41469,7 @@ window.reflection = [
         "longname": "width",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001275",
+        "___id": "T000002R001277",
         "___s": true
     },
     {
@@ -41442,7 +41495,7 @@ window.reflection = [
         "longname": "style",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001276",
+        "___id": "T000002R001278",
         "___s": true
     },
     {
@@ -41479,7 +41532,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001277",
+        "___id": "T000002R001279",
         "___s": true
     },
     {
@@ -41507,7 +41560,7 @@ window.reflection = [
         "memberof": "self.draw~drawActiveCell",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001278",
+        "___id": "T000002R001280",
         "___s": true
     },
     {
@@ -41535,7 +41588,7 @@ window.reflection = [
         "memberof": "self.draw~drawActiveCell",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001279",
+        "___id": "T000002R001281",
         "___s": true
     },
     {
@@ -41563,7 +41616,7 @@ window.reflection = [
         "memberof": "self.draw~drawActiveCell",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001280",
+        "___id": "T000002R001282",
         "___s": true
     },
     {
@@ -41591,7 +41644,7 @@ window.reflection = [
         "memberof": "self.draw~drawActiveCell",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001281",
+        "___id": "T000002R001283",
         "___s": true
     },
     {
@@ -41619,7 +41672,7 @@ window.reflection = [
         "memberof": "self.draw~drawActiveCell",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001282",
+        "___id": "T000002R001284",
         "___s": true
     },
     {
@@ -41647,7 +41700,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001283",
+        "___id": "T000002R001285",
         "___s": true
     },
     {
@@ -41675,7 +41728,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001284",
+        "___id": "T000002R001286",
         "___s": true
     },
     {
@@ -41703,7 +41756,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001285",
+        "___id": "T000002R001287",
         "___s": true
     },
     {
@@ -41731,7 +41784,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001286",
+        "___id": "T000002R001288",
         "___s": true
     },
     {
@@ -41768,7 +41821,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001287",
+        "___id": "T000002R001289",
         "___s": true
     },
     {
@@ -41796,7 +41849,7 @@ window.reflection = [
         "memberof": "self.draw~drawFrozenMarkers",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001288",
+        "___id": "T000002R001290",
         "___s": true
     },
     {
@@ -41824,7 +41877,7 @@ window.reflection = [
         "memberof": "self.draw~drawFrozenMarkers",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001289",
+        "___id": "T000002R001291",
         "___s": true
     },
     {
@@ -41852,7 +41905,7 @@ window.reflection = [
         "memberof": "self.draw~drawFrozenMarkers",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001290",
+        "___id": "T000002R001292",
         "___s": true
     },
     {
@@ -41880,7 +41933,7 @@ window.reflection = [
         "memberof": "self.draw~drawFrozenMarkers",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001291",
+        "___id": "T000002R001293",
         "___s": true
     },
     {
@@ -41908,7 +41961,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001292",
+        "___id": "T000002R001294",
         "___s": true
     },
     {
@@ -41936,7 +41989,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001293",
+        "___id": "T000002R001295",
         "___s": true
     },
     {
@@ -41964,7 +42017,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001294",
+        "___id": "T000002R001296",
         "___s": true
     },
     {
@@ -41990,7 +42043,7 @@ window.reflection = [
         "longname": "x",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001295",
+        "___id": "T000002R001297",
         "___s": true
     },
     {
@@ -42016,7 +42069,7 @@ window.reflection = [
         "longname": "y",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001296",
+        "___id": "T000002R001298",
         "___s": true
     },
     {
@@ -42042,7 +42095,7 @@ window.reflection = [
         "longname": "height",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001297",
+        "___id": "T000002R001299",
         "___s": true
     },
     {
@@ -42068,7 +42121,7 @@ window.reflection = [
         "longname": "width",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001298",
+        "___id": "T000002R001300",
         "___s": true
     },
     {
@@ -42094,7 +42147,7 @@ window.reflection = [
         "longname": "style",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001299",
+        "___id": "T000002R001301",
         "___s": true
     },
     {
@@ -42122,7 +42175,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001300",
+        "___id": "T000002R001302",
         "___s": true
     },
     {
@@ -42150,7 +42203,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001301",
+        "___id": "T000002R001303",
         "___s": true
     },
     {
@@ -42176,7 +42229,7 @@ window.reflection = [
         "longname": "x",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001302",
+        "___id": "T000002R001304",
         "___s": true
     },
     {
@@ -42202,7 +42255,7 @@ window.reflection = [
         "longname": "y",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001303",
+        "___id": "T000002R001305",
         "___s": true
     },
     {
@@ -42228,7 +42281,7 @@ window.reflection = [
         "longname": "height",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001304",
+        "___id": "T000002R001306",
         "___s": true
     },
     {
@@ -42254,7 +42307,7 @@ window.reflection = [
         "longname": "width",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001305",
+        "___id": "T000002R001307",
         "___s": true
     },
     {
@@ -42280,7 +42333,7 @@ window.reflection = [
         "longname": "style",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001306",
+        "___id": "T000002R001308",
         "___s": true
     },
     {
@@ -42308,7 +42361,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001307",
+        "___id": "T000002R001309",
         "___s": true
     },
     {
@@ -42336,7 +42389,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001308",
+        "___id": "T000002R001310",
         "___s": true
     },
     {
@@ -42379,7 +42432,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001309",
+        "___id": "T000002R001311",
         "___s": true
     },
     {
@@ -42407,7 +42460,7 @@ window.reflection = [
         "memberof": "self.draw~drawPerfLines",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001310",
+        "___id": "T000002R001312",
         "___s": true
     },
     {
@@ -42435,7 +42488,7 @@ window.reflection = [
         "memberof": "self.draw~drawPerfLines",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001311",
+        "___id": "T000002R001313",
         "___s": true
     },
     {
@@ -42463,7 +42516,7 @@ window.reflection = [
         "memberof": "self.draw~drawPerfLines",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001312",
+        "___id": "T000002R001314",
         "___s": true
     },
     {
@@ -42491,7 +42544,7 @@ window.reflection = [
         "memberof": "self.draw~drawPerfLines",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001313",
+        "___id": "T000002R001315",
         "___s": true
     },
     {
@@ -42520,7 +42573,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawPerfLines",
         "scope": "inner",
-        "___id": "T000002R001314",
+        "___id": "T000002R001316",
         "___s": true
     },
     {
@@ -42549,7 +42602,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawPerfLines",
         "scope": "inner",
-        "___id": "T000002R001315",
+        "___id": "T000002R001317",
         "___s": true
     },
     {
@@ -42578,7 +42631,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawPerfLines",
         "scope": "inner",
-        "___id": "T000002R001316",
+        "___id": "T000002R001318",
         "___s": true
     },
     {
@@ -42606,7 +42659,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001317",
+        "___id": "T000002R001319",
         "___s": true
     },
     {
@@ -42646,7 +42699,7 @@ window.reflection = [
         "memberof": "self.draw~drawPerfLines",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001318",
+        "___id": "T000002R001320",
         "___s": true
     },
     {
@@ -42672,7 +42725,7 @@ window.reflection = [
         "memberof": "self.draw~drawPerfLines~dpl",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001319",
+        "___id": "T000002R001321",
         "___s": true
     },
     {
@@ -42700,7 +42753,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001320",
+        "___id": "T000002R001322",
         "___s": true
     },
     {
@@ -42728,7 +42781,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001321",
+        "___id": "T000002R001323",
         "___s": true
     },
     {
@@ -42757,7 +42810,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawPerfLines~dpl",
         "scope": "inner",
-        "___id": "T000002R001322",
+        "___id": "T000002R001324",
         "___s": true
     },
     {
@@ -42785,7 +42838,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001323",
+        "___id": "T000002R001325",
         "___s": true
     },
     {
@@ -42813,7 +42866,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001324",
+        "___id": "T000002R001326",
         "___s": true
     },
     {
@@ -42841,7 +42894,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001325",
+        "___id": "T000002R001327",
         "___s": true
     },
     {
@@ -42869,7 +42922,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001326",
+        "___id": "T000002R001328",
         "___s": true
     },
     {
@@ -42940,7 +42993,7 @@ window.reflection = [
         "memberof": "self.draw",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001327",
+        "___id": "T000002R001329",
         "___s": true
     },
     {
@@ -42966,7 +43019,7 @@ window.reflection = [
         "memberof": "self.draw~drawDebug",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001328",
+        "___id": "T000002R001330",
         "___s": true
     },
     {
@@ -42995,7 +43048,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug",
         "scope": "inner",
-        "___id": "T000002R001329",
+        "___id": "T000002R001331",
         "___s": true
     },
     {
@@ -43023,7 +43076,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001330",
+        "___id": "T000002R001332",
         "___s": true
     },
     {
@@ -43052,7 +43105,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug",
         "scope": "inner",
-        "___id": "T000002R001331",
+        "___id": "T000002R001333",
         "___s": true
     },
     {
@@ -43081,7 +43134,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001332",
+        "___id": "T000002R001334",
         "___s": true
     },
     {
@@ -43110,7 +43163,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001333",
+        "___id": "T000002R001335",
         "___s": true
     },
     {
@@ -43139,7 +43192,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001334",
+        "___id": "T000002R001336",
         "___s": true
     },
     {
@@ -43165,7 +43218,7 @@ window.reflection = [
         "longname": "columnIndex",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001335",
+        "___id": "T000002R001337",
         "___s": true
     },
     {
@@ -43191,7 +43244,7 @@ window.reflection = [
         "longname": "rowIndex",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001336",
+        "___id": "T000002R001338",
         "___s": true
     },
     {
@@ -43220,7 +43273,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001337",
+        "___id": "T000002R001339",
         "___s": true
     },
     {
@@ -43246,7 +43299,7 @@ window.reflection = [
         "longname": "columnIndex",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001338",
+        "___id": "T000002R001340",
         "___s": true
     },
     {
@@ -43272,7 +43325,7 @@ window.reflection = [
         "longname": "rowIndex",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001339",
+        "___id": "T000002R001341",
         "___s": true
     },
     {
@@ -43301,7 +43354,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001340",
+        "___id": "T000002R001342",
         "___s": true
     },
     {
@@ -43330,7 +43383,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001341",
+        "___id": "T000002R001343",
         "___s": true
     },
     {
@@ -43359,7 +43412,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001342",
+        "___id": "T000002R001344",
         "___s": true
     },
     {
@@ -43388,7 +43441,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001343",
+        "___id": "T000002R001345",
         "___s": true
     },
     {
@@ -43417,7 +43470,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001344",
+        "___id": "T000002R001346",
         "___s": true
     },
     {
@@ -43446,7 +43499,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001345",
+        "___id": "T000002R001347",
         "___s": true
     },
     {
@@ -43472,7 +43525,7 @@ window.reflection = [
         "longname": "y",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001346",
+        "___id": "T000002R001348",
         "___s": true
     },
     {
@@ -43498,7 +43551,7 @@ window.reflection = [
         "longname": "y",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001347",
+        "___id": "T000002R001349",
         "___s": true
     },
     {
@@ -43527,7 +43580,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001348",
+        "___id": "T000002R001350",
         "___s": true
     },
     {
@@ -43556,7 +43609,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001349",
+        "___id": "T000002R001351",
         "___s": true
     },
     {
@@ -43585,7 +43638,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001350",
+        "___id": "T000002R001352",
         "___s": true
     },
     {
@@ -43614,7 +43667,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001351",
+        "___id": "T000002R001353",
         "___s": true
     },
     {
@@ -43643,7 +43696,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001352",
+        "___id": "T000002R001354",
         "___s": true
     },
     {
@@ -43672,7 +43725,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001353",
+        "___id": "T000002R001355",
         "___s": true
     },
     {
@@ -43701,7 +43754,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001354",
+        "___id": "T000002R001356",
         "___s": true
     },
     {
@@ -43730,7 +43783,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001355",
+        "___id": "T000002R001357",
         "___s": true
     },
     {
@@ -43759,7 +43812,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001356",
+        "___id": "T000002R001358",
         "___s": true
     },
     {
@@ -43788,7 +43841,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001357",
+        "___id": "T000002R001359",
         "___s": true
     },
     {
@@ -43817,7 +43870,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001358",
+        "___id": "T000002R001360",
         "___s": true
     },
     {
@@ -43846,7 +43899,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001359",
+        "___id": "T000002R001361",
         "___s": true
     },
     {
@@ -43875,7 +43928,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001360",
+        "___id": "T000002R001362",
         "___s": true
     },
     {
@@ -43904,7 +43957,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001361",
+        "___id": "T000002R001363",
         "___s": true
     },
     {
@@ -43933,7 +43986,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001362",
+        "___id": "T000002R001364",
         "___s": true
     },
     {
@@ -43962,7 +44015,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001363",
+        "___id": "T000002R001365",
         "___s": true
     },
     {
@@ -43991,7 +44044,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001364",
+        "___id": "T000002R001366",
         "___s": true
     },
     {
@@ -44020,7 +44073,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001365",
+        "___id": "T000002R001367",
         "___s": true
     },
     {
@@ -44049,7 +44102,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001366",
+        "___id": "T000002R001368",
         "___s": true
     },
     {
@@ -44078,7 +44131,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001367",
+        "___id": "T000002R001369",
         "___s": true
     },
     {
@@ -44107,7 +44160,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001368",
+        "___id": "T000002R001370",
         "___s": true
     },
     {
@@ -44136,7 +44189,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001369",
+        "___id": "T000002R001371",
         "___s": true
     },
     {
@@ -44165,7 +44218,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001370",
+        "___id": "T000002R001372",
         "___s": true
     },
     {
@@ -44194,7 +44247,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001371",
+        "___id": "T000002R001373",
         "___s": true
     },
     {
@@ -44223,7 +44276,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.draw~drawDebug~d",
         "scope": "static",
-        "___id": "T000002R001372",
+        "___id": "T000002R001374",
         "___s": true
     },
     {
@@ -44251,7 +44304,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001373",
+        "___id": "T000002R001375",
         "___s": true
     },
     {
@@ -44279,7 +44332,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001374",
+        "___id": "T000002R001376",
         "___s": true
     },
     {
@@ -44307,7 +44360,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001375",
+        "___id": "T000002R001377",
         "___s": true
     },
     {
@@ -44335,7 +44388,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001376",
+        "___id": "T000002R001378",
         "___s": true
     },
     {
@@ -44363,7 +44416,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R001377",
+        "___id": "T000002R001379",
         "___s": true
     },
     {
@@ -44389,7 +44442,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001378",
+        "___id": "T000002R001380",
         "___s": true
     },
     {
@@ -44423,7 +44476,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001379",
+        "___id": "T000002R001381",
         "___s": true
     },
     {
@@ -44449,7 +44502,7 @@ window.reflection = [
         "memberof": "<anonymous>~calculateCssSize",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001380",
+        "___id": "T000002R001382",
         "___s": true
     },
     {
@@ -44478,7 +44531,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~calculateCssSize",
         "scope": "inner",
-        "___id": "T000002R001381",
+        "___id": "T000002R001383",
         "___s": true
     },
     {
@@ -44507,7 +44560,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001382",
+        "___id": "T000002R001384",
         "___s": true
     },
     {
@@ -44545,7 +44598,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.addEventListener",
-        "___id": "T000002R001383",
+        "___id": "T000002R001385",
         "___s": true
     },
     {
@@ -44578,7 +44631,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001384",
+        "___id": "T000002R001386",
         "___s": true
     },
     {
@@ -44606,7 +44659,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001385",
+        "___id": "T000002R001387",
         "___s": true
     },
     {
@@ -44644,7 +44697,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.removeEventListener",
-        "___id": "T000002R001386",
+        "___id": "T000002R001388",
         "___s": true
     },
     {
@@ -44677,7 +44730,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001387",
+        "___id": "T000002R001389",
         "___s": true
     },
     {
@@ -44715,7 +44768,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.dispatchEvent",
-        "___id": "T000002R001388",
+        "___id": "T000002R001390",
         "___s": true
     },
     {
@@ -44750,7 +44803,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001389",
+        "___id": "T000002R001391",
         "___s": true
     },
     {
@@ -44776,7 +44829,7 @@ window.reflection = [
         "memberof": "self.dispatchEvent",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001390",
+        "___id": "T000002R001392",
         "___s": true
     },
     {
@@ -44807,7 +44860,7 @@ window.reflection = [
         "memberof": "self.dispatchEvent",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001391",
+        "___id": "T000002R001393",
         "___s": true
     },
     {
@@ -44836,7 +44889,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.dispatchEvent~preventDefault",
         "scope": "inner",
-        "___id": "T000002R001392",
+        "___id": "T000002R001394",
         "___s": true
     },
     {
@@ -44864,7 +44917,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "e",
         "scope": "static",
-        "___id": "T000002R001393",
+        "___id": "T000002R001395",
         "___s": true
     },
     {
@@ -44892,7 +44945,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "e",
         "scope": "static",
-        "___id": "T000002R001394",
+        "___id": "T000002R001396",
         "___s": true
     },
     {
@@ -44929,7 +44982,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001395",
+        "___id": "T000002R001397",
         "___s": true
     },
     {
@@ -44957,7 +45010,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001396",
+        "___id": "T000002R001398",
         "___s": true
     },
     {
@@ -44985,7 +45038,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001397",
+        "___id": "T000002R001399",
         "___s": true
     },
     {
@@ -45013,7 +45066,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001398",
+        "___id": "T000002R001400",
         "___s": true
     },
     {
@@ -45041,7 +45094,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001399",
+        "___id": "T000002R001401",
         "___s": true
     },
     {
@@ -45069,7 +45122,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.canvas.style",
         "scope": "static",
-        "___id": "T000002R001400",
+        "___id": "T000002R001402",
         "___s": true
     },
     {
@@ -45097,7 +45150,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.canvas.style",
         "scope": "static",
-        "___id": "T000002R001401",
+        "___id": "T000002R001403",
         "___s": true
     },
     {
@@ -45125,7 +45178,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.canvas",
         "scope": "static",
-        "___id": "T000002R001402",
+        "___id": "T000002R001404",
         "___s": true
     },
     {
@@ -45153,7 +45206,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.canvas",
         "scope": "static",
-        "___id": "T000002R001403",
+        "___id": "T000002R001405",
         "___s": true
     },
     {
@@ -45181,7 +45234,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001404",
+        "___id": "T000002R001406",
         "___s": true
     },
     {
@@ -45209,7 +45262,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001405",
+        "___id": "T000002R001407",
         "___s": true
     },
     {
@@ -45264,7 +45317,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001406",
+        "___id": "T000002R001408",
         "___s": true
     },
     {
@@ -45292,7 +45345,7 @@ window.reflection = [
         "memberof": "self.resize",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001407",
+        "___id": "T000002R001409",
         "___s": true
     },
     {
@@ -45320,7 +45373,7 @@ window.reflection = [
         "memberof": "self.resize",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001408",
+        "___id": "T000002R001410",
         "___s": true
     },
     {
@@ -45348,7 +45401,7 @@ window.reflection = [
         "memberof": "self.resize",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001409",
+        "___id": "T000002R001411",
         "___s": true
     },
     {
@@ -45374,7 +45427,7 @@ window.reflection = [
         "memberof": "self.resize",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001410",
+        "___id": "T000002R001412",
         "___s": true
     },
     {
@@ -45400,7 +45453,7 @@ window.reflection = [
         "memberof": "self.resize",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001411",
+        "___id": "T000002R001413",
         "___s": true
     },
     {
@@ -45428,7 +45481,7 @@ window.reflection = [
         "memberof": "self.resize",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001412",
+        "___id": "T000002R001414",
         "___s": true
     },
     {
@@ -45456,7 +45509,7 @@ window.reflection = [
         "memberof": "self.resize",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001413",
+        "___id": "T000002R001415",
         "___s": true
     },
     {
@@ -45484,7 +45537,7 @@ window.reflection = [
         "memberof": "self.resize",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001414",
+        "___id": "T000002R001416",
         "___s": true
     },
     {
@@ -45512,7 +45565,7 @@ window.reflection = [
         "memberof": "self.resize",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001415",
+        "___id": "T000002R001417",
         "___s": true
     },
     {
@@ -45540,7 +45593,7 @@ window.reflection = [
         "memberof": "self.resize",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001416",
+        "___id": "T000002R001418",
         "___s": true
     },
     {
@@ -45568,7 +45621,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001417",
+        "___id": "T000002R001419",
         "___s": true
     },
     {
@@ -45596,7 +45649,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001418",
+        "___id": "T000002R001420",
         "___s": true
     },
     {
@@ -45625,7 +45678,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.resize",
         "scope": "inner",
-        "___id": "T000002R001419",
+        "___id": "T000002R001421",
         "___s": true
     },
     {
@@ -45654,7 +45707,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.resize",
         "scope": "inner",
-        "___id": "T000002R001420",
+        "___id": "T000002R001422",
         "___s": true
     },
     {
@@ -45683,7 +45736,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.resize",
         "scope": "inner",
-        "___id": "T000002R001421",
+        "___id": "T000002R001423",
         "___s": true
     },
     {
@@ -45711,7 +45764,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001422",
+        "___id": "T000002R001424",
         "___s": true
     },
     {
@@ -45739,7 +45792,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001423",
+        "___id": "T000002R001425",
         "___s": true
     },
     {
@@ -45767,7 +45820,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001424",
+        "___id": "T000002R001426",
         "___s": true
     },
     {
@@ -45795,7 +45848,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001425",
+        "___id": "T000002R001427",
         "___s": true
     },
     {
@@ -45823,7 +45876,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001426",
+        "___id": "T000002R001428",
         "___s": true
     },
     {
@@ -45851,7 +45904,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001427",
+        "___id": "T000002R001429",
         "___s": true
     },
     {
@@ -45879,7 +45932,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001428",
+        "___id": "T000002R001430",
         "___s": true
     },
     {
@@ -45907,7 +45960,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001429",
+        "___id": "T000002R001431",
         "___s": true
     },
     {
@@ -45935,7 +45988,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001430",
+        "___id": "T000002R001432",
         "___s": true
     },
     {
@@ -45963,7 +46016,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001431",
+        "___id": "T000002R001433",
         "___s": true
     },
     {
@@ -45991,7 +46044,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001432",
+        "___id": "T000002R001434",
         "___s": true
     },
     {
@@ -46019,7 +46072,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001433",
+        "___id": "T000002R001435",
         "___s": true
     },
     {
@@ -46047,7 +46100,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001434",
+        "___id": "T000002R001436",
         "___s": true
     },
     {
@@ -46088,7 +46141,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001435",
+        "___id": "T000002R001437",
         "___s": true
     },
     {
@@ -46116,7 +46169,7 @@ window.reflection = [
         "memberof": "self.scroll",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001436",
+        "___id": "T000002R001438",
         "___s": true
     },
     {
@@ -46144,7 +46197,7 @@ window.reflection = [
         "memberof": "self.scroll",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001437",
+        "___id": "T000002R001439",
         "___s": true
     },
     {
@@ -46172,7 +46225,7 @@ window.reflection = [
         "memberof": "self.scroll",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001438",
+        "___id": "T000002R001440",
         "___s": true
     },
     {
@@ -46200,7 +46253,7 @@ window.reflection = [
         "memberof": "self.scroll",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001439",
+        "___id": "T000002R001441",
         "___s": true
     },
     {
@@ -46228,7 +46281,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001440",
+        "___id": "T000002R001442",
         "___s": true
     },
     {
@@ -46256,7 +46309,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001441",
+        "___id": "T000002R001443",
         "___s": true
     },
     {
@@ -46284,7 +46337,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001442",
+        "___id": "T000002R001444",
         "___s": true
     },
     {
@@ -46312,7 +46365,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001443",
+        "___id": "T000002R001445",
         "___s": true
     },
     {
@@ -46340,7 +46393,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001444",
+        "___id": "T000002R001446",
         "___s": true
     },
     {
@@ -46368,7 +46421,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001445",
+        "___id": "T000002R001447",
         "___s": true
     },
     {
@@ -46396,7 +46449,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001446",
+        "___id": "T000002R001448",
         "___s": true
     },
     {
@@ -46424,7 +46477,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001447",
+        "___id": "T000002R001449",
         "___s": true
     },
     {
@@ -46452,7 +46505,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001448",
+        "___id": "T000002R001450",
         "___s": true
     },
     {
@@ -46480,7 +46533,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001449",
+        "___id": "T000002R001451",
         "___s": true
     },
     {
@@ -46508,7 +46561,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001450",
+        "___id": "T000002R001452",
         "___s": true
     },
     {
@@ -46536,7 +46589,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001451",
+        "___id": "T000002R001453",
         "___s": true
     },
     {
@@ -46564,7 +46617,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001452",
+        "___id": "T000002R001454",
         "___s": true
     },
     {
@@ -46590,7 +46643,7 @@ window.reflection = [
         "longname": "top",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001453",
+        "___id": "T000002R001455",
         "___s": true
     },
     {
@@ -46616,7 +46669,7 @@ window.reflection = [
         "longname": "left",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001454",
+        "___id": "T000002R001456",
         "___s": true
     },
     {
@@ -46677,7 +46730,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001455",
+        "___id": "T000002R001457",
         "___s": true
     },
     {
@@ -46705,7 +46758,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001456",
+        "___id": "T000002R001458",
         "___s": true
     },
     {
@@ -46733,7 +46786,7 @@ window.reflection = [
         "memberof": "self.mousemove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001457",
+        "___id": "T000002R001459",
         "___s": true
     },
     {
@@ -46759,7 +46812,7 @@ window.reflection = [
         "memberof": "self.mousemove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001458",
+        "___id": "T000002R001460",
         "___s": true
     },
     {
@@ -46787,7 +46840,7 @@ window.reflection = [
         "memberof": "self.mousemove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001459",
+        "___id": "T000002R001461",
         "___s": true
     },
     {
@@ -46813,7 +46866,7 @@ window.reflection = [
         "memberof": "self.mousemove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001460",
+        "___id": "T000002R001462",
         "___s": true
     },
     {
@@ -46839,7 +46892,7 @@ window.reflection = [
         "memberof": "self.mousemove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001461",
+        "___id": "T000002R001463",
         "___s": true
     },
     {
@@ -46867,7 +46920,7 @@ window.reflection = [
         "memberof": "self.mousemove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001462",
+        "___id": "T000002R001464",
         "___s": true
     },
     {
@@ -46895,7 +46948,7 @@ window.reflection = [
         "memberof": "self.mousemove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001463",
+        "___id": "T000002R001465",
         "___s": true
     },
     {
@@ -46923,7 +46976,7 @@ window.reflection = [
         "memberof": "self.mousemove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001464",
+        "___id": "T000002R001466",
         "___s": true
     },
     {
@@ -46949,7 +47002,7 @@ window.reflection = [
         "memberof": "self.mousemove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001465",
+        "___id": "T000002R001467",
         "___s": true
     },
     {
@@ -46977,7 +47030,7 @@ window.reflection = [
         "memberof": "self.mousemove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001466",
+        "___id": "T000002R001468",
         "___s": true
     },
     {
@@ -47004,7 +47057,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.mousemove~ev",
         "scope": "static",
-        "___id": "T000002R001467",
+        "___id": "T000002R001469",
         "___s": true
     },
     {
@@ -47031,7 +47084,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.mousemove~ev",
         "scope": "static",
-        "___id": "T000002R001468",
+        "___id": "T000002R001470",
         "___s": true
     },
     {
@@ -47058,7 +47111,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.mousemove~ev",
         "scope": "static",
-        "___id": "T000002R001469",
+        "___id": "T000002R001471",
         "___s": true
     },
     {
@@ -47085,7 +47138,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.mousemove~ev",
         "scope": "static",
-        "___id": "T000002R001470",
+        "___id": "T000002R001472",
         "___s": true
     },
     {
@@ -47113,7 +47166,7 @@ window.reflection = [
         "memberof": "self.mousemove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001471",
+        "___id": "T000002R001473",
         "___s": true
     },
     {
@@ -47139,7 +47192,7 @@ window.reflection = [
         "longname": "x",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001472",
+        "___id": "T000002R001474",
         "___s": true
     },
     {
@@ -47165,7 +47218,7 @@ window.reflection = [
         "longname": "y",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001473",
+        "___id": "T000002R001475",
         "___s": true
     },
     {
@@ -47193,7 +47246,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001474",
+        "___id": "T000002R001476",
         "___s": true
     },
     {
@@ -47221,7 +47274,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001475",
+        "___id": "T000002R001477",
         "___s": true
     },
     {
@@ -47250,7 +47303,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.mousemove~ev",
         "scope": "static",
-        "___id": "T000002R001476",
+        "___id": "T000002R001478",
         "___s": true
     },
     {
@@ -47279,7 +47332,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.mousemove~ev",
         "scope": "static",
-        "___id": "T000002R001477",
+        "___id": "T000002R001479",
         "___s": true
     },
     {
@@ -47307,7 +47360,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001478",
+        "___id": "T000002R001480",
         "___s": true
     },
     {
@@ -47335,7 +47388,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001479",
+        "___id": "T000002R001481",
         "___s": true
     },
     {
@@ -47363,7 +47416,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001480",
+        "___id": "T000002R001482",
         "___s": true
     },
     {
@@ -47391,7 +47444,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001481",
+        "___id": "T000002R001483",
         "___s": true
     },
     {
@@ -47419,7 +47472,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.canvas.style",
         "scope": "static",
-        "___id": "T000002R001482",
+        "___id": "T000002R001484",
         "___s": true
     },
     {
@@ -47447,7 +47500,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.canvas.style",
         "scope": "static",
-        "___id": "T000002R001483",
+        "___id": "T000002R001485",
         "___s": true
     },
     {
@@ -47475,7 +47528,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001484",
+        "___id": "T000002R001486",
         "___s": true
     },
     {
@@ -47504,7 +47557,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.mousemove",
         "scope": "inner",
-        "___id": "T000002R001485",
+        "___id": "T000002R001487",
         "___s": true
     },
     {
@@ -47533,7 +47586,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.mousemove",
         "scope": "inner",
-        "___id": "T000002R001486",
+        "___id": "T000002R001488",
         "___s": true
     },
     {
@@ -47560,7 +47613,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.mousemove~delta",
         "scope": "static",
-        "___id": "T000002R001487",
+        "___id": "T000002R001489",
         "___s": true
     },
     {
@@ -47587,7 +47640,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.mousemove~delta",
         "scope": "static",
-        "___id": "T000002R001488",
+        "___id": "T000002R001490",
         "___s": true
     },
     {
@@ -47615,7 +47668,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001489",
+        "___id": "T000002R001491",
         "___s": true
     },
     {
@@ -47642,7 +47695,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.dragStartObject",
         "scope": "static",
-        "___id": "T000002R001490",
+        "___id": "T000002R001492",
         "___s": true
     },
     {
@@ -47669,7 +47722,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.dragStartObject",
         "scope": "static",
-        "___id": "T000002R001491",
+        "___id": "T000002R001493",
         "___s": true
     },
     {
@@ -47698,7 +47751,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.mousemove",
         "scope": "inner",
-        "___id": "T000002R001492",
+        "___id": "T000002R001494",
         "___s": true
     },
     {
@@ -47725,7 +47778,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.mousemove~dragBounds",
         "scope": "static",
-        "___id": "T000002R001493",
+        "___id": "T000002R001495",
         "___s": true
     },
     {
@@ -47752,7 +47805,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.mousemove~dragBounds",
         "scope": "static",
-        "___id": "T000002R001494",
+        "___id": "T000002R001496",
         "___s": true
     },
     {
@@ -47779,7 +47832,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.mousemove~dragBounds",
         "scope": "static",
-        "___id": "T000002R001495",
+        "___id": "T000002R001497",
         "___s": true
     },
     {
@@ -47806,7 +47859,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.mousemove~dragBounds",
         "scope": "static",
-        "___id": "T000002R001496",
+        "___id": "T000002R001498",
         "___s": true
     },
     {
@@ -47835,7 +47888,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.mousemove~dragBounds",
         "scope": "static",
-        "___id": "T000002R001497",
+        "___id": "T000002R001499",
         "___s": true
     },
     {
@@ -47864,7 +47917,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.mousemove~dragBounds",
         "scope": "static",
-        "___id": "T000002R001498",
+        "___id": "T000002R001500",
         "___s": true
     },
     {
@@ -47893,7 +47946,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.mousemove~dragBounds",
         "scope": "static",
-        "___id": "T000002R001499",
+        "___id": "T000002R001501",
         "___s": true
     },
     {
@@ -47922,7 +47975,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.mousemove~dragBounds",
         "scope": "static",
-        "___id": "T000002R001500",
+        "___id": "T000002R001502",
         "___s": true
     },
     {
@@ -47950,7 +48003,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001501",
+        "___id": "T000002R001503",
         "___s": true
     },
     {
@@ -47978,7 +48031,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001502",
+        "___id": "T000002R001504",
         "___s": true
     },
     {
@@ -48006,7 +48059,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001503",
+        "___id": "T000002R001505",
         "___s": true
     },
     {
@@ -48035,7 +48088,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.mousemove",
         "scope": "inner",
-        "___id": "T000002R001504",
+        "___id": "T000002R001506",
         "___s": true
     },
     {
@@ -48064,7 +48117,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.mousemove",
         "scope": "inner",
-        "___id": "T000002R001505",
+        "___id": "T000002R001507",
         "___s": true
     },
     {
@@ -48093,7 +48146,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.mousemove",
         "scope": "inner",
-        "___id": "T000002R001506",
+        "___id": "T000002R001508",
         "___s": true
     },
     {
@@ -48121,7 +48174,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001507",
+        "___id": "T000002R001509",
         "___s": true
     },
     {
@@ -48162,7 +48215,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001508",
+        "___id": "T000002R001510",
         "___s": true
     },
     {
@@ -48188,7 +48241,7 @@ window.reflection = [
         "memberof": "self.click",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001509",
+        "___id": "T000002R001511",
         "___s": true
     },
     {
@@ -48216,7 +48269,7 @@ window.reflection = [
         "memberof": "self.click",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001510",
+        "___id": "T000002R001512",
         "___s": true
     },
     {
@@ -48244,7 +48297,7 @@ window.reflection = [
         "memberof": "self.click",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001511",
+        "___id": "T000002R001513",
         "___s": true
     },
     {
@@ -48272,7 +48325,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001512",
+        "___id": "T000002R001514",
         "___s": true
     },
     {
@@ -48300,7 +48353,7 @@ window.reflection = [
         "memberof": "self.click",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001513",
+        "___id": "T000002R001515",
         "___s": true
     },
     {
@@ -48326,7 +48379,7 @@ window.reflection = [
         "longname": "selectedData",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001514",
+        "___id": "T000002R001516",
         "___s": true
     },
     {
@@ -48352,7 +48405,7 @@ window.reflection = [
         "longname": "selections",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001515",
+        "___id": "T000002R001517",
         "___s": true
     },
     {
@@ -48378,7 +48431,7 @@ window.reflection = [
         "longname": "selectionBounds",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001516",
+        "___id": "T000002R001518",
         "___s": true
     },
     {
@@ -48406,7 +48459,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001517",
+        "___id": "T000002R001519",
         "___s": true
     },
     {
@@ -48435,7 +48488,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.click",
         "scope": "inner",
-        "___id": "T000002R001518",
+        "___id": "T000002R001520",
         "___s": true
     },
     {
@@ -48461,7 +48514,7 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001519",
+        "___id": "T000002R001521",
         "___s": true
     },
     {
@@ -48487,7 +48540,7 @@ window.reflection = [
         "longname": "cell",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001520",
+        "___id": "T000002R001522",
         "___s": true
     },
     {
@@ -48515,7 +48568,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001521",
+        "___id": "T000002R001523",
         "___s": true
     },
     {
@@ -48543,7 +48596,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001522",
+        "___id": "T000002R001524",
         "___s": true
     },
     {
@@ -48571,7 +48624,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001523",
+        "___id": "T000002R001525",
         "___s": true
     },
     {
@@ -48599,7 +48652,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001524",
+        "___id": "T000002R001526",
         "___s": true
     },
     {
@@ -48639,7 +48692,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001525",
+        "___id": "T000002R001527",
         "___s": true
     },
     {
@@ -48665,7 +48718,7 @@ window.reflection = [
         "memberof": "self.dragResizeColumn",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001526",
+        "___id": "T000002R001528",
         "___s": true
     },
     {
@@ -48691,7 +48744,7 @@ window.reflection = [
         "memberof": "self.dragResizeColumn",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001527",
+        "___id": "T000002R001529",
         "___s": true
     },
     {
@@ -48717,7 +48770,7 @@ window.reflection = [
         "memberof": "self.dragResizeColumn",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001528",
+        "___id": "T000002R001530",
         "___s": true
     },
     {
@@ -48746,7 +48799,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.dragResizeColumn",
         "scope": "inner",
-        "___id": "T000002R001529",
+        "___id": "T000002R001531",
         "___s": true
     },
     {
@@ -48775,7 +48828,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.dragResizeColumn",
         "scope": "inner",
-        "___id": "T000002R001530",
+        "___id": "T000002R001532",
         "___s": true
     },
     {
@@ -48804,7 +48857,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.dragResizeColumn",
         "scope": "inner",
-        "___id": "T000002R001531",
+        "___id": "T000002R001533",
         "___s": true
     },
     {
@@ -48833,7 +48886,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.dragResizeColumn",
         "scope": "inner",
-        "___id": "T000002R001532",
+        "___id": "T000002R001534",
         "___s": true
     },
     {
@@ -48862,7 +48915,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.dragResizeColumn",
         "scope": "inner",
-        "___id": "T000002R001533",
+        "___id": "T000002R001535",
         "___s": true
     },
     {
@@ -48888,7 +48941,7 @@ window.reflection = [
         "longname": "x",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001534",
+        "___id": "T000002R001536",
         "___s": true
     },
     {
@@ -48914,7 +48967,7 @@ window.reflection = [
         "longname": "y",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001535",
+        "___id": "T000002R001537",
         "___s": true
     },
     {
@@ -48940,7 +48993,7 @@ window.reflection = [
         "longname": "draggingItem",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001536",
+        "___id": "T000002R001538",
         "___s": true
     },
     {
@@ -48968,7 +49021,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001537",
+        "___id": "T000002R001539",
         "___s": true
     },
     {
@@ -48996,7 +49049,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.sizes",
         "scope": "static",
-        "___id": "T000002R001538",
+        "___id": "T000002R001540",
         "___s": true
     },
     {
@@ -49024,7 +49077,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.sizes",
         "scope": "static",
-        "___id": "T000002R001539",
+        "___id": "T000002R001541",
         "___s": true
     },
     {
@@ -49052,7 +49105,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.style",
         "scope": "static",
-        "___id": "T000002R001540",
+        "___id": "T000002R001542",
         "___s": true
     },
     {
@@ -49080,7 +49133,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.sizes",
         "scope": "static",
-        "___id": "T000002R001541",
+        "___id": "T000002R001543",
         "___s": true
     },
     {
@@ -49106,7 +49159,7 @@ window.reflection = [
         "longname": "row",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001542",
+        "___id": "T000002R001544",
         "___s": true
     },
     {
@@ -49134,7 +49187,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001543",
+        "___id": "T000002R001545",
         "___s": true
     },
     {
@@ -49164,7 +49217,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001544",
+        "___id": "T000002R001546",
         "___s": true
     },
     {
@@ -49192,7 +49245,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001545",
+        "___id": "T000002R001547",
         "___s": true
     },
     {
@@ -49234,7 +49287,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001546",
+        "___id": "T000002R001548",
         "___s": true
     },
     {
@@ -49262,7 +49315,7 @@ window.reflection = [
         "memberof": "self.scrollGrid",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001547",
+        "___id": "T000002R001549",
         "___s": true
     },
     {
@@ -49290,7 +49343,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.pointerLockPosition",
         "scope": "static",
-        "___id": "T000002R001548",
+        "___id": "T000002R001550",
         "___s": true
     },
     {
@@ -49318,7 +49371,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.pointerLockPosition",
         "scope": "static",
-        "___id": "T000002R001549",
+        "___id": "T000002R001551",
         "___s": true
     },
     {
@@ -49346,7 +49399,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.pointerLockPosition",
         "scope": "static",
-        "___id": "T000002R001550",
+        "___id": "T000002R001552",
         "___s": true
     },
     {
@@ -49374,7 +49427,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.pointerLockPosition",
         "scope": "static",
-        "___id": "T000002R001551",
+        "___id": "T000002R001553",
         "___s": true
     },
     {
@@ -49403,7 +49456,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollGrid",
         "scope": "inner",
-        "___id": "T000002R001552",
+        "___id": "T000002R001554",
         "___s": true
     },
     {
@@ -49431,7 +49484,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001553",
+        "___id": "T000002R001555",
         "___s": true
     },
     {
@@ -49459,7 +49512,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001554",
+        "___id": "T000002R001556",
         "___s": true
     },
     {
@@ -49487,7 +49540,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001555",
+        "___id": "T000002R001557",
         "___s": true
     },
     {
@@ -49515,7 +49568,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollStart",
         "scope": "static",
-        "___id": "T000002R001556",
+        "___id": "T000002R001558",
         "___s": true
     },
     {
@@ -49543,7 +49596,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001557",
+        "___id": "T000002R001559",
         "___s": true
     },
     {
@@ -49571,7 +49624,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001558",
+        "___id": "T000002R001560",
         "___s": true
     },
     {
@@ -49599,7 +49652,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollStart",
         "scope": "static",
-        "___id": "T000002R001559",
+        "___id": "T000002R001561",
         "___s": true
     },
     {
@@ -49627,7 +49680,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001560",
+        "___id": "T000002R001562",
         "___s": true
     },
     {
@@ -49655,7 +49708,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001561",
+        "___id": "T000002R001563",
         "___s": true
     },
     {
@@ -49683,7 +49736,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001562",
+        "___id": "T000002R001564",
         "___s": true
     },
     {
@@ -49711,7 +49764,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001563",
+        "___id": "T000002R001565",
         "___s": true
     },
     {
@@ -49739,7 +49792,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001564",
+        "___id": "T000002R001566",
         "___s": true
     },
     {
@@ -49767,7 +49820,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001565",
+        "___id": "T000002R001567",
         "___s": true
     },
     {
@@ -49795,7 +49848,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001566",
+        "___id": "T000002R001568",
         "___s": true
     },
     {
@@ -49823,7 +49876,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001567",
+        "___id": "T000002R001569",
         "___s": true
     },
     {
@@ -49851,7 +49904,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001568",
+        "___id": "T000002R001570",
         "___s": true
     },
     {
@@ -49879,7 +49932,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001569",
+        "___id": "T000002R001571",
         "___s": true
     },
     {
@@ -49907,7 +49960,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001570",
+        "___id": "T000002R001572",
         "___s": true
     },
     {
@@ -49935,7 +49988,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001571",
+        "___id": "T000002R001573",
         "___s": true
     },
     {
@@ -49962,7 +50015,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001572",
+        "___id": "T000002R001574",
         "___s": true
     },
     {
@@ -49999,7 +50052,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001573",
+        "___id": "T000002R001575",
         "___s": true
     },
     {
@@ -50025,7 +50078,7 @@ window.reflection = [
         "memberof": "self.dragReorder",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001574",
+        "___id": "T000002R001576",
         "___s": true
     },
     {
@@ -50051,7 +50104,7 @@ window.reflection = [
         "memberof": "self.dragReorder",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001575",
+        "___id": "T000002R001577",
         "___s": true
     },
     {
@@ -50077,7 +50130,7 @@ window.reflection = [
         "memberof": "self.dragReorder",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001576",
+        "___id": "T000002R001578",
         "___s": true
     },
     {
@@ -50106,7 +50159,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.dragReorder",
         "scope": "inner",
-        "___id": "T000002R001577",
+        "___id": "T000002R001579",
         "___s": true
     },
     {
@@ -50135,7 +50188,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.dragReorder",
         "scope": "inner",
-        "___id": "T000002R001578",
+        "___id": "T000002R001580",
         "___s": true
     },
     {
@@ -50164,7 +50217,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.dragReorder",
         "scope": "inner",
-        "___id": "T000002R001579",
+        "___id": "T000002R001581",
         "___s": true
     },
     {
@@ -50190,7 +50243,7 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001580",
+        "___id": "T000002R001582",
         "___s": true
     },
     {
@@ -50216,7 +50269,7 @@ window.reflection = [
         "longname": "source",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001581",
+        "___id": "T000002R001583",
         "___s": true
     },
     {
@@ -50242,7 +50295,7 @@ window.reflection = [
         "longname": "target",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001582",
+        "___id": "T000002R001584",
         "___s": true
     },
     {
@@ -50268,7 +50321,7 @@ window.reflection = [
         "longname": "dragMode",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001583",
+        "___id": "T000002R001585",
         "___s": true
     },
     {
@@ -50296,7 +50349,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001584",
+        "___id": "T000002R001586",
         "___s": true
     },
     {
@@ -50324,7 +50377,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001585",
+        "___id": "T000002R001587",
         "___s": true
     },
     {
@@ -50352,7 +50405,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.reorderObject",
         "scope": "static",
-        "___id": "T000002R001586",
+        "___id": "T000002R001588",
         "___s": true
     },
     {
@@ -50379,7 +50432,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.reorderObject.dragOffset",
         "scope": "static",
-        "___id": "T000002R001587",
+        "___id": "T000002R001589",
         "___s": true
     },
     {
@@ -50406,7 +50459,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.reorderObject.dragOffset",
         "scope": "static",
-        "___id": "T000002R001588",
+        "___id": "T000002R001590",
         "___s": true
     },
     {
@@ -50444,7 +50497,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001589",
+        "___id": "T000002R001591",
         "___s": true
     },
     {
@@ -50470,7 +50523,7 @@ window.reflection = [
         "memberof": "self.stopDragReorder",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001590",
+        "___id": "T000002R001592",
         "___s": true
     },
     {
@@ -50496,7 +50549,7 @@ window.reflection = [
         "memberof": "self.stopDragReorder",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001591",
+        "___id": "T000002R001593",
         "___s": true
     },
     {
@@ -50524,7 +50577,7 @@ window.reflection = [
         "memberof": "self.stopDragReorder",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001592",
+        "___id": "T000002R001594",
         "___s": true
     },
     {
@@ -50551,7 +50604,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.stopDragReorder~cr",
         "scope": "static",
-        "___id": "T000002R001593",
+        "___id": "T000002R001595",
         "___s": true
     },
     {
@@ -50578,7 +50631,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.stopDragReorder~cr",
         "scope": "static",
-        "___id": "T000002R001594",
+        "___id": "T000002R001596",
         "___s": true
     },
     {
@@ -50606,7 +50659,7 @@ window.reflection = [
         "memberof": "self.stopDragReorder",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001595",
+        "___id": "T000002R001597",
         "___s": true
     },
     {
@@ -50632,7 +50685,7 @@ window.reflection = [
         "longname": "\"row-reorder\"",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001596",
+        "___id": "T000002R001598",
         "___s": true
     },
     {
@@ -50658,7 +50711,7 @@ window.reflection = [
         "longname": "\"column-reorder\"",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001597",
+        "___id": "T000002R001599",
         "___s": true
     },
     {
@@ -50684,7 +50737,7 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001598",
+        "___id": "T000002R001600",
         "___s": true
     },
     {
@@ -50710,7 +50763,7 @@ window.reflection = [
         "longname": "source",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001599",
+        "___id": "T000002R001601",
         "___s": true
     },
     {
@@ -50736,7 +50789,7 @@ window.reflection = [
         "longname": "target",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001600",
+        "___id": "T000002R001602",
         "___s": true
     },
     {
@@ -50762,7 +50815,7 @@ window.reflection = [
         "longname": "dragMode",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001601",
+        "___id": "T000002R001603",
         "___s": true
     },
     {
@@ -50790,7 +50843,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001602",
+        "___id": "T000002R001604",
         "___s": true
     },
     {
@@ -50819,7 +50872,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.stopDragReorder",
         "scope": "inner",
-        "___id": "T000002R001603",
+        "___id": "T000002R001605",
         "___s": true
     },
     {
@@ -50848,7 +50901,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.stopDragReorder",
         "scope": "inner",
-        "___id": "T000002R001604",
+        "___id": "T000002R001606",
         "___s": true
     },
     {
@@ -50876,7 +50929,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001605",
+        "___id": "T000002R001607",
         "___s": true
     },
     {
@@ -50904,7 +50957,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001606",
+        "___id": "T000002R001608",
         "___s": true
     },
     {
@@ -50938,7 +50991,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001607",
+        "___id": "T000002R001609",
         "___s": true
     },
     {
@@ -50964,7 +51017,7 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001608",
+        "___id": "T000002R001610",
         "___s": true
     },
     {
@@ -50990,7 +51043,7 @@ window.reflection = [
         "longname": "cell",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001609",
+        "___id": "T000002R001611",
         "___s": true
     },
     {
@@ -51018,7 +51071,7 @@ window.reflection = [
         "memberof": "self.dragMove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001610",
+        "___id": "T000002R001612",
         "___s": true
     },
     {
@@ -51046,7 +51099,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001611",
+        "___id": "T000002R001613",
         "___s": true
     },
     {
@@ -51073,7 +51126,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.moveOffset",
         "scope": "static",
-        "___id": "T000002R001612",
+        "___id": "T000002R001614",
         "___s": true
     },
     {
@@ -51100,7 +51153,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.moveOffset",
         "scope": "static",
-        "___id": "T000002R001613",
+        "___id": "T000002R001615",
         "___s": true
     },
     {
@@ -51134,7 +51187,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001614",
+        "___id": "T000002R001616",
         "___s": true
     },
     {
@@ -51162,7 +51215,7 @@ window.reflection = [
         "memberof": "self.stopDragMove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001615",
+        "___id": "T000002R001617",
         "___s": true
     },
     {
@@ -51188,7 +51241,7 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001616",
+        "___id": "T000002R001618",
         "___s": true
     },
     {
@@ -51214,7 +51267,7 @@ window.reflection = [
         "longname": "cell",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001617",
+        "___id": "T000002R001619",
         "___s": true
     },
     {
@@ -51242,7 +51295,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001618",
+        "___id": "T000002R001620",
         "___s": true
     },
     {
@@ -51270,7 +51323,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001619",
+        "___id": "T000002R001621",
         "___s": true
     },
     {
@@ -51298,7 +51351,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001620",
+        "___id": "T000002R001622",
         "___s": true
     },
     {
@@ -51326,7 +51379,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001621",
+        "___id": "T000002R001623",
         "___s": true
     },
     {
@@ -51365,7 +51418,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001622",
+        "___id": "T000002R001624",
         "___s": true
     },
     {
@@ -51391,7 +51444,7 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001623",
+        "___id": "T000002R001625",
         "___s": true
     },
     {
@@ -51417,7 +51470,7 @@ window.reflection = [
         "longname": "cell",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001624",
+        "___id": "T000002R001626",
         "___s": true
     },
     {
@@ -51445,7 +51498,7 @@ window.reflection = [
         "memberof": "self.freezeMove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001625",
+        "___id": "T000002R001627",
         "___s": true
     },
     {
@@ -51473,7 +51526,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001626",
+        "___id": "T000002R001628",
         "___s": true
     },
     {
@@ -51501,7 +51554,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001627",
+        "___id": "T000002R001629",
         "___s": true
     },
     {
@@ -51529,7 +51582,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001628",
+        "___id": "T000002R001630",
         "___s": true
     },
     {
@@ -51557,7 +51610,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001629",
+        "___id": "T000002R001631",
         "___s": true
     },
     {
@@ -51585,7 +51638,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001630",
+        "___id": "T000002R001632",
         "___s": true
     },
     {
@@ -51613,7 +51666,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001631",
+        "___id": "T000002R001633",
         "___s": true
     },
     {
@@ -51647,7 +51700,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001632",
+        "___id": "T000002R001634",
         "___s": true
     },
     {
@@ -51675,7 +51728,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001633",
+        "___id": "T000002R001635",
         "___s": true
     },
     {
@@ -51701,7 +51754,7 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001634",
+        "___id": "T000002R001636",
         "___s": true
     },
     {
@@ -51729,7 +51782,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001635",
+        "___id": "T000002R001637",
         "___s": true
     },
     {
@@ -51757,7 +51810,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001636",
+        "___id": "T000002R001638",
         "___s": true
     },
     {
@@ -51810,7 +51863,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001637",
+        "___id": "T000002R001639",
         "___s": true
     },
     {
@@ -51838,7 +51891,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001638",
+        "___id": "T000002R001640",
         "___s": true
     },
     {
@@ -51864,7 +51917,7 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001639",
+        "___id": "T000002R001641",
         "___s": true
     },
     {
@@ -51890,7 +51943,7 @@ window.reflection = [
         "longname": "cell",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001640",
+        "___id": "T000002R001642",
         "___s": true
     },
     {
@@ -51918,7 +51971,7 @@ window.reflection = [
         "memberof": "self.mousedown",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001641",
+        "___id": "T000002R001643",
         "___s": true
     },
     {
@@ -51946,7 +51999,7 @@ window.reflection = [
         "memberof": "self.mousedown",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001642",
+        "___id": "T000002R001644",
         "___s": true
     },
     {
@@ -51974,7 +52027,7 @@ window.reflection = [
         "memberof": "self.mousedown",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001643",
+        "___id": "T000002R001645",
         "___s": true
     },
     {
@@ -52002,7 +52055,7 @@ window.reflection = [
         "memberof": "self.mousedown",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001644",
+        "___id": "T000002R001646",
         "___s": true
     },
     {
@@ -52030,7 +52083,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001645",
+        "___id": "T000002R001647",
         "___s": true
     },
     {
@@ -52058,7 +52111,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001646",
+        "___id": "T000002R001648",
         "___s": true
     },
     {
@@ -52085,7 +52138,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollStart",
         "scope": "static",
-        "___id": "T000002R001647",
+        "___id": "T000002R001649",
         "___s": true
     },
     {
@@ -52112,7 +52165,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollStart",
         "scope": "static",
-        "___id": "T000002R001648",
+        "___id": "T000002R001650",
         "___s": true
     },
     {
@@ -52140,7 +52193,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001649",
+        "___id": "T000002R001651",
         "___s": true
     },
     {
@@ -52168,7 +52221,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001650",
+        "___id": "T000002R001652",
         "___s": true
     },
     {
@@ -52196,7 +52249,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001651",
+        "___id": "T000002R001653",
         "___s": true
     },
     {
@@ -52224,7 +52277,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001652",
+        "___id": "T000002R001654",
         "___s": true
     },
     {
@@ -52252,7 +52305,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001653",
+        "___id": "T000002R001655",
         "___s": true
     },
     {
@@ -52280,7 +52333,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001654",
+        "___id": "T000002R001656",
         "___s": true
     },
     {
@@ -52307,7 +52360,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.pointerLockPosition",
         "scope": "static",
-        "___id": "T000002R001655",
+        "___id": "T000002R001657",
         "___s": true
     },
     {
@@ -52334,7 +52387,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.pointerLockPosition",
         "scope": "static",
-        "___id": "T000002R001656",
+        "___id": "T000002R001658",
         "___s": true
     },
     {
@@ -52362,7 +52415,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001657",
+        "___id": "T000002R001659",
         "___s": true
     },
     {
@@ -52390,7 +52443,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001658",
+        "___id": "T000002R001660",
         "___s": true
     },
     {
@@ -52418,7 +52471,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001659",
+        "___id": "T000002R001661",
         "___s": true
     },
     {
@@ -52446,7 +52499,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001660",
+        "___id": "T000002R001662",
         "___s": true
     },
     {
@@ -52474,7 +52527,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001661",
+        "___id": "T000002R001663",
         "___s": true
     },
     {
@@ -52500,7 +52553,7 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001662",
+        "___id": "T000002R001664",
         "___s": true
     },
     {
@@ -52526,7 +52579,7 @@ window.reflection = [
         "longname": "cell",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001663",
+        "___id": "T000002R001665",
         "___s": true
     },
     {
@@ -52554,7 +52607,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001664",
+        "___id": "T000002R001666",
         "___s": true
     },
     {
@@ -52582,7 +52635,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001665",
+        "___id": "T000002R001667",
         "___s": true
     },
     {
@@ -52609,7 +52662,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.startFreezeMove",
         "scope": "static",
-        "___id": "T000002R001666",
+        "___id": "T000002R001668",
         "___s": true
     },
     {
@@ -52636,7 +52689,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.startFreezeMove",
         "scope": "static",
-        "___id": "T000002R001667",
+        "___id": "T000002R001669",
         "___s": true
     },
     {
@@ -52662,7 +52715,7 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001668",
+        "___id": "T000002R001670",
         "___s": true
     },
     {
@@ -52690,7 +52743,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001669",
+        "___id": "T000002R001671",
         "___s": true
     },
     {
@@ -52718,7 +52771,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001670",
+        "___id": "T000002R001672",
         "___s": true
     },
     {
@@ -52746,7 +52799,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001671",
+        "___id": "T000002R001673",
         "___s": true
     },
     {
@@ -52774,7 +52827,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001672",
+        "___id": "T000002R001674",
         "___s": true
     },
     {
@@ -52802,7 +52855,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001673",
+        "___id": "T000002R001675",
         "___s": true
     },
     {
@@ -52837,7 +52890,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001674",
+        "___id": "T000002R001676",
         "___s": true
     },
     {
@@ -52865,7 +52918,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001675",
+        "___id": "T000002R001677",
         "___s": true
     },
     {
@@ -52893,7 +52946,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001676",
+        "___id": "T000002R001678",
         "___s": true
     },
     {
@@ -52921,7 +52974,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001677",
+        "___id": "T000002R001679",
         "___s": true
     },
     {
@@ -52949,7 +53002,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001678",
+        "___id": "T000002R001680",
         "___s": true
     },
     {
@@ -52975,7 +53028,7 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001679",
+        "___id": "T000002R001681",
         "___s": true
     },
     {
@@ -53001,7 +53054,7 @@ window.reflection = [
         "longname": "cell",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001680",
+        "___id": "T000002R001682",
         "___s": true
     },
     {
@@ -53042,7 +53095,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001681",
+        "___id": "T000002R001683",
         "___s": true
     },
     {
@@ -53068,7 +53121,7 @@ window.reflection = [
         "memberof": "self.keydown",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001682",
+        "___id": "T000002R001684",
         "___s": true
     },
     {
@@ -53096,7 +53149,7 @@ window.reflection = [
         "memberof": "self.keydown",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001683",
+        "___id": "T000002R001685",
         "___s": true
     },
     {
@@ -53124,7 +53177,7 @@ window.reflection = [
         "memberof": "self.keydown",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001684",
+        "___id": "T000002R001686",
         "___s": true
     },
     {
@@ -53152,7 +53205,7 @@ window.reflection = [
         "memberof": "self.keydown",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001685",
+        "___id": "T000002R001687",
         "___s": true
     },
     {
@@ -53180,7 +53233,7 @@ window.reflection = [
         "memberof": "self.keydown",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001686",
+        "___id": "T000002R001688",
         "___s": true
     },
     {
@@ -53208,7 +53261,7 @@ window.reflection = [
         "memberof": "self.keydown",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001687",
+        "___id": "T000002R001689",
         "___s": true
     },
     {
@@ -53234,7 +53287,7 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001688",
+        "___id": "T000002R001690",
         "___s": true
     },
     {
@@ -53260,7 +53313,7 @@ window.reflection = [
         "longname": "cell",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001689",
+        "___id": "T000002R001691",
         "___s": true
     },
     {
@@ -53288,7 +53341,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001690",
+        "___id": "T000002R001692",
         "___s": true
     },
     {
@@ -53317,7 +53370,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.keydown",
         "scope": "inner",
-        "___id": "T000002R001691",
+        "___id": "T000002R001693",
         "___s": true
     },
     {
@@ -53345,7 +53398,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001692",
+        "___id": "T000002R001694",
         "___s": true
     },
     {
@@ -53374,7 +53427,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.keydown",
         "scope": "inner",
-        "___id": "T000002R001693",
+        "___id": "T000002R001695",
         "___s": true
     },
     {
@@ -53403,7 +53456,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.keydown",
         "scope": "inner",
-        "___id": "T000002R001694",
+        "___id": "T000002R001696",
         "___s": true
     },
     {
@@ -53432,7 +53485,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.keydown",
         "scope": "inner",
-        "___id": "T000002R001695",
+        "___id": "T000002R001697",
         "___s": true
     },
     {
@@ -53461,7 +53514,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.keydown",
         "scope": "inner",
-        "___id": "T000002R001696",
+        "___id": "T000002R001698",
         "___s": true
     },
     {
@@ -53490,7 +53543,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.keydown",
         "scope": "inner",
-        "___id": "T000002R001697",
+        "___id": "T000002R001699",
         "___s": true
     },
     {
@@ -53519,7 +53572,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.keydown",
         "scope": "inner",
-        "___id": "T000002R001698",
+        "___id": "T000002R001700",
         "___s": true
     },
     {
@@ -53548,7 +53601,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.keydown",
         "scope": "inner",
-        "___id": "T000002R001699",
+        "___id": "T000002R001701",
         "___s": true
     },
     {
@@ -53577,7 +53630,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.keydown",
         "scope": "inner",
-        "___id": "T000002R001700",
+        "___id": "T000002R001702",
         "___s": true
     },
     {
@@ -53606,7 +53659,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.keydown",
         "scope": "inner",
-        "___id": "T000002R001701",
+        "___id": "T000002R001703",
         "___s": true
     },
     {
@@ -53635,7 +53688,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.keydown",
         "scope": "inner",
-        "___id": "T000002R001702",
+        "___id": "T000002R001704",
         "___s": true
     },
     {
@@ -53663,7 +53716,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001703",
+        "___id": "T000002R001705",
         "___s": true
     },
     {
@@ -53691,7 +53744,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001704",
+        "___id": "T000002R001706",
         "___s": true
     },
     {
@@ -53719,7 +53772,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001705",
+        "___id": "T000002R001707",
         "___s": true
     },
     {
@@ -53748,7 +53801,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.keydown",
         "scope": "inner",
-        "___id": "T000002R001706",
+        "___id": "T000002R001708",
         "___s": true
     },
     {
@@ -53777,7 +53830,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.keydown",
         "scope": "inner",
-        "___id": "T000002R001707",
+        "___id": "T000002R001709",
         "___s": true
     },
     {
@@ -53806,7 +53859,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.keydown",
         "scope": "inner",
-        "___id": "T000002R001708",
+        "___id": "T000002R001710",
         "___s": true
     },
     {
@@ -53835,7 +53888,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.keydown",
         "scope": "inner",
-        "___id": "T000002R001709",
+        "___id": "T000002R001711",
         "___s": true
     },
     {
@@ -53864,7 +53917,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.keydown",
         "scope": "inner",
-        "___id": "T000002R001710",
+        "___id": "T000002R001712",
         "___s": true
     },
     {
@@ -53893,7 +53946,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.keydown",
         "scope": "inner",
-        "___id": "T000002R001711",
+        "___id": "T000002R001713",
         "___s": true
     },
     {
@@ -53921,7 +53974,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001712",
+        "___id": "T000002R001714",
         "___s": true
     },
     {
@@ -53949,7 +54002,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001713",
+        "___id": "T000002R001715",
         "___s": true
     },
     {
@@ -53977,7 +54030,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001714",
+        "___id": "T000002R001716",
         "___s": true
     },
     {
@@ -54005,7 +54058,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001715",
+        "___id": "T000002R001717",
         "___s": true
     },
     {
@@ -54031,7 +54084,7 @@ window.reflection = [
         "longname": "selectedData",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001716",
+        "___id": "T000002R001718",
         "___s": true
     },
     {
@@ -54057,7 +54110,7 @@ window.reflection = [
         "longname": "selections",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001717",
+        "___id": "T000002R001719",
         "___s": true
     },
     {
@@ -54083,7 +54136,7 @@ window.reflection = [
         "longname": "selectionBounds",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001718",
+        "___id": "T000002R001720",
         "___s": true
     },
     {
@@ -54112,7 +54165,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001719",
+        "___id": "T000002R001721",
         "___s": true
     },
     {
@@ -54138,7 +54191,7 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001720",
+        "___id": "T000002R001722",
         "___s": true
     },
     {
@@ -54164,7 +54217,7 @@ window.reflection = [
         "longname": "cell",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001721",
+        "___id": "T000002R001723",
         "___s": true
     },
     {
@@ -54193,7 +54246,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001722",
+        "___id": "T000002R001724",
         "___s": true
     },
     {
@@ -54219,7 +54272,7 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001723",
+        "___id": "T000002R001725",
         "___s": true
     },
     {
@@ -54245,7 +54298,7 @@ window.reflection = [
         "longname": "cell",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001724",
+        "___id": "T000002R001726",
         "___s": true
     },
     {
@@ -54274,7 +54327,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001725",
+        "___id": "T000002R001727",
         "___s": true
     },
     {
@@ -54300,7 +54353,7 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001726",
+        "___id": "T000002R001728",
         "___s": true
     },
     {
@@ -54326,7 +54379,7 @@ window.reflection = [
         "longname": "cell",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001727",
+        "___id": "T000002R001729",
         "___s": true
     },
     {
@@ -54366,7 +54419,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001728",
+        "___id": "T000002R001730",
         "___s": true
     },
     {
@@ -54392,7 +54445,7 @@ window.reflection = [
         "memberof": "self.scrollWheel",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001729",
+        "___id": "T000002R001731",
         "___s": true
     },
     {
@@ -54418,7 +54471,7 @@ window.reflection = [
         "memberof": "self.scrollWheel",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001730",
+        "___id": "T000002R001732",
         "___s": true
     },
     {
@@ -54446,7 +54499,7 @@ window.reflection = [
         "memberof": "self.scrollWheel",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001731",
+        "___id": "T000002R001733",
         "___s": true
     },
     {
@@ -54474,7 +54527,7 @@ window.reflection = [
         "memberof": "self.scrollWheel",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001732",
+        "___id": "T000002R001734",
         "___s": true
     },
     {
@@ -54502,7 +54555,7 @@ window.reflection = [
         "memberof": "self.scrollWheel",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001733",
+        "___id": "T000002R001735",
         "___s": true
     },
     {
@@ -54528,7 +54581,7 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001734",
+        "___id": "T000002R001736",
         "___s": true
     },
     {
@@ -54557,7 +54610,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollWheel",
         "scope": "inner",
-        "___id": "T000002R001735",
+        "___id": "T000002R001737",
         "___s": true
     },
     {
@@ -54585,7 +54638,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001736",
+        "___id": "T000002R001738",
         "___s": true
     },
     {
@@ -54614,7 +54667,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollWheel",
         "scope": "inner",
-        "___id": "T000002R001737",
+        "___id": "T000002R001739",
         "___s": true
     },
     {
@@ -54643,7 +54696,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollWheel",
         "scope": "inner",
-        "___id": "T000002R001738",
+        "___id": "T000002R001740",
         "___s": true
     },
     {
@@ -54672,7 +54725,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollWheel",
         "scope": "inner",
-        "___id": "T000002R001739",
+        "___id": "T000002R001741",
         "___s": true
     },
     {
@@ -54701,7 +54754,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollWheel",
         "scope": "inner",
-        "___id": "T000002R001740",
+        "___id": "T000002R001742",
         "___s": true
     },
     {
@@ -54730,7 +54783,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R001741",
+        "___id": "T000002R001743",
         "___s": true
     },
     {
@@ -54772,7 +54825,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001742",
+        "___id": "T000002R001744",
         "___s": true
     },
     {
@@ -54798,7 +54851,7 @@ window.reflection = [
         "memberof": "self.pasteItem",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001743",
+        "___id": "T000002R001745",
         "___s": true
     },
     {
@@ -54826,7 +54879,7 @@ window.reflection = [
         "memberof": "self.pasteItem",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001744",
+        "___id": "T000002R001746",
         "___s": true
     },
     {
@@ -54854,7 +54907,7 @@ window.reflection = [
         "memberof": "self.pasteItem",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001745",
+        "___id": "T000002R001747",
         "___s": true
     },
     {
@@ -54882,7 +54935,7 @@ window.reflection = [
         "memberof": "self.pasteItem",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001746",
+        "___id": "T000002R001748",
         "___s": true
     },
     {
@@ -54923,7 +54976,7 @@ window.reflection = [
         "memberof": "self.pasteItem",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001747",
+        "___id": "T000002R001749",
         "___s": true
     },
     {
@@ -54951,7 +55004,7 @@ window.reflection = [
         "memberof": "self.pasteItem~normalizeRowData",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001748",
+        "___id": "T000002R001750",
         "___s": true
     },
     {
@@ -54980,7 +55033,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.pasteItem~normalizeRowData",
         "scope": "inner",
-        "___id": "T000002R001749",
+        "___id": "T000002R001751",
         "___s": true
     },
     {
@@ -55009,7 +55062,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.pasteItem~normalizeRowData",
         "scope": "inner",
-        "___id": "T000002R001750",
+        "___id": "T000002R001752",
         "___s": true
     },
     {
@@ -55038,7 +55091,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.pasteItem~normalizeRowData",
         "scope": "inner",
-        "___id": "T000002R001751",
+        "___id": "T000002R001753",
         "___s": true
     },
     {
@@ -55066,7 +55119,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.pasteItem~sel",
         "scope": "static",
-        "___id": "T000002R001752",
+        "___id": "T000002R001754",
         "___s": true
     },
     {
@@ -55094,7 +55147,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001753",
+        "___id": "T000002R001755",
         "___s": true
     },
     {
@@ -55123,7 +55176,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.pasteItem~normalizeRowData~r",
         "scope": "static",
-        "___id": "T000002R001754",
+        "___id": "T000002R001756",
         "___s": true
     },
     {
@@ -55152,7 +55205,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.pasteItem~normalizeRowData~r",
         "scope": "static",
-        "___id": "T000002R001755",
+        "___id": "T000002R001757",
         "___s": true
     },
     {
@@ -55181,7 +55234,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.pasteItem",
         "scope": "inner",
-        "___id": "T000002R001756",
+        "___id": "T000002R001758",
         "___s": true
     },
     {
@@ -55210,7 +55263,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.pasteItem",
         "scope": "inner",
-        "___id": "T000002R001757",
+        "___id": "T000002R001759",
         "___s": true
     },
     {
@@ -55239,7 +55292,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.pasteItem",
         "scope": "inner",
-        "___id": "T000002R001758",
+        "___id": "T000002R001760",
         "___s": true
     },
     {
@@ -55268,7 +55321,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R001759",
+        "___id": "T000002R001761",
         "___s": true
     },
     {
@@ -55296,7 +55349,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001760",
+        "___id": "T000002R001762",
         "___s": true
     },
     {
@@ -55324,7 +55377,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001761",
+        "___id": "T000002R001763",
         "___s": true
     },
     {
@@ -55358,7 +55411,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001762",
+        "___id": "T000002R001764",
         "___s": true
     },
     {
@@ -55384,7 +55437,7 @@ window.reflection = [
         "memberof": "self.paste",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001763",
+        "___id": "T000002R001765",
         "___s": true
     },
     {
@@ -55418,7 +55471,7 @@ window.reflection = [
         "memberof": "self.paste",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001764",
+        "___id": "T000002R001766",
         "___s": true
     },
     {
@@ -55446,7 +55499,7 @@ window.reflection = [
         "memberof": "self.paste~getItem",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001765",
+        "___id": "T000002R001767",
         "___s": true
     },
     {
@@ -55475,7 +55528,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.paste",
         "scope": "inner",
-        "___id": "T000002R001766",
+        "___id": "T000002R001768",
         "___s": true
     },
     {
@@ -55507,7 +55560,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001767",
+        "___id": "T000002R001769",
         "___s": true
     },
     {
@@ -55534,7 +55587,7 @@ window.reflection = [
         "longname": "data[undefined][undefined]",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001768",
+        "___id": "T000002R001770",
         "___s": true
     },
     {
@@ -55572,7 +55625,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001769",
+        "___id": "T000002R001771",
         "___s": true
     },
     {
@@ -55598,7 +55651,7 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001770",
+        "___id": "T000002R001772",
         "___s": true
     },
     {
@@ -55624,7 +55677,7 @@ window.reflection = [
         "memberof": "self.copy",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001771",
+        "___id": "T000002R001773",
         "___s": true
     },
     {
@@ -55650,7 +55703,7 @@ window.reflection = [
         "memberof": "self.copy",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001772",
+        "___id": "T000002R001774",
         "___s": true
     },
     {
@@ -55678,7 +55731,7 @@ window.reflection = [
         "memberof": "self.copy",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001773",
+        "___id": "T000002R001775",
         "___s": true
     },
     {
@@ -55706,7 +55759,7 @@ window.reflection = [
         "memberof": "self.copy",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001774",
+        "___id": "T000002R001776",
         "___s": true
     },
     {
@@ -55734,7 +55787,7 @@ window.reflection = [
         "memberof": "self.copy",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001775",
+        "___id": "T000002R001777",
         "___s": true
     },
     {
@@ -55767,7 +55820,7 @@ window.reflection = [
         "memberof": "self.copy",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001776",
+        "___id": "T000002R001778",
         "___s": true
     },
     {
@@ -55796,7 +55849,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.copy~fCopyCell",
         "scope": "inner",
-        "___id": "T000002R001777",
+        "___id": "T000002R001779",
         "___s": true
     },
     {
@@ -55824,7 +55877,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001778",
+        "___id": "T000002R001780",
         "___s": true
     },
     {
@@ -55852,7 +55905,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001779",
+        "___id": "T000002R001781",
         "___s": true
     },
     {
@@ -55881,7 +55934,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.copy",
         "scope": "inner",
-        "___id": "T000002R001780",
+        "___id": "T000002R001782",
         "___s": true
     },
     {
@@ -55910,7 +55963,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.copy",
         "scope": "inner",
-        "___id": "T000002R001781",
+        "___id": "T000002R001783",
         "___s": true
     },
     {
@@ -55938,7 +55991,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001782",
+        "___id": "T000002R001784",
         "___s": true
     },
     {
@@ -55966,7 +56019,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001783",
+        "___id": "T000002R001785",
         "___s": true
     },
     {
@@ -55993,7 +56046,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.orders",
         "scope": "static",
-        "___id": "T000002R001784",
+        "___id": "T000002R001786",
         "___s": true
     },
     {
@@ -56020,7 +56073,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.orders",
         "scope": "static",
-        "___id": "T000002R001785",
+        "___id": "T000002R001787",
         "___s": true
     },
     {
@@ -56048,7 +56101,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001786",
+        "___id": "T000002R001788",
         "___s": true
     },
     {
@@ -56076,7 +56129,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001787",
+        "___id": "T000002R001789",
         "___s": true
     },
     {
@@ -56104,7 +56157,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001788",
+        "___id": "T000002R001790",
         "___s": true
     },
     {
@@ -56131,7 +56184,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.activeCell",
         "scope": "static",
-        "___id": "T000002R001789",
+        "___id": "T000002R001791",
         "___s": true
     },
     {
@@ -56158,7 +56211,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.activeCell",
         "scope": "static",
-        "___id": "T000002R001790",
+        "___id": "T000002R001792",
         "___s": true
     },
     {
@@ -56186,7 +56239,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001791",
+        "___id": "T000002R001793",
         "___s": true
     },
     {
@@ -56214,7 +56267,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001792",
+        "___id": "T000002R001794",
         "___s": true
     },
     {
@@ -56242,7 +56295,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001793",
+        "___id": "T000002R001795",
         "___s": true
     },
     {
@@ -56270,7 +56323,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001794",
+        "___id": "T000002R001796",
         "___s": true
     },
     {
@@ -56298,7 +56351,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001795",
+        "___id": "T000002R001797",
         "___s": true
     },
     {
@@ -56326,7 +56379,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001796",
+        "___id": "T000002R001798",
         "___s": true
     },
     {
@@ -56354,7 +56407,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001797",
+        "___id": "T000002R001799",
         "___s": true
     },
     {
@@ -56382,7 +56435,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001798",
+        "___id": "T000002R001800",
         "___s": true
     },
     {
@@ -56410,7 +56463,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001799",
+        "___id": "T000002R001801",
         "___s": true
     },
     {
@@ -56438,7 +56491,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001800",
+        "___id": "T000002R001802",
         "___s": true
     },
     {
@@ -56466,7 +56519,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001801",
+        "___id": "T000002R001803",
         "___s": true
     },
     {
@@ -56494,7 +56547,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001802",
+        "___id": "T000002R001804",
         "___s": true
     },
     {
@@ -56522,7 +56575,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001803",
+        "___id": "T000002R001805",
         "___s": true
     },
     {
@@ -56550,7 +56603,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001804",
+        "___id": "T000002R001806",
         "___s": true
     },
     {
@@ -56577,7 +56630,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.sizes",
         "scope": "static",
-        "___id": "T000002R001805",
+        "___id": "T000002R001807",
         "___s": true
     },
     {
@@ -56604,7 +56657,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.sizes",
         "scope": "static",
-        "___id": "T000002R001806",
+        "___id": "T000002R001808",
         "___s": true
     },
     {
@@ -56631,7 +56684,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.sizes",
         "scope": "static",
-        "___id": "T000002R001807",
+        "___id": "T000002R001809",
         "___s": true
     },
     {
@@ -56658,7 +56711,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001808",
+        "___id": "T000002R001810",
         "___s": true
     },
     {
@@ -56686,7 +56739,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001809",
+        "___id": "T000002R001811",
         "___s": true
     },
     {
@@ -56714,7 +56767,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001810",
+        "___id": "T000002R001812",
         "___s": true
     },
     {
@@ -56742,7 +56795,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001811",
+        "___id": "T000002R001813",
         "___s": true
     },
     {
@@ -56770,7 +56823,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001812",
+        "___id": "T000002R001814",
         "___s": true
     },
     {
@@ -56798,7 +56851,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001813",
+        "___id": "T000002R001815",
         "___s": true
     },
     {
@@ -56826,7 +56879,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001814",
+        "___id": "T000002R001816",
         "___s": true
     },
     {
@@ -56854,7 +56907,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001815",
+        "___id": "T000002R001817",
         "___s": true
     },
     {
@@ -56882,7 +56935,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001816",
+        "___id": "T000002R001818",
         "___s": true
     },
     {
@@ -56910,7 +56963,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001817",
+        "___id": "T000002R001819",
         "___s": true
     },
     {
@@ -56938,7 +56991,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001818",
+        "___id": "T000002R001820",
         "___s": true
     },
     {
@@ -56966,7 +57019,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001819",
+        "___id": "T000002R001821",
         "___s": true
     },
     {
@@ -56994,7 +57047,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001820",
+        "___id": "T000002R001822",
         "___s": true
     },
     {
@@ -57022,7 +57075,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001821",
+        "___id": "T000002R001823",
         "___s": true
     },
     {
@@ -57050,7 +57103,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001822",
+        "___id": "T000002R001824",
         "___s": true
     },
     {
@@ -57078,7 +57131,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001823",
+        "___id": "T000002R001825",
         "___s": true
     },
     {
@@ -57106,7 +57159,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001824",
+        "___id": "T000002R001826",
         "___s": true
     },
     {
@@ -57134,7 +57187,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001825",
+        "___id": "T000002R001827",
         "___s": true
     },
     {
@@ -57162,7 +57215,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001826",
+        "___id": "T000002R001828",
         "___s": true
     },
     {
@@ -57190,7 +57243,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001827",
+        "___id": "T000002R001829",
         "___s": true
     },
     {
@@ -57218,7 +57271,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001828",
+        "___id": "T000002R001830",
         "___s": true
     },
     {
@@ -57245,7 +57298,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.mouse",
         "scope": "static",
-        "___id": "T000002R001829",
+        "___id": "T000002R001831",
         "___s": true
     },
     {
@@ -57272,7 +57325,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.mouse",
         "scope": "static",
-        "___id": "T000002R001830",
+        "___id": "T000002R001832",
         "___s": true
     },
     {
@@ -57307,7 +57360,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001831",
+        "___id": "T000002R001833",
         "___s": true
     },
     {
@@ -57335,7 +57388,7 @@ window.reflection = [
         "memberof": "self.getSelectedData",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001832",
+        "___id": "T000002R001834",
         "___s": true
     },
     {
@@ -57363,7 +57416,7 @@ window.reflection = [
         "memberof": "self.getSelectedData",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001833",
+        "___id": "T000002R001835",
         "___s": true
     },
     {
@@ -57391,7 +57444,7 @@ window.reflection = [
         "memberof": "self.getSelectedData",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001834",
+        "___id": "T000002R001836",
         "___s": true
     },
     {
@@ -57420,7 +57473,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getSelectedData~d",
         "scope": "static",
-        "___id": "T000002R001835",
+        "___id": "T000002R001837",
         "___s": true
     },
     {
@@ -57449,7 +57502,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getSelectedData~d",
         "scope": "static",
-        "___id": "T000002R001836",
+        "___id": "T000002R001838",
         "___s": true
     },
     {
@@ -57478,7 +57531,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getSelectedData~d",
         "scope": "static",
-        "___id": "T000002R001837",
+        "___id": "T000002R001839",
         "___s": true
     },
     {
@@ -57516,7 +57569,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001838",
+        "___id": "T000002R001840",
         "___s": true
     },
     {
@@ -57545,7 +57598,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.fillArray",
         "scope": "inner",
-        "___id": "T000002R001839",
+        "___id": "T000002R001841",
         "___s": true
     },
     {
@@ -57573,7 +57626,7 @@ window.reflection = [
         "memberof": "self.fillArray",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001840",
+        "___id": "T000002R001842",
         "___s": true
     },
     {
@@ -57599,7 +57652,7 @@ window.reflection = [
         "memberof": "self.fillArray",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001841",
+        "___id": "T000002R001843",
         "___s": true
     },
     {
@@ -57628,7 +57681,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.fillArray",
         "scope": "inner",
-        "___id": "T000002R001842",
+        "___id": "T000002R001844",
         "___s": true
     },
     {
@@ -57657,7 +57710,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.fillArray",
         "scope": "inner",
-        "___id": "T000002R001843",
+        "___id": "T000002R001845",
         "___s": true
     },
     {
@@ -57686,7 +57739,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.fillArray~i",
         "scope": "static",
-        "___id": "T000002R001844",
+        "___id": "T000002R001846",
         "___s": true
     },
     {
@@ -57713,7 +57766,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001845",
+        "___id": "T000002R001847",
         "___s": true
     },
     {
@@ -57740,7 +57793,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001846",
+        "___id": "T000002R001848",
         "___s": true
     },
     {
@@ -57767,7 +57820,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001847",
+        "___id": "T000002R001849",
         "___s": true
     },
     {
@@ -57793,7 +57846,7 @@ window.reflection = [
         "longname": "sizes",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001848",
+        "___id": "T000002R001850",
         "___s": true
     },
     {
@@ -57820,7 +57873,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "sizes",
         "scope": "static",
-        "___id": "T000002R001849",
+        "___id": "T000002R001851",
         "___s": true
     },
     {
@@ -57847,7 +57900,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "sizes",
         "scope": "static",
-        "___id": "T000002R001850",
+        "___id": "T000002R001852",
         "___s": true
     },
     {
@@ -57873,7 +57926,7 @@ window.reflection = [
         "longname": "orders",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001851",
+        "___id": "T000002R001853",
         "___s": true
     },
     {
@@ -57900,7 +57953,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "orders",
         "scope": "static",
-        "___id": "T000002R001852",
+        "___id": "T000002R001854",
         "___s": true
     },
     {
@@ -57927,7 +57980,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "orders",
         "scope": "static",
-        "___id": "T000002R001853",
+        "___id": "T000002R001855",
         "___s": true
     },
     {
@@ -57953,7 +58006,7 @@ window.reflection = [
         "longname": "orderBy",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001854",
+        "___id": "T000002R001856",
         "___s": true
     },
     {
@@ -57979,7 +58032,7 @@ window.reflection = [
         "longname": "orderDirection",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001855",
+        "___id": "T000002R001857",
         "___s": true
     },
     {
@@ -58006,7 +58059,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001856",
+        "___id": "T000002R001858",
         "___s": true
     },
     {
@@ -58037,7 +58090,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001857",
+        "___id": "T000002R001859",
         "___s": true
     },
     {
@@ -58065,7 +58118,7 @@ window.reflection = [
         "memberof": "self.createColumnOrders",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001858",
+        "___id": "T000002R001860",
         "___s": true
     },
     {
@@ -58093,7 +58146,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.orders",
         "scope": "static",
-        "___id": "T000002R001859",
+        "___id": "T000002R001861",
         "___s": true
     },
     {
@@ -58123,7 +58176,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001860",
+        "___id": "T000002R001862",
         "___s": true
     },
     {
@@ -58151,7 +58204,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.orders",
         "scope": "static",
-        "___id": "T000002R001861",
+        "___id": "T000002R001863",
         "___s": true
     },
     {
@@ -58181,7 +58234,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001862",
+        "___id": "T000002R001864",
         "___s": true
     },
     {
@@ -58215,7 +58268,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001863",
+        "___id": "T000002R001865",
         "___s": true
     },
     {
@@ -58243,7 +58296,7 @@ window.reflection = [
         "memberof": "self.applyDefaultValue",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001864",
+        "___id": "T000002R001866",
         "___s": true
     },
     {
@@ -58272,7 +58325,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.applyDefaultValue",
         "scope": "inner",
-        "___id": "T000002R001865",
+        "___id": "T000002R001867",
         "___s": true
     },
     {
@@ -58299,7 +58352,7 @@ window.reflection = [
         "longname": "row[undefined]",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001866",
+        "___id": "T000002R001868",
         "___s": true
     },
     {
@@ -58332,7 +58385,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001867",
+        "___id": "T000002R001869",
         "___s": true
     },
     {
@@ -58360,7 +58413,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001868",
+        "___id": "T000002R001870",
         "___s": true
     },
     {
@@ -58388,7 +58441,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001869",
+        "___id": "T000002R001871",
         "___s": true
     },
     {
@@ -58416,7 +58469,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001870",
+        "___id": "T000002R001872",
         "___s": true
     },
     {
@@ -58449,7 +58502,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001871",
+        "___id": "T000002R001873",
         "___s": true
     },
     {
@@ -58477,7 +58530,7 @@ window.reflection = [
         "memberof": "self.getSchemaNameHash",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001872",
+        "___id": "T000002R001874",
         "___s": true
     },
     {
@@ -58506,7 +58559,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getSchemaNameHash",
         "scope": "inner",
-        "___id": "T000002R001873",
+        "___id": "T000002R001875",
         "___s": true
     },
     {
@@ -58535,7 +58588,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getSchemaNameHash",
         "scope": "inner",
-        "___id": "T000002R001874",
+        "___id": "T000002R001876",
         "___s": true
     },
     {
@@ -58567,7 +58620,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001875",
+        "___id": "T000002R001877",
         "___s": true
     },
     {
@@ -58595,7 +58648,7 @@ window.reflection = [
         "memberof": "self.filter",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001876",
+        "___id": "T000002R001878",
         "___s": true
     },
     {
@@ -58624,7 +58677,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.filter",
         "scope": "inner",
-        "___id": "T000002R001877",
+        "___id": "T000002R001879",
         "___s": true
     },
     {
@@ -58658,7 +58711,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001878",
+        "___id": "T000002R001880",
         "___s": true
     },
     {
@@ -58684,7 +58737,7 @@ window.reflection = [
         "memberof": "self.getBestGuessDataType",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001879",
+        "___id": "T000002R001881",
         "___s": true
     },
     {
@@ -58710,7 +58763,7 @@ window.reflection = [
         "memberof": "self.getBestGuessDataType",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001880",
+        "___id": "T000002R001882",
         "___s": true
     },
     {
@@ -58738,7 +58791,7 @@ window.reflection = [
         "memberof": "self.getBestGuessDataType",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001881",
+        "___id": "T000002R001883",
         "___s": true
     },
     {
@@ -58767,7 +58820,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getBestGuessDataType",
         "scope": "inner",
-        "___id": "T000002R001882",
+        "___id": "T000002R001884",
         "___s": true
     },
     {
@@ -58796,7 +58849,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getBestGuessDataType",
         "scope": "inner",
-        "___id": "T000002R001883",
+        "___id": "T000002R001885",
         "___s": true
     },
     {
@@ -58825,7 +58878,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getBestGuessDataType",
         "scope": "inner",
-        "___id": "T000002R001884",
+        "___id": "T000002R001886",
         "___s": true
     },
     {
@@ -58855,7 +58908,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001885",
+        "___id": "T000002R001887",
         "___s": true
     },
     {
@@ -58885,7 +58938,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001886",
+        "___id": "T000002R001888",
         "___s": true
     },
     {
@@ -58925,7 +58978,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001887",
+        "___id": "T000002R001889",
         "___s": true
     },
     {
@@ -58951,7 +59004,7 @@ window.reflection = [
         "memberof": "self.autoScrollZone",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001888",
+        "___id": "T000002R001890",
         "___s": true
     },
     {
@@ -58979,7 +59032,7 @@ window.reflection = [
         "memberof": "self.autoScrollZone",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001889",
+        "___id": "T000002R001891",
         "___s": true
     },
     {
@@ -59007,7 +59060,7 @@ window.reflection = [
         "memberof": "self.autoScrollZone",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001890",
+        "___id": "T000002R001892",
         "___s": true
     },
     {
@@ -59035,7 +59088,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001891",
+        "___id": "T000002R001893",
         "___s": true
     },
     {
@@ -59064,7 +59117,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.autoScrollZone",
         "scope": "inner",
-        "___id": "T000002R001892",
+        "___id": "T000002R001894",
         "___s": true
     },
     {
@@ -59092,7 +59145,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001893",
+        "___id": "T000002R001895",
         "___s": true
     },
     {
@@ -59121,7 +59174,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.autoScrollZone",
         "scope": "inner",
-        "___id": "T000002R001894",
+        "___id": "T000002R001896",
         "___s": true
     },
     {
@@ -59149,7 +59202,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001895",
+        "___id": "T000002R001897",
         "___s": true
     },
     {
@@ -59178,7 +59231,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.autoScrollZone",
         "scope": "inner",
-        "___id": "T000002R001896",
+        "___id": "T000002R001898",
         "___s": true
     },
     {
@@ -59206,7 +59259,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R001897",
+        "___id": "T000002R001899",
         "___s": true
     },
     {
@@ -59235,7 +59288,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.autoScrollZone",
         "scope": "inner",
-        "___id": "T000002R001898",
+        "___id": "T000002R001900",
         "___s": true
     },
     {
@@ -59263,7 +59316,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001899",
+        "___id": "T000002R001901",
         "___s": true
     },
     {
@@ -59294,7 +59347,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001900",
+        "___id": "T000002R001902",
         "___s": true
     },
     {
@@ -59322,7 +59375,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001901",
+        "___id": "T000002R001903",
         "___s": true
     },
     {
@@ -59355,7 +59408,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001902",
+        "___id": "T000002R001904",
         "___s": true
     },
     {
@@ -59390,7 +59443,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001903",
+        "___id": "T000002R001905",
         "___s": true
     },
     {
@@ -59417,7 +59470,7 @@ window.reflection = [
         "longname": "obj1[undefined]",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001904",
+        "___id": "T000002R001906",
         "___s": true
     },
     {
@@ -59447,7 +59500,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001905",
+        "___id": "T000002R001907",
         "___s": true
     },
     {
@@ -59477,7 +59530,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001906",
+        "___id": "T000002R001908",
         "___s": true
     },
     {
@@ -59509,7 +59562,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001907",
+        "___id": "T000002R001909",
         "___s": true
     },
     {
@@ -59536,7 +59589,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001908",
+        "___id": "T000002R001910",
         "___s": true
     },
     {
@@ -59570,7 +59623,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001909",
+        "___id": "T000002R001911",
         "___s": true
     },
     {
@@ -59596,7 +59649,7 @@ window.reflection = [
         "memberof": "self.tryLoadStoredOrders",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001910",
+        "___id": "T000002R001912",
         "___s": true
     },
     {
@@ -59624,7 +59677,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.orders",
         "scope": "static",
-        "___id": "T000002R001911",
+        "___id": "T000002R001913",
         "___s": true
     },
     {
@@ -59653,7 +59706,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.tryLoadStoredOrders",
         "scope": "inner",
-        "___id": "T000002R001912",
+        "___id": "T000002R001914",
         "___s": true
     },
     {
@@ -59681,7 +59734,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.orders",
         "scope": "static",
-        "___id": "T000002R001913",
+        "___id": "T000002R001915",
         "___s": true
     },
     {
@@ -59709,7 +59762,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001914",
+        "___id": "T000002R001916",
         "___s": true
     },
     {
@@ -59737,7 +59790,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001915",
+        "___id": "T000002R001917",
         "___s": true
     },
     {
@@ -59766,7 +59819,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001916",
+        "___id": "T000002R001918",
         "___s": true
     },
     {
@@ -59795,7 +59848,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001917",
+        "___id": "T000002R001919",
         "___s": true
     },
     {
@@ -59828,7 +59881,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001918",
+        "___id": "T000002R001920",
         "___s": true
     },
     {
@@ -59856,7 +59909,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001919",
+        "___id": "T000002R001921",
         "___s": true
     },
     {
@@ -59884,7 +59937,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001920",
+        "___id": "T000002R001922",
         "___s": true
     },
     {
@@ -59912,7 +59965,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001921",
+        "___id": "T000002R001923",
         "___s": true
     },
     {
@@ -59944,7 +59997,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001922",
+        "___id": "T000002R001924",
         "___s": true
     },
     {
@@ -59971,7 +60024,7 @@ window.reflection = [
         "longname": "self[undefined][undefined]",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R001923",
+        "___id": "T000002R001925",
         "___s": true
     },
     {
@@ -60079,7 +60132,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001924",
+        "___id": "T000002R001926",
         "___s": true
     },
     {
@@ -60107,7 +60160,7 @@ window.reflection = [
         "memberof": "self.init",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001925",
+        "___id": "T000002R001927",
         "___s": true
     },
     {
@@ -60135,7 +60188,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001926",
+        "___id": "T000002R001928",
         "___s": true
     },
     {
@@ -60163,7 +60216,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001927",
+        "___id": "T000002R001929",
         "___s": true
     },
     {
@@ -60191,7 +60244,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001928",
+        "___id": "T000002R001930",
         "___s": true
     },
     {
@@ -60219,7 +60272,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001929",
+        "___id": "T000002R001931",
         "___s": true
     },
     {
@@ -60247,7 +60300,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001930",
+        "___id": "T000002R001932",
         "___s": true
     },
     {
@@ -60275,7 +60328,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001931",
+        "___id": "T000002R001933",
         "___s": true
     },
     {
@@ -60303,7 +60356,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001932",
+        "___id": "T000002R001934",
         "___s": true
     },
     {
@@ -60331,7 +60384,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001933",
+        "___id": "T000002R001935",
         "___s": true
     },
     {
@@ -60359,7 +60412,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001934",
+        "___id": "T000002R001936",
         "___s": true
     },
     {
@@ -60387,7 +60440,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001935",
+        "___id": "T000002R001937",
         "___s": true
     },
     {
@@ -60415,7 +60468,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001936",
+        "___id": "T000002R001938",
         "___s": true
     },
     {
@@ -60443,7 +60496,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001937",
+        "___id": "T000002R001939",
         "___s": true
     },
     {
@@ -60471,7 +60524,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R001938",
+        "___id": "T000002R001940",
         "___s": true
     },
     {
@@ -60498,7 +60551,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.pointerLockPosition",
         "scope": "static",
-        "___id": "T000002R001939",
+        "___id": "T000002R001941",
         "___s": true
     },
     {
@@ -60525,7 +60578,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.pointerLockPosition",
         "scope": "static",
-        "___id": "T000002R001940",
+        "___id": "T000002R001942",
         "___s": true
     },
     {
@@ -60553,7 +60606,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001941",
+        "___id": "T000002R001943",
         "___s": true
     },
     {
@@ -60581,7 +60634,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001942",
+        "___id": "T000002R001944",
         "___s": true
     },
     {
@@ -60609,7 +60662,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001943",
+        "___id": "T000002R001945",
         "___s": true
     },
     {
@@ -60637,7 +60690,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001944",
+        "___id": "T000002R001946",
         "___s": true
     },
     {
@@ -60665,7 +60718,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001945",
+        "___id": "T000002R001947",
         "___s": true
     },
     {
@@ -60693,7 +60746,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001946",
+        "___id": "T000002R001948",
         "___s": true
     },
     {
@@ -60711,7 +60764,7 @@ window.reflection = [
         "kind": "function",
         "scope": "static",
         "longname": "canvasDatagrid.dispose",
-        "___id": "T000002R001947",
+        "___id": "T000002R001949",
         "___s": true
     },
     {
@@ -60739,7 +60792,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001948",
+        "___id": "T000002R001950",
         "___s": true
     },
     {
@@ -60768,7 +60821,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.appendTo",
-        "___id": "T000002R001949",
+        "___id": "T000002R001951",
         "___s": true
     },
     {
@@ -60796,7 +60849,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001950",
+        "___id": "T000002R001952",
         "___s": true
     },
     {
@@ -60824,7 +60877,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001951",
+        "___id": "T000002R001953",
         "___s": true
     },
     {
@@ -60852,7 +60905,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001952",
+        "___id": "T000002R001954",
         "___s": true
     },
     {
@@ -60880,7 +60933,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001953",
+        "___id": "T000002R001955",
         "___s": true
     },
     {
@@ -60908,7 +60961,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001954",
+        "___id": "T000002R001956",
         "___s": true
     },
     {
@@ -60936,7 +60989,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001955",
+        "___id": "T000002R001957",
         "___s": true
     },
     {
@@ -60964,7 +61017,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001956",
+        "___id": "T000002R001958",
         "___s": true
     },
     {
@@ -60992,7 +61045,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001957",
+        "___id": "T000002R001959",
         "___s": true
     },
     {
@@ -61020,7 +61073,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001958",
+        "___id": "T000002R001960",
         "___s": true
     },
     {
@@ -61048,7 +61101,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001959",
+        "___id": "T000002R001961",
         "___s": true
     },
     {
@@ -61076,7 +61129,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001960",
+        "___id": "T000002R001962",
         "___s": true
     },
     {
@@ -61104,7 +61157,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001961",
+        "___id": "T000002R001963",
         "___s": true
     },
     {
@@ -61132,7 +61185,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001962",
+        "___id": "T000002R001964",
         "___s": true
     },
     {
@@ -61160,7 +61213,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001963",
+        "___id": "T000002R001965",
         "___s": true
     },
     {
@@ -61188,7 +61241,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001964",
+        "___id": "T000002R001966",
         "___s": true
     },
     {
@@ -61216,7 +61269,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001965",
+        "___id": "T000002R001967",
         "___s": true
     },
     {
@@ -61244,7 +61297,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001966",
+        "___id": "T000002R001968",
         "___s": true
     },
     {
@@ -61272,7 +61325,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001967",
+        "___id": "T000002R001969",
         "___s": true
     },
     {
@@ -61300,7 +61353,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001968",
+        "___id": "T000002R001970",
         "___s": true
     },
     {
@@ -61328,7 +61381,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001969",
+        "___id": "T000002R001971",
         "___s": true
     },
     {
@@ -61356,7 +61409,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001970",
+        "___id": "T000002R001972",
         "___s": true
     },
     {
@@ -61384,7 +61437,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001971",
+        "___id": "T000002R001973",
         "___s": true
     },
     {
@@ -61412,7 +61465,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001972",
+        "___id": "T000002R001974",
         "___s": true
     },
     {
@@ -61440,7 +61493,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001973",
+        "___id": "T000002R001975",
         "___s": true
     },
     {
@@ -61468,7 +61521,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001974",
+        "___id": "T000002R001976",
         "___s": true
     },
     {
@@ -61496,7 +61549,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001975",
+        "___id": "T000002R001977",
         "___s": true
     },
     {
@@ -61524,7 +61577,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001976",
+        "___id": "T000002R001978",
         "___s": true
     },
     {
@@ -61552,7 +61605,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001977",
+        "___id": "T000002R001979",
         "___s": true
     },
     {
@@ -61580,7 +61633,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001978",
+        "___id": "T000002R001980",
         "___s": true
     },
     {
@@ -61608,7 +61661,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001979",
+        "___id": "T000002R001981",
         "___s": true
     },
     {
@@ -61636,7 +61689,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001980",
+        "___id": "T000002R001982",
         "___s": true
     },
     {
@@ -61664,7 +61717,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001981",
+        "___id": "T000002R001983",
         "___s": true
     },
     {
@@ -61692,7 +61745,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001982",
+        "___id": "T000002R001984",
         "___s": true
     },
     {
@@ -61720,7 +61773,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001983",
+        "___id": "T000002R001985",
         "___s": true
     },
     {
@@ -61748,7 +61801,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001984",
+        "___id": "T000002R001986",
         "___s": true
     },
     {
@@ -61776,7 +61829,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001985",
+        "___id": "T000002R001987",
         "___s": true
     },
     {
@@ -61804,7 +61857,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001986",
+        "___id": "T000002R001988",
         "___s": true
     },
     {
@@ -61832,7 +61885,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001987",
+        "___id": "T000002R001989",
         "___s": true
     },
     {
@@ -61860,7 +61913,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001988",
+        "___id": "T000002R001990",
         "___s": true
     },
     {
@@ -61888,7 +61941,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001989",
+        "___id": "T000002R001991",
         "___s": true
     },
     {
@@ -61916,7 +61969,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001990",
+        "___id": "T000002R001992",
         "___s": true
     },
     {
@@ -61944,7 +61997,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001991",
+        "___id": "T000002R001993",
         "___s": true
     },
     {
@@ -61972,7 +62025,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001992",
+        "___id": "T000002R001994",
         "___s": true
     },
     {
@@ -62000,7 +62053,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001993",
+        "___id": "T000002R001995",
         "___s": true
     },
     {
@@ -62028,7 +62081,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001994",
+        "___id": "T000002R001996",
         "___s": true
     },
     {
@@ -62056,7 +62109,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001995",
+        "___id": "T000002R001997",
         "___s": true
     },
     {
@@ -62084,7 +62137,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001996",
+        "___id": "T000002R001998",
         "___s": true
     },
     {
@@ -62112,7 +62165,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001997",
+        "___id": "T000002R001999",
         "___s": true
     },
     {
@@ -62140,7 +62193,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001998",
+        "___id": "T000002R002000",
         "___s": true
     },
     {
@@ -62168,7 +62221,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R001999",
+        "___id": "T000002R002001",
         "___s": true
     },
     {
@@ -62196,7 +62249,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R002000",
+        "___id": "T000002R002002",
         "___s": true
     },
     {
@@ -62224,7 +62277,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R002001",
+        "___id": "T000002R002003",
         "___s": true
     },
     {
@@ -62252,7 +62305,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R002002",
+        "___id": "T000002R002004",
         "___s": true
     },
     {
@@ -62280,7 +62333,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R002003",
+        "___id": "T000002R002005",
         "___s": true
     },
     {
@@ -62309,7 +62362,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.init~publicStyleKeyIntf",
         "scope": "static",
-        "___id": "T000002R002004",
+        "___id": "T000002R002006",
         "___s": true
     },
     {
@@ -62334,7 +62387,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002005",
+        "___id": "T000002R002007",
         "___s": true
     },
     {
@@ -62362,7 +62415,7 @@ window.reflection = [
         "longname": "set",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002006",
+        "___id": "T000002R002008",
         "___s": true
     },
     {
@@ -62390,7 +62443,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002007",
+        "___id": "T000002R002009",
         "___s": true
     },
     {
@@ -62416,7 +62469,7 @@ window.reflection = [
         "longname": "name",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002008",
+        "___id": "T000002R002010",
         "___s": true
     },
     {
@@ -62442,7 +62495,7 @@ window.reflection = [
         "longname": "value",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002009",
+        "___id": "T000002R002011",
         "___s": true
     },
     {
@@ -62467,7 +62520,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002010",
+        "___id": "T000002R002012",
         "___s": true
     },
     {
@@ -62492,7 +62545,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002011",
+        "___id": "T000002R002013",
         "___s": true
     },
     {
@@ -62517,7 +62570,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002012",
+        "___id": "T000002R002014",
         "___s": true
     },
     {
@@ -62542,7 +62595,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002013",
+        "___id": "T000002R002015",
         "___s": true
     },
     {
@@ -62570,7 +62623,7 @@ window.reflection = [
         "longname": "set",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002014",
+        "___id": "T000002R002016",
         "___s": true
     },
     {
@@ -62598,7 +62651,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002015",
+        "___id": "T000002R002017",
         "___s": true
     },
     {
@@ -62624,7 +62677,7 @@ window.reflection = [
         "longname": "name",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002016",
+        "___id": "T000002R002018",
         "___s": true
     },
     {
@@ -62650,7 +62703,7 @@ window.reflection = [
         "longname": "value",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002017",
+        "___id": "T000002R002019",
         "___s": true
     },
     {
@@ -62676,7 +62729,7 @@ window.reflection = [
         "longname": "value",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002018",
+        "___id": "T000002R002020",
         "___s": true
     },
     {
@@ -62701,7 +62754,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002019",
+        "___id": "T000002R002021",
         "___s": true
     },
     {
@@ -62729,7 +62782,7 @@ window.reflection = [
         "longname": "set",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002020",
+        "___id": "T000002R002022",
         "___s": true
     },
     {
@@ -62757,7 +62810,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002021",
+        "___id": "T000002R002023",
         "___s": true
     },
     {
@@ -62783,7 +62836,7 @@ window.reflection = [
         "longname": "name",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002022",
+        "___id": "T000002R002024",
         "___s": true
     },
     {
@@ -62809,7 +62862,7 @@ window.reflection = [
         "longname": "value",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002023",
+        "___id": "T000002R002025",
         "___s": true
     },
     {
@@ -62848,7 +62901,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self.filters",
         "scope": "static",
-        "___id": "T000002R002024",
+        "___id": "T000002R002026",
         "___s": true
     },
     {
@@ -62877,7 +62930,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.filters.string",
         "scope": "inner",
-        "___id": "T000002R002025",
+        "___id": "T000002R002027",
         "___s": true
     },
     {
@@ -62903,7 +62956,7 @@ window.reflection = [
         "memberof": "self.filters.string",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002026",
+        "___id": "T000002R002028",
         "___s": true
     },
     {
@@ -62931,7 +62984,7 @@ window.reflection = [
         "memberof": "self.filters.string",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002027",
+        "___id": "T000002R002029",
         "___s": true
     },
     {
@@ -62959,7 +63012,7 @@ window.reflection = [
         "memberof": "self.filters.string",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002028",
+        "___id": "T000002R002030",
         "___s": true
     },
     {
@@ -62987,7 +63040,7 @@ window.reflection = [
         "memberof": "self.filters.string",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002029",
+        "___id": "T000002R002031",
         "___s": true
     },
     {
@@ -63015,7 +63068,7 @@ window.reflection = [
         "memberof": "self.filters.string",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002030",
+        "___id": "T000002R002032",
         "___s": true
     },
     {
@@ -63043,7 +63096,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002031",
+        "___id": "T000002R002033",
         "___s": true
     },
     {
@@ -63072,7 +63125,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.filters.string",
         "scope": "inner",
-        "___id": "T000002R002032",
+        "___id": "T000002R002034",
         "___s": true
     },
     {
@@ -63100,7 +63153,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002033",
+        "___id": "T000002R002035",
         "___s": true
     },
     {
@@ -63130,7 +63183,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self.filters",
         "scope": "static",
-        "___id": "T000002R002034",
+        "___id": "T000002R002036",
         "___s": true
     },
     {
@@ -63158,7 +63211,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002035",
+        "___id": "T000002R002037",
         "___s": true
     },
     {
@@ -63186,7 +63239,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002036",
+        "___id": "T000002R002038",
         "___s": true
     },
     {
@@ -63214,7 +63267,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002037",
+        "___id": "T000002R002039",
         "___s": true
     },
     {
@@ -63242,7 +63295,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.sizes",
         "scope": "static",
-        "___id": "T000002R002038",
+        "___id": "T000002R002040",
         "___s": true
     },
     {
@@ -63270,7 +63323,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.sizes",
         "scope": "static",
-        "___id": "T000002R002039",
+        "___id": "T000002R002041",
         "___s": true
     },
     {
@@ -63298,7 +63351,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002040",
+        "___id": "T000002R002042",
         "___s": true
     },
     {
@@ -63326,7 +63379,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R002041",
+        "___id": "T000002R002043",
         "___s": true
     },
     {
@@ -63354,7 +63407,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R002042",
+        "___id": "T000002R002044",
         "___s": true
     },
     {
@@ -63382,7 +63435,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R002043",
+        "___id": "T000002R002045",
         "___s": true
     },
     {
@@ -63400,7 +63453,7 @@ window.reflection = [
         "kind": "function",
         "scope": "static",
         "longname": "canvasDatagrid.blur",
-        "___id": "T000002R002044",
+        "___id": "T000002R002046",
         "___s": true
     },
     {
@@ -63432,7 +63485,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R002045",
+        "___id": "T000002R002047",
         "___s": true
     },
     {
@@ -63460,7 +63513,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002046",
+        "___id": "T000002R002048",
         "___s": true
     },
     {
@@ -63478,7 +63531,7 @@ window.reflection = [
         "kind": "function",
         "scope": "static",
         "longname": "canvasDatagrid.focus",
-        "___id": "T000002R002047",
+        "___id": "T000002R002049",
         "___s": true
     },
     {
@@ -63508,7 +63561,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R002048",
+        "___id": "T000002R002050",
         "___s": true
     },
     {
@@ -63536,7 +63589,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002049",
+        "___id": "T000002R002051",
         "___s": true
     },
     {
@@ -63561,7 +63614,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002050",
+        "___id": "T000002R002052",
         "___s": true
     },
     {
@@ -63589,7 +63642,7 @@ window.reflection = [
         "longname": "set",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002051",
+        "___id": "T000002R002053",
         "___s": true
     },
     {
@@ -63617,7 +63670,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.parentNode",
         "scope": "static",
-        "___id": "T000002R002052",
+        "___id": "T000002R002054",
         "___s": true
     },
     {
@@ -63642,7 +63695,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002053",
+        "___id": "T000002R002055",
         "___s": true
     },
     {
@@ -63670,7 +63723,7 @@ window.reflection = [
         "longname": "set",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002054",
+        "___id": "T000002R002056",
         "___s": true
     },
     {
@@ -63698,7 +63751,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.parentNode",
         "scope": "static",
-        "___id": "T000002R002055",
+        "___id": "T000002R002057",
         "___s": true
     },
     {
@@ -63723,7 +63776,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002056",
+        "___id": "T000002R002058",
         "___s": true
     },
     {
@@ -63748,7 +63801,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002057",
+        "___id": "T000002R002059",
         "___s": true
     },
     {
@@ -63776,7 +63829,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002058",
+        "___id": "T000002R002060",
         "___s": true
     },
     {
@@ -63801,7 +63854,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002059",
+        "___id": "T000002R002061",
         "___s": true
     },
     {
@@ -63826,7 +63879,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002060",
+        "___id": "T000002R002062",
         "___s": true
     },
     {
@@ -63854,7 +63907,7 @@ window.reflection = [
         "longname": "set",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002061",
+        "___id": "T000002R002063",
         "___s": true
     },
     {
@@ -63882,7 +63935,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002062",
+        "___id": "T000002R002064",
         "___s": true
     },
     {
@@ -63907,7 +63960,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002063",
+        "___id": "T000002R002065",
         "___s": true
     },
     {
@@ -63932,7 +63985,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002064",
+        "___id": "T000002R002066",
         "___s": true
     },
     {
@@ -63957,7 +64010,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002065",
+        "___id": "T000002R002067",
         "___s": true
     },
     {
@@ -63982,7 +64035,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002066",
+        "___id": "T000002R002068",
         "___s": true
     },
     {
@@ -64007,7 +64060,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002067",
+        "___id": "T000002R002069",
         "___s": true
     },
     {
@@ -64032,7 +64085,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002068",
+        "___id": "T000002R002070",
         "___s": true
     },
     {
@@ -64060,7 +64113,7 @@ window.reflection = [
         "longname": "set",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002069",
+        "___id": "T000002R002071",
         "___s": true
     },
     {
@@ -64088,7 +64141,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R002070",
+        "___id": "T000002R002072",
         "___s": true
     },
     {
@@ -64113,7 +64166,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002071",
+        "___id": "T000002R002073",
         "___s": true
     },
     {
@@ -64141,7 +64194,7 @@ window.reflection = [
         "longname": "set",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002072",
+        "___id": "T000002R002074",
         "___s": true
     },
     {
@@ -64169,7 +64222,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R002073",
+        "___id": "T000002R002075",
         "___s": true
     },
     {
@@ -64194,7 +64247,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002074",
+        "___id": "T000002R002076",
         "___s": true
     },
     {
@@ -64219,7 +64272,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002075",
+        "___id": "T000002R002077",
         "___s": true
     },
     {
@@ -64244,7 +64297,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002076",
+        "___id": "T000002R002078",
         "___s": true
     },
     {
@@ -64269,7 +64322,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002077",
+        "___id": "T000002R002079",
         "___s": true
     },
     {
@@ -64294,7 +64347,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002078",
+        "___id": "T000002R002080",
         "___s": true
     },
     {
@@ -64319,7 +64372,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002079",
+        "___id": "T000002R002081",
         "___s": true
     },
     {
@@ -64344,7 +64397,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002080",
+        "___id": "T000002R002082",
         "___s": true
     },
     {
@@ -64369,7 +64422,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002081",
+        "___id": "T000002R002083",
         "___s": true
     },
     {
@@ -64394,7 +64447,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002082",
+        "___id": "T000002R002084",
         "___s": true
     },
     {
@@ -64422,7 +64475,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R002083",
+        "___id": "T000002R002085",
         "___s": true
     },
     {
@@ -64460,7 +64513,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002084",
+        "___id": "T000002R002086",
         "___s": true
     },
     {
@@ -64486,7 +64539,7 @@ window.reflection = [
         "memberof": "self.normalizeDataset",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002085",
+        "___id": "T000002R002087",
         "___s": true
     },
     {
@@ -64512,7 +64565,7 @@ window.reflection = [
         "memberof": "self.normalizeDataset",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002086",
+        "___id": "T000002R002088",
         "___s": true
     },
     {
@@ -64538,7 +64591,7 @@ window.reflection = [
         "memberof": "self.normalizeDataset",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002087",
+        "___id": "T000002R002089",
         "___s": true
     },
     {
@@ -64564,7 +64617,7 @@ window.reflection = [
         "memberof": "self.normalizeDataset",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002088",
+        "___id": "T000002R002090",
         "___s": true
     },
     {
@@ -64593,7 +64646,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.normalizeDataset",
         "scope": "inner",
-        "___id": "T000002R002089",
+        "___id": "T000002R002091",
         "___s": true
     },
     {
@@ -64619,7 +64672,7 @@ window.reflection = [
         "longname": "0",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002090",
+        "___id": "T000002R002092",
         "___s": true
     },
     {
@@ -64648,7 +64701,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.normalizeDataset",
         "scope": "inner",
-        "___id": "T000002R002091",
+        "___id": "T000002R002093",
         "___s": true
     },
     {
@@ -64677,7 +64730,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.normalizeDataset",
         "scope": "inner",
-        "___id": "T000002R002092",
+        "___id": "T000002R002094",
         "___s": true
     },
     {
@@ -64706,7 +64759,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.normalizeDataset",
         "scope": "inner",
-        "___id": "T000002R002093",
+        "___id": "T000002R002095",
         "___s": true
     },
     {
@@ -64735,7 +64788,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.normalizeDataset",
         "scope": "inner",
-        "___id": "T000002R002094",
+        "___id": "T000002R002096",
         "___s": true
     },
     {
@@ -64764,7 +64817,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.normalizeDataset",
         "scope": "inner",
-        "___id": "T000002R002095",
+        "___id": "T000002R002097",
         "___s": true
     },
     {
@@ -64793,7 +64846,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.normalizeDataset",
         "scope": "inner",
-        "___id": "T000002R002096",
+        "___id": "T000002R002098",
         "___s": true
     },
     {
@@ -64822,7 +64875,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.normalizeDataset",
         "scope": "inner",
-        "___id": "T000002R002097",
+        "___id": "T000002R002099",
         "___s": true
     },
     {
@@ -64851,7 +64904,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R002098",
+        "___id": "T000002R002100",
         "___s": true
     },
     {
@@ -64877,7 +64930,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002099",
+        "___id": "T000002R002101",
         "___s": true
     },
     {
@@ -64906,7 +64959,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.normalizeDataset~d",
         "scope": "static",
-        "___id": "T000002R002100",
+        "___id": "T000002R002102",
         "___s": true
     },
     {
@@ -64935,7 +64988,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R002101",
+        "___id": "T000002R002103",
         "___s": true
     },
     {
@@ -64964,7 +65017,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R002102",
+        "___id": "T000002R002104",
         "___s": true
     },
     {
@@ -64993,7 +65046,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.normalizeDataset~d",
         "scope": "static",
-        "___id": "T000002R002103",
+        "___id": "T000002R002105",
         "___s": true
     },
     {
@@ -65018,7 +65071,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002104",
+        "___id": "T000002R002106",
         "___s": true
     },
     {
@@ -65047,7 +65100,7 @@ window.reflection = [
         "longname": "set",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002105",
+        "___id": "T000002R002107",
         "___s": true
     },
     {
@@ -65075,7 +65128,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002106",
+        "___id": "T000002R002108",
         "___s": true
     },
     {
@@ -65103,7 +65156,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002107",
+        "___id": "T000002R002109",
         "___s": true
     },
     {
@@ -65128,7 +65181,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002108",
+        "___id": "T000002R002110",
         "___s": true
     },
     {
@@ -65156,7 +65209,7 @@ window.reflection = [
         "longname": "set",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002109",
+        "___id": "T000002R002111",
         "___s": true
     },
     {
@@ -65184,7 +65237,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002110",
+        "___id": "T000002R002112",
         "___s": true
     },
     {
@@ -65209,7 +65262,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002111",
+        "___id": "T000002R002113",
         "___s": true
     },
     {
@@ -65237,7 +65290,7 @@ window.reflection = [
         "longname": "set",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002112",
+        "___id": "T000002R002114",
         "___s": true
     },
     {
@@ -65265,7 +65318,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002113",
+        "___id": "T000002R002115",
         "___s": true
     },
     {
@@ -65290,7 +65343,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002114",
+        "___id": "T000002R002116",
         "___s": true
     },
     {
@@ -65316,7 +65369,7 @@ window.reflection = [
         "longname": "top",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002115",
+        "___id": "T000002R002117",
         "___s": true
     },
     {
@@ -65342,7 +65395,7 @@ window.reflection = [
         "longname": "right",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002116",
+        "___id": "T000002R002118",
         "___s": true
     },
     {
@@ -65368,7 +65421,7 @@ window.reflection = [
         "longname": "bottom",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002117",
+        "___id": "T000002R002119",
         "___s": true
     },
     {
@@ -65394,7 +65447,7 @@ window.reflection = [
         "longname": "left",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002118",
+        "___id": "T000002R002120",
         "___s": true
     },
     {
@@ -65419,7 +65472,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002119",
+        "___id": "T000002R002121",
         "___s": true
     },
     {
@@ -65445,7 +65498,7 @@ window.reflection = [
         "longname": "top",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002120",
+        "___id": "T000002R002122",
         "___s": true
     },
     {
@@ -65471,7 +65524,7 @@ window.reflection = [
         "longname": "right",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002121",
+        "___id": "T000002R002123",
         "___s": true
     },
     {
@@ -65497,7 +65550,7 @@ window.reflection = [
         "longname": "bottom",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002122",
+        "___id": "T000002R002124",
         "___s": true
     },
     {
@@ -65523,7 +65576,7 @@ window.reflection = [
         "longname": "left",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002123",
+        "___id": "T000002R002125",
         "___s": true
     },
     {
@@ -65548,7 +65601,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002124",
+        "___id": "T000002R002126",
         "___s": true
     },
     {
@@ -65573,7 +65626,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002125",
+        "___id": "T000002R002127",
         "___s": true
     },
     {
@@ -65598,7 +65651,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002126",
+        "___id": "T000002R002128",
         "___s": true
     },
     {
@@ -65626,7 +65679,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002127",
+        "___id": "T000002R002129",
         "___s": true
     },
     {
@@ -65651,7 +65704,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002128",
+        "___id": "T000002R002130",
         "___s": true
     },
     {
@@ -65677,7 +65730,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002129",
+        "___id": "T000002R002131",
         "___s": true
     },
     {
@@ -65708,7 +65761,7 @@ window.reflection = [
         "longname": "set",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002130",
+        "___id": "T000002R002132",
         "___s": true
     },
     {
@@ -65736,7 +65789,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002131",
+        "___id": "T000002R002133",
         "___s": true
     },
     {
@@ -65764,7 +65817,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "column",
         "scope": "static",
-        "___id": "T000002R002132",
+        "___id": "T000002R002134",
         "___s": true
     },
     {
@@ -65791,7 +65844,7 @@ window.reflection = [
         "longname": "column[undefined]",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002133",
+        "___id": "T000002R002135",
         "___s": true
     },
     {
@@ -65819,7 +65872,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "column",
         "scope": "static",
-        "___id": "T000002R002134",
+        "___id": "T000002R002136",
         "___s": true
     },
     {
@@ -65847,7 +65900,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "column",
         "scope": "static",
-        "___id": "T000002R002135",
+        "___id": "T000002R002137",
         "___s": true
     },
     {
@@ -65875,7 +65928,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "column",
         "scope": "static",
-        "___id": "T000002R002136",
+        "___id": "T000002R002138",
         "___s": true
     },
     {
@@ -65903,7 +65956,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "column",
         "scope": "static",
-        "___id": "T000002R002137",
+        "___id": "T000002R002139",
         "___s": true
     },
     {
@@ -65931,7 +65984,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "column",
         "scope": "static",
-        "___id": "T000002R002138",
+        "___id": "T000002R002140",
         "___s": true
     },
     {
@@ -65959,7 +66012,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002139",
+        "___id": "T000002R002141",
         "___s": true
     },
     {
@@ -65985,7 +66038,7 @@ window.reflection = [
         "longname": "schema",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002140",
+        "___id": "T000002R002142",
         "___s": true
     },
     {
@@ -66014,7 +66067,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002141",
+        "___id": "T000002R002143",
         "___s": true
     },
     {
@@ -66043,7 +66096,7 @@ window.reflection = [
         "longname": "set",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002142",
+        "___id": "T000002R002144",
         "___s": true
     },
     {
@@ -66071,7 +66124,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002143",
+        "___id": "T000002R002145",
         "___s": true
     },
     {
@@ -66098,7 +66151,7 @@ window.reflection = [
         "longname": "row[undefined]",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002144",
+        "___id": "T000002R002146",
         "___s": true
     },
     {
@@ -66126,7 +66179,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002145",
+        "___id": "T000002R002147",
         "___s": true
     },
     {
@@ -66154,7 +66207,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002146",
+        "___id": "T000002R002148",
         "___s": true
     },
     {
@@ -66182,7 +66235,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002147",
+        "___id": "T000002R002149",
         "___s": true
     },
     {
@@ -66210,7 +66263,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002148",
+        "___id": "T000002R002150",
         "___s": true
     },
     {
@@ -66238,7 +66291,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002149",
+        "___id": "T000002R002151",
         "___s": true
     },
     {
@@ -66264,7 +66317,7 @@ window.reflection = [
         "longname": "name",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002150",
+        "___id": "T000002R002152",
         "___s": true
     },
     {
@@ -66292,7 +66345,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002151",
+        "___id": "T000002R002153",
         "___s": true
     },
     {
@@ -66318,7 +66371,7 @@ window.reflection = [
         "longname": "schema",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002152",
+        "___id": "T000002R002154",
         "___s": true
     },
     {
@@ -66344,7 +66397,7 @@ window.reflection = [
         "longname": "data",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002153",
+        "___id": "T000002R002155",
         "___s": true
     },
     {
@@ -66386,7 +66439,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002154",
+        "___id": "T000002R002156",
         "___s": true
     },
     {
@@ -66414,7 +66467,7 @@ window.reflection = [
         "memberof": "self.initScrollBox",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002155",
+        "___id": "T000002R002157",
         "___s": true
     },
     {
@@ -66442,7 +66495,7 @@ window.reflection = [
         "memberof": "self.initScrollBox",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002156",
+        "___id": "T000002R002158",
         "___s": true
     },
     {
@@ -66470,7 +66523,7 @@ window.reflection = [
         "memberof": "self.initScrollBox",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002157",
+        "___id": "T000002R002159",
         "___s": true
     },
     {
@@ -66498,7 +66551,7 @@ window.reflection = [
         "memberof": "self.initScrollBox",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002158",
+        "___id": "T000002R002160",
         "___s": true
     },
     {
@@ -66526,7 +66579,7 @@ window.reflection = [
         "memberof": "self.initScrollBox",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002159",
+        "___id": "T000002R002161",
         "___s": true
     },
     {
@@ -66554,7 +66607,7 @@ window.reflection = [
         "memberof": "self.initScrollBox",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002160",
+        "___id": "T000002R002162",
         "___s": true
     },
     {
@@ -66582,7 +66635,7 @@ window.reflection = [
         "memberof": "self.initScrollBox",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002161",
+        "___id": "T000002R002163",
         "___s": true
     },
     {
@@ -66610,7 +66663,7 @@ window.reflection = [
         "memberof": "self.initScrollBox",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002162",
+        "___id": "T000002R002164",
         "___s": true
     },
     {
@@ -66645,7 +66698,7 @@ window.reflection = [
         "memberof": "self.initScrollBox",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002163",
+        "___id": "T000002R002165",
         "___s": true
     },
     {
@@ -66674,7 +66727,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.initScrollBox~setScrollTop",
         "scope": "inner",
-        "___id": "T000002R002164",
+        "___id": "T000002R002166",
         "___s": true
     },
     {
@@ -66703,7 +66756,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.initScrollBox~setScrollTop",
         "scope": "inner",
-        "___id": "T000002R002165",
+        "___id": "T000002R002167",
         "___s": true
     },
     {
@@ -66732,7 +66785,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.initScrollBox~setScrollTop",
         "scope": "inner",
-        "___id": "T000002R002166",
+        "___id": "T000002R002168",
         "___s": true
     },
     {
@@ -66761,7 +66814,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.initScrollBox~setScrollTop",
         "scope": "inner",
-        "___id": "T000002R002167",
+        "___id": "T000002R002169",
         "___s": true
     },
     {
@@ -66796,7 +66849,7 @@ window.reflection = [
         "memberof": "self.initScrollBox",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002168",
+        "___id": "T000002R002170",
         "___s": true
     },
     {
@@ -66825,7 +66878,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.initScrollBox~setScrollLeft",
         "scope": "inner",
-        "___id": "T000002R002169",
+        "___id": "T000002R002171",
         "___s": true
     },
     {
@@ -66854,7 +66907,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.initScrollBox~setScrollLeft",
         "scope": "inner",
-        "___id": "T000002R002170",
+        "___id": "T000002R002172",
         "___s": true
     },
     {
@@ -66883,7 +66936,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.initScrollBox~setScrollLeft",
         "scope": "inner",
-        "___id": "T000002R002171",
+        "___id": "T000002R002173",
         "___s": true
     },
     {
@@ -66912,7 +66965,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.initScrollBox~setScrollLeft",
         "scope": "inner",
-        "___id": "T000002R002172",
+        "___id": "T000002R002174",
         "___s": true
     },
     {
@@ -66939,7 +66992,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R002173",
+        "___id": "T000002R002175",
         "___s": true
     },
     {
@@ -66970,7 +67023,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R002174",
+        "___id": "T000002R002176",
         "___s": true
     },
     {
@@ -66995,7 +67048,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002175",
+        "___id": "T000002R002177",
         "___s": true
     },
     {
@@ -67023,7 +67076,7 @@ window.reflection = [
         "longname": "set",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002176",
+        "___id": "T000002R002178",
         "___s": true
     },
     {
@@ -67052,7 +67105,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "set",
         "scope": "inner",
-        "___id": "T000002R002177",
+        "___id": "T000002R002179",
         "___s": true
     },
     {
@@ -67077,7 +67130,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002178",
+        "___id": "T000002R002180",
         "___s": true
     },
     {
@@ -67105,7 +67158,7 @@ window.reflection = [
         "longname": "set",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002179",
+        "___id": "T000002R002181",
         "___s": true
     },
     {
@@ -67134,7 +67187,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "set",
         "scope": "inner",
-        "___id": "T000002R002180",
+        "___id": "T000002R002182",
         "___s": true
     },
     {
@@ -67159,7 +67212,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002181",
+        "___id": "T000002R002183",
         "___s": true
     },
     {
@@ -67188,7 +67241,7 @@ window.reflection = [
         "longname": "set",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002182",
+        "___id": "T000002R002184",
         "___s": true
     },
     {
@@ -67217,7 +67270,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "set",
         "scope": "inner",
-        "___id": "T000002R002183",
+        "___id": "T000002R002185",
         "___s": true
     },
     {
@@ -67246,7 +67299,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "set",
         "scope": "inner",
-        "___id": "T000002R002184",
+        "___id": "T000002R002186",
         "___s": true
     },
     {
@@ -67271,7 +67324,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002185",
+        "___id": "T000002R002187",
         "___s": true
     },
     {
@@ -67299,7 +67352,7 @@ window.reflection = [
         "longname": "set",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002186",
+        "___id": "T000002R002188",
         "___s": true
     },
     {
@@ -67328,7 +67381,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "set",
         "scope": "inner",
-        "___id": "T000002R002187",
+        "___id": "T000002R002189",
         "___s": true
     },
     {
@@ -67353,7 +67406,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002188",
+        "___id": "T000002R002190",
         "___s": true
     },
     {
@@ -67379,7 +67432,7 @@ window.reflection = [
         "longname": "set",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002189",
+        "___id": "T000002R002191",
         "___s": true
     },
     {
@@ -67404,7 +67457,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002190",
+        "___id": "T000002R002192",
         "___s": true
     },
     {
@@ -67430,7 +67483,7 @@ window.reflection = [
         "longname": "set",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002191",
+        "___id": "T000002R002193",
         "___s": true
     },
     {
@@ -67455,7 +67508,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002192",
+        "___id": "T000002R002194",
         "___s": true
     },
     {
@@ -67484,7 +67537,7 @@ window.reflection = [
         "longname": "set",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002193",
+        "___id": "T000002R002195",
         "___s": true
     },
     {
@@ -67513,7 +67566,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "set",
         "scope": "inner",
-        "___id": "T000002R002194",
+        "___id": "T000002R002196",
         "___s": true
     },
     {
@@ -67542,7 +67595,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "set",
         "scope": "inner",
-        "___id": "T000002R002195",
+        "___id": "T000002R002197",
         "___s": true
     },
     {
@@ -67571,7 +67624,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "set",
         "scope": "inner",
-        "___id": "T000002R002196",
+        "___id": "T000002R002198",
         "___s": true
     },
     {
@@ -67596,7 +67649,7 @@ window.reflection = [
         "longname": "get",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002197",
+        "___id": "T000002R002199",
         "___s": true
     },
     {
@@ -67625,7 +67678,7 @@ window.reflection = [
         "longname": "set",
         "kind": "function",
         "scope": "global",
-        "___id": "T000002R002198",
+        "___id": "T000002R002200",
         "___s": true
     },
     {
@@ -67654,7 +67707,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "set",
         "scope": "inner",
-        "___id": "T000002R002199",
+        "___id": "T000002R002201",
         "___s": true
     },
     {
@@ -67683,7 +67736,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "set",
         "scope": "inner",
-        "___id": "T000002R002200",
+        "___id": "T000002R002202",
         "___s": true
     },
     {
@@ -67712,7 +67765,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R002201",
+        "___id": "T000002R002203",
         "___s": true
     },
     {
@@ -67740,7 +67793,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002202",
+        "___id": "T000002R002204",
         "___s": true
     },
     {
@@ -67781,7 +67834,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002203",
+        "___id": "T000002R002205",
         "___s": true
     },
     {
@@ -67810,7 +67863,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~Grid",
         "scope": "inner",
-        "___id": "T000002R002204",
+        "___id": "T000002R002206",
         "___s": true
     },
     {
@@ -67838,7 +67891,7 @@ window.reflection = [
         "memberof": "<anonymous>~Grid",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002205",
+        "___id": "T000002R002207",
         "___s": true
     },
     {
@@ -67867,7 +67920,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~Grid~self",
         "scope": "static",
-        "___id": "T000002R002206",
+        "___id": "T000002R002208",
         "___s": true
     },
     {
@@ -67896,7 +67949,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~Grid~self",
         "scope": "static",
-        "___id": "T000002R002207",
+        "___id": "T000002R002209",
         "___s": true
     },
     {
@@ -67925,7 +67978,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~Grid~self",
         "scope": "static",
-        "___id": "T000002R002208",
+        "___id": "T000002R002210",
         "___s": true
     },
     {
@@ -67959,7 +68012,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "<anonymous>~Grid~self",
         "scope": "static",
-        "___id": "T000002R002209",
+        "___id": "T000002R002211",
         "___s": true
     },
     {
@@ -67988,7 +68041,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~Grid~args",
         "scope": "static",
-        "___id": "T000002R002210",
+        "___id": "T000002R002212",
         "___s": true
     },
     {
@@ -68017,7 +68070,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~Grid~self",
         "scope": "static",
-        "___id": "T000002R002211",
+        "___id": "T000002R002213",
         "___s": true
     },
     {
@@ -68046,7 +68099,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~Grid~self",
         "scope": "static",
-        "___id": "T000002R002212",
+        "___id": "T000002R002214",
         "___s": true
     },
     {
@@ -68075,7 +68128,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~Grid",
         "scope": "static",
-        "___id": "T000002R002213",
+        "___id": "T000002R002215",
         "___s": true
     },
     {
@@ -68104,7 +68157,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~Grid",
         "scope": "static",
-        "___id": "T000002R002214",
+        "___id": "T000002R002216",
         "___s": true
     },
     {
@@ -68132,7 +68185,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "<anonymous>~Grid",
         "scope": "instance",
-        "___id": "T000002R002215",
+        "___id": "T000002R002217",
         "___s": true
     },
     {
@@ -68161,7 +68214,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~Grid",
         "scope": "instance",
-        "___id": "T000002R002216",
+        "___id": "T000002R002218",
         "___s": true
     },
     {
@@ -68190,7 +68243,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~Grid",
         "scope": "instance",
-        "___id": "T000002R002217",
+        "___id": "T000002R002219",
         "___s": true
     },
     {
@@ -68219,7 +68272,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~Grid",
         "scope": "instance",
-        "___id": "T000002R002218",
+        "___id": "T000002R002220",
         "___s": true
     },
     {
@@ -68248,7 +68301,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "window",
         "scope": "static",
-        "___id": "T000002R002219",
+        "___id": "T000002R002221",
         "___s": true
     },
     {
@@ -68282,7 +68335,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "module",
         "scope": "static",
-        "___id": "T000002R002220",
+        "___id": "T000002R002222",
         "___s": true
     },
     {
@@ -68311,7 +68364,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "module.exports",
         "scope": "inner",
-        "___id": "T000002R002221",
+        "___id": "T000002R002223",
         "___s": true
     },
     {
@@ -68340,7 +68393,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "module.exports~args",
         "scope": "static",
-        "___id": "T000002R002222",
+        "___id": "T000002R002224",
         "___s": true
     },
     {
@@ -68369,7 +68422,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.integerToAlpha",
-        "___id": "T000002R002223",
+        "___id": "T000002R002225",
         "___s": true
     },
     {
@@ -68405,7 +68458,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002224",
+        "___id": "T000002R002226",
         "___s": true
     },
     {
@@ -68433,7 +68486,7 @@ window.reflection = [
         "memberof": "self.integerToAlpha",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002225",
+        "___id": "T000002R002227",
         "___s": true
     },
     {
@@ -68461,7 +68514,7 @@ window.reflection = [
         "memberof": "self.integerToAlpha",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002226",
+        "___id": "T000002R002228",
         "___s": true
     },
     {
@@ -68489,7 +68542,7 @@ window.reflection = [
         "memberof": "self.integerToAlpha",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002227",
+        "___id": "T000002R002229",
         "___s": true
     },
     {
@@ -68517,7 +68570,7 @@ window.reflection = [
         "memberof": "self.integerToAlpha",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002228",
+        "___id": "T000002R002230",
         "___s": true
     },
     {
@@ -68546,7 +68599,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.integerToAlpha",
         "scope": "inner",
-        "___id": "T000002R002229",
+        "___id": "T000002R002231",
         "___s": true
     },
     {
@@ -68575,7 +68628,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.integerToAlpha",
         "scope": "inner",
-        "___id": "T000002R002230",
+        "___id": "T000002R002232",
         "___s": true
     },
     {
@@ -68616,7 +68669,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.insertColumn",
-        "___id": "T000002R002231",
+        "___id": "T000002R002233",
         "___s": true
     },
     {
@@ -68651,7 +68704,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002232",
+        "___id": "T000002R002234",
         "___s": true
     },
     {
@@ -68679,7 +68732,7 @@ window.reflection = [
         "memberof": "self.insertColumn",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002233",
+        "___id": "T000002R002235",
         "___s": true
     },
     {
@@ -68707,7 +68760,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R002234",
+        "___id": "T000002R002236",
         "___s": true
     },
     {
@@ -68739,7 +68792,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.deleteColumn",
-        "___id": "T000002R002235",
+        "___id": "T000002R002237",
         "___s": true
     },
     {
@@ -68773,7 +68826,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002236",
+        "___id": "T000002R002238",
         "___s": true
     },
     {
@@ -68801,7 +68854,7 @@ window.reflection = [
         "memberof": "self.deleteColumn",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002237",
+        "___id": "T000002R002239",
         "___s": true
     },
     {
@@ -68829,7 +68882,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R002238",
+        "___id": "T000002R002240",
         "___s": true
     },
     {
@@ -68861,7 +68914,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.addColumn",
-        "___id": "T000002R002239",
+        "___id": "T000002R002241",
         "___s": true
     },
     {
@@ -68895,7 +68948,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002240",
+        "___id": "T000002R002242",
         "___s": true
     },
     {
@@ -68923,7 +68976,7 @@ window.reflection = [
         "memberof": "self.addColumn",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002241",
+        "___id": "T000002R002243",
         "___s": true
     },
     {
@@ -68951,7 +69004,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
-        "___id": "T000002R002242",
+        "___id": "T000002R002244",
         "___s": true
     },
     {
@@ -68980,7 +69033,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.deleteRow",
-        "___id": "T000002R002243",
+        "___id": "T000002R002245",
         "___s": true
     },
     {
@@ -69009,7 +69062,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002244",
+        "___id": "T000002R002246",
         "___s": true
     },
     {
@@ -69047,7 +69100,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.insertRow",
-        "___id": "T000002R002245",
+        "___id": "T000002R002247",
         "___s": true
     },
     {
@@ -69080,7 +69133,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002246",
+        "___id": "T000002R002248",
         "___s": true
     },
     {
@@ -69109,7 +69162,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.addRow",
-        "___id": "T000002R002247",
+        "___id": "T000002R002249",
         "___s": true
     },
     {
@@ -69141,7 +69194,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002248",
+        "___id": "T000002R002250",
         "___s": true
     },
     {
@@ -69179,7 +69232,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.setRowHeight",
-        "___id": "T000002R002249",
+        "___id": "T000002R002251",
         "___s": true
     },
     {
@@ -69212,7 +69265,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002250",
+        "___id": "T000002R002252",
         "___s": true
     },
     {
@@ -69240,7 +69293,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.sizes",
         "scope": "static",
-        "___id": "T000002R002251",
+        "___id": "T000002R002253",
         "___s": true
     },
     {
@@ -69278,7 +69331,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.setColumnWidth",
-        "___id": "T000002R002252",
+        "___id": "T000002R002254",
         "___s": true
     },
     {
@@ -69312,7 +69365,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002253",
+        "___id": "T000002R002255",
         "___s": true
     },
     {
@@ -69340,7 +69393,7 @@ window.reflection = [
         "memberof": "self.setColumnWidth",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002254",
+        "___id": "T000002R002256",
         "___s": true
     },
     {
@@ -69368,7 +69421,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.sizes",
         "scope": "static",
-        "___id": "T000002R002255",
+        "___id": "T000002R002257",
         "___s": true
     },
     {
@@ -69389,7 +69442,7 @@ window.reflection = [
         "kind": "function",
         "scope": "static",
         "longname": "canvasDatagrid.resetColumnWidths",
-        "___id": "T000002R002256",
+        "___id": "T000002R002258",
         "___s": true
     },
     {
@@ -69419,7 +69472,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002257",
+        "___id": "T000002R002259",
         "___s": true
     },
     {
@@ -69447,7 +69500,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.sizes",
         "scope": "static",
-        "___id": "T000002R002258",
+        "___id": "T000002R002260",
         "___s": true
     },
     {
@@ -69468,7 +69521,7 @@ window.reflection = [
         "kind": "function",
         "scope": "static",
         "longname": "canvasDatagrid.resetRowHeights",
-        "___id": "T000002R002259",
+        "___id": "T000002R002261",
         "___s": true
     },
     {
@@ -69498,7 +69551,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002260",
+        "___id": "T000002R002262",
         "___s": true
     },
     {
@@ -69526,7 +69579,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.sizes",
         "scope": "static",
-        "___id": "T000002R002261",
+        "___id": "T000002R002263",
         "___s": true
     },
     {
@@ -69564,7 +69617,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.setFilter",
-        "___id": "T000002R002262",
+        "___id": "T000002R002264",
         "___s": true
     },
     {
@@ -69599,7 +69652,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002263",
+        "___id": "T000002R002265",
         "___s": true
     },
     {
@@ -69630,7 +69683,7 @@ window.reflection = [
         "memberof": "self.setFilter",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002264",
+        "___id": "T000002R002266",
         "___s": true
     },
     {
@@ -69658,7 +69711,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002265",
+        "___id": "T000002R002267",
         "___s": true
     },
     {
@@ -69686,7 +69739,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002266",
+        "___id": "T000002R002268",
         "___s": true
     },
     {
@@ -69714,7 +69767,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002267",
+        "___id": "T000002R002269",
         "___s": true
     },
     {
@@ -69742,7 +69795,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002268",
+        "___id": "T000002R002270",
         "___s": true
     },
     {
@@ -69770,7 +69823,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002269",
+        "___id": "T000002R002271",
         "___s": true
     },
     {
@@ -69799,7 +69852,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.findRowScrollTop",
-        "___id": "T000002R002270",
+        "___id": "T000002R002272",
         "___s": true
     },
     {
@@ -69835,7 +69888,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002271",
+        "___id": "T000002R002273",
         "___s": true
     },
     {
@@ -69863,7 +69916,7 @@ window.reflection = [
         "memberof": "self.findRowScrollTop",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002272",
+        "___id": "T000002R002274",
         "___s": true
     },
     {
@@ -69891,7 +69944,7 @@ window.reflection = [
         "memberof": "self.findRowScrollTop",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002273",
+        "___id": "T000002R002275",
         "___s": true
     },
     {
@@ -69919,7 +69972,7 @@ window.reflection = [
         "memberof": "self.findRowScrollTop",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002274",
+        "___id": "T000002R002276",
         "___s": true
     },
     {
@@ -69947,7 +70000,7 @@ window.reflection = [
         "memberof": "self.findRowScrollTop",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002275",
+        "___id": "T000002R002277",
         "___s": true
     },
     {
@@ -69975,7 +70028,7 @@ window.reflection = [
         "memberof": "self.findRowScrollTop",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002276",
+        "___id": "T000002R002278",
         "___s": true
     },
     {
@@ -70004,7 +70057,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.findRowScrollTop",
         "scope": "inner",
-        "___id": "T000002R002277",
+        "___id": "T000002R002279",
         "___s": true
     },
     {
@@ -70033,7 +70086,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.findRowScrollTop",
         "scope": "inner",
-        "___id": "T000002R002278",
+        "___id": "T000002R002280",
         "___s": true
     },
     {
@@ -70062,7 +70115,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.findRowScrollTop",
         "scope": "inner",
-        "___id": "T000002R002279",
+        "___id": "T000002R002281",
         "___s": true
     },
     {
@@ -70091,7 +70144,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.findColumnScrollLeft",
-        "___id": "T000002R002280",
+        "___id": "T000002R002282",
         "___s": true
     },
     {
@@ -70126,7 +70179,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002281",
+        "___id": "T000002R002283",
         "___s": true
     },
     {
@@ -70154,7 +70207,7 @@ window.reflection = [
         "memberof": "self.findColumnScrollLeft",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002282",
+        "___id": "T000002R002284",
         "___s": true
     },
     {
@@ -70182,7 +70235,7 @@ window.reflection = [
         "memberof": "self.findColumnScrollLeft",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002283",
+        "___id": "T000002R002285",
         "___s": true
     },
     {
@@ -70210,7 +70263,7 @@ window.reflection = [
         "memberof": "self.findColumnScrollLeft",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002284",
+        "___id": "T000002R002286",
         "___s": true
     },
     {
@@ -70238,7 +70291,7 @@ window.reflection = [
         "memberof": "self.findColumnScrollLeft",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002285",
+        "___id": "T000002R002287",
         "___s": true
     },
     {
@@ -70267,7 +70320,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.findColumnScrollLeft",
         "scope": "inner",
-        "___id": "T000002R002286",
+        "___id": "T000002R002288",
         "___s": true
     },
     {
@@ -70296,7 +70349,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.findColumnScrollLeft",
         "scope": "inner",
-        "___id": "T000002R002287",
+        "___id": "T000002R002289",
         "___s": true
     },
     {
@@ -70334,7 +70387,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.gotoCell",
-        "___id": "T000002R002288",
+        "___id": "T000002R002290",
         "___s": true
     },
     {
@@ -70368,7 +70421,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002289",
+        "___id": "T000002R002291",
         "___s": true
     },
     {
@@ -70396,7 +70449,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R002290",
+        "___id": "T000002R002292",
         "___s": true
     },
     {
@@ -70424,7 +70477,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R002291",
+        "___id": "T000002R002293",
         "___s": true
     },
     {
@@ -70453,7 +70506,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.gotoRow",
-        "___id": "T000002R002292",
+        "___id": "T000002R002294",
         "___s": true
     },
     {
@@ -70482,7 +70535,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002293",
+        "___id": "T000002R002295",
         "___s": true
     },
     {
@@ -70520,7 +70573,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.scrollIntoView",
-        "___id": "T000002R002294",
+        "___id": "T000002R002296",
         "___s": true
     },
     {
@@ -70553,7 +70606,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002295",
+        "___id": "T000002R002297",
         "___s": true
     },
     {
@@ -70591,7 +70644,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.setActiveCell",
-        "___id": "T000002R002296",
+        "___id": "T000002R002298",
         "___s": true
     },
     {
@@ -70624,7 +70677,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002297",
+        "___id": "T000002R002299",
         "___s": true
     },
     {
@@ -70652,7 +70705,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002298",
+        "___id": "T000002R002300",
         "___s": true
     },
     {
@@ -70679,7 +70732,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.activeCell",
         "scope": "static",
-        "___id": "T000002R002299",
+        "___id": "T000002R002301",
         "___s": true
     },
     {
@@ -70706,7 +70759,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.activeCell",
         "scope": "static",
-        "___id": "T000002R002300",
+        "___id": "T000002R002302",
         "___s": true
     },
     {
@@ -70735,7 +70788,7 @@ window.reflection = [
         "kind": "function",
         "scope": "static",
         "longname": "canvasDatagrid.selectNone",
-        "___id": "T000002R002301",
+        "___id": "T000002R002303",
         "___s": true
     },
     {
@@ -70767,7 +70820,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002302",
+        "___id": "T000002R002304",
         "___s": true
     },
     {
@@ -70795,7 +70848,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002303",
+        "___id": "T000002R002305",
         "___s": true
     },
     {
@@ -70821,7 +70874,7 @@ window.reflection = [
         "longname": "selectedData",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002304",
+        "___id": "T000002R002306",
         "___s": true
     },
     {
@@ -70847,7 +70900,7 @@ window.reflection = [
         "longname": "selections",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002305",
+        "___id": "T000002R002307",
         "___s": true
     },
     {
@@ -70873,7 +70926,7 @@ window.reflection = [
         "longname": "selectionBounds",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002306",
+        "___id": "T000002R002308",
         "___s": true
     },
     {
@@ -70902,7 +70955,7 @@ window.reflection = [
         "kind": "function",
         "scope": "static",
         "longname": "canvasDatagrid.selectAll",
-        "___id": "T000002R002307",
+        "___id": "T000002R002309",
         "___s": true
     },
     {
@@ -70931,7 +70984,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002308",
+        "___id": "T000002R002310",
         "___s": true
     },
     {
@@ -70957,7 +71010,7 @@ window.reflection = [
         "longname": "top",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002309",
+        "___id": "T000002R002311",
         "___s": true
     },
     {
@@ -70983,7 +71036,7 @@ window.reflection = [
         "longname": "left",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002310",
+        "___id": "T000002R002312",
         "___s": true
     },
     {
@@ -71009,7 +71062,7 @@ window.reflection = [
         "longname": "right",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002311",
+        "___id": "T000002R002313",
         "___s": true
     },
     {
@@ -71035,7 +71088,7 @@ window.reflection = [
         "longname": "bottom",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002312",
+        "___id": "T000002R002314",
         "___s": true
     },
     {
@@ -71064,7 +71117,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.isColumnSelected",
-        "___id": "T000002R002313",
+        "___id": "T000002R002315",
         "___s": true
     },
     {
@@ -71097,7 +71150,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002314",
+        "___id": "T000002R002316",
         "___s": true
     },
     {
@@ -71125,7 +71178,7 @@ window.reflection = [
         "memberof": "self.isColumnSelected",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002315",
+        "___id": "T000002R002317",
         "___s": true
     },
     {
@@ -71154,7 +71207,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R002316",
+        "___id": "T000002R002318",
         "___s": true
     },
     {
@@ -71192,7 +71245,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.forEachSelectedCell",
-        "___id": "T000002R002317",
+        "___id": "T000002R002319",
         "___s": true
     },
     {
@@ -71228,7 +71281,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002318",
+        "___id": "T000002R002320",
         "___s": true
     },
     {
@@ -71256,7 +71309,7 @@ window.reflection = [
         "memberof": "self.forEachSelectedCell",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002319",
+        "___id": "T000002R002321",
         "___s": true
     },
     {
@@ -71284,7 +71337,7 @@ window.reflection = [
         "memberof": "self.forEachSelectedCell",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002320",
+        "___id": "T000002R002322",
         "___s": true
     },
     {
@@ -71312,7 +71365,7 @@ window.reflection = [
         "memberof": "self.forEachSelectedCell",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002321",
+        "___id": "T000002R002323",
         "___s": true
     },
     {
@@ -71341,7 +71394,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.forEachSelectedCell~d",
         "scope": "static",
-        "___id": "T000002R002322",
+        "___id": "T000002R002324",
         "___s": true
     },
     {
@@ -71370,7 +71423,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.forEachSelectedCell~d",
         "scope": "static",
-        "___id": "T000002R002323",
+        "___id": "T000002R002325",
         "___s": true
     },
     {
@@ -71426,7 +71479,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.selectColumn",
-        "___id": "T000002R002324",
+        "___id": "T000002R002326",
         "___s": true
     },
     {
@@ -71468,7 +71521,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002325",
+        "___id": "T000002R002327",
         "___s": true
     },
     {
@@ -71494,7 +71547,7 @@ window.reflection = [
         "memberof": "self.selectColumn",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002326",
+        "___id": "T000002R002328",
         "___s": true
     },
     {
@@ -71520,7 +71573,7 @@ window.reflection = [
         "memberof": "self.selectColumn",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002327",
+        "___id": "T000002R002329",
         "___s": true
     },
     {
@@ -71546,7 +71599,7 @@ window.reflection = [
         "memberof": "self.selectColumn",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002328",
+        "___id": "T000002R002330",
         "___s": true
     },
     {
@@ -71579,7 +71632,7 @@ window.reflection = [
         "memberof": "self.selectColumn",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002329",
+        "___id": "T000002R002331",
         "___s": true
     },
     {
@@ -71607,7 +71660,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002330",
+        "___id": "T000002R002332",
         "___s": true
     },
     {
@@ -71640,7 +71693,7 @@ window.reflection = [
         "memberof": "self.selectColumn",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002331",
+        "___id": "T000002R002333",
         "___s": true
     },
     {
@@ -71668,7 +71721,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002332",
+        "___id": "T000002R002334",
         "___s": true
     },
     {
@@ -71697,7 +71750,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.selectColumn",
         "scope": "inner",
-        "___id": "T000002R002333",
+        "___id": "T000002R002335",
         "___s": true
     },
     {
@@ -71726,7 +71779,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.selectColumn",
         "scope": "inner",
-        "___id": "T000002R002334",
+        "___id": "T000002R002336",
         "___s": true
     },
     {
@@ -71755,7 +71808,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.selectColumn",
         "scope": "inner",
-        "___id": "T000002R002335",
+        "___id": "T000002R002337",
         "___s": true
     },
     {
@@ -71784,7 +71837,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.selectColumn",
         "scope": "inner",
-        "___id": "T000002R002336",
+        "___id": "T000002R002338",
         "___s": true
     },
     {
@@ -71812,7 +71865,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002337",
+        "___id": "T000002R002339",
         "___s": true
     },
     {
@@ -71840,7 +71893,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.activeCell",
         "scope": "static",
-        "___id": "T000002R002338",
+        "___id": "T000002R002340",
         "___s": true
     },
     {
@@ -71868,7 +71921,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.activeCell",
         "scope": "static",
-        "___id": "T000002R002339",
+        "___id": "T000002R002341",
         "___s": true
     },
     {
@@ -71894,7 +71947,7 @@ window.reflection = [
         "longname": "selectedData",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002340",
+        "___id": "T000002R002342",
         "___s": true
     },
     {
@@ -71920,7 +71973,7 @@ window.reflection = [
         "longname": "selections",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002341",
+        "___id": "T000002R002343",
         "___s": true
     },
     {
@@ -71946,7 +71999,7 @@ window.reflection = [
         "longname": "selectionBounds",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002342",
+        "___id": "T000002R002344",
         "___s": true
     },
     {
@@ -72002,7 +72055,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.selectRow",
-        "___id": "T000002R002343",
+        "___id": "T000002R002345",
         "___s": true
     },
     {
@@ -72042,7 +72095,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002344",
+        "___id": "T000002R002346",
         "___s": true
     },
     {
@@ -72068,7 +72121,7 @@ window.reflection = [
         "memberof": "self.selectRow",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002345",
+        "___id": "T000002R002347",
         "___s": true
     },
     {
@@ -72094,7 +72147,7 @@ window.reflection = [
         "memberof": "self.selectRow",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002346",
+        "___id": "T000002R002348",
         "___s": true
     },
     {
@@ -72120,7 +72173,7 @@ window.reflection = [
         "memberof": "self.selectRow",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002347",
+        "___id": "T000002R002349",
         "___s": true
     },
     {
@@ -72148,7 +72201,7 @@ window.reflection = [
         "memberof": "self.selectRow",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002348",
+        "___id": "T000002R002350",
         "___s": true
     },
     {
@@ -72182,7 +72235,7 @@ window.reflection = [
         "memberof": "self.selectRow",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002349",
+        "___id": "T000002R002351",
         "___s": true
     },
     {
@@ -72210,7 +72263,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002350",
+        "___id": "T000002R002352",
         "___s": true
     },
     {
@@ -72238,7 +72291,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002351",
+        "___id": "T000002R002353",
         "___s": true
     },
     {
@@ -72267,7 +72320,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.selectRow",
         "scope": "inner",
-        "___id": "T000002R002352",
+        "___id": "T000002R002354",
         "___s": true
     },
     {
@@ -72296,7 +72349,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.selectRow",
         "scope": "inner",
-        "___id": "T000002R002353",
+        "___id": "T000002R002355",
         "___s": true
     },
     {
@@ -72325,7 +72378,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.selectRow",
         "scope": "inner",
-        "___id": "T000002R002354",
+        "___id": "T000002R002356",
         "___s": true
     },
     {
@@ -72354,7 +72407,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.selectRow",
         "scope": "inner",
-        "___id": "T000002R002355",
+        "___id": "T000002R002357",
         "___s": true
     },
     {
@@ -72380,7 +72433,7 @@ window.reflection = [
         "longname": "selectedData",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002356",
+        "___id": "T000002R002358",
         "___s": true
     },
     {
@@ -72406,7 +72459,7 @@ window.reflection = [
         "longname": "selections",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002357",
+        "___id": "T000002R002359",
         "___s": true
     },
     {
@@ -72432,7 +72485,7 @@ window.reflection = [
         "longname": "selectionBounds",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002358",
+        "___id": "T000002R002360",
         "___s": true
     },
     {
@@ -72461,7 +72514,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.collapseTree",
-        "___id": "T000002R002359",
+        "___id": "T000002R002361",
         "___s": true
     },
     {
@@ -72493,7 +72546,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002360",
+        "___id": "T000002R002362",
         "___s": true
     },
     {
@@ -72521,7 +72574,7 @@ window.reflection = [
         "memberof": "self.collapseTree",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002361",
+        "___id": "T000002R002363",
         "___s": true
     },
     {
@@ -72547,7 +72600,7 @@ window.reflection = [
         "longname": "childGrid",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002362",
+        "___id": "T000002R002364",
         "___s": true
     },
     {
@@ -72573,7 +72626,7 @@ window.reflection = [
         "longname": "data",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002363",
+        "___id": "T000002R002365",
         "___s": true
     },
     {
@@ -72599,7 +72652,7 @@ window.reflection = [
         "longname": "rowIndex",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002364",
+        "___id": "T000002R002366",
         "___s": true
     },
     {
@@ -72625,7 +72678,7 @@ window.reflection = [
         "longname": "cellHeight",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002365",
+        "___id": "T000002R002367",
         "___s": true
     },
     {
@@ -72654,7 +72707,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.expandTree",
-        "___id": "T000002R002366",
+        "___id": "T000002R002368",
         "___s": true
     },
     {
@@ -72694,7 +72747,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002367",
+        "___id": "T000002R002369",
         "___s": true
     },
     {
@@ -72722,7 +72775,7 @@ window.reflection = [
         "memberof": "self.expandTree",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002368",
+        "___id": "T000002R002370",
         "___s": true
     },
     {
@@ -72750,7 +72803,7 @@ window.reflection = [
         "memberof": "self.expandTree",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002369",
+        "___id": "T000002R002371",
         "___s": true
     },
     {
@@ -72778,7 +72831,7 @@ window.reflection = [
         "memberof": "self.expandTree",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002370",
+        "___id": "T000002R002372",
         "___s": true
     },
     {
@@ -72806,7 +72859,7 @@ window.reflection = [
         "memberof": "self.expandTree",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002371",
+        "___id": "T000002R002373",
         "___s": true
     },
     {
@@ -72832,7 +72885,7 @@ window.reflection = [
         "memberof": "self.expandTree",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002372",
+        "___id": "T000002R002374",
         "___s": true
     },
     {
@@ -72861,7 +72914,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.expandTree",
         "scope": "inner",
-        "___id": "T000002R002373",
+        "___id": "T000002R002375",
         "___s": true
     },
     {
@@ -72887,7 +72940,7 @@ window.reflection = [
         "longname": "debug",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002374",
+        "___id": "T000002R002376",
         "___s": true
     },
     {
@@ -72913,7 +72966,7 @@ window.reflection = [
         "longname": "name",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002375",
+        "___id": "T000002R002377",
         "___s": true
     },
     {
@@ -72939,7 +72992,7 @@ window.reflection = [
         "longname": "parentNode",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002376",
+        "___id": "T000002R002378",
         "___s": true
     },
     {
@@ -72966,7 +73019,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "parentNode",
         "scope": "static",
-        "___id": "T000002R002377",
+        "___id": "T000002R002379",
         "___s": true
     },
     {
@@ -72993,7 +73046,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "parentNode",
         "scope": "static",
-        "___id": "T000002R002378",
+        "___id": "T000002R002380",
         "___s": true
     },
     {
@@ -73020,7 +73073,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "parentNode",
         "scope": "static",
-        "___id": "T000002R002379",
+        "___id": "T000002R002381",
         "___s": true
     },
     {
@@ -73047,7 +73100,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "parentNode",
         "scope": "static",
-        "___id": "T000002R002380",
+        "___id": "T000002R002382",
         "___s": true
     },
     {
@@ -73074,7 +73127,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "parentNode",
         "scope": "static",
-        "___id": "T000002R002381",
+        "___id": "T000002R002383",
         "___s": true
     },
     {
@@ -73101,7 +73154,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "parentNode.header",
         "scope": "static",
-        "___id": "T000002R002382",
+        "___id": "T000002R002384",
         "___s": true
     },
     {
@@ -73128,7 +73181,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "parentNode",
         "scope": "static",
-        "___id": "T000002R002383",
+        "___id": "T000002R002385",
         "___s": true
     },
     {
@@ -73155,7 +73208,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "parentNode",
         "scope": "static",
-        "___id": "T000002R002384",
+        "___id": "T000002R002386",
         "___s": true
     },
     {
@@ -73182,7 +73235,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "parentNode",
         "scope": "static",
-        "___id": "T000002R002385",
+        "___id": "T000002R002387",
         "___s": true
     },
     {
@@ -73209,7 +73262,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "parentNode",
         "scope": "static",
-        "___id": "T000002R002386",
+        "___id": "T000002R002388",
         "___s": true
     },
     {
@@ -73236,7 +73289,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "parentNode",
         "scope": "static",
-        "___id": "T000002R002387",
+        "___id": "T000002R002389",
         "___s": true
     },
     {
@@ -73263,7 +73316,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "parentNode",
         "scope": "static",
-        "___id": "T000002R002388",
+        "___id": "T000002R002390",
         "___s": true
     },
     {
@@ -73291,7 +73344,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002389",
+        "___id": "T000002R002391",
         "___s": true
     },
     {
@@ -73320,7 +73373,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.expandTree",
         "scope": "inner",
-        "___id": "T000002R002390",
+        "___id": "T000002R002392",
         "___s": true
     },
     {
@@ -73349,7 +73402,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.expandTree~treeGrid",
         "scope": "static",
-        "___id": "T000002R002391",
+        "___id": "T000002R002393",
         "___s": true
     },
     {
@@ -73375,7 +73428,7 @@ window.reflection = [
         "longname": "treeGrid",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002392",
+        "___id": "T000002R002394",
         "___s": true
     },
     {
@@ -73401,7 +73454,7 @@ window.reflection = [
         "longname": "data",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002393",
+        "___id": "T000002R002395",
         "___s": true
     },
     {
@@ -73427,7 +73480,7 @@ window.reflection = [
         "longname": "rowIndex",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002394",
+        "___id": "T000002R002396",
         "___s": true
     },
     {
@@ -73455,7 +73508,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002395",
+        "___id": "T000002R002397",
         "___s": true
     },
     {
@@ -73483,7 +73536,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.sizes",
         "scope": "static",
-        "___id": "T000002R002396",
+        "___id": "T000002R002398",
         "___s": true
     },
     {
@@ -73509,7 +73562,7 @@ window.reflection = [
         "longname": "height",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002397",
+        "___id": "T000002R002399",
         "___s": true
     },
     {
@@ -73538,7 +73591,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.toggleTree",
-        "___id": "T000002R002398",
+        "___id": "T000002R002400",
         "___s": true
     },
     {
@@ -73570,7 +73623,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002399",
+        "___id": "T000002R002401",
         "___s": true
     },
     {
@@ -73598,7 +73651,7 @@ window.reflection = [
         "memberof": "self.toggleTree",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002400",
+        "___id": "T000002R002402",
         "___s": true
     },
     {
@@ -73640,7 +73693,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.getHeaderByName",
-        "___id": "T000002R002401",
+        "___id": "T000002R002403",
         "___s": true
     },
     {
@@ -73673,7 +73726,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002402",
+        "___id": "T000002R002404",
         "___s": true
     },
     {
@@ -73699,7 +73752,7 @@ window.reflection = [
         "memberof": "self.getHeaderByName",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002403",
+        "___id": "T000002R002405",
         "___s": true
     },
     {
@@ -73727,7 +73780,7 @@ window.reflection = [
         "memberof": "self.getHeaderByName",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002404",
+        "___id": "T000002R002406",
         "___s": true
     },
     {
@@ -73756,7 +73809,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getHeaderByName",
         "scope": "inner",
-        "___id": "T000002R002405",
+        "___id": "T000002R002407",
         "___s": true
     },
     {
@@ -73785,7 +73838,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getHeaderByName",
         "scope": "inner",
-        "___id": "T000002R002406",
+        "___id": "T000002R002408",
         "___s": true
     },
     {
@@ -73814,7 +73867,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.fitColumnToValues",
-        "___id": "T000002R002407",
+        "___id": "T000002R002409",
         "___s": true
     },
     {
@@ -73847,7 +73900,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002408",
+        "___id": "T000002R002410",
         "___s": true
     },
     {
@@ -73875,7 +73928,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.sizes",
         "scope": "static",
-        "___id": "T000002R002409",
+        "___id": "T000002R002411",
         "___s": true
     },
     {
@@ -73930,7 +73983,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.isCellVisible",
-        "___id": "T000002R002410",
+        "___id": "T000002R002412",
         "___s": true
     },
     {
@@ -73969,7 +74022,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.isCellVisible",
-        "___id": "T000002R002411",
+        "___id": "T000002R002413",
         "___s": true
     },
     {
@@ -74004,7 +74057,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002412",
+        "___id": "T000002R002414",
         "___s": true
     },
     {
@@ -74030,7 +74083,7 @@ window.reflection = [
         "memberof": "self.isCellVisible",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002413",
+        "___id": "T000002R002415",
         "___s": true
     },
     {
@@ -74058,7 +74111,7 @@ window.reflection = [
         "memberof": "self.isCellVisible",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002414",
+        "___id": "T000002R002416",
         "___s": true
     },
     {
@@ -74087,7 +74140,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.isCellVisible",
         "scope": "inner",
-        "___id": "T000002R002415",
+        "___id": "T000002R002417",
         "___s": true
     },
     {
@@ -74116,7 +74169,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.isCellVisible",
         "scope": "inner",
-        "___id": "T000002R002416",
+        "___id": "T000002R002418",
         "___s": true
     },
     {
@@ -74184,7 +74237,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.order",
-        "___id": "T000002R002417",
+        "___id": "T000002R002419",
         "___s": true
     },
     {
@@ -74223,7 +74276,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002418",
+        "___id": "T000002R002420",
         "___s": true
     },
     {
@@ -74249,7 +74302,7 @@ window.reflection = [
         "memberof": "self.order",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002419",
+        "___id": "T000002R002421",
         "___s": true
     },
     {
@@ -74277,7 +74330,7 @@ window.reflection = [
         "memberof": "self.order",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002420",
+        "___id": "T000002R002422",
         "___s": true
     },
     {
@@ -74305,7 +74358,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002421",
+        "___id": "T000002R002423",
         "___s": true
     },
     {
@@ -74334,7 +74387,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.order",
         "scope": "inner",
-        "___id": "T000002R002422",
+        "___id": "T000002R002424",
         "___s": true
     },
     {
@@ -74362,7 +74415,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002423",
+        "___id": "T000002R002425",
         "___s": true
     },
     {
@@ -74388,7 +74441,7 @@ window.reflection = [
         "longname": "name",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002424",
+        "___id": "T000002R002426",
         "___s": true
     },
     {
@@ -74414,7 +74467,7 @@ window.reflection = [
         "longname": "direction",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002425",
+        "___id": "T000002R002427",
         "___s": true
     },
     {
@@ -74443,7 +74496,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002426",
+        "___id": "T000002R002428",
         "___s": true
     },
     {
@@ -74481,7 +74534,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.moveSelection",
-        "___id": "T000002R002427",
+        "___id": "T000002R002429",
         "___s": true
     },
     {
@@ -74516,7 +74569,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002428",
+        "___id": "T000002R002430",
         "___s": true
     },
     {
@@ -74544,7 +74597,7 @@ window.reflection = [
         "memberof": "self.moveSelection",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002429",
+        "___id": "T000002R002431",
         "___s": true
     },
     {
@@ -74573,7 +74626,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.moveSelection~sel",
         "scope": "static",
-        "___id": "T000002R002430",
+        "___id": "T000002R002432",
         "___s": true
     },
     {
@@ -74601,7 +74654,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002431",
+        "___id": "T000002R002433",
         "___s": true
     },
     {
@@ -74648,7 +74701,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.moveTo",
-        "___id": "T000002R002432",
+        "___id": "T000002R002434",
         "___s": true
     },
     {
@@ -74687,7 +74740,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002433",
+        "___id": "T000002R002435",
         "___s": true
     },
     {
@@ -74715,7 +74768,7 @@ window.reflection = [
         "memberof": "self.moveTo",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002434",
+        "___id": "T000002R002436",
         "___s": true
     },
     {
@@ -74743,7 +74796,7 @@ window.reflection = [
         "memberof": "self.moveTo",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002435",
+        "___id": "T000002R002437",
         "___s": true
     },
     {
@@ -74771,7 +74824,7 @@ window.reflection = [
         "memberof": "self.moveTo",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002436",
+        "___id": "T000002R002438",
         "___s": true
     },
     {
@@ -74797,7 +74850,7 @@ window.reflection = [
         "memberof": "self.moveTo",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002437",
+        "___id": "T000002R002439",
         "___s": true
     },
     {
@@ -74825,7 +74878,7 @@ window.reflection = [
         "memberof": "self.moveTo",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002438",
+        "___id": "T000002R002440",
         "___s": true
     },
     {
@@ -74853,7 +74906,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002439",
+        "___id": "T000002R002441",
         "___s": true
     },
     {
@@ -74882,7 +74935,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R002440",
+        "___id": "T000002R002442",
         "___s": true
     },
     {
@@ -74911,7 +74964,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R002441",
+        "___id": "T000002R002443",
         "___s": true
     },
     {
@@ -74940,7 +74993,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R002442",
+        "___id": "T000002R002444",
         "___s": true
     },
     {
@@ -74968,7 +75021,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002443",
+        "___id": "T000002R002445",
         "___s": true
     },
     {
@@ -75007,7 +75060,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.isColumnVisible",
-        "___id": "T000002R002444",
+        "___id": "T000002R002446",
         "___s": true
     },
     {
@@ -75039,7 +75092,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002445",
+        "___id": "T000002R002447",
         "___s": true
     },
     {
@@ -75078,7 +75131,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.isRowVisible",
-        "___id": "T000002R002446",
+        "___id": "T000002R002448",
         "___s": true
     },
     {
@@ -75110,7 +75163,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002447",
+        "___id": "T000002R002449",
         "___s": true
     },
     {
@@ -75158,7 +75211,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.getVisibleCellByIndex",
-        "___id": "T000002R002448",
+        "___id": "T000002R002450",
         "___s": true
     },
     {
@@ -75191,7 +75244,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002449",
+        "___id": "T000002R002451",
         "___s": true
     },
     {
@@ -75239,7 +75292,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.getCellAt",
-        "___id": "T000002R002450",
+        "___id": "T000002R002452",
         "___s": true
     },
     {
@@ -75293,7 +75346,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002451",
+        "___id": "T000002R002453",
         "___s": true
     },
     {
@@ -75323,7 +75376,7 @@ window.reflection = [
         "memberof": "self.getCellAt",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002452",
+        "___id": "T000002R002454",
         "___s": true
     },
     {
@@ -75349,7 +75402,7 @@ window.reflection = [
         "memberof": "self.getCellAt",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002453",
+        "___id": "T000002R002455",
         "___s": true
     },
     {
@@ -75377,7 +75430,7 @@ window.reflection = [
         "memberof": "self.getCellAt",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002454",
+        "___id": "T000002R002456",
         "___s": true
     },
     {
@@ -75405,7 +75458,7 @@ window.reflection = [
         "memberof": "self.getCellAt",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002455",
+        "___id": "T000002R002457",
         "___s": true
     },
     {
@@ -75431,7 +75484,7 @@ window.reflection = [
         "memberof": "self.getCellAt",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002456",
+        "___id": "T000002R002458",
         "___s": true
     },
     {
@@ -75459,7 +75512,7 @@ window.reflection = [
         "memberof": "self.getCellAt",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002457",
+        "___id": "T000002R002459",
         "___s": true
     },
     {
@@ -75485,7 +75538,7 @@ window.reflection = [
         "memberof": "self.getCellAt",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002458",
+        "___id": "T000002R002460",
         "___s": true
     },
     {
@@ -75513,7 +75566,7 @@ window.reflection = [
         "memberof": "self.getCellAt",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002459",
+        "___id": "T000002R002461",
         "___s": true
     },
     {
@@ -75541,7 +75594,7 @@ window.reflection = [
         "memberof": "self.getCellAt",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002460",
+        "___id": "T000002R002462",
         "___s": true
     },
     {
@@ -75567,7 +75620,7 @@ window.reflection = [
         "memberof": "self.getCellAt",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002461",
+        "___id": "T000002R002463",
         "___s": true
     },
     {
@@ -75595,7 +75648,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002462",
+        "___id": "T000002R002464",
         "___s": true
     },
     {
@@ -75623,7 +75676,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002463",
+        "___id": "T000002R002465",
         "___s": true
     },
     {
@@ -75649,7 +75702,7 @@ window.reflection = [
         "longname": "dragContext",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002464",
+        "___id": "T000002R002466",
         "___s": true
     },
     {
@@ -75675,7 +75728,7 @@ window.reflection = [
         "longname": "context",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002465",
+        "___id": "T000002R002467",
         "___s": true
     },
     {
@@ -75704,7 +75757,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt",
         "scope": "inner",
-        "___id": "T000002R002466",
+        "___id": "T000002R002468",
         "___s": true
     },
     {
@@ -75733,7 +75786,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt",
         "scope": "inner",
-        "___id": "T000002R002467",
+        "___id": "T000002R002469",
         "___s": true
     },
     {
@@ -75762,7 +75815,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt",
         "scope": "inner",
-        "___id": "T000002R002468",
+        "___id": "T000002R002470",
         "___s": true
     },
     {
@@ -75791,7 +75844,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002469",
+        "___id": "T000002R002471",
         "___s": true
     },
     {
@@ -75820,7 +75873,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002470",
+        "___id": "T000002R002472",
         "___s": true
     },
     {
@@ -75849,7 +75902,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002471",
+        "___id": "T000002R002473",
         "___s": true
     },
     {
@@ -75878,7 +75931,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002472",
+        "___id": "T000002R002474",
         "___s": true
     },
     {
@@ -75907,7 +75960,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002473",
+        "___id": "T000002R002475",
         "___s": true
     },
     {
@@ -75936,7 +75989,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002474",
+        "___id": "T000002R002476",
         "___s": true
     },
     {
@@ -75965,7 +76018,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002475",
+        "___id": "T000002R002477",
         "___s": true
     },
     {
@@ -75994,7 +76047,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002476",
+        "___id": "T000002R002478",
         "___s": true
     },
     {
@@ -76023,7 +76076,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002477",
+        "___id": "T000002R002479",
         "___s": true
     },
     {
@@ -76052,7 +76105,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002478",
+        "___id": "T000002R002480",
         "___s": true
     },
     {
@@ -76081,7 +76134,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002479",
+        "___id": "T000002R002481",
         "___s": true
     },
     {
@@ -76110,7 +76163,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002480",
+        "___id": "T000002R002482",
         "___s": true
     },
     {
@@ -76139,7 +76192,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002481",
+        "___id": "T000002R002483",
         "___s": true
     },
     {
@@ -76168,7 +76221,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002482",
+        "___id": "T000002R002484",
         "___s": true
     },
     {
@@ -76197,7 +76250,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002483",
+        "___id": "T000002R002485",
         "___s": true
     },
     {
@@ -76226,7 +76279,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002484",
+        "___id": "T000002R002486",
         "___s": true
     },
     {
@@ -76255,7 +76308,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002485",
+        "___id": "T000002R002487",
         "___s": true
     },
     {
@@ -76284,7 +76337,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002486",
+        "___id": "T000002R002488",
         "___s": true
     },
     {
@@ -76312,7 +76365,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.canvas.style",
         "scope": "static",
-        "___id": "T000002R002487",
+        "___id": "T000002R002489",
         "___s": true
     },
     {
@@ -76341,7 +76394,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002488",
+        "___id": "T000002R002490",
         "___s": true
     },
     {
@@ -76370,7 +76423,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002489",
+        "___id": "T000002R002491",
         "___s": true
     },
     {
@@ -76399,7 +76452,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002490",
+        "___id": "T000002R002492",
         "___s": true
     },
     {
@@ -76428,7 +76481,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002491",
+        "___id": "T000002R002493",
         "___s": true
     },
     {
@@ -76457,7 +76510,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002492",
+        "___id": "T000002R002494",
         "___s": true
     },
     {
@@ -76486,7 +76539,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002493",
+        "___id": "T000002R002495",
         "___s": true
     },
     {
@@ -76515,7 +76568,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002494",
+        "___id": "T000002R002496",
         "___s": true
     },
     {
@@ -76544,7 +76597,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002495",
+        "___id": "T000002R002497",
         "___s": true
     },
     {
@@ -76572,7 +76625,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.canvas.style",
         "scope": "static",
-        "___id": "T000002R002496",
+        "___id": "T000002R002498",
         "___s": true
     },
     {
@@ -76601,7 +76654,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt",
         "scope": "inner",
-        "___id": "T000002R002497",
+        "___id": "T000002R002499",
         "___s": true
     },
     {
@@ -76630,7 +76683,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt",
         "scope": "inner",
-        "___id": "T000002R002498",
+        "___id": "T000002R002500",
         "___s": true
     },
     {
@@ -76659,7 +76712,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002499",
+        "___id": "T000002R002501",
         "___s": true
     },
     {
@@ -76688,7 +76741,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002500",
+        "___id": "T000002R002502",
         "___s": true
     },
     {
@@ -76717,7 +76770,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002501",
+        "___id": "T000002R002503",
         "___s": true
     },
     {
@@ -76746,7 +76799,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002502",
+        "___id": "T000002R002504",
         "___s": true
     },
     {
@@ -76775,7 +76828,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002503",
+        "___id": "T000002R002505",
         "___s": true
     },
     {
@@ -76804,7 +76857,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002504",
+        "___id": "T000002R002506",
         "___s": true
     },
     {
@@ -76833,7 +76886,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002505",
+        "___id": "T000002R002507",
         "___s": true
     },
     {
@@ -76862,7 +76915,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002506",
+        "___id": "T000002R002508",
         "___s": true
     },
     {
@@ -76891,7 +76944,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002507",
+        "___id": "T000002R002509",
         "___s": true
     },
     {
@@ -76920,7 +76973,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002508",
+        "___id": "T000002R002510",
         "___s": true
     },
     {
@@ -76949,7 +77002,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002509",
+        "___id": "T000002R002511",
         "___s": true
     },
     {
@@ -76978,7 +77031,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002510",
+        "___id": "T000002R002512",
         "___s": true
     },
     {
@@ -77007,7 +77060,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002511",
+        "___id": "T000002R002513",
         "___s": true
     },
     {
@@ -77036,7 +77089,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002512",
+        "___id": "T000002R002514",
         "___s": true
     },
     {
@@ -77064,7 +77117,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002513",
+        "___id": "T000002R002515",
         "___s": true
     },
     {
@@ -77093,7 +77146,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002514",
+        "___id": "T000002R002516",
         "___s": true
     },
     {
@@ -77122,7 +77175,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002515",
+        "___id": "T000002R002517",
         "___s": true
     },
     {
@@ -77150,7 +77203,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002516",
+        "___id": "T000002R002518",
         "___s": true
     },
     {
@@ -77179,7 +77232,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002517",
+        "___id": "T000002R002519",
         "___s": true
     },
     {
@@ -77208,7 +77261,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002518",
+        "___id": "T000002R002520",
         "___s": true
     },
     {
@@ -77237,7 +77290,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002519",
+        "___id": "T000002R002521",
         "___s": true
     },
     {
@@ -77266,7 +77319,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getCellAt~cell",
         "scope": "static",
-        "___id": "T000002R002520",
+        "___id": "T000002R002522",
         "___s": true
     },
     {
@@ -77294,7 +77347,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002521",
+        "___id": "T000002R002523",
         "___s": true
     },
     {
@@ -77322,7 +77375,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.canvas.style",
         "scope": "static",
-        "___id": "T000002R002522",
+        "___id": "T000002R002524",
         "___s": true
     },
     {
@@ -77348,7 +77401,7 @@ window.reflection = [
         "longname": "dragContext",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002523",
+        "___id": "T000002R002525",
         "___s": true
     },
     {
@@ -77374,7 +77427,7 @@ window.reflection = [
         "longname": "context",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002524",
+        "___id": "T000002R002526",
         "___s": true
     },
     {
@@ -77400,7 +77453,7 @@ window.reflection = [
         "longname": "style",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002525",
+        "___id": "T000002R002527",
         "___s": true
     },
     {
@@ -77426,7 +77479,7 @@ window.reflection = [
         "longname": "isBackground",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002526",
+        "___id": "T000002R002528",
         "___s": true
     },
     {
@@ -77454,7 +77507,7 @@ window.reflection = [
         "kind": "function",
         "scope": "static",
         "longname": "canvasDatagrid.getSelectionBounds",
-        "___id": "T000002R002527",
+        "___id": "T000002R002529",
         "___s": true
     },
     {
@@ -77486,7 +77539,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002528",
+        "___id": "T000002R002530",
         "___s": true
     },
     {
@@ -77514,7 +77567,7 @@ window.reflection = [
         "memberof": "self.getSelectionBounds",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002529",
+        "___id": "T000002R002531",
         "___s": true
     },
     {
@@ -77541,7 +77594,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getSelectionBounds~low",
         "scope": "static",
-        "___id": "T000002R002530",
+        "___id": "T000002R002532",
         "___s": true
     },
     {
@@ -77568,7 +77621,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getSelectionBounds~low",
         "scope": "static",
-        "___id": "T000002R002531",
+        "___id": "T000002R002533",
         "___s": true
     },
     {
@@ -77596,7 +77649,7 @@ window.reflection = [
         "memberof": "self.getSelectionBounds",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002532",
+        "___id": "T000002R002534",
         "___s": true
     },
     {
@@ -77623,7 +77676,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getSelectionBounds~high",
         "scope": "static",
-        "___id": "T000002R002533",
+        "___id": "T000002R002535",
         "___s": true
     },
     {
@@ -77650,7 +77703,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getSelectionBounds~high",
         "scope": "static",
-        "___id": "T000002R002534",
+        "___id": "T000002R002536",
         "___s": true
     },
     {
@@ -77676,7 +77729,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002535",
+        "___id": "T000002R002537",
         "___s": true
     },
     {
@@ -77702,7 +77755,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002536",
+        "___id": "T000002R002538",
         "___s": true
     },
     {
@@ -77731,7 +77784,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getSelectionBounds~low",
         "scope": "static",
-        "___id": "T000002R002537",
+        "___id": "T000002R002539",
         "___s": true
     },
     {
@@ -77760,7 +77813,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getSelectionBounds~high",
         "scope": "static",
-        "___id": "T000002R002538",
+        "___id": "T000002R002540",
         "___s": true
     },
     {
@@ -77789,7 +77842,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R002539",
+        "___id": "T000002R002541",
         "___s": true
     },
     {
@@ -77818,7 +77871,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R002540",
+        "___id": "T000002R002542",
         "___s": true
     },
     {
@@ -77847,7 +77900,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getSelectionBounds~low",
         "scope": "static",
-        "___id": "T000002R002541",
+        "___id": "T000002R002543",
         "___s": true
     },
     {
@@ -77876,7 +77929,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getSelectionBounds~high",
         "scope": "static",
-        "___id": "T000002R002542",
+        "___id": "T000002R002544",
         "___s": true
     },
     {
@@ -77902,7 +77955,7 @@ window.reflection = [
         "longname": "top",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002543",
+        "___id": "T000002R002545",
         "___s": true
     },
     {
@@ -77928,7 +77981,7 @@ window.reflection = [
         "longname": "left",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002544",
+        "___id": "T000002R002546",
         "___s": true
     },
     {
@@ -77954,7 +78007,7 @@ window.reflection = [
         "longname": "bottom",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002545",
+        "___id": "T000002R002547",
         "___s": true
     },
     {
@@ -77980,7 +78033,7 @@ window.reflection = [
         "longname": "right",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002546",
+        "___id": "T000002R002548",
         "___s": true
     },
     {
@@ -78011,7 +78064,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.getSchemaFromData",
-        "___id": "T000002R002547",
+        "___id": "T000002R002549",
         "___s": true
     },
     {
@@ -78041,7 +78094,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002548",
+        "___id": "T000002R002550",
         "___s": true
     },
     {
@@ -78067,7 +78120,7 @@ window.reflection = [
         "longname": "\" \"",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002549",
+        "___id": "T000002R002551",
         "___s": true
     },
     {
@@ -78095,7 +78148,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002550",
+        "___id": "T000002R002552",
         "___s": true
     },
     {
@@ -78123,7 +78176,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002551",
+        "___id": "T000002R002553",
         "___s": true
     },
     {
@@ -78150,7 +78203,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~i",
         "scope": "static",
-        "___id": "T000002R002552",
+        "___id": "T000002R002554",
         "___s": true
     },
     {
@@ -78177,7 +78230,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~i",
         "scope": "static",
-        "___id": "T000002R002553",
+        "___id": "T000002R002555",
         "___s": true
     },
     {
@@ -78204,7 +78257,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~i",
         "scope": "static",
-        "___id": "T000002R002554",
+        "___id": "T000002R002556",
         "___s": true
     },
     {
@@ -78231,7 +78284,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~i",
         "scope": "static",
-        "___id": "T000002R002555",
+        "___id": "T000002R002557",
         "___s": true
     },
     {
@@ -78258,7 +78311,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~i",
         "scope": "static",
-        "___id": "T000002R002556",
+        "___id": "T000002R002558",
         "___s": true
     },
     {
@@ -78285,7 +78338,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~i",
         "scope": "static",
-        "___id": "T000002R002557",
+        "___id": "T000002R002559",
         "___s": true
     },
     {
@@ -78314,7 +78367,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~i",
         "scope": "static",
-        "___id": "T000002R002558",
+        "___id": "T000002R002560",
         "___s": true
     },
     {
@@ -78343,7 +78396,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>~i",
         "scope": "static",
-        "___id": "T000002R002559",
+        "___id": "T000002R002561",
         "___s": true
     },
     {
@@ -78361,7 +78414,7 @@ window.reflection = [
         "kind": "function",
         "scope": "static",
         "longname": "canvasDatagrid.clearChangeLog",
-        "___id": "T000002R002560",
+        "___id": "T000002R002562",
         "___s": true
     },
     {
@@ -78391,7 +78444,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002561",
+        "___id": "T000002R002563",
         "___s": true
     },
     {
@@ -78419,7 +78472,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002562",
+        "___id": "T000002R002564",
         "___s": true
     },
     {
@@ -78448,7 +78501,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.selectArea",
-        "___id": "T000002R002563",
+        "___id": "T000002R002565",
         "___s": true
     },
     {
@@ -78486,7 +78539,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002564",
+        "___id": "T000002R002566",
         "___s": true
     },
     {
@@ -78514,7 +78567,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002565",
+        "___id": "T000002R002567",
         "___s": true
     },
     {
@@ -78540,7 +78593,7 @@ window.reflection = [
         "memberof": "self.selectArea",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002566",
+        "___id": "T000002R002568",
         "___s": true
     },
     {
@@ -78566,7 +78619,7 @@ window.reflection = [
         "memberof": "self.selectArea",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002567",
+        "___id": "T000002R002569",
         "___s": true
     },
     {
@@ -78594,7 +78647,7 @@ window.reflection = [
         "memberof": "self.selectArea",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002568",
+        "___id": "T000002R002570",
         "___s": true
     },
     {
@@ -78622,7 +78675,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002569",
+        "___id": "T000002R002571",
         "___s": true
     },
     {
@@ -78651,7 +78704,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.selectArea",
         "scope": "inner",
-        "___id": "T000002R002570",
+        "___id": "T000002R002572",
         "___s": true
     },
     {
@@ -78680,7 +78733,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.selectArea",
         "scope": "inner",
-        "___id": "T000002R002571",
+        "___id": "T000002R002573",
         "___s": true
     },
     {
@@ -78708,7 +78761,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002572",
+        "___id": "T000002R002574",
         "___s": true
     },
     {
@@ -78737,7 +78790,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.selectArea",
         "scope": "inner",
-        "___id": "T000002R002573",
+        "___id": "T000002R002575",
         "___s": true
     },
     {
@@ -78766,7 +78819,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.selectArea",
         "scope": "inner",
-        "___id": "T000002R002574",
+        "___id": "T000002R002576",
         "___s": true
     },
     {
@@ -78792,7 +78845,7 @@ window.reflection = [
         "longname": "selectedData",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002575",
+        "___id": "T000002R002577",
         "___s": true
     },
     {
@@ -78818,7 +78871,7 @@ window.reflection = [
         "longname": "selections",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002576",
+        "___id": "T000002R002578",
         "___s": true
     },
     {
@@ -78844,7 +78897,7 @@ window.reflection = [
         "longname": "selectionBounds",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002577",
+        "___id": "T000002R002579",
         "___s": true
     },
     {
@@ -78883,7 +78936,7 @@ window.reflection = [
         ],
         "scope": "static",
         "longname": "canvasDatagrid.findColumnMaxTextLength",
-        "___id": "T000002R002578",
+        "___id": "T000002R002580",
         "___s": true
     },
     {
@@ -78917,7 +78970,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002579",
+        "___id": "T000002R002581",
         "___s": true
     },
     {
@@ -78945,7 +78998,7 @@ window.reflection = [
         "memberof": "self.findColumnMaxTextLength",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002580",
+        "___id": "T000002R002582",
         "___s": true
     },
     {
@@ -78973,7 +79026,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R002581",
+        "___id": "T000002R002583",
         "___s": true
     },
     {
@@ -79001,7 +79054,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R002582",
+        "___id": "T000002R002584",
         "___s": true
     },
     {
@@ -79029,7 +79082,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002583",
+        "___id": "T000002R002585",
         "___s": true
     },
     {
@@ -79058,7 +79111,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R002584",
+        "___id": "T000002R002586",
         "___s": true
     },
     {
@@ -79086,7 +79139,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.ctx",
         "scope": "static",
-        "___id": "T000002R002585",
+        "___id": "T000002R002587",
         "___s": true
     },
     {
@@ -79114,7 +79167,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002586",
+        "___id": "T000002R002588",
         "___s": true
     },
     {
@@ -79143,7 +79196,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R002587",
+        "___id": "T000002R002589",
         "___s": true
     },
     {
@@ -79161,7 +79214,7 @@ window.reflection = [
         "kind": "function",
         "scope": "static",
         "longname": "canvasDatagrid.getHeaderWidth",
-        "___id": "T000002R002588",
+        "___id": "T000002R002590",
         "___s": true
     },
     {
@@ -79191,7 +79244,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002589",
+        "___id": "T000002R002591",
         "___s": true
     },
     {
@@ -79221,7 +79274,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self.formatters",
         "scope": "static",
-        "___id": "T000002R002590",
+        "___id": "T000002R002592",
         "___s": true
     },
     {
@@ -79249,7 +79302,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.formatters",
         "scope": "static",
-        "___id": "T000002R002591",
+        "___id": "T000002R002593",
         "___s": true
     },
     {
@@ -79277,7 +79330,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.formatters",
         "scope": "static",
-        "___id": "T000002R002592",
+        "___id": "T000002R002594",
         "___s": true
     },
     {
@@ -79305,7 +79358,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.formatters",
         "scope": "static",
-        "___id": "T000002R002593",
+        "___id": "T000002R002595",
         "___s": true
     },
     {
@@ -79333,7 +79386,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.formatters",
         "scope": "static",
-        "___id": "T000002R002594",
+        "___id": "T000002R002596",
         "___s": true
     },
     {
@@ -79361,7 +79414,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.formatters",
         "scope": "static",
-        "___id": "T000002R002595",
+        "___id": "T000002R002597",
         "___s": true
     },
     {
@@ -79395,7 +79448,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self.sorters",
         "scope": "static",
-        "___id": "T000002R002596",
+        "___id": "T000002R002598",
         "___s": true
     },
     {
@@ -79423,7 +79476,7 @@ window.reflection = [
         "memberof": "self.sorters.string",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002597",
+        "___id": "T000002R002599",
         "___s": true
     },
     {
@@ -79457,7 +79510,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self.sorters",
         "scope": "static",
-        "___id": "T000002R002598",
+        "___id": "T000002R002600",
         "___s": true
     },
     {
@@ -79485,7 +79538,7 @@ window.reflection = [
         "memberof": "self.sorters.number",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002599",
+        "___id": "T000002R002601",
         "___s": true
     },
     {
@@ -79519,7 +79572,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self.sorters",
         "scope": "static",
-        "___id": "T000002R002600",
+        "___id": "T000002R002602",
         "___s": true
     },
     {
@@ -79547,7 +79600,7 @@ window.reflection = [
         "memberof": "self.sorters.date",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002601",
+        "___id": "T000002R002603",
         "___s": true
     },
     {
@@ -79575,7 +79628,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002602",
+        "___id": "T000002R002604",
         "___s": true
     },
     {
@@ -79601,7 +79654,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002603",
+        "___id": "T000002R002605",
         "___s": true
     },
     {
@@ -79629,7 +79682,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002604",
+        "___id": "T000002R002606",
         "___s": true
     },
     {
@@ -79657,7 +79710,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002605",
+        "___id": "T000002R002607",
         "___s": true
     },
     {
@@ -79685,7 +79738,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002606",
+        "___id": "T000002R002608",
         "___s": true
     },
     {
@@ -79713,7 +79766,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002607",
+        "___id": "T000002R002609",
         "___s": true
     },
     {
@@ -79750,7 +79803,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002608",
+        "___id": "T000002R002610",
         "___s": true
     },
     {
@@ -79778,7 +79831,7 @@ window.reflection = [
         "memberof": "self.getTouchPos",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002609",
+        "___id": "T000002R002611",
         "___s": true
     },
     {
@@ -79806,7 +79859,7 @@ window.reflection = [
         "memberof": "self.getTouchPos",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002610",
+        "___id": "T000002R002612",
         "___s": true
     },
     {
@@ -79832,7 +79885,7 @@ window.reflection = [
         "memberof": "self.getTouchPos",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002611",
+        "___id": "T000002R002613",
         "___s": true
     },
     {
@@ -79861,7 +79914,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getTouchPos",
         "scope": "inner",
-        "___id": "T000002R002612",
+        "___id": "T000002R002614",
         "___s": true
     },
     {
@@ -79888,7 +79941,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getTouchPos~pos",
         "scope": "static",
-        "___id": "T000002R002613",
+        "___id": "T000002R002615",
         "___s": true
     },
     {
@@ -79915,7 +79968,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getTouchPos~pos",
         "scope": "static",
-        "___id": "T000002R002614",
+        "___id": "T000002R002616",
         "___s": true
     },
     {
@@ -79944,7 +79997,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getTouchPos~pos",
         "scope": "static",
-        "___id": "T000002R002615",
+        "___id": "T000002R002617",
         "___s": true
     },
     {
@@ -79973,7 +80026,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.getTouchPos~pos",
         "scope": "static",
-        "___id": "T000002R002616",
+        "___id": "T000002R002618",
         "___s": true
     },
     {
@@ -79999,7 +80052,7 @@ window.reflection = [
         "longname": "x",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002617",
+        "___id": "T000002R002619",
         "___s": true
     },
     {
@@ -80025,7 +80078,7 @@ window.reflection = [
         "longname": "y",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002618",
+        "___id": "T000002R002620",
         "___s": true
     },
     {
@@ -80051,7 +80104,7 @@ window.reflection = [
         "longname": "rect",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002619",
+        "___id": "T000002R002621",
         "___s": true
     },
     {
@@ -80079,7 +80132,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002620",
+        "___id": "T000002R002622",
         "___s": true
     },
     {
@@ -80105,7 +80158,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self.easingFunctions",
         "scope": "static",
-        "___id": "T000002R002621",
+        "___id": "T000002R002623",
         "___s": true
     },
     {
@@ -80131,7 +80184,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self.easingFunctions",
         "scope": "static",
-        "___id": "T000002R002622",
+        "___id": "T000002R002624",
         "___s": true
     },
     {
@@ -80157,7 +80210,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self.easingFunctions",
         "scope": "static",
-        "___id": "T000002R002623",
+        "___id": "T000002R002625",
         "___s": true
     },
     {
@@ -80183,7 +80236,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self.easingFunctions",
         "scope": "static",
-        "___id": "T000002R002624",
+        "___id": "T000002R002626",
         "___s": true
     },
     {
@@ -80209,7 +80262,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self.easingFunctions",
         "scope": "static",
-        "___id": "T000002R002625",
+        "___id": "T000002R002627",
         "___s": true
     },
     {
@@ -80235,7 +80288,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self.easingFunctions",
         "scope": "static",
-        "___id": "T000002R002626",
+        "___id": "T000002R002628",
         "___s": true
     },
     {
@@ -80261,7 +80314,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self.easingFunctions",
         "scope": "static",
-        "___id": "T000002R002627",
+        "___id": "T000002R002629",
         "___s": true
     },
     {
@@ -80287,7 +80340,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self.easingFunctions",
         "scope": "static",
-        "___id": "T000002R002628",
+        "___id": "T000002R002630",
         "___s": true
     },
     {
@@ -80313,7 +80366,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self.easingFunctions",
         "scope": "static",
-        "___id": "T000002R002629",
+        "___id": "T000002R002631",
         "___s": true
     },
     {
@@ -80339,7 +80392,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self.easingFunctions",
         "scope": "static",
-        "___id": "T000002R002630",
+        "___id": "T000002R002632",
         "___s": true
     },
     {
@@ -80365,7 +80418,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self.easingFunctions",
         "scope": "static",
-        "___id": "T000002R002631",
+        "___id": "T000002R002633",
         "___s": true
     },
     {
@@ -80391,7 +80444,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self.easingFunctions",
         "scope": "static",
-        "___id": "T000002R002632",
+        "___id": "T000002R002634",
         "___s": true
     },
     {
@@ -80417,7 +80470,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self.easingFunctions",
         "scope": "static",
-        "___id": "T000002R002633",
+        "___id": "T000002R002635",
         "___s": true
     },
     {
@@ -80449,7 +80502,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002634",
+        "___id": "T000002R002636",
         "___s": true
     },
     {
@@ -80481,7 +80534,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002635",
+        "___id": "T000002R002637",
         "___s": true
     },
     {
@@ -80509,7 +80562,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002636",
+        "___id": "T000002R002638",
         "___s": true
     },
     {
@@ -80537,7 +80590,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002637",
+        "___id": "T000002R002639",
         "___s": true
     },
     {
@@ -80565,7 +80618,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002638",
+        "___id": "T000002R002640",
         "___s": true
     },
     {
@@ -80592,7 +80645,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSigmaTimed",
         "scope": "static",
-        "___id": "T000002R002639",
+        "___id": "T000002R002641",
         "___s": true
     },
     {
@@ -80619,7 +80672,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSigmaTimed",
         "scope": "static",
-        "___id": "T000002R002640",
+        "___id": "T000002R002642",
         "___s": true
     },
     {
@@ -80646,7 +80699,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSigmaTimed",
         "scope": "static",
-        "___id": "T000002R002641",
+        "___id": "T000002R002643",
         "___s": true
     },
     {
@@ -80678,7 +80731,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002642",
+        "___id": "T000002R002644",
         "___s": true
     },
     {
@@ -80706,7 +80759,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002643",
+        "___id": "T000002R002645",
         "___s": true
     },
     {
@@ -80734,7 +80787,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002644",
+        "___id": "T000002R002646",
         "___s": true
     },
     {
@@ -80762,7 +80815,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002645",
+        "___id": "T000002R002647",
         "___s": true
     },
     {
@@ -80789,7 +80842,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSigma",
         "scope": "static",
-        "___id": "T000002R002646",
+        "___id": "T000002R002648",
         "___s": true
     },
     {
@@ -80816,7 +80869,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSigma",
         "scope": "static",
-        "___id": "T000002R002647",
+        "___id": "T000002R002649",
         "___s": true
     },
     {
@@ -80843,7 +80896,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSigma",
         "scope": "static",
-        "___id": "T000002R002648",
+        "___id": "T000002R002650",
         "___s": true
     },
     {
@@ -80878,7 +80931,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002649",
+        "___id": "T000002R002651",
         "___s": true
     },
     {
@@ -80906,7 +80959,7 @@ window.reflection = [
         "memberof": "self.touchEndAnimation",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002650",
+        "___id": "T000002R002652",
         "___s": true
     },
     {
@@ -80934,7 +80987,7 @@ window.reflection = [
         "memberof": "self.touchEndAnimation",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002651",
+        "___id": "T000002R002653",
         "___s": true
     },
     {
@@ -80960,7 +81013,7 @@ window.reflection = [
         "memberof": "self.touchEndAnimation",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002652",
+        "___id": "T000002R002654",
         "___s": true
     },
     {
@@ -80989,7 +81042,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchEndAnimation",
         "scope": "inner",
-        "___id": "T000002R002653",
+        "___id": "T000002R002655",
         "___s": true
     },
     {
@@ -81017,7 +81070,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002654",
+        "___id": "T000002R002656",
         "___s": true
     },
     {
@@ -81045,7 +81098,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollAnimation",
         "scope": "static",
-        "___id": "T000002R002655",
+        "___id": "T000002R002657",
         "___s": true
     },
     {
@@ -81073,7 +81126,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollAnimation",
         "scope": "static",
-        "___id": "T000002R002656",
+        "___id": "T000002R002658",
         "___s": true
     },
     {
@@ -81102,7 +81155,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002657",
+        "___id": "T000002R002659",
         "___s": true
     },
     {
@@ -81134,7 +81187,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002658",
+        "___id": "T000002R002660",
         "___s": true
     },
     {
@@ -81160,7 +81213,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002659",
+        "___id": "T000002R002661",
         "___s": true
     },
     {
@@ -81188,7 +81241,7 @@ window.reflection = [
         "memberof": "<anonymous>",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002660",
+        "___id": "T000002R002662",
         "___s": true
     },
     {
@@ -81217,7 +81270,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R002661",
+        "___id": "T000002R002663",
         "___s": true
     },
     {
@@ -81245,7 +81298,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002662",
+        "___id": "T000002R002664",
         "___s": true
     },
     {
@@ -81271,7 +81324,7 @@ window.reflection = [
         "longname": "top",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002663",
+        "___id": "T000002R002665",
         "___s": true
     },
     {
@@ -81297,7 +81350,7 @@ window.reflection = [
         "longname": "bottom",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002664",
+        "___id": "T000002R002666",
         "___s": true
     },
     {
@@ -81323,7 +81376,7 @@ window.reflection = [
         "longname": "left",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002665",
+        "___id": "T000002R002667",
         "___s": true
     },
     {
@@ -81349,7 +81402,7 @@ window.reflection = [
         "longname": "right",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002666",
+        "___id": "T000002R002668",
         "___s": true
     },
     {
@@ -81395,7 +81448,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002667",
+        "___id": "T000002R002669",
         "___s": true
     },
     {
@@ -81421,7 +81474,7 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002668",
+        "___id": "T000002R002670",
         "___s": true
     },
     {
@@ -81449,7 +81502,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002669",
+        "___id": "T000002R002671",
         "___s": true
     },
     {
@@ -81477,7 +81530,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002670",
+        "___id": "T000002R002672",
         "___s": true
     },
     {
@@ -81505,7 +81558,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002671",
+        "___id": "T000002R002673",
         "___s": true
     },
     {
@@ -81533,7 +81586,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002672",
+        "___id": "T000002R002674",
         "___s": true
     },
     {
@@ -81561,7 +81614,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002673",
+        "___id": "T000002R002675",
         "___s": true
     },
     {
@@ -81589,7 +81642,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002674",
+        "___id": "T000002R002676",
         "___s": true
     },
     {
@@ -81617,7 +81670,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002675",
+        "___id": "T000002R002677",
         "___s": true
     },
     {
@@ -81644,7 +81697,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchScrollStart",
         "scope": "static",
-        "___id": "T000002R002676",
+        "___id": "T000002R002678",
         "___s": true
     },
     {
@@ -81671,7 +81724,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchScrollStart",
         "scope": "static",
-        "___id": "T000002R002677",
+        "___id": "T000002R002679",
         "___s": true
     },
     {
@@ -81698,7 +81751,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchScrollStart",
         "scope": "static",
-        "___id": "T000002R002678",
+        "___id": "T000002R002680",
         "___s": true
     },
     {
@@ -81726,7 +81779,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002679",
+        "___id": "T000002R002681",
         "___s": true
     },
     {
@@ -81753,7 +81806,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R002680",
+        "___id": "T000002R002682",
         "___s": true
     },
     {
@@ -81780,7 +81833,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R002681",
+        "___id": "T000002R002683",
         "___s": true
     },
     {
@@ -81807,7 +81860,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R002682",
+        "___id": "T000002R002684",
         "___s": true
     },
     {
@@ -81834,7 +81887,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R002683",
+        "___id": "T000002R002685",
         "___s": true
     },
     {
@@ -81861,7 +81914,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R002684",
+        "___id": "T000002R002686",
         "___s": true
     },
     {
@@ -81889,7 +81942,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002685",
+        "___id": "T000002R002687",
         "___s": true
     },
     {
@@ -81916,7 +81969,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSigma",
         "scope": "static",
-        "___id": "T000002R002686",
+        "___id": "T000002R002688",
         "___s": true
     },
     {
@@ -81943,7 +81996,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSigma",
         "scope": "static",
-        "___id": "T000002R002687",
+        "___id": "T000002R002689",
         "___s": true
     },
     {
@@ -81970,7 +82023,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSigma",
         "scope": "static",
-        "___id": "T000002R002688",
+        "___id": "T000002R002690",
         "___s": true
     },
     {
@@ -81998,7 +82051,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002689",
+        "___id": "T000002R002691",
         "___s": true
     },
     {
@@ -82025,7 +82078,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSigmaTimed",
         "scope": "static",
-        "___id": "T000002R002690",
+        "___id": "T000002R002692",
         "___s": true
     },
     {
@@ -82052,7 +82105,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSigmaTimed",
         "scope": "static",
-        "___id": "T000002R002691",
+        "___id": "T000002R002693",
         "___s": true
     },
     {
@@ -82079,7 +82132,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSigmaTimed",
         "scope": "static",
-        "___id": "T000002R002692",
+        "___id": "T000002R002694",
         "___s": true
     },
     {
@@ -82107,7 +82160,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002693",
+        "___id": "T000002R002695",
         "___s": true
     },
     {
@@ -82135,7 +82188,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002694",
+        "___id": "T000002R002696",
         "___s": true
     },
     {
@@ -82163,7 +82216,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002695",
+        "___id": "T000002R002697",
         "___s": true
     },
     {
@@ -82191,7 +82244,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002696",
+        "___id": "T000002R002698",
         "___s": true
     },
     {
@@ -82219,7 +82272,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002697",
+        "___id": "T000002R002699",
         "___s": true
     },
     {
@@ -82245,7 +82298,7 @@ window.reflection = [
         "longname": "top",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002698",
+        "___id": "T000002R002700",
         "___s": true
     },
     {
@@ -82271,7 +82324,7 @@ window.reflection = [
         "longname": "bottom",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002699",
+        "___id": "T000002R002701",
         "___s": true
     },
     {
@@ -82297,7 +82350,7 @@ window.reflection = [
         "longname": "left",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002700",
+        "___id": "T000002R002702",
         "___s": true
     },
     {
@@ -82323,7 +82376,7 @@ window.reflection = [
         "longname": "right",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002701",
+        "___id": "T000002R002703",
         "___s": true
     },
     {
@@ -82351,7 +82404,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002702",
+        "___id": "T000002R002704",
         "___s": true
     },
     {
@@ -82379,7 +82432,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002703",
+        "___id": "T000002R002705",
         "___s": true
     },
     {
@@ -82405,7 +82458,7 @@ window.reflection = [
         "longname": "top",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002704",
+        "___id": "T000002R002706",
         "___s": true
     },
     {
@@ -82431,7 +82484,7 @@ window.reflection = [
         "longname": "bottom",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002705",
+        "___id": "T000002R002707",
         "___s": true
     },
     {
@@ -82457,7 +82510,7 @@ window.reflection = [
         "longname": "left",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002706",
+        "___id": "T000002R002708",
         "___s": true
     },
     {
@@ -82483,7 +82536,7 @@ window.reflection = [
         "longname": "right",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002707",
+        "___id": "T000002R002709",
         "___s": true
     },
     {
@@ -82509,7 +82562,7 @@ window.reflection = [
         "longname": "passive",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002708",
+        "___id": "T000002R002710",
         "___s": true
     },
     {
@@ -82547,7 +82600,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002709",
+        "___id": "T000002R002711",
         "___s": true
     },
     {
@@ -82575,7 +82628,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002710",
+        "___id": "T000002R002712",
         "___s": true
     },
     {
@@ -82603,7 +82656,7 @@ window.reflection = [
         "memberof": "self.touchSelect",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002711",
+        "___id": "T000002R002713",
         "___s": true
     },
     {
@@ -82632,7 +82685,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSelect~bounds",
         "scope": "static",
-        "___id": "T000002R002712",
+        "___id": "T000002R002714",
         "___s": true
     },
     {
@@ -82661,7 +82714,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSelect~bounds",
         "scope": "static",
-        "___id": "T000002R002713",
+        "___id": "T000002R002715",
         "___s": true
     },
     {
@@ -82690,7 +82743,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSelect~bounds",
         "scope": "static",
-        "___id": "T000002R002714",
+        "___id": "T000002R002716",
         "___s": true
     },
     {
@@ -82719,7 +82772,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSelect~bounds",
         "scope": "static",
-        "___id": "T000002R002715",
+        "___id": "T000002R002717",
         "___s": true
     },
     {
@@ -82748,7 +82801,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSelect~bounds",
         "scope": "static",
-        "___id": "T000002R002716",
+        "___id": "T000002R002718",
         "___s": true
     },
     {
@@ -82777,7 +82830,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSelect~bounds",
         "scope": "static",
-        "___id": "T000002R002717",
+        "___id": "T000002R002719",
         "___s": true
     },
     {
@@ -82806,7 +82859,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSelect~bounds",
         "scope": "static",
-        "___id": "T000002R002718",
+        "___id": "T000002R002720",
         "___s": true
     },
     {
@@ -82835,7 +82888,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSelect~bounds",
         "scope": "static",
-        "___id": "T000002R002719",
+        "___id": "T000002R002721",
         "___s": true
     },
     {
@@ -82864,7 +82917,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSelect~bounds",
         "scope": "static",
-        "___id": "T000002R002720",
+        "___id": "T000002R002722",
         "___s": true
     },
     {
@@ -82893,7 +82946,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSelect~bounds",
         "scope": "static",
-        "___id": "T000002R002721",
+        "___id": "T000002R002723",
         "___s": true
     },
     {
@@ -82922,7 +82975,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSelect~bounds",
         "scope": "static",
-        "___id": "T000002R002722",
+        "___id": "T000002R002724",
         "___s": true
     },
     {
@@ -82978,7 +83031,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002723",
+        "___id": "T000002R002725",
         "___s": true
     },
     {
@@ -83004,7 +83057,7 @@ window.reflection = [
         "memberof": "self.touchmove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002724",
+        "___id": "T000002R002726",
         "___s": true
     },
     {
@@ -83030,7 +83083,7 @@ window.reflection = [
         "memberof": "self.touchmove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002725",
+        "___id": "T000002R002727",
         "___s": true
     },
     {
@@ -83056,7 +83109,7 @@ window.reflection = [
         "memberof": "self.touchmove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002726",
+        "___id": "T000002R002728",
         "___s": true
     },
     {
@@ -83082,7 +83135,7 @@ window.reflection = [
         "memberof": "self.touchmove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002727",
+        "___id": "T000002R002729",
         "___s": true
     },
     {
@@ -83108,7 +83161,7 @@ window.reflection = [
         "memberof": "self.touchmove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002728",
+        "___id": "T000002R002730",
         "___s": true
     },
     {
@@ -83134,7 +83187,7 @@ window.reflection = [
         "memberof": "self.touchmove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002729",
+        "___id": "T000002R002731",
         "___s": true
     },
     {
@@ -83160,7 +83213,7 @@ window.reflection = [
         "memberof": "self.touchmove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002730",
+        "___id": "T000002R002732",
         "___s": true
     },
     {
@@ -83186,7 +83239,7 @@ window.reflection = [
         "memberof": "self.touchmove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002731",
+        "___id": "T000002R002733",
         "___s": true
     },
     {
@@ -83212,7 +83265,7 @@ window.reflection = [
         "memberof": "self.touchmove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002732",
+        "___id": "T000002R002734",
         "___s": true
     },
     {
@@ -83238,7 +83291,7 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002733",
+        "___id": "T000002R002735",
         "___s": true
     },
     {
@@ -83266,7 +83319,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002734",
+        "___id": "T000002R002736",
         "___s": true
     },
     {
@@ -83294,7 +83347,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002735",
+        "___id": "T000002R002737",
         "___s": true
     },
     {
@@ -83323,7 +83376,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
-        "___id": "T000002R002736",
+        "___id": "T000002R002738",
         "___s": true
     },
     {
@@ -83352,7 +83405,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
-        "___id": "T000002R002737",
+        "___id": "T000002R002739",
         "___s": true
     },
     {
@@ -83380,7 +83433,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002738",
+        "___id": "T000002R002740",
         "___s": true
     },
     {
@@ -83408,7 +83461,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002739",
+        "___id": "T000002R002741",
         "___s": true
     },
     {
@@ -83436,7 +83489,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002740",
+        "___id": "T000002R002742",
         "___s": true
     },
     {
@@ -83464,7 +83517,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002741",
+        "___id": "T000002R002743",
         "___s": true
     },
     {
@@ -83492,7 +83545,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002742",
+        "___id": "T000002R002744",
         "___s": true
     },
     {
@@ -83520,7 +83573,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002743",
+        "___id": "T000002R002745",
         "___s": true
     },
     {
@@ -83548,7 +83601,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002744",
+        "___id": "T000002R002746",
         "___s": true
     },
     {
@@ -83576,7 +83629,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002745",
+        "___id": "T000002R002747",
         "___s": true
     },
     {
@@ -83604,7 +83657,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002746",
+        "___id": "T000002R002748",
         "___s": true
     },
     {
@@ -83633,7 +83686,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
-        "___id": "T000002R002747",
+        "___id": "T000002R002749",
         "___s": true
     },
     {
@@ -83662,7 +83715,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
-        "___id": "T000002R002748",
+        "___id": "T000002R002750",
         "___s": true
     },
     {
@@ -83691,7 +83744,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
-        "___id": "T000002R002749",
+        "___id": "T000002R002751",
         "___s": true
     },
     {
@@ -83720,7 +83773,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
-        "___id": "T000002R002750",
+        "___id": "T000002R002752",
         "___s": true
     },
     {
@@ -83749,7 +83802,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
-        "___id": "T000002R002751",
+        "___id": "T000002R002753",
         "___s": true
     },
     {
@@ -83778,7 +83831,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
-        "___id": "T000002R002752",
+        "___id": "T000002R002754",
         "___s": true
     },
     {
@@ -83807,7 +83860,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
-        "___id": "T000002R002753",
+        "___id": "T000002R002755",
         "___s": true
     },
     {
@@ -83840,7 +83893,7 @@ window.reflection = [
         "memberof": "self.touchmove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002754",
+        "___id": "T000002R002756",
         "___s": true
     },
     {
@@ -83868,7 +83921,7 @@ window.reflection = [
         "memberof": "self.touchmove~touchScroll",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002755",
+        "___id": "T000002R002757",
         "___s": true
     },
     {
@@ -83896,7 +83949,7 @@ window.reflection = [
         "memberof": "self.touchmove~touchScroll",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002756",
+        "___id": "T000002R002758",
         "___s": true
     },
     {
@@ -83925,7 +83978,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove~touchScroll",
         "scope": "inner",
-        "___id": "T000002R002757",
+        "___id": "T000002R002759",
         "___s": true
     },
     {
@@ -83954,7 +84007,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove~touchScroll",
         "scope": "inner",
-        "___id": "T000002R002758",
+        "___id": "T000002R002760",
         "___s": true
     },
     {
@@ -83983,7 +84036,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove~touchScroll",
         "scope": "inner",
-        "___id": "T000002R002759",
+        "___id": "T000002R002761",
         "___s": true
     },
     {
@@ -84012,7 +84065,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove~touchScroll",
         "scope": "inner",
-        "___id": "T000002R002760",
+        "___id": "T000002R002762",
         "___s": true
     },
     {
@@ -84041,7 +84094,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove~touchScroll",
         "scope": "inner",
-        "___id": "T000002R002761",
+        "___id": "T000002R002763",
         "___s": true
     },
     {
@@ -84069,7 +84122,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002762",
+        "___id": "T000002R002764",
         "___s": true
     },
     {
@@ -84096,7 +84149,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R002763",
+        "___id": "T000002R002765",
         "___s": true
     },
     {
@@ -84123,7 +84176,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R002764",
+        "___id": "T000002R002766",
         "___s": true
     },
     {
@@ -84150,7 +84203,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R002765",
+        "___id": "T000002R002767",
         "___s": true
     },
     {
@@ -84177,7 +84230,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R002766",
+        "___id": "T000002R002768",
         "___s": true
     },
     {
@@ -84204,7 +84257,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R002767",
+        "___id": "T000002R002769",
         "___s": true
     },
     {
@@ -84232,7 +84285,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002768",
+        "___id": "T000002R002770",
         "___s": true
     },
     {
@@ -84260,7 +84313,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002769",
+        "___id": "T000002R002771",
         "___s": true
     },
     {
@@ -84288,7 +84341,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002770",
+        "___id": "T000002R002772",
         "___s": true
     },
     {
@@ -84316,7 +84369,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002771",
+        "___id": "T000002R002773",
         "___s": true
     },
     {
@@ -84344,7 +84397,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R002772",
+        "___id": "T000002R002774",
         "___s": true
     },
     {
@@ -84372,7 +84425,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R002773",
+        "___id": "T000002R002775",
         "___s": true
     },
     {
@@ -84405,7 +84458,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002774",
+        "___id": "T000002R002776",
         "___s": true
     },
     {
@@ -84433,7 +84486,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002775",
+        "___id": "T000002R002777",
         "___s": true
     },
     {
@@ -84461,7 +84514,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002776",
+        "___id": "T000002R002778",
         "___s": true
     },
     {
@@ -84487,7 +84540,7 @@ window.reflection = [
         "longname": "passive",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002777",
+        "___id": "T000002R002779",
         "___s": true
     },
     {
@@ -84530,7 +84583,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002778",
+        "___id": "T000002R002780",
         "___s": true
     },
     {
@@ -84556,7 +84609,7 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002779",
+        "___id": "T000002R002781",
         "___s": true
     },
     {
@@ -84584,7 +84637,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002780",
+        "___id": "T000002R002782",
         "___s": true
     },
     {
@@ -84612,7 +84665,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002781",
+        "___id": "T000002R002783",
         "___s": true
     },
     {
@@ -84640,7 +84693,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002782",
+        "___id": "T000002R002784",
         "___s": true
     },
     {
@@ -84668,7 +84721,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002783",
+        "___id": "T000002R002785",
         "___s": true
     },
     {
@@ -84696,7 +84749,7 @@ window.reflection = [
         "memberof": "self.touchend",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002784",
+        "___id": "T000002R002786",
         "___s": true
     },
     {
@@ -84724,7 +84777,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002785",
+        "___id": "T000002R002787",
         "___s": true
     },
     {
@@ -84752,7 +84805,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002786",
+        "___id": "T000002R002788",
         "___s": true
     },
     {
@@ -84780,7 +84833,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002787",
+        "___id": "T000002R002789",
         "___s": true
     },
     {
@@ -84808,7 +84861,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002788",
+        "___id": "T000002R002790",
         "___s": true
     },
     {
@@ -84836,7 +84889,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchAnimateTo",
         "scope": "static",
-        "___id": "T000002R002789",
+        "___id": "T000002R002791",
         "___s": true
     },
     {
@@ -84864,7 +84917,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchAnimateTo",
         "scope": "static",
-        "___id": "T000002R002790",
+        "___id": "T000002R002792",
         "___s": true
     },
     {
@@ -84892,7 +84945,7 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002791",
+        "___id": "T000002R002793",
         "___s": true
     },
     {
@@ -84921,7 +84974,7 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002792",
+        "___id": "T000002R002794",
         "___s": true
     },
     {
@@ -84947,7 +85000,7 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002793",
+        "___id": "T000002R002795",
         "___s": true
     },
     {
@@ -84966,7 +85019,7 @@ window.reflection = [
             "/Users/tgermaneri/git/canvas-datagrid/lib/publicMethods.js",
             "/Users/tgermaneri/git/canvas-datagrid/lib/touch.js"
         ],
-        "___id": "T000002R002794",
+        "___id": "T000002R002796",
         "___s": true
     }
 ];window.files = {
@@ -84977,8 +85030,8 @@ window.reflection = [
     "canvasDatagrid.style.md": "Setting Styles\n--------------\n\nStyles can be set during instantiation.\n\n    var grid = canvasDatagrid({\n            style: {\n                backgroundColor: 'red'\n            }\n        });\n\nStyles can be set after instantiation.\n\n    grid.style.backgroundColor = 'red';\n\nWhen using the web component, styles can be set as above, but also using standard CSS.\n\nWhen using standard CSS, style names are hyphenated, lower case, and prefixed with `--cdg-`.\n\n    <canvas-datagrid style=\"--cdg-background-color: red;\">[{\"my\": \"data\"}]</canvas-datagrid>\n\nWhen using the web component you can also use CSS classes and selectors as you would a native HTML element.\n    \n    <style>\n        .my-grid {\n            --cdg-background-color: red;\n        }\n    </style>\n\n    <canvas-datagrid class=\"my-grid\">[{\"my\": \"data\"}]</canvas-datagrid>\n\nYou can build your own styles using the <a href=\"https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html\">Style Builder</a>.\n",
     "demo.html": "<!doctype html>\n<html lang=\"en\">\n    <head>\n        <script src=\"../dist/canvas-datagrid.debug.js\"></script>\n        <script src=\"./demo.js\"></script>\n        <meta name=\"viewport\" content=\"width=device-width\">\n        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"/>\n        <style>\n            html, body {\n                height: 100%;\n                min-height: 100%;\n                margin: 0;\n                padding: 0;\n                overflow: hidden;\n            }\n            #grid {\n                height: 100%;\n                width: 100%;\n                min-height: 100%;\n            }\n        </style>\n    </head>\n    <body><div id=\"grid\"></div></body>\n</html>\n",
     "demo.js": "/*jslint browser: true*/\n/*globals canvasDatagrid: false*/\nvar data;\nfunction demo() {\n    'use strict';\n    var searchUrl = window.location.search.substring(3),\n        typeMap = {\n            'text': 'string',\n            'money': 'number',\n            'number': 'number'\n        };\n    function isNoiseData(name) {\n        // get rid of fields that we don't care about\n        return ['sid', 'id', 'position', 'created_at',\n                    'created_meta', 'updated_at',\n                    'updated_meta', 'meta'].indexOf(name) !== -1;\n    }\n    function parseOpenData(openData) {\n        var data, schema = [];\n        openData.meta.view.columns.forEach(function (column) {\n            if (isNoiseData(column.name)) {\n                column.hidden = true;\n            }\n            column.type = typeMap[column.dataTypeName] || 'string';\n            if (/full or part-time/i.test(column.name)) {\n                column.enum = [['F', 'F'], ['P', 'P']];\n            }\n            if (/salary or hourly/i.test(column.name)) {\n                column.enum = [['Salary', 'Salary'], ['Hourly', 'Hourly']];\n            }\n            schema.push(column);\n        });\n        data = openData.data.map(function (row) {\n            var r = {};\n            schema.forEach(function (column, index) {\n                r[column.name] = row[index];\n            });\n            return r;\n        });\n        return {\n            data: data,\n            schema: schema\n        };\n    }\n    function loadDataSet(url) {\n        var xhr = new XMLHttpRequest(),\n            grid = canvasDatagrid({\n                parentNode: document.getElementById('grid'),\n                borderDragBehavior: 'move',\n                allowMovingSelection: true,\n                columnHeaderClickBehavior: 'select',\n                allowFreezingRows: true,\n                allowFreezingColumns: true,\n                allowRowReordering: true,\n                tree: false,\n                debug: false\n            });\n        grid.addEventListener('contextmenu', function (e) {\n            e.items.push({\n                title: 'View page source',\n                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/demo.html', 'src'); }\n            });\n            e.items.push({\n                title: 'View JS module',\n                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/demo.js', 'src'); }\n            });\n            e.items.push({\n                title: 'Go to main canvas-datagrid GitHub page',\n                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid', 'src'); }\n            });\n        });\n        xhr.addEventListener('progress', function (e) {\n            grid.data = [{ status: 'Loading data: ' + e.loaded + ' of ' + (e.total || 'unknown') + ' bytes...'}];\n        });\n        xhr.addEventListener('load', function (e) {\n            grid.data = [{ status: 'Loading data ' + e.loaded + '...'}];\n            var openData = parseOpenData(JSON.parse(this.responseText));\n            grid.schema = openData.schema;\n            grid.data = openData.data;\n        });\n        xhr.open('GET', url);\n        xhr.send();\n    }\n    if (searchUrl.length > 3) {\n        // work encoded or not, for lazy people who can't be bothered encoding stuff\n        loadDataSet(/%3A/.test(searchUrl) ? decodeURIComponent(searchUrl) : searchUrl);\n    } else {\n        loadDataSet('https://data.cityofchicago.org/api/views/xzkq-xp2w/rows.json?accessType=DOWNLOAD');\n        // inner join\n        // https://data.cityofchicago.org/api/views/pasx-mnuv/rows.json?accessType=DOWNLOAD\n    }\n}\nif (document.addEventListener) {\n    document.addEventListener('DOMContentLoaded', demo);\n} else {\n    setTimeout(function () {\n        'use strict';\n        demo();\n    }, 500);\n}\n",
-    "developer.html": "<!doctype html>\n<html>\n<head>\n    <!-- this file is for developing in a sandbox on a local machine -->\n    <script src=\"./developer.js\"></script>\n    <script>\n        var s = document.createElement('script');\n        s.src = \"../dist/canvas-datagrid.debug.js?cacheBust=\" + +new Date();\n        s.onload = g;\n        document.head.appendChild(s);\n    </script>\n    <meta name=\"viewport\" content=\"width=device-width\">\n    <style>\n        html, body {\n            height: 200%;\n            min-height: 100%;\n            margin: 0;\n            padding: 0;\n            overflow: auto;\n        }\n        .n {\n            height: 300px;\n            width: 300px;\n            position: absolute;\n            top: 100px;\n            left: 100px;\n            overflow: scroll;\n        }\n        .grid {\n            margin: auto;\n            margin-top: 100px;\n            height: 500px;\n            width: 600px;\n        }\n    </style>\n</head>\n<body>\n<!-- <div class=\"grid\" id=\"grid\" style=\"height: 100%;\"></div> -->\n    <div class=\"n\">\n        <div class=\"grid\" id=\"grid\"></div>\n    </div>\n   <!--  <canvas-datagrid\n        style=\"background-color: dodgerblue;\"\n        selectionmode=\"row\"\n        data='[{\"a\": 1, \"b\": 2}, {\"a\": 3, \"b\": 4}]'>\n    </canvas-datagrid> -->\n</body>\n</html>",
-    "developer.js": "/*jslint browser: true*/\n/*globals canvasDatagrid: false*/\n/* this file is for developing in a sandbox on a local machine */\nfunction g() {\n    'use strict';\n    // var grid = document.createElement('canvas-datagrid');\n    // document.body.appendChild(grid);\n    // localStorage.setItem('canvasDataGrid-blah', '{\"sizes\":{\"rows\":{},\"columns\":{\"cornerCell\":67.6953125,\"localUrl\":124.44444444599999}},\"orders\":{\"rows\":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418,419,420,421,422,423,424,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440,441,442,443,444,445,446,447,448,449,450,451,452,453,454,455,456,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,480,481,482,483,484,485,486,487,488,489,490,491,492,493,494,495,496,497,498,499,500,501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,572,573,574,575,576,577,578,579,580,581,582,583,584,585,586,587,588,589,590,591,592,593,594,595,596,597,598,599,600,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633,634,635,636,637,638,639,640,641,642,643,644,645,646,647,648,649,650,651,652,653,654,655,656,657,658,659,660,661,662,663,664,665,666,667,668,669,670,671,672,673,674,675,676,677,678,679,680,681,682,683,684,685,686,687,688,689,690,691,692,693,694,695,696,697,698,699,700,701,702,703,704,705,706,707,708,709,710,711,712,713,714,715,716,717,718,719,720,721,722],\"columns\":[1,0,2,4,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]},\"orderBy\":\"_canvasDataGridUniqueId\",\"orderDirection\":\"asc\"}');\n    // function plotSparklineChart(cell, ctx) {\n    //     if (!cell.value) { return; }\n    //     var g,\n    //         gb,\n    //         x = 0,\n    //         m = Math.max.apply(null, cell.value),\n    //         a = cell.value.reduce(function (ac, c) { return ac + c; }, 0) / cell.value.length,\n    //         i = Math.min.apply(null, cell.value),\n    //         w = cell.width / cell.value.length,\n    //         r = cell.height / (m - (m * 0.1));\n    //     function line(n, c) {\n    //         ctx.beginPath();\n    //         ctx.lineWidth = 1;\n    //         ctx.strokeStyle = c;\n    //         ctx.moveTo(cell.x, cell.y + (n * r));\n    //         ctx.lineTo(cell.x + cell.width, cell.y + (n * r));\n    //         ctx.stroke();\n    //     }\n    //     ctx.save();\n    //     gb = ctx.createLinearGradient((cell.x + cell.width) / 2, cell.y, (cell.x + cell.width) / 2, cell.y + cell.height);\n    //     gb.addColorStop(0, a > 0.5 ? '#0C4B73' : '#A1680F');\n    //     gb.addColorStop(1, (cell.selected || cell.active) ? '#B3C3CC' : '#041724');\n    //     ctx.fillStyle = gb;\n    //     ctx.fillRect(cell.x, cell.y, cell.width, cell.height);\n    //     ctx.beginPath();\n    //     ctx.moveTo(cell.x, cell.y + cell.height);\n    //     cell.value.forEach(function (d) {\n    //         var cx = cell.x + w + x,\n    //             cy = cell.y + (d * r);\n    //         ctx.lineTo(cx, cy);\n    //         if (d === i || d === m) {\n    //             ctx.fillStyle = d === m ? 'green' : 'red';\n    //             ctx.fillRect(cx - 2, cy - 2, 5, 5);\n    //         }\n    //         x += w;\n    //     });\n    //     ctx.lineTo(cell.x + cell.width, cell.y + cell.height);\n    //     g = ctx.createLinearGradient((cell.x + cell.width) / 2, cell.y, (cell.x + cell.width) / 2, cell.y + cell.height);\n    //     g.addColorStop(0, '#0F5C8C');\n    //     g.addColorStop(1, '#499ABA');\n    //     ctx.fillStyle = g;\n    //     ctx.fill();\n    //     ctx.strokeStyle = '#0B466B';\n    //     ctx.stroke();\n    //     line(a, a > 0.5 ? 'green' : 'red');\n    //     cell.parentGrid.data[cell.rowIndex].col1 = 'Avg:' + a.toFixed(2) + '\\nMin: ' + i.toFixed(2) + '\\nMax: ' + m.toFixed(2);\n    //     ctx.restore();\n    // }\n    // function createRandomSeq(size, r) {\n    //     r = r || [];\n    //     while (r.length < size) {\n    //         r.push(Math.random());\n    //     }\n    //     return r;\n    // }\n    // // create a new grid\n    // var grid = canvasDatagrid({\n    //     parentNode: document.body,\n    //     schema: [\n    //         {name: 'col1', width: 220},\n    //         {name: 'col2', width: 150},\n    //         {name: 'col3', width: 300}\n    //     ]\n    // });\n    // grid.addEventListener('beforerendercell', function (e) {\n    //     if (/col2|col3/.test(e.header.name) && !e.cell.isHeader) {\n    //         e.cell.isGrid = false;\n    //     }\n    // });\n    // grid.addEventListener('rendertext', function (e) {\n    //     if (/col2|col3/.test(e.header.name) && !e.cell.isHeader) {\n    //         e.preventDefault();\n    //     }\n    //     if (!e.cell.isHeader && e.cell.value && e.cell.value.substring) {\n    //         e.ctx.fillStyle = parseFloat(e.cell.value.substring(4), 10) > 0.5 ? '#A1230F' : '#499A3D';\n    //     }\n    // });\n    // grid.addEventListener('afterrendercell', function (e) {\n    //     if (/col2|col3/.test(e.header.name) && !e.cell.isHeader) {\n    //         plotSparklineChart(e.cell, e.ctx);\n    //         e.preventDefault();\n    //     }\n    // });\n    // grid.data = function () {\n    //     var d = [], x = 0;\n    //     while (x < 2000) {\n    //         d.push({col1: '', col2: createRandomSeq(80), col3: createRandomSeq(100)});\n    //         x += 1;\n    //     }\n    //     return d;\n    // };\n    // function getData(fill) {\n    //     var a, x = grid.scrollIndexRect.top;\n    //     while (x < grid.scrollIndexRect.bottom + 2) {\n    //         if (fill || grid.isCellVisible(1, x)) {\n    //             a = grid.data[x].col2;\n    //             a.shift();\n    //             a.push(Math.random());\n    //             a = grid.data[x].col3;\n    //             a.shift();\n    //             a.push(Math.random());\n    //         }\n    //         x += 1;\n    //     }\n    //     grid.draw();\n    //     pollData();\n    // }\n    // function pollData() {\n    //     setTimeout(getData, 1000);\n    // }\n    // getData(true);\n\n\n\n\n\n    // var grid = canvasDatagrid({parentNode: document.getElementById('grid')});\n    // grid.attributes.debug = true;\n    // grid.data = dat;\n    // function dat() {\n    //     var x,\n    //         data = [],\n    //         d,\n    //         i,\n    //         c,\n    //         r = 'Elend, eam, animal omittam an, has in, explicari principes. Elit, causae eleifend mea cu. No sed adipisci accusata, ei mea everti melius periculis. Ei quot audire pericula mea, qui ubique offendit no. Sint mazim mandamus duo ei. Sumo maiestatis id has, at animal reprehendunt definitionem cum, mei ne adhuc theophrastus.';\n    //     c = r.split(' ').map(function (i) { return i.trim(); });\n    //     r = r.split(',').map(function (i) { return i.trim(); });\n    //     for (x = 0; x < 10000; x += 1) {\n    //         d = {};\n    //         for (i = 0; i < r.length; i += 1) {\n    //             d[r[i]] = c[Math.floor(Math.random() * 1000) % (c.length - 1)];\n    //         }\n    //         data.push(d);\n    //     }\n    //     return data;\n    // }\n    // grid.addEventListener('expandtree', function (e) {\n    //     e.treeGrid.data = dat();\n    // });\n    // // // add the data to the grid\n    // grid.data = dat();\n    // grid.addEventListener('expandtree', function (e) {\n    //     e.treeGrid.data = [{a: 'b', c: 'd', e: 'f', g: 'h'}];\n    // });\n    // grid.data = [{a: 'b', c: 'd', e: 'f', g: 'h'}];\n    // grid.data = [\n    //     {a: 'a', b: [{c: 'd'}]},\n    //     {a: 'a', b: [{c: [\n    //         {a: 'a', b: [{c: 'd'}]},\n    //         {a: 'a', b: [{c: 'd'}]},\n    //     ]}]},\n    // ];\n    // grid.data = [\n    //     {'a': 0, 'b': 1, 'c': 2},\n    //     {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},\n    //     {'a': 7, 'b': 8, 'c': 9}\n    // ];\n    // grid.addEventListener('expandtree', function (e) {\n    //     e.treeGrid.data = [\n    //         {'a': 0, 'b': 1, 'c': 2},\n    //         {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},\n    //         {'a': 7, 'b': 8, 'c': 9}\n    //     ];\n    // });\n    //grid.data = [null, \"32.84057112200048\", \"-86.63186076199969\", null, false];\n\n\n\n\n\n    // create a spreadsheet\n    var grid = canvasDatagrid({\n            borderDragBehavior: 'move',\n            showPaste: true,\n            parentNode: document.getElementById('grid'),\n            allowRowReordering: false,\n            scrollPointerLock: false,\n            showColumnHeaders: true,\n            showRowHeaders: true,\n            snapToRow: false,\n            debug: false,\n            showPerformance: false,\n            allowFreezingRows: false,\n            tree: false,\n            allowFreezingColumns: false\n        }),\n        x,\n        y,\n        d = [],\n        n;\n    grid.style.columnWidth = 70;\n    function colName(n) {\n        var ordA = 'a'.charCodeAt(0),\n            ordZ = 'z'.charCodeAt(0),\n            len = ordZ - ordA + 1,\n            s = '';\n        while (n >= 0) {\n            s = String.fromCharCode(n % len + ordA) + s;\n            n = Math.floor(n / len) - 1;\n        }\n        return s;\n    }\n    for (x = 0; x < 10000; x += 1) {\n        d[x] = {};\n        for (y = 0; y < 60; y += 1) {\n            n = colName(y).toUpperCase();\n            d[x][n] = (x + 1) + ', ' + n;\n        }\n    }\n    grid.attributes.columnHeaderClickBehavior = 'select';\n    grid.style.columnHeaderCellHorizontalAlignment = 'center';\n    grid.style.borderCollapse = 'collapse';\n    grid.style.backgroundColor = '#FF00FF';\n    grid.data = d;\n\n\n    // var grid = canvasDatagrid({\n    //     parentNode: document.getElementById('grid'),\n    //     data: [\n    //         {col1: 'foo', col2: 0, col3: 'a'},\n    //         {col1: 'bar', col2: 1, col3: 'b'},\n    //         {col1: 'baz', col2: 2, col3: 'c'}\n    //     ]\n    // });\n    // grid.addEventListener('contextmenu', function (e) {\n    //     e.items.push({\n    //         title: 'Top level item',\n    //         items: [\n    //             {\n    //                 title: 'Child item #1',\n    //                 click: function (ev) {\n    //                     grid.data[0].col1 = e.cell.value;\n    //                     grid.draw();\n    //                 }\n    //             },\n    //             {\n    //                 title: 'Child item #2',\n    //                 click: function (ev) {\n    //                     grid.data[0].col1 = e.cell.value;\n    //                     grid.draw();\n    //                 }\n    //             }\n    //         ]\n    //     });\n    //     e.items.push({\n    //         title: 'You have '\n    //             + grid.selectedRows.filter(function (row) { return !!row; }).length\n    //             + ' rows selected'\n    //     });\n    // });\n\n\n    // function smallData() {\n    //     return [\n    //         {col1: 'foo', col2: 0, col3: 'a'},\n    //         {col1: 'bar', col2: 1, col3: 'b'},\n    //         {col1: 'baz', col2: 2, col3: 'c'}\n    //     ];\n    // }\n    // var grid = canvasDatagrid({\n    //     parentNode:  document.getElementById('grid'),\n    //     data: smallData(),\n    //     tree: true\n    // });\n\n}",
+    "developer.html": "<!doctype html>\n<html>\n<head>\n    <!-- this file is for developing in a sandbox on a local machine -->\n    <script src=\"./developer.js\"></script>\n    <script>\n        var s = document.createElement('script');\n        s.src = \"../dist/canvas-datagrid.debug.js?cacheBust=\" + +new Date();\n        s.onload = g;\n        document.head.appendChild(s);\n    </script>\n    <meta name=\"viewport\" content=\"width=device-width\">\n    <style>\n        html, body {\n            height: 100%;\n            min-height: 100%;\n            margin: 0;\n            padding: 0;\n            overflow: hidden;\n        }\n/*        .n {\n            height: 300px;\n            width: 300px;\n            position: absolute;\n            top: 100px;\n            left: 100px;\n            overflow: scroll;\n        }\n        .grid {\n            margin: auto;\n            margin-top: 100px;\n            height: 500px;\n            width: 600px;\n        }*/\n    </style>\n</head>\n<body>\n<div class=\"grid\" id=\"grid\" style=\"height: 100%;\"></div>\n<!--     <div class=\"n\">\n        <div class=\"grid\" id=\"grid\"></div>\n    </div> -->\n   <!--  <canvas-datagrid\n        style=\"background-color: dodgerblue;\"\n        selectionmode=\"row\"\n        data='[{\"a\": 1, \"b\": 2}, {\"a\": 3, \"b\": 4}]'>\n    </canvas-datagrid> -->\n</body>\n</html>",
+    "developer.js": "/*jslint browser: true*/\n/*globals canvasDatagrid: false*/\n/* this file is for developing in a sandbox on a local machine */\nfunction g() {\n    'use strict';\n    // var grid = document.createElement('canvas-datagrid');\n    // document.body.appendChild(grid);\n    // localStorage.setItem('canvasDataGrid-blah', '{\"sizes\":{\"rows\":{},\"columns\":{\"cornerCell\":67.6953125,\"localUrl\":124.44444444599999}},\"orders\":{\"rows\":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418,419,420,421,422,423,424,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440,441,442,443,444,445,446,447,448,449,450,451,452,453,454,455,456,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,480,481,482,483,484,485,486,487,488,489,490,491,492,493,494,495,496,497,498,499,500,501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,572,573,574,575,576,577,578,579,580,581,582,583,584,585,586,587,588,589,590,591,592,593,594,595,596,597,598,599,600,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633,634,635,636,637,638,639,640,641,642,643,644,645,646,647,648,649,650,651,652,653,654,655,656,657,658,659,660,661,662,663,664,665,666,667,668,669,670,671,672,673,674,675,676,677,678,679,680,681,682,683,684,685,686,687,688,689,690,691,692,693,694,695,696,697,698,699,700,701,702,703,704,705,706,707,708,709,710,711,712,713,714,715,716,717,718,719,720,721,722],\"columns\":[1,0,2,4,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]},\"orderBy\":\"_canvasDataGridUniqueId\",\"orderDirection\":\"asc\"}');\n    // function plotSparklineChart(cell, ctx) {\n    //     if (!cell.value) { return; }\n    //     var g,\n    //         gb,\n    //         x = 0,\n    //         m = Math.max.apply(null, cell.value),\n    //         a = cell.value.reduce(function (ac, c) { return ac + c; }, 0) / cell.value.length,\n    //         i = Math.min.apply(null, cell.value),\n    //         w = cell.width / cell.value.length,\n    //         r = cell.height / (m - (m * 0.1));\n    //     function line(n, c) {\n    //         ctx.beginPath();\n    //         ctx.lineWidth = 1;\n    //         ctx.strokeStyle = c;\n    //         ctx.moveTo(cell.x, cell.y + (n * r));\n    //         ctx.lineTo(cell.x + cell.width, cell.y + (n * r));\n    //         ctx.stroke();\n    //     }\n    //     ctx.save();\n    //     gb = ctx.createLinearGradient((cell.x + cell.width) / 2, cell.y, (cell.x + cell.width) / 2, cell.y + cell.height);\n    //     gb.addColorStop(0, a > 0.5 ? '#0C4B73' : '#A1680F');\n    //     gb.addColorStop(1, (cell.selected || cell.active) ? '#B3C3CC' : '#041724');\n    //     ctx.fillStyle = gb;\n    //     ctx.fillRect(cell.x, cell.y, cell.width, cell.height);\n    //     ctx.beginPath();\n    //     ctx.moveTo(cell.x, cell.y + cell.height);\n    //     cell.value.forEach(function (d) {\n    //         var cx = cell.x + w + x,\n    //             cy = cell.y + (d * r);\n    //         ctx.lineTo(cx, cy);\n    //         if (d === i || d === m) {\n    //             ctx.fillStyle = d === m ? 'green' : 'red';\n    //             ctx.fillRect(cx - 2, cy - 2, 5, 5);\n    //         }\n    //         x += w;\n    //     });\n    //     ctx.lineTo(cell.x + cell.width, cell.y + cell.height);\n    //     g = ctx.createLinearGradient((cell.x + cell.width) / 2, cell.y, (cell.x + cell.width) / 2, cell.y + cell.height);\n    //     g.addColorStop(0, '#0F5C8C');\n    //     g.addColorStop(1, '#499ABA');\n    //     ctx.fillStyle = g;\n    //     ctx.fill();\n    //     ctx.strokeStyle = '#0B466B';\n    //     ctx.stroke();\n    //     line(a, a > 0.5 ? 'green' : 'red');\n    //     cell.parentGrid.data[cell.rowIndex].col1 = 'Avg:' + a.toFixed(2) + '\\nMin: ' + i.toFixed(2) + '\\nMax: ' + m.toFixed(2);\n    //     ctx.restore();\n    // }\n    // function createRandomSeq(size, r) {\n    //     r = r || [];\n    //     while (r.length < size) {\n    //         r.push(Math.random());\n    //     }\n    //     return r;\n    // }\n    // // create a new grid\n    // var grid = canvasDatagrid({\n    //     parentNode: document.body,\n    //     schema: [\n    //         {name: 'col1', width: 220},\n    //         {name: 'col2', width: 150},\n    //         {name: 'col3', width: 300}\n    //     ]\n    // });\n    // grid.addEventListener('beforerendercell', function (e) {\n    //     if (/col2|col3/.test(e.header.name) && !e.cell.isHeader) {\n    //         e.cell.isGrid = false;\n    //     }\n    // });\n    // grid.addEventListener('rendertext', function (e) {\n    //     if (/col2|col3/.test(e.header.name) && !e.cell.isHeader) {\n    //         e.preventDefault();\n    //     }\n    //     if (!e.cell.isHeader && e.cell.value && e.cell.value.substring) {\n    //         e.ctx.fillStyle = parseFloat(e.cell.value.substring(4), 10) > 0.5 ? '#A1230F' : '#499A3D';\n    //     }\n    // });\n    // grid.addEventListener('afterrendercell', function (e) {\n    //     if (/col2|col3/.test(e.header.name) && !e.cell.isHeader) {\n    //         plotSparklineChart(e.cell, e.ctx);\n    //         e.preventDefault();\n    //     }\n    // });\n    // grid.data = function () {\n    //     var d = [], x = 0;\n    //     while (x < 2000) {\n    //         d.push({col1: '', col2: createRandomSeq(80), col3: createRandomSeq(100)});\n    //         x += 1;\n    //     }\n    //     return d;\n    // };\n    // function getData(fill) {\n    //     var a, x = grid.scrollIndexRect.top;\n    //     while (x < grid.scrollIndexRect.bottom + 2) {\n    //         if (fill || grid.isCellVisible(1, x)) {\n    //             a = grid.data[x].col2;\n    //             a.shift();\n    //             a.push(Math.random());\n    //             a = grid.data[x].col3;\n    //             a.shift();\n    //             a.push(Math.random());\n    //         }\n    //         x += 1;\n    //     }\n    //     grid.draw();\n    //     pollData();\n    // }\n    // function pollData() {\n    //     setTimeout(getData, 1000);\n    // }\n    // getData(true);\n\n\n\n\n\n    // var grid = canvasDatagrid({parentNode: document.getElementById('grid')});\n    // grid.attributes.debug = true;\n    // grid.data = dat;\n    // function dat() {\n    //     var x,\n    //         data = [],\n    //         d,\n    //         i,\n    //         c,\n    //         r = 'Elend, eam, animal omittam an, has in, explicari principes. Elit, causae eleifend mea cu. No sed adipisci accusata, ei mea everti melius periculis. Ei quot audire pericula mea, qui ubique offendit no. Sint mazim mandamus duo ei. Sumo maiestatis id has, at animal reprehendunt definitionem cum, mei ne adhuc theophrastus.';\n    //     c = r.split(' ').map(function (i) { return i.trim(); });\n    //     r = r.split(',').map(function (i) { return i.trim(); });\n    //     for (x = 0; x < 10000; x += 1) {\n    //         d = {};\n    //         for (i = 0; i < r.length; i += 1) {\n    //             d[r[i]] = c[Math.floor(Math.random() * 1000) % (c.length - 1)];\n    //         }\n    //         data.push(d);\n    //     }\n    //     return data;\n    // }\n    // grid.addEventListener('expandtree', function (e) {\n    //     e.treeGrid.data = dat();\n    // });\n    // // // add the data to the grid\n    // grid.data = dat();\n    // grid.addEventListener('expandtree', function (e) {\n    //     e.treeGrid.data = [{a: 'b', c: 'd', e: 'f', g: 'h'}];\n    // });\n    // grid.data = [{a: 'b', c: 'd', e: 'f', g: 'h'}];\n    // grid.data = [\n    //     {a: 'a', b: [{c: 'd'}]},\n    //     {a: 'a', b: [{c: [\n    //         {a: 'a', b: [{c: 'd'}]},\n    //         {a: 'a', b: [{c: 'd'}]},\n    //     ]}]},\n    // ];\n    // grid.data = [\n    //     {'a': 0, 'b': 1, 'c': 2},\n    //     {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},\n    //     {'a': 7, 'b': 8, 'c': 9}\n    // ];\n    // grid.addEventListener('expandtree', function (e) {\n    //     e.treeGrid.data = [\n    //         {'a': 0, 'b': 1, 'c': 2},\n    //         {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},\n    //         {'a': 7, 'b': 8, 'c': 9}\n    //     ];\n    // });\n    //grid.data = [null, \"32.84057112200048\", \"-86.63186076199969\", null, false];\n\n\n\n\n\n    // create a spreadsheet\n    var grid = canvasDatagrid({\n            borderDragBehavior: 'move',\n            showPaste: true,\n            parentNode: document.getElementById('grid'),\n            allowRowReordering: false,\n            scrollPointerLock: false,\n            showColumnHeaders: true,\n            showRowHeaders: true,\n            snapToRow: false,\n            debug: false,\n            showPerformance: false,\n            allowFreezingRows: false,\n            tree: true,\n            allowFreezingColumns: false\n        }),\n        x,\n        y,\n        d = [],\n        n;\n\n    grid.style.columnWidth = 70;\n    function colName(n) {\n        var ordA = 'a'.charCodeAt(0),\n            ordZ = 'z'.charCodeAt(0),\n            len = ordZ - ordA + 1,\n            s = '';\n        while (n >= 0) {\n            s = String.fromCharCode(n % len + ordA) + s;\n            n = Math.floor(n / len) - 1;\n        }\n        return s;\n    }\n    for (x = 0; x < 10000; x += 1) {\n        d[x] = {};\n        for (y = 0; y < 60; y += 1) {\n            n = colName(y).toUpperCase();\n            d[x][n] = (x + 1) + ', ' + n;\n        }\n    }\n    grid.attributes.columnHeaderClickBehavior = 'select';\n    grid.style.columnHeaderCellHorizontalAlignment = 'center';\n    grid.style.borderCollapse = 'collapse';\n    grid.style.backgroundColor = '#FF00FF';\n    grid.data = d;\n    grid.addEventListener('expandtree', function (e) {\n        e.treeGrid.data = [\n            {'a': 0, 'b': 1, 'c': 2},\n            {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},\n            {'a': 7, 'b': 8, 'c': 9}\n        ];\n    });\n\n\n    // var grid = canvasDatagrid({\n    //     parentNode: document.getElementById('grid'),\n    //     data: [\n    //         {col1: 'foo', col2: 0, col3: 'a'},\n    //         {col1: 'bar', col2: 1, col3: 'b'},\n    //         {col1: 'baz', col2: 2, col3: 'c'}\n    //     ]\n    // });\n    // grid.addEventListener('contextmenu', function (e) {\n    //     e.items.push({\n    //         title: 'Top level item',\n    //         items: [\n    //             {\n    //                 title: 'Child item #1',\n    //                 click: function (ev) {\n    //                     grid.data[0].col1 = e.cell.value;\n    //                     grid.draw();\n    //                 }\n    //             },\n    //             {\n    //                 title: 'Child item #2',\n    //                 click: function (ev) {\n    //                     grid.data[0].col1 = e.cell.value;\n    //                     grid.draw();\n    //                 }\n    //             }\n    //         ]\n    //     });\n    //     e.items.push({\n    //         title: 'You have '\n    //             + grid.selectedRows.filter(function (row) { return !!row; }).length\n    //             + ' rows selected'\n    //     });\n    // });\n\n\n    // function smallData() {\n    //     return [\n    //         {col1: 'foo', col2: 0, col3: 'a'},\n    //         {col1: 'bar', col2: 1, col3: 'b'},\n    //         {col1: 'baz', col2: 2, col3: 'c'}\n    //     ];\n    // }\n    // var grid = canvasDatagrid({\n    //     parentNode:  document.getElementById('grid'),\n    //     data: smallData(),\n    //     tree: true\n    // });\n\n}",
     "index.html": "<!doctype html>\n<html>\n<head>\n    <title>API Documentation - Canvas Datagrid</title>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js\"></script>\n    <script src=\"../dist/canvas-datagrid.debug.js\"></script>\n    <script src=\"../docs/js/reflection.js\"></script>\n    <script src=\"../docs/js/marked.js\"></script>\n    <script src=\"./js/main.js\"></script>\n    <meta name=\"viewport\" content=\"width=device-width\">\n    <link rel=\"stylesheet\" href=\"./css/main.css\">\n</head>\n<body></body>\n</html>\n",
     "publish.js": "/*jslint node: true, stupid: true, nomen: true*/\nvar fs = require('fs'),\n    path = require('path');\nexports.publish = function (data) {\n    'use strict';\n    function cp(a, b) {\n        fs.createReadStream(a).pipe(fs.createWriteStream(b));\n    }\n    var files = {}, dirFiles, d = data().get(), p = __dirname, s;\n    fs.mkdirSync(p + '/../docs/');\n    fs.mkdirSync(p + '/../docs/js');\n    fs.mkdirSync(p + '/../docs/css');\n    dirFiles = fs.readdirSync(p);\n    dirFiles.forEach(function (file) {\n        if (/\\.DS_Store/.test(file)) { return; }\n        var f = path.join(p, file);\n        if (fs.lstatSync(f).isDirectory()) { return; }\n        files[file] = fs.readFileSync(f, {encoding: 'utf-8'});\n    });\n    files['README.md'] = fs.readFileSync(p + '/../README.md', {encoding: 'utf-8'});\n    s = 'window.reflection = ' + JSON.stringify(d.filter(function (a) {\n        return a.undocumented !== false;\n    }), null, '    ')\n        + ';window.files = ' + JSON.stringify(files, null, '    ') + ';';\n    fs.writeFileSync(p + '/../docs/js/reflection.js', s, 'utf8');\n    cp(path.join(p, '/../node_modules/marked/lib/marked.js'), p + '/../docs/js/marked.js');\n    cp(path.join(p, '/index.html'), p + '/../docs/index.html');\n    cp(path.join(p, '/js/main.js'), p + '/../docs/js/main.js');\n    cp(path.join(p, '/css/main.css'), p + '/../docs/css/main.css');\n};\n",
     "reactExample.html": "<!DOCTYPE html>\n<html>\n    <head>\n        <meta charset=\"utf-8\">\n        <title>React Example</title>\n    </head>\n    <body>\n        <div id=\"root\"></div>\n        <script src=\"../dist/canvas-datagrid.debug.js\"></script>\n        <script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/g/react@15.5.4(react.js+react-dom.js)\"></script>\n        <script type=\"text/javascript\" src=\"./reactExample.js\"></script>\n    </body>\n</html>\n",
