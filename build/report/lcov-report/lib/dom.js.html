@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">85.25% </span>
+        <span class="strong">85.48% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>208/244</span>
+        <span class='fraction'>212/248</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">69.67% </span>
+        <span class="strong">70.63% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>85/122</span>
+        <span class='fraction'>89/126</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">86.36% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>19/22</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">87.29% </span>
+        <span class="strong">87.5% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>206/236</span>
+        <span class='fraction'>210/240</span>
       </div>
     </div>
   </div>
@@ -617,7 +617,13 @@
 572
 573
 574
-575</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+575
+576
+577
+578
+579
+580
+581</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -678,19 +684,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">164×</span>
-<span class="cline-any cline-yes">108×</span>
-<span class="cline-any cline-yes">108×</span>
-<span class="cline-any cline-yes">568×</span>
+<span class="cline-any cline-yes">122×</span>
+<span class="cline-any cline-yes">122×</span>
+<span class="cline-any cline-yes">638×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">568×</span>
-<span class="cline-any cline-yes">568×</span>
+<span class="cline-any cline-yes">638×</span>
+<span class="cline-any cline-yes">638×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">568×</span>
+<span class="cline-any cline-yes">638×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">108×</span>
+<span class="cline-any cline-yes">122×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">164×</span>
-<span class="cline-any cline-yes">1332×</span>
+<span class="cline-any cline-yes">1331×</span>
 <span class="cline-any cline-yes">20×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -733,9 +739,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">205×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">205×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">14×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">205×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -917,7 +929,7 @@
 <span class="cline-any cline-yes">18×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">164×</span>
-<span class="cline-any cline-yes">942×</span>
+<span class="cline-any cline-yes">933×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1098,12 +1110,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">942×</span>
-<span class="cline-any cline-yes">942×</span>
-<span class="cline-any cline-yes">8360×</span>
+<span class="cline-any cline-yes">933×</span>
+<span class="cline-any cline-yes">933×</span>
+<span class="cline-any cline-yes">8278×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">942×</span>
+<span class="cline-any cline-yes">933×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">164×</span>
 <span class="cline-any cline-yes">164×</span>
@@ -1301,8 +1313,9 @@ define([], function () {
             s = self.scrollOffset(e);
             return { left: x + s.left, top: y + s.top, height: h, width: w };
         };
-        self.getLayerPos = function (e) {
-            var rect = self.canvas.getBoundingClientRect(),
+        self.getLayerPos = function (e, includeScrollOffset) {
+            var s,
+                rect = self.canvas.getBoundingClientRect(),
                 pos = {
                     x: e.clientX - rect.left,
                     y: e.clientY - rect.top
@@ -1310,6 +1323,11 @@ define([], function () {
             <span class="missing-if-branch" title="if path not taken" >I</span>if (self.isChildGrid) {
 <span class="cstat-no" title="statement not covered" >                pos.x -= self.canvasOffsetLeft;</span>
 <span class="cstat-no" title="statement not covered" >                pos.y -= self.canvasOffsetTop;</span>
+            }
+            if (includeScrollOffset) {
+                s = self.scrollOffset(self.shadowRootParentElement || self.args.parentNode);
+                pos.x -= s.left;
+                pos.y -= s.top;
             }
             return {
                 x: pos.x,
@@ -1771,7 +1789,7 @@ define([], function () {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Oct 23 2017 01:21:38 GMT-0700 (PDT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Oct 23 2017 21:49:03 GMT-0700 (PDT)
 </div>
 </div>
 <script src="../prettify.js"></script>
