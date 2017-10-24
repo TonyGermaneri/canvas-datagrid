@@ -190,13 +190,14 @@ function g() {
             debug: false,
             showPerformance: false,
             allowFreezingRows: false,
-            tree: false,
+            tree: true,
             allowFreezingColumns: false
         }),
         x,
         y,
         d = [],
         n;
+
     grid.style.columnWidth = 70;
     function colName(n) {
         var ordA = 'a'.charCodeAt(0),
@@ -221,6 +222,13 @@ function g() {
     grid.style.borderCollapse = 'collapse';
     grid.style.backgroundColor = '#FF00FF';
     grid.data = d;
+    grid.addEventListener('expandtree', function (e) {
+        e.treeGrid.data = [
+            {'a': 0, 'b': 1, 'c': 2},
+            {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},
+            {'a': 7, 'b': 8, 'c': 9}
+        ];
+    });
 
 
     // var grid = canvasDatagrid({
