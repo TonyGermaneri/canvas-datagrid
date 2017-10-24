@@ -182,7 +182,7 @@ function g() {
             borderDragBehavior: 'move',
             showPaste: true,
             parentNode: document.getElementById('grid'),
-            allowRowReordering: true,
+            allowRowReordering: false,
             scrollPointerLock: false,
             showColumnHeaders: true,
             showRowHeaders: true,

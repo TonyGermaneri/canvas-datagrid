@@ -3759,6 +3759,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.intf.clearChangeLog = self.clearChangeLog;
             self.intf.gotoCell = self.gotoCell;
             self.intf.gotoRow = self.gotoRow;
+            self.intf.getHeaderByName = self.getHeaderByName;
             self.intf.findColumnScrollLeft = self.findColumnScrollLeft;
             self.intf.findRowScrollTop = self.findRowScrollTop;
             self.intf.fitColumnToValues = self.fitColumnToValues;
@@ -6510,7 +6511,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         return cell;
                     }
                     if (cell.style === 'rowHeaderCell') {
-                        if (self.attributes.rowGrabZoneSize + (cell.y - self.style.cellBorderWidth) < y) {
+                        if ((self.attributes.rowGrabZoneSize + (cell.y - self.style.cellBorderWidth) < y)
+                                || !self.attributes.allowRowReordering) {
                             cell.dragContext = 'cell';
                             cell.context = 'cell';
                         } else {
