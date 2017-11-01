@@ -291,9 +291,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['frozenMarkerWidth', 2],
                 ['gridBorderColor', 'rgba(202, 202, 202, 1)'],
                 ['gridBorderWidth', 1],
-                ['height', 'auto'],
                 ['minColumnWidth', 45],
-                ['minHeight', 24],
                 ['minRowHeight', 24],
                 ['mobileContextMenuMargin', 10],
                 ['mobileEditInputHeight', 30],
@@ -353,8 +351,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['treeArrowMarginRight', 5],
                 ['treeArrowMarginTop', 6],
                 ['treeArrowWidth', 13],
-                ['treeGridHeight', 250],
-                ['width', 'auto']
+                ['treeGridHeight', 250]
             ]
         };
     };
@@ -1984,15 +1981,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
     'use strict';
     return function (self) {
         var wheeling;
-        function calculateCssSize(sizeString, parentSize) {
-            var p;
-            if (sizeString === 'auto' || sizeString === '') { return parentSize; }
-            if (/%/.test(sizeString)) {
-                p = parseFloat(sizeString, 10);
-                return parentSize * (p * 0.01);
-            }
-            return parseFloat(sizeString, 10);
-        }
         self.stopPropagation = function (e) { e.stopPropagation(); };
         /**
          * Adds an event listener to the given event.
@@ -2042,25 +2030,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             });
             return defaultPrevented;
         };
-        self.resizeDomElement = function () {
-            if (!self.parentIsCanvas) {
-                if (self.shadowRootParentElement) {
-                    // shadow dom browsers
-                    self.width = calculateCssSize(self.style.width, self.shadowRootParentElement.offsetWidth);
-                    self.height = calculateCssSize(self.style.height, self.shadowRootParentElement.offsetHeight);
-                } else {
-                    // pre shadow dom browsers
-                    self.width = self.parentDOMNode.offsetWidth;
-                    self.height = self.parentDOMNode.offsetHeight;
-                }
-                self.canvas.style.width = self.width + 'px';
-                self.canvas.style.height = self.height + 'px';
-                self.canvas.width = self.width * window.devicePixelRatio;
-                self.canvas.height = self.height * window.devicePixelRatio;
-            }
-            self.canvasOffsetLeft = self.args.canvasOffsetLeft || 0;
-            self.canvasOffsetTop = self.args.canvasOffsetTop || 0;
-        };
         self.resize = function (drawAfterResize) {
             var bm = self.style.borderCollapse === 'collapse' ? 1 : 2,
                 cellBorder = self.style.cellBorderWidth * bm,
@@ -2073,12 +2042,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 // TODO: What the hell are these numbers!?  They are probably some value in the style.
                 scrollDragPositionOffsetY = 30,
                 scrollDragPositionOffsetX = 15;
-            if (self.isChildGrid) {
-                self.width = self.parentNode.offsetWidth;
-                self.height = self.parentNode.offsetHeight;
-            } else {
-                self.resizeDomElement();
-            }
             scrollHeight = self.data.reduce(function reduceData(accumulator, row, rowIndex) {
                 return accumulator
                     + (((self.sizes.rows[row[self.uniqueId]] || ch) + (self.sizes.trees[row[self.uniqueId]] || 0)) * self.scale)
@@ -2090,6 +2053,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 if (column.hidden) { return accumulator; }
                 return accumulator + ((self.sizes.columns[column[self.uniqueId]] || column.width || self.style.columnWidth) * self.scale) + cellBorder;
             }, 0) || 0;
+            if (self.isChildGrid) {
+                self.width = self.parentNode.offsetWidth;
+                self.height = self.parentNode.offsetHeight;
+            } else {
+                self.height = self.canvas.offsetHeight;
+                self.width = self.canvas.offsetWidth;
+                self.canvas.width = self.width * window.devicePixelRatio;
+                self.canvas.height = self.height * window.devicePixelRatio;
+                self.canvasOffsetLeft = self.args.canvasOffsetLeft || 0;
+                self.canvasOffsetTop = self.args.canvasOffsetTop || 0;
+            }
             if (self.attributes.showNewRow) {
                 scrollHeight += ch + cellBorder;
             }
@@ -3804,13 +3778,28 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             Object.keys(self.style).forEach(function (key) {
                 // unless this line is here, Object.keys() will not work on <instance>.style
                 publicStyleKeyIntf[key] = undefined;
+                function getDomRoot() { return self.shadowRoot ? self.shadowRoot.host : self.parentNode; }
                 Object.defineProperty(publicStyleKeyIntf, key, {
                     get: function () {
+                        if (key === 'width') {
+                            return getDomRoot().style.width;
+                        }
+                        if (key === 'height') {
+                            return getDomRoot().style.height;
+                        }
                         return self.style[key];
                     },
                     set: function (value) {
-                        self.parseStyleValue(value);
-                        self.style[key] = value;
+                        if (key === 'width') {
+                            getDomRoot().style.width = value;
+                            self.resize();
+                        } else if (key === 'height') {
+                            getDomRoot().style.height = value;
+                            self.resize();
+                        } else {
+                            self.parseStyleValue(value);
+                            self.style[key] = value;
+                        }
                         self.draw(true);
                         self.dispatchEvent('stylechanged', {name: key, value: value});
                     }
@@ -3944,19 +3933,33 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         Object.defineProperty(self.intf, 'height', {
             get: function () {
+                if (self.shadowRoot) {
+                    return self.shadowRoot.height;
+                }
                 return self.parentNode.height;
             },
             set: function (value) {
-                self.parentNode.height = value;
+                if (self.shadowRoot) {
+                    self.shadowRoot.height = value;
+                } else {
+                    self.parentNode.height = value;
+                }
                 self.resize(true);
             }
         });
         Object.defineProperty(self.intf, 'width', {
             get: function () {
+                if (self.shadowRoot) {
+                    return self.shadowRoot.width;
+                }
                 return self.parentNode.width;
             },
             set: function (value) {
-                self.parentNode.width = value;
+                if (self.shadowRoot) {
+                    self.shadowRoot.width = value;
+                } else {
+                    self.parentNode.width = value;
+                }
                 self.resize(true);
             }
         });
@@ -5380,7 +5383,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     background: self.style.backgroundColor,
                     zIndex: '1',
                     boxSizing: 'content-box',
-                    padding: '0'
+                    padding: '0',
+                    width: '100%',
+                    height: '100%'
                 },
                 'canvas-datagrid-control-input': {
                     position: 'fixed',
