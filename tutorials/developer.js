@@ -220,7 +220,6 @@ function g() {
     grid.attributes.columnHeaderClickBehavior = 'select';
     grid.style.columnHeaderCellHorizontalAlignment = 'center';
     grid.style.borderCollapse = 'collapse';
-    grid.style.backgroundColor = '#FF00FF';
     grid.data = d;
     grid.addEventListener('expandtree', function (e) {
         e.treeGrid.data = [
