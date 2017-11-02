@@ -408,7 +408,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         } else {
             self.parentNode = args.parentNode;
         }
-        self.intf.self = self;
         self.init();
         return self.intf;
     }
