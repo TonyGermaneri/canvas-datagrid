@@ -246,7 +246,10 @@ This method is not dependent on values in the schema.  This methods overrides `g
 Extending the visual appearance
 -------------------------------
 All visual elements of the canvas are dependent on the values of the style object.
-You can change the dimensions and appearance of any element of the grid.
+Using the style object, you can change the dimensions and appearance of any element of the grid.
+
+There are two types of styles, styles built into the DOM element, such as width and margin, and there
+are styles related to the drawing of the grid on the canvas, these are listed in the style section.
 
 This example changes the fill style of the cell when the cell is a certain value.
 
