@@ -576,7 +576,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         component.observe = function (intf) {
             var observer;
             if (!window.MutationObserver) { return; }
-            intf.applyComponentStyle = function () { applyComponentStyle(intf); intf.resize(); };
+            intf.applyComponentStyle = function () { applyComponentStyle(false, intf); intf.resize(); };
             /**
              * Applies the computed css styles to the grid.  In some browsers, changing directives in attached style sheets does not automatically update the styles in this component.  It is necessary to call this method to update in these cases.
              * @memberof canvasDatagrid
@@ -588,7 +588,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 Array.prototype.forEach.call(mutations, function (mutation) {
                     if (mutation.attributeName === 'class'
                             || mutation.attributeName === 'style') {
-                        intf.applyComponentStyle(intf);
+                        intf.applyComponentStyle(false, intf);
                         return;
                     }
                     if (mutation.target.parentNode.nodeName === 'STYLE') {
@@ -600,7 +600,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     }
                 });
                 if (checkStyle) {
-                    intf.applyComponentStyle();
+                    intf.applyComponentStyle(false, intf);
                 }
                 if (checkInnerHTML) {
                     intf.data = typeMap.data(intf.innerHTML);
