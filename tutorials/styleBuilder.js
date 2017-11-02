@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
         ctx = titleCanvas.getContext('2d'),
         code,
         table = document.createElement('table'),
-        sLength = Object.keys(grid.style).length,
+        sLength = Object.keys(grid.defaults.styles).length,
         colorInputs = {},
         fontSize = 60,
         titleCanvasHeight = 75,
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
             l,
             ty,
             fExp = 'px ' + inputs.activeCellFont.value.replace(/\d+px/, ''),
-            keys = Object.keys(grid.style).filter(function (key) { return /Color|Style/.test(key); }),
+            keys = Object.keys(grid.defaults.styles).filter(function (key) { return /Color|Style/.test(key); }),
             borders = keys.filter(function (key) { return (/border/i).test(key); }),
             notBorders = keys.filter(function (key) { return !/border/i.test(key); });
         l = ((titleCanvas.width / window.devicePixelRatio) - (borders.length * bWdith)) / notBorders.length;
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return "#" + componentToHex(c[0]) + componentToHex(c[1]) + componentToHex(c[2]);
     }
     function apply() {
-        code = Object.keys(grid.style).reduce(function (s, key, index) {
+        code = Object.keys(grid.defaults.styles).reduce(function (s, key, index) {
             var ignoreKey = key.indexOf('FontFamilyHeight') !== -1;
             if (ignoreKey) { return s; }
             if (typeof grid.style[key] === 'number') {
@@ -418,7 +418,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     styleLibSelect.onchange = function () {
         var l = window.styleLibrary[this.value] || window.defaultStyleLibrary[this.value];
-        Object.keys(grid.style).forEach(function (key) {
+        Object.keys(grid.defaults.styles).forEach(function (key) {
             if (l && l[key] !== undefined) {
                 inputs[key].value = l[key];
                 if (colorInputs[key]) {
@@ -493,7 +493,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
             dialog.cancelButton.dispatchEvent(new Event('click'));
-            Object.keys(grid.style).forEach(function (key) {
+            Object.keys(grid.defaults.styles).forEach(function (key) {
                 grid.style[key] = style[key] || window.styleLibrary.default[key];
                 inputs[key].value = grid.style[key];
             });
@@ -557,7 +557,7 @@ document.addEventListener('DOMContentLoaded', function () {
         dialog.okButton.onclick = function () {
             grid.style = getStyleFromShortStyle(sStyle);
             grid.style.name = name.value;
-            Object.keys(grid.style).forEach(function (key) {
+            Object.keys(grid.defaults.styles).forEach(function (key) {
                 if (key.indexOf('FontFamilyHeight') !== -1) { return; }
                 inputs[key].value = grid.style[key];
                 if (/Color|Style/i.test(key)) {
@@ -582,9 +582,9 @@ document.addEventListener('DOMContentLoaded', function () {
         window.styleLibrary.default = code;
         fillStyle(styleLibSelect);
         styleLibSelect.value = 'default';
-        Object.keys(grid.style).sort().forEach(createProps(/^name$/));
-        Object.keys(grid.style).sort().forEach(createProps(/Color|Style/));
-        Object.keys(grid.style).sort().forEach(createProps(/Color|Style|^name$/, true));
+        Object.keys(grid.defaults.styles).sort().forEach(createProps(/^name$/));
+        Object.keys(grid.defaults.styles).sort().forEach(createProps(/Color|Style/));
+        Object.keys(grid.defaults.styles).sort().forEach(createProps(/Color|Style|^name$/, true));
         container.className = 'style-maker';
         props.className = 'style-maker-props';
         props.appendChild(table);
