@@ -186,7 +186,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['autocompleteBottomMargin', 60],
                 ['autosizeHeaderCellPadding', 8],
                 ['autosizePadding', 5],
-                ['backgroundColor', 'rgba(240, 240, 240, 1)'],
                 ['borderCollapse', 'collapse'],
                 ['cellAutoResizePadding', 13],
                 ['cellBackgroundColor', 'rgba(255, 255, 255, 1)'],
@@ -207,6 +206,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['cellSelectedBackgroundColor', 'rgba(236, 243, 255, 1)'],
                 ['cellSelectedColor', 'rgba(0, 0, 0, 1)'],
                 ['cellVerticalAlignment', 'center'],
+                ['cellWidth', 250],
                 ['cellWidthWithChildGrid', 250],
                 ['childContextMenuArrowColor', 'rgba(43, 48, 43, 1)'],
                 ['childContextMenuArrowHTML', '&#x25BA;'],
@@ -234,7 +234,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['columnHeaderOrderByArrowMarginRight', 5],
                 ['columnHeaderOrderByArrowMarginTop', 6],
                 ['columnHeaderOrderByArrowWidth', 13],
-                ['columnWidth', 250],
                 ['contextFilterButtonBorder', 'solid 1px rgba(158, 163, 169, 1)'],
                 ['contextFilterButtonBorderRadius', '3px'],
                 ['contextFilterButtonHTML', '&#x25BC;'],
@@ -289,6 +288,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['frozenMarkerBorderColor', 'rgba(168, 168, 168, 1)'],
                 ['frozenMarkerBorderWidth', 1],
                 ['frozenMarkerWidth', 2],
+                ['gridBackgroundColor', 'rgba(240, 240, 240, 1)'],
                 ['gridBorderColor', 'rgba(202, 202, 202, 1)'],
                 ['gridBorderWidth', 1],
                 ['minColumnWidth', 45],
@@ -397,11 +397,19 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         modules.forEach(function (module) {
             module(self);
         });
-        self.intf.args = self.args;
-        self.intf.init = self.init;
-        if (!self.isComponent) {
-            self.init();
+        if (self.isComponent) {
+            self.args.parentNode = self.intf;
+        } else {
+            self.args.parentNode = args.parentNode;
         }
+        if (self.args.parentNode && self.args.parentNode.createShadowRoot) {
+            self.shadowRoot = self.args.parentNode.attachShadow({mode: self.args.debug ? 'open' : 'closed'});
+            self.parentNode = self.shadowRoot;
+        } else {
+            self.parentNode = args.parentNode;
+        }
+        self.intf.self = self;
+        self.init();
         return self.intf;
     }
     if (window.HTMLElement) {
@@ -410,7 +418,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
     // export web component
     if (window.customElements) {
         Grid.observedAttributes = component.getObservableAttributes();
-        Grid.prototype.disconnectedCallback = function () { this.dispose(); };
+        Grid.prototype.disconnectedCallback = component.disconnectedCallback;
         Grid.prototype.attributeChangedCallback = component.attributeChangedCallback;
         Grid.prototype.connectedCallback = component.connectedCallback;
         Grid.prototype.adoptedCallback = component.adoptedCallback;
@@ -444,8 +452,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 /*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! ./defaults */ 0)], __WEBPACK_AMD_DEFINE_RESULT__ = function (defaults) {
     'use strict';
-    return function (self) {
-        self = self || {};
+    return function () {
         var typeMap, component = {};
         function hyphenateProperty(prop, cust) {
             var p = '';
@@ -469,21 +476,24 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             })[0];
             return r;
         }
-        function applyComponentStyle(intf, self, supressChangeAndDrawEvents) {
+        function applyComponentStyle(supressChangeAndDrawEvents, intf) {
             var cStyle = window.getComputedStyle(intf, null),
                 defs = {};
-            self.computedStyle = cStyle;
+            intf.computedStyle = cStyle;
             defaults(defs);
             defs = defs.defaults.styles;
             defs.forEach(function (def) {
                 var val = cStyle.getPropertyValue(hyphenateProperty(def[0], true));
+                if (val === "") {
+                    val = cStyle.getPropertyValue(hyphenateProperty(def[0], false));
+                }
                 if (val !== "") {
-                    self.style[def[0]] = typeMap[typeof def[1]](val, def[1]);
+                    intf.setStyleProperty(def[0], typeMap[typeof def[1]](val, def[1]));
                 }
             });
-            self.draw(true);
-            if (!supressChangeAndDrawEvents) {
-                self.dispatchEvent('stylechanged', intf.style);
+            intf.resize(true);
+            if (!supressChangeAndDrawEvents && intf.dispatchEvent) {
+                intf.dispatchEvent('stylechanged', intf.style);
             }
         }
         typeMap = {
@@ -513,44 +523,23 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
         };
         component.getObservableAttributes = function () {
-            var i = {}, attrs = ['data', 'schema'];
+            var i = {}, attrs = ['data', 'schema', 'style', 'className'];
             defaults(i);
             i.defaults.attributes.forEach(function (attr) {
                 attrs.push(attr[0].toLowerCase());
             });
             return attrs;
         };
+        component.disconnectedCallback = function () {
+            this.connected = false;
+            this.dispose();
+        };
         component.connectedCallback = function () {
-            var intf = this, s;
-            if (intf.initialized) { return; }
-            intf.initialized = true;
-            intf.args.parentNode = intf;
-            intf.args.attributes = intf.attributes;
-            //HACK init() will secretly return the internal reference object.
-            //since init is only run after instantiation in the component version
-            //it won't work in the amd version and won't return self, so it is still
-            //technically private since it's impossible to get at.
-            //this has to be done so intf setters can bet run and alter self without stack overflows
-            //intf.style.display = 'block';
-            s = intf.init();
-            component.observe(intf, s);
-            applyComponentStyle(intf, s, true);
-            Object.keys(intf.args.attributes).forEach(function (arg) {
-                if (intf.attributes[arg] === undefined) { return; }
-                intf.attributes[arg] = intf.args.attributes[arg];
-            });
-            s.resize();
-            ['style', 'data', 'schema'].forEach(function (key) {
-                Object.defineProperty(intf.args, key, {
-                    set: function (value) {
-                        s[key] = value;
-                        intf.draw();
-                    },
-                    get: function () {
-                        return s[key];
-                    }
-                });
-            });
+            var intf = this;
+            intf.connected = true;
+            component.observe(intf);
+            applyComponentStyle(true, intf);
+            intf.resize();
         };
         component.adoptedCallback = function () {
             this.resize();
@@ -558,6 +547,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         component.attributeChangedCallback = function (attrName, oldVal, newVal) {
             var tfn, intf = this, def;
             if (attrName === 'style') {
+                requestAnimationFrame(function () { applyComponentStyle(false, intf); });
                 return;
             }
             if (attrName === 'data') {
@@ -584,23 +574,22 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             return;
         };
-        component.observe = function (intf, self) {
+        component.observe = function (intf) {
             var observer;
             if (!window.MutationObserver) { return; }
-            self.applyComponentStyle = function () { applyComponentStyle(intf, self); self.resize(); };
+            intf.applyComponentStyle = function () { applyComponentStyle(intf); intf.resize(); };
             /**
              * Applies the computed css styles to the grid.  In some browsers, changing directives in attached style sheets does not automatically update the styles in this component.  It is necessary to call this method to update in these cases.
              * @memberof canvasDatagrid
              * @name applyComponentStyle
              * @method
              */
-            intf.applyComponentStyle = self.applyComponentStyle;
             observer = new window.MutationObserver(function (mutations) {
                 var checkInnerHTML, checkStyle;
                 Array.prototype.forEach.call(mutations, function (mutation) {
                     if (mutation.attributeName === 'class'
                             || mutation.attributeName === 'style') {
-                        self.applyComponentStyle();
+                        intf.applyComponentStyle(intf);
                         return;
                     }
                     if (mutation.target.parentNode.nodeName === 'STYLE') {
@@ -623,7 +612,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 observer.observe(el, { characterData: true, childList: true, attributes: true, subtree: true });
             });
         };
-        self.component = component;
         return component;
     };
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
@@ -942,7 +930,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 column;
             while (x < n) {
                 column = s[self.orders.columns[x]];
-                w += ((self.sizes.columns[column[self.uniqueId]] || column.width || self.style.columnWidth) * self.scale);
+                w += ((self.sizes.columns[column[self.uniqueId]] || column.width || self.style.cellWidth) * self.scale);
                 x += 1;
             }
             return w;
@@ -1202,7 +1190,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     }
                     // if no data or schema are defined, a width is provided to the stub column
                     if (cellWidth === undefined) {
-                        cellWidth = self.style.columnWidth;
+                        cellWidth = self.style.cellWidth;
                     }
                     cellWidth = cellWidth * self.scale;
                     if (x + cellWidth + self.style.cellBorderWidth < 0) {
@@ -1596,7 +1584,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             function drawBackground() {
                 radiusRect(0, 0, w, h, 0);
                 self.ctx.clip();
-                self.ctx.fillStyle = self.style.backgroundColor;
+                self.ctx.fillStyle = self.style.gridBackgroundColor;
                 fillRect(0, 0, w, h);
             }
             function drawFrozenRows() {
@@ -2031,6 +2019,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             return defaultPrevented;
         };
         self.resize = function (drawAfterResize) {
+            if (!self.canvas) { return; }
             var bm = self.style.borderCollapse === 'collapse' ? 1 : 2,
                 cellBorder = self.style.cellBorderWidth * bm,
                 columnHeaderCellBorder = self.style.columnHeaderCellBorderWidth * bm,
@@ -2051,7 +2040,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }, 0) || 0;
             scrollWidth = self.getVisibleSchema().reduce(function reduceSchema(accumulator, column) {
                 if (column.hidden) { return accumulator; }
-                return accumulator + ((self.sizes.columns[column[self.uniqueId]] || column.width || self.style.columnWidth) * self.scale) + cellBorder;
+                return accumulator + ((self.sizes.columns[column[self.uniqueId]] || column.width || self.style.cellWidth) * self.scale) + cellBorder;
             }, 0) || 0;
             if (self.isChildGrid) {
                 self.width = self.parentNode.offsetWidth;
@@ -2094,7 +2083,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.dispatchEvent('resize', {});
             return true;
         };
-        self.scroll = function (e, dontDraw) {
+        self.scroll = function (dontDraw) {
             var bm = self.style.borderCollapse === 'collapse' ? 1 : 2,
                 s = self.getVisibleSchema(),
                 cellBorder = self.style.cellBorderWidth * bm,
@@ -3657,6 +3646,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
             }
         };
+        self.getDomRoot = function () {
+            return self.shadowRoot ? self.shadowRoot.host : self.parentNode;
+        };
         self.getFontName = function (fontStyle) {
             return fontStyle.replace(/\d+\.?\d*px/, '');
         };
@@ -3679,6 +3671,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             Object.keys(self.args[propName]).forEach(function (key) {
                 self[propName][key] = self.args[propName][key];
             });
+        };
+        self.setStyleProperty = function (key, value) {
+            if (self.styleKeys.indexOf(key) === -1) {
+                self.parentNodeStyle[key] = value;
+            } else {
+                self.parseStyleValue(value);
+                self.style[key] = value;
+                self.draw(true);
+                self.dispatchEvent('stylechanged', {name: 'style', value: value});
+            }
         };
         self.init = function () {
             if (self.initialized) { return; }
@@ -3775,33 +3777,23 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.intf.clearPxColorAssertions = self.clearPxColorAssertions;
             self.intf.integerToAlpha = self.integerToAlpha;
             self.intf.copy = self.copy;
-            Object.keys(self.style).forEach(function (key) {
+            self.intf.setStyleProperty = self.setStyleProperty;
+            self.styleKeys = self.defaults.styles.map(function (i) {
+                return i[0];
+            });
+            self.DOMStyles = window.getComputedStyle(document.body, null);
+            Object.keys(self.DOMStyles).concat(Object.keys(self.style)).forEach(function (key) {
                 // unless this line is here, Object.keys() will not work on <instance>.style
                 publicStyleKeyIntf[key] = undefined;
-                function getDomRoot() { return self.shadowRoot ? self.shadowRoot.host : self.parentNode; }
                 Object.defineProperty(publicStyleKeyIntf, key, {
                     get: function () {
-                        if (key === 'width') {
-                            return getDomRoot().style.width;
+                        if (self.defaults.styles.indexOf(key) !== -1) {
+                            return self.style[key];
                         }
-                        if (key === 'height') {
-                            return getDomRoot().style.height;
-                        }
-                        return self.style[key];
+                        return self.canvas.style[key];
                     },
                     set: function (value) {
-                        if (key === 'width') {
-                            getDomRoot().style.width = value;
-                            self.resize();
-                        } else if (key === 'height') {
-                            getDomRoot().style.height = value;
-                            self.resize();
-                        } else {
-                            self.parseStyleValue(value);
-                            self.style[key] = value;
-                        }
-                        self.draw(true);
-                        self.dispatchEvent('stylechanged', {name: key, value: value});
+                        self.setStyleProperty(key, value);
                     }
                 });
             });
@@ -3820,21 +3812,23 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     return self.hasFocus;
                 }
             });
-            if (!self.args.component) {
-                Object.defineProperty(self.intf, 'style', {
-                    get: function () {
-                        return publicStyleKeyIntf;
-                    },
-                    set: function (value) {
-                        Object.keys(value).forEach(function (key) {
+            Object.defineProperty(self.intf, 'style', {
+                get: function () {
+                    return publicStyleKeyIntf;
+                },
+                set: function (value) {
+                    Object.keys(value).forEach(function (key) {
+                        if (self.defaults.styles.indexOf(key) === -1) {
+                            self.parentNodeStyle[key] = value;
+                        } else {
                             self.parseStyleValue(value);
                             self.style[key] = value[key];
-                        });
-                        self.draw(true);
-                        self.dispatchEvent('stylechanged', {name: 'style', value: value});
-                    }
-                });
-            }
+                        }
+                    });
+                    self.draw(true);
+                    self.dispatchEvent('stylechanged', {name: 'style', value: value});
+                }
+            });
             Object.defineProperty(self.intf, 'attributes', { value: {}});
             Object.keys(self.attributes).forEach(function (key) {
                 Object.defineProperty(self.intf.attributes, key, {
@@ -4239,7 +4233,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     throw new Error('Expected schema to contain an object with at least a name property.');
                 }
                 self.schema = value.map(function eachSchemaColumn(column, index) {
-                    column.width = column.width || self.style.columnWidth;
+                    column.width = column.width || self.style.cellWidth;
                     column[self.uniqueId] = self.getSchemaNameHash(column.name);
                     column.filter = column.filter || self.filter(column.type);
                     column.type = column.type || 'string';
@@ -4291,7 +4285,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         self.autosize();
                     }
                     self.fitColumnToValues('cornerCell', true);
-                    if (!self.resize() || !self.isChildGrid) { self.draw(true); }
+                    self.resize(true);
                     self.createRowOrders();
                     self.tryLoadStoredOrders();
                     self.dispatchEvent('datachanged', {data: self.data});
@@ -4907,7 +4901,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         self.createRowOrders();
                         self.createColumnOrders();
                         self.storedSettings = undefined;
-                        self.dispatchEvent('resizecolumn', {columnWidth: self.style.columnWidth});
+                        self.dispatchEvent('resizecolumn', {columnWidth: self.style.cellWidth});
                         self.dispatchEvent('resizerow', {cellHeight: self.style.cellHeight});
                         self.setStorageData();
                         self.resize(true);
@@ -5380,10 +5374,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 },
                 'canvas-datagrid': {
                     display: 'block',
-                    background: self.style.backgroundColor,
                     zIndex: '1',
                     boxSizing: 'content-box',
-                    padding: '0',
                     width: '100%',
                     height: '100%'
                 },
@@ -5507,8 +5499,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             return;
         };
-        self.appendTo = function (n) {
-            self.parentNode = n || document.createElement('canvas');
+        self.appendTo = function (e) {
+            self.parentNode = e;
+            self.setDom();
+        };
+        self.setDom = function () {
+            if (!self.parentNode) { return; }
             if (self.parentNode && /canvas-datagrid-(cell|tree)/.test(self.parentNode.nodeType)) {
                 self.isChildGrid = true;
                 self.parentGrid = self.parentNode.parentGrid;
@@ -5517,22 +5513,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.controlInput = self.parentGrid.controlInput;
                 self.eventParent = self.canvas;
             } else {
-                self.controlInput = document.createElement('input');
+                self.controlInput = self.controlInput || document.createElement('input');
                 self.controlInput.onblur = self.intf.blur;
                 self.createInlineStyle(self.controlInput, 'canvas-datagrid-control-input');
                 self.isChildGrid = false;
                 self.parentDOMNode = self.parentNode;
-                self.parentNode = self.parentDOMNode;
                 self.parentIsCanvas = /^canvas$/i.test(self.parentDOMNode.tagName);
-                if (self.isComponent) {
-                    self.shadowCss = document.createElement('style');
-                    self.shadowCss.innerHTML = ':host canvas { display:flex; flex-direction: column; padding: 0; margin: 0; }';
-                    self.parentDOMNode = self.parentNode.parentElement;
-                    self.canvas = document.createElement('canvas');
-                    self.parentNode.appendChild(self.shadowCss);
-                    self.parentNode.appendChild(self.canvas);
-                    self.parentNode.appendChild(self.controlInput);
-                } else if (self.parentIsCanvas) {
+                if (self.parentIsCanvas) {
                     self.canvas = self.parentDOMNode;
                     self.parentDOMNode.appendChild(self.controlInput);
                 } else {
@@ -5545,24 +5532,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.ctx.textBaseline = 'alphabetic';
                 self.eventParent = self.canvas;
             }
+            self.parentNodeStyle = (self.isComponent ? self.intf : self.canvas).style;
             self.controlInput.setAttribute('readonly', true);
             self.controlInput.addEventListener('blur', function (e) {
                 if (e.target !== self.canvas) {
                     self.hasFocus = false;
                 }
             });
-            window.addEventListener('resize', self.resize);
-            if (window.MutationObserver) {
-                self.observer = new window.MutationObserver(function (mutations) {
-                    mutations.forEach(function (mutation) {
-                        self.resize(true);
-                    });
-                });
-                [self.canvas.parentNode].forEach(function (el) {
-                    if (!el) { return; }
-                    self.observer.observe(el, { attributes: true });
-                });
-            }
             self.eventParent.addEventListener('scroll', self.resize, false);
             self.eventParent.addEventListener('touchstart', self.touchstart, false);
             self.eventParent.addEventListener('mouseup', self.mouseup, false);
@@ -5578,18 +5554,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.controlInput.addEventListener('keypress', self.keypress, false);
             self.controlInput.addEventListener('keyup', self.keyup, false);
             self.controlInput.addEventListener('keydown', self.keydown, false);
-        };
-        self.setDom = function () {
-            if (self.args.parentNode && self.args.parentNode.createShadowRoot) {
-                if (this.isComponent) {
-                    self.shadowRootParentElement = self.args.parentNode.parentElement;
-                } else {
-                    self.shadowRootParentElement = self.args.parentNode;
-                }
-                self.shadowRoot = self.args.parentNode.attachShadow({mode: self.args.debug ? 'open' : 'closed'});
-                self.args.parentNode = self.shadowRoot;
-            }
-            self.appendTo(self.args.parentNode);
+            window.addEventListener('resize', self.resize);
         };
     };
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
@@ -6202,6 +6167,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @param {string} name The name of the column to resize.
          */
         self.fitColumnToValues = function (name, internal) {
+            if (!self.canvas) { return; }
             self.sizes.columns[name === 'cornerCell' ? name : self.getHeaderByName(name)[self.uniqueId]]
                 = self.findColumnMaxTextLength(name);
             if (!internal) {
@@ -6596,7 +6562,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     i = {
                         name: key,
                         title: isNaN(parseInt(key, 10)) ? key : self.integerToAlpha(key).toUpperCase(),
-                        width: self.style.columnWidth,
+                        width: self.style.cellWidth,
                         index: index,
                         type: type,
                         filter: self.filter(type)
