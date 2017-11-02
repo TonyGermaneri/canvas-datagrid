@@ -123,12 +123,12 @@ To set attributes, add attributes.  Attributes are not case sensitive when using
     <canvas-datagrid selectionmode='row'></canvas-datagrid>
 
 Styles are declared as custom css properties prefixed with --cdg- and hyphenated rather than camelCase.
-For example, the style "backgroundColor" is set with "--cdg-background-color".  The web component
+For example, the style "gridBackgroundColor" is set with "--cdg-grid-background-color".  The web component
 works with classes, css cascading, and in-line styles just like any other HTML element.
 
 Inline styles:
 
-        <canvas-datagrid style="--cdg-background-color: lightblue;">[
+        <canvas-datagrid style="--cdg-grid-background-color: lightblue;">[
             {"col1": "row 1 column 1", "col2": "row 1 column 2", "col3": "row 1 column 3"},
             {"col1": "row 2 column 1", "col2": "row 2 column 2", "col3": "row 2 column 3"}
         ]</canvas-datagrid>
@@ -137,7 +137,7 @@ Class styles.
 
         <style>
             .grid {
-                --cdg-background-color: lightblue;
+                --cdg-grid-background-color: lightblue;
             }
         </style>
         <canvas-datagrid class="grid">[
