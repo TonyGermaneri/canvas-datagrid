@@ -19,7 +19,7 @@ canvas-datagrid
 * Built in and custom styles.
 * Per-user styles, settings using localStorage.
 * Hierarchal context menu.
-* Zero dependencies, very small code base, distributed as a single ~80k (~20k gziped) file.
+* Very small file size, no dependencies.
 
 
 [Documentation](https://tonygermaneri.github.io/canvas-datagrid/docs/)
