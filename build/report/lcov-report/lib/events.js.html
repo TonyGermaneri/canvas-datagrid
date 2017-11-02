@@ -1,0 +1,3062 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for lib/events.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">lib/</a> events.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">72.22% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>455/630</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">71.35% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>396/555</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">60.38% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>32/53</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">74.1% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>452/610</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762
+763
+764
+765
+766
+767
+768
+769
+770
+771
+772
+773
+774
+775
+776
+777
+778
+779
+780
+781
+782
+783
+784
+785
+786
+787
+788
+789
+790
+791
+792
+793
+794
+795
+796
+797
+798
+799
+800
+801
+802
+803
+804
+805
+806
+807
+808
+809
+810
+811
+812
+813
+814
+815
+816
+817
+818
+819
+820
+821
+822
+823
+824
+825
+826
+827
+828
+829
+830
+831
+832
+833
+834
+835
+836
+837
+838
+839
+840
+841
+842
+843
+844
+845
+846
+847
+848
+849
+850
+851
+852
+853
+854
+855
+856
+857
+858
+859
+860
+861
+862
+863
+864
+865
+866
+867
+868
+869
+870
+871
+872
+873
+874
+875
+876
+877
+878
+879
+880
+881
+882
+883
+884
+885
+886
+887
+888
+889
+890
+891
+892
+893
+894
+895
+896
+897
+898
+899
+900
+901
+902
+903
+904
+905
+906
+907
+908
+909
+910
+911
+912
+913
+914
+915
+916
+917
+918
+919
+920
+921
+922
+923
+924
+925
+926
+927
+928
+929
+930
+931
+932
+933
+934
+935
+936
+937
+938
+939
+940
+941
+942
+943
+944
+945
+946
+947
+948
+949
+950
+951
+952
+953
+954
+955
+956
+957
+958
+959
+960
+961
+962
+963
+964
+965
+966
+967
+968
+969
+970
+971
+972
+973
+974
+975
+976
+977
+978
+979
+980
+981
+982
+983
+984
+985
+986
+987
+988
+989
+990
+991
+992
+993
+994
+995
+996
+997
+998
+999
+1000</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">112×</span>
+<span class="cline-any cline-yes">112×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">100089×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">100089×</span>
+<span class="cline-any cline-yes">729×</span>
+<span class="cline-any cline-yes">763×</span>
+<span class="cline-any cline-yes">763×</span>
+<span class="cline-any cline-yes">763×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">729×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">401×</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-yes">1928×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-yes">11327×</span>
+<span class="cline-any cline-yes">11327×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">386×</span>
+<span class="cline-any cline-yes">386×</span>
+<span class="cline-any cline-yes">386×</span>
+<span class="cline-any cline-yes">386×</span>
+<span class="cline-any cline-yes">386×</span>
+<span class="cline-any cline-yes">386×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-yes">367×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-yes">399×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">906×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">906×</span>
+<span class="cline-any cline-yes">906×</span>
+<span class="cline-any cline-yes">906×</span>
+<span class="cline-any cline-yes">906×</span>
+<span class="cline-any cline-yes">906×</span>
+<span class="cline-any cline-yes">321×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">321×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">906×</span>
+<span class="cline-any cline-yes">13586×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13586×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">906×</span>
+<span class="cline-any cline-yes">876×</span>
+<span class="cline-any cline-yes">876×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">876×</span>
+<span class="cline-any cline-yes">876×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">906×</span>
+<span class="cline-any cline-yes">906×</span>
+<span class="cline-any cline-yes">507×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">906×</span>
+<span class="cline-any cline-yes">906×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51×</span>
+<span class="cline-any cline-yes">51×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">37×</span>
+<span class="cline-any cline-yes">37×</span>
+<span class="cline-any cline-yes">37×</span>
+<span class="cline-any cline-yes">37×</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">37×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51×</span>
+<span class="cline-any cline-yes">51×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">80×</span>
+<span class="cline-any cline-yes">80×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">80×</span>
+<span class="cline-any cline-yes">80×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">79×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">76×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">76×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">76×</span>
+<span class="cline-any cline-yes">76×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">76×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">73×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">70×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">76×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">73×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">45×</span>
+<span class="cline-any cline-yes">25×</span>
+<span class="cline-any cline-yes">25×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">148×</span>
+<span class="cline-any cline-yes">148×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">148×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">26×</span>
+<span class="cline-any cline-yes">26×</span>
+<span class="cline-any cline-yes">26×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26×</span>
+<span class="cline-any cline-yes">26×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26×</span>
+<span class="cline-any cline-yes">26×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26×</span>
+<span class="cline-any cline-yes">26×</span>
+<span class="cline-any cline-yes">26×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jslint browser: true, unparam: true, todo: true, plusplus: true*/
+/*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
+define([], function () {
+    'use strict';
+    return function (self) {
+        var wheeling;
+        self.stopPropagation = function (e) { e.stopPropagation(); };
+        /**
+         * Adds an event listener to the given event.
+         * @memberof canvasDatagrid
+         * @name addEventListener
+         * @method
+         * @param {string} ev The name of the event to subscribe to.
+         * @param {function} fn The event procedure to execute when the event is raised.
+         */
+        self.addEventListener = function (ev, fn) {
+            self.events[ev] = self.events[ev] || [];
+            self.events[ev].unshift(fn);
+        };
+        /**
+         * Removes the given listener function from the given event.  Must be an actual reference to the function that was bound.
+         * @memberof canvasDatagrid
+         * @name removeEventListener
+         * @method
+         * @param {string} ev The name of the event to unsubscribe from.
+         * @param {function} fn The event procedure to execute when the event is raised.
+         */
+        self.removeEventListener = <span class="fstat-no" title="function not covered" >function (ev, fn) {</span>
+<span class="cstat-no" title="statement not covered" >            (self.events[ev] || []).forEach(<span class="fstat-no" title="function not covered" >function removeEachListener(sfn, idx) {</span></span>
+<span class="cstat-no" title="statement not covered" >                if (fn === sfn) {</span>
+<span class="cstat-no" title="statement not covered" >                    self.events[ev].splice(idx, 1);</span>
+                }
+            });
+        };
+        /**
+         * Fires the given event, padding an event object to the event subscribers.
+         * @memberof canvasDatagrid
+         * @name dispatchEvent
+         * @method
+         * @param {number} ev The name of the event to dispatch.
+         * @param {number} e The event object.
+         */
+        self.dispatchEvent = function (ev, e) {
+            var defaultPrevented;
+            function preventDefault() {
+                defaultPrevented = true;
+            }
+            if (!self.events[ev]) { return; }
+            self.events[ev].forEach(function dispatchEachEvent(fn) {
+                e.ctx = self.ctx;
+                e.preventDefault = preventDefault;
+                fn.apply(self.intf, [e]);
+            });
+            return defaultPrevented;
+        };
+        self.resize = function (drawAfterResize) {
+            if (!self.canvas) { return; }
+            var bm = self.style.borderCollapse === 'collapse' ? <span class="branch-0 cbranch-no" title="branch not covered" >1 </span>: 2,
+                cellBorder = self.style.cellBorderWidth * bm,
+                columnHeaderCellBorder = self.style.columnHeaderCellBorderWidth * bm,
+                scrollHeight,
+                scrollWidth,
+                columnHeaderCellHeight = self.getColumnHeaderCellHeight(),
+                rowHeaderCellWidth = self.getRowHeaderCellWidth(),
+                ch = self.style.cellHeight,
+                // TODO: What the hell are these numbers!?  They are probably some value in the style.
+                scrollDragPositionOffsetY = 30,
+                scrollDragPositionOffsetX = 15;
+            scrollHeight = self.data.reduce(function reduceData(accumulator, row, rowIndex) {
+                return accumulator
+                    + (((self.sizes.rows[row[self.uniqueId]] || ch) + (self.sizes.trees[row[self.uniqueId]] || 0)) * self.scale)
+                    + cellBorder
+                    // HACK? if an expanded tree row is frozen it is necessary to add the tree row's height a second time.
+                    + (self.frozenRow &gt; rowIndex ? (<span class="branch-0 cbranch-no" title="branch not covered" >self.sizes.trees[row[self.uniqueId]] || 0)</span> : 0);
+            }, 0) || 0;
+            scrollWidth = self.getVisibleSchema().reduce(function reduceSchema(accumulator, column) {
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (column.hidden) { <span class="cstat-no" title="statement not covered" >return accumulator; </span>}
+                return accumulator + ((self.sizes.columns[column[self.uniqueId]] || column.width || self.style.cellWidth) * self.scale) + cellBorder;
+            }, 0) || <span class="branch-1 cbranch-no" title="branch not covered" >0;</span>
+            if (self.isChildGrid) {
+                self.width = self.parentNode.offsetWidth;
+                self.height = self.parentNode.offsetHeight;
+            } else {
+                self.height = self.canvas.offsetHeight;
+                self.width = self.canvas.offsetWidth;
+                self.canvas.width = self.width * window.devicePixelRatio;
+                self.canvas.height = self.height * window.devicePixelRatio;
+                self.canvasOffsetLeft = self.args.canvasOffsetLeft || 0;
+                self.canvasOffsetTop = self.args.canvasOffsetTop || 0;
+            }
+            if (self.attributes.showNewRow) {
+                scrollHeight += ch + cellBorder;
+            }
+            self.scrollBox.width = self.width - rowHeaderCellWidth;
+            self.scrollBox.height = self.height - columnHeaderCellHeight - columnHeaderCellBorder;
+            self.scrollBox.top = columnHeaderCellHeight + columnHeaderCellBorder;
+            self.scrollBox.left = rowHeaderCellWidth;
+            self.scrollBox.scrollHeight = scrollHeight + self.style.scrollBarWidth - self.scrollBox.height;
+            self.scrollBox.scrollWidth = scrollWidth + self.style.scrollBarWidth - self.scrollBox.width;
+            self.scrollBox.widthBoxRatio = ((self.scrollBox.width - scrollDragPositionOffsetX)
+                / (self.scrollBox.scrollWidth + self.scrollBox.width - scrollDragPositionOffsetX));
+            self.scrollBox.scrollBoxWidth = self.scrollBox.width
+                * self.scrollBox.widthBoxRatio
+                - self.style.scrollBarWidth;
+            self.scrollBox.heightBoxRatio = ((self.scrollBox.height - scrollDragPositionOffsetY)
+                / (self.scrollBox.scrollHeight + (self.scrollBox.height - scrollDragPositionOffsetY)));
+            self.scrollBox.scrollBoxHeight = self.scrollBox.height
+                * self.scrollBox.heightBoxRatio
+                - self.style.scrollBarWidth;
+            self.scrollBox.scrollBoxWidth = Math.max(self.scrollBox.scrollBoxWidth, self.style.scrollBarBoxMinSize);
+            self.scrollBox.scrollBoxHeight = Math.max(self.scrollBox.scrollBoxHeight, self.style.scrollBarBoxMinSize);
+            self.page = self.visibleRows.length - 3 - self.attributes.pageUpDownOverlap;
+            self.resizeEditInput();
+            self.scroll(true);
+            if (drawAfterResize) {
+                self.draw(true);
+            }
+            self.dispatchEvent('resize', {});
+            return true;
+        };
+        self.scroll = function (dontDraw) {
+            var bm = self.style.borderCollapse === 'collapse' ? <span class="branch-0 cbranch-no" title="branch not covered" >1 </span>: 2,
+                s = self.getVisibleSchema(),
+                cellBorder = self.style.cellBorderWidth * bm,
+                ch = self.style.cellHeight;
+            self.scrollIndexTop = 0;
+            self.scrollPixelTop = 0;
+            self.scrollIndexLeft = 0;
+            self.scrollPixelLeft = 0;
+            while (self.scrollPixelTop &lt; self.scrollBox.scrollTop &amp;&amp; self.scrollIndexTop &lt; self.data.length) {
+                self.scrollPixelTop +=
+                    (((self.sizes.rows[self.data[self.scrollIndexTop][self.uniqueId]] || ch)
+                        + (self.sizes.trees[self.data[self.scrollIndexTop][self.uniqueId]] || 0)) * self.scale)
+                    + cellBorder;
+                self.scrollIndexTop += 1;
+            }
+            while (self.scrollPixelLeft &lt; self.scrollBox.scrollLeft &amp;&amp; self.scrollIndexLeft &lt; s.length) {
+                self.scrollPixelLeft +=
+                    ((self.sizes.columns[s[self.scrollIndexLeft][self.uniqueId]] || s[self.scrollIndexLeft].width) * self.scale)
+                    + cellBorder;
+                self.scrollIndexLeft += 1;
+            }
+            if (self.data.length &gt; 0) {
+                self.scrollIndexLeft = Math.max(self.scrollIndexLeft - 1, 0);
+                self.scrollPixelLeft = Math.max(self.scrollPixelLeft
+                    - ((self.sizes.columns[s[self.scrollIndexLeft][self.uniqueId]] || s[self.scrollIndexLeft].width) * self.scale), 0);
+                self.scrollIndexTop = Math.max(self.scrollIndexTop - 1, 0);
+                self.scrollPixelTop = Math.max((self.scrollPixelTop
+                    - ((self.sizes.rows[self.data[self.scrollIndexTop][self.uniqueId]] || ch)
+                    + (self.sizes.trees[self.data[self.scrollIndexTop][self.uniqueId]] || 0)) * self.scale), 0);
+            }
+            self.ellipsisCache = {};
+            if (!dontDraw) {
+                self.draw(true);
+            }
+            //TODO: figure out why this has to be delayed for child grids
+            //BUG: wheeling event on 3rd level hierarchy fails to move input box
+            requestAnimationFrame(self.resizeEditInput);
+            self.dispatchEvent('scroll', {top: self.scrollBox.scrollTop, left: self.scrollBox.scrollLeft});
+        };
+        self.mousemove = function (e, overridePos) {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.contextMenu || self.input) {
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+            self.mouse = overridePos || self.getLayerPos(e);
+            var ctrl = (e.ctrlKey || e.metaKey || self.attributes.persistantSelectionMode),
+                i,
+                vs = self.getVisibleSchema(),
+                dragBounds,
+                sBounds,
+                x = self.mouse.x,
+                y = self.mouse.y,
+                o = self.getCellAt(x, y),
+                delta,
+                ev = {NativeEvent: e, cell: o, x: x, y: y},
+                previousCell = self.currentCell;
+            clearTimeout(self.scrollTimer);
+            if (!self.isInGrid({x: x, y: y})) {
+                self.hasFocus = false;
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.dispatchEvent('mousemove', ev)) {
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+            if (o &amp;&amp; self.currentCell &amp;&amp; (self.currentCell.rowIndex !== o.rowIndex
+                    || self.currentCell.columnIndex !== o.columnIndex)) {
+                self.cellBoundaryCrossed = true;
+                ev.cell = previousCell;
+                self.dispatchEvent('cellmouseout', ev);
+                ev.cell = o;
+                self.dispatchEvent('cellmouseover', ev);
+            }
+            self.currentCell = o;
+            if (!self.hasFocus) {
+                return;
+            }
+            self.hovers = {};
+            if (!self.draggingItem
+                    &amp;&amp; o
+                    &amp;&amp; self.scrollModes.indexOf(o.context) === -1) {
+                self.dragItem = o;
+                self.dragMode = o.dragContext;
+                self.canvas.style.cursor = o.context;
+                if (o.context === 'cell' &amp;&amp; o.data) {
+                    self.canvas.style.cursor = 'default';
+                    self.hovers[o.data[self.uniqueId]] = [o.columnIndex];
+                }
+                if ((self.selecting || self.reorderObject)
+                        &amp;&amp; o.context === 'cell'
+                        &amp;&amp; o.data) {
+                    sBounds = self.getSelectionBounds();
+                    delta = {
+                        x: Math.abs(self.dragStart.x - x),
+                        y: Math.abs(self.dragStart.y - y)
+                    };
+                    <span class="missing-if-branch" title="if path not taken" >I</span>if (self.dragStartObject.columnIndex !== -1 &amp;&amp; e.shiftKey) {
+<span class="cstat-no" title="statement not covered" >                        self.dragStartObject = {</span>
+                            rowIndex: self.activeCell.rowIndex,
+                            columnIndex: self.activeCell.columnIndex
+                        };
+                    }
+                    dragBounds = {
+                        top: Math.min(self.dragStartObject.rowIndex, o.rowIndex),
+                        left: Math.min(self.dragStartObject.columnIndex, o.columnIndex),
+                        bottom: Math.max(self.dragStartObject.rowIndex, o.rowIndex),
+                        right: Math.max(self.dragStartObject.columnIndex, o.columnIndex)
+                    };
+                    <span class="missing-if-branch" title="if path not taken" >I</span>if (self.dragStartObject.columnIndex === -1) {
+<span class="cstat-no" title="statement not covered" >                        dragBounds.left = -1;</span>
+<span class="cstat-no" title="statement not covered" >                        dragBounds.right = vs.length - 1;</span>
+<span class="cstat-no" title="statement not covered" >                        dragBounds.top = Math.min(sBounds.top, o.rowIndex);</span>
+<span class="cstat-no" title="statement not covered" >                        dragBounds.bottom = Math.max(sBounds.bottom, o.rowIndex);</span>
+                    }
+                    if (self.dragStartObject.rowIndex !== o.rowIndex
+                                || self.dragStartObject.columnIndex !== o.columnIndex) {
+                        self.ignoreNextClick = true;
+                    }
+                    <span class="missing-if-branch" title="else path not taken" >E</span>if (self.cellBoundaryCrossed || (delta.x === 0 &amp;&amp; delta.y === 0) || (<span class="branch-3 cbranch-no" title="branch not covered" >self.attributes.selectionMode === 'row')</span>) {
+                        if ((self.attributes.selectionMode === 'row') || self.dragStartObject.columnIndex === -1) {
+                            self.selectRow(o.rowIndex, ctrl, null, true);
+                        } else {
+                            if (!self.dragAddToSelection &amp;&amp; o.rowIndex !== undefined) {
+                                if (self.selections[o.rowIndex] &amp;&amp; self.selections[o.rowIndex].indexOf(o.columnIndex) !== -1) {
+                                    self.selections[o.rowIndex].splice(self.selections[o.rowIndex].indexOf(o.columnIndex), 1);
+                                }
+                            } else {
+                                self.selections[o.rowIndex] = self.selections[o.rowIndex] || [];
+                                <span class="missing-if-branch" title="else path not taken" >E</span>if (self.selections[o.rowIndex].indexOf(o.columnIndex) === -1) {
+                                    self.selections[o.rowIndex].push(o.columnIndex);
+                                }
+                            }
+                        }
+                    }
+                    if ((!self.selectionBounds || (dragBounds.top !== self.selectionBounds.top
+                            || dragBounds.left !== self.selectionBounds.left
+                            || dragBounds.bottom !== self.selectionBounds.bottom
+                            || dragBounds.right !== self.selectionBounds.right)) &amp;&amp; !ctrl) {
+                        self.selections = [];
+                        sBounds = dragBounds;
+                        if (self.attributes.selectionMode === 'row') {
+                            for (i = sBounds.top; i &lt;= sBounds.bottom; i += 1) {
+                                self.selectRow(i, true, null, true);
+                            }
+                        } else {
+                            self.selectArea(sBounds, true);
+                        }
+                    }
+                    self.autoScrollZone(e, x, y, ctrl);
+                }
+            }
+            self.cellBoundaryCrossed = false;
+            self.draw(true);
+        };
+        self.click = function (e, overridePos) {
+            var i,
+                ctrl = (e.ctrlKey || e.metaKey || self.attributes.persistantSelectionMode),
+                pos = overridePos || self.getLayerPos(e);
+            self.currentCell = self.getCellAt(pos.x, pos.y);
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.currentCell.grid !== undefined) {
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+            function checkSelectionChange() {
+                self.dispatchEvent('selectionchanged', {
+                    selectedData: self.getSelectedData(),
+                    selections: self.selections,
+                    selectionBounds: self.selectionBounds
+                });
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.input) {
+<span class="cstat-no" title="statement not covered" >                self.endEdit();</span>
+            }
+            if (self.ignoreNextClick) {
+                self.ignoreNextClick = false;
+                return;
+            }
+            i = self.currentCell;
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.dispatchEvent('click', {NativeEvent: e, cell: self.currentCell})) { <span class="cstat-no" title="statement not covered" >return; </span>}
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!self.hasFocus) {
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+            if (['rowHeaderCell', 'columnHeaderCell'].indexOf(self.currentCell.style) === -1 &amp;&amp; !ctrl) {
+                self.setActiveCell(i.columnIndex, i.rowIndex);
+            }
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (self.currentCell.context === 'cell') {
+                if (self.currentCell.style === 'cornerCell') {
+                    self.selectAll();
+                    self.draw();
+                    checkSelectionChange();
+                    return;
+                }
+                if (self.currentCell.style === 'columnHeaderCell') {
+                    if (self.attributes.columnHeaderClickBehavior === 'sort') {
+                        if (self.orderBy === i.header.name) {
+                            self.orderDirection = self.orderDirection === 'asc' ? 'desc' : <span class="branch-1 cbranch-no" title="branch not covered" >'asc';</span>
+                        } else {
+                            self.orderDirection = 'asc';
+                        }
+                        self.order(i.header.name, self.orderDirection);
+                        checkSelectionChange();
+                        return;
+                    }
+                    <span class="missing-if-branch" title="else path not taken" >E</span>if (self.attributes.columnHeaderClickBehavior === 'select') {
+                        self.selectColumn(i.header.index, ctrl, e.shiftKey, true);
+                        checkSelectionChange();
+                        self.draw();
+                        return;
+                    }
+                }
+                self.selections[i.rowIndex] = self.selections[i.rowIndex] || [];
+                if (((self.attributes.selectionMode === 'row') || self.currentCell.style === 'rowHeaderCell')) {
+                    <span class="missing-if-branch" title="else path not taken" >E</span>if (self.currentCell.style === 'rowHeaderCell'
+                            &amp;&amp; self.attributes.tree &amp;&amp; pos.x &gt; 0
+                            &amp;&amp; pos.x - self.currentCell.x &lt; self.style.treeArrowWidth
+                            + self.style.treeArrowMarginLeft
+                            + self.style.treeArrowMarginRight + self.style.treeArrowClickRadius
+                            &amp;&amp; pos.y - self.currentCell.y &lt; self.style.treeArrowHeight
+                            + self.style.treeArrowMarginTop + self.style.treeArrowClickRadius
+                            &amp;&amp; pos.y &gt; 0) {
+                        self.toggleTree(i.rowIndex);
+                        return;
+                    }
+                }
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (e.shiftKey &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >!ctrl)</span> {
+<span class="cstat-no" title="statement not covered" >                    self.selectionBounds = self.getSelectionBounds();</span>
+<span class="cstat-no" title="statement not covered" >                    self.selectArea(undefined, false);</span>
+                }
+            }
+            checkSelectionChange();
+            self.draw(true);
+        };
+        self.dragResizeColumn = function (e) {
+            var pos, x, y;
+            pos = self.getLayerPos(e);
+            x = self.resizingStartingWidth + pos.x - self.dragStart.x;
+            y = self.resizingStartingHeight + pos.y - self.dragStart.y;
+            if (x &lt; self.style.minColumnWidth) {
+                x = self.style.minColumnWidth;
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (y &lt; self.style.minRowHeight) {
+<span class="cstat-no" title="statement not covered" >                y = self.style.minRowHeight;</span>
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.dispatchEvent('resizecolumn', {x: x, y: y, draggingItem: self.draggingItem})) { <span class="cstat-no" title="statement not covered" >return false; </span>}
+            if (self.scrollBox.scrollLeft &gt; self.scrollBox.scrollWidth - self.attributes.resizeScrollZone
+                    &amp;&amp; self.dragMode === 'ew-resize') {
+                self.resize(true);
+                self.scrollBox.scrollLeft += x;
+            }
+            if (self.dragMode === 'ew-resize') {
+                self.sizes.columns[self.draggingItem.header.style === 'rowHeaderCell'
+                       ? <span class="branch-0 cbranch-no" title="branch not covered" >'cornerCell' </span>: self.draggingItem.header[self.uniqueId]] = x;
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (['rowHeaderCell', 'cornerCell'].indexOf(self.draggingItem.header.style) !== -1) {
+<span class="cstat-no" title="statement not covered" >                    self.resize(true);</span>
+                }
+                self.resizeChildGrids();
+                return;
+            }
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (self.dragMode === 'ns-resize') {
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (self.draggingItem.rowOpen) {
+<span class="cstat-no" title="statement not covered" >                    self.sizes.trees[self.draggingItem.data[self.uniqueId]] = y;</span>
+                } else <span class="missing-if-branch" title="if path not taken" >I</span>if (self.attributes.globalRowResize) {
+<span class="cstat-no" title="statement not covered" >                    self.style.cellHeight = y;</span>
+                } else {
+                    self.sizes.rows[self.draggingItem.data[self.uniqueId]] = y;
+                }
+                self.dispatchEvent('resizerow', {row: y});
+                self.resizeChildGrids();
+                return;
+            }
+<span class="cstat-no" title="statement not covered" >            self.ellipsisCache = {};</span>
+        };
+        self.stopDragResize = function () {
+            self.resize();
+            document.body.removeEventListener('mousemove', self.dragResizeColumn, false);
+            document.body.removeEventListener('mouseup', self.stopDragResize, false);
+            self.setStorageData();
+            self.draw(true);
+            self.ignoreNextClick = true;
+        };
+        self.scrollGrid = function (e) {
+            var pos = self.getLayerPos(e);
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.attributes.scrollPointerLock &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >self.pointerLockPosition</span>
+                    &amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >['horizontal-scroll-box', 'vertical-scroll-box'].indexOf(self.scrollStartMode) !== -1)</span> {
+<span class="cstat-no" title="statement not covered" >                self.pointerLockPosition.x += e.movementX;</span>
+<span class="cstat-no" title="statement not covered" >                self.pointerLockPosition.y += e.movementY;</span>
+<span class="cstat-no" title="statement not covered" >                self.pointerLockPosition.x = Math.min(self.width - self.style.scrollBarWidth, Math.max(0, self.pointerLockPosition.x));</span>
+<span class="cstat-no" title="statement not covered" >                self.pointerLockPosition.y = Math.min(self.height - self.style.scrollBarWidth, Math.max(0, self.pointerLockPosition.y));</span>
+<span class="cstat-no" title="statement not covered" >                pos = self.pointerLockPosition;</span>
+            }
+            self.scrollMode = self.getCellAt(pos.x, pos.y).context;
+            if (self.scrollMode === 'horizontal-scroll-box' &amp;&amp; self.scrollStartMode !== 'horizontal-scroll-box') {
+                self.scrollStartMode = 'horizontal-scroll-box';
+                self.dragStart = pos;
+                self.scrollStart.left = self.scrollBox.scrollLeft;
+                clearTimeout(self.scrollTimer);
+                return;
+            }
+            if (self.scrollMode === 'vertical-scroll-box' &amp;&amp; self.scrollStartMode !== 'vertical-scroll-box') {
+                self.scrollStartMode = 'vertical-scroll-box';
+                self.dragStart = pos;
+                self.scrollStart.top = self.scrollBox.scrollTop;
+                clearTimeout(self.scrollTimer);
+                return;
+            }
+            if (self.scrollStartMode === 'vertical-scroll-box'
+                    &amp;&amp; self.scrollMode !== 'vertical-scroll-box') {
+                self.scrollMode = 'vertical-scroll-box';
+            }
+            if (self.scrollStartMode === 'horizontal-scroll-box'
+                    &amp;&amp; self.scrollMode !== 'horizontal-scroll-box') {
+                self.scrollMode = 'horizontal-scroll-box';
+            }
+            clearTimeout(self.scrollTimer);
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.scrollModes.indexOf(self.scrollMode) === -1) {
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+            if (self.scrollMode === 'vertical-scroll-box') {
+                self.scrollBox.scrollTop = self.scrollStart.top + ((pos.y - self.dragStart.y)
+                    / self.scrollBox.heightBoxRatio);
+            } else if (self.scrollMode === 'vertical-scroll-top') {
+                self.scrollBox.scrollTop -= (self.page * self.style.cellHeight);
+                self.scrollTimer = setTimeout(self.scrollGrid, self.attributes.scrollRepeatRate, e);
+            } else if (self.scrollMode === 'vertical-scroll-bottom') {
+                self.scrollBox.scrollTop += (self.page * self.style.cellHeight);
+                self.scrollTimer = setTimeout(self.scrollGrid, self.attributes.scrollRepeatRate, e);
+            }
+            if (self.scrollMode === 'horizontal-scroll-box') {
+                self.scrollBox.scrollLeft = self.scrollStart.left + ((pos.x - self.dragStart.x)
+                    / self.scrollBox.widthBoxRatio);
+            } else if (self.scrollMode === 'horizontal-scroll-right') {
+                self.scrollBox.scrollLeft += self.attributes.selectionScrollIncrement;
+                self.scrollTimer = setTimeout(self.scrollGrid, self.attributes.scrollRepeatRate, e);
+            } else if (self.scrollMode === 'horizontal-scroll-left') {
+                self.scrollBox.scrollLeft -= self.attributes.selectionScrollIncrement;
+                self.scrollTimer = setTimeout(self.scrollGrid, self.attributes.scrollRepeatRate, e);
+            }
+        };
+        self.stopScrollGrid = function () {
+            clearTimeout(self.scrollTimer);
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (document.exitPointerLock) {
+<span class="cstat-no" title="statement not covered" >                document.exitPointerLock();</span>
+            }
+            document.body.removeEventListener('mousemove', self.scrollGrid, false);
+        };
+        self.dragReorder = function (e) {
+            var pos, x, y;
+            pos = self.getLayerPos(e);
+            x = pos.x - self.dragStart.x;
+            y = pos.y - self.dragStart.y;
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!self.attributes.allowColumnReordering &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >self.dragMode === 'column-reorder')</span> {
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!self.attributes.allowRowReordering &amp;&amp; self.dragMode === 'row-reorder') {
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.dispatchEvent('reordering', {
+                    NativeEvent: e,
+                    source: self.dragStartObject,
+                    target: self.currentCell,
+                    dragMode: self.dragMode
+                })) {
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (Math.abs(x) &gt; self.attributes.reorderDeadZone || Math.abs(y) &gt; self.attributes.reorderDeadZone) {
+                self.reorderObject = self.draggingItem;
+                self.reorderTarget = self.currentCell;
+                self.reorderObject.dragOffset = {
+                    x: x,
+                    y: y
+                };
+                self.autoScrollZone(e, pos.x, pos.y, false);
+            }
+        };
+        self.stopDragReorder = function (e) {
+            var oIndex,
+                tIndex,
+                cr = {
+                    'row-reorder': self.orders.rows,
+                    'column-reorder': self.orders.columns
+                },
+                i = {
+                    'row-reorder': 'rowIndex',
+                    'column-reorder': 'columnIndex'
+                }[self.dragMode];
+            document.body.removeEventListener('mousemove', self.dragReorder, false);
+            document.body.removeEventListener('mouseup', self.stopDragReorder, false);
+            if (self.reorderObject
+                    &amp;&amp; self.reorderTarget
+                    &amp;&amp; ((self.dragMode === 'column-reorder' &amp;&amp; self.reorderTarget.columnIndex &gt; -1
+                        &amp;&amp; self.reorderTarget.columnIndex &lt; self.getVisibleSchema().length)
+                    || (self.dragMode === 'row-reorder' &amp;&amp; self.reorderTarget.rowIndex &gt; -1
+                        &amp;&amp; self.reorderTarget.rowIndex &lt; self.data.length))
+                    &amp;&amp; self.reorderObject[i] !== self.reorderTarget[i]
+                    &amp;&amp; !self.dispatchEvent('reorder', {
+                        NativeEvent: e,
+                        source: self.reorderObject,
+                        target: self.reorderTarget,
+                        dragMode: self.dragMode
+                    })) {
+                self.ignoreNextClick = true;
+                oIndex = cr[self.dragMode].indexOf(self.reorderObject[i]);
+                tIndex = cr[self.dragMode].indexOf(self.reorderTarget[i]);
+                cr[self.dragMode].splice(oIndex, 1);
+                cr[self.dragMode].splice(tIndex, 0, self.reorderObject[i]);
+                self.setStorageData();
+            }
+            self.reorderObject = undefined;
+            self.reorderTarget = undefined;
+            self.draw(true);
+        };
+        self.dragMove = <span class="fstat-no" title="function not covered" >function (e) {</span>
+<span class="cstat-no" title="statement not covered" >            if (self.dispatchEvent('moving', {NativeEvent: e, cell: self.currentCell})) { <span class="cstat-no" title="statement not covered" >return; </span>}</span>
+<span class="cstat-no" title="statement not covered" >            var pos = self.getLayerPos(e);</span>
+<span class="cstat-no" title="statement not covered" >            self.moveOffset = {</span>
+                x: self.currentCell.columnIndex - self.dragStartObject.columnIndex,
+                y: self.currentCell.rowIndex - self.dragStartObject.rowIndex
+            };
+<span class="cstat-no" title="statement not covered" >            if (Math.abs(pos.x) &gt; self.attributes.reorderDeadZone || Math.abs(pos.y) &gt; self.attributes.reorderDeadZone) {</span>
+<span class="cstat-no" title="statement not covered" >                setTimeout(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >                    self.autoScrollZone(e, pos.x, pos.y, false);</span>
+                }, 1);
+            }
+        };
+        self.stopDragMove = <span class="fstat-no" title="function not covered" >function (e) {</span>
+<span class="cstat-no" title="statement not covered" >            document.body.removeEventListener('mousemove', self.dragMove, false);</span>
+<span class="cstat-no" title="statement not covered" >            document.body.removeEventListener('mouseup', self.stopDragMove, false);</span>
+<span class="cstat-no" title="statement not covered" >            var b = self.getSelectionBounds();</span>
+<span class="cstat-no" title="statement not covered" >            if (self.dispatchEvent('endmove', {NativeEvent: e, cell: self.currentCell})) {</span>
+<span class="cstat-no" title="statement not covered" >                self.movingSelection = undefined;</span>
+<span class="cstat-no" title="statement not covered" >                self.moveOffset = undefined;</span>
+<span class="cstat-no" title="statement not covered" >                self.draw(true);</span>
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (self.moveOffset) {</span>
+<span class="cstat-no" title="statement not covered" >                self.moveTo(self.movingSelection, b.left + self.moveOffset.x, b.top + self.moveOffset.y);</span>
+<span class="cstat-no" title="statement not covered" >                self.moveSelection(self.moveOffset.x, self.moveOffset.y);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            self.movingSelection = undefined;</span>
+<span class="cstat-no" title="statement not covered" >            self.moveOffset = undefined;</span>
+<span class="cstat-no" title="statement not covered" >            self.draw(true);</span>
+        };
+        self.freezeMove = <span class="fstat-no" title="function not covered" >function (e) {</span>
+<span class="cstat-no" title="statement not covered" >            if (self.dispatchEvent('freezemoving', {NativeEvent: e, cell: self.currentCell})) { <span class="cstat-no" title="statement not covered" >return; </span>}</span>
+<span class="cstat-no" title="statement not covered" >            var pos = self.getLayerPos(e);</span>
+<span class="cstat-no" title="statement not covered" >            self.ignoreNextClick = true;</span>
+<span class="cstat-no" title="statement not covered" >            self.freezeMarkerPosition = pos;</span>
+<span class="cstat-no" title="statement not covered" >            if (self.currentCell &amp;&amp; self.currentCell.rowIndex !== undefined &amp;&amp; self.dragMode === 'frozen-row-marker') {</span>
+<span class="cstat-no" title="statement not covered" >                self.scrollBox.scrollTop = 0;</span>
+<span class="cstat-no" title="statement not covered" >                self.frozenRow = self.currentCell.rowIndex + 1;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (self.currentCell &amp;&amp; self.currentCell.columnIndex !== undefined &amp;&amp; self.dragMode === 'frozen-column-marker') {</span>
+<span class="cstat-no" title="statement not covered" >                self.scrollBox.scrollLeft = 0;</span>
+<span class="cstat-no" title="statement not covered" >                self.frozenColumn = self.currentCell.columnIndex + 1;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (Math.abs(pos.x) &gt; self.attributes.reorderDeadZone || Math.abs(pos.y) &gt; self.attributes.reorderDeadZone) {</span>
+<span class="cstat-no" title="statement not covered" >                setTimeout(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >                    self.autoScrollZone(e, pos.x, pos.y, false);</span>
+                }, 1);
+            }
+        };
+        self.stopFreezeMove = <span class="fstat-no" title="function not covered" >function (e) {</span>
+<span class="cstat-no" title="statement not covered" >            document.body.removeEventListener('mousemove', self.freezeMove, false);</span>
+<span class="cstat-no" title="statement not covered" >            document.body.removeEventListener('mouseup', self.stopFreezeMove, false);</span>
+<span class="cstat-no" title="statement not covered" >            self.freezeMarkerPosition = undefined;</span>
+<span class="cstat-no" title="statement not covered" >            if (self.dispatchEvent('endfreezemove', {NativeEvent: e})) {</span>
+<span class="cstat-no" title="statement not covered" >                self.frozenRow = self.startFreezeMove.x;</span>
+<span class="cstat-no" title="statement not covered" >                self.frozenColumn = self.startFreezeMove.y;</span>
+<span class="cstat-no" title="statement not covered" >                self.draw(true);</span>
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            self.draw(true);</span>
+        };
+        self.mousedown = function (e, overridePos) {
+            self.lastMouseDownTarget = e.target;
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.dispatchEvent('mousedown', {NativeEvent: e, cell: self.currentCell})) { <span class="cstat-no" title="statement not covered" >return; </span>}
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!self.hasFocus) {
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (e.button === 2 || self.input) { <span class="cstat-no" title="statement not covered" >return; </span>}
+            var ctrl = (e.ctrlKey || e.metaKey),
+                move = /-move/.test(self.dragMode),
+                freeze = /frozen-row-marker|frozen-column-marker/.test(self.dragMode),
+                resize = /-resize/.test(self.dragMode);
+            self.dragStart = overridePos || self.getLayerPos(e);
+            self.scrollStart = {
+                left: self.scrollBox.scrollLeft,
+                top: self.scrollBox.scrollTop
+            };
+            self.dragStartObject = self.getCellAt(self.dragStart.x, self.dragStart.y);
+            self.dragAddToSelection = !self.dragStartObject.selected;
+            if (!ctrl &amp;&amp; !e.shiftKey &amp;&amp; !/(vertical|horizontal)-scroll-(bar|box)/
+                    .test(self.dragStartObject.context)
+                    &amp;&amp; self.currentCell
+                    &amp;&amp; !self.currentCell.isColumnHeader
+                    &amp;&amp; !move
+                    &amp;&amp; !freeze
+                    &amp;&amp; !resize) {
+                self.selections = [];
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.dragStartObject.isGrid) {
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+            if (self.scrollModes.indexOf(self.dragStartObject.context) !== -1) {
+                self.scrollMode = self.dragStartObject.context;
+                self.scrollStartMode = self.dragStartObject.context;
+                self.scrollGrid(e);
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (self.attributes.scrollPointerLock
+                        &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >['horizontal-scroll-box', 'vertical-scroll-box'].indexOf(self.scrollStartMode) !== -1)</span> {
+<span class="cstat-no" title="statement not covered" >                    self.pointerLockPosition = {</span>
+                        x: self.dragStart.x,
+                        y: self.dragStart.y
+                    };
+<span class="cstat-no" title="statement not covered" >                    self.canvas.requestPointerLock();</span>
+                }
+                document.body.addEventListener('mousemove', self.scrollGrid, false);
+                document.body.addEventListener('mouseup', self.stopScrollGrid, false);
+                self.ignoreNextClick = true;
+                return;
+            }
+            if (self.dragMode === 'cell') {
+                self.selecting = true;
+                if (self.attributes.selectionMode === 'row') {
+                    self.selectRow(self.dragStartObject.rowIndex, ctrl, null, true);
+                }
+                return self.mousemove(e);
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (move) {
+<span class="cstat-no" title="statement not covered" >                self.draggingItem = self.dragItem;</span>
+<span class="cstat-no" title="statement not covered" >                self.movingSelection = self.selections.concat([]);</span>
+<span class="cstat-no" title="statement not covered" >                self.dragging = self.dragStartObject;</span>
+<span class="cstat-no" title="statement not covered" >                if (self.dispatchEvent('beginmove', {NativeEvent: e, cell: self.currentCell})) { <span class="cstat-no" title="statement not covered" >return; </span>}</span>
+<span class="cstat-no" title="statement not covered" >                document.body.addEventListener('mousemove', self.dragMove, false);</span>
+<span class="cstat-no" title="statement not covered" >                document.body.addEventListener('mouseup', self.stopDragMove, false);</span>
+<span class="cstat-no" title="statement not covered" >                return self.mousemove(e);</span>
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (freeze) {
+<span class="cstat-no" title="statement not covered" >                self.draggingItem = self.dragItem;</span>
+<span class="cstat-no" title="statement not covered" >                self.startFreezeMove = {</span>
+                    x: self.frozenRow,
+                    y: self.frozenColumn
+                };
+<span class="cstat-no" title="statement not covered" >                if (self.dispatchEvent('beginfreezemove', {NativeEvent: e})) { <span class="cstat-no" title="statement not covered" >return; </span>}</span>
+<span class="cstat-no" title="statement not covered" >                document.body.addEventListener('mousemove', self.freezeMove, false);</span>
+<span class="cstat-no" title="statement not covered" >                document.body.addEventListener('mouseup', self.stopFreezeMove, false);</span>
+<span class="cstat-no" title="statement not covered" >                return self.mousemove(e);</span>
+            }
+            if (resize) {
+                self.draggingItem = self.dragItem;
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (self.draggingItem.rowOpen) {
+<span class="cstat-no" title="statement not covered" >                    self.resizingStartingHeight = self.sizes.trees[self.draggingItem.data[self.uniqueId]];</span>
+                } else {
+                    self.resizingStartingHeight = self.sizes.rows[self.draggingItem.data[self.uniqueId]] || self.style.cellHeight;
+                }
+                self.resizingStartingWidth = self.sizes.columns[self.draggingItem.header.style === 'rowHeaderCell'
+                       ? 'cornerCell' : self.draggingItem.header[self.uniqueId]] || self.draggingItem.width;
+                document.body.addEventListener('mousemove', self.dragResizeColumn, false);
+                document.body.addEventListener('mouseup', self.stopDragResize, false);
+            }
+            if (['row-reorder', 'column-reorder'].indexOf(self.dragMode) !== -1) {
+                self.draggingItem = self.dragStartObject;
+                document.body.addEventListener('mousemove', self.dragReorder, false);
+                document.body.addEventListener('mouseup', self.stopDragReorder, false);
+            }
+        };
+        self.mouseup = function (e) {
+            clearTimeout(self.scrollTimer);
+            self.cellBoundaryCrossed = true;
+            self.selecting = undefined;
+            self.draggingItem = undefined;
+            self.dragStartObject = undefined;
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.dispatchEvent('mouseup', {NativeEvent: e, cell: self.currentCell})) { <span class="cstat-no" title="statement not covered" >return; </span>}
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!self.hasFocus &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >e.target !== self.canvas)</span> {
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.currentCell &amp;&amp; self.currentCell.grid !== undefined) {
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.contextMenu || self.input) { <span class="cstat-no" title="statement not covered" >return; </span>}
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (self.dragStart &amp;&amp; self.isInGrid(self.dragStart)) {
+                self.controlInput.focus();
+            }
+            e.preventDefault();
+        };
+        self.keydown = function (e) {
+            var i,
+                x = self.activeCell.columnIndex,
+                y = self.activeCell.rowIndex,
+                ctrl = (e.ctrlKey || e.metaKey),
+                last = self.data.length - 1,
+                cols = self.getVisibleSchema().length - 1;
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.dispatchEvent('keydown', {NativeEvent: e, cell: self.currentCell})) { <span class="cstat-no" title="statement not covered" >return; </span>}
+            if (!self.hasFocus) {
+                return;
+            }
+            self.page = self.visibleRows.length - 3 - self.attributes.pageUpDownOverlap;
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.attributes.showNewRow) {
+<span class="cstat-no" title="statement not covered" >                last += 1;</span>
+            }
+            if (e.keyCode === 9) {
+                e.preventDefault();
+            }
+            // esc
+            if (e.keyCode === 27) {
+                self.selections = [];
+                self.draw(true);
+            // ctrl + a
+            } else if (ctrl &amp;&amp; e.keyCode === 65) {
+                self.selectAll();
+            //ArrowDown
+            } else if (e.keyCode === 40) {
+                y += 1;
+            //ArrowUp
+            } else if (e.keyCode === 38) {
+                y -= 1;
+            //ArrowLeft Tab
+            } else if (e.keyCode === 37 || (e.shiftKey &amp;&amp; e.keyCode === 9)) {
+                x -= 1;
+            //ArrowRight Tab
+            } else if (e.keyCode === 39 || (!e.shiftKey &amp;&amp; e.keyCode === 9)) {
+                x += 1;
+            //PageUp
+            } else if (e.keyCode === 33) {
+                y -= self.page;
+                e.preventDefault();
+            //PageDown
+            } else if (e.keyCode === 34) {
+                y += self.page;
+                e.preventDefault();
+            //Home ArrowUp
+            } else <span class="missing-if-branch" title="if path not taken" >I</span>if (e.keyCode === 36 || (ctrl &amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >e.keyCode === 38)</span>) {
+<span class="cstat-no" title="statement not covered" >                y = 0;</span>
+            //End ArrowDown
+            } else <span class="missing-if-branch" title="if path not taken" >I</span>if (e.keyCode === 35 || (ctrl &amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >e.keyCode === 40)</span>) {
+<span class="cstat-no" title="statement not covered" >                y = self.data.length - 1;</span>
+            //ArrowRight
+            } else <span class="missing-if-branch" title="if path not taken" >I</span>if (ctrl &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >e.keyCode === 39)</span> {
+<span class="cstat-no" title="statement not covered" >                x = cols;</span>
+            //ArrowLeft
+            } else <span class="missing-if-branch" title="if path not taken" >I</span>if (ctrl &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >e.keyCode === 37)</span> {
+<span class="cstat-no" title="statement not covered" >                x = 0;</span>
+            }
+            //Enter
+            if (e.keyCode === 13) {
+                return self.beginEditAt(x, y);
+            }
+            //Space
+            if (e.keyCode === 32) {
+                self.selections = [];
+                self.selections[Math.max(y, 0)] = [];
+                self.selections[Math.max(y, 0)].push(x);
+                self.selectionBounds = self.getSelectionBounds();
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (self.attributes.selectionMode === 'row') {
+<span class="cstat-no" title="statement not covered" >                    for (i = self.selectionBounds.top; i &lt;= self.selectionBounds.bottom; i += 1) {</span>
+<span class="cstat-no" title="statement not covered" >                        self.selectRow(i, ctrl, null, true);</span>
+                    }
+                } else {
+                    self.selectArea(undefined, ctrl);
+                }
+                e.preventDefault();
+                self.draw(true);
+                return;
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (x &lt; 0) {
+<span class="cstat-no" title="statement not covered" >                x = 0;</span>
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (y &gt; last) {
+<span class="cstat-no" title="statement not covered" >                y = last;</span>
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (y &lt; 0) {
+<span class="cstat-no" title="statement not covered" >                y = 0;</span>
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (x &gt; cols) {
+<span class="cstat-no" title="statement not covered" >                x = cols;</span>
+            }
+            // Arrows
+            if (e.shiftKey &amp;&amp; [37, 38, 39, 40].indexOf(e.keyCode) !== -1) {
+                self.selections[Math.max(y, 0)] = self.selections[Math.max(y, 0)] || [];
+                self.selections[Math.max(y, 0)].push(x);
+                self.selectionBounds = self.getSelectionBounds();
+                self.selectArea(undefined, ctrl);
+                self.draw(true);
+            }
+            if (x !== self.activeCell.columnIndex || y !== self.activeCell.rowIndex) {
+                self.scrollIntoView(x !== self.activeCell.columnIndex ? x : undefined, y !== self.activeCell.rowIndex ? y : undefined);
+                self.setActiveCell(x, y);
+                if (!e.shiftKey &amp;&amp; self.attributes.selectionFollowsActiveCell) {
+                    <span class="missing-if-branch" title="else path not taken" >E</span>if (!ctrl) {
+                        self.selections = [];
+                    }
+                    self.selections[y] = self.selections[y] || [];
+                    self.selections[y].push(x);
+                    self.dispatchEvent('selectionchanged', {
+                        selectedData: self.getSelectedData(),
+                        selections: self.selections,
+                        selectionBounds: self.selectionBounds
+                    });
+                }
+                self.draw(true);
+            }
+        };
+        self.keyup = function (e) {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.dispatchEvent('keyup', {NativeEvent: e, cell: self.currentCell})) { <span class="cstat-no" title="statement not covered" >return; </span>}
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!self.hasFocus) {
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+        };
+        self.keypress = function (e) {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!self.hasFocus) {
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.dispatchEvent('keypress', {NativeEvent: e, cell: self.currentCell})) { <span class="cstat-no" title="statement not covered" >return; </span>}
+        };
+        self.dblclick = function (e) {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.dispatchEvent('dblclick', {NativeEvent: e, cell: self.currentCell})) { <span class="cstat-no" title="statement not covered" >return; </span>}
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!self.hasFocus) {
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.currentCell.context === 'ew-resize'
+                    &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >self.currentCell.style === 'columnHeaderCell')</span> {
+<span class="cstat-no" title="statement not covered" >                self.fitColumnToValues(self.currentCell.header.name);</span>
+            } else <span class="missing-if-branch" title="if path not taken" >I</span>if (self.currentCell.context === 'ew-resize'
+                    &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >self.currentCell.style === 'cornerCell')</span> {
+<span class="cstat-no" title="statement not covered" >                self.autosize();</span>
+            } else <span class="missing-if-branch" title="else path not taken" >E</span>if (['cell', 'activeCell'].indexOf(self.currentCell.style) !== -1) {
+                self.beginEditAt(self.currentCell.columnIndex, self.currentCell.rowIndex);
+            }
+        };
+        self.scrollWheel = function (e) {
+            var l,
+                t,
+                deltaX = e.deltaX === undefined ? <span class="branch-0 cbranch-no" title="branch not covered" >e.NativeEvent.deltaX </span>: e.deltaX,
+                deltaY = e.deltaY === undefined ? <span class="branch-0 cbranch-no" title="branch not covered" >e.NativeEvent.deltaY </span>: e.deltaY,
+                deltaMode = e.deltaMode === undefined ? <span class="branch-0 cbranch-no" title="branch not covered" >e.NativeEvent.deltaMode </span>: e.deltaMode;
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (wheeling) {
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.dispatchEvent('wheel', {NativeEvent: e})) {
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+            e = e.NativeEvent || e;
+            self.touchHaltAnimation = true;
+            l = self.scrollBox.scrollLeft;
+            t = self.scrollBox.scrollTop;
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (self.hasFocus) {
+                //BUG Issue 42: https://github.com/TonyGermaneri/canvas-datagrid/issues/42
+                //https://stackoverflow.com/questions/20110224/what-is-the-height-of-a-line-in-a-wheel-event-deltamode-dom-delta-line
+                if (deltaMode === 1) {
+                    // line mode = 17 pixels per line
+                    deltaY = deltaY * 17;
+                }
+                <span class="missing-if-branch" title="else path not taken" >E</span>if ((self.scrollBox.scrollTop &lt; self.scrollBox.scrollHeight &amp;&amp; deltaY &gt; 0)
+                        || (self.scrollBox.scrollLeft &lt; self.scrollBox.scrollWidth &amp;&amp; deltaX &gt; 0)
+                        || (<span class="branch-4 cbranch-no" title="branch not covered" >self.scrollBox.scrollTop &gt; 0 </span>&amp;&amp; <span class="branch-5 cbranch-no" title="branch not covered" >deltaY &lt; 0)</span>
+                        || (<span class="branch-6 cbranch-no" title="branch not covered" >self.scrollBox.scrollLeft &gt; 0 </span>&amp;&amp; <span class="branch-7 cbranch-no" title="branch not covered" >deltaX &lt; 0)</span>) {
+                    e.preventDefault(e);
+                }
+                wheeling = setTimeout(function () {
+                    wheeling = undefined;
+                    self.scrollBox.scrollTo(deltaX + l, deltaY + t);
+                }, 1);
+            }
+        };
+        self.pasteItem = <span class="fstat-no" title="function not covered" >function (clipData, x, y, mimeType) {</span>
+<span class="cstat-no" title="statement not covered" >            var l, s = self.getVisibleSchema(), yi = y - 1, sel = [];</span>
+<span class="fstat-no" title="function not covered" >            function normalizeRowData(importingRow, existingRow, offsetX, schema, mimeType, rowIndex) {</span>
+<span class="cstat-no" title="statement not covered" >                var r = existingRow;</span>
+<span class="cstat-no" title="statement not covered" >                if (!Array.isArray(importingRow) &amp;&amp; importingRow !== null &amp;&amp; typeof importingRow === 'object') {</span>
+<span class="cstat-no" title="statement not covered" >                    importingRow = Object.keys(importingRow).map(<span class="fstat-no" title="function not covered" >function (colKey) {</span></span>
+<span class="cstat-no" title="statement not covered" >                        return importingRow[colKey];</span>
+                    });
+                }
+<span class="cstat-no" title="statement not covered" >                if (/^text\/html/.test(mimeType)) {</span>
+<span class="cstat-no" title="statement not covered" >                    importingRow = importingRow.substring(4, importingRow.length - 5).split('&lt;/td&gt;&lt;td&gt;');</span>
+                }
+<span class="cstat-no" title="statement not covered" >                if (typeof importingRow === 'string') {</span>
+<span class="cstat-no" title="statement not covered" >                    importingRow = [importingRow];</span>
+                }
+<span class="cstat-no" title="statement not covered" >                sel[rowIndex] = [];</span>
+<span class="cstat-no" title="statement not covered" >                importingRow.forEach(<span class="fstat-no" title="function not covered" >function (cellData, colIndex) {</span></span>
+<span class="cstat-no" title="statement not covered" >                    var cName = schema[colIndex + offsetX].name;</span>
+<span class="cstat-no" title="statement not covered" >                    if (importingRow[colIndex] === undefined || importingRow[colIndex] === null) {</span>
+<span class="cstat-no" title="statement not covered" >                        r[cName] = existingRow[cName];</span>
+<span class="cstat-no" title="statement not covered" >                        return;</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    sel[rowIndex].push(colIndex + offsetX);</span>
+<span class="cstat-no" title="statement not covered" >                    r[cName] = importingRow[colIndex];</span>
+                });
+<span class="cstat-no" title="statement not covered" >                return r;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (/^text\/html/.test(mimeType)) {</span>
+<span class="cstat-no" title="statement not covered" >                if (!/^(&lt;meta[^&gt;]+&gt;)?&lt;table&gt;/.test(clipData.substring(0, 29))) {</span>
+<span class="cstat-no" title="statement not covered" >                    console.warn('Unrecognized HTML format.  HTML must be a simple table, e.g.: &lt;table&gt;&lt;tr&gt;&lt;td&gt;data&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;.  Data with the mime type text/html not in this format will not be imported as row data.');</span>
+<span class="cstat-no" title="statement not covered" >                    return;</span>
+                }
+                // strip table beginning and ending off, then split at rows
+<span class="cstat-no" title="statement not covered" >                clipData = clipData.substring(clipData.indexOf('&lt;table&gt;&lt;tr&gt;') + 11, clipData.length - 13).split('&lt;/tr&gt;&lt;tr&gt;');</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >                clipData = clipData.split('\n');</span>
+            }
+<span class="cstat-no" title="statement not covered" >            l = clipData.length;</span>
+<span class="cstat-no" title="statement not covered" >            clipData.forEach(<span class="fstat-no" title="function not covered" >function (rowData) {</span></span>
+<span class="cstat-no" title="statement not covered" >                yi += 1;</span>
+<span class="cstat-no" title="statement not covered" >                self.data[yi] = normalizeRowData(rowData, self.data[yi], x, s, mimeType, yi);</span>
+            });
+<span class="cstat-no" title="statement not covered" >            self.selections = sel;</span>
+<span class="cstat-no" title="statement not covered" >            return l;</span>
+        };
+        self.paste = <span class="fstat-no" title="function not covered" >function (e) {</span>
+<span class="cstat-no" title="statement not covered" >            var d;</span>
+<span class="fstat-no" title="function not covered" >            function getItem(dti) {</span>
+<span class="cstat-no" title="statement not covered" >                var type = dti.type;</span>
+<span class="cstat-no" title="statement not covered" >                dti.getAsString(<span class="fstat-no" title="function not covered" >function (s) {</span></span>
+<span class="cstat-no" title="statement not covered" >                    self.pasteItem(s, self.activeCell.columnIndex, self.activeCell.rowIndex, type);</span>
+<span class="cstat-no" title="statement not covered" >                    self.draw();</span>
+                });
+            }
+<span class="cstat-no" title="statement not covered" >            d = Array.prototype.filter.call(e.clipboardData.items, <span class="fstat-no" title="function not covered" >function (dti) {</span></span>
+<span class="cstat-no" title="statement not covered" >                return dti.type === 'text/html';</span>
+            })[0] || Array.prototype.filter(<span class="fstat-no" title="function not covered" >function (dti) {</span>
+<span class="cstat-no" title="statement not covered" >                return dti.type === 'text/csv';</span>
+            })[0] || Array.prototype.filter(<span class="fstat-no" title="function not covered" >function (dti) {</span>
+<span class="cstat-no" title="statement not covered" >                return dti.type === 'text/plain';</span>
+            })[0];
+<span class="cstat-no" title="statement not covered" >            if (!d) {</span>
+<span class="cstat-no" title="statement not covered" >                console.warn('Cannot find supported clipboard data type.  Supported types are text/html, text/csv, text/plain.');</span>
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            getItem(d);</span>
+        };
+        self.cut = <span class="fstat-no" title="function not covered" >function (e) {</span>
+<span class="cstat-no" title="statement not covered" >            self.copy(e);</span>
+<span class="cstat-no" title="statement not covered" >            self.forEachSelectedCell(<span class="fstat-no" title="function not covered" >function (data, index, colName) {</span></span>
+<span class="cstat-no" title="statement not covered" >                data[index][colName] = '';</span>
+            });
+        };
+        self.copy = function (e) {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (self.dispatchEvent('copy', {NativeEvent: e})) { <span class="cstat-no" title="statement not covered" >return; </span>}
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!self.hasFocus || !e.clipboardData) { <span class="cstat-no" title="statement not covered" >return; </span>}
+            var t,
+                d,
+                rows = [],
+                trows = [],
+                sData = self.getSelectedData();
+            function fCopyCell(d) {
+                d = d === null || d === undefined ? <span class="branch-0 cbranch-no" title="branch not covered" >'' </span>: d;
+                return '&lt;td&gt;' + (typeof d === 'string' ? d.replace(/&lt;/g, '&amp;lt;').replace(/&gt;/g, '&amp;gt;') : <span class="branch-1 cbranch-no" title="branch not covered" >d)</span> + '&lt;/td&gt;';
+            }
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (sData.length &gt; 0) {
+                sData.forEach(function (row) {
+                    <span class="missing-if-branch" title="else path not taken" >E</span>if (row) {
+                        // r = array for HTML, rt = array for plain text
+                        var r = [],
+                            rt = [];
+                        Object.keys(row).forEach(function (key) {
+                            // escape strings
+                            <span class="missing-if-branch" title="else path not taken" >E</span>if (row[key] !== null
+                                    &amp;&amp; row[key] !== false
+                                    &amp;&amp; row[key] !== undefined
+                                    &amp;&amp; row[key].replace) {
+                                rt.push('"' + row[key].replace(/"/g, '""') + '"');
+                                r.push(fCopyCell(row[key]));
+                                return;
+                            }
+<span class="cstat-no" title="statement not covered" >                            rt.push(row[key]);</span>
+<span class="cstat-no" title="statement not covered" >                            r.push(fCopyCell(row[key]));</span>
+                        });
+                        rows.push(r.join(''));
+                        trows.push(rt.join(','));
+                    }
+                });
+                d = '&lt;table&gt;&lt;tr&gt;' + rows.join('&lt;/tr&gt;&lt;tr&gt;') + '&lt;/tr&gt;&lt;/table&gt;';
+                t = trows.join('\n');
+                e.clipboardData.setData('text/html', d);
+                e.clipboardData.setData('text/plain', t);
+                e.clipboardData.setData('text/csv', t);
+                e.preventDefault();
+            }
+        };
+        return;
+    };
+});
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Nov 02 2017 00:12:17 GMT-0700 (PDT)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

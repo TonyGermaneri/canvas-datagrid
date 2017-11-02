@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for lib/main.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">lib/</a> main.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">75% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>30/40</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">60.87% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>14/23</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">83.33% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>5/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">76.92% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>30/39</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">1467×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-yes">163×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">157×</span>
+<span class="cline-any cline-yes">157×</span>
+<span class="cline-any cline-yes">157×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jslint browser: true, unparam: true, todo: true, evil: true*/
+/*globals Reflect: false, HTMLElement: true, define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
+define([
+    './component',
+    './defaults',
+    './draw',
+    './events',
+    './touch',
+    './intf',
+    './contextMenu',
+    './dom',
+    './publicMethods'
+], function context(component) {
+    'use strict';
+    component = component();
+    var modules = Array.prototype.slice.call(arguments);
+    function Grid(args) {
+        args = args || <span class="branch-1 cbranch-no" title="branch not covered" >{};</span>
+        var self = {};
+        self.isComponent = args.component === undefined;
+        self.intf = self.isComponent ? <span class="branch-0 cbranch-no" title="branch not covered" >eval('Reflect.construct(HTMLElement, [], new.target)') </span>: {};
+        self.args = args;
+        self.createGrid = function grid(args) {
+            args.component = false;
+            return new Grid(args);
+        };
+        modules.forEach(function (module) {
+            module(self);
+        });
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (self.isComponent) {
+<span class="cstat-no" title="statement not covered" >            self.args.parentNode = self.intf;</span>
+        } else {
+            self.args.parentNode = args.parentNode;
+        }
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (self.args.parentNode &amp;&amp; self.args.parentNode.createShadowRoot) {
+<span class="cstat-no" title="statement not covered" >            self.shadowRoot = self.args.parentNode.attachShadow({mode: self.args.debug ? 'open' : 'closed'});</span>
+<span class="cstat-no" title="statement not covered" >            self.parentNode = self.shadowRoot;</span>
+        } else {
+            self.parentNode = args.parentNode;
+        }
+        self.init();
+        return self.intf;
+    }
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (window.HTMLElement) {
+        Grid.prototype = Object.create(window.HTMLElement.prototype);
+    }
+    // export web component
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (window.customElements) {
+<span class="cstat-no" title="statement not covered" >        Grid.observedAttributes = component.getObservableAttributes();</span>
+<span class="cstat-no" title="statement not covered" >        Grid.prototype.disconnectedCallback = component.disconnectedCallback;</span>
+<span class="cstat-no" title="statement not covered" >        Grid.prototype.attributeChangedCallback = component.attributeChangedCallback;</span>
+<span class="cstat-no" title="statement not covered" >        Grid.prototype.connectedCallback = component.connectedCallback;</span>
+<span class="cstat-no" title="statement not covered" >        Grid.prototype.adoptedCallback = component.adoptedCallback;</span>
+<span class="cstat-no" title="statement not covered" >        window.customElements.define('canvas-datagrid', Grid);</span>
+    }
+    // export global
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (window &amp;&amp; !window.canvasDatagrid &amp;&amp; !window.require) {
+        window.canvasDatagrid = <span class="fstat-no" title="function not covered" >function (args) {</span> <span class="cstat-no" title="statement not covered" >return new Grid(args); </span>};
+    }
+    // export amd loader
+    module.exports = function grid(args) {
+        args = args || {};
+        args.component = false;
+        return new Grid(args);
+    };
+    return module.exports;
+});
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Nov 02 2017 00:12:17 GMT-0700 (PDT)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
