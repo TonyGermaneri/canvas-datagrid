@@ -391,7 +391,7 @@ window.tutorials['Canvas fill styles|An example of using complex fill styles on 
     gradient.addColorStop(0, 'dodgerblue');
     gradient.addColorStop(1, 'chartreuse');
     grid.style.cellBackgroundColor = gradient;
-    grid.style.backgroundColor = gradient;
+    grid.style.gridBackgroundColor = gradient;
 };
 window.tutorials['Alter startup styles|Change the styles during instantiation.'] = function (parentNode) {
     var grid = canvasDatagrid({

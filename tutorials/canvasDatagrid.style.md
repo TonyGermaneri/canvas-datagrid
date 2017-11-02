@@ -10,25 +10,25 @@ Styles can be set during instantiation.
 
     var grid = canvasDatagrid({
             style: {
-                backgroundColor: 'red'
+                gridBackgroundColor: 'red'
             }
         });
 
 Styles can be set after instantiation.
 
-    grid.style.backgroundColor = 'red';
+    grid.style.gridBackgroundColor = 'red';
 
 When using the web component, styles can be set as above, but also using standard CSS.
 
 When using standard CSS, style names are hyphenated, lower case, and prefixed with `--cdg-`.
 
-    <canvas-datagrid style="--cdg-background-color: red;">[{"my": "data"}]</canvas-datagrid>
+    <canvas-datagrid style="--cdg-grid-background-color: red;">[{"my": "data"}]</canvas-datagrid>
 
 When using the web component you can also use CSS classes and selectors as you would a native HTML element.
     
     <style>
         .my-grid {
-            --cdg-background-color: red;
+            --cdg-grid-background-color: red;
         }
     </style>
 
