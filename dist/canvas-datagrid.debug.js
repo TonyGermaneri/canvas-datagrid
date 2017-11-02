@@ -3777,16 +3777,22 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.intf.integerToAlpha = self.integerToAlpha;
             self.intf.copy = self.copy;
             self.intf.setStyleProperty = self.setStyleProperty;
-            self.styleKeys = self.defaults.styles.map(function (i) {
-                return i[0];
+            Object.defineProperty(self.intf, 'defaults', {
+                get: function () {
+                    return {
+                        styles: self.defaults.styles.reduce(function (a, i) { a[i[0]] = i[1]; return a; }, {}),
+                        attributes: self.defaults.attributes.reduce(function (a, i) { a[i[0]] = i[1]; return a; }, {})
+                    };
+                }
             });
+            self.styleKeys = Object.keys(self.intf.defaults.styles);
             self.DOMStyles = window.getComputedStyle(document.body, null);
             Object.keys(self.DOMStyles).concat(Object.keys(self.style)).forEach(function (key) {
                 // unless this line is here, Object.keys() will not work on <instance>.style
                 publicStyleKeyIntf[key] = undefined;
                 Object.defineProperty(publicStyleKeyIntf, key, {
                     get: function () {
-                        if (self.defaults.styles.indexOf(key) !== -1) {
+                        if (self.styleKeys.indexOf(key) !== -1) {
                             return self.style[key];
                         }
                         return self.canvas.style[key];
@@ -3817,7 +3823,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 },
                 set: function (value) {
                     Object.keys(value).forEach(function (key) {
-                        if (self.defaults.styles.indexOf(key) === -1) {
+                        if (self.styleKeys.indexOf(key) === -1) {
                             self.parentNodeStyle[key] = value;
                         } else {
                             self.parseStyleValue(value);
@@ -5098,7 +5104,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     return;
                 }
                 self.input.style.left = pos.left + cell.x + self.canvasOffsetLeft - s.left + 'px';
-                self.input.style.top = pos.top + cell.y - borderWidth + self.canvasOffsetTop - s.top + 'px';
+                self.input.style.top = pos.top + cell.y - self.style.cellBorderWidth + self.canvasOffsetTop - s.top + 'px';
                 self.input.style.height = cell.height - borderWidth + 'px';
                 self.input.style.width = cell.width - self.style.cellPaddingLeft + 'px';
                 self.clipElement(self.input);
