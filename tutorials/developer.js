@@ -197,8 +197,6 @@ function g() {
         y,
         d = [],
         n;
-
-    grid.style.columnWidth = 70;
     function colName(n) {
         var ordA = 'a'.charCodeAt(0),
             ordZ = 'z'.charCodeAt(0),

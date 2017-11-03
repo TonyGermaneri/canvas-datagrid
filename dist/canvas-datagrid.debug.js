@@ -430,6 +430,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
     // export amd loader
     module.exports = function grid(args) {
         args = args || {};
+        var i;
+        if (window.customElements) {
+            i = document.createElement('canvas-datagrid');
+            if (args.parentNode) {
+                args.parentNode.appendChild(i);
+            }
+            return i;
+        }
         args.component = false;
         return new Grid(args);
     };
@@ -531,14 +539,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         component.disconnectedCallback = function () {
             this.connected = false;
-            this.dispose();
         };
         component.connectedCallback = function () {
             var intf = this;
             intf.connected = true;
             component.observe(intf);
             applyComponentStyle(true, intf);
-            intf.resize();
+            intf.resize(true);
         };
         component.adoptedCallback = function () {
             this.resize();
@@ -3671,12 +3678,20 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self[propName][key] = self.args[propName][key];
             });
         };
-        self.setStyleProperty = function (key, value) {
+        self.getStyleProperty = function (key) {
+            if (self.styleKeys.indexOf(key) === -1) {
+                return self.parentNodeStyle[key];
+            }
+            return self.style[key];
+        };
+        self.setStyleProperty = function (key, value, supressDrawAndEvent) {
             if (self.styleKeys.indexOf(key) === -1) {
                 self.parentNodeStyle[key] = value;
             } else {
                 self.parseStyleValue(value);
                 self.style[key] = value;
+            }
+            if (!supressDrawAndEvent) {
                 self.draw(true);
                 self.dispatchEvent('stylechanged', {name: 'style', value: value});
             }
@@ -3787,15 +3802,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             });
             self.styleKeys = Object.keys(self.intf.defaults.styles);
             self.DOMStyles = window.getComputedStyle(document.body, null);
+            self.intf.setStyleProperty('width', '100%');
+            self.intf.setStyleProperty('height', '100%');
             Object.keys(self.DOMStyles).concat(Object.keys(self.style)).forEach(function (key) {
                 // unless this line is here, Object.keys() will not work on <instance>.style
                 publicStyleKeyIntf[key] = undefined;
                 Object.defineProperty(publicStyleKeyIntf, key, {
                     get: function () {
-                        if (self.styleKeys.indexOf(key) !== -1) {
-                            return self.style[key];
-                        }
-                        return self.canvas.style[key];
+                        return self.getStyleProperty(key);
                     },
                     set: function (value) {
                         self.setStyleProperty(key, value);
@@ -3821,17 +3835,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 get: function () {
                     return publicStyleKeyIntf;
                 },
-                set: function (value) {
-                    Object.keys(value).forEach(function (key) {
-                        if (self.styleKeys.indexOf(key) === -1) {
-                            self.parentNodeStyle[key] = value;
-                        } else {
-                            self.parseStyleValue(value);
-                            self.style[key] = value[key];
-                        }
+                set: function (valueObject) {
+                    Object.keys(valueObject).forEach(function (key) {
+                        self.setStyleProperty(key, valueObject[key], true);
                     });
                     self.draw(true);
-                    self.dispatchEvent('stylechanged', {name: 'style', value: value});
+                    self.dispatchEvent('stylechanged', {name: 'style', value: valueObject});
                 }
             });
             Object.defineProperty(self.intf, 'attributes', { value: {}});
@@ -5378,11 +5387,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     zIndex: '-1'
                 },
                 'canvas-datagrid': {
-                    display: 'block',
-                    zIndex: '1',
-                    boxSizing: 'content-box',
-                    width: '100%',
-                    height: '100%'
+                    display: 'block'
                 },
                 'canvas-datagrid-control-input': {
                     position: 'fixed',
@@ -5537,7 +5542,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.ctx.textBaseline = 'alphabetic';
                 self.eventParent = self.canvas;
             }
-            self.parentNodeStyle = (self.isComponent ? self.intf : self.canvas).style;
+            self.parentNodeStyle = self.canvas.style;
             self.controlInput.setAttribute('readonly', true);
             self.controlInput.addEventListener('blur', function (e) {
                 if (e.target !== self.canvas) {
