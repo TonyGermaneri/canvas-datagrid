@@ -2462,7 +2462,7 @@
                         click(grid.canvas, 67, 10);
                         setTimeout(function () {
                             // make the test look less ugly
-                            //grid.parentNode.parentNode.parentNode.removeChild(grid.parentNode.parentNode);
+                            // grid.parentNode.parentNode.parentNode.removeChild(grid.parentNode.parentNode);
                             grid.dispose();
                             setTimeout(function () {
                                 grid = g(a);
@@ -2550,6 +2550,7 @@
                     });
                     setTimeout(function () {
                         grid.focus();
+                        marker(grid, 67, 10);
                         mousemove(grid.canvas, 67, 10);
                         mousedown(grid.canvas, 67, 10);
                         mousemove(grid.canvas, 140, 10, grid.canvas);
