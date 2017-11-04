@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">69.57% </span>
+        <span class="strong">55% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>32/46</span>
+        <span class='fraction'>33/60</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">38.46% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>15/39</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">55.56% </span>
-        <span class="quiet">Branches</span>
-        <span class='fraction'>15/27</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">83.33% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>5/6</span>
+        <span class='fraction'>5/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">71.11% </span>
+        <span class="strong">56.9% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>32/45</span>
+        <span class='fraction'>33/58</span>
       </div>
     </div>
   </div>
@@ -118,7 +118,30 @@
 73
 74
 75
-76</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -181,15 +204,38 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">157×</span>
 <span class="cline-any cline-yes">157×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">157×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">157×</span>
 <span class="cline-any cline-yes">157×</span>
+<span class="cline-any cline-yes">156×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -255,16 +301,39 @@ define([
     // export amd loader
     module.exports = function grid(args) {
         args = args || {};
-        var i;
+        var i, tKeys = ['style', 'schema', 'data', 'formatters',
+                    'sorters', 'filters'];
         <span class="missing-if-branch" title="if path not taken" >I</span>if (window.customElements) {
 <span class="cstat-no" title="statement not covered" >            i = document.createElement('canvas-datagrid');</span>
-<span class="cstat-no" title="statement not covered" >            if (args.parentNode) {</span>
-<span class="cstat-no" title="statement not covered" >                args.parentNode.appendChild(i);</span>
-            }
+<span class="cstat-no" title="statement not covered" >            Object.keys(args).forEach(<span class="fstat-no" title="function not covered" >function (argKey) {</span></span>
+<span class="cstat-no" title="statement not covered" >                if (argKey === 'parentNode') {</span>
+<span class="cstat-no" title="statement not covered" >                    args.parentNode.appendChild(i);</span>
+<span class="cstat-no" title="statement not covered" >                    return;</span>
+                }
+                // top level keys in args
+<span class="cstat-no" title="statement not covered" >                if (tKeys.indexOf(argKey) !== -1) {</span>
+<span class="cstat-no" title="statement not covered" >                    tKeys.forEach(<span class="fstat-no" title="function not covered" >function (tKey) {</span></span>
+<span class="cstat-no" title="statement not covered" >                        if (args[tKey] === undefined || tKey !== argKey) { <span class="cstat-no" title="statement not covered" >return; </span>}</span>
+<span class="cstat-no" title="statement not covered" >                        if (['formatters', 'sorters', 'filters'].indexOf(argKey) !== -1) {</span>
+<span class="cstat-no" title="statement not covered" >                            if (typeof args[tKey] === 'object' &amp;&amp; args[tKey] !== null) {</span>
+<span class="cstat-no" title="statement not covered" >                                Object.keys(args[tKey]).forEach(<span class="fstat-no" title="function not covered" >function (sKey) {</span></span>
+<span class="cstat-no" title="statement not covered" >                                    i[tKey][sKey] = args[tKey][sKey];</span>
+                                });
+                            }
+                        } else {
+<span class="cstat-no" title="statement not covered" >                            i[tKey] = args[tKey];</span>
+                        }
+                    });
+<span class="cstat-no" title="statement not covered" >                    return;</span>
+                }
+                // all others are attribute level keys
+<span class="cstat-no" title="statement not covered" >                i.attributes[argKey] = args[argKey];</span>
+            });
 <span class="cstat-no" title="statement not covered" >            return i;</span>
         }
         args.component = false;
-        return new Grid(args);
+        i = new Grid(args);
+        return i;
     };
     return module.exports;
 });
@@ -274,7 +343,7 @@ define([
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Nov 02 2017 17:30:26 GMT-0700 (PDT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Nov 04 2017 11:35:20 GMT-0700 (PDT)
 </div>
 </div>
 <script src="../prettify.js"></script>
