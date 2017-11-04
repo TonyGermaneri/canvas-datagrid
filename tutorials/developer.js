@@ -189,7 +189,7 @@ function g() {
             showRowHeaders: true,
             snapToRow: false,
             debug: false,
-            showPerformance: false,
+            showPerformance: true,
             allowFreezingRows: false,
             tree: true,
             allowFreezingColumns: false

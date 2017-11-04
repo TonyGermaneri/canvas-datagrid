@@ -460,8 +460,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             });
             return i;
         }
-        i = new Grid(args);
         args.component = false;
+        i = new Grid(args);
         return i;
     };
     return module.exports;
@@ -3108,7 +3108,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         self.touchEditCell(i);
                         return;
                     }
-                    if (self.input) {
+                    if (self.input && self.input.editCell) {
                         self.endEdit();
                     }
                     self.touchingCell = i;
@@ -5136,7 +5136,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             return {left: x, top: y};
         };
         self.resizeEditInput = function () {
-            if (self.input) {
+            if (self.input && self.input.editCell) {
                 var pos = self.canvas.getBoundingClientRect(),
                     s = self.scrollOffset(self.canvas),
                     bm = self.style.borderCollapse === 'collapse' ? 1 : 2,
