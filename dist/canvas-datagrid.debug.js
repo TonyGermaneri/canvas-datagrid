@@ -5228,7 +5228,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.draw(true);
             }
             document.body.removeChild(self.input);
-            self.controlInput.focus();
+            self.intf.focus();
             self.dispatchEvent('endedit', {
                 cell: cell,
                 value: self.input.value,
