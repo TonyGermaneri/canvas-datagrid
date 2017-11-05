@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">80.55% </span>
+        <span class="strong">79.89% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>294/365</span>
+        <span class='fraction'>294/368</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75.24% </span>
+        <span class="strong">74.52% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>155/206</span>
+        <span class='fraction'>155/208</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75.41% </span>
+        <span class="strong">74.19% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>46/61</span>
+        <span class='fraction'>46/62</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">81.51% </span>
+        <span class="strong">81.28% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>291/357</span>
+        <span class='fraction'>291/358</span>
       </div>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -607,7 +607,8 @@
 562
 563
 564
-565</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+565
+566</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -726,25 +727,25 @@
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">410×</span>
-<span class="cline-any cline-yes">381×</span>
+<span class="cline-any cline-yes">408×</span>
+<span class="cline-any cline-yes">379×</span>
 <span class="cline-any cline-yes">29×</span>
 <span class="cline-any cline-yes">29×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">410×</span>
+<span class="cline-any cline-yes">408×</span>
 <span class="cline-any cline-yes">24×</span>
-<span class="cline-any cline-yes">386×</span>
+<span class="cline-any cline-yes">384×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">386×</span>
+<span class="cline-any cline-yes">384×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">56×</span>
-<span class="cline-any cline-yes">383×</span>
-<span class="cline-any cline-yes">383×</span>
-<span class="cline-any cline-yes">382×</span>
-<span class="cline-any cline-yes">382×</span>
-<span class="cline-any cline-yes">382×</span>
+<span class="cline-any cline-yes">381×</span>
+<span class="cline-any cline-yes">381×</span>
+<span class="cline-any cline-yes">380×</span>
+<span class="cline-any cline-yes">380×</span>
+<span class="cline-any cline-yes">380×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -1024,6 +1025,7 @@
 <span class="cline-any cline-yes">16×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -1590,12 +1592,13 @@ define([], function () {
                     items: <span class="fstat-no" title="function not covered" >function () {</span>
 <span class="cstat-no" title="statement not covered" >                        var d = [];</span>
 <span class="cstat-no" title="statement not covered" >                        self.getSchema().forEach(<span class="fstat-no" title="function not covered" >function (column) {</span></span>
+<span class="cstat-no" title="statement not covered" >                            if (column.name === self.uniqueId) { <span class="cstat-no" title="statement not covered" >return; </span>}</span>
 <span class="fstat-no" title="function not covered" >                            function toggleColumnVisibility(e) {</span>
 <span class="cstat-no" title="statement not covered" >                                column.hidden = !column.hidden;</span>
 <span class="cstat-no" title="statement not covered" >                                e.preventDefault();</span>
 <span class="cstat-no" title="statement not covered" >                                self.stopPropagation(e);</span>
 <span class="cstat-no" title="statement not covered" >                                self.disposeContextMenu();</span>
-<span class="cstat-no" title="statement not covered" >                                self.draw();</span>
+<span class="cstat-no" title="statement not covered" >                                self.resize(true);</span>
                             }
 <span class="cstat-no" title="statement not covered" >                            var el = document.createElement('div');</span>
 <span class="cstat-no" title="statement not covered" >                            applyContextItemStyle(el);</span>
@@ -1620,7 +1623,7 @@ define([], function () {
 <span class="cstat-no" title="statement not covered" >                            ev.preventDefault();</span>
 <span class="cstat-no" title="statement not covered" >                            self.stopPropagation(ev);</span>
 <span class="cstat-no" title="statement not covered" >                            self.disposeContextMenu();</span>
-<span class="cstat-no" title="statement not covered" >                            setTimeout(self.draw, 10);</span>
+<span class="cstat-no" title="statement not covered" >                            setTimeout(<span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >self.resize(true); </span>}, 10);</span>
                         }
                     });
                 }
@@ -1741,7 +1744,7 @@ define([], function () {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Nov 04 2017 11:35:20 GMT-0700 (PDT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Nov 04 2017 17:54:30 GMT-0700 (PDT)
 </div>
 </div>
 <script src="../prettify.js"></script>

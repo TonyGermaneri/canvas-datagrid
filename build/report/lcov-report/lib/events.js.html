@@ -1087,11 +1087,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">163×</span>
-<span class="cline-any cline-yes">101757×</span>
+<span class="cline-any cline-yes">101066×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">101757×</span>
+<span class="cline-any cline-yes">101066×</span>
 <span class="cline-any cline-yes">736×</span>
 <span class="cline-any cline-yes">770×</span>
 <span class="cline-any cline-yes">770×</span>
@@ -1165,46 +1165,46 @@
 <span class="cline-any cline-yes">399×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">163×</span>
-<span class="cline-any cline-yes">906×</span>
+<span class="cline-any cline-yes">908×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">906×</span>
-<span class="cline-any cline-yes">906×</span>
-<span class="cline-any cline-yes">906×</span>
-<span class="cline-any cline-yes">906×</span>
-<span class="cline-any cline-yes">906×</span>
-<span class="cline-any cline-yes">321×</span>
+<span class="cline-any cline-yes">908×</span>
+<span class="cline-any cline-yes">908×</span>
+<span class="cline-any cline-yes">908×</span>
+<span class="cline-any cline-yes">908×</span>
+<span class="cline-any cline-yes">908×</span>
+<span class="cline-any cline-yes">325×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">321×</span>
+<span class="cline-any cline-yes">325×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">906×</span>
-<span class="cline-any cline-yes">13580×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13580×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">906×</span>
-<span class="cline-any cline-yes">876×</span>
-<span class="cline-any cline-yes">876×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">876×</span>
-<span class="cline-any cline-yes">876×</span>
+<span class="cline-any cline-yes">908×</span>
+<span class="cline-any cline-yes">13590×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">906×</span>
-<span class="cline-any cline-yes">906×</span>
-<span class="cline-any cline-yes">507×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13590×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">908×</span>
+<span class="cline-any cline-yes">878×</span>
+<span class="cline-any cline-yes">878×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">878×</span>
+<span class="cline-any cline-yes">878×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">906×</span>
-<span class="cline-any cline-yes">906×</span>
+<span class="cline-any cline-yes">908×</span>
+<span class="cline-any cline-yes">908×</span>
+<span class="cline-any cline-yes">509×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">908×</span>
+<span class="cline-any cline-yes">908×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">163×</span>
 <span class="cline-any cline-yes">54×</span>
@@ -2102,7 +2102,7 @@ define([], function () {
         };
         self.resize = function (drawAfterResize) {
             <span class="missing-if-branch" title="if path not taken" >I</span>if (!self.canvas) { <span class="cstat-no" title="statement not covered" >return; </span>}
-            var bm = self.style.borderCollapse === 'collapse' ? <span class="branch-0 cbranch-no" title="branch not covered" >1 </span>: 2,
+            var bm = self.style.gridBorderCollapse === 'collapse' ? 1 : <span class="branch-1 cbranch-no" title="branch not covered" >2,</span>
                 cellBorder = self.style.cellBorderWidth * bm,
                 columnHeaderCellBorder = self.style.columnHeaderCellBorderWidth * bm,
                 scrollHeight,
@@ -2166,7 +2166,7 @@ define([], function () {
             return true;
         };
         self.scroll = function (dontDraw) {
-            var bm = self.style.borderCollapse === 'collapse' ? <span class="branch-0 cbranch-no" title="branch not covered" >1 </span>: 2,
+            var bm = self.style.gridBorderCollapse === 'collapse' ? 1 : <span class="branch-1 cbranch-no" title="branch not covered" >2,</span>
                 s = self.getVisibleSchema(),
                 cellBorder = self.style.cellBorderWidth * bm,
                 ch = self.style.cellHeight;
@@ -3052,7 +3052,7 @@ define([], function () {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Nov 04 2017 11:35:20 GMT-0700 (PDT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Nov 04 2017 17:54:30 GMT-0700 (PDT)
 </div>
 </div>
 <script src="../prettify.js"></script>
