@@ -186,7 +186,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['autocompleteBottomMargin', 60],
                 ['autosizeHeaderCellPadding', 8],
                 ['autosizePadding', 5],
-                ['borderCollapse', 'collapse'],
                 ['cellAutoResizePadding', 13],
                 ['cellBackgroundColor', 'rgba(255, 255, 255, 1)'],
                 ['cellBorderColor', 'rgba(195, 199, 202, 1)'],
@@ -289,6 +288,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['frozenMarkerBorderWidth', 1],
                 ['frozenMarkerWidth', 2],
                 ['gridBackgroundColor', 'rgba(240, 240, 240, 1)'],
+                ['gridBorderCollapse', 'collapse'],
                 ['gridBorderColor', 'rgba(202, 202, 202, 1)'],
                 ['gridBorderWidth', 1],
                 ['minColumnWidth', 45],
@@ -1004,7 +1004,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             // initial values
             var checkScrollHeight, rowHeaderCell, p, cx, cy, treeGrid, rowOpen,
                 rowHeight, cornerCell, y, x, c, h, w, s, r, rd, aCell,
-                bc = self.style.borderCollapse === 'collapse',
+                bc = self.style.gridBorderCollapse === 'collapse',
                 selectionBorders = [],
                 moveBorders = [],
                 selectionHandles = [],
@@ -2054,7 +2054,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.resize = function (drawAfterResize) {
             if (!self.canvas) { return; }
-            var bm = self.style.borderCollapse === 'collapse' ? 1 : 2,
+            var bm = self.style.gridBorderCollapse === 'collapse' ? 1 : 2,
                 cellBorder = self.style.cellBorderWidth * bm,
                 columnHeaderCellBorder = self.style.columnHeaderCellBorderWidth * bm,
                 scrollHeight,
@@ -2118,7 +2118,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             return true;
         };
         self.scroll = function (dontDraw) {
-            var bm = self.style.borderCollapse === 'collapse' ? 1 : 2,
+            var bm = self.style.gridBorderCollapse === 'collapse' ? 1 : 2,
                 s = self.getVisibleSchema(),
                 cellBorder = self.style.cellBorderWidth * bm,
                 ch = self.style.cellHeight;
@@ -4906,12 +4906,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     items: function () {
                         var d = [];
                         self.getSchema().forEach(function (column) {
+                            if (column.name === self.uniqueId) { return; }
                             function toggleColumnVisibility(e) {
                                 column.hidden = !column.hidden;
                                 e.preventDefault();
                                 self.stopPropagation(e);
                                 self.disposeContextMenu();
-                                self.draw();
+                                self.resize(true);
                             }
                             var el = document.createElement('div');
                             applyContextItemStyle(el);
@@ -4936,7 +4937,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             ev.preventDefault();
                             self.stopPropagation(ev);
                             self.disposeContextMenu();
-                            setTimeout(self.draw, 10);
+                            setTimeout(function () { self.resize(true); }, 10);
                         }
                     });
                 }
@@ -5139,7 +5140,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (self.input && self.input.editCell) {
                 var pos = self.canvas.getBoundingClientRect(),
                     s = self.scrollOffset(self.canvas),
-                    bm = self.style.borderCollapse === 'collapse' ? 1 : 2,
+                    bm = self.style.gridBorderCollapse === 'collapse' ? 1 : 2,
                     borderWidth = (self.style.cellBorderWidth * bm),
                     cell = self.getVisibleCellByIndex(self.input.editCell.columnIndex, self.input.editCell.rowIndex)
                         || {x: -100, y: -100, height: 0, width: 0};
@@ -5839,7 +5840,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          */
         self.findRowScrollTop = function (rowIndex) {
             var top = 0, x = 0, l = self.data.length,
-                bm = self.style.borderCollapse === 'collapse' ? 1 : 2,
+                bm = self.style.gridBorderCollapse === 'collapse' ? 1 : 2,
                 cellBorder = self.style.cellBorderWidth * bm;
             if (!self.attributes.showNewRow) {
                 l -= 1;
