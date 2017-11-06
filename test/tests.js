@@ -91,6 +91,8 @@
     }
     function assertPxColorFn(grid, x, y, expected) {
         var d, match, e;
+        x = x * window.devicePixelRatio;
+        y = y * window.devicePixelRatio;
         return function (callback) {
             function f() {
                 d = grid.ctx.getImageData(x, y, 1, 1).data;
@@ -110,7 +112,7 @@
             if (!callback) {
                 return f();
             }
-            requestAnimationFrame(f);
+            f();
         };
     }
     function assertPxColor(grid, x, y, expected, callback) {
@@ -2362,7 +2364,9 @@
                         assertIf(e.treeGrid === undefined, 'Expected a grid here.');
                         e.treeGrid.style.cornerCellBackgroundColor = c.y;
                         assertPxColor(grid, 10, 34, c.fu, function () {
-                            assertPxColor(grid, 60, 60, c.y, done);
+                            setTimeout(function () {
+                                assertPxColor(grid, 60, 60, c.y, done);
+                            }, 3);
                         });
                     });
                     grid.style.treeArrowColor = c.fu;
@@ -2397,7 +2401,7 @@
                     });
                     setTimeout(function () {
                         assertPxColor(grid, 130, 60, c.b, done);
-                    }, 5);
+                    }, 30);
                 });
                 it('Should display a new row', function (done) {
                     var grid = g({

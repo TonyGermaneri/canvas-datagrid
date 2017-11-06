@@ -388,7 +388,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         args = args || {};
         var self = {};
         self.isComponent = args.component === undefined;
-        self.intf = self.isComponent ? eval('Reflect.construct(HTMLElement, [], new.target)') : {};
+        self.isChildGrid = args.parentNode && /canvas-datagrid-(cell|tree)/.test(args.parentNode.nodeType);
+        if (self.isChildGrid) {
+            self.intf = {};
+        } else {
+            self.intf = self.isComponent ? eval('Reflect.construct(HTMLElement, [], new.target)')
+                : document.createElement('section');
+        }
         self.args = args;
         self.createGrid = function grid(args) {
             args.component = false;
@@ -397,16 +403,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         modules.forEach(function (module) {
             module(self);
         });
-        if (self.isComponent) {
-            self.args.parentNode = self.intf;
-        } else {
-            self.args.parentNode = args.parentNode;
-        }
-        if (self.args.parentNode && self.args.parentNode.createShadowRoot) {
-            self.shadowRoot = self.args.parentNode.attachShadow({mode: self.args.debug ? 'open' : 'closed'});
+        if (self.isChildGrid) {
+            self.shadowRoot = args.parentNode.shadowRoot;
+            self.parentNode = args.parentNode;
+        } else if (self.intf.createShadowRoot) {
+            self.shadowRoot = self.intf.attachShadow({mode: self.args.debug ? 'open' : 'closed'});
             self.parentNode = self.shadowRoot;
         } else {
-            self.parentNode = args.parentNode;
+            self.parentNode = self.intf;
         }
         self.init();
         return self.intf;
@@ -432,8 +436,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         args = args || {};
         var i, tKeys = ['style', 'schema', 'data', 'formatters',
                     'sorters', 'filters'];
-        if (window.customElements) {
+        if (window.customElements && document.body.createShadowRoot) {
             i = document.createElement('canvas-datagrid');
+            // create "block" element effect
+            i.style.width = '100%';
+            i.style.height = '100%';
             Object.keys(args).forEach(function (argKey) {
                 if (argKey === 'parentNode') {
                     args.parentNode.appendChild(i);
@@ -462,6 +469,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         }
         args.component = false;
         i = new Grid(args);
+        if (args.parentNode && args.parentNode.appendChild) {
+            args.parentNode.appendChild(i);
+        }
+        // create "block" element effect
+        i.style.width = '100%';
+        i.style.height = '100%';
         return i;
     };
     return module.exports;
@@ -507,6 +520,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             return r;
         }
         function applyComponentStyle(supressChangeAndDrawEvents, intf) {
+            console.log('applyComponentStyle');
             var cStyle = window.getComputedStyle(intf, null),
                 defs = {};
             intf.computedStyle = cStyle;
@@ -521,7 +535,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     intf.setStyleProperty(def[0], typeMap[typeof def[1]](val, def[1]));
                 }
             });
-            intf.resize(true);
+            requestAnimationFrame(function () { intf.resize(true); });
             if (!supressChangeAndDrawEvents && intf.dispatchEvent) {
                 intf.dispatchEvent('stylechanged', intf.style);
             }
@@ -625,7 +639,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         intf.applyComponentStyle(false, intf);
                         return;
                     }
-                    if (mutation.target.parentNode.nodeName === 'STYLE') {
+                    if (mutation.target.parentNode
+                            && mutation.target.parentNode.nodeName === 'STYLE') {
                         checkStyle = true;
                         return;
                     }
@@ -641,6 +656,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
             });
             observer.observe(intf, { characterData: true, childList: true, attributes: true, subtree: true });
+            observer.observe(intf.canvas, { attributes: true });
             Array.prototype.forEach.call(document.querySelectorAll('style'), function (el) {
                 observer.observe(el, { characterData: true, childList: true, attributes: true, subtree: true });
             });
@@ -1345,6 +1361,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             if (!self.childGrids[cell.gridId]) {
                                 cellGridAttributes = self.args.cellGridAttributes || self.args;
                                 cellGridAttributes.name = self.attributes.saveAppearance ? cell.gridId : undefined;
+                                cellGridAttributes.component = false;
                                 cellGridAttributes.parentNode = cell;
                                 cellGridAttributes.data = d[header.name];
                                 cellGridAttributes.style = cellGridAttributes.style || self.style;
@@ -2200,9 +2217,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     && self.scrollModes.indexOf(o.context) === -1) {
                 self.dragItem = o;
                 self.dragMode = o.dragContext;
-                self.canvas.style.cursor = o.context;
+                self.cursor = o.context;
                 if (o.context === 'cell' && o.data) {
-                    self.canvas.style.cursor = 'default';
+                    self.cursor = 'default';
                     self.hovers[o.data[self.uniqueId]] = [o.columnIndex];
                 }
                 if ((self.selecting || self.reorderObject)
@@ -3858,8 +3875,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             });
             self.styleKeys = Object.keys(self.intf.defaults.styles);
             self.DOMStyles = window.getComputedStyle(document.body, null);
-            self.intf.setStyleProperty('width', '100%');
-            self.intf.setStyleProperty('height', '100%');
             Object.keys(self.DOMStyles).concat(Object.keys(self.style)).forEach(function (key) {
                 // unless this line is here, Object.keys() will not work on <instance>.style
                 publicStyleKeyIntf[key] = undefined;
@@ -4040,6 +4055,18 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     throw new TypeError('Cannot set property parentNode which has only a getter');
                 }
                 self.parentNode = value;
+            }
+        });
+        Object.defineProperty(self, 'cursor', {
+            get: function () {
+                return self.parentNodeStyle.cursor;
+            },
+            set: function (value) {
+                if (value === 'cell') { value = 'default'; }
+                if (self.currentCursor !== value) {
+                    self.parentNodeStyle.cursor = value;
+                    self.currentCursor = value;
+                }
             }
         });
         Object.defineProperty(self.intf, 'offsetParent', {
@@ -5553,9 +5580,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.setDom();
         };
         self.setDom = function () {
-            if (!self.parentNode) { return; }
-            if (self.parentNode && /canvas-datagrid-(cell|tree)/.test(self.parentNode.nodeType)) {
-                self.isChildGrid = true;
+            if (self.isChildGrid) {
                 self.parentGrid = self.parentNode.parentGrid;
                 self.ctx = self.parentGrid.context;
                 self.canvas = self.parentGrid.canvas;
@@ -5582,6 +5607,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.eventParent = self.canvas;
             }
             self.parentNodeStyle = self.canvas.style;
+            // simulate a block element
+            self.parentNodeStyle.width = '100%';
+            self.parentNodeStyle.height = '100%';
             self.controlInput.setAttribute('readonly', true);
             self.controlInput.addEventListener('blur', function (e) {
                 if (e.target !== self.canvas) {
@@ -6475,7 +6503,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             cell.dragContext = 'vertical-scroll-top';
                             cell.context = 'vertical-scroll-top';
                         }
-                        self.canvas.style.cursor = 'default';
+                        self.cursor = 'default';
                         return cell;
                     }
                     if (/horizontal-scroll-(bar|box)/.test(cell.style)) {
@@ -6490,7 +6518,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             cell.dragContext = 'horizontal-scroll-left';
                             cell.context = 'horizontal-scroll-left';
                         }
-                        self.canvas.style.cursor = 'default';
+                        self.cursor = 'default';
                         return cell;
                     }
                     border = getBorder(cell);
@@ -6561,7 +6589,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
             }
             self.hasFocus = true;
-            self.canvas.style.cursor = 'default';
+            self.cursor = 'default';
             return {
                 dragContext: 'background',
                 context: 'background',
