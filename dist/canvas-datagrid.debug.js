@@ -520,7 +520,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             return r;
         }
         function applyComponentStyle(supressChangeAndDrawEvents, intf) {
-            console.log('applyComponentStyle');
             var cStyle = window.getComputedStyle(intf, null),
                 defs = {};
             intf.computedStyle = cStyle;
