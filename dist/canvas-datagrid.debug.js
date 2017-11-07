@@ -4069,21 +4069,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
             }
         });
-        Object.defineProperty(self.intf, 'offsetParent', {
-            get: function () {
-                return self.parentNode;
-            }
-        });
-        Object.defineProperty(self.intf, 'offsetLeft', {
-            get: function () {
-                return self.parentNode.offsetLeft;
-            }
-        });
-        Object.defineProperty(self.intf, 'offsetTop', {
-            get: function () {
-                return self.parentNode.offsetTop;
-            }
-        });
         Object.defineProperty(self.intf, 'scrollHeight', {
             get: function () {
                 return self.scrollBox.scrollHeight;
@@ -5153,7 +5138,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.scrollOffset = function (e) {
             var x = 0, y = 0;
-            while (e.parentNode && e.nodeName !== 'CANVAS-DATAGRID') {
+            while (e.parentNode && e.nodeName !== 'CANVAS-DATAGRID' && e !== self.intf) {
                 if (e.nodeType !== 'canvas-datagrid-tree'
                         && e.nodeType !== 'canvas-datagrid-cell') {
                     x -= e.scrollLeft;
@@ -5166,7 +5151,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.resizeEditInput = function () {
             if (self.input && self.input.editCell) {
                 var pos = self.canvas.getBoundingClientRect(),
-                    s = self.scrollOffset(self.canvas),
+                    s = self.scrollOffset(self.intf),
                     bm = self.style.gridBorderCollapse === 'collapse' ? 1 : 2,
                     borderWidth = (self.style.cellBorderWidth * bm),
                     cell = self.getVisibleCellByIndex(self.input.editCell.columnIndex, self.input.editCell.rowIndex)
