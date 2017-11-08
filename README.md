@@ -113,6 +113,8 @@ More Demos
 
 * [Sparkline example](https://tonygermaneri.github.io/canvas-datagrid/tutorials/sparklineDemo.html)
 
+* [Pivot-form integration example](https://tonygermaneri.github.io/canvas-datagrid/tutorials/pivotFormDemo.html)
+
 
 Building & Testing
 ------------------

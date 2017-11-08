@@ -3991,38 +3991,51 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.hasFocus = true;
             self.controlInput.focus();
         };
-        Object.defineProperty(self.intf, 'height', {
-            get: function () {
-                if (self.shadowRoot) {
-                    return self.shadowRoot.height;
+        if (self.shadowRoot || self.isChildGrid) {
+            Object.defineProperty(self.intf, 'height', {
+                get: function () {
+                    if (self.shadowRoot) {
+                        return self.shadowRoot.height;
+                    }
+                    return self.parentNode.height;
+                },
+                set: function (value) {
+                    if (self.shadowRoot) {
+                        self.shadowRoot.height = value;
+                    } else {
+                        self.parentNode.height = value;
+                    }
+                    self.resize(true);
                 }
-                return self.parentNode.height;
-            },
-            set: function (value) {
-                if (self.shadowRoot) {
-                    self.shadowRoot.height = value;
-                } else {
-                    self.parentNode.height = value;
+            });
+            Object.defineProperty(self.intf, 'width', {
+                get: function () {
+                    if (self.shadowRoot) {
+                        return self.shadowRoot.width;
+                    }
+                    return self.parentNode.width;
+                },
+                set: function (value) {
+                    if (self.shadowRoot) {
+                        self.shadowRoot.width = value;
+                    } else {
+                        self.parentNode.width = value;
+                    }
+                    self.resize(true);
                 }
-                self.resize(true);
-            }
-        });
-        Object.defineProperty(self.intf, 'width', {
-            get: function () {
-                if (self.shadowRoot) {
-                    return self.shadowRoot.width;
+            });
+            Object.defineProperty(self.intf, 'parentNode', {
+                get: function () {
+                    return self.parentNode;
+                },
+                set: function (value) {
+                    if (!self.isChildGrid) {
+                        throw new TypeError('Cannot set property parentNode which has only a getter');
+                    }
+                    self.parentNode = value;
                 }
-                return self.parentNode.width;
-            },
-            set: function (value) {
-                if (self.shadowRoot) {
-                    self.shadowRoot.width = value;
-                } else {
-                    self.parentNode.width = value;
-                }
-                self.resize(true);
-            }
-        });
+            });
+        }
         Object.defineProperty(self.intf, 'visibleRowHeights', {
             get: function () {
                 return self.visibleRowHeights;
@@ -4043,17 +4056,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         Object.defineProperty(self.intf, 'isChildGrid', {
             get: function () {
                 return self.isChildGrid;
-            }
-        });
-        Object.defineProperty(self.intf, 'parentNode', {
-            get: function () {
-                return self.parentNode;
-            },
-            set: function (value) {
-                if (!self.isChildGrid) {
-                    throw new TypeError('Cannot set property parentNode which has only a getter');
-                }
-                self.parentNode = value;
             }
         });
         Object.defineProperty(self, 'cursor', {
