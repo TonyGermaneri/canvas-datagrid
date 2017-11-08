@@ -60,6 +60,7 @@ function demo() {
             var form = pivotForm(),
                 schema = JSON.parse(JSON.stringify(grid.schema));
             schema = schema.map(function (header) {
+                // should check open data schema here
                 header.type = header.enum ? 'select' : 'text';
                 return header;
             });
