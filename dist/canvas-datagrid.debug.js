@@ -2056,6 +2056,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @param {number} e The event object.
          */
         self.dispatchEvent = function (ev, e) {
+            e = ev.type ? ev : (e || {});
+            ev = ev.type || ev;
             var defaultPrevented;
             function preventDefault() {
                 defaultPrevented = true;
