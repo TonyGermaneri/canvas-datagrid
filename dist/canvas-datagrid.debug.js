@@ -270,6 +270,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['contextMenuOpacity', '0.98'],
                 ['contextMenuPadding', '2px'],
                 ['contextMenuWindowMargin', 100],
+                ['contextMenuZIndex', 10000],
                 ['cornerCellBackgroundColor', 'rgba(240, 240, 240, 1)'],
                 ['cornerCellBorderColor', 'rgba(202, 202, 202, 1)'],
                 ['editCellBackgroundColor', 'white'],
@@ -279,6 +280,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['editCellFontFamily', 'sans-serif'],
                 ['editCellFontSize', '16px'],
                 ['editCellPaddingLeft', 4],
+                ['editCellZIndex', 10000],
                 ['frozenMarkerHoverColor', 'rgba(236, 243, 255, 1)'],
                 ['frozenMarkerHoverBorderColor', 'rgba(110, 168, 255, 1)'],
                 ['frozenMarkerActiveColor', 'rgba(236, 243, 255, 1)'],
@@ -2056,6 +2058,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @param {number} e The event object.
          */
         self.dispatchEvent = function (ev, e) {
+            e = ev.type ? ev : (e || {});
+            ev = ev.type || ev;
             var defaultPrevented;
             function preventDefault() {
                 defaultPrevented = true;
@@ -4505,7 +4509,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
     'use strict';
     return function (self) {
-        var zIndexTop = 9000, hoverScrollTimeout, autoCompleteContext;
+        var zIndexTop, hoverScrollTimeout, autoCompleteContext;
         function applyContextItemStyle(contextItemContainer) {
             self.createInlineStyle(contextItemContainer, 'canvas-datagrid-context-menu-item' + (self.mobile ? '-mobile' : ''));
             contextItemContainer.addEventListener('mouseover', function () {
@@ -4648,6 +4652,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             function init() {
                 var loc = {},
                     s = self.scrollOffset(self.canvas);
+                if (zIndexTop === undefined) {
+                    zIndexTop = self.style.contextMenuZIndex;
+                }
                 createItems();
                 self.createInlineStyle(container, 'canvas-datagrid-context-menu' + (self.mobile ? '-mobile' : ''));
                 loc.x = pos.left - s.left;
@@ -5004,7 +5011,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.disposeContextMenu = function () {
             document.removeEventListener('click', self.disposeContextMenu);
-            zIndexTop = 9000;
+            zIndexTop = self.style.contextMenuZIndex;
             self.disposeAutocomplete();
             if (self.contextMenu) {
                 self.contextMenu.dispose();
@@ -5325,7 +5332,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.input.style.position = 'absolute';
             self.input.editCell = cell;
             self.resizeEditInput();
-            self.input.style.zIndex = '2';
+            self.input.style.zIndex = self.style.editCellZIndex;
             self.input.style.fontSize = (parseInt(self.style.editCellFontSize, 10) * self.scale) + 'px';
             self.input.value = cell.value;
             self.input.focus();
