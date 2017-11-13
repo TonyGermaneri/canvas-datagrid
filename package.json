@@ -1,11 +1,10 @@
 {
   "name": "canvas-datagrid",
-  "version": "0.18.10",
+  "version": "0.18.11",
   "description": "Canvas based data grid web component.  Capable of displaying millions of contiguous hierarchical rows and columns without paging or loading, on a single canvas element.",
   "main": "./lib/main.js",
   "scripts": {
     "build-docs": "rm -rf docs;./node_modules/.bin/jsdoc -r --template ./tutorials/ ./lib/",
-    "postinstall": "npm run-script build",
     "build-gh-pages": "git checkout gh-pages; git merge master --no-edit; npm run build-docs; npm test; git add .; git commit -m 'rebuilt docs, tests.'; git push; git checkout master",
     "build-watch": "./node_modules/.bin/webpack --output-library=canvasDatagrid --output-library-target=umd  --watch -d --entry=./lib/main.js --output-path=./dist --output-filename=canvas-datagrid.debug.js --devtool source-map --output-source-map-filename='canvas-datagrid.debug.map'",
     "build-dev": "./node_modules/.bin/webpack --output-library=canvasDatagrid --output-library-target=umd  -d --entry=./lib/main.js --output-path=./dist --output-filename=canvas-datagrid.debug.js --devtool source-map --output-source-map-filename='canvas-datagrid.debug.map'",
@@ -15,8 +14,8 @@
     "build-run-test": "./node_modules/.bin/phantomjs ./node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js ./test/tests.html spec '{\"hooks\": \"mocha-phantomjs-istanbul\", \"coverageFile\": \"./build/coverage.json\"}'",
     "build-run-report": "./node_modules/.bin/istanbul report --root ./build --dir ./build/report --reporter text --reporter lcov",
     "coveralls": "echo '-- Requires token from https://coveralls.io/github/TonyGermaneri/canvas-datagrid set to env var COVERALLS_REPO_TOKEN --\n';export COVERALLS_SERVICE_NAME=cli;COVERALLS_SERVICE_JOB_ID=`cat build.txt`;cat ./build/report/lcov.info | ./node_modules/.bin/coveralls",
-    "build": "echo \"$((`cat build.txt` + 1))\" > build.txt;./node_modules/.bin/webpack --output-library=canvasDatagrid --output-library-target=umd -p --entry=./lib/main.js --output-path=./dist --output-filename=canvas-datagrid.js --devtool source-map --output-source-map-filename='canvas-datagrid.map'",
-    "build-all": "npm run build-dev; npm run build; npm run build-instrument; npm run build-pack-instrument"
+    "build-prd": "echo \"$((`cat build.txt` + 1))\" > build.txt;./node_modules/.bin/webpack --output-library=canvasDatagrid --output-library-target=umd -p --entry=./lib/main.js --output-path=./dist --output-filename=canvas-datagrid.js --devtool source-map --output-source-map-filename='canvas-datagrid.map'",
+    "build-all": "npm run build-dev; npm run build-prd; npm run build-instrument; npm run build-pack-instrument"
   },
   "repository": {
     "type": "git",
