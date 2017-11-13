@@ -56,15 +56,23 @@ a script tag that points to the source or use webpack.
 
     <script src="dist/canvas-datagrid.js"></script>
 
-If you do not use a webpack a function will
-be added to the global scope of the web page called `canvasDatagrid`.
+Alternatively, instead of downloading and installing, you can link directly to an NPM CDN like [unpkg.com](https://unpkg.com).
+
+    <script src="https://unpkg.com/canvas-datagrid"></script>
+
+
+A function will be added to the global scope of the web page called `canvasDatagrid` as well as module loader definitions.
 
 Getting started
 ---------------
 
 Works [with webpack](https://tonygermaneri.github.io/canvas-datagrid/tutorials/amdDemo.html), [without webpack](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html) or as a [web component](https://tonygermaneri.github.io/canvas-datagrid/tutorials/webcomponentDemo.html).
 If used without webpack, `canvasDatagrid` is declared in the global scope.
-The container can be any block element.  `canvasDatagrid` generates its own canvas element in [Shadow DOM](https://www.w3.org/TR/shadow-dom/) when available.
+
+Canvas-datagrid is a [Web Component](https://www.webcomponents.org/element/TonyGermaneri/canvas-datagrid).  It creates a
+custom tag definition where custom tags can be used.  If custom-tags cannot be used, a `<section>` tag is used instead.
+A canvas element is generated automatically within the `<section>` or shadow root.
+
 
 Using pure JavaScript
 ---------------------
@@ -121,7 +129,7 @@ Building & Testing
 
 To build production version.
 
-    npm install
+    npm run build-prd
 
 To build debug version
 

@@ -6,10 +6,15 @@ Ways to create a grid
 * Webpack3 universal module loader by adding one of many module loaders to your application code.  <br>See example: {@link https://tonygermaneri.github.io/canvas-datagrid/tutorials/amdDemo.html}.
 * You can also load the grid by invoking the global method `var foo = canvasDatagrid(&lt;args&gt;);` <br>See example: {@link https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html}
 
-If you create the grid using the non-web component model, you can attach the grid to an existing
-canvas by passing the canvas in as the `parentNode` when you instantiate the grid.
+If you create the grid using the non-web component model, you can attach the grid to an existing canvas by passing the canvas in as the `parentNode` when you instantiate the grid using the module loader or global versions.  This is not possible when instantiating using `createElement` or markup.
 
 With the exception of attaching to an existing canvas, the grid will attempt to create a Shadow DOM element and attach a canvas within.
+
+* Support for attaching to existing canvas elements is experimental.
+
+* In browsers that do not support custom tags, a `&lt;section&gt;` tag is used in place of the `&lt;canvas-datagrid&gt;` tag.
+
+* In browsers that do not support Shadow DOM, no shadow root will be created.  In this mode cascading CSS can alter the grid, altering behavior in potentially breaking ways.  Careful application of CSS is required.
 
 Setting and Getting Data
 ------------------------
@@ -43,6 +48,8 @@ When setting data using the data property, you can use many types.
 When using an array of arrays, the columns will be named like a spread sheet, A, B, C, through ZZZZ.
 
 When the value of a cell is an object or an array, a new grid will be drawn into the cell.
+
+* Note: if you pass in data that appears to be the native format, an array like object of object like objects, no conversion will occur and object reference to the data can be maintained.  Also load time will decrease by a barely perceptible amount.
 
 Schema
 ------
@@ -149,7 +156,7 @@ You can still access the grid as you would expect and the interface for the web 
 
 For further reading about web components see: https://www.webcomponents.org/
 
-* When instantiating the grid using the Webpack loader or the global function canvasDatagrid, class support will not work.
+* When instantiating the grid in a browser that does not support custom tags or css varaibles, class support will not work.
 
 Sorters
 -------
