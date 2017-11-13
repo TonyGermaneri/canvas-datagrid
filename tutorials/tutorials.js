@@ -737,7 +737,7 @@ window.tutorials['Multiple filters|Create filters on more than one column at a t
     }
     // add the data to the grid
     grid.data = data.concat(grid.data);
-    grid.setFilter('quick', /the/i);
+    grid.setFilter('quick', '/the/i');
     grid.setFilter('brown', 'quick');
 };
 window.tutorials['Draw a picture|Draw a picture into a cell.  First hook into <i>rendertext</i> to show the text "No Image" text if there is no image.  Then hook into <i>afterrendercell</i> to actually create an image element, hook into the image load event and draw the image once it\'s loaded.'] = function (parentNode) {
