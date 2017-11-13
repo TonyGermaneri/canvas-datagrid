@@ -5601,6 +5601,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             self.parentNodeStyle = self.canvas.style;
             // simulate a block element
+            if (self.intf.tagName === 'SECTION') {
+                // required for non custom tag browsers
+                self.intf.style.height = '100%';
+                self.intf.style.width = '100%';
+            }
             self.parentNodeStyle.width = '100%';
             self.parentNodeStyle.height = '100%';
             self.controlInput.setAttribute('readonly', true);
