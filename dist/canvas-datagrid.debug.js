@@ -3145,8 +3145,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.touchstart = function (e) {
             if (e.changedTouches[0]) {
                 self.touchStart = self.getTouchPos(e);
+                self.startingCell = self.getCellAt(self.touchStart.x, self.touchStart.y, true);
             }
-            self.startingCell = self.getCellAt(self.touchStart.x, self.touchStart.y, true);
             if (self.dispatchEvent('touchstart', {NativeEvent: e, cell: self.startingCell})) { return; }
             self.disposeContextMenu();
             clearInterval(self.calculatePPSTimer);
