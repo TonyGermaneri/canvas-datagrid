@@ -53,7 +53,8 @@ function demo() {
                 allowFreezingColumns: true,
                 allowRowReordering: true,
                 tree: false,
-                debug: false
+                debug: false,
+                showPerformance: false
             });
         grid.addEventListener('contextmenu', function (e) {
             e.items.push({

@@ -3143,7 +3143,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             };
         };
         self.touchstart = function (e) {
-            if (self.dispatchEvent('touchstart', {NativeEvent: e})) { return; }
+            if (e.changedTouches[0]) {
+                self.touchStart = self.getTouchPos(e);
+            }
+            self.startingCell = self.getCellAt(self.touchStart.x, self.touchStart.y, true);
+            if (self.dispatchEvent('touchstart', {NativeEvent: e, cell: self.startingCell})) { return; }
             self.disposeContextMenu();
             clearInterval(self.calculatePPSTimer);
             clearTimeout(self.touchContextTimeout);
@@ -3152,9 +3156,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.animationFrames = 0;
             self.stopPropagation(e);
             e.preventDefault();
-            if (e.changedTouches[0]) {
-                self.touchStart = self.getTouchPos(e);
-            }
             if (e.touches.length === 1 && e.changedTouches[0] && !self.zoomAltered) {
                 self.touchLength = 1;
                 self.touchStart = self.touchStart || self.touchStart1;
@@ -3184,7 +3185,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.contextmenuEvent(e, self.touchStart);
                 }, self.attributes.touchContextMenuTimeMs);
                 self.calculatePPSTimer = setInterval(self.calculatePPSTimed, touchTimerMs);
-                self.startingCell = self.getCellAt(self.touchStart.x, self.touchStart.y, true);
                 if (self.startingCell && (self.startingCell.isGrid || ['tree', 'inherit'].indexOf(self.startingCell.context) !== -1)) {
                     self.hasFocus = false;
                     return;
