@@ -13249,7 +13249,7 @@ window.reflection = [
         "___s": true
     },
     {
-        "comment": "/**\n * Fires when the a touch event ends.\n * @event\n * @name canvasDatagrid#touchend\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n * @param {object} e.NativeEvent Native touchend event.\n * @param {canvasDatagrid.cell} e.cell Cell object.\n*/",
+        "comment": "/**\n * Fires when the a touch event ends.\n * @event\n * @name canvasDatagrid#touchend\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n * @param {object} e.NativeEvent Native touchend event.\n*/",
         "meta": {
             "filename": "docs.js",
             "lineno": 705,
@@ -13287,15 +13287,6 @@ window.reflection = [
                 },
                 "description": "Native touchend event.",
                 "name": "e.NativeEvent"
-            },
-            {
-                "type": {
-                    "names": [
-                        "canvasDatagrid.cell"
-                    ]
-                },
-                "description": "Cell object.",
-                "name": "e.cell"
             }
         ],
         "memberof": "canvasDatagrid",
@@ -13305,10 +13296,10 @@ window.reflection = [
         "___s": true
     },
     {
-        "comment": "/**\n * Fires when the a touch move event occurs.\n * @event\n * @name canvasDatagrid#touchmove\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n * @param {object} e.NativeEvent Native touchmove event.\n * @param {canvasDatagrid.cell} e.cell Cell object.\n*/",
+        "comment": "/**\n * Fires when the a touch move event occurs.\n * @event\n * @name canvasDatagrid#touchmove\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n * @param {object} e.NativeEvent Native touchmove event.\n*/",
         "meta": {
             "filename": "docs.js",
-            "lineno": 714,
+            "lineno": 713,
             "columnno": 0,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -13343,15 +13334,6 @@ window.reflection = [
                 },
                 "description": "Native touchmove event.",
                 "name": "e.NativeEvent"
-            },
-            {
-                "type": {
-                    "names": [
-                        "canvasDatagrid.cell"
-                    ]
-                },
-                "description": "Cell object.",
-                "name": "e.cell"
             }
         ],
         "memberof": "canvasDatagrid",
@@ -13361,10 +13343,10 @@ window.reflection = [
         "___s": true
     },
     {
-        "comment": "/**\n * Fires when the a touch event is canceled.\n * @event\n * @name canvasDatagrid#touchcancel\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n * @param {object} e.NativeEvent Native touchcancel event.\n * @param {canvasDatagrid.cell} e.cell Cell object.\n*/",
+        "comment": "/**\n * Fires when the a touch event is canceled.\n * @event\n * @name canvasDatagrid#touchcancel\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n * @param {object} e.NativeEvent Native touchcancel event.\n*/",
         "meta": {
             "filename": "docs.js",
-            "lineno": 723,
+            "lineno": 721,
             "columnno": 0,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -13399,15 +13381,6 @@ window.reflection = [
                 },
                 "description": "Native touchcancel event.",
                 "name": "e.NativeEvent"
-            },
-            {
-                "type": {
-                    "names": [
-                        "canvasDatagrid.cell"
-                    ]
-                },
-                "description": "Cell object.",
-                "name": "e.cell"
             }
         ],
         "memberof": "canvasDatagrid",
@@ -13420,7 +13393,7 @@ window.reflection = [
         "comment": "/**\n * Fires when the grid is clicked.\n * @event\n * @name canvasDatagrid#click\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n * @param {canvasDatagrid.cell} e.cell Cell object.\n*/",
         "meta": {
             "filename": "docs.js",
-            "lineno": 732,
+            "lineno": 729,
             "columnno": 0,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -13467,7 +13440,7 @@ window.reflection = [
         "comment": "/**\n * Fires when a column is about to be resized.\n * `e.preventDefault();` will abort the resize.\n * @event\n * @name canvasDatagrid#resizecolumn\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n * @param {object} e.x x pixel position of the resize.\n * @param {object} e.y y pixel position of the resize.\n * @param {function} e.preventDefault Prevents the default behavior.\n * @param {canvasDatagrid.cell} e.cell The mutable cell to be resized.\n*/",
         "meta": {
             "filename": "docs.js",
-            "lineno": 740,
+            "lineno": 737,
             "columnno": 0,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -13541,7 +13514,7 @@ window.reflection = [
         "comment": "/**\n * Fires when the mouse button is pressed down on the grid.\n * `e.preventDefault();` will abort the default grid event.\n * @event\n * @name canvasDatagrid#mousedown\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n * @param {function} e.preventDefault Prevents the default behavior.\n * @param {object} e.NativeEvent Native mousedown event.\n * @param {canvasDatagrid.cell} e.cell Cell object.\n*/",
         "meta": {
             "filename": "docs.js",
-            "lineno": 752,
+            "lineno": 749,
             "columnno": 0,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -13606,7 +13579,7 @@ window.reflection = [
         "comment": "/**\n * Fires when the mouse button is pressed down on the grid.\n * `e.preventDefault();` will abort the default grid event.\n * @event\n * @name canvasDatagrid#mouseup\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n * @param {function} e.preventDefault Prevents the default behavior.\n * @param {object} e.NativeEvent Native mouseup event.\n * @param {canvasDatagrid.cell} e.cell Cell object.\n*/",
         "meta": {
             "filename": "docs.js",
-            "lineno": 763,
+            "lineno": 760,
             "columnno": 0,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -13671,7 +13644,7 @@ window.reflection = [
         "comment": "/**\n * Fires when the mouse button is double clicked on the grid.\n * `e.preventDefault();` will abort the default grid event.\n * Note that this will necessarily require 2*`mousedown`, 2*`mouseup` and 2*`click` events to fire prior to the double click.\n * @event\n * @name canvasDatagrid#dblclick\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n * @param {function} e.preventDefault Prevents the default behavior.\n * @param {object} e.NativeEvent Native dblclick event. \n * @param {canvasDatagrid.cell} e.cell Cell object.\n*/",
         "meta": {
             "filename": "docs.js",
-            "lineno": 774,
+            "lineno": 771,
             "columnno": 0,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -13736,7 +13709,7 @@ window.reflection = [
         "comment": "/**\n * Fires when the keyboard button is pressed down on the grid.\n * `e.preventDefault();` will abort the default grid event.\n * @event\n * @name canvasDatagrid#keydown\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n * @param {function} e.preventDefault Prevents the default behavior.\n * @param {object} e.NativeEvent Native keydown event.\n * @param {canvasDatagrid.cell} e.cell Cell object.\n*/",
         "meta": {
             "filename": "docs.js",
-            "lineno": 786,
+            "lineno": 783,
             "columnno": 0,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -13801,7 +13774,7 @@ window.reflection = [
         "comment": "/**\n * Fires when the keyboard button is released on the grid.\n * `e.preventDefault();` will abort the default grid event.\n * @event\n * @name canvasDatagrid#keyup\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n * @param {function} e.preventDefault Prevents the default behavior.\n * @param {object} e.NativeEvent Native keyup event.\n * @param {canvasDatagrid.cell} e.cell Cell object.\n*/",
         "meta": {
             "filename": "docs.js",
-            "lineno": 797,
+            "lineno": 794,
             "columnno": 0,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -13866,7 +13839,7 @@ window.reflection = [
         "comment": "/**\n * Fires when the keyboard press is completed on the grid.\n * `e.preventDefault();` will abort the default grid event.\n * @event\n * @name canvasDatagrid#keypress\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n * @param {function} e.preventDefault Prevents the default behavior.\n * @param {object} e.NativeEvent Native keypress event.\n * @param {canvasDatagrid.cell} e.cell Cell object.\n*/",
         "meta": {
             "filename": "docs.js",
-            "lineno": 808,
+            "lineno": 805,
             "columnno": 0,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -13931,7 +13904,7 @@ window.reflection = [
         "comment": "/**\n * Fires when grid is being resized.\n * @event\n * @name canvasDatagrid#resize\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n*/",
         "meta": {
             "filename": "docs.js",
-            "lineno": 819,
+            "lineno": 816,
             "columnno": 0,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -13969,7 +13942,7 @@ window.reflection = [
         "comment": "/**\n * Fires when the mouse enters a cell.\n * @event\n * @name canvasDatagrid#cellmouseover\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n * @param {canvasDatagrid.cell} e.cell The cell being moved over.\n*/",
         "meta": {
             "filename": "docs.js",
-            "lineno": 826,
+            "lineno": 823,
             "columnno": 0,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -14016,7 +13989,7 @@ window.reflection = [
         "comment": "/**\n * Fires when the mouse exits a cell.\n * @event\n * @name canvasDatagrid#cellmouseout\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n * @param {canvasDatagrid.cell} e.cell The cell being moved out of.\n*/",
         "meta": {
             "filename": "docs.js",
-            "lineno": 834,
+            "lineno": 831,
             "columnno": 0,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -14063,7 +14036,7 @@ window.reflection = [
         "comment": "/**\n * Fires when a style has been changed.\n * @event\n * @name canvasDatagrid#stylechanged\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n * @param {function} e.preventDefault Prevents the default behavior.\n * @param {object} e.styleName The name of the style being changed.\n * @param {object} e.styleValue The value of the style being changed.\n*/",
         "meta": {
             "filename": "docs.js",
-            "lineno": 842,
+            "lineno": 839,
             "columnno": 0,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -14128,7 +14101,7 @@ window.reflection = [
         "comment": "/**\n * Fires when an attribute has been changed.\n * @event\n * @name canvasDatagrid#attributechanged\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n*/",
         "meta": {
             "filename": "docs.js",
-            "lineno": 852,
+            "lineno": 849,
             "columnno": 0,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -14166,7 +14139,7 @@ window.reflection = [
         "comment": "/**\n * Fires as the user reorders a row or column.  Calling `e.preventDefault` will prevent the column from starting to be reordered.\n * @event\n * @name canvasDatagrid#reordering\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n * @param {function} e.preventDefault Prevents the default behavior.\n * @param {object} e.NativeEvent Native mousemove event.\n * @param {cell} e.source The header cell of the column or row being reordered.\n * @param {cell} e.target The header cell of the column or row that the dragged row or column will be inserted onto.\n * @param {string} e.dragMode When dragging a column `column-reorder`, when dragging a row `row-reorder`.\n*/",
         "meta": {
             "filename": "docs.js",
-            "lineno": 859,
+            "lineno": 856,
             "columnno": 0,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -14249,7 +14222,7 @@ window.reflection = [
         "comment": "/**\n * Fires when the user finishes reordering a column or row.  Calling `e.preventDefault` will prevent the column from being reordered.\n * @event\n * @name canvasDatagrid#reorder\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n * @param {function} e.preventDefault Prevents the default behavior.\n * @param {object} e.NativeEvent Native mousemove event.\n * @param {cell} e.source The header cell of the column or row being reordered.\n * @param {cell} e.target The header cell of the column or row that the dragged row or column will be inserted onto.\n * @param {string} e.dragMode When dragging a column `column-reorder`, when dragging a row `row-reorder`.\n*/",
         "meta": {
             "filename": "docs.js",
-            "lineno": 871,
+            "lineno": 868,
             "columnno": 0,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -14332,7 +14305,7 @@ window.reflection = [
         "comment": "/**\n * Fires when a selection begins to move.  Calling `e.preventDefault` will prevent the move from starting.\n * @event\n * @name canvasDatagrid#beginmove\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n*/",
         "meta": {
             "filename": "docs.js",
-            "lineno": 883,
+            "lineno": 880,
             "columnno": 0,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -14370,7 +14343,7 @@ window.reflection = [
         "comment": "/**\n * Fires when the mouse moves while moving a selection.  Calling `e.preventDefault` will prevent the move from occurring.\n * @event\n * @name canvasDatagrid#moving\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n*/",
         "meta": {
             "filename": "docs.js",
-            "lineno": 890,
+            "lineno": 887,
             "columnno": 0,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -14408,7 +14381,7 @@ window.reflection = [
         "comment": "/**\n * Fires when a selection moving selection is dropped.  Calling `e.preventDefault` will prevent the drop from occurring.\n * @event\n * @name canvasDatagrid#endmove\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n*/",
         "meta": {
             "filename": "docs.js",
-            "lineno": 897,
+            "lineno": 894,
             "columnno": 0,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -14446,7 +14419,7 @@ window.reflection = [
         "comment": "/**\n * Fires when a freeze cutter begins to move.  Calling `e.preventDefault` will prevent the move from starting.\n * @event\n * @name canvasDatagrid#beginfreezemove\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n*/",
         "meta": {
             "filename": "docs.js",
-            "lineno": 904,
+            "lineno": 901,
             "columnno": 0,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -14484,7 +14457,7 @@ window.reflection = [
         "comment": "/**\n * Fires when the mouse moves while moving a freeze cutter.  Calling `e.preventDefault` will prevent the freeze cutter from moving.\n * @event\n * @name canvasDatagrid#freezemoving\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n*/",
         "meta": {
             "filename": "docs.js",
-            "lineno": 911,
+            "lineno": 908,
             "columnno": 0,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -14522,7 +14495,7 @@ window.reflection = [
         "comment": "/**\n * Fires when a freeze cutter is dropped.  Calling `e.preventDefault` will prevent the drop from occurring.\n * @event\n * @name canvasDatagrid#endfreezemove\n * @param {object} e Event object.\n * @param {object} e.ctx Canvas context.\n*/",
         "meta": {
             "filename": "docs.js",
-            "lineno": 918,
+            "lineno": 915,
             "columnno": 0,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {}
@@ -81823,7 +81796,7 @@ window.reflection = [
         "meta": {
             "range": [
                 5495,
-                9686
+                9707
             ],
             "filename": "touch.js",
             "lineno": 113,
@@ -81838,10 +81811,11 @@ window.reflection = [
                 ]
             },
             "vars": {
+                "self.touchStart": "self.touchStart",
+                "self.startingCell": "self.startingCell",
                 "self.touchStartEvent": "self.touchStartEvent",
                 "self.stopAnimation": "self.stopAnimation",
                 "self.animationFrames": "self.animationFrames",
-                "self.touchStart": "self.touchStart",
                 "self.touchLength": "self.touchLength",
                 "self.touchScrollStart": "self.touchScrollStart",
                 "self.touchDelta": "self.touchDelta",
@@ -81850,7 +81824,6 @@ window.reflection = [
                 "self.touchContextTimeout": "self.touchContextTimeout",
                 "": null,
                 "self.calculatePPSTimer": "self.calculatePPSTimer",
-                "self.startingCell": "self.startingCell",
                 "self.hasFocus": "self.hasFocus",
                 "self.orderDirection": "self.orderDirection"
             }
@@ -81868,25 +81841,27 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                5578,
-                5592
+                5583,
+                5620
             ],
             "filename": "touch.js",
-            "lineno": 114,
-            "columnno": 50,
+            "lineno": 115,
+            "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036205",
-                "name": "NativeEvent",
-                "type": "Identifier",
-                "value": "e"
+                "id": "astnode100036206",
+                "name": "self.touchStart",
+                "type": "CallExpression",
+                "value": "",
+                "paramnames": []
             }
         },
         "undocumented": true,
-        "name": "NativeEvent",
-        "longname": "NativeEvent",
+        "name": "touchStart",
+        "longname": "self.touchStart",
         "kind": "member",
-        "scope": "global",
+        "memberof": "self",
+        "scope": "static",
         "___id": "T000002R002682",
         "___s": true
     },
@@ -81894,729 +81869,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                5762,
-                5786
+                5648,
+                5726
             ],
             "filename": "touch.js",
-            "lineno": 118,
+            "lineno": 117,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036227",
-                "name": "self.touchStartEvent",
-                "type": "Identifier",
-                "value": "e",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "touchStartEvent",
-        "longname": "self.touchStartEvent",
-        "kind": "member",
-        "memberof": "self",
-        "scope": "static",
-        "___id": "T000002R002683",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                5800,
-                5825
-            ],
-            "filename": "touch.js",
-            "lineno": 119,
-            "columnno": 12,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036233",
-                "name": "self.stopAnimation",
-                "type": "Literal",
-                "value": true,
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "stopAnimation",
-        "longname": "self.stopAnimation",
-        "kind": "member",
-        "memberof": "self",
-        "scope": "static",
-        "___id": "T000002R002684",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                5839,
-                5863
-            ],
-            "filename": "touch.js",
-            "lineno": 120,
-            "columnno": 12,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036239",
-                "name": "self.animationFrames",
-                "type": "Literal",
-                "value": 0,
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "animationFrames",
-        "longname": "self.animationFrames",
-        "kind": "member",
-        "memberof": "self",
-        "scope": "static",
-        "___id": "T000002R002685",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                5989,
-                6026
-            ],
-            "filename": "touch.js",
-            "lineno": 124,
-            "columnno": 16,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036263",
-                "name": "self.touchStart",
-                "type": "CallExpression",
-                "value": "",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "touchStart",
-        "longname": "self.touchStart",
-        "kind": "member",
-        "memberof": "self",
-        "scope": "static",
-        "___id": "T000002R002686",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                6144,
-                6164
-            ],
-            "filename": "touch.js",
-            "lineno": 127,
-            "columnno": 16,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036293",
-                "name": "self.touchLength",
-                "type": "Literal",
-                "value": 1,
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "touchLength",
-        "longname": "self.touchLength",
-        "kind": "member",
-        "memberof": "self",
-        "scope": "static",
-        "___id": "T000002R002687",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                6182,
-                6235
-            ],
-            "filename": "touch.js",
-            "lineno": 128,
-            "columnno": 16,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036299",
-                "name": "self.touchStart",
-                "type": "LogicalExpression",
-                "value": "",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "touchStart",
-        "longname": "self.touchStart",
-        "kind": "member",
-        "memberof": "self",
-        "scope": "static",
-        "___id": "T000002R002688",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                6253,
-                6436
-            ],
-            "filename": "touch.js",
-            "lineno": 129,
-            "columnno": 16,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036311",
-                "name": "self.touchScrollStart",
-                "type": "ObjectExpression",
-                "value": "{\"x\":\"\",\"y\":\"\",\"t\":\"\"}",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "touchScrollStart",
-        "longname": "self.touchScrollStart",
-        "kind": "member",
-        "memberof": "self",
-        "scope": "static",
-        "___id": "T000002R002689",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                6299,
-                6327
-            ],
-            "filename": "touch.js",
-            "lineno": 130,
-            "columnno": 20,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036316",
-                "name": "x",
-                "type": "MemberExpression",
-                "value": "self.scrollBox.scrollLeft"
-            }
-        },
-        "undocumented": true,
-        "name": "x",
-        "longname": "self.touchScrollStart.x",
-        "kind": "member",
-        "memberof": "self.touchScrollStart",
-        "scope": "static",
-        "___id": "T000002R002690",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                6349,
-                6376
-            ],
-            "filename": "touch.js",
-            "lineno": 131,
-            "columnno": 20,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036322",
-                "name": "y",
-                "type": "MemberExpression",
-                "value": "self.scrollBox.scrollTop"
-            }
-        },
-        "undocumented": true,
-        "name": "y",
-        "longname": "self.touchScrollStart.y",
-        "kind": "member",
-        "memberof": "self.touchScrollStart",
-        "scope": "static",
-        "___id": "T000002R002691",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                6398,
-                6418
-            ],
-            "filename": "touch.js",
-            "lineno": 132,
-            "columnno": 20,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036328",
-                "name": "t",
-                "type": "CallExpression",
-                "value": ""
-            }
-        },
-        "undocumented": true,
-        "name": "t",
-        "longname": "self.touchScrollStart.t",
-        "kind": "member",
-        "memberof": "self.touchScrollStart",
-        "scope": "static",
-        "___id": "T000002R002692",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                6454,
-                6706
-            ],
-            "filename": "touch.js",
-            "lineno": 134,
-            "columnno": 16,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036334",
-                "name": "self.touchDelta",
-                "type": "ObjectExpression",
-                "value": "{\"x\":0,\"y\":0,\"scrollLeft\":\"\",\"scrollTop\":\"\",\"t\":\"\"}",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "touchDelta",
-        "longname": "self.touchDelta",
-        "kind": "member",
-        "memberof": "self",
-        "scope": "static",
-        "___id": "T000002R002693",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                6494,
-                6498
-            ],
-            "filename": "touch.js",
-            "lineno": 135,
-            "columnno": 20,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036339",
-                "name": "x",
-                "type": "Literal",
-                "value": 0
-            }
-        },
-        "undocumented": true,
-        "name": "x",
-        "longname": "self.touchDelta.x",
-        "kind": "member",
-        "memberof": "self.touchDelta",
-        "scope": "static",
-        "___id": "T000002R002694",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                6520,
-                6524
-            ],
-            "filename": "touch.js",
-            "lineno": 136,
-            "columnno": 20,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036341",
-                "name": "y",
-                "type": "Literal",
-                "value": 0
-            }
-        },
-        "undocumented": true,
-        "name": "y",
-        "longname": "self.touchDelta.y",
-        "kind": "member",
-        "memberof": "self.touchDelta",
-        "scope": "static",
-        "___id": "T000002R002695",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                6546,
-                6583
-            ],
-            "filename": "touch.js",
-            "lineno": 137,
-            "columnno": 20,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036343",
-                "name": "scrollLeft",
-                "type": "MemberExpression",
-                "value": "self.scrollBox.scrollLeft"
-            }
-        },
-        "undocumented": true,
-        "name": "scrollLeft",
-        "longname": "self.touchDelta.scrollLeft",
-        "kind": "member",
-        "memberof": "self.touchDelta",
-        "scope": "static",
-        "___id": "T000002R002696",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                6605,
-                6640
-            ],
-            "filename": "touch.js",
-            "lineno": 138,
-            "columnno": 20,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036349",
-                "name": "scrollTop",
-                "type": "MemberExpression",
-                "value": "self.scrollBox.scrollTop"
-            }
-        },
-        "undocumented": true,
-        "name": "scrollTop",
-        "longname": "self.touchDelta.scrollTop",
-        "kind": "member",
-        "memberof": "self.touchDelta",
-        "scope": "static",
-        "___id": "T000002R002697",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                6662,
-                6688
-            ],
-            "filename": "touch.js",
-            "lineno": 139,
-            "columnno": 20,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036355",
-                "name": "t",
-                "type": "MemberExpression",
-                "value": "self.touchScrollStart.t"
-            }
-        },
-        "undocumented": true,
-        "name": "t",
-        "longname": "self.touchDelta.t",
-        "kind": "member",
-        "memberof": "self.touchDelta",
-        "scope": "static",
-        "___id": "T000002R002698",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                6724,
-                6886
-            ],
-            "filename": "touch.js",
-            "lineno": 141,
-            "columnno": 16,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036362",
-                "name": "self.touchSigma",
-                "type": "ObjectExpression",
-                "value": "{\"x\":\"\",\"y\":\"\",\"t\":\"\"}",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "touchSigma",
-        "longname": "self.touchSigma",
-        "kind": "member",
-        "memberof": "self",
-        "scope": "static",
-        "___id": "T000002R002699",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                6764,
-                6784
-            ],
-            "filename": "touch.js",
-            "lineno": 142,
-            "columnno": 20,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036367",
-                "name": "x",
-                "type": "MemberExpression",
-                "value": "self.touchDelta.x"
-            }
-        },
-        "undocumented": true,
-        "name": "x",
-        "longname": "self.touchSigma.x",
-        "kind": "member",
-        "memberof": "self.touchSigma",
-        "scope": "static",
-        "___id": "T000002R002700",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                6806,
-                6826
-            ],
-            "filename": "touch.js",
-            "lineno": 143,
-            "columnno": 20,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036373",
-                "name": "y",
-                "type": "MemberExpression",
-                "value": "self.touchDelta.y"
-            }
-        },
-        "undocumented": true,
-        "name": "y",
-        "longname": "self.touchSigma.y",
-        "kind": "member",
-        "memberof": "self.touchSigma",
-        "scope": "static",
-        "___id": "T000002R002701",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                6848,
-                6868
-            ],
-            "filename": "touch.js",
-            "lineno": 144,
-            "columnno": 20,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036379",
-                "name": "t",
-                "type": "MemberExpression",
-                "value": "self.touchDelta.t"
-            }
-        },
-        "undocumented": true,
-        "name": "t",
-        "longname": "self.touchSigma.t",
-        "kind": "member",
-        "memberof": "self.touchSigma",
-        "scope": "static",
-        "___id": "T000002R002702",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                6904,
-                7071
-            ],
-            "filename": "touch.js",
-            "lineno": 146,
-            "columnno": 16,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036386",
-                "name": "self.touchSigmaTimed",
-                "type": "ObjectExpression",
-                "value": "{\"x\":\"\",\"y\":\"\",\"t\":\"\"}",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "touchSigmaTimed",
-        "longname": "self.touchSigmaTimed",
-        "kind": "member",
-        "memberof": "self",
-        "scope": "static",
-        "___id": "T000002R002703",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                6949,
-                6969
-            ],
-            "filename": "touch.js",
-            "lineno": 147,
-            "columnno": 20,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036391",
-                "name": "x",
-                "type": "MemberExpression",
-                "value": "self.touchDelta.x"
-            }
-        },
-        "undocumented": true,
-        "name": "x",
-        "longname": "self.touchSigmaTimed.x",
-        "kind": "member",
-        "memberof": "self.touchSigmaTimed",
-        "scope": "static",
-        "___id": "T000002R002704",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                6991,
-                7011
-            ],
-            "filename": "touch.js",
-            "lineno": 148,
-            "columnno": 20,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036397",
-                "name": "y",
-                "type": "MemberExpression",
-                "value": "self.touchDelta.y"
-            }
-        },
-        "undocumented": true,
-        "name": "y",
-        "longname": "self.touchSigmaTimed.y",
-        "kind": "member",
-        "memberof": "self.touchSigmaTimed",
-        "scope": "static",
-        "___id": "T000002R002705",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                7033,
-                7053
-            ],
-            "filename": "touch.js",
-            "lineno": 149,
-            "columnno": 20,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036403",
-                "name": "t",
-                "type": "MemberExpression",
-                "value": "self.touchDelta.t"
-            }
-        },
-        "undocumented": true,
-        "name": "t",
-        "longname": "self.touchSigmaTimed.t",
-        "kind": "member",
-        "memberof": "self.touchSigmaTimed",
-        "scope": "static",
-        "___id": "T000002R002706",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                7089,
-                7262
-            ],
-            "filename": "touch.js",
-            "lineno": 151,
-            "columnno": 16,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036410",
-                "name": "self.touchContextTimeout",
-                "type": "CallExpression",
-                "value": "",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "touchContextTimeout",
-        "longname": "self.touchContextTimeout",
-        "kind": "member",
-        "memberof": "self",
-        "scope": "static",
-        "___id": "T000002R002707",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                7280,
-                7354
-            ],
-            "filename": "touch.js",
-            "lineno": 154,
-            "columnno": 16,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036433",
-                "name": "self.calculatePPSTimer",
-                "type": "CallExpression",
-                "value": "",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "calculatePPSTimer",
-        "longname": "self.calculatePPSTimer",
-        "kind": "member",
-        "memberof": "self",
-        "scope": "static",
-        "___id": "T000002R002708",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                7372,
-                7450
-            ],
-            "filename": "touch.js",
-            "lineno": 155,
-            "columnno": 16,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036444",
+                "id": "astnode100036216",
                 "name": "self.startingCell",
                 "type": "CallExpression",
                 "value": "",
@@ -82629,6 +81890,716 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
+        "___id": "T000002R002683",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                5778,
+                5792
+            ],
+            "filename": "touch.js",
+            "lineno": 118,
+            "columnno": 50,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036242",
+                "name": "NativeEvent",
+                "type": "Identifier",
+                "value": "e"
+            }
+        },
+        "undocumented": true,
+        "name": "NativeEvent",
+        "longname": "NativeEvent",
+        "kind": "member",
+        "scope": "global",
+        "___id": "T000002R002684",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                5794,
+                5817
+            ],
+            "filename": "touch.js",
+            "lineno": 118,
+            "columnno": 66,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036244",
+                "name": "cell",
+                "type": "MemberExpression",
+                "value": "self.startingCell"
+            }
+        },
+        "undocumented": true,
+        "name": "cell",
+        "longname": "cell",
+        "kind": "member",
+        "scope": "global",
+        "___id": "T000002R002685",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                5987,
+                6011
+            ],
+            "filename": "touch.js",
+            "lineno": 122,
+            "columnno": 12,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036268",
+                "name": "self.touchStartEvent",
+                "type": "Identifier",
+                "value": "e",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "touchStartEvent",
+        "longname": "self.touchStartEvent",
+        "kind": "member",
+        "memberof": "self",
+        "scope": "static",
+        "___id": "T000002R002686",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                6025,
+                6050
+            ],
+            "filename": "touch.js",
+            "lineno": 123,
+            "columnno": 12,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036274",
+                "name": "self.stopAnimation",
+                "type": "Literal",
+                "value": true,
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "stopAnimation",
+        "longname": "self.stopAnimation",
+        "kind": "member",
+        "memberof": "self",
+        "scope": "static",
+        "___id": "T000002R002687",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                6064,
+                6088
+            ],
+            "filename": "touch.js",
+            "lineno": 124,
+            "columnno": 12,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036280",
+                "name": "self.animationFrames",
+                "type": "Literal",
+                "value": 0,
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "animationFrames",
+        "longname": "self.animationFrames",
+        "kind": "member",
+        "memberof": "self",
+        "scope": "static",
+        "___id": "T000002R002688",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                6261,
+                6281
+            ],
+            "filename": "touch.js",
+            "lineno": 128,
+            "columnno": 16,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036317",
+                "name": "self.touchLength",
+                "type": "Literal",
+                "value": 1,
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "touchLength",
+        "longname": "self.touchLength",
+        "kind": "member",
+        "memberof": "self",
+        "scope": "static",
+        "___id": "T000002R002689",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                6299,
+                6352
+            ],
+            "filename": "touch.js",
+            "lineno": 129,
+            "columnno": 16,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036323",
+                "name": "self.touchStart",
+                "type": "LogicalExpression",
+                "value": "",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "touchStart",
+        "longname": "self.touchStart",
+        "kind": "member",
+        "memberof": "self",
+        "scope": "static",
+        "___id": "T000002R002690",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                6370,
+                6553
+            ],
+            "filename": "touch.js",
+            "lineno": 130,
+            "columnno": 16,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036335",
+                "name": "self.touchScrollStart",
+                "type": "ObjectExpression",
+                "value": "{\"x\":\"\",\"y\":\"\",\"t\":\"\"}",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "touchScrollStart",
+        "longname": "self.touchScrollStart",
+        "kind": "member",
+        "memberof": "self",
+        "scope": "static",
+        "___id": "T000002R002691",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                6416,
+                6444
+            ],
+            "filename": "touch.js",
+            "lineno": 131,
+            "columnno": 20,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036340",
+                "name": "x",
+                "type": "MemberExpression",
+                "value": "self.scrollBox.scrollLeft"
+            }
+        },
+        "undocumented": true,
+        "name": "x",
+        "longname": "self.touchScrollStart.x",
+        "kind": "member",
+        "memberof": "self.touchScrollStart",
+        "scope": "static",
+        "___id": "T000002R002692",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                6466,
+                6493
+            ],
+            "filename": "touch.js",
+            "lineno": 132,
+            "columnno": 20,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036346",
+                "name": "y",
+                "type": "MemberExpression",
+                "value": "self.scrollBox.scrollTop"
+            }
+        },
+        "undocumented": true,
+        "name": "y",
+        "longname": "self.touchScrollStart.y",
+        "kind": "member",
+        "memberof": "self.touchScrollStart",
+        "scope": "static",
+        "___id": "T000002R002693",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                6515,
+                6535
+            ],
+            "filename": "touch.js",
+            "lineno": 133,
+            "columnno": 20,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036352",
+                "name": "t",
+                "type": "CallExpression",
+                "value": ""
+            }
+        },
+        "undocumented": true,
+        "name": "t",
+        "longname": "self.touchScrollStart.t",
+        "kind": "member",
+        "memberof": "self.touchScrollStart",
+        "scope": "static",
+        "___id": "T000002R002694",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                6571,
+                6823
+            ],
+            "filename": "touch.js",
+            "lineno": 135,
+            "columnno": 16,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036358",
+                "name": "self.touchDelta",
+                "type": "ObjectExpression",
+                "value": "{\"x\":0,\"y\":0,\"scrollLeft\":\"\",\"scrollTop\":\"\",\"t\":\"\"}",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "touchDelta",
+        "longname": "self.touchDelta",
+        "kind": "member",
+        "memberof": "self",
+        "scope": "static",
+        "___id": "T000002R002695",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                6611,
+                6615
+            ],
+            "filename": "touch.js",
+            "lineno": 136,
+            "columnno": 20,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036363",
+                "name": "x",
+                "type": "Literal",
+                "value": 0
+            }
+        },
+        "undocumented": true,
+        "name": "x",
+        "longname": "self.touchDelta.x",
+        "kind": "member",
+        "memberof": "self.touchDelta",
+        "scope": "static",
+        "___id": "T000002R002696",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                6637,
+                6641
+            ],
+            "filename": "touch.js",
+            "lineno": 137,
+            "columnno": 20,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036365",
+                "name": "y",
+                "type": "Literal",
+                "value": 0
+            }
+        },
+        "undocumented": true,
+        "name": "y",
+        "longname": "self.touchDelta.y",
+        "kind": "member",
+        "memberof": "self.touchDelta",
+        "scope": "static",
+        "___id": "T000002R002697",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                6663,
+                6700
+            ],
+            "filename": "touch.js",
+            "lineno": 138,
+            "columnno": 20,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036367",
+                "name": "scrollLeft",
+                "type": "MemberExpression",
+                "value": "self.scrollBox.scrollLeft"
+            }
+        },
+        "undocumented": true,
+        "name": "scrollLeft",
+        "longname": "self.touchDelta.scrollLeft",
+        "kind": "member",
+        "memberof": "self.touchDelta",
+        "scope": "static",
+        "___id": "T000002R002698",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                6722,
+                6757
+            ],
+            "filename": "touch.js",
+            "lineno": 139,
+            "columnno": 20,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036373",
+                "name": "scrollTop",
+                "type": "MemberExpression",
+                "value": "self.scrollBox.scrollTop"
+            }
+        },
+        "undocumented": true,
+        "name": "scrollTop",
+        "longname": "self.touchDelta.scrollTop",
+        "kind": "member",
+        "memberof": "self.touchDelta",
+        "scope": "static",
+        "___id": "T000002R002699",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                6779,
+                6805
+            ],
+            "filename": "touch.js",
+            "lineno": 140,
+            "columnno": 20,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036379",
+                "name": "t",
+                "type": "MemberExpression",
+                "value": "self.touchScrollStart.t"
+            }
+        },
+        "undocumented": true,
+        "name": "t",
+        "longname": "self.touchDelta.t",
+        "kind": "member",
+        "memberof": "self.touchDelta",
+        "scope": "static",
+        "___id": "T000002R002700",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                6841,
+                7003
+            ],
+            "filename": "touch.js",
+            "lineno": 142,
+            "columnno": 16,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036386",
+                "name": "self.touchSigma",
+                "type": "ObjectExpression",
+                "value": "{\"x\":\"\",\"y\":\"\",\"t\":\"\"}",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "touchSigma",
+        "longname": "self.touchSigma",
+        "kind": "member",
+        "memberof": "self",
+        "scope": "static",
+        "___id": "T000002R002701",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                6881,
+                6901
+            ],
+            "filename": "touch.js",
+            "lineno": 143,
+            "columnno": 20,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036391",
+                "name": "x",
+                "type": "MemberExpression",
+                "value": "self.touchDelta.x"
+            }
+        },
+        "undocumented": true,
+        "name": "x",
+        "longname": "self.touchSigma.x",
+        "kind": "member",
+        "memberof": "self.touchSigma",
+        "scope": "static",
+        "___id": "T000002R002702",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                6923,
+                6943
+            ],
+            "filename": "touch.js",
+            "lineno": 144,
+            "columnno": 20,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036397",
+                "name": "y",
+                "type": "MemberExpression",
+                "value": "self.touchDelta.y"
+            }
+        },
+        "undocumented": true,
+        "name": "y",
+        "longname": "self.touchSigma.y",
+        "kind": "member",
+        "memberof": "self.touchSigma",
+        "scope": "static",
+        "___id": "T000002R002703",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                6965,
+                6985
+            ],
+            "filename": "touch.js",
+            "lineno": 145,
+            "columnno": 20,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036403",
+                "name": "t",
+                "type": "MemberExpression",
+                "value": "self.touchDelta.t"
+            }
+        },
+        "undocumented": true,
+        "name": "t",
+        "longname": "self.touchSigma.t",
+        "kind": "member",
+        "memberof": "self.touchSigma",
+        "scope": "static",
+        "___id": "T000002R002704",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                7021,
+                7188
+            ],
+            "filename": "touch.js",
+            "lineno": 147,
+            "columnno": 16,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036410",
+                "name": "self.touchSigmaTimed",
+                "type": "ObjectExpression",
+                "value": "{\"x\":\"\",\"y\":\"\",\"t\":\"\"}",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "touchSigmaTimed",
+        "longname": "self.touchSigmaTimed",
+        "kind": "member",
+        "memberof": "self",
+        "scope": "static",
+        "___id": "T000002R002705",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                7066,
+                7086
+            ],
+            "filename": "touch.js",
+            "lineno": 148,
+            "columnno": 20,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036415",
+                "name": "x",
+                "type": "MemberExpression",
+                "value": "self.touchDelta.x"
+            }
+        },
+        "undocumented": true,
+        "name": "x",
+        "longname": "self.touchSigmaTimed.x",
+        "kind": "member",
+        "memberof": "self.touchSigmaTimed",
+        "scope": "static",
+        "___id": "T000002R002706",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                7108,
+                7128
+            ],
+            "filename": "touch.js",
+            "lineno": 149,
+            "columnno": 20,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036421",
+                "name": "y",
+                "type": "MemberExpression",
+                "value": "self.touchDelta.y"
+            }
+        },
+        "undocumented": true,
+        "name": "y",
+        "longname": "self.touchSigmaTimed.y",
+        "kind": "member",
+        "memberof": "self.touchSigmaTimed",
+        "scope": "static",
+        "___id": "T000002R002707",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                7150,
+                7170
+            ],
+            "filename": "touch.js",
+            "lineno": 150,
+            "columnno": 20,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036427",
+                "name": "t",
+                "type": "MemberExpression",
+                "value": "self.touchDelta.t"
+            }
+        },
+        "undocumented": true,
+        "name": "t",
+        "longname": "self.touchSigmaTimed.t",
+        "kind": "member",
+        "memberof": "self.touchSigmaTimed",
+        "scope": "static",
+        "___id": "T000002R002708",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                7206,
+                7379
+            ],
+            "filename": "touch.js",
+            "lineno": 152,
+            "columnno": 16,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036434",
+                "name": "self.touchContextTimeout",
+                "type": "CallExpression",
+                "value": "",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "touchContextTimeout",
+        "longname": "self.touchContextTimeout",
+        "kind": "member",
+        "memberof": "self",
+        "scope": "static",
         "___id": "T000002R002709",
         "___s": true
     },
@@ -82636,24 +82607,24 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7608,
-                7629
+                7397,
+                7471
             ],
             "filename": "touch.js",
-            "lineno": 157,
-            "columnno": 20,
+            "lineno": 155,
+            "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036490",
-                "name": "self.hasFocus",
-                "type": "Literal",
-                "value": false,
+                "id": "astnode100036457",
+                "name": "self.calculatePPSTimer",
+                "type": "CallExpression",
+                "value": "",
                 "paramnames": []
             }
         },
         "undocumented": true,
-        "name": "hasFocus",
-        "longname": "self.hasFocus",
+        "name": "calculatePPSTimer",
+        "longname": "self.calculatePPSTimer",
         "kind": "member",
         "memberof": "self",
         "scope": "static",
@@ -82664,18 +82635,18 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7693,
-                7713
+                7629,
+                7650
             ],
             "filename": "touch.js",
-            "lineno": 160,
-            "columnno": 16,
+            "lineno": 157,
+            "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036497",
+                "id": "astnode100036494",
                 "name": "self.hasFocus",
                 "type": "Literal",
-                "value": true,
+                "value": false,
                 "paramnames": []
             }
         },
@@ -82692,15 +82663,43 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7892,
-                7923
+                7714,
+                7734
+            ],
+            "filename": "touch.js",
+            "lineno": 160,
+            "columnno": 16,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036501",
+                "name": "self.hasFocus",
+                "type": "Literal",
+                "value": true,
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "hasFocus",
+        "longname": "self.hasFocus",
+        "kind": "member",
+        "memberof": "self",
+        "scope": "static",
+        "___id": "T000002R002712",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                7913,
+                7944
             ],
             "filename": "touch.js",
             "lineno": 164,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036522",
+                "id": "astnode100036526",
                 "name": "top",
                 "type": "MemberExpression",
                 "value": "self.startingCell.rowIndex"
@@ -82711,22 +82710,22 @@ window.reflection = [
         "longname": "top",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002712",
+        "___id": "T000002R002713",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                7953,
-                7987
+                7974,
+                8008
             ],
             "filename": "touch.js",
             "lineno": 165,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036528",
+                "id": "astnode100036532",
                 "name": "bottom",
                 "type": "MemberExpression",
                 "value": "self.startingCell.rowIndex"
@@ -82737,22 +82736,22 @@ window.reflection = [
         "longname": "bottom",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002713",
+        "___id": "T000002R002714",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                8017,
-                8024
+                8038,
+                8045
             ],
             "filename": "touch.js",
             "lineno": 166,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036534",
+                "id": "astnode100036538",
                 "name": "left",
                 "type": "Literal",
                 "value": 0
@@ -82763,22 +82762,22 @@ window.reflection = [
         "longname": "left",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002714",
+        "___id": "T000002R002715",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                8054,
-                8095
+                8075,
+                8116
             ],
             "filename": "touch.js",
             "lineno": 167,
             "columnno": 28,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036536",
+                "id": "astnode100036540",
                 "name": "right",
                 "type": "BinaryExpression",
                 "value": ""
@@ -82789,34 +82788,6 @@ window.reflection = [
         "longname": "right",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002715",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                8431,
-                8499
-            ],
-            "filename": "touch.js",
-            "lineno": 173,
-            "columnno": 32,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036581",
-                "name": "self.orderDirection",
-                "type": "ConditionalExpression",
-                "value": "",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "orderDirection",
-        "longname": "self.orderDirection",
-        "kind": "member",
-        "memberof": "self",
-        "scope": "static",
         "___id": "T000002R002716",
         "___s": true
     },
@@ -82824,18 +82795,18 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                8570,
-                8597
+                8452,
+                8520
             ],
             "filename": "touch.js",
-            "lineno": 175,
+            "lineno": 173,
             "columnno": 32,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036595",
+                "id": "astnode100036585",
                 "name": "self.orderDirection",
-                "type": "Literal",
-                "value": "asc",
+                "type": "ConditionalExpression",
+                "value": "",
                 "paramnames": []
             }
         },
@@ -82852,15 +82823,43 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                8911,
-                8917
+                8591,
+                8618
+            ],
+            "filename": "touch.js",
+            "lineno": 175,
+            "columnno": 32,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036599",
+                "name": "self.orderDirection",
+                "type": "Literal",
+                "value": "asc",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "orderDirection",
+        "longname": "self.orderDirection",
+        "kind": "member",
+        "memberof": "self",
+        "scope": "static",
+        "___id": "T000002R002718",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                8932,
+                8938
             ],
             "filename": "touch.js",
             "lineno": 181,
             "columnno": 32,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036630",
+                "id": "astnode100036634",
                 "name": "top",
                 "type": "Literal",
                 "value": 0
@@ -82871,22 +82870,22 @@ window.reflection = [
         "longname": "top",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002718",
+        "___id": "T000002R002719",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                8951,
-                8979
+                8972,
+                9000
             ],
             "filename": "touch.js",
             "lineno": 182,
             "columnno": 32,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036632",
+                "id": "astnode100036636",
                 "name": "bottom",
                 "type": "BinaryExpression",
                 "value": ""
@@ -82897,22 +82896,22 @@ window.reflection = [
         "longname": "bottom",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002719",
+        "___id": "T000002R002720",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9013,
-                9048
+                9034,
+                9069
             ],
             "filename": "touch.js",
             "lineno": 183,
             "columnno": 32,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036640",
+                "id": "astnode100036644",
                 "name": "left",
                 "type": "MemberExpression",
                 "value": "self.startingCell.columnIndex"
@@ -82923,22 +82922,22 @@ window.reflection = [
         "longname": "left",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002720",
+        "___id": "T000002R002721",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9082,
-                9118
+                9103,
+                9139
             ],
             "filename": "touch.js",
             "lineno": 184,
             "columnno": 32,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036646",
+                "id": "astnode100036650",
                 "name": "right",
                 "type": "MemberExpression",
                 "value": "self.startingCell.columnIndex"
@@ -82949,22 +82948,22 @@ window.reflection = [
         "longname": "right",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002721",
+        "___id": "T000002R002722",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9468,
-                9482
+                9489,
+                9503
             ],
             "filename": "touch.js",
             "lineno": 194,
             "columnno": 73,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036683",
+                "id": "astnode100036687",
                 "name": "passive",
                 "type": "Literal",
                 "value": false
@@ -82975,22 +82974,22 @@ window.reflection = [
         "longname": "passive",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002722",
+        "___id": "T000002R002723",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9696,
-                11337
+                9717,
+                11358
             ],
             "filename": "touch.js",
             "lineno": 199,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036716",
+                "id": "astnode100036720",
                 "name": "self.touchSelect",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -83013,22 +83012,22 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002723",
+        "___id": "T000002R002724",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9848,
-                9874
+                9869,
+                9895
             ],
             "filename": "touch.js",
             "lineno": 201,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036739",
+                "id": "astnode100036743",
                 "name": "self.touchSelecting",
                 "type": "Literal",
                 "value": true,
@@ -83041,22 +83040,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002724",
+        "___id": "T000002R002725",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9892,
-                9926
+                9913,
+                9947
             ],
             "filename": "touch.js",
             "lineno": 202,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036745",
+                "id": "astnode100036749",
                 "name": "bounds",
                 "type": "CallExpression",
                 "value": ""
@@ -83069,22 +83068,22 @@ window.reflection = [
         "memberof": "self.touchSelect",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002725",
+        "___id": "T000002R002726",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                10107,
-                10136
+                10128,
+                10157
             ],
             "filename": "touch.js",
             "lineno": 206,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036773",
+                "id": "astnode100036777",
                 "name": "bounds.bottom",
                 "type": "MemberExpression",
                 "funcscope": "self.touchSelect",
@@ -83095,35 +83094,6 @@ window.reflection = [
         "undocumented": true,
         "name": "bottom",
         "longname": "self.touchSelect~bounds.bottom",
-        "kind": "member",
-        "memberof": "self.touchSelect~bounds",
-        "scope": "static",
-        "___id": "T000002R002726",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                10154,
-                10184
-            ],
-            "filename": "touch.js",
-            "lineno": 207,
-            "columnno": 16,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036781",
-                "name": "bounds.left",
-                "type": "MemberExpression",
-                "funcscope": "self.touchSelect",
-                "value": "cell.columnIndex",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "left",
-        "longname": "self.touchSelect~bounds.left",
         "kind": "member",
         "memberof": "self.touchSelect~bounds",
         "scope": "static",
@@ -83134,44 +83104,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                10375,
-                10401
+                10175,
+                10205
             ],
             "filename": "touch.js",
-            "lineno": 211,
+            "lineno": 207,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036810",
-                "name": "bounds.top",
-                "type": "MemberExpression",
-                "funcscope": "self.touchSelect",
-                "value": "cell.rowIndex",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "top",
-        "longname": "self.touchSelect~bounds.top",
-        "kind": "member",
-        "memberof": "self.touchSelect~bounds",
-        "scope": "static",
-        "___id": "T000002R002728",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                10419,
-                10449
-            ],
-            "filename": "touch.js",
-            "lineno": 212,
-            "columnno": 16,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036818",
+                "id": "astnode100036785",
                 "name": "bounds.left",
                 "type": "MemberExpression",
                 "funcscope": "self.touchSelect",
@@ -83185,22 +83126,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSelect~bounds",
         "scope": "static",
-        "___id": "T000002R002729",
+        "___id": "T000002R002728",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                10639,
-                10665
+                10396,
+                10422
             ],
             "filename": "touch.js",
-            "lineno": 216,
+            "lineno": 211,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036847",
+                "id": "astnode100036814",
                 "name": "bounds.top",
                 "type": "MemberExpression",
                 "funcscope": "self.touchSelect",
@@ -83214,6 +83155,35 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSelect~bounds",
         "scope": "static",
+        "___id": "T000002R002729",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                10440,
+                10470
+            ],
+            "filename": "touch.js",
+            "lineno": 212,
+            "columnno": 16,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036822",
+                "name": "bounds.left",
+                "type": "MemberExpression",
+                "funcscope": "self.touchSelect",
+                "value": "cell.columnIndex",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "left",
+        "longname": "self.touchSelect~bounds.left",
+        "kind": "member",
+        "memberof": "self.touchSelect~bounds",
+        "scope": "static",
         "___id": "T000002R002730",
         "___s": true
     },
@@ -83221,15 +83191,44 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                10683,
-                10714
+                10660,
+                10686
+            ],
+            "filename": "touch.js",
+            "lineno": 216,
+            "columnno": 16,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036851",
+                "name": "bounds.top",
+                "type": "MemberExpression",
+                "funcscope": "self.touchSelect",
+                "value": "cell.rowIndex",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "top",
+        "longname": "self.touchSelect~bounds.top",
+        "kind": "member",
+        "memberof": "self.touchSelect~bounds",
+        "scope": "static",
+        "___id": "T000002R002731",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                10704,
+                10735
             ],
             "filename": "touch.js",
             "lineno": 217,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036855",
+                "id": "astnode100036859",
                 "name": "bounds.right",
                 "type": "MemberExpression",
                 "funcscope": "self.touchSelect",
@@ -83243,22 +83242,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSelect~bounds",
         "scope": "static",
-        "___id": "T000002R002731",
+        "___id": "T000002R002732",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                10901,
-                10930
+                10922,
+                10951
             ],
             "filename": "touch.js",
             "lineno": 221,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036884",
+                "id": "astnode100036888",
                 "name": "bounds.bottom",
                 "type": "MemberExpression",
                 "funcscope": "self.touchSelect",
@@ -83272,22 +83271,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSelect~bounds",
         "scope": "static",
-        "___id": "T000002R002732",
+        "___id": "T000002R002733",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                10948,
-                10979
+                10969,
+                11000
             ],
             "filename": "touch.js",
             "lineno": 222,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036892",
+                "id": "astnode100036896",
                 "name": "bounds.right",
                 "type": "MemberExpression",
                 "funcscope": "self.touchSelect",
@@ -83301,22 +83300,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSelect~bounds",
         "scope": "static",
-        "___id": "T000002R002733",
+        "___id": "T000002R002734",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11094,
-                11109
+                11115,
+                11130
             ],
             "filename": "touch.js",
             "lineno": 225,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036916",
+                "id": "astnode100036920",
                 "name": "bounds.left",
                 "type": "Literal",
                 "funcscope": "self.touchSelect",
@@ -83330,22 +83329,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSelect~bounds",
         "scope": "static",
-        "___id": "T000002R002734",
+        "___id": "T000002R002735",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11127,
-                11169
+                11148,
+                11190
             ],
             "filename": "touch.js",
             "lineno": 226,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036922",
+                "id": "astnode100036926",
                 "name": "bounds.right",
                 "type": "BinaryExpression",
                 "funcscope": "self.touchSelect",
@@ -83359,22 +83358,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSelect~bounds",
         "scope": "static",
-        "___id": "T000002R002735",
+        "___id": "T000002R002736",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11208,
-                11246
+                11229,
+                11267
             ],
             "filename": "touch.js",
             "lineno": 228,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036936",
+                "id": "astnode100036940",
                 "name": "bounds.left",
                 "type": "CallExpression",
                 "funcscope": "self.touchSelect",
@@ -83388,22 +83387,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSelect~bounds",
         "scope": "static",
-        "___id": "T000002R002736",
+        "___id": "T000002R002737",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11347,
-                15886
+                11368,
+                15907
             ],
             "filename": "touch.js",
             "lineno": 233,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036961",
+                "id": "astnode100036965",
                 "name": "self.touchmove",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -83444,32 +83443,6 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002737",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                11395,
-                11397
-            ],
-            "filename": "touch.js",
-            "lineno": 234,
-            "columnno": 16,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100036969",
-                "name": "ch"
-            }
-        },
-        "undocumented": true,
-        "name": "ch",
-        "longname": "self.touchmove~ch",
-        "kind": "member",
-        "memberof": "self.touchmove",
-        "scope": "inner",
-        "params": [],
         "___id": "T000002R002738",
         "___s": true
     },
@@ -83477,21 +83450,21 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11399,
-                11401
+                11416,
+                11418
             ],
             "filename": "touch.js",
             "lineno": 234,
-            "columnno": 20,
+            "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036971",
-                "name": "rw"
+                "id": "astnode100036973",
+                "name": "ch"
             }
         },
         "undocumented": true,
-        "name": "rw",
-        "longname": "self.touchmove~rw",
+        "name": "ch",
+        "longname": "self.touchmove~ch",
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
@@ -83503,21 +83476,21 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11403,
-                11414
+                11420,
+                11422
             ],
             "filename": "touch.js",
             "lineno": 234,
-            "columnno": 24,
+            "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036973",
-                "name": "rScrollZone"
+                "id": "astnode100036975",
+                "name": "rw"
             }
         },
         "undocumented": true,
-        "name": "rScrollZone",
-        "longname": "self.touchmove~rScrollZone",
+        "name": "rw",
+        "longname": "self.touchmove~rw",
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
@@ -83529,21 +83502,21 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11416,
-                11427
+                11424,
+                11435
             ],
             "filename": "touch.js",
             "lineno": 234,
-            "columnno": 37,
+            "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036975",
-                "name": "lScrollZone"
+                "id": "astnode100036977",
+                "name": "rScrollZone"
             }
         },
         "undocumented": true,
-        "name": "lScrollZone",
-        "longname": "self.touchmove~lScrollZone",
+        "name": "rScrollZone",
+        "longname": "self.touchmove~rScrollZone",
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
@@ -83555,21 +83528,21 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11429,
-                11440
+                11437,
+                11448
             ],
             "filename": "touch.js",
             "lineno": 234,
-            "columnno": 50,
+            "columnno": 37,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036977",
-                "name": "bScrollZone"
+                "id": "astnode100036979",
+                "name": "lScrollZone"
             }
         },
         "undocumented": true,
-        "name": "bScrollZone",
-        "longname": "self.touchmove~bScrollZone",
+        "name": "lScrollZone",
+        "longname": "self.touchmove~lScrollZone",
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
@@ -83581,21 +83554,21 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11442,
-                11453
+                11450,
+                11461
             ],
             "filename": "touch.js",
             "lineno": 234,
-            "columnno": 63,
+            "columnno": 50,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036979",
-                "name": "tScrollZone"
+                "id": "astnode100036981",
+                "name": "bScrollZone"
             }
         },
         "undocumented": true,
-        "name": "tScrollZone",
-        "longname": "self.touchmove~tScrollZone",
+        "name": "bScrollZone",
+        "longname": "self.touchmove~bScrollZone",
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
@@ -83607,21 +83580,21 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11455,
-                11458
+                11463,
+                11474
             ],
             "filename": "touch.js",
             "lineno": 234,
-            "columnno": 76,
+            "columnno": 63,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036981",
-                "name": "sbw"
+                "id": "astnode100036983",
+                "name": "tScrollZone"
             }
         },
         "undocumented": true,
-        "name": "sbw",
-        "longname": "self.touchmove~sbw",
+        "name": "tScrollZone",
+        "longname": "self.touchmove~tScrollZone",
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
@@ -83633,21 +83606,21 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11460,
-                11462
+                11476,
+                11479
             ],
             "filename": "touch.js",
             "lineno": 234,
-            "columnno": 81,
+            "columnno": 76,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036983",
-                "name": "t1"
+                "id": "astnode100036985",
+                "name": "sbw"
             }
         },
         "undocumented": true,
-        "name": "t1",
-        "longname": "self.touchmove~t1",
+        "name": "sbw",
+        "longname": "self.touchmove~sbw",
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
@@ -83659,21 +83632,21 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11464,
-                11466
+                11481,
+                11483
             ],
             "filename": "touch.js",
             "lineno": 234,
-            "columnno": 85,
+            "columnno": 81,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036985",
-                "name": "t2"
+                "id": "astnode100036987",
+                "name": "t1"
             }
         },
         "undocumented": true,
-        "name": "t2",
-        "longname": "self.touchmove~t2",
+        "name": "t1",
+        "longname": "self.touchmove~t1",
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
@@ -83685,15 +83658,41 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11517,
-                11531
+                11485,
+                11487
+            ],
+            "filename": "touch.js",
+            "lineno": 234,
+            "columnno": 85,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100036989",
+                "name": "t2"
+            }
+        },
+        "undocumented": true,
+        "name": "t2",
+        "longname": "self.touchmove~t2",
+        "kind": "member",
+        "memberof": "self.touchmove",
+        "scope": "inner",
+        "params": [],
+        "___id": "T000002R002747",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                11538,
+                11552
             ],
             "filename": "touch.js",
             "lineno": 235,
             "columnno": 49,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036994",
+                "id": "astnode100036998",
                 "name": "NativeEvent",
                 "type": "Identifier",
                 "value": "e"
@@ -83704,22 +83703,22 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002747",
+        "___id": "T000002R002748",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11648,
-                11688
+                11669,
+                11709
             ],
             "filename": "touch.js",
             "lineno": 238,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037010",
+                "id": "astnode100037014",
                 "name": "self.touchPosition",
                 "type": "CallExpression",
                 "value": "",
@@ -83732,22 +83731,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002748",
+        "___id": "T000002R002749",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11759,
-                11803
+                11780,
+                11824
             ],
             "filename": "touch.js",
             "lineno": 241,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037027",
+                "id": "astnode100037031",
                 "name": "self.touchPosition1",
                 "type": "CallExpression",
                 "value": "",
@@ -83760,22 +83759,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002749",
+        "___id": "T000002R002750",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12101,
-                12126
+                12122,
+                12147
             ],
             "filename": "touch.js",
             "lineno": 247,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037088",
+                "id": "astnode100037092",
                 "name": "t1",
                 "type": "MemberExpression",
                 "funcscope": "self.touchmove",
@@ -83789,22 +83788,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
-        "___id": "T000002R002750",
+        "___id": "T000002R002751",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12144,
-                12170
+                12165,
+                12191
             ],
             "filename": "touch.js",
             "lineno": 248,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037096",
+                "id": "astnode100037100",
                 "name": "t2",
                 "type": "MemberExpression",
                 "funcscope": "self.touchmove",
@@ -83818,22 +83817,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
-        "___id": "T000002R002751",
+        "___id": "T000002R002752",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12236,
-                12275
+                12257,
+                12296
             ],
             "filename": "touch.js",
             "lineno": 250,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037110",
+                "id": "astnode100037114",
                 "name": "self.zoomDeltaStart",
                 "type": "CallExpression",
                 "value": "",
@@ -83846,22 +83845,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002752",
+        "___id": "T000002R002753",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12297,
-                12325
+                12318,
+                12346
             ],
             "filename": "touch.js",
             "lineno": 251,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037122",
+                "id": "astnode100037126",
                 "name": "self.startScale",
                 "type": "MemberExpression",
                 "value": "self.scale",
@@ -83874,22 +83873,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002753",
+        "___id": "T000002R002754",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12361,
-                12381
+                12382,
+                12402
             ],
             "filename": "touch.js",
             "lineno": 253,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037130",
+                "id": "astnode100037134",
                 "name": "self.touchLength",
                 "type": "Literal",
                 "value": 2,
@@ -83902,22 +83901,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002754",
+        "___id": "T000002R002755",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12399,
-                12456
+                12420,
+                12477
             ],
             "filename": "touch.js",
             "lineno": 254,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037136",
+                "id": "astnode100037140",
                 "name": "self.scaleDelta",
                 "type": "BinaryExpression",
                 "value": "",
@@ -83930,34 +83929,6 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002755",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                12474,
-                12561
-            ],
-            "filename": "touch.js",
-            "lineno": 255,
-            "columnno": 16,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100037152",
-                "name": "self.scale",
-                "type": "BinaryExpression",
-                "value": "",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "scale",
-        "longname": "self.scale",
-        "kind": "member",
-        "memberof": "self",
-        "scope": "static",
         "___id": "T000002R002756",
         "___s": true
     },
@@ -83965,17 +83936,17 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12579,
-                12682
+                12495,
+                12582
             ],
             "filename": "touch.js",
-            "lineno": 256,
+            "lineno": 255,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037170",
+                "id": "astnode100037156",
                 "name": "self.scale",
-                "type": "CallExpression",
+                "type": "BinaryExpression",
                 "value": "",
                 "paramnames": []
             }
@@ -83993,15 +83964,43 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12700,
-                12723
+                12600,
+                12703
+            ],
+            "filename": "touch.js",
+            "lineno": 256,
+            "columnno": 16,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100037174",
+                "name": "self.scale",
+                "type": "CallExpression",
+                "value": "",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "scale",
+        "longname": "self.scale",
+        "kind": "member",
+        "memberof": "self",
+        "scope": "static",
+        "___id": "T000002R002758",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                12721,
+                12744
             ],
             "filename": "touch.js",
             "lineno": 257,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037196",
+                "id": "astnode100037200",
                 "name": "self.zoomAltered",
                 "type": "Literal",
                 "value": true,
@@ -84014,22 +84013,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002758",
+        "___id": "T000002R002759",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12897,
-                12917
+                12918,
+                12938
             ],
             "filename": "touch.js",
             "lineno": 263,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037220",
+                "id": "astnode100037224",
                 "name": "self.touchLength",
                 "type": "Literal",
                 "value": 1,
@@ -84042,22 +84041,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002759",
+        "___id": "T000002R002760",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12931,
-                12993
+                12952,
+                13014
             ],
             "filename": "touch.js",
             "lineno": 264,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037226",
+                "id": "astnode100037230",
                 "name": "self.touchPosition",
                 "type": "LogicalExpression",
                 "value": "",
@@ -84070,22 +84069,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002760",
+        "___id": "T000002R002761",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13007,
-                13044
+                13028,
+                13065
             ],
             "filename": "touch.js",
             "lineno": 265,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037238",
+                "id": "astnode100037242",
                 "name": "ch",
                 "type": "CallExpression",
                 "funcscope": "self.touchmove",
@@ -84099,22 +84098,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
-        "___id": "T000002R002761",
+        "___id": "T000002R002762",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13058,
-                13091
+                13079,
+                13112
             ],
             "filename": "touch.js",
             "lineno": 266,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037245",
+                "id": "astnode100037249",
                 "name": "rw",
                 "type": "CallExpression",
                 "funcscope": "self.touchmove",
@@ -84128,22 +84127,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
-        "___id": "T000002R002762",
+        "___id": "T000002R002763",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13105,
-                13218
+                13126,
+                13239
             ],
             "filename": "touch.js",
             "lineno": 267,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037252",
+                "id": "astnode100037256",
                 "name": "rScrollZone",
                 "type": "BinaryExpression",
                 "funcscope": "self.touchmove",
@@ -84157,22 +84156,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
-        "___id": "T000002R002763",
+        "___id": "T000002R002764",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13232,
-                13309
+                13253,
+                13330
             ],
             "filename": "touch.js",
             "lineno": 268,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037276",
+                "id": "astnode100037280",
                 "name": "lScrollZone",
                 "type": "BinaryExpression",
                 "funcscope": "self.touchmove",
@@ -84186,22 +84185,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
-        "___id": "T000002R002764",
+        "___id": "T000002R002765",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13323,
-                13437
+                13344,
+                13458
             ],
             "filename": "touch.js",
             "lineno": 269,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037292",
+                "id": "astnode100037296",
                 "name": "bScrollZone",
                 "type": "BinaryExpression",
                 "funcscope": "self.touchmove",
@@ -84215,22 +84214,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
-        "___id": "T000002R002765",
+        "___id": "T000002R002766",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13451,
-                13528
+                13472,
+                13549
             ],
             "filename": "touch.js",
             "lineno": 270,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037316",
+                "id": "astnode100037320",
                 "name": "tScrollZone",
                 "type": "BinaryExpression",
                 "funcscope": "self.touchmove",
@@ -84244,22 +84243,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
-        "___id": "T000002R002766",
+        "___id": "T000002R002767",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13542,
-                13573
+                13563,
+                13594
             ],
             "filename": "touch.js",
             "lineno": 271,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037332",
+                "id": "astnode100037336",
                 "name": "sbw",
                 "type": "MemberExpression",
                 "funcscope": "self.touchmove",
@@ -84273,22 +84272,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove",
         "scope": "inner",
-        "___id": "T000002R002767",
+        "___id": "T000002R002768",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13587,
-                14201
+                13608,
+                14222
             ],
             "filename": "touch.js",
             "lineno": 272,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037339",
+                "id": "astnode100037343",
                 "name": "touchScroll",
                 "type": "FunctionDeclaration",
                 "paramnames": []
@@ -84306,22 +84305,22 @@ window.reflection = [
         "memberof": "self.touchmove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002768",
+        "___id": "T000002R002769",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13632,
-                13661
+                13653,
+                13682
             ],
             "filename": "touch.js",
             "lineno": 273,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037343",
+                "id": "astnode100037347",
                 "name": "x",
                 "type": "MemberExpression",
                 "value": "self.scrollBox.scrollLeft"
@@ -84334,22 +84333,22 @@ window.reflection = [
         "memberof": "self.touchmove~touchScroll",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002769",
+        "___id": "T000002R002770",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13683,
-                13711
+                13704,
+                13732
             ],
             "filename": "touch.js",
             "lineno": 274,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037350",
+                "id": "astnode100037354",
                 "name": "y",
                 "type": "MemberExpression",
                 "value": "self.scrollBox.scrollTop"
@@ -84362,22 +84361,22 @@ window.reflection = [
         "memberof": "self.touchmove~touchScroll",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002770",
+        "___id": "T000002R002771",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13729,
-                13794
+                13750,
+                13815
             ],
             "filename": "touch.js",
             "lineno": 275,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037358",
+                "id": "astnode100037362",
                 "name": "x",
                 "type": "ConditionalExpression",
                 "funcscope": "self.touchmove~touchScroll",
@@ -84391,35 +84390,6 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove~touchScroll",
         "scope": "inner",
-        "___id": "T000002R002771",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                13812,
-                13877
-            ],
-            "filename": "touch.js",
-            "lineno": 276,
-            "columnno": 16,
-            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100037369",
-                "name": "y",
-                "type": "ConditionalExpression",
-                "funcscope": "self.touchmove~touchScroll",
-                "value": "",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "y",
-        "longname": "self.touchmove~touchScroll~y",
-        "kind": "member",
-        "memberof": "self.touchmove~touchScroll",
-        "scope": "inner",
         "___id": "T000002R002772",
         "___s": true
     },
@@ -84427,15 +84397,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                13895,
-                13960
+                13833,
+                13898
             ],
             "filename": "touch.js",
-            "lineno": 277,
+            "lineno": 276,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037380",
+                "id": "astnode100037373",
                 "name": "y",
                 "type": "ConditionalExpression",
                 "funcscope": "self.touchmove~touchScroll",
@@ -84456,15 +84426,44 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                13978,
-                14043
+                13916,
+                13981
+            ],
+            "filename": "touch.js",
+            "lineno": 277,
+            "columnno": 16,
+            "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100037384",
+                "name": "y",
+                "type": "ConditionalExpression",
+                "funcscope": "self.touchmove~touchScroll",
+                "value": "",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "y",
+        "longname": "self.touchmove~touchScroll~y",
+        "kind": "member",
+        "memberof": "self.touchmove~touchScroll",
+        "scope": "inner",
+        "___id": "T000002R002774",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                13999,
+                14064
             ],
             "filename": "touch.js",
             "lineno": 278,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037391",
+                "id": "astnode100037395",
                 "name": "x",
                 "type": "ConditionalExpression",
                 "funcscope": "self.touchmove~touchScroll",
@@ -84478,22 +84477,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove~touchScroll",
         "scope": "inner",
-        "___id": "T000002R002774",
+        "___id": "T000002R002775",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14108,
-                14186
+                14129,
+                14207
             ],
             "filename": "touch.js",
             "lineno": 280,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037411",
+                "id": "astnode100037415",
                 "name": "touchScrollTimeout",
                 "type": "CallExpression",
                 "funcscope": "self.touchmove~touchScroll",
@@ -84507,22 +84506,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchmove~touchScroll",
         "scope": "inner",
-        "___id": "T000002R002775",
+        "___id": "T000002R002776",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14247,
-                14547
+                14268,
+                14568
             ],
             "filename": "touch.js",
             "lineno": 283,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037427",
+                "id": "astnode100037431",
                 "name": "self.touchDelta",
                 "type": "ObjectExpression",
                 "value": "{\"x\":\"\",\"y\":\"\",\"scrollLeft\":\"\",\"scrollTop\":\"\",\"t\":\"\"}",
@@ -84535,22 +84534,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002776",
+        "___id": "T000002R002777",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14283,
-                14326
+                14304,
+                14347
             ],
             "filename": "touch.js",
             "lineno": 284,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037432",
+                "id": "astnode100037436",
                 "name": "x",
                 "type": "BinaryExpression",
                 "value": ""
@@ -84562,22 +84561,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R002777",
+        "___id": "T000002R002778",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14344,
-                14387
+                14365,
+                14408
             ],
             "filename": "touch.js",
             "lineno": 285,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037444",
+                "id": "astnode100037448",
                 "name": "y",
                 "type": "BinaryExpression",
                 "value": ""
@@ -84589,22 +84588,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R002778",
+        "___id": "T000002R002779",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14405,
-                14442
+                14426,
+                14463
             ],
             "filename": "touch.js",
             "lineno": 286,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037456",
+                "id": "astnode100037460",
                 "name": "scrollLeft",
                 "type": "MemberExpression",
                 "value": "self.scrollBox.scrollLeft"
@@ -84616,22 +84615,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R002779",
+        "___id": "T000002R002780",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14460,
-                14495
+                14481,
+                14516
             ],
             "filename": "touch.js",
             "lineno": 287,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037462",
+                "id": "astnode100037466",
                 "name": "scrollTop",
                 "type": "MemberExpression",
                 "value": "self.scrollBox.scrollTop"
@@ -84643,22 +84642,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R002780",
+        "___id": "T000002R002781",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14513,
-                14533
+                14534,
+                14554
             ],
             "filename": "touch.js",
             "lineno": 288,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037468",
+                "id": "astnode100037472",
                 "name": "t",
                 "type": "CallExpression",
                 "value": ""
@@ -84670,22 +84669,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R002781",
+        "___id": "T000002R002782",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14561,
-                14638
+                14582,
+                14659
             ],
             "filename": "touch.js",
             "lineno": 290,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037474",
+                "id": "astnode100037478",
                 "name": "self.currentCell",
                 "type": "CallExpression",
                 "value": "",
@@ -84698,22 +84697,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002782",
+        "___id": "T000002R002783",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14685,
-                14749
+                14706,
+                14770
             ],
             "filename": "touch.js",
             "lineno": 292,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037498",
+                "id": "astnode100037502",
                 "name": "self.touchDuration",
                 "type": "BinaryExpression",
                 "value": "",
@@ -84726,22 +84725,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002783",
+        "___id": "T000002R002784",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14763,
-                14788
+                14784,
+                14809
             ],
             "filename": "touch.js",
             "lineno": 293,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037513",
+                "id": "astnode100037517",
                 "name": "self.stopAnimation",
                 "type": "Literal",
                 "value": true,
@@ -84754,22 +84753,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002784",
+        "___id": "T000002R002785",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14802,
-                14826
+                14823,
+                14847
             ],
             "filename": "touch.js",
             "lineno": 294,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037519",
+                "id": "astnode100037523",
                 "name": "self.animationFrames",
                 "type": "Literal",
                 "value": 0,
@@ -84782,22 +84781,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002785",
+        "___id": "T000002R002786",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15058,
-                15207
+                15079,
+                15228
             ],
             "filename": "touch.js",
             "lineno": 299,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037552",
+                "id": "astnode100037556",
                 "name": "self.scrollBox.scrollTop",
                 "type": "BinaryExpression",
                 "value": "",
@@ -84810,22 +84809,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R002786",
+        "___id": "T000002R002787",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15333,
-                15481
+                15354,
+                15502
             ],
             "filename": "touch.js",
             "lineno": 304,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037596",
+                "id": "astnode100037600",
                 "name": "self.scrollBox.scrollLeft",
                 "type": "BinaryExpression",
                 "value": "",
@@ -84838,22 +84837,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R002787",
+        "___id": "T000002R002788",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15896,
-                16479
+                15917,
+                16500
             ],
             "filename": "touch.js",
             "lineno": 316,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037689",
+                "id": "astnode100037693",
                 "name": "self.touchEndEvents",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -84871,22 +84870,22 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002788",
+        "___id": "T000002R002789",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15945,
-                15976
+                15966,
+                15997
             ],
             "filename": "touch.js",
             "lineno": 317,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037697",
+                "id": "astnode100037701",
                 "name": "self.zoomDeltaStart",
                 "type": "Identifier",
                 "value": "undefined",
@@ -84899,22 +84898,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002789",
+        "___id": "T000002R002790",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15990,
-                16017
+                16011,
+                16038
             ],
             "filename": "touch.js",
             "lineno": 318,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037703",
+                "id": "astnode100037707",
                 "name": "self.touchSelecting",
                 "type": "Literal",
                 "value": false,
@@ -84927,22 +84926,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002790",
+        "___id": "T000002R002791",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16284,
-                16298
+                16305,
+                16319
             ],
             "filename": "touch.js",
             "lineno": 323,
             "columnno": 76,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037743",
+                "id": "astnode100037747",
                 "name": "passive",
                 "type": "Literal",
                 "value": false
@@ -84953,22 +84952,22 @@ window.reflection = [
         "longname": "passive",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002791",
+        "___id": "T000002R002792",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16489,
-                18263
+                16510,
+                18284
             ],
             "filename": "touch.js",
             "lineno": 327,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037770",
+                "id": "astnode100037774",
                 "name": "self.touchend",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -84996,22 +84995,22 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002792",
+        "___id": "T000002R002793",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16568,
-                16582
+                16589,
+                16603
             ],
             "filename": "touch.js",
             "lineno": 328,
             "columnno": 48,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037784",
+                "id": "astnode100037788",
                 "name": "NativeEvent",
                 "type": "Identifier",
                 "value": "e"
@@ -85022,22 +85021,22 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002793",
+        "___id": "T000002R002794",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16610,
-                16641
+                16631,
+                16662
             ],
             "filename": "touch.js",
             "lineno": 329,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037789",
+                "id": "astnode100037793",
                 "name": "self.zoomDeltaStart",
                 "type": "Identifier",
                 "value": "undefined",
@@ -85050,22 +85049,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002794",
+        "___id": "T000002R002795",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16698,
-                16728
+                16719,
+                16749
             ],
             "filename": "touch.js",
             "lineno": 331,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037802",
+                "id": "astnode100037806",
                 "name": "self.touchPosition",
                 "type": "Identifier",
                 "value": "undefined",
@@ -85078,22 +85077,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002795",
+        "___id": "T000002R002796",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16799,
-                16830
+                16820,
+                16851
             ],
             "filename": "touch.js",
             "lineno": 334,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037815",
+                "id": "astnode100037819",
                 "name": "self.touchPosition1",
                 "type": "Identifier",
                 "value": "undefined",
@@ -85106,22 +85105,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002796",
+        "___id": "T000002R002797",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16948,
-                16972
+                16969,
+                16993
             ],
             "filename": "touch.js",
             "lineno": 338,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037835",
+                "id": "astnode100037839",
                 "name": "self.zoomAltered",
                 "type": "Literal",
                 "value": false,
@@ -85134,22 +85133,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002797",
+        "___id": "T000002R002798",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17046,
-                17140
+                17067,
+                17161
             ],
             "filename": "touch.js",
             "lineno": 342,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037842",
+                "id": "astnode100037846",
                 "name": "dz",
                 "type": "BinaryExpression",
                 "value": ""
@@ -85162,22 +85161,22 @@ window.reflection = [
         "memberof": "self.touchend",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R002798",
+        "___id": "T000002R002799",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17194,
-                17207
+                17215,
+                17228
             ],
             "filename": "touch.js",
             "lineno": 344,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037877",
+                "id": "astnode100037881",
                 "name": "self.xPPS",
                 "type": "Literal",
                 "value": 0,
@@ -85190,22 +85189,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002799",
+        "___id": "T000002R002800",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17275,
-                17288
+                17296,
+                17309
             ],
             "filename": "touch.js",
             "lineno": 347,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037890",
+                "id": "astnode100037894",
                 "name": "self.yPPS",
                 "type": "Literal",
                 "value": 0,
@@ -85218,22 +85217,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002800",
+        "___id": "T000002R002801",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17357,
-                17371
+                17378,
+                17392
             ],
             "filename": "touch.js",
             "lineno": 350,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037903",
+                "id": "astnode100037907",
                 "name": "self.xPPST",
                 "type": "Literal",
                 "value": 0,
@@ -85246,22 +85245,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002801",
+        "___id": "T000002R002802",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17440,
-                17454
+                17461,
+                17475
             ],
             "filename": "touch.js",
             "lineno": 353,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037916",
+                "id": "astnode100037920",
                 "name": "self.yPPST",
                 "type": "Literal",
                 "value": 0,
@@ -85274,22 +85273,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002802",
+        "___id": "T000002R002803",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17482,
-                17558
+                17503,
+                17579
             ],
             "filename": "touch.js",
             "lineno": 355,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037922",
+                "id": "astnode100037926",
                 "name": "self.touchAnimateTo.x",
                 "type": "BinaryExpression",
                 "value": "",
@@ -85302,22 +85301,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchAnimateTo",
         "scope": "static",
-        "___id": "T000002R002803",
+        "___id": "T000002R002804",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                17572,
-                17648
+                17593,
+                17669
             ],
             "filename": "touch.js",
             "lineno": 356,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037938",
+                "id": "astnode100037942",
                 "name": "self.touchAnimateTo.y",
                 "type": "BinaryExpression",
                 "value": "",
@@ -85330,22 +85329,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchAnimateTo",
         "scope": "static",
-        "___id": "T000002R002804",
+        "___id": "T000002R002805",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                18134,
-                18160
+                18155,
+                18181
             ],
             "filename": "touch.js",
             "lineno": 365,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038025",
+                "id": "astnode100038029",
                 "name": "self.stopAnimation",
                 "type": "Literal",
                 "value": false,
@@ -85358,22 +85357,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002805",
+        "___id": "T000002R002806",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                18273,
-                18433
+                18294,
+                18454
             ],
             "filename": "touch.js",
             "lineno": 370,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038042",
+                "id": "astnode100038046",
                 "name": "self.touchcancel",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -85387,22 +85386,22 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R002806",
+        "___id": "T000002R002807",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                18358,
-                18372
+                18379,
+                18393
             ],
             "filename": "touch.js",
             "lineno": 371,
             "columnno": 51,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038056",
+                "id": "astnode100038060",
                 "name": "NativeEvent",
                 "type": "Identifier",
                 "value": "e"
@@ -85413,7 +85412,7 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R002807",
+        "___id": "T000002R002808",
         "___s": true
     },
     {
@@ -85432,7 +85431,7 @@ window.reflection = [
             "/Users/tgermaneri/git/canvas-datagrid/lib/publicMethods.js",
             "/Users/tgermaneri/git/canvas-datagrid/lib/touch.js"
         ],
-        "___id": "T000002R002808",
+        "___id": "T000002R002809",
         "___s": true
     }
 ];window.files = {
@@ -85442,7 +85441,7 @@ window.reflection = [
     "canvasDatagrid.md": "Ways to create a grid\n---------------------\n\n* Web component by using the tag `&lt;canvas-datagrid&gt;&lt;/canvas-datagrid&gt;` anywhere in your document.\n* Web component by running `var foo = document.createElement('canvas-datagrid')`.\n* Webpack3 universal module loader by adding one of many module loaders to your application code.  <br>See example: {@link https://tonygermaneri.github.io/canvas-datagrid/tutorials/amdDemo.html}.\n* You can also load the grid by invoking the global method `var foo = canvasDatagrid(&lt;args&gt;);` <br>See example: {@link https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html}\n\nIf you create the grid using the non-web component model, you can attach the grid to an existing canvas by passing the canvas in as the `parentNode` when you instantiate the grid using the module loader or global versions.  This is not possible when instantiating using `createElement` or markup.\n\nWith the exception of attaching to an existing canvas, the grid will attempt to create a Shadow DOM element and attach a canvas within.\n\n* Support for attaching to existing canvas elements is experimental.\n\n* In browsers that do not support custom tags, a `&lt;section&gt;` tag is used in place of the `&lt;canvas-datagrid&gt;` tag.\n\n* In browsers that do not support Shadow DOM, no shadow root will be created.  In this mode cascading CSS can alter the grid, altering behavior in potentially breaking ways.  Careful application of CSS is required.\n\nSetting and Getting Data\n------------------------\n\nYou can set data into the grid in a number of ways.  No matter how it is passed in, it is immediately converted into the native\nformat which is an array of objects that all contain the same properties.  E.g.:\n\n    [\n        {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},\n        {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}\n    ]\n\nWhen getting data, no matter how it was set, it will be returned in the native format above.\n\nData can be almost any type, the behavior of the grid will change slightly depending on how it is set.\n\n* Data can be set using the data property.\n* Data can be set using the web component data attribute.\n* Data can be set using the web component innerHTML attribute.\n\nWhen setting data using the data property, you can use many types.\n\n* As an array of objects.\n* As an array of arrays.\n* As an object.\n* As a jagged array of objects.\n* As a jagged array of arrays.\n* As a function that returns any of the above.\n* As a function that returns undefined, and passes any of the above to the callback argument asynchronously.\n\nWhen using an array of arrays, the columns will be named like a spread sheet, A, B, C, through ZZZZ.\n\nWhen the value of a cell is an object or an array, a new grid will be drawn into the cell.\n\n* Note: if you pass in data that appears to be the native format, an array like object of object like objects, no conversion will occur and object reference to the data can be maintained.  Also load time will decrease by a barely perceptible amount.\n\nSchema\n------\n\nSchema is optional.  Schema is an array of header objects.\nThis documentation will use the term header and column interchangeably.\nIf no schema is provided one will be generated from the\ndata, in that case all data will be assumed to be string data.\n\nEach header object can have the following properties:\n\n| Property | Description |\n|-----|------|\n| name | The name of the column.  This is used to match with data and is the only required property. |\n| type | The data type of this column |\n| title | What will be displayed to the user.  If not present, name will be used. |\n| width | The default width in pixels of this column.|\n| hidden | When true the column will be hidden. |\n| filter | The filter function to use to filter this column.  If no function is provided, type will determine filer. |\n| formatter | The formatter function used display this column.  If no function is provided, type will determine formatter.|\n| defaultValue | The default value of this column for new rows.  This is a function or a string.  When a function is used, it takes the arguments `header` and `index` and must return a value for new default cell value in this column.|\n\nExample schema:\n\n    [\n        {\n            name: 'col1'\n        },\n        {\n            name: 'col2'\n        },\n        {\n            name: 'col3'\n        }\n    ]\n\nProperties, Attributes, & Parameters\n------------------------------------\n\n* Properties, attributes, and parameters represent different ways to change the values and behaviors of the grid.\nProperties can be accessed directly from the grid instance. E.g.:\n\n    myGrid.someProperty = 'Some Value';\n\n* Attributes can be access from the grid instance's attributes property.  E.g.:\n\n    myGrid.attributes.someAttribute = 'Some Value';\n\n* Attributes can also be set from the attribute list of the web component tag.  E.g.:\n\n    &lt;canvas-datagrid someattribute=\"Some Value\"&gt;&lt;/canvas-datagrid&gt;\n\n* Parameters are attributes that are passed in the arguments object during instantiation.  E.g.:\n\n    var myGrid = canvasDatagrid({someAttribute: 'Some Value'});\n\n\nWeb Component\n-------------\n\nThe grid can be instantiated as a web component.\n\n\n    <canvas-datagrid></canvas-datagrid>\n\n\nTo set data, add JSON between the open and close tags.\n\n\n        <canvas-datagrid>[\n            {\"col1\": \"row 1 column 1\", \"col2\": \"row 1 column 2\", \"col3\": \"row 1 column 3\"},\n            {\"col1\": \"row 2 column 1\", \"col2\": \"row 2 column 2\", \"col3\": \"row 2 column 3\"}\n        ]</canvas-datagrid>\n\n\nTo set attributes, add attributes.  Attributes are not case sensitive when using HTML.  When using the same element in JavaScript however they are case sensitive.\n\n    <canvas-datagrid selectionmode='row'></canvas-datagrid>\n\nStyles are declared as custom css properties prefixed with --cdg- and hyphenated rather than camelCase.\nFor example, the style \"gridBackgroundColor\" is set with \"--cdg-grid-background-color\".  The web component\nworks with classes, css cascading, and in-line styles just like any other HTML element.\n\nInline styles:\n\n        <canvas-datagrid style=\"--cdg-grid-background-color: lightblue;\">[\n            {\"col1\": \"row 1 column 1\", \"col2\": \"row 1 column 2\", \"col3\": \"row 1 column 3\"},\n            {\"col1\": \"row 2 column 1\", \"col2\": \"row 2 column 2\", \"col3\": \"row 2 column 3\"}\n        ]</canvas-datagrid>\n\nClass styles.\n\n        <style>\n            .grid {\n                --cdg-grid-background-color: lightblue;\n            }\n        </style>\n        <canvas-datagrid class=\"grid\">[\n            {\"col1\": \"row 1 column 1\", \"col2\": \"row 1 column 2\", \"col3\": \"row 1 column 3\"},\n            {\"col1\": \"row 2 column 1\", \"col2\": \"row 2 column 2\", \"col3\": \"row 2 column 3\"}\n        ]</canvas-datagrid>\n\nYou can still access the grid as you would expect and the interface for the web component instance is the same as the module loaded or globally scoped version.  The web component version has additional properties that come from inheriting the base HTTPElement class.\n\nFor further reading about web components see: https://www.webcomponents.org/\n\n* When instantiating the grid in a browser that does not support custom tags or css varaibles, class support will not work.\n\nSorters\n-------\n\nObject that contains a list of sorting functions for sorting columns.\n\n| Argument | Description |\n|-----|------|\n| columnName | Name of the column to be sorted. |\n| direction | `asc` or `desc` for ascending or descending. |\n\nSorter function must return a sort function.\nThis function will be used in the [native sort method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).\n\nExample sorter:\n\n    grid.sorters.number = function (columnName, direction) {\n        var asc = direction === 'asc';\n        return function (a, b) {\n            if (asc) {\n                return a[columnName] - b[columnName];\n            }\n            return b[columnName] - a[columnName];\n        };\n    };\n\nFilters\n-------\n\nObject that contains a list of filters for filtering data.\nThe properties in this object match the `schema[].type` property.\nFor example, if the schema for a given column was of the type `date`\nthe grid would look for a filter called `filters.date`\nif a filter cannot be found for a given data type a warning will\nbe logged and the string/RegExp filter will be used.\n\n    filters.number = function (value, filterFor) {\n        if (!filterFor) { return true; }\n        return value === filterFor;\n    };\n\nFormatters\n----------\n\nObject that contains a list of formatting functions for displaying text.\nThe properties in this object match the `schema[].type` property.\nFor example, if the schema for a given column was of the type `date`\nthe grid would look for a formatter called `formatters.date`\nif a formatter cannot be found for a given data type a warning will\nbe logged and the string formatter will be used.\n\nCell formatter function should contain the following arguments.\n\n    grid.formatters.date = function (e) { return new Date(e.cell.value).toISOString(); }\n\nFormatters must return a string value to be displayed in the cell.\n\n\nFormatting using event listeners\n--------------------------------\n\nYou can format the data in your cells without altering the data in two ways.\n\nThe first and fastest method is grid formatters.\nGrid formatters allow you to pass your values though a function to format them as they are drawn onto the grid.\nData type is defined in the [schema](https://tonygermaneri.github.io/canvas-datagrid/docs/#schema) that you can optionally pass to describe your data.\n\nThis method is slightly faster due to the O(1) hash map employed in the value formatters.\n\nIn the following example, the type `date` is given a formatter function.\n\n    grid.formatters.date = function (e) {\n        return new Date(e.cell.value).toISOString();\n    };\n\nThe return value of the formatter function will be displayed in the cell instead of the value\nin the data without altering the data.\n\nThe second method is the `rendertext` event.  By subscribing to the `rendertext` event listener\nwe can intercept the value in the context of the [cell](https://tonygermaneri.github.io/canvas-datagrid/docs/#canvasDatagrid.cell) being drawn and alter it.\n\nThis method is slightly slower due to the O(n) loop employed in the event handler class.\n\nThis method is not dependent on values in the schema.  This methods overrides `grid.formatters`.\n\n    grid.addEventListener('rendertext', function (e) {\n        if (e.cell.rowIndex > -1) {\n            if (e.cell.header.name === 'MyDateColumnName') {\n                e.cell.formattedValue = new Date(e.cell.value).toISOString();\n            }\n        }\n    });\n\nExtending the visual appearance\n-------------------------------\nAll visual elements of the canvas are dependent on the values of the style object.\nUsing the style object, you can change the dimensions and appearance of any element of the grid.\n\nThere are two types of styles, styles built into the DOM element, such as width and margin, and there\nare styles related to the drawing of the grid on the canvas, these are listed in the style section.\n\nThis example changes the fill style of the cell when the cell is a certain value.\n\n    grid.addEventListener('rendercell', function (e) {\n        if (e.cell.header.name === 'MyStatusCell' && /blah/.test(e.cell.value)) {\n            e.ctx.fillStyle = '#AEEDCF';\n        }\n    });\n\nDrawing on the canvas\n---------------------\nExtending behavior is done using event handlers just like a regular HTML element.\nYou can alter the content of a rendered cell by attaching to such an event handler.\nBelow is an example of drawing an image into a cell:\n\nThis example attaches to two events. `rendertext` to prevent the rendering of text into the cell...\n\n    grid.addEventListener('rendertext', function (e) {\n        if (e.cell.rowIndex > -1) {\n            if (e.cell.header.name === 'MyImageColumnName') {\n                e.cell.formattedValue = e.cell.value ? '' : 'No Image';\n            }\n        }\n    });\n\n... and `afterrendercell` to draw an image into the cell after the background and borders are drawn.\nBecause the image is loaded asynchronously, you need to attach to the load event to actually draw\nthe image.\n\n    var imgs = {};\n    grid.addEventListener('afterrendercell', function (e) {\n        var i, contextGrid = this;\n        if (e.cell.header.name === 'MyImageColumnName'\n                && e.cell.value && e.cell.rowIndex > -1) {\n            if (!imgs[e.cell.value]) {\n                i = imgs[e.cell.value] = new Image();\n                i.src = e.cell.value;\n                i.onload = function () {\n                    i.targetHeight = e.cell.height;\n                    i.targetWidth = e.cell.height * (i.width / i.height);\n                    contextGrid.draw();\n                };\n                return;\n            }\n            i = imgs[e.cell.value];\n            if (i.width !== 0) {\n                e.ctx.drawImage(i, e.cell.x, e.cell.y, i.targetWidth, i.targetHeight);\n            }\n        }\n    });\n\n\n\nSupporting DOM elements\n-----------------------\n\nAlthough the grid itself is pure canvas, there are some supporting elements of the grid that are HTMLElements.\n\n* In order to overlap parts of the page that are not on the canvas, the context menu is a `&lt;div&gt;`.\n* In order to support advanced key commands, copying, pasting as well as user customization outside of this library, the editing input/textarea is DOM.\n* A hidden input is placed outside of the visible area of the web page to capture keystroke and translate them into grid commands, such as cursor navigation.\n\nYou can customize almost every behavior of the grid by subscribing to an event in the event handler collection.\nMost events provide a `e.preventDefault();` method that will allow you to manipulate the grid's behavior on a very granular level.\n\nExamples of how to use many of the event handlers to change default grid behaviors can be found in the <a href=\"#tutorials\">tutorials</a> section.\n\nNotes\n-----\n\n* Throughout this document there are several words that will be used interchangeably.\n* Canvas Datagrid will also be referred to simply as \"grid\".\n* Column and header are used interchangeably.\n* Node, HTMLElement, DOM, DOM element, and element all refer to an HTML element or elements.\n* Firing, raising, invoking, and running, all refer to a function or event occurring.\n* Binding, subscribing, and listening all refer to using `&lt;element&gt;.addEventListener()` to subscribe to an event.\n* Inner grid, child grid, tree grid, cell grid all refer to one of two types of grids that render inside of other grids.  Cell grids are in a single cell, while tree grids span an entire row.\n* Drawing and rendering both refer to using low level methods to draw pixels onto the canvas, usually by invoking `canvasDatagrid.draw`.\n* This documentation is automatically generated and can be prone to omissions, bad links and errors.  Please report any problems with the documentation here {@link https://github.com/TonyGermaneri/canvas-datagrid/issues}.\n",
     "canvasDatagrid.style.md": "Setting Styles\n--------------\nAll visual elements of the canvas are dependent on the values of the style object.\nUsing the style object, you can change the dimensions and appearance of any element of the grid.\n\nThere are two types of styles, styles built into the DOM element, such as width and margin, and there\nare styles related to the drawing of the grid on the canvas, these are listed in the style section.\n\nStyles can be set during instantiation.\n\n    var grid = canvasDatagrid({\n            style: {\n                gridBackgroundColor: 'red'\n            }\n        });\n\nStyles can be set after instantiation.\n\n    grid.style.gridBackgroundColor = 'red';\n\nWhen using the web component, styles can be set as above, but also using standard CSS.\n\nWhen using standard CSS, style names are hyphenated, lower case, and prefixed with `--cdg-`.\n\n    <canvas-datagrid style=\"--cdg-grid-background-color: red;\">[{\"my\": \"data\"}]</canvas-datagrid>\n\nWhen using the web component you can also use CSS classes and selectors as you would a native HTML element.\n    \n    <style>\n        .my-grid {\n            --cdg-grid-background-color: red;\n        }\n    </style>\n\n    <canvas-datagrid class=\"my-grid\">[{\"my\": \"data\"}]</canvas-datagrid>\n\nYou can build your own styles using the <a href=\"https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html\">Style Builder</a>.\n",
     "demo.html": "<!doctype html>\n<html lang=\"en\">\n    <head>\n        <script src=\"../dist/canvas-datagrid.debug.js\"></script>\n        <script src=\"./demo.js\"></script>\n        <meta name=\"viewport\" content=\"width=device-width\">\n        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"/>\n        <style>\n            html, body {\n                height: 100%;\n                min-height: 100%;\n                margin: 0;\n                padding: 0;\n                overflow: hidden;\n            }\n            #grid {\n                height: 100%;\n                width: 100%;\n                min-height: 100%;\n            }\n        </style>\n    </head>\n    <body><div id=\"grid\"></div></body>\n</html>\n",
-    "demo.js": "/*jslint browser: true*/\n/*globals canvasDatagrid: false*/\nvar data;\nfunction demo() {\n    'use strict';\n    var searchUrl = window.location.search.substring(3),\n        typeMap = {\n            'text': 'string',\n            'money': 'number',\n            'number': 'number'\n        };\n    function isNoiseData(name) {\n        // get rid of fields that we don't care about\n        return ['sid', 'id', 'position', 'created_at',\n                    'created_meta', 'updated_at',\n                    'updated_meta', 'meta'].indexOf(name) !== -1;\n    }\n    function parseOpenData(openData) {\n        var data, schema = [];\n        openData.meta.view.columns.forEach(function (column) {\n            if (isNoiseData(column.name)) {\n                column.hidden = true;\n            }\n            column.type = typeMap[column.dataTypeName] || 'string';\n            if (/full or part-time/i.test(column.name)) {\n                column.enum = [['F', 'F'], ['P', 'P']];\n            }\n            if (/salary or hourly/i.test(column.name)) {\n                column.enum = [['Salary', 'Salary'], ['Hourly', 'Hourly']];\n            }\n            schema.push(column);\n        });\n        data = openData.data.map(function (row) {\n            var r = {};\n            schema.forEach(function (column, index) {\n                r[column.name] = row[index];\n            });\n            return r;\n        });\n        return {\n            data: data,\n            schema: schema\n        };\n    }\n    function loadDataSet(url) {\n        var xhr = new XMLHttpRequest(),\n            grid = canvasDatagrid({\n                parentNode: document.getElementById('grid'),\n                borderDragBehavior: 'move',\n                allowMovingSelection: true,\n                columnHeaderClickBehavior: 'select',\n                allowFreezingRows: true,\n                allowFreezingColumns: true,\n                allowRowReordering: true,\n                tree: false,\n                debug: false\n            });\n        grid.addEventListener('contextmenu', function (e) {\n            e.items.push({\n                title: 'View page source',\n                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/demo.html', 'src'); }\n            });\n            e.items.push({\n                title: 'View JS module',\n                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/demo.js', 'src'); }\n            });\n            e.items.push({\n                title: 'Go to main canvas-datagrid GitHub page',\n                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid', 'src'); }\n            });\n        });\n        xhr.addEventListener('progress', function (e) {\n            grid.data = [{ status: 'Loading data: ' + e.loaded + ' of ' + (e.total || 'unknown') + ' bytes...'}];\n        });\n        xhr.addEventListener('load', function (e) {\n            grid.data = [{ status: 'Loading data ' + e.loaded + '...'}];\n            var openData = parseOpenData(JSON.parse(this.responseText));\n            grid.schema = openData.schema;\n            grid.data = openData.data;\n        });\n        xhr.open('GET', url);\n        xhr.send();\n    }\n    if (searchUrl.length > 3) {\n        // work encoded or not, for lazy people who can't be bothered encoding stuff\n        loadDataSet(/%3A/.test(searchUrl) ? decodeURIComponent(searchUrl) : searchUrl);\n    } else {\n        loadDataSet('https://data.cityofchicago.org/api/views/xzkq-xp2w/rows.json?accessType=DOWNLOAD');\n        // inner join\n        // https://data.cityofchicago.org/api/views/pasx-mnuv/rows.json?accessType=DOWNLOAD\n    }\n}\nif (document.addEventListener) {\n    document.addEventListener('DOMContentLoaded', demo);\n} else {\n    setTimeout(function () {\n        'use strict';\n        demo();\n    }, 500);\n}\n",
+    "demo.js": "/*jslint browser: true*/\n/*globals canvasDatagrid: false*/\nvar data;\nfunction demo() {\n    'use strict';\n    var searchUrl = window.location.search.substring(3),\n        typeMap = {\n            'text': 'string',\n            'money': 'number',\n            'number': 'number'\n        };\n    function isNoiseData(name) {\n        // get rid of fields that we don't care about\n        return ['sid', 'id', 'position', 'created_at',\n                    'created_meta', 'updated_at',\n                    'updated_meta', 'meta'].indexOf(name) !== -1;\n    }\n    function parseOpenData(openData) {\n        var data, schema = [];\n        openData.meta.view.columns.forEach(function (column) {\n            if (isNoiseData(column.name)) {\n                column.hidden = true;\n            }\n            column.type = typeMap[column.dataTypeName] || 'string';\n            if (/full or part-time/i.test(column.name)) {\n                column.enum = [['F', 'F'], ['P', 'P']];\n            }\n            if (/salary or hourly/i.test(column.name)) {\n                column.enum = [['Salary', 'Salary'], ['Hourly', 'Hourly']];\n            }\n            schema.push(column);\n        });\n        data = openData.data.map(function (row) {\n            var r = {};\n            schema.forEach(function (column, index) {\n                r[column.name] = row[index];\n            });\n            return r;\n        });\n        return {\n            data: data,\n            schema: schema\n        };\n    }\n    function loadDataSet(url) {\n        var xhr = new XMLHttpRequest(),\n            grid = canvasDatagrid({\n                parentNode: document.getElementById('grid'),\n                borderDragBehavior: 'move',\n                allowMovingSelection: true,\n                columnHeaderClickBehavior: 'select',\n                allowFreezingRows: true,\n                allowFreezingColumns: true,\n                allowRowReordering: true,\n                tree: false,\n                debug: false,\n                showPerformance: false\n            });\n        grid.addEventListener('contextmenu', function (e) {\n            e.items.push({\n                title: 'View page source',\n                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/demo.html', 'src'); }\n            });\n            e.items.push({\n                title: 'View JS module',\n                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/demo.js', 'src'); }\n            });\n            e.items.push({\n                title: 'Go to main canvas-datagrid GitHub page',\n                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid', 'src'); }\n            });\n        });\n        xhr.addEventListener('progress', function (e) {\n            grid.data = [{ status: 'Loading data: ' + e.loaded + ' of ' + (e.total || 'unknown') + ' bytes...'}];\n        });\n        xhr.addEventListener('load', function (e) {\n            grid.data = [{ status: 'Loading data ' + e.loaded + '...'}];\n            var openData = parseOpenData(JSON.parse(this.responseText));\n            grid.schema = openData.schema;\n            grid.data = openData.data;\n        });\n        xhr.open('GET', url);\n        xhr.send();\n    }\n    if (searchUrl.length > 3) {\n        // work encoded or not, for lazy people who can't be bothered encoding stuff\n        loadDataSet(/%3A/.test(searchUrl) ? decodeURIComponent(searchUrl) : searchUrl);\n    } else {\n        loadDataSet('https://data.cityofchicago.org/api/views/xzkq-xp2w/rows.json?accessType=DOWNLOAD');\n        // inner join\n        // https://data.cityofchicago.org/api/views/pasx-mnuv/rows.json?accessType=DOWNLOAD\n    }\n}\nif (document.addEventListener) {\n    document.addEventListener('DOMContentLoaded', demo);\n} else {\n    setTimeout(function () {\n        'use strict';\n        demo();\n    }, 500);\n}\n",
     "developer.html": "<!doctype html>\n<html>\n<head>\n    <!-- this file is for developing in a sandbox on a local machine -->\n    <script src=\"./developer.js\"></script>\n    <script>\n        var s = document.createElement('script');\n        s.src = \"../dist/canvas-datagrid.debug.js?cacheBust=\" + +new Date();\n        s.onload = g;\n        document.head.appendChild(s);\n    </script>\n    <meta name=\"viewport\" content=\"width=device-width\">\n    <style>\n        html, body {\n            height: 100%;\n            min-height: 100%;\n            margin: 0;\n            padding: 0;\n            overflow: hidden;\n        }\n        .n {\n            height: 300px;\n            width: 300px;\n            position: absolute;\n            top: 100px;\n            left: 100px;\n            overflow: scroll;\n        }\n        .grid {\n            margin: auto;\n            margin-top: 100px;\n            height: 500px;\n            width: 600px;\n        }\n    </style>\n</head>\n<body>\n<!-- <div class=\"grid\" id=\"grid\" style=\"height: 100%;\"></div> -->\n    <div class=\"n\">\n        <div class=\"grid\" id=\"grid\"></div>\n    </div>\n   <!--  <canvas-datagrid\n        style=\"background-color: dodgerblue;\"\n        selectionmode=\"row\"\n        data='[{\"a\": 1, \"b\": 2}, {\"a\": 3, \"b\": 4}]'>\n    </canvas-datagrid> -->\n</body>\n</html>",
     "developer.js": "/*jslint browser: true*/\n/*globals canvasDatagrid: false*/\n/* this file is for developing in a sandbox on a local machine */\nfunction g() {\n    'use strict';\n    // var grid = document.createElement('canvas-datagrid');\n    // document.body.appendChild(grid);\n    // localStorage.setItem('canvasDataGrid-blah', '{\"sizes\":{\"rows\":{},\"columns\":{\"cornerCell\":67.6953125,\"localUrl\":124.44444444599999}},\"orders\":{\"rows\":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418,419,420,421,422,423,424,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440,441,442,443,444,445,446,447,448,449,450,451,452,453,454,455,456,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,480,481,482,483,484,485,486,487,488,489,490,491,492,493,494,495,496,497,498,499,500,501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,572,573,574,575,576,577,578,579,580,581,582,583,584,585,586,587,588,589,590,591,592,593,594,595,596,597,598,599,600,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633,634,635,636,637,638,639,640,641,642,643,644,645,646,647,648,649,650,651,652,653,654,655,656,657,658,659,660,661,662,663,664,665,666,667,668,669,670,671,672,673,674,675,676,677,678,679,680,681,682,683,684,685,686,687,688,689,690,691,692,693,694,695,696,697,698,699,700,701,702,703,704,705,706,707,708,709,710,711,712,713,714,715,716,717,718,719,720,721,722],\"columns\":[1,0,2,4,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]},\"orderBy\":\"_canvasDataGridUniqueId\",\"orderDirection\":\"asc\"}');\n    // function plotSparklineChart(cell, ctx) {\n    //     if (!cell.value) { return; }\n    //     var g,\n    //         gb,\n    //         x = 0,\n    //         m = Math.max.apply(null, cell.value),\n    //         a = cell.value.reduce(function (ac, c) { return ac + c; }, 0) / cell.value.length,\n    //         i = Math.min.apply(null, cell.value),\n    //         w = cell.width / cell.value.length,\n    //         r = cell.height / (m - (m * 0.1));\n    //     function line(n, c) {\n    //         ctx.beginPath();\n    //         ctx.lineWidth = 1;\n    //         ctx.strokeStyle = c;\n    //         ctx.moveTo(cell.x, cell.y + (n * r));\n    //         ctx.lineTo(cell.x + cell.width, cell.y + (n * r));\n    //         ctx.stroke();\n    //     }\n    //     ctx.save();\n    //     gb = ctx.createLinearGradient((cell.x + cell.width) / 2, cell.y, (cell.x + cell.width) / 2, cell.y + cell.height);\n    //     gb.addColorStop(0, a > 0.5 ? '#0C4B73' : '#A1680F');\n    //     gb.addColorStop(1, (cell.selected || cell.active) ? '#B3C3CC' : '#041724');\n    //     ctx.fillStyle = gb;\n    //     ctx.fillRect(cell.x, cell.y, cell.width, cell.height);\n    //     ctx.beginPath();\n    //     ctx.moveTo(cell.x, cell.y + cell.height);\n    //     cell.value.forEach(function (d) {\n    //         var cx = cell.x + w + x,\n    //             cy = cell.y + (d * r);\n    //         ctx.lineTo(cx, cy);\n    //         if (d === i || d === m) {\n    //             ctx.fillStyle = d === m ? 'green' : 'red';\n    //             ctx.fillRect(cx - 2, cy - 2, 5, 5);\n    //         }\n    //         x += w;\n    //     });\n    //     ctx.lineTo(cell.x + cell.width, cell.y + cell.height);\n    //     g = ctx.createLinearGradient((cell.x + cell.width) / 2, cell.y, (cell.x + cell.width) / 2, cell.y + cell.height);\n    //     g.addColorStop(0, '#0F5C8C');\n    //     g.addColorStop(1, '#499ABA');\n    //     ctx.fillStyle = g;\n    //     ctx.fill();\n    //     ctx.strokeStyle = '#0B466B';\n    //     ctx.stroke();\n    //     line(a, a > 0.5 ? 'green' : 'red');\n    //     cell.parentGrid.data[cell.rowIndex].col1 = 'Avg:' + a.toFixed(2) + '\\nMin: ' + i.toFixed(2) + '\\nMax: ' + m.toFixed(2);\n    //     ctx.restore();\n    // }\n    // function createRandomSeq(size, r) {\n    //     r = r || [];\n    //     while (r.length < size) {\n    //         r.push(Math.random());\n    //     }\n    //     return r;\n    // }\n    // // create a new grid\n    // var grid = canvasDatagrid({\n    //     parentNode: document.body,\n    //     schema: [\n    //         {name: 'col1', width: 220},\n    //         {name: 'col2', width: 150},\n    //         {name: 'col3', width: 300}\n    //     ]\n    // });\n    // grid.addEventListener('beforerendercell', function (e) {\n    //     if (/col2|col3/.test(e.header.name) && !e.cell.isHeader) {\n    //         e.cell.isGrid = false;\n    //     }\n    // });\n    // grid.addEventListener('rendertext', function (e) {\n    //     if (/col2|col3/.test(e.header.name) && !e.cell.isHeader) {\n    //         e.preventDefault();\n    //     }\n    //     if (!e.cell.isHeader && e.cell.value && e.cell.value.substring) {\n    //         e.ctx.fillStyle = parseFloat(e.cell.value.substring(4), 10) > 0.5 ? '#A1230F' : '#499A3D';\n    //     }\n    // });\n    // grid.addEventListener('afterrendercell', function (e) {\n    //     if (/col2|col3/.test(e.header.name) && !e.cell.isHeader) {\n    //         plotSparklineChart(e.cell, e.ctx);\n    //         e.preventDefault();\n    //     }\n    // });\n    // grid.data = function () {\n    //     var d = [], x = 0;\n    //     while (x < 2000) {\n    //         d.push({col1: '', col2: createRandomSeq(80), col3: createRandomSeq(100)});\n    //         x += 1;\n    //     }\n    //     return d;\n    // };\n    // function getData(fill) {\n    //     var a, x = grid.scrollIndexRect.top;\n    //     while (x < grid.scrollIndexRect.bottom + 2) {\n    //         if (fill || grid.isCellVisible(1, x)) {\n    //             a = grid.data[x].col2;\n    //             a.shift();\n    //             a.push(Math.random());\n    //             a = grid.data[x].col3;\n    //             a.shift();\n    //             a.push(Math.random());\n    //         }\n    //         x += 1;\n    //     }\n    //     grid.draw();\n    //     pollData();\n    // }\n    // function pollData() {\n    //     setTimeout(getData, 1000);\n    // }\n    // getData(true);\n\n\n\n\n\n    // var grid = canvasDatagrid({parentNode: document.getElementById('grid')});\n    // grid.attributes.debug = true;\n    // grid.data = dat;\n    // function dat() {\n    //     var x,\n    //         data = [],\n    //         d,\n    //         i,\n    //         c,\n    //         r = 'Elend, eam, animal omittam an, has in, explicari principes. Elit, causae eleifend mea cu. No sed adipisci accusata, ei mea everti melius periculis. Ei quot audire pericula mea, qui ubique offendit no. Sint mazim mandamus duo ei. Sumo maiestatis id has, at animal reprehendunt definitionem cum, mei ne adhuc theophrastus.';\n    //     c = r.split(' ').map(function (i) { return i.trim(); });\n    //     r = r.split(',').map(function (i) { return i.trim(); });\n    //     for (x = 0; x < 10000; x += 1) {\n    //         d = {};\n    //         for (i = 0; i < r.length; i += 1) {\n    //             d[r[i]] = c[Math.floor(Math.random() * 1000) % (c.length - 1)];\n    //         }\n    //         data.push(d);\n    //     }\n    //     return data;\n    // }\n    // grid.addEventListener('expandtree', function (e) {\n    //     e.treeGrid.data = dat();\n    // });\n    // // // add the data to the grid\n    // grid.data = dat();\n    // grid.addEventListener('expandtree', function (e) {\n    //     e.treeGrid.data = [{a: 'b', c: 'd', e: 'f', g: 'h'}];\n    // });\n    // grid.data = [{a: 'b', c: 'd', e: 'f', g: 'h'}];\n    // grid.data = [\n    //     {a: 'a', b: [{c: 'd'}]},\n    //     {a: 'a', b: [{c: [\n    //         {a: 'a', b: [{c: 'd'}]},\n    //         {a: 'a', b: [{c: 'd'}]},\n    //     ]}]},\n    // ];\n    // grid.data = [\n    //     {'a': 0, 'b': 1, 'c': 2},\n    //     {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},\n    //     {'a': 7, 'b': 8, 'c': 9}\n    // ];\n    // grid.addEventListener('expandtree', function (e) {\n    //     e.treeGrid.data = [\n    //         {'a': 0, 'b': 1, 'c': 2},\n    //         {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},\n    //         {'a': 7, 'b': 8, 'c': 9}\n    //     ];\n    // });\n    //grid.data = [null, \"32.84057112200048\", \"-86.63186076199969\", null, false];\n\n\n\n\n\n    // create a spreadsheet\n    var grid = canvasDatagrid({\n            name: 'blah',\n            borderDragBehavior: 'move',\n            showPaste: true,\n            parentNode: document.getElementById('grid'),\n            allowRowReordering: false,\n            scrollPointerLock: false,\n            showColumnHeaders: true,\n            showRowHeaders: true,\n            snapToRow: false,\n            debug: false,\n            showPerformance: true,\n            allowFreezingRows: false,\n            tree: true,\n            allowFreezingColumns: false\n        }),\n        x,\n        y,\n        d = [],\n        n;\n    function colName(n) {\n        var ordA = 'a'.charCodeAt(0),\n            ordZ = 'z'.charCodeAt(0),\n            len = ordZ - ordA + 1,\n            s = '';\n        while (n >= 0) {\n            s = String.fromCharCode(n % len + ordA) + s;\n            n = Math.floor(n / len) - 1;\n        }\n        return s;\n    }\n    for (x = 0; x < 500; x += 1) {\n        d[x] = {};\n        for (y = 0; y < 30; y += 1) {\n            n = colName(y).toUpperCase();\n            d[x][n] = (x + 1) + ', ' + n;\n        }\n    }\n    grid.attributes.columnHeaderClickBehavior = 'select';\n    grid.style.columnHeaderCellHorizontalAlignment = 'center';\n    grid.style.borderCollapse = 'collapse';\n    grid.style.cellWidth = 50;\n    // grid.style.cellBackgroundColor = 'red';\n    // grid.style.width = '50%';\n    grid.data = d;\n    grid.addEventListener('expandtree', function (e) {\n        e.treeGrid.data = [\n            {'a': 0, 'b': 1, 'c': 2},\n            {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},\n            {'a': 7, 'b': 8, 'c': 9}\n        ];\n    });\n\n\n    // var grid = canvasDatagrid({\n    //     parentNode: document.getElementById('grid'),\n    //     data: [\n    //         {col1: 'foo', col2: 0, col3: 'a'},\n    //         {col1: 'bar', col2: 1, col3: 'b'},\n    //         {col1: 'baz', col2: 2, col3: 'c'}\n    //     ]\n    // });\n    // grid.addEventListener('contextmenu', function (e) {\n    //     e.items.push({\n    //         title: 'Top level item',\n    //         items: [\n    //             {\n    //                 title: 'Child item #1',\n    //                 click: function (ev) {\n    //                     grid.data[0].col1 = e.cell.value;\n    //                     grid.draw();\n    //                 }\n    //             },\n    //             {\n    //                 title: 'Child item #2',\n    //                 click: function (ev) {\n    //                     grid.data[0].col1 = e.cell.value;\n    //                     grid.draw();\n    //                 }\n    //             }\n    //         ]\n    //     });\n    //     e.items.push({\n    //         title: 'You have '\n    //             + grid.selectedRows.filter(function (row) { return !!row; }).length\n    //             + ' rows selected'\n    //     });\n    // });\n\n\n    // function smallData() {\n    //     return [\n    //         {col1: 'foo', col2: 0, col3: 'a'},\n    //         {col1: 'bar', col2: 1, col3: 'b'},\n    //         {col1: 'baz', col2: 2, col3: 'c'}\n    //     ];\n    // }\n    // var grid = canvasDatagrid({\n    //     parentNode:  document.getElementById('grid'),\n    //     data: smallData(),\n    //     tree: true\n    // });\n\n}",
     "index.html": "<!doctype html>\n<html>\n<head>\n    <title>API Documentation - Canvas Datagrid</title>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js\"></script>\n    <script src=\"../dist/canvas-datagrid.debug.js\"></script>\n    <script src=\"../docs/js/reflection.js\"></script>\n    <script src=\"../docs/js/marked.js\"></script>\n    <script src=\"./js/main.js\"></script>\n    <meta name=\"viewport\" content=\"width=device-width\">\n    <link rel=\"stylesheet\" href=\"./css/main.css\">\n</head>\n<body></body>\n</html>\n",
