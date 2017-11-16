@@ -1246,7 +1246,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     if (x + cellWidth + self.style.cellBorderWidth < 0) {
                         x += cellWidth + self.style.cellBorderWidth;
                     }
-                    if (active) {
+                    if (active && cellStyle !== 'cornerCell') {
                         cellStyle = 'activeCell';
                     }
                     if (self.visibleRows.indexOf(rowIndex) === -1 && !isHeader) {
@@ -2281,7 +2281,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             for (i = sBounds.top; i <= sBounds.bottom; i += 1) {
                                 self.selectRow(i, true, null, true);
                             }
-                        } else {
+                        } else if (dragBounds.top !== -1) {
                             self.selectArea(sBounds, true);
                         }
                     }
@@ -2658,7 +2658,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             if (self.dragMode === 'cell') {
                 self.selecting = true;
-                if (self.attributes.selectionMode === 'row') {
+                if (self.attributes.selectionMode === 'row' && self.dragStartObject.rowIndex > -1) {
                     self.selectRow(self.dragStartObject.rowIndex, ctrl, null, true);
                 }
                 return self.mousemove(e);
