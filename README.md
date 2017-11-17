@@ -1,7 +1,7 @@
 canvas-datagrid
 ---------------
 
-[Demo](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html)
+[Demo](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html) - Entire City of Chichago government employee list.  Thanks to [data.gov](https://www.data.gov/).
 
 ![canvas-datagrid](https://tonygermaneri.github.io/canvas-datagrid/images/datagrid1.png)
 
@@ -67,24 +67,20 @@ Getting started
 ---------------
 
 Works [with webpack](https://tonygermaneri.github.io/canvas-datagrid/tutorials/amdDemo.html), [without webpack](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html) or as a [web component](https://tonygermaneri.github.io/canvas-datagrid/tutorials/webcomponentDemo.html).
-If used without webpack, `canvasDatagrid` is declared in the global scope.
+No matter how you use it, `canvasDatagrid` is declared in the global scope.
 
-Canvas-datagrid is a [Web Component](https://www.webcomponents.org/element/TonyGermaneri/canvas-datagrid).  It creates a
-custom tag definition where custom tags can be used.  If custom-tags cannot be used, a `<section>` tag is used instead.
-A canvas element is generated automatically within the `<section>` or shadow root.
-
+Canvas-datagrid is a [Web Component](https://www.webcomponents.org/element/TonyGermaneri/canvas-datagrid) when
+in a compatible browser, otherwise it is a `<section>` tag with a canvas element inside.
 
 Using pure JavaScript
 ---------------------
 
-
-    var grid = canvasDatagrid({
-        parentNode: document.getElementById('container'),
-        data: [
-            {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},
-            {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}
-        ]
-    });
+    var grid = canvasDatagrid();
+    document.body.appendChild(grid);
+    grid.data: [
+        {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},
+        {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}
+    ];
 
 
 Using web component
@@ -119,7 +115,7 @@ More Demos
 
 * [XHR data paging demo](https://tonygermaneri.github.io/canvas-datagrid/tutorials/xhrPagingDemo.html) - Jeopardy Questions API.  Thanks to [jservice](http://jservice.io/) for the use of the free paging API
 
-* [Loading data with XHR](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html) - City of Chichago government employee list.  Thanks to [data.gov](https://www.data.gov/).
+* [Loading data with XHR](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html)
 
 * [Sparkline example](https://tonygermaneri.github.io/canvas-datagrid/tutorials/sparklineDemo.html)
 
