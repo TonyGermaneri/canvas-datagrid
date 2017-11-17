@@ -1,7 +1,7 @@
 canvas-datagrid
 ---------------
 
-[Demo](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html)
+[Demo](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html) - Entire City of Chichago government employee list.  Thanks to [data.gov](https://www.data.gov/).
 
 ![canvas-datagrid](https://tonygermaneri.github.io/canvas-datagrid/images/datagrid1.png)
 
@@ -119,7 +119,7 @@ More Demos
 
 * [XHR data paging demo](https://tonygermaneri.github.io/canvas-datagrid/tutorials/xhrPagingDemo.html) - Jeopardy Questions API.  Thanks to [jservice](http://jservice.io/) for the use of the free paging API
 
-* [Loading data with XHR](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html) - City of Chichago government employee list.  Thanks to [data.gov](https://www.data.gov/).
+* [Loading data with XHR](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html)
 
 * [Sparkline example](https://tonygermaneri.github.io/canvas-datagrid/tutorials/sparklineDemo.html)
 
