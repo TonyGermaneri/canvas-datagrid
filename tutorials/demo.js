@@ -69,6 +69,14 @@ function demo() {
                 title: 'Go to main canvas-datagrid GitHub page',
                 click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid', 'src'); }
             });
+            e.items.push({
+                title: 'Toggle debugging info',
+                click: function () { grid.attributes.debug = !grid.attributes.debug; }
+            });
+            e.items.push({
+                title: 'Toggle performance info',
+                click: function () { grid.attributes.showPerformance = !grid.attributes.showPerformance; }
+            });
         });
         xhr.addEventListener('progress', function (e) {
             grid.data = [{ status: 'Loading data: ' + e.loaded + ' of ' + (e.total || 'unknown') + ' bytes...'}];

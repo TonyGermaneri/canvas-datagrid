@@ -1975,7 +1975,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     var m = key + ': ' + d[key],
                         lh = 14;
                     self.ctx.fillStyle = 'rgba(37, 254, 21, 1)';
-                    fillText(m, w - 20, 140 + (index * lh));
+                    fillText(m, w - 20, (self.attributes.showPerformance ? 140 : 24) + (index * lh));
                 });
                 self.ctx.restore();
             }

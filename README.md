@@ -117,7 +117,9 @@ More Demos
 
 * [Web component example](https://tonygermaneri.github.io/canvas-datagrid/tutorials/webcomponentDemo.html)
 
-* [Loading data with XHR](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html)
+* [XHR data paging demo](https://tonygermaneri.github.io/canvas-datagrid/tutorials/xhrPagingDemo.html) - Jeopardy Questions API.  Thanks to [jservice](http://jservice.io/) for the use of the free paging API
+
+* [Loading data with XHR](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html) - City of Chichago government employee list.  Thanks to [data.gov](https://www.data.gov/).
 
 * [Sparkline example](https://tonygermaneri.github.io/canvas-datagrid/tutorials/sparklineDemo.html)
 
