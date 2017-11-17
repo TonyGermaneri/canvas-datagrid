@@ -72,7 +72,7 @@ function demo() {
             callback(data, offset, rows);
         });
         // rows is not used by this API, other APIs usually define some sort of records per page
-        url = 'http://jservice.io/api/clues?offset=:offset'
+        url = 'https://jservice.io/api/clues?offset=:offset'
             .replace(':offset', offset)
             .replace(':rows', rows);
         xhr.open('GET', url);
