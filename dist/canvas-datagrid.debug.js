@@ -2102,8 +2102,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             } else {
                 self.height = self.canvas.offsetHeight;
                 self.width = self.canvas.offsetWidth;
-                self.canvas.width = self.width * window.devicePixelRatio;
-                self.canvas.height = self.height * window.devicePixelRatio;
+                self.canvas.width = self.width;
+                self.canvas.height = self.height;
                 self.canvasOffsetLeft = self.args.canvasOffsetLeft || 0;
                 self.canvasOffsetTop = self.args.canvasOffsetTop || 0;
             }
