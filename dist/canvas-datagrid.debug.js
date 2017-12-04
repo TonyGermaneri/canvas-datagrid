@@ -2202,13 +2202,18 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (self.dispatchEvent('mousemove', ev)) {
                 return;
             }
-            if (o && self.currentCell && (self.currentCell.rowIndex !== o.rowIndex
-                    || self.currentCell.columnIndex !== o.columnIndex)) {
-                self.cellBoundaryCrossed = true;
-                ev.cell = previousCell;
-                self.dispatchEvent('cellmouseout', ev);
-                ev.cell = o;
-                self.dispatchEvent('cellmouseover', ev);
+            if (o && self.currentCell) {
+                self.rowBoundaryCrossed = self.currentCell.rowIndex !== o.rowIndex;
+                self.columnBoundaryCrossed = self.currentCell.columnIndex !== o.columnIndex;
+                self.cellBoundaryCrossed = self.rowBoundaryCrossed || self.columnBoundaryCrossed;
+                ['row', 'column', 'cell'].forEach(function (prefix) {
+                    if (self[prefix + 'BoundaryCrossed']) {
+                        ev.cell = previousCell;
+                        self.dispatchEvent(prefix + 'mouseout', ev);
+                        ev.cell = o;
+                        self.dispatchEvent(prefix + 'mouseover', ev);
+                    }
+                });
             }
             self.currentCell = o;
             if (!self.hasFocus) {
@@ -2256,9 +2261,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         self.ignoreNextClick = true;
                     }
                     if (self.cellBoundaryCrossed || (delta.x === 0 && delta.y === 0) || (self.attributes.selectionMode === 'row')) {
-                        if ((self.attributes.selectionMode === 'row') || self.dragStartObject.columnIndex === -1) {
+                        if (((self.attributes.selectionMode === 'row') || self.dragStartObject.columnIndex === -1)
+                                && self.rowBoundaryCrossed) {
                             self.selectRow(o.rowIndex, ctrl, null, true);
-                        } else {
+                        } else if (self.attributes.selectionMode !== 'row') {
                             if (!self.dragAddToSelection && o.rowIndex !== undefined) {
                                 if (self.selections[o.rowIndex] && self.selections[o.rowIndex].indexOf(o.columnIndex) !== -1) {
                                     self.selections[o.rowIndex].splice(self.selections[o.rowIndex].indexOf(o.columnIndex), 1);
@@ -2289,6 +2295,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
             }
             self.cellBoundaryCrossed = false;
+            self.rowBoundaryCrossed = false;
+            self.columnBoundaryCrossed = false;
             self.draw(true);
         };
         self.click = function (e, overridePos) {
@@ -2658,10 +2666,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             if (self.dragMode === 'cell') {
                 self.selecting = true;
-                if (self.attributes.selectionMode === 'row' && self.dragStartObject.rowIndex > -1) {
+                if ((self.attributes.selectionMode === 'row' || self.dragStartObject.columnIndex === -1)
+                        && self.dragStartObject.rowIndex > -1) {
                     self.selectRow(self.dragStartObject.rowIndex, ctrl, null, true);
+                } else if (self.attributes.selectionMode !== 'row') {
+                    self.mousemove(e);
                 }
-                return self.mousemove(e);
+                return;
             }
             if (move) {
                 self.draggingItem = self.dragItem;
@@ -2694,16 +2705,20 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                        ? 'cornerCell' : self.draggingItem.header[self.uniqueId]] || self.draggingItem.width;
                 document.body.addEventListener('mousemove', self.dragResizeColumn, false);
                 document.body.addEventListener('mouseup', self.stopDragResize, false);
+                return;
             }
             if (['row-reorder', 'column-reorder'].indexOf(self.dragMode) !== -1) {
                 self.draggingItem = self.dragStartObject;
                 document.body.addEventListener('mousemove', self.dragReorder, false);
                 document.body.addEventListener('mouseup', self.stopDragReorder, false);
+                return;
             }
         };
         self.mouseup = function (e) {
             clearTimeout(self.scrollTimer);
             self.cellBoundaryCrossed = true;
+            self.rowBoundaryCrossed = true;
+            self.columnBoundaryCrossed = true;
             self.selecting = undefined;
             self.draggingItem = undefined;
             self.dragStartObject = undefined;
@@ -3490,6 +3505,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.mouse = { x: 0, y: 0};
         self.getSelectedData = function (expandToRow) {
             var d = [], s = expandToRow ? self.getSchema() : self.getVisibleSchema(), l = self.data.length;
+            if (l === 0) { return []; }
             self.selections.forEach(function (row, index) {
                 if (index === l) { return; }
                 if (row.length === 0) {
@@ -4703,12 +4719,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     }
                 }
                 if (rect.right > window.innerWidth) {
-                    if (parentContextMenu && parentContextMenu.container) {
-                        loc.x = parentContextMenu.container.offsetLeft - container.offsetWidth;
-                    } else {
-                        loc.x = window.innerWidth - container.offsetWidth;
-                    }
+                    loc.x -= rect.right - window.innerWidth + self.style.contextMenuWindowMargin;
                 }
+                if (loc.x < 0) { loc.x = 0; }
+                if (loc.y < 0) { loc.y = 0; }
                 container.style.left = loc.x + 'px';
                 container.style.top = loc.y + 'px';
                 rect = container.getBoundingClientRect();

@@ -329,7 +329,9 @@
                     mousemove(grid.canvas, 45, 37);
                     mousedown(grid.canvas, 45, 37);
                     mouseup(grid.canvas, 45, 37);
-                    assertPxColor(grid, 80, 37, c.b, done);
+                    setTimeout(function () {
+                        assertPxColor(grid, 80, 37, c.b, done);
+                    }, 1);
                 });
                 it('Should draw a debug message.', function (done) {
                     var grid = g({
