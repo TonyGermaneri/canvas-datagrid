@@ -3279,7 +3279,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.touchmove = function (e) {
             var ch, rw, rScrollZone, lScrollZone, bScrollZone, tScrollZone, sbw, t1, t2;
-            if (self.dispatchEvent('touchmove', {NativeEvent: e})) { return; }
+            if (self.dispatchEvent('beforetouchmove', {NativeEvent: e})) { return; }
             clearTimeout(touchScrollTimeout);
             if (e.changedTouches[0]) {
                 self.touchPosition = self.getTouchPos(e);
@@ -3335,6 +3335,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 t: performance.now()
             };
             self.currentCell = self.getCellAt(self.touchPosition.x, self.touchPosition.y);
+            self.dispatchEvent('touchmove', {NativeEvent: e, cell: self.currentCell});
             self.calculatePPS();
             self.touchDuration = performance.now() - self.touchScrollStart.t;
             self.stopAnimation = true;
@@ -3372,7 +3373,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             document.body.removeEventListener('touchcancel', self.touchcancel, false);
         };
         self.touchend = function (e) {
-            if (self.dispatchEvent('touchend', {NativeEvent: e})) { return; }
+            if (self.dispatchEvent('touchend', {NativeEvent: e, cell: self.currentCell})) { return; }
             self.zoomDeltaStart = undefined;
             if (e.changedTouches[0]) {
                 self.touchPosition = undefined;
@@ -3415,7 +3416,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.touchEndEvents(e);
         };
         self.touchcancel = function (e) {
-            if (self.dispatchEvent('touchcancel', {NativeEvent: e})) { return; }
+            if (self.dispatchEvent('touchcancel', {NativeEvent: e, cell: self.currentCell})) { return; }
             self.touchEndEvents(e);
         };
     };
@@ -6455,6 +6456,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     return 't';
                 }
             }
+            if (!self.visibleCells) { return; }
             var border,
                 tsz = useTouchScrollZones ? self.attributes.touchScrollZone : 0,
                 moveMode = self.attributes.borderDragBehavior === 'move',

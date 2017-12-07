@@ -125,19 +125,27 @@ More Demos
 Building & Testing
 ------------------
 
+To build production and debug versions.
+
+    npm run build-all
+
 To build production version.
 
     npm run build-prd
 
-To build debug version
+To build debug version.
 
     npm run build-dev
 
-To build documentation
+To build debug version anytime a file in ./lib changes.
+
+    npm run build-watch
+
+To build documentation.
 
     npm run build-docs
 
-To run tests
+To run tests.
 
     npm test
 

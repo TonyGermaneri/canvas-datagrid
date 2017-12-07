@@ -87,11 +87,11 @@ function demo() {
         grid.addEventListener('contextmenu', function (e) {
             e.items.push({
                 title: 'View page source',
-                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/demo.html', 'src'); }
+                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/pivotFormDemo.html', 'src'); }
             });
             e.items.push({
                 title: 'View JS module',
-                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/demo.js', 'src'); }
+                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/pivotFormDemo.js', 'src'); }
             });
             e.items.push({
                 title: 'Go to main canvas-datagrid GitHub page',
