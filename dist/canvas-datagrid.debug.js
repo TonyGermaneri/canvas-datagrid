@@ -688,6 +688,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             scrollDebugCounters = [],
             touchPPSCounters = [];
         self.htmlImageCache = {};
+        function getRatio() {
+            return (window.devicePixelRatio || 1) /
+                (self.ctx.webkitBackingStorePixelRatio ||
+                    self.ctx.mozBackingStorePixelRatio ||
+                    self.ctx.msBackingStorePixelRatio ||
+                    self.ctx.oBackingStorePixelRatio ||
+                    self.ctx.backingStorePixelRatio || 1);
+        }
         function drawPerfLine(w, h, x, y, perfArr, arrIndex, max, color, useAbs) {
             var i = w / perfArr.length,
                 r = h / max;
@@ -1008,9 +1016,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          // w = current width
         self.draw = function (internal) {
             if (self.dispatchEvent('beforedraw', {})) { return; }
-            if (!self.isChildGrid) {
-                self.ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-            }
             if (!self.isChildGrid && (!self.height || !self.width)) {
                 return;
             }
@@ -1023,6 +1028,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             // initial values
             var checkScrollHeight, rowHeaderCell, p, cx, cy, treeGrid, rowOpen,
+                ratio = getRatio(),
                 rowHeight, cornerCell, y, x, c, h, w, s, r, rd, aCell,
                 bc = self.style.gridBorderCollapse === 'collapse',
                 selectionBorders = [],
@@ -1980,6 +1986,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.ctx.restore();
             }
             self.ctx.save();
+            if (!self.isChildGrid) {
+                self.canvas.width = self.width * ratio;
+                self.canvas.height = self.height * ratio;
+                self.ctx.scale(ratio, ratio);
+            }
             initDraw();
             drawBackground();
             drawFrozenRows();
@@ -2102,8 +2113,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             } else {
                 self.height = self.canvas.offsetHeight;
                 self.width = self.canvas.offsetWidth;
-                self.canvas.width = self.width * window.devicePixelRatio;
-                self.canvas.height = self.height * window.devicePixelRatio;
                 self.canvasOffsetLeft = self.args.canvasOffsetLeft || 0;
                 self.canvasOffsetTop = self.args.canvasOffsetTop || 0;
             }
