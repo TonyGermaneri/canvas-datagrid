@@ -1008,6 +1008,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          // w = current width
         self.draw = function (internal) {
             if (self.dispatchEvent('beforedraw', {})) { return; }
+            if (!self.isChildGrid) {
+                self.ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
             if (!self.isChildGrid && (!self.height || !self.width)) {
                 return;
             }
@@ -1629,9 +1632,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.canvasOffsetLeft = self.isChildGrid ? self.parentNode.offsetLeft : 0;
                 h = self.height;
                 w = self.width;
-                if (!self.isChildGrid) {
-                    self.ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-                }
             }
             function drawBackground() {
                 radiusRect(0, 0, w, h, 0);
