@@ -119,7 +119,7 @@ More Demos
 
 * [Sparkline example](https://tonygermaneri.github.io/canvas-datagrid/tutorials/sparklineDemo.html)
 
-* [Pivot-form integration example](https://tonygermaneri.github.io/canvas-datagrid/tutorials/pivotFormDemo.html)
+* [Pivot-form integration example](https://tonygermaneri.github.io/canvas-datagrid/tutorials/pivotFormDemo.html) - [pivot-form](https://github.com/TonyGermaneri/pivot-form) is the companion library to canvas-datagrid.  Where canvas-datagrid is a focused on large datasets, pivot-form is focused on a single row of data, providing rich UI abstractions such as dialogs, tabs, split-containers and more to present your schemas without the need to write complex UI interactions.
 
 
 Building & Testing
