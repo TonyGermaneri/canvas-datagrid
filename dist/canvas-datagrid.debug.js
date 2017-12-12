@@ -160,6 +160,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['touchZoomSensitivity', 0.005],
                 ['touchZoomMin', 0.5],
                 ['touchZoomMax', 1.75],
+                ['maxPixelRatio', 1],
                 ['tree', false],
                 ['treeHorizontalScroll', false]
             ],
@@ -688,14 +689,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             scrollDebugCounters = [],
             touchPPSCounters = [];
         self.htmlImageCache = {};
-        function getRatio() {
-            return (window.devicePixelRatio || 1) /
-                (self.ctx.webkitBackingStorePixelRatio ||
-                    self.ctx.mozBackingStorePixelRatio ||
-                    self.ctx.msBackingStorePixelRatio ||
-                    self.ctx.oBackingStorePixelRatio ||
-                    self.ctx.backingStorePixelRatio || 1);
-        }
         function drawPerfLine(w, h, x, y, perfArr, arrIndex, max, color, useAbs) {
             var i = w / perfArr.length,
                 r = h / max;
@@ -1028,7 +1021,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             // initial values
             var checkScrollHeight, rowHeaderCell, p, cx, cy, treeGrid, rowOpen,
-                ratio = getRatio(),
                 rowHeight, cornerCell, y, x, c, h, w, s, r, rd, aCell,
                 bc = self.style.gridBorderCollapse === 'collapse',
                 selectionBorders = [],
@@ -1986,11 +1978,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.ctx.restore();
             }
             self.ctx.save();
-            if (!self.isChildGrid) {
-                self.canvas.width = self.width * ratio;
-                self.canvas.height = self.height * ratio;
-                self.ctx.scale(ratio, ratio);
-            }
             initDraw();
             drawBackground();
             drawFrozenRows();
@@ -2083,9 +2070,18 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             });
             return defaultPrevented;
         };
+        self.getRatio = function () {
+            return Math.min(self.attributes.maxPixelRatio, (window.devicePixelRatio || 1) /
+                (self.ctx.webkitBackingStorePixelRatio ||
+                    self.ctx.mozBackingStorePixelRatio ||
+                    self.ctx.msBackingStorePixelRatio ||
+                    self.ctx.oBackingStorePixelRatio ||
+                    self.ctx.backingStorePixelRatio || 1));
+        };
         self.resize = function (drawAfterResize) {
             if (!self.canvas) { return; }
-            var bm = self.style.gridBorderCollapse === 'collapse' ? 1 : 2,
+            var ratio = self.getRatio(),
+                bm = self.style.gridBorderCollapse === 'collapse' ? 1 : 2,
                 cellBorder = self.style.cellBorderWidth * bm,
                 columnHeaderCellBorder = self.style.columnHeaderCellBorderWidth * bm,
                 scrollHeight,
@@ -2113,6 +2109,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             } else {
                 self.height = self.canvas.offsetHeight;
                 self.width = self.canvas.offsetWidth;
+                self.canvas.width = self.width * ratio;
+                self.canvas.height = self.height * ratio;
+                self.ctx.scale(ratio, ratio);
                 self.canvasOffsetLeft = self.args.canvasOffsetLeft || 0;
                 self.canvasOffsetTop = self.args.canvasOffsetTop || 0;
             }
@@ -4720,12 +4719,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 document.body.appendChild(downArrow);
                 document.body.appendChild(container);
                 rect = container.getBoundingClientRect();
-                if (rect.bottom > window.innerHeight && !(parentContextMenu && parentContextMenu.inputDropdown)) {
-                    loc.y = window.innerHeight - container.offsetHeight;
+                // TODO: fix !(parentContextMenu && parentContextMenu.inputDropdown) state (autocomplete)
+                if (rect.bottom > window.innerHeight) {
+                    if (!(parentContextMenu && parentContextMenu.inputDropdown)) {
+                        loc.y -= (rect.bottom + self.style.contextMenuWindowMargin) - window.innerHeight;
+                    }
                     if (loc.y < 0) { loc.y = 0; }
                     if (container.offsetHeight > window.innerHeight - self.style.contextMenuWindowMargin) {
                         container.style.height = window.innerHeight - self.style.contextMenuWindowMargin + 'px';
-                        loc.y += self.style.contextMenuWindowMargin * 0.5;
+                        loc.y -= self.style.contextMenuWindowMargin;
                     }
                 }
                 if (rect.right > window.innerWidth) {
@@ -5059,15 +5061,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     NativeEvent: e,
                     cell: self.getCellAt(pos.x, pos.y),
                     items: items
-                },
-                st,
-                sl;
+                };
             if (!ev.cell.isGrid) {
                 addDefaultContextMenuItem(ev);
-            }
-            if (document.scrollingElement) {
-                sl = document.scrollingElement.scrollLeft;
-                st = document.scrollingElement.scrollTop;
             }
             if (self.dispatchEvent('contextmenu', ev)) {
                 return;
@@ -5077,8 +5073,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.disposeContextMenu();
                 }
                 contextPosition = {
-                    left: pos.x + sl + pos.rect.left + self.style.contextMenuMarginLeft + self.canvasOffsetLeft,
-                    top: pos.y + st + pos.rect.top + self.style.contextMenuMarginTop + self.canvasOffsetTop,
+                    left: pos.x + pos.rect.left
+                        + self.style.contextMenuMarginLeft + self.canvasOffsetLeft,
+                    top: pos.y + pos.rect.top
+                        + self.style.contextMenuMarginTop + self.canvasOffsetTop,
                     right: ev.cell.width + ev.cell.x + pos.rect.left,
                     bottom: ev.cell.height + ev.cell.y + pos.rect.top,
                     height: ev.cell.height,
@@ -5178,7 +5176,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
                 e = e.parentNode;
             }
-            return {left: x, top: y};
+            return {
+                left: x - document.scrollingElement.scrollLeft,
+                top: y - document.scrollingElement.scrollTop
+            };
         };
         self.resizeEditInput = function () {
             if (self.input && self.input.editCell) {
