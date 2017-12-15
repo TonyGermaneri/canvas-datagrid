@@ -3547,6 +3547,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.setStorageData = function () {
             if (!self.attributes.saveAppearance || !self.attributes.name) { return; }
+            var visibility = {};
+            self.getSchema().forEach(function (column) {
+                visibility[column.name] = !column.hidden;
+            });
             localStorage.setItem(self.storageName + '-' + self.attributes.name, JSON.stringify({
                 sizes: {
                     rows: self.sizes.rows,
@@ -3557,7 +3561,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     columns: self.orders.columns
                 },
                 orderBy: self.orderBy,
-                orderDirection: self.orderDirection
+                orderDirection: self.orderDirection,
+                visibility: visibility
             }));
         };
         self.getSchema = function () {
@@ -3791,6 +3796,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         ['trees', 'columns', 'rows'].forEach(function (i) {
                             if (!self.sizes[i]) {
                                 self.sizes[i] = {};
+                            }
+                        });
+                    }
+                    if (typeof self.storedSettings.visibility === 'object') {
+                        self.getSchema().forEach(function (column) {
+                            if (self.storedSettings.visibility[column.name] !== undefined) {
+                                column.hidden = !self.storedSettings.visibility[column.name];
                             }
                         });
                     }
@@ -4334,6 +4346,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     column.index = index;
                     column.columnIndex = index;
                     column.rowIndex = -1;
+                    if (self.storedSettings && self.storedSettings.visibility[column.name] !== undefined) {
+                        column.hidden = !self.storedSettings.visibility[column.name];
+                    }
                     return column;
                 });
                 self.tempSchema = undefined;
@@ -4959,6 +4974,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                                 self.stopPropagation(e);
                                 self.disposeContextMenu();
                                 self.resize(true);
+                                self.setStorageData();
                             }
                             var el = document.createElement('div');
                             applyContextItemStyle(el);
@@ -4983,6 +4999,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             ev.preventDefault();
                             self.stopPropagation(ev);
                             self.disposeContextMenu();
+                            self.setStorageData();
                             setTimeout(function () { self.resize(true); }, 10);
                         }
                     });
@@ -6314,7 +6331,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @name order
          * @method
          * @returns {cell} cell at the selected location.
-         * @param {number} columnName Number of pixels from the left.
+         * @param {number} columnName Name of the column to be sorted.
          * @param {string} direction `asc` for ascending or `desc` for descending.
          * @param {function} [sortFunction] When defined, override the default sorting method defined in the column's schema and use this one.
          * @param {bool} [dontSetStorageData] Don't store this setting for future use.
