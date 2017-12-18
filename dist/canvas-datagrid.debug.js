@@ -3713,6 +3713,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.tryLoadStoredSettings = function () {
             var s;
+            self.reloadStoredValues();
             if (self.storedSettings
                     && typeof self.storedSettings.orders === 'object'
                     && self.storedSettings.orders !== null) {
@@ -3963,7 +3964,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     set: function (value) {
                         self.attributes[key] = value;
                         if (key === 'name') {
-                            self.reloadStoredValues();
                             self.tryLoadStoredSettings();
                         }
                         self.draw(true);
