@@ -6687,6 +6687,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 if (key === self.uniqueId) {
                     i.hidden = true;
                 }
+                if (self.storedSettings && self.storedSettings.visibility[i.name] !== undefined) {
+                    i.hidden = !self.storedSettings.visibility[i.name];
+                }
                 i[self.uniqueId] = self.getSchemaNameHash(key);
                 return i;
             });
