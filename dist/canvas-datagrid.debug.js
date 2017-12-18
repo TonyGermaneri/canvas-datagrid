@@ -3711,7 +3711,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.observer.disconnect();
             }
         };
-        self.tryLoadStoredOrders = function () {
+        self.tryLoadStoredSettings = function () {
             var s;
             if (self.storedSettings
                     && typeof self.storedSettings.orders === 'object'
@@ -3964,7 +3964,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         self.attributes[key] = value;
                         if (key === 'name') {
                             self.reloadStoredValues();
-                            self.tryLoadStoredOrders();
+                            self.tryLoadStoredSettings();
                         }
                         self.draw(true);
                         self.dispatchEvent('attributechanged', {name: key, value: value[key]});
@@ -4346,15 +4346,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     column.index = index;
                     column.columnIndex = index;
                     column.rowIndex = -1;
-                    if (self.storedSettings && self.storedSettings.visibility[column.name] !== undefined) {
-                        column.hidden = !self.storedSettings.visibility[column.name];
-                    }
                     return column;
                 });
                 self.tempSchema = undefined;
                 self.createNewRowData();
                 self.createColumnOrders();
-                self.tryLoadStoredOrders();
+                self.tryLoadStoredSettings();
+                self.schema.forEach(function hideEachSchemaColumn(column, index) {
+                    if (self.storedSettings && self.storedSettings.visibility[column.name] !== undefined) {
+                        column.hidden = !self.storedSettings.visibility[column.name];
+                    }
+                });
                 self.resize(true);
                 self.dispatchEvent('schemachanged', {schema: self.schema});
             }
@@ -4385,7 +4387,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     }
                     if (self.tempSchema && !self.schema) {
                         self.createColumnOrders();
-                        self.tryLoadStoredOrders();
+                        self.tryLoadStoredSettings();
                         self.dispatchEvent('schemachanged', {schema: self.tempSchema});
                     }
                     self.createNewRowData();
@@ -4396,7 +4398,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.fitColumnToValues('cornerCell', true);
                     self.resize(true);
                     self.createRowOrders();
-                    self.tryLoadStoredOrders();
+                    self.tryLoadStoredSettings();
                     self.dispatchEvent('datachanged', {data: self.data});
                 });
             }
