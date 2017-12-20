@@ -3802,7 +3802,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     }
                     if (typeof self.storedSettings.visibility === 'object') {
                         self.getSchema().forEach(function (column) {
-                            if (self.storedSettings.visibility[column.name] !== undefined) {
+                            if (self.storedSettings.visibility && self.storedSettings.visibility[column.name] !== undefined) {
                                 column.hidden = !self.storedSettings.visibility[column.name];
                             }
                         });
@@ -4352,11 +4352,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.createNewRowData();
                 self.createColumnOrders();
                 self.tryLoadStoredSettings();
-                self.schema.forEach(function hideEachSchemaColumn(column, index) {
-                    if (self.storedSettings && self.storedSettings.visibility[column.name] !== undefined) {
-                        column.hidden = !self.storedSettings.visibility[column.name];
-                    }
-                });
+                if (self.storedSettings && typeof self.storedSettings.visibility === 'object') {
+                    self.schema.forEach(function hideEachSchemaColumn(column, index) {
+                        if (self.storedSettings && self.storedSettings.visibility[column.name] !== undefined) {
+                            column.hidden = !self.storedSettings.visibility[column.name];
+                        }
+                    });
+                }
                 self.resize(true);
                 self.dispatchEvent('schemachanged', {schema: self.schema});
             }
