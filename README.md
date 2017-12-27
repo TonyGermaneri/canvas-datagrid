@@ -1,7 +1,7 @@
 canvas-datagrid
 ---------------
 
-[Demo](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html) - Entire City of Chichago government employee list.  Thanks to [data.gov](https://www.data.gov/).
+[Demo](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html) - Entire City of Chicago government employee list.  Thanks to [data.gov](https://www.data.gov/).
 
 ![canvas-datagrid](https://tonygermaneri.github.io/canvas-datagrid/images/datagrid1.png)
 
