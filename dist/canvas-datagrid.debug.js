@@ -2962,7 +2962,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             l = clipData.length;
             clipData.forEach(function (rowData) {
                 yi += 1;
-                self.data[yi] = normalizeRowData(rowData, self.data[yi], x, s, mimeType, yi);
+                var i = self.orders.columns[yi];
+                self.data[i] = normalizeRowData(rowData, self.data[i], x, s, mimeType, i);
             });
             self.selections = sel;
             return l;
@@ -3035,6 +3036,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 e.clipboardData.setData('text/html', d);
                 e.clipboardData.setData('text/plain', t);
                 e.clipboardData.setData('text/csv', t);
+                e.clipboardData.setData('application/json', JSON.stringify(sData));
                 e.preventDefault();
             }
         };
@@ -3523,8 +3525,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
                 d[index] = {};
                 row.forEach(function (col) {
+                    var orderedIndex;
                     if (col === -1 || !s[col]) { return; }
-                    d[index][s[col].name] = self.data[index][s[col].name];
+                    orderedIndex = self.orders.columns[col];
+                    d[index][s[orderedIndex].name] = self.data[index][s[orderedIndex].name];
                 });
             });
             return d;
@@ -4260,7 +4264,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 if (isNaN(val)) {
                     throw new TypeError('Expected value for frozenRow to be a number.');
                 }
-                if (self.visibleRows.length > val) {
+                if (self.visibleRows.length < val) {
                     throw new RangeError('Cannot set a value larger than the number of visible rows.');
                 }
                 self.frozenRow = val;
@@ -4274,7 +4278,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 if (isNaN(val)) {
                     throw new TypeError('Expected value for frozenRow to be a number.');
                 }
-                if (self.getVisibleSchema().length > val) {
+                if (self.getVisibleSchema().length < val) {
                     throw new RangeError('Cannot set a value larger than the number of visible columns.');
                 }
                 self.frozenColumn = val;
