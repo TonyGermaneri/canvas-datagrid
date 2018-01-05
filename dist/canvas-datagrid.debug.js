@@ -3463,7 +3463,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.invalidSearchExpClass = 'canvas-datagrid-invalid-search-regExp';
         self.localStyleLibraryStorageKey = 'canvas-datagrid-user-style-library';
         self.uniqueId = '_canvasDataGridUniqueId';
-        self.orderBy = self.uniqueId;
+        self.orderBy = null;
         self.orderDirection = 'asc';
         self.columnFilters = {};
         self.filters = {};
@@ -4113,6 +4113,32 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.parentNodeStyle.cursor = value;
                     self.currentCursor = value;
                 }
+            }
+        });
+        Object.defineProperty(self.intf, 'orderDirection', {
+            get: function () {
+                return self.orderDirection;
+            },
+            set: function (value) {
+                if (value !== 'desc') {
+                    value = 'asc';
+                }
+                self.orderDirection = value;
+                self.order(self.orderBy, self.orderDirection);
+            }
+        });
+        Object.defineProperty(self.intf, 'orderBy', {
+            get: function () {
+                return self.orderBy;
+            },
+            set: function (value) {
+                if (self.getSchema().find(function (col) {
+                        return col.name === value;
+                    }) === undefined) {
+                    throw new Error('Cannot sort by unknown column name.');
+                }
+                self.orderBy = value;
+                self.order(self.orderBy, self.orderDirection);
             }
         });
         Object.defineProperty(self.intf, 'scrollHeight', {
@@ -6349,6 +6375,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 c = self.getSchema().filter(function (col) {
                     return col.name === columnName;
                 });
+            if (self.dispatchEvent('beforesortcolumn', {name: columnName, direction: direction})) { return; }
             self.orderBy = columnName;
             if (c.length === 0) {
                 throw new Error('Cannot sort.  No such column name');
@@ -6358,7 +6385,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 console.warn('Cannot sort type "%s" falling back to string sort.', c[0].type);
             }
             self.data = self.data.sort(typeof f === 'function' ? f(columnName, direction) : self.sorters.string);
-            self.dispatchEvent('ordercolumn', {name: columnName, direction: direction});
+            self.dispatchEvent('sortcolumn', {name: columnName, direction: direction});
             self.draw(true);
             if (dontSetStorageData) { return; }
             self.setStorageData();

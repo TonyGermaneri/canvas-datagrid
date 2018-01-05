@@ -219,7 +219,12 @@ function g() {
     grid.style.cellWidth = 50;
     // grid.style.cellBackgroundColor = 'red';
     // grid.style.width = '50%';
-     grid.data = d;
+    grid.data = d;
+    grid.addEventListener('beforesortcolumn', function (e) {
+        e.preventDefault();
+    });
+    grid.orderBy = 'S';
+    grid.orderDirection = 'desc';
     grid.addEventListener('expandtree', function (e) {
         e.treeGrid.data = [
             {'a': 0, 'b': 1, 'c': 2},
