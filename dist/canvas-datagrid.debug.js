@@ -2962,7 +2962,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             l = clipData.length;
             clipData.forEach(function (rowData) {
                 yi += 1;
-                self.data[yi] = normalizeRowData(rowData, self.data[yi], x, s, mimeType, yi);
+                var i = self.orders.columns[yi];
+                self.data[i] = normalizeRowData(rowData, self.data[i], x, s, mimeType, i);
             });
             self.selections = sel;
             return l;
@@ -3035,6 +3036,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 e.clipboardData.setData('text/html', d);
                 e.clipboardData.setData('text/plain', t);
                 e.clipboardData.setData('text/csv', t);
+                e.clipboardData.setData('application/json', JSON.stringify(sData));
                 e.preventDefault();
             }
         };
@@ -3461,7 +3463,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.invalidSearchExpClass = 'canvas-datagrid-invalid-search-regExp';
         self.localStyleLibraryStorageKey = 'canvas-datagrid-user-style-library';
         self.uniqueId = '_canvasDataGridUniqueId';
-        self.orderBy = self.uniqueId;
+        self.orderBy = null;
         self.orderDirection = 'asc';
         self.columnFilters = {};
         self.filters = {};
@@ -3523,8 +3525,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
                 d[index] = {};
                 row.forEach(function (col) {
+                    var orderedIndex;
                     if (col === -1 || !s[col]) { return; }
-                    d[index][s[col].name] = self.data[index][s[col].name];
+                    orderedIndex = self.orders.columns[col];
+                    d[index][s[orderedIndex].name] = self.data[index][s[orderedIndex].name];
                 });
             });
             return d;
@@ -3802,7 +3806,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     }
                     if (typeof self.storedSettings.visibility === 'object') {
                         self.getSchema().forEach(function (column) {
-                            if (self.storedSettings.visibility[column.name] !== undefined) {
+                            if (self.storedSettings.visibility && self.storedSettings.visibility[column.name] !== undefined) {
                                 column.hidden = !self.storedSettings.visibility[column.name];
                             }
                         });
@@ -4111,6 +4115,32 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
             }
         });
+        Object.defineProperty(self.intf, 'orderDirection', {
+            get: function () {
+                return self.orderDirection;
+            },
+            set: function (value) {
+                if (value !== 'desc') {
+                    value = 'asc';
+                }
+                self.orderDirection = value;
+                self.order(self.orderBy, self.orderDirection);
+            }
+        });
+        Object.defineProperty(self.intf, 'orderBy', {
+            get: function () {
+                return self.orderBy;
+            },
+            set: function (value) {
+                if (self.getSchema().find(function (col) {
+                        return col.name === value;
+                    }) === undefined) {
+                    throw new Error('Cannot sort by unknown column name.');
+                }
+                self.orderBy = value;
+                self.order(self.orderBy, self.orderDirection);
+            }
+        });
         Object.defineProperty(self.intf, 'scrollHeight', {
             get: function () {
                 return self.scrollBox.scrollHeight;
@@ -4260,7 +4290,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 if (isNaN(val)) {
                     throw new TypeError('Expected value for frozenRow to be a number.');
                 }
-                if (self.visibleRows.length > val) {
+                if (self.visibleRows.length < val) {
                     throw new RangeError('Cannot set a value larger than the number of visible rows.');
                 }
                 self.frozenRow = val;
@@ -4274,7 +4304,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 if (isNaN(val)) {
                     throw new TypeError('Expected value for frozenRow to be a number.');
                 }
-                if (self.getVisibleSchema().length > val) {
+                if (self.getVisibleSchema().length < val) {
                     throw new RangeError('Cannot set a value larger than the number of visible columns.');
                 }
                 self.frozenColumn = val;
@@ -4352,11 +4382,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.createNewRowData();
                 self.createColumnOrders();
                 self.tryLoadStoredSettings();
-                self.schema.forEach(function hideEachSchemaColumn(column, index) {
-                    if (self.storedSettings && self.storedSettings.visibility[column.name] !== undefined) {
-                        column.hidden = !self.storedSettings.visibility[column.name];
-                    }
-                });
+                if (self.storedSettings && typeof self.storedSettings.visibility === 'object') {
+                    self.schema.forEach(function hideEachSchemaColumn(column, index) {
+                        if (self.storedSettings && self.storedSettings.visibility[column.name] !== undefined) {
+                            column.hidden = !self.storedSettings.visibility[column.name];
+                        }
+                    });
+                }
                 self.resize(true);
                 self.dispatchEvent('schemachanged', {schema: self.schema});
             }
@@ -6343,6 +6375,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 c = self.getSchema().filter(function (col) {
                     return col.name === columnName;
                 });
+            if (self.dispatchEvent('beforesortcolumn', {name: columnName, direction: direction})) { return; }
             self.orderBy = columnName;
             if (c.length === 0) {
                 throw new Error('Cannot sort.  No such column name');
@@ -6352,7 +6385,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 console.warn('Cannot sort type "%s" falling back to string sort.', c[0].type);
             }
             self.data = self.data.sort(typeof f === 'function' ? f(columnName, direction) : self.sorters.string);
-            self.dispatchEvent('ordercolumn', {name: columnName, direction: direction});
+            self.dispatchEvent('sortcolumn', {name: columnName, direction: direction});
             self.draw(true);
             if (dontSetStorageData) { return; }
             self.setStorageData();
