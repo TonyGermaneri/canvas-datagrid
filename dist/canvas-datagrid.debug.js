@@ -526,7 +526,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             return r;
         }
         component.applyComponentStyle = function (supressChangeAndDrawEvents, intf) {
-            var cStyle = window.getComputedStyle(intf, null),
+            var cStyle = window.getComputedStyle(intf.tagName === 'CANVAS-DATAGRID' ? intf : intf.canvas, null),
                 defs = {};
             intf.computedStyle = cStyle;
             defaults(defs);
@@ -1048,8 +1048,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             function drawScrollBars() {
                 var drawCorner,
                     en = self.scrollBox.entities,
-                    m = (self.style.scrollBarBoxMargin * 2),
-                    b = (self.style.scrollBarBorderWidth * 2);
+                    m = (self.style.scrollBarBoxMargin * 2);
                 self.ctx.strokeStyle = self.style.scrollBarBorderColor;
                 self.ctx.lineWidth = self.style.scrollBarBorderWidth;
                 en.horizontalBox.x = rowHeaderCellWidth + self.style.scrollBarBoxMargin
@@ -2096,15 +2095,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 height: scrollHeight + columnHeaderCellHeight,
                 width: scrollWidth + rowHeaderCellWidth
             };
-            ['width', 'height'].forEach(function (dim) {
-                //TODO: support inherit
-                if (['auto', undefined].indexOf(self.style[dim]) !== -1) {
-                    //TODO: support min-max
-                    self.parentNodeStyle[dim] = dims[dim] + 'px';
-                } else {
-                    self.parentNodeStyle[dim] = self.style[dim];
-                }
-            });
+            if (!self.isChildGrid) {
+                ['width', 'height'].forEach(function (dim) {
+                    //TODO: support inherit
+                    if (['auto', undefined].indexOf(self.style[dim]) !== -1) {
+                        //TODO: support min-max
+                        self.parentNodeStyle[dim] = dims[dim] + 'px';
+                    } else {
+                        self.parentNodeStyle[dim] = self.style[dim];
+                    }
+                });
+            }
             if (self.isChildGrid) {
                 self.width = self.parentNode.offsetWidth;
                 self.height = self.parentNode.offsetHeight;
@@ -6568,17 +6569,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @param {number} y Number of pixels from the top.
          */
         self.getCellAt = function (x, y, useTouchScrollZones) {
-            function getBorder(cell) {
-                if (cell.x + cell.width - (self.attributes.borderResizeZone * 0.4) < x && cell.x + cell.width + (self.attributes.borderResizeZone * 0.6) > x) {
+            function getBorder(entitiy) {
+                if (entitiy.x + entitiy.width - (self.attributes.borderResizeZone * 0.4) < x && entitiy.x + entitiy.width + (self.attributes.borderResizeZone * 0.6) > x) {
                     return 'r';
                 }
-                if (cell.x - (self.attributes.borderResizeZone * 0.4) < x && cell.x + (self.attributes.borderResizeZone * 0.6) > x) {
+                if (entitiy.x - (self.attributes.borderResizeZone * 0.4) < x && entitiy.x + (self.attributes.borderResizeZone * 0.6) > x) {
                     return 'l';
                 }
-                if (cell.y + cell.height - (self.attributes.borderResizeZone * 0.4) < y && cell.y + cell.height + (self.attributes.borderResizeZone * 0.6) > y) {
+                if (entitiy.y + entitiy.height - (self.attributes.borderResizeZone * 0.4) < y && entitiy.y + entitiy.height + (self.attributes.borderResizeZone * 0.6) > y) {
                     return 'b';
                 }
-                if (cell.y - (self.attributes.borderResizeZone * 0.4) < y && cell.y + (self.attributes.borderResizeZone * 0.6) > y) {
+                if (entitiy.y - (self.attributes.borderResizeZone * 0.4) < y && entitiy.y + (self.attributes.borderResizeZone * 0.6) > y) {
                     return 't';
                 }
             }
@@ -6591,7 +6592,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 moveBorder,
                 xBorderBehavior = moveMode ? self.cursorGrab : 'ew-resize',
                 yBorderBehavior = moveMode ? self.cursorGrab : 'ns-resize',
-                cell;
+                cell,
+                entitiy;
             if (!self.visibleCells || !self.visibleCells.length) { return; }
             self.hasFocus = true;
             if (!(y < self.height
@@ -6606,16 +6608,23 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             for (i = 0; i < l; i += 1) {
                 cell = self.visibleCells[i];
+                // interactive dimensions of the cell.  used for touch "over size" zones
+                entitiy = {
+                    x: cell.x,
+                    y: cell.y,
+                    height: cell.height,
+                    width: cell.width
+                };
                 if (useTouchScrollZones && /(vertical|horizontal)-scroll-/.test(cell.style)) {
-                    cell.x -= tsz;
-                    cell.y -= tsz;
-                    cell.height += tsz;
-                    cell.width += tsz;
+                    entitiy.x -= tsz;
+                    entitiy.y -= tsz;
+                    entitiy.height += tsz;
+                    entitiy.width += tsz;
                 }
-                if (cell.x - self.style.cellBorderWidth < x
-                        && cell.x + cell.width + self.style.cellBorderWidth > x
-                        && cell.y - self.style.cellBorderWidth < y
-                        && cell.y + cell.height + self.style.cellBorderWidth > y) {
+                if (entitiy.x - self.style.cellBorderWidth < x
+                        && entitiy.x + entitiy.width + self.style.cellBorderWidth > x
+                        && entitiy.y - self.style.cellBorderWidth < y
+                        && entitiy.y + entitiy.height + self.style.cellBorderWidth > y) {
                     if (/frozen-row-marker/.test(cell.style)) {
                         cell.dragContext = cell.style;
                         cell.context = 'row-resize';
@@ -6661,7 +6670,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         self.cursor = 'default';
                         return cell;
                     }
-                    border = getBorder(cell);
+                    border = getBorder(entitiy);
                     // check if the border of this cell is the border of the selection and if so show move cursor in move mode
                     moveBorder = moveMode && cell.selectionBorder && cell.selectionBorder.indexOf(border) !== -1;
                     if (['l', 'r'].indexOf(border) !== -1
@@ -6786,7 +6795,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 if (key === self.uniqueId) {
                     i.hidden = true;
                 }
-                if (self.storedSettings && self.storedSettings.visibility[i.name] !== undefined) {
+                if (self.storedSettings
+                        && self.storedSettings.visibility
+                        && self.storedSettings.visibility[i.name] !== undefined) {
                     i.hidden = !self.storedSettings.visibility[i.name];
                 }
                 i[self.uniqueId] = self.getSchemaNameHash(key);

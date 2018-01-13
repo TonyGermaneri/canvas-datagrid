@@ -74,6 +74,8 @@ function demo() {
                 debug: false,
                 showPerformance: false
             });
+        grid.style.height = '100%';
+        grid.style.width = '100%';
         function loadDataSet(url) {
             var xhr = new XMLHttpRequest();
             xhr.addEventListener('progress', function (e) {

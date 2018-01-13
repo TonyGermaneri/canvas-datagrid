@@ -183,8 +183,10 @@ function g() {
             allowColumnResizeFromCell: true,
             allowRowReordering: false,
             scrollPointerLock: false,
-            showColumnHeaders: false,
-            showRowHeaders: false,
+            showRowNumbers: false,
+            showColumnHeaders: true,
+            showRowHeaders: true,
+            tree: true,
             snapToRow: false,
             debug: false,
             allowFreezingRows: false,
@@ -194,6 +196,13 @@ function g() {
         y,
         d = [],
         n;
+    grid.addEventListener('expandtree', function (e) {
+        e.treeGrid.data = [
+            {'a': 0, 'b': 1, 'c': 2},
+            {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},
+            {'a': 7, 'b': 8, 'c': 9}
+        ];
+    });
     function colName(n) {
         var ordA = 'a'.charCodeAt(0),
             ordZ = 'z'.charCodeAt(0),
@@ -217,8 +226,8 @@ function g() {
     grid.style.borderCollapse = 'collapse';
     grid.style.cellWidth = 50;
     grid.data = d;
-    grid.style.height = '100%';
-    grid.style.width = '100%';
+    grid.style.height = '60%';
+    grid.style.width = '60%';
 
     // var grid = canvasDatagrid({
     //     parentNode: document.getElementById('grid'),

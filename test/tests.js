@@ -217,6 +217,8 @@
         } else {
             grid = canvasDatagrid(args);
         }
+        grid.style.height = '100%';
+        grid.style.width = '100%';
         args.test.grid = grid;
         return grid;
     }
