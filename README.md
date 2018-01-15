@@ -71,7 +71,7 @@ Works [with webpack](https://tonygermaneri.github.io/canvas-datagrid/tutorials/a
 No matter how you load it, `canvasDatagrid` is declared in the global scope.
 
 Canvas-datagrid is a [Web Component](https://www.webcomponents.org/element/TonyGermaneri/canvas-datagrid) when
-in a compatible browser, otherwise it is a `<section>` tag with a canvas element inside.
+in a compatible browser, otherwise it is a `<canvas>` tag.
 
 Using pure JavaScript
 ---------------------
