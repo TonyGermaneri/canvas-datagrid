@@ -10,15 +10,16 @@ canvas-datagrid
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/TonyGermaneri/canvas-datagrid)
 
-* Support for millions of contiguous rows and columns without paging or loading.
+* Support for unlimited rows and columns without paging or loading.
+* Drawn in immediate mode, data size does not impact performance.
 * Native support for touch devices (phones and tablets).
 * Extensible styling, filtering, formatting, resizing, selecting, and ordering.
-* Easy to use W3C web component.
-* Rich API of events, methods and properties using the familiar DOM interface.
+* Rich API of events, methods and properties using the familiar W3C DOM interface.
 * Works with Firefox, IE11, Edge, Safari and Chrome.
 * Built in and custom styles.
+* Customizable hierarchal context menu.
+* W3C web component.
 * Per-user styles, settings using localStorage.
-* Hierarchal context menu.
 * Very small file size, no dependencies.
 
 
@@ -67,7 +68,7 @@ Getting started
 ---------------
 
 Works [with webpack](https://tonygermaneri.github.io/canvas-datagrid/tutorials/amdDemo.html), [without webpack](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html) or as a [web component](https://tonygermaneri.github.io/canvas-datagrid/tutorials/webcomponentDemo.html).
-No matter how you use it, `canvasDatagrid` is declared in the global scope.
+No matter how you load it, `canvasDatagrid` is declared in the global scope.
 
 Canvas-datagrid is a [Web Component](https://www.webcomponents.org/element/TonyGermaneri/canvas-datagrid) when
 in a compatible browser, otherwise it is a `<section>` tag with a canvas element inside.
@@ -124,6 +125,10 @@ More Demos
 
 Building & Testing
 ------------------
+
+To install development dependencies.  Required to build or test.
+
+    npm install
 
 To build production and debug versions.
 

@@ -1118,7 +1118,7 @@
                 it('Scroll horizontally via box drag', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: makeData(30, 500),
+                        data: makeData(30, 50),
                         scrollPointerLock: false
                     });
                     setTimeout(function () {
