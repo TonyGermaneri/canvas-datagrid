@@ -214,9 +214,9 @@ function g() {
         }
         return s;
     }
-    for (x = 0; x < 30; x += 1) {
+    for (x = 0; x < 10; x += 1) {
         d[x] = {};
-        for (y = 0; y < 14; y += 1) {
+        for (y = 0; y < 400; y += 1) {
             n = colName(y).toUpperCase();
             d[x][n] = (x + 1) + ', ' + n;
         }
@@ -226,8 +226,8 @@ function g() {
     grid.style.borderCollapse = 'collapse';
     grid.style.cellWidth = 50;
     grid.data = d;
-    grid.style.height = '60%';
-    grid.style.width = '60%';
+    grid.style.height = '100%';
+    grid.style.width = '100%';
 
     // var grid = canvasDatagrid({
     //     parentNode: document.getElementById('grid'),

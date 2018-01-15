@@ -2077,7 +2077,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 dims,
                 columnHeaderCellHeight = self.getColumnHeaderCellHeight(),
                 rowHeaderCellWidth = self.getRowHeaderCellWidth(),
-                ch = self.style.cellHeight;
+                ch = self.style.cellHeight,
+                // TODO: These offset numbers are probably wrong
+                // it being off causes the scroll bar to "slide" under
+                // the dragged mouse.
+                scrollDragPositionOffsetY = 30,
+                scrollDragPositionOffsetX = 15;
             scrollHeight = (self.data || []).reduce(function reduceData(accumulator, row, rowIndex) {
                 return accumulator
                     + (((self.sizes.rows[row[self.uniqueId]] || ch) + (self.sizes.trees[row[self.uniqueId]] || 0)) * self.scale)
@@ -2127,19 +2132,21 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.scrollBox.verticalBarVisible = scrollHeight - self.scrollBox.height > 1;
             if (self.scrollBox.horizontalBarVisible) {
                 scrollHeight += sbw;
+                self.scrollBox.verticalBarVisible = scrollHeight - self.scrollBox.height > 1;
             }
             if (self.scrollBox.verticalBarVisible) {
                 scrollWidth += sbw;
+                self.scrollBox.horizontalBarVisible = scrollWidth - self.scrollBox.width > 1;
             }
             self.scrollBox.scrollWidth = scrollWidth - self.scrollBox.width;
             self.scrollBox.scrollHeight = scrollHeight - self.scrollBox.height;
-            self.scrollBox.widthBoxRatio = (self.scrollBox.width
-                / (self.scrollBox.scrollWidth + self.scrollBox.width));
+            self.scrollBox.widthBoxRatio = ((self.scrollBox.width - scrollDragPositionOffsetX)
+                / (self.scrollBox.scrollWidth + (self.scrollBox.width - scrollDragPositionOffsetX)));
             self.scrollBox.scrollBoxWidth = self.scrollBox.width
                 * self.scrollBox.widthBoxRatio
                 - self.style.scrollBarWidth - b;
-            self.scrollBox.heightBoxRatio = (self.scrollBox.height
-                / (self.scrollBox.scrollHeight + self.scrollBox.height));
+            self.scrollBox.heightBoxRatio = ((self.scrollBox.height - scrollDragPositionOffsetY)
+                / (self.scrollBox.scrollHeight + (self.scrollBox.height - scrollDragPositionOffsetY)));
             self.scrollBox.scrollBoxHeight = self.scrollBox.height
                 * self.scrollBox.heightBoxRatio
                 - self.style.scrollBarWidth - b - d;
@@ -4053,6 +4060,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 return value === filterFor;
             };
             ['formatters', 'filters', 'sorters'].forEach(self.initProp);
+            self.applyComponentStyle(false, self.intf);
+            self.resize();
             self.reloadStoredValues();
             if (self.args.data) {
                 self.intf.data = self.args.data;
@@ -4070,7 +4079,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (self.args.schema) {
                 self.intf.schema = self.args.schema;
             }
-            self.applyComponentStyle(false, self.intf);
             if (self.isChildGrid) {
                 requestAnimationFrame(function () { self.resize(true); });
             } else {

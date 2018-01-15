@@ -11,6 +11,10 @@
                 right: 70px;
                 top: 0;
             }
+            canvas-datagrid {
+                --cdg-height: 100%;
+                --cdg-width: 100%;
+            }
         </style>
     </head>
     <body>
@@ -22,8 +26,8 @@
             mocha.setup('bdd');
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/async/2.5.0/async.js"></script>
-        <script src="../dist/canvas-datagrid.debug.js"></script>
-        <!-- <script src="../build/canvas-datagrid.instrument.js"></script> -->
+        <!-- <script src="../dist/canvas-datagrid.debug.js"></script> -->
+        <script src="../build/canvas-datagrid.instrument.js"></script>
         <script src="./tests.js"></script>
         <script>
             mocha.run();
