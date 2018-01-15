@@ -69,6 +69,8 @@ document.addEventListener('DOMContentLoaded', function () {
             {name: 'col3', width: 300}
         ]
     });
+    grid.style.height = '100%';
+    grid.style.width = '100%';
     grid.addEventListener('contextmenu', function (e) {
         e.items.push({
             title: 'View page source',
