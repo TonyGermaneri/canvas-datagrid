@@ -80,6 +80,8 @@ function demo() {
     }
     // instantiate the grid 
     grid = canvasDatagrid();
+    grid.style.height = '100%';
+    grid.style.width = '100%';
     // format dates so they are easy to read
     // grid.formatters.<type> determine how data
     // of a certain type is formatted as it is drawn

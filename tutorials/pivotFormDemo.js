@@ -55,6 +55,8 @@ function demo() {
                 tree: false,
                 debug: false
             });
+        grid.style.height = '100%';
+        grid.style.width = '100%';
         grid.addEventListener('beforebeginedit', function (e) {
             e.preventDefault();
             var form = pivotForm(),
