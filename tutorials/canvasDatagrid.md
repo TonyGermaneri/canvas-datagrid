@@ -12,9 +12,9 @@ With the exception of attaching to an existing canvas, the grid will attempt to 
 
 * Support for attaching to existing canvas elements is experimental.
 
-* In browsers that do not support custom tags, a `&lt;section&gt;` tag is used in place of the `&lt;canvas-datagrid&gt;` tag.
+* In browsers that do not support custom tags, a `&lt;canvas&gt;` tag is used in place of the `&lt;canvas-datagrid&gt;` tag.
 
-* In browsers that do not support Shadow DOM, no shadow root will be created.  In this mode cascading CSS can alter the grid, altering behavior in potentially breaking ways.  Careful application of CSS is required.
+* In browsers that do not support Shadow DOM, no shadow root will be created.  In this mode cascading CSS can alter the grid, altering behavior in potentially breaking ways.  Careful application of CSS is required.  This can effect the grid in-line editing and context menus.
 
 Setting and Getting Data
 ------------------------
