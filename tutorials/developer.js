@@ -173,28 +173,36 @@ function g() {
     // });
     //grid.data = [null, "32.84057112200048", "-86.63186076199969", null, false];
 
-
     // create a spreadsheet
     var grid = canvasDatagrid({
             name: 'blah',
             borderDragBehavior: 'move',
             showPaste: true,
-            parentNode: document.getElementById('grid'),
+            parentNode: document.body,
+            allowRowResizeFromCell: true,
+            allowColumnResizeFromCell: true,
             allowRowReordering: false,
             scrollPointerLock: false,
+            showRowNumbers: false,
             showColumnHeaders: true,
             showRowHeaders: true,
+            tree: true,
             snapToRow: false,
             debug: false,
-            showPerformance: true,
             allowFreezingRows: false,
-            tree: true,
             allowFreezingColumns: false
         }),
         x,
         y,
         d = [],
         n;
+    grid.addEventListener('expandtree', function (e) {
+        e.treeGrid.data = [
+            {'a': 0, 'b': 1, 'c': 2},
+            {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},
+            {'a': 7, 'b': 8, 'c': 9}
+        ];
+    });
     function colName(n) {
         var ordA = 'a'.charCodeAt(0),
             ordZ = 'z'.charCodeAt(0),
@@ -206,9 +214,9 @@ function g() {
         }
         return s;
     }
-    for (x = 0; x < 500; x += 1) {
+    for (x = 0; x < 10; x += 1) {
         d[x] = {};
-        for (y = 0; y < 30; y += 1) {
+        for (y = 0; y < 400; y += 1) {
             n = colName(y).toUpperCase();
             d[x][n] = (x + 1) + ', ' + n;
         }
@@ -217,22 +225,9 @@ function g() {
     grid.style.columnHeaderCellHorizontalAlignment = 'center';
     grid.style.borderCollapse = 'collapse';
     grid.style.cellWidth = 50;
-    // grid.style.cellBackgroundColor = 'red';
-    // grid.style.width = '50%';
     grid.data = d;
-    grid.addEventListener('beforesortcolumn', function (e) {
-        e.preventDefault();
-    });
-    grid.orderBy = 'S';
-    grid.orderDirection = 'desc';
-    grid.addEventListener('expandtree', function (e) {
-        e.treeGrid.data = [
-            {'a': 0, 'b': 1, 'c': 2},
-            {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},
-            {'a': 7, 'b': 8, 'c': 9}
-        ];
-    });
-
+    grid.style.height = '100%';
+    grid.style.width = '100%';
 
     // var grid = canvasDatagrid({
     //     parentNode: document.getElementById('grid'),
