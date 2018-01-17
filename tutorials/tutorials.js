@@ -155,6 +155,8 @@ window.tutorials['Get data via XHR function.|Fetch data from data.gov and parse 
         grid = canvasDatagrid({
             parentNode: parentNode
         });
+    grid.style.height = 300;
+    grid.style.width = '100%';
     function parseOpenData(openData) {
         var data, schema = openData.meta.view.columns;
         data = openData.data.map(function (row) {
@@ -970,6 +972,8 @@ window.tutorials['Create a spreadsheet|It\'s just like excel, but without all th
     }
     grid.attributes.columnHeaderClickBehavior = 'select';
     grid.style.columnHeaderCellHorizontalAlignment = 'center';
+    grid.style.height = 300;
+    grid.style.width = '100%';
     grid.data = d;
 };
 window.tutorials['Add 10,000 random rows|Because why not?'] = function (parentNode) {
@@ -992,6 +996,8 @@ window.tutorials['Add 10,000 random rows|Because why not?'] = function (parentNo
         }
         data.push(d);
     }
+    grid.style.height = 300;
+    grid.style.width = '100%';
     // add the data to the grid
     grid.data = data.concat(grid.data);
 };
@@ -1000,7 +1006,7 @@ window.tutorials['Disco Mode|This is silly.  There is no way to stop it.'] = fun
     // you'll probably have to refresh the page to get rid of this timer
     function createData() {
         var x, y, d = [];
-        for (x = 0; x < 2000; x += 1) {
+        for (x = 0; x < 100; x += 1) {
             d[x] = {};
             for (y = 0; y < 20; y += 1) {
                 d[x][y] = y * x;
