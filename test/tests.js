@@ -1149,7 +1149,7 @@
                             mouseup(document.body, 100, 113, grid.canvas);
                             done(assertIf(grid.scrollLeft < 1,
                                  'Expected the scroll bar to be further along.'));
-                        }, 2000);
+                        }, 500);
                     }, 1);
                 }).timeout(5000);
                 it('Scroll horizontally right via margin click until box capture', function (done) {
@@ -1160,14 +1160,14 @@
                     });
                     setTimeout(function () {
                         grid.focus();
-                        marker(grid, 90, 113);
-                        mousemove(grid.canvas, 90, 113);
-                        mousedown(grid.canvas, 90, 113);
+                        marker(grid, 100, 113);
+                        mousemove(grid.canvas, 100, 113);
+                        mousedown(grid.canvas, 100, 113);
                         setTimeout(function () {
-                            mouseup(document.body, 90, 113, grid.canvas);
+                            mouseup(document.body, 100, 113, grid.canvas);
                             done(assertIf(grid.scrollLeft < 1,
                                  'Expected the scroll bar to be further along.'));
-                        }, 2000);
+                        }, 500);
                     }, 1);
                 }).timeout(5000);
                 it('Scroll horizontally left via margin click', function (done) {
