@@ -214,23 +214,21 @@ function g() {
         }
         return s;
     }
-    for (x = 0; x < 30; x += 1) {
-        d[x] = {};
-        for (y = 0; y < 30; y += 1) {
-            d[x][y] = '';
-        }
+    for (x = 0; x < 30000; x += 1) {
+        d[x] = {a: '', b: '', c: '', d: ''};
     }
     grid.attributes.columnHeaderClickBehavior = 'select';
     grid.style.columnHeaderCellHorizontalAlignment = 'center';
     grid.style.borderCollapse = 'collapse';
     grid.style.cellWidth = 50;
     grid.className = 'grid';
+    grid.style.height = '100%';
+    grid.style.width = '100%';
     // grid.style.maxWidth = '550px';
     // grid.style.width = '100%';
     // grid.style.height = '300px';
     grid.data = d;
-    // grid.style.height = '100%';
-    // grid.style.width = '100%';
+
     // grid.style.gridBackgroundColor = 'red';
     //grid.style.scrollBarCornerBackgroundColor = 'blue';
     // grid.style.columnHeaderCellHeight = 45;

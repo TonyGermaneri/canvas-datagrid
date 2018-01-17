@@ -2081,7 +2081,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 // TODO: These offset numbers are probably wrong
                 // it being off causes the scroll bar to "slide" under
                 // the dragged mouse.
-                scrollDragPositionOffsetY = 0,
+                scrollDragPositionOffsetY = 55,
                 scrollDragPositionOffsetX = -100;
             self.scrollCache.x = [];
             self.scrollCache.y = [];
