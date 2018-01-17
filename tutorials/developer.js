@@ -172,7 +172,7 @@ function g() {
     //     ];
     // });
     //grid.data = [null, "32.84057112200048", "-86.63186076199969", null, false];
-
+    // debugger;
     // create a spreadsheet
     var grid = canvasDatagrid({
             name: 'blah',
@@ -183,7 +183,7 @@ function g() {
             allowColumnResizeFromCell: true,
             allowRowReordering: false,
             scrollPointerLock: false,
-            showRowNumbers: false,
+            showRowNumbers: true,
             showColumnHeaders: true,
             showRowHeaders: true,
             tree: true,
@@ -214,21 +214,26 @@ function g() {
         }
         return s;
     }
-    for (x = 0; x < 10; x += 1) {
+    for (x = 0; x < 30; x += 1) {
         d[x] = {};
-        for (y = 0; y < 400; y += 1) {
-            n = colName(y).toUpperCase();
-            d[x][n] = (x + 1) + ', ' + n;
+        for (y = 0; y < 30; y += 1) {
+            d[x][y] = '';
         }
     }
     grid.attributes.columnHeaderClickBehavior = 'select';
     grid.style.columnHeaderCellHorizontalAlignment = 'center';
     grid.style.borderCollapse = 'collapse';
     grid.style.cellWidth = 50;
+    grid.className = 'grid';
+    // grid.style.maxWidth = '550px';
+    // grid.style.width = '100%';
+    // grid.style.height = '300px';
     grid.data = d;
-    grid.style.height = '100%';
-    grid.style.width = '100%';
-
+    // grid.style.height = '100%';
+    // grid.style.width = '100%';
+    // grid.style.gridBackgroundColor = 'red';
+    //grid.style.scrollBarCornerBackgroundColor = 'blue';
+    // grid.style.columnHeaderCellHeight = 45;
     // var grid = canvasDatagrid({
     //     parentNode: document.getElementById('grid'),
     //     data: [
@@ -277,5 +282,32 @@ function g() {
     //     data: smallData(),
     //     tree: true
     // });
+
+
+
+    // var grid = canvasDatagrid({
+    //         parentNode:  document.body
+    //     }),
+    //     dataCache = [],
+    //     x;
+    // grid.style.height = '100%';
+    // grid.style.width = '100%';
+    // grid.schema = [
+    //     {name: 'Lorem'},
+    //     {name: 'Ipsum'},
+    //     {name: 'Dolar'},
+    //     {name: 'Set'}
+    // ];
+    // dataCache.length = 400000;
+    // for (x = 0; x < dataCache.length; x += 1) {
+    //     // create empty "loading..." rows
+    //     dataCache[x] = {
+    //         Lorem: x,
+    //         Ipsum: x * (x / 0.5),
+    //         Dolar: x * 0.5,
+    //         Set: x * x
+    //     };
+    // }
+    // grid.data = dataCache;
 
 }

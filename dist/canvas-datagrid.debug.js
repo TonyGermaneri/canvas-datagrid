@@ -419,7 +419,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.shadowRoot = args.parentNode.shadowRoot;
             self.parentNode = args.parentNode;
         } else if (self.intf.createShadowRoot) {
-            self.shadowRoot = self.intf.attachShadow({mode: self.args.debug ? 'open' : 'closed'});
+            self.shadowRoot = self.intf.attachShadow({mode: 'open'});
             self.parentNode = self.shadowRoot;
         } else {
             self.parentNode = self.intf;
@@ -1610,7 +1610,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 var o, n, i, g = s.length;
                 x = -self.scrollBox.scrollLeft + self.scrollPixelLeft + self.style.cellBorderWidth;
                 if (!self.attributes.snapToRow) {
-                    y += -self.scrollBox.scrollTop + self.scrollPixelTop;
+                    y += -self.scrollBox.scrollTop + self.scrollPixelTop + self.style.cellBorderWidth;
                 }
                 for (r = self.frozenRow + self.scrollIndexTop; r < l; r += 1) {
                     n = self.orders.rows[r];
@@ -2081,30 +2081,40 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 // TODO: These offset numbers are probably wrong
                 // it being off causes the scroll bar to "slide" under
                 // the dragged mouse.
-                scrollDragPositionOffsetY = 30,
-                scrollDragPositionOffsetX = 15;
+                scrollDragPositionOffsetY = 0,
+                scrollDragPositionOffsetX = -100;
+            self.scrollCache.x = [];
+            self.scrollCache.y = [];
             scrollHeight = (self.data || []).reduce(function reduceData(accumulator, row, rowIndex) {
-                return accumulator
+                var va = accumulator
                     + (((self.sizes.rows[row[self.uniqueId]] || ch) + (self.sizes.trees[row[self.uniqueId]] || 0)) * self.scale)
                     // HACK? if an expanded tree row is frozen it is necessary to add the tree row's height a second time.
                     + (self.frozenRow > rowIndex ? (self.sizes.trees[row[self.uniqueId]] || 0) : 0);
+                self.scrollCache.y[rowIndex] = va;
+                return va;
             }, 0) || 0;
-            scrollWidth = self.getVisibleSchema().reduce(function reduceSchema(accumulator, column) {
-                if (column.hidden) { return accumulator; }
-                return accumulator + ((self.sizes.columns[column[self.uniqueId]] || column.width || self.style.cellWidth) * self.scale);
+            scrollWidth = self.getVisibleSchema().reduce(function reduceSchema(accumulator, column, columnIndex) {
+                if (column.hidden) {
+                    self.scrollCache.x[columnIndex] = accumulator;
+                    return accumulator;
+                }
+                var va = accumulator + ((self.sizes.columns[column[self.uniqueId]] || column.width || self.style.cellWidth) * self.scale);
+                self.scrollCache.x[columnIndex] = va;
+                return va;
             }, 0) || 0;
             if (self.attributes.showNewRow) {
                 scrollHeight += ch + cellBorder;
             }
+            scrollHeight += columnHeaderCellHeight;
             dims = {
-                height: scrollHeight + columnHeaderCellHeight,
-                width: scrollWidth + rowHeaderCellWidth
+                // HACK +1 ? maybe it's a magic cell border?  Required to line up properly in auto height mode.
+                height: scrollHeight + cellBorder + 1,
+                width: scrollWidth + rowHeaderCellWidth + cellBorder
             };
             if (!self.isChildGrid) {
                 ['width', 'height'].forEach(function (dim) {
                     //TODO: support inherit
                     if (['auto', undefined].indexOf(self.style[dim]) !== -1) {
-                        //TODO: support min-max
                         self.parentNodeStyle[dim] = dims[dim] + 'px';
                     } else {
                         self.parentNodeStyle[dim] = self.style[dim];
@@ -2124,12 +2134,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.canvasOffsetTop = self.args.canvasOffsetTop || 0;
             }
             /// calculate scroll bar dimensions
-            self.scrollBox.width = self.width - rowHeaderCellWidth;
-            self.scrollBox.height = self.height - columnHeaderCellHeight - columnHeaderCellBorder;
+            self.scrollBox.width = self.width - rowHeaderCellWidth - cellBorder;
+            self.scrollBox.height = self.height - columnHeaderCellBorder - cellBorder;
             self.scrollBox.top = columnHeaderCellHeight + columnHeaderCellBorder;
             self.scrollBox.left = rowHeaderCellWidth;
-            self.scrollBox.horizontalBarVisible = scrollWidth - self.scrollBox.width > 1;
-            self.scrollBox.verticalBarVisible = scrollHeight - self.scrollBox.height > 1;
+            self.scrollBox.horizontalBarVisible = scrollWidth > self.scrollBox.width;
+            self.scrollBox.verticalBarVisible = scrollHeight > self.scrollBox.height;
             if (self.scrollBox.horizontalBarVisible) {
                 scrollHeight += sbw;
                 self.scrollBox.verticalBarVisible = scrollHeight - self.scrollBox.height > 1;
@@ -2144,12 +2154,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 / (self.scrollBox.scrollWidth + (self.scrollBox.width - scrollDragPositionOffsetX)));
             self.scrollBox.scrollBoxWidth = self.scrollBox.width
                 * self.scrollBox.widthBoxRatio
-                - self.style.scrollBarWidth - b;
+                - self.style.scrollBarWidth - b - d;
             self.scrollBox.heightBoxRatio = ((self.scrollBox.height - scrollDragPositionOffsetY)
                 / (self.scrollBox.scrollHeight + (self.scrollBox.height - scrollDragPositionOffsetY)));
             self.scrollBox.scrollBoxHeight = self.scrollBox.height
                 * self.scrollBox.heightBoxRatio
-                - self.style.scrollBarWidth - b - d;
+                - self.style.scrollBarWidth - b - d - (columnHeaderCellHeight - cellBorder);
             self.scrollBox.scrollBoxWidth = Math.max(self.scrollBox.scrollBoxWidth, self.style.scrollBarBoxMinSize);
             self.scrollBox.scrollBoxHeight = Math.max(self.scrollBox.scrollBoxHeight, self.style.scrollBarBoxMinSize);
             // horizontal
@@ -2201,27 +2211,18 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             return true;
         };
         self.scroll = function (dontDraw) {
-            var bm = self.style.gridBorderCollapse === 'collapse' ? 1 : 2,
-                s = self.getVisibleSchema(),
-                cellBorder = self.style.cellBorderWidth * bm,
+            var s = self.getVisibleSchema(),
                 ch = self.style.cellHeight;
             self.scrollIndexTop = 0;
             self.scrollPixelTop = 0;
             self.scrollIndexLeft = 0;
             self.scrollPixelLeft = 0;
             while (self.scrollPixelTop < self.scrollBox.scrollTop && self.scrollIndexTop < self.data.length) {
-                self.scrollPixelTop +=
-                    (((self.sizes.rows[self.data[self.scrollIndexTop][self.uniqueId]] || ch)
-                        + (self.sizes.trees[self.data[self.scrollIndexTop][self.uniqueId]] || 0)) * self.scale)
-                    + cellBorder;
+                self.scrollPixelTop = self.scrollCache.y[self.scrollIndexTop];
                 self.scrollIndexTop += 1;
             }
             while (self.scrollPixelLeft < self.scrollBox.scrollLeft && self.scrollIndexLeft < s.length) {
-                self.scrollPixelLeft +=
-                    ((self.sizes.columns[s[self.scrollIndexLeft][self.uniqueId]]
-                        || s[self.scrollIndexLeft].width
-                        || self.style.cellWidth) * self.scale)
-                    + cellBorder;
+                self.scrollPixelLeft = self.scrollCache.x[self.scrollIndexLeft];
                 self.scrollIndexLeft += 1;
             }
             if ((self.data || []).length > 0) {
@@ -3526,6 +3527,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.frozenRow = 0;
         self.frozenColumn = 0;
         self.ellipsisCache = {};
+        self.scrollCache = { x: [], y: [] };
         self.scrollBox = {};
         self.visibleRows = [];
         self.sizes = {
@@ -3827,7 +3829,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             return self.style[key];
         };
         self.setStyleProperty = function (key, value, supressDrawAndEvent) {
-            var isDim = ['height', 'width'].indexOf(key) !== -1;
+            var isDim = ['height', 'width', 'minHeight', 'minWidth', 'maxHeight', 'maxWidth'].indexOf(key) !== -1;
             if (self.styleKeys.indexOf(key) === -1) {
                 self.parentNodeStyle[key] = value;
             } else {
