@@ -281,7 +281,7 @@
                     hiddenFormItems = {},
                     fiddleForm = {
                         html: '<div id="grid"></div>',
-                        css: '#grid { height: 300px; }',
+                        css: '#grid { height: 300px; } #grid canvas, #grid canvas-datagrid { --cdg-height: 300px; }',
                         js: '',
                         title: msg[0],
                         description: msg[1] || msg[0],
