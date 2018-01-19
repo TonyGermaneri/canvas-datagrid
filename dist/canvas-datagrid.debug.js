@@ -2225,7 +2225,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.scrollPixelLeft = self.scrollCache.x[self.scrollIndexLeft];
                 self.scrollIndexLeft += 1;
             }
-            if ((self.data || []).length > 0) {
+            if ((self.data || []).length > 0 && s.length > 0) {
                 self.scrollIndexLeft = Math.max(self.scrollIndexLeft - 1, 0);
                 self.scrollPixelLeft = Math.max(self.scrollPixelLeft
                     - ((self.sizes.columns[s[self.scrollIndexLeft][self.uniqueId]] || s[self.scrollIndexLeft].width || self.style.cellWidth) * self.scale), 0);
