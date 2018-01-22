@@ -4445,6 +4445,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 return self.getSchema();
             },
             set: function schemaSetter(value) {
+                if (value === undefined) {
+                    // Issue #90 - allow schema to be set to initialized state
+                    self.schema = undefined;
+                    self.tempSchema = undefined;
+                    self.dispatchEvent('schemachanged', {schema: undefined});
+                    return;
+                }
                 if (!Array.isArray(value) || typeof value[0] !== 'object') {
                     throw new Error('Schema must be an array of objects.');
                 }
@@ -4495,6 +4502,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.data = self.originalData;
                     if (!self.schema) {
                         self.tempSchema = self.getSchemaFromData();
+                    }
+                    // Issue #90 - allow schema to be auto-created every time data is set
+                    if (self.attributes.autoGenerateSchema) {
+                        self.schema = self.getSchemaFromData();
                     }
                     if (!self.schema && self.data.length === 0) {
                         self.tempSchema = [{name: ''}];
