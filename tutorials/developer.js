@@ -174,61 +174,75 @@ function g() {
     //grid.data = [null, "32.84057112200048", "-86.63186076199969", null, false];
     // debugger;
     // create a spreadsheet
-    // var grid = canvasDatagrid({
-    //         name: 'blah',
-    //         borderDragBehavior: 'move',
-    //         showPaste: true,
-    //         parentNode: document.body,
-    //         allowRowResizeFromCell: true,
-    //         allowColumnResizeFromCell: true,
-    //         allowRowReordering: false,
-    //         scrollPointerLock: false,
-    //         showRowNumbers: true,
-    //         showColumnHeaders: true,
-    //         showRowHeaders: true,
-    //         tree: true,
-    //         snapToRow: false,
-    //         debug: false,
-    //         allowFreezingRows: false,
-    //         allowFreezingColumns: false
-    //     }),
-    //     x,
-    //     y,
-    //     d = [],
-    //     n;
-    // grid.addEventListener('expandtree', function (e) {
-    //     e.treeGrid.data = [
-    //         {'a': 0, 'b': 1, 'c': 2},
-    //         {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},
-    //         {'a': 7, 'b': 8, 'c': 9}
-    //     ];
-    // });
-    // function colName(n) {
-    //     var ordA = 'a'.charCodeAt(0),
-    //         ordZ = 'z'.charCodeAt(0),
-    //         len = ordZ - ordA + 1,
-    //         s = '';
-    //     while (n >= 0) {
-    //         s = String.fromCharCode(n % len + ordA) + s;
-    //         n = Math.floor(n / len) - 1;
-    //     }
-    //     return s;
-    // }
-    // for (x = 0; x < 30000; x += 1) {
-    //     d[x] = {a: '', b: '', c: '', d: ''};
-    // }
-    // grid.attributes.columnHeaderClickBehavior = 'select';
-    // grid.style.columnHeaderCellHorizontalAlignment = 'center';
-    // grid.style.borderCollapse = 'collapse';
-    // grid.style.cellWidth = 50;
-    // grid.className = 'grid';
-    // grid.style.height = '100%';
-    // grid.style.width = '100%';
-    // grid.style.maxWidth = '550px';
-    // grid.style.width = '100%';
-    // grid.style.height = '300px';
-    // grid.data = d;
+    var grid = canvasDatagrid({
+            name: 'blah',
+            borderDragBehavior: 'move',
+            showPaste: true,
+            parentNode: document.body,
+            allowRowResizeFromCell: true,
+            allowColumnResizeFromCell: true,
+            allowRowReordering: false,
+            scrollPointerLock: false,
+            showRowNumbers: true,
+            showColumnHeaders: true,
+            showRowHeaders: true,
+            tree: true,
+            snapToRow: false,
+            debug: false,
+            allowFreezingRows: false,
+            allowFreezingColumns: false
+        }),
+        x,
+        y,
+        d = [],
+        n;
+    grid.addEventListener('expandtree', function (e) {
+        e.treeGrid.data = [
+            {'a': 0, 'b': 1, 'c': 2},
+            {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},
+            {'a': 7, 'b': 8, 'c': 9}
+        ];
+    });
+    function colName(n) {
+        var ordA = 'a'.charCodeAt(0),
+            ordZ = 'z'.charCodeAt(0),
+            len = ordZ - ordA + 1,
+            s = '';
+        while (n >= 0) {
+            s = String.fromCharCode(n % len + ordA) + s;
+            n = Math.floor(n / len) - 1;
+        }
+        return s;
+    }
+    for (x = 0; x < 30000; x += 1) {
+        d[x] = {a: '', b: '', c: '', d: ''};
+    }
+    grid.attributes.columnHeaderClickBehavior = 'select';
+    grid.style.columnHeaderCellHorizontalAlignment = 'center';
+    grid.style.borderCollapse = 'collapse';
+    grid.style.cellWidth = 50;
+    grid.className = 'grid';
+    grid.style.height = '100%';
+    grid.style.width = '100%';
+    grid.style.maxWidth = '550px';
+    grid.style.width = '100%';
+    grid.style.height = '300px';
+    grid.data = d;
 
+    setTimeout(function () {
+        var n = [];
+        for (x = 0; x < 30000; x += 1) {
+            n[x] = {a: '', b: '', c: '', d: '', e: '', f: '', g: ''};
+        }
+        grid.data = n;
+        setTimeout(function () {
+            var n = [];
+            for (x = 0; x < 30000; x += 1) {
+                n[x] = {q: '', r: ''};
+            }
+            grid.data = n;
+        }, 5000);
+    }, 5000);
     // grid.style.gridBackgroundColor = 'red';
     //grid.style.scrollBarCornerBackgroundColor = 'blue';
     // grid.style.columnHeaderCellHeight = 45;
@@ -307,13 +321,13 @@ function g() {
     //     };
     // }
     // grid.data = dataCache;
-    debugger;
-    var datagridOpts = {
-        editable: false,
-        selectionMode: 'row',
-        autoResizeColumns: true
-    };
-    var grid = canvasDatagrid(datagridOpts);
-    grid.data = new Array(10).fill([]);
+    // debugger;
+    // var datagridOpts = {
+    //     editable: false,
+    //     selectionMode: 'row',
+    //     autoResizeColumns: true
+    // };
+    // var grid = canvasDatagrid(datagridOpts);
+    // grid.data = new Array(10).fill([]);
 
 }
