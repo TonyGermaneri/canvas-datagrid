@@ -172,7 +172,7 @@ function g() {
     //     ];
     // });
     //grid.data = [null, "32.84057112200048", "-86.63186076199969", null, false];
-    // debugger;
+    debugger;
     // create a spreadsheet
     var grid = canvasDatagrid({
             name: 'blah',
@@ -180,6 +180,7 @@ function g() {
             showPaste: true,
             parentNode: document.body,
             allowRowResizeFromCell: true,
+            autoGenerateSchema: true,
             allowColumnResizeFromCell: true,
             allowRowReordering: false,
             scrollPointerLock: false,

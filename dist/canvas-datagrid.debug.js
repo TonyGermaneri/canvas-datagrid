@@ -100,6 +100,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['allowRowResize', true],
                 ['allowRowResizeFromCell', false],
                 ['allowSorting', true],
+                ['autoGenerateSchema', false],
                 ['autoResizeColumns', false],
                 ['borderDragBehavior', 'none'],
                 ['borderResizeZone', 10],
@@ -4446,7 +4447,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             },
             set: function schemaSetter(value) {
                 if (value === undefined) {
-                    // Issue #90 - allow schema to be set to initialized state
+                    // Issue #89 - allow schema to be set to initialized state
                     self.schema = undefined;
                     self.tempSchema = undefined;
                     self.dispatchEvent('schemachanged', {schema: undefined});
@@ -4503,7 +4504,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     if (!self.schema) {
                         self.tempSchema = self.getSchemaFromData();
                     }
-                    // Issue #90 - allow schema to be auto-created every time data is set
+                    // Issue #89 - allow schema to be auto-created every time data is set
                     if (self.attributes.autoGenerateSchema) {
                         self.schema = self.getSchemaFromData();
                     }
@@ -4511,7 +4512,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         self.tempSchema = [{name: ''}];
                         self.tempSchema[0][self.uniqueId] = self.getSchemaNameHash('');
                     }
-                    if (self.tempSchema && !self.schema) {
+                    if ((self.tempSchema && !self.schema) || self.attributes.autoGenerateSchema) {
                         self.createColumnOrders();
                         self.tryLoadStoredSettings();
                         self.dispatchEvent('schemachanged', {schema: self.tempSchema});
