@@ -2079,11 +2079,28 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 columnHeaderCellHeight = self.getColumnHeaderCellHeight(),
                 rowHeaderCellWidth = self.getRowHeaderCellWidth(),
                 ch = self.style.cellHeight,
-                // TODO: These offset numbers are probably wrong
+                // TODO: These offset numbers are terribly wrong.
+                // They should be a result of the size of the grid/canvas?
                 // it being off causes the scroll bar to "slide" under
                 // the dragged mouse.
+                // https://github.com/TonyGermaneri/canvas-datagrid/issues/97
                 scrollDragPositionOffsetY = 55,
                 scrollDragPositionOffsetX = -100;
+            function setCanvasSize() {
+                dims = {
+                    // HACK +1 ? maybe it's a magic cell border?  Required to line up properly in auto height mode.
+                    height: scrollHeight + cellBorder + 1,
+                    width: scrollWidth + rowHeaderCellWidth + cellBorder
+                };
+                ['width', 'height'].forEach(function (dim) {
+                    //TODO: support inherit
+                    if (['auto', undefined].indexOf(self.style[dim]) !== -1) {
+                        self.parentNodeStyle[dim] = dims[dim] + 'px';
+                    } else {
+                        self.parentNodeStyle[dim] = self.style[dim];
+                    }
+                });
+            }
             self.scrollCache.x = [];
             self.scrollCache.y = [];
             scrollHeight = (self.data || []).reduce(function reduceData(accumulator, row, rowIndex) {
@@ -2107,20 +2124,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 scrollHeight += ch + cellBorder;
             }
             scrollHeight += columnHeaderCellHeight;
-            dims = {
-                // HACK +1 ? maybe it's a magic cell border?  Required to line up properly in auto height mode.
-                height: scrollHeight + cellBorder + 1,
-                width: scrollWidth + rowHeaderCellWidth + cellBorder
-            };
             if (!self.isChildGrid) {
-                ['width', 'height'].forEach(function (dim) {
-                    //TODO: support inherit
-                    if (['auto', undefined].indexOf(self.style[dim]) !== -1) {
-                        self.parentNodeStyle[dim] = dims[dim] + 'px';
-                    } else {
-                        self.parentNodeStyle[dim] = self.style[dim];
-                    }
-                });
+                setCanvasSize();
             }
             if (self.isChildGrid) {
                 self.width = self.parentNode.offsetWidth;
@@ -2142,12 +2147,26 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.scrollBox.horizontalBarVisible = scrollWidth > self.scrollBox.width;
             self.scrollBox.verticalBarVisible = scrollHeight > self.scrollBox.height;
             if (self.scrollBox.horizontalBarVisible) {
-                scrollHeight += sbw;
-                self.scrollBox.verticalBarVisible = scrollHeight - self.scrollBox.height > 1;
+                if (self.style.height === 'auto') {
+                    scrollHeight += sbw;
+                    self.scrollBox.height += sbw;
+                    setCanvasSize();
+                    self.height = self.canvas.offsetHeight;
+                    self.canvas.height = self.height * ratio;
+                } else {
+                    self.scrollBox.verticalBarVisible = scrollHeight - self.scrollBox.height > 1;
+                }
             }
             if (self.scrollBox.verticalBarVisible) {
-                scrollWidth += sbw;
-                self.scrollBox.horizontalBarVisible = scrollWidth - self.scrollBox.width > 1;
+                if (self.style.width === 'auto') {
+                    scrollWidth += sbw;
+                    self.scrollBox.width += sbw;
+                    setCanvasSize();
+                    self.width = self.canvas.offsetWidth;
+                    self.canvas.width = self.width * ratio;
+                } else {
+                    self.scrollBox.verticalBarVisible = scrollWidth - self.scrollBox.width > 1;
+                }
             }
             self.scrollBox.scrollWidth = scrollWidth - self.scrollBox.width;
             self.scrollBox.scrollHeight = scrollHeight - self.scrollBox.height;
