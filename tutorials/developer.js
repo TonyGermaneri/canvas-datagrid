@@ -172,7 +172,6 @@ function g() {
     //     ];
     // });
     //grid.data = [null, "32.84057112200048", "-86.63186076199969", null, false];
-    debugger;
     // create a spreadsheet
     var grid = canvasDatagrid({
             name: 'blah',
@@ -197,13 +196,13 @@ function g() {
         y,
         d = [],
         n;
-    grid.addEventListener('expandtree', function (e) {
-        e.treeGrid.data = [
-            {'a': 0, 'b': 1, 'c': 2},
-            {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},
-            {'a': 7, 'b': 8, 'c': 9}
-        ];
-    });
+    // grid.addEventListener('expandtree', function (e) {
+    //     e.treeGrid.data = [
+    //         {'a': 0, 'b': 1, 'c': 2},
+    //         {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},
+    //         {'a': 7, 'b': 8, 'c': 9}
+    //     ];
+    // });
     function colName(n) {
         var ordA = 'a'.charCodeAt(0),
             ordZ = 'z'.charCodeAt(0),
@@ -215,35 +214,17 @@ function g() {
         }
         return s;
     }
-    for (x = 0; x < 30000; x += 1) {
+    for (x = 0; x < 10; x += 1) {
         d[x] = {a: '', b: '', c: '', d: ''};
     }
     grid.attributes.columnHeaderClickBehavior = 'select';
     grid.style.columnHeaderCellHorizontalAlignment = 'center';
     grid.style.borderCollapse = 'collapse';
-    grid.style.cellWidth = 50;
-    grid.className = 'grid';
+    // grid.className = 'grid';
     grid.style.height = '100%';
-    grid.style.width = '100%';
-    grid.style.maxWidth = '550px';
-    grid.style.width = '100%';
-    grid.style.height = '300px';
+    grid.style.width = 'auto';
     grid.data = d;
-
-    setTimeout(function () {
-        var n = [];
-        for (x = 0; x < 30000; x += 1) {
-            n[x] = {a: '', b: '', c: '', d: '', e: '', f: '', g: ''};
-        }
-        grid.data = n;
-        setTimeout(function () {
-            var n = [];
-            for (x = 0; x < 30000; x += 1) {
-                n[x] = {q: '', r: ''};
-            }
-            grid.data = n;
-        }, 5000);
-    }, 5000);
+    grid.schema[0].width = 1000;
     // grid.style.gridBackgroundColor = 'red';
     //grid.style.scrollBarCornerBackgroundColor = 'blue';
     // grid.style.columnHeaderCellHeight = 45;
