@@ -447,11 +447,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
     // export amd loader
     module.exports = function grid(args) {
         args = args || {};
-        var i, tKeys = ['style', 'schema', 'data', 'formatters',
-                    'sorters', 'filters'];
+        var i, tKeys = ['style', 'formatters', 'sorters', 'filters',
+                    'treeGridAttributes', 'cellGridAttributes', 'data', 'schema'];
         if (window.customElements && document.body.createShadowRoot) {
             i = document.createElement('canvas-datagrid');
             Object.keys(args).forEach(function (argKey) {
+                // set data after everything else
+                if (argKey === 'data') { return; }
                 if (argKey === 'parentNode') {
                     args.parentNode.appendChild(i);
                     return;
@@ -475,6 +477,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 // all others are attribute level keys
                 i.attributes[argKey] = args[argKey];
             });
+            if (args.data) {
+                i.data = args.data;
+            }
             return i;
         }
         args.component = false;
@@ -1307,12 +1312,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             || !isRowHeader) {
                         if (cell.isGrid && !self.dispatchEvent('beforerendercellgrid', ev)) {
                             if (!self.childGrids[cell.gridId]) {
-                                cellGridAttributes = self.args.cellGridAttributes || self.args;
+                                // HACK: this only allows setting of the child grids styles if data is set _after_
+                                // this is less than desirable.  An interface needs to be made to effect the
+                                // style of all cell grids.  One for individual grids already exists.
+                                cellGridAttributes = self.cellGridAttributes;
                                 cellGridAttributes.name = self.attributes.saveAppearance ? cell.gridId : undefined;
                                 cellGridAttributes.component = false;
                                 cellGridAttributes.parentNode = cell;
                                 cellGridAttributes.data = d[header.name];
-                                cellGridAttributes.style = cellGridAttributes.style || self.style;
                                 ev.cellGridAttributes = cellGridAttributes;
                                 if (self.dispatchEvent('beforecreatecellgrid', ev)) { return; }
                                 self.childGrids[cell.gridId] = self.createGrid(cellGridAttributes);
@@ -2073,8 +2080,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 bm = self.style.gridBorderCollapse === 'collapse' ? 1 : 2,
                 cellBorder = self.style.cellBorderWidth * bm,
                 columnHeaderCellBorder = self.style.columnHeaderCellBorderWidth * bm,
-                scrollHeight,
-                scrollWidth,
+                dataHeight,
+                dataWidth,
                 dims,
                 columnHeaderCellHeight = self.getColumnHeaderCellHeight(),
                 rowHeaderCellWidth = self.getRowHeaderCellWidth(),
@@ -2086,11 +2093,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 // https://github.com/TonyGermaneri/canvas-datagrid/issues/97
                 scrollDragPositionOffsetY = 55,
                 scrollDragPositionOffsetX = -100;
+            // sets actual DOM canvas element
             function setCanvasSize() {
+                if (self.isChildGrid) {
+                    return;
+                }
                 dims = {
                     // HACK +1 ? maybe it's a magic cell border?  Required to line up properly in auto height mode.
-                    height: scrollHeight + cellBorder + 1,
-                    width: scrollWidth + rowHeaderCellWidth + cellBorder
+                    height: dataHeight + cellBorder + 1,
+                    width: dataWidth + rowHeaderCellWidth + cellBorder
                 };
                 ['width', 'height'].forEach(function (dim) {
                     //TODO: support inherit
@@ -2103,7 +2114,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             self.scrollCache.x = [];
             self.scrollCache.y = [];
-            scrollHeight = (self.data || []).reduce(function reduceData(accumulator, row, rowIndex) {
+            dataHeight = (self.data || []).reduce(function reduceData(accumulator, row, rowIndex) {
                 var va = accumulator
                     + (((self.sizes.rows[row[self.uniqueId]] || ch) + (self.sizes.trees[row[self.uniqueId]] || 0)) * self.scale)
                     // HACK? if an expanded tree row is frozen it is necessary to add the tree row's height a second time.
@@ -2111,7 +2122,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.scrollCache.y[rowIndex] = va;
                 return va;
             }, 0) || 0;
-            scrollWidth = self.getVisibleSchema().reduce(function reduceSchema(accumulator, column, columnIndex) {
+            dataWidth = self.getVisibleSchema().reduce(function reduceSchema(accumulator, column, columnIndex) {
                 if (column.hidden) {
                     self.scrollCache.x[columnIndex] = accumulator;
                     return accumulator;
@@ -2121,55 +2132,46 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 return va;
             }, 0) || 0;
             if (self.attributes.showNewRow) {
-                scrollHeight += ch + cellBorder;
+                dataHeight += ch + cellBorder;
             }
-            scrollHeight += columnHeaderCellHeight;
-            if (!self.isChildGrid) {
-                setCanvasSize();
-            }
+            // accounts for the offset of the headers if any
+            dataHeight += columnHeaderCellHeight;
+            setCanvasSize();
             if (self.isChildGrid) {
                 self.width = self.parentNode.offsetWidth;
                 self.height = self.parentNode.offsetHeight;
             } else if (self.height !== self.canvas.offsetHeight || self.width !== self.canvas.offsetWidth) {
                 self.height = self.canvas.offsetHeight;
                 self.width = self.canvas.offsetWidth;
-                self.canvas.width = self.width * ratio;
-                self.canvas.height = self.height * ratio;
-                self.ctx.scale(ratio, ratio);
                 self.canvasOffsetLeft = self.args.canvasOffsetLeft || 0;
                 self.canvasOffsetTop = self.args.canvasOffsetTop || 0;
             }
             /// calculate scroll bar dimensions
-            self.scrollBox.width = self.width - rowHeaderCellWidth - cellBorder;
-            self.scrollBox.height = self.height - columnHeaderCellBorder - cellBorder;
+            // non-controversial
             self.scrollBox.top = columnHeaderCellHeight + columnHeaderCellBorder;
             self.scrollBox.left = rowHeaderCellWidth;
-            self.scrollBox.horizontalBarVisible = scrollWidth > self.scrollBox.width;
-            self.scrollBox.verticalBarVisible = scrollHeight > self.scrollBox.height;
-            if (self.scrollBox.horizontalBarVisible) {
-                if (self.style.height === 'auto') {
-                    scrollHeight += sbw;
-                    self.scrollBox.height += sbw;
-                    setCanvasSize();
-                    self.height = self.canvas.offsetHeight;
-                    self.canvas.height = self.height * ratio;
-                } else {
-                    self.scrollBox.verticalBarVisible = scrollHeight - self.scrollBox.height > 1;
-                }
+            // width and height of scroll box
+            self.scrollBox.width = self.width - rowHeaderCellWidth - cellBorder;
+            self.scrollBox.height = self.height - columnHeaderCellBorder - cellBorder;
+            // is the data larger than the scroll box
+            self.scrollBox.horizontalBarVisible = dataWidth > self.scrollBox.width;
+            self.scrollBox.verticalBarVisible = dataHeight > self.scrollBox.height;
+            // if the scroll box is visible, make room for it by expanding the size of the element
+            // if the other dimension is set to auto
+            if (self.scrollBox.horizontalBarVisible && !self.isChildGrid) {
+                self.height += sbw;
+                dataHeight += sbw;
+                setCanvasSize();
+                self.scrollBox.horizontalBarVisible = dataWidth > self.scrollBox.width;
             }
-            if (self.scrollBox.verticalBarVisible) {
-                if (self.style.width === 'auto') {
-                    scrollWidth += sbw;
-                    self.scrollBox.width += sbw;
-                    setCanvasSize();
-                    self.width = self.canvas.offsetWidth;
-                    self.canvas.width = self.width * ratio;
-                } else {
-                    self.scrollBox.verticalBarVisible = scrollWidth - self.scrollBox.width > 1;
-                }
+            if (self.scrollBox.verticalBarVisible && !self.isChildGrid) {
+                self.width += sbw;
+                dataWidth += sbw;
+                setCanvasSize();
+                self.scrollBox.verticalBarVisible = dataHeight > self.scrollBox.height;
             }
-            self.scrollBox.scrollWidth = scrollWidth - self.scrollBox.width;
-            self.scrollBox.scrollHeight = scrollHeight - self.scrollBox.height;
+            self.scrollBox.scrollWidth = dataWidth - self.scrollBox.width;
+            self.scrollBox.scrollHeight = dataHeight - self.scrollBox.height;
             self.scrollBox.widthBoxRatio = ((self.scrollBox.width - scrollDragPositionOffsetX)
                 / (self.scrollBox.scrollWidth + (self.scrollBox.width - scrollDragPositionOffsetX)));
             self.scrollBox.scrollBoxWidth = self.scrollBox.width
@@ -2222,6 +2224,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             };
             /// calculate page and dom elements
             self.page = self.visibleRows.length - 3 - self.attributes.pageUpDownOverlap;
+            // set canvas drawing related items
+            if (!self.isChildGrid) {
+                self.canvas.width = self.width * ratio;
+                self.canvas.height = self.height * ratio;
+                self.ctx.scale(ratio, ratio);
+            }
+            // resize any open dom elements (input/textarea)
             self.resizeEditInput();
             self.scroll(true);
             if (drawAfterResize) {
@@ -3529,6 +3538,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             rows: [],
             columns: []
         };
+        self.cellGridAttributes = {};
+        self.treeGridAttributes = {};
         self.visibleRowHeights = [];
         self.hasFocus = false;
         self.activeCell = {
@@ -4453,6 +4464,22 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 return self.getVisibleSchema().map(function eachDataRow(col) {
                     return col;
                 });
+            }
+        });
+        Object.defineProperty(self.intf, 'treeGridAttributes', {
+            get: function () {
+                return self.treeGridAttributes;
+            },
+            set: function setTreeGridAttributes(value) {
+                self.treeGridAttributes = value;
+            }
+        });
+        Object.defineProperty(self.intf, 'cellGridAttributes', {
+            get: function () {
+                return self.cellGridAttributes;
+            },
+            set: function setCellGridAttributes(value) {
+                self.cellGridAttributes = value;
             }
         });
         Object.defineProperty(self.intf, 'ctx', {

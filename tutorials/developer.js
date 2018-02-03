@@ -196,13 +196,13 @@ function g() {
         y,
         d = [],
         n;
-    // grid.addEventListener('expandtree', function (e) {
-    //     e.treeGrid.data = [
-    //         {'a': 0, 'b': 1, 'c': 2},
-    //         {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},
-    //         {'a': 7, 'b': 8, 'c': 9}
-    //     ];
-    // });
+    grid.addEventListener('expandtree', function (e) {
+        e.treeGrid.data = [
+            {'a': 0, 'b': 1, 'c': 2},
+            {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},
+            {'a': 7, 'b': 8, 'c': 9}
+        ];
+    });
     function colName(n) {
         var ordA = 'a'.charCodeAt(0),
             ordZ = 'z'.charCodeAt(0),
@@ -221,10 +221,11 @@ function g() {
     grid.style.columnHeaderCellHorizontalAlignment = 'center';
     grid.style.borderCollapse = 'collapse';
     // grid.className = 'grid';
+    grid.style.width = '100%';
     grid.style.height = '100%';
-    grid.style.width = 'auto';
+    //grid.style.cellHeight = 259;
     grid.data = d;
-    grid.schema[0].width = 1000;
+    //grid.schema[0].width = 1000;
     // grid.style.gridBackgroundColor = 'red';
     //grid.style.scrollBarCornerBackgroundColor = 'blue';
     // grid.style.columnHeaderCellHeight = 45;
