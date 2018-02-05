@@ -111,6 +111,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['columnSelectorVisibleText', '\u2713'],
                 ['contextHoverScrollAmount', 2],
                 ['contextHoverScrollRateMs', 5],
+                ['copyHeadersOnSelectAll', true],
                 ['copyText', 'Copy'],
                 ['debug', false],
                 ['editable', true],
@@ -140,7 +141,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['showClearSettingsOption', true],
                 ['showColumnHeaders', true],
                 ['showColumnSelector', true],
-                ['showCopy', true],
+                ['showCopy', false],
                 ['showFilter', true],
                 ['showNewRow', false],
                 ['showOrderByOption', true],
@@ -447,11 +448,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
     // export amd loader
     module.exports = function grid(args) {
         args = args || {};
-        var i, tKeys = ['style', 'schema', 'data', 'formatters',
-                    'sorters', 'filters'];
+        var i, tKeys = ['style', 'formatters', 'sorters', 'filters',
+                    'treeGridAttributes', 'cellGridAttributes', 'data', 'schema'];
         if (window.customElements && document.body.createShadowRoot) {
             i = document.createElement('canvas-datagrid');
             Object.keys(args).forEach(function (argKey) {
+                // set data after everything else
+                if (argKey === 'data') { return; }
                 if (argKey === 'parentNode') {
                     args.parentNode.appendChild(i);
                     return;
@@ -475,6 +478,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 // all others are attribute level keys
                 i.attributes[argKey] = args[argKey];
             });
+            if (args.data) {
+                i.data = args.data;
+            }
             return i;
         }
         args.component = false;
@@ -1307,12 +1313,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             || !isRowHeader) {
                         if (cell.isGrid && !self.dispatchEvent('beforerendercellgrid', ev)) {
                             if (!self.childGrids[cell.gridId]) {
-                                cellGridAttributes = self.args.cellGridAttributes || self.args;
+                                // HACK: this only allows setting of the child grids styles if data is set _after_
+                                // this is less than desirable.  An interface needs to be made to effect the
+                                // style of all cell grids.  One for individual grids already exists.
+                                cellGridAttributes = self.cellGridAttributes;
                                 cellGridAttributes.name = self.attributes.saveAppearance ? cell.gridId : undefined;
                                 cellGridAttributes.component = false;
                                 cellGridAttributes.parentNode = cell;
                                 cellGridAttributes.data = d[header.name];
-                                cellGridAttributes.style = cellGridAttributes.style || self.style;
                                 ev.cellGridAttributes = cellGridAttributes;
                                 if (self.dispatchEvent('beforecreatecellgrid', ev)) { return; }
                                 self.childGrids[cell.gridId] = self.createGrid(cellGridAttributes);
@@ -2073,8 +2081,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 bm = self.style.gridBorderCollapse === 'collapse' ? 1 : 2,
                 cellBorder = self.style.cellBorderWidth * bm,
                 columnHeaderCellBorder = self.style.columnHeaderCellBorderWidth * bm,
-                scrollHeight,
-                scrollWidth,
+                dataHeight,
+                dataWidth,
                 dims,
                 columnHeaderCellHeight = self.getColumnHeaderCellHeight(),
                 rowHeaderCellWidth = self.getRowHeaderCellWidth(),
@@ -2086,11 +2094,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 // https://github.com/TonyGermaneri/canvas-datagrid/issues/97
                 scrollDragPositionOffsetY = 55,
                 scrollDragPositionOffsetX = -100;
+            // sets actual DOM canvas element
             function setCanvasSize() {
+                if (self.isChildGrid) {
+                    return;
+                }
                 dims = {
                     // HACK +1 ? maybe it's a magic cell border?  Required to line up properly in auto height mode.
-                    height: scrollHeight + cellBorder + 1,
-                    width: scrollWidth + rowHeaderCellWidth + cellBorder
+                    height: dataHeight + cellBorder + 1,
+                    width: dataWidth + rowHeaderCellWidth + cellBorder
                 };
                 ['width', 'height'].forEach(function (dim) {
                     //TODO: support inherit
@@ -2103,7 +2115,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             self.scrollCache.x = [];
             self.scrollCache.y = [];
-            scrollHeight = (self.data || []).reduce(function reduceData(accumulator, row, rowIndex) {
+            dataHeight = (self.data || []).reduce(function reduceData(accumulator, row, rowIndex) {
                 var va = accumulator
                     + (((self.sizes.rows[row[self.uniqueId]] || ch) + (self.sizes.trees[row[self.uniqueId]] || 0)) * self.scale)
                     // HACK? if an expanded tree row is frozen it is necessary to add the tree row's height a second time.
@@ -2111,7 +2123,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.scrollCache.y[rowIndex] = va;
                 return va;
             }, 0) || 0;
-            scrollWidth = self.getVisibleSchema().reduce(function reduceSchema(accumulator, column, columnIndex) {
+            dataWidth = self.getVisibleSchema().reduce(function reduceSchema(accumulator, column, columnIndex) {
                 if (column.hidden) {
                     self.scrollCache.x[columnIndex] = accumulator;
                     return accumulator;
@@ -2121,55 +2133,51 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 return va;
             }, 0) || 0;
             if (self.attributes.showNewRow) {
-                scrollHeight += ch + cellBorder;
+                dataHeight += ch + cellBorder;
             }
-            scrollHeight += columnHeaderCellHeight;
-            if (!self.isChildGrid) {
-                setCanvasSize();
-            }
+            // accounts for the offset of the headers if any
+            dataHeight += columnHeaderCellHeight;
+            setCanvasSize();
             if (self.isChildGrid) {
                 self.width = self.parentNode.offsetWidth;
                 self.height = self.parentNode.offsetHeight;
             } else if (self.height !== self.canvas.offsetHeight || self.width !== self.canvas.offsetWidth) {
                 self.height = self.canvas.offsetHeight;
                 self.width = self.canvas.offsetWidth;
-                self.canvas.width = self.width * ratio;
-                self.canvas.height = self.height * ratio;
-                self.ctx.scale(ratio, ratio);
                 self.canvasOffsetLeft = self.args.canvasOffsetLeft || 0;
                 self.canvasOffsetTop = self.args.canvasOffsetTop || 0;
             }
             /// calculate scroll bar dimensions
-            self.scrollBox.width = self.width - rowHeaderCellWidth - cellBorder;
-            self.scrollBox.height = self.height - columnHeaderCellBorder - cellBorder;
+            // non-controversial
             self.scrollBox.top = columnHeaderCellHeight + columnHeaderCellBorder;
             self.scrollBox.left = rowHeaderCellWidth;
-            self.scrollBox.horizontalBarVisible = scrollWidth > self.scrollBox.width;
-            self.scrollBox.verticalBarVisible = scrollHeight > self.scrollBox.height;
-            if (self.scrollBox.horizontalBarVisible) {
+            // width and height of scroll box
+            self.scrollBox.width = self.width - rowHeaderCellWidth - cellBorder;
+            self.scrollBox.height = self.height - columnHeaderCellBorder - cellBorder;
+            // is the data larger than the scroll box
+            self.scrollBox.horizontalBarVisible = dataWidth > self.scrollBox.width;
+            self.scrollBox.verticalBarVisible = dataHeight > self.scrollBox.height;
+            // if the scroll box is visible, make room for it by expanding the size of the element
+            // if the other dimension is set to auto
+            if (self.scrollBox.horizontalBarVisible && !self.isChildGrid) {
                 if (self.style.height === 'auto') {
-                    scrollHeight += sbw;
-                    self.scrollBox.height += sbw;
-                    setCanvasSize();
-                    self.height = self.canvas.offsetHeight;
-                    self.canvas.height = self.height * ratio;
-                } else {
-                    self.scrollBox.verticalBarVisible = scrollHeight - self.scrollBox.height > 1;
+                    self.height += sbw;
                 }
+                dataHeight += sbw;
+                self.scrollBox.width = self.width - rowHeaderCellWidth - cellBorder;
+                setCanvasSize();
+                self.scrollBox.horizontalBarVisible = dataWidth > self.scrollBox.width;
             }
-            if (self.scrollBox.verticalBarVisible) {
+            if (self.scrollBox.verticalBarVisible && !self.isChildGrid) {
                 if (self.style.width === 'auto') {
-                    scrollWidth += sbw;
-                    self.scrollBox.width += sbw;
-                    setCanvasSize();
-                    self.width = self.canvas.offsetWidth;
-                    self.canvas.width = self.width * ratio;
-                } else {
-                    self.scrollBox.verticalBarVisible = scrollWidth - self.scrollBox.width > 1;
+                    self.width += sbw;
                 }
+                dataWidth += sbw;
+                setCanvasSize();
+                self.scrollBox.verticalBarVisible = dataHeight > self.scrollBox.height;
             }
-            self.scrollBox.scrollWidth = scrollWidth - self.scrollBox.width;
-            self.scrollBox.scrollHeight = scrollHeight - self.scrollBox.height;
+            self.scrollBox.scrollWidth = dataWidth - self.scrollBox.width;
+            self.scrollBox.scrollHeight = dataHeight - self.scrollBox.height;
             self.scrollBox.widthBoxRatio = ((self.scrollBox.width - scrollDragPositionOffsetX)
                 / (self.scrollBox.scrollWidth + (self.scrollBox.width - scrollDragPositionOffsetX)));
             self.scrollBox.scrollBoxWidth = self.scrollBox.width
@@ -2222,6 +2230,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             };
             /// calculate page and dom elements
             self.page = self.visibleRows.length - 3 - self.attributes.pageUpDownOverlap;
+            // set canvas drawing related items
+            if (!self.isChildGrid) {
+                self.canvas.width = self.width * ratio;
+                self.canvas.height = self.height * ratio;
+                self.ctx.scale(ratio, ratio);
+            }
+            // resize any open dom elements (input/textarea)
             self.resizeEditInput();
             self.scroll(true);
             if (drawAfterResize) {
@@ -3077,38 +3092,63 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (!self.hasFocus || !e.clipboardData) { return; }
             var t,
                 d,
-                rows = [],
-                trows = [],
-                sData = self.getSelectedData();
-            function fCopyCell(d) {
-                d = d === null || d === undefined ? '' : d;
-                return '<td>' + (typeof d === 'string' ? d.replace(/</g, '&lt;').replace(/>/g, '&gt;') : d) + '</td>';
+                data = (self.data || []),
+                tableRows = [],
+                textRows = [],
+                headers = [],
+                sData = self.getSelectedData(),
+                s = self.getVisibleSchema();
+            function htmlSafe(v) {
+                return v.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            }
+            function fCopyCell(v) {
+                v = v === null || v === undefined ? '' : v;
+                return '<td>' + (typeof v === 'string' ? htmlSafe(v) : v) + '</td>';
+            }
+            function addTableHeaders() {
+                if (!headers.length) { return ''; }
+                return '<tr>' + headers.map(function (name) {
+                    return '<th>' + htmlSafe(name) + '</th>';
+                }).join('') + '</tr>';
+            }
+            function addCellValue(val, trRow, textRow, column) {
+                // escape strings
+                var ht = column.title || column.name;
+                if (val !== null
+                        && val !== false
+                        && val !== undefined
+                        && val.replace) {
+                    if (headers.indexOf(ht) === -1
+                            && sData.length === data.length
+                            && self.attributes.copyHeadersOnSelectAll) {
+                        headers.push(ht);
+                    }
+                    trRow.push(fCopyCell(val));
+                    textRow.push('"' + val.replace(/"/g, '""') + '"');
+                    return;
+                }
+                if (val !== undefined) {
+                    textRow.push(val);
+                    trRow.push(fCopyCell(val));
+                }
             }
             if (sData.length > 0) {
                 sData.forEach(function (row) {
                     if (row) {
-                        // r = array for HTML, rt = array for plain text
-                        var r = [],
-                            rt = [];
-                        Object.keys(row).forEach(function (key) {
+                        var trRow = [],
+                            textRow = [];
+                        s.forEach(function (column, columnIndex) {
+                            // intentional redefinition of column
+                            column = s[self.orders.columns[columnIndex]];
                             // escape strings
-                            if (row[key] !== null
-                                    && row[key] !== false
-                                    && row[key] !== undefined
-                                    && row[key].replace) {
-                                rt.push('"' + row[key].replace(/"/g, '""') + '"');
-                                r.push(fCopyCell(row[key]));
-                                return;
-                            }
-                            rt.push(row[key]);
-                            r.push(fCopyCell(row[key]));
+                            addCellValue(row[column.name], trRow, textRow, column);
                         });
-                        rows.push(r.join(''));
-                        trows.push(rt.join(','));
+                        tableRows.push(trRow.join(''));
+                        textRows.push(textRow.join(','));
                     }
                 });
-                d = '<table><tr>' + rows.join('</tr><tr>') + '</tr></table>';
-                t = trows.join('\n');
+                t = headers.join(',') + (headers.length > 0 ? '\n' : '') + textRows.join('\n');
+                d = '<table>' + addTableHeaders() + '<tr>' + tableRows.join('</tr><tr>') + '</tr></table>';
                 e.clipboardData.setData('text/html', d);
                 e.clipboardData.setData('text/plain', t);
                 e.clipboardData.setData('text/csv', t);
@@ -3529,6 +3569,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             rows: [],
             columns: []
         };
+        self.cellGridAttributes = {};
+        self.treeGridAttributes = {};
         self.visibleRowHeights = [];
         self.hasFocus = false;
         self.activeCell = {
@@ -3938,6 +3980,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
              * @param {number} el The element to append the grid to.
              */
             self.intf.appendTo = self.appendTo;
+            self.intf.getColumnByIndex = self.getColumnByIndex;
             self.intf.filters = self.filters;
             self.intf.sorters = self.sorters;
             self.intf.autosize = self.autosize;
@@ -4453,6 +4496,22 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 return self.getVisibleSchema().map(function eachDataRow(col) {
                     return col;
                 });
+            }
+        });
+        Object.defineProperty(self.intf, 'treeGridAttributes', {
+            get: function () {
+                return self.treeGridAttributes;
+            },
+            set: function setTreeGridAttributes(value) {
+                self.treeGridAttributes = value;
+            }
+        });
+        Object.defineProperty(self.intf, 'cellGridAttributes', {
+            get: function () {
+                return self.cellGridAttributes;
+            },
+            set: function setCellGridAttributes(value) {
+                self.cellGridAttributes = value;
             }
         });
         Object.defineProperty(self.intf, 'ctx', {
@@ -5832,8 +5891,21 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
     'use strict';
     return function (self) {
-        // all methods here are exposed by intf
-        // to users
+        /**
+         * Gets the specified column by the column index number.
+         * @memberof canvasDatagrid
+         * @name getColumnByIndex
+         * @method
+         * @param {column} n The number to convert.
+         */
+        self.getColumnByIndex = function (columnIndex) {
+            var x, s = self.getSchema();
+            for (x = 0; x < s.length; x += 1) {
+                if (s[x].index === columnIndex) {
+                    return s[x];
+                }
+            }
+        }
         /**
          * Converts a integer into a letter A - ZZZZZ...
          * @memberof canvasDatagrid

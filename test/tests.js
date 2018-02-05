@@ -1195,15 +1195,16 @@
                         data: makeData(30, 500),
                         scrollPointerLock: false
                     });
+                    marker(grid, 395, 35);
                     setTimeout(function () {
                         grid.focus();
-                        mousedown(grid.canvas, 393, 35);
-                        mousemove(document.body, 393, 35, grid.canvas);
+                        mousedown(grid.canvas, 395, 35);
+                        mousemove(document.body, 395, 35, grid.canvas);
                         setTimeout(function () {
                             // simulate very slow movement of humans
                             //marker(grid, 100, 113);
-                            mousemove(document.body, 393, 100, grid.canvas);
-                            mouseup(document.body, 393, 100, grid.canvas);
+                            mousemove(document.body, 395, 100, grid.canvas);
+                            mouseup(document.body, 395, 100, grid.canvas);
                             done(assertIf(grid.scrollTop < 100,
                                 'Expected the scroll bar to be further along.'));
                         }, 200);
@@ -1217,10 +1218,10 @@
                     });
                     setTimeout(function () {
                         grid.focus();
-                        mousemove(grid.canvas, 393, 100);
-                        mousedown(grid.canvas, 393, 100);
+                        mousemove(grid.canvas, 395, 100);
+                        mousedown(grid.canvas, 395, 100);
                         setTimeout(function () {
-                            mouseup(document.body, 393, 100, grid.canvas);
+                            mouseup(document.body, 395, 100, grid.canvas);
                             done(assertIf(grid.scrollTop < 1,
                                  'Expected the scroll bar to be further along.'));
                         }, 2000);
@@ -1234,11 +1235,11 @@
                     });
                     setTimeout(function () {
                         grid.focus();
-                        marker(grid, 393, 70);
-                        mousemove(grid.canvas, 393, 70);
-                        mousedown(grid.canvas, 393, 70);
+                        marker(grid, 395, 70);
+                        mousemove(grid.canvas, 395, 70);
+                        mousedown(grid.canvas, 395, 70);
                         setTimeout(function () {
-                            mouseup(document.body, 393, 70, grid.canvas);
+                            mouseup(document.body, 395, 70, grid.canvas);
                             done(assertIf(grid.scrollTop < 1,
                                  'Expected the scroll bar to be further along.'));
                         }, 2000);
@@ -1253,10 +1254,10 @@
                     grid.scrollTop = grid.scrollHeight;
                     setTimeout(function () {
                         grid.focus();
-                        mousemove(grid.canvas, 393, 75);
-                        mousedown(grid.canvas, 393, 75);
+                        mousemove(grid.canvas, 395, 75);
+                        mousedown(grid.canvas, 395, 75);
                         setTimeout(function () {
-                            mouseup(document.body, 393, 75, grid.canvas);
+                            mouseup(document.body, 395, 75, grid.canvas);
                             done(assertIf(grid.scrollTop === grid.scrollHeight,
                                  'Expected the scroll bar to be further along.'));
                         }, 2000);
@@ -1803,7 +1804,7 @@
                     ev = new Event('keydown');
                     ev.keyCode = kcs.pgdown;
                     grid.controlInput.dispatchEvent(ev);
-                    done(assertIf(grid.activeCell.rowIndex !== 3, 'Expected the active cell to move.'));
+                    done(assertIf(grid.activeCell.rowIndex === 0, 'Expected the active cell to move.'));
                 });
                 it('Page up should move up a page', function (done) {
                     var ev, grid = g({
@@ -2397,8 +2398,10 @@
                     var grid = g({
                         test: this.test,
                         data: [{a: [{b: 'c'}]}],
-                        style: {
-                            activeCellBackgroundColor: c.b
+                        cellGridAttributes: {
+                            style: {
+                                activeCellBackgroundColor: c.b
+                            }
                         }
                     });
                     setTimeout(function () {
