@@ -2159,13 +2159,18 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             // if the scroll box is visible, make room for it by expanding the size of the element
             // if the other dimension is set to auto
             if (self.scrollBox.horizontalBarVisible && !self.isChildGrid) {
-                self.height += sbw;
+                if (self.style.height === 'auto') {
+                    self.height += sbw;
+                }
                 dataHeight += sbw;
+                self.scrollBox.width = self.width - rowHeaderCellWidth - cellBorder;
                 setCanvasSize();
                 self.scrollBox.horizontalBarVisible = dataWidth > self.scrollBox.width;
             }
             if (self.scrollBox.verticalBarVisible && !self.isChildGrid) {
-                self.width += sbw;
+                if (self.style.width === 'auto') {
+                    self.width += sbw;
+                }
                 dataWidth += sbw;
                 setCanvasSize();
                 self.scrollBox.verticalBarVisible = dataHeight > self.scrollBox.height;

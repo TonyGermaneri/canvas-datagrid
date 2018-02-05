@@ -221,8 +221,10 @@ function g() {
     grid.style.columnHeaderCellHorizontalAlignment = 'center';
     grid.style.borderCollapse = 'collapse';
     // grid.className = 'grid';
-    grid.style.width = '100%';
+    // grid.style.width = '100%';
+    grid.style.width = 'auto';
     grid.style.height = '100%';
+    // grid.style.height = 'auto';
     //grid.style.cellHeight = 259;
     grid.data = d;
     //grid.schema[0].width = 1000;
