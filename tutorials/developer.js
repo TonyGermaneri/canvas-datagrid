@@ -215,14 +215,14 @@ function g() {
         return s;
     }
     for (x = 0; x < 10; x += 1) {
-        d[x] = {a: '', b: '', c: '', d: ''};
+        d[x] = {a: 'a' + x, b: 'b' + x, c: 'c' + x, d: 'd' + x};
     }
     grid.attributes.columnHeaderClickBehavior = 'select';
     grid.style.columnHeaderCellHorizontalAlignment = 'center';
     grid.style.borderCollapse = 'collapse';
     // grid.className = 'grid';
-    // grid.style.width = '100%';
-    grid.style.width = 'auto';
+    grid.style.width = '100%';
+    // grid.style.width = 'auto';
     grid.style.height = '100%';
     // grid.style.height = 'auto';
     //grid.style.cellHeight = 259;

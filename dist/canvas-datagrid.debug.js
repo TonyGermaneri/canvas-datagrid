@@ -111,6 +111,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['columnSelectorVisibleText', '\u2713'],
                 ['contextHoverScrollAmount', 2],
                 ['contextHoverScrollRateMs', 5],
+                ['copyHeadersOnSelectAll', true],
                 ['copyText', 'Copy'],
                 ['debug', false],
                 ['editable', true],
@@ -140,7 +141,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['showClearSettingsOption', true],
                 ['showColumnHeaders', true],
                 ['showColumnSelector', true],
-                ['showCopy', true],
+                ['showCopy', false],
                 ['showFilter', true],
                 ['showNewRow', false],
                 ['showOrderByOption', true],
@@ -3091,38 +3092,63 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (!self.hasFocus || !e.clipboardData) { return; }
             var t,
                 d,
-                rows = [],
-                trows = [],
-                sData = self.getSelectedData();
-            function fCopyCell(d) {
-                d = d === null || d === undefined ? '' : d;
-                return '<td>' + (typeof d === 'string' ? d.replace(/</g, '&lt;').replace(/>/g, '&gt;') : d) + '</td>';
+                data = (self.data || []),
+                tableRows = [],
+                textRows = [],
+                headers = [],
+                sData = self.getSelectedData(),
+                s = self.getVisibleSchema();
+            function htmlSafe(v) {
+                return v.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            }
+            function fCopyCell(v) {
+                v = v === null || v === undefined ? '' : v;
+                return '<td>' + (typeof v === 'string' ? htmlSafe(v) : v) + '</td>';
+            }
+            function addTableHeaders() {
+                if (!headers.length) { return ''; }
+                return '<tr>' + headers.map(function (name) {
+                    return '<th>' + htmlSafe(name) + '</th>';
+                }).join('') + '</tr>';
+            }
+            function addCellValue(val, trRow, textRow, column) {
+                // escape strings
+                var ht = column.title || column.name;
+                if (val !== null
+                        && val !== false
+                        && val !== undefined
+                        && val.replace) {
+                    if (headers.indexOf(ht) === -1
+                            && sData.length === data.length
+                            && self.attributes.copyHeadersOnSelectAll) {
+                        headers.push(ht);
+                    }
+                    trRow.push(fCopyCell(val));
+                    textRow.push('"' + val.replace(/"/g, '""') + '"');
+                    return;
+                }
+                if (val !== undefined) {
+                    textRow.push(val);
+                    trRow.push(fCopyCell(val));
+                }
             }
             if (sData.length > 0) {
                 sData.forEach(function (row) {
                     if (row) {
-                        // r = array for HTML, rt = array for plain text
-                        var r = [],
-                            rt = [];
-                        Object.keys(row).forEach(function (key) {
+                        var trRow = [],
+                            textRow = [];
+                        s.forEach(function (column, columnIndex) {
+                            // intentional redefinition of column
+                            column = s[self.orders.columns[columnIndex]];
                             // escape strings
-                            if (row[key] !== null
-                                    && row[key] !== false
-                                    && row[key] !== undefined
-                                    && row[key].replace) {
-                                rt.push('"' + row[key].replace(/"/g, '""') + '"');
-                                r.push(fCopyCell(row[key]));
-                                return;
-                            }
-                            rt.push(row[key]);
-                            r.push(fCopyCell(row[key]));
+                            addCellValue(row[column.name], trRow, textRow, column);
                         });
-                        rows.push(r.join(''));
-                        trows.push(rt.join(','));
+                        tableRows.push(trRow.join(''));
+                        textRows.push(textRow.join(','));
                     }
                 });
-                d = '<table><tr>' + rows.join('</tr><tr>') + '</tr></table>';
-                t = trows.join('\n');
+                t = headers.join(',') + (headers.length > 0 ? '\n' : '') + textRows.join('\n');
+                d = '<table>' + addTableHeaders() + '<tr>' + tableRows.join('</tr><tr>') + '</tr></table>';
                 e.clipboardData.setData('text/html', d);
                 e.clipboardData.setData('text/plain', t);
                 e.clipboardData.setData('text/csv', t);
@@ -3954,6 +3980,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
              * @param {number} el The element to append the grid to.
              */
             self.intf.appendTo = self.appendTo;
+            self.intf.getColumnByIndex = self.getColumnByIndex;
             self.intf.filters = self.filters;
             self.intf.sorters = self.sorters;
             self.intf.autosize = self.autosize;
@@ -5864,8 +5891,21 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
     'use strict';
     return function (self) {
-        // all methods here are exposed by intf
-        // to users
+        /**
+         * Gets the specified column by the column index number.
+         * @memberof canvasDatagrid
+         * @name getColumnByIndex
+         * @method
+         * @param {column} n The number to convert.
+         */
+        self.getColumnByIndex = function (columnIndex) {
+            var x, s = self.getSchema();
+            for (x = 0; x < s.length; x += 1) {
+                if (s[x].index === columnIndex) {
+                    return s[x];
+                }
+            }
+        }
         /**
          * Converts a integer into a letter A - ZZZZZ...
          * @memberof canvasDatagrid
