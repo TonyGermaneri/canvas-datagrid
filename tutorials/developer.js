@@ -173,60 +173,76 @@ function g() {
     // });
     //grid.data = [null, "32.84057112200048", "-86.63186076199969", null, false];
     // create a spreadsheet
-    var grid = canvasDatagrid({
-            name: 'blah',
-            borderDragBehavior: 'move',
-            showPaste: true,
-            parentNode: document.body,
-            allowRowResizeFromCell: true,
-            autoGenerateSchema: true,
-            allowColumnResizeFromCell: true,
-            allowRowReordering: false,
-            scrollPointerLock: false,
-            showRowNumbers: true,
-            showColumnHeaders: true,
-            showRowHeaders: true,
-            tree: true,
-            snapToRow: false,
-            debug: false,
-            allowFreezingRows: false,
-            allowFreezingColumns: false
-        }),
-        x,
-        y,
-        d = [],
-        n;
-    grid.addEventListener('expandtree', function (e) {
-        e.treeGrid.data = [
-            {'a': 0, 'b': 1, 'c': 2},
-            {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},
-            {'a': 7, 'b': 8, 'c': 9}
-        ];
-    });
-    function colName(n) {
-        var ordA = 'a'.charCodeAt(0),
-            ordZ = 'z'.charCodeAt(0),
-            len = ordZ - ordA + 1,
-            s = '';
-        while (n >= 0) {
-            s = String.fromCharCode(n % len + ordA) + s;
-            n = Math.floor(n / len) - 1;
-        }
-        return s;
-    }
-    for (x = 0; x < 10; x += 1) {
-        d[x] = {a: 'a' + x, b: 'b' + x, c: 'c' + x, d: 'd' + x};
-    }
-    grid.attributes.columnHeaderClickBehavior = 'select';
-    grid.style.columnHeaderCellHorizontalAlignment = 'center';
-    grid.style.borderCollapse = 'collapse';
-    // grid.className = 'grid';
-    grid.style.width = '100%';
-    // grid.style.width = 'auto';
-    grid.style.height = '100%';
+    // var grid = canvasDatagrid({
+    //         // name: 'blah',
+    //         // borderDragBehavior: 'move',
+    //         // showPaste: true,
+    //         parentNode: document.body,
+    //         // allowRowResizeFromCell: true,
+    //         // // autoGenerateSchema: true,
+    //         // allowColumnResizeFromCell: true,
+    //         // allowRowReordering: false,
+    //         // scrollPointerLock: false,
+    //         // showRowNumbers: true,
+    //         // showColumnHeaders: true,
+    //         // showRowHeaders: true,
+    //         // tree: true,
+    //         // snapToRow: false,
+    //         // debug: false,
+    //         // allowFreezingRows: false,
+    //         // allowFreezingColumns: false
+    //     }),
+    //     x,
+    //     y,
+    //     d = [],
+    //     n;
+    // grid.addEventListener('expandtree', function (e) {
+    //     e.treeGrid.data = [
+    //         {'a': 0, 'b': 1, 'c': 2},
+    //         {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},
+    //         {'a': 7, 'b': 8, 'c': 9}
+    //     ];
+    // });
+    // function colName(n) {
+    //     var ordA = 'a'.charCodeAt(0),
+    //         ordZ = 'z'.charCodeAt(0),
+    //         len = ordZ - ordA + 1,
+    //         s = '';
+    //     while (n >= 0) {
+    //         s = String.fromCharCode(n % len + ordA) + s;
+    //         n = Math.floor(n / len) - 1;
+    //     }
+    //     return s;
+    // }
+    // for (x = 0; x < 10; x += 1) {
+    //     d[x] = {a: 'a' + x, b: 'b' + x, c: 'c' + x, d: {a: '1234', b: 'nnnnn'}};
+    // }
+    // grid.attributes.columnHeaderClickBehavior = 'select';
+    // grid.style.columnHeaderCellHorizontalAlignment = 'center';
+    // grid.style.borderCollapse = 'collapse';
+    // // grid.className = 'grid';
+    // grid.style.width = '100%';
+    // // grid.style.width = 'auto';
+    // grid.style.height = '100%';
     // grid.style.height = 'auto';
     //grid.style.cellHeight = 259;
-    grid.data = d;
+    
+    // grid.formatters.widget = function (e) {
+    //     return e.cell.value.a + ' ' + e.cell.value.b;
+    // };
+    // grid.schema = [
+    //     {name: 'a'},
+    //     {name: 'b'},
+    //     {name: 'c'},
+    //     {name: 'd', type: 'widget'}
+    // ];
+    // grid.addEventListener('beforerendercellgrid', function (e) {
+    //     e.cell.isGrid = false;
+    //     e.ctx.fillRect(e.cell.x, e.cell.y, e.cell.width, e.cell.height);
+    //     e.ctx.strokeRect(e.cell.x, e.cell.y, e.cell.width, e.cell.height);
+    //     e.preventDefault();
+    // });
+    // grid.data = [{a: 'a', b: 'b', c: 'c', d: {a: '1234', b: 'nnnnn'}}];
     //grid.schema[0].width = 1000;
     // grid.style.gridBackgroundColor = 'red';
     //grid.style.scrollBarCornerBackgroundColor = 'blue';
@@ -314,5 +330,20 @@ function g() {
     // };
     // var grid = canvasDatagrid(datagridOpts);
     // grid.data = new Array(10).fill([]);
+
+
+
+    var grid = canvasDatagrid({ parentNode: document.body });
+
+    grid.data = [
+        {a: '1', b: '2', c: undefined, d: '4'},
+        {a: '1', b: '2', c: '', d: '4'},
+        {a: '1', b: null, c: '3', d: '4'},
+        {a: '1', b: '2', c: false, d: '4'},
+    ];
+
+
+
+
 
 }

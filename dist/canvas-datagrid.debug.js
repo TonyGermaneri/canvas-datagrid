@@ -3130,7 +3130,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 if (val !== undefined) {
                     textRow.push(val);
                     trRow.push(fCopyCell(val));
+                    return;
                 }
+                // issue #66
+                textRow.push('');
+                trRow.push('<td>&nbsp;</td>');
             }
             if (sData.length > 0) {
                 sData.forEach(function (row) {
@@ -3980,7 +3984,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
              * @param {number} el The element to append the grid to.
              */
             self.intf.appendTo = self.appendTo;
-            self.intf.getColumnByIndex = self.getColumnByIndex;
             self.intf.filters = self.filters;
             self.intf.sorters = self.sorters;
             self.intf.autosize = self.autosize;
@@ -5891,21 +5894,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
     'use strict';
     return function (self) {
-        /**
-         * Gets the specified column by the column index number.
-         * @memberof canvasDatagrid
-         * @name getColumnByIndex
-         * @method
-         * @param {column} n The number to convert.
-         */
-        self.getColumnByIndex = function (columnIndex) {
-            var x, s = self.getSchema();
-            for (x = 0; x < s.length; x += 1) {
-                if (s[x].index === columnIndex) {
-                    return s[x];
-                }
-            }
-        }
         /**
          * Converts a integer into a letter A - ZZZZZ...
          * @memberof canvasDatagrid
