@@ -333,14 +333,11 @@ function g() {
 
 
 
-    var grid = canvasDatagrid({ parentNode: document.body });
-
-    grid.data = [
-        {a: '1', b: '2', c: undefined, d: '4'},
-        {a: '1', b: '2', c: '', d: '4'},
-        {a: '1', b: null, c: '3', d: '4'},
-        {a: '1', b: '2', c: false, d: '4'},
-    ];
+    var grid = canvasDatagrid({ parentNode: document.body }),
+        data = [];
+    data.length = 1000;
+    grid.schema = [{name: 'test', primaryKey: true }];
+    grid.data = data;
 
 
 

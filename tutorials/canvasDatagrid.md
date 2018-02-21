@@ -16,40 +16,60 @@ With the exception of attaching to an existing canvas, the grid will attempt to 
 
 * In browsers that do not support Shadow DOM, no shadow root will be created.  In this mode cascading CSS can alter the grid, altering behavior in potentially breaking ways.  Careful application of CSS is required.  This can effect the grid in-line editing and context menus.
 
+Setting Height and Width
+------------------------
+
+Limiting the size of the canvas-datagrid element is the best way to improve performance.
+
+canvas-datagrid by default is set to `grid.style.height: auto` and `grid.style.width: auto`.
+This means the canvas-datagrid element expands to the height and width of the rows and columns contained within.
+If you have many rows or columns you will want to limit the height and width of the element by setting
+`grid.style.height` and `grid.style.width` to something besides `auto`.  Try `100%` or `300px`.
+
+When set to a value other than auto a virtual scroll box will be drawn onto the canvas
+constraining the size and allowing the user to scroll around the columns and rows.
+
+Currently `max-width`, `max-height`, `min-width` and `min-height` are not supported and will do nothing, but support is planned.
+
 Setting and Getting Data
 ------------------------
 
-You can set data into the grid in a number of ways.  No matter how it is passed in, it is immediately converted into the native
-format which is an array of objects that all contain the same properties.  E.g.:
+Data is set according to the MIME type parser defined in grid.types.  The default type parser is `application/octet-stream+cdg-object-array`.
+
+This format expects an in-memory array of objects that strictly conform to a schema (i.e.: they all have the same properties).
+
+Example `application/octet-stream+cdg-object-array`
 
     [
         {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},
         {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}
     ]
 
-When getting data, no matter how it was set, it will be returned in the native format above.
+When getting data, no matter how it was set, it will be returned as `application/octet-stream+cdg-object-array` (an array of objects).
 
-Data can be almost any type, the behavior of the grid will change slightly depending on how it is set.
+For more information on using and creating custom parsers see: [parsers](https://tonygermaneri.github.io/canvas-datagrid/docs/#parsers)
 
-* Data can be set using the data property.
-* Data can be set using the web component data attribute.
-* Data can be set using the web component innerHTML attribute.
+The table below lists ways to set data and the default parser used.
 
-When setting data using the data property, you can use many types.
+| Method | Parser |
+|-----|------|
+| data property | application/octet-stream+cdg-object-array |
+| web component data attribute | application/json+cdg-object-array |
+| web component innerHTML attribute | application/json+cdg-object-array |
 
-* As an array of objects.
-* As an array of arrays.
-* As an object.
-* As a jagged array of objects.
-* As a jagged array of arrays.
-* As a function that returns any of the above.
-* As a function that returns undefined, and passes any of the above to the callback argument asynchronously.
+There are four built in parsers.
 
-When using an array of arrays, the columns will be named like a spread sheet, A, B, C, through ZZZZ.
+application/x-canvas-datagrid
+application/x-canvas-datagrid;2dArray
+application/json+x-canvas-datagrid
+application/json+x-canvas-datagrid;2dArray
 
-When the value of a cell is an object or an array, a new grid will be drawn into the cell.
+When using `application/json+cdg-2d-array` or `application/octet-stream+cdg-2d-array`
+by default the columns will be named like a spread sheet, A, B, C, through ZZZZ.
 
-* Note: if you pass in data that appears to be the native format, an array like object of object like objects, no conversion will occur and object reference to the data can be maintained.  Also load time will decrease by a barely perceptible amount.
+Note: When the value of a cell is an object or an array, a new grid will be drawn into the cell.  This behavior can be overridden.
+
+Note: When setting data via the web component data attribute or innerHTML attribute, only string data can be passed.
 
 Schema
 ------
@@ -59,11 +79,17 @@ This documentation will use the term header and column interchangeably.
 If no schema is provided one will be generated from the
 data, in that case all data will be assumed to be string data.
 
+If you do not define a primary key in your data, a hidden column will be created and added to the dataset.
+This column will be removed when you retrieve data from `grid.data`.  You can avoid this performance impacting behavior by defining a primary key.
+
+For more information how primary key impacts performance see: [parsers](https://tonygermaneri.github.io/canvas-datagrid/docs/#parsers).
+
 Each header object can have the following properties:
 
 | Property | Description |
 |-----|------|
 | name | The name of the column.  This is used to match with data and is the only required property. |
+| primaryKey | When true, this column is the primary key of the data. |
 | type | The data type of this column |
 | title | What will be displayed to the user.  If not present, name will be used. |
 | width | The default width in pixels of this column.|
@@ -157,6 +183,44 @@ You can still access the grid as you would expect and the interface for the web 
 For further reading about web components see: https://www.webcomponents.org/
 
 * When instantiating the grid in a browser that does not support custom tags or css varaibles, class support will not work.
+
+Parsers
+-------
+
+Object that contains a list of MIME type keys and parsing function values for parsing data into the grid.
+
+| Argument | Optional | Description |
+|-----|------|
+| data | false | Input data from interface. |
+| callback | false | Callback function. See below. |
+| mimeType | true | The name of the MIME type. |
+
+Callback
+
+| Argument | Optional | Description |
+|-----|------|
+| data | false | Output data. |
+| schema or primaryKeyColumnName | true | Optionally, you can define the schema and/or primary key as part of the parsing process. |
+
+If no primary key column is set, internally, hidden auto incremented primary keys will be added to your data.
+This is slower than if you provide your own primary keys.
+You won't see this slowness on record sets with fewer than 10^6 rows.
+
+If you're not sure what a primary key is, it's a column where the data in each cell is guaranteed to be unique in the table.
+
+Here's a link to [Wikipedia](https://en.wikipedia.org/wiki/Primary_key) with way more than you ever wanted to know about primary keys.
+
+Example parser:
+
+    grid.parsers['text/csv'] = function (data, callback) {
+        var x, s = data.split('\n');
+        for (x = 0; x < s.length; x += 1) {
+            s[x] = s[x].split(',');
+        }
+        callback(s);
+    }
+
+Note: This is not a good solution for parsing CSV files, just a simple example of the parser contract.
 
 Sorters
 -------
