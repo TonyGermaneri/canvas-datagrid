@@ -34,18 +34,18 @@ Currently `max-width`, `max-height`, `min-width` and `min-height` are not suppor
 Setting and Getting Data
 ------------------------
 
-Data is set according to the MIME type parser defined in grid.types.  The default type parser is `application/octet-stream+cdg-object-array`.
+Data is set according to the MIME type parser defined in grid.types.  The default type parser is `application/x-canvas-datagrid`.
 
 This format expects an in-memory array of objects that strictly conform to a schema (i.e.: they all have the same properties).
 
-Example `application/octet-stream+cdg-object-array`
+Example `application/x-canvas-datagrid`
 
     [
         {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},
         {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}
     ]
 
-When getting data, no matter how it was set, it will be returned as `application/octet-stream+cdg-object-array` (an array of objects).
+When getting data, no matter how it was set, it will be returned as `application/x-canvas-datagrid` (an array of objects).
 
 For more information on using and creating custom parsers see: [parsers](https://tonygermaneri.github.io/canvas-datagrid/docs/#parsers)
 
@@ -59,7 +59,7 @@ The table below lists ways to set data and the default parser used.
 
 There are four built in parsers.
 
-application/x-canvas-datagrid
+application/x-canvas-datagrid (Default)
 application/x-canvas-datagrid;2dArray
 application/json+x-canvas-datagrid
 application/json+x-canvas-datagrid;2dArray
@@ -79,17 +79,11 @@ This documentation will use the term header and column interchangeably.
 If no schema is provided one will be generated from the
 data, in that case all data will be assumed to be string data.
 
-If you do not define a primary key in your data, a hidden column will be created and added to the dataset.
-This column will be removed when you retrieve data from `grid.data`.  You can avoid this performance impacting behavior by defining a primary key.
-
-For more information how primary key impacts performance see: [parsers](https://tonygermaneri.github.io/canvas-datagrid/docs/#parsers).
-
 Each header object can have the following properties:
 
 | Property | Description |
 |-----|------|
 | name | The name of the column.  This is used to match with data and is the only required property. |
-| primaryKey | When true, this column is the primary key of the data. |
 | type | The data type of this column |
 | title | What will be displayed to the user.  If not present, name will be used. |
 | width | The default width in pixels of this column.|
@@ -200,15 +194,6 @@ Callback
 | Argument | Optional | Description |
 |-----|------|
 | data | false | Output data. |
-| schema or primaryKeyColumnName | true | Optionally, you can define the schema and/or primary key as part of the parsing process. |
-
-If no primary key column is set, internally, hidden auto incremented primary keys will be added to your data.
-This is slower than if you provide your own primary keys.
-You won't see this slowness on record sets with fewer than 10^6 rows.
-
-If you're not sure what a primary key is, it's a column where the data in each cell is guaranteed to be unique in the table.
-
-Here's a link to [Wikipedia](https://en.wikipedia.org/wiki/Primary_key) with way more than you ever wanted to know about primary keys.
 
 Example parser:
 
@@ -220,7 +205,7 @@ Example parser:
         callback(s);
     }
 
-Note: This is not a good solution for parsing CSV files, just a simple example of the parser contract.
+Note: This a terrible solution for parsing CSV files.  This only serves as an example of the parser contract.
 
 Sorters
 -------

@@ -333,12 +333,29 @@ function g() {
 
 
 
-    var grid = canvasDatagrid({ parentNode: document.body }),
+    var grid = canvasDatagrid({
+            borderDragBehavior: 'move',
+            showPaste: true,
+            parentNode: document.body,
+            allowRowResizeFromCell: true,
+            // autoGenerateSchema: true,
+            allowColumnResizeFromCell: true,
+            showRowNumbers: true,
+            showColumnHeaders: true,
+            showRowHeaders: true,
+            tree: true,
+            snapToRow: false,
+            debug: false,
+            allowFreezingRows: true,
+            allowFreezingColumns: true
+        }),
         data = [];
-    data.length = 1000;
-    grid.schema = [{name: 'test', primaryKey: true }];
+    data.length = Math.pow(10, 7);
+    grid.schema = [{name: 'A'}, {name: 'B'}, {name: 'C'}, {name: 'D'}, {name: 'E'}, {name: 'F'}, {name: 'G'}, {name: 'H'}, {name: 'I'}, {name: 'J'}, {name: 'K'}, {name: 'L'}, {name: 'M'}, {name: 'N'}, {name: 'O'}, {name: 'P'}, {name: 'Q'}, {name: 'R'}, {name: 'S'}, {name: 'T'}, {name: 'U'}, {name: 'V'}, {name: 'W'}, {name: 'X'}, {name: 'Y'}, {name: 'Z'}];
+    grid.style.cellHoverBackgroundColor = 'green';
+    grid.style.width = '100%';
+    grid.style.height = '100%';
     grid.data = data;
-
 
 
 
