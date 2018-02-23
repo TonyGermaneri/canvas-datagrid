@@ -114,8 +114,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['copyHeadersOnSelectAll', true],
                 ['copyText', 'Copy'],
                 ['debug', false],
-                ['disableRowOrdering', false],
-                ['disableRowResizing', false],
                 ['editable', true],
                 ['filterOptionText', 'Filter %s'],
                 ['filterTextPrefix', '(filtered) '],
@@ -412,6 +410,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.args = args;
         self.intf.args = args;
         self.applyComponentStyle = component.applyComponentStyle;
+        self.hyphenateProperty = component.hyphenateProperty;
+        self.dehyphenateProperty = component.dehyphenateProperty;
         self.createGrid = function grid(args) {
             args.component = false;
             return new Grid(args);
@@ -455,12 +455,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         if (window.customElements && document.body.createShadowRoot) {
             i = document.createElement('canvas-datagrid');
             Object.keys(args).forEach(function (argKey) {
-                // set data after everything else
+                // set data and parentNode after everything else
                 if (argKey === 'data') { return; }
-                if (argKey === 'parentNode') {
-                    args.parentNode.appendChild(i);
-                    return;
-                }
+                if (argKey === 'parentNode') { return; }
                 // top level keys in args
                 if (tKeys.indexOf(argKey) !== -1) {
                     tKeys.forEach(function (tKey) {
@@ -482,6 +479,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             });
             if (args.data) {
                 i.data = args.data;
+            }
+            // add to the dom very last to avoid redraws
+            if (args.parentNode) {
+                args.parentNode.appendChild(i);
             }
             return i;
         }
@@ -512,7 +513,24 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
     'use strict';
     return function () {
         var typeMap, component = {};
-        function hyphenateProperty(prop, cust) {
+        component.dehyphenateProperty = function hyphenateProperty(prop) {
+            prop = prop.replace('--cdg-', '');
+            var p = '', nextLetterCap;
+            Array.prototype.forEach.call(prop, function (char) {
+                if (nextLetterCap) {
+                    nextLetterCap = false;
+                    p += char.toUpperCase();
+                    return;
+                }
+                if (char === '-') {
+                    nextLetterCap = true;
+                    return;
+                }
+                p += char;
+            });
+            return p;
+        };
+        component.hyphenateProperty = function hyphenateProperty(prop, cust) {
             var p = '';
             Array.prototype.forEach.call(prop, function (char) {
                 if (char === char.toUpperCase()) {
@@ -522,15 +540,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 p += char;
             });
             return (cust ? '--cdg-' : '') + p;
-        }
+        };
         function getDefaultItem(base, item) {
             var i = {},
                 r;
             defaults(i);
             r = i.defaults[base].filter(function (i) {
                 return i[0].toLowerCase() === item.toLowerCase()
-                    || hyphenateProperty(i[0]) === item.toLowerCase()
-                    || hyphenateProperty(i[0], true) === item.toLowerCase();
+                    || component.hyphenateProperty(i[0]) === item.toLowerCase()
+                    || component.hyphenateProperty(i[0], true) === item.toLowerCase();
             })[0];
             return r;
         }
@@ -542,9 +560,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             defs = defs.defaults.styles;
             defs.forEach(function (def) {
                 var val;
-                val = cStyle.getPropertyValue(hyphenateProperty(def[0], true));
+                val = cStyle.getPropertyValue(component.hyphenateProperty(def[0], true));
                 if (val === "") {
-                    val = cStyle.getPropertyValue(hyphenateProperty(def[0], false));
+                    val = cStyle.getPropertyValue(component.hyphenateProperty(def[0], false));
                 }
                 if (val !== "" && typeof val === 'string') {
                     intf.setStyleProperty(def[0], typeMap[typeof def[1]](val
@@ -1182,8 +1200,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         isRowHeader = 'rowHeaderCell' === cellStyle,
                         isColumnHeader = 'columnHeaderCell' === cellStyle,
                         selected = self.selections[rowOrderIndex] && self.selections[rowOrderIndex].indexOf(columnOrderIndex) !== -1,
-                        hovered = self.hovers.y === rowOrderIndex && self.hovers.x === headerIndex,
-                        active = self.activeCell.rowIndex === rowOrderIndex && self.activeCell.columnIndex === columnOrderIndex,
+                        hovered = self.hovers.rowIndex === rowOrderIndex && self.hovers.columnIndex === columnOrderIndex,
+                        active = self.activeCell.rowIndex === rowOrderIndex && self.activeCell.columnIndex === headerIndex,
                         rawValue = d ? d[header.name] : undefined,
                         isGrid = typeof rawValue === 'object' && rawValue !== null && rawValue !== undefined,
                         activeHeader = (self.orders.rows[self.activeCell.rowIndex] === rowOrderIndex
@@ -2240,7 +2258,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 h: nb
             };
             /// calculate page and dom elements
-            self.page = self.visibleRows.length - 3 - self.attributes.pageUpDownOverlap;
+            self.page = Math.max(1, self.visibleRows.length - 3 - self.attributes.pageUpDownOverlap);
             // set canvas drawing related items
             if (!self.isChildGrid) {
                 self.canvas.width = self.width * ratio;
@@ -2343,7 +2361,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.cursor = o.context;
                 if (o.context === 'cell') {
                     self.cursor = 'default';
-                    self.hovers = { y: o.rowIndex, x: o.columnIndex };
+                    self.hovers = { rowIndex: o.rowIndex, columnIndex: o.columnIndex };
                 }
                 if ((self.selecting || self.reorderObject)
                         && o.context === 'cell') {
@@ -2865,7 +2883,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (!self.hasFocus) {
                 return;
             }
-            self.page = self.visibleRows.length - 3 - self.attributes.pageUpDownOverlap;
             if (self.attributes.showNewRow) {
                 last += 1;
             }
@@ -3874,7 +3891,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (self.storedSettings
                     && typeof self.storedSettings.orders === 'object'
                     && self.storedSettings.orders !== null) {
-                if (self.storedSettings.orders.rows.length >= self.data.length) {
+                if (self.storedSettings.orders.rows.length >= (self.data || []).length) {
                     self.orders.rows = self.storedSettings.orders.rows;
                 }
                 s = self.getSchema();
@@ -3928,6 +3945,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (self.styleKeys.indexOf(key) === -1) {
                 self.parentNodeStyle[key] = value;
             } else {
+                if (/-/.test(key)) {
+                    key = self.dehyphenateProperty(key);
+                }
                 self.style[key] = value;
                 self.parseStyleValue(key);
             }
@@ -4075,8 +4095,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
             });
             self.styleKeys = Object.keys(self.intf.defaults.styles);
+            self.styleKeys = self.styleKeys
+                .concat(self.styleKeys.map(function (i) { return self.hyphenateProperty(i, false); }))
+                .concat(self.styleKeys.map(function (i) { return self.hyphenateProperty(i, true); }));
             self.DOMStyles = window.getComputedStyle(document.body, null);
-            Object.keys(self.DOMStyles).concat(Object.keys(self.style)).forEach(function (key) {
+            self.styleKeys.concat(Object.keys(self.DOMStyles)).forEach(function (key) {
                 // unless this line is here, Object.keys() will not work on <instance>.style
                 publicStyleKeyIntf[key] = undefined;
                 Object.defineProperty(publicStyleKeyIntf, key, {
@@ -4157,14 +4180,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             };
             ['formatters', 'filters', 'sorters'].forEach(self.initProp);
             self.applyComponentStyle(false, self.intf);
-            self.resize();
             self.reloadStoredValues();
             if (self.args.data) {
                 self.intf.data = self.args.data;
             }
-            if (!self.data) {
-                self.intf.data = [];
-            }
+            // if (!self.data) {
+            //     self.intf.data = [];
+            // }
             if (self.intf.innerText || self.intf.textContent) {
                 try {
                     self.intf.data = JSON.parse(self.intf.innerText || self.intf.textContent);
