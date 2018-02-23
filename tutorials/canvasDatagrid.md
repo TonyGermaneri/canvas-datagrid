@@ -53,9 +53,9 @@ The table below lists ways to set data and the default parser used.
 
 | Method | Parser |
 |-----|------|
-| data property | application/octet-stream+cdg-object-array |
-| web component data attribute | application/json+cdg-object-array |
-| web component innerHTML attribute | application/json+cdg-object-array |
+| data property | application/x-canvas-datagrid |
+| web component data attribute | application/json+x-canvas-datagrid |
+| web component innerHTML attribute | application/json+x-canvas-datagrid |
 
 There are four built in parsers.
 
@@ -64,7 +64,7 @@ application/x-canvas-datagrid;2dArray
 application/json+x-canvas-datagrid
 application/json+x-canvas-datagrid;2dArray
 
-When using `application/json+cdg-2d-array` or `application/octet-stream+cdg-2d-array`
+When using `application/x-canvas-datagrid;2dArray` or `application/json+x-canvas-datagrid;2dArray`
 by default the columns will be named like a spread sheet, A, B, C, through ZZZZ.
 
 Note: When the value of a cell is an object or an array, a new grid will be drawn into the cell.  This behavior can be overridden.
