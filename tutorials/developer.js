@@ -352,7 +352,7 @@ function g() {
         data = [];
     grid.style['active-cell-background-color'] = 'blue';
     //grid.style.activeCellBackgroundColor = 'blue';
-    data.length = 75000000;
+    data.length = 10000000;
     grid.schema = [{name: 'A'}, {name: 'B'}, {name: 'C'}, {name: 'D'}, {name: 'E'}, {name: 'F'}, {name: 'G'}, {name: 'H'}, {name: 'I'}, {name: 'J'}, {name: 'K'}, {name: 'L'}, {name: 'M'}, {name: 'N'}, {name: 'O'}, {name: 'P'}, {name: 'Q'}, {name: 'R'}, {name: 'S'}, {name: 'T'}, {name: 'U'}, {name: 'V'}, {name: 'W'}, {name: 'X'}, {name: 'Y'}, {name: 'Z'}];
     grid.style.cellHoverBackgroundColor = 'green';
     grid.style.width = '100%';
