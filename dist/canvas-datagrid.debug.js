@@ -210,13 +210,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['cellVerticalAlignment', 'center'],
                 ['cellWidth', 250],
                 ['cellWidthWithChildGrid', 250],
-                ['childContextMenuArrowColor', 'rgba(43, 48, 43, 1)'],
+                ['childContextMenuArrowColor', 'rgba(43, 48, 43, 0.7)'],
                 ['childContextMenuArrowHTML', '&#x25BA;'],
                 ['childContextMenuMarginLeft', -11],
                 ['childContextMenuMarginTop', -6],
                 ['columnHeaderCellBackgroundColor', 'rgba(240, 240, 240, 1)'],
                 ['columnHeaderCellBorderColor', 'rgba(172, 172, 172, 1)'],
                 ['columnHeaderCellBorderWidth', 1],
+                ['columnHeaderCellCapBackgroundColor', 'rgba(240, 240, 240, 1)'],
+                ['columnHeaderCellCapBorderColor', 'rgba(172, 172, 172, 1)'],
+                ['columnHeaderCellCapBorderWidth', 1],
                 ['columnHeaderCellColor', 'rgba(50, 50, 50, 1)'],
                 ['columnHeaderCellFont', '16px sans-serif'],
                 ['columnHeaderCellHeight', 25],
@@ -272,7 +275,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['contextMenuMarginTop', -3],
                 ['contextMenuOpacity', '0.98'],
                 ['contextMenuPadding', '2px'],
-                ['contextMenuWindowMargin', 100],
+                ['contextMenuWindowMargin', 30],
                 ['contextMenuZIndex', 10000],
                 ['cornerCellBackgroundColor', 'rgba(240, 240, 240, 1)'],
                 ['cornerCellBorderColor', 'rgba(202, 202, 202, 1)'],
@@ -1192,6 +1195,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             function drawCell(d, rowOrderIndex, rowIndex) {
                 return function drawEach(header, headerIndex, columnOrderIndex) {
+                    if (header.hidden) { return 0; }
                     var cellStyle = header.style || 'cell',
                         cellGridAttributes,
                         cell,
@@ -1201,7 +1205,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         isColumnHeader = 'columnHeaderCell' === cellStyle,
                         selected = self.selections[rowOrderIndex] && self.selections[rowOrderIndex].indexOf(columnOrderIndex) !== -1,
                         hovered = self.hovers.rowIndex === rowOrderIndex && self.hovers.columnIndex === columnOrderIndex,
-                        active = self.activeCell.rowIndex === rowOrderIndex && self.activeCell.columnIndex === headerIndex,
+                        active = self.activeCell.rowIndex === rowOrderIndex && self.activeCell.columnIndex === columnOrderIndex,
+                        isColumnHeaderCellCap = cellStyle === 'columnHeaderCellCap',
                         rawValue = d ? d[header.name] : undefined,
                         isGrid = typeof rawValue === 'object' && rawValue !== null && rawValue !== undefined,
                         activeHeader = (self.orders.rows[self.activeCell.rowIndex] === rowOrderIndex
@@ -1218,7 +1223,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             row: d,
                             header: header
                         };
-                    if (cellStyle === 'headerCellCap') {
+                    if (isColumnHeaderCellCap) {
                         cellWidth = w - x;
                     }
                     // if no data or schema are defined, a width is provided to the stub column
@@ -1271,7 +1276,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         isCorner: isCorner,
                         isHeader: isHeader,
                         isColumnHeader: isColumnHeader,
-                        isHeaderCellCap: !!header.isHeaderCellCap,
+                        isColumnHeaderCellCap: isColumnHeaderCellCap,
                         isRowHeader: isRowHeader,
                         rowOpen: rowOpen,
                         header: header,
@@ -1444,19 +1449,21 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     for (o = start; o < end; o += 1) {
                         i = self.orders.columns[o];
                         header = s[i];
-                        d = {
-                            title: header.title,
-                            name: header.name,
-                            width: header.width || self.style.cellWidth,
-                            style: 'columnHeaderCell',
-                            type: 'string',
-                            index: o,
-                            order: i
-                        };
-                        columnHeaderCell = {'columnHeaderCell': header.title || header.name};
-                        x += drawCell(columnHeaderCell, -1, -1)(d, i, o);
-                        if (x > self.width + self.scrollBox.scrollLeft) {
-                            break;
+                        if (!header.hidden) {
+                            d = {
+                                title: header.title,
+                                name: header.name,
+                                width: header.width || self.style.cellWidth,
+                                style: 'columnHeaderCell',
+                                type: 'string',
+                                index: o,
+                                order: i
+                            };
+                            columnHeaderCell = {'columnHeaderCell': header.title || header.name};
+                            x += drawCell(columnHeaderCell, -1, -1)(d, i, o);
+                            if (x > self.width + self.scrollBox.scrollLeft) {
+                                break;
+                            }
                         }
                     }
                 }
@@ -1495,9 +1502,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         c = {
                             name: '',
                             width: self.style.scrollBarWidth,
-                            style: 'headerCellCap',
-                            isHeaderCell: true,
-                            isHeaderCellCap: true,
+                            style: 'columnHeaderCellCap',
+                            isColumnHeaderCell: true,
+                            isColumnHeaderCellCap: true,
                             type: 'string',
                             index: s.length
                         };
@@ -1603,7 +1610,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             function initDraw() {
                 self.visibleRows = [];
-                s = self.getVisibleSchema();
+                s = self.getSchema();
                 self.visibleCells = [];
                 self.canvasOffsetTop = self.isChildGrid ? self.parentNode.offsetTop : 0;
                 self.canvasOffsetLeft = self.isChildGrid ? self.parentNode.offsetLeft : 0;
@@ -2871,14 +2878,43 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             e.preventDefault();
         };
+        // gets the horizontal adjacent cells as well as first/last based on column visibility
+        self.getAdjacentCells = function () {
+            var x,
+                i,
+                s = self.getSchema(),
+                o = {};
+            for (x = 0; x < s.length; x += 1) {
+                i = self.orders.columns[x];
+                if (!s[i].hidden) {
+                    if (o.first === undefined) {
+                        o.first = x;
+                        o.left = x;
+                    }
+                    o.last = x;
+                    if (x > self.activeCell.columnIndex && o.right === undefined) {
+                        o.right = x;
+                    }
+                    if (x < self.activeCell.columnIndex) {
+                        o.left = x;
+                    }
+                }
+            }
+            if (o.right === undefined) {
+                o.right = o.last;
+            }
+            return o;
+        };
         self.keydown = function (e) {
             var i,
                 ev,
+                adjacentCells = self.getAdjacentCells(),
                 x = self.activeCell.columnIndex,
                 y = self.activeCell.rowIndex,
                 ctrl = (e.ctrlKey || e.metaKey),
                 last = self.data.length - 1,
-                cols = self.getVisibleSchema().length - 1;
+                s = self.getSchema(),
+                cols = s.length - 1;
             if (self.dispatchEvent('keydown', {NativeEvent: e, cell: self.currentCell})) { return; }
             if (!self.hasFocus) {
                 return;
@@ -2904,10 +2940,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 y -= 1;
             //ArrowLeft Tab
             } else if (e.keyCode === 37 || (e.shiftKey && e.keyCode === 9)) {
-                x -= 1;
+                x = adjacentCells.left;
             //ArrowRight Tab
             } else if (e.keyCode === 39 || (!e.shiftKey && e.keyCode === 9)) {
-                x += 1;
+                x = adjacentCells.right;
             //PageUp
             } else if (e.keyCode === 33) {
                 y -= self.page;
@@ -2924,10 +2960,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 y = self.data.length - 1;
             //ArrowRight
             } else if (ctrl && e.keyCode === 39) {
-                x = cols;
+                x = adjacentCells.last;
             //ArrowLeft
             } else if (ctrl && e.keyCode === 37) {
-                x = 0;
+                x = adjacentCells.first;
             }
             //Enter
             if (e.keyCode === 13) {
@@ -2951,7 +2987,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 return;
             }
             if (x < 0) {
-                x = 0;
+                x = adjacentCells.first;
             }
             if (y > last) {
                 y = last;
@@ -2960,8 +2996,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 y = 0;
             }
             if (x > cols) {
-                x = cols;
+                x = adjacentCells.last;
             }
+            // TODO - most likley some column order related bugs in key based selection
             // Arrows
             if (e.shiftKey && [37, 38, 39, 40].indexOf(e.keyCode) !== -1) {
                 self.selections[Math.max(y, 0)] = self.selections[Math.max(y, 0)] || [];
@@ -3684,7 +3721,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             'touchcancel', 'touchend', 'touchmove', 'touchstart', 'wheel'];
         self.mouse = { x: 0, y: 0};
         self.getSelectedData = function (expandToRow) {
-            var d = [], s = expandToRow ? self.getSchema() : self.getVisibleSchema(), l = self.data.length;
+            var d = [], s = self.getSchema(), l = self.data.length;
             if (l === 0) { return []; }
             self.selections.forEach(function (row, index) {
                 if (!row) { return; }
@@ -3698,6 +3735,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     var orderedIndex;
                     if (col === -1 || !s[col]) { return; }
                     orderedIndex = self.orders.columns[col];
+                    if (!expandToRow && s[orderedIndex].hidden) { return; }
                     if (self.data[index]) {
                         d[index][s[orderedIndex].name] = self.data[index][s[orderedIndex].name];
                     }
@@ -5005,17 +5043,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     if (!(parentContextMenu && parentContextMenu.inputDropdown)) {
                         loc.y -= (rect.bottom + self.style.contextMenuWindowMargin) - window.innerHeight;
                     }
-                    if (loc.y < 0) { loc.y = 0; }
+                    if (loc.y < 0) { loc.y = self.style.contextMenuWindowMargin; }
                     if (container.offsetHeight > window.innerHeight - self.style.contextMenuWindowMargin) {
-                        container.style.height = window.innerHeight - self.style.contextMenuWindowMargin + 'px';
-                        loc.y -= self.style.contextMenuWindowMargin;
+                        container.style.height = window.innerHeight - (self.style.contextMenuWindowMargin * 2) + 'px';
                     }
                 }
                 if (rect.right > window.innerWidth) {
                     loc.x -= rect.right - window.innerWidth + self.style.contextMenuWindowMargin;
                 }
-                if (loc.x < 0) { loc.x = 0; }
-                if (loc.y < 0) { loc.y = 0; }
+                if (loc.x < 0) { loc.x = self.style.contextMenuWindowMargin; }
+                if (loc.y < 0) { loc.y = self.style.contextMenuWindowMargin; }
                 container.style.left = loc.x + 'px';
                 container.style.top = loc.y + 'px';
                 rect = container.getBoundingClientRect();
@@ -5199,7 +5236,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
         }
         function addDefaultContextMenuItem(e) {
-            var isNormalCell = !(e.cell.isBackground || e.cell.isHeaderCellCap
+            var isNormalCell = !(e.cell.isBackground || e.cell.isColumnHeaderCellCap
                     || e.cell.isScrollBar || e.cell.isCorner || e.cell.isRowHeader)
                     && e.cell.header;
             if (self.attributes.showFilter && isNormalCell) {
@@ -5645,7 +5682,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.resizeEditInput();
             self.input.style.zIndex = self.style.editCellZIndex;
             self.input.style.fontSize = (parseInt(self.style.editCellFontSize, 10) * self.scale) + 'px';
-            self.input.value = cell.value;
+            self.input.value = [null, undefined].indexOf(cell.value) !== -1 ? '' : cell.value;
             self.input.focus();
             self.input.addEventListener('click', self.stopPropagation);
             self.input.addEventListener('dblclick', self.stopPropagation);
@@ -6165,21 +6202,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @param {number} rowIndex The row index of the row to scroll find.
          */
         self.findRowScrollTop = function (rowIndex) {
-            var top = 0, x = 0, l = self.data.length,
-                bm = self.style.gridBorderCollapse === 'collapse' ? 1 : 2,
-                cellBorder = self.style.cellBorderWidth * bm;
-            if (!self.attributes.showNewRow) {
-                l -= 1;
-            }
-            if (rowIndex > l) {
-                throw new Error('Impossible row index');
-            }
-            while (x < rowIndex) {
-                top += (self.sizes.rows[x] || self.style.cellHeight) + cellBorder;
-                x += 1;
-            }
-            //TODO: This is not super accurate, causes pageUp/Dn to not move around right
-            return top - (self.sizes.rows[rowIndex] || self.style.cellHeight);
+            return self.scrollCache.y[rowIndex] - (self.attributes.showColumnHeaders ? self.getColumnHeaderCellHeight() : 0);
         };
         /**
          * Returns the number of pixels to scroll to the left to line up with column columnIndex.
@@ -6254,6 +6277,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @param {number} y The row index of the cell to set active.
          */
         self.setActiveCell = function (x, y) {
+            if (x < 0) { x = 0; }
+            if (y < 0) { y = 0; }
             self.activeCell = {
                 rowIndex: y,
                 columnIndex: x
@@ -6659,6 +6684,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 if (row.length === 0) { return; }
                 row.forEach(function (col) {
                     if (!s[col]) { return; }
+                    if (!self.data[index]) { self.data[index] = {}; }
                     self.data[index][s[col].name] = null;
                 });
             });
@@ -6672,6 +6698,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             || !s[col]
                             || self.data.length - 1 < yi
                             || yi < 0) { return; }
+                    if (!self.data[yi]) { self.data[yi] = {}; }
                     self.data[yi][s[xi].name] = d[index][s[col].name];
                 });
             });
