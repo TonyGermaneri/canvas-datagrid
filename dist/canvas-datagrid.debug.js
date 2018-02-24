@@ -3667,7 +3667,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.treeGridAttributes = {};
         self.visibleRowHeights = [];
         self.hasFocus = false;
-        self.pkDefined = true;
         self.activeCell = {
             columnIndex: 0,
             rowIndex: 0
