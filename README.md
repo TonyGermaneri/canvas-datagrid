@@ -1,7 +1,7 @@
 canvas-datagrid
 ---------------
 
-[Demo](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html) - Entire City of Chicago government employee list.  Thanks to [data.gov](https://www.data.gov/).
+[Demo](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html) - City of Chicago government employee list.  Thanks to [data.gov](https://www.data.gov/).
 
 ![canvas-datagrid](https://tonygermaneri.github.io/canvas-datagrid/images/datagrid1.png)
 
@@ -16,12 +16,12 @@ canvas-datagrid
 * Extensible styling, filtering, formatting, resizing, selecting, and ordering.
 * Rich API of events, methods and properties using the familiar W3C DOM interface.
 * Works with Firefox, IE11, Edge, Safari and Chrome.
-* Built in and custom styles.
+* Support for hierarchal drill in style row level inner grids as well grids in cells.
 * Customizable hierarchal context menu.
+* Built in and custom styles.
 * W3C web component.
-* Per-user styles, settings using localStorage.
+* Per-user styles, view prefrences and settings using localStorage.
 * Very small file size, no dependencies.
-
 
 [Documentation](https://tonygermaneri.github.io/canvas-datagrid/docs/)
 
