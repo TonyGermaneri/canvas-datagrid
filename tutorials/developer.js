@@ -331,33 +331,36 @@ function g() {
     // var grid = canvasDatagrid(datagridOpts);
     // grid.data = new Array(10).fill([]);
 
-
-
-    var grid = canvasDatagrid({
-            borderDragBehavior: 'move',
-            showPaste: true,
-            parentNode: document.body,
-            allowRowResizeFromCell: true,
-            // autoGenerateSchema: true,
-            // allowColumnResizeFromCell: true,
-            showRowNumbers: true,
-            showColumnHeaders: true,
-            showRowHeaders: true,
-            // tree: true,
-            snapToRow: false,
-            debug: false,
-            // allowFreezingRows: true,
-            // allowFreezingColumns: true
-        }),
-        data = [];
-    grid.style['active-cell-background-color'] = 'blue';
-    //grid.style.activeCellBackgroundColor = 'blue';
-    data.length = 1000;
-    grid.schema = [{name: 'A'}, {name: 'B'}, {name: 'C'}, {name: 'D'}];
-    grid.style.cellHoverBackgroundColor = 'green';
-    grid.style.width = '100%';
-    grid.style.height = '100%';
-    grid.data = data;
+    // var grid = canvasDatagrid({
+    //         borderDragBehavior: 'move',
+    //         showPaste: true,
+    //         parentNode: document.body,
+    //         allowRowResizeFromCell: true,
+    //         // autoGenerateSchema: true,
+    //         // allowColumnResizeFromCell: true,
+    //         showRowNumbers: true,
+    //         showColumnHeaders: true,
+    //         showRowHeaders: true,
+    //         // tree: true,
+    //         snapToRow: false,
+    //         debug: false,
+    //         // allowFreezingRows: true,
+    //         // allowFreezingColumns: true
+    //     }),
+    //     data = [];
+    // grid.style['active-cell-background-color'] = 'blue';
+    // //grid.style.activeCellBackgroundColor = 'blue';
+    // data.length = 1000;
+    // //grid.schema = [{name: 'A'}, {name: 'B'}, {name: 'C'}, {name: 'D'}];
+    // grid.style.cellHoverBackgroundColor = 'green';
+    // grid.style.width = '100%';
+    // grid.style.height = '100%';
+    // grid.innerHTML = data;
+    // grid.innerHTML = JSON.stringify([
+    //     {col1: 'foo', col2: 0, col3: 'a'},
+    //     {col1: 'bar', col2: 1, col3: 'b'},
+    //     {col1: 'baz', col2: 2, col3: 'c'}
+    // ]);
 
 
 

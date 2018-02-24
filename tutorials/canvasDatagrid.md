@@ -71,6 +71,8 @@ Note: When the value of a cell is an object or an array, a new grid will be draw
 
 Note: When setting data via the web component data attribute or innerHTML attribute, only string data can be passed.
 
+Note: When you pass string data into the web component and the `grid.type` is set to the default: `application/x-canvas-datagrid` it will become set to `application/json+x-canvas-datagrid` to parse the string data.  If `grid.type` has been changed, the parser it was changed to will be used instead.
+
 Schema
 ------
 

@@ -210,7 +210,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['cellVerticalAlignment', 'center'],
                 ['cellWidth', 250],
                 ['cellWidthWithChildGrid', 250],
-                ['childContextMenuArrowColor', 'rgba(43, 48, 43, 0.7)'],
+                ['childContextMenuArrowColor', 'rgba(43, 48, 43, 1)'],
                 ['childContextMenuArrowHTML', '&#x25BA;'],
                 ['childContextMenuMarginLeft', -11],
                 ['childContextMenuMarginTop', -6],
@@ -631,7 +631,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 return;
             }
             if (attrName === 'data') {
-                intf.args.data = typeMap.data(newVal);
+                if (intf.type === 'application/x-canvas-datagrid') {
+                    intf.type = 'application/json+x-canvas-datagrid';
+                }
+                intf.args.data = newVal;
                 return;
             }
             if (attrName === 'schema') {
@@ -689,7 +692,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     intf.applyComponentStyle(false, intf);
                 }
                 if (checkInnerHTML) {
-                    intf.data = typeMap.data(intf.innerHTML);
+                    if (intf.type === 'application/x-canvas-datagrid') {
+                        intf.type = 'application/json+x-canvas-datagrid';
+                    }
+                    intf.data = intf.innerHTML;
                 }
             });
             observer.observe(intf, { characterData: true, childList: true, attributes: true, subtree: true });
@@ -2285,6 +2291,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             var s = self.getVisibleSchema(),
                 ch = self.style.cellHeight;
             self.scrollIndexTop = Math.floor(((self.data || []).length * (self.scrollBox.scrollTop / self.scrollBox.scrollHeight)) - 100);
+            // sometimes the grid is rendered but the height is zero
+            if (self.scrollBox.scrollHeight === 0) {
+                self.scrollIndexTop = 0;
+            }
             self.scrollPixelTop = 0;
             self.scrollIndexLeft = 0;
             self.scrollPixelLeft = 0;
@@ -4222,15 +4232,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (self.args.data) {
                 self.intf.data = self.args.data;
             }
-            // if (!self.data) {
-            //     self.intf.data = [];
-            // }
             if (self.intf.innerText || self.intf.textContent) {
-                try {
-                    self.intf.data = JSON.parse(self.intf.innerText || self.intf.textContent);
-                } catch (e) {
-                    console.warn('Cannot parse innerText', e);
+                if (self.intf.type === 'application/x-canvas-datagrid') {
+                    self.intf.type = 'application/json+x-canvas-datagrid';
                 }
+                self.intf.data = self.intf.innerText || self.intf.textContent;
             }
             if (self.args.schema) {
                 self.intf.schema = self.args.schema;
@@ -4617,13 +4623,23 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.intf.getTypes = function () {
             return Object.keys(self.parsers);
         };
+        self.parseInnerHtml = function (data) {
+            try {
+                data = JSON.parse(data);
+            } catch (e) {
+                throw new Error('Cannot parse application/json+x-canvas-datagrid;2dArray formated data. '
+                    + e.message + '  \nNote: canvas-datagrid.innerHTML is for string data only.  '
+                    + 'Use the canvas-datagrid.data property to set object data.');
+            }
+            return data;
+        };
         self.parsers['application/json+x-canvas-datagrid;2dArray'] = function (data, callback) {
-            self.parsers['application/x-canvas-datagrid;2dArray'](JSON.parse(data), function (data, schema) {
+            self.parsers['application/x-canvas-datagrid;2dArray'](self.parseInnerHtml(data), function (data, schema) {
                 return callback(data, schema);
             });
         };
         self.parsers['application/json+x-canvas-datagrid'] = function (data, callback) {
-            self.parsers['application/x-canvas-datagrid'](JSON.parse(data), function (data, schema) {
+            self.parsers['application/x-canvas-datagrid'](self.parseInnerHtml(data), function (data, schema) {
                 return callback(data, schema);
             });
         };
@@ -4637,6 +4653,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 max = Math.max(max, data[x].length);
             }
             for (x = 0; x < l; x += 1) {
+                d[x] = {};
                 for (y = 0; y < max; y += 1) {
                     d[x][y] = data[x][y];
                 }
