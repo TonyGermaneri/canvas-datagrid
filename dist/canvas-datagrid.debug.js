@@ -3703,7 +3703,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.parsers = {};
         self.schemaHashes = {};
         self.events = {};
-        self.uId = 0;
         self.changes = [];
         self.scrollIndexTop = 0;
         self.scrollPixelTop = 0;
@@ -5584,7 +5583,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             cell: cell,
                             input: self.input
                         })) { return false; }
-                    self.uId += 1;
                     self.addRow(cell.data);
                     self.createNewRowData();
                 }
