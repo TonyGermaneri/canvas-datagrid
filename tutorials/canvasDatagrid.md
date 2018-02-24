@@ -36,7 +36,7 @@ Setting and Getting Data
 
 Data is set according to the MIME type parser defined in grid.types.  The default type parser is `application/x-canvas-datagrid`.
 
-This format expects an in-memory array of objects that strictly conform to a schema (i.e.: they all have the same properties).
+This format expects an array of objects or an array of arrays that strictly conform to a schema (i.e.: they all have the same properties or lengths).
 
 Example `application/x-canvas-datagrid`
 
@@ -44,6 +44,14 @@ Example `application/x-canvas-datagrid`
         {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},
         {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}
     ]
+
+or
+
+    [
+        ['row 1 column 1', 'row 1 column 2', 'row 1 column 3'],
+        ['row 2 column 1', 'row 2 column 2', 'row 2 column 3']
+    ]
+
 
 When getting data, no matter how it was set, it will be returned as `application/x-canvas-datagrid` (an array of objects).
 
@@ -57,21 +65,16 @@ The table below lists ways to set data and the default parser used.
 | web component data attribute | application/json+x-canvas-datagrid |
 | web component innerHTML attribute | application/json+x-canvas-datagrid |
 
-There are four built in parsers.
+There are two built in parsers.
 
 application/x-canvas-datagrid (Default)
-application/x-canvas-datagrid;2dArray
 application/json+x-canvas-datagrid
-application/json+x-canvas-datagrid;2dArray
-
-When using `application/x-canvas-datagrid;2dArray` or `application/json+x-canvas-datagrid;2dArray`
-by default the columns will be named like a spread sheet, A, B, C, through ZZZZ.
 
 Note: When the value of a cell is an object or an array, a new grid will be drawn into the cell.  This behavior can be overridden.
 
-Note: When setting data via the web component data attribute or innerHTML attribute, only string data can be passed.
+Note: When setting data via the web component innerHTML attribute, only string data can be passed.
 
-Note: When you pass string data into the web component and the `grid.type` is set to the default: `application/x-canvas-datagrid` it will become set to `application/json+x-canvas-datagrid` to parse the string data.  If `grid.type` has been changed, the parser it was changed to will be used instead.
+Note: When you pass string data into the web component and the `grid.type` is set to the default: `application/x-canvas-datagrid` it will become set to `application/json+x-canvas-datagrid` to parse the string data.  If `grid.type` was previously changed, the parser it was changed to will be used instead.
 
 Schema
 ------
@@ -80,6 +83,8 @@ Schema is optional.  Schema is an array of header objects.
 This documentation will use the term header and column interchangeably.
 If no schema is provided one will be generated from the
 data, in that case all data will be assumed to be string data.
+
+Note: When data is generated from an 2D array (array of arrays vs. array of objects) the columns will be named A, B, C, D,... etc..
 
 Each header object can have the following properties:
 

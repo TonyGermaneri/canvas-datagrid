@@ -355,14 +355,18 @@ function g() {
     // grid.style.cellHoverBackgroundColor = 'green';
     // grid.style.width = '100%';
     // grid.style.height = '100%';
-    // grid.innerHTML = data;
-    // grid.innerHTML = JSON.stringify([
-    //     {col1: 'foo', col2: 0, col3: 'a'},
-    //     {col1: 'bar', col2: 1, col3: 'b'},
-    //     {col1: 'baz', col2: 2, col3: 'c'}
-    // ]);
+    // grid.data = data;
 
-
-
+    // var grid2 = canvasDatagrid({
+    //     parentNode: document.body
+    // });
+    // grid2.data = [{a: 'b', b: 'b'}, {a: 'a', b: 'c'}];
+    var grid3 = canvasDatagrid({
+        parentNode: document.body
+    });
+    grid3.data =     [
+        ['row 1 column 1', 'row 1 column 2', 'row 1 column 3'],
+        ['row 2 column 1', 'row 2 column 2', 'row 2 column 3']
+    ];
 
 }

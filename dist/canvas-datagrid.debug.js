@@ -4627,38 +4627,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             try {
                 data = JSON.parse(data);
             } catch (e) {
-                throw new Error('Cannot parse application/json+x-canvas-datagrid;2dArray formated data. '
+                throw new Error('Cannot parse application/json+x-canvas-datagrid formated data. '
                     + e.message + '  \nNote: canvas-datagrid.innerHTML is for string data only.  '
                     + 'Use the canvas-datagrid.data property to set object data.');
             }
             return data;
         };
-        self.parsers['application/json+x-canvas-datagrid;2dArray'] = function (data, callback) {
-            self.parsers['application/x-canvas-datagrid;2dArray'](self.parseInnerHtml(data), function (data, schema) {
-                return callback(data, schema);
-            });
-        };
         self.parsers['application/json+x-canvas-datagrid'] = function (data, callback) {
             self.parsers['application/x-canvas-datagrid'](self.parseInnerHtml(data), function (data, schema) {
                 return callback(data, schema);
             });
-        };
-        self.parsers['application/x-canvas-datagrid;2dArray'] = function (data, callback) {
-            var x, y, l, d, max;
-            // find the longest length
-            max = 0;
-            d = [];
-            l = data.length;
-            for (x = 0; x < l; x += 1) {
-                max = Math.max(max, data[x].length);
-            }
-            for (x = 0; x < l; x += 1) {
-                d[x] = {};
-                for (y = 0; y < max; y += 1) {
-                    d[x][y] = data[x][y];
-                }
-            }
-            return callback(d, self.getSchemaFromData(data));
         };
         self.parsers['application/x-canvas-datagrid'] = function (data, callback) {
             return callback(data);
