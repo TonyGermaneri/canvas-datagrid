@@ -569,11 +569,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
                 if (val !== "" && typeof val === 'string') {
                     intf.setStyleProperty(def[0], typeMap[typeof def[1]](val
-                        .replace(/^\s+/, '').replace(/\s+$/, ''), def[1]));
+                        .replace(/^\s+/, '').replace(/\s+$/, ''), def[1]), true);
                 }
             });
-            requestAnimationFrame(function () { intf.resize(true); });
             if (!supressChangeAndDrawEvents && intf.dispatchEvent) {
+                requestAnimationFrame(function () { intf.resize(true); });
                 intf.dispatchEvent('stylechanged', intf.style);
             }
         };
@@ -1920,6 +1920,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 d.perf = (perfCounters.reduce(function (a, b) {
                     return a + b;
                 }, 0) / Math.min(drawCount, perfCounters.length)).toFixed(1);
+                d.perfDelta = perfCounters[0].toFixed(1);
                 d.htmlImages = Object.keys(self.htmlImageCache).length;
                 d.reorderObject = 'x: ' + (self.reorderObject || {columnIndex: 0}).columnIndex + ', y: ' + (self.reorderObject || {rowIndex: 0}).rowIndex;
                 d.reorderTarget = 'x: ' + (self.reorderTarget || {columnIndex: 0}).columnIndex + ', y: ' + (self.reorderTarget || {rowIndex: 0}).rowIndex;
@@ -2073,7 +2074,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.resize = function (drawAfterResize, onlyResizeX) {
             if (!self.canvas) { return; }
             var x,
-                l,
                 v = {
                     x: 0,
                     y: 0,
@@ -2122,16 +2122,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 dataHeight = 0,
                 dataWidth = 0,
                 dims,
+                l = (self.data || []).length,
                 columnHeaderCellHeight = self.getColumnHeaderCellHeight(),
                 rowHeaderCellWidth = self.getRowHeaderCellWidth(),
-                ch = self.style.cellHeight,
-                // TODO: These offset numbers are terribly wrong.
-                // They should be a result of the size of the grid/canvas?
-                // it being off causes the scroll bar to "slide" under
-                // the dragged mouse.
-                // https://github.com/TonyGermaneri/canvas-datagrid/issues/97
-                scrollDragPositionOffsetY = 55,
-                scrollDragPositionOffsetX = -100;
+                ch = self.style.cellHeight;
             // sets actual DOM canvas element
             function setCanvasSize() {
                 if (self.isChildGrid) {
@@ -2154,7 +2148,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.scrollCache.x = [];
             if (!onlyResizeX) {
                 self.scrollCache.y = [];
-                l = (self.data || []).length;
                 for (x = 0; x < l; x += 1) {
                     self.scrollCache.y[x] = dataHeight;
                     dataHeight += (((self.sizes.rows[x] || ch) + (self.sizes.trees[x] || 0)) * self.scale)
@@ -2175,7 +2168,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 dataHeight += ch + cellBorder;
             }
             // accounts for the offset of the headers if any
-            dataHeight += columnHeaderCellHeight;
+            // dataHeight += columnHeaderCellHeight;
             setCanvasSize();
             if (self.isChildGrid) {
                 self.width = self.parentNode.offsetWidth;
@@ -2192,7 +2185,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.scrollBox.left = rowHeaderCellWidth;
             // width and height of scroll box
             self.scrollBox.width = self.width - rowHeaderCellWidth - cellBorder;
-            self.scrollBox.height = self.height - columnHeaderCellBorder - cellBorder;
+            self.scrollBox.height = self.height - columnHeaderCellHeight - columnHeaderCellBorder;
             // is the data larger than the scroll box
             self.scrollBox.horizontalBarVisible = dataWidth > self.scrollBox.width;
             self.scrollBox.verticalBarVisible = dataHeight > self.scrollBox.height;
@@ -2203,7 +2196,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.height += sbw;
                 }
                 dataHeight += sbw;
-                self.scrollBox.width = self.width - rowHeaderCellWidth - cellBorder;
                 setCanvasSize();
                 self.scrollBox.horizontalBarVisible = dataWidth > self.scrollBox.width;
             }
@@ -2216,20 +2208,26 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 setCanvasSize();
                 self.scrollBox.verticalBarVisible = dataHeight > self.scrollBox.height;
             }
+            // set again after bar visibility checks
+            self.scrollBox.width = self.width - rowHeaderCellWidth - cellBorder - (self.scrollBox.verticalBarVisible ? sbw : 0);
+            self.scrollBox.height = self.height - columnHeaderCellHeight - columnHeaderCellBorder - (self.scrollBox.horizontalBarVisible ? sbw : 0);
             self.scrollBox.scrollWidth = dataWidth - self.scrollBox.width;
             if (!onlyResizeX) {
                 self.scrollBox.scrollHeight = dataHeight - self.scrollBox.height;
             }
-            self.scrollBox.widthBoxRatio = ((self.scrollBox.width - scrollDragPositionOffsetX)
-                / (self.scrollBox.scrollWidth + (self.scrollBox.width - scrollDragPositionOffsetX)));
+            self.scrollBox.widthBoxRatio = self.scrollBox.width / dataWidth;
             self.scrollBox.scrollBoxWidth = self.scrollBox.width
                 * self.scrollBox.widthBoxRatio
                 - self.style.scrollBarWidth - b - d;
-            self.scrollBox.heightBoxRatio = ((self.scrollBox.height - scrollDragPositionOffsetY)
-                / (self.scrollBox.scrollHeight + (self.scrollBox.height - scrollDragPositionOffsetY)));
+            // TODO: This heightBoxRatio number is terribly wrong.
+            // They should be a result of the size of the grid/canvas?
+            // it being off causes the scroll bar to "slide" under
+            // the dragged mouse.
+            // https://github.com/TonyGermaneri/canvas-datagrid/issues/97
+            self.scrollBox.heightBoxRatio = (self.scrollBox.height - 15) / dataHeight;
             self.scrollBox.scrollBoxHeight = self.scrollBox.height
                 * self.scrollBox.heightBoxRatio
-                - self.style.scrollBarWidth - b - d - (columnHeaderCellHeight - cellBorder);
+                - self.style.scrollBarWidth - b - d;
             self.scrollBox.scrollBoxWidth = Math.max(self.scrollBox.scrollBoxWidth, self.style.scrollBarBoxMinSize);
             self.scrollBox.scrollBoxHeight = Math.max(self.scrollBox.scrollBoxHeight, self.style.scrollBarBoxMinSize);
             // horizontal
@@ -2289,8 +2287,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.scroll = function (dontDraw) {
             var s = self.getVisibleSchema(),
+                l = (self.data || []).length,
                 ch = self.style.cellHeight;
-            self.scrollIndexTop = Math.floor(((self.data || []).length * (self.scrollBox.scrollTop / self.scrollBox.scrollHeight)) - 100);
+            // go too far in leaps, then get focused
+            self.scrollIndexTop = Math.floor((l * (self.scrollBox.scrollTop / self.scrollBox.scrollHeight)) - 100);
+            self.scrollIndexTop = Math.max(self.scrollIndexTop, 0);
+            self.scrollPixelTop = self.scrollCache.y[self.scrollIndexTop];
             // sometimes the grid is rendered but the height is zero
             if (self.scrollBox.scrollHeight === 0) {
                 self.scrollIndexTop = 0;
@@ -2298,11 +2300,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.scrollPixelTop = 0;
             self.scrollIndexLeft = 0;
             self.scrollPixelLeft = 0;
-            // go too far in leaps, then get focused
-            self.scrollIndexTop = Math.max(self.scrollIndexTop, 0);
             while (self.scrollPixelTop < self.scrollBox.scrollTop && self.scrollIndexTop < self.data.length) {
-                self.scrollPixelTop = self.scrollCache.y[self.scrollIndexTop];
+                // start on index +1 since index +0 was checked prior to loop start in "go too far"
                 self.scrollIndexTop += 1;
+                self.scrollPixelTop = self.scrollCache.y[self.scrollIndexTop];
             }
             while (self.scrollPixelLeft < self.scrollBox.scrollLeft && self.scrollIndexLeft < s.length) {
                 self.scrollPixelLeft = self.scrollCache.x[self.scrollIndexLeft];
@@ -4747,7 +4748,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 return '{"width": ' + scrollWidth
                     + ', "height": ' + scrollHeight
                     + ', "left": ' + scrollLeft
-                    + ', "top": ' + scrollTop + '}';
+                    + ', "top": ' + scrollTop
+                    + ', "widthRatio": ' + self.scrollBox.widthBoxRatio
+                    + ', "heightRatio": ' + self.scrollBox.heightBoxRatio + '}';
             };
             self.scrollBox.scrollTo = function (x, y, supressDrawEvent) {
                 setScrollLeft(x, true);
