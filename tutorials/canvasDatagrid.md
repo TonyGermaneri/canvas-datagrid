@@ -16,40 +16,65 @@ With the exception of attaching to an existing canvas, the grid will attempt to 
 
 * In browsers that do not support Shadow DOM, no shadow root will be created.  In this mode cascading CSS can alter the grid, altering behavior in potentially breaking ways.  Careful application of CSS is required.  This can effect the grid in-line editing and context menus.
 
+Setting Height and Width
+------------------------
+
+Limiting the size of the canvas-datagrid element is the best way to improve performance.
+
+canvas-datagrid by default is set to `grid.style.height: auto` and `grid.style.width: auto`.
+This means the canvas-datagrid element expands to the height and width of the rows and columns contained within.
+If you have many rows or columns you will want to limit the height and width of the element by setting
+`grid.style.height` and `grid.style.width` to something besides `auto`.  Try `100%` or `300px`.
+
+When set to a value other than auto a virtual scroll box will be drawn onto the canvas
+constraining the size and allowing the user to scroll around the columns and rows.
+
+Currently `max-width`, `max-height`, `min-width` and `min-height` are not supported and will do nothing, but support is planned.
+
 Setting and Getting Data
 ------------------------
 
-You can set data into the grid in a number of ways.  No matter how it is passed in, it is immediately converted into the native
-format which is an array of objects that all contain the same properties.  E.g.:
+Data is set according to the MIME type parser defined in grid.types.  The default type parser is `application/x-canvas-datagrid`.
+
+This format expects an array of objects or an array of arrays that strictly conform to a schema (i.e.: they all have the same properties or lengths).
+
+Example `application/x-canvas-datagrid`
 
     [
         {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},
         {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}
     ]
 
-When getting data, no matter how it was set, it will be returned in the native format above.
+or
 
-Data can be almost any type, the behavior of the grid will change slightly depending on how it is set.
+    [
+        ['row 1 column 1', 'row 1 column 2', 'row 1 column 3'],
+        ['row 2 column 1', 'row 2 column 2', 'row 2 column 3']
+    ]
 
-* Data can be set using the data property.
-* Data can be set using the web component data attribute.
-* Data can be set using the web component innerHTML attribute.
 
-When setting data using the data property, you can use many types.
+When getting data, no matter how it was set, it will be returned as `application/x-canvas-datagrid` (an array of objects).
 
-* As an array of objects.
-* As an array of arrays.
-* As an object.
-* As a jagged array of objects.
-* As a jagged array of arrays.
-* As a function that returns any of the above.
-* As a function that returns undefined, and passes any of the above to the callback argument asynchronously.
+For more information on using and creating custom parsers see: [parsers](https://tonygermaneri.github.io/canvas-datagrid/docs/#parsers)
 
-When using an array of arrays, the columns will be named like a spread sheet, A, B, C, through ZZZZ.
+The table below lists ways to set data and the default parser used.
 
-When the value of a cell is an object or an array, a new grid will be drawn into the cell.
+| Method | Parser |
+|-----|------|
+| data property | application/x-canvas-datagrid |
+| web component data attribute | application/json+x-canvas-datagrid |
+| web component innerHTML attribute | application/json+x-canvas-datagrid |
 
-* Note: if you pass in data that appears to be the native format, an array like object of object like objects, no conversion will occur and object reference to the data can be maintained.  Also load time will decrease by a barely perceptible amount.
+There are two built in parsers.
+
+application/x-canvas-datagrid (Default)
+application/json+x-canvas-datagrid
+
+Note: When the value of a cell is an object or an array, a new grid will be drawn into the cell.  This behavior can be overridden.
+
+Note: When setting data via the web component innerHTML attribute, only string data can be passed.
+
+Note: When you pass string data into the web component and the `grid.type` is set to the default: `application/x-canvas-datagrid` it will become set to `application/json+x-canvas-datagrid` to parse the string data.  If `grid.type` was previously changed, the parser it was changed to will be used instead.
 
 Schema
 ------
@@ -58,6 +83,8 @@ Schema is optional.  Schema is an array of header objects.
 This documentation will use the term header and column interchangeably.
 If no schema is provided one will be generated from the
 data, in that case all data will be assumed to be string data.
+
+Note: When data is generated from an 2D array (array of arrays vs. array of objects) the columns will be named A, B, C, D,... etc..
 
 Each header object can have the following properties:
 
@@ -157,6 +184,35 @@ You can still access the grid as you would expect and the interface for the web 
 For further reading about web components see: https://www.webcomponents.org/
 
 * When instantiating the grid in a browser that does not support custom tags or css varaibles, class support will not work.
+
+Parsers
+-------
+
+Object that contains a list of MIME type keys and parsing function values for parsing data into the grid.
+
+| Argument | Optional | Description |
+|-----|------|
+| data | false | Input data from interface. |
+| callback | false | Callback function. See below. |
+| mimeType | true | The name of the MIME type. |
+
+Callback
+
+| Argument | Optional | Description |
+|-----|------|
+| data | false | Output data. |
+
+Example parser:
+
+    grid.parsers['text/csv'] = function (data, callback) {
+        var x, s = data.split('\n');
+        for (x = 0; x < s.length; x += 1) {
+            s[x] = s[x].split(',');
+        }
+        callback(s);
+    }
+
+Note: This a terrible solution for parsing CSV files.  This only serves as an example of the parser contract.
 
 Sorters
 -------

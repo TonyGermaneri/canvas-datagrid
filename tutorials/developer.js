@@ -331,19 +331,42 @@ function g() {
     // var grid = canvasDatagrid(datagridOpts);
     // grid.data = new Array(10).fill([]);
 
+    // var grid = canvasDatagrid({
+    //         borderDragBehavior: 'move',
+    //         showPaste: true,
+    //         parentNode: document.body,
+    //         allowRowResizeFromCell: true,
+    //         // autoGenerateSchema: true,
+    //         // allowColumnResizeFromCell: true,
+    //         showRowNumbers: true,
+    //         showColumnHeaders: true,
+    //         showRowHeaders: true,
+    //         // tree: true,
+    //         snapToRow: false,
+    //         debug: false,
+    //         // allowFreezingRows: true,
+    //         // allowFreezingColumns: true
+    //     }),
+    //     data = [];
+    // grid.style['active-cell-background-color'] = 'blue';
+    // //grid.style.activeCellBackgroundColor = 'blue';
+    // data.length = 1000;
+    // //grid.schema = [{name: 'A'}, {name: 'B'}, {name: 'C'}, {name: 'D'}];
+    // grid.style.cellHoverBackgroundColor = 'green';
+    // grid.style.width = '100%';
+    // grid.style.height = '100%';
+    // grid.data = data;
 
-
-    var grid = canvasDatagrid({ parentNode: document.body });
-
-    grid.data = [
-        {a: '1', b: '2', c: undefined, d: '4'},
-        {a: '1', b: '2', c: '', d: '4'},
-        {a: '1', b: null, c: '3', d: '4'},
-        {a: '1', b: '2', c: false, d: '4'},
+    // var grid2 = canvasDatagrid({
+    //     parentNode: document.body
+    // });
+    // grid2.data = [{a: 'b', b: 'b'}, {a: 'a', b: 'c'}];
+    var grid3 = canvasDatagrid({
+        parentNode: document.body
+    });
+    grid3.data =     [
+        ['row 1 column 1', 'row 1 column 2', 'row 1 column 3'],
+        ['row 2 column 1', 'row 2 column 2', 'row 2 column 3']
     ];
-
-
-
-
 
 }
