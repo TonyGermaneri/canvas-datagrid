@@ -260,10 +260,10 @@
                         test: this.test,
                         data: smallData()
                     });
-                    grid.style.activeCellBackgroundColor = c.white;
+                    grid.style.activeCellBackgroundColor = c.b;
                     assertIf(grid.data.length !== 3,
                         'Expected to see data in the interface.');
-                    assertPxColor(grid, 80, 32, c.white, done);
+                    assertPxColor(grid, 80, 32, c.b, done);
                 });
             });
             if (window.customElements) {
@@ -274,10 +274,10 @@
                             data: smallData(),
                             component: true
                         });
-                        grid.style.activeCellBackgroundColor = c.white;
+                        grid.style.activeCellBackgroundColor = c.b;
                         assertIf(grid.data.length !== 3,
                             'Expected to see data in the interface.');
-                        assertPxColor(grid, 80, 32, c.white, done);
+                        assertPxColor(grid, 80, 32, c.b, done);
                     });
                     it('Should create a web component and set a hyphenated style', function (done) {
                         var grid = g({
@@ -285,10 +285,10 @@
                             data: smallData(),
                             component: true
                         });
-                        grid.style['active-cell-background-color'] = c.white;
+                        grid.style['active-cell-background-color'] = c.b;
                         assertIf(grid.data.length !== 3,
                             'Expected to see data in the interface.');
-                        assertPxColor(grid, 80, 32, c.white, done);
+                        assertPxColor(grid, 80, 32, c.b, done);
                     });
                     it('Should create a web component and set a hyphenated style with a custom prefix', function (done) {
                         var grid = g({
@@ -296,10 +296,10 @@
                             data: smallData(),
                             component: true
                         });
-                        grid.style['-cdg-active-cell-background-color'] = c.white;
+                        grid.style['--cdg-active-cell-background-color'] = c.b;
                         assertIf(grid.data.length !== 3,
                             'Expected to see data in the interface.');
-                        assertPxColor(grid, 80, 32, c.white, done);
+                        assertPxColor(grid, 80, 32, c.b, done);
                     });
                     it('Should create a web component and set a schema', function (done) {
                         var grid = g({
@@ -307,11 +307,11 @@
                             data: [{a: blocks}],
                             component: true
                         });
-                        grid.style.gridBackgroundColor = c.white;
+                        grid.style.gridBackgroundColor = c.b;
                         grid.schema = [{name: 'a', width: 30}];
                         assertIf(grid.data.length !== 1,
                             'Expected to see data in the interface.');
-                        assertPxColor(grid, 80, 32, c.white, done);
+                        assertPxColor(grid, 80, 32, c.b, done);
                     });
                 });
             }
@@ -343,18 +343,17 @@
                     mousemove(grid.canvas, 100, 113);
                     assertPxColor(grid, 120, 10, 'rgb(90, 90, 90)', done);
                 });
-                // TODO: after phantomjs has been replaced, re-enable this test.
                 // phantom throws a nonsense error due to the way the data url is constructed in the html function
-                // it('Should draw HTML.', function (done) {
-                //     var grid = g({
-                //         test: this.test,
-                //         data: [{a: '<span style="background: ' + c.b + ';color: ' + c.b + '">blah</span>' }],
-                //         schema: [{name: 'a', type: 'html'}]
-                //     });
-                //     setTimeout(function () {
-                //         assertPxColor(grid, 50, 32, c.b, done);
-                //     }, 100);
-                // });
+                it('Should draw HTML.', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{a: '<span style="background: ' + c.b + ';color: ' + c.b + '">blah</span>' }],
+                        schema: [{name: 'a', type: 'html'}]
+                    });
+                    setTimeout(function () {
+                        assertPxColor(grid, 50, 32, c.b, done);
+                    }, 100);
+                });
             });
             describe('Styles', function () {
                 it('Should set the active cell color to black.', function (done) {
@@ -417,72 +416,6 @@
                     done(assertIf(grid.data[0][0] !== 'a',
                         'Expected grid to be able to import and export this format'));
                 });
-                it('Pass string to data', function (done) {
-                    var grid = g({
-                        test: this.test
-                    });
-                    grid.data = "blah";
-                    done(assertIf(grid.data[0][0] !== 'blah',
-                        'Expected grid to be able to import and export this format'));
-                });
-                it('Pass number to data', function (done) {
-                    var grid = g({
-                        test: this.test
-                    });
-                    grid.data = 4235234234;
-                    done(assertIf(grid.data[0][0] !== 4235234234,
-                        'Expected grid to be able to import and export this format'));
-                });
-                it('Pass boolean to data', function (done) {
-                    var grid = g({
-                        test: this.test
-                    });
-                    grid.data = false;
-                    done(assertIf(grid.data[0][0] !== false,
-                        'Expected grid to be able to import and export this format'));
-                });
-                it('Pass a function to data', function (done) {
-                    var grid = g({
-                        test: this.test
-                    });
-                    grid.data = function () {
-                        return [
-                            {'a': 0, 'b': 1, 'c': 2},
-                            {'a': 4, 'b': 5, 'c': 6},
-                            {'a': 7, 'b': 8, 'c': 9}
-                        ];
-                    };
-                    done(assertIf(grid.data[0].a !== 0,
-                        'Expected grid to be able to import and export this format'));
-                });
-                it('Pass an async function to data', function (done) {
-                    var grid = g({
-                        test: this.test
-                    });
-                    grid.data = function (callback) {
-                        return callback([
-                            {'a': 0, 'b': 1, 'c': 2},
-                            {'a': 4, 'b': 5, 'c': 6},
-                            {'a': 7, 'b': 8, 'c': 9}
-                        ]);
-                    };
-                    done(assertIf(grid.data[0].a !== 0,
-                        'Expected grid to be able to import and export this format'));
-                });
-                it('Pass an async function to data', function (done) {
-                    var grid = g({
-                        test: this.test
-                    });
-                    grid.data = function (callback) {
-                        return callback([
-                            {'a': 0, 'b': 1, 'c': 2},
-                            {'a': 4, 'b': 5, 'c': 6},
-                            {'a': 7, 'b': 8, 'c': 9}
-                        ]);
-                    };
-                    done(assertIf(grid.data[0].a !== 0,
-                        'Expected grid to be able to import and export this format'));
-                });
             });
             describe('Public interface', function () {
                 it('Focus on the grid', function (done) {
@@ -538,6 +471,7 @@
                         }
                     });
                     grid.autosize('d');
+                    grid.draw();
                     assertPxColor(grid, 200, 32, c.b, done);
                 });
                 it('Autosize all columns', function (done) {
@@ -549,6 +483,7 @@
                         }
                     });
                     grid.autosize();
+                    grid.draw();
                     assertPxColor(grid, 220, 32, c.b, done);
                 });
                 it('Add a style to the style setter', function (done) {
@@ -733,7 +668,7 @@
                     });
                     grid.setColumnWidth(0, 10);
                     setTimeout(function () {
-                        assertPxColor(grid, 35, 78, c.y, done);
+                        assertPxColor(grid, 48, 78, c.y, done);
                     }, 1);
                 });
                 it('Reset row height', function (done) {
@@ -1254,8 +1189,9 @@
                     grid.scrollTop = grid.scrollHeight;
                     setTimeout(function () {
                         grid.focus();
-                        mousemove(grid.canvas, 395, 75);
-                        mousedown(grid.canvas, 395, 75);
+                        marker(grid, 393, 75);
+                        mousemove(grid.canvas, 393, 75);
+                        mousedown(grid.canvas, 393, 75);
                         setTimeout(function () {
                             mouseup(document.body, 395, 75, grid.canvas);
                             done(assertIf(grid.scrollTop === grid.scrollHeight,
@@ -1527,18 +1463,19 @@
                             test: this.test,
                             data: [{d: ''}]
                         });
-                    mousemove(grid.canvas, 45, 37);
-                    mousedown(grid.canvas, 45, 37);
-                    mouseup(grid.canvas, 45, 37);
-                    mousedown(grid.canvas, 45, 37);
-                    mouseup(grid.canvas, 45, 37);
-                    dblclick(grid.canvas, 45, 37);
+                    mousemove(grid.canvas, 65, 37);
+                    mousedown(grid.canvas, 65, 37);
+                    mouseup(grid.canvas, 65, 37);
+                    mousedown(grid.canvas, 65, 37);
+                    mouseup(grid.canvas, 65, 37);
+                    dblclick(grid.canvas, 65, 37);
                     editInput = document.body.lastChild;
                     done(assertIf(editInput.tagName !== 'INPUT', 'Expected an input to have appeared'));
                     grid.endEdit();
                 });
                 it('Should copy a value onto the simulated clipboard.', function (done) {
-                    var once, grid = g({
+                    var once,
+                        grid = g({
                             test: this.test,
                             data: [
                                 {d: 'Text with, a comma 1', e: 'Text that has no comma in in 1'},
@@ -1834,7 +1771,7 @@
                 });
             });
             describe('Resize', function () {
-                it('Resize a column.', function (done) {
+                it('Resize a column from a column header.', function (done) {
                     var grid = g({
                         test: this.test,
                         data: smallData(),
@@ -1847,16 +1784,15 @@
                             e.ctx.fillStyle = c.b;
                         }
                     });
+                    grid.focus();
+                    mousemove(grid.canvas, 94, 10);
+                    mousedown(grid.canvas, 94, 10);
+                    mousemove(grid.canvas, 190, 10, grid.canvas);
+                    mousemove(document.body, 190, 10, grid.canvas);
+                    mouseup(document.body, 190, 10, grid.canvas);
                     setTimeout(function () {
-                        grid.focus();
-                        marker(grid, 81, 10);
-                        mousemove(grid.canvas, 81, 10);
-                        mousedown(grid.canvas, 81, 10);
-                        mousemove(grid.canvas, 120, 10, grid.canvas);
-                        mousemove(document.body, 120, 10, grid.canvas);
-                        mouseup(document.body, 120, 10, grid.canvas);
                         assertPxColor(grid, 100, 36, c.b, done);
-                    }, 1);
+                    }, 10);
                 });
                 it('Resize a column from a cell.', function (done) {
                     var grid = g({
@@ -1875,11 +1811,11 @@
                     });
                     setTimeout(function () {
                         grid.focus();
-                        mousemove(grid.canvas, 80, 36);
-                        mousedown(grid.canvas, 80, 36);
-                        mousemove(grid.canvas, 120, 36, grid.canvas);
-                        mousemove(document.body, 120, 36, grid.canvas);
-                        mouseup(document.body, 120, 36, grid.canvas);
+                        mousemove(grid.canvas, 94, 36);
+                        mousedown(grid.canvas, 94, 36);
+                        mousemove(grid.canvas, 190, 36, grid.canvas);
+                        mousemove(document.body, 190, 36, grid.canvas);
+                        mouseup(document.body, 190, 36, grid.canvas);
                         assertPxColor(grid, 110, 36, c.b, done);
                     }, 1);
                 });
@@ -2416,7 +2352,7 @@
                     });
                     grid.style.cellBackgroundColor = c.y;
                     assertIf(grid.data.length !== 1, 'Expected there to be exactly 1 row.');
-                    assertPxColor(grid, 40, 60, c.y, done);
+                    assertPxColor(grid, 60, 60, c.y, done);
                 });
                 it('Should insert data into the new row', function (done) {
                     var ev, editInput, grid = g({
@@ -2431,7 +2367,7 @@
                     editInput = document.body.lastChild;
                     editInput.value = 'abcd';
                     editInput.dispatchEvent(ev);
-                    assertPxColor(grid, 40, 90, c.y, function (err) {
+                    assertPxColor(grid, 60, 90, c.y, function (err) {
                         if (err) { return done(err); }
                         done(assertIf(grid.data.length !== 2,
                             'expected there to be exactly 3 row.'));
@@ -2625,9 +2561,9 @@
                         mousemove(grid.canvas, 180, 10, grid.canvas);
                         mousemove(document.body, 180, 10, grid.canvas);
                         async.parallel([
-                            assertPxColorFn(grid, 165, 30, c.r),
-                            assertPxColorFn(grid, 145, 10, c.y),
-                            assertPxColorFn(grid, 182, 50, c.b)
+                            assertPxColorFn(grid, 178, 30, c.r),
+                            assertPxColorFn(grid, 159, 10, c.y),
+                            assertPxColorFn(grid, 195, 50, c.b)
                         ], function (err) {
                             done(err);
                         });
@@ -2731,7 +2667,7 @@
                         marker(grid, 12, 12);
                         mousemove(grid.canvas, 12, 12);
                         click(grid.canvas, 12, 12);
-                        done(assertIf(grid.selectedRows.length !== d.length, 'Expected data to be sorted.'));
+                        done(assertIf(grid.selectedRows.length !== d.length, 'Expected data to be selected.'));
                     }, 1);
                 });
                 it('Clicking a header cell with columnHeaderClickBehavior set to sort should sort the column asc', function (done) {
@@ -2740,9 +2676,9 @@
                         data: smallData(),
                         columnHeaderClickBehavior: 'sort'
                     });
-                    marker(grid, 40, 12);
-                    mousemove(grid.canvas, 40, 12);
-                    click(grid.canvas, 40, 12);
+                    marker(grid, 60, 12);
+                    mousemove(grid.canvas, 60, 12);
+                    click(grid.canvas, 60, 12);
                     done(assertIf(grid.data[0].col1 !== 'bar', 'Expected data to be sorted.'));
                 });
                 it('Clicking a header cell with columnHeaderClickBehavior set to select should select the column', function (done) {
@@ -2751,9 +2687,9 @@
                         data: smallData(),
                         columnHeaderClickBehavior: 'select'
                     });
-                    marker(grid, 40, 12);
-                    mousemove(grid.canvas, 40, 12);
-                    click(grid.canvas, 40, 12);
+                    marker(grid, 60, 12);
+                    mousemove(grid.canvas, 60, 12);
+                    click(grid.canvas, 60, 12);
                     done(assertIf(grid.selectedRows.length !== 3
                         || grid.selectedCells[0].col2 !== undefined, 'Expected every row to be selected.'));
                 });
@@ -2766,9 +2702,9 @@
                             cellWidth: 50
                         }
                     });
-                    marker(grid, 40, 12);
-                    mousemove(grid.canvas, 40, 12);
-                    click(grid.canvas, 40, 12);
+                    marker(grid, 60, 12);
+                    mousemove(grid.canvas, 60, 12);
+                    click(grid.canvas, 60, 12);
                     mousemove(grid.canvas, 175, 12);
                     click(grid.canvas, 175, 12, null, {ctrlKey: true});
                     done(assertIf(grid.selectedRows.length !== 3
