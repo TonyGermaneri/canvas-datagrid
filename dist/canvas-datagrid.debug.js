@@ -4677,6 +4677,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.createColumnOrders();
                     self.dispatchEvent('schemachanged', {schema: self.tempSchema});
                 }
+                callback();
             });
         };
         Object.defineProperty(self.intf, 'data', {
@@ -4684,7 +4685,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 return self.data;
             },
             set: function dataSetter(value) {
-                self.etl(value, function (d) {
+                self.etl(value, function () {
                     self.changes = [];
                     self.createNewRowData();
                     if (self.attributes.autoResizeColumns && self.data.length > 0
@@ -4693,9 +4694,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     }
                     // set the header column to fit the numbers in it
                     self.fitColumnToValues('cornerCell', true);
-                    if (!self.attributes.disableRowOrdering) {
-                        self.createRowOrders();
-                    }
+                    self.createRowOrders();
                     self.tryLoadStoredSettings();
                     self.dispatchEvent('datachanged', {data: self.data});
                     self.resize(true);
