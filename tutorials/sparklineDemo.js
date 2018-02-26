@@ -107,14 +107,14 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault();
         }
     });
-    grid.data = function () {
+    grid.data = (function () {
         var d = [], x = 0;
         while (x < 2000) {
             d.push({col1: 'Avg: 0.50\nMin: 0\nMax: 0.99', col2: createRandomSeq(80), col3: createRandomSeq(100)});
             x += 1;
         }
         return d;
-    };
+    }());
     function getData(fill) {
         var a, x = grid.scrollIndexRect.top;
         while (x < grid.scrollIndexRect.bottom + 2) {
