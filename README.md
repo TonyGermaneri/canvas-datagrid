@@ -20,7 +20,7 @@ canvas-datagrid
 * Customizable hierarchal context menu.
 * Built in and custom styles.
 * W3C web component.
-* Per-user styles, view prefrences and settings using localStorage.
+* Per-user styles, view preferences and settings using localStorage.
 * Very small file size, no dependencies.
 
 [Documentation](https://tonygermaneri.github.io/canvas-datagrid/docs/)

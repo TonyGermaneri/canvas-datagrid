@@ -18,6 +18,5 @@ function g() {
     grid.style.height = '100%';
     grid.style.width = '100%';
     grid.schema = schema;
-    grid.attributes.debug = true;
     grid.data = data;
 }
