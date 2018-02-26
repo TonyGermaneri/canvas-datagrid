@@ -2154,6 +2154,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         // HACK? if an expanded tree row is frozen it is necessary to add the tree row's height a second time.
                         + (self.frozenRow > x ? (self.sizes.trees[x] || 0) : 0);
                 }
+                if (l > 1) {
+                    self.scrollCache.y[x] = dataHeight;
+                }
             }
             dataWidth = self.getVisibleSchema().reduce(function reduceSchema(accumulator, column, columnIndex) {
                 if (column.hidden) {
@@ -2168,7 +2171,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 dataHeight += ch + cellBorder;
             }
             // accounts for the offset of the headers if any
-            // dataHeight += columnHeaderCellHeight;
+            dataHeight += columnHeaderCellHeight;
             setCanvasSize();
             if (self.isChildGrid) {
                 self.width = self.parentNode.offsetWidth;
@@ -2185,7 +2188,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.scrollBox.left = rowHeaderCellWidth;
             // width and height of scroll box
             self.scrollBox.width = self.width - rowHeaderCellWidth - cellBorder;
-            self.scrollBox.height = self.height - columnHeaderCellHeight - columnHeaderCellBorder;
+            self.scrollBox.height = self.height;
             // is the data larger than the scroll box
             self.scrollBox.horizontalBarVisible = dataWidth > self.scrollBox.width;
             self.scrollBox.verticalBarVisible = dataHeight > self.scrollBox.height;
@@ -2213,7 +2216,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.scrollBox.height = self.height - columnHeaderCellHeight - columnHeaderCellBorder - (self.scrollBox.horizontalBarVisible ? sbw : 0);
             self.scrollBox.scrollWidth = dataWidth - self.scrollBox.width;
             if (!onlyResizeX) {
-                self.scrollBox.scrollHeight = dataHeight - self.scrollBox.height;
+                self.scrollBox.scrollHeight = dataHeight - self.scrollBox.height - columnHeaderCellHeight;
             }
             self.scrollBox.widthBoxRatio = self.scrollBox.width / dataWidth;
             self.scrollBox.scrollBoxWidth = self.scrollBox.width
