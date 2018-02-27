@@ -2158,7 +2158,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.scrollCache.y[x] = dataHeight;
                 }
             }
-            dataWidth = self.getVisibleSchema().reduce(function reduceSchema(accumulator, column, columnIndex) {
+            dataWidth = self.getSchema().reduce(function reduceSchema(accumulator, column, columnIndex) {
                 if (column.hidden) {
                     self.scrollCache.x[columnIndex] = accumulator;
                     return accumulator;
@@ -2289,7 +2289,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             return true;
         };
         self.scroll = function (dontDraw) {
-            var s = self.getVisibleSchema(),
+            var s = self.getSchema(),
                 l = (self.data || []).length,
                 ch = self.style.cellHeight;
             // go too far in leaps, then get focused
