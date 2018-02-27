@@ -39,6 +39,8 @@ document.addEventListener('DOMContentLoaded', function () {
         storageKey = 'canvas-datagrid-user-style-library',
         tdls = {},
         inputs = {};
+    grid.style.height = '100%';
+    grid.style.width = '100%';
     function createDialog() {
         var modal = document.createElement('div'),
             dialog = document.createElement('div'),
@@ -178,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             return s;
         }, '{\n') + '\n}';
-        eval('grid.style = ' + code + ';');
+        console.log(grid.style.name);
         drawTitleCanvas();
         window.styleLibrary[inputs.name.value] = JSON.parse(code);
     }
@@ -327,7 +329,13 @@ document.addEventListener('DOMContentLoaded', function () {
             e.treeGrid.attributes.allowRowResizeFromCell = true;
             e.treeGrid.attributes.allowColumnResizeFromCell = true;
             grid.addEventListener('stylechanged', function () {
-                e.treeGrid.style = grid.style;
+                var o = {};
+                Object.keys(grid.style).forEach(function (keyName) {
+                    if (!isNaN(keyName)) { return; }
+                    if (keyName.indexOf('-') !== -1) { return; }
+                    o[keyName] = grid.style[keyName];
+                });
+                e.treeGrid.style = o;
             });
         });
         // expand and select stuff to show as many colors as possible like a drunken peacock
