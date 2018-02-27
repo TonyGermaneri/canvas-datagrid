@@ -361,12 +361,15 @@ function g() {
     //     parentNode: document.body
     // });
     // grid2.data = [{a: 'b', b: 'b'}, {a: 'a', b: 'c'}];
-    var grid3 = canvasDatagrid({
+    var grid = canvasDatagrid({
         parentNode: document.body
     });
-    grid3.data =     [
+    grid.data =     [
         ['row 1 column 1', 'row 1 column 2', 'row 1 column 3'],
         ['row 2 column 1', 'row 2 column 2', 'row 2 column 3']
     ];
+    debugger;
+    console.log(grid.style.name);
+    grid.style.name = 'blah';
 
 }

@@ -4043,6 +4043,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.init = function () {
             if (self.initialized) { return; }
+            function addStyleKeyIfNoneExists(key) {
+                if (self.styleKeys.indexOf(key) === -1) {
+                    self.styleKeys.push(key);
+                }
+            }
             var publicStyleKeyIntf = {};
             self.setAttributes();
             self.setStyle();
@@ -4145,9 +4150,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
             });
             self.styleKeys = Object.keys(self.intf.defaults.styles);
-            self.styleKeys = self.styleKeys
-                .concat(self.styleKeys.map(function (i) { return self.hyphenateProperty(i, false); }))
-                .concat(self.styleKeys.map(function (i) { return self.hyphenateProperty(i, true); }));
+            self.styleKeys.map(function (i) { return self.hyphenateProperty(i, false); }).forEach(addStyleKeyIfNoneExists);
+            self.styleKeys.map(function (i) { return self.hyphenateProperty(i, true); }).forEach(addStyleKeyIfNoneExists);
             self.DOMStyles = window.getComputedStyle(document.body, null);
             self.styleKeys.concat(Object.keys(self.DOMStyles)).forEach(function (key) {
                 // unless this line is here, Object.keys() will not work on <instance>.style
