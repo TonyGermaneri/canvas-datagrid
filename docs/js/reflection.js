@@ -43640,7 +43640,7 @@ window.reflection = [
         "meta": {
             "range": [
                 2806,
-                13268
+                13261
             ],
             "filename": "events.js",
             "lineno": 66,
@@ -45421,7 +45421,7 @@ window.reflection = [
         "meta": {
             "range": [
                 6407,
-                6902
+                6895
             ],
             "filename": "events.js",
             "lineno": 153,
@@ -45449,8 +45449,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                6565,
-                6610
+                6558,
+                6603
             ],
             "filename": "events.js",
             "lineno": 155,
@@ -45477,8 +45477,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                6690,
-                6797
+                6683,
+                6790
             ],
             "filename": "events.js",
             "lineno": 158,
@@ -45505,8 +45505,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                6815,
-                6851
+                6808,
+                6844
             ],
             "filename": "events.js",
             "lineno": 159,
@@ -45533,8 +45533,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                6966,
-                6995
+                6959,
+                6988
             ],
             "filename": "events.js",
             "lineno": 163,
@@ -45562,8 +45562,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7084,
-                7120
+                7077,
+                7113
             ],
             "filename": "events.js",
             "lineno": 166,
@@ -45591,8 +45591,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7203,
-                7243
+                7196,
+                7236
             ],
             "filename": "events.js",
             "lineno": 169,
@@ -45619,8 +45619,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7261,
-                7303
+                7254,
+                7296
             ],
             "filename": "events.js",
             "lineno": 170,
@@ -45647,8 +45647,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7430,
-                7468
+                7423,
+                7461
             ],
             "filename": "events.js",
             "lineno": 172,
@@ -45675,8 +45675,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7486,
-                7522
+                7479,
+                7515
             ],
             "filename": "events.js",
             "lineno": 173,
@@ -45703,8 +45703,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7540,
-                7595
+                7533,
+                7588
             ],
             "filename": "events.js",
             "lineno": 174,
@@ -45731,8 +45731,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7613,
-                7666
+                7606,
+                7659
             ],
             "filename": "events.js",
             "lineno": 175,
@@ -45759,8 +45759,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7775,
-                7843
+                7768,
+                7836
             ],
             "filename": "events.js",
             "lineno": 179,
@@ -45787,8 +45787,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7857,
-                7897
+                7850,
+                7890
             ],
             "filename": "events.js",
             "lineno": 180,
@@ -45815,8 +45815,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7957,
-                8024
+                7950,
+                8017
             ],
             "filename": "events.js",
             "lineno": 182,
@@ -45843,8 +45843,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                8038,
-                8073
+                8031,
+                8066
             ],
             "filename": "events.js",
             "lineno": 183,
@@ -45871,8 +45871,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                8141,
-                8211
+                8134,
+                8204
             ],
             "filename": "events.js",
             "lineno": 185,
@@ -45899,8 +45899,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                8225,
-                8295
+                8218,
+                8288
             ],
             "filename": "events.js",
             "lineno": 186,
@@ -45927,8 +45927,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                8613,
-                8631
+                8606,
+                8624
             ],
             "filename": "events.js",
             "lineno": 191,
@@ -45955,8 +45955,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                8667,
-                8684
+                8660,
+                8677
             ],
             "filename": "events.js",
             "lineno": 193,
@@ -45984,8 +45984,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                8735,
-                8805
+                8728,
+                8798
             ],
             "filename": "events.js",
             "lineno": 195,
@@ -46012,8 +46012,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                8966,
-                8983
+                8959,
+                8976
             ],
             "filename": "events.js",
             "lineno": 199,
@@ -46040,8 +46040,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                9096,
-                9112
+                9089,
+                9105
             ],
             "filename": "events.js",
             "lineno": 202,
@@ -46069,8 +46069,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                9163,
-                9233
+                9156,
+                9226
             ],
             "filename": "events.js",
             "lineno": 204,
@@ -46097,8 +46097,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                9314,
-                9429
+                9307,
+                9422
             ],
             "filename": "events.js",
             "lineno": 207,
@@ -46125,8 +46125,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                9443,
-                9578
+                9436,
+                9571
             ],
             "filename": "events.js",
             "lineno": 208,
@@ -46153,8 +46153,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                9592,
-                9653
+                9585,
+                9646
             ],
             "filename": "events.js",
             "lineno": 209,
@@ -46181,8 +46181,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                9703,
-                9792
+                9696,
+                9785
             ],
             "filename": "events.js",
             "lineno": 211,
@@ -46209,8 +46209,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                9820,
-                9883
+                9813,
+                9876
             ],
             "filename": "events.js",
             "lineno": 213,
@@ -46237,8 +46237,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                9897,
-                10048
+                9890,
+                10041
             ],
             "filename": "events.js",
             "lineno": 214,
@@ -46265,8 +46265,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                10375,
-                10448
+                10368,
+                10441
             ],
             "filename": "events.js",
             "lineno": 222,
@@ -46293,8 +46293,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                10462,
-                10616
+                10455,
+                10609
             ],
             "filename": "events.js",
             "lineno": 223,
@@ -46321,8 +46321,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                10630,
-                10733
+                10623,
+                10726
             ],
             "filename": "events.js",
             "lineno": 226,
@@ -46349,8 +46349,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                10747,
-                10852
+                10740,
+                10845
             ],
             "filename": "events.js",
             "lineno": 227,
@@ -46377,8 +46377,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                10892,
-                10917
+                10885,
+                10910
             ],
             "filename": "events.js",
             "lineno": 229,
@@ -46406,8 +46406,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                10931,
-                10981
+                10924,
+                10974
             ],
             "filename": "events.js",
             "lineno": 230,
@@ -46435,8 +46435,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                10995,
-                11072
+                10988,
+                11065
             ],
             "filename": "events.js",
             "lineno": 231,
@@ -46464,8 +46464,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11086,
-                11160
+                11079,
+                11153
             ],
             "filename": "events.js",
             "lineno": 232,
@@ -46493,8 +46493,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11204,
-                11246
+                11197,
+                11239
             ],
             "filename": "events.js",
             "lineno": 234,
@@ -46522,8 +46522,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11260,
-                11300
+                11253,
+                11293
             ],
             "filename": "events.js",
             "lineno": 235,
@@ -46551,8 +46551,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11314,
-                11354
+                11307,
+                11347
             ],
             "filename": "events.js",
             "lineno": 236,
@@ -46580,8 +46580,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11392,
-                11475
+                11385,
+                11468
             ],
             "filename": "events.js",
             "lineno": 238,
@@ -46609,8 +46609,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11489,
-                11518
+                11482,
+                11511
             ],
             "filename": "events.js",
             "lineno": 239,
@@ -46638,8 +46638,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11532,
-                11605
+                11525,
+                11598
             ],
             "filename": "events.js",
             "lineno": 240,
@@ -46667,8 +46667,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11619,
-                11702
+                11612,
+                11695
             ],
             "filename": "events.js",
             "lineno": 241,
@@ -46696,8 +46696,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11744,
-                11786
+                11737,
+                11779
             ],
             "filename": "events.js",
             "lineno": 243,
@@ -46725,8 +46725,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11800,
-                11839
+                11793,
+                11832
             ],
             "filename": "events.js",
             "lineno": 244,
@@ -46754,8 +46754,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11853,
-                11895
+                11846,
+                11888
             ],
             "filename": "events.js",
             "lineno": 245,
@@ -46783,8 +46783,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11931,
-                11955
+                11924,
+                11948
             ],
             "filename": "events.js",
             "lineno": 247,
@@ -46812,8 +46812,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                11969,
-                11994
+                11962,
+                11987
             ],
             "filename": "events.js",
             "lineno": 248,
@@ -46841,8 +46841,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12008,
-                12078
+                12001,
+                12071
             ],
             "filename": "events.js",
             "lineno": 249,
@@ -46870,8 +46870,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12092,
-                12163
+                12085,
+                12156
             ],
             "filename": "events.js",
             "lineno": 250,
@@ -46899,8 +46899,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12177,
-                12379
+                12170,
+                12372
             ],
             "filename": "events.js",
             "lineno": 251,
@@ -46927,8 +46927,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12221,
-                12237
+                12214,
+                12230
             ],
             "filename": "events.js",
             "lineno": 252,
@@ -46954,8 +46954,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12255,
-                12272
+                12248,
+                12265
             ],
             "filename": "events.js",
             "lineno": 253,
@@ -46981,8 +46981,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12290,
-                12304
+                12283,
+                12297
             ],
             "filename": "events.js",
             "lineno": 254,
@@ -47008,8 +47008,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12322,
-                12337
+                12315,
+                12330
             ],
             "filename": "events.js",
             "lineno": 255,
@@ -47035,8 +47035,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12355,
-                12365
+                12348,
+                12358
             ],
             "filename": "events.js",
             "lineno": 256,
@@ -47062,8 +47062,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12393,
-                12472
+                12386,
+                12465
             ],
             "filename": "events.js",
             "lineno": 258,
@@ -47090,8 +47090,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12432,
-                12436
+                12425,
+                12429
             ],
             "filename": "events.js",
             "lineno": 259,
@@ -47117,8 +47117,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12454,
-                12458
+                12447,
+                12451
             ],
             "filename": "events.js",
             "lineno": 260,
@@ -47144,8 +47144,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12486,
-                12567
+                12479,
+                12560
             ],
             "filename": "events.js",
             "lineno": 262,
@@ -47172,8 +47172,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12525,
-                12530
+                12518,
+                12523
             ],
             "filename": "events.js",
             "lineno": 263,
@@ -47199,8 +47199,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12548,
-                12553
+                12541,
+                12546
             ],
             "filename": "events.js",
             "lineno": 264,
@@ -47226,8 +47226,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12629,
-                12717
+                12622,
+                12710
             ],
             "filename": "events.js",
             "lineno": 267,
@@ -47254,8 +47254,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12820,
-                12858
+                12813,
+                12851
             ],
             "filename": "events.js",
             "lineno": 270,
@@ -47282,8 +47282,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                12876,
-                12916
+                12869,
+                12909
             ],
             "filename": "events.js",
             "lineno": 271,
@@ -47310,8 +47310,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                13278,
-                15869
+                13271,
+                15855
             ],
             "filename": "events.js",
             "lineno": 283,
@@ -47349,8 +47349,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                13330,
-                13357
+                13323,
+                13343
             ],
             "filename": "events.js",
             "lineno": 284,
@@ -47377,8 +47377,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                13375,
-                13403
+                13361,
+                13389
             ],
             "filename": "events.js",
             "lineno": 285,
@@ -47405,8 +47405,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                13421,
-                13447
+                13407,
+                13433
             ],
             "filename": "events.js",
             "lineno": 286,
@@ -47433,8 +47433,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                13514,
-                13616
+                13500,
+                13602
             ],
             "filename": "events.js",
             "lineno": 288,
@@ -47461,8 +47461,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                13630,
-                13684
+                13616,
+                13670
             ],
             "filename": "events.js",
             "lineno": 289,
@@ -47489,8 +47489,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                13698,
-                13759
+                13684,
+                13745
             ],
             "filename": "events.js",
             "lineno": 290,
@@ -47517,8 +47517,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                13899,
-                13922
+                13885,
+                13908
             ],
             "filename": "events.js",
             "lineno": 293,
@@ -47545,8 +47545,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                13950,
-                13973
+                13936,
+                13959
             ],
             "filename": "events.js",
             "lineno": 295,
@@ -47573,8 +47573,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                13987,
-                14011
+                13973,
+                13997
             ],
             "filename": "events.js",
             "lineno": 296,
@@ -47601,8 +47601,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                14025,
-                14049
+                14011,
+                14035
             ],
             "filename": "events.js",
             "lineno": 297,
@@ -47629,8 +47629,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                14278,
-                14302
+                14264,
+                14288
             ],
             "filename": "events.js",
             "lineno": 300,
@@ -47657,8 +47657,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                14320,
-                14381
+                14306,
+                14367
             ],
             "filename": "events.js",
             "lineno": 301,
@@ -47685,8 +47685,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                14519,
-                14582
+                14505,
+                14568
             ],
             "filename": "events.js",
             "lineno": 304,
@@ -47713,8 +47713,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                14600,
-                14625
+                14586,
+                14611
             ],
             "filename": "events.js",
             "lineno": 305,
@@ -47741,8 +47741,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                14721,
-                14781
+                14707,
+                14767
             ],
             "filename": "events.js",
             "lineno": 308,
@@ -47769,8 +47769,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                14799,
-                14992
+                14785,
+                14978
             ],
             "filename": "events.js",
             "lineno": 309,
@@ -47797,8 +47797,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                15010,
-                15068
+                14996,
+                15054
             ],
             "filename": "events.js",
             "lineno": 311,
@@ -47825,8 +47825,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                15086,
-                15411
+                15072,
+                15397
             ],
             "filename": "events.js",
             "lineno": 312,
@@ -47853,8 +47853,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                15439,
-                15462
+                15425,
+                15448
             ],
             "filename": "events.js",
             "lineno": 319,
@@ -47881,8 +47881,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                15794,
-                15823
+                15780,
+                15809
             ],
             "filename": "events.js",
             "lineno": 326,
@@ -47907,8 +47907,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                15825,
-                15856
+                15811,
+                15842
             ],
             "filename": "events.js",
             "lineno": 326,
@@ -47933,8 +47933,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                15879,
-                22101
+                15865,
+                22087
             ],
             "filename": "events.js",
             "lineno": 328,
@@ -47995,8 +47995,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16024,
-                16071
+                16010,
+                16057
             ],
             "filename": "events.js",
             "lineno": 332,
@@ -48023,8 +48023,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16089,
-                16163
+                16075,
+                16149
             ],
             "filename": "events.js",
             "lineno": 333,
@@ -48051,8 +48051,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16181,
-                16182
+                16167,
+                16168
             ],
             "filename": "events.js",
             "lineno": 334,
@@ -48077,8 +48077,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16200,
-                16228
+                16186,
+                16214
             ],
             "filename": "events.js",
             "lineno": 335,
@@ -48105,8 +48105,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16246,
-                16256
+                16232,
+                16242
             ],
             "filename": "events.js",
             "lineno": 336,
@@ -48131,8 +48131,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16274,
-                16281
+                16260,
+                16267
             ],
             "filename": "events.js",
             "lineno": 337,
@@ -48157,8 +48157,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16299,
-                16315
+                16285,
+                16301
             ],
             "filename": "events.js",
             "lineno": 338,
@@ -48185,8 +48185,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16333,
-                16349
+                16319,
+                16335
             ],
             "filename": "events.js",
             "lineno": 339,
@@ -48213,8 +48213,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16367,
-                16391
+                16353,
+                16377
             ],
             "filename": "events.js",
             "lineno": 340,
@@ -48241,8 +48241,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16409,
-                16414
+                16395,
+                16400
             ],
             "filename": "events.js",
             "lineno": 341,
@@ -48267,8 +48267,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16432,
-                16474
+                16418,
+                16460
             ],
             "filename": "events.js",
             "lineno": 342,
@@ -48295,8 +48295,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16438,
-                16452
+                16424,
+                16438
             ],
             "filename": "events.js",
             "lineno": 342,
@@ -48322,8 +48322,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16454,
-                16461
+                16440,
+                16447
             ],
             "filename": "events.js",
             "lineno": 342,
@@ -48349,8 +48349,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16463,
-                16467
+                16449,
+                16453
             ],
             "filename": "events.js",
             "lineno": 342,
@@ -48376,8 +48376,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16469,
-                16473
+                16455,
+                16459
             ],
             "filename": "events.js",
             "lineno": 342,
@@ -48403,8 +48403,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16492,
-                16523
+                16478,
+                16509
             ],
             "filename": "events.js",
             "lineno": 343,
@@ -48431,8 +48431,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16601,
-                16605
+                16587,
+                16591
             ],
             "filename": "events.js",
             "lineno": 345,
@@ -48457,8 +48457,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16607,
-                16611
+                16593,
+                16597
             ],
             "filename": "events.js",
             "lineno": 345,
@@ -48483,8 +48483,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16633,
-                16654
+                16619,
+                16640
             ],
             "filename": "events.js",
             "lineno": 346,
@@ -48511,8 +48511,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16820,
-                16886
+                16806,
+                16872
             ],
             "filename": "events.js",
             "lineno": 352,
@@ -48539,8 +48539,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16904,
-                16979
+                16890,
+                16965
             ],
             "filename": "events.js",
             "lineno": 353,
@@ -48567,8 +48567,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                16997,
-                17077
+                16983,
+                17063
             ],
             "filename": "events.js",
             "lineno": 354,
@@ -48595,8 +48595,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                17233,
-                17255
+                17219,
+                17241
             ],
             "filename": "events.js",
             "lineno": 357,
@@ -48624,8 +48624,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                17350,
-                17361
+                17336,
+                17347
             ],
             "filename": "events.js",
             "lineno": 359,
@@ -48653,8 +48653,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                17501,
-                17521
+                17487,
+                17507
             ],
             "filename": "events.js",
             "lineno": 364,
@@ -48681,8 +48681,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                17607,
-                17623
+                17593,
+                17609
             ],
             "filename": "events.js",
             "lineno": 368,
@@ -48709,8 +48709,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                17770,
-                17787
+                17756,
+                17773
             ],
             "filename": "events.js",
             "lineno": 372,
@@ -48737,8 +48737,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                17805,
-                17834
+                17791,
+                17820
             ],
             "filename": "events.js",
             "lineno": 373,
@@ -48765,8 +48765,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                17852,
-                17875
+                17838,
+                17861
             ],
             "filename": "events.js",
             "lineno": 374,
@@ -48793,8 +48793,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                17941,
-                17964
+                17927,
+                17950
             ],
             "filename": "events.js",
             "lineno": 376,
@@ -48821,8 +48821,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                17986,
-                18052
+                17972,
+                18038
             ],
             "filename": "events.js",
             "lineno": 377,
@@ -48849,8 +48849,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                18002,
-                18022
+                17988,
+                18008
             ],
             "filename": "events.js",
             "lineno": 377,
@@ -48876,8 +48876,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                18024,
-                18050
+                18010,
+                18036
             ],
             "filename": "events.js",
             "lineno": 377,
@@ -48903,8 +48903,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                18202,
-                18350
+                18188,
+                18336
             ],
             "filename": "events.js",
             "lineno": 381,
@@ -48932,8 +48932,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                18236,
-                18269
+                18222,
+                18255
             ],
             "filename": "events.js",
             "lineno": 382,
@@ -48959,8 +48959,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                18295,
-                18328
+                18281,
+                18314
             ],
             "filename": "events.js",
             "lineno": 383,
@@ -48986,8 +48986,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                18457,
-                18640
+                18443,
+                18626
             ],
             "filename": "events.js",
             "lineno": 386,
@@ -49014,8 +49014,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                18510,
-                18544
+                18496,
+                18530
             ],
             "filename": "events.js",
             "lineno": 387,
@@ -49041,8 +49041,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                18574,
-                18614
+                18560,
+                18600
             ],
             "filename": "events.js",
             "lineno": 388,
@@ -49068,8 +49068,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                18684,
-                19065
+                18670,
+                19051
             ],
             "filename": "events.js",
             "lineno": 391,
@@ -49097,8 +49097,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                18723,
-                18779
+                18709,
+                18765
             ],
             "filename": "events.js",
             "lineno": 392,
@@ -49124,8 +49124,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                18805,
-                18868
+                18791,
+                18854
             ],
             "filename": "events.js",
             "lineno": 393,
@@ -49151,8 +49151,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                18894,
-                18953
+                18880,
+                18939
             ],
             "filename": "events.js",
             "lineno": 394,
@@ -49178,8 +49178,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                18979,
-                19043
+                18965,
+                19029
             ],
             "filename": "events.js",
             "lineno": 395,
@@ -49205,8 +49205,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                19158,
-                19193
+                19144,
+                19179
             ],
             "filename": "events.js",
             "lineno": 398,
@@ -49234,8 +49234,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                19219,
-                19239
+                19205,
+                19225
             ],
             "filename": "events.js",
             "lineno": 399,
@@ -49263,8 +49263,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                19265,
-                19297
+                19251,
+                19283
             ],
             "filename": "events.js",
             "lineno": 400,
@@ -49292,8 +49292,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                19323,
-                19373
+                19309,
+                19359
             ],
             "filename": "events.js",
             "lineno": 401,
@@ -49321,8 +49321,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                19399,
-                19455
+                19385,
+                19441
             ],
             "filename": "events.js",
             "lineno": 402,
@@ -49350,8 +49350,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                19661,
-                19688
+                19647,
+                19674
             ],
             "filename": "events.js",
             "lineno": 406,
@@ -49378,8 +49378,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                20620,
-                20683
+                20606,
+                20669
             ],
             "filename": "events.js",
             "lineno": 418,
@@ -49406,8 +49406,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                21349,
-                21369
+                21335,
+                21355
             ],
             "filename": "events.js",
             "lineno": 429,
@@ -49434,8 +49434,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                21395,
-                21415
+                21381,
+                21401
             ],
             "filename": "events.js",
             "lineno": 430,
@@ -49463,8 +49463,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                21521,
-                21536
+                21507,
+                21522
             ],
             "filename": "events.js",
             "lineno": 432,
@@ -49492,8 +49492,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                21559,
-                21565
+                21545,
+                21551
             ],
             "filename": "events.js",
             "lineno": 432,
@@ -49521,8 +49521,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                21936,
-                21968
+                21922,
+                21954
             ],
             "filename": "events.js",
             "lineno": 442,
@@ -49549,8 +49549,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                21982,
-                22013
+                21968,
+                21999
             ],
             "filename": "events.js",
             "lineno": 443,
@@ -49577,8 +49577,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                22027,
-                22061
+                22013,
+                22047
             ],
             "filename": "events.js",
             "lineno": 444,
@@ -49605,8 +49605,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                22111,
-                25864
+                22097,
+                25850
             ],
             "filename": "events.js",
             "lineno": 447,
@@ -49646,8 +49646,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                22168,
-                22169
+                22154,
+                22155
             ],
             "filename": "events.js",
             "lineno": 448,
@@ -49672,8 +49672,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                22187,
-                22261
+                22173,
+                22247
             ],
             "filename": "events.js",
             "lineno": 449,
@@ -49700,8 +49700,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                22279,
-                22319
+                22265,
+                22305
             ],
             "filename": "events.js",
             "lineno": 450,
@@ -49728,8 +49728,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                22333,
-                22380
+                22319,
+                22366
             ],
             "filename": "events.js",
             "lineno": 451,
@@ -49756,8 +49756,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                22487,
-                22883
+                22473,
+                22869
             ],
             "filename": "events.js",
             "lineno": 455,
@@ -49788,8 +49788,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                22541,
-                22672
+                22527,
+                22658
             ],
             "filename": "events.js",
             "lineno": 456,
@@ -49816,8 +49816,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                22568,
-                22595
+                22554,
+                22581
             ],
             "filename": "events.js",
             "lineno": 457,
@@ -49843,8 +49843,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                22617,
-                22654
+                22603,
+                22640
             ],
             "filename": "events.js",
             "lineno": 458,
@@ -49870,8 +49870,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                22754,
-                22849
+                22740,
+                22835
             ],
             "filename": "events.js",
             "lineno": 461,
@@ -49895,8 +49895,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                23016,
-                23044
+                23002,
+                23030
             ],
             "filename": "events.js",
             "lineno": 470,
@@ -49923,8 +49923,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                23096,
-                23116
+                23082,
+                23102
             ],
             "filename": "events.js",
             "lineno": 473,
@@ -49952,8 +49952,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                23163,
-                23177
+                23149,
+                23163
             ],
             "filename": "events.js",
             "lineno": 474,
@@ -49978,8 +49978,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                23179,
-                23201
+                23165,
+                23187
             ],
             "filename": "events.js",
             "lineno": 474,
@@ -50004,8 +50004,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                23989,
-                24057
+                23975,
+                24043
             ],
             "filename": "events.js",
             "lineno": 491,
@@ -50032,8 +50032,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                24120,
-                24147
+                24106,
+                24133
             ],
             "filename": "events.js",
             "lineno": 493,
@@ -50060,8 +50060,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                24687,
-                24750
+                24673,
+                24736
             ],
             "filename": "events.js",
             "lineno": 506,
@@ -50088,8 +50088,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                25653,
-                25701
+                25639,
+                25687
             ],
             "filename": "events.js",
             "lineno": 521,
@@ -50116,8 +50116,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                25874,
-                27752
+                25860,
+                27738
             ],
             "filename": "events.js",
             "lineno": 528,
@@ -50156,8 +50156,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                25929,
-                25932
+                25915,
+                25918
             ],
             "filename": "events.js",
             "lineno": 529,
@@ -50182,8 +50182,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                25934,
-                25935
+                25920,
+                25921
             ],
             "filename": "events.js",
             "lineno": 529,
@@ -50208,8 +50208,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                25937,
-                25938
+                25923,
+                25924
             ],
             "filename": "events.js",
             "lineno": 529,
@@ -50234,8 +50234,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                25952,
-                25977
+                25938,
+                25963
             ],
             "filename": "events.js",
             "lineno": 530,
@@ -50263,8 +50263,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                25991,
-                26048
+                25977,
+                26034
             ],
             "filename": "events.js",
             "lineno": 531,
@@ -50292,8 +50292,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                26062,
-                26120
+                26048,
+                26106
             ],
             "filename": "events.js",
             "lineno": 532,
@@ -50321,8 +50321,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                26187,
-                26216
+                26173,
+                26202
             ],
             "filename": "events.js",
             "lineno": 534,
@@ -50350,8 +50350,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                26295,
-                26322
+                26281,
+                26308
             ],
             "filename": "events.js",
             "lineno": 537,
@@ -50379,8 +50379,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                26390,
-                26394
+                26376,
+                26380
             ],
             "filename": "events.js",
             "lineno": 539,
@@ -50405,8 +50405,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                26396,
-                26400
+                26382,
+                26386
             ],
             "filename": "events.js",
             "lineno": 539,
@@ -50431,8 +50431,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                26402,
-                26433
+                26388,
+                26419
             ],
             "filename": "events.js",
             "lineno": 539,
@@ -50457,8 +50457,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                26674,
-                26704
+                26660,
+                26690
             ],
             "filename": "events.js",
             "lineno": 543,
@@ -50485,8 +50485,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                26785,
-                26933
+                26771,
+                26919
             ],
             "filename": "events.js",
             "lineno": 546,
@@ -50513,8 +50513,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27297,
-                27345
+                27283,
+                27331
             ],
             "filename": "events.js",
             "lineno": 556,
@@ -50541,8 +50541,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27429,
-                27454
+                27415,
+                27440
             ],
             "filename": "events.js",
             "lineno": 558,
@@ -50569,8 +50569,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27501,
-                27548
+                27487,
+                27534
             ],
             "filename": "events.js",
             "lineno": 560,
@@ -50597,8 +50597,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27617,
-                27623
+                27603,
+                27609
             ],
             "filename": "events.js",
             "lineno": 562,
@@ -50623,8 +50623,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27718,
-                27741
+                27704,
+                27727
             ],
             "filename": "events.js",
             "lineno": 566,
@@ -50651,8 +50651,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27762,
-                28115
+                27748,
+                28101
             ],
             "filename": "events.js",
             "lineno": 568,
@@ -50681,8 +50681,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                28077,
-                28104
+                28063,
+                28090
             ],
             "filename": "events.js",
             "lineno": 574,
@@ -50709,8 +50709,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                28125,
-                31684
+                28111,
+                31670
             ],
             "filename": "events.js",
             "lineno": 576,
@@ -50751,8 +50751,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                28174,
-                28199
+                28160,
+                28185
             ],
             "filename": "events.js",
             "lineno": 577,
@@ -50779,8 +50779,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                28407,
-                28448
+                28393,
+                28434
             ],
             "filename": "events.js",
             "lineno": 580,
@@ -50807,8 +50807,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                28466,
-                28507
+                28452,
+                28493
             ],
             "filename": "events.js",
             "lineno": 581,
@@ -50835,8 +50835,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                28525,
-                28643
+                28511,
+                28629
             ],
             "filename": "events.js",
             "lineno": 582,
@@ -50863,8 +50863,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                28661,
-                28780
+                28647,
+                28766
             ],
             "filename": "events.js",
             "lineno": 583,
@@ -50891,8 +50891,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                28798,
-                28828
+                28784,
+                28814
             ],
             "filename": "events.js",
             "lineno": 584,
@@ -50920,8 +50920,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                28856,
-                28910
+                28842,
+                28896
             ],
             "filename": "events.js",
             "lineno": 586,
@@ -50948,8 +50948,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                29043,
-                29089
+                29029,
+                29075
             ],
             "filename": "events.js",
             "lineno": 588,
@@ -50976,8 +50976,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                29107,
-                29127
+                29093,
+                29113
             ],
             "filename": "events.js",
             "lineno": 589,
@@ -51004,8 +51004,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                29145,
-                29194
+                29131,
+                29180
             ],
             "filename": "events.js",
             "lineno": 590,
@@ -51032,8 +51032,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                29409,
-                29453
+                29395,
+                29439
             ],
             "filename": "events.js",
             "lineno": 595,
@@ -51060,8 +51060,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                29471,
-                29491
+                29457,
+                29477
             ],
             "filename": "events.js",
             "lineno": 596,
@@ -51088,8 +51088,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                29509,
-                29556
+                29495,
+                29542
             ],
             "filename": "events.js",
             "lineno": 597,
@@ -51116,8 +51116,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                29791,
-                29830
+                29777,
+                29816
             ],
             "filename": "events.js",
             "lineno": 603,
@@ -51144,8 +51144,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                29997,
-                30038
+                29983,
+                30024
             ],
             "filename": "events.js",
             "lineno": 607,
@@ -51172,8 +51172,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                30281,
-                30411
+                30267,
+                30397
             ],
             "filename": "events.js",
             "lineno": 614,
@@ -51200,8 +51200,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                30497,
-                30560
+                30483,
+                30546
             ],
             "filename": "events.js",
             "lineno": 617,
@@ -51228,8 +51228,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                30578,
-                30661
+                30564,
+                30647
             ],
             "filename": "events.js",
             "lineno": 618,
@@ -51256,8 +51256,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                30750,
-                30813
+                30736,
+                30799
             ],
             "filename": "events.js",
             "lineno": 620,
@@ -51284,8 +51284,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                30831,
-                30914
+                30817,
+                30900
             ],
             "filename": "events.js",
             "lineno": 621,
@@ -51312,8 +51312,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31009,
-                31140
+                30995,
+                31126
             ],
             "filename": "events.js",
             "lineno": 624,
@@ -51340,8 +51340,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31230,
-                31299
+                31216,
+                31285
             ],
             "filename": "events.js",
             "lineno": 627,
@@ -51368,8 +51368,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31317,
-                31400
+                31303,
+                31386
             ],
             "filename": "events.js",
             "lineno": 628,
@@ -51396,8 +51396,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31489,
-                31558
+                31475,
+                31544
             ],
             "filename": "events.js",
             "lineno": 630,
@@ -51424,8 +51424,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31576,
-                31659
+                31562,
+                31645
             ],
             "filename": "events.js",
             "lineno": 631,
@@ -51452,8 +51452,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31694,
-                31969
+                31680,
+                31955
             ],
             "filename": "events.js",
             "lineno": 634,
@@ -51479,8 +51479,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31979,
-                33141
+                31965,
+                33127
             ],
             "filename": "events.js",
             "lineno": 641,
@@ -51516,8 +51516,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32029,
-                32032
+                32015,
+                32018
             ],
             "filename": "events.js",
             "lineno": 642,
@@ -51542,8 +51542,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32034,
-                32035
+                32020,
+                32021
             ],
             "filename": "events.js",
             "lineno": 642,
@@ -51568,8 +51568,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32037,
-                32038
+                32023,
+                32024
             ],
             "filename": "events.js",
             "lineno": 642,
@@ -51594,8 +51594,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32052,
-                32077
+                32038,
+                32063
             ],
             "filename": "events.js",
             "lineno": 643,
@@ -51623,8 +51623,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32091,
-                32119
+                32077,
+                32105
             ],
             "filename": "events.js",
             "lineno": 644,
@@ -51652,8 +51652,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32133,
-                32161
+                32119,
+                32147
             ],
             "filename": "events.js",
             "lineno": 645,
@@ -51681,8 +51681,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32496,
-                32510
+                32482,
+                32496
             ],
             "filename": "events.js",
             "lineno": 653,
@@ -51707,8 +51707,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32532,
-                32560
+                32518,
+                32546
             ],
             "filename": "events.js",
             "lineno": 654,
@@ -51733,8 +51733,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32582,
-                32606
+                32568,
+                32592
             ],
             "filename": "events.js",
             "lineno": 655,
@@ -51759,8 +51759,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32628,
-                32651
+                32614,
+                32637
             ],
             "filename": "events.js",
             "lineno": 656,
@@ -51785,8 +51785,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32842,
-                32880
+                32828,
+                32866
             ],
             "filename": "events.js",
             "lineno": 661,
@@ -51813,8 +51813,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32898,
-                32935
+                32884,
+                32921
             ],
             "filename": "events.js",
             "lineno": 662,
@@ -51841,8 +51841,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32953,
-                33055
+                32939,
+                33041
             ],
             "filename": "events.js",
             "lineno": 663,
@@ -51869,8 +51869,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33007,
-                33011
+                32993,
+                32997
             ],
             "filename": "events.js",
             "lineno": 664,
@@ -51896,8 +51896,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33033,
-                33037
+                33019,
+                33023
             ],
             "filename": "events.js",
             "lineno": 665,
@@ -51923,8 +51923,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33151,
-                35001
+                33137,
+                34987
             ],
             "filename": "events.js",
             "lineno": 670,
@@ -51961,8 +51961,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33205,
-                33211
+                33191,
+                33197
             ],
             "filename": "events.js",
             "lineno": 671,
@@ -51987,8 +51987,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33229,
-                33235
+                33215,
+                33221
             ],
             "filename": "events.js",
             "lineno": 672,
@@ -52013,8 +52013,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33253,
-                33388
+                33239,
+                33374
             ],
             "filename": "events.js",
             "lineno": 673,
@@ -52041,8 +52041,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33280,
-                33311
+                33266,
+                33297
             ],
             "filename": "events.js",
             "lineno": 674,
@@ -52068,8 +52068,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33333,
-                33370
+                33319,
+                33356
             ],
             "filename": "events.js",
             "lineno": 675,
@@ -52095,8 +52095,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33406,
-                33543
+                33392,
+                33529
             ],
             "filename": "events.js",
             "lineno": 677,
@@ -52123,8 +52123,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33432,
-                33457
+                33418,
+                33443
             ],
             "filename": "events.js",
             "lineno": 678,
@@ -52149,8 +52149,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33479,
-                33510
+                33465,
+                33496
             ],
             "filename": "events.js",
             "lineno": 679,
@@ -52175,8 +52175,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34304,
-                34318
+                34290,
+                34304
             ],
             "filename": "events.js",
             "lineno": 691,
@@ -52201,8 +52201,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34344,
-                34370
+                34330,
+                34356
             ],
             "filename": "events.js",
             "lineno": 692,
@@ -52227,8 +52227,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34396,
-                34422
+                34382,
+                34408
             ],
             "filename": "events.js",
             "lineno": 693,
@@ -52253,8 +52253,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34448,
-                34471
+                34434,
+                34457
             ],
             "filename": "events.js",
             "lineno": 694,
@@ -52279,8 +52279,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34514,
-                34541
+                34500,
+                34527
             ],
             "filename": "events.js",
             "lineno": 696,
@@ -52307,8 +52307,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34559,
-                34616
+                34545,
+                34602
             ],
             "filename": "events.js",
             "lineno": 697,
@@ -52336,8 +52336,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34634,
-                34691
+                34620,
+                34677
             ],
             "filename": "events.js",
             "lineno": 698,
@@ -52365,8 +52365,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34887,
-                34917
+                34873,
+                34903
             ],
             "filename": "events.js",
             "lineno": 703,
@@ -52393,8 +52393,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34931,
-                34961
+                34917,
+                34947
             ],
             "filename": "events.js",
             "lineno": 704,
@@ -52421,8 +52421,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35011,
-                35667
+                34997,
+                35653
             ],
             "filename": "events.js",
             "lineno": 707,
@@ -52455,8 +52455,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35088,
-                35102
+                35074,
+                35088
             ],
             "filename": "events.js",
             "lineno": 708,
@@ -52481,8 +52481,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35104,
-                35126
+                35090,
+                35112
             ],
             "filename": "events.js",
             "lineno": 708,
@@ -52507,8 +52507,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35158,
-                35183
+                35144,
+                35169
             ],
             "filename": "events.js",
             "lineno": 709,
@@ -52535,8 +52535,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35197,
-                35391
+                35183,
+                35377
             ],
             "filename": "events.js",
             "lineno": 710,
@@ -52563,8 +52563,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35233,
-                35299
+                35219,
+                35285
             ],
             "filename": "events.js",
             "lineno": 711,
@@ -52590,8 +52590,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35317,
-                35377
+                35303,
+                35363
             ],
             "filename": "events.js",
             "lineno": 712,
@@ -52617,8 +52617,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35677,
-                36536
+                35663,
+                36522
             ],
             "filename": "events.js",
             "lineno": 720,
@@ -52651,8 +52651,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35894,
-                35923
+                35880,
+                35909
             ],
             "filename": "events.js",
             "lineno": 723,
@@ -52679,8 +52679,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35972,
-                35986
+                35958,
+                35972
             ],
             "filename": "events.js",
             "lineno": 724,
@@ -52705,8 +52705,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35988,
-                36010
+                35974,
+                35996
             ],
             "filename": "events.js",
             "lineno": 724,
@@ -52731,8 +52731,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36032,
-                36064
+                36018,
+                36050
             ],
             "filename": "events.js",
             "lineno": 725,
@@ -52759,8 +52759,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36082,
-                36109
+                36068,
+                36095
             ],
             "filename": "events.js",
             "lineno": 726,
@@ -52787,8 +52787,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36423,
-                36455
+                36409,
+                36441
             ],
             "filename": "events.js",
             "lineno": 734,
@@ -52815,8 +52815,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36469,
-                36496
+                36455,
+                36482
             ],
             "filename": "events.js",
             "lineno": 735,
@@ -52843,8 +52843,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36546,
-                37589
+                36532,
+                37575
             ],
             "filename": "events.js",
             "lineno": 738,
@@ -52882,8 +52882,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36631,
-                36645
+                36617,
+                36631
             ],
             "filename": "events.js",
             "lineno": 739,
@@ -52908,8 +52908,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36647,
-                36669
+                36633,
+                36655
             ],
             "filename": "events.js",
             "lineno": 739,
@@ -52934,8 +52934,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36701,
-                36726
+                36687,
+                36712
             ],
             "filename": "events.js",
             "lineno": 740,
@@ -52962,8 +52962,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36740,
-                36767
+                36726,
+                36753
             ],
             "filename": "events.js",
             "lineno": 741,
@@ -52990,8 +52990,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36781,
-                36812
+                36767,
+                36798
             ],
             "filename": "events.js",
             "lineno": 742,
@@ -53018,8 +53018,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36950,
-                36978
+                36936,
+                36964
             ],
             "filename": "events.js",
             "lineno": 744,
@@ -53046,8 +53046,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36996,
-                37042
+                36982,
+                37028
             ],
             "filename": "events.js",
             "lineno": 745,
@@ -53074,8 +53074,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37200,
-                37229
+                37186,
+                37215
             ],
             "filename": "events.js",
             "lineno": 748,
@@ -53102,8 +53102,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37247,
-                37299
+                37233,
+                37285
             ],
             "filename": "events.js",
             "lineno": 749,
@@ -53130,8 +53130,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37599,
-                38156
+                37585,
+                38142
             ],
             "filename": "events.js",
             "lineno": 757,
@@ -53164,8 +53164,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37818,
-                37855
+                37804,
+                37841
             ],
             "filename": "events.js",
             "lineno": 760,
@@ -53192,8 +53192,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37910,
-                37924
+                37896,
+                37910
             ],
             "filename": "events.js",
             "lineno": 761,
@@ -53218,8 +53218,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37946,
-                37985
+                37932,
+                37971
             ],
             "filename": "events.js",
             "lineno": 762,
@@ -53246,8 +53246,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38003,
-                38045
+                37989,
+                38031
             ],
             "filename": "events.js",
             "lineno": 763,
@@ -53274,8 +53274,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38166,
-                43220
+                38152,
+                43206
             ],
             "filename": "events.js",
             "lineno": 769,
@@ -53327,8 +53327,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38223,
-                38258
+                38209,
+                38244
             ],
             "filename": "events.js",
             "lineno": 770,
@@ -53355,8 +53355,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38309,
-                38323
+                38295,
+                38309
             ],
             "filename": "events.js",
             "lineno": 771,
@@ -53381,8 +53381,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38325,
-                38347
+                38311,
+                38333
             ],
             "filename": "events.js",
             "lineno": 771,
@@ -53407,8 +53407,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38509,
-                38540
+                38495,
+                38526
             ],
             "filename": "events.js",
             "lineno": 776,
@@ -53435,8 +53435,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38558,
-                38592
+                38544,
+                38578
             ],
             "filename": "events.js",
             "lineno": 777,
@@ -53463,8 +53463,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38610,
-                38679
+                38596,
+                38665
             ],
             "filename": "events.js",
             "lineno": 778,
@@ -53491,8 +53491,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38697,
-                38735
+                38683,
+                38721
             ],
             "filename": "events.js",
             "lineno": 779,
@@ -53519,8 +53519,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38749,
-                38800
+                38735,
+                38786
             ],
             "filename": "events.js",
             "lineno": 780,
@@ -53547,8 +53547,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38814,
-                38943
+                38800,
+                38929
             ],
             "filename": "events.js",
             "lineno": 781,
@@ -53575,8 +53575,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38851,
-                38882
+                38837,
+                38868
             ],
             "filename": "events.js",
             "lineno": 782,
@@ -53602,8 +53602,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38900,
-                38929
+                38886,
+                38915
             ],
             "filename": "events.js",
             "lineno": 783,
@@ -53629,8 +53629,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38957,
-                39030
+                38943,
+                39016
             ],
             "filename": "events.js",
             "lineno": 785,
@@ -53657,8 +53657,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39044,
-                39100
+                39030,
+                39086
             ],
             "filename": "events.js",
             "lineno": 786,
@@ -53685,8 +53685,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39446,
-                39466
+                39432,
+                39452
             ],
             "filename": "events.js",
             "lineno": 794,
@@ -53713,8 +53713,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39664,
-                39710
+                39650,
+                39696
             ],
             "filename": "events.js",
             "lineno": 800,
@@ -53741,8 +53741,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39728,
-                39779
+                39714,
+                39765
             ],
             "filename": "events.js",
             "lineno": 801,
@@ -53769,8 +53769,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40007,
-                40146
+                39993,
+                40132
             ],
             "filename": "events.js",
             "lineno": 805,
@@ -53797,8 +53797,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40060,
-                40079
+                40046,
+                40065
             ],
             "filename": "events.js",
             "lineno": 806,
@@ -53824,8 +53824,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40105,
-                40124
+                40091,
+                40110
             ],
             "filename": "events.js",
             "lineno": 807,
@@ -53851,8 +53851,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40408,
-                40435
+                40394,
+                40421
             ],
             "filename": "events.js",
             "lineno": 813,
@@ -53879,8 +53879,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40535,
-                40556
+                40521,
+                40542
             ],
             "filename": "events.js",
             "lineno": 817,
@@ -53907,8 +53907,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41018,
-                41051
+                41004,
+                41037
             ],
             "filename": "events.js",
             "lineno": 827,
@@ -53935,8 +53935,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41069,
-                41118
+                41055,
+                41104
             ],
             "filename": "events.js",
             "lineno": 828,
@@ -53963,8 +53963,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41136,
-                41172
+                41122,
+                41158
             ],
             "filename": "events.js",
             "lineno": 829,
@@ -53991,8 +53991,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41227,
-                41241
+                41213,
+                41227
             ],
             "filename": "events.js",
             "lineno": 830,
@@ -54017,8 +54017,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41243,
-                41265
+                41229,
+                41251
             ],
             "filename": "events.js",
             "lineno": 830,
@@ -54043,8 +54043,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41547,
-                41580
+                41533,
+                41566
             ],
             "filename": "events.js",
             "lineno": 836,
@@ -54071,8 +54071,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41598,
-                41720
+                41584,
+                41706
             ],
             "filename": "events.js",
             "lineno": 837,
@@ -54099,8 +54099,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41643,
-                41660
+                41629,
+                41646
             ],
             "filename": "events.js",
             "lineno": 838,
@@ -54126,8 +54126,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41682,
-                41702
+                41668,
+                41688
             ],
             "filename": "events.js",
             "lineno": 839,
@@ -54153,8 +54153,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41781,
-                41795
+                41767,
+                41781
             ],
             "filename": "events.js",
             "lineno": 841,
@@ -54179,8 +54179,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42081,
-                42114
+                42067,
+                42100
             ],
             "filename": "events.js",
             "lineno": 847,
@@ -54207,8 +54207,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42185,
-                42259
+                42171,
+                42245
             ],
             "filename": "events.js",
             "lineno": 849,
@@ -54235,8 +54235,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42306,
-                42404
+                42292,
+                42390
             ],
             "filename": "events.js",
             "lineno": 851,
@@ -54263,8 +54263,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42440,
-                42640
+                42426,
+                42626
             ],
             "filename": "events.js",
             "lineno": 853,
@@ -54291,8 +54291,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42957,
-                42997
+                42943,
+                42983
             ],
             "filename": "events.js",
             "lineno": 860,
@@ -54319,8 +54319,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43230,
-                44108
+                43216,
+                44094
             ],
             "filename": "events.js",
             "lineno": 866,
@@ -54356,8 +54356,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43316,
-                43347
+                43302,
+                43333
             ],
             "filename": "events.js",
             "lineno": 868,
@@ -54384,8 +54384,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43361,
-                43391
+                43347,
+                43377
             ],
             "filename": "events.js",
             "lineno": 869,
@@ -54412,8 +54412,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43405,
-                43438
+                43391,
+                43424
             ],
             "filename": "events.js",
             "lineno": 870,
@@ -54440,8 +54440,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43452,
-                43478
+                43438,
+                43464
             ],
             "filename": "events.js",
             "lineno": 871,
@@ -54468,8 +54468,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43492,
-                43521
+                43478,
+                43507
             ],
             "filename": "events.js",
             "lineno": 872,
@@ -54496,8 +54496,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43535,
-                43567
+                43521,
+                43553
             ],
             "filename": "events.js",
             "lineno": 873,
@@ -54524,8 +54524,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43616,
-                43630
+                43602,
+                43616
             ],
             "filename": "events.js",
             "lineno": 874,
@@ -54550,8 +54550,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43632,
-                43654
+                43618,
+                43640
             ],
             "filename": "events.js",
             "lineno": 874,
@@ -54576,8 +54576,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44213,
-                45067
+                44199,
+                45053
             ],
             "filename": "events.js",
             "lineno": 888,
@@ -54613,8 +54613,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44267,
-                44268
+                44253,
+                44254
             ],
             "filename": "events.js",
             "lineno": 889,
@@ -54639,8 +54639,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44286,
-                44287
+                44272,
+                44273
             ],
             "filename": "events.js",
             "lineno": 890,
@@ -54665,8 +54665,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44305,
-                44325
+                44291,
+                44311
             ],
             "filename": "events.js",
             "lineno": 891,
@@ -54693,8 +54693,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44343,
-                44349
+                44329,
+                44335
             ],
             "filename": "events.js",
             "lineno": 892,
@@ -54721,8 +54721,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44368,
-                44373
+                44354,
+                44359
             ],
             "filename": "events.js",
             "lineno": 893,
@@ -54750,8 +54750,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44389,
-                44395
+                44375,
+                44381
             ],
             "filename": "events.js",
             "lineno": 893,
@@ -54779,8 +54779,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44415,
-                44441
+                44401,
+                44427
             ],
             "filename": "events.js",
             "lineno": 894,
@@ -54808,8 +54808,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44552,
-                44563
+                44538,
+                44549
             ],
             "filename": "events.js",
             "lineno": 897,
@@ -54837,8 +54837,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44589,
-                44599
+                44575,
+                44585
             ],
             "filename": "events.js",
             "lineno": 898,
@@ -54866,8 +54866,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44643,
-                44653
+                44629,
+                44639
             ],
             "filename": "events.js",
             "lineno": 900,
@@ -54895,8 +54895,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44763,
-                44774
+                44749,
+                44760
             ],
             "filename": "events.js",
             "lineno": 902,
@@ -54924,8 +54924,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44881,
-                44891
+                44867,
+                44877
             ],
             "filename": "events.js",
             "lineno": 905,
@@ -54953,8 +54953,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45004,
-                45020
+                44990,
+                45006
             ],
             "filename": "events.js",
             "lineno": 910,
@@ -54982,8 +54982,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45077,
-                50067
+                45063,
+                50053
             ],
             "filename": "events.js",
             "lineno": 914,
@@ -55026,8 +55026,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45123,
-                45124
+                45109,
+                45110
             ],
             "filename": "events.js",
             "lineno": 915,
@@ -55052,8 +55052,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45142,
-                45144
+                45128,
+                45130
             ],
             "filename": "events.js",
             "lineno": 916,
@@ -55078,8 +55078,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45162,
-                45201
+                45148,
+                45187
             ],
             "filename": "events.js",
             "lineno": 917,
@@ -55106,8 +55106,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45219,
-                45250
+                45205,
+                45236
             ],
             "filename": "events.js",
             "lineno": 918,
@@ -55134,8 +55134,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45268,
-                45296
+                45254,
+                45282
             ],
             "filename": "events.js",
             "lineno": 919,
@@ -55162,8 +55162,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45314,
-                45345
+                45300,
+                45331
             ],
             "filename": "events.js",
             "lineno": 920,
@@ -55190,8 +55190,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45363,
-                45390
+                45349,
+                45376
             ],
             "filename": "events.js",
             "lineno": 921,
@@ -55218,8 +55218,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45408,
-                45428
+                45394,
+                45414
             ],
             "filename": "events.js",
             "lineno": 922,
@@ -55246,8 +55246,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45446,
-                45465
+                45432,
+                45451
             ],
             "filename": "events.js",
             "lineno": 923,
@@ -55274,8 +55274,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45514,
-                45528
+                45500,
+                45514
             ],
             "filename": "events.js",
             "lineno": 924,
@@ -55300,8 +55300,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45530,
-                45552
+                45516,
+                45538
             ],
             "filename": "events.js",
             "lineno": 924,
@@ -55326,8 +55326,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45702,
-                45711
+                45688,
+                45697
             ],
             "filename": "events.js",
             "lineno": 929,
@@ -55355,8 +55355,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45883,
-                45903
+                45869,
+                45889
             ],
             "filename": "events.js",
             "lineno": 936,
@@ -55383,8 +55383,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46130,
-                46136
+                46116,
+                46122
             ],
             "filename": "events.js",
             "lineno": 943,
@@ -55412,8 +55412,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46219,
-                46225
+                46205,
+                46211
             ],
             "filename": "events.js",
             "lineno": 946,
@@ -55441,8 +55441,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46349,
-                46371
+                46335,
+                46357
             ],
             "filename": "events.js",
             "lineno": 949,
@@ -55470,8 +55470,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46497,
-                46520
+                46483,
+                46506
             ],
             "filename": "events.js",
             "lineno": 952,
@@ -55499,8 +55499,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46602,
-                46616
+                46588,
+                46602
             ],
             "filename": "events.js",
             "lineno": 955,
@@ -55528,8 +55528,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46736,
-                46750
+                46722,
+                46736
             ],
             "filename": "events.js",
             "lineno": 959,
@@ -55557,8 +55557,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46904,
-                46909
+                46890,
+                46895
             ],
             "filename": "events.js",
             "lineno": 963,
@@ -55586,8 +55586,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47028,
-                47052
+                47014,
+                47038
             ],
             "filename": "events.js",
             "lineno": 966,
@@ -55615,8 +55615,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47146,
-                47168
+                47132,
+                47154
             ],
             "filename": "events.js",
             "lineno": 969,
@@ -55644,8 +55644,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47261,
-                47284
+                47247,
+                47270
             ],
             "filename": "events.js",
             "lineno": 972,
@@ -55673,8 +55673,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47489,
-                47509
+                47475,
+                47495
             ],
             "filename": "events.js",
             "lineno": 980,
@@ -55701,8 +55701,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47527,
-                47563
+                47513,
+                47549
             ],
             "filename": "events.js",
             "lineno": 981,
@@ -55729,8 +55729,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47638,
-                47686
+                47624,
+                47672
             ],
             "filename": "events.js",
             "lineno": 983,
@@ -55757,8 +55757,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47776,
-                47804
+                47762,
+                47790
             ],
             "filename": "events.js",
             "lineno": 985,
@@ -55786,8 +55786,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47840,
-                47846
+                47826,
+                47832
             ],
             "filename": "events.js",
             "lineno": 985,
@@ -55815,8 +55815,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48178,
-                48201
+                48164,
+                48187
             ],
             "filename": "events.js",
             "lineno": 996,
@@ -55844,8 +55844,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48261,
-                48269
+                48247,
+                48255
             ],
             "filename": "events.js",
             "lineno": 999,
@@ -55873,8 +55873,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48326,
-                48331
+                48312,
+                48317
             ],
             "filename": "events.js",
             "lineno": 1002,
@@ -55902,8 +55902,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48391,
-                48413
+                48377,
+                48399
             ],
             "filename": "events.js",
             "lineno": 1005,
@@ -55931,8 +55931,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48631,
-                48702
+                48617,
+                48688
             ],
             "filename": "events.js",
             "lineno": 1010,
@@ -55959,8 +55959,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48777,
-                48825
+                48763,
+                48811
             ],
             "filename": "events.js",
             "lineno": 1012,
@@ -55987,8 +55987,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                49327,
-                49347
+                49313,
+                49333
             ],
             "filename": "events.js",
             "lineno": 1021,
@@ -56015,8 +56015,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                49391,
-                49436
+                49377,
+                49422
             ],
             "filename": "events.js",
             "lineno": 1023,
@@ -56043,8 +56043,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                49506,
-                49711
+                49492,
+                49697
             ],
             "filename": "events.js",
             "lineno": 1025,
@@ -56072,8 +56072,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                49537,
-                49573
+                49523,
+                49559
             ],
             "filename": "events.js",
             "lineno": 1026,
@@ -56099,8 +56099,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                49599,
-                49626
+                49585,
+                49612
             ],
             "filename": "events.js",
             "lineno": 1027,
@@ -56126,8 +56126,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                49652,
-                49689
+                49638,
+                49675
             ],
             "filename": "events.js",
             "lineno": 1028,
@@ -56153,8 +56153,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                49801,
-                49904
+                49787,
+                49890
             ],
             "filename": "events.js",
             "lineno": 1031,
@@ -56178,8 +56178,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                50077,
-                50285
+                50063,
+                50271
             ],
             "filename": "events.js",
             "lineno": 1040,
@@ -56207,8 +56207,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                50150,
-                50164
+                50136,
+                50150
             ],
             "filename": "events.js",
             "lineno": 1041,
@@ -56233,8 +56233,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                50166,
-                50188
+                50152,
+                50174
             ],
             "filename": "events.js",
             "lineno": 1041,
@@ -56259,8 +56259,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                50295,
-                50509
+                50281,
+                50495
             ],
             "filename": "events.js",
             "lineno": 1046,
@@ -56288,8 +56288,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                50446,
-                50460
+                50432,
+                50446
             ],
             "filename": "events.js",
             "lineno": 1050,
@@ -56314,8 +56314,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                50462,
-                50484
+                50448,
+                50470
             ],
             "filename": "events.js",
             "lineno": 1050,
@@ -56340,8 +56340,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                50519,
-                51288
+                50505,
+                51274
             ],
             "filename": "events.js",
             "lineno": 1052,
@@ -56369,8 +56369,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                50598,
-                50612
+                50584,
+                50598
             ],
             "filename": "events.js",
             "lineno": 1053,
@@ -56395,8 +56395,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                50614,
-                50636
+                50600,
+                50622
             ],
             "filename": "events.js",
             "lineno": 1053,
@@ -56421,8 +56421,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51298,
-                52981
+                51284,
+                52967
             ],
             "filename": "events.js",
             "lineno": 1067,
@@ -56461,8 +56461,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51348,
-                51349
+                51334,
+                51335
             ],
             "filename": "events.js",
             "lineno": 1068,
@@ -56487,8 +56487,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51367,
-                51368
+                51353,
+                51354
             ],
             "filename": "events.js",
             "lineno": 1069,
@@ -56513,8 +56513,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51386,
-                51451
+                51372,
+                51437
             ],
             "filename": "events.js",
             "lineno": 1070,
@@ -56541,8 +56541,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51469,
-                51534
+                51455,
+                51520
             ],
             "filename": "events.js",
             "lineno": 1071,
@@ -56569,8 +56569,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51552,
-                51629
+                51538,
+                51615
             ],
             "filename": "events.js",
             "lineno": 1072,
@@ -56597,8 +56597,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51742,
-                51756
+                51728,
+                51742
             ],
             "filename": "events.js",
             "lineno": 1076,
@@ -56623,8 +56623,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51812,
-                51834
+                51798,
+                51820
             ],
             "filename": "events.js",
             "lineno": 1079,
@@ -56652,8 +56652,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51848,
-                51878
+                51834,
+                51864
             ],
             "filename": "events.js",
             "lineno": 1080,
@@ -56680,8 +56680,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51892,
-                51921
+                51878,
+                51907
             ],
             "filename": "events.js",
             "lineno": 1081,
@@ -56709,8 +56709,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51935,
-                51963
+                51921,
+                51949
             ],
             "filename": "events.js",
             "lineno": 1082,
@@ -56738,8 +56738,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                52336,
-                52356
+                52322,
+                52342
             ],
             "filename": "events.js",
             "lineno": 1088,
@@ -56767,8 +56767,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                52788,
-                52956
+                52774,
+                52942
             ],
             "filename": "events.js",
             "lineno": 1096,
@@ -56796,8 +56796,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                52844,
-                52864
+                52830,
+                52850
             ],
             "filename": "events.js",
             "lineno": 1097,
@@ -56825,8 +56825,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                52991,
-                55421
+                52977,
+                55407
             ],
             "filename": "events.js",
             "lineno": 1102,
@@ -56867,8 +56867,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                53062,
-                53063
+                53048,
+                53049
             ],
             "filename": "events.js",
             "lineno": 1103,
@@ -56893,8 +56893,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                53065,
-                53092
+                53051,
+                53078
             ],
             "filename": "events.js",
             "lineno": 1103,
@@ -56921,8 +56921,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                53094,
-                53104
+                53080,
+                53090
             ],
             "filename": "events.js",
             "lineno": 1103,
@@ -56949,8 +56949,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                53106,
-                53114
+                53092,
+                53100
             ],
             "filename": "events.js",
             "lineno": 1103,
@@ -56977,8 +56977,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                53128,
-                54403
+                53114,
+                54389
             ],
             "filename": "events.js",
             "lineno": 1104,
@@ -57018,8 +57018,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                53240,
-                53255
+                53226,
+                53241
             ],
             "filename": "events.js",
             "lineno": 1105,
@@ -57046,8 +57046,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                53390,
-                53530
+                53376,
+                53516
             ],
             "filename": "events.js",
             "lineno": 1107,
@@ -57075,8 +57075,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                53622,
-                53706
+                53608,
+                53692
             ],
             "filename": "events.js",
             "lineno": 1112,
@@ -57104,8 +57104,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                53802,
-                53831
+                53788,
+                53817
             ],
             "filename": "events.js",
             "lineno": 1115,
@@ -57133,8 +57133,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                53867,
-                53885
+                53853,
+                53871
             ],
             "filename": "events.js",
             "lineno": 1117,
@@ -57161,8 +57161,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                53980,
-                54019
+                53966,
+                54005
             ],
             "filename": "events.js",
             "lineno": 1119,
@@ -57189,8 +57189,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                54144,
-                54173
+                54130,
+                54159
             ],
             "filename": "events.js",
             "lineno": 1121,
@@ -57218,8 +57218,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                54309,
-                54342
+                54295,
+                54328
             ],
             "filename": "events.js",
             "lineno": 1125,
@@ -57247,8 +57247,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                54897,
-                55005
+                54883,
+                54991
             ],
             "filename": "events.js",
             "lineno": 1135,
@@ -57276,8 +57276,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                55044,
-                55075
+                55030,
+                55061
             ],
             "filename": "events.js",
             "lineno": 1137,
@@ -57305,8 +57305,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                55103,
-                55122
+                55089,
+                55108
             ],
             "filename": "events.js",
             "lineno": 1139,
@@ -57334,8 +57334,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                55190,
-                55197
+                55176,
+                55183
             ],
             "filename": "events.js",
             "lineno": 1141,
@@ -57363,8 +57363,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                55219,
-                55246
+                55205,
+                55232
             ],
             "filename": "events.js",
             "lineno": 1142,
@@ -57391,8 +57391,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                55264,
-                55337
+                55250,
+                55323
             ],
             "filename": "events.js",
             "lineno": 1143,
@@ -57419,8 +57419,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                55367,
-                55388
+                55353,
+                55374
             ],
             "filename": "events.js",
             "lineno": 1145,
@@ -57447,8 +57447,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                55431,
-                56360
+                55417,
+                56346
             ],
             "filename": "events.js",
             "lineno": 1148,
@@ -57481,8 +57481,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                55475,
-                55476
+                55461,
+                55462
             ],
             "filename": "events.js",
             "lineno": 1149,
@@ -57507,8 +57507,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                55490,
-                55764
+                55476,
+                55750
             ],
             "filename": "events.js",
             "lineno": 1150,
@@ -57541,8 +57541,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                55534,
-                55549
+                55520,
+                55535
             ],
             "filename": "events.js",
             "lineno": 1151,
@@ -57569,8 +57569,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                55777,
-                56135
+                55763,
+                56121
             ],
             "filename": "events.js",
             "lineno": 1157,
@@ -57598,8 +57598,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56370,
-                56561
+                56356,
+                56547
             ],
             "filename": "events.js",
             "lineno": 1170,
@@ -57630,8 +57630,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56509,
-                56534
+                56495,
+                56520
             ],
             "filename": "events.js",
             "lineno": 1173,
@@ -57657,8 +57657,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56571,
-                59846
+                56557,
+                59832
             ],
             "filename": "events.js",
             "lineno": 1176,
@@ -57701,8 +57701,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56642,
-                56656
+                56628,
+                56642
             ],
             "filename": "events.js",
             "lineno": 1177,
@@ -57727,8 +57727,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56752,
-                56753
+                56738,
+                56739
             ],
             "filename": "events.js",
             "lineno": 1179,
@@ -57753,8 +57753,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56771,
-                56772
+                56757,
+                56758
             ],
             "filename": "events.js",
             "lineno": 1180,
@@ -57779,8 +57779,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56790,
-                56814
+                56776,
+                56800
             ],
             "filename": "events.js",
             "lineno": 1181,
@@ -57807,8 +57807,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56832,
-                56846
+                56818,
+                56832
             ],
             "filename": "events.js",
             "lineno": 1182,
@@ -57835,8 +57835,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56864,
-                56877
+                56850,
+                56863
             ],
             "filename": "events.js",
             "lineno": 1183,
@@ -57863,8 +57863,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56895,
-                56907
+                56881,
+                56893
             ],
             "filename": "events.js",
             "lineno": 1184,
@@ -57891,8 +57891,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56925,
-                56955
+                56911,
+                56941
             ],
             "filename": "events.js",
             "lineno": 1185,
@@ -57919,8 +57919,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56973,
-                57000
+                56959,
+                56986
             ],
             "filename": "events.js",
             "lineno": 1186,
@@ -57947,8 +57947,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                57014,
-                57120
+                57000,
+                57106
             ],
             "filename": "events.js",
             "lineno": 1187,
@@ -57977,8 +57977,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                57133,
-                57315
+                57119,
+                57301
             ],
             "filename": "events.js",
             "lineno": 1190,
@@ -58010,8 +58010,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                57173,
-                57215
+                57159,
+                57201
             ],
             "filename": "events.js",
             "lineno": 1191,
@@ -58039,8 +58039,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                57328,
-                57585
+                57314,
+                57571
             ],
             "filename": "events.js",
             "lineno": 1194,
@@ -58070,8 +58070,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                57598,
-                58610
+                57584,
+                58596
             ],
             "filename": "events.js",
             "lineno": 1200,
@@ -58106,8 +58106,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                57705,
-                57737
+                57691,
+                57723
             ],
             "filename": "events.js",
             "lineno": 1202,
@@ -58134,8 +58134,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                58753,
-                58763
+                58739,
+                58749
             ],
             "filename": "events.js",
             "lineno": 1228,
@@ -58162,8 +58162,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                58793,
-                58805
+                58779,
+                58791
             ],
             "filename": "events.js",
             "lineno": 1229,
@@ -58190,8 +58190,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                58968,
-                59012
+                58954,
+                58998
             ],
             "filename": "events.js",
             "lineno": 1232,
@@ -58219,8 +58219,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                59344,
-                59422
+                59330,
+                59408
             ],
             "filename": "events.js",
             "lineno": 1240,
@@ -58248,8 +58248,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                59440,
-                59530
+                59426,
+                59516
             ],
             "filename": "events.js",
             "lineno": 1241,
@@ -69206,7 +69206,7 @@ window.reflection = [
         "___s": true
     },
     {
-        "comment": "/**\n         * Gets an array of currently registered MIME types.\n         * @memberof canvasDatagrid\n         * @name getDataTypes\n         * @method\n         * @returns array List of registered MIME types.\n         */",
+        "comment": "/**\n         * Gets an array of currently registered MIME types.\n         * @memberof canvasDatagrid\n         * @name getDataTypes\n         * @method\n         */",
         "meta": {
             "filename": "intf.js",
             "lineno": 963,
@@ -69218,11 +69218,6 @@ window.reflection = [
         "memberof": "canvasDatagrid",
         "name": "getDataTypes",
         "kind": "function",
-        "returns": [
-            {
-                "description": "array List of registered MIME types."
-            }
-        ],
         "scope": "static",
         "longname": "canvasDatagrid.getDataTypes",
         "___id": "T000002R002246",
@@ -69232,11 +69227,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41224,
-                41314
+                41167,
+                41257
             ],
             "filename": "intf.js",
-            "lineno": 970,
+            "lineno": 969,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69259,11 +69254,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41324,
-                41778
+                41267,
+                41721
             ],
             "filename": "intf.js",
-            "lineno": 973,
+            "lineno": 972,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69291,11 +69286,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41398,
-                41421
+                41341,
+                41364
             ],
             "filename": "intf.js",
-            "lineno": 975,
+            "lineno": 974,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69320,11 +69315,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41788,
-                42052
+                41731,
+                41995
             ],
             "filename": "intf.js",
-            "lineno": 983,
+            "lineno": 982,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69353,11 +69348,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42062,
-                42182
+                42005,
+                42125
             ],
             "filename": "intf.js",
-            "lineno": 988,
+            "lineno": 987,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69383,11 +69378,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42192,
-                42224
+                42135,
+                42167
             ],
             "filename": "intf.js",
-            "lineno": 991,
+            "lineno": 990,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69411,11 +69406,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42355,
-                43883
+                42298,
+                43826
             ],
             "filename": "intf.js",
-            "lineno": 994,
+            "lineno": 993,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69444,11 +69439,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42662,
-                42682
+                42605,
+                42625
             ],
             "filename": "intf.js",
-            "lineno": 1000,
+            "lineno": 999,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69472,11 +69467,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42866,
-                42908
+                42809,
+                42851
             ],
             "filename": "intf.js",
-            "lineno": 1004,
+            "lineno": 1003,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69500,11 +69495,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42984,
-                43030
+                42927,
+                42973
             ],
             "filename": "intf.js",
-            "lineno": 1007,
+            "lineno": 1006,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69528,11 +69523,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43227,
-                43251
+                43170,
+                43194
             ],
             "filename": "intf.js",
-            "lineno": 1013,
+            "lineno": 1012,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69556,11 +69551,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43325,
-                43354
+                43268,
+                43297
             ],
             "filename": "intf.js",
-            "lineno": 1015,
+            "lineno": 1014,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69584,11 +69579,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43476,
-                43506
+                43419,
+                43449
             ],
             "filename": "intf.js",
-            "lineno": 1018,
+            "lineno": 1017,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69612,11 +69607,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43496,
-                43504
+                43439,
+                43447
             ],
             "filename": "intf.js",
-            "lineno": 1018,
+            "lineno": 1017,
             "columnno": 40,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69638,11 +69633,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43785,
-                43808
+                43728,
+                43751
             ],
             "filename": "intf.js",
-            "lineno": 1023,
+            "lineno": 1022,
             "columnno": 57,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69664,11 +69659,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43948,
-                44024
+                43891,
+                43967
             ],
             "filename": "intf.js",
-            "lineno": 1029,
+            "lineno": 1028,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69690,11 +69685,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44038,
-                44789
+                43981,
+                44732
             ],
             "filename": "intf.js",
-            "lineno": 1032,
+            "lineno": 1031,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69719,11 +69714,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44138,
-                44155
+                44081,
+                44098
             ],
             "filename": "intf.js",
-            "lineno": 1034,
+            "lineno": 1033,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69747,11 +69742,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44698,
-                44713
+                44641,
+                44656
             ],
             "filename": "intf.js",
-            "lineno": 1044,
+            "lineno": 1043,
             "columnno": 55,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69773,11 +69768,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44810,
-                49468
+                44753,
+                49411
             ],
             "filename": "intf.js",
-            "lineno": 1049,
+            "lineno": 1048,
             "columnno": 8,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69815,11 +69810,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44861,
-                44872
+                44804,
+                44815
             ],
             "filename": "intf.js",
-            "lineno": 1050,
+            "lineno": 1049,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69843,11 +69838,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44890,
-                44900
+                44833,
+                44843
             ],
             "filename": "intf.js",
-            "lineno": 1051,
+            "lineno": 1050,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69871,11 +69866,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44918,
-                44931
+                44861,
+                44874
             ],
             "filename": "intf.js",
-            "lineno": 1052,
+            "lineno": 1051,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69899,11 +69894,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44949,
-                44963
+                44892,
+                44906
             ],
             "filename": "intf.js",
-            "lineno": 1053,
+            "lineno": 1052,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69927,11 +69922,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44981,
-                44997
+                44924,
+                44940
             ],
             "filename": "intf.js",
-            "lineno": 1054,
+            "lineno": 1053,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69955,11 +69950,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45015,
-                45030
+                44958,
+                44973
             ],
             "filename": "intf.js",
-            "lineno": 1055,
+            "lineno": 1054,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -69983,11 +69978,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45048,
-                45068
+                44991,
+                45011
             ],
             "filename": "intf.js",
-            "lineno": 1056,
+            "lineno": 1055,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70011,11 +70006,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45086,
-                45105
+                45029,
+                45048
             ],
             "filename": "intf.js",
-            "lineno": 1057,
+            "lineno": 1056,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70039,11 +70034,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45119,
-                45716
+                45062,
+                45659
             ],
             "filename": "intf.js",
-            "lineno": 1058,
+            "lineno": 1057,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70074,11 +70069,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45350,
-                45359
+                45293,
+                45302
             ],
             "filename": "intf.js",
-            "lineno": 1063,
+            "lineno": 1062,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70103,11 +70098,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45443,
-                45463
+                45386,
+                45406
             ],
             "filename": "intf.js",
-            "lineno": 1066,
+            "lineno": 1065,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70132,11 +70127,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45543,
-                45552
+                45486,
+                45495
             ],
             "filename": "intf.js",
-            "lineno": 1069,
+            "lineno": 1068,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70161,11 +70156,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45588,
-                45605
+                45531,
+                45548
             ],
             "filename": "intf.js",
-            "lineno": 1071,
+            "lineno": 1070,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70190,11 +70185,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45729,
-                46326
+                45672,
+                46269
             ],
             "filename": "intf.js",
-            "lineno": 1076,
+            "lineno": 1075,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70225,11 +70220,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45962,
-                45971
+                45905,
+                45914
             ],
             "filename": "intf.js",
-            "lineno": 1081,
+            "lineno": 1080,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70254,11 +70249,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46054,
-                46073
+                45997,
+                46016
             ],
             "filename": "intf.js",
-            "lineno": 1084,
+            "lineno": 1083,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70283,11 +70278,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46152,
-                46161
+                46095,
+                46104
             ],
             "filename": "intf.js",
-            "lineno": 1087,
+            "lineno": 1086,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70312,11 +70307,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46197,
-                46215
+                46140,
+                46158
             ],
             "filename": "intf.js",
-            "lineno": 1089,
+            "lineno": 1088,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70341,11 +70336,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46339,
-                46741
+                46282,
+                46684
             ],
             "filename": "intf.js",
-            "lineno": 1094,
+            "lineno": 1093,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70368,11 +70363,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46755,
-                46921
+                46698,
+                46864
             ],
             "filename": "intf.js",
-            "lineno": 1102,
+            "lineno": 1101,
             "columnno": 12,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70399,11 +70394,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47010,
-                47090
+                46953,
+                47033
             ],
             "filename": "intf.js",
-            "lineno": 1107,
+            "lineno": 1106,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70424,11 +70419,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47108,
-                47194
+                47051,
+                47137
             ],
             "filename": "intf.js",
-            "lineno": 1110,
+            "lineno": 1109,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70452,11 +70447,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47152,
-                47175
+                47095,
+                47118
             ],
             "filename": "intf.js",
-            "lineno": 1111,
+            "lineno": 1110,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70481,11 +70476,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47297,
-                47376
+                47240,
+                47319
             ],
             "filename": "intf.js",
-            "lineno": 1115,
+            "lineno": 1114,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70506,11 +70501,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47394,
-                47479
+                47337,
+                47422
             ],
             "filename": "intf.js",
-            "lineno": 1118,
+            "lineno": 1117,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70534,11 +70529,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47438,
-                47460
+                47381,
+                47403
             ],
             "filename": "intf.js",
-            "lineno": 1119,
+            "lineno": 1118,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70563,11 +70558,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47574,
-                47646
+                47517,
+                47589
             ],
             "filename": "intf.js",
-            "lineno": 1123,
+            "lineno": 1122,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70588,11 +70583,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47664,
-                47851
+                47607,
+                47794
             ],
             "filename": "intf.js",
-            "lineno": 1126,
+            "lineno": 1125,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70617,11 +70612,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47760,
-                47773
+                47703,
+                47716
             ],
             "filename": "intf.js",
-            "lineno": 1128,
+            "lineno": 1127,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70646,11 +70641,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47817,
-                47832
+                47760,
+                47775
             ],
             "filename": "intf.js",
-            "lineno": 1130,
+            "lineno": 1129,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70675,11 +70670,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47945,
-                48016
+                47888,
+                47959
             ],
             "filename": "intf.js",
-            "lineno": 1134,
+            "lineno": 1133,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70700,11 +70695,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48034,
-                48111
+                47977,
+                48054
             ],
             "filename": "intf.js",
-            "lineno": 1137,
+            "lineno": 1136,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70728,11 +70723,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48078,
-                48092
+                48021,
+                48035
             ],
             "filename": "intf.js",
-            "lineno": 1138,
+            "lineno": 1137,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70757,11 +70752,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48209,
-                48283
+                48152,
+                48226
             ],
             "filename": "intf.js",
-            "lineno": 1142,
+            "lineno": 1141,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70782,11 +70777,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48301,
-                48318
+                48244,
+                48261
             ],
             "filename": "intf.js",
-            "lineno": 1145,
+            "lineno": 1144,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70808,11 +70803,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48417,
-                48492
+                48360,
+                48435
             ],
             "filename": "intf.js",
-            "lineno": 1148,
+            "lineno": 1147,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70833,11 +70828,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48510,
-                48528
+                48453,
+                48471
             ],
             "filename": "intf.js",
-            "lineno": 1151,
+            "lineno": 1150,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70859,11 +70854,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48629,
-                48706
+                48572,
+                48649
             ],
             "filename": "intf.js",
-            "lineno": 1154,
+            "lineno": 1153,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70884,11 +70879,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48724,
-                49041
+                48667,
+                48984
             ],
             "filename": "intf.js",
-            "lineno": 1157,
+            "lineno": 1156,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70913,11 +70908,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48817,
-                48847
+                48760,
+                48790
             ],
             "filename": "intf.js",
-            "lineno": 1159,
+            "lineno": 1158,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70942,11 +70937,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48945,
-                48958
+                48888,
+                48901
             ],
             "filename": "intf.js",
-            "lineno": 1162,
+            "lineno": 1161,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -70971,11 +70966,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                49002,
-                49022
+                48945,
+                48965
             ],
             "filename": "intf.js",
-            "lineno": 1164,
+            "lineno": 1163,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71000,11 +70995,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                49141,
-                49217
+                49084,
+                49160
             ],
             "filename": "intf.js",
-            "lineno": 1168,
+            "lineno": 1167,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71025,11 +71020,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                49235,
-                49442
+                49178,
+                49385
             ],
             "filename": "intf.js",
-            "lineno": 1171,
+            "lineno": 1170,
             "columnno": 16,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71054,11 +71049,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                49329,
-                49360
+                49272,
+                49303
             ],
             "filename": "intf.js",
-            "lineno": 1173,
+            "lineno": 1172,
             "columnno": 24,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -71083,11 +71078,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                49404,
-                49423
+                49347,
+                49366
             ],
             "filename": "intf.js",
-            "lineno": 1175,
+            "lineno": 1174,
             "columnno": 20,
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
@@ -89168,8 +89163,8 @@ window.reflection = [
     "canvasDatagrid.style.md": "Setting Styles\n--------------\nAll visual elements of the canvas are dependent on the values of the style object.\nUsing the style object, you can change the dimensions and appearance of any element of the grid.\n\nThere are two types of styles, styles built into the DOM element, such as width and margin, and there\nare styles related to the drawing of the grid on the canvas, these are listed in the style section.\n\nStyles can be set during instantiation.\n\n    var grid = canvasDatagrid({\n            style: {\n                gridBackgroundColor: 'red'\n            }\n        });\n\nStyles can be set after instantiation.\n\n    grid.style.gridBackgroundColor = 'red';\n\nWhen using the web component, styles can be set as above, but also using standard CSS.\n\nWhen using standard CSS, style names are hyphenated, lower case, and prefixed with `--cdg-`.\n\n    <canvas-datagrid style=\"--cdg-grid-background-color: red;\">[{\"my\": \"data\"}]</canvas-datagrid>\n\nWhen using the web component you can also use CSS classes and selectors as you would a native HTML element.\n    \n    <style>\n        .my-grid {\n            --cdg-grid-background-color: red;\n        }\n    </style>\n\n    <canvas-datagrid class=\"my-grid\">[{\"my\": \"data\"}]</canvas-datagrid>\n\nYou can build your own styles using the <a href=\"https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html\">Style Builder</a>.\n",
     "demo.html": "<!doctype html>\n<html lang=\"en\">\n    <head>\n        <script src=\"../dist/canvas-datagrid.debug.js\"></script>\n        <script src=\"./demo.js\"></script>\n        <meta name=\"viewport\" content=\"width=device-width\">\n        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"/>\n        <style>\n            html, body {\n                height: 100%;\n                min-height: 100%;\n                margin: 0;\n                padding: 0;\n                overflow: hidden;\n            }\n            #grid {\n                height: 100%;\n                width: 100%;\n                min-height: 100%;\n            }\n        </style>\n    </head>\n    <body><div id=\"grid\"></div></body>\n</html>\n",
     "demo.js": "/*jslint browser: true*/\n/*globals canvasDatagrid: false*/\nvar data;\nfunction demo() {\n    'use strict';\n    var searchUrl = window.location.search.substring(3),\n        typeMap = {\n            'text': 'string',\n            'money': 'number',\n            'number': 'number'\n        },\n        dataSets = [\n            ['Institute of Museum and Library Services - Museum Universe Data File FY 2015 Q3', 'https://data.imls.gov/api/views/ku5e-zr2b/rows.json?accessType=DOWNLOAD'],\n            ['Main Libraries, Branches, and Bookmobiles: FY 2014 Public Libraries Survey', 'https://data.imls.gov/api/views/ucdn-7aur/rows.json?accessType=DOWNLOAD'],\n            ['NCHS - Leading Causes of Death: United States', 'https://data.cdc.gov/api/views/bi63-dtpu/rows.json?accessType=DOWNLOAD'],\n            ['State of Connecticut - SAT School Participation and Performance: 2012-2013', 'https://data.ct.gov/api/views/kbxi-4ia7/rows.json?accessType=DOWNLOAD'],\n            ['Nutrition, Physical Activity, and Obesity - Behavioral Risk Factor Surveillance System', 'https://chronicdata.cdc.gov/api/views/hn4x-zwk7/rows.json?accessType=DOWNLOAD'],\n            ['City of Los Angeles 2010 Census Populations by Zip Code', 'http://localhost/tutorials/demo.html?q=https://data.lacity.org/api/views/nxs9-385f/rows.json?accessType=DOWNLOAD'],\n            ['Youth Tobacco Survey', 'https://chronicdata.cdc.gov/api/views/4juz-x2tp/rows.json?accessType=DOWNLOAD'],\n            ['Most Popular Baby Names by Sex and Mother\\'s Ethnic Group, New York City', 'https://data.cityofnewyork.us/api/views/25th-nujf/rows.json?accessType=DOWNLOAD'],\n            ['Deaths in 122 U.S. cities - 1962-2016. 122 Cities Mortality Reporting System', 'https://data.cdc.gov/api/views/mr8w-325u/rows.json?accessType=DOWNLOAD'],\n            ['Nutrition, Physical Activity, and Obesity - National Immunization Survey (Breastfeeding)', 'https://chronicdata.cdc.gov/api/views/8hxn-cvik/rows.json?accessType=DOWNLOAD'],\n            ['Nutrition, Physical Activity, and Obesity - Women, Infant, and Child', 'https://chronicdata.cdc.gov/api/views/735e-byxc/rows.json?accessType=DOWNLOAD'],\n            ['NYC Social Media Usage', 'https://data.cityofnewyork.us/api/views/5b3a-rs48/rows.json?accessType=DOWNLOAD'],\n            ['New York City Leading Causes of Death', 'https://data.cityofnewyork.us/api/views/jb7j-dtam/rows.json?accessType=DOWNLOAD'],\n            ['New York State - Index, Violent, Property, and Firearm Rates By County: Beginning 1990', 'https://data.ny.gov/api/views/34dd-6g2j/rows.json?accessType=DOWNLOAD'],\n            ['U.S. Chronic Disease Indicators (CDI) (250mb+)', 'https://chronicdata.cdc.gov/api/views/g4ie-h725/rows.json?accessType=DOWNLOAD'],\n        ];\n    function isNoiseData(name) {\n        // get rid of fields that we don't care about\n        return ['sid', 'id', 'position', 'created_at',\n                    'created_meta', 'updated_at',\n                    'updated_meta', 'meta', 'GeoLocation',\n                    'LOCATION', 'Location 1', 'Location 2',\n                    'Location 3', 'Location 4', 'WEBURL'].indexOf(name) !== -1;\n    }\n    function parseOpenData(openData) {\n        var data, schema = [];\n        openData.meta.view.columns.forEach(function (column) {\n            if (isNoiseData(column.name)) {\n                column.hidden = true;\n            }\n            column.type = typeMap[column.dataTypeName] || 'string';\n            if (/full or part-time/i.test(column.name)) {\n                column.enum = [['F', 'F'], ['P', 'P']];\n            }\n            if (/salary or hourly/i.test(column.name)) {\n                column.enum = [['Salary', 'Salary'], ['Hourly', 'Hourly']];\n            }\n            schema.push(column);\n        });\n        data = openData.data.map(function (row) {\n            var r = {};\n            schema.forEach(function (column, index) {\n                r[column.name] = row[index];\n            });\n            return r;\n        });\n        return {\n            data: data,\n            schema: schema\n        };\n    }\n    function initGrid() {\n        var grid = canvasDatagrid({\n                parentNode: document.getElementById('grid'),\n                borderDragBehavior: 'move',\n                allowMovingSelection: true,\n                columnHeaderClickBehavior: 'select',\n                allowFreezingRows: true,\n                allowFreezingColumns: true,\n                allowRowReordering: true,\n                tree: false,\n                debug: false,\n                showPerformance: false\n            });\n        grid.style.height = '100%';\n        grid.style.width = '100%';\n        function loadDataSet(url) {\n            var xhr = new XMLHttpRequest();\n            xhr.addEventListener('progress', function (e) {\n                grid.data = [{ status: 'Loading data: ' + e.loaded + ' of ' + (e.total || 'unknown') + ' bytes...'}];\n            });\n            xhr.addEventListener('load', function (e) {\n                grid.data = [{ status: 'Loading data ' + e.loaded + '...'}];\n                var openData = parseOpenData(JSON.parse(this.responseText));\n                grid.schema = openData.schema;\n                grid.data = openData.data;\n            });\n            xhr.open('GET', url);\n            xhr.send();\n        }\n        grid.addEventListener('contextmenu', function (e) {\n            e.items.push({\n                title: 'More data sets from Data.gov',\n                items: dataSets.map(function (u) {\n                    return {\n                        title: u[0],\n                        click: function () {\n                            loadDataSet(u[1]);\n                        }\n                    };\n                })\n            });\n            e.items.push({\n                title: 'View page source',\n                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/demo.html', 'src'); }\n            });\n            e.items.push({\n                title: 'View JS module',\n                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/demo.js', 'src'); }\n            });\n            e.items.push({\n                title: 'Go to main canvas-datagrid GitHub page',\n                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid', 'src'); }\n            });\n            e.items.push({\n                title: 'Toggle debugging info',\n                click: function () { grid.attributes.debug = !grid.attributes.debug; }\n            });\n            e.items.push({\n                title: 'Toggle performance info',\n                click: function () { grid.attributes.showPerformance = !grid.attributes.showPerformance; }\n            });\n            e.items.push({\n                title: 'Get other JSON URLs from Data.gov<br>&nbsp;&nbsp;&nbsp;&nbsp;then set to this page\\'s q querystring parameter',\n                click: function () { window.open('https://catalog.data.gov/dataset?res_format=JSON&_res_format_limit=0&_bureauCode_limit=0', 'datagov'); }\n            });\n        });\n        if (searchUrl.length > 3) {\n            // work encoded or not, for lazy people who can't be bothered encoding stuff\n            loadDataSet(/%3A/.test(searchUrl) ? decodeURIComponent(searchUrl) : searchUrl);\n        } else {\n            loadDataSet('https://data.cityofchicago.org/api/views/xzkq-xp2w/rows.json?accessType=DOWNLOAD');\n            // inner join\n            // https://data.cityofchicago.org/api/views/pasx-mnuv/rows.json?accessType=DOWNLOAD\n        }\n    }\n    initGrid();\n}\nif (document.addEventListener) {\n    document.addEventListener('DOMContentLoaded', demo);\n} else {\n    setTimeout(function () {\n        'use strict';\n        demo();\n    }, 500);\n}\n",
-    "developer.html": "<!doctype html>\n<html>\n<head>\n    <!-- this file is for developing in a sandbox on a local machine -->\n    <script src=\"./developer.js\"></script>\n    <script>\n        var s = document.createElement('script');\n        s.src = \"../dist/canvas-datagrid.debug.js?cacheBust=\" + +new Date();\n        s.onload = g;\n        document.head.appendChild(s);\n    </script>\n    <meta name=\"viewport\" content=\"width=device-width\">\n    <style>\n        html, body {\n            height: 100%;\n            min-height: 100%;\n            margin: 0;\n            padding: 0;\n            overflow: auto;\n/*            --cdg-height: 100%;\n            --cdg-width: 100%;*/\n        }\n       /* .n {\n            height: 300px;\n            width: 300px;\n            position: absolute;\n            top: 900px;\n            left: 100px;\n            overflow: scroll;\n        }*/\n        .some {\n\n        }\n        .grid {\n\n            /*--cdg-grid-background-color: dodgerblue;*/\n        }\n    </style>\n</head>\n<body>\n<!-- <div class=\"grid\" id=\"grid\"></div> -->\n    <!-- <div class=\"n\">\n        <div class=\"grid\" id=\"grid\"></div>\n    </div> -->\n<!--     <script>debugger;</script> -->\n    <canvas-datagrid class=\"grid\" type=\"application/json+x-canvas-datagrid;2dArray\"><script>[[1, 2, 3, 4], [1, 2, 3, 4]]</script></canvas-datagrid>\n    <canvas-datagrid class=\"grid\"><script>[\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 3, \"b\": 4}\n    ]</script></canvas-datagrid>\n    <div class=\"some\"></div>\n</body>\n</html>",
-    "developer.js": "/*jslint browser: true*/\n/*globals canvasDatagrid: false*/\n/* this file is for developing in a sandbox on a local machine */\nfunction g() {\n    'use strict';\n    // var grid = document.createElement('canvas-datagrid');\n    // document.body.appendChild(grid);\n    // localStorage.setItem('canvasDataGrid-blah', '{\"sizes\":{\"rows\":{},\"columns\":{\"cornerCell\":67.6953125,\"localUrl\":124.44444444599999}},\"orders\":{\"rows\":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418,419,420,421,422,423,424,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440,441,442,443,444,445,446,447,448,449,450,451,452,453,454,455,456,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,480,481,482,483,484,485,486,487,488,489,490,491,492,493,494,495,496,497,498,499,500,501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,572,573,574,575,576,577,578,579,580,581,582,583,584,585,586,587,588,589,590,591,592,593,594,595,596,597,598,599,600,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633,634,635,636,637,638,639,640,641,642,643,644,645,646,647,648,649,650,651,652,653,654,655,656,657,658,659,660,661,662,663,664,665,666,667,668,669,670,671,672,673,674,675,676,677,678,679,680,681,682,683,684,685,686,687,688,689,690,691,692,693,694,695,696,697,698,699,700,701,702,703,704,705,706,707,708,709,710,711,712,713,714,715,716,717,718,719,720,721,722],\"columns\":[1,0,2,4,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]},\"orderBy\":\"_canvasDataGridUniqueId\",\"orderDirection\":\"asc\"}');\n    // function plotSparklineChart(cell, ctx) {\n    //     if (!cell.value) { return; }\n    //     var g,\n    //         gb,\n    //         x = 0,\n    //         m = Math.max.apply(null, cell.value),\n    //         a = cell.value.reduce(function (ac, c) { return ac + c; }, 0) / cell.value.length,\n    //         i = Math.min.apply(null, cell.value),\n    //         w = cell.width / cell.value.length,\n    //         r = cell.height / (m - (m * 0.1));\n    //     function line(n, c) {\n    //         ctx.beginPath();\n    //         ctx.lineWidth = 1;\n    //         ctx.strokeStyle = c;\n    //         ctx.moveTo(cell.x, cell.y + (n * r));\n    //         ctx.lineTo(cell.x + cell.width, cell.y + (n * r));\n    //         ctx.stroke();\n    //     }\n    //     ctx.save();\n    //     gb = ctx.createLinearGradient((cell.x + cell.width) / 2, cell.y, (cell.x + cell.width) / 2, cell.y + cell.height);\n    //     gb.addColorStop(0, a > 0.5 ? '#0C4B73' : '#A1680F');\n    //     gb.addColorStop(1, (cell.selected || cell.active) ? '#B3C3CC' : '#041724');\n    //     ctx.fillStyle = gb;\n    //     ctx.fillRect(cell.x, cell.y, cell.width, cell.height);\n    //     ctx.beginPath();\n    //     ctx.moveTo(cell.x, cell.y + cell.height);\n    //     cell.value.forEach(function (d) {\n    //         var cx = cell.x + w + x,\n    //             cy = cell.y + (d * r);\n    //         ctx.lineTo(cx, cy);\n    //         if (d === i || d === m) {\n    //             ctx.fillStyle = d === m ? 'green' : 'red';\n    //             ctx.fillRect(cx - 2, cy - 2, 5, 5);\n    //         }\n    //         x += w;\n    //     });\n    //     ctx.lineTo(cell.x + cell.width, cell.y + cell.height);\n    //     g = ctx.createLinearGradient((cell.x + cell.width) / 2, cell.y, (cell.x + cell.width) / 2, cell.y + cell.height);\n    //     g.addColorStop(0, '#0F5C8C');\n    //     g.addColorStop(1, '#499ABA');\n    //     ctx.fillStyle = g;\n    //     ctx.fill();\n    //     ctx.strokeStyle = '#0B466B';\n    //     ctx.stroke();\n    //     line(a, a > 0.5 ? 'green' : 'red');\n    //     cell.parentGrid.data[cell.rowIndex].col1 = 'Avg:' + a.toFixed(2) + '\\nMin: ' + i.toFixed(2) + '\\nMax: ' + m.toFixed(2);\n    //     ctx.restore();\n    // }\n    // function createRandomSeq(size, r) {\n    //     r = r || [];\n    //     while (r.length < size) {\n    //         r.push(Math.random());\n    //     }\n    //     return r;\n    // }\n    // // create a new grid\n    // var grid = canvasDatagrid({\n    //     parentNode: document.body,\n    //     schema: [\n    //         {name: 'col1', width: 220},\n    //         {name: 'col2', width: 150},\n    //         {name: 'col3', width: 300}\n    //     ]\n    // });\n    // grid.addEventListener('beforerendercell', function (e) {\n    //     if (/col2|col3/.test(e.header.name) && !e.cell.isHeader) {\n    //         e.cell.isGrid = false;\n    //     }\n    // });\n    // grid.addEventListener('rendertext', function (e) {\n    //     if (/col2|col3/.test(e.header.name) && !e.cell.isHeader) {\n    //         e.preventDefault();\n    //     }\n    //     if (!e.cell.isHeader && e.cell.value && e.cell.value.substring) {\n    //         e.ctx.fillStyle = parseFloat(e.cell.value.substring(4), 10) > 0.5 ? '#A1230F' : '#499A3D';\n    //     }\n    // });\n    // grid.addEventListener('afterrendercell', function (e) {\n    //     if (/col2|col3/.test(e.header.name) && !e.cell.isHeader) {\n    //         plotSparklineChart(e.cell, e.ctx);\n    //         e.preventDefault();\n    //     }\n    // });\n    // grid.data = function () {\n    //     var d = [], x = 0;\n    //     while (x < 2000) {\n    //         d.push({col1: '', col2: createRandomSeq(80), col3: createRandomSeq(100)});\n    //         x += 1;\n    //     }\n    //     return d;\n    // };\n    // function getData(fill) {\n    //     var a, x = grid.scrollIndexRect.top;\n    //     while (x < grid.scrollIndexRect.bottom + 2) {\n    //         if (fill || grid.isCellVisible(1, x)) {\n    //             a = grid.data[x].col2;\n    //             a.shift();\n    //             a.push(Math.random());\n    //             a = grid.data[x].col3;\n    //             a.shift();\n    //             a.push(Math.random());\n    //         }\n    //         x += 1;\n    //     }\n    //     grid.draw();\n    //     pollData();\n    // }\n    // function pollData() {\n    //     setTimeout(getData, 1000);\n    // }\n    // getData(true);\n\n\n\n\n\n    // var grid = canvasDatagrid({parentNode: document.getElementById('grid')});\n    // grid.attributes.debug = true;\n    // grid.data = dat;\n    // function dat() {\n    //     var x,\n    //         data = [],\n    //         d,\n    //         i,\n    //         c,\n    //         r = 'Elend, eam, animal omittam an, has in, explicari principes. Elit, causae eleifend mea cu. No sed adipisci accusata, ei mea everti melius periculis. Ei quot audire pericula mea, qui ubique offendit no. Sint mazim mandamus duo ei. Sumo maiestatis id has, at animal reprehendunt definitionem cum, mei ne adhuc theophrastus.';\n    //     c = r.split(' ').map(function (i) { return i.trim(); });\n    //     r = r.split(',').map(function (i) { return i.trim(); });\n    //     for (x = 0; x < 10000; x += 1) {\n    //         d = {};\n    //         for (i = 0; i < r.length; i += 1) {\n    //             d[r[i]] = c[Math.floor(Math.random() * 1000) % (c.length - 1)];\n    //         }\n    //         data.push(d);\n    //     }\n    //     return data;\n    // }\n    // grid.addEventListener('expandtree', function (e) {\n    //     e.treeGrid.data = dat();\n    // });\n    // // // add the data to the grid\n    // grid.data = dat();\n    // grid.addEventListener('expandtree', function (e) {\n    //     e.treeGrid.data = [{a: 'b', c: 'd', e: 'f', g: 'h'}];\n    // });\n    // grid.data = [{a: 'b', c: 'd', e: 'f', g: 'h'}];\n    // grid.data = [\n    //     {a: 'a', b: [{c: 'd'}]},\n    //     {a: 'a', b: [{c: [\n    //         {a: 'a', b: [{c: 'd'}]},\n    //         {a: 'a', b: [{c: 'd'}]},\n    //     ]}]},\n    // ];\n    // grid.data = [\n    //     {'a': 0, 'b': 1, 'c': 2},\n    //     {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},\n    //     {'a': 7, 'b': 8, 'c': 9}\n    // ];\n    // grid.addEventListener('expandtree', function (e) {\n    //     e.treeGrid.data = [\n    //         {'a': 0, 'b': 1, 'c': 2},\n    //         {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},\n    //         {'a': 7, 'b': 8, 'c': 9}\n    //     ];\n    // });\n    //grid.data = [null, \"32.84057112200048\", \"-86.63186076199969\", null, false];\n    // create a spreadsheet\n    // var grid = canvasDatagrid({\n    //         // name: 'blah',\n    //         // borderDragBehavior: 'move',\n    //         // showPaste: true,\n    //         parentNode: document.body,\n    //         // allowRowResizeFromCell: true,\n    //         // // autoGenerateSchema: true,\n    //         // allowColumnResizeFromCell: true,\n    //         // allowRowReordering: false,\n    //         // scrollPointerLock: false,\n    //         // showRowNumbers: true,\n    //         // showColumnHeaders: true,\n    //         // showRowHeaders: true,\n    //         // tree: true,\n    //         // snapToRow: false,\n    //         // debug: false,\n    //         // allowFreezingRows: false,\n    //         // allowFreezingColumns: false\n    //     }),\n    //     x,\n    //     y,\n    //     d = [],\n    //     n;\n    // grid.addEventListener('expandtree', function (e) {\n    //     e.treeGrid.data = [\n    //         {'a': 0, 'b': 1, 'c': 2},\n    //         {'a': 4, 'b': {'a': 0, 'b': 1, 'c': 2}, 'c': 6},\n    //         {'a': 7, 'b': 8, 'c': 9}\n    //     ];\n    // });\n    // function colName(n) {\n    //     var ordA = 'a'.charCodeAt(0),\n    //         ordZ = 'z'.charCodeAt(0),\n    //         len = ordZ - ordA + 1,\n    //         s = '';\n    //     while (n >= 0) {\n    //         s = String.fromCharCode(n % len + ordA) + s;\n    //         n = Math.floor(n / len) - 1;\n    //     }\n    //     return s;\n    // }\n    // for (x = 0; x < 10; x += 1) {\n    //     d[x] = {a: 'a' + x, b: 'b' + x, c: 'c' + x, d: {a: '1234', b: 'nnnnn'}};\n    // }\n    // grid.attributes.columnHeaderClickBehavior = 'select';\n    // grid.style.columnHeaderCellHorizontalAlignment = 'center';\n    // grid.style.borderCollapse = 'collapse';\n    // // grid.className = 'grid';\n    // grid.style.width = '100%';\n    // // grid.style.width = 'auto';\n    // grid.style.height = '100%';\n    // grid.style.height = 'auto';\n    //grid.style.cellHeight = 259;\n    \n    // grid.formatters.widget = function (e) {\n    //     return e.cell.value.a + ' ' + e.cell.value.b;\n    // };\n    // grid.schema = [\n    //     {name: 'a'},\n    //     {name: 'b'},\n    //     {name: 'c'},\n    //     {name: 'd', type: 'widget'}\n    // ];\n    // grid.addEventListener('beforerendercellgrid', function (e) {\n    //     e.cell.isGrid = false;\n    //     e.ctx.fillRect(e.cell.x, e.cell.y, e.cell.width, e.cell.height);\n    //     e.ctx.strokeRect(e.cell.x, e.cell.y, e.cell.width, e.cell.height);\n    //     e.preventDefault();\n    // });\n    // grid.data = [{a: 'a', b: 'b', c: 'c', d: {a: '1234', b: 'nnnnn'}}];\n    //grid.schema[0].width = 1000;\n    // grid.style.gridBackgroundColor = 'red';\n    //grid.style.scrollBarCornerBackgroundColor = 'blue';\n    // grid.style.columnHeaderCellHeight = 45;\n    // var grid = canvasDatagrid({\n    //     parentNode: document.getElementById('grid'),\n    //     data: [\n    //         {col1: 'foo', col2: 0, col3: 'a'},\n    //         {col1: 'bar', col2: 1, col3: 'b'},\n    //         {col1: 'baz', col2: 2, col3: 'c'}\n    //     ]\n    // });\n    // grid.addEventListener('contextmenu', function (e) {\n    //     e.items.push({\n    //         title: 'Top level item',\n    //         items: [\n    //             {\n    //                 title: 'Child item #1',\n    //                 click: function (ev) {\n    //                     grid.data[0].col1 = e.cell.value;\n    //                     grid.draw();\n    //                 }\n    //             },\n    //             {\n    //                 title: 'Child item #2',\n    //                 click: function (ev) {\n    //                     grid.data[0].col1 = e.cell.value;\n    //                     grid.draw();\n    //                 }\n    //             }\n    //         ]\n    //     });\n    //     e.items.push({\n    //         title: 'You have '\n    //             + grid.selectedRows.filter(function (row) { return !!row; }).length\n    //             + ' rows selected'\n    //     });\n    // });\n\n\n    // function smallData() {\n    //     return [\n    //         {col1: 'foo', col2: 0, col3: 'a'},\n    //         {col1: 'bar', col2: 1, col3: 'b'},\n    //         {col1: 'baz', col2: 2, col3: 'c'}\n    //     ];\n    // }\n    // var grid = canvasDatagrid({\n    //     parentNode:  document.getElementById('grid'),\n    //     data: smallData(),\n    //     tree: true\n    // });\n\n\n\n    // var grid = canvasDatagrid({\n    //         parentNode:  document.body\n    //     }),\n    //     dataCache = [],\n    //     x;\n    // grid.style.height = '100%';\n    // grid.style.width = '100%';\n    // grid.schema = [\n    //     {name: 'Lorem'},\n    //     {name: 'Ipsum'},\n    //     {name: 'Dolar'},\n    //     {name: 'Set'}\n    // ];\n    // dataCache.length = 400000;\n    // for (x = 0; x < dataCache.length; x += 1) {\n    //     // create empty \"loading...\" rows\n    //     dataCache[x] = {\n    //         Lorem: x,\n    //         Ipsum: x * (x / 0.5),\n    //         Dolar: x * 0.5,\n    //         Set: x * x\n    //     };\n    // }\n    // grid.data = dataCache;\n    // debugger;\n    // var datagridOpts = {\n    //     editable: false,\n    //     selectionMode: 'row',\n    //     autoResizeColumns: true\n    // };\n    // var grid = canvasDatagrid(datagridOpts);\n    // grid.data = new Array(10).fill([]);\n\n    // var grid = canvasDatagrid({\n    //         borderDragBehavior: 'move',\n    //         showPaste: true,\n    //         parentNode: document.body,\n    //         allowRowResizeFromCell: true,\n    //         // autoGenerateSchema: true,\n    //         // allowColumnResizeFromCell: true,\n    //         showRowNumbers: true,\n    //         showColumnHeaders: true,\n    //         showRowHeaders: true,\n    //         // tree: true,\n    //         snapToRow: false,\n    //         debug: false,\n    //         // allowFreezingRows: true,\n    //         // allowFreezingColumns: true\n    //     }),\n    //     data = [];\n    // grid.style['active-cell-background-color'] = 'blue';\n    // //grid.style.activeCellBackgroundColor = 'blue';\n    // data.length = 1000;\n    // //grid.schema = [{name: 'A'}, {name: 'B'}, {name: 'C'}, {name: 'D'}];\n    // grid.style.cellHoverBackgroundColor = 'green';\n    // grid.style.width = '100%';\n    // grid.style.height = '100%';\n    // grid.data = data;\n\n    // var grid2 = canvasDatagrid({\n    //     parentNode: document.body\n    // });\n    // grid2.data = [{a: 'b', b: 'b'}, {a: 'a', b: 'c'}];\n    var grid = canvasDatagrid({\n        parentNode: document.body\n    });\n    grid.data =     [\n        ['row 1 column 1', 'row 1 column 2', 'row 1 column 3'],\n        ['row 2 column 1', 'row 2 column 2', 'row 2 column 3']\n    ];\n    debugger;\n    console.log(grid.style.name);\n    grid.style.name = 'blah';\n\n}",
+    "developer.html": "<!doctype html>\n<html>\n<head>\n    <!-- this file is for developing in a sandbox on a local machine -->\n    <script src=\"./developer.js\"></script>\n    <script>\n        var s = document.createElement('script');\n        s.src = \"../dist/canvas-datagrid.debug.js?cacheBust=\" + +new Date();\n        s.onload = g;\n        document.head.appendChild(s);\n    </script>\n    <meta name=\"viewport\" content=\"width=device-width\">\n    <style>\n        html, body {\n            height: 100%;\n            min-height: 100%;\n            margin: 0;\n            padding: 0;\n            overflow: auto;\n/*            --cdg-height: 100%;\n            --cdg-width: 100%;*/\n        }\n       /* .n {\n            height: 300px;\n            width: 300px;\n            position: absolute;\n            top: 900px;\n            left: 100px;\n            overflow: scroll;\n        }*/\n        .some {\n\n        }\n        .grid {\n\n            /*--cdg-grid-background-color: dodgerblue;*/\n        }\n    </style>\n</head>\n<body>\n<!-- <div class=\"grid\" id=\"grid\"></div> -->\n    <!-- <div class=\"n\">\n        <div class=\"grid\" id=\"grid\"></div>\n    </div> -->\n<!--     <script>debugger;</script> -->\n<!--     <canvas-datagrid class=\"grid\" style=\"height: 20%;\" selectionMode=\"row\"><script>[[1, 2, 3, 4], [1, 2, 3, 4]]</script></canvas-datagrid>\n    <canvas-datagrid class=\"grid\" style=\"height: 20%;\"><script>[\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 1, \"b\": 2},\n        {\"e\": 3, \"b\": 4}\n    ]</script></canvas-datagrid> -->\n</body>\n</html>",
+    "developer.js": "/*jslint browser: true*/\n/*globals canvasDatagrid: false*/\n/* this file is for developing in a sandbox on a local machine */\nfunction g() {\n    'use strict';\n    var x,\n        y,\n        data = [],\n        grid = canvasDatagrid({\n            parentNode: document.body\n        });\n    grid.style.height = '100%';\n    grid.style.width = '100%';\n    for (x = 0; x < 1000; x += 1) {\n        data[x] = {};\n        for (y = 0; y < 6; y += 1) {\n            data[x][String.fromCharCode(65 + y)] = '';\n        }\n    }\n    grid.data = data;\n}",
     "index.html": "<!doctype html>\n<html>\n<head>\n    <title>API Documentation - Canvas Datagrid</title>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js\"></script>\n    <script src=\"../dist/canvas-datagrid.debug.js\"></script>\n    <script src=\"../docs/js/reflection.js\"></script>\n    <script src=\"../docs/js/marked.js\"></script>\n    <script src=\"./js/main.js\"></script>\n    <meta name=\"viewport\" content=\"width=device-width\">\n    <link rel=\"stylesheet\" href=\"./css/main.css\">\n</head>\n<body></body>\n</html>\n",
     "largeArraysDemo.html": "<!doctype html>\n<html>\n<head>\n    <!-- this file is for developing in a sandbox on a local machine -->\n    <script src=\"./largeArraysDemo.js\"></script>\n    <style>\n        html, body {\n            min-height: 100%;\n            height: 100%;\n            margin: 0;\n        }\n    </style>\n    <script>\n        var s = document.createElement('script');\n        s.src = \"../dist/canvas-datagrid.debug.js?cacheBust=\" + +new Date();\n        s.onload = g;\n        document.head.appendChild(s);\n    </script>\n    <meta name=\"viewport\" content=\"width=device-width\">\n</head>\n<body>\n</body>\n</html>",
     "largeArraysDemo.js": "/*jslint browser: true*/\n/*globals canvasDatagrid: false*/\nfunction g() {\n    'use strict';\n    var x,\n        grid = canvasDatagrid(),\n        data = [],\n        schema = [];\n    data.length = Math.pow(10, 7);\n    /// create columns A - Z\n    for (x = 0; x < 26; x += 1) {\n        schema.push({\n            name: String.fromCharCode(65 + x)\n        });\n    }\n    // constrain the height/width or we'd get a really large canvas element\n    document.body.appendChild(grid);\n    grid.style.height = '100%';\n    grid.style.width = '100%';\n    grid.schema = schema;\n    grid.data = data;\n}",
