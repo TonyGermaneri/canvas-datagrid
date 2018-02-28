@@ -2175,8 +2175,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (self.attributes.showNewRow) {
                 dataHeight += ch + cellBorder;
             }
-            // accounts for the offset of the headers if any
-            dataHeight += columnHeaderCellHeight;
             setCanvasSize();
             if (self.isChildGrid) {
                 self.width = self.parentNode.offsetWidth;
@@ -2206,6 +2204,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 dataHeight += sbw;
                 setCanvasSize();
                 self.scrollBox.horizontalBarVisible = dataWidth > self.scrollBox.width;
+                self.scrollBox.verticalBarVisible = dataHeight > self.scrollBox.height;
             }
             if (self.scrollBox.verticalBarVisible && !self.isChildGrid) {
                 if (self.style.width === 'auto') {
@@ -2215,13 +2214,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 dataWidth += sbw;
                 setCanvasSize();
                 self.scrollBox.verticalBarVisible = dataHeight > self.scrollBox.height;
+                self.scrollBox.horizontalBarVisible = dataWidth > self.scrollBox.width;
             }
             // set again after bar visibility checks
             self.scrollBox.width = self.width - rowHeaderCellWidth - cellBorder - (self.scrollBox.verticalBarVisible ? sbw : 0);
-            self.scrollBox.height = self.height - columnHeaderCellHeight - columnHeaderCellBorder - (self.scrollBox.horizontalBarVisible ? sbw : 0);
+            self.scrollBox.height = self.height - columnHeaderCellHeight - columnHeaderCellBorder;
             self.scrollBox.scrollWidth = dataWidth - self.scrollBox.width;
             if (!onlyResizeX) {
-                self.scrollBox.scrollHeight = dataHeight - self.scrollBox.height - columnHeaderCellHeight;
+                self.scrollBox.scrollHeight = dataHeight - self.scrollBox.height;
             }
             self.scrollBox.widthBoxRatio = self.scrollBox.width / dataWidth;
             self.scrollBox.scrollBoxWidth = self.scrollBox.width
@@ -5637,7 +5637,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.endEdit();
             }
             var cell = self.getVisibleCellByIndex(x, y),
-                s = self.getVisibleSchema(),
+                s = self.getSchema(),
+                adjacentCells,
                 enumItems,
                 enu,
                 option,
@@ -5648,6 +5649,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (self.dispatchEvent('beforebeginedit', {cell: cell})) { return false; }
             self.scrollIntoView(x, y);
             self.setActiveCell(x, y);
+            adjacentCells = self.getAdjacentCells();
             if (enu) {
                 self.input = document.createElement('select');
             } else {
@@ -5723,16 +5725,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         return;
                     }
                     if (e.shiftKey) {
-                        nx -= 1;
+                        nx = adjacentCells.left;
                     } else {
-                        nx += 1;
+                        nx = adjacentCells.right;
                     }
-                    if (nx < 0) {
-                        nx = s.length - 1;
+                    if (adjacentCells.left === x && e.shiftKey) {
+                        nx = adjacentCells.last;
                         ny -= 1;
                     }
-                    if (nx > s.length - 1) {
-                        nx = 0;
+                    if (adjacentCells.right === x && !e.shiftKey) {
+                        nx = adjacentCells.first;
                         ny += 1;
                     }
                     if (ny < 0) {
@@ -5741,6 +5743,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     if (ny > self.data.length - 1) {
                         ny = 0;
                     }
+                    console.log('nx', nx, 'ny', ny);
                     self.scrollIntoView(nx, ny);
                     self.beginEditAt(nx, ny);
                 }
