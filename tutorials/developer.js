@@ -7,7 +7,8 @@ function g() {
         y,
         data = [],
         grid = canvasDatagrid({
-            parentNode: document.body
+            parentNode: document.body,
+            debug: true
         });
     grid.style.height = '100%';
     grid.style.width = '100%';

@@ -1467,6 +1467,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             };
                             columnHeaderCell = {'columnHeaderCell': header.title || header.name};
                             x += drawCell(columnHeaderCell, -1, -1)(d, i, o);
+                            if (self.attributes.debug) {
+                                self.ctx.font = '14px sans-serif';
+                                self.ctx.fillStyle = 'rgba(37, 254, 21, 1)';
+                                fillText('Actual: ' + i + ' Ordered: ' + o, x - 175, 17);
+                            }
                             if (x > self.width + self.scrollBox.scrollLeft) {
                                 break;
                             }
@@ -1735,10 +1740,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     strokeRect(b.x, b.y, b.width, b.height);
                     self.ctx.lineWidth = self.style.reorderMarkerIndexBorderWidth;
                     self.ctx.strokeStyle = self.style.reorderMarkerIndexBorderColor;
-                    if (self.currentCell.columnIndex !== self.reorderObject.columnIndex
-                            && self.currentCell.columnIndex > -1
-                            && self.currentCell.columnIndex < s.length) {
-                        addBorderLine(m, self.reorderTarget.sortColumnIndex > self.reorderObject.sortColumnIndex ? 'r' : 'l');
+                    if (self.currentCell.sortColumnIndex !== self.reorderObject.sortColumnIndex
+                            && self.currentCell.sortColumnIndex > -1
+                            && self.currentCell.sortColumnIndex < s.length) {
+                        addBorderLine(m, self.reorderTarget.columnIndex > self.reorderObject.columnIndex ? 'r' : 'l');
                     }
                 }
             }
@@ -1960,12 +1965,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     d.type = self.currentCell.type;
                 }
                 self.ctx.textAlign = 'right';
-                self.ctx.fillStyle = 'rgba(0, 0, 0, .60)';
+                self.ctx.fillStyle = 'rgba(0, 0, 0, .40)';
                 fillRect(0, 0, self.width, self.height);
                 Object.keys(d).forEach(function (key, index) {
                     var m = key + ': ' + d[key],
                         lh = 14;
-                    self.ctx.fillStyle = 'rgba(37, 254, 21, 1)';
+                    self.ctx.fillStyle = 'rgba(37, 254, 21, .90)';
                     fillText(m, w - 20, (self.attributes.showPerformance ? 140 : 24) + (index * lh));
                 });
                 self.ctx.restore();
@@ -2684,14 +2689,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 },
                 i = {
                     'row-reorder': 'rowIndex',
-                    'column-reorder': 'columnIndex'
+                    'column-reorder': 'sortColumnIndex'
                 }[self.dragMode];
             document.body.removeEventListener('mousemove', self.dragReorder, false);
             document.body.removeEventListener('mouseup', self.stopDragReorder, false);
             if (self.reorderObject
                     && self.reorderTarget
-                    && ((self.dragMode === 'column-reorder' && self.reorderTarget.columnIndex > -1
-                        && self.reorderTarget.columnIndex < self.getVisibleSchema().length)
+                    && ((self.dragMode === 'column-reorder' && self.reorderTarget.sortColumnIndex > -1
+                        && self.reorderTarget.sortColumnIndex < self.getSchema().length)
                     || (self.dragMode === 'row-reorder' && self.reorderTarget.rowIndex > -1
                         && self.reorderTarget.rowIndex < self.data.length))
                     && self.reorderObject[i] !== self.reorderTarget[i]
@@ -3191,7 +3196,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 textRows = [],
                 headers = [],
                 sData = self.getSelectedData(),
-                s = self.getVisibleSchema();
+                s = self.getSchema();
             function htmlSafe(v) {
                 return v.replace(/</g, '&lt;').replace(/>/g, '&gt;');
             }
@@ -3199,24 +3204,33 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 v = v === null || v === undefined ? '' : v;
                 return '<td>' + (typeof v === 'string' ? htmlSafe(v) : v) + '</td>';
             }
-            function addTableHeaders() {
-                if (!headers.length) { return ''; }
-                return '<tr>' + headers.map(function (name) {
-                    return '<th>' + htmlSafe(name) + '</th>';
-                }).join('') + '</tr>';
+            function addHeaders(useHtml) {
+                if (!s.length) { return ''; }
+                var h = [];
+                if (useHtml) {
+                    h.push('<tr>');
+                }
+                s.forEach(function (column, columnIndex) {
+                    if (!column.hidden) {
+                        // intentional redefinition of column
+                        column = s[self.orders.columns[columnIndex]];
+                        var hVal = (column.name || column.title) || '';
+                        if (useHtml) {
+                            h.push('<th>' + htmlSafe(hVal) + '</th>');
+                        } else {
+                            h.push('"' + hVal.replace(/"/g, '""') + '"');
+                        }
+                    }
+                });
+                h.push(useHtml ? '</tr>' : '\n');
+                return h.join(useHtml ? '' : ',');
             }
             function addCellValue(val, trRow, textRow, column) {
                 // escape strings
-                var ht = column.title || column.name;
                 if (val !== null
                         && val !== false
                         && val !== undefined
                         && val.replace) {
-                    if (headers.indexOf(ht) === -1
-                            && sData.length === data.length
-                            && self.attributes.copyHeadersOnSelectAll) {
-                        headers.push(ht);
-                    }
                     trRow.push(fCopyCell(val));
                     textRow.push('"' + val.replace(/"/g, '""') + '"');
                     return;
@@ -3236,17 +3250,19 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         var trRow = [],
                             textRow = [];
                         s.forEach(function (column, columnIndex) {
-                            // intentional redefinition of column
-                            column = s[self.orders.columns[columnIndex]];
-                            // escape strings
-                            addCellValue(row[column.name], trRow, textRow, column);
+                            if (!column.hidden) {
+                                // intentional redefinition of column
+                                column = s[self.orders.columns[columnIndex]];
+                                // escape strings
+                                addCellValue(row[column.name], trRow, textRow, column);
+                            }
                         });
                         tableRows.push(trRow.join(''));
                         textRows.push(textRow.join(','));
                     }
                 });
-                t = headers.join(',') + (headers.length > 0 ? '\n' : '') + textRows.join('\n');
-                d = '<table>' + addTableHeaders() + '<tr>' + tableRows.join('</tr><tr>') + '</tr></table>';
+                t = addHeaders() + (headers.length > 0 ? '\n' : '') + textRows.join('\n');
+                d = '<table>' + addHeaders(true) + '<tr>' + tableRows.join('</tr><tr>') + '</tr></table>';
                 e.clipboardData.setData('text/html', d);
                 e.clipboardData.setData('text/plain', t);
                 e.clipboardData.setData('text/csv', t);
@@ -4624,7 +4640,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @memberof canvasDatagrid
          * @name getDataTypes
          * @method
-         * @returns array List of registered MIME types.
          */
         self.intf.getTypes = function () {
             return Object.keys(self.parsers);
@@ -4751,12 +4766,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
             }
             self.scrollBox.toString = function () {
-                return '{"width": ' + scrollWidth
-                    + ', "height": ' + scrollHeight
-                    + ', "left": ' + scrollLeft
-                    + ', "top": ' + scrollTop
-                    + ', "widthRatio": ' + self.scrollBox.widthBoxRatio
-                    + ', "heightRatio": ' + self.scrollBox.heightBoxRatio + '}';
+                return '{"width": ' + scrollWidth.toFixed(2)
+                    + ', "height": ' + scrollHeight.toFixed(2)
+                    + ', "left": ' + scrollLeft.toFixed(2)
+                    + ', "top": ' + scrollTop.toFixed(2)
+                    + ', "widthRatio": ' + self.scrollBox.widthBoxRatio.toFixed(5)
+                    + ', "heightRatio": ' + self.scrollBox.heightBoxRatio.toFixed(5) + '}';
             };
             self.scrollBox.scrollTo = function (x, y, supressDrawEvent) {
                 setScrollLeft(x, true);
