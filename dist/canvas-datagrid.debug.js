@@ -631,8 +631,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 return;
             }
             if (attrName === 'data') {
-                if (intf.type === 'application/x-canvas-datagrid') {
-                    intf.type = 'application/json+x-canvas-datagrid';
+                if (intf.dataType === 'application/x-canvas-datagrid') {
+                    intf.dataType = 'application/json+x-canvas-datagrid';
                 }
                 intf.args.data = newVal;
                 return;
@@ -692,8 +692,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     intf.applyComponentStyle(false, intf);
                 }
                 if (checkInnerHTML) {
-                    if (intf.type === 'application/x-canvas-datagrid') {
-                        intf.type = 'application/json+x-canvas-datagrid';
+                    if (intf.dataType === 'application/x-canvas-datagrid') {
+                        intf.dataType = 'application/json+x-canvas-datagrid';
                     }
                     intf.data = intf.innerHTML;
                 }
@@ -4255,8 +4255,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.intf.data = self.args.data;
             }
             if (self.intf.innerText || self.intf.textContent) {
-                if (self.intf.type === 'application/x-canvas-datagrid') {
-                    self.intf.type = 'application/json+x-canvas-datagrid';
+                if (self.intf.dataType === 'application/x-canvas-datagrid') {
+                    self.intf.dataType = 'application/json+x-canvas-datagrid';
                 }
                 self.intf.data = self.intf.innerText || self.intf.textContent;
             }
@@ -4478,7 +4478,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
         });
         self.intf.formatters = self.formatters;
-        Object.defineProperty(self.intf, 'type', {
+        Object.defineProperty(self.intf, 'dataType', {
             get: function () {
                 return self.dataType;
             },
