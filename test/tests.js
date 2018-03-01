@@ -341,7 +341,7 @@
                     });
                     grid.style.activeCellBackgroundColor = c.b;
                     mousemove(grid.canvas, 100, 113);
-                    assertPxColor(grid, 120, 10, 'rgb(90, 90, 90)', done);
+                    assertPxColor(grid, 110, 10, 'rgb(135, 135, 135)', done);
                 });
                 // phantom throws a nonsense error due to the way the data url is constructed in the html function
                 it('Should draw HTML.', function (done) {
