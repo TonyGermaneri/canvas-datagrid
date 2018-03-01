@@ -34,7 +34,7 @@ Currently `max-width`, `max-height`, `min-width` and `min-height` are not suppor
 Setting and Getting Data
 ------------------------
 
-Data is set according to the MIME type parser defined in grid.types.  The default type parser is `application/x-canvas-datagrid`.
+Data is set according to the MIME type parser defined in grid.dataType.  The default type parser is `application/x-canvas-datagrid`.
 
 This format expects an array of objects or an array of arrays that strictly conform to a schema (i.e.: they all have the same properties or lengths).
 
@@ -74,7 +74,7 @@ Note: When the value of a cell is an object or an array, a new grid will be draw
 
 Note: When setting data via the web component innerHTML attribute, only string data can be passed.
 
-Note: When you pass string data into the web component and the `grid.type` is set to the default: `application/x-canvas-datagrid` it will become set to `application/json+x-canvas-datagrid` to parse the string data.  If `grid.type` was previously changed, the parser it was changed to will be used instead.
+Note: When you pass string data into the web component and the `grid.dataType` is set to the default: `application/x-canvas-datagrid` it will become set to `application/json+x-canvas-datagrid` to parse the string data.  If `grid.dataType` was previously changed, the parser it was changed to will be used instead.
 
 Schema
 ------
