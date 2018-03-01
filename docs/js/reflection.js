@@ -1224,7 +1224,7 @@ window.reflection = [
         "meta": {
             "range": [
                 4560,
-                5871
+                5879
             ],
             "filename": "component.js",
             "lineno": 115,
@@ -1245,7 +1245,7 @@ window.reflection = [
                 "tfn": "<anonymous>~component.attributeChangedCallback~tfn",
                 "intf": "<anonymous>~component.attributeChangedCallback~intf",
                 "def": "<anonymous>~component.attributeChangedCallback~def",
-                "intf.type": "<anonymous>~component.attributeChangedCallback~intf.type",
+                "intf.dataType": "<anonymous>~component.attributeChangedCallback~intf.dataType",
                 "intf.args.data": "<anonymous>~component.attributeChangedCallback~intf.args.data",
                 "intf.args.schema": "<anonymous>~component.attributeChangedCallback~intf.args.schema",
                 "intf.name": "<anonymous>~component.attributeChangedCallback~intf.name",
@@ -1346,8 +1346,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                4940,
-                4988
+                4944,
+                4996
             ],
             "filename": "component.js",
             "lineno": 123,
@@ -1355,7 +1355,7 @@ window.reflection = [
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
                 "id": "astnode100000605",
-                "name": "intf.type",
+                "name": "intf.dataType",
                 "type": "Literal",
                 "funcscope": "<anonymous>~component.attributeChangedCallback",
                 "value": "application/json+x-canvas-datagrid",
@@ -1363,8 +1363,8 @@ window.reflection = [
             }
         },
         "undocumented": true,
-        "name": "type",
-        "longname": "<anonymous>~component.attributeChangedCallback~intf.type",
+        "name": "dataType",
+        "longname": "<anonymous>~component.attributeChangedCallback~intf.dataType",
         "kind": "member",
         "memberof": "<anonymous>~component.attributeChangedCallback~intf",
         "scope": "static",
@@ -1375,8 +1375,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                5024,
-                5047
+                5032,
+                5055
             ],
             "filename": "component.js",
             "lineno": 125,
@@ -1404,8 +1404,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                5144,
-                5185
+                5152,
+                5193
             ],
             "filename": "component.js",
             "lineno": 129,
@@ -1433,8 +1433,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                5280,
-                5298
+                5288,
+                5306
             ],
             "filename": "component.js",
             "lineno": 133,
@@ -1462,8 +1462,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                5456,
-                5500
+                5464,
+                5508
             ],
             "filename": "component.js",
             "lineno": 139,
@@ -1491,8 +1491,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                5541,
-                5569
+                5549,
+                5577
             ],
             "filename": "component.js",
             "lineno": 141,
@@ -1520,8 +1520,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                5587,
-                5624
+                5595,
+                5632
             ],
             "filename": "component.js",
             "lineno": 142,
@@ -1549,8 +1549,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                5881,
-                8078
+                5889,
+                8094
             ],
             "filename": "component.js",
             "lineno": 152,
@@ -1584,8 +1584,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                5935,
-                5943
+                5943,
+                5951
             ],
             "filename": "component.js",
             "lineno": 153,
@@ -1610,8 +1610,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                6011,
-                6112
+                6019,
+                6120
             ],
             "filename": "component.js",
             "lineno": 155,
@@ -1655,8 +1655,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                6509,
-                7734
+                6517,
+                7750
             ],
             "filename": "component.js",
             "lineno": 162,
@@ -1684,8 +1684,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                6591,
-                6605
+                6599,
+                6613
             ],
             "filename": "component.js",
             "lineno": 163,
@@ -1710,8 +1710,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                6607,
-                6617
+                6615,
+                6625
             ],
             "filename": "component.js",
             "lineno": 163,
@@ -1736,8 +1736,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                6849,
-                6866
+                6857,
+                6874
             ],
             "filename": "component.js",
             "lineno": 167,
@@ -1765,8 +1765,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7079,
-                7096
+                7087,
+                7104
             ],
             "filename": "component.js",
             "lineno": 172,
@@ -1794,8 +1794,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7271,
-                7292
+                7279,
+                7300
             ],
             "filename": "component.js",
             "lineno": 176,
@@ -1823,8 +1823,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7582,
-                7630
+                7594,
+                7646
             ],
             "filename": "component.js",
             "lineno": 184,
@@ -1832,15 +1832,15 @@ window.reflection = [
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
                 "id": "astnode100000859",
-                "name": "intf.type",
+                "name": "intf.dataType",
                 "type": "Literal",
                 "value": "application/json+x-canvas-datagrid",
                 "paramnames": []
             }
         },
         "undocumented": true,
-        "name": "type",
-        "longname": "intf.type",
+        "name": "dataType",
+        "longname": "intf.dataType",
         "kind": "member",
         "memberof": "intf",
         "scope": "static",
@@ -1851,8 +1851,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7674,
-                7700
+                7690,
+                7716
             ],
             "filename": "component.js",
             "lineno": 186,
@@ -1879,8 +1879,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7773,
-                7792
+                7789,
+                7808
             ],
             "filename": "component.js",
             "lineno": 189,
@@ -1905,8 +1905,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7794,
-                7809
+                7810,
+                7825
             ],
             "filename": "component.js",
             "lineno": 189,
@@ -1931,8 +1931,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7811,
-                7827
+                7827,
+                7843
             ],
             "filename": "component.js",
             "lineno": 189,
@@ -1957,8 +1957,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7829,
-                7842
+                7845,
+                7858
             ],
             "filename": "component.js",
             "lineno": 189,
@@ -1983,8 +1983,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                7979,
-                7998
+                7995,
+                8014
             ],
             "filename": "component.js",
             "lineno": 191,
@@ -2009,8 +2009,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                8000,
-                8015
+                8016,
+                8031
             ],
             "filename": "component.js",
             "lineno": 191,
@@ -2035,8 +2035,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                8017,
-                8033
+                8033,
+                8049
             ],
             "filename": "component.js",
             "lineno": 191,
@@ -2061,8 +2061,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                8035,
-                8048
+                8051,
+                8064
             ],
             "filename": "component.js",
             "lineno": 191,
@@ -63301,7 +63301,7 @@ window.reflection = [
         "meta": {
             "range": [
                 17241,
-                27601
+                27609
             ],
             "filename": "intf.js",
             "lineno": 385,
@@ -63392,7 +63392,7 @@ window.reflection = [
                 "self.filters.string": "self.filters.string",
                 "self.filters.number": "self.filters.number",
                 "self.intf.data": "self.intf.data",
-                "self.intf.type": "self.intf.type",
+                "self.intf.dataType": "self.intf.dataType",
                 "self.intf.schema": "self.intf.schema"
             }
         },
@@ -66597,8 +66597,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27117,
-                27170
+                27121,
+                27178
             ],
             "filename": "intf.js",
             "lineno": 584,
@@ -66606,15 +66606,15 @@ window.reflection = [
             "path": "/Users/tgermaneri/git/canvas-datagrid/lib",
             "code": {
                 "id": "astnode100029005",
-                "name": "self.intf.type",
+                "name": "self.intf.dataType",
                 "type": "Literal",
                 "value": "application/json+x-canvas-datagrid",
                 "paramnames": []
             }
         },
         "undocumented": true,
-        "name": "type",
-        "longname": "self.intf.type",
+        "name": "dataType",
+        "longname": "self.intf.dataType",
         "kind": "member",
         "memberof": "self.intf",
         "scope": "static",
@@ -66625,8 +66625,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27206,
-                27267
+                27214,
+                27275
             ],
             "filename": "intf.js",
             "lineno": 586,
@@ -66653,8 +66653,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27335,
-                27370
+                27343,
+                27378
             ],
             "filename": "intf.js",
             "lineno": 589,
@@ -66699,8 +66699,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27752,
-                27828
+                27760,
+                27836
             ],
             "filename": "intf.js",
             "lineno": 604,
@@ -66731,8 +66731,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27796,
-                27817
+                27804,
+                27825
             ],
             "filename": "intf.js",
             "lineno": 605,
@@ -66777,8 +66777,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                27972,
-                28086
+                27980,
+                28094
             ],
             "filename": "intf.js",
             "lineno": 613,
@@ -66807,8 +66807,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                28016,
-                28036
+                28024,
+                28044
             ],
             "filename": "intf.js",
             "lineno": 614,
@@ -66835,8 +66835,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                28212,
-                28419
+                28220,
+                28427
             ],
             "filename": "intf.js",
             "lineno": 619,
@@ -66860,8 +66860,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                28437,
-                28723
+                28445,
+                28731
             ],
             "filename": "intf.js",
             "lineno": 625,
@@ -66889,8 +66889,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                28528,
-                28558
+                28536,
+                28566
             ],
             "filename": "intf.js",
             "lineno": 627,
@@ -66917,8 +66917,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                28613,
-                28643
+                28621,
+                28651
             ],
             "filename": "intf.js",
             "lineno": 629,
@@ -66945,8 +66945,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                28812,
-                29017
+                28820,
+                29025
             ],
             "filename": "intf.js",
             "lineno": 635,
@@ -66970,8 +66970,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                29035,
-                29319
+                29043,
+                29327
             ],
             "filename": "intf.js",
             "lineno": 641,
@@ -66999,8 +66999,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                29126,
-                29155
+                29134,
+                29163
             ],
             "filename": "intf.js",
             "lineno": 643,
@@ -67027,8 +67027,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                29210,
-                29239
+                29218,
+                29247
             ],
             "filename": "intf.js",
             "lineno": 645,
@@ -67055,8 +67055,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                29413,
-                29493
+                29421,
+                29501
             ],
             "filename": "intf.js",
             "lineno": 651,
@@ -67080,8 +67080,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                29511,
-                29767
+                29519,
+                29775
             ],
             "filename": "intf.js",
             "lineno": 654,
@@ -67108,8 +67108,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                29725,
-                29748
+                29733,
+                29756
             ],
             "filename": "intf.js",
             "lineno": 658,
@@ -67136,8 +67136,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                29870,
-                29949
+                29878,
+                29957
             ],
             "filename": "intf.js",
             "lineno": 663,
@@ -67161,8 +67161,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                30033,
-                30107
+                30041,
+                30115
             ],
             "filename": "intf.js",
             "lineno": 668,
@@ -67186,8 +67186,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                30189,
-                30369
+                30197,
+                30377
             ],
             "filename": "intf.js",
             "lineno": 673,
@@ -67214,8 +67214,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                30452,
-                30525
+                30460,
+                30533
             ],
             "filename": "intf.js",
             "lineno": 680,
@@ -67239,8 +67239,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                30598,
-                30682
+                30606,
+                30690
             ],
             "filename": "intf.js",
             "lineno": 685,
@@ -67264,8 +67264,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                30696,
-                30969
+                30704,
+                30977
             ],
             "filename": "intf.js",
             "lineno": 688,
@@ -67294,8 +67294,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                30760,
-                30777
+                30768,
+                30785
             ],
             "filename": "intf.js",
             "lineno": 689,
@@ -67323,8 +67323,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                30853,
-                30888
+                30861,
+                30896
             ],
             "filename": "intf.js",
             "lineno": 691,
@@ -67351,8 +67351,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                30910,
-                30936
+                30918,
+                30944
             ],
             "filename": "intf.js",
             "lineno": 692,
@@ -67379,8 +67379,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31055,
-                31131
+                31063,
+                31139
             ],
             "filename": "intf.js",
             "lineno": 697,
@@ -67404,8 +67404,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31145,
-                31383
+                31153,
+                31391
             ],
             "filename": "intf.js",
             "lineno": 700,
@@ -67433,8 +67433,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31229,
-                31242
+                31237,
+                31250
             ],
             "filename": "intf.js",
             "lineno": 702,
@@ -67462,8 +67462,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31278,
-                31305
+                31286,
+                31313
             ],
             "filename": "intf.js",
             "lineno": 704,
@@ -67490,8 +67490,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31462,
-                31531
+                31470,
+                31539
             ],
             "filename": "intf.js",
             "lineno": 709,
@@ -67515,8 +67515,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31545,
-                31927
+                31553,
+                31935
             ],
             "filename": "intf.js",
             "lineno": 712,
@@ -67544,8 +67544,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                31829,
-                31849
+                31837,
+                31857
             ],
             "filename": "intf.js",
             "lineno": 718,
@@ -67572,8 +67572,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32051,
-                32140
+                32059,
+                32148
             ],
             "filename": "intf.js",
             "lineno": 724,
@@ -67597,8 +67597,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32235,
-                32323
+                32243,
+                32331
             ],
             "filename": "intf.js",
             "lineno": 729,
@@ -67622,8 +67622,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32421,
-                32505
+                32429,
+                32513
             ],
             "filename": "intf.js",
             "lineno": 735,
@@ -67647,8 +67647,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32588,
-                32671
+                32596,
+                32679
             ],
             "filename": "intf.js",
             "lineno": 740,
@@ -67672,8 +67672,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32752,
-                32833
+                32760,
+                32841
             ],
             "filename": "intf.js",
             "lineno": 745,
@@ -67697,8 +67697,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32847,
-                32934
+                32855,
+                32942
             ],
             "filename": "intf.js",
             "lineno": 748,
@@ -67725,8 +67725,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                32887,
-                32919
+                32895,
+                32927
             ],
             "filename": "intf.js",
             "lineno": 749,
@@ -67753,8 +67753,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33016,
-                33098
+                33024,
+                33106
             ],
             "filename": "intf.js",
             "lineno": 753,
@@ -67778,8 +67778,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33112,
-                33200
+                33120,
+                33208
             ],
             "filename": "intf.js",
             "lineno": 756,
@@ -67806,8 +67806,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33152,
-                33185
+                33160,
+                33193
             ],
             "filename": "intf.js",
             "lineno": 757,
@@ -67834,8 +67834,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33277,
-                33344
+                33285,
+                33352
             ],
             "filename": "intf.js",
             "lineno": 761,
@@ -67859,8 +67859,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33421,
-                33488
+                33429,
+                33496
             ],
             "filename": "intf.js",
             "lineno": 766,
@@ -67884,8 +67884,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33572,
-                33646
+                33580,
+                33654
             ],
             "filename": "intf.js",
             "lineno": 771,
@@ -67909,8 +67909,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33729,
-                33802
+                33737,
+                33810
             ],
             "filename": "intf.js",
             "lineno": 776,
@@ -67934,8 +67934,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                33886,
-                33960
+                33894,
+                33968
             ],
             "filename": "intf.js",
             "lineno": 781,
@@ -67959,8 +67959,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34043,
-                34116
+                34051,
+                34124
             ],
             "filename": "intf.js",
             "lineno": 786,
@@ -67984,8 +67984,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34198,
-                34270
+                34206,
+                34278
             ],
             "filename": "intf.js",
             "lineno": 791,
@@ -68009,8 +68009,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34350,
-                34420
+                34358,
+                34428
             ],
             "filename": "intf.js",
             "lineno": 796,
@@ -68034,8 +68034,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34499,
-                34568
+                34507,
+                34576
             ],
             "filename": "intf.js",
             "lineno": 801,
@@ -68059,8 +68059,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34589,
-                34627
+                34597,
+                34635
             ],
             "filename": "intf.js",
             "lineno": 805,
@@ -68087,8 +68087,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34692,
-                34762
+                34704,
+                34774
             ],
             "filename": "intf.js",
             "lineno": 807,
@@ -68112,8 +68112,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34776,
-                34987
+                34788,
+                34999
             ],
             "filename": "intf.js",
             "lineno": 810,
@@ -68140,8 +68140,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                34951,
-                34972
+                34963,
+                34984
             ],
             "filename": "intf.js",
             "lineno": 814,
@@ -68168,8 +68168,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35136,
-                35234
+                35148,
+                35246
             ],
             "filename": "intf.js",
             "lineno": 819,
@@ -68193,8 +68193,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35252,
-                35510
+                35264,
+                35522
             ],
             "filename": "intf.js",
             "lineno": 822,
@@ -68222,8 +68222,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35296,
-                35323
+                35308,
+                35335
             ],
             "filename": "intf.js",
             "lineno": 823,
@@ -68250,8 +68250,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35345,
-                35386
+                35357,
+                35398
             ],
             "filename": "intf.js",
             "lineno": 824,
@@ -68278,8 +68278,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35607,
-                35678
+                35619,
+                35690
             ],
             "filename": "intf.js",
             "lineno": 831,
@@ -68303,8 +68303,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                35692,
-                36081
+                35704,
+                36093
             ],
             "filename": "intf.js",
             "lineno": 834,
@@ -68331,8 +68331,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36046,
-                36066
+                36058,
+                36078
             ],
             "filename": "intf.js",
             "lineno": 841,
@@ -68359,8 +68359,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36165,
-                36239
+                36177,
+                36251
             ],
             "filename": "intf.js",
             "lineno": 845,
@@ -68384,8 +68384,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36253,
-                36655
+                36265,
+                36667
             ],
             "filename": "intf.js",
             "lineno": 848,
@@ -68412,8 +68412,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36617,
-                36640
+                36629,
+                36652
             ],
             "filename": "intf.js",
             "lineno": 855,
@@ -68440,8 +68440,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36742,
-                37013
+                36754,
+                37025
             ],
             "filename": "intf.js",
             "lineno": 859,
@@ -68465,8 +68465,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36806,
-                36830
+                36818,
+                36842
             ],
             "filename": "intf.js",
             "lineno": 861,
@@ -68491,8 +68491,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36852,
-                36880
+                36864,
+                36892
             ],
             "filename": "intf.js",
             "lineno": 862,
@@ -68517,8 +68517,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36902,
-                36932
+                36914,
+                36944
             ],
             "filename": "intf.js",
             "lineno": 863,
@@ -68543,8 +68543,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                36954,
-                36980
+                36966,
+                36992
             ],
             "filename": "intf.js",
             "lineno": 864,
@@ -68569,8 +68569,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37100,
-                37371
+                37112,
+                37383
             ],
             "filename": "intf.js",
             "lineno": 869,
@@ -68594,8 +68594,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37164,
-                37188
+                37176,
+                37200
             ],
             "filename": "intf.js",
             "lineno": 871,
@@ -68620,8 +68620,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37210,
-                37238
+                37222,
+                37250
             ],
             "filename": "intf.js",
             "lineno": 872,
@@ -68646,8 +68646,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37260,
-                37290
+                37272,
+                37302
             ],
             "filename": "intf.js",
             "lineno": 873,
@@ -68672,8 +68672,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37312,
-                37338
+                37324,
+                37350
             ],
             "filename": "intf.js",
             "lineno": 874,
@@ -68698,8 +68698,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37458,
-                37540
+                37470,
+                37552
             ],
             "filename": "intf.js",
             "lineno": 879,
@@ -68723,8 +68723,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37624,
-                37707
+                37636,
+                37719
             ],
             "filename": "intf.js",
             "lineno": 884,
@@ -68748,8 +68748,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37792,
-                37871
+                37804,
+                37883
             ],
             "filename": "intf.js",
             "lineno": 889,
@@ -68773,8 +68773,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                37956,
-                38119
+                37968,
+                38131
             ],
             "filename": "intf.js",
             "lineno": 894,
@@ -68801,8 +68801,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38209,
-                38289
+                38221,
+                38301
             ],
             "filename": "intf.js",
             "lineno": 901,
@@ -68826,8 +68826,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38303,
-                38410
+                38315,
+                38422
             ],
             "filename": "intf.js",
             "lineno": 904,
@@ -68855,8 +68855,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38364,
-                38395
+                38376,
+                38407
             ],
             "filename": "intf.js",
             "lineno": 905,
@@ -68883,8 +68883,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38500,
-                38580
+                38512,
+                38592
             ],
             "filename": "intf.js",
             "lineno": 909,
@@ -68908,8 +68908,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38594,
-                38701
+                38606,
+                38713
             ],
             "filename": "intf.js",
             "lineno": 912,
@@ -68937,8 +68937,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38655,
-                38686
+                38667,
+                38698
             ],
             "filename": "intf.js",
             "lineno": 913,
@@ -68965,8 +68965,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38776,
-                38841
+                38788,
+                38853
             ],
             "filename": "intf.js",
             "lineno": 917,
@@ -68990,8 +68990,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                38919,
-                39004
+                38931,
+                39016
             ],
             "filename": "intf.js",
             "lineno": 922,
@@ -69016,8 +69016,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39018,
-                40976
+                39030,
+                40988
             ],
             "filename": "intf.js",
             "lineno": 925,
@@ -69047,8 +69047,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39196,
-                39219
+                39208,
+                39231
             ],
             "filename": "intf.js",
             "lineno": 928,
@@ -69075,8 +69075,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39241,
-                39268
+                39253,
+                39280
             ],
             "filename": "intf.js",
             "lineno": 929,
@@ -69103,8 +69103,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39327,
-                39344
+                39339,
+                39356
             ],
             "filename": "intf.js",
             "lineno": 930,
@@ -69129,8 +69129,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39758,
-                40221
+                39770,
+                40233
             ],
             "filename": "intf.js",
             "lineno": 939,
@@ -69157,8 +69157,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39845,
-                39896
+                39857,
+                39908
             ],
             "filename": "intf.js",
             "lineno": 940,
@@ -69185,8 +69185,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39918,
-                39975
+                39930,
+                39987
             ],
             "filename": "intf.js",
             "lineno": 941,
@@ -69213,8 +69213,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                39997,
-                40034
+                40009,
+                40046
             ],
             "filename": "intf.js",
             "lineno": 942,
@@ -69241,8 +69241,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40056,
-                40076
+                40068,
+                40088
             ],
             "filename": "intf.js",
             "lineno": 943,
@@ -69269,8 +69269,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40098,
-                40124
+                40110,
+                40136
             ],
             "filename": "intf.js",
             "lineno": 944,
@@ -69297,8 +69297,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40146,
-                40166
+                40158,
+                40178
             ],
             "filename": "intf.js",
             "lineno": 945,
@@ -69325,8 +69325,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40239,
-                40266
+                40251,
+                40278
             ],
             "filename": "intf.js",
             "lineno": 948,
@@ -69353,8 +69353,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40722,
-                40782
+                40734,
+                40794
             ],
             "filename": "intf.js",
             "lineno": 955,
@@ -69381,8 +69381,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                40940,
-                40959
+                40952,
+                40971
             ],
             "filename": "intf.js",
             "lineno": 960,
@@ -69425,8 +69425,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41167,
-                41257
+                41179,
+                41269
             ],
             "filename": "intf.js",
             "lineno": 969,
@@ -69452,8 +69452,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41267,
-                41721
+                41279,
+                41733
             ],
             "filename": "intf.js",
             "lineno": 972,
@@ -69484,8 +69484,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41341,
-                41364
+                41353,
+                41376
             ],
             "filename": "intf.js",
             "lineno": 974,
@@ -69513,8 +69513,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                41731,
-                41995
+                41743,
+                42007
             ],
             "filename": "intf.js",
             "lineno": 982,
@@ -69546,8 +69546,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42005,
-                42125
+                42017,
+                42137
             ],
             "filename": "intf.js",
             "lineno": 987,
@@ -69576,8 +69576,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42135,
-                42167
+                42147,
+                42179
             ],
             "filename": "intf.js",
             "lineno": 990,
@@ -69604,8 +69604,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42298,
-                43826
+                42310,
+                43838
             ],
             "filename": "intf.js",
             "lineno": 993,
@@ -69637,8 +69637,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42605,
-                42625
+                42617,
+                42637
             ],
             "filename": "intf.js",
             "lineno": 999,
@@ -69665,8 +69665,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42809,
-                42851
+                42821,
+                42863
             ],
             "filename": "intf.js",
             "lineno": 1003,
@@ -69693,8 +69693,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42927,
-                42973
+                42939,
+                42985
             ],
             "filename": "intf.js",
             "lineno": 1006,
@@ -69721,8 +69721,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43170,
-                43194
+                43182,
+                43206
             ],
             "filename": "intf.js",
             "lineno": 1012,
@@ -69749,8 +69749,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43268,
-                43297
+                43280,
+                43309
             ],
             "filename": "intf.js",
             "lineno": 1014,
@@ -69777,8 +69777,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43419,
-                43449
+                43431,
+                43461
             ],
             "filename": "intf.js",
             "lineno": 1017,
@@ -69805,8 +69805,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43439,
-                43447
+                43451,
+                43459
             ],
             "filename": "intf.js",
             "lineno": 1017,
@@ -69831,8 +69831,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43728,
-                43751
+                43740,
+                43763
             ],
             "filename": "intf.js",
             "lineno": 1022,
@@ -69857,8 +69857,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43891,
-                43967
+                43903,
+                43979
             ],
             "filename": "intf.js",
             "lineno": 1028,
@@ -69883,8 +69883,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43981,
-                44732
+                43993,
+                44744
             ],
             "filename": "intf.js",
             "lineno": 1031,
@@ -69912,8 +69912,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44081,
-                44098
+                44093,
+                44110
             ],
             "filename": "intf.js",
             "lineno": 1033,
@@ -69940,8 +69940,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44641,
-                44656
+                44653,
+                44668
             ],
             "filename": "intf.js",
             "lineno": 1043,
@@ -69966,8 +69966,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44753,
-                49477
+                44765,
+                49489
             ],
             "filename": "intf.js",
             "lineno": 1048,
@@ -70008,8 +70008,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44804,
-                44815
+                44816,
+                44827
             ],
             "filename": "intf.js",
             "lineno": 1049,
@@ -70036,8 +70036,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44833,
-                44843
+                44845,
+                44855
             ],
             "filename": "intf.js",
             "lineno": 1050,
@@ -70064,8 +70064,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44861,
-                44874
+                44873,
+                44886
             ],
             "filename": "intf.js",
             "lineno": 1051,
@@ -70092,8 +70092,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44892,
-                44906
+                44904,
+                44918
             ],
             "filename": "intf.js",
             "lineno": 1052,
@@ -70120,8 +70120,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44924,
-                44940
+                44936,
+                44952
             ],
             "filename": "intf.js",
             "lineno": 1053,
@@ -70148,8 +70148,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44958,
-                44973
+                44970,
+                44985
             ],
             "filename": "intf.js",
             "lineno": 1054,
@@ -70176,8 +70176,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44991,
-                45011
+                45003,
+                45023
             ],
             "filename": "intf.js",
             "lineno": 1055,
@@ -70204,8 +70204,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45029,
-                45048
+                45041,
+                45060
             ],
             "filename": "intf.js",
             "lineno": 1056,
@@ -70232,8 +70232,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45062,
-                45659
+                45074,
+                45671
             ],
             "filename": "intf.js",
             "lineno": 1057,
@@ -70267,8 +70267,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45293,
-                45302
+                45305,
+                45314
             ],
             "filename": "intf.js",
             "lineno": 1062,
@@ -70296,8 +70296,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45386,
-                45406
+                45398,
+                45418
             ],
             "filename": "intf.js",
             "lineno": 1065,
@@ -70325,8 +70325,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45486,
-                45495
+                45498,
+                45507
             ],
             "filename": "intf.js",
             "lineno": 1068,
@@ -70354,8 +70354,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45531,
-                45548
+                45543,
+                45560
             ],
             "filename": "intf.js",
             "lineno": 1070,
@@ -70383,8 +70383,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45672,
-                46269
+                45684,
+                46281
             ],
             "filename": "intf.js",
             "lineno": 1075,
@@ -70418,8 +70418,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45905,
-                45914
+                45917,
+                45926
             ],
             "filename": "intf.js",
             "lineno": 1080,
@@ -70447,8 +70447,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45997,
-                46016
+                46009,
+                46028
             ],
             "filename": "intf.js",
             "lineno": 1083,
@@ -70476,8 +70476,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46095,
-                46104
+                46107,
+                46116
             ],
             "filename": "intf.js",
             "lineno": 1086,
@@ -70505,8 +70505,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46140,
-                46158
+                46152,
+                46170
             ],
             "filename": "intf.js",
             "lineno": 1088,
@@ -70534,8 +70534,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46282,
-                46750
+                46294,
+                46762
             ],
             "filename": "intf.js",
             "lineno": 1093,
@@ -70561,8 +70561,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46764,
-                46930
+                46776,
+                46942
             ],
             "filename": "intf.js",
             "lineno": 1101,
@@ -70592,8 +70592,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47019,
-                47099
+                47031,
+                47111
             ],
             "filename": "intf.js",
             "lineno": 1106,
@@ -70617,8 +70617,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47117,
-                47203
+                47129,
+                47215
             ],
             "filename": "intf.js",
             "lineno": 1109,
@@ -70645,8 +70645,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47161,
-                47184
+                47173,
+                47196
             ],
             "filename": "intf.js",
             "lineno": 1110,
@@ -70674,8 +70674,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47306,
-                47385
+                47318,
+                47397
             ],
             "filename": "intf.js",
             "lineno": 1114,
@@ -70699,8 +70699,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47403,
-                47488
+                47415,
+                47500
             ],
             "filename": "intf.js",
             "lineno": 1117,
@@ -70727,8 +70727,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47447,
-                47469
+                47459,
+                47481
             ],
             "filename": "intf.js",
             "lineno": 1118,
@@ -70756,8 +70756,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47583,
-                47655
+                47595,
+                47667
             ],
             "filename": "intf.js",
             "lineno": 1122,
@@ -70781,8 +70781,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47673,
-                47860
+                47685,
+                47872
             ],
             "filename": "intf.js",
             "lineno": 1125,
@@ -70810,8 +70810,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47769,
-                47782
+                47781,
+                47794
             ],
             "filename": "intf.js",
             "lineno": 1127,
@@ -70839,8 +70839,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47826,
-                47841
+                47838,
+                47853
             ],
             "filename": "intf.js",
             "lineno": 1129,
@@ -70868,8 +70868,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47954,
-                48025
+                47966,
+                48037
             ],
             "filename": "intf.js",
             "lineno": 1133,
@@ -70893,8 +70893,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48043,
-                48120
+                48055,
+                48132
             ],
             "filename": "intf.js",
             "lineno": 1136,
@@ -70921,8 +70921,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48087,
-                48101
+                48099,
+                48113
             ],
             "filename": "intf.js",
             "lineno": 1137,
@@ -70950,8 +70950,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48218,
-                48292
+                48230,
+                48304
             ],
             "filename": "intf.js",
             "lineno": 1141,
@@ -70975,8 +70975,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48310,
-                48327
+                48322,
+                48339
             ],
             "filename": "intf.js",
             "lineno": 1144,
@@ -71001,8 +71001,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48426,
-                48501
+                48438,
+                48513
             ],
             "filename": "intf.js",
             "lineno": 1147,
@@ -71026,8 +71026,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48519,
-                48537
+                48531,
+                48549
             ],
             "filename": "intf.js",
             "lineno": 1150,
@@ -71052,8 +71052,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48638,
-                48715
+                48650,
+                48727
             ],
             "filename": "intf.js",
             "lineno": 1153,
@@ -71077,8 +71077,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48733,
-                49050
+                48745,
+                49062
             ],
             "filename": "intf.js",
             "lineno": 1156,
@@ -71106,8 +71106,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48826,
-                48856
+                48838,
+                48868
             ],
             "filename": "intf.js",
             "lineno": 1158,
@@ -71135,8 +71135,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48954,
-                48967
+                48966,
+                48979
             ],
             "filename": "intf.js",
             "lineno": 1161,
@@ -71164,8 +71164,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                49011,
-                49031
+                49023,
+                49043
             ],
             "filename": "intf.js",
             "lineno": 1163,
@@ -71193,8 +71193,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                49150,
-                49226
+                49162,
+                49238
             ],
             "filename": "intf.js",
             "lineno": 1167,
@@ -71218,8 +71218,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                49244,
-                49451
+                49256,
+                49463
             ],
             "filename": "intf.js",
             "lineno": 1170,
@@ -71247,8 +71247,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                49338,
-                49369
+                49350,
+                49381
             ],
             "filename": "intf.js",
             "lineno": 1172,
@@ -71276,8 +71276,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                49413,
-                49432
+                49425,
+                49444
             ],
             "filename": "intf.js",
             "lineno": 1174,
@@ -89357,7 +89357,7 @@ window.reflection = [
     "amdDemo.html": "<html>\n    <head>\n        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.js\" data-main=\"amdDemo.js\"></script>\n<!--\n\n    amdDemo.js can be found here:\n\n    https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/amdDemo.js\n\n-->\n        <style>\n            html, body {\n                height: 100%;\n                min-height: 100%;\n                margin: 0;\n                padding: 0;\n                overflow: hidden;\n            }\n            #grid {\n                height: 100%;\n                width: 100%;\n                min-height: 100%;\n            }\n        </style>\n    </head>\n    <body><div id=\"grid\"></div></body>\n</html>\n",
     "amdDemo.js": "/*jslint browser: true */\nrequire(['../dist/canvas-datagrid.debug.js'], function (dataGrid) {\n    'use strict';\n    var grid = dataGrid({\n        parentNode: document.getElementById('grid')\n    });\n    grid.addEventListener('contextmenu', function (e) {\n        e.items.push({\n            title: 'View page source',\n            click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/amdDemo.html', 'src'); }\n        });\n        e.items.push({\n            title: 'View JS module',\n            click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/amdDemo.js', 'src'); }\n        });\n        e.items.push({\n            title: 'Go to main canvas-datagrid GitHub page',\n            click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid', 'src'); }\n        });\n    });\n    grid.data = [{a: 0, b: 1, c: 2}];\n});\n",
     "canvasDatagrid.contextMenuItem.md": "You can add or remove items from the context menu, or stop it from appearing.\nIn the following example, a context menu item is added:\n\n        grid.addEventListener('contextmenu', function (e) {\n            e.items.push({\n                title: 'Process selected row(s)',\n                click: function () {\n                    // e.cell.value contains the cell's value\n                    // e.cell.data contains the row values\n                    myProcess(e.cell.value, e.cell.data);\n                }\n            });\n        });\n\nThe `title` property can be an HTML node reference instead of a string.\nThe `click` property is optional.  See [contextmenu](https://tonygermaneri.github.io/canvas-datagrid/docs/#tutorial--Simple-context-menu) complete information.\n",
-    "canvasDatagrid.md": "Ways to create a grid\n---------------------\n\n* Web component by using the tag `&lt;canvas-datagrid&gt;&lt;/canvas-datagrid&gt;` anywhere in your document.\n* Web component by running `var foo = document.createElement('canvas-datagrid')`.\n* Webpack3 universal module loader by adding one of many module loaders to your application code.  <br>See example: {@link https://tonygermaneri.github.io/canvas-datagrid/tutorials/amdDemo.html}.\n* You can also load the grid by invoking the global method `var foo = canvasDatagrid(&lt;args&gt;);` <br>See example: {@link https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html}\n\nIf you create the grid using the non-web component model, you can attach the grid to an existing canvas by passing the canvas in as the `parentNode` when you instantiate the grid using the module loader or global versions.  This is not possible when instantiating using `createElement` or markup.\n\nWith the exception of attaching to an existing canvas, the grid will attempt to create a Shadow DOM element and attach a canvas within.\n\n* Support for attaching to existing canvas elements is experimental.\n\n* In browsers that do not support custom tags, a `&lt;canvas&gt;` tag is used in place of the `&lt;canvas-datagrid&gt;` tag.\n\n* In browsers that do not support Shadow DOM, no shadow root will be created.  In this mode cascading CSS can alter the grid, altering behavior in potentially breaking ways.  Careful application of CSS is required.  This can effect the grid in-line editing and context menus.\n\nSetting Height and Width\n------------------------\n\nLimiting the size of the canvas-datagrid element is the best way to improve performance.\n\ncanvas-datagrid by default is set to `grid.style.height: auto` and `grid.style.width: auto`.\nThis means the canvas-datagrid element expands to the height and width of the rows and columns contained within.\nIf you have many rows or columns you will want to limit the height and width of the element by setting\n`grid.style.height` and `grid.style.width` to something besides `auto`.  Try `100%` or `300px`.\n\nWhen set to a value other than auto a virtual scroll box will be drawn onto the canvas\nconstraining the size and allowing the user to scroll around the columns and rows.\n\nCurrently `max-width`, `max-height`, `min-width` and `min-height` are not supported and will do nothing, but support is planned.\n\nSetting and Getting Data\n------------------------\n\nData is set according to the MIME type parser defined in grid.types.  The default type parser is `application/x-canvas-datagrid`.\n\nThis format expects an array of objects or an array of arrays that strictly conform to a schema (i.e.: they all have the same properties or lengths).\n\nExample `application/x-canvas-datagrid`\n\n    [\n        {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},\n        {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}\n    ]\n\nor\n\n    [\n        ['row 1 column 1', 'row 1 column 2', 'row 1 column 3'],\n        ['row 2 column 1', 'row 2 column 2', 'row 2 column 3']\n    ]\n\n\nWhen getting data, no matter how it was set, it will be returned as `application/x-canvas-datagrid` (an array of objects).\n\nFor more information on using and creating custom parsers see: [parsers](https://tonygermaneri.github.io/canvas-datagrid/docs/#parsers)\n\nThe table below lists ways to set data and the default parser used.\n\n| Method | Parser |\n|-----|------|\n| data property | application/x-canvas-datagrid |\n| web component data attribute | application/json+x-canvas-datagrid |\n| web component innerHTML attribute | application/json+x-canvas-datagrid |\n\nThere are two built in parsers.\n\napplication/x-canvas-datagrid (Default)\napplication/json+x-canvas-datagrid\n\nNote: When the value of a cell is an object or an array, a new grid will be drawn into the cell.  This behavior can be overridden.\n\nNote: When setting data via the web component innerHTML attribute, only string data can be passed.\n\nNote: When you pass string data into the web component and the `grid.type` is set to the default: `application/x-canvas-datagrid` it will become set to `application/json+x-canvas-datagrid` to parse the string data.  If `grid.type` was previously changed, the parser it was changed to will be used instead.\n\nSchema\n------\n\nSchema is optional.  Schema is an array of header objects.\nThis documentation will use the term header and column interchangeably.\nIf no schema is provided one will be generated from the\ndata, in that case all data will be assumed to be string data.\n\nNote: When data is generated from an 2D array (array of arrays vs. array of objects) the columns will be named A, B, C, D,... etc..\n\nEach header object can have the following properties:\n\n| Property | Description |\n|-----|------|\n| name | The name of the column.  This is used to match with data and is the only required property. |\n| type | The data type of this column |\n| title | What will be displayed to the user.  If not present, name will be used. |\n| width | The default width in pixels of this column.|\n| hidden | When true the column will be hidden. |\n| filter | The filter function to use to filter this column.  If no function is provided, type will determine filer. |\n| formatter | The formatter function used display this column.  If no function is provided, type will determine formatter.|\n| defaultValue | The default value of this column for new rows.  This is a function or a string.  When a function is used, it takes the arguments `header` and `index` and must return a value for new default cell value in this column.|\n\nExample schema:\n\n    [\n        {\n            name: 'col1'\n        },\n        {\n            name: 'col2'\n        },\n        {\n            name: 'col3'\n        }\n    ]\n\nProperties, Attributes, & Parameters\n------------------------------------\n\n* Properties, attributes, and parameters represent different ways to change the values and behaviors of the grid.\nProperties can be accessed directly from the grid instance. E.g.:\n\n    myGrid.someProperty = 'Some Value';\n\n* Attributes can be access from the grid instance's attributes property.  E.g.:\n\n    myGrid.attributes.someAttribute = 'Some Value';\n\n* Attributes can also be set from the attribute list of the web component tag.  E.g.:\n\n    &lt;canvas-datagrid someattribute=\"Some Value\"&gt;&lt;/canvas-datagrid&gt;\n\n* Parameters are attributes that are passed in the arguments object during instantiation.  E.g.:\n\n    var myGrid = canvasDatagrid({someAttribute: 'Some Value'});\n\n\nWeb Component\n-------------\n\nThe grid can be instantiated as a web component.\n\n\n    <canvas-datagrid></canvas-datagrid>\n\n\nTo set data, add JSON between the open and close tags.\n\n\n        <canvas-datagrid>[\n            {\"col1\": \"row 1 column 1\", \"col2\": \"row 1 column 2\", \"col3\": \"row 1 column 3\"},\n            {\"col1\": \"row 2 column 1\", \"col2\": \"row 2 column 2\", \"col3\": \"row 2 column 3\"}\n        ]</canvas-datagrid>\n\n\nTo set attributes, add attributes.  Attributes are not case sensitive when using HTML.  When using the same element in JavaScript however they are case sensitive.\n\n    <canvas-datagrid selectionmode='row'></canvas-datagrid>\n\nStyles are declared as custom css properties prefixed with --cdg- and hyphenated rather than camelCase.\nFor example, the style \"gridBackgroundColor\" is set with \"--cdg-grid-background-color\".  The web component\nworks with classes, css cascading, and in-line styles just like any other HTML element.\n\nInline styles:\n\n        <canvas-datagrid style=\"--cdg-grid-background-color: lightblue;\">[\n            {\"col1\": \"row 1 column 1\", \"col2\": \"row 1 column 2\", \"col3\": \"row 1 column 3\"},\n            {\"col1\": \"row 2 column 1\", \"col2\": \"row 2 column 2\", \"col3\": \"row 2 column 3\"}\n        ]</canvas-datagrid>\n\nClass styles.\n\n        <style>\n            .grid {\n                --cdg-grid-background-color: lightblue;\n            }\n        </style>\n        <canvas-datagrid class=\"grid\">[\n            {\"col1\": \"row 1 column 1\", \"col2\": \"row 1 column 2\", \"col3\": \"row 1 column 3\"},\n            {\"col1\": \"row 2 column 1\", \"col2\": \"row 2 column 2\", \"col3\": \"row 2 column 3\"}\n        ]</canvas-datagrid>\n\nYou can still access the grid as you would expect and the interface for the web component instance is the same as the module loaded or globally scoped version.  The web component version has additional properties that come from inheriting the base HTTPElement class.\n\nFor further reading about web components see: https://www.webcomponents.org/\n\n* When instantiating the grid in a browser that does not support custom tags or css varaibles, class support will not work.\n\nParsers\n-------\n\nObject that contains a list of MIME type keys and parsing function values for parsing data into the grid.\n\n| Argument | Optional | Description |\n|-----|------|\n| data | false | Input data from interface. |\n| callback | false | Callback function. See below. |\n| mimeType | true | The name of the MIME type. |\n\nCallback\n\n| Argument | Optional | Description |\n|-----|------|\n| data | false | Output data. |\n\nExample parser:\n\n    grid.parsers['text/csv'] = function (data, callback) {\n        var x, s = data.split('\\n');\n        for (x = 0; x < s.length; x += 1) {\n            s[x] = s[x].split(',');\n        }\n        callback(s);\n    }\n\nNote: This a terrible solution for parsing CSV files.  This only serves as an example of the parser contract.\n\nSorters\n-------\n\nObject that contains a list of sorting functions for sorting columns.\n\n| Argument | Description |\n|-----|------|\n| columnName | Name of the column to be sorted. |\n| direction | `asc` or `desc` for ascending or descending. |\n\nSorter function must return a sort function.\nThis function will be used in the [native sort method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).\n\nExample sorter:\n\n    grid.sorters.number = function (columnName, direction) {\n        var asc = direction === 'asc';\n        return function (a, b) {\n            if (asc) {\n                return a[columnName] - b[columnName];\n            }\n            return b[columnName] - a[columnName];\n        };\n    };\n\nFilters\n-------\n\nObject that contains a list of filters for filtering data.\nThe properties in this object match the `schema[].type` property.\nFor example, if the schema for a given column was of the type `date`\nthe grid would look for a filter called `filters.date`\nif a filter cannot be found for a given data type a warning will\nbe logged and the string/RegExp filter will be used.\n\n    filters.number = function (value, filterFor) {\n        if (!filterFor) { return true; }\n        return value === filterFor;\n    };\n\nFormatters\n----------\n\nObject that contains a list of formatting functions for displaying text.\nThe properties in this object match the `schema[].type` property.\nFor example, if the schema for a given column was of the type `date`\nthe grid would look for a formatter called `formatters.date`\nif a formatter cannot be found for a given data type a warning will\nbe logged and the string formatter will be used.\n\nCell formatter function should contain the following arguments.\n\n    grid.formatters.date = function (e) { return new Date(e.cell.value).toISOString(); }\n\nFormatters must return a string value to be displayed in the cell.\n\n\nFormatting using event listeners\n--------------------------------\n\nYou can format the data in your cells without altering the data in two ways.\n\nThe first and fastest method is grid formatters.\nGrid formatters allow you to pass your values though a function to format them as they are drawn onto the grid.\nData type is defined in the [schema](https://tonygermaneri.github.io/canvas-datagrid/docs/#schema) that you can optionally pass to describe your data.\n\nThis method is slightly faster due to the O(1) hash map employed in the value formatters.\n\nIn the following example, the type `date` is given a formatter function.\n\n    grid.formatters.date = function (e) {\n        return new Date(e.cell.value).toISOString();\n    };\n\nThe return value of the formatter function will be displayed in the cell instead of the value\nin the data without altering the data.\n\nThe second method is the `rendertext` event.  By subscribing to the `rendertext` event listener\nwe can intercept the value in the context of the [cell](https://tonygermaneri.github.io/canvas-datagrid/docs/#canvasDatagrid.cell) being drawn and alter it.\n\nThis method is slightly slower due to the O(n) loop employed in the event handler class.\n\nThis method is not dependent on values in the schema.  This methods overrides `grid.formatters`.\n\n    grid.addEventListener('rendertext', function (e) {\n        if (e.cell.rowIndex > -1) {\n            if (e.cell.header.name === 'MyDateColumnName') {\n                e.cell.formattedValue = new Date(e.cell.value).toISOString();\n            }\n        }\n    });\n\nExtending the visual appearance\n-------------------------------\nAll visual elements of the canvas are dependent on the values of the style object.\nUsing the style object, you can change the dimensions and appearance of any element of the grid.\n\nThere are two types of styles, styles built into the DOM element, such as width and margin, and there\nare styles related to the drawing of the grid on the canvas, these are listed in the style section.\n\nThis example changes the fill style of the cell when the cell is a certain value.\n\n    grid.addEventListener('rendercell', function (e) {\n        if (e.cell.header.name === 'MyStatusCell' && /blah/.test(e.cell.value)) {\n            e.ctx.fillStyle = '#AEEDCF';\n        }\n    });\n\nDrawing on the canvas\n---------------------\nExtending behavior is done using event handlers just like a regular HTML element.\nYou can alter the content of a rendered cell by attaching to such an event handler.\nBelow is an example of drawing an image into a cell:\n\nThis example attaches to two events. `rendertext` to prevent the rendering of text into the cell...\n\n    grid.addEventListener('rendertext', function (e) {\n        if (e.cell.rowIndex > -1) {\n            if (e.cell.header.name === 'MyImageColumnName') {\n                e.cell.formattedValue = e.cell.value ? '' : 'No Image';\n            }\n        }\n    });\n\n... and `afterrendercell` to draw an image into the cell after the background and borders are drawn.\nBecause the image is loaded asynchronously, you need to attach to the load event to actually draw\nthe image.\n\n    var imgs = {};\n    grid.addEventListener('afterrendercell', function (e) {\n        var i, contextGrid = this;\n        if (e.cell.header.name === 'MyImageColumnName'\n                && e.cell.value && e.cell.rowIndex > -1) {\n            if (!imgs[e.cell.value]) {\n                i = imgs[e.cell.value] = new Image();\n                i.src = e.cell.value;\n                i.onload = function () {\n                    i.targetHeight = e.cell.height;\n                    i.targetWidth = e.cell.height * (i.width / i.height);\n                    contextGrid.draw();\n                };\n                return;\n            }\n            i = imgs[e.cell.value];\n            if (i.width !== 0) {\n                e.ctx.drawImage(i, e.cell.x, e.cell.y, i.targetWidth, i.targetHeight);\n            }\n        }\n    });\n\n\n\nSupporting DOM elements\n-----------------------\n\nAlthough the grid itself is pure canvas, there are some supporting elements of the grid that are HTMLElements.\n\n* In order to overlap parts of the page that are not on the canvas, the context menu is a `&lt;div&gt;`.\n* In order to support advanced key commands, copying, pasting as well as user customization outside of this library, the editing input/textarea is DOM.\n* A hidden input is placed outside of the visible area of the web page to capture keystroke and translate them into grid commands, such as cursor navigation.\n\nYou can customize almost every behavior of the grid by subscribing to an event in the event handler collection.\nMost events provide a `e.preventDefault();` method that will allow you to manipulate the grid's behavior on a very granular level.\n\nExamples of how to use many of the event handlers to change default grid behaviors can be found in the <a href=\"#tutorials\">tutorials</a> section.\n\nNotes\n-----\n\n* Throughout this document there are several words that will be used interchangeably.\n* Canvas Datagrid will also be referred to simply as \"grid\".\n* Column and header are used interchangeably.\n* Node, HTMLElement, DOM, DOM element, and element all refer to an HTML element or elements.\n* Firing, raising, invoking, and running, all refer to a function or event occurring.\n* Binding, subscribing, and listening all refer to using `&lt;element&gt;.addEventListener()` to subscribe to an event.\n* Inner grid, child grid, tree grid, cell grid all refer to one of two types of grids that render inside of other grids.  Cell grids are in a single cell, while tree grids span an entire row.\n* Drawing and rendering both refer to using low level methods to draw pixels onto the canvas, usually by invoking `canvasDatagrid.draw`.\n* This documentation is automatically generated and can be prone to omissions, bad links and errors.  Please report any problems with the documentation here {@link https://github.com/TonyGermaneri/canvas-datagrid/issues}.\n",
+    "canvasDatagrid.md": "Ways to create a grid\n---------------------\n\n* Web component by using the tag `&lt;canvas-datagrid&gt;&lt;/canvas-datagrid&gt;` anywhere in your document.\n* Web component by running `var foo = document.createElement('canvas-datagrid')`.\n* Webpack3 universal module loader by adding one of many module loaders to your application code.  <br>See example: {@link https://tonygermaneri.github.io/canvas-datagrid/tutorials/amdDemo.html}.\n* You can also load the grid by invoking the global method `var foo = canvasDatagrid(&lt;args&gt;);` <br>See example: {@link https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html}\n\nIf you create the grid using the non-web component model, you can attach the grid to an existing canvas by passing the canvas in as the `parentNode` when you instantiate the grid using the module loader or global versions.  This is not possible when instantiating using `createElement` or markup.\n\nWith the exception of attaching to an existing canvas, the grid will attempt to create a Shadow DOM element and attach a canvas within.\n\n* Support for attaching to existing canvas elements is experimental.\n\n* In browsers that do not support custom tags, a `&lt;canvas&gt;` tag is used in place of the `&lt;canvas-datagrid&gt;` tag.\n\n* In browsers that do not support Shadow DOM, no shadow root will be created.  In this mode cascading CSS can alter the grid, altering behavior in potentially breaking ways.  Careful application of CSS is required.  This can effect the grid in-line editing and context menus.\n\nSetting Height and Width\n------------------------\n\nLimiting the size of the canvas-datagrid element is the best way to improve performance.\n\ncanvas-datagrid by default is set to `grid.style.height: auto` and `grid.style.width: auto`.\nThis means the canvas-datagrid element expands to the height and width of the rows and columns contained within.\nIf you have many rows or columns you will want to limit the height and width of the element by setting\n`grid.style.height` and `grid.style.width` to something besides `auto`.  Try `100%` or `300px`.\n\nWhen set to a value other than auto a virtual scroll box will be drawn onto the canvas\nconstraining the size and allowing the user to scroll around the columns and rows.\n\nCurrently `max-width`, `max-height`, `min-width` and `min-height` are not supported and will do nothing, but support is planned.\n\nSetting and Getting Data\n------------------------\n\nData is set according to the MIME type parser defined in grid.dataType.  The default type parser is `application/x-canvas-datagrid`.\n\nThis format expects an array of objects or an array of arrays that strictly conform to a schema (i.e.: they all have the same properties or lengths).\n\nExample `application/x-canvas-datagrid`\n\n    [\n        {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},\n        {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}\n    ]\n\nor\n\n    [\n        ['row 1 column 1', 'row 1 column 2', 'row 1 column 3'],\n        ['row 2 column 1', 'row 2 column 2', 'row 2 column 3']\n    ]\n\n\nWhen getting data, no matter how it was set, it will be returned as `application/x-canvas-datagrid` (an array of objects).\n\nFor more information on using and creating custom parsers see: [parsers](https://tonygermaneri.github.io/canvas-datagrid/docs/#parsers)\n\nThe table below lists ways to set data and the default parser used.\n\n| Method | Parser |\n|-----|------|\n| data property | application/x-canvas-datagrid |\n| web component data attribute | application/json+x-canvas-datagrid |\n| web component innerHTML attribute | application/json+x-canvas-datagrid |\n\nThere are two built in parsers.\n\napplication/x-canvas-datagrid (Default)\napplication/json+x-canvas-datagrid\n\nNote: When the value of a cell is an object or an array, a new grid will be drawn into the cell.  This behavior can be overridden.\n\nNote: When setting data via the web component innerHTML attribute, only string data can be passed.\n\nNote: When you pass string data into the web component and the `grid.dataType` is set to the default: `application/x-canvas-datagrid` it will become set to `application/json+x-canvas-datagrid` to parse the string data.  If `grid.dataType` was previously changed, the parser it was changed to will be used instead.\n\nSchema\n------\n\nSchema is optional.  Schema is an array of header objects.\nThis documentation will use the term header and column interchangeably.\nIf no schema is provided one will be generated from the\ndata, in that case all data will be assumed to be string data.\n\nNote: When data is generated from an 2D array (array of arrays vs. array of objects) the columns will be named A, B, C, D,... etc..\n\nEach header object can have the following properties:\n\n| Property | Description |\n|-----|------|\n| name | The name of the column.  This is used to match with data and is the only required property. |\n| type | The data type of this column |\n| title | What will be displayed to the user.  If not present, name will be used. |\n| width | The default width in pixels of this column.|\n| hidden | When true the column will be hidden. |\n| filter | The filter function to use to filter this column.  If no function is provided, type will determine filer. |\n| formatter | The formatter function used display this column.  If no function is provided, type will determine formatter.|\n| defaultValue | The default value of this column for new rows.  This is a function or a string.  When a function is used, it takes the arguments `header` and `index` and must return a value for new default cell value in this column.|\n\nExample schema:\n\n    [\n        {\n            name: 'col1'\n        },\n        {\n            name: 'col2'\n        },\n        {\n            name: 'col3'\n        }\n    ]\n\nProperties, Attributes, & Parameters\n------------------------------------\n\n* Properties, attributes, and parameters represent different ways to change the values and behaviors of the grid.\nProperties can be accessed directly from the grid instance. E.g.:\n\n    myGrid.someProperty = 'Some Value';\n\n* Attributes can be access from the grid instance's attributes property.  E.g.:\n\n    myGrid.attributes.someAttribute = 'Some Value';\n\n* Attributes can also be set from the attribute list of the web component tag.  E.g.:\n\n    &lt;canvas-datagrid someattribute=\"Some Value\"&gt;&lt;/canvas-datagrid&gt;\n\n* Parameters are attributes that are passed in the arguments object during instantiation.  E.g.:\n\n    var myGrid = canvasDatagrid({someAttribute: 'Some Value'});\n\n\nWeb Component\n-------------\n\nThe grid can be instantiated as a web component.\n\n\n    <canvas-datagrid></canvas-datagrid>\n\n\nTo set data, add JSON between the open and close tags.\n\n\n        <canvas-datagrid>[\n            {\"col1\": \"row 1 column 1\", \"col2\": \"row 1 column 2\", \"col3\": \"row 1 column 3\"},\n            {\"col1\": \"row 2 column 1\", \"col2\": \"row 2 column 2\", \"col3\": \"row 2 column 3\"}\n        ]</canvas-datagrid>\n\n\nTo set attributes, add attributes.  Attributes are not case sensitive when using HTML.  When using the same element in JavaScript however they are case sensitive.\n\n    <canvas-datagrid selectionmode='row'></canvas-datagrid>\n\nStyles are declared as custom css properties prefixed with --cdg- and hyphenated rather than camelCase.\nFor example, the style \"gridBackgroundColor\" is set with \"--cdg-grid-background-color\".  The web component\nworks with classes, css cascading, and in-line styles just like any other HTML element.\n\nInline styles:\n\n        <canvas-datagrid style=\"--cdg-grid-background-color: lightblue;\">[\n            {\"col1\": \"row 1 column 1\", \"col2\": \"row 1 column 2\", \"col3\": \"row 1 column 3\"},\n            {\"col1\": \"row 2 column 1\", \"col2\": \"row 2 column 2\", \"col3\": \"row 2 column 3\"}\n        ]</canvas-datagrid>\n\nClass styles.\n\n        <style>\n            .grid {\n                --cdg-grid-background-color: lightblue;\n            }\n        </style>\n        <canvas-datagrid class=\"grid\">[\n            {\"col1\": \"row 1 column 1\", \"col2\": \"row 1 column 2\", \"col3\": \"row 1 column 3\"},\n            {\"col1\": \"row 2 column 1\", \"col2\": \"row 2 column 2\", \"col3\": \"row 2 column 3\"}\n        ]</canvas-datagrid>\n\nYou can still access the grid as you would expect and the interface for the web component instance is the same as the module loaded or globally scoped version.  The web component version has additional properties that come from inheriting the base HTTPElement class.\n\nFor further reading about web components see: https://www.webcomponents.org/\n\n* When instantiating the grid in a browser that does not support custom tags or css varaibles, class support will not work.\n\nParsers\n-------\n\nObject that contains a list of MIME type keys and parsing function values for parsing data into the grid.\n\n| Argument | Optional | Description |\n|-----|------|\n| data | false | Input data from interface. |\n| callback | false | Callback function. See below. |\n| mimeType | true | The name of the MIME type. |\n\nCallback\n\n| Argument | Optional | Description |\n|-----|------|\n| data | false | Output data. |\n\nExample parser:\n\n    grid.parsers['text/csv'] = function (data, callback) {\n        var x, s = data.split('\\n');\n        for (x = 0; x < s.length; x += 1) {\n            s[x] = s[x].split(',');\n        }\n        callback(s);\n    }\n\nNote: This a terrible solution for parsing CSV files.  This only serves as an example of the parser contract.\n\nSorters\n-------\n\nObject that contains a list of sorting functions for sorting columns.\n\n| Argument | Description |\n|-----|------|\n| columnName | Name of the column to be sorted. |\n| direction | `asc` or `desc` for ascending or descending. |\n\nSorter function must return a sort function.\nThis function will be used in the [native sort method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).\n\nExample sorter:\n\n    grid.sorters.number = function (columnName, direction) {\n        var asc = direction === 'asc';\n        return function (a, b) {\n            if (asc) {\n                return a[columnName] - b[columnName];\n            }\n            return b[columnName] - a[columnName];\n        };\n    };\n\nFilters\n-------\n\nObject that contains a list of filters for filtering data.\nThe properties in this object match the `schema[].type` property.\nFor example, if the schema for a given column was of the type `date`\nthe grid would look for a filter called `filters.date`\nif a filter cannot be found for a given data type a warning will\nbe logged and the string/RegExp filter will be used.\n\n    filters.number = function (value, filterFor) {\n        if (!filterFor) { return true; }\n        return value === filterFor;\n    };\n\nFormatters\n----------\n\nObject that contains a list of formatting functions for displaying text.\nThe properties in this object match the `schema[].type` property.\nFor example, if the schema for a given column was of the type `date`\nthe grid would look for a formatter called `formatters.date`\nif a formatter cannot be found for a given data type a warning will\nbe logged and the string formatter will be used.\n\nCell formatter function should contain the following arguments.\n\n    grid.formatters.date = function (e) { return new Date(e.cell.value).toISOString(); }\n\nFormatters must return a string value to be displayed in the cell.\n\n\nFormatting using event listeners\n--------------------------------\n\nYou can format the data in your cells without altering the data in two ways.\n\nThe first and fastest method is grid formatters.\nGrid formatters allow you to pass your values though a function to format them as they are drawn onto the grid.\nData type is defined in the [schema](https://tonygermaneri.github.io/canvas-datagrid/docs/#schema) that you can optionally pass to describe your data.\n\nThis method is slightly faster due to the O(1) hash map employed in the value formatters.\n\nIn the following example, the type `date` is given a formatter function.\n\n    grid.formatters.date = function (e) {\n        return new Date(e.cell.value).toISOString();\n    };\n\nThe return value of the formatter function will be displayed in the cell instead of the value\nin the data without altering the data.\n\nThe second method is the `rendertext` event.  By subscribing to the `rendertext` event listener\nwe can intercept the value in the context of the [cell](https://tonygermaneri.github.io/canvas-datagrid/docs/#canvasDatagrid.cell) being drawn and alter it.\n\nThis method is slightly slower due to the O(n) loop employed in the event handler class.\n\nThis method is not dependent on values in the schema.  This methods overrides `grid.formatters`.\n\n    grid.addEventListener('rendertext', function (e) {\n        if (e.cell.rowIndex > -1) {\n            if (e.cell.header.name === 'MyDateColumnName') {\n                e.cell.formattedValue = new Date(e.cell.value).toISOString();\n            }\n        }\n    });\n\nExtending the visual appearance\n-------------------------------\nAll visual elements of the canvas are dependent on the values of the style object.\nUsing the style object, you can change the dimensions and appearance of any element of the grid.\n\nThere are two types of styles, styles built into the DOM element, such as width and margin, and there\nare styles related to the drawing of the grid on the canvas, these are listed in the style section.\n\nThis example changes the fill style of the cell when the cell is a certain value.\n\n    grid.addEventListener('rendercell', function (e) {\n        if (e.cell.header.name === 'MyStatusCell' && /blah/.test(e.cell.value)) {\n            e.ctx.fillStyle = '#AEEDCF';\n        }\n    });\n\nDrawing on the canvas\n---------------------\nExtending behavior is done using event handlers just like a regular HTML element.\nYou can alter the content of a rendered cell by attaching to such an event handler.\nBelow is an example of drawing an image into a cell:\n\nThis example attaches to two events. `rendertext` to prevent the rendering of text into the cell...\n\n    grid.addEventListener('rendertext', function (e) {\n        if (e.cell.rowIndex > -1) {\n            if (e.cell.header.name === 'MyImageColumnName') {\n                e.cell.formattedValue = e.cell.value ? '' : 'No Image';\n            }\n        }\n    });\n\n... and `afterrendercell` to draw an image into the cell after the background and borders are drawn.\nBecause the image is loaded asynchronously, you need to attach to the load event to actually draw\nthe image.\n\n    var imgs = {};\n    grid.addEventListener('afterrendercell', function (e) {\n        var i, contextGrid = this;\n        if (e.cell.header.name === 'MyImageColumnName'\n                && e.cell.value && e.cell.rowIndex > -1) {\n            if (!imgs[e.cell.value]) {\n                i = imgs[e.cell.value] = new Image();\n                i.src = e.cell.value;\n                i.onload = function () {\n                    i.targetHeight = e.cell.height;\n                    i.targetWidth = e.cell.height * (i.width / i.height);\n                    contextGrid.draw();\n                };\n                return;\n            }\n            i = imgs[e.cell.value];\n            if (i.width !== 0) {\n                e.ctx.drawImage(i, e.cell.x, e.cell.y, i.targetWidth, i.targetHeight);\n            }\n        }\n    });\n\n\n\nSupporting DOM elements\n-----------------------\n\nAlthough the grid itself is pure canvas, there are some supporting elements of the grid that are HTMLElements.\n\n* In order to overlap parts of the page that are not on the canvas, the context menu is a `&lt;div&gt;`.\n* In order to support advanced key commands, copying, pasting as well as user customization outside of this library, the editing input/textarea is DOM.\n* A hidden input is placed outside of the visible area of the web page to capture keystroke and translate them into grid commands, such as cursor navigation.\n\nYou can customize almost every behavior of the grid by subscribing to an event in the event handler collection.\nMost events provide a `e.preventDefault();` method that will allow you to manipulate the grid's behavior on a very granular level.\n\nExamples of how to use many of the event handlers to change default grid behaviors can be found in the <a href=\"#tutorials\">tutorials</a> section.\n\nNotes\n-----\n\n* Throughout this document there are several words that will be used interchangeably.\n* Canvas Datagrid will also be referred to simply as \"grid\".\n* Column and header are used interchangeably.\n* Node, HTMLElement, DOM, DOM element, and element all refer to an HTML element or elements.\n* Firing, raising, invoking, and running, all refer to a function or event occurring.\n* Binding, subscribing, and listening all refer to using `&lt;element&gt;.addEventListener()` to subscribe to an event.\n* Inner grid, child grid, tree grid, cell grid all refer to one of two types of grids that render inside of other grids.  Cell grids are in a single cell, while tree grids span an entire row.\n* Drawing and rendering both refer to using low level methods to draw pixels onto the canvas, usually by invoking `canvasDatagrid.draw`.\n* This documentation is automatically generated and can be prone to omissions, bad links and errors.  Please report any problems with the documentation here {@link https://github.com/TonyGermaneri/canvas-datagrid/issues}.\n",
     "canvasDatagrid.style.md": "Setting Styles\n--------------\nAll visual elements of the canvas are dependent on the values of the style object.\nUsing the style object, you can change the dimensions and appearance of any element of the grid.\n\nThere are two types of styles, styles built into the DOM element, such as width and margin, and there\nare styles related to the drawing of the grid on the canvas, these are listed in the style section.\n\nStyles can be set during instantiation.\n\n    var grid = canvasDatagrid({\n            style: {\n                gridBackgroundColor: 'red'\n            }\n        });\n\nStyles can be set after instantiation.\n\n    grid.style.gridBackgroundColor = 'red';\n\nWhen using the web component, styles can be set as above, but also using standard CSS.\n\nWhen using standard CSS, style names are hyphenated, lower case, and prefixed with `--cdg-`.\n\n    <canvas-datagrid style=\"--cdg-grid-background-color: red;\">[{\"my\": \"data\"}]</canvas-datagrid>\n\nWhen using the web component you can also use CSS classes and selectors as you would a native HTML element.\n    \n    <style>\n        .my-grid {\n            --cdg-grid-background-color: red;\n        }\n    </style>\n\n    <canvas-datagrid class=\"my-grid\">[{\"my\": \"data\"}]</canvas-datagrid>\n\nYou can build your own styles using the <a href=\"https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html\">Style Builder</a>.\n",
     "demo.html": "<!doctype html>\n<html lang=\"en\">\n    <head>\n        <script src=\"../dist/canvas-datagrid.debug.js\"></script>\n        <script src=\"./demo.js\"></script>\n        <meta name=\"viewport\" content=\"width=device-width\">\n        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"/>\n        <style>\n            html, body {\n                height: 100%;\n                min-height: 100%;\n                margin: 0;\n                padding: 0;\n                overflow: hidden;\n            }\n            #grid {\n                height: 100%;\n                width: 100%;\n                min-height: 100%;\n            }\n        </style>\n    </head>\n    <body><div id=\"grid\"></div></body>\n</html>\n",
     "demo.js": "/*jslint browser: true*/\n/*globals canvasDatagrid: false*/\nvar data;\nfunction demo() {\n    'use strict';\n    var searchUrl = window.location.search.substring(3),\n        typeMap = {\n            'text': 'string',\n            'money': 'number',\n            'number': 'number'\n        },\n        dataSets = [\n            ['Institute of Museum and Library Services - Museum Universe Data File FY 2015 Q3', 'https://data.imls.gov/api/views/ku5e-zr2b/rows.json?accessType=DOWNLOAD'],\n            ['Main Libraries, Branches, and Bookmobiles: FY 2014 Public Libraries Survey', 'https://data.imls.gov/api/views/ucdn-7aur/rows.json?accessType=DOWNLOAD'],\n            ['NCHS - Leading Causes of Death: United States', 'https://data.cdc.gov/api/views/bi63-dtpu/rows.json?accessType=DOWNLOAD'],\n            ['State of Connecticut - SAT School Participation and Performance: 2012-2013', 'https://data.ct.gov/api/views/kbxi-4ia7/rows.json?accessType=DOWNLOAD'],\n            ['Nutrition, Physical Activity, and Obesity - Behavioral Risk Factor Surveillance System', 'https://chronicdata.cdc.gov/api/views/hn4x-zwk7/rows.json?accessType=DOWNLOAD'],\n            ['City of Los Angeles 2010 Census Populations by Zip Code', 'http://localhost/tutorials/demo.html?q=https://data.lacity.org/api/views/nxs9-385f/rows.json?accessType=DOWNLOAD'],\n            ['Youth Tobacco Survey', 'https://chronicdata.cdc.gov/api/views/4juz-x2tp/rows.json?accessType=DOWNLOAD'],\n            ['Most Popular Baby Names by Sex and Mother\\'s Ethnic Group, New York City', 'https://data.cityofnewyork.us/api/views/25th-nujf/rows.json?accessType=DOWNLOAD'],\n            ['Deaths in 122 U.S. cities - 1962-2016. 122 Cities Mortality Reporting System', 'https://data.cdc.gov/api/views/mr8w-325u/rows.json?accessType=DOWNLOAD'],\n            ['Nutrition, Physical Activity, and Obesity - National Immunization Survey (Breastfeeding)', 'https://chronicdata.cdc.gov/api/views/8hxn-cvik/rows.json?accessType=DOWNLOAD'],\n            ['Nutrition, Physical Activity, and Obesity - Women, Infant, and Child', 'https://chronicdata.cdc.gov/api/views/735e-byxc/rows.json?accessType=DOWNLOAD'],\n            ['NYC Social Media Usage', 'https://data.cityofnewyork.us/api/views/5b3a-rs48/rows.json?accessType=DOWNLOAD'],\n            ['New York City Leading Causes of Death', 'https://data.cityofnewyork.us/api/views/jb7j-dtam/rows.json?accessType=DOWNLOAD'],\n            ['New York State - Index, Violent, Property, and Firearm Rates By County: Beginning 1990', 'https://data.ny.gov/api/views/34dd-6g2j/rows.json?accessType=DOWNLOAD'],\n            ['U.S. Chronic Disease Indicators (CDI) (250mb+)', 'https://chronicdata.cdc.gov/api/views/g4ie-h725/rows.json?accessType=DOWNLOAD'],\n        ];\n    function isNoiseData(name) {\n        // get rid of fields that we don't care about\n        return ['sid', 'id', 'position', 'created_at',\n                    'created_meta', 'updated_at',\n                    'updated_meta', 'meta', 'GeoLocation',\n                    'LOCATION', 'Location 1', 'Location 2',\n                    'Location 3', 'Location 4', 'WEBURL'].indexOf(name) !== -1;\n    }\n    function parseOpenData(openData) {\n        var data, schema = [];\n        openData.meta.view.columns.forEach(function (column) {\n            if (isNoiseData(column.name)) {\n                column.hidden = true;\n            }\n            column.type = typeMap[column.dataTypeName] || 'string';\n            if (/full or part-time/i.test(column.name)) {\n                column.enum = [['F', 'F'], ['P', 'P']];\n            }\n            if (/salary or hourly/i.test(column.name)) {\n                column.enum = [['Salary', 'Salary'], ['Hourly', 'Hourly']];\n            }\n            schema.push(column);\n        });\n        data = openData.data.map(function (row) {\n            var r = {};\n            schema.forEach(function (column, index) {\n                r[column.name] = row[index];\n            });\n            return r;\n        });\n        return {\n            data: data,\n            schema: schema\n        };\n    }\n    function initGrid() {\n        var grid = canvasDatagrid({\n                parentNode: document.getElementById('grid'),\n                borderDragBehavior: 'move',\n                allowMovingSelection: true,\n                columnHeaderClickBehavior: 'select',\n                allowFreezingRows: true,\n                allowFreezingColumns: true,\n                allowRowReordering: true,\n                tree: false,\n                debug: false,\n                showPerformance: false\n            });\n        grid.style.height = '100%';\n        grid.style.width = '100%';\n        function loadDataSet(url) {\n            var xhr = new XMLHttpRequest();\n            xhr.addEventListener('progress', function (e) {\n                grid.data = [{ status: 'Loading data: ' + e.loaded + ' of ' + (e.total || 'unknown') + ' bytes...'}];\n            });\n            xhr.addEventListener('load', function (e) {\n                grid.data = [{ status: 'Loading data ' + e.loaded + '...'}];\n                var openData = parseOpenData(JSON.parse(this.responseText));\n                grid.schema = openData.schema;\n                grid.data = openData.data;\n            });\n            xhr.open('GET', url);\n            xhr.send();\n        }\n        grid.addEventListener('contextmenu', function (e) {\n            e.items.push({\n                title: 'More data sets from Data.gov',\n                items: dataSets.map(function (u) {\n                    return {\n                        title: u[0],\n                        click: function () {\n                            loadDataSet(u[1]);\n                        }\n                    };\n                })\n            });\n            e.items.push({\n                title: 'View page source',\n                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/demo.html', 'src'); }\n            });\n            e.items.push({\n                title: 'View JS module',\n                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid/blob/master/tutorials/demo.js', 'src'); }\n            });\n            e.items.push({\n                title: 'Go to main canvas-datagrid GitHub page',\n                click: function () { window.open('https://github.com/TonyGermaneri/canvas-datagrid', 'src'); }\n            });\n            e.items.push({\n                title: 'Toggle debugging info',\n                click: function () { grid.attributes.debug = !grid.attributes.debug; }\n            });\n            e.items.push({\n                title: 'Toggle performance info',\n                click: function () { grid.attributes.showPerformance = !grid.attributes.showPerformance; }\n            });\n            e.items.push({\n                title: 'Get other JSON URLs from Data.gov<br>&nbsp;&nbsp;&nbsp;&nbsp;then set to this page\\'s q querystring parameter',\n                click: function () { window.open('https://catalog.data.gov/dataset?res_format=JSON&_res_format_limit=0&_bureauCode_limit=0', 'datagov'); }\n            });\n        });\n        if (searchUrl.length > 3) {\n            // work encoded or not, for lazy people who can't be bothered encoding stuff\n            loadDataSet(/%3A/.test(searchUrl) ? decodeURIComponent(searchUrl) : searchUrl);\n        } else {\n            loadDataSet('https://data.cityofchicago.org/api/views/xzkq-xp2w/rows.json?accessType=DOWNLOAD');\n            // inner join\n            // https://data.cityofchicago.org/api/views/pasx-mnuv/rows.json?accessType=DOWNLOAD\n        }\n    }\n    initGrid();\n}\nif (document.addEventListener) {\n    document.addEventListener('DOMContentLoaded', demo);\n} else {\n    setTimeout(function () {\n        'use strict';\n        demo();\n    }, 500);\n}\n",
