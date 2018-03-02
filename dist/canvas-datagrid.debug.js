@@ -2076,7 +2076,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.ctx.oBackingStorePixelRatio ||
                     self.ctx.backingStorePixelRatio || 1));
         };
-        self.resize = function (drawAfterResize, onlyResizeX) {
+        self.resize = function (drawAfterResize) {
             if (!self.canvas) { return; }
             var x,
                 v = {
@@ -2151,17 +2151,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 });
             }
             self.scrollCache.x = [];
-            if (!onlyResizeX) {
-                self.scrollCache.y = [];
-                for (x = 0; x < l; x += 1) {
-                    self.scrollCache.y[x] = dataHeight;
-                    dataHeight += (((self.sizes.rows[x] || ch) + (self.sizes.trees[x] || 0)) * self.scale)
-                        // HACK? if an expanded tree row is frozen it is necessary to add the tree row's height a second time.
-                        + (self.frozenRow > x ? (self.sizes.trees[x] || 0) : 0);
-                }
-                if (l > 1) {
-                    self.scrollCache.y[x] = dataHeight;
-                }
+            self.scrollCache.y = [];
+            for (x = 0; x < l; x += 1) {
+                self.scrollCache.y[x] = dataHeight;
+                dataHeight += (((self.sizes.rows[x] || ch) + (self.sizes.trees[x] || 0)) * self.scale)
+                    // HACK? if an expanded tree row is frozen it is necessary to add the tree row's height a second time.
+                    + (self.frozenRow > x ? (self.sizes.trees[x] || 0) : 0);
+            }
+            if (l > 1) {
+                self.scrollCache.y[x] = dataHeight;
             }
             dataWidth = self.getSchema().reduce(function reduceSchema(accumulator, column, columnIndex) {
                 if (column.hidden) {
@@ -2198,7 +2196,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.scrollBox.verticalBarVisible = dataHeight > self.scrollBox.height;
             // if the scroll box is visible, make room for it by expanding the size of the element
             // if the other dimension is set to auto
-            if (!onlyResizeX && self.scrollBox.horizontalBarVisible && !self.isChildGrid) {
+            if (self.scrollBox.horizontalBarVisible && !self.isChildGrid) {
                 if (self.style.height === 'auto') {
                     self.height += sbw;
                 }
@@ -2221,9 +2219,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.scrollBox.width = self.width - rowHeaderCellWidth - cellBorder - (self.scrollBox.verticalBarVisible ? sbw : 0);
             self.scrollBox.height = self.height - columnHeaderCellHeight - columnHeaderCellBorder;
             self.scrollBox.scrollWidth = dataWidth - self.scrollBox.width;
-            if (!onlyResizeX) {
-                self.scrollBox.scrollHeight = dataHeight - self.scrollBox.height - columnHeaderCellHeight - columnHeaderCellBorder;
-            }
+            self.scrollBox.scrollHeight = dataHeight - self.scrollBox.height - columnHeaderCellHeight - columnHeaderCellBorder;
             self.scrollBox.widthBoxRatio = self.scrollBox.width / dataWidth;
             self.scrollBox.scrollBoxWidth = self.scrollBox.width
                 * self.scrollBox.widthBoxRatio
@@ -2553,14 +2549,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (self.dispatchEvent('resizecolumn', {x: x, y: y, draggingItem: self.draggingItem})) { return false; }
             if (self.scrollBox.scrollLeft > self.scrollBox.scrollWidth - self.attributes.resizeScrollZone
                     && self.dragMode === 'ew-resize') {
-                self.resize(true, true);
+                self.resize(true);
                 self.scrollBox.scrollLeft += x;
             }
             if (self.dragMode === 'ew-resize') {
                 self.sizes.columns[self.draggingItem.header.style === 'rowHeaderCell'
                        ? 'cornerCell' : self.draggingItem.sortColumnIndex] = x;
                 if (['rowHeaderCell', 'cornerCell'].indexOf(self.draggingItem.header.style) !== -1) {
-                    self.resize(true, true);
+                    self.resize(true);
                 }
                 self.resizeChildGrids();
                 return;
