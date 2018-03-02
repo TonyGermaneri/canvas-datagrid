@@ -4688,7 +4688,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 //TODO apply filter to incoming dataset
                 self.data = self.originalData;
                 // empty data was set
-                if (!self.schema && self.data.length === 0) {
+                if (!self.schema && (self.data || []).length === 0) {
                     self.tempSchema = [{name: ''}];
                 }
                 self.fitColumnToValues('cornerCell', true);
@@ -6643,6 +6643,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 });
             if (self.dispatchEvent('beforesortcolumn', {name: columnName, direction: direction})) { return; }
             self.orderBy = columnName;
+            if (!self.data || self.data.length === 0) { return; }
             if (c.length === 0) {
                 throw new Error('Cannot sort.  No such column name');
             }
