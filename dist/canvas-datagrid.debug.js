@@ -2172,6 +2172,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.scrollCache.x[columnIndex] = va;
                 return va;
             }, 0) || 0;
+            dataHeight += columnHeaderCellHeight + columnHeaderCellBorder;
             if (self.attributes.showNewRow) {
                 dataHeight += ch + cellBorder;
             }
@@ -2221,7 +2222,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.scrollBox.height = self.height - columnHeaderCellHeight - columnHeaderCellBorder;
             self.scrollBox.scrollWidth = dataWidth - self.scrollBox.width;
             if (!onlyResizeX) {
-                self.scrollBox.scrollHeight = dataHeight - self.scrollBox.height;
+                self.scrollBox.scrollHeight = dataHeight - self.scrollBox.height - columnHeaderCellHeight - columnHeaderCellBorder;
             }
             self.scrollBox.widthBoxRatio = self.scrollBox.width / dataWidth;
             self.scrollBox.scrollBoxWidth = self.scrollBox.width
@@ -2232,8 +2233,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             // it being off causes the scroll bar to "slide" under
             // the dragged mouse.
             // https://github.com/TonyGermaneri/canvas-datagrid/issues/97
-            self.scrollBox.heightBoxRatio = (self.scrollBox.height - 15) / dataHeight;
-            self.scrollBox.scrollBoxHeight = self.scrollBox.height
+            self.scrollBox.heightBoxRatio = (self.scrollBox.height - columnHeaderCellHeight + columnHeaderCellBorder) / dataHeight;
+            self.scrollBox.scrollBoxHeight = (self.scrollBox.height - columnHeaderCellHeight + columnHeaderCellBorder)
                 * self.scrollBox.heightBoxRatio
                 - self.style.scrollBarWidth - b - d;
             self.scrollBox.scrollBoxWidth = Math.max(self.scrollBox.scrollBoxWidth, self.style.scrollBarBoxMinSize);
