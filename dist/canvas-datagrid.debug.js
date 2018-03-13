@@ -6218,7 +6218,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @param {number} rowIndex The row index of the row to scroll find.
          */
         self.findRowScrollTop = function (rowIndex) {
-            return self.scrollCache.y[rowIndex] - (self.attributes.showColumnHeaders ? self.getColumnHeaderCellHeight() : 0);
+            if (self.scrollCache.y[rowIndex] === undefined) { throw new RangeError('Row index out of range.'); }
+            return self.scrollCache.y[rowIndex];
         };
         /**
          * Returns the number of pixels to scroll to the left to line up with column columnIndex.
@@ -6230,7 +6231,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.findColumnScrollLeft = function (columnIndex) {
             var left = 0, y = 0, s = self.getSchema(), l = s.length - 1;
             if (columnIndex > l) {
-                throw new Error('Impossible column index');
+                throw new Error('Column index out of range.');
             }
             while (y < columnIndex) {
                 left += self.sizes.columns[y] || s[y].width || self.style.cellWidth;
@@ -6239,19 +6240,37 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             return left;
         };
         /**
-         * Scrolls the cell at cell x, row y.
+         * Scrolls to the cell at columnIndex x, and rowIndex y.  If you define both rowIndex and columnIndex additional calculations can be made to center the cell using the target cell's height and width.  Defining only one rowIndex or only columnIndex will result in simpler calculations.
          * @memberof canvasDatagrid
          * @name gotoCell
          * @method
          * @param {number} x The column index of the cell to scroll to.
          * @param {number} y The row index of the cell to scroll to.
+         * @param {number} [offsetX=0] Percentage offset the cell should be from the left edge (not including headers).  The default is 0, meaning the cell will appear at the left edge. Valid values are 0 through 1. 1 = Left, 0 = Right, 0.5 = Center.
+         * @param {number} [offsetY=0] Percentage offset the cell should be from the top edge (not including headers).  The default is 0, meaning the cell will appear at the top edge. Valid values are 0 through 1. 1 = Bottom, 0 = Top, 0.5 = Center.
          */
-        self.gotoCell = function (x, y) {
-            if (x !== undefined) {
-                self.scrollBox.scrollLeft = self.findColumnScrollLeft(x);
-            }
-            if (y !== undefined) {
-                self.scrollBox.scrollTop = self.findRowScrollTop(y);
+        self.gotoCell = function (x, y, offsetX, offsetY) {
+            var targetX = x === undefined ? undefined : self.findColumnScrollLeft(x),
+                targetY = y === undefined ? undefined : self.findRowScrollTop(y),
+                cell,
+                sbw = self.scrollBox.width - (self.scrollBox.verticalBarVisible ? self.style.scrollBarWidth : 0),
+                sbh = self.scrollBox.height - (self.scrollBox.horizontalBarVisible ? self.style.scrollBarWidth : 0);
+            offsetX = offsetX === undefined ? 0 : offsetX;
+            offsetY = offsetY === undefined ? 0 : offsetY;
+            targetX -= sbw * offsetX;
+            targetY -= sbh * offsetY;
+            if (x !== undefined && y !== undefined) {
+                self.scrollBox.scrollTo(targetX, targetY);
+                requestAnimationFrame(function () {
+                    cell = self.getVisibleCellByIndex(x, y);
+                    targetX += cell.width * offsetX;
+                    targetY += cell.height * offsetY;
+                    self.scrollBox.scrollTo(targetX, targetY);
+                });
+            } else if (x !== undefined) {
+                self.scrollBox.scrollLeft = targetX;
+            } else if (y !== undefined) {
+                self.scrollBox.scrollTop = targetY;
             }
         };
         /**
