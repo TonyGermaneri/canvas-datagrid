@@ -2076,7 +2076,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.ctx.oBackingStorePixelRatio ||
                     self.ctx.backingStorePixelRatio || 1));
         };
-        self.resize = function (drawAfterResize, onlyResizeX) {
+        self.resize = function (drawAfterResize) {
             if (!self.canvas) { return; }
             var x,
                 v = {
@@ -2151,17 +2151,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 });
             }
             self.scrollCache.x = [];
-            if (!onlyResizeX) {
-                self.scrollCache.y = [];
-                for (x = 0; x < l; x += 1) {
-                    self.scrollCache.y[x] = dataHeight;
-                    dataHeight += (((self.sizes.rows[x] || ch) + (self.sizes.trees[x] || 0)) * self.scale)
-                        // HACK? if an expanded tree row is frozen it is necessary to add the tree row's height a second time.
-                        + (self.frozenRow > x ? (self.sizes.trees[x] || 0) : 0);
-                }
-                if (l > 1) {
-                    self.scrollCache.y[x] = dataHeight;
-                }
+            self.scrollCache.y = [];
+            for (x = 0; x < l; x += 1) {
+                self.scrollCache.y[x] = dataHeight;
+                dataHeight += (((self.sizes.rows[x] || ch) + (self.sizes.trees[x] || 0)) * self.scale)
+                    // HACK? if an expanded tree row is frozen it is necessary to add the tree row's height a second time.
+                    + (self.frozenRow > x ? (self.sizes.trees[x] || 0) : 0);
+            }
+            if (l > 1) {
+                self.scrollCache.y[x] = dataHeight;
             }
             dataWidth = self.getSchema().reduce(function reduceSchema(accumulator, column, columnIndex) {
                 if (column.hidden) {
@@ -2198,7 +2196,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.scrollBox.verticalBarVisible = dataHeight > self.scrollBox.height;
             // if the scroll box is visible, make room for it by expanding the size of the element
             // if the other dimension is set to auto
-            if (!onlyResizeX && self.scrollBox.horizontalBarVisible && !self.isChildGrid) {
+            if (self.scrollBox.horizontalBarVisible && !self.isChildGrid) {
                 if (self.style.height === 'auto') {
                     self.height += sbw;
                 }
@@ -2221,9 +2219,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.scrollBox.width = self.width - rowHeaderCellWidth - cellBorder - (self.scrollBox.verticalBarVisible ? sbw : 0);
             self.scrollBox.height = self.height - columnHeaderCellHeight - columnHeaderCellBorder;
             self.scrollBox.scrollWidth = dataWidth - self.scrollBox.width;
-            if (!onlyResizeX) {
-                self.scrollBox.scrollHeight = dataHeight - self.scrollBox.height - columnHeaderCellHeight - columnHeaderCellBorder;
-            }
+            self.scrollBox.scrollHeight = dataHeight - self.scrollBox.height - columnHeaderCellHeight - columnHeaderCellBorder;
             self.scrollBox.widthBoxRatio = self.scrollBox.width / dataWidth;
             self.scrollBox.scrollBoxWidth = self.scrollBox.width
                 * self.scrollBox.widthBoxRatio
@@ -2553,14 +2549,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (self.dispatchEvent('resizecolumn', {x: x, y: y, draggingItem: self.draggingItem})) { return false; }
             if (self.scrollBox.scrollLeft > self.scrollBox.scrollWidth - self.attributes.resizeScrollZone
                     && self.dragMode === 'ew-resize') {
-                self.resize(true, true);
+                self.resize(true);
                 self.scrollBox.scrollLeft += x;
             }
             if (self.dragMode === 'ew-resize') {
                 self.sizes.columns[self.draggingItem.header.style === 'rowHeaderCell'
                        ? 'cornerCell' : self.draggingItem.sortColumnIndex] = x;
                 if (['rowHeaderCell', 'cornerCell'].indexOf(self.draggingItem.header.style) !== -1) {
-                    self.resize(true, true);
+                    self.resize(true);
                 }
                 self.resizeChildGrids();
                 return;
@@ -6222,7 +6218,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @param {number} rowIndex The row index of the row to scroll find.
          */
         self.findRowScrollTop = function (rowIndex) {
-            return self.scrollCache.y[rowIndex] - (self.attributes.showColumnHeaders ? self.getColumnHeaderCellHeight() : 0);
+            if (self.scrollCache.y[rowIndex] === undefined) { throw new RangeError('Row index out of range.'); }
+            return self.scrollCache.y[rowIndex];
         };
         /**
          * Returns the number of pixels to scroll to the left to line up with column columnIndex.
@@ -6234,7 +6231,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.findColumnScrollLeft = function (columnIndex) {
             var left = 0, y = 0, s = self.getSchema(), l = s.length - 1;
             if (columnIndex > l) {
-                throw new Error('Impossible column index');
+                throw new Error('Column index out of range.');
             }
             while (y < columnIndex) {
                 left += self.sizes.columns[y] || s[y].width || self.style.cellWidth;
@@ -6243,19 +6240,37 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             return left;
         };
         /**
-         * Scrolls the cell at cell x, row y.
+         * Scrolls to the cell at columnIndex x, and rowIndex y.  If you define both rowIndex and columnIndex additional calculations can be made to center the cell using the target cell's height and width.  Defining only one rowIndex or only columnIndex will result in simpler calculations.
          * @memberof canvasDatagrid
          * @name gotoCell
          * @method
          * @param {number} x The column index of the cell to scroll to.
          * @param {number} y The row index of the cell to scroll to.
+         * @param {number} [offsetX=0] Percentage offset the cell should be from the left edge (not including headers).  The default is 0, meaning the cell will appear at the left edge. Valid values are 0 through 1. 1 = Left, 0 = Right, 0.5 = Center.
+         * @param {number} [offsetY=0] Percentage offset the cell should be from the top edge (not including headers).  The default is 0, meaning the cell will appear at the top edge. Valid values are 0 through 1. 1 = Bottom, 0 = Top, 0.5 = Center.
          */
-        self.gotoCell = function (x, y) {
-            if (x !== undefined) {
-                self.scrollBox.scrollLeft = self.findColumnScrollLeft(x);
-            }
-            if (y !== undefined) {
-                self.scrollBox.scrollTop = self.findRowScrollTop(y);
+        self.gotoCell = function (x, y, offsetX, offsetY) {
+            var targetX = x === undefined ? undefined : self.findColumnScrollLeft(x),
+                targetY = y === undefined ? undefined : self.findRowScrollTop(y),
+                cell,
+                sbw = self.scrollBox.width - (self.scrollBox.verticalBarVisible ? self.style.scrollBarWidth : 0),
+                sbh = self.scrollBox.height - (self.scrollBox.horizontalBarVisible ? self.style.scrollBarWidth : 0);
+            offsetX = offsetX === undefined ? 0 : offsetX;
+            offsetY = offsetY === undefined ? 0 : offsetY;
+            targetX -= sbw * offsetX;
+            targetY -= sbh * offsetY;
+            if (x !== undefined && y !== undefined) {
+                self.scrollBox.scrollTo(targetX, targetY);
+                requestAnimationFrame(function () {
+                    cell = self.getVisibleCellByIndex(x, y);
+                    targetX += cell.width * offsetX;
+                    targetY += cell.height * offsetY;
+                    self.scrollBox.scrollTo(targetX, targetY);
+                });
+            } else if (x !== undefined) {
+                self.scrollBox.scrollLeft = targetX;
+            } else if (y !== undefined) {
+                self.scrollBox.scrollTop = targetY;
             }
         };
         /**

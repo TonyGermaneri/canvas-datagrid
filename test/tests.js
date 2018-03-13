@@ -70,13 +70,12 @@
         return d;
     }
     function cleanup(done) {
-        //HACK: this allows for DOM events to cool off?
-        setTimeout(done, 2);
         var m = document.getElementById('mocha');
         m.scrollTop = m.scrollHeight;
         if (this.currentTest && this.currentTest.grid) {
             this.currentTest.grid.disposeContextMenu();
         }
+        done();
     }
     function marker(grid, x, y) {
         grid.markerCount = grid.markerCount || 0;
