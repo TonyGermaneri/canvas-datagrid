@@ -1214,7 +1214,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         active = self.activeCell.rowIndex === rowOrderIndex && self.activeCell.columnIndex === columnOrderIndex,
                         isColumnHeaderCellCap = cellStyle === 'columnHeaderCellCap',
                         rawValue = d ? d[header.name] : undefined,
-                        isGrid = typeof rawValue === 'object' && rawValue !== null && rawValue !== undefined,
+                        isGrid = header.type === 'canvas-datagrid',
                         activeHeader = (self.orders.rows[self.activeCell.rowIndex] === rowOrderIndex
                                 || self.orders.columns[self.activeCell.columnIndex] === headerIndex)
                             && (columnOrderIndex === -1 || rowOrderIndex === -1)
@@ -1664,9 +1664,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
                 for (r = self.frozenRow + self.scrollIndexTop; r < l; r += 1) {
                     n = self.orders.rows[r];
+                    self.scrollIndexBottom = r;
+                    self.scrollPixelBottom = y;
                     if (!drawRow(n, r)) {
-                        self.scrollIndexBottom = r;
-                        self.scrollPixelBottom = y;
                         break;
                     }
                 }

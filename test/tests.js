@@ -2332,6 +2332,7 @@
                 it('Should render a cell grid.', function (done) {
                     var grid = g({
                         test: this.test,
+                        schema: [{name: 'a', type: 'canvas-datagrid'}],
                         data: [{a: [{b: 'c'}]}],
                         cellGridAttributes: {
                             style: {

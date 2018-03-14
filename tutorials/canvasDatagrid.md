@@ -70,8 +70,6 @@ There are two built in parsers.
 application/x-canvas-datagrid (Default)
 application/json+x-canvas-datagrid
 
-Note: When the value of a cell is an object or an array, a new grid will be drawn into the cell.  This behavior can be overridden.
-
 Note: When setting data via the web component innerHTML attribute, only string data can be passed.
 
 Note: When you pass string data into the web component and the `grid.dataType` is set to the default: `application/x-canvas-datagrid` it will become set to `application/json+x-canvas-datagrid` to parse the string data.  If `grid.dataType` was previously changed, the parser it was changed to will be used instead.
@@ -379,6 +377,13 @@ You can customize almost every behavior of the grid by subscribing to an event i
 Most events provide a `e.preventDefault();` method that will allow you to manipulate the grid's behavior on a very granular level.
 
 Examples of how to use many of the event handlers to change default grid behaviors can be found in the <a href="#tutorials">tutorials</a> section.
+
+Cell Grids
+----------
+
+Cell grids are child instances of canvas-datagrid inside of a cell.  By setting the header or cell `type` to `canvas-datagrid` the value of the cell will be passed to the data property of the cell grid.
+
+You can hook into the events `beforerendercellgrid` or `beforecreatecellgrid` to prevent the cell grid from being drawn by calling `e.preventDefault();`.  You can manipulate the parameters used to instantiate the cell grid by hooking into `beforecreatecellgrid` and manipluating `e.cellGridAttributes`.  Cells that are grid cells have the property `cell.isGrid` set to the value `true`.
 
 Notes
 -----
