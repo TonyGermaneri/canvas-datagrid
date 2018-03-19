@@ -2342,7 +2342,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.mouse = overridePos || self.getLayerPos(e);
             var ctrl = (e.ctrlKey || e.metaKey || self.attributes.persistantSelectionMode),
                 i,
-                vs = self.getVisibleSchema(),
+                s = self.getSchema(),
                 dragBounds,
                 sBounds,
                 x = self.mouse.x,
@@ -2407,7 +2407,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     if (self.dragStartObject.columnIndex === -1) {
                         sBounds = self.getSelectionBounds();
                         dragBounds.left = -1;
-                        dragBounds.right = vs.length - 1;
+                        dragBounds.right = s.length - 1;
                         dragBounds.top = Math.min(sBounds.top, o.rowIndex);
                         dragBounds.bottom = Math.max(sBounds.bottom, o.rowIndex);
                     }
@@ -2649,14 +2649,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             document.body.removeEventListener('mousemove', self.scrollGrid, false);
         };
         self.dragReorder = function (e) {
-            var pos, x, y;
+            var pos, x, y,
+                columReorder = self.dragMode === 'column-reorder',
+                rowReorder = self.dragMode === 'row-reorder';
             pos = self.getLayerPos(e);
             x = pos.x - self.dragStart.x;
             y = pos.y - self.dragStart.y;
-            if (!self.attributes.allowColumnReordering && self.dragMode === 'column-reorder') {
+            if (!self.attributes.allowColumnReordering && columReorder) {
                 return;
             }
-            if (!self.attributes.allowRowReordering && self.dragMode === 'row-reorder') {
+            if (!self.attributes.allowRowReordering && rowReorder) {
                 return;
             }
             if (self.dispatchEvent('reordering', {
@@ -2674,7 +2676,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     x: x,
                     y: y
                 };
-                self.autoScrollZone(e, pos.x, pos.y, false);
+                self.autoScrollZone(e, columReorder ? pos.x : -1, rowReorder ? pos.y : -1, false);
             }
         };
         self.stopDragReorder = function (e) {
@@ -3871,21 +3873,25 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             var setTimer,
                 rowHeaderCellWidth = self.getRowHeaderCellWidth(),
                 columnHeaderCellHeight = self.getColumnHeaderCellHeight();
-            if (x > self.width - self.attributes.selectionScrollZone && x < self.width) {
-                self.scrollBox.scrollLeft += self.attributes.selectionScrollIncrement;
-                setTimer = true;
+            if (y !== -1) {
+                if (x > self.width - self.attributes.selectionScrollZone && x < self.width) {
+                    self.scrollBox.scrollLeft += self.attributes.selectionScrollIncrement;
+                    setTimer = true;
+                }
+                if (x - self.attributes.selectionScrollZone - rowHeaderCellWidth < 0) {
+                    self.scrollBox.scrollLeft -= self.attributes.selectionScrollIncrement;
+                    setTimer = true;
+                }
             }
-            if (y > self.height - self.attributes.selectionScrollZone && y < self.height) {
-                self.scrollBox.scrollTop += self.attributes.selectionScrollIncrement;
-                setTimer = true;
-            }
-            if (x - self.attributes.selectionScrollZone - rowHeaderCellWidth < 0) {
-                self.scrollBox.scrollLeft -= self.attributes.selectionScrollIncrement;
-                setTimer = true;
-            }
-            if (y - self.attributes.selectionScrollZone - columnHeaderCellHeight < 0) {
-                self.scrollBox.scrollTop -= self.attributes.selectionScrollIncrement;
-                setTimer = true;
+            if (y !== -1) {
+                if (y > self.height - self.attributes.selectionScrollZone && y < self.height) {
+                    self.scrollBox.scrollTop += self.attributes.selectionScrollIncrement;
+                    setTimer = true;
+                }
+                if (y - self.attributes.selectionScrollZone - columnHeaderCellHeight < 0) {
+                    self.scrollBox.scrollTop -= self.attributes.selectionScrollIncrement;
+                    setTimer = true;
+                }
             }
             if (setTimer && !ctrl && self.currentCell && self.currentCell.columnIndex !== -1) {
                 self.scrollTimer = setTimeout(self.mousemove, self.attributes.scrollRepeatRate, e);
@@ -5311,7 +5317,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         title: self.attributes.hideColumnText
                             .replace(/%s/ig, e.cell.header.title || e.cell.header.name),
                         click: function (ev) {
-                            e.cell.header.hidden = true;
+                            self.getSchema()[e.cell.columnIndex].hidden = true;
                             ev.preventDefault();
                             self.stopPropagation(ev);
                             self.disposeContextMenu();
@@ -6456,12 +6462,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @param {boolean} supressSelectionchangedEvent When true, prevents the selectionchanged event from firing.
          */
         self.selectRow = function (rowIndex, ctrl, shift, supressEvent) {
-            var x, st, en, s = self.getVisibleSchema();
+            var x, st, en, s = self.getSchema();
             function addRow(ri) {
                 self.selections[ri] = [];
                 self.selections[ri].push(-1);
                 s.forEach(function (col, index) {
-                    self.selections[ri].push(index);
+                    if (!col.hidden) {
+                        self.selections[ri].push(index);
+                    }
                 });
             }
             if (self.dragAddToSelection === false || self.dragObject === undefined) {

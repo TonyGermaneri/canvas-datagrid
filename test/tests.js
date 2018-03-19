@@ -2560,14 +2560,16 @@
                         mousedown(grid.canvas, 67, 10);
                         mousemove(grid.canvas, 180, 10, grid.canvas);
                         mousemove(document.body, 180, 10, grid.canvas);
-                        async.parallel([
-                            assertPxColorFn(grid, 178, 30, c.r),
-                            assertPxColorFn(grid, 159, 10, c.y),
-                            assertPxColorFn(grid, 195, 50, c.b)
-                        ], function (err) {
-                            done(err);
-                        });
                         grid.draw();
+                        setTimeout(function () {
+                            async.parallel([
+                                assertPxColorFn(grid, 178, 30, c.r),
+                                assertPxColorFn(grid, 159, 10, c.y),
+                                assertPxColorFn(grid, 195, 50, c.b)
+                            ], function (err) {
+                                done(err);
+                            });
+                        }, 10);
                     }, 10);
                 });
                 it('Should allow row reordering when allowRowReordering is true', function (done) {
