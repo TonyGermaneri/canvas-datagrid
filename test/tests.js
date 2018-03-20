@@ -71,6 +71,7 @@
     }
     function cleanup(done) {
         var m = document.getElementById('mocha');
+        if (!m) { return done(); }
         m.scrollTop = m.scrollHeight;
         if (this.currentTest && this.currentTest.grid) {
             this.currentTest.grid.disposeContextMenu();
@@ -94,6 +95,7 @@
         y = y * window.devicePixelRatio;
         return function (callback) {
             function f() {
+                console.log(grid.canvas.toDataURL('image/jpeg'));
                 d = grid.ctx.getImageData(x, y, 1, 1).data;
                 d = 'rgb(' + [d['0'], d['1'], d['2']].join(', ') + ')';
                 match = d === expected;
@@ -181,6 +183,9 @@
             a = document.createElement('div'),
             t = document.createElement('div'),
             d = document.createElement('div');
+        if (!i) {
+            i = document.createElement('div');
+        }
         a.className = 'test-container';
         d.className = 'grid-container';
         t.className = 'grid-test-title';

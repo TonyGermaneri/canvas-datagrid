@@ -8,13 +8,20 @@ function g() {
         data = [],
         grid = canvasDatagrid({
             parentNode: document.body,
-            debug: false
+            debug: false,
+            selectionMode: 'row',
+            showColumnHeaders: false,
+            showRowHeaders: false
         });
-    grid.style.columnHeaderCellHeight = 40;
-    grid.style.cellHeight = 40;
-    grid.style.height = '100%';
-    grid.style.width = '100%';
-    for (x = 0; x < 400; x += 1) {
+    grid.style.marginTop = '20px';
+    grid.style.marginLeft = '20px';
+    grid.style.columnHeaderCellHeight = 50;
+    grid.style.rowHeaderCellWidth = 50;
+    grid.style.cellHeight = 50;
+    grid.style.cellWidth = 500;
+    grid.style.height = '300px';
+    grid.style.width = '1000px';
+    for (x = 0; x < 600; x += 1) {
         data[x] = {};
         for (y = 0; y < 4; y += 1) {
             data[x][String.fromCharCode(65 + y)] = '';

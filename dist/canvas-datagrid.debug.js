@@ -100,6 +100,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['allowRowResize', true],
                 ['allowRowResizeFromCell', false],
                 ['allowSorting', true],
+                ['alpha', false],
+                ['antialias', true],
                 ['autoGenerateSchema', false],
                 ['autoResizeColumns', false],
                 ['borderDragBehavior', 'none'],
@@ -125,6 +127,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['pageUpDownOverlap', 1],
                 ['pasteText', 'Paste'],
                 ['persistantSelectionMode', false],
+                ['premultipliedAlpha', false],
+                ['preserveDrawingBuffer', true],
                 ['removeFilterOptionText', 'Remove filter on %s'],
                 ['reorderDeadZone', 3],
                 ['resizeScrollZone', 20],
@@ -2138,8 +2142,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
                 dims = {
                     // HACK +1 ? maybe it's a magic cell border?  Required to line up properly in auto height mode.
-                    height: dataHeight + cellBorder + 1,
-                    width: dataWidth + rowHeaderCellWidth + cellBorder
+                    height: dataHeight + 1,
+                    width: dataWidth + rowHeaderCellWidth
                 };
                 ['width', 'height'].forEach(function (dim) {
                     //TODO: support inherit
@@ -2189,7 +2193,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.scrollBox.top = columnHeaderCellHeight + columnHeaderCellBorder;
             self.scrollBox.left = rowHeaderCellWidth;
             // width and height of scroll box
-            self.scrollBox.width = self.width - rowHeaderCellWidth - cellBorder;
+            self.scrollBox.width = self.width - rowHeaderCellWidth;
             self.scrollBox.height = self.height;
             // is the data larger than the scroll box
             self.scrollBox.horizontalBarVisible = dataWidth > self.scrollBox.width;
@@ -2216,23 +2220,19 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.scrollBox.horizontalBarVisible = dataWidth > self.scrollBox.width;
             }
             // set again after bar visibility checks
-            self.scrollBox.width = self.width - rowHeaderCellWidth - cellBorder - (self.scrollBox.verticalBarVisible ? sbw : 0);
-            self.scrollBox.height = self.height - columnHeaderCellHeight - columnHeaderCellBorder;
+            self.scrollBox.width = self.width - rowHeaderCellWidth;
+            self.scrollBox.height = self.height - columnHeaderCellHeight;
             self.scrollBox.scrollWidth = dataWidth - self.scrollBox.width;
-            self.scrollBox.scrollHeight = dataHeight - self.scrollBox.height - columnHeaderCellHeight - columnHeaderCellBorder;
+            self.scrollBox.scrollHeight = dataHeight - self.scrollBox.height;
             self.scrollBox.widthBoxRatio = self.scrollBox.width / dataWidth;
-            self.scrollBox.scrollBoxWidth = self.scrollBox.width
-                * self.scrollBox.widthBoxRatio
-                - self.style.scrollBarWidth - b - d;
+            self.scrollBox.scrollBoxWidth = self.scrollBox.width * self.scrollBox.widthBoxRatio;
             // TODO: This heightBoxRatio number is terribly wrong.
             // They should be a result of the size of the grid/canvas?
             // it being off causes the scroll bar to "slide" under
             // the dragged mouse.
             // https://github.com/TonyGermaneri/canvas-datagrid/issues/97
-            self.scrollBox.heightBoxRatio = (self.scrollBox.height - columnHeaderCellHeight + columnHeaderCellBorder) / dataHeight;
-            self.scrollBox.scrollBoxHeight = (self.scrollBox.height - columnHeaderCellHeight + columnHeaderCellBorder)
-                * self.scrollBox.heightBoxRatio
-                - self.style.scrollBarWidth - b - d;
+            self.scrollBox.heightBoxRatio = self.scrollBox.height / dataHeight;
+            self.scrollBox.scrollBoxHeight = self.scrollBox.height * self.scrollBox.heightBoxRatio;
             self.scrollBox.scrollBoxWidth = Math.max(self.scrollBox.scrollBoxWidth, self.style.scrollBarBoxMinSize);
             self.scrollBox.scrollBoxHeight = Math.max(self.scrollBox.scrollBoxHeight, self.style.scrollBarBoxMinSize);
             // horizontal
@@ -5965,7 +5965,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.parentDOMNode.appendChild(self.controlInput);
                 }
                 self.createInlineStyle(self.canvas, 'canvas-datagrid');
-                self.ctx = self.canvas.getContext('2d');
+                self.ctx = self.canvas.getContext('2d', {
+                    preserveDrawingBuffer: self.attributes.preserveDrawingBuffer,
+                    premultipliedAlpha: self.attributes.premultipliedAlpha,
+                    antialias: self.attributes.antialias,
+                    alpha: self.attributes.alpha
+                });
                 self.ctx.textBaseline = 'alphabetic';
                 self.eventParent = self.canvas;
             }
