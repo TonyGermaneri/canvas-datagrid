@@ -2133,8 +2133,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ch = self.style.cellHeight;
             // sets actual DOM canvas element
             function setScrollBoxSize() {
-                self.scrollBox.width = self.width - rowHeaderCellWidth - cellBorder;
-                self.scrollBox.height = self.height - columnHeaderCellHeight - columnHeaderCellBorder;
+                self.scrollBox.width = self.width - rowHeaderCellWidth;
+                self.scrollBox.height = self.height - columnHeaderCellHeight;
             }
             function setCanvasSize() {
                 if (self.isChildGrid) {
@@ -2174,6 +2174,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.scrollCache.x[columnIndex] = va;
                 return va;
             }, 0) || 0;
+            dataHeight += columnHeaderCellHeight;
             if (self.attributes.showNewRow) {
                 dataHeight += ch;
             }
@@ -2223,7 +2224,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             // set again after bar visibility checks
             setScrollBoxSize();
             self.scrollBox.scrollWidth = dataWidth - self.scrollBox.width;
-            self.scrollBox.scrollHeight = dataHeight - self.scrollBox.height;
+            self.scrollBox.scrollHeight = dataHeight - self.scrollBox.height - columnHeaderCellHeight;
             self.scrollBox.widthBoxRatio = self.scrollBox.width / dataWidth;
             self.scrollBox.scrollBoxWidth = self.scrollBox.width
                 * self.scrollBox.widthBoxRatio
@@ -2233,7 +2234,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             // it being off causes the scroll bar to "slide" under
             // the dragged mouse.
             // https://github.com/TonyGermaneri/canvas-datagrid/issues/97
-            self.scrollBox.heightBoxRatio = self.scrollBox.height / dataHeight;
+            self.scrollBox.heightBoxRatio = self.scrollBox.height / (dataHeight - columnHeaderCellHeight);
             self.scrollBox.scrollBoxHeight = self.scrollBox.height
                 * self.scrollBox.heightBoxRatio
                 - self.style.scrollBarWidth - b - d;
