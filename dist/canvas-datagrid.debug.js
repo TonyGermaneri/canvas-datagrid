@@ -2132,6 +2132,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 rowHeaderCellWidth = self.getRowHeaderCellWidth(),
                 ch = self.style.cellHeight;
             // sets actual DOM canvas element
+            function setScrollBarSize() {
+                self.scrollBox.width = self.width - rowHeaderCellWidth - cellBorder;
+                self.scrollBox.height = self.height - columnHeaderCellHeight - columnHeaderCellBorder;
+            }
             function setCanvasSize() {
                 if (self.isChildGrid) {
                     return;
@@ -2190,7 +2194,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.scrollBox.left = rowHeaderCellWidth;
             // width and height of scroll box
             self.scrollBox.width = self.width - rowHeaderCellWidth - cellBorder;
-            self.scrollBox.height = self.height;
+            self.scrollBox.height = self.height - columnHeaderCellHeight - columnHeaderCellBorder;
             // is the data larger than the scroll box
             self.scrollBox.horizontalBarVisible = dataWidth > self.scrollBox.width;
             self.scrollBox.verticalBarVisible = dataHeight > self.scrollBox.height;
@@ -2202,18 +2206,21 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
                 dataHeight += sbw;
                 setCanvasSize();
+                setScrollBarSize();
                 self.scrollBox.horizontalBarVisible = dataWidth > self.scrollBox.width;
-                self.scrollBox.verticalBarVisible = dataHeight > self.scrollBox.height;
+                self.scrollBox.verticalBarVisible = self.style.height !== 'auto'
+                    && dataHeight > self.scrollBox.height;
             }
             if (self.scrollBox.verticalBarVisible && !self.isChildGrid) {
                 if (self.style.width === 'auto') {
                     self.width += sbw;
                 }
-                // HACK, this will not work with onlyResizeX mode for now :/
                 dataWidth += sbw;
                 setCanvasSize();
+                setScrollBarSize();
                 self.scrollBox.verticalBarVisible = dataHeight > self.scrollBox.height;
-                self.scrollBox.horizontalBarVisible = dataWidth > self.scrollBox.width;
+                self.scrollBox.horizontalBarVisible = self.style.width !== 'auto'
+                    && dataWidth > self.scrollBox.width;
             }
             // set again after bar visibility checks
             self.scrollBox.width = self.width - rowHeaderCellWidth - cellBorder - (self.scrollBox.verticalBarVisible ? sbw : 0);
