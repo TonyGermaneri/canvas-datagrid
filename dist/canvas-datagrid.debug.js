@@ -2132,9 +2132,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 rowHeaderCellWidth = self.getRowHeaderCellWidth(),
                 ch = self.style.cellHeight;
             // sets actual DOM canvas element
-            function setScrollBarSize() {
-                self.scrollBox.width = self.width - rowHeaderCellWidth - cellBorder;
-                self.scrollBox.height = self.height - columnHeaderCellHeight - columnHeaderCellBorder;
+            function setScrollBoxSize() {
+                self.scrollBox.width = self.width - rowHeaderCellWidth;
+                self.scrollBox.height = self.height - columnHeaderCellHeight;
             }
             function setCanvasSize() {
                 if (self.isChildGrid) {
@@ -2174,9 +2174,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.scrollCache.x[columnIndex] = va;
                 return va;
             }, 0) || 0;
-            dataHeight += columnHeaderCellHeight + columnHeaderCellBorder;
+            dataHeight += columnHeaderCellHeight;
             if (self.attributes.showNewRow) {
-                dataHeight += ch + cellBorder;
+                dataHeight += ch;
             }
             setCanvasSize();
             if (self.isChildGrid) {
@@ -2193,11 +2193,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.scrollBox.top = columnHeaderCellHeight + columnHeaderCellBorder;
             self.scrollBox.left = rowHeaderCellWidth;
             // width and height of scroll box
-            self.scrollBox.width = self.width - rowHeaderCellWidth - cellBorder;
-            self.scrollBox.height = self.height - columnHeaderCellHeight - columnHeaderCellBorder;
+            setScrollBoxSize();
             // is the data larger than the scroll box
-            self.scrollBox.horizontalBarVisible = dataWidth > self.scrollBox.width;
-            self.scrollBox.verticalBarVisible = dataHeight > self.scrollBox.height;
+            self.scrollBox.horizontalBarVisible = self.style.width !== 'auto' && dataWidth > self.scrollBox.width;
+            self.scrollBox.verticalBarVisible = self.style.height !== 'auto' && dataHeight > self.scrollBox.height;
             // if the scroll box is visible, make room for it by expanding the size of the element
             // if the other dimension is set to auto
             if (self.scrollBox.horizontalBarVisible && !self.isChildGrid) {
@@ -2206,7 +2205,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
                 dataHeight += sbw;
                 setCanvasSize();
-                setScrollBarSize();
+                setScrollBoxSize();
                 self.scrollBox.horizontalBarVisible = dataWidth > self.scrollBox.width;
                 self.scrollBox.verticalBarVisible = self.style.height !== 'auto'
                     && dataHeight > self.scrollBox.height;
@@ -2217,16 +2216,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
                 dataWidth += sbw;
                 setCanvasSize();
-                setScrollBarSize();
+                setScrollBoxSize();
                 self.scrollBox.verticalBarVisible = dataHeight > self.scrollBox.height;
                 self.scrollBox.horizontalBarVisible = self.style.width !== 'auto'
                     && dataWidth > self.scrollBox.width;
             }
             // set again after bar visibility checks
-            self.scrollBox.width = self.width - rowHeaderCellWidth - cellBorder - (self.scrollBox.verticalBarVisible ? sbw : 0);
-            self.scrollBox.height = self.height - columnHeaderCellHeight - columnHeaderCellBorder;
+            setScrollBoxSize();
             self.scrollBox.scrollWidth = dataWidth - self.scrollBox.width;
-            self.scrollBox.scrollHeight = dataHeight - self.scrollBox.height - columnHeaderCellHeight - columnHeaderCellBorder;
+            self.scrollBox.scrollHeight = dataHeight - self.scrollBox.height - columnHeaderCellHeight;
             self.scrollBox.widthBoxRatio = self.scrollBox.width / dataWidth;
             self.scrollBox.scrollBoxWidth = self.scrollBox.width
                 * self.scrollBox.widthBoxRatio
@@ -2236,8 +2234,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             // it being off causes the scroll bar to "slide" under
             // the dragged mouse.
             // https://github.com/TonyGermaneri/canvas-datagrid/issues/97
-            self.scrollBox.heightBoxRatio = (self.scrollBox.height - columnHeaderCellHeight + columnHeaderCellBorder) / dataHeight;
-            self.scrollBox.scrollBoxHeight = (self.scrollBox.height - columnHeaderCellHeight + columnHeaderCellBorder)
+            self.scrollBox.heightBoxRatio = self.scrollBox.height / (dataHeight - columnHeaderCellHeight);
+            self.scrollBox.scrollBoxHeight = self.scrollBox.height
                 * self.scrollBox.heightBoxRatio
                 - self.style.scrollBarWidth - b - d;
             self.scrollBox.scrollBoxWidth = Math.max(self.scrollBox.scrollBoxWidth, self.style.scrollBarBoxMinSize);
