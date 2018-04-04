@@ -1024,13 +1024,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         }
         function getFrozenColumnsWidth() {
             var w = 0,
-                s = self.getVisibleSchema(),
+                s = self.getSchema(),
                 x = 0,
                 n = Math.min(self.frozenColumn, s.length),
                 column;
             while (x < n) {
                 column = s[self.orders.columns[x]];
-                w += ((self.sizes.columns[x] || column.width || self.style.cellWidth) * self.scale);
+                if (!column.hidden) {
+                    w += ((self.sizes.columns[x] || column.width || self.style.cellWidth) * self.scale);
+                }
                 x += 1;
             }
             return w;

@@ -8,15 +8,16 @@ function g() {
         data = [],
         grid = canvasDatagrid({
             parentNode: document.body,
+            allowFreezingColumns: true,
             debug: false
         });
     grid.style.columnHeaderCellHeight = 40;
     grid.style.cellHeight = 40;
     grid.style.height = '100%';
     grid.style.width = '100%';
-    for (x = 0; x < 7; x += 1) {
+    for (x = 0; x < 1000; x += 1) {
         data[x] = {};
-        for (y = 0; y < 4; y += 1) {
+        for (y = 0; y < 100; y += 1) {
             data[x][String.fromCharCode(65 + y)] = '';
         }
     }
