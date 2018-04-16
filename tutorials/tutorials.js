@@ -346,6 +346,7 @@ window.tutorials['Create complex context menu|If you set the value of title to a
                 {col1: 'baz', col2: 2, col3: 'c'}
             ]
         });
+    grid.style.height = '250px';
     content.appendChild(upButton);
     content.appendChild(downButton);
     upButton.innerHTML = 'Scroll Up';
@@ -458,6 +459,7 @@ window.tutorials['Scroll to a cell'] = function (parentNode) {
             {col1: 'baz', col2: 2, col3: 'c'}
         ]
     });
+    grid.style.height = '100px';
     grid.scrollIntoView(2, 2);
 };
 window.tutorials['Conditionally set colors|Change styles during the <i>rendercell</i> event.'] = function (parentNode) {
@@ -684,9 +686,11 @@ window.tutorials['Open a tree|Open a tree grid on a specific row.  Use the <i>ex
         return d;
     }
     var grid = canvasDatagrid({
-        parentNode: parentNode,
-        data: createData()
+        parentNode: parentNode
     });
+    grid.style.height = '300px';
+    grid.style.width = '100%';
+    grid.data = createData();
     grid.addEventListener('expandtree', function expandTree(e) {
         e.treeGrid.data = createData();
         // prevent repeated executions of this example code from blowing things up
@@ -706,9 +710,11 @@ window.tutorials['Allow users to open trees|Allows users to open trees.  Use the
         return d;
     }
     var grid = canvasDatagrid({
-        parentNode: parentNode,
-        data: createData()
+        parentNode: parentNode
     });
+    grid.style.height = '300px';
+    grid.style.width = '100%';
+    grid.data = createData();
     grid.attributes.tree = true;
     function expandTree(e) {
         e.treeGrid.addEventListener('expandtree', expandTree);
@@ -737,6 +743,8 @@ window.tutorials['Multiple filters|Create filters on more than one column at a t
         }
         data.push(d);
     }
+    grid.style.height = '300px';
+    grid.style.width = '100%';
     // add the data to the grid
     grid.data = data.concat(grid.data);
     grid.setFilter('quick', '/the/i');
@@ -833,6 +841,7 @@ window.tutorials['Display unicode samples|Unicode works if it is properly encode
         parentNode: parentNode
     });
    grid.style.height = '300px';
+   grid.style.width = '100%';
     grid.data = [
         {'Block': 'Basic Latin', 'Sample': '! " # $ % & \' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ? @ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z [ \\ ] ^ _ ` a b c d e f g h i j k l m n o p q r s t u v w x y z { | } ~'},
         {'Block': 'Latin-1 Supplement', 'Sample': '  \u00A1 \u00A2 \u00A3 \u00A4 \u00A5 \u00A6 \u00A7 \u00A8 \u00A9 \u00AA \u00AB \u00AC \u00AD \u00AE \u00AF \u00B0 \u00B1 \u00B2 \u00B3 \u00B4 \u00B5 \u00B6 \u00B7 \u00B8 \u00B9 \u00BA \u00BB \u00BC \u00BD \u00BE \u00BF \u00C0 \u00C1 \u00C2 \u00C3 \u00C4 \u00C5 \u00C6 \u00C7 \u00C8 \u00C9 \u00CA \u00CB \u00CC \u00CD \u00CE \u00CF \u00D0 \u00D1 \u00D2 \u00D3 \u00D4 \u00D5 \u00D6 \u00D7 \u00D8 \u00D9 \u00DA \u00DB \u00DC \u00DD \u00DE \u00DF \u00E0 \u00E1 \u00E2 \u00E3 \u00E4 \u00E5 \u00E6 \u00E7 \u00E8 \u00E9 \u00EA \u00EB \u00EC \u00ED \u00EE \u00EF \u00F0 \u00F1 \u00F2 \u00F3 \u00F4 \u00F5 \u00F6 \u00F7 \u00F8 \u00F9 \u00FA \u00FB \u00FC \u00FD \u00FE \u00FF'},
