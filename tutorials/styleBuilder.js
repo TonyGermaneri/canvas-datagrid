@@ -11,9 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
             background: "#1E1E20"
         },
         container = document.createElement('div'),
-        gridContainer = document.createElement('div'),
         grid = canvasDatagrid({
-            parentNode: gridContainer,
             tree: true,
             name: 'style-maker'
         }),
@@ -180,9 +178,13 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             return s;
         }, '{\n') + '\n}';
-        console.log(grid.style.name);
         drawTitleCanvas();
-        window.styleLibrary[inputs.name.value] = JSON.parse(code);
+        code = JSON.parse(code);
+        window.styleLibrary[inputs.name.value] = code;
+        grid.style = code;
+        drawTitleCanvas();
+        grid.style.height = '100%';
+        grid.style.width = '100%';
     }
     function pickColor(getColor, onchange) {
         return function () {
@@ -596,8 +598,7 @@ document.addEventListener('DOMContentLoaded', function () {
         container.className = 'style-maker';
         props.className = 'style-maker-props';
         props.appendChild(table);
-        gridContainer.style.height = '100%';
-        document.body.appendChild(gridContainer);
+        document.body.appendChild(grid);
         document.body.appendChild(container);
         copyCode.innerHTML = 'Export To Clipboard';
         newButton.innerHTML = 'New...';
