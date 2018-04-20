@@ -6312,8 +6312,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @method
          * @param {number} x The column index of the cell to scroll into view.
          * @param {number} y The row index of the cell to scroll into view.
+         * @param {number} [offsetX=0] Percentage offset the cell should be from the left edge (not including headers).  The default is 0, meaning the cell will appear at the left edge. Valid values are 0 through 1. 1 = Left, 0 = Right, 0.5 = Center.
+         * @param {number} [offsetY=0] Percentage offset the cell should be from the top edge (not including headers).  The default is 0, meaning the cell will appear at the top edge. Valid values are 0 through 1. 1 = Bottom, 0 = Top, 0.5 = Center.
          */
-        self.scrollIntoView = function (x, y) {
+        self.scrollIntoView = function (x, y, offsetX, offsetY) {
             if (self.visibleCells.filter(function (cell) {
                     return (cell.rowIndex === y || y === undefined)
                         && (cell.columnIndex === x || x === undefined)
@@ -6322,7 +6324,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         && cell.x + cell.width < self.width
                         && cell.y + cell.height < self.height;
                 }).length === 0) {
-                self.gotoCell(x, y);
+                self.gotoCell(x, y, offsetX, offsetY);
             }
         };
         /**
