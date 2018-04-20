@@ -726,6 +726,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             drawCount = 0,
             perfWindowSize = 300,
             entityCount = [],
+            hiddenFrozenColumnCount = 0,
             scrollDebugCounters = [],
             touchPPSCounters = [];
         self.htmlImageCache = {};
@@ -1028,10 +1029,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 x = 0,
                 n = Math.min(self.frozenColumn, s.length),
                 column;
+            hiddenFrozenColumnCount = 0;
             while (x < n) {
                 column = s[self.orders.columns[x]];
-                if (!column.hidden) {
-                    w += ((self.sizes.columns[x] || column.width || self.style.cellWidth) * self.scale);
+                if (column.hidden) {
+                    hiddenFrozenColumnCount += 1;
+                } else {
+                    w += self.getColummnWidth(x);
                 }
                 x += 1;
             }
@@ -1502,7 +1506,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     y = 0;
                     // cell height might have changed during drawing
                     cellHeight = self.getColumnHeaderCellHeight();
-                    drawHeaderColumnRange(self.scrollIndexLeft + self.frozenColumn, g);
+                    drawHeaderColumnRange(self.scrollIndexLeft + self.frozenColumn - hiddenFrozenColumnCount, g);
                     nonFrozenHeaderWidth = x;
                     x = self.style.columnHeaderCellBorderWidth;
                     if (self.attributes.showRowHeaders) {
@@ -1559,7 +1563,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     x += frozenColumnWidths;
                 }
                 //draw normal columns
-                for (o = (self.scrollIndexLeft + self.frozenColumn); o < g; o += 1) {
+                for (o = (self.scrollIndexLeft + self.frozenColumn - hiddenFrozenColumnCount); o < g; o += 1) {
                     i = self.orders.columns[o];
                     x += drawCell(rd, r, d)(s[i], i, o);
                     if (x > self.width) {
@@ -2132,7 +2136,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 l = (self.data || []).length,
                 columnHeaderCellHeight = self.getColumnHeaderCellHeight(),
                 rowHeaderCellWidth = self.getRowHeaderCellWidth(),
-                ch = self.style.cellHeight;
+                ch = self.style.cellHeight,
+                s = self.getSchema();
             // sets actual DOM canvas element
             function setScrollBoxSize() {
                 self.scrollBox.width = self.width - rowHeaderCellWidth;
@@ -2167,7 +2172,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (l > 1) {
                 self.scrollCache.y[x] = dataHeight;
             }
-            dataWidth = self.getSchema().reduce(function reduceSchema(accumulator, column, columnIndex) {
+            dataWidth = s.reduce(function reduceSchema(accumulator, column, columnIndex) {
+                // intentional redefintion of column.  This causes scrollCache to be in the correct order
+                column = s[self.orders.columns[columnIndex]];
                 if (column.hidden) {
                     self.scrollCache.x[columnIndex] = accumulator;
                     return accumulator;
@@ -2317,14 +2324,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.scrollIndexTop += 1;
                 self.scrollPixelTop = self.scrollCache.y[self.scrollIndexTop];
             }
-            while (self.scrollPixelLeft < self.scrollBox.scrollLeft && self.scrollIndexLeft < s.length) {
+            while (self.scrollPixelLeft < (self.scrollBox.scrollLeft + 1) && self.scrollIndexLeft < s.length) {
                 self.scrollPixelLeft = self.scrollCache.x[self.scrollIndexLeft];
                 self.scrollIndexLeft += 1;
             }
-            if ((self.data || []).length > 0 && s.length > 0) {
+            if (s.length > 0) {
                 self.scrollIndexLeft = Math.max(self.scrollIndexLeft - 1, 0);
                 self.scrollPixelLeft = Math.max(self.scrollPixelLeft
                     - ((self.sizes.columns[self.scrollIndexLeft] || s[self.scrollIndexLeft].width || self.style.cellWidth) * self.scale), 0);
+            }
+            if ((self.data || []).length > 0) {
                 self.scrollIndexTop = Math.max(self.scrollIndexTop - 1, 0);
                 self.scrollPixelTop = Math.max((self.scrollPixelTop
                     - (
@@ -7129,6 +7138,18 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             return self.getVisibleSchema().reduce(function (total, header) {
                 return total + (header.width || self.style.cellWidth);
             }, 0);
+        };
+        /**
+         * Gets the total width of all header columns.
+         * @memberof canvasDatagrid
+         * @name getColummnWidth
+         * @method
+         * @param {number} columnIndex The column index to lookup.
+         */
+        self.getColummnWidth = function (columnIndex) {
+            return ((self.sizes.columns[columnIndex]
+                    || self.getSchema()[columnIndex].width
+                    || self.style.cellWidth) * self.scale);
         };
         self.formatters.string = function cellFormatterString(e) {
             return e.cell.value !== undefined ? e.cell.value : '';
