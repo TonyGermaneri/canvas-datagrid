@@ -36,4 +36,7 @@ function g() {
     grid.style.width = '100%';
     // grid.style.height = 'auto';
     // grid.style.width = 'auto';
+    setTimeout(function () {
+        grid.scrollIntoView(20, 75, .5, .5);
+    }, 1000);
 }
