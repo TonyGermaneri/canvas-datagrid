@@ -5518,7 +5518,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             //     + ')';
         };
         self.scrollOffset = function (e) {
-            var x = 0, y = 0;
+            var x = 0, y = 0, scrollingElement = document.scrollingElement || { scrollLeft: 0, scrollTop: 0 };
             while (e.parentNode && e.nodeName !== 'CANVAS-DATAGRID' && e !== self.intf) {
                 if (e.nodeType !== 'canvas-datagrid-tree'
                         && e.nodeType !== 'canvas-datagrid-cell') {
@@ -5528,8 +5528,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 e = e.parentNode;
             }
             return {
-                left: x - document.scrollingElement.scrollLeft,
-                top: y - document.scrollingElement.scrollTop
+                left: x - scrollingElement.scrollLeft,
+                top: y - scrollingElement.scrollTop
             };
         };
         self.resizeEditInput = function () {
@@ -6249,7 +6249,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.findColumnScrollLeft = function (columnIndex) {
             var i = Math.max(columnIndex - 1, 0);
             if (self.scrollCache.x[i] === undefined) { throw new Error('Column index out of range.'); }
-            return self.scrollCache.x[i];
+            return self.scrollCache.x[i] - self.getColummnWidth(self.orders.columns[columnIndex]);
         };
         /**
          * Scrolls to the cell at columnIndex x, and rowIndex y.  If you define both rowIndex and columnIndex additional calculations can be made to center the cell using the target cell's height and width.  Defining only one rowIndex or only columnIndex will result in simpler calculations.
@@ -6275,6 +6275,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.scrollBox.scrollTo(targetX, targetY);
                 requestAnimationFrame(function () {
                     cell = self.getVisibleCellByIndex(x, y);
+                    // HACK: just don't offset if the target cell cannot be seen
+                    // TODO: offset does not work on very small grids, not sure why
+                    if (!cell) { return; }
                     targetX += cell.width * offsetX;
                     targetY += cell.height * offsetY;
                     self.scrollBox.scrollTo(targetX, targetY);
@@ -7132,7 +7135,18 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }, 0);
         };
         /**
-         * Gets the total width of all header columns.
+         * Gets the height of a row by index.
+         * @memberof canvasDatagrid
+         * @name getRowHeight
+         * @method
+         * @param {number} rowIndex The row index to lookup.
+         */
+        self.getRowHeight = function (rowIndex) {
+            return ((self.sizes.rows[rowIndex]
+                    || self.style.cellHeight) * self.scale);
+        };
+        /**
+         * Gets the width of a column by index.
          * @memberof canvasDatagrid
          * @name getColummnWidth
          * @method
