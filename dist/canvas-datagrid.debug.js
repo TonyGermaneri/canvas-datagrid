@@ -1031,7 +1031,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 column;
             hiddenFrozenColumnCount = 0;
             while (x < n) {
-                column = s[self.orders.columns[x]];
+                column = s[x];
                 if (column.hidden) {
                     hiddenFrozenColumnCount += 1;
                 } else {
@@ -1083,7 +1083,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 moveBorders = [],
                 selectionHandles = [],
                 rowHeaders = [],
-                frozenColumnWidths = getFrozenColumnsWidth(),
                 l = data.length,
                 u = self.currentCell || {},
                 columnHeaderCellHeight = self.getColumnHeaderCellHeight(),
@@ -1500,13 +1499,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     if (self.attributes.showRowHeaders) {
                         x += rowHeaderCellWidth;
                     }
-                    if (self.attributes.allowFreezingColumns) {
-                        x += frozenColumnWidths;
-                    }
                     y = 0;
                     // cell height might have changed during drawing
                     cellHeight = self.getColumnHeaderCellHeight();
-                    drawHeaderColumnRange(self.scrollIndexLeft + self.frozenColumn - hiddenFrozenColumnCount, g);
+                    drawHeaderColumnRange(self.scrollIndexLeft, g);
                     nonFrozenHeaderWidth = x;
                     x = self.style.columnHeaderCellBorderWidth;
                     if (self.attributes.showRowHeaders) {
@@ -1559,11 +1555,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     x += rowHeaderCellWidth;
                 }
                 cellHeight = rowHeight;
-                if (self.attributes.allowFreezingColumns) {
-                    x += frozenColumnWidths;
-                }
                 //draw normal columns
-                for (o = (self.scrollIndexLeft + self.frozenColumn - hiddenFrozenColumnCount); o < g; o += 1) {
+                for (o = (self.scrollIndexLeft); o < g; o += 1) {
                     i = self.orders.columns[o];
                     x += drawCell(rd, r, d)(s[i], i, o);
                     if (x > self.width) {
@@ -1932,6 +1925,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     return a + b;
                 }, 0) / Math.min(drawCount, perfCounters.length)).toFixed(1);
                 d.perfDelta = perfCounters[0].toFixed(1);
+                d.frozenColumnsWidth = getFrozenColumnsWidth();
                 d.htmlImages = Object.keys(self.htmlImageCache).length;
                 d.reorderObject = 'x: ' + (self.reorderObject || {columnIndex: 0}).columnIndex + ', y: ' + (self.reorderObject || {rowIndex: 0}).rowIndex;
                 d.reorderTarget = 'x: ' + (self.reorderTarget || {columnIndex: 0}).columnIndex + ', y: ' + (self.reorderTarget || {rowIndex: 0}).rowIndex;
@@ -2179,7 +2173,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.scrollCache.x[columnIndex] = accumulator;
                     return accumulator;
                 }
-                var va = accumulator + ((self.sizes.columns[columnIndex] || column.width || self.style.cellWidth) * self.scale);
+                var va = accumulator + self.getColummnWidth(self.orders.columns[columnIndex]);
                 self.scrollCache.x[columnIndex] = va;
                 return va;
             }, 0) || 0;
@@ -2317,10 +2311,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.scrollIndexTop = 0;
             }
             self.scrollPixelTop = 0;
-            self.scrollIndexLeft = 0;
+            self.scrollIndexLeft = self.frozenColumn;
             self.scrollPixelLeft = 0;
             while (self.scrollPixelTop < self.scrollBox.scrollTop && self.scrollIndexTop < self.data.length) {
-                // start on index +1 since index +0 was checked prior to loop start in "go too far"
+                // start on index +1 since index 0 was used in "go too far" section above
                 self.scrollIndexTop += 1;
                 self.scrollPixelTop = self.scrollCache.y[self.scrollIndexTop];
             }
@@ -2330,8 +2324,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             if (s.length > 0) {
                 self.scrollIndexLeft = Math.max(self.scrollIndexLeft - 1, 0);
-                self.scrollPixelLeft = Math.max(self.scrollPixelLeft
-                    - ((self.sizes.columns[self.scrollIndexLeft] || s[self.scrollIndexLeft].width || self.style.cellWidth) * self.scale), 0);
+                self.scrollPixelLeft -= self.getColummnWidth(self.orders.columns[self.scrollIndexLeft]);
             }
             if ((self.data || []).length > 0) {
                 self.scrollIndexTop = Math.max(self.scrollIndexTop - 1, 0);
@@ -2726,6 +2719,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 tIndex = cr[self.dragMode].indexOf(self.reorderTarget[i]);
                 cr[self.dragMode].splice(oIndex, 1);
                 cr[self.dragMode].splice(tIndex, 0, self.reorderObject[i]);
+                self.resize();
                 self.setStorageData();
             }
             self.reorderObject = undefined;
@@ -5762,7 +5756,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     if (ny > self.data.length - 1) {
                         ny = 0;
                     }
-                    console.log('nx', nx, 'ny', ny);
                     self.scrollIntoView(nx, ny);
                     self.beginEditAt(nx, ny);
                 }
@@ -6251,15 +6244,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @param {number} columnIndex The column index of the column to find.
          */
         self.findColumnScrollLeft = function (columnIndex) {
-            var left = 0, y = 0, s = self.getSchema(), l = s.length - 1;
-            if (columnIndex > l) {
-                throw new Error('Column index out of range.');
-            }
-            while (y < columnIndex) {
-                left += self.sizes.columns[y] || s[y].width || self.style.cellWidth;
-                y += 1;
-            }
-            return left;
+            var i = Math.max(columnIndex - 1, 0);
+            if (self.scrollCache.x[i] === undefined) { throw new Error('Column index out of range.'); }
+            return self.scrollCache.x[i];
         };
         /**
          * Scrolls to the cell at columnIndex x, and rowIndex y.  If you define both rowIndex and columnIndex additional calculations can be made to center the cell using the target cell's height and width.  Defining only one rowIndex or only columnIndex will result in simpler calculations.
