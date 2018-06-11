@@ -17,6 +17,7 @@ canvas-datagrid
 * Rich API of events, methods and properties using the familiar W3C DOM interface.
 * Works with Firefox, IE11, Edge, Safari and Chrome.
 * Support for hierarchal drill in style row level inner grids as well grids in cells.
+* Support for freezing columns and rows.
 * Customizable hierarchal context menu.
 * Built in and custom styles.
 * W3C web component.
