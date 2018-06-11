@@ -258,6 +258,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['contextMenuBorderRadius', '3px'],
                 ['contextMenuChildArrowFontSize', '12px'],
                 ['contextMenuColor', 'rgba(43, 48, 43, 1)'],
+                ['contextMenuCursor', 'default'],
                 ['contextMenuFilterButtonFontFamily', 'sans-serif'],
                 ['contextMenuFilterButtonFontSize', '10px'],
                 ['contextMenuFilterInvalidExpresion', 'rgba(237, 155, 156, 1)'],
@@ -5934,7 +5935,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     borderRadius: self.style.contextMenuBorderRadius,
                     opacity: self.style.contextMenuOpacity,
                     overflow: 'hidden',
-                    whiteSpace: 'nowrap'
+                    whiteSpace: 'nowrap',
+                    cursor: self.style.contextMenuCursor
                 },
                 'canvas-datagrid-invalid-search-regExp': {
                     background: self.style.contextMenuFilterInvalidExpresion
