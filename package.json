@@ -1,8 +1,8 @@
 {
   "name": "canvas-datagrid",
-  "version": "0.20.15",
+  "version": "0.20.17",
   "description": "Canvas based data grid web component.  Capable of displaying millions of contiguous hierarchical rows and columns without paging or loading, on a single canvas element.",
-  "main": "./lib/main.js",
+  "main": "./dist/canvas-datagrid.js",
   "scripts": {
     "build-docs": "rm -rf docs;./node_modules/.bin/jsdoc -r --template ./tutorials/ ./lib/",
     "build-gh-pages": "git checkout gh-pages; git merge master --no-edit; npm run build-docs; npm test; git add .; git commit -m 'rebuilt docs, tests.'; git push; git checkout master",
