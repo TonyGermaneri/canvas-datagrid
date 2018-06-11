@@ -2832,6 +2832,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.canvas.requestPointerLock();
                 }
                 document.body.addEventListener('mousemove', self.scrollGrid, false);
+                document.addEventListener('mouseout',self.stopScrollGrid, false);
                 document.body.addEventListener('mouseup', self.stopScrollGrid, false);
                 self.ignoreNextClick = true;
                 return;
