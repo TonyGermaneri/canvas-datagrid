@@ -4090,7 +4090,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.edge = /Edge/.test(window.navigator.userAgent);
             self.webKit = /WebKit/.test(window.navigator.userAgent);
             self.moz = /Gecko/.test(window.navigator.userAgent);
-            self.webKit = /WebKit/.test(window.navigator.userAgent);
             self.mobile = /Mobile/i.test(window.navigator.userAgent);
             self.cursorGrab = 'grab';
             self.cursorGrabing = 'grabbing';
@@ -4563,6 +4562,48 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     bottom: self.scrollPixelBottom,
                     left: self.scrollPixelLeft
                 };
+            }
+        });
+        /**
+         * Gets or sets the order of the rows.  This allows you to modify the appearance of the data without modifying the data itself.
+         * @memberof canvasDatagrid
+         * @name columnOrder
+         * @method
+         * @param {array} val Array of integers.  The order of the array dictates the order of the rows, e.g.: [0, 1, 2] is normal order, [2, 1, 0] is reverse.  The array length must be equal to or greater than the number of rows.
+         */
+        Object.defineProperty(self.intf, 'rowOrder', {
+            get: function () {
+                return self.orders.rows;
+            },
+            set: function (val) {
+                if (!Array.isArray(val)) {
+                    throw new TypeError('Value must be an array.');
+                }
+                if (!self.data || val.length < self.data.length) {
+                    throw new RangeError('Array length must be equal to or greater than number of rows.');
+                }
+                self.orders.rows = val;
+            }
+        });
+        /**
+         * Gets or sets the order of the columns.  This allows you to modify the appearance of the schema without modifying the data itself.
+         * @memberof canvasDatagrid
+         * @name columnOrder
+         * @method
+         * @param {array} val Array of integers.  The order of the array dictates the order of the columns, e.g.: [0, 1, 2] is normal order, [2, 1, 0] is reverse.  The array length must be equal to or greater than the number of columns.
+         */
+        Object.defineProperty(self.intf, 'columnOrder', {
+            get: function () {
+                return self.orders.columns;
+            },
+            set: function (val) {
+                if (!Array.isArray(val)) {
+                    throw new TypeError('Value must be an array.');
+                }
+                if (val.length < s.length) {
+                    throw new RangeError('Array length must be equal to or greater than number of columns.');
+                }
+                self.orders.columns = val;
             }
         });
         Object.defineProperty(self.intf, 'selectionBounds', {

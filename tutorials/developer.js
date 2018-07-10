@@ -7,8 +7,6 @@ function g() {
         y,
         grid = canvasDatagrid({
             parentNode: document.body,
-            allowFreezingColumns: true,
-            allowFreezingRows: true,
             debug: false
         });
     grid.addEventListener('expandtree', function (e) {
@@ -20,7 +18,7 @@ function g() {
     grid.style.width = '100%';
     function getData(prefix) {
         var data = [];
-        for (x = 0; x < 100; x += 1) {
+        for (x = 0; x < 5; x += 1) {
             data[x] = {};
             for (y = 0; y < 5; y += 1) {
                 data[x][String.fromCharCode(65 + y)] = prefix + x + ':' + y;
@@ -44,6 +42,10 @@ function g() {
     grid.schema[0].hidden = false;
     grid.style.height = '100%';
     grid.style.width = '100%';
+    console.log(grid.columnOrder);
+    grid.columnOrder = [4, 3, 2, 1, 0];
+    console.log(grid.rowOrder);
+    grid.rowOrder = [4, 3, 2, 1, 0];
     // grid.style.height = 'auto';
     // grid.style.width = 'auto';
     // setTimeout(function () {
