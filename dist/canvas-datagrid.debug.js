@@ -115,6 +115,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['copyText', 'Copy'],
                 ['debug', false],
                 ['editable', true],
+                ['ellipsisText', '...'],
                 ['filterOptionText', 'Filter %s'],
                 ['filterTextPrefix', '(filtered) '],
                 ['globalRowResize', false],
@@ -173,15 +174,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['activeCellColor', 'rgba(0, 0, 0, 1)'],
                 ['activeCellFont', '16px sans-serif'],
                 ['activeCellHoverBackgroundColor', 'rgba(255, 255, 255, 1)'],
+                ['activeCellHorizontalAlignment', 'left'],
                 ['activeCellHoverColor', 'rgba(0, 0, 0, 1)'],
                 ['activeCellOverlayBorderColor', 'rgba(66, 133, 244, 1)'],
                 ['activeCellOverlayBorderWidth', 1],
                 ['activeCellPaddingBottom', 5],
                 ['activeCellPaddingLeft', 5],
-                ['activeCellPaddingRight', 7],
+                ['activeCellPaddingRight', 5],
                 ['activeCellPaddingTop', 5],
                 ['activeCellSelectedBackgroundColor', 'rgba(236, 243, 255, 1)'],
                 ['activeCellSelectedColor', 'rgba(0, 0, 0, 1)'],
+                ['activeCellVerticalAlignment', 'center'],
                 ['activeColumnHeaderCellBackgroundColor', 'rgba(225, 225, 225, 1)'],
                 ['activeColumnHeaderCellColor', 'rgba(0, 0, 0, 1)'],
                 ['activeRowHeaderCellBackgroundColor', 'rgba(225, 225, 225, 1)'],
@@ -203,13 +206,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['cellHoverColor', 'rgba(0, 0, 0, 1)'],
                 ['cellPaddingBottom', 5],
                 ['cellPaddingLeft', 5],
-                ['cellPaddingRight', 7],
+                ['cellPaddingRight', 5],
                 ['cellPaddingTop', 5],
                 ['cellSelectedBackgroundColor', 'rgba(236, 243, 255, 1)'],
                 ['cellSelectedColor', 'rgba(0, 0, 0, 1)'],
                 ['cellVerticalAlignment', 'center'],
                 ['cellWidth', 250],
                 ['cellWidthWithChildGrid', 250],
+                ['cellWhiteSpace', 'nowrap'],
+                ['cellLineHeight', 1],
+                ['cellLineSpacing', 3],
                 ['childContextMenuArrowColor', 'rgba(43, 48, 43, 1)'],
                 ['childContextMenuArrowHTML', '&#x25BA;'],
                 ['childContextMenuMarginLeft', -11],
@@ -228,7 +234,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['columnHeaderCellHoverColor', 'rgba(0, 0, 0, 1)'],
                 ['columnHeaderCellPaddingBottom', 5],
                 ['columnHeaderCellPaddingLeft', 5],
-                ['columnHeaderCellPaddingRight', 7],
+                ['columnHeaderCellPaddingRight', 5],
                 ['columnHeaderCellPaddingTop', 5],
                 ['columnHeaderCellVerticalAlignment', 'center'],
                 ['columnHeaderOrderByArrowBorderColor', 'rgba(195, 199, 202, 1)'],
@@ -280,6 +286,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['contextMenuZIndex', 10000],
                 ['cornerCellBackgroundColor', 'rgba(240, 240, 240, 1)'],
                 ['cornerCellBorderColor', 'rgba(202, 202, 202, 1)'],
+                ['debugBackgroundColor', 'rgba(0, 0, 0, .0)'],
+                ['debugColor', 'rgba(255, 15, 24, 1)'],
+                ['debugEntitiesColor', 'rgba(76, 231, 239, 1.00)'],
+                ['debugFont', '11px sans-serif'],
+                ['debugPerfChartBackground', 'rgba(29, 25, 26, 1.00)'],
+                ['debugPerfChartTextColor', 'rgba(255, 255, 255, 0.8)'],
+                ['debugPerformanceColor', 'rgba(252, 255, 37, 1.00)'],
+                ['debugScrollHeightColor', 'rgba(248, 33, 103, 1.00)'],
+                ['debugScrollWidthColor', 'rgba(66, 255, 27, 1.00)'],
+                ['debugTouchPPSXColor', 'rgba(246, 102, 24, 1.00)'],
+                ['debugTouchPPSYColor', 'rgba(186, 0, 255, 1.00)'],
                 ['display', 'inline-block'],
                 ['editCellBackgroundColor', 'white'],
                 ['editCellBorder', 'solid 1px rgba(110, 168, 255, 1)'],
@@ -1001,28 +1018,132 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.ellipsisCache[text][width] = c;
             return c;
         }
+        function wrapText(cell, splitChar) {
+            if (!cell.formattedValue) {
+                return { lines: [{width: 0, value: ''}], width: 0, height: cell.calculatedLineHeight };
+            }
+            var max = 0,
+                n = '\n',
+                x,
+                word,
+                words = cell.formattedValue.split(splitChar),
+                textHeight = cell.calculatedLineHeight,
+                lines = [],
+                out = [],
+                wrap = self.style.cellWhiteSpace !== 'nowrap',
+                elWidth,
+                et = self.attributes.ellipsisText,
+                elClipLength,
+                plWidth,
+                clippedVal,
+                ogWordWidth,
+                previousLine,
+                line = {
+                    width: 0,
+                    value: ''
+                },
+                cHeight = wrap ? cell.paddedHeight : cell.calculatedLineHeight;
+            lines.push(line);
+            elWidth = self.ctx.measureText(' ' + et).width;
+            for (x = 0; x < words.length; x += 1) {
+                word = words[x];
+                var measure = self.ctx.measureText(word + splitChar);
+                if (line.width + measure.width + elWidth < cell.paddedWidth) {
+                    line.value += word + splitChar;
+                    line.width += measure.width;
+                    continue;
+                }
+                // if there is a hyphenated word that is too long
+                // split it and add the split set to the array
+                // then back up and re-read new split set
+                // this behavior seems right, it might not be
+                if (/\w-\w/.test(word) && cell.paddedWidth < measure.width) {
+                    words.splice(x, 1, word.split('-')[0] + '-', word.split('-')[1]);
+                    x -= 1;
+                    continue;
+                }
+                line = {
+                    width: measure.width,
+                    value: word + splitChar
+                };
+                if (x === 0) {
+                    lines = [];
+                    lines.push(line);
+                }
+                textHeight += cell.calculatedLineHeight;
+                if (textHeight > cHeight) {
+                    if (lines.length === 0) { break; }
+                    elClipLength = 1;
+                    previousLine = lines[lines.length - 1];
+                    if (previousLine.width < cell.paddedWidth && words.length === 1) { break; }
+                    clippedVal = previousLine.value + word;
+                    while(plWidth == undefined || (plWidth > cell.paddedWidth && elClipLength < clippedVal.length)) {
+                        plWidth = self.ctx.measureText(clippedVal + et).width
+                        clippedVal = clippedVal.substring(0, clippedVal.length - elClipLength);
+                        elClipLength + 1;
+                    }
+                    clippedVal = clippedVal + et;
+                    previousLine.value = clippedVal;
+                    previousLine.width = plWidth;
+                    break;
+                }
+                if (x > 0) {
+                    lines.push(line);
+                }
+            }
+            return {
+                lines: lines,
+                width: max,
+                height: cell.calculatedLineHeight * lines.length
+            }
+        }
         function drawText(cell) {
-            var paddingLeft = self.style[cell.style + 'PaddingLeft'] * self.scale,
-                paddingTop = self.style[cell.style + 'PaddingTop'] * self.scale,
-                paddingRight = self.style[cell.style + 'PaddingRight'] * self.scale,
-                paddingBottom = self.style[cell.style + 'PaddingBottom'] * self.scale,
-                vPos = paddingTop + cell.height - (cell.height * 0.5),
-                hPos = paddingLeft + cell.treeArrowWidth + cell.orderByArrowWidth;
-            cell.text = addEllipsis(cell.formattedValue, cell.width - paddingRight - paddingLeft);
-            cell.text.height = cell.fontHeight;
-            if (cell.horizontalAlignment === 'right') {
-                hPos = cell.width - cell.text.width - paddingRight;
-            } else if (cell.horizontalAlignment === 'center') {
-                hPos = (cell.width / 2) - (cell.text.width / 2);
+            var ll = cell.text.lines.length,
+                h = (cell.fontHeight * cell.lineHeight),
+                x,
+                line,
+                wrap = self.style.cellWhiteSpace !== 'nowrap',
+                textHeight = 0;
+            for (x = 0; x < cell.text.lines.length; x += 1) {
+                line = cell.text.lines[x];
+                var vPos = Math.max((cell.height - (wrap ? cell.text.height : cell.calculatedLineHeight)) * 0.5, 0) + h,
+                    hPos = cell.paddingLeft + cell.treeArrowWidth + cell.orderByArrowWidth;
+                if (cell.horizontalAlignment === 'right') {
+                    hPos = cell.paddingLeft + cell.paddedWidth - line.width;
+                } else if (cell.horizontalAlignment === 'center') {
+                    hPos = cell.paddingLeft + ((cell.paddedWidth + cell.paddingRight) / 2) - (line.width / 2);
+                }
+                if (cell.verticalAlignment === 'top') {
+                    vPos = cell.calculatedLineHeight;
+                } else if (cell.verticalAlignment === 'bottom') {
+                    vPos = cell.height - cell.paddingBottom - cell.text.height;
+                }
+                line.height = h + cell.lineSpacing;
+                line.offsetLeft = hPos;
+                line.offsetTop = vPos;
+                line.x = cell.x + hPos;
+                line.y = cell.y + textHeight + vPos;
+                textHeight += line.height;
+                fillText(line.value, line.x, line.y);
             }
-            if (cell.verticalAlignment === 'top') {
-                vPos = paddingTop + cell.text.height;
-            } else if (cell.verticalAlignment === 'bottom') {
-                vPos = cell.height - paddingBottom - cell.text.height;
+            if (self.attributes.debug) {
+                requestAnimationFrame(function () {
+                    self.ctx.font = self.style.debugFont;
+                    self.ctx.fillStyle = self.style.debugColor;
+                    fillText(JSON.stringify({
+                        x: cell.x,
+                        y: cell.y,
+                        h: cell.height,
+                        w: cell.width,
+                        pw: cell.paddedWidth,
+                        idx: cell.columnIndex,
+                        idx_ord: cell.sortColumnIndex
+                    }, null, '\t'),
+                        cell.x + 14, cell.y + 14);
+                    fillText(JSON.stringify(cell.text.lines.map(function (l) { return {w: l.width, v: l.value.length }; }), null, '\t'),
+                        cell.x + 14, cell.y + 30);
+                });
             }
-            cell.text.x = cell.x + hPos;
-            cell.text.y = cell.y + vPos;
-            fillText(cell.text.value, cell.text.x, cell.text.y);
         }
         function getFrozenColumnsWidth() {
             var w = 0,
@@ -1269,8 +1390,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         nodeType: 'canvas-datagrid-cell',
                         x: cx,
                         y: cy,
+                        fontHeight: (self.style[cellStyle + 'FontHeight'] || 0) * self.scale,
                         horizontalAlignment: self.style[cellStyle + 'HorizontalAlignment'],
                         verticalAlignment: self.style[cellStyle + 'VerticalAlignment'],
+                        paddingLeft: (self.style[cellStyle + 'PaddingLeft'] || 0) * self.scale,
+                        paddingTop: (self.style[cellStyle + 'PaddingTop'] || 0) * self.scale,
+                        paddingRight: (self.style[cellStyle + 'PaddingRight'] || 0) * self.scale,
+                        paddingBottom: (self.style[cellStyle + 'PaddingBottom'] || 0) * self.scale,
+                        whiteSpace: self.style.cellWhiteSpace,
+                        lineHeight: self.style.cellLineHeight,
+                        lineSpacing: self.style.cellLineSpacing,
                         offsetTop: self.canvasOffsetTop + cy,
                         offsetLeft: self.canvasOffsetLeft + cx,
                         scrollTop: self.scrollBox.scrollTop,
@@ -1304,6 +1433,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         activeHeader: activeHeader,
                         value: isHeader && !isRowHeader ? (header.title || header.name) : rawValue
                     };
+                    cell.calculatedLineHeight = (cell.fontHeight * cell.lineHeight) + cell.lineSpacing;
+                    cell.paddedWidth = cell.width - cell.paddingRight - cell.paddingLeft;
+                    cell.paddedHeight = cell.height - cell.paddingTop - cell.paddingBottom;
                     ev.cell = cell;
                     cell.userHeight = cell.isHeader ? self.sizes.rows[-1] : rowHeight;
                     cell.userWidth = cell.isHeader ? self.sizes.columns.cornerCell : self.sizes.columns[headerIndex];
@@ -1398,10 +1530,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             if (activeHeader) {
                                 self.ctx.fillStyle = self.style[activeHeader + 'Color'];
                             }
-                            self.ctx.font = (self.style[cellStyle + 'FontHeight'] * self.scale) + 'px ' + self.style[cellStyle + 'FontName'];
-                            cell.fontHeight = (self.style[cellStyle + 'FontHeight'] * self.scale);
                             cell.treeArrowWidth = treeArrowSize;
                             cell.orderByArrowWidth = orderByArrowSize;
+                            // create text ref to see if height needs to expand
                             val = val !== undefined ? val : f
                                 ? f(ev) : '';
                             if (val === undefined && !f) {
@@ -1413,6 +1544,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             if (self.columnFilters && self.columnFilters[val] !== undefined && isHeader) {
                                 cell.formattedValue = self.attributes.filterTextPrefix + val;
                             }
+                            self.ctx.font = (self.style[cellStyle + 'FontHeight'] * self.scale) + 'px ' + self.style[cellStyle + 'FontName'];
+                            cell.text = wrapText(cell, ' ');
                             if (!self.dispatchEvent('rendertext', ev)) {
                                 if (cell.innerHTML || header.type === 'html') {
                                     drawHtml(cell);
@@ -1473,11 +1606,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             };
                             columnHeaderCell = {'columnHeaderCell': header.title || header.name};
                             x += drawCell(columnHeaderCell, -1, -1)(d, i, o);
-                            if (self.attributes.debug) {
-                                self.ctx.font = '14px sans-serif';
-                                self.ctx.fillStyle = 'rgba(37, 254, 21, 1)';
-                                fillText('Actual: ' + i + ' Ordered: ' + o, x - 175, 17);
-                            }
                             if (x > self.width + self.scrollBox.scrollLeft) {
                                 break;
                             }
@@ -1882,25 +2010,25 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     drawPerfLine(pw, ph, px, py, perfArr, arrIndex, max, color, useAbs);
                     self.ctx.fillStyle = color;
                     fillRect(3 + px, py + 9 + (rowIndex * 11), 8, 8);
-                    self.ctx.fillStyle = '#999999';
+                    self.ctx.fillStyle = self.style.debugPerfChartTextColor;
                     v = arrIndex !== undefined ? perfArr[0][arrIndex] : perfArr[0];
                     fillText(name + ' ' + (isNaN(v) ? 0 : v).toFixed(3), 14 + px, py + 16 + (rowIndex * 11));
                 }
                 self.ctx.textAlign = 'left';
-                self.ctx.font = '8px sans-serif';
-                self.ctx.fillStyle = 'rgba(29, 25, 26, 1.00)';
+                self.ctx.font = self.style.debugFont;
+                self.ctx.fillStyle = self.style.debugPerfChartBackground;
                 fillRect(px, py, pw, ph);
-                [['Scroll Height', scrollDebugCounters, 0, self.scrollBox.scrollHeight, 'rgba(248, 33, 103, 1.00)', false],
-                    ['Scroll Width', scrollDebugCounters, 1, self.scrollBox.scrollWidth, 'rgba(66, 255, 27, 1.00)', false],
-                    ['Performance', perfCounters, undefined, 200, 'rgba(252, 255, 37, 1.00)', false],
-                    ['Entities', entityCount, undefined, 1500, 'rgba(76, 231, 239, 1.00)', false],
-                    ['TouchPPSX', touchPPSCounters, 0, 1000, 'rgba(246, 102, 24, 1.00)', true],
-                    ['TouchPPSY', touchPPSCounters, 1, 1000, 'purple', true]
+                [['Scroll Height', scrollDebugCounters, 0, self.scrollBox.scrollHeight, self.style.debugScrollHeightColor, false],
+                    ['Scroll Width', scrollDebugCounters, 1, self.scrollBox.scrollWidth, self.style.debugScrollWidthColor, false],
+                    ['Performance', perfCounters, undefined, 200, self.style.debugPerformanceColor, false],
+                    ['Entities', entityCount, undefined, 1500, self.style.debugEntitiesColor, false],
+                    ['TouchPPSX', touchPPSCounters, 0, 1000, self.style.debugTouchPPSXColor, true],
+                    ['TouchPPSY', touchPPSCounters, 1, 1000, self.style.debugTouchPPSYColor, true]
                     ].forEach(function (i, index) {
                     i.push(index);
                     dpl.apply(null, i);
                 });
-                self.ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                self.ctx.fillStyle = self.style.debugPerfChartBackground;
                 entityCount.pop();
                 entityCount.unshift(self.visibleCells.length);
                 scrollDebugCounters.pop();
@@ -1920,7 +2048,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.ctx.restore();
                     return;
                 }
-                self.ctx.font = '14px sans-serif';
+                self.ctx.font = self.style.debugFont;
                 d = {};
                 d.perf = (perfCounters.reduce(function (a, b) {
                     return a + b;
@@ -1966,12 +2094,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     d.type = self.currentCell.type;
                 }
                 self.ctx.textAlign = 'right';
-                self.ctx.fillStyle = 'rgba(0, 0, 0, .40)';
+                self.ctx.fillStyle = self.style.debugBackgroundColor;
                 fillRect(0, 0, self.width, self.height);
                 Object.keys(d).forEach(function (key, index) {
                     var m = key + ': ' + d[key],
                         lh = 14;
-                    self.ctx.fillStyle = 'rgba(37, 254, 21, .90)';
+                    self.ctx.fillStyle = self.style.debugColor;
                     fillText(m, w - 20, (self.attributes.showPerformance ? 140 : 24) + (index * lh));
                 });
                 self.ctx.restore();
