@@ -341,11 +341,14 @@
                     var grid = g({
                         test: this.test,
                         data: smallData(),
-                        debug: true
+                        debug: true,
+                        style: {
+                            debugFont: '200px sans-serif',
+                            debugColor: c.b
+                        }
                     });
-                    grid.style.activeCellBackgroundColor = c.b;
                     mousemove(grid.canvas, 100, 113);
-                    assertPxColor(grid, 110, 10, 'rgb(135, 135, 135)', done);
+                    assertPxColor(grid, 90, 10, c.b, done);
                 });
                 // phantom throws a nonsense error due to the way the data url is constructed in the html function
                 it('Should draw HTML.', function (done) {

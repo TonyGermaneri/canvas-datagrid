@@ -100,8 +100,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['allowRowResize', true],
                 ['allowRowResizeFromCell', false],
                 ['allowSorting', true],
-                ['alpha', false],
-                ['antialias', true],
                 ['autoGenerateSchema', false],
                 ['autoResizeColumns', false],
                 ['borderDragBehavior', 'none'],
@@ -117,6 +115,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['copyText', 'Copy'],
                 ['debug', false],
                 ['editable', true],
+                ['ellipsisText', '...'],
                 ['filterOptionText', 'Filter %s'],
                 ['filterTextPrefix', '(filtered) '],
                 ['globalRowResize', false],
@@ -127,8 +126,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['pageUpDownOverlap', 1],
                 ['pasteText', 'Paste'],
                 ['persistantSelectionMode', false],
-                ['premultipliedAlpha', false],
-                ['preserveDrawingBuffer', true],
                 ['removeFilterOptionText', 'Remove filter on %s'],
                 ['reorderDeadZone', 3],
                 ['resizeScrollZone', 20],
@@ -177,15 +174,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['activeCellColor', 'rgba(0, 0, 0, 1)'],
                 ['activeCellFont', '16px sans-serif'],
                 ['activeCellHoverBackgroundColor', 'rgba(255, 255, 255, 1)'],
+                ['activeCellHorizontalAlignment', 'left'],
                 ['activeCellHoverColor', 'rgba(0, 0, 0, 1)'],
                 ['activeCellOverlayBorderColor', 'rgba(66, 133, 244, 1)'],
                 ['activeCellOverlayBorderWidth', 1],
                 ['activeCellPaddingBottom', 5],
                 ['activeCellPaddingLeft', 5],
-                ['activeCellPaddingRight', 7],
+                ['activeCellPaddingRight', 5],
                 ['activeCellPaddingTop', 5],
                 ['activeCellSelectedBackgroundColor', 'rgba(236, 243, 255, 1)'],
                 ['activeCellSelectedColor', 'rgba(0, 0, 0, 1)'],
+                ['activeCellVerticalAlignment', 'center'],
                 ['activeColumnHeaderCellBackgroundColor', 'rgba(225, 225, 225, 1)'],
                 ['activeColumnHeaderCellColor', 'rgba(0, 0, 0, 1)'],
                 ['activeRowHeaderCellBackgroundColor', 'rgba(225, 225, 225, 1)'],
@@ -207,13 +206,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['cellHoverColor', 'rgba(0, 0, 0, 1)'],
                 ['cellPaddingBottom', 5],
                 ['cellPaddingLeft', 5],
-                ['cellPaddingRight', 7],
+                ['cellPaddingRight', 5],
                 ['cellPaddingTop', 5],
                 ['cellSelectedBackgroundColor', 'rgba(236, 243, 255, 1)'],
                 ['cellSelectedColor', 'rgba(0, 0, 0, 1)'],
                 ['cellVerticalAlignment', 'center'],
                 ['cellWidth', 250],
                 ['cellWidthWithChildGrid', 250],
+                ['cellWhiteSpace', 'nowrap'],
+                ['cellLineHeight', 1],
+                ['cellLineSpacing', 3],
                 ['childContextMenuArrowColor', 'rgba(43, 48, 43, 1)'],
                 ['childContextMenuArrowHTML', '&#x25BA;'],
                 ['childContextMenuMarginLeft', -11],
@@ -232,7 +234,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['columnHeaderCellHoverColor', 'rgba(0, 0, 0, 1)'],
                 ['columnHeaderCellPaddingBottom', 5],
                 ['columnHeaderCellPaddingLeft', 5],
-                ['columnHeaderCellPaddingRight', 7],
+                ['columnHeaderCellPaddingRight', 5],
                 ['columnHeaderCellPaddingTop', 5],
                 ['columnHeaderCellVerticalAlignment', 'center'],
                 ['columnHeaderOrderByArrowBorderColor', 'rgba(195, 199, 202, 1)'],
@@ -262,6 +264,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['contextMenuBorderRadius', '3px'],
                 ['contextMenuChildArrowFontSize', '12px'],
                 ['contextMenuColor', 'rgba(43, 48, 43, 1)'],
+                ['contextMenuCursor', 'default'],
                 ['contextMenuFilterButtonFontFamily', 'sans-serif'],
                 ['contextMenuFilterButtonFontSize', '10px'],
                 ['contextMenuFilterInvalidExpresion', 'rgba(237, 155, 156, 1)'],
@@ -283,6 +286,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['contextMenuZIndex', 10000],
                 ['cornerCellBackgroundColor', 'rgba(240, 240, 240, 1)'],
                 ['cornerCellBorderColor', 'rgba(202, 202, 202, 1)'],
+                ['debugBackgroundColor', 'rgba(0, 0, 0, .0)'],
+                ['debugColor', 'rgba(255, 15, 24, 1)'],
+                ['debugEntitiesColor', 'rgba(76, 231, 239, 1.00)'],
+                ['debugFont', '11px sans-serif'],
+                ['debugPerfChartBackground', 'rgba(29, 25, 26, 1.00)'],
+                ['debugPerfChartTextColor', 'rgba(255, 255, 255, 0.8)'],
+                ['debugPerformanceColor', 'rgba(252, 255, 37, 1.00)'],
+                ['debugScrollHeightColor', 'rgba(248, 33, 103, 1.00)'],
+                ['debugScrollWidthColor', 'rgba(66, 255, 27, 1.00)'],
+                ['debugTouchPPSXColor', 'rgba(246, 102, 24, 1.00)'],
+                ['debugTouchPPSYColor', 'rgba(186, 0, 255, 1.00)'],
                 ['display', 'inline-block'],
                 ['editCellBackgroundColor', 'white'],
                 ['editCellBorder', 'solid 1px rgba(110, 168, 255, 1)'],
@@ -730,6 +744,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             drawCount = 0,
             perfWindowSize = 300,
             entityCount = [],
+            hiddenFrozenColumnCount = 0,
             scrollDebugCounters = [],
             touchPPSCounters = [];
         self.htmlImageCache = {};
@@ -1003,38 +1018,147 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.ellipsisCache[text][width] = c;
             return c;
         }
+        function wrapText(cell, splitChar) {
+            if (!cell.formattedValue) {
+                return { lines: [{width: 0, value: ''}], width: 0, height: cell.calculatedLineHeight };
+            }
+            var max = 0,
+                n = '\n',
+                x,
+                word,
+                words = cell.formattedValue.split(splitChar),
+                textHeight = cell.calculatedLineHeight,
+                lines = [],
+                out = [],
+                wrap = self.style.cellWhiteSpace !== 'nowrap',
+                elWidth,
+                et = self.attributes.ellipsisText,
+                elClipLength,
+                plWidth,
+                clippedVal,
+                ogWordWidth,
+                previousLine,
+                line = {
+                    width: 0,
+                    value: ''
+                },
+                cHeight = wrap ? cell.paddedHeight : cell.calculatedLineHeight;
+            lines.push(line);
+            elWidth = self.ctx.measureText(' ' + et).width;
+            for (x = 0; x < words.length; x += 1) {
+                word = words[x];
+                var measure = self.ctx.measureText(word + splitChar);
+                if (line.width + measure.width + elWidth < cell.paddedWidth) {
+                    line.value += word + splitChar;
+                    line.width += measure.width;
+                    continue;
+                }
+                // if there is a hyphenated word that is too long
+                // split it and add the split set to the array
+                // then back up and re-read new split set
+                // this behavior seems right, it might not be
+                if (/\w-\w/.test(word) && cell.paddedWidth < measure.width) {
+                    words.splice(x, 1, word.split('-')[0] + '-', word.split('-')[1]);
+                    x -= 1;
+                    continue;
+                }
+                line = {
+                    width: measure.width,
+                    value: word + splitChar
+                };
+                if (x === 0) {
+                    lines = [];
+                    lines.push(line);
+                }
+                textHeight += cell.calculatedLineHeight;
+                if (textHeight > cHeight) {
+                    if (lines.length === 0) { break; }
+                    elClipLength = 1;
+                    previousLine = lines[lines.length - 1];
+                    if (previousLine.width < cell.paddedWidth && words.length === 1) { break; }
+                    clippedVal = previousLine.value + word;
+                    while(plWidth == undefined || (plWidth > cell.paddedWidth && elClipLength < clippedVal.length)) {
+                        plWidth = self.ctx.measureText(clippedVal + et).width
+                        clippedVal = clippedVal.substring(0, clippedVal.length - elClipLength);
+                        elClipLength + 1;
+                    }
+                    clippedVal = clippedVal + et;
+                    previousLine.value = clippedVal;
+                    previousLine.width = plWidth;
+                    break;
+                }
+                if (x > 0) {
+                    lines.push(line);
+                }
+            }
+            return {
+                lines: lines,
+                width: max,
+                height: cell.calculatedLineHeight * lines.length
+            }
+        }
         function drawText(cell) {
-            var paddingLeft = self.style[cell.style + 'PaddingLeft'] * self.scale,
-                paddingTop = self.style[cell.style + 'PaddingTop'] * self.scale,
-                paddingRight = self.style[cell.style + 'PaddingRight'] * self.scale,
-                paddingBottom = self.style[cell.style + 'PaddingBottom'] * self.scale,
-                vPos = paddingTop + cell.height - (cell.height * 0.5),
-                hPos = paddingLeft + cell.treeArrowWidth + cell.orderByArrowWidth;
-            cell.text = addEllipsis(cell.formattedValue, cell.width - paddingRight - paddingLeft);
-            cell.text.height = cell.fontHeight;
-            if (cell.horizontalAlignment === 'right') {
-                hPos = cell.width - cell.text.width - paddingRight;
-            } else if (cell.horizontalAlignment === 'center') {
-                hPos = (cell.width / 2) - (cell.text.width / 2);
+            var ll = cell.text.lines.length,
+                h = (cell.fontHeight * cell.lineHeight),
+                x,
+                line,
+                wrap = self.style.cellWhiteSpace !== 'nowrap',
+                textHeight = 0;
+            for (x = 0; x < cell.text.lines.length; x += 1) {
+                line = cell.text.lines[x];
+                var vPos = Math.max((cell.height - (wrap ? cell.text.height : cell.calculatedLineHeight)) * 0.5, 0) + h,
+                    hPos = cell.paddingLeft + cell.treeArrowWidth + cell.orderByArrowWidth;
+                if (cell.horizontalAlignment === 'right') {
+                    hPos = cell.paddingLeft + cell.paddedWidth - line.width;
+                } else if (cell.horizontalAlignment === 'center') {
+                    hPos = cell.paddingLeft + ((cell.paddedWidth + cell.paddingRight) / 2) - (line.width / 2);
+                }
+                if (cell.verticalAlignment === 'top') {
+                    vPos = cell.calculatedLineHeight;
+                } else if (cell.verticalAlignment === 'bottom') {
+                    vPos = cell.height - cell.paddingBottom - cell.text.height;
+                }
+                line.height = h + cell.lineSpacing;
+                line.offsetLeft = hPos;
+                line.offsetTop = vPos;
+                line.x = cell.x + hPos;
+                line.y = cell.y + textHeight + vPos;
+                textHeight += line.height;
+                fillText(line.value, line.x, line.y);
             }
-            if (cell.verticalAlignment === 'top') {
-                vPos = paddingTop + cell.text.height;
-            } else if (cell.verticalAlignment === 'bottom') {
-                vPos = cell.height - paddingBottom - cell.text.height;
+            if (self.attributes.debug) {
+                requestAnimationFrame(function () {
+                    self.ctx.font = self.style.debugFont;
+                    self.ctx.fillStyle = self.style.debugColor;
+                    fillText(JSON.stringify({
+                        x: cell.x,
+                        y: cell.y,
+                        h: cell.height,
+                        w: cell.width,
+                        pw: cell.paddedWidth,
+                        idx: cell.columnIndex,
+                        idx_ord: cell.sortColumnIndex
+                    }, null, '\t'),
+                        cell.x + 14, cell.y + 14);
+                    fillText(JSON.stringify(cell.text.lines.map(function (l) { return {w: l.width, v: l.value.length }; }), null, '\t'),
+                        cell.x + 14, cell.y + 30);
+                });
             }
-            cell.text.x = cell.x + hPos;
-            cell.text.y = cell.y + vPos;
-            fillText(cell.text.value, cell.text.x, cell.text.y);
         }
         function getFrozenColumnsWidth() {
             var w = 0,
-                s = self.getVisibleSchema(),
+                s = self.getSchema(),
                 x = 0,
                 n = Math.min(self.frozenColumn, s.length),
                 column;
+            hiddenFrozenColumnCount = 0;
             while (x < n) {
-                column = s[self.orders.columns[x]];
-                w += ((self.sizes.columns[x] || column.width || self.style.cellWidth) * self.scale);
+                column = s[x];
+                if (column.hidden) {
+                    hiddenFrozenColumnCount += 1;
+                } else {
+                    w += self.getColummnWidth(x);
+                }
                 x += 1;
             }
             return w;
@@ -1081,7 +1205,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 moveBorders = [],
                 selectionHandles = [],
                 rowHeaders = [],
-                frozenColumnWidths = getFrozenColumnsWidth(),
                 l = data.length,
                 u = self.currentCell || {},
                 columnHeaderCellHeight = self.getColumnHeaderCellHeight(),
@@ -1267,8 +1390,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         nodeType: 'canvas-datagrid-cell',
                         x: cx,
                         y: cy,
+                        fontHeight: (self.style[cellStyle + 'FontHeight'] || 0) * self.scale,
                         horizontalAlignment: self.style[cellStyle + 'HorizontalAlignment'],
                         verticalAlignment: self.style[cellStyle + 'VerticalAlignment'],
+                        paddingLeft: (self.style[cellStyle + 'PaddingLeft'] || 0) * self.scale,
+                        paddingTop: (self.style[cellStyle + 'PaddingTop'] || 0) * self.scale,
+                        paddingRight: (self.style[cellStyle + 'PaddingRight'] || 0) * self.scale,
+                        paddingBottom: (self.style[cellStyle + 'PaddingBottom'] || 0) * self.scale,
+                        whiteSpace: self.style.cellWhiteSpace,
+                        lineHeight: self.style.cellLineHeight,
+                        lineSpacing: self.style.cellLineSpacing,
                         offsetTop: self.canvasOffsetTop + cy,
                         offsetLeft: self.canvasOffsetLeft + cx,
                         scrollTop: self.scrollBox.scrollTop,
@@ -1302,6 +1433,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         activeHeader: activeHeader,
                         value: isHeader && !isRowHeader ? (header.title || header.name) : rawValue
                     };
+                    cell.calculatedLineHeight = (cell.fontHeight * cell.lineHeight) + cell.lineSpacing;
+                    cell.paddedWidth = cell.width - cell.paddingRight - cell.paddingLeft;
+                    cell.paddedHeight = cell.height - cell.paddingTop - cell.paddingBottom;
                     ev.cell = cell;
                     cell.userHeight = cell.isHeader ? self.sizes.rows[-1] : rowHeight;
                     cell.userWidth = cell.isHeader ? self.sizes.columns.cornerCell : self.sizes.columns[headerIndex];
@@ -1396,10 +1530,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             if (activeHeader) {
                                 self.ctx.fillStyle = self.style[activeHeader + 'Color'];
                             }
-                            self.ctx.font = (self.style[cellStyle + 'FontHeight'] * self.scale) + 'px ' + self.style[cellStyle + 'FontName'];
-                            cell.fontHeight = (self.style[cellStyle + 'FontHeight'] * self.scale);
                             cell.treeArrowWidth = treeArrowSize;
                             cell.orderByArrowWidth = orderByArrowSize;
+                            // create text ref to see if height needs to expand
                             val = val !== undefined ? val : f
                                 ? f(ev) : '';
                             if (val === undefined && !f) {
@@ -1411,6 +1544,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             if (self.columnFilters && self.columnFilters[val] !== undefined && isHeader) {
                                 cell.formattedValue = self.attributes.filterTextPrefix + val;
                             }
+                            self.ctx.font = (self.style[cellStyle + 'FontHeight'] * self.scale) + 'px ' + self.style[cellStyle + 'FontName'];
+                            cell.text = wrapText(cell, ' ');
                             if (!self.dispatchEvent('rendertext', ev)) {
                                 if (cell.innerHTML || header.type === 'html') {
                                     drawHtml(cell);
@@ -1471,11 +1606,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                             };
                             columnHeaderCell = {'columnHeaderCell': header.title || header.name};
                             x += drawCell(columnHeaderCell, -1, -1)(d, i, o);
-                            if (self.attributes.debug) {
-                                self.ctx.font = '14px sans-serif';
-                                self.ctx.fillStyle = 'rgba(37, 254, 21, 1)';
-                                fillText('Actual: ' + i + ' Ordered: ' + o, x - 175, 17);
-                            }
                             if (x > self.width + self.scrollBox.scrollLeft) {
                                 break;
                             }
@@ -1498,13 +1628,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     if (self.attributes.showRowHeaders) {
                         x += rowHeaderCellWidth;
                     }
-                    if (self.attributes.allowFreezingColumns) {
-                        x += frozenColumnWidths;
-                    }
                     y = 0;
                     // cell height might have changed during drawing
                     cellHeight = self.getColumnHeaderCellHeight();
-                    drawHeaderColumnRange(self.scrollIndexLeft + self.frozenColumn, g);
+                    drawHeaderColumnRange(self.scrollIndexLeft, g);
                     nonFrozenHeaderWidth = x;
                     x = self.style.columnHeaderCellBorderWidth;
                     if (self.attributes.showRowHeaders) {
@@ -1557,11 +1684,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     x += rowHeaderCellWidth;
                 }
                 cellHeight = rowHeight;
-                if (self.attributes.allowFreezingColumns) {
-                    x += frozenColumnWidths;
-                }
                 //draw normal columns
-                for (o = (self.scrollIndexLeft + self.frozenColumn); o < g; o += 1) {
+                for (o = (self.scrollIndexLeft); o < g; o += 1) {
                     i = self.orders.columns[o];
                     x += drawCell(rd, r, d)(s[i], i, o);
                     if (x > self.width) {
@@ -1886,25 +2010,25 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     drawPerfLine(pw, ph, px, py, perfArr, arrIndex, max, color, useAbs);
                     self.ctx.fillStyle = color;
                     fillRect(3 + px, py + 9 + (rowIndex * 11), 8, 8);
-                    self.ctx.fillStyle = '#999999';
+                    self.ctx.fillStyle = self.style.debugPerfChartTextColor;
                     v = arrIndex !== undefined ? perfArr[0][arrIndex] : perfArr[0];
                     fillText(name + ' ' + (isNaN(v) ? 0 : v).toFixed(3), 14 + px, py + 16 + (rowIndex * 11));
                 }
                 self.ctx.textAlign = 'left';
-                self.ctx.font = '8px sans-serif';
-                self.ctx.fillStyle = 'rgba(29, 25, 26, 1.00)';
+                self.ctx.font = self.style.debugFont;
+                self.ctx.fillStyle = self.style.debugPerfChartBackground;
                 fillRect(px, py, pw, ph);
-                [['Scroll Height', scrollDebugCounters, 0, self.scrollBox.scrollHeight, 'rgba(248, 33, 103, 1.00)', false],
-                    ['Scroll Width', scrollDebugCounters, 1, self.scrollBox.scrollWidth, 'rgba(66, 255, 27, 1.00)', false],
-                    ['Performance', perfCounters, undefined, 200, 'rgba(252, 255, 37, 1.00)', false],
-                    ['Entities', entityCount, undefined, 1500, 'rgba(76, 231, 239, 1.00)', false],
-                    ['TouchPPSX', touchPPSCounters, 0, 1000, 'rgba(246, 102, 24, 1.00)', true],
-                    ['TouchPPSY', touchPPSCounters, 1, 1000, 'purple', true]
+                [['Scroll Height', scrollDebugCounters, 0, self.scrollBox.scrollHeight, self.style.debugScrollHeightColor, false],
+                    ['Scroll Width', scrollDebugCounters, 1, self.scrollBox.scrollWidth, self.style.debugScrollWidthColor, false],
+                    ['Performance', perfCounters, undefined, 200, self.style.debugPerformanceColor, false],
+                    ['Entities', entityCount, undefined, 1500, self.style.debugEntitiesColor, false],
+                    ['TouchPPSX', touchPPSCounters, 0, 1000, self.style.debugTouchPPSXColor, true],
+                    ['TouchPPSY', touchPPSCounters, 1, 1000, self.style.debugTouchPPSYColor, true]
                     ].forEach(function (i, index) {
                     i.push(index);
                     dpl.apply(null, i);
                 });
-                self.ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                self.ctx.fillStyle = self.style.debugPerfChartBackground;
                 entityCount.pop();
                 entityCount.unshift(self.visibleCells.length);
                 scrollDebugCounters.pop();
@@ -1924,12 +2048,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.ctx.restore();
                     return;
                 }
-                self.ctx.font = '14px sans-serif';
+                self.ctx.font = self.style.debugFont;
                 d = {};
                 d.perf = (perfCounters.reduce(function (a, b) {
                     return a + b;
                 }, 0) / Math.min(drawCount, perfCounters.length)).toFixed(1);
                 d.perfDelta = perfCounters[0].toFixed(1);
+                d.frozenColumnsWidth = getFrozenColumnsWidth();
                 d.htmlImages = Object.keys(self.htmlImageCache).length;
                 d.reorderObject = 'x: ' + (self.reorderObject || {columnIndex: 0}).columnIndex + ', y: ' + (self.reorderObject || {rowIndex: 0}).rowIndex;
                 d.reorderTarget = 'x: ' + (self.reorderTarget || {columnIndex: 0}).columnIndex + ', y: ' + (self.reorderTarget || {rowIndex: 0}).rowIndex;
@@ -1969,12 +2094,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     d.type = self.currentCell.type;
                 }
                 self.ctx.textAlign = 'right';
-                self.ctx.fillStyle = 'rgba(0, 0, 0, .40)';
+                self.ctx.fillStyle = self.style.debugBackgroundColor;
                 fillRect(0, 0, self.width, self.height);
                 Object.keys(d).forEach(function (key, index) {
                     var m = key + ': ' + d[key],
                         lh = 14;
-                    self.ctx.fillStyle = 'rgba(37, 254, 21, .90)';
+                    self.ctx.fillStyle = self.style.debugColor;
                     fillText(m, w - 20, (self.attributes.showPerformance ? 140 : 24) + (index * lh));
                 });
                 self.ctx.restore();
@@ -2134,16 +2259,21 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 l = (self.data || []).length,
                 columnHeaderCellHeight = self.getColumnHeaderCellHeight(),
                 rowHeaderCellWidth = self.getRowHeaderCellWidth(),
-                ch = self.style.cellHeight;
+                ch = self.style.cellHeight,
+                s = self.getSchema();
             // sets actual DOM canvas element
+            function setScrollBoxSize() {
+                self.scrollBox.width = self.width - rowHeaderCellWidth;
+                self.scrollBox.height = self.height - columnHeaderCellHeight;
+            }
             function setCanvasSize() {
                 if (self.isChildGrid) {
                     return;
                 }
                 dims = {
                     // HACK +1 ? maybe it's a magic cell border?  Required to line up properly in auto height mode.
-                    height: dataHeight + 1,
-                    width: dataWidth + rowHeaderCellWidth
+                    height: dataHeight + cellBorder + 1,
+                    width: dataWidth + rowHeaderCellWidth + cellBorder
                 };
                 ['width', 'height'].forEach(function (dim) {
                     //TODO: support inherit
@@ -2165,18 +2295,20 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (l > 1) {
                 self.scrollCache.y[x] = dataHeight;
             }
-            dataWidth = self.getSchema().reduce(function reduceSchema(accumulator, column, columnIndex) {
+            dataWidth = s.reduce(function reduceSchema(accumulator, column, columnIndex) {
+                // intentional redefintion of column.  This causes scrollCache to be in the correct order
+                column = s[self.orders.columns[columnIndex]];
                 if (column.hidden) {
                     self.scrollCache.x[columnIndex] = accumulator;
                     return accumulator;
                 }
-                var va = accumulator + ((self.sizes.columns[columnIndex] || column.width || self.style.cellWidth) * self.scale);
+                var va = accumulator + self.getColummnWidth(self.orders.columns[columnIndex]);
                 self.scrollCache.x[columnIndex] = va;
                 return va;
             }, 0) || 0;
-            dataHeight += columnHeaderCellHeight + columnHeaderCellBorder;
+            dataHeight += columnHeaderCellHeight;
             if (self.attributes.showNewRow) {
-                dataHeight += ch + cellBorder;
+                dataHeight += ch;
             }
             setCanvasSize();
             if (self.isChildGrid) {
@@ -2193,11 +2325,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.scrollBox.top = columnHeaderCellHeight + columnHeaderCellBorder;
             self.scrollBox.left = rowHeaderCellWidth;
             // width and height of scroll box
-            self.scrollBox.width = self.width - rowHeaderCellWidth;
-            self.scrollBox.height = self.height;
+            setScrollBoxSize();
             // is the data larger than the scroll box
-            self.scrollBox.horizontalBarVisible = dataWidth > self.scrollBox.width;
-            self.scrollBox.verticalBarVisible = dataHeight > self.scrollBox.height;
+            self.scrollBox.horizontalBarVisible = self.style.width !== 'auto' && dataWidth > self.scrollBox.width;
+            self.scrollBox.verticalBarVisible = self.style.height !== 'auto' && dataHeight > self.scrollBox.height;
             // if the scroll box is visible, make room for it by expanding the size of the element
             // if the other dimension is set to auto
             if (self.scrollBox.horizontalBarVisible && !self.isChildGrid) {
@@ -2206,33 +2337,39 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
                 dataHeight += sbw;
                 setCanvasSize();
+                setScrollBoxSize();
                 self.scrollBox.horizontalBarVisible = dataWidth > self.scrollBox.width;
-                self.scrollBox.verticalBarVisible = dataHeight > self.scrollBox.height;
+                self.scrollBox.verticalBarVisible = self.style.height !== 'auto'
+                    && dataHeight > self.scrollBox.height;
             }
             if (self.scrollBox.verticalBarVisible && !self.isChildGrid) {
                 if (self.style.width === 'auto') {
                     self.width += sbw;
                 }
-                // HACK, this will not work with onlyResizeX mode for now :/
                 dataWidth += sbw;
                 setCanvasSize();
+                setScrollBoxSize();
                 self.scrollBox.verticalBarVisible = dataHeight > self.scrollBox.height;
-                self.scrollBox.horizontalBarVisible = dataWidth > self.scrollBox.width;
+                self.scrollBox.horizontalBarVisible = self.style.width !== 'auto'
+                    && dataWidth > self.scrollBox.width;
             }
             // set again after bar visibility checks
-            self.scrollBox.width = self.width - rowHeaderCellWidth;
-            self.scrollBox.height = self.height - columnHeaderCellHeight;
+            setScrollBoxSize();
             self.scrollBox.scrollWidth = dataWidth - self.scrollBox.width;
-            self.scrollBox.scrollHeight = dataHeight - self.scrollBox.height;
+            self.scrollBox.scrollHeight = dataHeight - self.scrollBox.height - columnHeaderCellHeight;
             self.scrollBox.widthBoxRatio = self.scrollBox.width / dataWidth;
-            self.scrollBox.scrollBoxWidth = self.scrollBox.width * self.scrollBox.widthBoxRatio;
+            self.scrollBox.scrollBoxWidth = self.scrollBox.width
+                * self.scrollBox.widthBoxRatio
+                - self.style.scrollBarWidth - b - d;
             // TODO: This heightBoxRatio number is terribly wrong.
             // They should be a result of the size of the grid/canvas?
             // it being off causes the scroll bar to "slide" under
             // the dragged mouse.
             // https://github.com/TonyGermaneri/canvas-datagrid/issues/97
-            self.scrollBox.heightBoxRatio = self.scrollBox.height / dataHeight;
-            self.scrollBox.scrollBoxHeight = self.scrollBox.height * self.scrollBox.heightBoxRatio;
+            self.scrollBox.heightBoxRatio = self.scrollBox.height / (dataHeight - columnHeaderCellHeight);
+            self.scrollBox.scrollBoxHeight = self.scrollBox.height
+                * self.scrollBox.heightBoxRatio
+                - self.style.scrollBarWidth - b - d;
             self.scrollBox.scrollBoxWidth = Math.max(self.scrollBox.scrollBoxWidth, self.style.scrollBarBoxMinSize);
             self.scrollBox.scrollBoxHeight = Math.max(self.scrollBox.scrollBoxHeight, self.style.scrollBarBoxMinSize);
             // horizontal
@@ -2303,21 +2440,22 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.scrollIndexTop = 0;
             }
             self.scrollPixelTop = 0;
-            self.scrollIndexLeft = 0;
+            self.scrollIndexLeft = self.frozenColumn;
             self.scrollPixelLeft = 0;
             while (self.scrollPixelTop < self.scrollBox.scrollTop && self.scrollIndexTop < self.data.length) {
-                // start on index +1 since index +0 was checked prior to loop start in "go too far"
+                // start on index +1 since index 0 was used in "go too far" section above
                 self.scrollIndexTop += 1;
                 self.scrollPixelTop = self.scrollCache.y[self.scrollIndexTop];
             }
-            while (self.scrollPixelLeft < self.scrollBox.scrollLeft && self.scrollIndexLeft < s.length) {
+            while (self.scrollPixelLeft < (self.scrollBox.scrollLeft + 1) && self.scrollIndexLeft < s.length) {
                 self.scrollPixelLeft = self.scrollCache.x[self.scrollIndexLeft];
                 self.scrollIndexLeft += 1;
             }
-            if ((self.data || []).length > 0 && s.length > 0) {
+            if (s.length > 0) {
                 self.scrollIndexLeft = Math.max(self.scrollIndexLeft - 1, 0);
-                self.scrollPixelLeft = Math.max(self.scrollPixelLeft
-                    - ((self.sizes.columns[self.scrollIndexLeft] || s[self.scrollIndexLeft].width || self.style.cellWidth) * self.scale), 0);
+                self.scrollPixelLeft -= self.getColummnWidth(self.orders.columns[self.scrollIndexLeft]);
+            }
+            if ((self.data || []).length > 0) {
                 self.scrollIndexTop = Math.max(self.scrollIndexTop - 1, 0);
                 self.scrollPixelTop = Math.max((self.scrollPixelTop
                     - (
@@ -2710,6 +2848,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 tIndex = cr[self.dragMode].indexOf(self.reorderTarget[i]);
                 cr[self.dragMode].splice(oIndex, 1);
                 cr[self.dragMode].splice(tIndex, 0, self.reorderObject[i]);
+                self.resize();
                 self.setStorageData();
             }
             self.reorderObject = undefined;
@@ -2821,6 +2960,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.canvas.requestPointerLock();
                 }
                 document.body.addEventListener('mousemove', self.scrollGrid, false);
+                document.addEventListener('mouseout',self.stopScrollGrid, false);
                 document.body.addEventListener('mouseup', self.stopScrollGrid, false);
                 self.ignoreNextClick = true;
                 return;
@@ -4078,7 +4218,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.edge = /Edge/.test(window.navigator.userAgent);
             self.webKit = /WebKit/.test(window.navigator.userAgent);
             self.moz = /Gecko/.test(window.navigator.userAgent);
-            self.webKit = /WebKit/.test(window.navigator.userAgent);
             self.mobile = /Mobile/i.test(window.navigator.userAgent);
             self.cursorGrab = 'grab';
             self.cursorGrabing = 'grabbing';
@@ -4551,6 +4690,48 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     bottom: self.scrollPixelBottom,
                     left: self.scrollPixelLeft
                 };
+            }
+        });
+        /**
+         * Gets or sets the order of the rows.  This allows you to modify the appearance of the data without modifying the data itself.
+         * @memberof canvasDatagrid
+         * @name columnOrder
+         * @method
+         * @param {array} val Array of integers.  The order of the array dictates the order of the rows, e.g.: [0, 1, 2] is normal order, [2, 1, 0] is reverse.  The array length must be equal to or greater than the number of rows.
+         */
+        Object.defineProperty(self.intf, 'rowOrder', {
+            get: function () {
+                return self.orders.rows;
+            },
+            set: function (val) {
+                if (!Array.isArray(val)) {
+                    throw new TypeError('Value must be an array.');
+                }
+                if (!self.data || val.length < self.data.length) {
+                    throw new RangeError('Array length must be equal to or greater than number of rows.');
+                }
+                self.orders.rows = val;
+            }
+        });
+        /**
+         * Gets or sets the order of the columns.  This allows you to modify the appearance of the schema without modifying the data itself.
+         * @memberof canvasDatagrid
+         * @name columnOrder
+         * @method
+         * @param {array} val Array of integers.  The order of the array dictates the order of the columns, e.g.: [0, 1, 2] is normal order, [2, 1, 0] is reverse.  The array length must be equal to or greater than the number of columns.
+         */
+        Object.defineProperty(self.intf, 'columnOrder', {
+            get: function () {
+                return self.orders.columns;
+            },
+            set: function (val) {
+                if (!Array.isArray(val)) {
+                    throw new TypeError('Value must be an array.');
+                }
+                if (val.length < s.length) {
+                    throw new RangeError('Array length must be equal to or greater than number of columns.');
+                }
+                self.orders.columns = val;
             }
         });
         Object.defineProperty(self.intf, 'selectionBounds', {
@@ -5506,7 +5687,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             //     + ')';
         };
         self.scrollOffset = function (e) {
-            var x = 0, y = 0;
+            var x = 0, y = 0, scrollingElement = document.scrollingElement || { scrollLeft: 0, scrollTop: 0 };
             while (e.parentNode && e.nodeName !== 'CANVAS-DATAGRID' && e !== self.intf) {
                 if (e.nodeType !== 'canvas-datagrid-tree'
                         && e.nodeType !== 'canvas-datagrid-cell') {
@@ -5516,8 +5697,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 e = e.parentNode;
             }
             return {
-                left: x - document.scrollingElement.scrollLeft,
-                top: y - document.scrollingElement.scrollTop
+                left: x - scrollingElement.scrollLeft,
+                top: y - scrollingElement.scrollTop
             };
         };
         self.resizeEditInput = function () {
@@ -5746,7 +5927,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     if (ny > self.data.length - 1) {
                         ny = 0;
                     }
-                    console.log('nx', nx, 'ny', ny);
                     self.scrollIntoView(nx, ny);
                     self.beginEditAt(nx, ny);
                 }
@@ -5925,7 +6105,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     borderRadius: self.style.contextMenuBorderRadius,
                     opacity: self.style.contextMenuOpacity,
                     overflow: 'hidden',
-                    whiteSpace: 'nowrap'
+                    whiteSpace: 'nowrap',
+                    cursor: self.style.contextMenuCursor
                 },
                 'canvas-datagrid-invalid-search-regExp': {
                     background: self.style.contextMenuFilterInvalidExpresion
@@ -5965,12 +6146,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.parentDOMNode.appendChild(self.controlInput);
                 }
                 self.createInlineStyle(self.canvas, 'canvas-datagrid');
-                self.ctx = self.canvas.getContext('2d', {
-                    preserveDrawingBuffer: self.attributes.preserveDrawingBuffer,
-                    premultipliedAlpha: self.attributes.premultipliedAlpha,
-                    antialias: self.attributes.antialias,
-                    alpha: self.attributes.alpha
-                });
+                self.ctx = self.canvas.getContext('2d');
                 self.ctx.textBaseline = 'alphabetic';
                 self.eventParent = self.canvas;
             }
@@ -6240,15 +6416,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @param {number} columnIndex The column index of the column to find.
          */
         self.findColumnScrollLeft = function (columnIndex) {
-            var left = 0, y = 0, s = self.getSchema(), l = s.length - 1;
-            if (columnIndex > l) {
-                throw new Error('Column index out of range.');
-            }
-            while (y < columnIndex) {
-                left += self.sizes.columns[y] || s[y].width || self.style.cellWidth;
-                y += 1;
-            }
-            return left;
+            var i = Math.max(columnIndex - 1, 0);
+            if (self.scrollCache.x[i] === undefined) { throw new Error('Column index out of range.'); }
+            return self.scrollCache.x[i] - self.getColummnWidth(self.orders.columns[columnIndex]);
         };
         /**
          * Scrolls to the cell at columnIndex x, and rowIndex y.  If you define both rowIndex and columnIndex additional calculations can be made to center the cell using the target cell's height and width.  Defining only one rowIndex or only columnIndex will result in simpler calculations.
@@ -6274,6 +6444,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.scrollBox.scrollTo(targetX, targetY);
                 requestAnimationFrame(function () {
                     cell = self.getVisibleCellByIndex(x, y);
+                    // HACK: just don't offset if the target cell cannot be seen
+                    // TODO: offset does not work on very small grids, not sure why
+                    if (!cell) { return; }
                     targetX += cell.width * offsetX;
                     targetY += cell.height * offsetY;
                     self.scrollBox.scrollTo(targetX, targetY);
@@ -6301,8 +6474,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @method
          * @param {number} x The column index of the cell to scroll into view.
          * @param {number} y The row index of the cell to scroll into view.
+         * @param {number} [offsetX=0] Percentage offset the cell should be from the left edge (not including headers).  The default is 0, meaning the cell will appear at the left edge. Valid values are 0 through 1. 1 = Left, 0 = Right, 0.5 = Center.
+         * @param {number} [offsetY=0] Percentage offset the cell should be from the top edge (not including headers).  The default is 0, meaning the cell will appear at the top edge. Valid values are 0 through 1. 1 = Bottom, 0 = Top, 0.5 = Center.
          */
-        self.scrollIntoView = function (x, y) {
+        self.scrollIntoView = function (x, y, offsetX, offsetY) {
             if (self.visibleCells.filter(function (cell) {
                     return (cell.rowIndex === y || y === undefined)
                         && (cell.columnIndex === x || x === undefined)
@@ -6311,7 +6486,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         && cell.x + cell.width < self.width
                         && cell.y + cell.height < self.height;
                 }).length === 0) {
-                self.gotoCell(x, y);
+                self.gotoCell(x, y, offsetX, offsetY);
             }
         };
         /**
@@ -7127,6 +7302,29 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             return self.getVisibleSchema().reduce(function (total, header) {
                 return total + (header.width || self.style.cellWidth);
             }, 0);
+        };
+        /**
+         * Gets the height of a row by index.
+         * @memberof canvasDatagrid
+         * @name getRowHeight
+         * @method
+         * @param {number} rowIndex The row index to lookup.
+         */
+        self.getRowHeight = function (rowIndex) {
+            return ((self.sizes.rows[rowIndex]
+                    || self.style.cellHeight) * self.scale);
+        };
+        /**
+         * Gets the width of a column by index.
+         * @memberof canvasDatagrid
+         * @name getColummnWidth
+         * @method
+         * @param {number} columnIndex The column index to lookup.
+         */
+        self.getColummnWidth = function (columnIndex) {
+            return ((self.sizes.columns[columnIndex]
+                    || self.getSchema()[columnIndex].width
+                    || self.style.cellWidth) * self.scale);
         };
         self.formatters.string = function cellFormatterString(e) {
             return e.cell.value !== undefined ? e.cell.value : '';
