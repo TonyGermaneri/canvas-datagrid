@@ -100,6 +100,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['allowRowResize', true],
                 ['allowRowResizeFromCell', false],
                 ['allowSorting', true],
+                ['alpha', false],
+                ['antialias', true],
                 ['autoGenerateSchema', false],
                 ['autoResizeColumns', false],
                 ['borderDragBehavior', 'none'],
@@ -126,6 +128,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['pageUpDownOverlap', 1],
                 ['pasteText', 'Paste'],
                 ['persistantSelectionMode', false],
+                ['premultipliedAlpha', false],
+                ['preserveDrawingBuffer', true],
                 ['removeFilterOptionText', 'Remove filter on %s'],
                 ['reorderDeadZone', 3],
                 ['resizeScrollZone', 20],
@@ -6146,7 +6150,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.parentDOMNode.appendChild(self.controlInput);
                 }
                 self.createInlineStyle(self.canvas, 'canvas-datagrid');
-                self.ctx = self.canvas.getContext('2d');
+                self.ctx = self.canvas.getContext('2d', {
+                    preserveDrawingBuffer: self.attributes.preserveDrawingBuffer,
+                    premultipliedAlpha: self.attributes.premultipliedAlpha,
+                    antialias: self.attributes.antialias,
+                    alpha: self.attributes.alpha
+                });
                 self.ctx.textBaseline = 'alphabetic';
                 self.eventParent = self.canvas;
             }
