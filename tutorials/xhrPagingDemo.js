@@ -32,7 +32,7 @@ function demo() {
         grid.schema[0].hidden = true;
         grid.schema[1].hidden = true;
         grid.schema[2].width = 150;
-        grid.schema[3].width = 700;
+        grid.schema[3].width = 400;
         grid.schema[4].width = 250;
         grid.schema[5].width = 75;
         grid.schema[6].width = 100;
@@ -80,6 +80,9 @@ function demo() {
     }
     // instantiate the grid 
     grid = canvasDatagrid();
+    grid.attributes.globalRowResize = true;
+    grid.style.cellWhiteSpace = 'normal';
+    grid.style.cellHeight = 80;
     grid.style.height = '100%';
     grid.style.width = '100%';
     // format dates so they are easy to read
