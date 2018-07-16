@@ -1381,87 +1381,76 @@
                 it('Begin editing, end editing', function (done) {
                     var ev,
                         err,
-                        editInput,
                         grid = g({
                             test: this.test,
                             data: [{d: ''}]
                         });
                     grid.beginEditAt(0, 0);
-                    editInput = document.body.lastChild;
-                    err = assertIf(editInput.tagName !== 'INPUT', 'Expected an input to have appeared');
+                    err = assertIf(!grid.input.parentNode, 'Expected an input to have appeared');
                     if (err) { return done(err); }
                     ev = new Event('keydown');
                     ev.keyCode = kcs.esc;
                     grid.addEventListener('endedit', function () {
                         done();
                     });
-                    editInput.dispatchEvent(ev);
+                    grid.input.dispatchEvent(ev);
                 });
                 it('Begin editing, enter a value, end editing', function (done) {
                     var ev,
-                        editInput,
                         grid = g({
                             test: this.test,
                             data: [{d: ''}]
                         });
                     grid.beginEditAt(0, 0);
-                    editInput = document.body.lastChild;
                     ev = new Event('keydown');
                     ev.keyCode = kcs.enter;
-                    editInput.value = 'blah';
+                    grid.input.value = 'blah';
                     grid.addEventListener('endedit', function (e) {
                         done(assertIf(grid.data[0].d !== 'blah', 'Expected value to be in data'));
                     });
-                    editInput.dispatchEvent(ev);
+                    grid.input.dispatchEvent(ev);
                 });
                 it('Begin editing, enter a value, end editing, abort before ending.', function (done) {
                     var ev,
-                        editInput,
                         grid = g({
                             test: this.test,
                             data: [{d: ''}]
                         });
                     grid.beginEditAt(0, 0);
-                    editInput = document.body.lastChild;
                     ev = new Event('keydown');
                     ev.keyCode = kcs.enter;
-                    editInput.value = 'blah';
+                    grid.input.value = 'blah';
                     grid.addEventListener('beforeendedit', function (e) {
                         e.abort();
                         done(assertIf(grid.data[0].d === 'blah', 'Expected value to be in data'));
                     });
-                    editInput.dispatchEvent(ev);
+                    grid.input.dispatchEvent(ev);
                 });
                 it('Begin editing a select with short definition.', function (done) {
-                    var editInput,
-                        grid = g({
+                    var grid = g({
                             test: this.test,
                             data: [{d: ''}],
                             schema: [{name: 'd', enum: ['a', 'b', 'c']}]
                         });
                     grid.beginEditAt(0, 0);
-                    editInput = document.body.lastChild;
-                    done(assertIf(editInput.childNodes.length === 3
-                            && editInput.tagName !== 'SELECT', 'Expected an input to have appeared'));
+                    done(assertIf(grid.input.childNodes.length === 3
+                            && grid.input.tagName !== 'SELECT', 'Expected an input to have appeared'));
                     grid.endEdit();
                 });
                 it('Begin editing a select with standard definition.', function (done) {
-                    var editInput,
-                        grid = g({
+                    var grid = g({
                             test: this.test,
                             data: [{d: ''}],
                             schema: [{name: 'd', enum: [['a', 'A'], ['b', 'B'], ['c', 'C']]}]
                         });
                     grid.beginEditAt(0, 0);
-                    editInput = document.body.lastChild;
-                    done(assertIf(editInput.childNodes[0].innerHTML === 'A'
-                            && editInput.childNodes.length === 3
-                            && editInput.tagName !== 'SELECT', 'Expected an input to have appeared'));
+                    done(assertIf(grid.input.childNodes[0].innerHTML === 'A'
+                            && grid.input.childNodes.length === 3
+                            && grid.input.tagName !== 'SELECT', 'Expected an input to have appeared'));
                     grid.endEdit();
                 });
                 it('Begin editing by double clicking a cell.', function (done) {
-                    var editInput,
-                        grid = g({
+                    var grid = g({
                             test: this.test,
                             data: [{d: ''}]
                         });
@@ -1471,8 +1460,7 @@
                     mousedown(grid.canvas, 65, 37);
                     mouseup(grid.canvas, 65, 37);
                     dblclick(grid.canvas, 65, 37);
-                    editInput = document.body.lastChild;
-                    done(assertIf(editInput.tagName !== 'INPUT', 'Expected an input to have appeared'));
+                    done(assertIf(grid.input.tagName !== 'INPUT', 'Expected an input to have appeared'));
                     grid.endEdit();
                 });
                 it('Should copy a value onto the simulated clipboard.', function (done) {
@@ -1502,16 +1490,14 @@
                 it('Begin editing, tab to next cell', function (done) {
                     var ev,
                         err,
-                        editInput,
                         grid = g({
                             test: this.test,
                             data: smallData()
                         });
                     grid.beginEditAt(0, 0);
-                    editInput = document.body.lastChild;
                     ev = new Event('keydown');
                     ev.keyCode = kcs.tab;
-                    editInput.dispatchEvent(ev);
+                    grid.input.dispatchEvent(ev);
                     grid.addEventListener('endedit', function (e) {
                         if (e.cell.columnIndex === 1) {
                             done();
@@ -1522,13 +1508,11 @@
                 it('Begin editing, shift tab to very last cell', function (done) {
                     var ev,
                         err,
-                        editInput,
                         grid = g({
                             test: this.test,
                             data: smallData()
                         });
                     grid.beginEditAt(0, 0);
-                    editInput = document.body.lastChild;
                     ev = new Event('keydown');
                     ev.shiftKey = true;
                     ev.keyCode = kcs.tab;
@@ -1537,13 +1521,12 @@
                             done();
                         }
                     });
-                    editInput.dispatchEvent(ev);
+                    grid.input.dispatchEvent(ev);
                     grid.endEdit();
                 });
                 it('Begin editing, tab to next row by hitting tab three times', function (done) {
                     var ev,
                         err,
-                        editInput,
                         grid = g({
                             test: this.test,
                             data: smallData()
@@ -2358,7 +2341,7 @@
                     assertPxColor(grid, 60, 60, c.y, done);
                 });
                 it('Should insert data into the new row', function (done) {
-                    var ev, editInput, grid = g({
+                    var ev, grid = g({
                         test: this.test,
                         showNewRow: true,
                         data: [{a: 'a'}]
@@ -2367,9 +2350,8 @@
                     ev.keyCode = kcs.enter;
                     grid.style.cellBackgroundColor = c.y;
                     grid.beginEditAt(0, 1);
-                    editInput = document.body.lastChild;
-                    editInput.value = 'abcd';
-                    editInput.dispatchEvent(ev);
+                    grid.input.value = 'abcd';
+                    grid.input.dispatchEvent(ev);
                     assertPxColor(grid, 60, 90, c.y, function (err) {
                         if (err) { return done(err); }
                         done(assertIf(grid.data.length !== 2,
