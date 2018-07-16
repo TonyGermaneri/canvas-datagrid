@@ -72,8 +72,10 @@ function demo() {
                 allowRowReordering: true,
                 tree: false,
                 debug: false,
-                showPerformance: false
+                showPerformance: false,
+                globalRowResize: true
             });
+        grid.style.cellWhiteSpace = 'normal';
         grid.style.height = '100%';
         grid.style.width = '100%';
         function loadDataSet(url) {

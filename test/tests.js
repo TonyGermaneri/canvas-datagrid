@@ -251,6 +251,7 @@
                     var grid = g({test: this.test});
                     assertIf(!grid, 'Expected a grid instance, instead got something false');
                     grid.style.gridBackgroundColor = c.y;
+                    throw grid.canvas.toDataURL();
                     assertPxColor(grid, 80, 32, c.y, done);
                 });
                 it('Should create, then completely annihilate the grid.', function (done) {

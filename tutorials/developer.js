@@ -58,10 +58,13 @@ function g() {
     grid.style.height = '100%';
     grid.style.width = '100%';
     grid.style.cellWhiteSpace = 'normal';
-    grid.style.cellHorizontalAlignment = 'right';
-    grid.style.activeCellHorizontalAlignment = 'right';
-    // grid.style.cellVerticalAlignment = 'top';
-    // grid.style.activeCellVerticalAlignment = 'top';
+    grid.style.cellHorizontalAlignment = 'left';
+    grid.style.activeCellHorizontalAlignment = 'left';
+    grid.style.cellVerticalAlignment = 'top';
+    grid.style.activeCellVerticalAlignment = 'top';
+    grid.addEventListener('scroll', function () {
+        console.log(grid.isRowVisible(0));
+    });
     // grid.data[0][grid.schema[0].name] = difficult;
     // grid.data[0][grid.schema[1].name] = veryDifficult;
     //console.log(grid.columnOrder);
