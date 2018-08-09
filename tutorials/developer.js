@@ -45,6 +45,9 @@ function g() {
         return data;
     }
     grid.data = getData('');
+    grid.addEventListener('beforerendercell', function (e) {
+        e.cell.innerHTML = e.cell.value;
+    });
     // for (x = 0; x < 40; x += 1) {
     //     // grid.schema[x].width = 500 * Math.random();
     //     // grid.schema[x].hidden = Math.random() > 0.5;
