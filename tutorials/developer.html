@@ -1,68 +1,30 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-    <!-- this file is for developing in a sandbox on a local machine -->
-    <script src="./developer.js"></script>
-    <script>
-        var s = document.createElement('script');
-        s.src = "../dist/canvas-datagrid.debug.js?cacheBust=" + +new Date();
-        s.onload = function () {
-            setTimeout(g, 1000);
-        }
-        document.head.appendChild(s);
-    </script>
-    <meta name="viewport" content="width=device-width">
-    <style>
-        html, body {
-            height: 100%;
-            min-height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow: auto;
-/*            --cdg-height: 100%;
-            --cdg-width: 100%;*/
-        }
-       /* .n {
-            height: 300px;
-            width: 300px;
-            position: absolute;
-            top: 900px;
-            left: 100px;
-            overflow: scroll;
-        }*/
-        .some {
+  <script type="text/javascript" src="../dist/canvas-datagrid.debug.js"></script>
+  <style type="text/css">
+    #grid { height: 300px; } #grid canvas, #grid canvas-datagrid { --cdg-height: 300px; }
+  </style>
 
-        }
-        .grid {
+  <script type="text/javascript">
+  window.addEventListener('load', function () {
+      var parentNode = document.getElementById('grid');
+      var grid = document.createElement('canvas-datagrid');
+      parentNode.appendChild(grid);
+      grid.data = [
+          {col1: 'foo', col2: 0, col3: 'a'},
+          {col1: 'bar', col2: 1, col3: 'b'},
+          {col1: 'baz', col2: 2, col3: 'c'}
+      ];
+      grid.columnOrder = [2, 1, 0];
+      grid.addEventListener('reorder', function () {
+        //grid.columnOrder = [1, 2, 0];
+    });
+  });
+</script>
 
-            /*--cdg-grid-background-color: dodgerblue;*/
-        }
-    </style>
 </head>
 <body>
-<!-- <div class="grid" id="grid"></div> -->
-    <!-- <div class="n">
-        <div class="grid" id="grid"></div>
-    </div> -->
-<!--     <script>debugger;</script> -->
-<!--     <canvas-datagrid class="grid" style="height: 20%;" selectionMode="row"><script>[[1, 2, 3, 4], [1, 2, 3, 4]]</script></canvas-datagrid>
-    <canvas-datagrid class="grid" style="height: 20%;"><script>[
-        {"e": 1, "b": 2},
-        {"e": 1, "b": 2},
-        {"e": 1, "b": 2},
-        {"e": 1, "b": 2},
-        {"e": 1, "b": 2},
-        {"e": 1, "b": 2},
-        {"e": 1, "b": 2},
-        {"e": 1, "b": 2},
-        {"e": 1, "b": 2},
-        {"e": 1, "b": 2},
-        {"e": 1, "b": 2},
-        {"e": 1, "b": 2},
-        {"e": 1, "b": 2},
-        {"e": 1, "b": 2},
-        {"e": 1, "b": 2},
-        {"e": 3, "b": 4}
-    ]</script></canvas-datagrid> -->
+  <div id="grid"></div>
 </body>
 </html>

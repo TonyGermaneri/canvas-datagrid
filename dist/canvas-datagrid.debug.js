@@ -7,7 +7,7 @@
 		exports["canvasDatagrid"] = factory();
 	else
 		root["canvasDatagrid"] = factory();
-})(window, function() {
+})(typeof self !== 'undefined' ? self : this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -46,32 +46,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
 /******/ 		}
-/******/ 	};
-/******/
-/******/ 	// define __esModule on exports
-/******/ 	__webpack_require__.r = function(exports) {
-/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 		}
-/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/
-/******/ 	// create a fake namespace object
-/******/ 	// mode & 1: value is a module id, require it
-/******/ 	// mode & 2: merge all properties of value into the ns
-/******/ 	// mode & 4: return value when already ns object
-/******/ 	// mode & 8|1: behave like require
-/******/ 	__webpack_require__.t = function(value, mode) {
-/******/ 		if(mode & 1) value = __webpack_require__(value);
-/******/ 		if(mode & 8) return value;
-/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
-/******/ 		var ns = Object.create(null);
-/******/ 		__webpack_require__.r(ns);
-/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
-/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
-/******/ 		return ns;
 /******/ 	};
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
@@ -89,802 +69,17 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
-/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./lib/main.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ "./lib/component.js":
-/*!**************************!*\
-  !*** ./lib/component.js ***!
-  \**************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true*/
-/*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! ./defaults */ "./lib/defaults.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (defaults) {
-    'use strict';
-    return function () {
-        var typeMap, component = {};
-        component.dehyphenateProperty = function hyphenateProperty(prop) {
-            prop = prop.replace('--cdg-', '');
-            var p = '', nextLetterCap;
-            Array.prototype.forEach.call(prop, function (char) {
-                if (nextLetterCap) {
-                    nextLetterCap = false;
-                    p += char.toUpperCase();
-                    return;
-                }
-                if (char === '-') {
-                    nextLetterCap = true;
-                    return;
-                }
-                p += char;
-            });
-            return p;
-        };
-        component.hyphenateProperty = function hyphenateProperty(prop, cust) {
-            var p = '';
-            Array.prototype.forEach.call(prop, function (char) {
-                if (char === char.toUpperCase()) {
-                    p += '-' + char.toLowerCase();
-                    return;
-                }
-                p += char;
-            });
-            return (cust ? '--cdg-' : '') + p;
-        };
-        function getDefaultItem(base, item) {
-            var i = {},
-                r;
-            defaults(i);
-            r = i.defaults[base].filter(function (i) {
-                return i[0].toLowerCase() === item.toLowerCase()
-                    || component.hyphenateProperty(i[0]) === item.toLowerCase()
-                    || component.hyphenateProperty(i[0], true) === item.toLowerCase();
-            })[0];
-            return r;
-        }
-        component.applyComponentStyle = function (supressChangeAndDrawEvents, intf) {
-            var cStyle = window.getComputedStyle(intf.tagName === 'CANVAS-DATAGRID' ? intf : intf.canvas, null),
-                defs = {};
-            intf.computedStyle = cStyle;
-            defaults(defs);
-            defs = defs.defaults.styles;
-            defs.forEach(function (def) {
-                var val;
-                val = cStyle.getPropertyValue(component.hyphenateProperty(def[0], true));
-                if (val === "") {
-                    val = cStyle.getPropertyValue(component.hyphenateProperty(def[0], false));
-                }
-                if (val !== "" && typeof val === 'string') {
-                    intf.setStyleProperty(def[0], typeMap[typeof def[1]](val
-                        .replace(/^\s+/, '').replace(/\s+$/, ''), def[1]), true);
-                }
-            });
-            if (!supressChangeAndDrawEvents && intf.dispatchEvent) {
-                requestAnimationFrame(function () { intf.resize(true); });
-                intf.dispatchEvent('stylechanged', intf.style);
-            }
-        };
-        typeMap = {
-            data: function (strData) {
-                try {
-                    return JSON.parse(strData);
-                } catch (e) {
-                    throw new Error('Cannot read JSON data in canvas-datagrid data.');
-                }
-            },
-            schema: function (strSchema) {
-                try {
-                    return JSON.parse(strSchema);
-                } catch (e) {
-                    throw new Error('Cannot read JSON data in canvas-datagrid schema attribute.');
-                }
-            },
-            number: function (strNum, def) {
-                var n = parseInt(strNum, 10);
-                return isNaN(n) ? def : n;
-            },
-            boolean: function (strBool) {
-                return (/true/i).test(strBool);
-            },
-            string: function (str) {
-                return str;
-            }
-        };
-        component.getObservableAttributes = function () {
-            var i = {}, attrs = ['data', 'schema', 'style', 'className', 'name'];
-            defaults(i);
-            i.defaults.attributes.forEach(function (attr) {
-                attrs.push(attr[0].toLowerCase());
-            });
-            return attrs;
-        };
-        component.disconnectedCallback = function () {
-            this.connected = false;
-        };
-        component.connectedCallback = function () {
-            var intf = this;
-            intf.connected = true;
-            component.observe(intf);
-            component.applyComponentStyle(true, intf);
-            intf.resize(true);
-        };
-        component.adoptedCallback = function () {
-            this.resize();
-        };
-        component.attributeChangedCallback = function (attrName, oldVal, newVal) {
-            var tfn, intf = this, def;
-            if (attrName === 'style') {
-                component.applyComponentStyle(false, intf);
-                return;
-            }
-            if (attrName === 'data') {
-                if (intf.dataType === 'application/x-canvas-datagrid') {
-                    intf.dataType = 'application/json+x-canvas-datagrid';
-                }
-                intf.args.data = newVal;
-                return;
-            }
-            if (attrName === 'schema') {
-                intf.args.schema = typeMap.schema(newVal);
-                return;
-            }
-            if (attrName === 'name') {
-                intf.name = newVal;
-                return;
-            }
-            if (attrName === 'class' || attrName === 'className') {
-                return;
-            }
-            def = getDefaultItem('attributes', attrName);
-            if (def) {
-                tfn = typeMap[typeof def[1]];
-                intf.attributes[def[0]] = tfn(newVal);
-                return;
-            }
-            if (/^on/.test(attrName)) {
-                intf.addEventListener('on' + attrName, function (e) {
-                    eval(newVal);
-                });
-            }
-            return;
-        };
-        component.observe = function (intf) {
-            var observer;
-            if (!window.MutationObserver) { return; }
-            intf.applyComponentStyle = function () { component.applyComponentStyle(false, intf); intf.resize(); };
-            /**
-             * Applies the computed css styles to the grid.  In some browsers, changing directives in attached style sheets does not automatically update the styles in this component.  It is necessary to call this method to update in these cases.
-             * @memberof canvasDatagrid
-             * @name applyComponentStyle
-             * @method
-             */
-            observer = new window.MutationObserver(function (mutations) {
-                var checkInnerHTML, checkStyle;
-                Array.prototype.forEach.call(mutations, function (mutation) {
-                    if (mutation.attributeName === 'class'
-                            || mutation.attributeName === 'style') {
-                        checkStyle = true;
-                        return;
-                    }
-                    if (mutation.target.parentNode
-                            && mutation.target.parentNode.nodeName === 'STYLE') {
-                        checkStyle = true;
-                        return;
-                    }
-                    if (mutation.addedNodes.length > 0 || mutation.type === 'characterData') {
-                        checkInnerHTML = true;
-                    }
-                });
-                if (checkStyle) {
-                    intf.applyComponentStyle(false, intf);
-                }
-                if (checkInnerHTML) {
-                    if (intf.dataType === 'application/x-canvas-datagrid') {
-                        intf.dataType = 'application/json+x-canvas-datagrid';
-                    }
-                    intf.data = intf.innerHTML;
-                }
-            });
-            observer.observe(intf, { characterData: true, childList: true, attributes: true, subtree: true });
-            Array.prototype.forEach.call(document.querySelectorAll('style'), function (el) {
-                observer.observe(el, { characterData: true, childList: true, attributes: true, subtree: true });
-            });
-        };
-        return component;
-    };
-}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
-/***/ }),
-
-/***/ "./lib/contextMenu.js":
-/*!****************************!*\
-  !*** ./lib/contextMenu.js ***!
-  \****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true*/
-/*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false, Event: false*/
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
-    'use strict';
-    return function (self) {
-        var zIndexTop, hoverScrollTimeout, autoCompleteContext;
-        function applyContextItemStyle(contextItemContainer) {
-            self.createInlineStyle(contextItemContainer, 'canvas-datagrid-context-menu-item' + (self.mobile ? '-mobile' : ''));
-            contextItemContainer.addEventListener('mouseover', function () {
-                self.createInlineStyle(contextItemContainer, 'canvas-datagrid-context-menu-item:hover');
-            });
-            contextItemContainer.addEventListener('mouseout', function () {
-                self.createInlineStyle(contextItemContainer, 'canvas-datagrid-context-menu-item');
-            });
-        }
-        function createContextMenu(ev, pos, items, parentContextMenu) {
-            var container = document.createElement('div'),
-                upArrow = document.createElement('div'),
-                downArrow = document.createElement('div'),
-                children = [],
-                selectedIndex = -1,
-                intf = {},
-                rect;
-            if (!Array.isArray(items)) { throw new Error('createContextMenu expects an array.'); }
-            function createItems() {
-                items.forEach(function (item) {
-                    var contextItemContainer = document.createElement('div'),
-                        childMenuArrow;
-                    function removeChildContext(e) {
-                        if (e.relatedTarget === container
-                                || item.contextMenu.container === e.relatedTarget
-                                || childMenuArrow === e.relatedTarget
-                                || (contextItemContainer === e.relatedTarget)
-                                || item.contextMenu.container.contains(e.relatedTarget)
-                                ) { return; }
-                        item.contextMenu.dispose();
-                        children.splice(children.indexOf(item.contextMenu), 1);
-                        item.contextMenu = undefined;
-                        contextItemContainer.removeEventListener('mouseout', removeChildContext);
-                        container.removeEventListener('mouseout', removeChildContext);
-                        contextItemContainer.setAttribute('contextOpen', '0');
-                        contextItemContainer.setAttribute('opening', '0');
-                    }
-                    function contextAddCallback(items) {
-                        // check yet again if the user hasn't moved off
-                        if (contextItemContainer.getAttribute('opening') !== '1' ||
-                                contextItemContainer.getAttribute('contextOpen') === '1') {
-                            return;
-                        }
-                        var cPos = contextItemContainer.getBoundingClientRect();
-                        cPos = {
-                            left: cPos.left + self.style.childContextMenuMarginLeft + container.offsetWidth,
-                            top: cPos.top + self.style.childContextMenuMarginTop,
-                            bottom: cPos.bottom,
-                            right: cPos.right
-                        };
-                        item.contextMenu = createContextMenu(ev, cPos, items, intf);
-                        contextItemContainer.setAttribute('contextOpen', '1');
-                        contextItemContainer.addEventListener('mouseout', removeChildContext);
-                        container.addEventListener('mouseout', removeChildContext);
-                        children.push(item.contextMenu);
-                    }
-                    function createChildContext() {
-                        var i;
-                        if (contextItemContainer.getAttribute('contextOpen') === '1') {
-                            return;
-                        }
-                        contextItemContainer.setAttribute('opening', '1');
-                        if (typeof item.items === 'function') {
-                            i  = item.items.apply(intf, [function (items) {
-                                contextAddCallback(items);
-                            }]);
-                            if (i !== undefined && Array.isArray(i)) {
-                                contextAddCallback(i);
-                            }
-                            return;
-                        }
-                        contextAddCallback(item.items);
-                    }
-                    function addItem(item) {
-                        function addContent(content) {
-                            if (content === null) { return; }
-                            if (typeof content === 'function') {
-                                return addContent(content(ev));
-                            }
-                            if (typeof content === 'object') {
-                                contextItemContainer.appendChild(content);
-                                return;
-                            }
-                            applyContextItemStyle(contextItemContainer);
-                            contextItemContainer.innerHTML = content;
-                            return;
-                        }
-                        addContent(item.title);
-                        item.contextItemContainer = contextItemContainer;
-                        if ((item.items && item.items.length > 0) || typeof item.items === 'function') {
-                            childMenuArrow = document.createElement('div');
-                            self.createInlineStyle(childMenuArrow, 'canvas-datagrid-context-child-arrow');
-                            childMenuArrow.innerHTML = self.style.childContextMenuArrowHTML;
-                            contextItemContainer.appendChild(childMenuArrow);
-                            contextItemContainer.addEventListener('mouseover', createChildContext);
-                            contextItemContainer.addEventListener('mouseout', function () {
-                                contextItemContainer.setAttribute('opening', '0');
-                            });
-                        }
-                        if (item.click) {
-                            contextItemContainer.addEventListener('click', function (ev) {
-                                item.click.apply(self, [ev]);
-                            });
-                        }
-                    }
-                    addItem(item);
-                    container.appendChild(contextItemContainer);
-                });
-            }
-            function clickIndex(idx) {
-                items[idx].contextItemContainer.dispatchEvent(new Event('click'));
-            }
-            function checkArrowVisibility() {
-                if (container.scrollTop > 0) {
-                    self.parentDOMNode.appendChild(upArrow);
-                } else if (upArrow.parentNode) {
-                    upArrow.parentNode.removeChild(upArrow);
-                }
-                if (container.scrollTop >= container.scrollHeight - container.offsetHeight && downArrow.parentNode) {
-                    downArrow.parentNode.removeChild(downArrow);
-                } else if (container.scrollHeight - container.offsetHeight > 0
-                        && !(container.scrollTop >= container.scrollHeight - container.offsetHeight)) {
-                    self.parentDOMNode.appendChild(downArrow);
-                }
-            }
-            function startHoverScroll(type) {
-                return function t() {
-                    var a = self.attributes.contextHoverScrollAmount;
-                    if (type === 'up' && container.scrollTop === 0) { return; }
-                    if (type === 'down' && container.scrollTop === container.scrollHeight) { return; }
-                    container.scrollTop += (type === 'up' ? -a : a);
-                    hoverScrollTimeout = setTimeout(t, self.attributes.contextHoverScrollRateMs, type);
-                };
-            }
-            function endHoverScroll(type) {
-                return function () {
-                    clearTimeout(hoverScrollTimeout);
-                };
-            }
-            function init() {
-                var loc = {},
-                    s = self.scrollOffset(self.canvas);
-                if (zIndexTop === undefined) {
-                    zIndexTop = self.style.contextMenuZIndex;
-                }
-                createItems();
-                self.createInlineStyle(container, 'canvas-datagrid-context-menu' + (self.mobile ? '-mobile' : ''));
-                loc.x = pos.left - s.left;
-                loc.y = pos.top - s.top;
-                loc.height = 0;
-                zIndexTop += 1;
-                container.style.position = 'absolute';
-                upArrow.style.color = self.style.contextMenuArrowColor;
-                downArrow.style.color = self.style.contextMenuArrowColor;
-                [upArrow, downArrow].forEach(function (el) {
-                    el.style.textAlign = 'center';
-                    el.style.position = 'absolute';
-                    el.style.zIndex = zIndexTop + 1;
-                });
-                container.style.zIndex = zIndexTop;
-                if (parentContextMenu && parentContextMenu.inputDropdown) {
-                    container.style.maxHeight = window.innerHeight - loc.y - self.style.autocompleteBottomMargin + 'px';
-                    container.style.minWidth = pos.width + 'px';
-                    loc.y += pos.height;
-                }
-                if (self.mobile) {
-                    container.style.width = pos.width + 'px';
-                }
-                container.style.left = loc.x + 'px';
-                container.style.top = loc.y + 'px';
-                container.addEventListener('scroll', checkArrowVisibility);
-                container.addEventListener('wheel', function (e) {
-                    if (self.hasFocus) {
-                        container.scrollTop += e.deltaY;
-                        container.scrollLeft += e.deltaX;
-                    }
-                    checkArrowVisibility();
-                });
-                upArrow.innerHTML = self.style.contextMenuArrowUpHTML;
-                downArrow.innerHTML = self.style.contextMenuArrowDownHTML;
-                container.appendChild(upArrow);
-                document.body.appendChild(downArrow);
-                document.body.appendChild(container);
-                rect = container.getBoundingClientRect();
-                // TODO: fix !(parentContextMenu && parentContextMenu.inputDropdown) state (autocomplete)
-                if (rect.bottom > window.innerHeight) {
-                    if (!(parentContextMenu && parentContextMenu.inputDropdown)) {
-                        loc.y -= (rect.bottom + self.style.contextMenuWindowMargin) - window.innerHeight;
-                    }
-                    if (loc.y < 0) { loc.y = self.style.contextMenuWindowMargin; }
-                    if (container.offsetHeight > window.innerHeight - self.style.contextMenuWindowMargin) {
-                        container.style.height = window.innerHeight - (self.style.contextMenuWindowMargin * 2) + 'px';
-                    }
-                }
-                if (rect.right > window.innerWidth) {
-                    loc.x -= rect.right - window.innerWidth + self.style.contextMenuWindowMargin;
-                }
-                if (loc.x < 0) { loc.x = self.style.contextMenuWindowMargin; }
-                if (loc.y < 0) { loc.y = self.style.contextMenuWindowMargin; }
-                container.style.left = loc.x + 'px';
-                container.style.top = loc.y + 'px';
-                rect = container.getBoundingClientRect();
-                upArrow.style.top = rect.top + 'px';
-                downArrow.style.top = rect.top + rect.height - downArrow.offsetHeight + 'px';
-                upArrow.style.left = rect.left + 'px';
-                downArrow.style.left = rect.left + 'px';
-                downArrow.style.width = container.offsetWidth + 'px';
-                upArrow.style.width = container.offsetWidth + 'px';
-                downArrow.addEventListener('mouseover', startHoverScroll('down'));
-                downArrow.addEventListener('mouseout', endHoverScroll('down'));
-                upArrow.addEventListener('mouseover', startHoverScroll('up'));
-                upArrow.addEventListener('mouseout', endHoverScroll('up'));
-                checkArrowVisibility();
-            }
-            intf.parentGrid = self.intf;
-            intf.parentContextMenu = parentContextMenu;
-            intf.container = container;
-            init();
-            intf.clickIndex = clickIndex;
-            intf.rect = rect;
-            intf.items = items;
-            intf.upArrow = upArrow;
-            intf.downArrow = downArrow;
-            intf.dispose = function () {
-                clearTimeout(hoverScrollTimeout);
-                children.forEach(function (c) {
-                    c.dispose();
-                });
-                [downArrow, upArrow, container].forEach(function (el) {
-                    if (el.parentNode) { el.parentNode.removeChild(el); }
-                });
-            };
-            Object.defineProperty(intf, 'selectedIndex', {
-                get: function () {
-                    return selectedIndex;
-                },
-                set: function (value) {
-                    if (typeof value !== 'number' || isNaN(value || !isFinite(value))) {
-                        throw new Error('Context menu selected index must be a sane number.');
-                    }
-                    selectedIndex = value;
-                    if (selectedIndex > items.length - 1) {
-                        selectedIndex = items.length - 1;
-                    }
-                    if (selectedIndex < 0) {
-                        selectedIndex = 0;
-                    }
-                    items.forEach(function (item, index) {
-                        if (index === selectedIndex) {
-                            return self.createInlineStyle(item.contextItemContainer, 'canvas-datagrid-context-menu-item:hover');
-                        }
-                        self.createInlineStyle(item.contextItemContainer, 'canvas-datagrid-context-menu-item');
-                    });
-                }
-            });
-            return intf;
-        }
-        function createFilterContextMenuItems(e) {
-            var filterContainer = document.createElement('div'),
-                filterLabel = document.createElement('div'),
-                filterAutoCompleteButton = document.createElement('button'),
-                filterInput = document.createElement('input'),
-                n = e.cell && e.cell.header ? e.cell.header.title || e.cell.header.name : '',
-                autoCompleteItems,
-                iRect;
-            function checkRegExpErrorState() {
-                filterInput.style.background = self.style.contextFilterInputBackground;
-                filterInput.style.color = self.style.contextFilterInputColor;
-                if (self.invalidFilterRegEx) {
-                    filterInput.style.background = self.style.contextFilterInvalidRegExpBackground;
-                    filterInput.style.color = self.style.contextFilterInvalidRegExpColor;
-                }
-            }
-            function fillAutoComplete() {
-                var count = 0;
-                autoCompleteItems = {};
-                self.data.forEach(function (row) {
-                    var value = row[e.cell.header.name];
-                    if (autoCompleteItems[value] || count > self.attributes.maxAutoCompleteItems) { return; }
-                    count += 1;
-                    autoCompleteItems[value] = {
-                        title: self.formatters[e.cell.header.type || 'string']({ cell: { value: value }}),
-                        click: function (e) {
-                            filterInput.value = value;
-                            e.stopPropagation();
-                            filterInput.dispatchEvent(new Event('keyup'));
-                            self.disposeAutocomplete();
-                            return;
-                        }
-                    };
-                });
-                autoCompleteItems = Object.keys(autoCompleteItems).map(function (key) {
-                    return autoCompleteItems[key];
-                });
-            }
-            function createAutoCompleteContext(ev) {
-                if (ev && [40, 38, 13, 9].indexOf(ev.keyCode) !== -1) { return; }
-                fillAutoComplete();
-                iRect = filterInput.getBoundingClientRect();
-                if (autoCompleteContext) {
-                    autoCompleteContext.dispose();
-                    autoCompleteContext = undefined;
-                }
-                autoCompleteContext = createContextMenu(e, {
-                    left: iRect.left,
-                    top: iRect.top,
-                    right: iRect.right,
-                    bottom: iRect.bottom,
-                    height: iRect.height,
-                    width: iRect.width
-                }, autoCompleteItems, {inputDropdown: true});
-                autoCompleteContext.selectedIndex = 0;
-            }
-            self.createInlineStyle(filterLabel, 'canvas-datagrid-context-menu-label');
-            self.createInlineStyle(filterAutoCompleteButton, 'canvas-datagrid-context-menu-filter-button');
-            self.createInlineStyle(filterInput, 'canvas-datagrid-context-menu-filter-input');
-            checkRegExpErrorState();
-            filterInput.onclick = self.disposeAutocomplete;
-            filterInput.addEventListener('keydown', function (e) {
-                //down
-                if (e.keyCode === 40) {
-                    autoCompleteContext.selectedIndex += 1;
-                }
-                //up
-                if (e.keyCode === 38) {
-                    autoCompleteContext.selectedIndex -= 1;
-                }
-                //enter
-                if (e.keyCode === 13) {
-                    autoCompleteContext.clickIndex(autoCompleteContext.selectedIndex);
-                    self.disposeContextMenu();
-                }
-                //tab
-                if (e.keyCode === 9) {
-                    autoCompleteContext.clickIndex(autoCompleteContext.selectedIndex);
-                    e.preventDefault();
-                }
-                //esc
-                if (e.keyCode === 27) {
-                    self.disposeContextMenu();
-                }
-            });
-            filterInput.addEventListener('keyup', function () {
-                self.setFilter(e.cell.header.name, filterInput.value);
-            });
-            filterInput.addEventListener('keyup', createAutoCompleteContext);
-            ['focus', 'blur', 'keydown', 'keyup', 'change'].forEach(function (en) {
-                filterInput.addEventListener(en, checkRegExpErrorState);
-            });
-            filterInput.value = e.cell.header ? self.columnFilters[e.cell.header.name] || '' : '';
-            filterLabel.innerHTML = self.attributes.filterOptionText.replace(/%s/g, n);
-            filterAutoCompleteButton.onclick = function () {
-                if (autoCompleteContext) {
-                    return self.disposeAutocomplete();
-                }
-                createAutoCompleteContext();
-            };
-            filterAutoCompleteButton.innerHTML = self.style.contextFilterButtonHTML;
-            filterContainer.addEventListener('click', function (e) {
-                return e.stopPropagation();
-            });
-            filterContainer.appendChild(filterLabel);
-            filterContainer.appendChild(filterInput);
-            filterContainer.appendChild(filterAutoCompleteButton);
-            e.items.push({
-                title: filterContainer
-            });
-            if (Object.keys(self.columnFilters).length) {
-                Object.keys(self.columnFilters).forEach(function (cf) {
-                    var h = self.getHeaderByName(cf);
-                    e.items.push({
-                        title: self.attributes.removeFilterOptionText.replace(/%s/g, h.title || h.name),
-                        click: function removeFilterClick(e) {
-                            e.preventDefault();
-                            self.setFilter(cf, '');
-                            self.controlInput.focus();
-                        }
-                    });
-                });
-            }
-        }
-        function addDefaultContextMenuItem(e) {
-            var isNormalCell = !(e.cell.isBackground || e.cell.isColumnHeaderCellCap
-                    || e.cell.isScrollBar || e.cell.isCorner || e.cell.isRowHeader)
-                    && e.cell.header;
-            if (self.attributes.showFilter && isNormalCell) {
-                createFilterContextMenuItems(e);
-            }
-            if (self.attributes.showCopy
-                    && self.selections.reduce(function (p, r) {
-                        return p + r.length;
-                    }, 0) > 0) {
-                e.items.push({
-                    title: self.attributes.copyText,
-                    click: function () {
-                        document.execCommand('copy');
-                        self.disposeContextMenu();
-                        self.controlInput.focus();
-                    }
-                });
-            }
-            if (self.attributes.showPaste && self.clipBoardData) {
-                e.items.push({
-                    title: self.attributes.pasteText,
-                    click: function () {
-                        self.paste(self.clipBoardData, e.cell.columnIndex, e.cell.rowIndex);
-                        self.draw();
-                    }
-                });
-            }
-            if (self.attributes.showColumnSelector) {
-                e.items.push({
-                    title: self.attributes.columnSelectorText,
-                    items: function () {
-                        var d = [];
-                        self.getSchema().forEach(function (column) {
-                            function toggleColumnVisibility(e) {
-                                column.hidden = !column.hidden;
-                                e.preventDefault();
-                                self.stopPropagation(e);
-                                self.disposeContextMenu();
-                                self.resize(true);
-                                self.setStorageData();
-                            }
-                            var el = document.createElement('div');
-                            applyContextItemStyle(el);
-                            el.addEventListener('touchstart', toggleColumnVisibility);
-                            el.addEventListener('click', toggleColumnVisibility);
-                            el.innerHTML = (column.hidden ? self.attributes.columnSelectorHiddenText
-                                    : self.attributes.columnSelectorVisibleText)
-                                    + (column.title || column.name);
-                            d.push({
-                                title: el
-                            });
-                        });
-                        return d;
-                    }
-                });
-                if (e.cell && e.cell.header) {
-                    e.items.push({
-                        title: self.attributes.hideColumnText
-                            .replace(/%s/ig, e.cell.header.title || e.cell.header.name),
-                        click: function (ev) {
-                            self.getSchema()[e.cell.columnIndex].hidden = true;
-                            ev.preventDefault();
-                            self.stopPropagation(ev);
-                            self.disposeContextMenu();
-                            self.setStorageData();
-                            setTimeout(function () { self.resize(true); }, 10);
-                        }
-                    });
-                }
-            }
-            if (self.attributes.saveAppearance && self.attributes.showClearSettingsOption
-                    && (Object.keys(self.sizes.rows).length > 0
-                        || Object.keys(self.sizes.columns).length > 0)) {
-                e.items.push({
-                    title: self.attributes.clearSettingsOptionText,
-                    click: function (e) {
-                        e.preventDefault();
-                        self.sizes.rows = {};
-                        self.sizes.columns = {};
-                        self.createRowOrders();
-                        self.createColumnOrders();
-                        self.storedSettings = undefined;
-                        self.dispatchEvent('resizecolumn', {columnWidth: self.style.cellWidth});
-                        self.dispatchEvent('resizerow', {cellHeight: self.style.cellHeight});
-                        self.setStorageData();
-                        self.resize(true);
-                        self.disposeContextMenu();
-                        self.controlInput.focus();
-                    }
-                });
-            }
-            if (self.attributes.allowSorting && self.attributes.showOrderByOption && isNormalCell) {
-                e.items.push({
-                    title: self.attributes.showOrderByOptionTextAsc.replace('%s', e.cell.header.title || e.cell.header.name),
-                    click: function (ev) {
-                        ev.preventDefault();
-                        self.order(e.cell.header.name, 'asc');
-                        self.controlInput.focus();
-                    }
-                });
-                e.items.push({
-                    title: self.attributes.showOrderByOptionTextDesc.replace('%s', e.cell.header.title || e.cell.header.name),
-                    click: function (ev) {
-                        ev.preventDefault();
-                        self.order(e.cell.header.name, 'desc');
-                        self.disposeContextMenu();
-                        self.controlInput.focus();
-                    }
-                });
-            }
-        }
-        self.disposeAutocomplete = function () {
-            if (autoCompleteContext) {
-                autoCompleteContext.dispose();
-                autoCompleteContext = undefined;
-            }
-        };
-        self.disposeContextMenu = function () {
-            document.removeEventListener('click', self.disposeContextMenu);
-            zIndexTop = self.style.contextMenuZIndex;
-            self.disposeAutocomplete();
-            if (self.contextMenu) {
-                self.contextMenu.dispose();
-            }
-            self.contextMenu = undefined;
-        };
-        self.contextmenuEvent = function (e, overridePos) {
-            if (!self.hasFocus && e.target !== self.canvas) {
-                return;
-            }
-            function createDiposeEvent() {
-                requestAnimationFrame(function () {
-                    document.addEventListener('click', self.disposeContextMenu);
-                    document.removeEventListener('mouseup', createDiposeEvent);
-                });
-            }
-            var contextPosition,
-                items = [],
-                pos = overridePos || self.getLayerPos(e),
-                ev = {
-                    NativeEvent: e,
-                    cell: self.getCellAt(pos.x, pos.y),
-                    items: items
-                };
-            if (!ev.cell.isGrid) {
-                addDefaultContextMenuItem(ev);
-            }
-            if (self.dispatchEvent('contextmenu', ev)) {
-                return;
-            }
-            if (!ev.cell.isGrid) {
-                if (self.contextMenu) {
-                    self.disposeContextMenu();
-                }
-                contextPosition = {
-                    left: pos.x + pos.rect.left
-                        + self.style.contextMenuMarginLeft + self.canvasOffsetLeft,
-                    top: pos.y + pos.rect.top
-                        + self.style.contextMenuMarginTop + self.canvasOffsetTop,
-                    right: ev.cell.width + ev.cell.x + pos.rect.left,
-                    bottom: ev.cell.height + ev.cell.y + pos.rect.top,
-                    height: ev.cell.height,
-                    width: ev.cell.width
-                };
-                if (self.mobile) {
-                    contextPosition.left = self.style.mobileContextMenuMargin + 'px';
-                    contextPosition.width = self.width - (self.style.mobileContextMenuMargin * 2) + 'px';
-                }
-                self.contextMenu = createContextMenu(ev, contextPosition, items);
-                document.addEventListener('mouseup', createDiposeEvent);
-                e.preventDefault();
-            }
-        };
-        return;
-    };
-}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
-
-/***/ }),
-
-/***/ "./lib/defaults.js":
+/******/ ([
+/* 0 */
 /*!*************************!*\
   !*** ./lib/defaults.js ***!
   \*************************/
-/*! no static exports found */
+/*! dynamic exports provided */
+/*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true*/
@@ -1198,574 +393,346 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 
 
 /***/ }),
-
-/***/ "./lib/dom.js":
-/*!********************!*\
-  !*** ./lib/dom.js ***!
-  \********************/
-/*! no static exports found */
+/* 1 */
+/*!*********************!*\
+  !*** ./lib/main.js ***!
+  \*********************/
+/*! dynamic exports provided */
+/*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true*/
-/*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true, evil: true*/
+/*globals Reflect: false, HTMLElement: true, define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [
+    __webpack_require__(/*! ./component */ 2),
+    __webpack_require__(/*! ./defaults */ 0),
+    __webpack_require__(/*! ./draw */ 3),
+    __webpack_require__(/*! ./events */ 4),
+    __webpack_require__(/*! ./touch */ 5),
+    __webpack_require__(/*! ./intf */ 6),
+    __webpack_require__(/*! ./contextMenu */ 7),
+    __webpack_require__(/*! ./dom */ 8),
+    __webpack_require__(/*! ./publicMethods */ 9)
+], __WEBPACK_AMD_DEFINE_RESULT__ = (function context(component) {
     'use strict';
-    return function (self) {
-        self.getClippingRect = function (ele) {
-            var boundingRect = self.position(self.parentNode),
-                eleRect = self.position(ele),
-                s = self.scrollOffset(self.canvas),
-                clipRect = {
-                    x: 0,
-                    y: 0,
-                    h: 0,
-                    w: 0
-                },
-                parentRect = {
-                    x: -Infinity,
-                    y: -Infinity,
-                    h: Infinity,
-                    w: Infinity
-                },
-                columnHeaderCellHeight = self.getColumnHeaderCellHeight(),
-                rowHeaderCellWidth = self.getRowHeaderCellWidth();
-            boundingRect.top -= s.top;
-            boundingRect.left -= s.left;
-            eleRect.top -= s.top;
-            eleRect.left -= s.left;
-            clipRect.h = boundingRect.top + boundingRect.height - ele.offsetTop - self.style.scrollBarWidth;
-            clipRect.w = boundingRect.left + boundingRect.width - ele.offsetLeft - self.style.scrollBarWidth;
-            clipRect.x = boundingRect.left + (eleRect.left * -1) + rowHeaderCellWidth;
-            clipRect.y = boundingRect.top + (eleRect.top * -1) + columnHeaderCellHeight;
-            return {
-                x: clipRect.x > parentRect.x ? clipRect.x : parentRect.x,
-                y: clipRect.y > parentRect.y ? clipRect.y : parentRect.y,
-                h: clipRect.h < parentRect.h ? clipRect.h : parentRect.h,
-                w: clipRect.w < parentRect.w ? clipRect.w : parentRect.w
-            };
+    component = component();
+    var modules = Array.prototype.slice.call(arguments);
+    function Grid(args) {
+        args = args || {};
+        var self = {};
+        self.isComponent = args.component === undefined;
+        self.isChildGrid = args.parentNode && /canvas-datagrid-(cell|tree)/.test(args.parentNode.nodeType);
+        if (self.isChildGrid) {
+            self.intf = {};
+        } else {
+            self.intf = self.isComponent ? eval('Reflect.construct(HTMLElement, [], new.target)')
+                : document.createElement('canvas');
+        }
+        self.args = args;
+        self.intf.args = args;
+        self.applyComponentStyle = component.applyComponentStyle;
+        self.hyphenateProperty = component.hyphenateProperty;
+        self.dehyphenateProperty = component.dehyphenateProperty;
+        self.createGrid = function grid(args) {
+            args.component = false;
+            return new Grid(args);
         };
-        self.clipElement = function (ele) {
-            var clipRect = self.getClippingRect(ele);
-            if (clipRect.w < 0) { clipRect.w = 0; }
-            if (clipRect.h < 0) { clipRect.h = 0; }
-            ele.style.clip = 'rect('
-                + clipRect.y + 'px,'
-                + clipRect.w + 'px,'
-                + clipRect.h + 'px,'
-                + clipRect.x + 'px'
-                + ')';
-            // INFO https://developer.mozilla.org/en-US/docs/Web/CSS/clip
-            // clip has been "deprecated" for clipPath.  Of course nothing but chrome
-            // supports clip path, so we'll keep using clip until someday clipPath becomes
-            // more widely support.  The code below works correctly, but setting clipPath and clip
-            // at the same time has undesirable results.
-            // ele.style.clipPath = 'polygon('
-            //     + clipRect.x + 'px ' + clipRect.y + 'px,'
-            //     + clipRect.x + 'px ' + clipRect.h + 'px,'
-            //     + clipRect.w + 'px ' + clipRect.h + 'px,'
-            //     + clipRect.w + 'px ' + clipRect.y + 'px'
-            //     + ')';
-        };
-        self.scrollOffset = function (e) {
-            var x = 0, y = 0, scrollingElement = document.scrollingElement || { scrollLeft: 0, scrollTop: 0 };
-            while (e.parentNode && e.nodeName !== 'CANVAS-DATAGRID' && e !== self.intf) {
-                if (e.nodeType !== 'canvas-datagrid-tree'
-                        && e.nodeType !== 'canvas-datagrid-cell') {
-                    x -= e.scrollLeft;
-                    y -= e.scrollTop;
-                }
-                e = e.parentNode;
-            }
-            return {
-                left: x - scrollingElement.scrollLeft,
-                top: y - scrollingElement.scrollTop
-            };
-        };
-        self.resizeEditInput = function () {
-            if (self.input && self.input.editCell) {
-                var pos = self.canvas.getBoundingClientRect(),
-                    s = self.scrollOffset(self.intf),
-                    bm = self.style.gridBorderCollapse === 'collapse' ? 1 : 2,
-                    borderWidth = (self.style.cellBorderWidth * bm),
-                    cell = self.getVisibleCellByIndex(self.input.editCell.columnIndex, self.input.editCell.rowIndex)
-                        || {x: -100, y: -100, height: 0, width: 0};
-                if (self.mobile) {
-                    self.input.style.left = '0';
-                    self.input.style.top = (self.height - self.style.mobileEditInputHeight) - borderWidth - 1 + 'px';
-                    self.input.style.height = self.style.mobileEditInputHeight + 'px';
-                    self.input.style.width = self.width - borderWidth - 1 + 'px';
+        modules.forEach(function (module) {
+            module(self);
+        });
+        if (self.isChildGrid) {
+            self.shadowRoot = args.parentNode.shadowRoot;
+            self.parentNode = args.parentNode;
+        } else if (self.intf.createShadowRoot) {
+            self.shadowRoot = self.intf.attachShadow({mode: 'open'});
+            self.parentNode = self.shadowRoot;
+        } else {
+            self.parentNode = self.intf;
+        }
+        self.init();
+        return self.intf;
+    }
+    if (window.HTMLElement) {
+        Grid.prototype = Object.create(window.HTMLElement.prototype);
+    }
+    // export web component
+    if (window.customElements) {
+        Grid.observedAttributes = component.getObservableAttributes();
+        Grid.prototype.disconnectedCallback = component.disconnectedCallback;
+        Grid.prototype.attributeChangedCallback = component.attributeChangedCallback;
+        Grid.prototype.connectedCallback = component.connectedCallback;
+        Grid.prototype.adoptedCallback = component.adoptedCallback;
+        window.customElements.define('canvas-datagrid', Grid);
+    }
+    // export global
+    if (window && !window.canvasDatagrid && !window.require) {
+        window.canvasDatagrid = function (args) { return new Grid(args); };
+    }
+    // export amd loader
+    module.exports = function grid(args) {
+        args = args || {};
+        var i, tKeys = ['style', 'formatters', 'sorters', 'filters',
+                    'treeGridAttributes', 'cellGridAttributes', 'data', 'schema'];
+        if (window.customElements && document.body.createShadowRoot) {
+            i = document.createElement('canvas-datagrid');
+            Object.keys(args).forEach(function (argKey) {
+                // set data and parentNode after everything else
+                if (argKey === 'data') { return; }
+                if (argKey === 'parentNode') { return; }
+                // top level keys in args
+                if (tKeys.indexOf(argKey) !== -1) {
+                    tKeys.forEach(function (tKey) {
+                        if (args[tKey] === undefined || tKey !== argKey) { return; }
+                        if (['formatters', 'sorters', 'filters'].indexOf(argKey) !== -1) {
+                            if (typeof args[tKey] === 'object' && args[tKey] !== null) {
+                                Object.keys(args[tKey]).forEach(function (sKey) {
+                                    i[tKey][sKey] = args[tKey][sKey];
+                                });
+                            }
+                        } else {
+                            i[tKey] = args[tKey];
+                        }
+                    });
                     return;
                 }
-                self.input.style.left = pos.left + cell.x + self.canvasOffsetLeft - s.left + 'px';
-                self.input.style.top = pos.top + cell.y - self.style.cellBorderWidth + self.canvasOffsetTop - s.top + 'px';
-                self.input.style.height = cell.height - borderWidth + 'px';
-                self.input.style.width = cell.width - self.style.cellPaddingLeft + 'px';
-                self.clipElement(self.input);
-            }
-        };
-        self.position = function (e, ignoreScrollOffset) {
-            var x = 0, y = 0, s = e, h, w;
-            while (e.offsetParent && e.nodeName !== 'CANVAS-DATAGRID') {
-                x += e.offsetLeft;
-                y += e.offsetTop;
-                h = e.offsetHeight;
-                w = e.offsetWidth;
-                e = e.offsetParent;
-            }
-            if (ignoreScrollOffset) {
-                return {left: x, top: y, height: h, width: w};
-            }
-            e = s;
-            s = self.scrollOffset(e);
-            return { left: x + s.left, top: y + s.top, height: h, width: w };
-        };
-        self.getLayerPos = function (e) {
-            var rect = self.canvas.getBoundingClientRect(),
-                pos = {
-                    x: e.clientX - rect.left,
-                    y: e.clientY - rect.top
-                };
-            if (self.isChildGrid) {
-                pos.x -= self.canvasOffsetLeft;
-                pos.y -= self.canvasOffsetTop;
-            }
-            return {
-                x: pos.x,
-                y: pos.y,
-                rect: rect
-            };
-        };
-        /**
-         * Ends editing, optionally aborting the edit.
-         * @memberof canvasDatagrid
-         * @name endEdit
-         * @method
-         * @param {boolean} abort When true, abort the edit.
-         */
-        self.endEdit = function (abort) {
-            var cell = self.input.editCell,
-                y = cell.rowIndex;
-            function abortEdit() {
-                abort = true;
-            }
-            if (self.dispatchEvent('beforeendedit', {
-                    cell: cell,
-                    newValue: self.input.value,
-                    oldValue: cell.value,
-                    abort: abortEdit,
-                    input: self.input
-                })) { return false; }
-            if (self.input.value !== cell.value && !abort) {
-                self.changes[y] = self.changes[y] || {};
-                self.changes[y][cell.header.name] = self.input.value;
-                if (!cell.data) {
-                    self.data[cell.rowIndex] = {};
-                    cell.data = self.data[cell.rowIndex];
-                }
-                cell.data[cell.header.name] = self.input.value;
-                if (y === self.data.length) {
-                    if (self.dispatchEvent('newrow', {
-                            value: self.input.value,
-                            defaultValue: cell.value,
-                            aborted: abort,
-                            cell: cell,
-                            input: self.input
-                        })) { return false; }
-                    self.addRow(cell.data);
-                    self.createNewRowData();
-                }
-                self.draw(true);
-            }
-            self.parentDOMNode.removeChild(self.input);
-            self.intf.focus();
-            self.dispatchEvent('endedit', {
-                cell: cell,
-                value: self.input.value,
-                aborted: abort,
-                input: self.input
+                // all others are attribute level keys
+                i.attributes[argKey] = args[argKey];
             });
-            self.input = undefined;
-            return true;
-        };
-        /**
-         * Begins editing at cell x, row y.
-         * @memberof canvasDatagrid
-         * @name beginEditAt
-         * @method
-         * @param {number} x The column index of the cell to edit.
-         * @param {number} y The row index of the cell to edit.
-         */
-        self.beginEditAt = function (x, y) {
-            if (!self.attributes.editable) { return; }
-            if (self.input) {
-                self.endEdit();
+            if (args.data) {
+                i.data = args.data;
             }
-            var cell = self.getVisibleCellByIndex(x, y),
-                s = self.getSchema(),
-                adjacentCells,
-                enumItems,
-                enu,
-                option,
-                valueInEnum;
-            if (!(cell && cell.header)) { return; }
-            //HACK for IE10, does not like literal enum
-            enu = cell.header['enum'];
-            if (self.dispatchEvent('beforebeginedit', {cell: cell})) { return false; }
-            self.scrollIntoView(x, y);
-            self.setActiveCell(x, y);
-            adjacentCells = self.getAdjacentCells();
-            if (enu) {
-                self.input = document.createElement('select');
-            } else {
-                self.input = document.createElement(self.attributes.multiLine
-                    ? 'textarea' : 'input');
+            // add to the dom very last to avoid redraws
+            if (args.parentNode) {
+                args.parentNode.appendChild(i);
             }
-            cell = self.getVisibleCellByIndex(x, y);
-            //HACK on mobile devices sometimes edit can begin without the cell being in view, I don't know how.
-            if (!cell) { return; }
-            if (enu) {
-                // add enums
-                if (typeof enu === 'function') {
-                    enumItems = enu.apply(self.intf, [{cell: cell}]);
-                } else if (Array.isArray(enu)) {
-                    enumItems = enu;
-                }
-                enumItems.forEach(function (e) {
-                    var i = document.createElement('option'),
-                        val,
-                        title;
-                    if (Array.isArray(e)) {
-                        val = e[0];
-                        title = e[1];
-                    } else {
-                        val = e;
-                        title = e;
-                    }
-                    if (val === cell.value) { valueInEnum = true; }
-                    i.value = val;
-                    i.innerHTML = title;
-                    self.input.appendChild(i);
-                });
-                if (!valueInEnum) {
-                    option = document.createElement('option');
-                    option.value = cell.value;
-                    option.innerHTML = cell.value;
-                    self.input.appendChild(option);
-                }
-                self.input.addEventListener('change', function () {
-                    self.endEdit();
-                    self.draw(true);
-                });
-            }
-            self.parentDOMNode.appendChild(self.input);
-            self.createInlineStyle(self.input, self.mobile ? 'canvas-datagrid-edit-mobile-input' : 'canvas-datagrid-edit-input');
-            self.input.style.position = 'absolute';
-            self.input.editCell = cell;
-            self.resizeEditInput();
-            self.input.style.zIndex = self.style.editCellZIndex;
-            self.input.style.fontSize = (parseInt(self.style.editCellFontSize, 10) * self.scale) + 'px';
-            self.input.value = [null, undefined].indexOf(cell.value) !== -1 ? '' : cell.value;
-            self.input.focus();
-            self.input.addEventListener('click', self.stopPropagation);
-            self.input.addEventListener('dblclick', self.stopPropagation);
-            self.input.addEventListener('mouseup', self.stopPropagation);
-            self.input.addEventListener('mousedown', self.stopPropagation);
-            self.input.addEventListener('keydown', function (e) {
-                var nx = cell.columnIndex,
-                    ny = cell.rowIndex;
-                // esc
-                if (e.keyCode === 27) {
-                    self.endEdit(true);
-                    self.draw(true);
-                // enter
-                } else if (e.keyCode === 13
-                        && (!self.attributes.multiLine
-                            || (self.attributes.multiLine && e.shiftKey))) {
-                    self.endEdit();
-                    self.draw(true);
-                } else if (e.keyCode === 9) {
-                    e.preventDefault();
-                    if (!self.endEdit()) {
-                        return;
-                    }
-                    if (e.shiftKey) {
-                        nx = adjacentCells.left;
-                    } else {
-                        nx = adjacentCells.right;
-                    }
-                    if (adjacentCells.left === x && e.shiftKey) {
-                        nx = adjacentCells.last;
-                        ny -= 1;
-                    }
-                    if (adjacentCells.right === x && !e.shiftKey) {
-                        nx = adjacentCells.first;
-                        ny += 1;
-                    }
-                    if (ny < 0) {
-                        ny = self.data.length - 1;
-                    }
-                    if (ny > self.data.length - 1) {
-                        ny = 0;
-                    }
-                    self.scrollIntoView(nx, ny);
-                    self.beginEditAt(nx, ny);
-                }
-            });
-            self.dispatchEvent('beginedit', {cell: cell, input: self.input});
-        };
-        self.createInlineStyle = function (el, className) {
-            var css = {
-                'canvas-datagrid-context-menu-filter-input': {
-                    height: '19px',
-                    verticalAlign: 'bottom',
-                    marginLeft: '2px',
-                    padding: '0',
-                    background: self.style.contextFilterInputBackground,
-                    color: self.style.contextFilterInputColor,
-                    border: self.style.contextFilterInputBorder,
-                    borderRadius: self.style.contextFilterInputBorderRadius,
-                    lineHeight: 'normal',
-                    fontWeight: 'normal',
-                    fontFamily: self.style.contextFilterInputFontFamily,
-                    fontSize: self.style.contextFilterInputFontSize
-                },
-                'canvas-datagrid-context-menu-filter-button': {
-                    height: '19px',
-                    verticalAlign: 'bottom',
-                    marginLeft: '2px',
-                    padding: '0',
-                    background: self.style.contextMenuBackground,
-                    color: self.style.contextMenuColor,
-                    border: self.style.contextFilterButtonBorder,
-                    borderRadius: self.style.contextFilterButtonBorderRadius,
-                    lineHeight: 'normal',
-                    fontWeight: 'normal',
-                    fontFamily: self.style.contextMenuFilterButtonFontFamily,
-                    fontSize: self.style.contextMenuFilterButtonFontSize
-                },
-                'canvas-datagrid-context-child-arrow': {
-                    cssFloat: 'right',
-                    color: self.style.childContextMenuArrowColor,
-                    fontSize: self.style.contextMenuChildArrowFontSize,
-                    fontFamily: self.style.contextMenuFontFamily,
-                    verticalAlign: 'middle'
-                },
-                'canvas-datagrid-autocomplete': {
-                    fontFamily: self.style.contextMenuFontFamily,
-                    fontSize: self.style.contextMenuFontSize,
-                    background: self.style.contextMenuBackground,
-                    color: self.style.contextMenuColor,
-                    border: self.style.contextMenuBorder,
-                    padding: self.style.contextMenuPadding,
-                    borderRadius: self.style.contextMenuBorderRadius,
-                    opacity: self.style.contextMenuOpacity,
-                    position: 'absolute',
-                    zIndex: 9999,
-                    overflow: 'hidden'
-                },
-                'canvas-datagrid-autocomplete-item': {
-                    background: self.style.contextMenuBackground,
-                    color: self.style.contextMenuColor
-                },
-                'canvas-datagrid-autocomplete-item:hover': {
-                    background: self.style.contextMenuHoverBackground,
-                    color: self.style.contextMenuHoverColor
-                },
-                'canvas-datagrid-canvas': {
-                    position: 'absolute',
-                    zIndex: '-1'
-                },
-                'canvas-datagrid': {
-                    display: 'block'
-                },
-                'canvas-datagrid-control-input': {
-                    position: 'fixed',
-                    top: '-5px',
-                    left: '-5px',
-                    border: 'none',
-                    opacity: '0',
-                    cursor: 'pointer',
-                    width: '1px',
-                    height: '1px',
-                    lineHeight: 'normal',
-                    fontWeight: 'normal',
-                    fontFamily: self.style.contextMenuFontFamily,
-                    fontSize: self.style.contextMenuFontSize
-                },
-                'canvas-datagrid-edit-mobile-input': {
-                    boxSizing: 'content-box',
-                    outline: 'none',
-                    margin: '0',
-                    padding: '0 0 0 0',
-                    lineHeight: 'normal',
-                    fontWeight: 'normal',
-                    fontFamily: self.style.mobileEditFontFamily,
-                    fontSize: self.style.mobileEditFontSize,
-                    border: self.style.editCellBorder,
-                    color: self.style.editCellColor,
-                    background: self.style.editCellBackgroundColor,
-                    appearance: 'none',
-                    webkitAppearance: 'none',
-                    mozAppearance: 'none',
-                    borderRadius: '0'
-                },
-                'canvas-datagrid-edit-input': {
-                    boxSizing: 'content-box',
-                    outline: 'none',
-                    margin: '0',
-                    padding: '0 0 0 ' + self.style.editCellPaddingLeft + 'px',
-                    lineHeight: 'normal',
-                    fontWeight: 'normal',
-                    fontFamily: self.style.editCellFontFamily,
-                    fontSize: self.style.editCellFontSize,
-                    boxShadow: self.style.editCellBoxShadow,
-                    border: self.style.editCellBorder,
-                    color: self.style.editCellColor,
-                    background: self.style.editCellBackgroundColor,
-                    appearance: 'none',
-                    webkitAppearance: 'none',
-                    mozAppearance: 'none',
-                    borderRadius: '0'
-                },
-                'canvas-datagrid-context-menu-item-mobile': {
-                    lineHeight: 'normal',
-                    fontWeight: 'normal',
-                    fontFamily: self.style.contextMenuFontFamily,
-                    fontSize: self.style.contextMenuFontSize,
-                    color: 'inherit',
-                    background: 'inherit',
-                    margin: self.style.contextMenuItemMargin,
-                    borderRadius: self.style.contextMenuItemBorderRadius,
-                    verticalAlign: 'middle'
-                },
-                'canvas-datagrid-context-menu-item': {
-                    lineHeight: 'normal',
-                    fontWeight: 'normal',
-                    fontFamily: self.style.contextMenuFontFamily,
-                    fontSize: self.style.contextMenuFontSize,
-                    color: 'inherit',
-                    background: 'inherit',
-                    margin: self.style.contextMenuItemMargin,
-                    borderRadius: self.style.contextMenuItemBorderRadius,
-                    verticalAlign: 'middle'
-                },
-                'canvas-datagrid-context-menu-item:hover': {
-                    background: self.style.contextMenuHoverBackground,
-                    color: self.style.contextMenuHoverColor
-                },
-                'canvas-datagrid-context-menu-label': {
-                    margin: self.style.contextMenuLabelMargin,
-                    display: self.style.contextMenuLabelDisplay,
-                    minWidth: self.style.contextMenuLabelMinWidth,
-                    maxWidth: self.style.contextMenuLabelMaxWidth
-                },
-                'canvas-datagrid-context-menu-mobile': {
-                    lineHeight: 'normal',
-                    fontWeight: 'normal',
-                    fontFamily: self.style.contextMenuFontFamily,
-                    fontSize: self.style.contextMenuFontSize,
-                    background: self.style.contextMenuBackground,
-                    color: self.style.contextMenuColor,
-                    border: self.style.contextMenuBorder,
-                    padding: self.style.contextMenuPadding,
-                    borderRadius: self.style.contextMenuBorderRadius,
-                    opacity: self.style.contextMenuOpacity,
-                    overflow: 'hidden',
-                    whiteSpace: 'nowrap'
-                },
-                'canvas-datagrid-context-menu': {
-                    lineHeight: 'normal',
-                    fontWeight: 'normal',
-                    fontFamily: self.style.contextMenuFontFamily,
-                    fontSize: self.style.contextMenuFontSize,
-                    background: self.style.contextMenuBackground,
-                    color: self.style.contextMenuColor,
-                    border: self.style.contextMenuBorder,
-                    padding: self.style.contextMenuPadding,
-                    borderRadius: self.style.contextMenuBorderRadius,
-                    opacity: self.style.contextMenuOpacity,
-                    overflow: 'hidden',
-                    whiteSpace: 'nowrap',
-                    cursor: self.style.contextMenuCursor
-                },
-                'canvas-datagrid-invalid-search-regExp': {
-                    background: self.style.contextMenuFilterInvalidExpresion
-                }
-            };
-            if (css[className]) {
-                Object.keys(css[className]).map(function (prop) {
-                    el.style[prop] = css[className][prop];
-                });
-            }
-            return;
-        };
-        self.appendTo = function (e) {
-            self.parentNode = e;
-            self.setDom();
-        };
-        self.setDom = function () {
-            if (self.isChildGrid) {
-                self.parentGrid = self.parentNode.parentGrid;
-                self.ctx = self.parentGrid.context;
-                self.canvas = self.parentGrid.canvas;
-                self.controlInput = self.parentGrid.controlInput;
-                self.eventParent = self.canvas;
-            } else {
-                self.controlInput = self.controlInput || document.createElement('input');
-                self.controlInput.onblur = self.intf.blur;
-                self.createInlineStyle(self.controlInput, 'canvas-datagrid-control-input');
-                self.isChildGrid = false;
-                self.parentDOMNode = self.parentNode;
-                self.parentIsCanvas = /^canvas$/i.test(self.parentDOMNode.tagName);
-                if (self.parentIsCanvas) {
-                    self.canvas = self.parentDOMNode;
-                    self.parentDOMNode.appendChild(self.controlInput);
-                } else {
-                    self.canvas = document.createElement('canvas');
-                    self.parentDOMNode.appendChild(self.canvas);
-                    self.parentDOMNode.appendChild(self.controlInput);
-                }
-                self.createInlineStyle(self.canvas, 'canvas-datagrid');
-                self.ctx = self.canvas.getContext('2d');
-                self.ctx.textBaseline = 'alphabetic';
-                self.eventParent = self.canvas;
-            }
-            self.parentNodeStyle = self.canvas.style;
-            self.controlInput.setAttribute('readonly', true);
-            self.controlInput.addEventListener('blur', function (e) {
-                if (e.target !== self.canvas) {
-                    self.hasFocus = false;
-                }
-            });
-            self.eventParent.addEventListener('scroll', self.resize, false);
-            self.eventParent.addEventListener('touchstart', self.touchstart, false);
-            self.eventParent.addEventListener('mouseup', self.mouseup, false);
-            self.eventParent.addEventListener('mousedown', self.mousedown, false);
-            self.eventParent.addEventListener('dblclick', self.dblclick, false);
-            self.eventParent.addEventListener('click', self.click, false);
-            self.eventParent.addEventListener('mousemove', self.mousemove);
-            self.eventParent.addEventListener('wheel', self.scrollWheel, false);
-            self.canvas.addEventListener('contextmenu', self.contextmenuEvent, false);
-            self.controlInput.addEventListener('copy', self.copy);
-            self.controlInput.addEventListener('cut', self.cut);
-            self.controlInput.addEventListener('paste', self.paste);
-            self.controlInput.addEventListener('keypress', self.keypress, false);
-            self.controlInput.addEventListener('keyup', self.keyup, false);
-            self.controlInput.addEventListener('keydown', self.keydown, false);
-            window.addEventListener('resize', self.resize);
-        };
+            return i;
+        }
+        args.component = false;
+        i = new Grid(args);
+        if (args.parentNode && args.parentNode.appendChild) {
+            args.parentNode.appendChild(i);
+        }
+        return i;
     };
+    return module.exports;
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 
 /***/ }),
+/* 2 */
+/*!**************************!*\
+  !*** ./lib/component.js ***!
+  \**************************/
+/*! dynamic exports provided */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
 
-/***/ "./lib/draw.js":
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true*/
+/*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! ./defaults */ 0)], __WEBPACK_AMD_DEFINE_RESULT__ = (function (defaults) {
+    'use strict';
+    return function () {
+        var typeMap, component = {};
+        component.dehyphenateProperty = function hyphenateProperty(prop) {
+            prop = prop.replace('--cdg-', '');
+            var p = '', nextLetterCap;
+            Array.prototype.forEach.call(prop, function (char) {
+                if (nextLetterCap) {
+                    nextLetterCap = false;
+                    p += char.toUpperCase();
+                    return;
+                }
+                if (char === '-') {
+                    nextLetterCap = true;
+                    return;
+                }
+                p += char;
+            });
+            return p;
+        };
+        component.hyphenateProperty = function hyphenateProperty(prop, cust) {
+            var p = '';
+            Array.prototype.forEach.call(prop, function (char) {
+                if (char === char.toUpperCase()) {
+                    p += '-' + char.toLowerCase();
+                    return;
+                }
+                p += char;
+            });
+            return (cust ? '--cdg-' : '') + p;
+        };
+        function getDefaultItem(base, item) {
+            var i = {},
+                r;
+            defaults(i);
+            r = i.defaults[base].filter(function (i) {
+                return i[0].toLowerCase() === item.toLowerCase()
+                    || component.hyphenateProperty(i[0]) === item.toLowerCase()
+                    || component.hyphenateProperty(i[0], true) === item.toLowerCase();
+            })[0];
+            return r;
+        }
+        component.applyComponentStyle = function (supressChangeAndDrawEvents, intf) {
+            var cStyle = window.getComputedStyle(intf.tagName === 'CANVAS-DATAGRID' ? intf : intf.canvas, null),
+                defs = {};
+            intf.computedStyle = cStyle;
+            defaults(defs);
+            defs = defs.defaults.styles;
+            defs.forEach(function (def) {
+                var val;
+                val = cStyle.getPropertyValue(component.hyphenateProperty(def[0], true));
+                if (val === "") {
+                    val = cStyle.getPropertyValue(component.hyphenateProperty(def[0], false));
+                }
+                if (val !== "" && typeof val === 'string') {
+                    intf.setStyleProperty(def[0], typeMap[typeof def[1]](val
+                        .replace(/^\s+/, '').replace(/\s+$/, ''), def[1]), true);
+                }
+            });
+            if (!supressChangeAndDrawEvents && intf.dispatchEvent) {
+                requestAnimationFrame(function () { intf.resize(true); });
+                intf.dispatchEvent('stylechanged', intf.style);
+            }
+        };
+        typeMap = {
+            data: function (strData) {
+                try {
+                    return JSON.parse(strData);
+                } catch (e) {
+                    throw new Error('Cannot read JSON data in canvas-datagrid data.');
+                }
+            },
+            schema: function (strSchema) {
+                try {
+                    return JSON.parse(strSchema);
+                } catch (e) {
+                    throw new Error('Cannot read JSON data in canvas-datagrid schema attribute.');
+                }
+            },
+            number: function (strNum, def) {
+                var n = parseInt(strNum, 10);
+                return isNaN(n) ? def : n;
+            },
+            boolean: function (strBool) {
+                return (/true/i).test(strBool);
+            },
+            string: function (str) {
+                return str;
+            }
+        };
+        component.getObservableAttributes = function () {
+            var i = {}, attrs = ['data', 'schema', 'style', 'className', 'name'];
+            defaults(i);
+            i.defaults.attributes.forEach(function (attr) {
+                attrs.push(attr[0].toLowerCase());
+            });
+            return attrs;
+        };
+        component.disconnectedCallback = function () {
+            this.connected = false;
+        };
+        component.connectedCallback = function () {
+            var intf = this;
+            intf.connected = true;
+            component.observe(intf);
+            component.applyComponentStyle(true, intf);
+            intf.resize(true);
+        };
+        component.adoptedCallback = function () {
+            this.resize();
+        };
+        component.attributeChangedCallback = function (attrName, oldVal, newVal) {
+            var tfn, intf = this, def;
+            if (attrName === 'style') {
+                component.applyComponentStyle(false, intf);
+                return;
+            }
+            if (attrName === 'data') {
+                if (intf.dataType === 'application/x-canvas-datagrid') {
+                    intf.dataType = 'application/json+x-canvas-datagrid';
+                }
+                intf.args.data = newVal;
+                return;
+            }
+            if (attrName === 'schema') {
+                intf.args.schema = typeMap.schema(newVal);
+                return;
+            }
+            if (attrName === 'name') {
+                intf.name = newVal;
+                return;
+            }
+            if (attrName === 'class' || attrName === 'className') {
+                return;
+            }
+            def = getDefaultItem('attributes', attrName);
+            if (def) {
+                tfn = typeMap[typeof def[1]];
+                intf.attributes[def[0]] = tfn(newVal);
+                return;
+            }
+            if (/^on/.test(attrName)) {
+                intf.addEventListener('on' + attrName, function (e) {
+                    eval(newVal);
+                });
+            }
+            return;
+        };
+        component.observe = function (intf) {
+            var observer;
+            if (!window.MutationObserver) { return; }
+            intf.applyComponentStyle = function () { component.applyComponentStyle(false, intf); intf.resize(); };
+            /**
+             * Applies the computed css styles to the grid.  In some browsers, changing directives in attached style sheets does not automatically update the styles in this component.  It is necessary to call this method to update in these cases.
+             * @memberof canvasDatagrid
+             * @name applyComponentStyle
+             * @method
+             */
+            observer = new window.MutationObserver(function (mutations) {
+                var checkInnerHTML, checkStyle;
+                Array.prototype.forEach.call(mutations, function (mutation) {
+                    if (mutation.attributeName === 'class'
+                            || mutation.attributeName === 'style') {
+                        checkStyle = true;
+                        return;
+                    }
+                    if (mutation.target.parentNode
+                            && mutation.target.parentNode.nodeName === 'STYLE') {
+                        checkStyle = true;
+                        return;
+                    }
+                    if (mutation.addedNodes.length > 0 || mutation.type === 'characterData') {
+                        checkInnerHTML = true;
+                    }
+                });
+                if (checkStyle) {
+                    intf.applyComponentStyle(false, intf);
+                }
+                if (checkInnerHTML) {
+                    if (intf.dataType === 'application/x-canvas-datagrid') {
+                        intf.dataType = 'application/json+x-canvas-datagrid';
+                    }
+                    intf.data = intf.innerHTML;
+                }
+            });
+            observer.observe(intf, { characterData: true, childList: true, attributes: true, subtree: true });
+            Array.prototype.forEach.call(document.querySelectorAll('style'), function (el) {
+                observer.observe(el, { characterData: true, childList: true, attributes: true, subtree: true });
+            });
+        };
+        return component;
+    };
+}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+/***/ }),
+/* 3 */
 /*!*********************!*\
   !*** ./lib/draw.js ***!
   \*********************/
-/*! no static exports found */
+/*! dynamic exports provided */
+/*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true*/
@@ -3170,12 +2137,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 
 
 /***/ }),
-
-/***/ "./lib/events.js":
+/* 4 */
 /*!***********************!*\
   !*** ./lib/events.js ***!
   \***********************/
-/*! no static exports found */
+/*! dynamic exports provided */
+/*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true, plusplus: true*/
@@ -4454,12 +3421,400 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 
 
 /***/ }),
+/* 5 */
+/*!**********************!*\
+  !*** ./lib/touch.js ***!
+  \**********************/
+/*! dynamic exports provided */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
 
-/***/ "./lib/intf.js":
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true, plusplus: true*/
+/*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+    'use strict';
+    return function (self) {
+        var touchTimerMs = 50,
+            touchScrollTimeout;
+        self.scrollAnimation = {};
+        self.touchDelta = {};
+        self.touchAnimateTo = {};
+        self.animationFrames = 0;
+        self.getTouchPos = function (e, touchIndex) {
+            var t = touchIndex ? e.touches[touchIndex] : e.touches[0],
+                rect = self.canvas.getBoundingClientRect(),
+                pos;
+            if (!t) { return; }
+            pos = {
+                x: t.clientX - rect.left,
+                y: t.clientY - rect.top
+            };
+            if (self.isChildGrid) {
+                pos.x -= self.canvasOffsetLeft;
+                pos.y -= self.canvasOffsetTop;
+            }
+            return {
+                x: pos.x,
+                y: pos.y,
+                rect: rect
+            };
+        };
+        // shamelessly stolen from from https://gist.github.com/gre/1650294
+        self.easingFunctions = {
+            linear: function (t) { return t; },
+            easeInQuad: function (t) { return t * t; },
+            easeOutQuad: function (t) { return t * (2 - t); },
+            easeInOutQuad: function (t) { return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t; },
+            easeInCubic: function (t) { return t * t * t; },
+            easeOutCubic: function (t) { return (--t) * t * t + 1; },
+            easeInOutCubic: function (t) { return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1; },
+            easeInQuart: function (t) { return t * t * t * t; },
+            easeOutQuart: function (t) { return 1 - (--t) * t * t * t; },
+            easeInOutQuart: function (t) { return t < 0.5 ? 8 * t  * t  * t * t : 1 - 8 * (--t) * t * t * t; },
+            easeInQuint: function (t) { return t * t * t * t * t; },
+            easeOutQuint: function (t) { return 1 + (--t) * t *  t * t * t; },
+            easeInOutQuint: function (t) { return t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * (--t) * t * t * t * t; }
+        };
+        self.easing = function (t, b, c, d) {
+            return c * self.easingFunctions[self.attributes.touchEasingMethod](t / d) + b;
+        };
+        self.calculatePPSTimed = function () {
+            self.xPPST = -((self.touchDelta.x - self.touchSigmaTimed.x) / (self.touchDelta.t - self.touchSigmaTimed.t));
+            self.yPPST = -((self.touchDelta.y - self.touchSigmaTimed.y) / (self.touchDelta.t - self.touchSigmaTimed.t));
+            self.touchSigmaTimed = {
+                x: self.touchDelta.x,
+                y: self.touchDelta.y,
+                t: performance.now()
+            };
+        };
+        self.calculatePPS = function () {
+            self.xPPS = -((self.touchDelta.x - self.touchSigma.x) / (self.touchDelta.t - self.touchSigma.t));
+            self.yPPS = -((self.touchDelta.y - self.touchSigma.y) / (self.touchDelta.t - self.touchSigma.t));
+            self.touchSigma = {
+                x: self.touchDelta.x,
+                y: self.touchDelta.y,
+                t: performance.now()
+            };
+        };
+        self.touchEndAnimation = function () {
+            if (!self.canvas || !self.scrollBox.scrollTo) { return requestAnimationFrame(self.touchEndAnimation); }
+            var n = performance.now(),
+                d = self.attributes.touchReleaseAnimationDurationMs,
+                t;
+            t = n - self.touchDelta.t;
+            self.animationFrames += 1;
+            self.scrollAnimation.x = self.easing(t, self.touchDelta.scrollLeft, self.touchAnimateTo.x, d);
+            self.scrollAnimation.y = self.easing(t, self.touchDelta.scrollTop, self.touchAnimateTo.y, d);
+            if (t > d || (self.scrollAnimation.y === self.scrollBox.scrollTop
+                    && self.scrollAnimation.x === self.scrollBox.scrollLeft) || self.stopAnimation) {
+                return;
+            }
+            self.scrollBox.scrollTo(self.scrollAnimation.x, self.scrollAnimation.y);
+            requestAnimationFrame(self.touchEndAnimation);
+        };
+        self.touchEditCell = function (cell) {
+            self.beginEditAt(cell.columnIndex, cell.rowIndex);
+        };
+        self.touchCell = function (e) {
+            return function () {
+                clearInterval(self.calculatePPSTimer);
+                var i, pos = self.getTouchPos(e);
+                if (Math.abs(self.touchDelta.x) + Math.abs(self.touchDelta.y) < self.attributes.touchDeadZone) {
+                    i = self.getCellAt(pos.x, pos.y);
+                    if (!i) { return; }
+                    if (self.touchingCell && self.touchingCell.rowIndex === i.rowIndex
+                            && self.touchingCell.columnIndex === i.columnIndex) {
+                        self.touchEditCell(i);
+                        return;
+                    }
+                    if (self.input && self.input.editCell) {
+                        self.endEdit();
+                    }
+                    self.touchingCell = i;
+                    self.selectArea({
+                        top: i.rowIndex,
+                        bottom: i.rowIndex,
+                        left: i.columnIndex,
+                        right: i.columnIndex
+                    });
+                    self.draw(true);
+                }
+            };
+        };
+        self.touchstart = function (e) {
+            if (e.changedTouches[0]) {
+                self.touchStart = self.getTouchPos(e);
+                self.startingCell = self.getCellAt(self.touchStart.x, self.touchStart.y, true);
+            }
+            if (self.dispatchEvent('touchstart', {NativeEvent: e, cell: self.startingCell})) { return; }
+            self.disposeContextMenu();
+            clearInterval(self.calculatePPSTimer);
+            clearTimeout(self.touchContextTimeout);
+            self.touchStartEvent = e;
+            self.stopAnimation = true;
+            self.animationFrames = 0;
+            self.stopPropagation(e);
+            e.preventDefault();
+            if (e.touches.length === 1 && e.changedTouches[0] && !self.zoomAltered) {
+                self.touchLength = 1;
+                self.touchStart = self.touchStart || self.touchStart1;
+                self.touchScrollStart = {
+                    x: self.scrollBox.scrollLeft,
+                    y: self.scrollBox.scrollTop,
+                    t: performance.now()
+                };
+                self.touchDelta = {
+                    x: 0,
+                    y: 0,
+                    scrollLeft: self.scrollBox.scrollLeft,
+                    scrollTop: self.scrollBox.scrollTop,
+                    t: self.touchScrollStart.t
+                };
+                self.touchSigma = {
+                    x: self.touchDelta.x,
+                    y: self.touchDelta.y,
+                    t: self.touchDelta.t
+                };
+                self.touchSigmaTimed = {
+                    x: self.touchDelta.x,
+                    y: self.touchDelta.y,
+                    t: self.touchDelta.t
+                };
+                self.touchContextTimeout = setTimeout(function () {
+                    self.contextmenuEvent(e, self.touchStart);
+                }, self.attributes.touchContextMenuTimeMs);
+                self.calculatePPSTimer = setInterval(self.calculatePPSTimed, touchTimerMs);
+                if (self.startingCell && (self.startingCell.isGrid || ['tree', 'inherit'].indexOf(self.startingCell.context) !== -1)) {
+                    self.hasFocus = false;
+                    return;
+                }
+                self.hasFocus = true;
+                if (self.startingCell.isHeader) {
+                    if (self.startingCell.isRowHeader) {
+                        self.selectArea({
+                            top: self.startingCell.rowIndex,
+                            bottom: self.startingCell.rowIndex,
+                            left: 0,
+                            right: self.getVisibleSchema().length - 1,
+                        });
+                        self.draw(true);
+                    } else if (self.startingCell.isColumnHeader) {
+                        if (self.attributes.columnHeaderClickBehavior === 'sort') {
+                            if (self.orderBy === self.startingCell.header.name) {
+                                self.orderDirection = self.orderDirection === 'asc' ? 'desc' : 'asc';
+                            } else {
+                                self.orderDirection = 'asc';
+                            }
+                            self.order(self.startingCell.header.name, self.orderDirection);
+                        }
+                        if (self.attributes.columnHeaderClickBehavior === 'select') {
+                            self.selectArea({
+                                top: 0,
+                                bottom: self.data.length - 1,
+                                left: self.startingCell.columnIndex,
+                                right: self.startingCell.columnIndex,
+                            });
+                            self.draw(true);
+                        }
+                    }
+                    self.touchEndEvents(e);
+                    return;
+                }
+            }
+            if (self.zoomAltered) { return; }
+            document.body.addEventListener('touchmove', self.touchmove, {passive: false});
+            document.body.addEventListener('touchend', self.touchend, false);
+            document.body.addEventListener('touchcancel', self.touchcancel, false);
+            self.draw(true);
+        };
+        self.touchSelect = function (cell, handleType) {
+            if (cell.rowIndex === undefined || cell.columnIndex === undefined) { return; }
+            self.touchSelecting = true;
+            var bounds = self.getSelectionBounds();
+            if (handleType === 'selection-handle-bl'
+                    && cell.rowIndex >= bounds.top
+                    && cell.columnIndex <= bounds.right) {
+                bounds.bottom = cell.rowIndex;
+                bounds.left = cell.columnIndex;
+            } else if (handleType === 'selection-handle-tl'
+                    && cell.rowIndex <= bounds.bottom
+                    && cell.columnIndex <= bounds.right) {
+                bounds.top = cell.rowIndex;
+                bounds.left = cell.columnIndex;
+            } else if (handleType === 'selection-handle-tr'
+                    && cell.rowIndex <= bounds.bottom
+                    && cell.columnIndex >= bounds.left) {
+                bounds.top = cell.rowIndex;
+                bounds.right = cell.columnIndex;
+            } else if (handleType === 'selection-handle-br'
+                    && cell.rowIndex >= bounds.top
+                    && cell.columnIndex >= bounds.left) {
+                bounds.bottom = cell.rowIndex;
+                bounds.right = cell.columnIndex;
+            }
+            if (self.attributes.selectionMode === 'row' || cell.rowIndex === -1) {
+                bounds.left = 0;
+                bounds.right = self.getSchema().length - 1;
+            } else {
+                bounds.left = Math.max(0, bounds.left);
+            }
+            self.selectArea(bounds);
+            self.draw(true);
+        };
+        self.touchmove = function (e) {
+            var ch, rw, rScrollZone, lScrollZone, bScrollZone, tScrollZone, sbw, t1, t2;
+            if (self.dispatchEvent('beforetouchmove', {NativeEvent: e})) { return; }
+            clearTimeout(touchScrollTimeout);
+            if (e.changedTouches[0]) {
+                self.touchPosition = self.getTouchPos(e);
+            }
+            if (e.changedTouches[1]) {
+                self.touchPosition1 = self.getTouchPos(e, 1);
+            }
+            if (Math.abs(self.touchDelta.x) + Math.abs(self.touchDelta.y) > self.attributes.touchDeadZone) {
+                clearTimeout(self.touchContextTimeout);
+            }
+            if (e.touches.length === 2 && self.touchPosition && self.touchPosition1) {
+                t1 = self.touchPosition.y;
+                t2 = self.touchPosition1.y;
+                if (!self.zoomDeltaStart) {
+                    self.zoomDeltaStart = Math.abs(t1 - t2);
+                    self.startScale = self.scale;
+                }
+                self.touchLength = 2;
+                self.scaleDelta = self.zoomDeltaStart - Math.abs(t1 - t2);
+                self.scale = self.startScale - (self.scaleDelta * self.attributes.touchZoomSensitivity);
+                self.scale = Math.min(Math.max(self.scale, self.attributes.touchZoomMin), self.attributes.touchZoomMax);
+                self.zoomAltered = true;
+                self.resize(true);
+                self.resizeChildGrids();
+                return;
+            }
+            if (self.zoomAltered) { return; }
+            self.touchLength = 1;
+            self.touchPosition = self.touchPosition || self.touchPosition1;
+            ch = self.getColumnHeaderCellHeight();
+            rw = self.getRowHeaderCellWidth();
+            rScrollZone = self.width - self.style.scrollBarWidth - self.touchPosition.x < self.attributes.selectionScrollZone;
+            lScrollZone = self.touchPosition.x - rw < self.attributes.selectionScrollZone;
+            bScrollZone = self.height - self.style.scrollBarWidth - self.touchPosition.y < self.attributes.selectionScrollZone;
+            tScrollZone = self.touchPosition.y - ch < self.attributes.selectionScrollZone;
+            sbw = self.style.scrollBarWidth;
+            function touchScroll() {
+                var x = self.scrollBox.scrollLeft,
+                    y = self.scrollBox.scrollTop;
+                x += (rScrollZone ? self.attributes.selectionScrollIncrement : 0);
+                y += (bScrollZone ? self.attributes.selectionScrollIncrement : 0);
+                y -= (tScrollZone ? self.attributes.selectionScrollIncrement : 0);
+                x -= (lScrollZone ? self.attributes.selectionScrollIncrement : 0);
+                self.scrollBox.scrollTo(x, y);
+                touchScrollTimeout = setTimeout(touchScroll, self.attributes.scrollRepeatRate);
+            }
+            e.stopPropagation();
+            self.touchDelta = {
+                x: self.touchPosition.x - self.touchStart.x,
+                y: self.touchPosition.y - self.touchStart.y,
+                scrollLeft: self.scrollBox.scrollLeft,
+                scrollTop: self.scrollBox.scrollTop,
+                t: performance.now()
+            };
+            self.currentCell = self.getCellAt(self.touchPosition.x, self.touchPosition.y);
+            self.dispatchEvent('touchmove', {NativeEvent: e, cell: self.currentCell});
+            self.calculatePPS();
+            self.touchDuration = performance.now() - self.touchScrollStart.t;
+            self.stopAnimation = true;
+            self.animationFrames = 0;
+            if (self.touchSelecting && (rScrollZone || lScrollZone || tScrollZone || bScrollZone)) {
+                touchScroll();
+            }
+            if (/vertical-scroll-/.test(self.startingCell.style)) {
+                self.scrollBox.scrollTop = self.scrollBox.scrollHeight
+                    * ((self.touchPosition.y - ch - sbw) / (self.scrollBox.height - sbw - ch));
+                return;
+            }
+            if (/horizontal-scroll-/.test(self.startingCell.style)) {
+                self.scrollBox.scrollLeft = self.scrollBox.scrollWidth
+                    * ((self.touchPosition.x - rw - sbw) / (self.scrollBox.width - sbw - rw));
+                return;
+            }
+            if (/selection-handle-/.test(self.startingCell.style)) {
+                self.touchSelect(self.currentCell, self.startingCell.style);
+                return;
+            }
+            self.scrollBox.scrollTo(self.touchScrollStart.x - self.touchDelta.x,
+                self.touchScrollStart.y - self.touchDelta.y);
+            self.draw(true);
+        };
+        self.touchEndEvents = function (e) {
+            self.zoomDeltaStart = undefined;
+            self.touchSelecting = false;
+            clearInterval(self.touchScrollTimeout);
+            clearInterval(self.touchContextTimeout);
+            clearInterval(self.calculatePPSTimer);
+            e.stopPropagation();
+            document.body.removeEventListener('touchmove', self.touchmove, {passive: false});
+            document.body.removeEventListener('touchend', self.touchend, false);
+            document.body.removeEventListener('touchcancel', self.touchcancel, false);
+        };
+        self.touchend = function (e) {
+            if (self.dispatchEvent('touchend', {NativeEvent: e, cell: self.currentCell})) { return; }
+            self.zoomDeltaStart = undefined;
+            if (e.changedTouches[0]) {
+                self.touchPosition = undefined;
+            }
+            if (e.changedTouches[1]) {
+                self.touchPosition1 = undefined;
+            }
+            if (self.zoomAltered) {
+                if (e.touches.length === 0) {
+                    self.zoomAltered = false;
+                }
+                return;
+            }
+            var dz = Math.abs(self.touchDelta.x) + Math.abs(self.touchDelta.y) < self.attributes.touchDeadZone;
+            if (isNaN(self.xPPS)) {
+                self.xPPS = 0;
+            }
+            if (isNaN(self.yPPS)) {
+                self.yPPS = 0;
+            }
+            if (isNaN(self.xPPST)) {
+                self.xPPST = 0;
+            }
+            if (isNaN(self.yPPST)) {
+                self.yPPST = 0;
+            }
+            self.touchAnimateTo.x = self.xPPS * self.attributes.touchReleaseAcceleration;
+            self.touchAnimateTo.y = self.yPPS * self.attributes.touchReleaseAcceleration;
+            self.calculatePPSTimed();
+            if (dz && !self.contextMenu) {
+                self.touchCell(self.touchStartEvent)();
+            } else if (self.animationFrames === 0
+                    && (Math.abs(self.xPPST) > self.attributes.scrollAnimationPPSThreshold
+                        || Math.abs(self.yPPST) > self.attributes.scrollAnimationPPSThreshold)
+                    && !/-scroll-/.test(self.startingCell.style)
+                    && !dz) {
+                self.stopAnimation = false;
+                self.touchEndAnimation();
+            }
+            self.touchEndEvents(e);
+        };
+        self.touchcancel = function (e) {
+            if (self.dispatchEvent('touchcancel', {NativeEvent: e, cell: self.currentCell})) { return; }
+            self.touchEndEvents(e);
+        };
+    };
+}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ }),
+/* 6 */
 /*!*********************!*\
   !*** ./lib/intf.js ***!
   \*********************/
-/*! no static exports found */
+/*! dynamic exports provided */
+/*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true*/
@@ -5344,13 +4699,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 };
             }
         });
-        /**
-         * Gets or sets the order of the rows.  This allows you to modify the appearance of the data without modifying the data itself.
-         * @memberof canvasDatagrid
-         * @name columnOrder
-         * @method
-         * @param {array} val Array of integers.  The order of the array dictates the order of the rows, e.g.: [0, 1, 2] is normal order, [2, 1, 0] is reverse.  The array length must be equal to or greater than the number of rows.
-         */
         Object.defineProperty(self.intf, 'rowOrder', {
             get: function () {
                 return self.orders.rows;
@@ -5365,13 +4713,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.orders.rows = val;
             }
         });
-        /**
-         * Gets or sets the order of the columns.  This allows you to modify the appearance of the schema without modifying the data itself.
-         * @memberof canvasDatagrid
-         * @name columnOrder
-         * @method
-         * @param {array} val Array of integers.  The order of the array dictates the order of the columns, e.g.: [0, 1, 2] is normal order, [2, 1, 0] is reverse.  The array length must be equal to or greater than the number of columns.
-         */
         Object.defineProperty(self.intf, 'columnOrder', {
             get: function () {
                 return self.orders.columns;
@@ -5380,7 +4721,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 if (!Array.isArray(val)) {
                     throw new TypeError('Value must be an array.');
                 }
-                if (val.length < s.length) {
+                if (val.length < self.getSchema().length) {
                     throw new RangeError('Array length must be equal to or greater than number of columns.');
                 }
                 self.orders.columns = val;
@@ -5693,139 +5034,1151 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 
 
 /***/ }),
-
-/***/ "./lib/main.js":
-/*!*********************!*\
-  !*** ./lib/main.js ***!
-  \*********************/
-/*! no static exports found */
+/* 7 */
+/*!****************************!*\
+  !*** ./lib/contextMenu.js ***!
+  \****************************/
+/*! dynamic exports provided */
+/*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true, evil: true*/
-/*globals Reflect: false, HTMLElement: true, define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [
-    __webpack_require__(/*! ./component */ "./lib/component.js"),
-    __webpack_require__(/*! ./defaults */ "./lib/defaults.js"),
-    __webpack_require__(/*! ./draw */ "./lib/draw.js"),
-    __webpack_require__(/*! ./events */ "./lib/events.js"),
-    __webpack_require__(/*! ./touch */ "./lib/touch.js"),
-    __webpack_require__(/*! ./intf */ "./lib/intf.js"),
-    __webpack_require__(/*! ./contextMenu */ "./lib/contextMenu.js"),
-    __webpack_require__(/*! ./dom */ "./lib/dom.js"),
-    __webpack_require__(/*! ./publicMethods */ "./lib/publicMethods.js")
-], __WEBPACK_AMD_DEFINE_RESULT__ = (function context(component) {
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true*/
+/*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false, Event: false*/
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
     'use strict';
-    component = component();
-    var modules = Array.prototype.slice.call(arguments);
-    function Grid(args) {
-        args = args || {};
-        var self = {};
-        self.isComponent = args.component === undefined;
-        self.isChildGrid = args.parentNode && /canvas-datagrid-(cell|tree)/.test(args.parentNode.nodeType);
-        if (self.isChildGrid) {
-            self.intf = {};
-        } else {
-            self.intf = self.isComponent ? eval('Reflect.construct(HTMLElement, [], new.target)')
-                : document.createElement('canvas');
+    return function (self) {
+        var zIndexTop, hoverScrollTimeout, autoCompleteContext;
+        function applyContextItemStyle(contextItemContainer) {
+            self.createInlineStyle(contextItemContainer, 'canvas-datagrid-context-menu-item' + (self.mobile ? '-mobile' : ''));
+            contextItemContainer.addEventListener('mouseover', function () {
+                self.createInlineStyle(contextItemContainer, 'canvas-datagrid-context-menu-item:hover');
+            });
+            contextItemContainer.addEventListener('mouseout', function () {
+                self.createInlineStyle(contextItemContainer, 'canvas-datagrid-context-menu-item');
+            });
         }
-        self.args = args;
-        self.intf.args = args;
-        self.applyComponentStyle = component.applyComponentStyle;
-        self.hyphenateProperty = component.hyphenateProperty;
-        self.dehyphenateProperty = component.dehyphenateProperty;
-        self.createGrid = function grid(args) {
-            args.component = false;
-            return new Grid(args);
-        };
-        modules.forEach(function (module) {
-            module(self);
-        });
-        if (self.isChildGrid) {
-            self.shadowRoot = args.parentNode.shadowRoot;
-            self.parentNode = args.parentNode;
-        } else if (self.intf.createShadowRoot) {
-            self.shadowRoot = self.intf.attachShadow({mode: 'open'});
-            self.parentNode = self.shadowRoot;
-        } else {
-            self.parentNode = self.intf;
-        }
-        self.init();
-        return self.intf;
-    }
-    if (window.HTMLElement) {
-        Grid.prototype = Object.create(window.HTMLElement.prototype);
-    }
-    // export web component
-    if (window.customElements) {
-        Grid.observedAttributes = component.getObservableAttributes();
-        Grid.prototype.disconnectedCallback = component.disconnectedCallback;
-        Grid.prototype.attributeChangedCallback = component.attributeChangedCallback;
-        Grid.prototype.connectedCallback = component.connectedCallback;
-        Grid.prototype.adoptedCallback = component.adoptedCallback;
-        window.customElements.define('canvas-datagrid', Grid);
-    }
-    // export global
-    if (window && !window.canvasDatagrid && !window.require) {
-        window.canvasDatagrid = function (args) { return new Grid(args); };
-    }
-    // export amd loader
-    module.exports = function grid(args) {
-        args = args || {};
-        var i, tKeys = ['style', 'formatters', 'sorters', 'filters',
-                    'treeGridAttributes', 'cellGridAttributes', 'data', 'schema'];
-        if (window.customElements && document.body.createShadowRoot) {
-            i = document.createElement('canvas-datagrid');
-            Object.keys(args).forEach(function (argKey) {
-                // set data and parentNode after everything else
-                if (argKey === 'data') { return; }
-                if (argKey === 'parentNode') { return; }
-                // top level keys in args
-                if (tKeys.indexOf(argKey) !== -1) {
-                    tKeys.forEach(function (tKey) {
-                        if (args[tKey] === undefined || tKey !== argKey) { return; }
-                        if (['formatters', 'sorters', 'filters'].indexOf(argKey) !== -1) {
-                            if (typeof args[tKey] === 'object' && args[tKey] !== null) {
-                                Object.keys(args[tKey]).forEach(function (sKey) {
-                                    i[tKey][sKey] = args[tKey][sKey];
-                                });
+        function createContextMenu(ev, pos, items, parentContextMenu) {
+            var container = document.createElement('div'),
+                upArrow = document.createElement('div'),
+                downArrow = document.createElement('div'),
+                children = [],
+                selectedIndex = -1,
+                intf = {},
+                rect;
+            if (!Array.isArray(items)) { throw new Error('createContextMenu expects an array.'); }
+            function createItems() {
+                items.forEach(function (item) {
+                    var contextItemContainer = document.createElement('div'),
+                        childMenuArrow;
+                    function removeChildContext(e) {
+                        if (e.relatedTarget === container
+                                || item.contextMenu.container === e.relatedTarget
+                                || childMenuArrow === e.relatedTarget
+                                || (contextItemContainer === e.relatedTarget)
+                                || item.contextMenu.container.contains(e.relatedTarget)
+                                ) { return; }
+                        item.contextMenu.dispose();
+                        children.splice(children.indexOf(item.contextMenu), 1);
+                        item.contextMenu = undefined;
+                        contextItemContainer.removeEventListener('mouseout', removeChildContext);
+                        container.removeEventListener('mouseout', removeChildContext);
+                        contextItemContainer.setAttribute('contextOpen', '0');
+                        contextItemContainer.setAttribute('opening', '0');
+                    }
+                    function contextAddCallback(items) {
+                        // check yet again if the user hasn't moved off
+                        if (contextItemContainer.getAttribute('opening') !== '1' ||
+                                contextItemContainer.getAttribute('contextOpen') === '1') {
+                            return;
+                        }
+                        var cPos = contextItemContainer.getBoundingClientRect();
+                        cPos = {
+                            left: cPos.left + self.style.childContextMenuMarginLeft + container.offsetWidth,
+                            top: cPos.top + self.style.childContextMenuMarginTop,
+                            bottom: cPos.bottom,
+                            right: cPos.right
+                        };
+                        item.contextMenu = createContextMenu(ev, cPos, items, intf);
+                        contextItemContainer.setAttribute('contextOpen', '1');
+                        contextItemContainer.addEventListener('mouseout', removeChildContext);
+                        container.addEventListener('mouseout', removeChildContext);
+                        children.push(item.contextMenu);
+                    }
+                    function createChildContext() {
+                        var i;
+                        if (contextItemContainer.getAttribute('contextOpen') === '1') {
+                            return;
+                        }
+                        contextItemContainer.setAttribute('opening', '1');
+                        if (typeof item.items === 'function') {
+                            i  = item.items.apply(intf, [function (items) {
+                                contextAddCallback(items);
+                            }]);
+                            if (i !== undefined && Array.isArray(i)) {
+                                contextAddCallback(i);
                             }
-                        } else {
-                            i[tKey] = args[tKey];
+                            return;
+                        }
+                        contextAddCallback(item.items);
+                    }
+                    function addItem(item) {
+                        function addContent(content) {
+                            if (content === null) { return; }
+                            if (typeof content === 'function') {
+                                return addContent(content(ev));
+                            }
+                            if (typeof content === 'object') {
+                                contextItemContainer.appendChild(content);
+                                return;
+                            }
+                            applyContextItemStyle(contextItemContainer);
+                            contextItemContainer.innerHTML = content;
+                            return;
+                        }
+                        addContent(item.title);
+                        item.contextItemContainer = contextItemContainer;
+                        if ((item.items && item.items.length > 0) || typeof item.items === 'function') {
+                            childMenuArrow = document.createElement('div');
+                            self.createInlineStyle(childMenuArrow, 'canvas-datagrid-context-child-arrow');
+                            childMenuArrow.innerHTML = self.style.childContextMenuArrowHTML;
+                            contextItemContainer.appendChild(childMenuArrow);
+                            contextItemContainer.addEventListener('mouseover', createChildContext);
+                            contextItemContainer.addEventListener('mouseout', function () {
+                                contextItemContainer.setAttribute('opening', '0');
+                            });
+                        }
+                        if (item.click) {
+                            contextItemContainer.addEventListener('click', function (ev) {
+                                item.click.apply(self, [ev]);
+                            });
+                        }
+                    }
+                    addItem(item);
+                    container.appendChild(contextItemContainer);
+                });
+            }
+            function clickIndex(idx) {
+                items[idx].contextItemContainer.dispatchEvent(new Event('click'));
+            }
+            function checkArrowVisibility() {
+                if (container.scrollTop > 0) {
+                    self.parentDOMNode.appendChild(upArrow);
+                } else if (upArrow.parentNode) {
+                    upArrow.parentNode.removeChild(upArrow);
+                }
+                if (container.scrollTop >= container.scrollHeight - container.offsetHeight && downArrow.parentNode) {
+                    downArrow.parentNode.removeChild(downArrow);
+                } else if (container.scrollHeight - container.offsetHeight > 0
+                        && !(container.scrollTop >= container.scrollHeight - container.offsetHeight)) {
+                    self.parentDOMNode.appendChild(downArrow);
+                }
+            }
+            function startHoverScroll(type) {
+                return function t() {
+                    var a = self.attributes.contextHoverScrollAmount;
+                    if (type === 'up' && container.scrollTop === 0) { return; }
+                    if (type === 'down' && container.scrollTop === container.scrollHeight) { return; }
+                    container.scrollTop += (type === 'up' ? -a : a);
+                    hoverScrollTimeout = setTimeout(t, self.attributes.contextHoverScrollRateMs, type);
+                };
+            }
+            function endHoverScroll(type) {
+                return function () {
+                    clearTimeout(hoverScrollTimeout);
+                };
+            }
+            function init() {
+                var loc = {},
+                    s = self.scrollOffset(self.canvas);
+                if (zIndexTop === undefined) {
+                    zIndexTop = self.style.contextMenuZIndex;
+                }
+                createItems();
+                self.createInlineStyle(container, 'canvas-datagrid-context-menu' + (self.mobile ? '-mobile' : ''));
+                loc.x = pos.left - s.left;
+                loc.y = pos.top - s.top;
+                loc.height = 0;
+                zIndexTop += 1;
+                container.style.position = 'absolute';
+                upArrow.style.color = self.style.contextMenuArrowColor;
+                downArrow.style.color = self.style.contextMenuArrowColor;
+                [upArrow, downArrow].forEach(function (el) {
+                    el.style.textAlign = 'center';
+                    el.style.position = 'absolute';
+                    el.style.zIndex = zIndexTop + 1;
+                });
+                container.style.zIndex = zIndexTop;
+                if (parentContextMenu && parentContextMenu.inputDropdown) {
+                    container.style.maxHeight = window.innerHeight - loc.y - self.style.autocompleteBottomMargin + 'px';
+                    container.style.minWidth = pos.width + 'px';
+                    loc.y += pos.height;
+                }
+                if (self.mobile) {
+                    container.style.width = pos.width + 'px';
+                }
+                container.style.left = loc.x + 'px';
+                container.style.top = loc.y + 'px';
+                container.addEventListener('scroll', checkArrowVisibility);
+                container.addEventListener('wheel', function (e) {
+                    if (self.hasFocus) {
+                        container.scrollTop += e.deltaY;
+                        container.scrollLeft += e.deltaX;
+                    }
+                    checkArrowVisibility();
+                });
+                upArrow.innerHTML = self.style.contextMenuArrowUpHTML;
+                downArrow.innerHTML = self.style.contextMenuArrowDownHTML;
+                container.appendChild(upArrow);
+                document.body.appendChild(downArrow);
+                document.body.appendChild(container);
+                rect = container.getBoundingClientRect();
+                // TODO: fix !(parentContextMenu && parentContextMenu.inputDropdown) state (autocomplete)
+                if (rect.bottom > window.innerHeight) {
+                    if (!(parentContextMenu && parentContextMenu.inputDropdown)) {
+                        loc.y -= (rect.bottom + self.style.contextMenuWindowMargin) - window.innerHeight;
+                    }
+                    if (loc.y < 0) { loc.y = self.style.contextMenuWindowMargin; }
+                    if (container.offsetHeight > window.innerHeight - self.style.contextMenuWindowMargin) {
+                        container.style.height = window.innerHeight - (self.style.contextMenuWindowMargin * 2) + 'px';
+                    }
+                }
+                if (rect.right > window.innerWidth) {
+                    loc.x -= rect.right - window.innerWidth + self.style.contextMenuWindowMargin;
+                }
+                if (loc.x < 0) { loc.x = self.style.contextMenuWindowMargin; }
+                if (loc.y < 0) { loc.y = self.style.contextMenuWindowMargin; }
+                container.style.left = loc.x + 'px';
+                container.style.top = loc.y + 'px';
+                rect = container.getBoundingClientRect();
+                upArrow.style.top = rect.top + 'px';
+                downArrow.style.top = rect.top + rect.height - downArrow.offsetHeight + 'px';
+                upArrow.style.left = rect.left + 'px';
+                downArrow.style.left = rect.left + 'px';
+                downArrow.style.width = container.offsetWidth + 'px';
+                upArrow.style.width = container.offsetWidth + 'px';
+                downArrow.addEventListener('mouseover', startHoverScroll('down'));
+                downArrow.addEventListener('mouseout', endHoverScroll('down'));
+                upArrow.addEventListener('mouseover', startHoverScroll('up'));
+                upArrow.addEventListener('mouseout', endHoverScroll('up'));
+                checkArrowVisibility();
+            }
+            intf.parentGrid = self.intf;
+            intf.parentContextMenu = parentContextMenu;
+            intf.container = container;
+            init();
+            intf.clickIndex = clickIndex;
+            intf.rect = rect;
+            intf.items = items;
+            intf.upArrow = upArrow;
+            intf.downArrow = downArrow;
+            intf.dispose = function () {
+                clearTimeout(hoverScrollTimeout);
+                children.forEach(function (c) {
+                    c.dispose();
+                });
+                [downArrow, upArrow, container].forEach(function (el) {
+                    if (el.parentNode) { el.parentNode.removeChild(el); }
+                });
+            };
+            Object.defineProperty(intf, 'selectedIndex', {
+                get: function () {
+                    return selectedIndex;
+                },
+                set: function (value) {
+                    if (typeof value !== 'number' || isNaN(value || !isFinite(value))) {
+                        throw new Error('Context menu selected index must be a sane number.');
+                    }
+                    selectedIndex = value;
+                    if (selectedIndex > items.length - 1) {
+                        selectedIndex = items.length - 1;
+                    }
+                    if (selectedIndex < 0) {
+                        selectedIndex = 0;
+                    }
+                    items.forEach(function (item, index) {
+                        if (index === selectedIndex) {
+                            return self.createInlineStyle(item.contextItemContainer, 'canvas-datagrid-context-menu-item:hover');
+                        }
+                        self.createInlineStyle(item.contextItemContainer, 'canvas-datagrid-context-menu-item');
+                    });
+                }
+            });
+            return intf;
+        }
+        function createFilterContextMenuItems(e) {
+            var filterContainer = document.createElement('div'),
+                filterLabel = document.createElement('div'),
+                filterAutoCompleteButton = document.createElement('button'),
+                filterInput = document.createElement('input'),
+                n = e.cell && e.cell.header ? e.cell.header.title || e.cell.header.name : '',
+                autoCompleteItems,
+                iRect;
+            function checkRegExpErrorState() {
+                filterInput.style.background = self.style.contextFilterInputBackground;
+                filterInput.style.color = self.style.contextFilterInputColor;
+                if (self.invalidFilterRegEx) {
+                    filterInput.style.background = self.style.contextFilterInvalidRegExpBackground;
+                    filterInput.style.color = self.style.contextFilterInvalidRegExpColor;
+                }
+            }
+            function fillAutoComplete() {
+                var count = 0;
+                autoCompleteItems = {};
+                self.data.forEach(function (row) {
+                    var value = row[e.cell.header.name];
+                    if (autoCompleteItems[value] || count > self.attributes.maxAutoCompleteItems) { return; }
+                    count += 1;
+                    autoCompleteItems[value] = {
+                        title: self.formatters[e.cell.header.type || 'string']({ cell: { value: value }}),
+                        click: function (e) {
+                            filterInput.value = value;
+                            e.stopPropagation();
+                            filterInput.dispatchEvent(new Event('keyup'));
+                            self.disposeAutocomplete();
+                            return;
+                        }
+                    };
+                });
+                autoCompleteItems = Object.keys(autoCompleteItems).map(function (key) {
+                    return autoCompleteItems[key];
+                });
+            }
+            function createAutoCompleteContext(ev) {
+                if (ev && [40, 38, 13, 9].indexOf(ev.keyCode) !== -1) { return; }
+                fillAutoComplete();
+                iRect = filterInput.getBoundingClientRect();
+                if (autoCompleteContext) {
+                    autoCompleteContext.dispose();
+                    autoCompleteContext = undefined;
+                }
+                autoCompleteContext = createContextMenu(e, {
+                    left: iRect.left,
+                    top: iRect.top,
+                    right: iRect.right,
+                    bottom: iRect.bottom,
+                    height: iRect.height,
+                    width: iRect.width
+                }, autoCompleteItems, {inputDropdown: true});
+                autoCompleteContext.selectedIndex = 0;
+            }
+            self.createInlineStyle(filterLabel, 'canvas-datagrid-context-menu-label');
+            self.createInlineStyle(filterAutoCompleteButton, 'canvas-datagrid-context-menu-filter-button');
+            self.createInlineStyle(filterInput, 'canvas-datagrid-context-menu-filter-input');
+            checkRegExpErrorState();
+            filterInput.onclick = self.disposeAutocomplete;
+            filterInput.addEventListener('keydown', function (e) {
+                //down
+                if (e.keyCode === 40) {
+                    autoCompleteContext.selectedIndex += 1;
+                }
+                //up
+                if (e.keyCode === 38) {
+                    autoCompleteContext.selectedIndex -= 1;
+                }
+                //enter
+                if (e.keyCode === 13) {
+                    autoCompleteContext.clickIndex(autoCompleteContext.selectedIndex);
+                    self.disposeContextMenu();
+                }
+                //tab
+                if (e.keyCode === 9) {
+                    autoCompleteContext.clickIndex(autoCompleteContext.selectedIndex);
+                    e.preventDefault();
+                }
+                //esc
+                if (e.keyCode === 27) {
+                    self.disposeContextMenu();
+                }
+            });
+            filterInput.addEventListener('keyup', function () {
+                self.setFilter(e.cell.header.name, filterInput.value);
+            });
+            filterInput.addEventListener('keyup', createAutoCompleteContext);
+            ['focus', 'blur', 'keydown', 'keyup', 'change'].forEach(function (en) {
+                filterInput.addEventListener(en, checkRegExpErrorState);
+            });
+            filterInput.value = e.cell.header ? self.columnFilters[e.cell.header.name] || '' : '';
+            filterLabel.innerHTML = self.attributes.filterOptionText.replace(/%s/g, n);
+            filterAutoCompleteButton.onclick = function () {
+                if (autoCompleteContext) {
+                    return self.disposeAutocomplete();
+                }
+                createAutoCompleteContext();
+            };
+            filterAutoCompleteButton.innerHTML = self.style.contextFilterButtonHTML;
+            filterContainer.addEventListener('click', function (e) {
+                return e.stopPropagation();
+            });
+            filterContainer.appendChild(filterLabel);
+            filterContainer.appendChild(filterInput);
+            filterContainer.appendChild(filterAutoCompleteButton);
+            e.items.push({
+                title: filterContainer
+            });
+            if (Object.keys(self.columnFilters).length) {
+                Object.keys(self.columnFilters).forEach(function (cf) {
+                    var h = self.getHeaderByName(cf);
+                    e.items.push({
+                        title: self.attributes.removeFilterOptionText.replace(/%s/g, h.title || h.name),
+                        click: function removeFilterClick(e) {
+                            e.preventDefault();
+                            self.setFilter(cf, '');
+                            self.controlInput.focus();
                         }
                     });
-                    return;
+                });
+            }
+        }
+        function addDefaultContextMenuItem(e) {
+            var isNormalCell = !(e.cell.isBackground || e.cell.isColumnHeaderCellCap
+                    || e.cell.isScrollBar || e.cell.isCorner || e.cell.isRowHeader)
+                    && e.cell.header;
+            if (self.attributes.showFilter && isNormalCell) {
+                createFilterContextMenuItems(e);
+            }
+            if (self.attributes.showCopy
+                    && self.selections.reduce(function (p, r) {
+                        return p + r.length;
+                    }, 0) > 0) {
+                e.items.push({
+                    title: self.attributes.copyText,
+                    click: function () {
+                        document.execCommand('copy');
+                        self.disposeContextMenu();
+                        self.controlInput.focus();
+                    }
+                });
+            }
+            if (self.attributes.showPaste && self.clipBoardData) {
+                e.items.push({
+                    title: self.attributes.pasteText,
+                    click: function () {
+                        self.paste(self.clipBoardData, e.cell.columnIndex, e.cell.rowIndex);
+                        self.draw();
+                    }
+                });
+            }
+            if (self.attributes.showColumnSelector) {
+                e.items.push({
+                    title: self.attributes.columnSelectorText,
+                    items: function () {
+                        var d = [];
+                        self.getSchema().forEach(function (column) {
+                            function toggleColumnVisibility(e) {
+                                column.hidden = !column.hidden;
+                                e.preventDefault();
+                                self.stopPropagation(e);
+                                self.disposeContextMenu();
+                                self.resize(true);
+                                self.setStorageData();
+                            }
+                            var el = document.createElement('div');
+                            applyContextItemStyle(el);
+                            el.addEventListener('touchstart', toggleColumnVisibility);
+                            el.addEventListener('click', toggleColumnVisibility);
+                            el.innerHTML = (column.hidden ? self.attributes.columnSelectorHiddenText
+                                    : self.attributes.columnSelectorVisibleText)
+                                    + (column.title || column.name);
+                            d.push({
+                                title: el
+                            });
+                        });
+                        return d;
+                    }
+                });
+                if (e.cell && e.cell.header) {
+                    e.items.push({
+                        title: self.attributes.hideColumnText
+                            .replace(/%s/ig, e.cell.header.title || e.cell.header.name),
+                        click: function (ev) {
+                            self.getSchema()[e.cell.columnIndex].hidden = true;
+                            ev.preventDefault();
+                            self.stopPropagation(ev);
+                            self.disposeContextMenu();
+                            self.setStorageData();
+                            setTimeout(function () { self.resize(true); }, 10);
+                        }
+                    });
                 }
-                // all others are attribute level keys
-                i.attributes[argKey] = args[argKey];
-            });
-            if (args.data) {
-                i.data = args.data;
             }
-            // add to the dom very last to avoid redraws
-            if (args.parentNode) {
-                args.parentNode.appendChild(i);
+            if (self.attributes.saveAppearance && self.attributes.showClearSettingsOption
+                    && (Object.keys(self.sizes.rows).length > 0
+                        || Object.keys(self.sizes.columns).length > 0)) {
+                e.items.push({
+                    title: self.attributes.clearSettingsOptionText,
+                    click: function (e) {
+                        e.preventDefault();
+                        self.sizes.rows = {};
+                        self.sizes.columns = {};
+                        self.createRowOrders();
+                        self.createColumnOrders();
+                        self.storedSettings = undefined;
+                        self.dispatchEvent('resizecolumn', {columnWidth: self.style.cellWidth});
+                        self.dispatchEvent('resizerow', {cellHeight: self.style.cellHeight});
+                        self.setStorageData();
+                        self.resize(true);
+                        self.disposeContextMenu();
+                        self.controlInput.focus();
+                    }
+                });
             }
-            return i;
+            if (self.attributes.allowSorting && self.attributes.showOrderByOption && isNormalCell) {
+                e.items.push({
+                    title: self.attributes.showOrderByOptionTextAsc.replace('%s', e.cell.header.title || e.cell.header.name),
+                    click: function (ev) {
+                        ev.preventDefault();
+                        self.order(e.cell.header.name, 'asc');
+                        self.controlInput.focus();
+                    }
+                });
+                e.items.push({
+                    title: self.attributes.showOrderByOptionTextDesc.replace('%s', e.cell.header.title || e.cell.header.name),
+                    click: function (ev) {
+                        ev.preventDefault();
+                        self.order(e.cell.header.name, 'desc');
+                        self.disposeContextMenu();
+                        self.controlInput.focus();
+                    }
+                });
+            }
         }
-        args.component = false;
-        i = new Grid(args);
-        if (args.parentNode && args.parentNode.appendChild) {
-            args.parentNode.appendChild(i);
-        }
-        return i;
+        self.disposeAutocomplete = function () {
+            if (autoCompleteContext) {
+                autoCompleteContext.dispose();
+                autoCompleteContext = undefined;
+            }
+        };
+        self.disposeContextMenu = function () {
+            document.removeEventListener('click', self.disposeContextMenu);
+            zIndexTop = self.style.contextMenuZIndex;
+            self.disposeAutocomplete();
+            if (self.contextMenu) {
+                self.contextMenu.dispose();
+            }
+            self.contextMenu = undefined;
+        };
+        self.contextmenuEvent = function (e, overridePos) {
+            if (!self.hasFocus && e.target !== self.canvas) {
+                return;
+            }
+            function createDiposeEvent() {
+                requestAnimationFrame(function () {
+                    document.addEventListener('click', self.disposeContextMenu);
+                    document.removeEventListener('mouseup', createDiposeEvent);
+                });
+            }
+            var contextPosition,
+                items = [],
+                pos = overridePos || self.getLayerPos(e),
+                ev = {
+                    NativeEvent: e,
+                    cell: self.getCellAt(pos.x, pos.y),
+                    items: items
+                };
+            if (!ev.cell.isGrid) {
+                addDefaultContextMenuItem(ev);
+            }
+            if (self.dispatchEvent('contextmenu', ev)) {
+                return;
+            }
+            if (!ev.cell.isGrid) {
+                if (self.contextMenu) {
+                    self.disposeContextMenu();
+                }
+                contextPosition = {
+                    left: pos.x + pos.rect.left
+                        + self.style.contextMenuMarginLeft + self.canvasOffsetLeft,
+                    top: pos.y + pos.rect.top
+                        + self.style.contextMenuMarginTop + self.canvasOffsetTop,
+                    right: ev.cell.width + ev.cell.x + pos.rect.left,
+                    bottom: ev.cell.height + ev.cell.y + pos.rect.top,
+                    height: ev.cell.height,
+                    width: ev.cell.width
+                };
+                if (self.mobile) {
+                    contextPosition.left = self.style.mobileContextMenuMargin + 'px';
+                    contextPosition.width = self.width - (self.style.mobileContextMenuMargin * 2) + 'px';
+                }
+                self.contextMenu = createContextMenu(ev, contextPosition, items);
+                document.addEventListener('mouseup', createDiposeEvent);
+                e.preventDefault();
+            }
+        };
+        return;
     };
-    return module.exports;
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 
 /***/ }),
+/* 8 */
+/*!********************!*\
+  !*** ./lib/dom.js ***!
+  \********************/
+/*! dynamic exports provided */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
 
-/***/ "./lib/publicMethods.js":
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true*/
+/*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+    'use strict';
+    return function (self) {
+        self.getClippingRect = function (ele) {
+            var boundingRect = self.position(self.parentNode),
+                eleRect = self.position(ele),
+                s = self.scrollOffset(self.canvas),
+                clipRect = {
+                    x: 0,
+                    y: 0,
+                    h: 0,
+                    w: 0
+                },
+                parentRect = {
+                    x: -Infinity,
+                    y: -Infinity,
+                    h: Infinity,
+                    w: Infinity
+                },
+                columnHeaderCellHeight = self.getColumnHeaderCellHeight(),
+                rowHeaderCellWidth = self.getRowHeaderCellWidth();
+            boundingRect.top -= s.top;
+            boundingRect.left -= s.left;
+            eleRect.top -= s.top;
+            eleRect.left -= s.left;
+            clipRect.h = boundingRect.top + boundingRect.height - ele.offsetTop - self.style.scrollBarWidth;
+            clipRect.w = boundingRect.left + boundingRect.width - ele.offsetLeft - self.style.scrollBarWidth;
+            clipRect.x = boundingRect.left + (eleRect.left * -1) + rowHeaderCellWidth;
+            clipRect.y = boundingRect.top + (eleRect.top * -1) + columnHeaderCellHeight;
+            return {
+                x: clipRect.x > parentRect.x ? clipRect.x : parentRect.x,
+                y: clipRect.y > parentRect.y ? clipRect.y : parentRect.y,
+                h: clipRect.h < parentRect.h ? clipRect.h : parentRect.h,
+                w: clipRect.w < parentRect.w ? clipRect.w : parentRect.w
+            };
+        };
+        self.clipElement = function (ele) {
+            var clipRect = self.getClippingRect(ele);
+            if (clipRect.w < 0) { clipRect.w = 0; }
+            if (clipRect.h < 0) { clipRect.h = 0; }
+            ele.style.clip = 'rect('
+                + clipRect.y + 'px,'
+                + clipRect.w + 'px,'
+                + clipRect.h + 'px,'
+                + clipRect.x + 'px'
+                + ')';
+            // INFO https://developer.mozilla.org/en-US/docs/Web/CSS/clip
+            // clip has been "deprecated" for clipPath.  Of course nothing but chrome
+            // supports clip path, so we'll keep using clip until someday clipPath becomes
+            // more widely support.  The code below works correctly, but setting clipPath and clip
+            // at the same time has undesirable results.
+            // ele.style.clipPath = 'polygon('
+            //     + clipRect.x + 'px ' + clipRect.y + 'px,'
+            //     + clipRect.x + 'px ' + clipRect.h + 'px,'
+            //     + clipRect.w + 'px ' + clipRect.h + 'px,'
+            //     + clipRect.w + 'px ' + clipRect.y + 'px'
+            //     + ')';
+        };
+        self.scrollOffset = function (e) {
+            var x = 0, y = 0, scrollingElement = document.scrollingElement || { scrollLeft: 0, scrollTop: 0 };
+            while (e.parentNode && e.nodeName !== 'CANVAS-DATAGRID' && e !== self.intf) {
+                if (e.nodeType !== 'canvas-datagrid-tree'
+                        && e.nodeType !== 'canvas-datagrid-cell') {
+                    x -= e.scrollLeft;
+                    y -= e.scrollTop;
+                }
+                e = e.parentNode;
+            }
+            return {
+                left: x - scrollingElement.scrollLeft,
+                top: y - scrollingElement.scrollTop
+            };
+        };
+        self.resizeEditInput = function () {
+            if (self.input && self.input.editCell) {
+                var pos = self.canvas.getBoundingClientRect(),
+                    s = self.scrollOffset(self.intf),
+                    bm = self.style.gridBorderCollapse === 'collapse' ? 1 : 2,
+                    borderWidth = (self.style.cellBorderWidth * bm),
+                    cell = self.getVisibleCellByIndex(self.input.editCell.columnIndex, self.input.editCell.rowIndex)
+                        || {x: -100, y: -100, height: 0, width: 0};
+                if (self.mobile) {
+                    self.input.style.left = '0';
+                    self.input.style.top = (self.height - self.style.mobileEditInputHeight) - borderWidth - 1 + 'px';
+                    self.input.style.height = self.style.mobileEditInputHeight + 'px';
+                    self.input.style.width = self.width - borderWidth - 1 + 'px';
+                    return;
+                }
+                self.input.style.left = pos.left + cell.x + self.canvasOffsetLeft - s.left + 'px';
+                self.input.style.top = pos.top + cell.y - self.style.cellBorderWidth + self.canvasOffsetTop - s.top + 'px';
+                self.input.style.height = cell.height - borderWidth + 'px';
+                self.input.style.width = cell.width - self.style.cellPaddingLeft + 'px';
+                self.clipElement(self.input);
+            }
+        };
+        self.position = function (e, ignoreScrollOffset) {
+            var x = 0, y = 0, s = e, h, w;
+            while (e.offsetParent && e.nodeName !== 'CANVAS-DATAGRID') {
+                x += e.offsetLeft;
+                y += e.offsetTop;
+                h = e.offsetHeight;
+                w = e.offsetWidth;
+                e = e.offsetParent;
+            }
+            if (ignoreScrollOffset) {
+                return {left: x, top: y, height: h, width: w};
+            }
+            e = s;
+            s = self.scrollOffset(e);
+            return { left: x + s.left, top: y + s.top, height: h, width: w };
+        };
+        self.getLayerPos = function (e) {
+            var rect = self.canvas.getBoundingClientRect(),
+                pos = {
+                    x: e.clientX - rect.left,
+                    y: e.clientY - rect.top
+                };
+            if (self.isChildGrid) {
+                pos.x -= self.canvasOffsetLeft;
+                pos.y -= self.canvasOffsetTop;
+            }
+            return {
+                x: pos.x,
+                y: pos.y,
+                rect: rect
+            };
+        };
+        /**
+         * Ends editing, optionally aborting the edit.
+         * @memberof canvasDatagrid
+         * @name endEdit
+         * @method
+         * @param {boolean} abort When true, abort the edit.
+         */
+        self.endEdit = function (abort) {
+            var cell = self.input.editCell,
+                y = cell.rowIndex;
+            function abortEdit() {
+                abort = true;
+            }
+            if (self.dispatchEvent('beforeendedit', {
+                    cell: cell,
+                    newValue: self.input.value,
+                    oldValue: cell.value,
+                    abort: abortEdit,
+                    input: self.input
+                })) { return false; }
+            if (self.input.value !== cell.value && !abort) {
+                self.changes[y] = self.changes[y] || {};
+                self.changes[y][cell.header.name] = self.input.value;
+                if (!cell.data) {
+                    self.data[cell.rowIndex] = {};
+                    cell.data = self.data[cell.rowIndex];
+                }
+                cell.data[cell.header.name] = self.input.value;
+                if (y === self.data.length) {
+                    if (self.dispatchEvent('newrow', {
+                            value: self.input.value,
+                            defaultValue: cell.value,
+                            aborted: abort,
+                            cell: cell,
+                            input: self.input
+                        })) { return false; }
+                    self.addRow(cell.data);
+                    self.createNewRowData();
+                }
+                self.draw(true);
+            }
+            self.parentDOMNode.removeChild(self.input);
+            self.intf.focus();
+            self.dispatchEvent('endedit', {
+                cell: cell,
+                value: self.input.value,
+                aborted: abort,
+                input: self.input
+            });
+            self.input = undefined;
+            return true;
+        };
+        /**
+         * Begins editing at cell x, row y.
+         * @memberof canvasDatagrid
+         * @name beginEditAt
+         * @method
+         * @param {number} x The column index of the cell to edit.
+         * @param {number} y The row index of the cell to edit.
+         */
+        self.beginEditAt = function (x, y) {
+            if (!self.attributes.editable) { return; }
+            if (self.input) {
+                self.endEdit();
+            }
+            var cell = self.getVisibleCellByIndex(x, y),
+                s = self.getSchema(),
+                adjacentCells,
+                enumItems,
+                enu,
+                option,
+                valueInEnum;
+            if (!(cell && cell.header)) { return; }
+            //HACK for IE10, does not like literal enum
+            enu = cell.header['enum'];
+            if (self.dispatchEvent('beforebeginedit', {cell: cell})) { return false; }
+            self.scrollIntoView(x, y);
+            self.setActiveCell(x, y);
+            adjacentCells = self.getAdjacentCells();
+            if (enu) {
+                self.input = document.createElement('select');
+            } else {
+                self.input = document.createElement(self.attributes.multiLine
+                    ? 'textarea' : 'input');
+            }
+            cell = self.getVisibleCellByIndex(x, y);
+            //HACK on mobile devices sometimes edit can begin without the cell being in view, I don't know how.
+            if (!cell) { return; }
+            if (enu) {
+                // add enums
+                if (typeof enu === 'function') {
+                    enumItems = enu.apply(self.intf, [{cell: cell}]);
+                } else if (Array.isArray(enu)) {
+                    enumItems = enu;
+                }
+                enumItems.forEach(function (e) {
+                    var i = document.createElement('option'),
+                        val,
+                        title;
+                    if (Array.isArray(e)) {
+                        val = e[0];
+                        title = e[1];
+                    } else {
+                        val = e;
+                        title = e;
+                    }
+                    if (val === cell.value) { valueInEnum = true; }
+                    i.value = val;
+                    i.innerHTML = title;
+                    self.input.appendChild(i);
+                });
+                if (!valueInEnum) {
+                    option = document.createElement('option');
+                    option.value = cell.value;
+                    option.innerHTML = cell.value;
+                    self.input.appendChild(option);
+                }
+                self.input.addEventListener('change', function () {
+                    self.endEdit();
+                    self.draw(true);
+                });
+            }
+            self.parentDOMNode.appendChild(self.input);
+            self.createInlineStyle(self.input, self.mobile ? 'canvas-datagrid-edit-mobile-input' : 'canvas-datagrid-edit-input');
+            self.input.style.position = 'absolute';
+            self.input.editCell = cell;
+            self.resizeEditInput();
+            self.input.style.zIndex = self.style.editCellZIndex;
+            self.input.style.fontSize = (parseInt(self.style.editCellFontSize, 10) * self.scale) + 'px';
+            self.input.value = [null, undefined].indexOf(cell.value) !== -1 ? '' : cell.value;
+            self.input.focus();
+            self.input.addEventListener('click', self.stopPropagation);
+            self.input.addEventListener('dblclick', self.stopPropagation);
+            self.input.addEventListener('mouseup', self.stopPropagation);
+            self.input.addEventListener('mousedown', self.stopPropagation);
+            self.input.addEventListener('keydown', function (e) {
+                var nx = cell.columnIndex,
+                    ny = cell.rowIndex;
+                // esc
+                if (e.keyCode === 27) {
+                    self.endEdit(true);
+                    self.draw(true);
+                // enter
+                } else if (e.keyCode === 13
+                        && (!self.attributes.multiLine
+                            || (self.attributes.multiLine && e.shiftKey))) {
+                    self.endEdit();
+                    self.draw(true);
+                } else if (e.keyCode === 9) {
+                    e.preventDefault();
+                    if (!self.endEdit()) {
+                        return;
+                    }
+                    if (e.shiftKey) {
+                        nx = adjacentCells.left;
+                    } else {
+                        nx = adjacentCells.right;
+                    }
+                    if (adjacentCells.left === x && e.shiftKey) {
+                        nx = adjacentCells.last;
+                        ny -= 1;
+                    }
+                    if (adjacentCells.right === x && !e.shiftKey) {
+                        nx = adjacentCells.first;
+                        ny += 1;
+                    }
+                    if (ny < 0) {
+                        ny = self.data.length - 1;
+                    }
+                    if (ny > self.data.length - 1) {
+                        ny = 0;
+                    }
+                    self.scrollIntoView(nx, ny);
+                    self.beginEditAt(nx, ny);
+                }
+            });
+            self.dispatchEvent('beginedit', {cell: cell, input: self.input});
+        };
+        self.createInlineStyle = function (el, className) {
+            var css = {
+                'canvas-datagrid-context-menu-filter-input': {
+                    height: '19px',
+                    verticalAlign: 'bottom',
+                    marginLeft: '2px',
+                    padding: '0',
+                    background: self.style.contextFilterInputBackground,
+                    color: self.style.contextFilterInputColor,
+                    border: self.style.contextFilterInputBorder,
+                    borderRadius: self.style.contextFilterInputBorderRadius,
+                    lineHeight: 'normal',
+                    fontWeight: 'normal',
+                    fontFamily: self.style.contextFilterInputFontFamily,
+                    fontSize: self.style.contextFilterInputFontSize
+                },
+                'canvas-datagrid-context-menu-filter-button': {
+                    height: '19px',
+                    verticalAlign: 'bottom',
+                    marginLeft: '2px',
+                    padding: '0',
+                    background: self.style.contextMenuBackground,
+                    color: self.style.contextMenuColor,
+                    border: self.style.contextFilterButtonBorder,
+                    borderRadius: self.style.contextFilterButtonBorderRadius,
+                    lineHeight: 'normal',
+                    fontWeight: 'normal',
+                    fontFamily: self.style.contextMenuFilterButtonFontFamily,
+                    fontSize: self.style.contextMenuFilterButtonFontSize
+                },
+                'canvas-datagrid-context-child-arrow': {
+                    cssFloat: 'right',
+                    color: self.style.childContextMenuArrowColor,
+                    fontSize: self.style.contextMenuChildArrowFontSize,
+                    fontFamily: self.style.contextMenuFontFamily,
+                    verticalAlign: 'middle'
+                },
+                'canvas-datagrid-autocomplete': {
+                    fontFamily: self.style.contextMenuFontFamily,
+                    fontSize: self.style.contextMenuFontSize,
+                    background: self.style.contextMenuBackground,
+                    color: self.style.contextMenuColor,
+                    border: self.style.contextMenuBorder,
+                    padding: self.style.contextMenuPadding,
+                    borderRadius: self.style.contextMenuBorderRadius,
+                    opacity: self.style.contextMenuOpacity,
+                    position: 'absolute',
+                    zIndex: 9999,
+                    overflow: 'hidden'
+                },
+                'canvas-datagrid-autocomplete-item': {
+                    background: self.style.contextMenuBackground,
+                    color: self.style.contextMenuColor
+                },
+                'canvas-datagrid-autocomplete-item:hover': {
+                    background: self.style.contextMenuHoverBackground,
+                    color: self.style.contextMenuHoverColor
+                },
+                'canvas-datagrid-canvas': {
+                    position: 'absolute',
+                    zIndex: '-1'
+                },
+                'canvas-datagrid': {
+                    display: 'block'
+                },
+                'canvas-datagrid-control-input': {
+                    position: 'fixed',
+                    top: '-5px',
+                    left: '-5px',
+                    border: 'none',
+                    opacity: '0',
+                    cursor: 'pointer',
+                    width: '1px',
+                    height: '1px',
+                    lineHeight: 'normal',
+                    fontWeight: 'normal',
+                    fontFamily: self.style.contextMenuFontFamily,
+                    fontSize: self.style.contextMenuFontSize
+                },
+                'canvas-datagrid-edit-mobile-input': {
+                    boxSizing: 'content-box',
+                    outline: 'none',
+                    margin: '0',
+                    padding: '0 0 0 0',
+                    lineHeight: 'normal',
+                    fontWeight: 'normal',
+                    fontFamily: self.style.mobileEditFontFamily,
+                    fontSize: self.style.mobileEditFontSize,
+                    border: self.style.editCellBorder,
+                    color: self.style.editCellColor,
+                    background: self.style.editCellBackgroundColor,
+                    appearance: 'none',
+                    webkitAppearance: 'none',
+                    mozAppearance: 'none',
+                    borderRadius: '0'
+                },
+                'canvas-datagrid-edit-input': {
+                    boxSizing: 'content-box',
+                    outline: 'none',
+                    margin: '0',
+                    padding: '0 0 0 ' + self.style.editCellPaddingLeft + 'px',
+                    lineHeight: 'normal',
+                    fontWeight: 'normal',
+                    fontFamily: self.style.editCellFontFamily,
+                    fontSize: self.style.editCellFontSize,
+                    boxShadow: self.style.editCellBoxShadow,
+                    border: self.style.editCellBorder,
+                    color: self.style.editCellColor,
+                    background: self.style.editCellBackgroundColor,
+                    appearance: 'none',
+                    webkitAppearance: 'none',
+                    mozAppearance: 'none',
+                    borderRadius: '0'
+                },
+                'canvas-datagrid-context-menu-item-mobile': {
+                    lineHeight: 'normal',
+                    fontWeight: 'normal',
+                    fontFamily: self.style.contextMenuFontFamily,
+                    fontSize: self.style.contextMenuFontSize,
+                    color: 'inherit',
+                    background: 'inherit',
+                    margin: self.style.contextMenuItemMargin,
+                    borderRadius: self.style.contextMenuItemBorderRadius,
+                    verticalAlign: 'middle'
+                },
+                'canvas-datagrid-context-menu-item': {
+                    lineHeight: 'normal',
+                    fontWeight: 'normal',
+                    fontFamily: self.style.contextMenuFontFamily,
+                    fontSize: self.style.contextMenuFontSize,
+                    color: 'inherit',
+                    background: 'inherit',
+                    margin: self.style.contextMenuItemMargin,
+                    borderRadius: self.style.contextMenuItemBorderRadius,
+                    verticalAlign: 'middle'
+                },
+                'canvas-datagrid-context-menu-item:hover': {
+                    background: self.style.contextMenuHoverBackground,
+                    color: self.style.contextMenuHoverColor
+                },
+                'canvas-datagrid-context-menu-label': {
+                    margin: self.style.contextMenuLabelMargin,
+                    display: self.style.contextMenuLabelDisplay,
+                    minWidth: self.style.contextMenuLabelMinWidth,
+                    maxWidth: self.style.contextMenuLabelMaxWidth
+                },
+                'canvas-datagrid-context-menu-mobile': {
+                    lineHeight: 'normal',
+                    fontWeight: 'normal',
+                    fontFamily: self.style.contextMenuFontFamily,
+                    fontSize: self.style.contextMenuFontSize,
+                    background: self.style.contextMenuBackground,
+                    color: self.style.contextMenuColor,
+                    border: self.style.contextMenuBorder,
+                    padding: self.style.contextMenuPadding,
+                    borderRadius: self.style.contextMenuBorderRadius,
+                    opacity: self.style.contextMenuOpacity,
+                    overflow: 'hidden',
+                    whiteSpace: 'nowrap'
+                },
+                'canvas-datagrid-context-menu': {
+                    lineHeight: 'normal',
+                    fontWeight: 'normal',
+                    fontFamily: self.style.contextMenuFontFamily,
+                    fontSize: self.style.contextMenuFontSize,
+                    background: self.style.contextMenuBackground,
+                    color: self.style.contextMenuColor,
+                    border: self.style.contextMenuBorder,
+                    padding: self.style.contextMenuPadding,
+                    borderRadius: self.style.contextMenuBorderRadius,
+                    opacity: self.style.contextMenuOpacity,
+                    overflow: 'hidden',
+                    whiteSpace: 'nowrap',
+                    cursor: self.style.contextMenuCursor
+                },
+                'canvas-datagrid-invalid-search-regExp': {
+                    background: self.style.contextMenuFilterInvalidExpresion
+                }
+            };
+            if (css[className]) {
+                Object.keys(css[className]).map(function (prop) {
+                    el.style[prop] = css[className][prop];
+                });
+            }
+            return;
+        };
+        self.appendTo = function (e) {
+            self.parentNode = e;
+            self.setDom();
+        };
+        self.setDom = function () {
+            if (self.isChildGrid) {
+                self.parentGrid = self.parentNode.parentGrid;
+                self.ctx = self.parentGrid.context;
+                self.canvas = self.parentGrid.canvas;
+                self.controlInput = self.parentGrid.controlInput;
+                self.eventParent = self.canvas;
+            } else {
+                self.controlInput = self.controlInput || document.createElement('input');
+                self.controlInput.onblur = self.intf.blur;
+                self.createInlineStyle(self.controlInput, 'canvas-datagrid-control-input');
+                self.isChildGrid = false;
+                self.parentDOMNode = self.parentNode;
+                self.parentIsCanvas = /^canvas$/i.test(self.parentDOMNode.tagName);
+                if (self.parentIsCanvas) {
+                    self.canvas = self.parentDOMNode;
+                    self.parentDOMNode.appendChild(self.controlInput);
+                } else {
+                    self.canvas = document.createElement('canvas');
+                    self.parentDOMNode.appendChild(self.canvas);
+                    self.parentDOMNode.appendChild(self.controlInput);
+                }
+                self.createInlineStyle(self.canvas, 'canvas-datagrid');
+                self.ctx = self.canvas.getContext('2d');
+                self.ctx.textBaseline = 'alphabetic';
+                self.eventParent = self.canvas;
+            }
+            self.parentNodeStyle = self.canvas.style;
+            self.controlInput.setAttribute('readonly', true);
+            self.controlInput.addEventListener('blur', function (e) {
+                if (e.target !== self.canvas) {
+                    self.hasFocus = false;
+                }
+            });
+            self.eventParent.addEventListener('scroll', self.resize, false);
+            self.eventParent.addEventListener('touchstart', self.touchstart, false);
+            self.eventParent.addEventListener('mouseup', self.mouseup, false);
+            self.eventParent.addEventListener('mousedown', self.mousedown, false);
+            self.eventParent.addEventListener('dblclick', self.dblclick, false);
+            self.eventParent.addEventListener('click', self.click, false);
+            self.eventParent.addEventListener('mousemove', self.mousemove);
+            self.eventParent.addEventListener('wheel', self.scrollWheel, false);
+            self.canvas.addEventListener('contextmenu', self.contextmenuEvent, false);
+            self.controlInput.addEventListener('copy', self.copy);
+            self.controlInput.addEventListener('cut', self.cut);
+            self.controlInput.addEventListener('paste', self.paste);
+            self.controlInput.addEventListener('keypress', self.keypress, false);
+            self.controlInput.addEventListener('keyup', self.keyup, false);
+            self.controlInput.addEventListener('keydown', self.keydown, false);
+            window.addEventListener('resize', self.resize);
+        };
+    };
+}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ }),
+/* 9 */
 /*!******************************!*\
   !*** ./lib/publicMethods.js ***!
   \******************************/
-/*! no static exports found */
+/*! dynamic exports provided */
+/*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true*/
@@ -7016,396 +7369,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 
-/***/ }),
-
-/***/ "./lib/touch.js":
-/*!**********************!*\
-  !*** ./lib/touch.js ***!
-  \**********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser: true, unparam: true, todo: true, plusplus: true*/
-/*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
-    'use strict';
-    return function (self) {
-        var touchTimerMs = 50,
-            touchScrollTimeout;
-        self.scrollAnimation = {};
-        self.touchDelta = {};
-        self.touchAnimateTo = {};
-        self.animationFrames = 0;
-        self.getTouchPos = function (e, touchIndex) {
-            var t = touchIndex ? e.touches[touchIndex] : e.touches[0],
-                rect = self.canvas.getBoundingClientRect(),
-                pos;
-            if (!t) { return; }
-            pos = {
-                x: t.clientX - rect.left,
-                y: t.clientY - rect.top
-            };
-            if (self.isChildGrid) {
-                pos.x -= self.canvasOffsetLeft;
-                pos.y -= self.canvasOffsetTop;
-            }
-            return {
-                x: pos.x,
-                y: pos.y,
-                rect: rect
-            };
-        };
-        // shamelessly stolen from from https://gist.github.com/gre/1650294
-        self.easingFunctions = {
-            linear: function (t) { return t; },
-            easeInQuad: function (t) { return t * t; },
-            easeOutQuad: function (t) { return t * (2 - t); },
-            easeInOutQuad: function (t) { return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t; },
-            easeInCubic: function (t) { return t * t * t; },
-            easeOutCubic: function (t) { return (--t) * t * t + 1; },
-            easeInOutCubic: function (t) { return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1; },
-            easeInQuart: function (t) { return t * t * t * t; },
-            easeOutQuart: function (t) { return 1 - (--t) * t * t * t; },
-            easeInOutQuart: function (t) { return t < 0.5 ? 8 * t  * t  * t * t : 1 - 8 * (--t) * t * t * t; },
-            easeInQuint: function (t) { return t * t * t * t * t; },
-            easeOutQuint: function (t) { return 1 + (--t) * t *  t * t * t; },
-            easeInOutQuint: function (t) { return t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * (--t) * t * t * t * t; }
-        };
-        self.easing = function (t, b, c, d) {
-            return c * self.easingFunctions[self.attributes.touchEasingMethod](t / d) + b;
-        };
-        self.calculatePPSTimed = function () {
-            self.xPPST = -((self.touchDelta.x - self.touchSigmaTimed.x) / (self.touchDelta.t - self.touchSigmaTimed.t));
-            self.yPPST = -((self.touchDelta.y - self.touchSigmaTimed.y) / (self.touchDelta.t - self.touchSigmaTimed.t));
-            self.touchSigmaTimed = {
-                x: self.touchDelta.x,
-                y: self.touchDelta.y,
-                t: performance.now()
-            };
-        };
-        self.calculatePPS = function () {
-            self.xPPS = -((self.touchDelta.x - self.touchSigma.x) / (self.touchDelta.t - self.touchSigma.t));
-            self.yPPS = -((self.touchDelta.y - self.touchSigma.y) / (self.touchDelta.t - self.touchSigma.t));
-            self.touchSigma = {
-                x: self.touchDelta.x,
-                y: self.touchDelta.y,
-                t: performance.now()
-            };
-        };
-        self.touchEndAnimation = function () {
-            if (!self.canvas || !self.scrollBox.scrollTo) { return requestAnimationFrame(self.touchEndAnimation); }
-            var n = performance.now(),
-                d = self.attributes.touchReleaseAnimationDurationMs,
-                t;
-            t = n - self.touchDelta.t;
-            self.animationFrames += 1;
-            self.scrollAnimation.x = self.easing(t, self.touchDelta.scrollLeft, self.touchAnimateTo.x, d);
-            self.scrollAnimation.y = self.easing(t, self.touchDelta.scrollTop, self.touchAnimateTo.y, d);
-            if (t > d || (self.scrollAnimation.y === self.scrollBox.scrollTop
-                    && self.scrollAnimation.x === self.scrollBox.scrollLeft) || self.stopAnimation) {
-                return;
-            }
-            self.scrollBox.scrollTo(self.scrollAnimation.x, self.scrollAnimation.y);
-            requestAnimationFrame(self.touchEndAnimation);
-        };
-        self.touchEditCell = function (cell) {
-            self.beginEditAt(cell.columnIndex, cell.rowIndex);
-        };
-        self.touchCell = function (e) {
-            return function () {
-                clearInterval(self.calculatePPSTimer);
-                var i, pos = self.getTouchPos(e);
-                if (Math.abs(self.touchDelta.x) + Math.abs(self.touchDelta.y) < self.attributes.touchDeadZone) {
-                    i = self.getCellAt(pos.x, pos.y);
-                    if (!i) { return; }
-                    if (self.touchingCell && self.touchingCell.rowIndex === i.rowIndex
-                            && self.touchingCell.columnIndex === i.columnIndex) {
-                        self.touchEditCell(i);
-                        return;
-                    }
-                    if (self.input && self.input.editCell) {
-                        self.endEdit();
-                    }
-                    self.touchingCell = i;
-                    self.selectArea({
-                        top: i.rowIndex,
-                        bottom: i.rowIndex,
-                        left: i.columnIndex,
-                        right: i.columnIndex
-                    });
-                    self.draw(true);
-                }
-            };
-        };
-        self.touchstart = function (e) {
-            if (e.changedTouches[0]) {
-                self.touchStart = self.getTouchPos(e);
-                self.startingCell = self.getCellAt(self.touchStart.x, self.touchStart.y, true);
-            }
-            if (self.dispatchEvent('touchstart', {NativeEvent: e, cell: self.startingCell})) { return; }
-            self.disposeContextMenu();
-            clearInterval(self.calculatePPSTimer);
-            clearTimeout(self.touchContextTimeout);
-            self.touchStartEvent = e;
-            self.stopAnimation = true;
-            self.animationFrames = 0;
-            self.stopPropagation(e);
-            e.preventDefault();
-            if (e.touches.length === 1 && e.changedTouches[0] && !self.zoomAltered) {
-                self.touchLength = 1;
-                self.touchStart = self.touchStart || self.touchStart1;
-                self.touchScrollStart = {
-                    x: self.scrollBox.scrollLeft,
-                    y: self.scrollBox.scrollTop,
-                    t: performance.now()
-                };
-                self.touchDelta = {
-                    x: 0,
-                    y: 0,
-                    scrollLeft: self.scrollBox.scrollLeft,
-                    scrollTop: self.scrollBox.scrollTop,
-                    t: self.touchScrollStart.t
-                };
-                self.touchSigma = {
-                    x: self.touchDelta.x,
-                    y: self.touchDelta.y,
-                    t: self.touchDelta.t
-                };
-                self.touchSigmaTimed = {
-                    x: self.touchDelta.x,
-                    y: self.touchDelta.y,
-                    t: self.touchDelta.t
-                };
-                self.touchContextTimeout = setTimeout(function () {
-                    self.contextmenuEvent(e, self.touchStart);
-                }, self.attributes.touchContextMenuTimeMs);
-                self.calculatePPSTimer = setInterval(self.calculatePPSTimed, touchTimerMs);
-                if (self.startingCell && (self.startingCell.isGrid || ['tree', 'inherit'].indexOf(self.startingCell.context) !== -1)) {
-                    self.hasFocus = false;
-                    return;
-                }
-                self.hasFocus = true;
-                if (self.startingCell.isHeader) {
-                    if (self.startingCell.isRowHeader) {
-                        self.selectArea({
-                            top: self.startingCell.rowIndex,
-                            bottom: self.startingCell.rowIndex,
-                            left: 0,
-                            right: self.getVisibleSchema().length - 1,
-                        });
-                        self.draw(true);
-                    } else if (self.startingCell.isColumnHeader) {
-                        if (self.attributes.columnHeaderClickBehavior === 'sort') {
-                            if (self.orderBy === self.startingCell.header.name) {
-                                self.orderDirection = self.orderDirection === 'asc' ? 'desc' : 'asc';
-                            } else {
-                                self.orderDirection = 'asc';
-                            }
-                            self.order(self.startingCell.header.name, self.orderDirection);
-                        }
-                        if (self.attributes.columnHeaderClickBehavior === 'select') {
-                            self.selectArea({
-                                top: 0,
-                                bottom: self.data.length - 1,
-                                left: self.startingCell.columnIndex,
-                                right: self.startingCell.columnIndex,
-                            });
-                            self.draw(true);
-                        }
-                    }
-                    self.touchEndEvents(e);
-                    return;
-                }
-            }
-            if (self.zoomAltered) { return; }
-            document.body.addEventListener('touchmove', self.touchmove, {passive: false});
-            document.body.addEventListener('touchend', self.touchend, false);
-            document.body.addEventListener('touchcancel', self.touchcancel, false);
-            self.draw(true);
-        };
-        self.touchSelect = function (cell, handleType) {
-            if (cell.rowIndex === undefined || cell.columnIndex === undefined) { return; }
-            self.touchSelecting = true;
-            var bounds = self.getSelectionBounds();
-            if (handleType === 'selection-handle-bl'
-                    && cell.rowIndex >= bounds.top
-                    && cell.columnIndex <= bounds.right) {
-                bounds.bottom = cell.rowIndex;
-                bounds.left = cell.columnIndex;
-            } else if (handleType === 'selection-handle-tl'
-                    && cell.rowIndex <= bounds.bottom
-                    && cell.columnIndex <= bounds.right) {
-                bounds.top = cell.rowIndex;
-                bounds.left = cell.columnIndex;
-            } else if (handleType === 'selection-handle-tr'
-                    && cell.rowIndex <= bounds.bottom
-                    && cell.columnIndex >= bounds.left) {
-                bounds.top = cell.rowIndex;
-                bounds.right = cell.columnIndex;
-            } else if (handleType === 'selection-handle-br'
-                    && cell.rowIndex >= bounds.top
-                    && cell.columnIndex >= bounds.left) {
-                bounds.bottom = cell.rowIndex;
-                bounds.right = cell.columnIndex;
-            }
-            if (self.attributes.selectionMode === 'row' || cell.rowIndex === -1) {
-                bounds.left = 0;
-                bounds.right = self.getSchema().length - 1;
-            } else {
-                bounds.left = Math.max(0, bounds.left);
-            }
-            self.selectArea(bounds);
-            self.draw(true);
-        };
-        self.touchmove = function (e) {
-            var ch, rw, rScrollZone, lScrollZone, bScrollZone, tScrollZone, sbw, t1, t2;
-            if (self.dispatchEvent('beforetouchmove', {NativeEvent: e})) { return; }
-            clearTimeout(touchScrollTimeout);
-            if (e.changedTouches[0]) {
-                self.touchPosition = self.getTouchPos(e);
-            }
-            if (e.changedTouches[1]) {
-                self.touchPosition1 = self.getTouchPos(e, 1);
-            }
-            if (Math.abs(self.touchDelta.x) + Math.abs(self.touchDelta.y) > self.attributes.touchDeadZone) {
-                clearTimeout(self.touchContextTimeout);
-            }
-            if (e.touches.length === 2 && self.touchPosition && self.touchPosition1) {
-                t1 = self.touchPosition.y;
-                t2 = self.touchPosition1.y;
-                if (!self.zoomDeltaStart) {
-                    self.zoomDeltaStart = Math.abs(t1 - t2);
-                    self.startScale = self.scale;
-                }
-                self.touchLength = 2;
-                self.scaleDelta = self.zoomDeltaStart - Math.abs(t1 - t2);
-                self.scale = self.startScale - (self.scaleDelta * self.attributes.touchZoomSensitivity);
-                self.scale = Math.min(Math.max(self.scale, self.attributes.touchZoomMin), self.attributes.touchZoomMax);
-                self.zoomAltered = true;
-                self.resize(true);
-                self.resizeChildGrids();
-                return;
-            }
-            if (self.zoomAltered) { return; }
-            self.touchLength = 1;
-            self.touchPosition = self.touchPosition || self.touchPosition1;
-            ch = self.getColumnHeaderCellHeight();
-            rw = self.getRowHeaderCellWidth();
-            rScrollZone = self.width - self.style.scrollBarWidth - self.touchPosition.x < self.attributes.selectionScrollZone;
-            lScrollZone = self.touchPosition.x - rw < self.attributes.selectionScrollZone;
-            bScrollZone = self.height - self.style.scrollBarWidth - self.touchPosition.y < self.attributes.selectionScrollZone;
-            tScrollZone = self.touchPosition.y - ch < self.attributes.selectionScrollZone;
-            sbw = self.style.scrollBarWidth;
-            function touchScroll() {
-                var x = self.scrollBox.scrollLeft,
-                    y = self.scrollBox.scrollTop;
-                x += (rScrollZone ? self.attributes.selectionScrollIncrement : 0);
-                y += (bScrollZone ? self.attributes.selectionScrollIncrement : 0);
-                y -= (tScrollZone ? self.attributes.selectionScrollIncrement : 0);
-                x -= (lScrollZone ? self.attributes.selectionScrollIncrement : 0);
-                self.scrollBox.scrollTo(x, y);
-                touchScrollTimeout = setTimeout(touchScroll, self.attributes.scrollRepeatRate);
-            }
-            e.stopPropagation();
-            self.touchDelta = {
-                x: self.touchPosition.x - self.touchStart.x,
-                y: self.touchPosition.y - self.touchStart.y,
-                scrollLeft: self.scrollBox.scrollLeft,
-                scrollTop: self.scrollBox.scrollTop,
-                t: performance.now()
-            };
-            self.currentCell = self.getCellAt(self.touchPosition.x, self.touchPosition.y);
-            self.dispatchEvent('touchmove', {NativeEvent: e, cell: self.currentCell});
-            self.calculatePPS();
-            self.touchDuration = performance.now() - self.touchScrollStart.t;
-            self.stopAnimation = true;
-            self.animationFrames = 0;
-            if (self.touchSelecting && (rScrollZone || lScrollZone || tScrollZone || bScrollZone)) {
-                touchScroll();
-            }
-            if (/vertical-scroll-/.test(self.startingCell.style)) {
-                self.scrollBox.scrollTop = self.scrollBox.scrollHeight
-                    * ((self.touchPosition.y - ch - sbw) / (self.scrollBox.height - sbw - ch));
-                return;
-            }
-            if (/horizontal-scroll-/.test(self.startingCell.style)) {
-                self.scrollBox.scrollLeft = self.scrollBox.scrollWidth
-                    * ((self.touchPosition.x - rw - sbw) / (self.scrollBox.width - sbw - rw));
-                return;
-            }
-            if (/selection-handle-/.test(self.startingCell.style)) {
-                self.touchSelect(self.currentCell, self.startingCell.style);
-                return;
-            }
-            self.scrollBox.scrollTo(self.touchScrollStart.x - self.touchDelta.x,
-                self.touchScrollStart.y - self.touchDelta.y);
-            self.draw(true);
-        };
-        self.touchEndEvents = function (e) {
-            self.zoomDeltaStart = undefined;
-            self.touchSelecting = false;
-            clearInterval(self.touchScrollTimeout);
-            clearInterval(self.touchContextTimeout);
-            clearInterval(self.calculatePPSTimer);
-            e.stopPropagation();
-            document.body.removeEventListener('touchmove', self.touchmove, {passive: false});
-            document.body.removeEventListener('touchend', self.touchend, false);
-            document.body.removeEventListener('touchcancel', self.touchcancel, false);
-        };
-        self.touchend = function (e) {
-            if (self.dispatchEvent('touchend', {NativeEvent: e, cell: self.currentCell})) { return; }
-            self.zoomDeltaStart = undefined;
-            if (e.changedTouches[0]) {
-                self.touchPosition = undefined;
-            }
-            if (e.changedTouches[1]) {
-                self.touchPosition1 = undefined;
-            }
-            if (self.zoomAltered) {
-                if (e.touches.length === 0) {
-                    self.zoomAltered = false;
-                }
-                return;
-            }
-            var dz = Math.abs(self.touchDelta.x) + Math.abs(self.touchDelta.y) < self.attributes.touchDeadZone;
-            if (isNaN(self.xPPS)) {
-                self.xPPS = 0;
-            }
-            if (isNaN(self.yPPS)) {
-                self.yPPS = 0;
-            }
-            if (isNaN(self.xPPST)) {
-                self.xPPST = 0;
-            }
-            if (isNaN(self.yPPST)) {
-                self.yPPST = 0;
-            }
-            self.touchAnimateTo.x = self.xPPS * self.attributes.touchReleaseAcceleration;
-            self.touchAnimateTo.y = self.yPPS * self.attributes.touchReleaseAcceleration;
-            self.calculatePPSTimed();
-            if (dz && !self.contextMenu) {
-                self.touchCell(self.touchStartEvent)();
-            } else if (self.animationFrames === 0
-                    && (Math.abs(self.xPPST) > self.attributes.scrollAnimationPPSThreshold
-                        || Math.abs(self.yPPST) > self.attributes.scrollAnimationPPSThreshold)
-                    && !/-scroll-/.test(self.startingCell.style)
-                    && !dz) {
-                self.stopAnimation = false;
-                self.touchEndAnimation();
-            }
-            self.touchEndEvents(e);
-        };
-        self.touchcancel = function (e) {
-            if (self.dispatchEvent('touchcancel', {NativeEvent: e, cell: self.currentCell})) { return; }
-            self.touchEndEvents(e);
-        };
-    };
-}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
-
 /***/ })
-
-/******/ });
+/******/ ]);
 });
 //# sourceMappingURL=canvas-datagrid.debug.map
