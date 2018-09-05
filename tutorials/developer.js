@@ -29,4 +29,6 @@ function g() {
 
     grid.data = data; 
 
+    console.log(grid.getVisibleCellByIndex(0,0));
+
 }

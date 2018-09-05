@@ -4897,6 +4897,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
              * @param {number} el The element to append the grid to.
              */
             self.intf.appendTo = self.appendTo;
+            self.intf.getVisibleCellByIndex = self.getVisibleCellByIndex;
             self.intf.filters = self.filters;
             self.intf.sorters = self.sorters;
             self.intf.autosize = self.autosize;
