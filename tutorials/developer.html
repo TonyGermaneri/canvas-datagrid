@@ -2,29 +2,18 @@
 <html>
 <head>
   <script type="text/javascript" src="../dist/canvas-datagrid.debug.js"></script>
+  <script type="text/javascript" src="developer.js"></script>
   <style type="text/css">
-    #grid { height: 300px; } #grid canvas, #grid canvas-datagrid { --cdg-height: 300px; }
+    .myGridStyle { --cdg-height: 600px; }
   </style>
-
-  <script type="text/javascript">
-  window.addEventListener('load', function () {
-      var parentNode = document.getElementById('grid');
-      var grid = document.createElement('canvas-datagrid');
-      parentNode.appendChild(grid);
-      grid.data = [
-          {col1: 'foo', col2: 0, col3: 'a'},
-          {col1: 'bar', col2: 1, col3: 'b'},
-          {col1: 'baz', col2: 2, col3: 'c'}
-      ];
-      grid.columnOrder = [2, 1, 0];
-      grid.addEventListener('reorder', function () {
-        //grid.columnOrder = [1, 2, 0];
-    });
-  });
-</script>
-
 </head>
-<body>
+<body xonload="g();">
+
+<canvas-datagrid class="myGridStyle">[
+    {"col1": "row 1 column 1", "col2": "row 1 column 2", "col3": "row 1 column 3"},
+    {"col1": "row 2 column 1", "col2": "row 2 column 2", "col3": "row 2 column 3"}
+]</canvas-datagrid>
+
   <div id="grid"></div>
 </body>
 </html>
