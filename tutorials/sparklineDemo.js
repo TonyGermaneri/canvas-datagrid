@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         ctx.save();
         gb = ctx.createLinearGradient((cell.x + cell.width) / 2, cell.y, (cell.x + cell.width) / 2, cell.y + cell.height);
-        gb.addColorStop(0, d >= 0 ? '#0C4B73' : '#A1680F');
+        gb.addColorStop(0, '#0C4B73');
         gb.addColorStop(1, (cell.selected || cell.active) ? '#B3C3CC' : '#041724');
         ctx.fillStyle = gb;
         ctx.fillRect(cell.x, cell.y, cell.width, cell.height);
@@ -68,6 +68,14 @@ document.addEventListener('DOMContentLoaded', function () {
             {name: 'col2', width: 300},
             {name: 'col3', width: 300}
         ]
+    });
+    grid.sizes.rows[2] = 200;
+    grid.sizes.columns[1] = 600;
+    grid.sizes.columns[2] = 400;
+    grid.addEventListener('formattext', function (e) {
+        if (e.cell.columnIndex < 1) { return; }
+        e.preventDefault();
+        e.cell.text = { lines: [{value: e.cell.value }] };
     });
     grid.style.height = '100%';
     grid.style.width = '100%';
@@ -132,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function () {
         pollData();
     }
     function pollData() {
-        setTimeout(getData, 1000);
+        setTimeout(getData, 50);
     }
     getData(true);
 });

@@ -48,13 +48,7 @@ With [npm](https://www.npmjs.com/package/canvas-datagrid)
     npm install canvas-datagrid
 
 
-With [bower](https://libraries.io/bower/canvas-datagrid)
-
-    bower install canvas-datagrid
-
-
-Place the single source file `./dist/canvas-datagrid.js` in your web page using
-a script tag that points to the source or use webpack.
+Place the single source file `./dist/canvas-datagrid.js` in your web page using a script tag that points to the source or use webpack.
 
     <script src="dist/canvas-datagrid.js"></script>
 
