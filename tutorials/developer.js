@@ -17,15 +17,15 @@ function getData(r, c, f) {
 function g() {
     'use strict';
     var parentNode = document.body;
-    var grid = document.createElement('canvas-datagrid');
+    var grid = canvasDatagrid();
     grid.attributes.tree = true;
     grid.addEventListener('expandtree', function (e) {
-        e.treeGrid.data = getData(1000,10);
+        e.treeGrid.data = getData(10,10);
     });
     grid.attributes.debug = true;
 
     parentNode.appendChild(grid);
-    var data = getData(100, 300);
+    var data = getData(10, 10);
 
 
     grid.style.width = '100%';

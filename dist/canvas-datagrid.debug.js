@@ -149,6 +149,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             return r;
         }
         component.applyComponentStyle = function (supressChangeAndDrawEvents, intf) {
+            if (!self.isComponent) { return; }
             var cStyle = window.getComputedStyle(intf.tagName === 'CANVAS-DATAGRID' ? intf : intf.canvas, null),
                 defs = {};
             intf.computedStyle = cStyle;
@@ -1717,7 +1718,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.controlInput.onblur = self.intf.blur;
                 self.createInlineStyle(self.controlInput, 'canvas-datagrid-control-input');
                 self.isChildGrid = false;
-                self.parentDOMNode = self.parentNode;
+                self.parentDOMNode = self.parentNode;// this needs to be something else to fix the input
                 self.parentIsCanvas = /^canvas$/i.test(self.parentDOMNode.tagName);
                 if (self.parentIsCanvas) {
                     self.canvas = self.parentDOMNode;
@@ -3334,7 +3335,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         self.parentNodeStyle[dim] = dims[dim] + 'px';
                     } else {
                         self.parentNodeStyle[dim] = self.style[dim];
-                        self.canvas.style[dim] = self.style[dim];
+                        if (self.isComponet) {
+                            self.canvas.style[dim] = self.style[dim];
+                        }
                     }
                 });
             }
@@ -3832,7 +3835,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (document.exitPointerLock) {
                 document.exitPointerLock();
             }
-            document.body.removeEventListener('mousemove', self.scrollGrid, false);
+            document.removeEventListener('mousemove', self.scrollGrid, false);
         };
         self.dragReorder = function (e) {
             var pos, x, y,
@@ -4007,9 +4010,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     };
                     self.canvas.requestPointerLock();
                 }
-                document.body.addEventListener('mousemove', self.scrollGrid, false);
-                document.addEventListener('mouseout',self.stopScrollGrid, false);
-                document.body.addEventListener('mouseup', self.stopScrollGrid, false);
+                document.addEventListener('mousemove', self.scrollGrid, false);
+                document.addEventListener('mouseup', self.stopScrollGrid, false);
                 self.ignoreNextClick = true;
                 return;
             }
@@ -4832,7 +4834,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.reloadStoredValues = function () {
             if (self.attributes.name && self.attributes.saveAppearance) {
-                self.storedSettings = localStorage.getItem(self.storageName + '-' + self.attributes.name);
+                try {
+                    self.storedSettings = localStorage.getItem(self.storageName + '-' + self.attributes.name);
+                } catch (e) {
+                    console.warn("Error loading stored values. " + e.message);
+                    self.storedSettings = undefined;
+                }
                 if (self.storedSettings) {
                     try {
                         self.storedSettings = JSON.parse(self.storedSettings);

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.17/webcomponents-lite.js"></script>
   <script type="text/javascript" src="../dist/canvas-datagrid.debug.js"></script>
   <script type="text/javascript" src="developer.js"></script>
   <style type="text/css">
@@ -10,7 +11,7 @@
       padding: 0;
       margin: 0;
     }
-    .myGridStyle { --cdg-height: 600px; }
+    canvas-datagrid { --cdg-height: 600px; --cdg-width: 700px;}
   </style>
 </head>
 <body onload="g();">
