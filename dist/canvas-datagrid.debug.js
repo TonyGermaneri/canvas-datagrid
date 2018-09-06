@@ -1379,7 +1379,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
                 self.draw(true);
             }
-            self.parentDOMNode.removeChild(self.input);
+            if (self.input.parentNode) {
+                self.input.parentNode.removeChild(self.input);
+            }
             self.intf.focus();
             self.dispatchEvent('endedit', {
                 cell: cell,
@@ -1460,7 +1462,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.draw(true);
                 });
             }
-            self.parentDOMNode.appendChild(self.input);
+            // if the user has not prevented the default action, append to the body
+            if (!self.dispatchEvent('appendeditinput', {cell: cell, input:self.input})) { 
+                document.body.appendChild(self.input);
+            }
             self.createInlineStyle(self.input, self.mobile ? 'canvas-datagrid-edit-mobile-input' : 'canvas-datagrid-edit-input');
             self.input.style.position = 'absolute';
             self.input.editCell = cell;
@@ -1718,7 +1723,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.controlInput.onblur = self.intf.blur;
                 self.createInlineStyle(self.controlInput, 'canvas-datagrid-control-input');
                 self.isChildGrid = false;
-                self.parentDOMNode = self.parentNode;// this needs to be something else to fix the input
+                self.parentDOMNode = self.parentNode;
                 self.parentIsCanvas = /^canvas$/i.test(self.parentDOMNode.tagName);
                 if (self.parentIsCanvas) {
                     self.canvas = self.parentDOMNode;
