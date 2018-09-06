@@ -2595,7 +2595,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                                 cell.formattedValue = self.attributes.filterTextPrefix + val;
                             }
                             self.ctx.font = (self.style[cellStyle + 'FontHeight'] * self.scale) + 'px ' + self.style[cellStyle + 'FontName'];
-                            cell.text = wrapText(cell, ' ');
+                            if (!self.dispatchEvent('formattext', ev)) {
+                                cell.text = wrapText(cell, ' ');
+                            }
                             if (!self.dispatchEvent('rendertext', ev)) {
                                 if (cell.innerHTML || header.type === 'html') {
                                     drawHtml(cell);
