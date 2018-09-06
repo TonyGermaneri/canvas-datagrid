@@ -16,19 +16,25 @@ function getData(r, c, f) {
 
 function g() {
     'use strict';
-    var parentNode = document.getElementById('grid');
+    var parentNode = document.body;
     var grid = document.createElement('canvas-datagrid');
-
+    grid.attributes.tree = true;
+    grid.addEventListener('expandtree', function (e) {
+        e.treeGrid.data = getData(1000,10);
+    });
+    grid.attributes.debug = true;
 
     parentNode.appendChild(grid);
-    var data = getData(10, 10);
+    var data = getData(100, 300);
 
 
-    grid.style.width = '300px';
-    grid.style.height = '300px';
+    grid.style.width = '100%';
+    grid.style.height = '100%';
 
     grid.data = data; 
 
-    console.log(grid.getVisibleCellByIndex(0,0));
+    grid.style.overflowY = 'scroll';
+    grid.style.overflowX = 'scroll';
+
 
 }
