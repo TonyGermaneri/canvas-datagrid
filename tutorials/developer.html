@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.17/webcomponents-lite.js"></script>
   <script type="text/javascript" src="../dist/canvas-datagrid.debug.js"></script>
   <script type="text/javascript" src="developer.js"></script>
   <style type="text/css">
@@ -11,8 +10,20 @@
       padding: 0;
       margin: 0;
     }
+    .myGridStyle {
+      --cdg-width: 100%;
+      --cdg-height: 100%;
+      width: 100%;
+      height: 100%;
+      --cdg-cell-color: red;
+    }
   </style>
 </head>
-<body onload="g();">
+<body>
+<!-- 
+  <canvas-datagrid class="myGridStyle">[
+      {"col1": "row 1 column 1", "col2": "row 1 column 2", "col3": "row 1 column 3"},
+      {"col1": "row 2 column 1", "col2": "row 2 column 2", "col3": "row 2 column 3"}
+  ]</canvas-datagrid> -->
 </body>
 </html>

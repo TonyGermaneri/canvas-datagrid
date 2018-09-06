@@ -149,7 +149,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             return r;
         }
         component.applyComponentStyle = function (supressChangeAndDrawEvents, intf) {
-            if (!self.isComponent) { return; }
+            if (!intf.isComponent) { return; }
             var cStyle = window.getComputedStyle(intf.tagName === 'CANVAS-DATAGRID' ? intf : intf.canvas, null),
                 defs = {};
             intf.computedStyle = cStyle;
@@ -1727,11 +1727,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.parentIsCanvas = /^canvas$/i.test(self.parentDOMNode.tagName);
                 if (self.parentIsCanvas) {
                     self.canvas = self.parentDOMNode;
-                    self.parentDOMNode.appendChild(self.controlInput);
+                    document.body.appendChild(self.controlInput);
                 } else {
                     self.canvas = document.createElement('canvas');
                     self.parentDOMNode.appendChild(self.canvas);
-                    self.parentDOMNode.appendChild(self.controlInput);
+                    document.body.appendChild(self.controlInput);
                 }
                 self.createInlineStyle(self.canvas, 'canvas-datagrid');
                 self.ctx = self.canvas.getContext('2d');
@@ -4944,6 +4944,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.intf.isColumnVisible = self.isColumnVisible;
             self.intf.order = self.order;
             self.intf.draw = self.draw;
+            self.intf.isComponent = self.isComponent;
             self.intf.selectArea = self.selectArea;
             self.intf.clipElement = self.clipElement;
             self.intf.getSchemaFromData = self.getSchemaFromData;
@@ -5086,7 +5087,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (self.args.schema) {
                 self.intf.schema = self.args.schema;
             }
-            if (self.isChildGrid) {
+            if (self.isChildGrid || !self.isComponent) {
                 requestAnimationFrame(function () { self.resize(true); });
             } else {
                 self.resize(true);

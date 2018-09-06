@@ -1,40 +1,15 @@
-/*jslint browser: true*/
-/*globals canvasDatagrid: false*/
-/* this file is for developing in a sandbox on a local machine */
-
-
-function getData(r, c, f) {
-    var data = [];
-    for (var x = 0; x < r; x++) {
-        data[x] = {};
-        for (var y = 0; y < c; y++) {
-            data[x][y] = f ? f(x, y) : x + ", " + y
-        }
-    }
-    return data;
-}
-
-function g() {
-    'use strict';
+document.addEventListener('DOMContentLoaded', function () {
     var parentNode = document.body;
+    // create a new grid
+    //var grid = document.createElement('canvas-datagrid');
     var grid = canvasDatagrid();
-    grid.attributes.tree = true;
-    grid.addEventListener('expandtree', function (e) {
-        e.treeGrid.data = getData(10,10);
-    });
-    grid.attributes.debug = true;
-
-    parentNode.appendChild(grid);
-    var data = getData(10, 10);
-
-
+    grid.className = 'myGridStyle';
+    grid.data = [
+        {col1: 'foo', col2: 0, col3: 'a'},
+        {col1: 'bar', col2: 1, col3: 'b'},
+        {col1: 'baz', col2: 2, col3: 'c'}
+    ];
     grid.style.width = '100%';
     grid.style.height = '100%';
-
-    grid.data = data; 
-
-    grid.style.overflowY = 'scroll';
-    grid.style.overflowX = 'scroll';
-
-
-}
+    parentNode.appendChild(grid);
+});
