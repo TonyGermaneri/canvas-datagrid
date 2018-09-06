@@ -216,6 +216,8 @@
         } else {
             grid = canvasDatagrid(args);
         }
+        grid.style.height = '100%';
+        grid.style.width = '100%';
         args.test.grid = grid;
         return grid;
     }
@@ -328,6 +330,7 @@
                     mousemove(grid.canvas, 45, 37);
                     mousedown(grid.canvas, 45, 37);
                     mouseup(grid.canvas, 45, 37);
+                    mousemove(grid.canvas, 45, 37);
                     setTimeout(function () {
                         assertPxColor(grid, 80, 37, c.b, done);
                     }, 1);
@@ -1060,13 +1063,14 @@
                     });
                     setTimeout(function () {
                         grid.focus();
-                        mousedown(grid.canvas, 50, 113);
-                        mousemove(document.body, 50, 113, grid.canvas);
+                        mousedown(grid.canvas, 53, 113);
+                        marker(grid, 53, 113);
+                        mousemove(document, 50, 113, grid.canvas);
                         setTimeout(function () {
                             // simulate very slow movement of humans
-                            //marker(grid, 100, 113);
-                            mousemove(document.body, 100, 113, grid.canvas);
-                            mouseup(document.body, 100, 113, grid.canvas);
+                            marker(grid, 100, 113);
+                            mousemove(document, 100, 113, grid.canvas);
+                            mouseup(document, 100, 113, grid.canvas);
                             done(assertIf(grid.scrollLeft < 100,
                                 'Expected the scroll bar to be further along.'));
                         }, 200);
@@ -1083,7 +1087,7 @@
                         mousemove(grid.canvas, 100, 113);
                         mousedown(grid.canvas, 100, 113);
                         setTimeout(function () {
-                            mouseup(document.body, 100, 113, grid.canvas);
+                            mouseup(document, 100, 113, grid.canvas);
                             done(assertIf(grid.scrollLeft < 1,
                                  'Expected the scroll bar to be further along.'));
                         }, 500);
@@ -1101,7 +1105,7 @@
                         mousemove(grid.canvas, 100, 113);
                         mousedown(grid.canvas, 100, 113);
                         setTimeout(function () {
-                            mouseup(document.body, 100, 113, grid.canvas);
+                            mouseup(document, 100, 113, grid.canvas);
                             done(assertIf(grid.scrollLeft < 1,
                                  'Expected the scroll bar to be further along.'));
                         }, 500);
@@ -1120,7 +1124,7 @@
                         mousemove(grid.canvas, 60, 113);
                         mousedown(grid.canvas, 60, 113);
                         setTimeout(function () {
-                            mouseup(document.body, 60, 113, grid.canvas);
+                            mouseup(document, 60, 113, grid.canvas);
                             done(assertIf(grid.scrollLeft === grid.scrollWidth,
                                  'Expected the scroll bar to be further along.'));
                         }, 2000);
@@ -1136,12 +1140,12 @@
                     setTimeout(function () {
                         grid.focus();
                         mousedown(grid.canvas, 395, 35);
-                        mousemove(document.body, 395, 35, grid.canvas);
+                        mousemove(document, 395, 35, grid.canvas);
                         setTimeout(function () {
                             // simulate very slow movement of humans
                             //marker(grid, 100, 113);
-                            mousemove(document.body, 395, 100, grid.canvas);
-                            mouseup(document.body, 395, 100, grid.canvas);
+                            mousemove(document, 395, 100, grid.canvas);
+                            mouseup(document, 395, 100, grid.canvas);
                             done(assertIf(grid.scrollTop < 100,
                                 'Expected the scroll bar to be further along.'));
                         }, 200);
@@ -1158,7 +1162,7 @@
                         mousemove(grid.canvas, 395, 100);
                         mousedown(grid.canvas, 395, 100);
                         setTimeout(function () {
-                            mouseup(document.body, 395, 100, grid.canvas);
+                            mouseup(document, 395, 100, grid.canvas);
                             done(assertIf(grid.scrollTop < 1,
                                  'Expected the scroll bar to be further along.'));
                         }, 2000);
@@ -1176,7 +1180,7 @@
                         mousemove(grid.canvas, 395, 70);
                         mousedown(grid.canvas, 395, 70);
                         setTimeout(function () {
-                            mouseup(document.body, 395, 70, grid.canvas);
+                            mouseup(document, 395, 70, grid.canvas);
                             done(assertIf(grid.scrollTop < 1,
                                  'Expected the scroll bar to be further along.'));
                         }, 2000);
@@ -1195,7 +1199,7 @@
                         mousemove(grid.canvas, 393, 75);
                         mousedown(grid.canvas, 393, 75);
                         setTimeout(function () {
-                            mouseup(document.body, 395, 75, grid.canvas);
+                            mouseup(document, 395, 75, grid.canvas);
                             done(assertIf(grid.scrollTop === grid.scrollHeight,
                                  'Expected the scroll bar to be further along.'));
                         }, 2000);

@@ -20,8 +20,8 @@ canvas-datagrid
 * Support for freezing columns and rows.
 * Customizable hierarchal context menu.
 * Built in and custom styles.
-* W3C web component.
-* Per-user styles, view preferences and settings using localStorage.
+* W3C Web Component.
+* Per-user styles, column sizes, row sizes, view preferences and settings using localStorage.
 * Very small file size, no dependencies.
 
 [Documentation](https://tonygermaneri.github.io/canvas-datagrid/docs/)
@@ -85,7 +85,7 @@ Using pure JavaScript
     ];
 
 
-Using web component
+Using Web Component
 -------------------
 
 <!--
@@ -104,6 +104,15 @@ Using web component
         {"col1": "row 1 column 1", "col2": "row 1 column 2", "col3": "row 1 column 3"},
         {"col1": "row 2 column 1", "col2": "row 2 column 2", "col3": "row 2 column 3"}
     ]</canvas-datagrid>
+
+
+or
+
+    var grid = document.createElement('canvas-datagrid');
+    grid.data = [
+        {"col1": "row 1 column 1", "col2": "row 1 column 2", "col3": "row 1 column 3"},
+        {"col1": "row 2 column 1", "col2": "row 2 column 2", "col3": "row 2 column 3"}
+    ];
 
 
 More Demos
@@ -148,7 +157,7 @@ To build documentation.
 
     npm run build-docs
 
-To run tests.
+To run tests. Note: Headless tests will mostly fail due to lack of headless canvas pixel detection support.  Use VM testing or your browser.
 
     npm test
 

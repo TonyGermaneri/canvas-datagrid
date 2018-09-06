@@ -149,6 +149,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             return r;
         }
         component.applyComponentStyle = function (supressChangeAndDrawEvents, intf) {
+            if (!self.isComponent) { return; }
             var cStyle = window.getComputedStyle(intf.tagName === 'CANVAS-DATAGRID' ? intf : intf.canvas, null),
                 defs = {};
             intf.computedStyle = cStyle;
@@ -1138,6 +1139,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['moveOverlayBorderColor', 'rgba(66, 133, 244, 1)'],
                 ['moveOverlayBorderSegments', '12, 7'],
                 ['name', 'default'],
+                ['overflowY', 'auto'],
+                ['overflowX', 'auto'],
                 ['reorderMarkerBackgroundColor', 'rgba(0, 0, 0, 0.1)'],
                 ['reorderMarkerBorderColor', 'rgba(0, 0, 0, 0.2)'],
                 ['reorderMarkerBorderWidth', 1.25],
@@ -1376,7 +1379,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
                 self.draw(true);
             }
-            self.parentDOMNode.removeChild(self.input);
+            if (self.input.parentNode) {
+                self.input.parentNode.removeChild(self.input);
+            }
             self.intf.focus();
             self.dispatchEvent('endedit', {
                 cell: cell,
@@ -1457,7 +1462,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.draw(true);
                 });
             }
-            self.parentDOMNode.appendChild(self.input);
+            // if the user has not prevented the default action, append to the body
+            if (!self.dispatchEvent('appendeditinput', {cell: cell, input:self.input})) { 
+                document.body.appendChild(self.input);
+            }
             self.createInlineStyle(self.input, self.mobile ? 'canvas-datagrid-edit-mobile-input' : 'canvas-datagrid-edit-input');
             self.input.style.position = 'absolute';
             self.input.editCell = cell;
@@ -1744,7 +1752,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.eventParent.addEventListener('dblclick', self.dblclick, false);
             self.eventParent.addEventListener('click', self.click, false);
             self.eventParent.addEventListener('mousemove', self.mousemove);
-            self.eventParent.addEventListener('wheel', self.scrollWheel, false);
+            self[self.isChildGrid ? 'parentGrid' : 'eventParent'].addEventListener('wheel', self.scrollWheel, false);
             self.canvas.addEventListener('contextmenu', self.contextmenuEvent, false);
             self.controlInput.addEventListener('copy', self.copy);
             self.controlInput.addEventListener('cut', self.cut);
@@ -2164,7 +2172,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 textHeight += line.height;
                 fillText(line.value, line.x, line.y);
             }
-            if (self.attributes.debug) {
+            if (self.attributes.debug && cell.active) {
                 requestAnimationFrame(function () {
                     self.ctx.font = self.style.debugFont;
                     self.ctx.fillStyle = self.style.debugColor;
@@ -2272,13 +2280,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     fillRect(en.horizontalBar.x, en.horizontalBar.y, en.horizontalBar.width + m, en.horizontalBar.height);
                     strokeRect(en.horizontalBar.x, en.horizontalBar.y, en.horizontalBar.width + m, en.horizontalBar.height);
                     self.ctx.fillStyle = self.style.scrollBarBoxColor;
-                    if (/horizontal/.test(u.context)) {
-                        self.ctx.fillStyle = self.style.scrollBarActiveColor;
+                    if (self.scrollBox.horizontalBoxVisible) {
+                        if (/horizontal/.test(u.context)) {
+                            self.ctx.fillStyle = self.style.scrollBarActiveColor;
+                        }
+                        radiusRect(en.horizontalBox.x, en.horizontalBox.y,
+                            en.horizontalBox.width, en.horizontalBox.height, self.style.scrollBarBoxBorderRadius);
+                        self.ctx.stroke();
+                        self.ctx.fill();
                     }
-                    radiusRect(en.horizontalBox.x, en.horizontalBox.y,
-                        en.horizontalBox.width, en.horizontalBox.height, self.style.scrollBarBoxBorderRadius);
-                    self.ctx.stroke();
-                    self.ctx.fill();
                     drawCorner = true;
                     self.visibleCells.unshift(en.horizontalBar);
                     self.visibleCells.unshift(en.horizontalBox);
@@ -2287,14 +2297,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.ctx.fillStyle = self.style.scrollBarBackgroundColor;
                     fillRect(en.verticalBar.x, en.verticalBar.y, en.verticalBar.width, en.verticalBar.height + m);
                     strokeRect(en.verticalBar.x, en.verticalBar.y, en.verticalBar.width, en.verticalBar.height + m);
-                    self.ctx.fillStyle = self.style.scrollBarBoxColor;
-                    if (/vertical/.test(u.context)) {
-                        self.ctx.fillStyle = self.style.scrollBarActiveColor;
+                    if (self.scrollBox.verticalBoxVisible) {
+                        self.ctx.fillStyle = self.style.scrollBarBoxColor;
+                        if (/vertical/.test(u.context)) {
+                            self.ctx.fillStyle = self.style.scrollBarActiveColor;
+                        }
+                        radiusRect(en.verticalBox.x, en.verticalBox.y, en.verticalBox.width,
+                            en.verticalBox.height, self.style.scrollBarBoxBorderRadius);
+                        self.ctx.stroke();
+                        self.ctx.fill();
                     }
-                    radiusRect(en.verticalBox.x, en.verticalBox.y, en.verticalBox.width,
-                        en.verticalBox.height, self.style.scrollBarBoxBorderRadius);
-                    self.ctx.stroke();
-                    self.ctx.fill();
                     drawCorner = true;
                     self.visibleCells.unshift(en.verticalBar);
                     self.visibleCells.unshift(en.verticalBox);
@@ -3300,6 +3312,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ch = self.style.cellHeight,
                 s = self.getSchema();
             // sets actual DOM canvas element
+            function checkScrollBoxVisibility() {
+                self.scrollBox.horizontalBarVisible = (self.style.width !== 'auto' && dataWidth > self.scrollBox.width && self.style.overflowX !== 'hidden')
+                    || self.style.overflowX === 'scroll';
+                self.scrollBox.horizontalBoxVisible = dataWidth > self.scrollBox.width;
+                self.scrollBox.verticalBarVisible = (self.style.height !== 'auto' && dataHeight > self.scrollBox.height && self.style.overflowY !== 'hidden')
+                    || self.style.overflowY === 'scroll';
+                self.scrollBox.verticalBoxVisible = dataHeight > self.scrollBox.height;
+            }
             function setScrollBoxSize() {
                 self.scrollBox.width = self.width - rowHeaderCellWidth;
                 self.scrollBox.height = self.height - columnHeaderCellHeight;
@@ -3310,15 +3330,19 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
                 dims = {
                     // HACK +1 ? maybe it's a magic cell border?  Required to line up properly in auto height mode.
-                    height: dataHeight + cellBorder + 1,
+                    height: columnHeaderCellHeight + dataHeight + cellBorder + 1,
                     width: dataWidth + rowHeaderCellWidth + cellBorder
                 };
                 ['width', 'height'].forEach(function (dim) {
                     //TODO: support inherit
-                    if (['auto', undefined].indexOf(self.style[dim]) !== -1) {
+                    if (['auto', undefined].indexOf(self.style[dim]) !== -1
+                            && ['auto', undefined].indexOf(self.appliedInlineStyles[dim]) !== -1) {
                         self.parentNodeStyle[dim] = dims[dim] + 'px';
                     } else {
                         self.parentNodeStyle[dim] = self.style[dim];
+                        if (self.isComponet) {
+                            self.canvas.style[dim] = self.style[dim];
+                        }
                     }
                 });
             }
@@ -3344,7 +3368,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.scrollCache.x[columnIndex] = va;
                 return va;
             }, 0) || 0;
-            dataHeight += columnHeaderCellHeight;
             if (self.attributes.showNewRow) {
                 dataHeight += ch;
             }
@@ -3365,36 +3388,31 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             // width and height of scroll box
             setScrollBoxSize();
             // is the data larger than the scroll box
-            self.scrollBox.horizontalBarVisible = self.style.width !== 'auto' && dataWidth > self.scrollBox.width;
-            self.scrollBox.verticalBarVisible = self.style.height !== 'auto' && dataHeight > self.scrollBox.height;
+            checkScrollBoxVisibility();
             // if the scroll box is visible, make room for it by expanding the size of the element
             // if the other dimension is set to auto
-            if (self.scrollBox.horizontalBarVisible && !self.isChildGrid) {
-                if (self.style.height === 'auto') {
+            if (self.scrollBox.horizontalBarVisible) {
+                if (self.style.height === 'auto' && !self.isChildGrid) {
                     self.height += sbw;
                 }
                 dataHeight += sbw;
                 setCanvasSize();
                 setScrollBoxSize();
-                self.scrollBox.horizontalBarVisible = dataWidth > self.scrollBox.width;
-                self.scrollBox.verticalBarVisible = self.style.height !== 'auto'
-                    && dataHeight > self.scrollBox.height;
+                checkScrollBoxVisibility();
             }
-            if (self.scrollBox.verticalBarVisible && !self.isChildGrid) {
-                if (self.style.width === 'auto') {
+            if (self.scrollBox.verticalBarVisible) {
+                if (self.style.width === 'auto' && !self.isChildGrid) {
                     self.width += sbw;
                 }
                 dataWidth += sbw;
                 setCanvasSize();
                 setScrollBoxSize();
-                self.scrollBox.verticalBarVisible = dataHeight > self.scrollBox.height;
-                self.scrollBox.horizontalBarVisible = self.style.width !== 'auto'
-                    && dataWidth > self.scrollBox.width;
+                checkScrollBoxVisibility();
             }
             // set again after bar visibility checks
             setScrollBoxSize();
             self.scrollBox.scrollWidth = dataWidth - self.scrollBox.width;
-            self.scrollBox.scrollHeight = dataHeight - self.scrollBox.height - columnHeaderCellHeight;
+            self.scrollBox.scrollHeight = dataHeight - self.scrollBox.height;
             self.scrollBox.widthBoxRatio = self.scrollBox.width / dataWidth;
             self.scrollBox.scrollBoxWidth = self.scrollBox.width
                 * self.scrollBox.widthBoxRatio
@@ -3404,7 +3422,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             // it being off causes the scroll bar to "slide" under
             // the dragged mouse.
             // https://github.com/TonyGermaneri/canvas-datagrid/issues/97
-            self.scrollBox.heightBoxRatio = self.scrollBox.height / (dataHeight - columnHeaderCellHeight);
+            self.scrollBox.heightBoxRatio = (self.scrollBox.height - columnHeaderCellHeight) / dataHeight;
             self.scrollBox.scrollBoxHeight = self.scrollBox.height
                 * self.scrollBox.heightBoxRatio
                 - self.style.scrollBarWidth - b - d;
@@ -3822,7 +3840,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (document.exitPointerLock) {
                 document.exitPointerLock();
             }
-            document.body.removeEventListener('mousemove', self.scrollGrid, false);
+            document.removeEventListener('mousemove', self.scrollGrid, false);
         };
         self.dragReorder = function (e) {
             var pos, x, y,
@@ -3997,9 +4015,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     };
                     self.canvas.requestPointerLock();
                 }
-                document.body.addEventListener('mousemove', self.scrollGrid, false);
-                document.addEventListener('mouseout',self.stopScrollGrid, false);
-                document.body.addEventListener('mouseup', self.stopScrollGrid, false);
+                document.addEventListener('mousemove', self.scrollGrid, false);
+                document.addEventListener('mouseup', self.stopScrollGrid, false);
                 self.ignoreNextClick = true;
                 return;
             }
@@ -4257,6 +4274,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.scrollWheel = function (e) {
             var l,
                 t,
+                ev = e,
                 deltaX = e.deltaX === undefined ? e.NativeEvent.deltaX : e.deltaX,
                 deltaY = e.deltaY === undefined ? e.NativeEvent.deltaY : e.deltaY,
                 deltaMode = e.deltaMode === undefined ? e.NativeEvent.deltaMode : e.deltaMode;
@@ -4266,7 +4284,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (self.dispatchEvent('wheel', {NativeEvent: e})) {
                 return;
             }
-            e = e.NativeEvent || e;
+            var e = e.NativeEvent || e;
             self.touchHaltAnimation = true;
             l = self.scrollBox.scrollLeft;
             t = self.scrollBox.scrollTop;
@@ -4277,11 +4295,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     // line mode = 17 pixels per line
                     deltaY = deltaY * 17;
                 }
-                if ((self.scrollBox.scrollTop < self.scrollBox.scrollHeight && deltaY > 0)
+                if ((self.scrollBox.scrollTop  < self.scrollBox.scrollHeight && deltaY > 0)
                         || (self.scrollBox.scrollLeft < self.scrollBox.scrollWidth && deltaX > 0)
                         || (self.scrollBox.scrollTop > 0 && deltaY < 0)
                         || (self.scrollBox.scrollLeft > 0 && deltaX < 0)) {
-                    e.preventDefault(e);
+                    ev.preventDefault(e);
                 }
                 wheeling = setTimeout(function () {
                     wheeling = undefined;
@@ -4472,6 +4490,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             rows: [],
             columns: []
         };
+        self.appliedInlineStyles = {};
         self.cellGridAttributes = {};
         self.treeGridAttributes = {};
         self.visibleRowHeights = [];
@@ -4820,7 +4839,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.reloadStoredValues = function () {
             if (self.attributes.name && self.attributes.saveAppearance) {
-                self.storedSettings = localStorage.getItem(self.storageName + '-' + self.attributes.name);
+                try {
+                    self.storedSettings = localStorage.getItem(self.storageName + '-' + self.attributes.name);
+                } catch (e) {
+                    console.warn("Error loading stored values. " + e.message);
+                    self.storedSettings = undefined;
+                }
                 if (self.storedSettings) {
                     try {
                         self.storedSettings = JSON.parse(self.storedSettings);
@@ -4863,7 +4887,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.initScrollBox();
             self.setDom();
             self.nodeType = 'canvas-datagrid';
-            self.initialized = true;
             self.ie = /Trident/.test(window.navigator.userAgent);
             self.edge = /Edge/.test(window.navigator.userAgent);
             self.webKit = /WebKit/.test(window.navigator.userAgent);
@@ -4895,6 +4918,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
              * @param {number} el The element to append the grid to.
              */
             self.intf.appendTo = self.appendTo;
+            self.intf.getVisibleCellByIndex = self.getVisibleCellByIndex;
             self.intf.filters = self.filters;
             self.intf.sorters = self.sorters;
             self.intf.autosize = self.autosize;
@@ -4971,6 +4995,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         return self.getStyleProperty(key);
                     },
                     set: function (value) {
+                        if (self.initialized) {
+                            self.appliedInlineStyles[key] = value;
+                        }
                         self.setStyleProperty(key, value);
                     }
                 });
@@ -5062,6 +5089,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             } else {
                 self.resize(true);
             }
+            self.initialized = true;
             return self;
         };
         /**
@@ -5344,13 +5372,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 };
             }
         });
-        /**
-         * Gets or sets the order of the rows.  This allows you to modify the appearance of the data without modifying the data itself.
-         * @memberof canvasDatagrid
-         * @name columnOrder
-         * @method
-         * @param {array} val Array of integers.  The order of the array dictates the order of the rows, e.g.: [0, 1, 2] is normal order, [2, 1, 0] is reverse.  The array length must be equal to or greater than the number of rows.
-         */
         Object.defineProperty(self.intf, 'rowOrder', {
             get: function () {
                 return self.orders.rows;
@@ -5365,13 +5386,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.orders.rows = val;
             }
         });
-        /**
-         * Gets or sets the order of the columns.  This allows you to modify the appearance of the schema without modifying the data itself.
-         * @memberof canvasDatagrid
-         * @name columnOrder
-         * @method
-         * @param {array} val Array of integers.  The order of the array dictates the order of the columns, e.g.: [0, 1, 2] is normal order, [2, 1, 0] is reverse.  The array length must be equal to or greater than the number of columns.
-         */
         Object.defineProperty(self.intf, 'columnOrder', {
             get: function () {
                 return self.orders.columns;
@@ -5380,7 +5394,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 if (!Array.isArray(val)) {
                     throw new TypeError('Value must be an array.');
                 }
-                if (val.length < s.length) {
+                if (val.length < self.getSchema().length) {
                     throw new RangeError('Array length must be equal to or greater than number of columns.');
                 }
                 self.orders.columns = val;
