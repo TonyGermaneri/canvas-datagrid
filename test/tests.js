@@ -26,6 +26,7 @@
             white: 'rgb(255, 255, 255)',
             black: 'rgb(0, 0, 0)'
         },
+        // Marker colors, for visually identifying test points
         markerColors = [
             '#a50026',
             '#d73027',
@@ -70,7 +71,8 @@
     }
     
     // Create data grid with `r` rows, `c` columns, and cell contents derived
-    //  by the function `dFn`. If dFn does not exist, each cell is left blank.
+    // by the function `dFn`.
+    //  Note: If dFn does not exist, each cell is left blank.
     function makeData(r, c, dFn) {
         var y, x, d = [];
         for (y = 0; y < r; y += 1) {
@@ -92,7 +94,13 @@
         done();
     }
     
-    
+    // Draws a 'crosshairs' marker at coordinates (x,y).
+    // The marker includes:
+    //  - A 1px vertical line at x
+    //  - A 1px horizontal line at y
+    //  - A 3px central marker centered at (x,y)
+    // Note: markerColors[...] selection ensures contrast between lines and 
+    //  central marker
     function marker(grid, x, y) {
         grid.markerCount = grid.markerCount || 0;
         grid.markerCount += 1;
