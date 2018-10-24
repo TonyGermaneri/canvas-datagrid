@@ -2,6 +2,7 @@
 /*globals Event: false, describe: false, afterEach: false, beforeEach: false, after: false, it: false, canvasDatagrid: false, async: false, requestAnimationFrame: false*/
 (function () {
     'use strict';
+    // Keycodes, for keyDown tests
     var kcs = {
             up: 38,
             down: 40,
@@ -16,6 +17,7 @@
             esc: 27
         },
         blocks = '██████████████████',
+        // Template colors, for pixel tests
         c = {
             b: 'rgb(0, 0, 255)',
             y: 'rgb(255, 255, 0)',
@@ -24,6 +26,7 @@
             white: 'rgb(255, 255, 255)',
             black: 'rgb(0, 0, 0)'
         },
+        // Marker colors, for visually identifying test points
         markerColors = [
             '#a50026',
             '#d73027',
@@ -36,6 +39,7 @@
             '#4575b4',
             '#313695'
         ],
+        // Sample data
         smallData = function () {
             return [
                 {col1: 'foo', col2: 0, col3: 'a'},
@@ -43,11 +47,17 @@
                 {col1: 'baz', col2: 2, col3: 'c'}
             ];
         };
+        
+    // Get color `c` of rgb vector `v` 
+    //  Note: See c = {...} above for color options 
     function getC(v) {
         return Object.keys(c).filter(function (k) {
             return c[k] === v;
         })[0] || v;
     }
+    
+    // Convert number `n` to 'spreadsheet-style' column label `s`
+    //  Note: Zero-index, so 0 = A, 27 = AB, etc.
     function itoa(n) {
         var ordA = 'a'.charCodeAt(0),
             ordZ = 'z'.charCodeAt(0),
@@ -59,6 +69,10 @@
         }
         return s;
     }
+    
+    // Create data grid with `r` rows, `c` columns, and cell contents derived
+    // by the function `dFn`.
+    //  Note: If dFn does not exist, each cell is left blank.
     function makeData(r, c, dFn) {
         var y, x, d = [];
         for (y = 0; y < r; y += 1) {
@@ -69,6 +83,8 @@
         }
         return d;
     }
+    
+    // Reset test environment
     function cleanup(done) {
         var m = document.getElementById('mocha');
         m.scrollTop = m.scrollHeight;
@@ -77,6 +93,14 @@
         }
         done();
     }
+    
+    // Draws a 'crosshairs' marker at coordinates (x,y).
+    // The marker includes:
+    //  - A 1px vertical line at x
+    //  - A 1px horizontal line at y
+    //  - A 3px central marker centered at (x,y)
+    // Note: markerColors[...] selection ensures contrast between lines and 
+    //  central marker
     function marker(grid, x, y) {
         grid.markerCount = grid.markerCount || 0;
         grid.markerCount += 1;
@@ -88,6 +112,7 @@
             grid.ctx.fillRect(x - 1, y - 1, 3, 3);
         });
     }
+
     function assertPxColorFn(grid, x, y, expected) {
         var d, match, e;
         x = x * window.devicePixelRatio;
