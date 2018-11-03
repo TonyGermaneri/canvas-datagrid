@@ -6299,14 +6299,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @param {boolean} supressSelectionchangedEvent When true, prevents the selectionchanged event from firing.
          */
         self.selectRow = function (rowIndex, ctrl, shift, supressEvent) {
-            var x, st, en, s = self.getSchema();
+            var x, st, en, s = self.getVisibleSchema();
             function addRow(ri) {
                 self.selections[ri] = [];
                 self.selections[ri].push(-1);
                 s.forEach(function (col, index) {
-                    if (!col.hidden) {
-                        self.selections[ri].push(index);
-                    }
+                    self.selections[ri].push(self.orders.columns.indexOf(col.index));
                 });
             }
             if (self.dragAddToSelection === false || self.dragObject === undefined) {
