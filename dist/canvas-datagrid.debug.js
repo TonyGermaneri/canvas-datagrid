@@ -755,7 +755,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         return d;
                     }
                 });
-                if (e.cell && e.cell.header) {
+                if (e.cell && e.cell.header && e.cell.columnIndex > -1) {
                     e.items.push({
                         title: self.attributes.hideColumnText
                             .replace(/%s/ig, e.cell.header.title || e.cell.header.name),
