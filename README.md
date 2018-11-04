@@ -20,7 +20,7 @@ canvas-datagrid
 * Support for freezing columns and rows.
 * Customizable hierarchal context menu.
 * Built in and custom styles.
-* W3C Web Component.
+* W3C Web Component.  Works in all frameworks.
 * Per-user styles, column sizes, row sizes, view preferences and settings using localStorage.
 * Very small file size, no dependencies.
 
