@@ -4353,11 +4353,20 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             l = clipData.length;
             clipData.forEach(function (rowData) {
                 yi += 1;
-                var i = self.orders.columns[yi];
+                var i = self.orders.rows[yi];
                 self.data[i] = normalizeRowData(rowData, self.data[i], x, s, mimeType, i);
             });
             self.selections = sel;
             return l;
+        };
+        self.getNextVisibleColumnIndex = function (visibleColumnIndex) {
+            var x, s = self.getVisibleSchema();
+            for (x = 0; x < s.length; x += 1) {
+                if (s[x].columnIndex === visibleColumnIndex) {
+                    return s[x + 1].columnIndex;
+                }
+            }
+            return -1;
         };
         self.getVisibleColumnIndexOf = function (columnIndex) {
             var x, s = self.getVisibleSchema();
@@ -6582,17 +6591,26 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             sel.forEach(function (row, index) {
                 if (index === l) { return; }
                 if (row.length === 0) { return; }
-                row.forEach(function (col) {
-                    if (!s[col]) { return; }
+                row.forEach(function (colIndex) {
+                    // intentional redef of colIndex
+                    colIndex = self.getVisibleColumnIndexOf(colIndex);
+                    if (!s[colIndex]) { return; }
                     if (!self.data[index]) { self.data[index] = {}; }
-                    self.data[index][s[col].name] = null;
+                    self.data[index][s[colIndex].name] = null;
                 });
             });
             sel.forEach(function (row, index) {
+                var lastSourceIndex;
                 yi += 1;
-                xi = x - 1;
+                xi = self.getVisibleColumnIndexOf(x);
                 row.forEach(function (col, cidx) {
-                    xi += 1;
+                    col = self.getVisibleColumnIndexOf(col);
+                    if (cidx > 0) {
+                        // this confusing bit of nonsense figures out
+                        // if the selection has skipped cells
+                        xi += col - lastSourceIndex;
+                    }
+                    lastSourceIndex = col;
                     if (col === -1
                             || !s[xi]
                             || !s[col]
