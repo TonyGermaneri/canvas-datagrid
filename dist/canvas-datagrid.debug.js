@@ -149,7 +149,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             return r;
         }
         component.applyComponentStyle = function (supressChangeAndDrawEvents, intf) {
-            if (!self.isComponent) { return; }
+            if (!intf.isComponent) { return; }
             var cStyle = window.getComputedStyle(intf.tagName === 'CANVAS-DATAGRID' ? intf : intf.canvas, null),
                 defs = {};
             intf.computedStyle = cStyle;
@@ -755,7 +755,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         return d;
                     }
                 });
-                if (e.cell && e.cell.header) {
+                if (e.cell && e.cell.header && e.cell.columnIndex > -1) {
                     e.items.push({
                         title: self.attributes.hideColumnText
                             .replace(/%s/ig, e.cell.header.title || e.cell.header.name),
@@ -1727,11 +1727,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.parentIsCanvas = /^canvas$/i.test(self.parentDOMNode.tagName);
                 if (self.parentIsCanvas) {
                     self.canvas = self.parentDOMNode;
-                    self.parentDOMNode.appendChild(self.controlInput);
+                    document.body.appendChild(self.controlInput);
                 } else {
                     self.canvas = document.createElement('canvas');
                     self.parentDOMNode.appendChild(self.canvas);
-                    self.parentDOMNode.appendChild(self.controlInput);
+                    document.body.appendChild(self.controlInput);
                 }
                 self.createInlineStyle(self.canvas, 'canvas-datagrid');
                 self.ctx = self.canvas.getContext('2d');
@@ -4343,6 +4343,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
                 // strip table beginning and ending off, then split at rows
                 clipData = clipData.substring(clipData.indexOf('<table><tr>') + 11, clipData.length - 13).split('</tr><tr>');
+                // ditch any headers on the table
+                clipData = clipData.filter(function (row) {
+                    return !/^<th>|^<thead>/.test(row);
+                });
             } else {
                 clipData = clipData.split('\n');
             }
@@ -4355,12 +4359,21 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.selections = sel;
             return l;
         };
+        self.getVisibleColumnIndexOf = function (columnIndex) {
+            var x, s = self.getVisibleSchema();
+            for (x = 0; x < s.length; x += 1) {
+                if (s[x].columnIndex === columnIndex) {
+                    return x;
+                }
+            }
+            return -1;
+        };
         self.paste = function (e) {
             var d;
             function getItem(dti) {
                 var type = dti.type;
                 dti.getAsString(function (s) {
-                    self.pasteItem(s, self.activeCell.columnIndex, self.activeCell.rowIndex, type);
+                    self.pasteItem(s, self.getVisibleColumnIndexOf(self.activeCell.columnIndex), self.activeCell.rowIndex, type);
                     self.draw();
                 });
             }
@@ -4391,7 +4404,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 data = (self.data || []),
                 tableRows = [],
                 textRows = [],
-                headers = [],
+                outputHeaders = {},
+                outputHeaderKeys,
                 sData = self.getSelectedData(),
                 s = self.getSchema();
             function htmlSafe(v) {
@@ -4401,14 +4415,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 v = v === null || v === undefined ? '' : v;
                 return '<td>' + (typeof v === 'string' ? htmlSafe(v) : v) + '</td>';
             }
-            function addHeaders(useHtml) {
-                if (!s.length) { return ''; }
+            function addHeaders(headers, useHtml) {
+                if (!s.length || headers.length < 2) { return ''; }
                 var h = [];
                 if (useHtml) {
                     h.push('<tr>');
                 }
                 s.forEach(function (column, columnIndex) {
-                    if (!column.hidden) {
+                    if (!column.hidden && headers.indexOf(column.name) !== -1) {
                         // intentional redefinition of column
                         column = s[self.orders.columns[columnIndex]];
                         var hVal = (column.name || column.title) || '';
@@ -4443,11 +4457,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             if (sData.length > 0) {
                 sData.forEach(function (row) {
+                    var rowKeys = Object.keys(row);
                     if (row) {
                         var trRow = [],
                             textRow = [];
                         s.forEach(function (column, columnIndex) {
-                            if (!column.hidden) {
+                            if (rowKeys.indexOf(column.name) !== -1) {
+                                outputHeaders[column.name] = true;
                                 // intentional redefinition of column
                                 column = s[self.orders.columns[columnIndex]];
                                 // escape strings
@@ -4458,8 +4474,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         textRows.push(textRow.join(','));
                     }
                 });
-                t = addHeaders() + (headers.length > 0 ? '\n' : '') + textRows.join('\n');
-                d = '<table>' + addHeaders(true) + '<tr>' + tableRows.join('</tr><tr>') + '</tr></table>';
+                outputHeaderKeys = Object.keys(outputHeaders);
+                t = addHeaders(outputHeaderKeys) + textRows.join('\n');
+                d = '<table>' + addHeaders(outputHeaderKeys, true) + '<tr>' + tableRows.join('</tr><tr>') + '</tr></table>';
+                if (outputHeaderKeys.length === 1) {
+                    // if there was only one cell selected, remove the quotes from the string
+                    t = t.substring(1, t.length -1);
+                }
                 e.clipboardData.setData('text/html', d);
                 e.clipboardData.setData('text/plain', t);
                 e.clipboardData.setData('text/csv', t);
@@ -4944,6 +4965,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.intf.isColumnVisible = self.isColumnVisible;
             self.intf.order = self.order;
             self.intf.draw = self.draw;
+            self.intf.isComponent = self.isComponent;
             self.intf.selectArea = self.selectArea;
             self.intf.clipElement = self.clipElement;
             self.intf.getSchemaFromData = self.getSchemaFromData;
@@ -5086,7 +5108,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (self.args.schema) {
                 self.intf.schema = self.args.schema;
             }
-            if (self.isChildGrid) {
+            if (self.isChildGrid || !self.isComponent) {
                 requestAnimationFrame(function () { self.resize(true); });
             } else {
                 self.resize(true);
@@ -6298,14 +6320,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @param {boolean} supressSelectionchangedEvent When true, prevents the selectionchanged event from firing.
          */
         self.selectRow = function (rowIndex, ctrl, shift, supressEvent) {
-            var x, st, en, s = self.getSchema();
+            var x, st, en, s = self.getVisibleSchema();
             function addRow(ri) {
                 self.selections[ri] = [];
                 self.selections[ri].push(-1);
                 s.forEach(function (col, index) {
-                    if (!col.hidden) {
-                        self.selections[ri].push(index);
-                    }
+                    self.selections[ri].push(self.orders.columns.indexOf(col.index));
                 });
             }
             if (self.dragAddToSelection === false || self.dragObject === undefined) {

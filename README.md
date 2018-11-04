@@ -20,13 +20,15 @@ canvas-datagrid
 * Support for freezing columns and rows.
 * Customizable hierarchal context menu.
 * Built in and custom styles.
-* W3C Web Component.
+* W3C Web Component.  Works in all frameworks.
 * Per-user styles, column sizes, row sizes, view preferences and settings using localStorage.
 * Very small file size, no dependencies.
 
 [Documentation](https://tonygermaneri.github.io/canvas-datagrid/docs/)
 
 [Tutorials](https://tonygermaneri.github.io/canvas-datagrid/docs/index.html#tutorials)
+
+[Slack Support](https://canvas-datagrid.slack.com/)
 
 [Style Builder](https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html)
 
@@ -94,7 +96,7 @@ Using Web Component
 -->
 
 
-    <canvas-datagrid class="myGridStyle">[
+    <canvas-datagrid class="myGridStyle" data="data can go here too">[
         {"col1": "row 1 column 1", "col2": "row 1 column 2", "col3": "row 1 column 3"},
         {"col1": "row 2 column 1", "col2": "row 2 column 2", "col3": "row 2 column 3"}
     ]</canvas-datagrid>
