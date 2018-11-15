@@ -114,6 +114,8 @@ or
 More Demos
 ----------
 
+* [Using Vue](https://tonygermaneri.github.io/canvas-datagrid/tutorials/vueExample.html)
+
 * [Using Webpack3: AMD](https://tonygermaneri.github.io/canvas-datagrid/tutorials/amdDemo.html)
 
 * [Using React](https://tonygermaneri.github.io/canvas-datagrid/tutorials/reactExample.html)
