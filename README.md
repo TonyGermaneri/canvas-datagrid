@@ -122,11 +122,13 @@ More Demos
 
 * [Web component example](https://tonygermaneri.github.io/canvas-datagrid/tutorials/webcomponentDemo.html)
 
-* [XHR data paging demo](https://tonygermaneri.github.io/canvas-datagrid/tutorials/xhrPagingDemo.html) - Jeopardy Questions API.  Thanks to [jservice](http://jservice.io/) for the use of the free paging API.  Note: you must "load unsafe scripts" or relevant command to allow HTTPS (github) to make XHR requests to HTTP (Jeopardy Questions API).  There is nothing unsafe about this.
-
 * [Loading data with XHR](https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html)
 
 * [Sparkline example](https://tonygermaneri.github.io/canvas-datagrid/tutorials/sparklineDemo.html)
+
+* [XHR data paging demo Jeopardy Questions API](https://tonygermaneri.github.io/canvas-datagrid/tutorials/xhrPagingDemo.html)
+
+Note about XHR paging demo: Thanks to [jservice](http://jservice.io/) for the use of the free paging API.  You must "load unsafe scripts" or relevant command to allow HTTPS (github) to make XHR requests to HTTP (Jeopardy Questions API).  There is nothing unsafe about this.
 
 Building & Testing
 ------------------
