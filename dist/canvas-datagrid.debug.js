@@ -3164,15 +3164,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             drawActiveCell();
             drawHeaders();
             drawFrozenMarkers();
-            drawSelectionBorders();
             drawSelectionHandles();
             drawReorderMarkers();
             drawMoveMarkers();
+            drawBorder();
+            drawSelectionBorders();
             drawScrollBars();
             if (checkScrollHeight) {
                 self.resize(true);
             }
-            drawBorder();
             drawDebug();
             drawPerfLines();
             if (self.dispatchEvent('afterdraw', {})) { return; }
@@ -6223,8 +6223,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.selectAll = function (dontDraw) {
             self.selectArea({
                 top: 0,
-                left: 0,
-                right: self.getVisibleSchema().length - 1,
+                left: -1,
+                right: self.getSchema().length - 1,
                 bottom: self.data.length - 1
             });
             if (dontDraw) { return; }
