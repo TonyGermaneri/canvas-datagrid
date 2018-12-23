@@ -4431,9 +4431,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     h.push('<tr>');
                 }
                 s.forEach(function (column, columnIndex) {
+                    // intentional redefinition of column
+                    column = s[self.orders.columns[columnIndex]];
                     if (!column.hidden && headers.indexOf(column.name) !== -1) {
-                        // intentional redefinition of column
-                        column = s[self.orders.columns[columnIndex]];
                         var hVal = (column.name || column.title) || '';
                         if (useHtml) {
                             h.push('<th>' + htmlSafe(hVal) + '</th>');
@@ -4469,12 +4469,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     var rowKeys = Object.keys(row);
                     if (row) {
                         var trRow = [],
-                            textRow = [];
+                            textRow = [],
+                            sSorted = [];
+                        // HACK: https://github.com/TonyGermaneri/canvas-datagrid/issues/181
+                        // I can't use sort here or O(1), so hacks
                         s.forEach(function (column, columnIndex) {
+                            sSorted.push(s[self.orders.columns[columnIndex]]);
+                        });
+                        sSorted.forEach(function (column, columnIndex) {
                             if (rowKeys.indexOf(column.name) !== -1) {
                                 outputHeaders[column.name] = true;
-                                // intentional redefinition of column
-                                column = s[self.orders.columns[columnIndex]];
                                 // escape strings
                                 addCellValue(row[column.name], trRow, textRow, column);
                             }
@@ -6587,10 +6591,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 s = self.getVisibleSchema(),
                 l = sel.length,
                 xi,
+                maxRowLength = -Infinity,
+                minXi = Infinity,
                 yi = y - 1;
             sel.forEach(function (row, index) {
                 if (index === l) { return; }
                 if (row.length === 0) { return; }
+                minXi = Math.min(self.getVisibleColumnIndexOf(x), minXi);
+                maxRowLength = Math.max(maxRowLength, row.length);
                 row.forEach(function (colIndex) {
                     // intentional redef of colIndex
                     colIndex = self.getVisibleColumnIndexOf(colIndex);
@@ -6603,21 +6611,21 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 var lastSourceIndex;
                 yi += 1;
                 xi = self.getVisibleColumnIndexOf(x);
-                row.forEach(function (col, cidx) {
-                    col = self.getVisibleColumnIndexOf(col);
+                row.forEach(function (colIndex, cidx) {
+                    colIndex = self.getVisibleColumnIndexOf(colIndex);
                     if (cidx > 0) {
                         // this confusing bit of nonsense figures out
                         // if the selection has skipped cells
-                        xi += col - lastSourceIndex;
+                        xi += colIndex - lastSourceIndex;
                     }
-                    lastSourceIndex = col;
-                    if (col === -1
+                    lastSourceIndex = colIndex;
+                    if (colIndex === -1
                             || !s[xi]
-                            || !s[col]
+                            || !s[colIndex]
                             || self.data.length - 1 < yi
                             || yi < 0) { return; }
                     if (!self.data[yi]) { self.data[yi] = {}; }
-                    self.data[yi][s[xi].name] = d[index][s[col].name];
+                    self.data[yi][s[xi].name] = d[index][s[colIndex].name];
                 });
             });
         };
