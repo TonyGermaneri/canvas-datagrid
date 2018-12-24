@@ -3652,6 +3652,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         self.click = function (e, overridePos) {
             var i,
+                startingBounds = JSON.stringify(self.getSelectionBounds()),
                 ctrl = (e.ctrlKey || e.metaKey || self.attributes.persistantSelectionMode),
                 pos = overridePos || self.getLayerPos(e);
             self.currentCell = self.getCellAt(pos.x, pos.y);
@@ -3659,15 +3660,20 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 return;
             }
             function checkSelectionChange() {
-                var ev = {
+                var ev, sb = self.getSelectionBounds();
+                if (startingBounds === JSON.stringify(sb)) {
+                    return;
+                }
+                ev = {
                     selections: self.selections,
-                    selectionBounds: self.selectionBounds
+                    selectionBounds: self.getSelectionBounds()
                 };
                 Object.defineProperty(ev, 'selectedData', {
                     get: function () {
                         return self.getSelectedData();
                     }
                 });
+                self.dispatchEvent('selectionchanged', ev);
             }
             if (self.input) {
                 self.endEdit();
@@ -3703,8 +3709,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         return;
                     }
                     if (self.attributes.columnHeaderClickBehavior === 'select') {
-                        self.selectColumn(i.header.index, ctrl, e.shiftKey, true);
-                        checkSelectionChange();
+                        self.selectColumn(i.header.index, ctrl, e.shiftKey);
                         self.draw();
                         return;
                     }
@@ -4026,7 +4031,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.selecting = true;
                 if ((self.attributes.selectionMode === 'row' || self.dragStartObject.columnIndex === -1)
                         && self.dragStartObject.rowIndex > -1) {
-                    self.selectRow(self.dragStartObject.rowIndex, ctrl, null, true);
+                    self.selectRow(self.dragStartObject.rowIndex, ctrl, null);
                 } else if (self.attributes.selectionMode !== 'row') {
                     self.mousemove(e);
                 }
@@ -6334,6 +6339,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          */
         self.selectRow = function (rowIndex, ctrl, shift, supressEvent) {
             var x, st, en, s = self.getVisibleSchema();
+            function de() {
+                if (supressEvent) { return; }
+                self.dispatchEvent('selectionchanged', {
+                    selectedData: self.getSelectedData(),
+                    selections: self.selections,
+                    selectionBounds: self.selectionBounds
+                });
+            }
             function addRow(ri) {
                 self.selections[ri] = [];
                 self.selections[ri].push(-1);
@@ -6345,6 +6358,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 if (self.selections[rowIndex] && self.selections[rowIndex].length - 1 === s.length) {
                     if (ctrl) {
                         self.selections[rowIndex] = [];
+                        de();
                         return;
                     }
                 }
@@ -6361,12 +6375,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     addRow(rowIndex);
                 }
             }
-            if (supressEvent) { return; }
-            self.dispatchEvent('selectionchanged', {
-                selectedData: self.getSelectedData(),
-                selections: self.selections,
-                selectionBounds: self.selectionBounds
-            });
+            de();
         };
         /**
          * Collapse a tree grid by row index.

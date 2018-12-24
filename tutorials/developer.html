@@ -10,6 +10,7 @@
     window.addEventListener('load', function () {
         var parentNode = document.getElementById('grid');
         var grid = document.createElement('canvas-datagrid');
+        grid.setAttribute('columnHeaderClickBehavior', 'select');
         parentNode.appendChild(grid);
         grid.data = [
           {col0: '0foo', col1: 'foo', col2: 0, col3: 'a', col4: 'test', col5: 'test2'},
@@ -45,6 +46,9 @@
           }
         ];
         grid.columnOrder = [4, 5, 2, 1, 0, 3]; // if called, clicking on a x-axis header will select a full row.
+        grid.addEventListener('selectionchanged', function () {
+          console.log('change')
+        });
     });
   </script>
 

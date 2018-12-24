@@ -10,14 +10,15 @@ canvas-datagrid
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/TonyGermaneri/canvas-datagrid)
 
-* Support for unlimited rows and columns without paging or loading.
-* Drawn in immediate mode, data size does not impact performance.
-* Native support for touch devices (phones and tablets).
-* Extensible styling, filtering, formatting, resizing, selecting, and ordering.
-* Rich API of events, methods and properties using the familiar W3C DOM interface.
+
 * Works with Firefox, IE11, Edge, Safari and Chrome.
+* Native support for touch devices (phones and tablets).
+* Rich [documentation](https://tonygermaneri.github.io/canvas-datagrid/docs/), [tutorials](https://tonygermaneri.github.io/canvas-datagrid/docs/index.html#tutorials), and [slack support](https://canvas-datagrid.slack.com/).
+* Single canvas element, drawn in immediate mode, data size does not impact performance.
+* Support for unlimited rows and columns without paging or loading.
+* Rich API of events, methods and properties using the familiar W3C DOM interface.
+* Extensible styling, filtering, formatting, resizing, selecting, and ordering.
 * Support for hierarchal drill in style row level inner grids as well grids in cells.
-* Support for freezing columns and rows.
 * Customizable hierarchal context menu.
 * Built in and custom styles.
 * W3C Web Component.  Works in all frameworks.
@@ -28,7 +29,7 @@ canvas-datagrid
 
 [Tutorials](https://tonygermaneri.github.io/canvas-datagrid/docs/index.html#tutorials)
 
-[Slack Support](https://canvas-datagrid.slack.com/)
+[Slack Support](https://canvas-datagrid.slack.com/) (message author for invite)
 
 [Style Builder](https://tonygermaneri.github.io/canvas-datagrid/tutorials/styleBuilder.html)
 
