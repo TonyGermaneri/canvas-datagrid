@@ -1400,7 +1400,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @param {number} x The column index of the cell to edit.
          * @param {number} y The row index of the cell to edit.
          */
-        self.beginEditAt = function (x, y) {
+        self.beginEditAt = function (x, y, NativeEvent) {
             if (!self.attributes.editable) { return; }
             if (self.input) {
                 self.endEdit();
@@ -1415,7 +1415,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (!(cell && cell.header)) { return; }
             //HACK for IE10, does not like literal enum
             enu = cell.header['enum'];
-            if (self.dispatchEvent('beforebeginedit', {cell: cell})) { return false; }
+            if (self.dispatchEvent('beforebeginedit', {cell: cell, NativeEvent: NativeEvent})) { return false; }
             self.scrollIntoView(x, y);
             self.setActiveCell(x, y);
             adjacentCells = self.getAdjacentCells();
@@ -1516,7 +1516,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         ny = 0;
                     }
                     self.scrollIntoView(nx, ny);
-                    self.beginEditAt(nx, ny);
+                    self.beginEditAt(nx, ny, e);
                 }
             });
             self.dispatchEvent('beginedit', {cell: cell, input: self.input});
@@ -4187,7 +4187,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             //Enter
             if (e.keyCode === 13) {
-                return self.beginEditAt(x, y);
+                return self.beginEditAt(x, y, e);
             }
             //Space
             if (e.keyCode === 32) {
@@ -4239,7 +4239,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     ev = {
                         selectedData: self.getSelectedData(),
                         selections: self.selections,
-                        selectionBounds: self.selectionBounds
+                        selectionBounds: self.getSelectionBounds()
                     };
                     Object.defineProperty(ev, 'selectedData', {
                         get: function () {
@@ -4788,6 +4788,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             if (!self.isChildGrid && self.canvas && self.canvas.parentNode) {
                 self.canvas.parentNode.removeChild(self.canvas);
             }
+            if(!self.isChildGrid) {
+                document.body.removeChild(self.controlInput)
+            }
             self.eventParent.removeEventListener('mouseup', self.mouseup, false);
             self.eventParent.removeEventListener('mousedown', self.mousedown, false);
             self.eventParent.removeEventListener('dblclick', self.dblclick, false);
@@ -4796,6 +4799,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             self.eventParent.removeEventListener('wheel', self.scrollWheel, false);
             self.canvas.removeEventListener('contextmenu', self.contextmenu, false);
             self.canvas.removeEventListener('copy', self.copy);
+            self.controlInput.removeEventListener('copy', self.copy);
+            self.controlInput.removeEventListener('cut', self.cut);
+            self.controlInput.removeEventListener('paste', self.paste);
             self.controlInput.removeEventListener('keypress', self.keypress, false);
             self.controlInput.removeEventListener('keyup', self.keyup, false);
             self.controlInput.removeEventListener('keydown', self.keydown, false);
