@@ -735,6 +735,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         self.getSchema().forEach(function (column) {
                             function toggleColumnVisibility(e) {
                                 column.hidden = !column.hidden;
+                                self.dispatchEvent('togglecolumn', {column: column, hidden: column.hidden});
                                 e.preventDefault();
                                 self.stopPropagation(e);
                                 self.disposeContextMenu();
