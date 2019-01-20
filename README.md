@@ -114,7 +114,7 @@ or
 Using Vue
 ---------
 
-    <cavnas-datagrid :data.prop="[{"col1": "row 1 column 1"}]"></cavnas-datagrid>
+    <canvas-datagrid :data.prop="[{"col1": "row 1 column 1"}]"></canvas-datagrid>
 
 
 More Demos

@@ -5544,6 +5544,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             return Object.keys(self.parsers);
         };
         self.parseInnerHtml = function (data) {
+            if (!data || /^ +$/.test(data)) {
+                return [];
+            }
             try {
                 data = JSON.parse(data);
             } catch (e) {
