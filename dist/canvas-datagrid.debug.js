@@ -637,6 +637,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         };
         component.connectedCallback = function () {
             var intf = this;
+            intf.parentDOMNode.innerHTML = "";
+            intf.parentDOMNode.appendChild(intf.canvas);
             intf.connected = true;
             component.observe(intf);
             component.applyComponentStyle(true, intf);
@@ -4687,6 +4689,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 return self.sizes;
             }
         });
+        Object.defineProperty(self.intf, 'parentDOMNode', {
+            get: function () {
+                return self.parentDOMNode;
+            }
+        });
         Object.defineProperty(self.intf, 'input', {
             get: function () {
                 return self.input;
@@ -6236,12 +6243,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 self.parentIsCanvas = /^canvas$/i.test(self.parentDOMNode.tagName);
                 if (self.parentIsCanvas) {
                     self.canvas = self.parentDOMNode;
-                    document.body.appendChild(self.controlInput);
                 } else {
                     self.canvas = document.createElement('canvas');
-                    self.parentDOMNode.appendChild(self.canvas);
-                    document.body.appendChild(self.controlInput);
+                    if (self.intf.createShadowRoot) {
+                        self.parentDOMNode.appendChild(self.canvas);
+                    }
                 }
+                document.body.appendChild(self.controlInput);
                 self.createInlineStyle(self.canvas, 'canvas-datagrid');
                 self.ctx = self.canvas.getContext('2d');
                 self.ctx.textBaseline = 'alphabetic';
