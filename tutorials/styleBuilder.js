@@ -513,7 +513,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
     document.addEventListener('copy', function (e) {
         if (!copyCode.clicked) { return; }
-        e.clipboardData.setData('text/plain', code);
+        e.clipboardData.setData('text/plain', JSON.stringify(code));
         e.preventDefault();
     });
     copyCode.onclick = function () {
