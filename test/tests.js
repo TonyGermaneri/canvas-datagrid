@@ -1338,8 +1338,10 @@
                             // simulate very slow movement of humans
                             touchmove(document.body, 100, 113, grid.canvas);
                             touchend(document.body, 100, 113, grid.canvas);
-                            done(assertIf(grid.scrollLeft < 400,
-                                'Expected the scroll bar to be further along.'));
+                            setTimeout(function () {
+                                done(assertIf(grid.scrollLeft < 400,
+                                    'Expected the scroll bar to be further along.'));
+                            }, 100);
                         }, 200);
                     }, 1);
                 });

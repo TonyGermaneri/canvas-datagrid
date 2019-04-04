@@ -1,6 +1,6 @@
 {
   "name": "canvas-datagrid",
-  "version": "0.22.9",
+  "version": "0.22.10",
   "description": "Canvas based data grid web component.  Capable of displaying millions of contiguous hierarchical rows and columns without paging or loading, on a single canvas element.",
   "main": "./dist/canvas-datagrid.js",
   "scripts": {
@@ -56,7 +56,6 @@
     "mocha-phantomjs": "^4.1.0",
     "mocha-phantomjs-core": "^2.1.2",
     "mocha-phantomjs-istanbul": "0.0.2",
-    "node-coveralls": "git@github.com:nickmerwin/node-coveralls.git",
     "phantomjs": "^2.1.7",
     "should": "^11.2.1",
     "webpack": "^3.0.0"
