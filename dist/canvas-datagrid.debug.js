@@ -4936,9 +4936,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             try {
                 data = JSON.parse(data);
             } catch (e) {
-                throw new Error('Cannot parse application/json+x-canvas-datagrid formated data. '
+                console.warn(Error('Cannot parse application/json+x-canvas-datagrid formated data. '
                     + e.message + '  \nNote: canvas-datagrid.innerHTML is for string data only.  '
-                    + 'Use the canvas-datagrid.data property to set object data.');
+                    + 'Use the canvas-datagrid.data property to set object data.'));
             }
             return data;
         };
