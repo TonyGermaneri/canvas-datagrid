@@ -48,17 +48,22 @@ Installation
 
 With [npm](https://www.npmjs.com/package/canvas-datagrid)
 
-    npm install canvas-datagrid
+```console
+npm install canvas-datagrid
+```
 
 
 Place the single source file `./dist/canvas-datagrid.js` in your web page using a script tag that points to the source or use webpack.
 
-    <script src="dist/canvas-datagrid.js"></script>
+```html
+<script src="dist/canvas-datagrid.js"></script>
+```
 
 Alternatively, instead of downloading and installing, you can link directly to an NPM CDN like [unpkg.com](https://unpkg.com).
 
-    <script src="https://unpkg.com/canvas-datagrid"></script>
-
+```html
+<script src="https://unpkg.com/canvas-datagrid"></script>
+```
 
 A function will be added to the global scope of the web page called `canvasDatagrid` as well as module loader definitions.
 
@@ -74,12 +79,14 @@ in a compatible browser, otherwise it is a `<canvas>` tag.
 Using pure JavaScript
 ---------------------
 
-    var grid = canvasDatagrid();
-    document.body.appendChild(grid);
-    grid.data = [
-        {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},
-        {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}
-    ];
+```js
+var grid = canvasDatagrid();
+document.body.appendChild(grid);
+grid.data = [
+    {col1: 'row 1 column 1', col2: 'row 1 column 2', col3: 'row 1 column 3'},
+    {col1: 'row 2 column 1', col2: 'row 2 column 2', col3: 'row 2 column 3'}
+];
+```
 
 
 Using Web Component
@@ -96,25 +103,30 @@ Using Web Component
 ```
 -->
 
-    <canvas-datagrid class="myGridStyle" data="data can go here too">[
-        {"col1": "row 1 column 1", "col2": "row 1 column 2", "col3": "row 1 column 3"},
-        {"col1": "row 2 column 1", "col2": "row 2 column 2", "col3": "row 2 column 3"}
-    ]</canvas-datagrid>
-
+```html
+<canvas-datagrid class="myGridStyle" data="data can go here too">[
+    {"col1": "row 1 column 1", "col2": "row 1 column 2", "col3": "row 1 column 3"},
+    {"col1": "row 2 column 1", "col2": "row 2 column 2", "col3": "row 2 column 3"}
+]</canvas-datagrid>
+```
 
 or
 
-    var grid = document.createElement('canvas-datagrid');
-    grid.data = [
-        {"col1": "row 1 column 1", "col2": "row 1 column 2", "col3": "row 1 column 3"},
-        {"col1": "row 2 column 1", "col2": "row 2 column 2", "col3": "row 2 column 3"}
-    ];
+```js
+var grid = document.createElement('canvas-datagrid');
+grid.data = [
+    {"col1": "row 1 column 1", "col2": "row 1 column 2", "col3": "row 1 column 3"},
+    {"col1": "row 2 column 1", "col2": "row 2 column 2", "col3": "row 2 column 3"}
+];
+```
 
 
 Using Vue
 ---------
 
-    <cavnas-datagrid :data.prop="[{"col1": "row 1 column 1"}]"></cavnas-datagrid>
+```vue
+<canvas-datagrid :data.prop="[{"col1": "row 1 column 1"}]"></canvas-datagrid>
+```
 
 
 More Demos
