@@ -2302,6 +2302,17 @@
                     grid.setFilter('x', 'a');
                     done(assertIf(grid.data.length !== 1, 'Expected to see only 1 record.'));
                 });
+                it('Should apply correct type filtering method when column filter not set', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{ num: 1234 }, { num: 1 }],
+                        schema: [{ name: 'num', type: 'int' }],
+                        filters: { int: function (value, filterFor) { return !filterFor || value.toString() === filterFor; }}
+                    });
+                    delete grid.schema[0].filter;
+                    grid.setFilter('num', '1');
+                    done(assertIf(grid.data.length !== 1, 'Expected to see only 1 record.'));
+                });
             });
             describe('Attributes', function () {
                 it('Should store JSON view state data when a name is passed and view state is altered.', function (done) {
