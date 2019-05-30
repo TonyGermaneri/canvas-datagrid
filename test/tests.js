@@ -2322,6 +2322,18 @@
                     grid.data = [{ d: 'gfde' }, { d: 'dcba' }]
                     done(assertIf(grid.data.length !== 1, 'Expected to see only 1 record.'));
                 });
+                it('Should retain filters of columns not in new data when data is set', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{ d: 'abcd' }, { d: 'edfg' }]
+                    });
+                    grid.setFilter('d', 'a');
+
+                    grid.data = [{ x: 'aaaa' }, { x: 'aaaa' }]
+                    grid.data = [{ d: 'gfde' }, { d: 'dcba' }]
+
+                    done(assertIf(grid.data.length !== 1, 'Expected to see only 1 record.'));
+                });
             });
             describe('Attributes', function () {
                 it('Should store JSON view state data when a name is passed and view state is altered.', function (done) {
