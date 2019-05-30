@@ -2244,7 +2244,7 @@
                     });
                     grid.setFilter('d', 'edfg');
                     done(assertIf(grid.data.length === 0 && grid.data[0].d === 'edfg',
-                            'Expected filter to remove all but 1 row.'));
+                        'Expected filter to remove all but 1 row.'));
                 });
                 it('Should remove all filters', function (done) {
                     var grid = g({
@@ -2283,7 +2283,7 @@
                     });
                     grid.setFilter('d', '/\\w/');
                     done(assertIf(grid.data.length === 0 && grid.data[0].d === 'edfg',
-                            'Expected to see a row after a RegExp value.'));
+                        'Expected to see a row after a RegExp value.'));
                 });
                 it('Should tolerate RegExp errors', function (done) {
                     var grid = g({
@@ -2311,6 +2311,15 @@
                     });
                     delete grid.schema[0].filter;
                     grid.setFilter('num', '1');
+                    done(assertIf(grid.data.length !== 1, 'Expected to see only 1 record.'));
+                });
+                it('Should apply filter to new data when data is set', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{ d: 'abcd' }, { d: 'edfg' }]
+                    });
+                    grid.setFilter('d', 'a');
+                    grid.data = [{ d: 'gfde' }, { d: 'dcba' }]
                     done(assertIf(grid.data.length !== 1, 'Expected to see only 1 record.'));
                 });
             });
