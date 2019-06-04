@@ -1931,6 +1931,81 @@
                     grid.order('a', 'desc');
                     done(assertIf(grid.data[0].a !== 1503307136397, 'expected to see sort by date desc'));
                 });
+                it('Should throw when a nonexistant column name is passed', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{ a: 'a' }, { a: 'b' }, { a: 'c' }],
+                        schema: [{ name: 'a', type: 'string' }]
+                    });
+                    var err;
+                    try {
+                        grid.order('x', 'desc');
+                    } catch (e) {
+                        err = e
+                    }
+                    done(assertIf(typeof err === 'undefined', 'Error not thrown'));
+                });
+                it('Should raise beforesortcolumn before sort', function (done) {
+                    var err = new Error('Expected beforesortcolumn event to be raised');
+                    var grid = g({
+                        test: this.test,
+                        data: [{ a: 'a' }, { a: 'b' }, { a: 'c' }],
+                        schema: [{ name: 'a', type: 'string' }]
+                    });
+                    grid.addEventListener('beforesortcolumn', function (e) {
+                        err = assertIf(e.name !== 'a', 'name should be "a" but was "%s"', e.column) ||
+                              assertIf(e.direction !== 'desc', 'direction should be "desc" but was "%s"', e.direction) ||
+                              assertIf(grid.data[0].a !== 'a', 'expected data to not be sorted in event');
+                    });
+                    grid.order('a', 'desc');
+                    done(err || assertIf(grid.data[0].a !== 'c', 'expected data to be sorted'));
+                });
+                it('Should not sort when beforesortcolumn prevents default', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{ a: 'a' }, { a: 'b' }, { a: 'c' }],
+                        schema: [{ name: 'a', type: 'string' }]
+                    });
+                    grid.addEventListener('beforesortcolumn', function (e) { e.preventDefault(); });
+                    grid.order('a', 'desc');
+                    done(assertIf(grid.data[0].a !== 'a', 'expected no change in sort order'));
+                });
+                it('Should raise sortcolumn event after sort', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{ a: 'a' }, { a: 'b' }, { a: 'c' }],
+                        schema: [{ name: 'a', type: 'string' }]
+                    });
+                    grid.addEventListener('sortcolumn', function (e) {
+                        done(assertIf(e.name !== 'a', 'name should be "a" but was "%s"', e.column) ||
+                             assertIf(e.direction !== 'desc', 'direction should be "desc" but was "%s"', e.direction) ||
+                             assertIf(grid.data[0].a !== 'c', 'expected data to be sorted'));
+                    });
+                    grid.order('a', 'desc');
+                });
+                it('Should raise sortcolumn event only once', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{ a: 'a' }, { a: 'b' }, { a: 'c' }],
+                        schema: [{ name: 'a', type: 'string' }]
+                    });
+                    var callCnt = 0;
+                    grid.addEventListener('sortcolumn', function (e) { callCnt++; });
+                    grid.order('a', 'desc');
+
+                    done(assertIf(callCnt !== 1, 'expected sort column to only be called once'));
+                });
+                it('Should not raise sortcolumn event when beforesortcolumn prevents default', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{ a: 'a' }, { a: 'b' }, { a: 'c' }],
+                        schema: [{ name: 'a', type: 'string' }]
+                    });
+                    grid.addEventListener('beforesortcolumn', function (e) { e.preventDefault(); });
+                    grid.addEventListener('sortcolumn', function (e) { throw new Error("sortcolumn event"); });
+                    grid.order('a', 'desc');
+                    done();
+                });
             });
             describe('Selections', function () {
                 it('Should select all', function (done) {
