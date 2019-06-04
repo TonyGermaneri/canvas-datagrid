@@ -1931,6 +1931,16 @@
                     grid.order('a', 'desc');
                     done(assertIf(grid.data[0].a !== 1503307136397, 'expected to see sort by date desc'));
                 });
+                it('Should sort with string sorter if type sorter undefined', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{ a: '0' }, { a: '10' }, { a: '2' }],
+                        schema: [{ name: 'a', type: 'xxx' }],
+                        formatters: { xxx: function (e) { return e.cell.value.toString(); }}
+                    });
+                    grid.order('a', 'desc');
+                    done(assertIf(grid.data[0].a !== '2', 'expected to see sort by string desc'));
+                });
                 it('Should throw when a nonexistant column name is passed', function (done) {
                     var grid = g({
                         test: this.test,
