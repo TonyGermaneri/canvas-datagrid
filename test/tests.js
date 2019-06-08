@@ -1941,6 +1941,16 @@
                     grid.order('a', 'desc');
                     done(assertIf(grid.data[0].a !== '2', 'expected to see sort by string desc'));
                 });
+                it('Should preserve current sort order, effectively allowing sort on multiple columns', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{ a: 'a', b: 'a' }, { a: 'b', b: 'a' }, { a: 'c', b: 'b' }],
+                        schema: [{ name: 'a', type: 'string' }, { name: 'b', type: 'string' }]
+                    });
+                    grid.order('a', 'desc');
+                    grid.order('b', 'asc');
+                    done(assertIf(grid.data[0].a !== 'b', 'expected to see sort by a desc then b asc'));
+                });
                 it('Should throw when a nonexistant column name is passed', function (done) {
                     var grid = g({
                         test: this.test,
