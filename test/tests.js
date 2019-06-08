@@ -2026,6 +2026,25 @@
                     grid.order('a', 'desc');
                     done();
                 });
+                it('Should apply the schema sorter to sort data', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{ a: 'ab' }, { a: 'ba' }, { a: 'cd' }, { a: 'dc' }],
+                        schema: [{
+                            name: 'a',
+                            type: 'string',
+                            sorter: function (col, dir) {
+                                var mult = (dir === "desc" ? -1 : 1);
+                                return function (x, y) {
+                                    var x1 = x[col].charCodeAt(1), y1 = y[col].charCodeAt(1);
+                                    return mult * (x1 - y1);
+                                }
+                            }
+                        }]
+                    });
+                    grid.order('a', 'desc');
+                    done(assertIf(grid.data[0].a !== 'cd', 'expected schema sorter to be used'));
+                });
             });
             describe('Selections', function () {
                 it('Should select all', function (done) {
