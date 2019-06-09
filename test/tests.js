@@ -2080,6 +2080,16 @@
                     grid.data = [{ a: 'a', b: 'a' }, { a: 'b', b: 'a' }, { a: 'c', b: 'b' }];
                     done(assertIf(grid.data[0].a !== 'b', 'expected to see sort by a desc then b asc'));
                 });
+                it('Should reapply current sort after filter', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{ a: 'a', b: 'a' }, { a: 'b', b: 'a' }, { a: 'c', b: 'b' }],
+                        schema: [{ name: 'a', type: 'string' }, { name: 'b', type: 'string' }]
+                    });
+                    grid.order('a', 'desc');
+                    grid.setFilter('b', 'a');
+                    done(assertIf(grid.data[0].a !== 'b', 'expected to see sort by a desc then b asc'));
+                });
             });
             describe('Selections', function () {
                 it('Should select all', function (done) {
