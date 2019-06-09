@@ -2069,6 +2069,17 @@
                     grid.order('a', 'desc');
                     done(assertIf(grid.data[0].a !== 'cd', 'expected schema sorter to be used'));
                 });
+                it('Should reapply current sort after data set', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{ a: 'a', b: 'a' }, { a: 'b', b: 'b' }, { a: 'c', b: 'c' }],
+                        schema: [{ name: 'a', type: 'string' }, { name: 'b', type: 'string' }]
+                    });
+                    grid.order('a', 'desc');
+                    grid.order('b', 'asc');
+                    grid.data = [{ a: 'a', b: 'a' }, { a: 'b', b: 'a' }, { a: 'c', b: 'b' }];
+                    done(assertIf(grid.data[0].a !== 'b', 'expected to see sort by a desc then b asc'));
+                });
             });
             describe('Selections', function () {
                 it('Should select all', function (done) {
