@@ -1931,6 +1931,30 @@
                     grid.order('a', 'desc');
                     done(assertIf(grid.data[0].a !== 1503307136397, 'expected to see sort by date desc'));
                 });
+                it('Should set orderBy', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{ a: 'a' }, { a: 'b' }, { a: 'c' }],
+                        schema: [{ name: 'a', type: 'string' }]
+                    });
+                    if (grid.orderBy !== null) {
+                        throw new Error('expected orderBy to be null initially')
+                    }
+                    grid.order('a', 'desc');
+                    done(assertIf(grid.orderBy !== 'a', 'expected orderBy to be set'));
+                });
+                it('Should set orderDirection', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{ a: 'a' }, { a: 'b' }, { a: 'c' }],
+                        schema: [{ name: 'a', type: 'string' }]
+                    });
+                    if (grid.orderDirection !== 'asc') {
+                        throw new Error('expected orderBy to be asc initially')
+                    }
+                    grid.order('a', 'desc');
+                    done(assertIf(grid.orderDirection !== 'desc', 'expected orderDirection to be set'));
+                });
                 it('Should sort with string sorter if type sorter undefined', function (done) {
                     var grid = g({
                         test: this.test,
