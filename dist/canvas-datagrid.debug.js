@@ -445,11 +445,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         if (self.isChildGrid) {
             self.shadowRoot = args.parentNode.shadowRoot;
             self.parentNode = args.parentNode;
-        } else if (self.intf.createShadowRoot) {
+        } else {
             self.shadowRoot = self.intf.attachShadow({mode: 'open'});
             self.parentNode = self.shadowRoot;
-        } else {
-            self.parentNode = self.intf;
         }
         self.init();
         return self.intf;
@@ -475,7 +473,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         args = args || {};
         var i, tKeys = ['style', 'formatters', 'sorters', 'filters',
                     'treeGridAttributes', 'cellGridAttributes', 'data', 'schema'];
-        if (window.customElements && document.body.createShadowRoot) {
+        if (window.customElements) {
             i = document.createElement('canvas-datagrid');
             Object.keys(args).forEach(function (argKey) {
                 // set data and parentNode after everything else
@@ -702,12 +700,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         checkStyle = true;
                         return;
                     }
+                    if (mutation.target.nodeName === 'STYLE') {
+                        checkStyle = true;
+                        return;
+                    }
                     if (mutation.target.parentNode
                             && mutation.target.parentNode.nodeName === 'STYLE') {
                         checkStyle = true;
                         return;
                     }
-                    if (mutation.addedNodes.length > 0 || mutation.type === 'characterData') {
+                    if (mutation.target === intf && (mutation.addedNodes.length > 0 || mutation.type === 'characterData')) {
                         checkInnerHTML = true;
                     }
                 });
@@ -730,6 +732,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
     };
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
 
 /***/ }),
 /* 3 */
@@ -2951,7 +2954,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             document.body.removeEventListener('mousemove', self.freezeMove, false);
             document.body.removeEventListener('mouseup', self.stopFreezeMove, false);
             self.freezeMarkerPosition = undefined;
-            if (self.dispatchEvent('endfreezemove', {NativeEvent: e})) {
+            if (self.dispatchEvent('endfreezemove', {NativeEvent: e, cell: self.currentCell})) {
                 self.frozenRow = self.startFreezeMove.x;
                 self.frozenColumn = self.startFreezeMove.y;
                 self.draw(true);
@@ -3422,6 +3425,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     // intentional redefinition of column
                     column = s[self.orders.columns[columnIndex]];
                     if (!column.hidden && headers.indexOf(column.name) !== -1) {
+                        var ev = {NativeEvent: e, column: column};
+                        if(self.dispatchEvent('copyonschema', ev)) {
+                            column = ev.column;
+                        }
+
                         var hVal = (column.name || column.title) || '';
                         if (useHtml) {
                             h.push('<th>' + htmlSafe(hVal) + '</th>');
@@ -3929,6 +3937,24 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.dataType = 'application/x-canvas-datagrid';
         self.orderBy = null;
         self.orderDirection = 'asc';
+        self.orderings = {
+            columns: [],
+            add: function (orderBy, orderDirection, sortFunction) {
+                self.orderings.columns = self.orderings.columns.filter(function (col) {
+                    return col.orderBy !== orderBy;
+                });
+                self.orderings.columns.push({
+                    orderBy: orderBy,
+                    orderDirection: orderDirection,
+                    sortFunction: sortFunction
+                });
+            },
+            sort: function () {
+                self.orderings.columns.forEach(function (col) {
+                    self.data.sort(col.sortFunction(col.orderBy, col.orderDirection));
+                });
+            }
+        };
         self.columnFilters = {};
         self.filters = {};
         self.frozenRow = 0;
@@ -3937,6 +3963,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.scrollCache = { x: [], y: [] };
         self.scrollBox = {};
         self.visibleRows = [];
+        self.visibleCells = [];
         self.sizes = {
             rows: {},
             columns: {},
@@ -4081,6 +4108,25 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
             }
             return f;
         };
+        self.applyFilter = function () {
+            self.refreshFromOrigialData();
+            Object.keys(self.columnFilters).forEach(function (filter) {
+                var header = self.getHeaderByName(filter);
+                if (!header) {
+                    return;
+                }
+                self.currentFilter = header.filter || self.filter(header.type || 'string');
+                self.data = self.data.filter(function (row) {
+                    return self.currentFilter(row[filter], self.columnFilters[filter]);
+                });
+            });
+            self.resize();
+            self.draw(true);
+        };
+        self.applyDataTransforms = function () {
+            self.applyFilter();
+            self.orderings.sort();
+        }
         self.getBestGuessDataType = function (columnName, data) {
             var t, x, l = data.length;
             for (x = 0; x < l; x += 1) {
@@ -4973,8 +5019,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 }
                 // set the unfiltered/sorted data array
                 self.originalData = data;
-                //TODO apply filter to incoming dataset
-                self.data = self.originalData;
+                // apply filter, sort, etc to incoming dataset
+                self.applyDataTransforms();
                 // empty data was set
                 if (!self.schema && (self.data || []).length === 0) {
                     self.tempSchema = [{name: ''}];
@@ -6245,9 +6291,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                     self.canvas = self.parentDOMNode;
                 } else {
                     self.canvas = document.createElement('canvas');
-                    if (self.intf.createShadowRoot) {
-                        self.parentDOMNode.appendChild(self.canvas);
-                    }
+                    self.parentDOMNode.appendChild(self.canvas);
                 }
                 document.body.appendChild(self.controlInput);
                 self.createInlineStyle(self.canvas, 'canvas-datagrid');
@@ -6476,31 +6520,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @param {string} value The value to filter for.
          */
         self.setFilter = function (column, value) {
-            function applyFilter() {
-                self.refreshFromOrigialData();
-                Object.keys(self.columnFilters).forEach(function (filter) {
-                    var header = self.getHeaderByName(column);
-                    if (!header) {
-                        return;
-                    }
-                    self.currentFilter = header.filter || self.filter(column.type || 'string');
-                    self.data = self.data.filter(function (row) {
-                        return self.currentFilter(row[filter], self.columnFilters[filter]);
-                    });
-                });
-                self.resize();
-                self.draw(true);
-            }
             if (column === undefined && value === undefined) {
                 self.columnFilters = {};
-                return applyFilter();
-            }
-            if (column && (value === '' || value === undefined)) {
+            } else if (column && (value === '' || value === undefined)) {
                 delete self.columnFilters[column];
             } else {
                 self.columnFilters[column] = value;
             }
-            applyFilter();
+            self.applyDataTransforms();
         };
         /**
          * Returns the number of pixels to scroll down to line up with row rowIndex.
@@ -6941,7 +6968,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @memberof canvasDatagrid
          * @name order
          * @method
-         * @returns {cell} cell at the selected location.
          * @param {number} columnName Name of the column to be sorted.
          * @param {string} direction `asc` for ascending or `desc` for descending.
          * @param {function} [sortFunction] When defined, override the default sorting method defined in the column's schema and use this one.
@@ -6954,15 +6980,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 });
             if (self.dispatchEvent('beforesortcolumn', {name: columnName, direction: direction})) { return; }
             self.orderBy = columnName;
+            self.orderDirection = direction;
             if (!self.data || self.data.length === 0) { return; }
             if (c.length === 0) {
                 throw new Error('Cannot sort.  No such column name');
             }
-            f = sortFunction || self.sorters[c[0].type];
+            f = sortFunction || c[0].sorter || self.sorters[c[0].type];
             if (!f && c[0].type !== undefined) {
                 console.warn('Cannot sort type "%s" falling back to string sort.', c[0].type);
             }
-            self.data = self.data.sort(typeof f === 'function' ? f(columnName, direction) : self.sorters.string);
+            self.orderings.add(columnName, direction, (typeof f === 'function' ? f : self.sorters.string));
+            self.orderings.sort();
             self.dispatchEvent('sortcolumn', {name: columnName, direction: direction});
             self.draw(true);
             if (dontSetStorageData) { return; }
