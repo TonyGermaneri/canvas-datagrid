@@ -60,10 +60,6 @@
     "karma-mocha": "^2.0.1",
     "marked": "^0.3.6",
     "mocha": "^3.5.3",
-    "mocha-phantomjs": "^4.1.0",
-    "mocha-phantomjs-core": "^2.1.2",
-    "mocha-phantomjs-istanbul": "0.0.2",
-    "phantomjs": "^2.1.7",
     "puppeteer": "^3.0.4",
     "should": "^11.2.1",
     "webpack": "^3.0.0"
