@@ -25,4 +25,5 @@ jobs:
       - name: Publish NPM Module
         uses: JS-DevTools/npm-publish@v1
         with:
+          check-version: false
           token: ${{ secrets.NPM_DEPLOY_KEY }}
