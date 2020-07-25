@@ -21,6 +21,19 @@
         </style>
     </head>
     <body>
+        <!-- The scripts need to be in the body DOM element, as some test running frameworks need the body
+        to have already been created so they can insert their magic into it. For example, if loaded
+        before body, Angular Scenario test framework fails to find the body and crashes and burns in
+        an epic manner. -->
+        <script src="context.js"></script>
+        <script type="text/javascript">
+            // Configure our Karma and set up bindings
+            %CLIENT_CONFIG%
+            window.__karma__.setupContext(window);
+
+            // All served files with the latest timestamps
+            %MAPPINGS%
+        </script>
         <a id="coverage" href="https://tonygermaneri.github.io/canvas-datagrid/build/report/lcov-report/index.html">Latest Coverage Report</a>
         <div id="mocha"></div>
         <div id="grid"><div></div></div>
@@ -29,9 +42,9 @@
             mocha.setup('bdd');
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/async/2.5.0/async.js"></script>
-        <script src="../dist/canvas-datagrid.debug.js"></script>
+        <script src="base/dist/canvas-datagrid.debug.js"></script>
         <!-- <script src="../build/canvas-datagrid.instrument.js"></script> -->
-        <script src="./tests.js"></script>
+        <script src="base/test/tests.js"></script>
         <script>
             mocha.run();
         </script>
@@ -85,6 +98,15 @@
                 color: white;
             }
         </style>
-        
+        <!-- Dynamically replaced with <script> tags -->
+        %SCRIPTS%
+        <!-- Since %SCRIPTS% might include modules, the `loaded()` call needs to be in a module too.
+        This ensures all the tests will have been declared before karma tries to run them. -->
+        <script type="module">
+            window.__karma__.loaded();
+        </script>
+        <script nomodule>
+            window.__karma__.loaded();
+        </script>
     </body>
 </html>
