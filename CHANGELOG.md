@@ -6,6 +6,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.22.16 - 2020-07-25
+
+This release is (also) of no substance, it was merely to get the CI system
+to publish to NPM.
+
 ## 0.22.15 - 2020-07-25
 
 This release is of no substance, it was merely to get the CI system
