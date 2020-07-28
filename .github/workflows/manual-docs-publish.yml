@@ -1,4 +1,4 @@
-name: Release new tagged version
+name: Publish documentation
 
 on: workflow_dispatch
 
