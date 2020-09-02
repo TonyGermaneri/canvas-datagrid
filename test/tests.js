@@ -1510,6 +1510,39 @@
                         });
                     }, 1);
                 });
+                it('Should paste a value from the clipboard into a cell', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [
+                            { 'Column A': 'Original value' }
+                        ]
+                    });
+
+                    grid.focus();
+                    grid.setActiveCell(0, 0);
+
+                    // grid.paste is not a function?
+                    grid.paste({
+                        clipboardData: {
+                            items: [
+                                {
+                                    type: 'text/html',
+                                    getAsString: function() {
+                                        return 'Paste buffer value';
+                                    }
+                                }
+                            ]
+                        }
+                    });
+
+                    setTimeout(function() {
+                        done(
+                            assertIf(grid.data[0]["Column A"] === "Paste buffer value", "Value has been replaced with clipboard data")
+                        );
+                    }, 10);
+                });
+                it.skip("Should fire a beforepaste event");
+                it.skip("Should fire an afterpaste event");
                 it('Begin editing, tab to next cell', function (done) {
                     var ev,
                         err,
