@@ -1521,14 +1521,13 @@
                     grid.focus();
                     grid.setActiveCell(0, 0);
 
-                    // grid.paste is not a function?
                     grid.paste({
                         clipboardData: {
                             items: [
                                 {
-                                    type: 'text/html',
-                                    getAsString: function() {
-                                        return 'Paste buffer value';
+                                    type: 'text/plain',
+                                    getAsString: function(callback) {
+                                        callback('Paste buffer value');
                                     }
                                 }
                             ]
@@ -1536,13 +1535,87 @@
                     });
 
                     setTimeout(function() {
-                        done(
-                            assertIf(grid.data[0]["Column A"] === "Paste buffer value", "Value has been replaced with clipboard data")
-                        );
+                        var cellData = grid.data[0]['Column A'];
+                        done(assertIf(cellData !== 'Paste buffer value', 'Value has not been replaced with clipboard data: ' + cellData));
                     }, 10);
                 });
-                it.skip("Should fire a beforepaste event");
-                it.skip("Should fire an afterpaste event");
+                it('Should paste an HTML value from the clipboard into a cell', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [
+                            { 'Column A': 'Original value' }
+                        ]
+                    });
+
+                    grid.focus();
+                    grid.setActiveCell(0, 0);
+
+                    grid.paste({
+                        clipboardData: {
+                            items: [
+                                {
+                                    type: 'text/html',
+                                    getAsString: function(callback) {
+                                        callback("<meta charset='utf-8'><table><tr><td>Paste buffer value</td></tr></table>");
+                                    }
+                                }
+                            ]
+                        }
+                    });
+
+                    setTimeout(function() {
+                        var cellData = grid.data[0]['Column A'];
+                        done(assertIf(cellData !== 'Paste buffer value', 'Value has not been replaced with clipboard data: ' + cellData));
+                    }, 10);
+                });
+                it("Should fire a beforepaste event", function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [
+                            { 'Column A': 'Original value' }
+                        ]
+                    });
+
+                    grid.focus();
+                    grid.setActiveCell(0, 0);
+
+                    grid.addEventListener('beforepaste', function (event) {
+                        event.preventDefault();
+                        done();
+                    });
+
+                    // Event can be empty, because beforepaste should fire immediately,
+                    // and return from paste function (because preventDefault):
+                    grid.paste({});
+                });
+                it("Should fire an afterpaste event", function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [
+                            { 'Column A': 'Original value' }
+                        ]
+                    });
+
+                    grid.focus();
+                    grid.setActiveCell(0, 0);
+
+                    grid.addEventListener('afterpaste', function (event) {
+                        done();
+                    });
+
+                    grid.paste({
+                        clipboardData: {
+                            items: [
+                                {
+                                    type: 'text/plain',
+                                    getAsString: function(callback) {
+                                        callback('Paste buffer value');
+                                    }
+                                }
+                            ]
+                        }
+                    });
+                });
                 it('Begin editing, tab to next cell', function (done) {
                     var ev,
                         err,
