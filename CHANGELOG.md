@@ -6,6 +6,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.22.17 - 2020-09-03
+
+### Fixed
+
+- Improper truncating of text in custom formatter (yuanliwei, #287)
+- Pasting non-HTML values from clipboard
+- Attempting to paste beyond grid bounds resulted in error
+
+### Added
+
+- Adds beforepaste / afterpaste events (ndrsn, #288)
+
 ## 0.22.16 - 2020-07-25
 
 This release is (also) of no substance, it was merely to get the CI system
