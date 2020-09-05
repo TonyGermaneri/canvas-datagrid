@@ -2,21 +2,7 @@
 /*globals Event: false, describe: false, afterEach: false, beforeEach: false, after: false, it: false, canvasDatagrid: false, async: false, requestAnimationFrame: false*/
 (function () {
     'use strict';
-    // Keycodes, for keyDown tests
-    var kcs = {
-            up: 38,
-            down: 40,
-            left: 37,
-            right: 39,
-            enter: 13,
-            tab: 9,
-            space: 32,
-            pgup: 33,
-            pgdown: 34,
-            a: 65,
-            esc: 27
-        },
-        blocks = '██████████████████',
+    var blocks = '██████████████████',
         // Template colors, for pixel tests
         c = {
             b: 'rgb(0, 0, 255)',
@@ -149,9 +135,9 @@
         });
         el.dispatchEvent(e);
     }
-    function keydown(el, keyCode, args) {
+    function keydown(el, key, args) {
         args = args || {};
-        args.keyCode = keyCode;
+        args.key = key;
         de(el, 'keydown', args);
     }
     function bb(el) {
@@ -970,11 +956,14 @@
                             var i = e.items[0].title.children[1];
                             i.value = 'b';
                             i.dispatchEvent(new Event('keyup'));
-                            ['down', 'enter'].forEach(function (kk) {
+
+                            ['ArrowDown', 'Enter'].forEach(function (key) {
                                 var ev = new Event('keydown');
-                                ev.keyCode = kcs[kk];
+                                ev.key = key;
+                                
                                 i.dispatchEvent(ev);
-                                if (kk === 'enter') {
+                                
+                                if (key === 'Enter') {
                                     err = assertIf(grid.data[0].col1 !== 'baz', 'Expected key combination to filter for baz');
                                 }
                             });
@@ -995,11 +984,13 @@
                             var i = e.items[0].title.children[1];
                             i.value = 'b';
                             i.dispatchEvent(new Event('keyup'));
-                            ['down', 'up', 'enter'].forEach(function (kk) {
+                            ['ArrowDown', 'ArrowUp', 'Enter'].forEach(function (key) {
                                 var ev = new Event('keydown');
-                                ev.keyCode = kcs[kk];
+                                ev.key = key;
+
                                 i.dispatchEvent(ev);
-                                if (kk === 'enter') {
+                                
+                                if (key === 'Enter') {
                                     err = assertIf(grid.data[0].col1 !== 'bar', 'Expected key combination to filter for bar');
                                 }
                             });
@@ -1020,11 +1011,11 @@
                             var i = e.items[0].title.children[1];
                             i.value = 'f';
                             i.dispatchEvent(new Event('keyup'));
-                            ['tab'].forEach(function (kk) {
+                            ['Tab'].forEach(function (key) {
                                 var ev = new Event('keydown');
-                                ev.keyCode = kcs[kk];
+                                ev.key = key;
                                 i.dispatchEvent(ev);
-                                if (kk === 'tab') {
+                                if (key === 'Tab') {
                                     err = assertIf(grid.data[0].col1 !== 'foo', 'Expected key combination to filter for bar');
                                 }
                             });
@@ -1045,11 +1036,11 @@
                             var i = e.items[0].title.children[1];
                             i.value = 'f';
                             i.dispatchEvent(new Event('keyup'));
-                            ['esc'].forEach(function (kk) {
+                            ['Escape'].forEach(function (key) {
                                 var ev = new Event('keydown');
-                                ev.keyCode = kcs[kk];
+                                ev.key = key;
                                 i.dispatchEvent(ev);
-                                if (kk === 'esc') {
+                                if (key === 'esc') {
                                     err = assertIf(grid.data[0].col1 !== 'foo', 'Expected key combination to filter for bar');
                                 }
                             });
@@ -1420,7 +1411,8 @@
                     err = assertIf(!grid.input.parentNode, 'Expected an input to have appeared');
                     if (err) { return done(err); }
                     ev = new Event('keydown');
-                    ev.keyCode = kcs.esc;
+                    ev.key = "Escape";
+
                     grid.addEventListener('endedit', function () {
                         done();
                     });
@@ -1434,7 +1426,7 @@
                         });
                     grid.beginEditAt(0, 0);
                     ev = new Event('keydown');
-                    ev.keyCode = kcs.enter;
+                    ev.key = "Enter";
                     grid.input.value = 'blah';
                     grid.addEventListener('endedit', function (e) {
                         done(assertIf(grid.data[0].d !== 'blah', 'Expected value to be in data'));
@@ -1449,7 +1441,7 @@
                         });
                     grid.beginEditAt(0, 0);
                     ev = new Event('keydown');
-                    ev.keyCode = kcs.enter;
+                    ev.key = "Enter";
                     grid.input.value = 'blah';
                     grid.addEventListener('beforeendedit', function (e) {
                         e.abort();
@@ -1527,7 +1519,7 @@
                         });
                     grid.beginEditAt(0, 0);
                     ev = new Event('keydown');
-                    ev.keyCode = kcs.tab;
+                    ev.key = "Tab";
                     grid.input.dispatchEvent(ev);
                     grid.addEventListener('endedit', function (e) {
                         if (e.cell.columnIndex === 1) {
@@ -1546,7 +1538,7 @@
                     grid.beginEditAt(0, 0);
                     ev = new Event('keydown');
                     ev.shiftKey = true;
-                    ev.keyCode = kcs.tab;
+                    ev.key = "Tab";
                     grid.addEventListener('endedit', function (e) {
                         if (e.cell.columnIndex === 2 && e.cell.rowIndex === 2) {
                             done();
@@ -1569,7 +1561,7 @@
                         }
                     });
                     ev = new Event('keydown');
-                    ev.keyCode = kcs.tab;
+                    ev.key = "Tab";
                     document.body.lastChild.dispatchEvent(ev);
                     document.body.lastChild.dispatchEvent(ev);
                     document.body.lastChild.dispatchEvent(ev);
@@ -1584,7 +1576,7 @@
                     });
                     grid.focus();
                     ev = new Event('keydown');
-                    ev.keyCode = kcs.down;
+                    ev.key = "ArrowDown";
                     grid.controlInput.dispatchEvent(ev);
                     done(assertIf(grid.activeCell.rowIndex !== 1, 'Expected the active cell to move.'));
                 });
@@ -1595,7 +1587,7 @@
                     });
                     grid.focus();
                     ev = new Event('keydown');
-                    ev.keyCode = kcs.right;
+                    ev.key = "ArrowRight";
                     grid.controlInput.dispatchEvent(ev);
                     done(assertIf(grid.activeCell.columnIndex !== 1, 'Expected the active cell to move.'));
                 });
@@ -1606,10 +1598,10 @@
                     });
                     grid.focus();
                     ev = new Event('keydown');
-                    ev.keyCode = kcs.right;
+                    ev.key = "ArrowRight";
                     grid.controlInput.dispatchEvent(ev);
                     ev = new Event('keydown');
-                    ev.keyCode = kcs.left;
+                    ev.key = "ArrowLeft";
                     grid.controlInput.dispatchEvent(ev);
                     done(assertIf(grid.activeCell.columnIndex !== 0, 'Expected the active cell to move.'));
                 });
@@ -1620,10 +1612,10 @@
                     });
                     grid.focus();
                     ev = new Event('keydown');
-                    ev.keyCode = kcs.down;
+                    ev.key = "ArrowDown";
                     grid.controlInput.dispatchEvent(ev);
                     ev = new Event('keydown');
-                    ev.keyCode = kcs.up;
+                    ev.key = "ArrowUp";
                     grid.controlInput.dispatchEvent(ev);
                     done(assertIf(grid.activeCell.columnIndex !== 0, 'Expected the active cell to move.'));
                 });
@@ -1634,11 +1626,11 @@
                     });
                     grid.focus();
                     ev = new Event('keydown');
-                    ev.keyCode = kcs.space;
+                    ev.key = " "; // Space
                     grid.controlInput.dispatchEvent(ev);
                     ev = new Event('keydown');
                     ev.shiftKey = true;
-                    ev.keyCode = kcs.down;
+                    ev.key = "ArrowDown";
                     grid.controlInput.dispatchEvent(ev);
                     done(assertIf(grid.selectedRows.length !== 2, 'Expected the active cell to move.'));
                 });
@@ -1649,11 +1641,11 @@
                     });
                     grid.focus();
                     ev = new Event('keydown');
-                    ev.keyCode = kcs.space;
+                    ev.key = " "; // Space
                     grid.controlInput.dispatchEvent(ev);
                     ev = new Event('keydown');
                     ev.shiftKey = true;
-                    ev.keyCode = kcs.right;
+                    ev.key = "ArrowRight";
                     grid.controlInput.dispatchEvent(ev);
                     done(assertIf(grid.selectedRows.length !== 1 || grid.selections[0].col3 !== undefined, 'Expected the active cell to move.'));
                 });
@@ -1664,15 +1656,15 @@
                     });
                     grid.focus();
                     ev = new Event('keydown');
-                    ev.keyCode = kcs.space;
+                    ev.key = " "; // Space
                     grid.controlInput.dispatchEvent(ev);
                     ev = new Event('keydown');
                     ev.shiftKey = true;
-                    ev.keyCode = kcs.right;
+                    ev.key = "ArrowRight";
                     grid.controlInput.dispatchEvent(ev);
                     ev = new Event('keydown');
                     ev.shiftKey = true;
-                    ev.keyCode = kcs.left;
+                    ev.key = "ArrowLeft";
                     grid.controlInput.dispatchEvent(ev);
                     done(assertIf(grid.selectedRows.length !== 1 || grid.selections[0].col3 !== undefined, 'Expected the active cell to move.'));
                 });
@@ -1683,15 +1675,15 @@
                     });
                     grid.focus();
                     ev = new Event('keydown');
-                    ev.keyCode = kcs.space;
+                    ev.key = " "; // Space
                     grid.controlInput.dispatchEvent(ev);
                     ev = new Event('keydown');
                     ev.shiftKey = true;
-                    ev.keyCode = kcs.down;
+                    ev.key = "ArrowDown";
                     grid.controlInput.dispatchEvent(ev);
                     ev = new Event('keydown');
                     ev.shiftKey = true;
-                    ev.keyCode = kcs.up;
+                    ev.key = "ArrowUp";
                     grid.controlInput.dispatchEvent(ev);
                     done(assertIf(grid.selectedRows.length !== 2 || grid.selections[0].col2 !== undefined, 'Expected the active cell to move.'));
                 });
@@ -1702,10 +1694,10 @@
                     });
                     grid.focus();
                     ev = new Event('keydown');
-                    ev.keyCode = kcs.right;
+                    ev.key = "ArrowRight";
                     grid.controlInput.dispatchEvent(ev);
                     ev = new Event('keydown');
-                    ev.keyCode = kcs.tab;
+                    ev.key = "Tab";
                     ev.shiftKey = true;
                     grid.controlInput.dispatchEvent(ev);
                     done(assertIf(grid.activeCell.columnIndex !== 0, 'Expected the active cell to move.'));
@@ -1717,7 +1709,7 @@
                     });
                     grid.focus();
                     ev = new Event('keydown');
-                    ev.keyCode = kcs.tab;
+                    ev.key = "Tab";
                     grid.controlInput.dispatchEvent(ev);
                     done(assertIf(grid.activeCell.columnIndex !== 1, 'Expected the active cell to move.'));
                 });
@@ -1728,7 +1720,7 @@
                     });
                     grid.focus();
                     ev = new Event('keydown');
-                    ev.keyCode = kcs.tab;
+                    ev.key = "Tab";
                     grid.controlInput.dispatchEvent(ev);
                     done(assertIf(grid.activeCell.columnIndex !== 1, 'Expected the active cell to move.'));
                 });
@@ -1755,7 +1747,7 @@
                     });
                     grid.focus();
                     ev = new Event('keydown');
-                    ev.keyCode = kcs.pgdown;
+                    ev.key = "PageDown";
                     grid.controlInput.dispatchEvent(ev);
                     done(assertIf(grid.activeCell.rowIndex === 0, 'Expected the active cell to move.'));
                 });
@@ -1766,10 +1758,10 @@
                     });
                     grid.focus();
                     ev = new Event('keydown');
-                    ev.keyCode = kcs.pgdown;
+                    ev.key = "PageDown";
                     grid.controlInput.dispatchEvent(ev);
                     ev = new Event('keydown');
-                    ev.keyCode = kcs.pgup;
+                    ev.key = "PageUp";
                     grid.controlInput.dispatchEvent(ev);
                     done(assertIf(grid.activeCell.rowIndex !== 0, 'Expected the active cell to move.'));
                 });
@@ -1781,7 +1773,7 @@
                     grid.focus();
                     grid.selectAll();
                     ev = new Event('keydown');
-                    ev.keyCode = kcs.space;
+                    ev.key = " "; // Space
                     grid.controlInput.dispatchEvent(ev);
                     done(assertIf(grid.selectedRows.length !== 1, 'Expected to see one row selected.'));
                 });
@@ -2115,7 +2107,7 @@
                         data: smallData()
                     });
                     grid.focus();
-                    de(grid.controlInput, 'keydown', {keyCode: 65, ctrlKey: true });
+                    de(grid.controlInput, 'keydown', {key: "a", ctrlKey: true });
                     setTimeout(function () {
                         grid.style.activeCellSelectedBackgroundColor = c.y;
                         grid.style.cellSelectedBackgroundColor = c.y;
@@ -2134,7 +2126,7 @@
                         test: this.test,
                         data: smallData()
                     });
-                    de(grid.controlInput, 'keydown', {keyCode: 65, ctrlKey: true });
+                    de(grid.controlInput, 'keydown', {key: "a", ctrlKey: true });
                     setTimeout(function () {
                         grid.style.activeCellBackgroundColor = c.b;
                         grid.style.cellBackgroundColor = c.b;
@@ -2154,7 +2146,7 @@
                         data: smallData()
                     });
                     grid.focus();
-                    de(grid.controlInput, 'keydown', {keyCode: 27});
+                    de(grid.controlInput, 'keydown', {key: "Escape"});
                     setTimeout(function () {
                         grid.style.activeCellBackgroundColor = c.y;
                         grid.style.cellBackgroundColor = c.y;
@@ -2578,7 +2570,7 @@
                         data: [{a: 'a'}]
                     });
                     ev = new Event('keydown');
-                    ev.keyCode = kcs.enter;
+                    ev.key = "Enter";
                     grid.style.cellBackgroundColor = c.y;
                     grid.beginEditAt(0, 1);
                     grid.input.value = 'abcd';
