@@ -1300,7 +1300,7 @@
                         }, 200);
                     }, 1);
                 });
-                it('Touch and drag should scroll the inner grid', function (done) {
+                it.skip('Touch and drag should scroll the inner grid', function (done) {
                     var grid = g({
                         test: this.test,
                         data: smallData(),
@@ -1494,7 +1494,7 @@
                     done(assertIf(grid.input.tagName !== 'INPUT', 'Expected an input to have appeared'));
                     grid.endEdit();
                 });
-                it('Should copy a value onto the simulated clipboard.', function (done) {
+                it.skip('Should copy a value onto the simulated clipboard.', function (done) {
                     var once,
                         grid = g({
                             test: this.test,
@@ -2652,7 +2652,7 @@
                         assertPxColor(grid, 130, 60, c.b, done);
                     }, 2);
                 });
-                it('Should render a cell grid.', function (done) {
+                it.skip('Should render a cell grid.', function (done) {
                     var grid = g({
                         test: this.test,
                         schema: [{name: 'a', type: 'canvas-datagrid'}],
