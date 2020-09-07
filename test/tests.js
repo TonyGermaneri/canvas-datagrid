@@ -939,7 +939,7 @@
                         }, 1);
                     });
                     contextmenu(grid.canvas, 60, 37);
-                }).timeout(5000);
+                });
                 it('Autocomplete should appear when a value is entered into the filter input', function (done) {
                     var grid = g({
                         test: this.test,
