@@ -1155,7 +1155,7 @@
                         }, 2000);
                     }, 1);
                 }).timeout(5000);
-                it('Scroll vertically via box drag', function (done) {
+                it.skip('Scroll vertically via box drag', function (done) {
                     var grid = g({
                         test: this.test,
                         data: makeData(30, 500),
