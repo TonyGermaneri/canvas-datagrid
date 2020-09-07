@@ -1528,6 +1528,7 @@
 
                     grid.focus();
                     grid.setActiveCell(0, 0);
+                    grid.selectArea({ top: 0, left: 0, bottom: 0, right: 0 });
 
                     grid.paste({
                         clipboardData: {
@@ -1557,6 +1558,7 @@
 
                     grid.focus();
                     grid.setActiveCell(0, 0);
+                    grid.selectArea({ top: 0, left: 0, bottom: 0, right: 0 });
 
                     grid.paste({
                         clipboardData: {
