@@ -31,7 +31,7 @@ module.exports = function(config) {
       '**/lib/*.js': ['coverage']
     },
 
-    failOnFailingTestSuite: false,
+    failOnFailingTestSuite: true,
 
     customContextFile: 'test/tests.html',
 
