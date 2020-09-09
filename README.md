@@ -23,7 +23,7 @@ canvas-datagrid
 * Built in and custom styles.
 * W3C Web Component.  Works in all frameworks.
 * Per-user styles, column sizes, row sizes, view preferences and settings using localStorage.
-* Very small file size, no dependencies.
+* Small file size
 
 [Documentation](https://tonygermaneri.github.io/canvas-datagrid/docs/)
 

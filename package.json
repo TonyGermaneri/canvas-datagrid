@@ -68,5 +68,8 @@
     "should": "^11.2.1",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "is-printable-key-event": "1.0.0"
   }
 }
