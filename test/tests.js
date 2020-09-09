@@ -1874,18 +1874,6 @@
                     grid.controlInput.dispatchEvent(ev);
                     done(assertIf(grid.activeCell.rowIndex !== 0, 'Expected the active cell to move.'));
                 });
-                it('Space select just the active cell', function (done) {
-                    var ev, grid = g({
-                        test: this.test,
-                        data: smallData()
-                    });
-                    grid.focus();
-                    grid.selectAll();
-                    ev = new Event('keydown');
-                    ev.key = " "; // Space
-                    grid.controlInput.dispatchEvent(ev);
-                    done(assertIf(grid.selectedRows.length !== 1, 'Expected to see one row selected.'));
-                });
             });
             describe('Resize', function () {
                 it('Resize a column from a column header.', function (done) {
