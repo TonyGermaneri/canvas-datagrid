@@ -4,17 +4,10 @@
   "description": "Canvas based data grid web component.  Capable of displaying millions of contiguous hierarchical rows and columns without paging or loading, on a single canvas element.",
   "main": "./dist/canvas-datagrid.js",
   "scripts": {
-    "build-docs": "rm -rf docs;./node_modules/.bin/jsdoc -r --template ./tutorials/ ./lib/",
-    "build-gh-pages": "git checkout gh-pages; git merge master --no-edit; npm run build-docs; npm test; git add .; git commit -m 'rebuilt docs, tests.'; git push; git checkout master",
-    "build-watch": "./node_modules/.bin/webpack --output-library=canvasDatagrid --output-library-target=umd  --watch -d --entry=./lib/main.js --output-path=./dist --output-filename=canvas-datagrid.debug.js --devtool source-map --output-source-map-filename='canvas-datagrid.debug.map'",
-    "build-dev": "./node_modules/.bin/webpack --output-library=canvasDatagrid --output-library-target=umd  -d --entry=./lib/main.js --output-path=./dist --output-filename=canvas-datagrid.debug.js --devtool source-map --output-source-map-filename='canvas-datagrid.debug.map'",
-    "test": "npm run build-dev; karma start",
-    "build-instrument": "rm -rf build;mkdir build;./node_modules/.bin/istanbul instrument ./lib -o ./build/lib",
-    "build-pack-instrument": "./node_modules/.bin/webpack --output-library=canvasDatagrid --output-library-target=umd  -d --entry=./build/lib/main.js --output-path=./build --output-filename=canvas-datagrid.instrument.js --devtool source-map --output-source-map-filename='canvas-datagrid.instrument.map'",
-    "build-run-report": "./node_modules/.bin/istanbul report --root ./build --dir ./build/report --reporter text --reporter lcov",
-    "coveralls": "echo '-- Requires token from https://coveralls.io/github/TonyGermaneri/canvas-datagrid set to env var COVERALLS_REPO_TOKEN --\n';export COVERALLS_SERVICE_NAME=cli;COVERALLS_SERVICE_JOB_ID=`cat build.txt`;cat ./build/report/lcov.info | ./node_modules/.bin/coveralls",
-    "build-prd": "echo \"$((`cat build.txt` + 1))\" > build.txt;./node_modules/.bin/webpack --output-library=canvasDatagrid --output-library-target=umd -p --entry=./lib/main.js --output-path=./dist --output-filename=canvas-datagrid.js --devtool source-map --output-source-map-filename='canvas-datagrid.map'",
-    "build-all": "npm run build-dev; npm run build-prd; npm run build-instrument; npm run build-pack-instrument"
+    "build": "webpack",
+    "build-docs": "rm -rf docs; jsdoc -r --template ./tutorials/ ./lib/",
+    "test": "npm run build; karma start",
+    "watch": "webpack --watch"
   },
   "files": [
     "dist/*",
@@ -36,6 +29,9 @@
     "datatable",
     "component"
   ],
+  "browserslist": [
+    "defaults"
+  ],
   "author": "Tony Germaneri <Tony.Germaneri@gmail.com>",
   "contributors": [
     {
@@ -54,6 +50,9 @@
   },
   "homepage": "https://github.com/TonyGermaneri/canvas-datagrid#readme",
   "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "babel-loader": "^8.1.0",
     "chai": "^4.2.0",
     "istanbul": "^0.4.5",
     "jsdoc": "^3.4.3",
@@ -67,6 +66,7 @@
     "mocha": "^3.5.3",
     "puppeteer": "^3.0.4",
     "should": "^11.2.1",
-    "webpack": "^3.0.0"
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   }
 }

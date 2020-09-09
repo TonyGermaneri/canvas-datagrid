@@ -25,7 +25,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build
-        run: npm run build-all --if-present
+        run: npm run build
       - name: Test
         run: npm test
       - name: Upload build artifacts
@@ -101,7 +101,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build debug version
-        run: npm run build-dev
+        run: npm run build
       - name: Build documentation
         run: npm run build-docs
       # This will make documentation available at
