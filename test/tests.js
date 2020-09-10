@@ -1729,71 +1729,91 @@
                     done(assertIf(grid.activeCell.columnIndex !== 0, 'Expected the active cell to move.'));
                 });
                 it('Shift and Arrow down should add the selection down one', function (done) {
-                    var ev, grid = g({
+                    var grid = g({
                         test: this.test,
                         data: smallData()
                     });
+
                     grid.focus();
-                    ev = new Event('keydown');
-                    ev.key = " "; // Space
-                    grid.controlInput.dispatchEvent(ev);
-                    ev = new Event('keydown');
+                    grid.selectArea({
+                        top: 0, left: 0, bottom: 0, right: 0
+                    });
+
+                    var ev = new Event('keydown');
                     ev.shiftKey = true;
                     ev.key = "ArrowDown";
+
                     grid.controlInput.dispatchEvent(ev);
+
                     done(assertIf(grid.selectedRows.length !== 2, 'Expected the active cell to move.'));
                 });
                 it('Shift and Arrow right should add the selection right one', function (done) {
-                    var ev, grid = g({
+                    var grid = g({
                         test: this.test,
                         data: smallData()
                     });
+                    
                     grid.focus();
-                    ev = new Event('keydown');
-                    ev.key = " "; // Space
-                    grid.controlInput.dispatchEvent(ev);
-                    ev = new Event('keydown');
+                    grid.selectArea({
+                        top: 0, left: 0, bottom: 0, right: 0
+                    });
+
+                    var ev = new Event('keydown');
                     ev.shiftKey = true;
                     ev.key = "ArrowRight";
+                    
                     grid.controlInput.dispatchEvent(ev);
+                    
                     done(assertIf(grid.selectedRows.length !== 1 || grid.selections[0].col3 !== undefined, 'Expected the active cell to move.'));
                 });
                 it('Shift and Arrow left should add the selection to the left one', function (done) {
-                    var ev, grid = g({
+                    var grid = g({
                         test: this.test,
                         data: smallData()
                     });
+
                     grid.focus();
-                    ev = new Event('keydown');
-                    ev.key = " "; // Space
-                    grid.controlInput.dispatchEvent(ev);
-                    ev = new Event('keydown');
+                    grid.selectArea({
+                        top: 0, left: 1, bottom: 0, right: 1
+                    });
+
+                    var ev = new Event('keydown');
                     ev.shiftKey = true;
                     ev.key = "ArrowRight";
+
                     grid.controlInput.dispatchEvent(ev);
+
                     ev = new Event('keydown');
                     ev.shiftKey = true;
                     ev.key = "ArrowLeft";
+
                     grid.controlInput.dispatchEvent(ev);
+
                     done(assertIf(grid.selectedRows.length !== 1 || grid.selections[0].col3 !== undefined, 'Expected the active cell to move.'));
                 });
                 it('Shift and Arrow up should add the selection up one', function (done) {
-                    var ev, grid = g({
+                    var grid = g({
                         test: this.test,
                         data: smallData()
                     });
+
                     grid.focus();
-                    ev = new Event('keydown');
-                    ev.key = " "; // Space
-                    grid.controlInput.dispatchEvent(ev);
-                    ev = new Event('keydown');
+                    grid.selectArea({
+                        top: 1, left: 0, bottom: 1, right: 0
+                    });
+
+                    var ev = new Event('keydown');
                     ev.shiftKey = true;
                     ev.key = "ArrowDown";
+
                     grid.controlInput.dispatchEvent(ev);
+
                     ev = new Event('keydown');
                     ev.shiftKey = true;
                     ev.key = "ArrowUp";
+
                     grid.controlInput.dispatchEvent(ev);
+
                     done(assertIf(grid.selectedRows.length !== 2 || grid.selections[0].col2 !== undefined, 'Expected the active cell to move.'));
                 });
                 it('Shift tab should behave like left arrow', function (done) {
