@@ -1049,6 +1049,30 @@
                     });
                     contextmenu(grid.canvas, 100, 37);
                 });
+                it('Autocomplete should have an option for filtering blank values', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [ 
+                            {col1: 'bar', col2: 0, col3: 'a'},
+                            {col1: '    ', col2: 1, col3: 'b'},
+                            {col1: 'baz', col2: 2, col3: 'c'},
+                        ],
+                    });
+                    grid.addEventListener('contextmenu', function (e) {
+                        setTimeout(function () {
+                            //HACK: get to filter input element in context menu
+                            var i = e.items[0].title.children[1];
+                            i.value = '';
+                            i.dispatchEvent(new Event('keyup'));
+                            var firstDropdownValue = document.body.lastChild.childNodes[0].innerHTML;
+                            var containsBlanksText = firstDropdownValue === '(Blanks)';
+                            done(assertIf(
+                                !containsBlanksText,
+                                'Expected the autocomplete to have blanksText value item'));
+                        }, 1);
+                    });
+                    contextmenu(grid.canvas, 100, 37);
+                });
                 it('Should store JSON view state data, then clear it once clear settings is clicked.', function (done) {
                     var n = 'a' + (new Date().getTime()),
                         k = 'canvasDataGrid-' + n,
@@ -2513,6 +2537,33 @@
                     grid.setFilter('d', 'edfg');
                     done(assertIf(grid.data.length === 0 && grid.data[0].d === 'edfg',
                         'Expected filter to remove all but 1 row.'));
+                });
+                it('Should filter for blank values', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{ d: 'abcd' }, { d: null }, { d: undefined }, { d: '' }, { d: '       ' }, { d: 'edfg' }]
+                    });
+                    grid.setFilter('d', '(Blanks)');
+                    var filteredValuesOnly = grid.data.map(obj => obj.d);
+                    var onlyBlanks = filteredValuesOnly.length === 4 && filteredValuesOnly.every(item => [undefined, null, '', '       '].includes(item))
+                    done(assertIf(
+                        !onlyBlanks,
+                        'Expected filter remove non-null/empty values'),
+                    );
+                });
+                it('Should filter for blank values (numbers)', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [{ d: 1 }, { d: null }, { d: undefined }, { d: '' }, { d: 2 }],
+                        schema: [{ name: 'd', type: 'number' }],
+                    });
+                    grid.setFilter('d', '(Blanks)');
+                    var filteredValuesOnly = grid.data.map(obj => obj.d);
+                    var onlyBlanks = filteredValuesOnly.length === 3 && filteredValuesOnly.every(item => [undefined, null, ''].includes(item))
+                    done(assertIf(
+                        !onlyBlanks,
+                        'Expected filter remove non-null/empty values'),
+                    );
                 });
                 it('Should remove all filters', function (done) {
                     var grid = g({
