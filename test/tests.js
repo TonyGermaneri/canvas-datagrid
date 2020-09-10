@@ -1578,6 +1578,36 @@
                         done(assertIf(cellData !== 'Paste buffer value', 'Value has not been replaced with clipboard data: ' + cellData));
                     }, 10);
                 });
+                it('Should paste a CF_HTML value from the clipboard into a cell', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [
+                            { 'Column A': 'Original value' }
+                        ]
+                    });
+
+                    grid.focus();
+                    grid.setActiveCell(0, 0);
+                    grid.selectArea({ top: 0, left: 0, bottom: 0, right: 0 });
+
+                    grid.paste({
+                        clipboardData: {
+                            items: [
+                                {
+                                    type: 'text/html',
+                                    getAsString: function(callback) {
+                                        callback("<html> <body> <!--StartFragment--><table><tr><td>Paste buffer value</td></tr></table><!--EndFragment--> </body> </html>");
+                                    }
+                                }
+                            ]
+                        }
+                    });
+
+                    setTimeout(function() {
+                        var cellData = grid.data[0]['Column A'];
+                        done(assertIf(cellData !== 'Paste buffer value', 'Value has not been replaced with clipboard data: ' + cellData));
+                    }, 10);
+                });
                 it("Should fire a beforepaste event", function (done) {
                     var grid = g({
                         test: this.test,
