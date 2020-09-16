@@ -1596,7 +1596,7 @@
                                 {
                                     type: 'text/html',
                                     getAsString: function(callback) {
-                                        callback("<html> <body> <!--StartFragment--><table><tr><td>Paste buffer value</td></tr></table><!--EndFragment--> </body> </html>");
+                                        callback('<html> <body> <!--StartFragment--><table><tr><td>Paste buffer value</td></tr></table><!--EndFragment--> </body> </html>');
                                     }
                                 }
                             ]
