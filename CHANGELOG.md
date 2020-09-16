@@ -6,6 +6,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.23.1 - 2020-09-16
+
+This release merits bumping the minor version, as it contains not only a couple fixes,
+but some new behavior: editing a cell is starting by typing, instead of hitting `Enter`
+first, bringing the behavior more in line with Excel and Google Sheets. It also allows
+for filtering on blank/empty values in a column.
+
+## Fixed
+
+- Fixes scrolling behaviour in safari. (tim-vandecasteele, #286)
+- Fix copy/paste of cells in canvas-datagrid on Windows (mdebrauw, #301)
+
+## Added
+
+- Fill paste values in multiple selected cells (ndrsn, #291)
+- Enable filtering empty/blank column values (mdebrauw, #298)
+
+## Changed
+
+- Type to enter text in cell (ndrsn, #299)
+- Skip flaky tests (ndrsn, #294)
+- Bump lodash from 4.17.15 to 4.17.20 (dependabot, #302)
+- Bump elliptic from 6.5.2 to 6.5.3 (dependabot, #284)
+- Bump http-proxy from 1.18.0 to 1.18.1 (dependabot, #295)
+
 ## 0.22.17 - 2020-09-03
 
 ### Fixed
