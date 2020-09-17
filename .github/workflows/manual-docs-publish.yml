@@ -36,5 +36,5 @@ jobs:
           uses: peaceiris/actions-gh-pages@v3.7.0-8
           with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
-            exclude_assets: '.gitignore,.github'
+            exclude_assets: '.gitignore,.github,node_modules'
             publish_dir: .
