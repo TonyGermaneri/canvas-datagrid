@@ -24,6 +24,12 @@ jobs:
           run: npm run build
         - name: Build documentation
           run: npm run build-docs
+        # Copying manually, because the gh-pages actions
+        # ignores everything listed in .gitignore, which
+        # includes the dist/ directory, meaning files there
+        # will not be published along with the rest of the docs
+        - name: Make library available to docs
+          run: cp dist/canvas-datagrid.debug.js docs/
         # This will make documentation available at
         # https://<username>.github.io/canvas-datagrid/docs/
         - name: Publish documentation to GitHub pages
