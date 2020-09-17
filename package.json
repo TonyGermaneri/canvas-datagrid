@@ -64,7 +64,6 @@
     "karma-mocha": "^2.0.1",
     "marked": "^0.3.6",
     "mocha": "^3.5.3",
-    "puppeteer": "^3.0.4",
     "should": "^11.2.1",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
