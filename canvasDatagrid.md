@@ -276,7 +276,7 @@ You can format the data in your cells without altering the data in two ways.
 
 The first and fastest method is grid formatters.
 Grid formatters allow you to pass your values though a function to format them as they are drawn onto the grid.
-Data type is defined in the [schema](https://tonygermaneri.github.io/canvas-datagrid/docs/#schema) that you can optionally pass to describe your data.
+Data type is defined in the [schema](https://tonygermaneri.github.io/canvas-datagrid/#schema) that you can optionally pass to describe your data.
 
 This method is slightly faster due to the O(1) hash map employed in the value formatters.
 
@@ -290,7 +290,7 @@ The return value of the formatter function will be displayed in the cell instead
 in the data without altering the data.
 
 The second method is the `rendertext` event.  By subscribing to the `rendertext` event listener
-we can intercept the value in the context of the [cell](https://tonygermaneri.github.io/canvas-datagrid/docs/#canvasDatagrid.cell) being drawn and alter it.
+we can intercept the value in the context of the [cell](https://tonygermaneri.github.io/canvas-datagrid/#canvasDatagrid.cell) being drawn and alter it.
 
 This method is slightly slower due to the O(n) loop employed in the event handler class.
 
