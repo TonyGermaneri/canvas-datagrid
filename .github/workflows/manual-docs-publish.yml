@@ -26,7 +26,7 @@ jobs:
           run: npm run build-docs
         # Required for hosting at js.org
         - name: Ensure CNAME is part of gh-pages
-          run: cp CNAME docs/
+          run: echo "canvas-datagrid.js.org" > docs/CNAME
         # This will make documentation available at
         # https://<username>.github.io/canvas-datagrid/
         - name: Publish documentation to GitHub pages
