@@ -5,7 +5,7 @@
   "main": "./dist/canvas-datagrid.js",
   "scripts": {
     "build": "webpack",
-    "build-docs": "rm -rf docs; npm run build; jsdoc -c ./jsdoc.conf.js; cp dist/canvas-datagrid.* docs/; cp -r tutorials/* docs/",
+    "build-docs": "rm -rf docs; npm run build; jsdoc -c ./jsdoc.conf.js; cp dist/canvas-datagrid.* docs/; cp -r tutorials/* images docs/",
     "test": "npm run build; karma start",
     "watch": "webpack --watch"
   },
