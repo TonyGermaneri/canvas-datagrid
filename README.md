@@ -25,7 +25,7 @@ canvas-datagrid
 * Per-user styles, column sizes, row sizes, view preferences and settings using localStorage.
 * Small file size
 
-[Documentation](https://tonygermaneri.github.io/canvas-datagrid/)
+[Documentation](https://tonygermaneri.github.io/canvas-datagrid/index.html)
 
 [Tutorials](https://tonygermaneri.github.io/canvas-datagrid/#tutorials)
 
