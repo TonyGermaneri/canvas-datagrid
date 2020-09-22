@@ -13,7 +13,7 @@ canvas-datagrid
 
 * Works with Firefox, IE11, Edge, Safari and Chrome.
 * Native support for touch devices (phones and tablets).
-* Rich [documentation](https://tonygermaneri.github.io/canvas-datagrid/), [tutorials](https://tonygermaneri.github.io/canvas-datagrid/index.html#tutorials), and [slack support](https://canvas-datagrid.slack.com/).
+* Rich [documentation](http://ndrsn.org/canvas-datagrid/), [tutorials](https://tonygermaneri.github.io/canvas-datagrid/index.html#tutorials), and [slack support](https://canvas-datagrid.slack.com/).
 * Single canvas element, drawn in immediate mode, data size does not impact performance.
 * Support for unlimited rows and columns without paging or loading.
 * Rich API of events, methods and properties using the familiar W3C DOM interface.
@@ -27,13 +27,13 @@ canvas-datagrid
 
 [Documentation](http://ndrsn.org/canvas-datagrid/)
 
-[Tutorials](https://tonygermaneri.github.io/canvas-datagrid/#tutorials)
+[Tutorials](http://ndrsn.org/canvas-datagrid/#tutorials)
 
 [Slack Support](https://canvas-datagrid.slack.com/) (message author for invite)
 
-[Style Builder](https://tonygermaneri.github.io/canvas-datagrid/styleBuilder.html)
+[Style Builder](http://ndrsn.org/canvas-datagrid/styleBuilder.html)
 
-[Download latest version (minified)](https://tonygermaneri.github.io/canvas-datagrid/canvas-datagrid.js)
+[Download latest version (minified)](http://ndrsn.org/canvas-datagrid/canvas-datagrid.js)
 
 [Tests](https://tonygermaneri.github.io/canvas-datagrid/test/tests.html)
 
@@ -70,7 +70,7 @@ A function will be added to the global scope of the web page called `canvasDatag
 Getting started
 ---------------
 
-Works [with webpack](https://tonygermaneri.github.io/canvas-datagrid/amdDemo.html), [without webpack](https://tonygermaneri.github.io/canvas-datagrid/demo.html) or as a [web component](https://tonygermaneri.github.io/canvas-datagrid/webcomponentDemo.html).
+Works [with webpack](http://ndrsn.org/canvas-datagrid/amdDemo.html), [without webpack](http://ndrsn.org/canvas-datagrid/demo.html) or as a [web component](http://ndrsn.org/canvas-datagrid/webcomponentDemo.html).
 No matter how you load it, `canvasDatagrid` is declared in the global scope.
 
 Canvas-datagrid is a [Web Component](https://www.webcomponents.org/element/TonyGermaneri/canvas-datagrid) when
@@ -132,19 +132,19 @@ Using Vue
 More Demos
 ----------
 
-* [Using Vue](https://tonygermaneri.github.io/canvas-datagrid/vueExample.html)
+* [Using Vue](http://ndrsn.org/canvas-datagrid/vueExample.html)
 
-* [Using Webpack3: AMD](https://tonygermaneri.github.io/canvas-datagrid/amdDemo.html)
+* [Using Webpack3: AMD](http://ndrsn.org/canvas-datagrid/amdDemo.html)
 
-* [Using React](https://tonygermaneri.github.io/canvas-datagrid/reactExample.html)
+* [Using React](http://ndrsn.org/canvas-datagrid/reactExample.html)
 
-* [Web component example](https://tonygermaneri.github.io/canvas-datagrid/webcomponentDemo.html)
+* [Web component example](http://ndrsn.org/canvas-datagrid/webcomponentDemo.html)
 
-* [Loading data with XHR](https://tonygermaneri.github.io/canvas-datagrid/demo.html)
+* [Loading data with XHR](http://ndrsn.org/canvas-datagrid/demo.html)
 
-* [Sparkline example](https://tonygermaneri.github.io/canvas-datagrid/sparklineDemo.html)
+* [Sparkline example](http://ndrsn.org/canvas-datagrid/sparklineDemo.html)
 
-* [XHR data paging demo Jeopardy Questions API](https://tonygermaneri.github.io/canvas-datagrid/xhrPagingDemo.html)
+* [XHR data paging demo Jeopardy Questions API](http://ndrsn.org/canvas-datagrid/xhrPagingDemo.html)
 
 Note about XHR paging demo: Thanks to [jservice](http://jservice.io/) for the use of the free paging API.  You must "load unsafe scripts" or relevant command to allow HTTPS (github) to make XHR requests to HTTP (Jeopardy Questions API).  There is nothing unsafe about this.
 
