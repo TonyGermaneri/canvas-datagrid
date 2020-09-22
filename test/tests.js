@@ -2685,6 +2685,71 @@
                 });
             });
             describe('Attributes', function () {
+                it('Should have one row in cell if text-wrapping enabled but rows are not auto resized', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [
+                            {col1: 'This is a very long value which we expect to be wrapped on multiple lines',},
+                        ],
+                        style: {
+                            cellWhiteSpace: 'normal'
+                        }
+                    });
+                    var cell = grid.getVisibleCellByIndex(0,0)
+                    
+                    
+                    var lineCount = cell.text.lines.length;
+                    done(
+                        assertIf(lineCount !== 1, 'Expected 1 wrapped lines, got', lineCount)
+                    );
+                });
+
+                it('Should have multiple rows in cell after resize', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [
+                            {col1: 'This is a very long value which we expect to be wrapped on multiple lines',},
+                        ],
+                        style: {
+                            cellWhiteSpace: 'normal'
+                        }
+                    });
+                    setTimeout(function () {
+                        grid.focus();
+                        mousemove(grid.canvas, 10, 48);
+                        mousedown(grid.canvas, 10, 48);
+                        mousemove(grid.canvas, 10, 160, grid.canvas);
+                        mousemove(document.body, 10, 160, grid.canvas);
+                        mouseup(document.body, 10, 160, grid.canvas);
+
+                        var cell = grid.getVisibleCellByIndex(0,0)
+                        var lineCount = cell.text.lines.length;
+
+                        done(
+                            assertIf(lineCount !== 3, 'Expected 3 wrapped lines after resize, got %s', lineCount)
+                        );
+                    }, 10);
+                });
+
+                it('Should auto resize row if text-wrapping is enabled', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: [
+                            {col1: 'This is a very long row which we expect to be wrapped on multiple lines',},
+                        ],
+                        style: {
+                            cellWhiteSpace: 'normal'
+                        },
+                        autoResizeRows: true,
+                    });
+                    var cell = grid.getVisibleCellByIndex(0,0)
+                    var lineCount = cell.text.lines.length;
+                    
+                    done(
+                        assertIf(lineCount !== 3, 'Expected 3 wrapped lines, got %s', lineCount)
+                    )
+                });
+
                 it('Should store JSON view state data when a name is passed and view state is altered.', function (done) {
                     var n = 'a' + (new Date().getTime()),
                         k = 'canvasDataGrid-' + n,
