@@ -48,7 +48,7 @@
   "bugs": {
     "url": "https://github.com/TonyGermaneri/canvas-datagrid/issues"
   },
-  "homepage": "https://github.com/TonyGermaneri/canvas-datagrid#readme",
+  "homepage": "https://canvas-datagrid.js.org/",
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
