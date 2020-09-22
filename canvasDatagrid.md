@@ -3,8 +3,8 @@ Ways to create a grid
 
 * Web component by using the tag `&lt;canvas-datagrid&gt;&lt;/canvas-datagrid&gt;` anywhere in your document.
 * Web component by running `var foo = document.createElement('canvas-datagrid')`.
-* Webpack3 universal module loader by adding one of many module loaders to your application code.  <br>See example: {@link https://tonygermaneri.github.io/canvas-datagrid/tutorials/amdDemo.html}.
-* You can also load the grid by invoking the global method `var foo = canvasDatagrid(&lt;args&gt;);` <br>See example: {@link https://tonygermaneri.github.io/canvas-datagrid/tutorials/demo.html}
+* Webpack3 universal module loader by adding one of many module loaders to your application code.  <br>See example: {@link https://canvas-datagrid.js.org/amdDemo.html}.
+* You can also load the grid by invoking the global method `var foo = canvasDatagrid(&lt;args&gt;);` <br>See example: {@link https://canvas-datagrid.js.org/demo.html}
 
 If you create the grid using the non-web component model, you can attach the grid to an existing canvas by passing the canvas in as the `parentNode` when you instantiate the grid using the module loader or global versions.  This is not possible when instantiating using `createElement` or markup.
 
@@ -55,7 +55,7 @@ or
 
 When getting data, no matter how it was set, it will be returned as `application/x-canvas-datagrid` (an array of objects).
 
-For more information on using and creating custom parsers see: [parsers](https://tonygermaneri.github.io/canvas-datagrid/docs/#parsers)
+For more information on using and creating custom parsers see: [parsers](https://canvas-datagrid.js.org/#parsers)
 
 The table below lists ways to set data and the default parser used.
 
@@ -276,7 +276,7 @@ You can format the data in your cells without altering the data in two ways.
 
 The first and fastest method is grid formatters.
 Grid formatters allow you to pass your values though a function to format them as they are drawn onto the grid.
-Data type is defined in the [schema](https://tonygermaneri.github.io/canvas-datagrid/#schema) that you can optionally pass to describe your data.
+Data type is defined in the [schema](https://canvas-datagrid.js.org/#schema) that you can optionally pass to describe your data.
 
 This method is slightly faster due to the O(1) hash map employed in the value formatters.
 
@@ -290,7 +290,7 @@ The return value of the formatter function will be displayed in the cell instead
 in the data without altering the data.
 
 The second method is the `rendertext` event.  By subscribing to the `rendertext` event listener
-we can intercept the value in the context of the [cell](https://tonygermaneri.github.io/canvas-datagrid/#canvasDatagrid.cell) being drawn and alter it.
+we can intercept the value in the context of the [cell](https://canvas-datagrid.js.org/#canvasDatagrid.cell) being drawn and alter it.
 
 This method is slightly slower due to the O(n) loop employed in the event handler class.
 
