@@ -33,15 +33,15 @@
                 {col1: 'baz', col2: 2, col3: 'c'}
             ];
         };
-        
-    // Get color `c` of rgb vector `v` 
-    //  Note: See c = {...} above for color options 
+
+    // Get color `c` of rgb vector `v`
+    //  Note: See c = {...} above for color options
     function getC(v) {
         return Object.keys(c).filter(function (k) {
             return c[k] === v;
         })[0] || v;
     }
-    
+
     // Convert number `n` to 'spreadsheet-style' column label `s`
     //  Note: Zero-index, so 0 = A, 27 = AB, etc.
     function itoa(n) {
@@ -55,7 +55,7 @@
         }
         return s;
     }
-    
+
     // Create data grid with `r` rows, `c` columns, and cell contents derived
     // by the function `dFn`.
     //  Note: If dFn does not exist, each cell is left blank.
@@ -69,7 +69,7 @@
         }
         return d;
     }
-    
+
     // Reset test environment
     function cleanup(done) {
         var m = document.getElementById('mocha');
@@ -79,13 +79,13 @@
         }
         done();
     }
-    
+
     // Draws a 'crosshairs' marker at coordinates (x,y).
     // The marker includes:
     //  - A 1px vertical line at x
     //  - A 1px horizontal line at y
     //  - A 3px central marker centered at (x,y)
-    // Note: markerColors[...] selection ensures contrast between lines and 
+    // Note: markerColors[...] selection ensures contrast between lines and
     //  central marker
     function marker(grid, x, y) {
         grid.markerCount = grid.markerCount || 0;
@@ -960,9 +960,9 @@
                             ['ArrowDown', 'Enter'].forEach(function (key) {
                                 var ev = new Event('keydown');
                                 ev.key = key;
-                                
+
                                 i.dispatchEvent(ev);
-                                
+
                                 if (key === 'Enter') {
                                     err = assertIf(grid.data[0].col1 !== 'baz', 'Expected key combination to filter for baz');
                                 }
@@ -989,7 +989,7 @@
                                 ev.key = key;
 
                                 i.dispatchEvent(ev);
-                                
+
                                 if (key === 'Enter') {
                                     err = assertIf(grid.data[0].col1 !== 'bar', 'Expected key combination to filter for bar');
                                 }
@@ -1052,7 +1052,7 @@
                 it('Autocomplete should have an option for filtering blank values', function (done) {
                     var grid = g({
                         test: this.test,
-                        data: [ 
+                        data: [
                             {col1: 'bar', col2: 0, col3: 'a'},
                             {col1: '    ', col2: 1, col3: 'b'},
                             {col1: 'baz', col2: 2, col3: 'c'},
@@ -1806,7 +1806,7 @@
                         test: this.test,
                         data: smallData()
                     });
-                    
+
                     grid.focus();
                     grid.selectArea({
                         top: 0, left: 0, bottom: 0, right: 0
@@ -1815,9 +1815,9 @@
                     var ev = new Event('keydown');
                     ev.shiftKey = true;
                     ev.key = "ArrowRight";
-                    
+
                     grid.controlInput.dispatchEvent(ev);
-                    
+
                     done(assertIf(grid.selectedRows.length !== 1 || grid.selections[0].col3 !== undefined, 'Expected the active cell to move.'));
                 });
                 it('Shift and Arrow left should add the selection to the left one', function (done) {
@@ -2696,8 +2696,8 @@
                         }
                     });
                     var cell = grid.getVisibleCellByIndex(0,0)
-                    
-                    
+
+
                     var lineCount = cell.text.lines.length;
                     done(
                         assertIf(lineCount !== 1, 'Expected 1 wrapped lines, got', lineCount)
@@ -2744,7 +2744,7 @@
                     });
                     var cell = grid.getVisibleCellByIndex(0,0)
                     var lineCount = cell.text.lines.length;
-                    
+
                     done(
                         assertIf(lineCount !== 3, 'Expected 3 wrapped lines, got %s', lineCount)
                     )
@@ -2773,7 +2773,8 @@
                     grid.addEventListener('expandtree', function (e) {
                         assertIf(e.treeGrid === undefined, 'Expected a grid here.');
                         e.treeGrid.style.cornerCellBackgroundColor = c.y;
-                        assertPxColor(grid, 10, 34, c.fu, function () {
+
+                        assertPxColor(grid, 10, 38, c.fu, function () {
                             setTimeout(function () {
                                 assertPxColor(grid, 60, 60, c.y, done);
                             }, 3);
@@ -3091,9 +3092,9 @@
                         mousemove(document.body, 10, 90, grid.canvas);
                         assertPxColor(grid, 10, 98, c.b, function (err) {
                             if (err) { return done(err); }
-                            assertPxColor(grid, 10, 85, c.fu, function (err) {
+                            assertPxColor(grid, 10, 86, c.fu, function (err) {
                                 if (err) { return done(err); }
-                                assertPxColor(grid, 30, 90, c.y, done);
+                                assertPxColor(grid, 30, 91, c.y, done);
                             });
                         });
                         grid.draw();
