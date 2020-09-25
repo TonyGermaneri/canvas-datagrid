@@ -1879,8 +1879,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
       var img,
           v = cell.innerHTML || cell.formattedValue,
           cacheKey = v.toString() + cell.rowIndex.toString() + cell.columnIndex.toString(),
-          x = cell.x + self.canvasOffsetLeft,
-          y = cell.y + self.canvasOffsetTop;
+          x = Math.round(cell.x + self.canvasOffsetLeft),
+          y = Math.round(cell.y + self.canvasOffsetTop);
 
       if (self.htmlImageCache[cacheKey]) {
         img = self.htmlImageCache[cacheKey].img;
@@ -3058,8 +3058,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.visibleRows = [];
         s = self.getSchema();
         self.visibleCells = [];
-        self.canvasOffsetTop = self.isChildGrid ? self.parentNode.offsetTop : 0;
-        self.canvasOffsetLeft = self.isChildGrid ? self.parentNode.offsetLeft : 0;
+        self.canvasOffsetTop = self.isChildGrid ? self.parentNode.offsetTop : .5;
+        self.canvasOffsetLeft = self.isChildGrid ? self.parentNode.offsetLeft : -.5;
         h = self.height;
         w = self.width;
       }
@@ -3288,7 +3288,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
           if (self.activeCell && self.activeCell.rowIndex === aCell.rowIndex) {
             self.ctx.lineWidth = self.style.activeCellOverlayBorderWidth;
             self.ctx.strokeStyle = self.style.activeCellOverlayBorderColor;
-            strokeRect(0, aCell.y, self.getHeaderWidth() + rowHeaderCellWidth, self.visibleRowHeights[aCell.rowIndex]);
+            strokeRect(1, aCell.y, self.getHeaderWidth() + rowHeaderCellWidth, self.visibleRowHeights[aCell.rowIndex]);
           }
         } else {
           self.ctx.lineWidth = self.style.activeCellOverlayBorderWidth;
