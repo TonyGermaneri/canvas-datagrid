@@ -60988,7 +60988,7 @@ window.reflection = [
         "meta": {
             "range": [
                 54025,
-                58405
+                58416
             ],
             "filename": "events.js",
             "lineno": 1137,
@@ -61011,8 +61011,8 @@ window.reflection = [
                 "": null,
                 "parseData": "self.pasteData~parseData",
                 "rows": "self.pasteData~rows",
-                "selections": "self.pasteData~selections",
                 "cellData": "self.pasteData~cellData",
+                "selections": "self.pasteData~selections",
                 "rowIndex": "self.pasteData~rowIndex",
                 "realRowIndex": "self.pasteData~realRowIndex",
                 "cells": "self.pasteData~cells",
@@ -61187,43 +61187,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                55839,
-                55854
+                56081,
+                56102
             ],
             "filename": "events.js",
-            "lineno": 1173,
-            "columnno": 16,
-            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100025757",
-                "name": "selections",
-                "type": "ArrayExpression",
-                "value": "[]"
-            }
-        },
-        "undocumented": true,
-        "name": "selections",
-        "longname": "self.pasteData~selections",
-        "kind": "member",
-        "memberof": "self.pasteData",
-        "scope": "inner",
-        "params": [],
-        "___id": "T000002R001947",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                56114,
-                56135
-            ],
-            "filename": "events.js",
-            "lineno": 1179,
+            "lineno": 1178,
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100025768",
+                "id": "astnode100025764",
                 "name": "cellData",
                 "type": "MemberExpression",
                 "value": "rows[0][0]"
@@ -61236,22 +61208,22 @@ window.reflection = [
         "memberof": "self.pasteData",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R001948",
+        "___id": "T000002R001947",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                56236,
-                56270
+                56203,
+                56237
             ],
             "filename": "events.js",
-            "lineno": 1182,
+            "lineno": 1181,
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100025786",
+                "id": "astnode100025782",
                 "name": "data[undefined][undefined]",
                 "type": "Identifier",
                 "value": "cellData",
@@ -61263,6 +61235,34 @@ window.reflection = [
         "longname": "data[undefined][undefined]",
         "kind": "member",
         "scope": "global",
+        "___id": "T000002R001948",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                56300,
+                56315
+            ],
+            "filename": "events.js",
+            "lineno": 1184,
+            "columnno": 20,
+            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100025791",
+                "name": "selections",
+                "type": "ArrayExpression",
+                "value": "[]"
+            }
+        },
+        "undocumented": true,
+        "name": "selections",
+        "longname": "self.pasteData~selections",
+        "kind": "member",
+        "memberof": "self.pasteData",
+        "scope": "inner",
+        "params": [],
         "___id": "T000002R001949",
         "___s": true
     },
@@ -61270,8 +61270,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56338,
-                56350
+                56342,
+                56354
             ],
             "filename": "events.js",
             "lineno": 1185,
@@ -61298,8 +61298,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56579,
-                56636
+                56583,
+                56640
             ],
             "filename": "events.js",
             "lineno": 1188,
@@ -61326,8 +61326,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56662,
-                56684
+                56666,
+                56688
             ],
             "filename": "events.js",
             "lineno": 1189,
@@ -61354,8 +61354,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56715,
-                56756
+                56719,
+                56760
             ],
             "filename": "events.js",
             "lineno": 1191,
@@ -61382,8 +61382,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56782,
-                56829
+                56786,
+                56833
             ],
             "filename": "events.js",
             "lineno": 1192,
@@ -61410,8 +61410,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56856,
-                56885
+                56860,
+                56889
             ],
             "filename": "events.js",
             "lineno": 1194,
@@ -61439,8 +61439,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56921,
-                56933
+                56925,
+                56937
             ],
             "filename": "events.js",
             "lineno": 1196,
@@ -61467,8 +61467,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                57002,
-                57043
+                57006,
+                57047
             ],
             "filename": "events.js",
             "lineno": 1197,
@@ -61495,8 +61495,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                57278,
-                57302
+                57282,
+                57306
             ],
             "filename": "events.js",
             "lineno": 1204,
@@ -61523,8 +61523,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                57332,
-                57358
+                57336,
+                57362
             ],
             "filename": "events.js",
             "lineno": 1205,
@@ -61551,8 +61551,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                57468,
-                57520
+                57472,
+                57524
             ],
             "filename": "events.js",
             "lineno": 1208,
@@ -61580,8 +61580,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                57701,
-                57734
+                57705,
+                57738
             ],
             "filename": "events.js",
             "lineno": 1214,
@@ -61609,8 +61609,8 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                57783,
-                57819
+                57787,
+                57823
             ],
             "filename": "events.js",
             "lineno": 1217,
@@ -61637,12 +61637,12 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                57867,
-                57895
+                57859,
+                57887
             ],
             "filename": "events.js",
-            "lineno": 1222,
-            "columnno": 12,
+            "lineno": 1219,
+            "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
                 "id": "astnode100025935",
@@ -61665,11 +61665,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                57975,
-                57993
+                57981,
+                57999
             ],
             "filename": "events.js",
-            "lineno": 1225,
+            "lineno": 1223,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -61693,15 +61693,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                58325,
-                58345
+                58336,
+                58356
             ],
             "filename": "events.js",
-            "lineno": 1236,
+            "lineno": 1234,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100025981",
+                "id": "astnode100025983",
                 "name": "cells",
                 "type": "Identifier",
                 "value": "affectedCells"
@@ -61719,15 +61719,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                58414,
-                58751
+                58425,
+                58762
             ],
             "filename": "events.js",
-            "lineno": 1241,
+            "lineno": 1239,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100025988",
+                "id": "astnode100025990",
                 "name": "self.getNextVisibleColumnIndex",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -61752,15 +61752,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                58495,
-                58496
+                58506,
+                58507
             ],
             "filename": "events.js",
-            "lineno": 1242,
+            "lineno": 1240,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100025996",
+                "id": "astnode100025998",
                 "name": "x"
             }
         },
@@ -61778,15 +61778,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                58498,
-                58525
+                58509,
+                58536
             ],
             "filename": "events.js",
-            "lineno": 1242,
+            "lineno": 1240,
             "columnno": 19,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100025998",
+                "id": "astnode100026000",
                 "name": "s",
                 "type": "CallExpression",
                 "value": ""
@@ -61806,15 +61806,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                58544,
-                58549
+                58555,
+                58560
             ],
             "filename": "events.js",
-            "lineno": 1243,
+            "lineno": 1241,
             "columnno": 17,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026005",
+                "id": "astnode100026007",
                 "name": "x",
                 "type": "Literal",
                 "funcscope": "self.getNextVisibleColumnIndex",
@@ -61835,15 +61835,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                58565,
-                58571
+                58576,
+                58582
             ],
             "filename": "events.js",
-            "lineno": 1243,
+            "lineno": 1241,
             "columnno": 38,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026013",
+                "id": "astnode100026015",
                 "name": "x",
                 "type": "Literal",
                 "funcscope": "self.getNextVisibleColumnIndex",
@@ -61864,15 +61864,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                58761,
-                59063
+                58772,
+                59074
             ],
             "filename": "events.js",
-            "lineno": 1250,
+            "lineno": 1248,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026038",
+                "id": "astnode100026040",
                 "name": "self.getVisibleColumnIndexOf",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -61897,15 +61897,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                58833,
-                58834
+                58844,
+                58845
             ],
             "filename": "events.js",
-            "lineno": 1251,
+            "lineno": 1249,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026046",
+                "id": "astnode100026048",
                 "name": "x"
             }
         },
@@ -61923,15 +61923,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                58836,
-                58863
+                58847,
+                58874
             ],
             "filename": "events.js",
-            "lineno": 1251,
+            "lineno": 1249,
             "columnno": 19,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026048",
+                "id": "astnode100026050",
                 "name": "s",
                 "type": "CallExpression",
                 "value": ""
@@ -61951,15 +61951,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                58882,
-                58887
+                58893,
+                58898
             ],
             "filename": "events.js",
-            "lineno": 1252,
+            "lineno": 1250,
             "columnno": 17,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026055",
+                "id": "astnode100026057",
                 "name": "x",
                 "type": "Literal",
                 "funcscope": "self.getVisibleColumnIndexOf",
@@ -61980,15 +61980,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                58903,
-                58909
+                58914,
+                58920
             ],
             "filename": "events.js",
-            "lineno": 1252,
+            "lineno": 1250,
             "columnno": 38,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026063",
+                "id": "astnode100026065",
                 "name": "x",
                 "type": "Literal",
                 "funcscope": "self.getVisibleColumnIndexOf",
@@ -62009,15 +62009,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                59073,
-                60886
+                59084,
+                60897
             ],
             "filename": "events.js",
-            "lineno": 1259,
+            "lineno": 1257,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026082",
+                "id": "astnode100026084",
                 "name": "self.paste",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -62047,15 +62047,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                59121,
-                59197
+                59132,
+                59208
             ],
             "filename": "events.js",
-            "lineno": 1260,
+            "lineno": 1258,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026090",
+                "id": "astnode100026092",
                 "name": "defaultPrevented",
                 "type": "CallExpression",
                 "value": ""
@@ -62075,15 +62075,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                59176,
-                59194
+                59187,
+                59205
             ],
             "filename": "events.js",
-            "lineno": 1260,
+            "lineno": 1258,
             "columnno": 71,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026098",
+                "id": "astnode100026100",
                 "name": "NativeEvent",
                 "type": "Identifier",
                 "value": "event"
@@ -62101,15 +62101,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                59291,
-                59415
+                59302,
+                59426
             ],
             "filename": "events.js",
-            "lineno": 1266,
+            "lineno": 1264,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026105",
+                "id": "astnode100026107",
                 "name": "clipboardItems",
                 "type": "NewExpression",
                 "value": ""
@@ -62129,15 +62129,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                59495,
-                59555
+                59506,
+                59566
             ],
             "filename": "events.js",
-            "lineno": 1271,
+            "lineno": 1269,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026129",
+                "id": "astnode100026131",
                 "name": "supportedMimeTypes",
                 "type": "ArrayExpression",
                 "value": "[\"text/html\",\"text/csv\",\"text/plain\"]"
@@ -62157,15 +62157,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                59882,
-                60016
+                59893,
+                60027
             ],
             "filename": "events.js",
-            "lineno": 1277,
+            "lineno": 1275,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026136",
+                "id": "astnode100026138",
                 "name": "pasteableItems",
                 "type": "CallExpression",
                 "value": ""
@@ -62185,15 +62185,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                60298,
-                60329
+                60309,
+                60340
             ],
             "filename": "events.js",
-            "lineno": 1286,
+            "lineno": 1284,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026177",
+                "id": "astnode100026179",
                 "name": "itemToPaste",
                 "type": "MemberExpression",
                 "value": "pasteableItems[0]"
@@ -62213,15 +62213,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                60502,
-                60530
+                60513,
+                60541
             ],
             "filename": "events.js",
-            "lineno": 1290,
+            "lineno": 1288,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026183",
+                "id": "astnode100026185",
                 "name": "pasteType",
                 "type": "MemberExpression",
                 "value": "itemToPaste.type"
@@ -62241,15 +62241,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                60896,
-                61087
+                60907,
+                61098
             ],
             "filename": "events.js",
-            "lineno": 1303,
+            "lineno": 1301,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026223",
+                "id": "astnode100026225",
                 "name": "self.cut",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -62273,15 +62273,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                61035,
-                61060
+                61046,
+                61071
             ],
             "filename": "events.js",
-            "lineno": 1306,
+            "lineno": 1304,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026247",
+                "id": "astnode100026249",
                 "name": "data[undefined][undefined]",
                 "type": "Literal",
                 "value": "",
@@ -62300,15 +62300,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                61097,
-                65757
+                61108,
+                65768
             ],
             "filename": "events.js",
-            "lineno": 1309,
+            "lineno": 1307,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026255",
+                "id": "astnode100026257",
                 "name": "self.copy",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -62345,15 +62345,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                61168,
-                61182
+                61179,
+                61193
             ],
             "filename": "events.js",
-            "lineno": 1310,
+            "lineno": 1308,
             "columnno": 44,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026269",
+                "id": "astnode100026271",
                 "name": "NativeEvent",
                 "type": "Identifier",
                 "value": "e"
@@ -62371,15 +62371,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                61278,
-                61279
+                61289,
+                61290
             ],
             "filename": "events.js",
-            "lineno": 1312,
+            "lineno": 1310,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026286",
+                "id": "astnode100026288",
                 "name": "t"
             }
         },
@@ -62397,15 +62397,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                61297,
-                61298
+                61308,
+                61309
             ],
             "filename": "events.js",
-            "lineno": 1313,
+            "lineno": 1311,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026288",
+                "id": "astnode100026290",
                 "name": "d"
             }
         },
@@ -62423,15 +62423,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                61316,
-                61340
+                61327,
+                61351
             ],
             "filename": "events.js",
-            "lineno": 1314,
+            "lineno": 1312,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026290",
+                "id": "astnode100026292",
                 "name": "data",
                 "type": "LogicalExpression",
                 "value": ""
@@ -62451,15 +62451,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                61358,
-                61372
+                61369,
+                61383
             ],
             "filename": "events.js",
-            "lineno": 1315,
+            "lineno": 1313,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026297",
+                "id": "astnode100026299",
                 "name": "tableRows",
                 "type": "ArrayExpression",
                 "value": "[]"
@@ -62479,15 +62479,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                61390,
-                61403
+                61401,
+                61414
             ],
             "filename": "events.js",
-            "lineno": 1316,
+            "lineno": 1314,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026300",
+                "id": "astnode100026302",
                 "name": "textRows",
                 "type": "ArrayExpression",
                 "value": "[]"
@@ -62507,15 +62507,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                61421,
-                61439
+                61432,
+                61450
             ],
             "filename": "events.js",
-            "lineno": 1317,
+            "lineno": 1315,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026303",
+                "id": "astnode100026305",
                 "name": "outputHeaders",
                 "type": "ObjectExpression",
                 "value": "{}"
@@ -62535,15 +62535,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                61457,
-                61473
+                61468,
+                61484
             ],
             "filename": "events.js",
-            "lineno": 1318,
+            "lineno": 1316,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026306",
+                "id": "astnode100026308",
                 "name": "outputHeaderKeys"
             }
         },
@@ -62561,15 +62561,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                61491,
-                61521
+                61502,
+                61532
             ],
             "filename": "events.js",
-            "lineno": 1319,
+            "lineno": 1317,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026308",
+                "id": "astnode100026310",
                 "name": "sData",
                 "type": "CallExpression",
                 "value": ""
@@ -62589,15 +62589,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                61539,
-                61559
+                61550,
+                61570
             ],
             "filename": "events.js",
-            "lineno": 1320,
+            "lineno": 1318,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026314",
+                "id": "astnode100026316",
                 "name": "s",
                 "type": "CallExpression",
                 "value": ""
@@ -62617,15 +62617,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                61573,
-                61679
+                61584,
+                61690
             ],
             "filename": "events.js",
-            "lineno": 1321,
+            "lineno": 1319,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026320",
+                "id": "astnode100026322",
                 "name": "htmlSafe",
                 "type": "FunctionDeclaration",
                 "paramnames": [
@@ -62647,15 +62647,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                61692,
-                61874
+                61703,
+                61885
             ],
             "filename": "events.js",
-            "lineno": 1324,
+            "lineno": 1322,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026336",
+                "id": "astnode100026338",
                 "name": "fCopyCell",
                 "type": "FunctionDeclaration",
                 "paramnames": [
@@ -62680,15 +62680,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                61732,
-                61774
+                61743,
+                61785
             ],
             "filename": "events.js",
-            "lineno": 1325,
+            "lineno": 1323,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026341",
+                "id": "astnode100026343",
                 "name": "v",
                 "type": "ConditionalExpression",
                 "funcscope": "self.copy~fCopyCell",
@@ -62709,15 +62709,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                61887,
-                63054
+                61898,
+                63065
             ],
             "filename": "events.js",
-            "lineno": 1328,
+            "lineno": 1326,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026367",
+                "id": "astnode100026369",
                 "name": "addHeaders",
                 "type": "FunctionDeclaration",
                 "paramnames": [
@@ -62744,15 +62744,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                62015,
-                62021
+                62026,
+                62032
             ],
             "filename": "events.js",
-            "lineno": 1330,
+            "lineno": 1328,
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026387",
+                "id": "astnode100026389",
                 "name": "h",
                 "type": "ArrayExpression",
                 "value": "[]"
@@ -62772,15 +62772,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                62245,
-                62289
+                62256,
+                62300
             ],
             "filename": "events.js",
-            "lineno": 1336,
+            "lineno": 1334,
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026409",
+                "id": "astnode100026411",
                 "name": "column",
                 "type": "MemberExpression",
                 "funcscope": "<anonymous>",
@@ -62801,15 +62801,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                62400,
-                62437
+                62411,
+                62448
             ],
             "filename": "events.js",
-            "lineno": 1338,
+            "lineno": 1336,
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026438",
+                "id": "astnode100026440",
                 "name": "ev",
                 "type": "ObjectExpression",
                 "value": "{\"NativeEvent\":\"\",\"column\":\"\"}"
@@ -62829,15 +62829,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                62406,
-                62420
+                62417,
+                62431
             ],
             "filename": "events.js",
-            "lineno": 1338,
+            "lineno": 1336,
             "columnno": 34,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026441",
+                "id": "astnode100026443",
                 "name": "NativeEvent",
                 "type": "Identifier",
                 "value": "e"
@@ -62856,15 +62856,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                62422,
-                62436
+                62433,
+                62447
             ],
             "filename": "events.js",
-            "lineno": 1338,
+            "lineno": 1336,
             "columnno": 50,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026443",
+                "id": "astnode100026445",
                 "name": "column",
                 "type": "Identifier",
                 "value": "column"
@@ -62883,15 +62883,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                62536,
-                62554
+                62547,
+                62565
             ],
             "filename": "events.js",
-            "lineno": 1340,
+            "lineno": 1338,
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026454",
+                "id": "astnode100026456",
                 "name": "column",
                 "type": "MemberExpression",
                 "funcscope": "<anonymous>",
@@ -62912,15 +62912,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                62611,
-                62653
+                62622,
+                62664
             ],
             "filename": "events.js",
-            "lineno": 1343,
+            "lineno": 1341,
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026460",
+                "id": "astnode100026462",
                 "name": "hVal",
                 "type": "LogicalExpression",
                 "value": ""
@@ -62940,15 +62940,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                63067,
-                63777
+                63078,
+                63788
             ],
             "filename": "events.js",
-            "lineno": 1354,
+            "lineno": 1352,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026520",
+                "id": "astnode100026522",
                 "name": "addCellValue",
                 "type": "FunctionDeclaration",
                 "paramnames": [
@@ -62973,15 +62973,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                63885,
-                63911
+                63896,
+                63922
             ],
             "filename": "events.js",
-            "lineno": 1375,
+            "lineno": 1373,
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026616",
+                "id": "astnode100026618",
                 "name": "rowKeys",
                 "type": "CallExpression",
                 "value": ""
@@ -63001,15 +63001,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                63972,
-                63982
+                63983,
+                63993
             ],
             "filename": "events.js",
-            "lineno": 1377,
+            "lineno": 1375,
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026627",
+                "id": "astnode100026629",
                 "name": "trRow",
                 "type": "ArrayExpression",
                 "value": "[]"
@@ -63029,15 +63029,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                64012,
-                64024
+                64023,
+                64035
             ],
             "filename": "events.js",
-            "lineno": 1378,
+            "lineno": 1376,
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026630",
+                "id": "astnode100026632",
                 "name": "textRow",
                 "type": "ArrayExpression",
                 "value": "[]"
@@ -63057,15 +63057,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                64054,
-                64066
+                64065,
+                64077
             ],
             "filename": "events.js",
-            "lineno": 1379,
+            "lineno": 1377,
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026633",
+                "id": "astnode100026635",
                 "name": "sSorted",
                 "type": "ArrayExpression",
                 "value": "[]"
@@ -63085,15 +63085,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                64578,
-                64611
+                64589,
+                64622
             ],
             "filename": "events.js",
-            "lineno": 1387,
+            "lineno": 1385,
             "columnno": 32,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026681",
+                "id": "astnode100026683",
                 "name": "outputHeaders[undefined]",
                 "type": "Literal",
                 "funcscope": "self.copy",
@@ -63114,15 +63114,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                64981,
-                65026
+                64992,
+                65037
             ],
             "filename": "events.js",
-            "lineno": 1396,
+            "lineno": 1394,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026720",
+                "id": "astnode100026722",
                 "name": "outputHeaderKeys",
                 "type": "CallExpression",
                 "funcscope": "self.copy",
@@ -63143,15 +63143,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                65044,
-                65098
+                65055,
+                65109
             ],
             "filename": "events.js",
-            "lineno": 1397,
+            "lineno": 1395,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026728",
+                "id": "astnode100026730",
                 "name": "t",
                 "type": "BinaryExpression",
                 "funcscope": "self.copy",
@@ -63172,15 +63172,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                65116,
-                65223
+                65127,
+                65234
             ],
             "filename": "events.js",
-            "lineno": 1398,
+            "lineno": 1396,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026740",
+                "id": "astnode100026742",
                 "name": "d",
                 "type": "BinaryExpression",
                 "funcscope": "self.copy",
@@ -63201,15 +63201,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                65392,
-                65423
+                65403,
+                65434
             ],
             "filename": "events.js",
-            "lineno": 1401,
+            "lineno": 1399,
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026766",
+                "id": "astnode100026768",
                 "name": "t",
                 "type": "CallExpression",
                 "funcscope": "self.copy",
@@ -63238,7 +63238,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026840",
+                "id": "astnode100026842",
                 "name": "self.scale",
                 "type": "Literal",
                 "value": 1,
@@ -63266,7 +63266,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026846",
+                "id": "astnode100026848",
                 "name": "self.orders",
                 "type": "ObjectExpression",
                 "value": "{\"rows\":\"\",\"columns\":\"\"}",
@@ -63294,7 +63294,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026851",
+                "id": "astnode100026853",
                 "name": "rows",
                 "type": "ArrayExpression",
                 "value": "[]"
@@ -63321,7 +63321,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026853",
+                "id": "astnode100026855",
                 "name": "columns",
                 "type": "ArrayExpression",
                 "value": "[]"
@@ -63348,7 +63348,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026856",
+                "id": "astnode100026858",
                 "name": "self.appliedInlineStyles",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -63376,7 +63376,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026862",
+                "id": "astnode100026864",
                 "name": "self.cellGridAttributes",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -63404,7 +63404,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026868",
+                "id": "astnode100026870",
                 "name": "self.treeGridAttributes",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -63432,7 +63432,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026874",
+                "id": "astnode100026876",
                 "name": "self.visibleRowHeights",
                 "type": "ArrayExpression",
                 "value": "[]",
@@ -63460,7 +63460,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026880",
+                "id": "astnode100026882",
                 "name": "self.hasFocus",
                 "type": "Literal",
                 "value": false,
@@ -63488,7 +63488,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026886",
+                "id": "astnode100026888",
                 "name": "self.activeCell",
                 "type": "ObjectExpression",
                 "value": "{\"columnIndex\":0,\"rowIndex\":0}",
@@ -63516,7 +63516,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026891",
+                "id": "astnode100026893",
                 "name": "columnIndex",
                 "type": "Literal",
                 "value": 0
@@ -63543,7 +63543,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026893",
+                "id": "astnode100026895",
                 "name": "rowIndex",
                 "type": "Literal",
                 "value": 0
@@ -63570,7 +63570,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026896",
+                "id": "astnode100026898",
                 "name": "self.innerHTML",
                 "type": "Literal",
                 "value": "",
@@ -63598,7 +63598,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026902",
+                "id": "astnode100026904",
                 "name": "self.storageName",
                 "type": "Literal",
                 "value": "canvasDataGrid",
@@ -63626,7 +63626,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026908",
+                "id": "astnode100026910",
                 "name": "self.invalidSearchExpClass",
                 "type": "Literal",
                 "value": "canvas-datagrid-invalid-search-regExp",
@@ -63654,7 +63654,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026914",
+                "id": "astnode100026916",
                 "name": "self.localStyleLibraryStorageKey",
                 "type": "Literal",
                 "value": "canvas-datagrid-user-style-library",
@@ -63682,7 +63682,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026920",
+                "id": "astnode100026922",
                 "name": "self.dataType",
                 "type": "Literal",
                 "value": "application/x-canvas-datagrid",
@@ -63710,7 +63710,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026926",
+                "id": "astnode100026928",
                 "name": "self.orderBy",
                 "type": "Literal",
                 "value": null,
@@ -63738,7 +63738,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026932",
+                "id": "astnode100026934",
                 "name": "self.orderDirection",
                 "type": "Literal",
                 "value": "asc",
@@ -63766,7 +63766,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026938",
+                "id": "astnode100026940",
                 "name": "self.orderings",
                 "type": "ObjectExpression",
                 "value": "{\"columns\":\"\",\"add\":\"\",\"sort\":\"\"}",
@@ -63794,7 +63794,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026943",
+                "id": "astnode100026945",
                 "name": "columns",
                 "type": "ArrayExpression",
                 "value": "[]"
@@ -63821,7 +63821,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026945",
+                "id": "astnode100026947",
                 "name": "add",
                 "type": "FunctionExpression"
             },
@@ -63851,7 +63851,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026952",
+                "id": "astnode100026954",
                 "name": "self.orderings.columns",
                 "type": "CallExpression",
                 "value": "",
@@ -63879,7 +63879,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026985",
+                "id": "astnode100026987",
                 "name": "orderBy",
                 "type": "Identifier",
                 "value": "orderBy"
@@ -63905,7 +63905,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026987",
+                "id": "astnode100026989",
                 "name": "orderDirection",
                 "type": "Identifier",
                 "value": "orderDirection"
@@ -63931,7 +63931,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026989",
+                "id": "astnode100026991",
                 "name": "sortFunction",
                 "type": "Identifier",
                 "value": "sortFunction"
@@ -63957,7 +63957,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100026991",
+                "id": "astnode100026993",
                 "name": "sort",
                 "type": "FunctionExpression"
             },
@@ -63986,7 +63986,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027024",
+                "id": "astnode100027026",
                 "name": "self.columnFilters",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -64014,7 +64014,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027030",
+                "id": "astnode100027032",
                 "name": "self.filters",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -64042,7 +64042,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027036",
+                "id": "astnode100027038",
                 "name": "self.frozenRow",
                 "type": "Literal",
                 "value": 0,
@@ -64070,7 +64070,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027042",
+                "id": "astnode100027044",
                 "name": "self.frozenColumn",
                 "type": "Literal",
                 "value": 0,
@@ -64098,7 +64098,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027048",
+                "id": "astnode100027050",
                 "name": "self.ellipsisCache",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -64126,7 +64126,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027054",
+                "id": "astnode100027056",
                 "name": "self.scrollCache",
                 "type": "ObjectExpression",
                 "value": "{\"x\":\"\",\"y\":\"\"}",
@@ -64154,7 +64154,7 @@ window.reflection = [
             "columnno": 29,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027059",
+                "id": "astnode100027061",
                 "name": "x",
                 "type": "ArrayExpression",
                 "value": "[]"
@@ -64181,7 +64181,7 @@ window.reflection = [
             "columnno": 36,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027061",
+                "id": "astnode100027063",
                 "name": "y",
                 "type": "ArrayExpression",
                 "value": "[]"
@@ -64208,7 +64208,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027064",
+                "id": "astnode100027066",
                 "name": "self.scrollBox",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -64236,7 +64236,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027070",
+                "id": "astnode100027072",
                 "name": "self.visibleRows",
                 "type": "ArrayExpression",
                 "value": "[]",
@@ -64264,7 +64264,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027076",
+                "id": "astnode100027078",
                 "name": "self.visibleCells",
                 "type": "ArrayExpression",
                 "value": "[]",
@@ -64292,7 +64292,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027082",
+                "id": "astnode100027084",
                 "name": "self.sizes",
                 "type": "ObjectExpression",
                 "value": "{\"rows\":\"\",\"columns\":\"\",\"trees\":\"\"}",
@@ -64320,7 +64320,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027087",
+                "id": "astnode100027089",
                 "name": "rows",
                 "type": "ObjectExpression",
                 "value": "{}"
@@ -64347,7 +64347,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027089",
+                "id": "astnode100027091",
                 "name": "columns",
                 "type": "ObjectExpression",
                 "value": "{}"
@@ -64374,7 +64374,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027091",
+                "id": "astnode100027093",
                 "name": "trees",
                 "type": "ObjectExpression",
                 "value": "{}"
@@ -64401,7 +64401,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027094",
+                "id": "astnode100027096",
                 "name": "self.currentFilter",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -64428,7 +64428,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027103",
+                "id": "astnode100027105",
                 "name": "self.selections",
                 "type": "ArrayExpression",
                 "value": "[]",
@@ -64456,7 +64456,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027109",
+                "id": "astnode100027111",
                 "name": "self.hovers",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -64484,7 +64484,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027115",
+                "id": "astnode100027117",
                 "name": "self.attributes",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -64512,7 +64512,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027121",
+                "id": "astnode100027123",
                 "name": "self.style",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -64540,7 +64540,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027127",
+                "id": "astnode100027129",
                 "name": "self.formatters",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -64568,7 +64568,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027133",
+                "id": "astnode100027135",
                 "name": "self.sorters",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -64596,7 +64596,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027139",
+                "id": "astnode100027141",
                 "name": "self.parsers",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -64624,7 +64624,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027145",
+                "id": "astnode100027147",
                 "name": "self.schemaHashes",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -64652,7 +64652,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027151",
+                "id": "astnode100027153",
                 "name": "self.events",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -64680,7 +64680,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027157",
+                "id": "astnode100027159",
                 "name": "self.changes",
                 "type": "ArrayExpression",
                 "value": "[]",
@@ -64708,7 +64708,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027163",
+                "id": "astnode100027165",
                 "name": "self.scrollIndexTop",
                 "type": "Literal",
                 "value": 0,
@@ -64736,7 +64736,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027169",
+                "id": "astnode100027171",
                 "name": "self.scrollPixelTop",
                 "type": "Literal",
                 "value": 0,
@@ -64764,7 +64764,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027175",
+                "id": "astnode100027177",
                 "name": "self.scrollIndexLeft",
                 "type": "Literal",
                 "value": 0,
@@ -64792,7 +64792,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027181",
+                "id": "astnode100027183",
                 "name": "self.scrollPixelLeft",
                 "type": "Literal",
                 "value": 0,
@@ -64820,7 +64820,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027187",
+                "id": "astnode100027189",
                 "name": "self.childGrids",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -64848,7 +64848,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027193",
+                "id": "astnode100027195",
                 "name": "self.openChildren",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -64876,7 +64876,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027199",
+                "id": "astnode100027201",
                 "name": "self.scrollModes",
                 "type": "ArrayExpression",
                 "value": "[\"vertical-scroll-box\",\"vertical-scroll-top\",\"vertical-scroll-bottom\",\"horizontal-scroll-box\",\"horizontal-scroll-right\",\"horizontal-scroll-left\"]",
@@ -64904,7 +64904,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027211",
+                "id": "astnode100027213",
                 "name": "self.componentL1Events",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -64932,7 +64932,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027217",
+                "id": "astnode100027219",
                 "name": "self.eventNames",
                 "type": "ArrayExpression",
                 "value": "[\"afterdraw\",\"afterrendercell\",\"attributechanged\",\"beforebeginedit\",\"beforecreatecellgrid\",\"beforedraw\",\"beforeendedit\",\"beforerendercell\",\"beforerendercellgrid\",\"beginedit\",\"cellmouseout\",\"cellmouseover\",\"click\",\"collapsetree\",\"contextmenu\",\"copy\",\"datachanged\",\"dblclick\",\"endedit\",\"expandtree\",\"formatcellvalue\",\"keydown\",\"keypress\",\"keyup\",\"mousedown\",\"mousemove\",\"mouseup\",\"newrow\",\"ordercolumn\",\"rendercell\",\"rendercellgrid\",\"renderorderbyarrow\",\"rendertext\",\"rendertreearrow\",\"reorder\",\"reordering\",\"resize\",\"resizecolumn\",\"resizerow\",\"schemachanged\",\"scroll\",\"selectionchanged\",\"stylechanged\",\"touchcancel\",\"touchend\",\"touchmove\",\"touchstart\",\"wheel\"]",
@@ -64960,7 +64960,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027271",
+                "id": "astnode100027273",
                 "name": "self.mouse",
                 "type": "ObjectExpression",
                 "value": "{\"x\":0,\"y\":0}",
@@ -64988,7 +64988,7 @@ window.reflection = [
             "columnno": 23,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027276",
+                "id": "astnode100027278",
                 "name": "x",
                 "type": "Literal",
                 "value": 0
@@ -65015,7 +65015,7 @@ window.reflection = [
             "columnno": 29,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027278",
+                "id": "astnode100027280",
                 "name": "y",
                 "type": "Literal",
                 "value": 0
@@ -65042,7 +65042,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027281",
+                "id": "astnode100027283",
                 "name": "self.getSelectedData",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -65077,7 +65077,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027289",
+                "id": "astnode100027291",
                 "name": "d",
                 "type": "ArrayExpression",
                 "value": "[]"
@@ -65105,7 +65105,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027292",
+                "id": "astnode100027294",
                 "name": "s",
                 "type": "CallExpression",
                 "value": ""
@@ -65133,7 +65133,7 @@ window.reflection = [
             "columnno": 46,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027298",
+                "id": "astnode100027300",
                 "name": "l",
                 "type": "MemberExpression",
                 "value": "self.data.length"
@@ -65161,7 +65161,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027342",
+                "id": "astnode100027344",
                 "name": "d[undefined]",
                 "type": "Literal",
                 "funcscope": "self.getSelectedData",
@@ -65190,7 +65190,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027349",
+                "id": "astnode100027351",
                 "name": "d[undefined]",
                 "type": "ObjectExpression",
                 "funcscope": "self.getSelectedData",
@@ -65219,7 +65219,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027363",
+                "id": "astnode100027365",
                 "name": "orderedIndex"
             }
         },
@@ -65245,7 +65245,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027378",
+                "id": "astnode100027380",
                 "name": "orderedIndex",
                 "type": "MemberExpression",
                 "funcscope": "<anonymous>",
@@ -65274,7 +65274,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027406",
+                "id": "astnode100027408",
                 "name": "d[undefined][undefined]",
                 "type": "MemberExpression",
                 "funcscope": "self.getSelectedData",
@@ -65303,7 +65303,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027430",
+                "id": "astnode100027432",
                 "name": "self.getColumnHeaderCellHeight",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -65330,7 +65330,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027466",
+                "id": "astnode100027468",
                 "name": "self.getRowHeaderCellWidth",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -65357,7 +65357,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027502",
+                "id": "astnode100027504",
                 "name": "self.setStorageData",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -65388,7 +65388,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027525",
+                "id": "astnode100027527",
                 "name": "visibility",
                 "type": "ObjectExpression",
                 "value": "{}"
@@ -65416,7 +65416,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027540",
+                "id": "astnode100027542",
                 "name": "visibility[undefined]",
                 "type": "UnaryExpression",
                 "funcscope": "self.setStorageData",
@@ -65445,7 +65445,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027571",
+                "id": "astnode100027573",
                 "name": "sizes",
                 "type": "ObjectExpression",
                 "value": "{\"rows\":\"\",\"columns\":\"\"}"
@@ -65471,7 +65471,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027573",
+                "id": "astnode100027575",
                 "name": "rows",
                 "type": "MemberExpression",
                 "value": "self.sizes.rows"
@@ -65498,7 +65498,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027579",
+                "id": "astnode100027581",
                 "name": "columns",
                 "type": "MemberExpression",
                 "value": "self.sizes.columns"
@@ -65525,7 +65525,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027585",
+                "id": "astnode100027587",
                 "name": "orders",
                 "type": "ObjectExpression",
                 "value": "{\"rows\":\"\",\"columns\":\"\"}"
@@ -65551,7 +65551,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027587",
+                "id": "astnode100027589",
                 "name": "rows",
                 "type": "MemberExpression",
                 "value": "self.orders.rows"
@@ -65578,7 +65578,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027593",
+                "id": "astnode100027595",
                 "name": "columns",
                 "type": "MemberExpression",
                 "value": "self.orders.columns"
@@ -65605,7 +65605,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027599",
+                "id": "astnode100027601",
                 "name": "orderBy",
                 "type": "MemberExpression",
                 "value": "self.orderBy"
@@ -65631,7 +65631,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027603",
+                "id": "astnode100027605",
                 "name": "orderDirection",
                 "type": "MemberExpression",
                 "value": "self.orderDirection"
@@ -65657,7 +65657,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027607",
+                "id": "astnode100027609",
                 "name": "visibility",
                 "type": "Identifier",
                 "value": "visibility"
@@ -65683,7 +65683,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027610",
+                "id": "astnode100027612",
                 "name": "self.getSchema",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -65710,7 +65710,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027626",
+                "id": "astnode100027628",
                 "name": "fillArray",
                 "type": "FunctionDeclaration",
                 "paramnames": [
@@ -65746,7 +65746,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027632",
+                "id": "astnode100027634",
                 "name": "i",
                 "type": "ArrayExpression",
                 "value": "[]"
@@ -65774,7 +65774,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027635",
+                "id": "astnode100027637",
                 "name": "x"
             }
         },
@@ -65800,7 +65800,7 @@ window.reflection = [
             "columnno": 17,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027638",
+                "id": "astnode100027640",
                 "name": "x",
                 "type": "Identifier",
                 "funcscope": "<anonymous>~fillArray",
@@ -65829,7 +65829,7 @@ window.reflection = [
             "columnno": 37,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027644",
+                "id": "astnode100027646",
                 "name": "x",
                 "type": "Literal",
                 "funcscope": "<anonymous>~fillArray",
@@ -65858,7 +65858,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027649",
+                "id": "astnode100027651",
                 "name": "i[undefined]",
                 "type": "Identifier",
                 "funcscope": "<anonymous>~fillArray",
@@ -65887,7 +65887,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027657",
+                "id": "astnode100027659",
                 "name": "self.createColumnOrders",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -65918,7 +65918,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027664",
+                "id": "astnode100027666",
                 "name": "s",
                 "type": "CallExpression",
                 "value": ""
@@ -65946,7 +65946,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027671",
+                "id": "astnode100027673",
                 "name": "self.orders.columns",
                 "type": "CallExpression",
                 "value": "",
@@ -65974,7 +65974,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027686",
+                "id": "astnode100027688",
                 "name": "self.createRowOrders",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -66004,7 +66004,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027693",
+                "id": "astnode100027695",
                 "name": "self.orders.rows",
                 "type": "CallExpression",
                 "value": "",
@@ -66032,7 +66032,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027710",
+                "id": "astnode100027712",
                 "name": "self.getVisibleSchema",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -66062,7 +66062,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027733",
+                "id": "astnode100027735",
                 "name": "self.applyDefaultValue",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -66096,7 +66096,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027742",
+                "id": "astnode100027744",
                 "name": "d",
                 "type": "LogicalExpression",
                 "value": ""
@@ -66124,7 +66124,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027756",
+                "id": "astnode100027758",
                 "name": "d",
                 "type": "CallExpression",
                 "funcscope": "self.applyDefaultValue",
@@ -66153,7 +66153,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027768",
+                "id": "astnode100027770",
                 "name": "row[undefined]",
                 "type": "Identifier",
                 "value": "d",
@@ -66180,7 +66180,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027776",
+                "id": "astnode100027778",
                 "name": "self.createNewRowData",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -66211,7 +66211,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027783",
+                "id": "astnode100027785",
                 "name": "self.newRow",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -66239,7 +66239,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027810",
+                "id": "astnode100027812",
                 "name": "self.getSchemaNameHash",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -66272,7 +66272,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027818",
+                "id": "astnode100027820",
                 "name": "n",
                 "type": "Literal",
                 "value": 0
@@ -66300,7 +66300,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027829",
+                "id": "astnode100027831",
                 "name": "n",
                 "type": "Literal",
                 "funcscope": "self.getSchemaNameHash",
@@ -66329,7 +66329,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027833",
+                "id": "astnode100027835",
                 "name": "key",
                 "type": "BinaryExpression",
                 "funcscope": "self.getSchemaNameHash",
@@ -66358,7 +66358,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027841",
+                "id": "astnode100027843",
                 "name": "self.filter",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -66390,7 +66390,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027849",
+                "id": "astnode100027851",
                 "name": "f",
                 "type": "MemberExpression",
                 "value": "self.filters[undefined]"
@@ -66418,7 +66418,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027872",
+                "id": "astnode100027874",
                 "name": "f",
                 "type": "MemberExpression",
                 "funcscope": "self.filter",
@@ -66447,7 +66447,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027882",
+                "id": "astnode100027884",
                 "name": "self.applyFilter",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -66477,7 +66477,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027908",
+                "id": "astnode100027910",
                 "name": "header",
                 "type": "CallExpression",
                 "value": ""
@@ -66505,7 +66505,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027921",
+                "id": "astnode100027923",
                 "name": "self.currentFilter",
                 "type": "LogicalExpression",
                 "value": "",
@@ -66533,7 +66533,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027939",
+                "id": "astnode100027941",
                 "name": "self.data",
                 "type": "CallExpression",
                 "value": "",
@@ -66561,7 +66561,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027977",
+                "id": "astnode100027979",
                 "name": "self.applyDataTransforms",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -66588,7 +66588,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100027996",
+                "id": "astnode100027998",
                 "name": "self.getBestGuessDataType",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -66623,7 +66623,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028005",
+                "id": "astnode100028007",
                 "name": "t"
             }
         },
@@ -66649,7 +66649,7 @@ window.reflection = [
             "columnno": 19,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028007",
+                "id": "astnode100028009",
                 "name": "x"
             }
         },
@@ -66675,7 +66675,7 @@ window.reflection = [
             "columnno": 22,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028009",
+                "id": "astnode100028011",
                 "name": "l",
                 "type": "MemberExpression",
                 "value": "data.length"
@@ -66703,7 +66703,7 @@ window.reflection = [
             "columnno": 17,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028015",
+                "id": "astnode100028017",
                 "name": "x",
                 "type": "Literal",
                 "funcscope": "self.getBestGuessDataType",
@@ -66732,7 +66732,7 @@ window.reflection = [
             "columnno": 31,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028021",
+                "id": "astnode100028023",
                 "name": "x",
                 "type": "Literal",
                 "funcscope": "self.getBestGuessDataType",
@@ -66761,7 +66761,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028054",
+                "id": "astnode100028056",
                 "name": "t",
                 "type": "UnaryExpression",
                 "funcscope": "self.getBestGuessDataType",
@@ -66790,7 +66790,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028070",
+                "id": "astnode100028072",
                 "name": "self.drawChildGrids",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -66820,7 +66820,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028100",
+                "id": "astnode100028102",
                 "name": "self.resizeChildGrids",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -66850,7 +66850,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028130",
+                "id": "astnode100028132",
                 "name": "self.autoScrollZone",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -66890,7 +66890,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028141",
+                "id": "astnode100028143",
                 "name": "setTimer"
             }
         },
@@ -66916,7 +66916,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028143",
+                "id": "astnode100028145",
                 "name": "rowHeaderCellWidth",
                 "type": "CallExpression",
                 "value": ""
@@ -66944,7 +66944,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028149",
+                "id": "astnode100028151",
                 "name": "columnHeaderCellHeight",
                 "type": "CallExpression",
                 "value": ""
@@ -66972,7 +66972,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028181",
+                "id": "astnode100028183",
                 "name": "self.scrollBox.scrollLeft",
                 "type": "MemberExpression",
                 "value": "self.attributes.selectionScrollIncrement",
@@ -67000,7 +67000,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028193",
+                "id": "astnode100028195",
                 "name": "setTimer",
                 "type": "Literal",
                 "funcscope": "self.autoScrollZone",
@@ -67029,7 +67029,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028210",
+                "id": "astnode100028212",
                 "name": "self.scrollBox.scrollLeft",
                 "type": "MemberExpression",
                 "value": "self.attributes.selectionScrollIncrement",
@@ -67057,7 +67057,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028222",
+                "id": "astnode100028224",
                 "name": "setTimer",
                 "type": "Literal",
                 "funcscope": "self.autoScrollZone",
@@ -67086,7 +67086,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028251",
+                "id": "astnode100028253",
                 "name": "self.scrollBox.scrollTop",
                 "type": "MemberExpression",
                 "value": "self.attributes.selectionScrollIncrement",
@@ -67114,7 +67114,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028263",
+                "id": "astnode100028265",
                 "name": "setTimer",
                 "type": "Literal",
                 "funcscope": "self.autoScrollZone",
@@ -67143,7 +67143,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028280",
+                "id": "astnode100028282",
                 "name": "self.scrollBox.scrollTop",
                 "type": "MemberExpression",
                 "value": "self.attributes.selectionScrollIncrement",
@@ -67171,7 +67171,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028292",
+                "id": "astnode100028294",
                 "name": "setTimer",
                 "type": "Literal",
                 "funcscope": "self.autoScrollZone",
@@ -67200,7 +67200,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028315",
+                "id": "astnode100028317",
                 "name": "self.scrollTimer",
                 "type": "CallExpression",
                 "value": "",
@@ -67228,7 +67228,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028331",
+                "id": "astnode100028333",
                 "name": "self.refreshFromOrigialData",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -67259,7 +67259,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028338",
+                "id": "astnode100028340",
                 "name": "self.data",
                 "type": "CallExpression",
                 "value": "",
@@ -67287,7 +67287,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028354",
+                "id": "astnode100028356",
                 "name": "self.validateColumn",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -67320,7 +67320,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028406",
+                "id": "astnode100028408",
                 "name": "self.setDefaults",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -67355,7 +67355,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028417",
+                "id": "astnode100028419",
                 "name": "obj1[undefined]",
                 "type": "ConditionalExpression",
                 "value": "",
@@ -67382,7 +67382,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028432",
+                "id": "astnode100028434",
                 "name": "self.setAttributes",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -67412,7 +67412,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028469",
+                "id": "astnode100028471",
                 "name": "self.setStyle",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -67442,7 +67442,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028510",
+                "id": "astnode100028512",
                 "name": "self.autosize",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -67475,7 +67475,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028541",
+                "id": "astnode100028543",
                 "name": "self.sizes.columns[undefined]",
                 "type": "CallExpression",
                 "value": "",
@@ -67503,7 +67503,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028566",
+                "id": "astnode100028568",
                 "name": "self.sizes.columns[undefined]",
                 "type": "CallExpression",
                 "value": "",
@@ -67531,7 +67531,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028581",
+                "id": "astnode100028583",
                 "name": "self.dispose",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -67558,7 +67558,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028822",
+                "id": "astnode100028824",
                 "name": "self.tryLoadStoredSettings",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -67592,7 +67592,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028829",
+                "id": "astnode100028831",
                 "name": "s"
             }
         },
@@ -67618,7 +67618,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028878",
+                "id": "astnode100028880",
                 "name": "self.orders.rows",
                 "type": "MemberExpression",
                 "value": "self.storedSettings.orders.rows",
@@ -67646,7 +67646,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028892",
+                "id": "astnode100028894",
                 "name": "s",
                 "type": "CallExpression",
                 "funcscope": "self.tryLoadStoredSettings",
@@ -67675,7 +67675,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028914",
+                "id": "astnode100028916",
                 "name": "self.orders.columns",
                 "type": "MemberExpression",
                 "value": "self.storedSettings.orders.columns",
@@ -67703,7 +67703,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028928",
+                "id": "astnode100028930",
                 "name": "self.orderBy",
                 "type": "ConditionalExpression",
                 "value": "",
@@ -67731,7 +67731,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100028951",
+                "id": "astnode100028953",
                 "name": "self.orderDirection",
                 "type": "ConditionalExpression",
                 "value": "",
@@ -67759,7 +67759,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029002",
+                "id": "astnode100029004",
                 "name": "self.getDomRoot",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -67786,7 +67786,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029022",
+                "id": "astnode100029024",
                 "name": "self.getFontName",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -67815,7 +67815,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029037",
+                "id": "astnode100029039",
                 "name": "self.getFontHeight",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -67844,7 +67844,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029050",
+                "id": "astnode100029052",
                 "name": "self.parseStyleValue",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -67877,7 +67877,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029065",
+                "id": "astnode100029067",
                 "name": "self.style[undefined]",
                 "type": "CallExpression",
                 "value": "",
@@ -67905,7 +67905,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029083",
+                "id": "astnode100029085",
                 "name": "self.style[undefined]",
                 "type": "CallExpression",
                 "value": "",
@@ -67933,7 +67933,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029116",
+                "id": "astnode100029118",
                 "name": "self.style[undefined]",
                 "type": "CallExpression",
                 "value": "",
@@ -67961,7 +67961,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029143",
+                "id": "astnode100029145",
                 "name": "self.initProp",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -67993,7 +67993,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029176",
+                "id": "astnode100029178",
                 "name": "self[undefined][undefined]",
                 "type": "MemberExpression",
                 "value": "self.args[undefined][undefined]",
@@ -68020,7 +68020,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029190",
+                "id": "astnode100029192",
                 "name": "self.getStyleProperty",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -68049,7 +68049,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029222",
+                "id": "astnode100029224",
                 "name": "self.setStyleProperty",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -68086,7 +68086,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029232",
+                "id": "astnode100029234",
                 "name": "isDim",
                 "type": "BinaryExpression",
                 "value": ""
@@ -68114,7 +68114,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029261",
+                "id": "astnode100029263",
                 "name": "self.parentNodeStyle[undefined]",
                 "type": "Identifier",
                 "value": "value",
@@ -68142,7 +68142,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029277",
+                "id": "astnode100029279",
                 "name": "key",
                 "type": "CallExpression",
                 "funcscope": "self.setStyleProperty",
@@ -68171,7 +68171,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029285",
+                "id": "astnode100029287",
                 "name": "self.style[undefined]",
                 "type": "Identifier",
                 "value": "value",
@@ -68199,7 +68199,7 @@ window.reflection = [
             "columnno": 52,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029323",
+                "id": "astnode100029325",
                 "name": "name",
                 "type": "Literal",
                 "value": "style"
@@ -68225,7 +68225,7 @@ window.reflection = [
             "columnno": 67,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029325",
+                "id": "astnode100029327",
                 "name": "value",
                 "type": "Identifier",
                 "value": "value"
@@ -68251,7 +68251,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029328",
+                "id": "astnode100029330",
                 "name": "self.reloadStoredValues",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -68284,7 +68284,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029350",
+                "id": "astnode100029352",
                 "name": "self.storedSettings",
                 "type": "CallExpression",
                 "value": "",
@@ -68312,7 +68312,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029381",
+                "id": "astnode100029383",
                 "name": "self.storedSettings",
                 "type": "Identifier",
                 "value": "undefined",
@@ -68340,7 +68340,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029394",
+                "id": "astnode100029396",
                 "name": "self.storedSettings",
                 "type": "CallExpression",
                 "value": "",
@@ -68368,7 +68368,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029414",
+                "id": "astnode100029416",
                 "name": "self.storedSettings",
                 "type": "Identifier",
                 "value": "undefined",
@@ -68396,7 +68396,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029443",
+                "id": "astnode100029445",
                 "name": "self.sizes.rows",
                 "type": "MemberExpression",
                 "value": "self.storedSettings.sizes.rows",
@@ -68424,7 +68424,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029457",
+                "id": "astnode100029459",
                 "name": "self.sizes.columns",
                 "type": "MemberExpression",
                 "value": "self.storedSettings.sizes.columns",
@@ -68452,7 +68452,7 @@ window.reflection = [
             "columnno": 32,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029490",
+                "id": "astnode100029492",
                 "name": "self.sizes[undefined]",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -68480,7 +68480,7 @@ window.reflection = [
             "columnno": 32,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029538",
+                "id": "astnode100029540",
                 "name": "column.hidden",
                 "type": "UnaryExpression",
                 "value": "!self.storedSettings.visibility[undefined]",
@@ -68508,7 +68508,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029553",
+                "id": "astnode100029555",
                 "name": "self.init",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -68623,7 +68623,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029565",
+                "id": "astnode100029567",
                 "name": "addStyleKeyIfNoneExists",
                 "type": "FunctionDeclaration",
                 "paramnames": [
@@ -68653,7 +68653,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029590",
+                "id": "astnode100029592",
                 "name": "publicStyleKeyIntf",
                 "type": "ObjectExpression",
                 "value": "{}"
@@ -68681,7 +68681,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029614",
+                "id": "astnode100029616",
                 "name": "self.nodeType",
                 "type": "Literal",
                 "value": "canvas-datagrid",
@@ -68709,7 +68709,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029620",
+                "id": "astnode100029622",
                 "name": "self.ie",
                 "type": "CallExpression",
                 "value": "",
@@ -68737,7 +68737,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029634",
+                "id": "astnode100029636",
                 "name": "self.edge",
                 "type": "CallExpression",
                 "value": "",
@@ -68765,7 +68765,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029648",
+                "id": "astnode100029650",
                 "name": "self.webKit",
                 "type": "CallExpression",
                 "value": "",
@@ -68793,7 +68793,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029662",
+                "id": "astnode100029664",
                 "name": "self.moz",
                 "type": "CallExpression",
                 "value": "",
@@ -68821,7 +68821,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029676",
+                "id": "astnode100029678",
                 "name": "self.mobile",
                 "type": "CallExpression",
                 "value": "",
@@ -68849,7 +68849,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029690",
+                "id": "astnode100029692",
                 "name": "self.blankValues",
                 "type": "ArrayExpression",
                 "value": "[\"undefined\",null,\"\"]",
@@ -68877,7 +68877,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029699",
+                "id": "astnode100029701",
                 "name": "self.cursorGrab",
                 "type": "Literal",
                 "value": "grab",
@@ -68905,7 +68905,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029705",
+                "id": "astnode100029707",
                 "name": "self.cursorGrabing",
                 "type": "Literal",
                 "value": "grabbing",
@@ -68933,7 +68933,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029711",
+                "id": "astnode100029713",
                 "name": "self.cursorGrab",
                 "type": "ConditionalExpression",
                 "value": "",
@@ -68961,7 +68961,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029724",
+                "id": "astnode100029726",
                 "name": "self.cursorGrabing",
                 "type": "ConditionalExpression",
                 "value": "",
@@ -68989,7 +68989,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029737",
+                "id": "astnode100029739",
                 "name": "self.pointerLockPosition",
                 "type": "ObjectExpression",
                 "value": "{\"x\":0,\"y\":0}",
@@ -69017,7 +69017,7 @@ window.reflection = [
             "columnno": 40,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029742",
+                "id": "astnode100029744",
                 "name": "x",
                 "type": "Literal",
                 "value": 0
@@ -69044,7 +69044,7 @@ window.reflection = [
             "columnno": 46,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029744",
+                "id": "astnode100029746",
                 "name": "y",
                 "type": "Literal",
                 "value": 0
@@ -69071,7 +69071,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029761",
+                "id": "astnode100029763",
                 "name": "self.intf.moveSelection",
                 "type": "MemberExpression",
                 "value": "self.moveSelection",
@@ -69099,7 +69099,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029771",
+                "id": "astnode100029773",
                 "name": "self.intf.moveTo",
                 "type": "MemberExpression",
                 "value": "self.moveTo",
@@ -69127,7 +69127,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029781",
+                "id": "astnode100029783",
                 "name": "self.intf.addEventListener",
                 "type": "MemberExpression",
                 "value": "self.addEventListener",
@@ -69155,7 +69155,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029791",
+                "id": "astnode100029793",
                 "name": "self.intf.removeEventListener",
                 "type": "MemberExpression",
                 "value": "self.removeEventListener",
@@ -69183,7 +69183,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029801",
+                "id": "astnode100029803",
                 "name": "self.intf.dispatchEvent",
                 "type": "MemberExpression",
                 "value": "self.dispatchEvent",
@@ -69229,7 +69229,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029811",
+                "id": "astnode100029813",
                 "name": "self.intf.dispose",
                 "type": "MemberExpression",
                 "value": "self.dispose",
@@ -69286,7 +69286,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029821",
+                "id": "astnode100029823",
                 "name": "self.intf.appendTo",
                 "type": "MemberExpression",
                 "value": "self.appendTo",
@@ -69314,7 +69314,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029831",
+                "id": "astnode100029833",
                 "name": "self.intf.getVisibleCellByIndex",
                 "type": "MemberExpression",
                 "value": "self.getVisibleCellByIndex",
@@ -69342,7 +69342,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029841",
+                "id": "astnode100029843",
                 "name": "self.intf.filters",
                 "type": "MemberExpression",
                 "value": "self.filters",
@@ -69370,7 +69370,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029851",
+                "id": "astnode100029853",
                 "name": "self.intf.sorters",
                 "type": "MemberExpression",
                 "value": "self.sorters",
@@ -69398,7 +69398,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029861",
+                "id": "astnode100029863",
                 "name": "self.intf.autosize",
                 "type": "MemberExpression",
                 "value": "self.autosize",
@@ -69426,7 +69426,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029871",
+                "id": "astnode100029873",
                 "name": "self.intf.beginEditAt",
                 "type": "MemberExpression",
                 "value": "self.beginEditAt",
@@ -69454,7 +69454,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029881",
+                "id": "astnode100029883",
                 "name": "self.intf.endEdit",
                 "type": "MemberExpression",
                 "value": "self.endEdit",
@@ -69482,7 +69482,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029891",
+                "id": "astnode100029893",
                 "name": "self.intf.setActiveCell",
                 "type": "MemberExpression",
                 "value": "self.setActiveCell",
@@ -69510,7 +69510,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029901",
+                "id": "astnode100029903",
                 "name": "self.intf.forEachSelectedCell",
                 "type": "MemberExpression",
                 "value": "self.forEachSelectedCell",
@@ -69538,7 +69538,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029911",
+                "id": "astnode100029913",
                 "name": "self.intf.scrollIntoView",
                 "type": "MemberExpression",
                 "value": "self.scrollIntoView",
@@ -69566,7 +69566,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029921",
+                "id": "astnode100029923",
                 "name": "self.intf.clearChangeLog",
                 "type": "MemberExpression",
                 "value": "self.clearChangeLog",
@@ -69594,7 +69594,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029931",
+                "id": "astnode100029933",
                 "name": "self.intf.gotoCell",
                 "type": "MemberExpression",
                 "value": "self.gotoCell",
@@ -69622,7 +69622,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029941",
+                "id": "astnode100029943",
                 "name": "self.intf.gotoRow",
                 "type": "MemberExpression",
                 "value": "self.gotoRow",
@@ -69650,7 +69650,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029951",
+                "id": "astnode100029953",
                 "name": "self.intf.getHeaderByName",
                 "type": "MemberExpression",
                 "value": "self.getHeaderByName",
@@ -69678,7 +69678,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029961",
+                "id": "astnode100029963",
                 "name": "self.intf.findColumnScrollLeft",
                 "type": "MemberExpression",
                 "value": "self.findColumnScrollLeft",
@@ -69706,7 +69706,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029971",
+                "id": "astnode100029973",
                 "name": "self.intf.findRowScrollTop",
                 "type": "MemberExpression",
                 "value": "self.findRowScrollTop",
@@ -69734,7 +69734,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029981",
+                "id": "astnode100029983",
                 "name": "self.intf.fitColumnToValues",
                 "type": "MemberExpression",
                 "value": "self.fitColumnToValues",
@@ -69762,7 +69762,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100029991",
+                "id": "astnode100029993",
                 "name": "self.intf.findColumnMaxTextLength",
                 "type": "MemberExpression",
                 "value": "self.findColumnMaxTextLength",
@@ -69790,7 +69790,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030001",
+                "id": "astnode100030003",
                 "name": "self.intf.disposeContextMenu",
                 "type": "MemberExpression",
                 "value": "self.disposeContextMenu",
@@ -69818,7 +69818,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030011",
+                "id": "astnode100030013",
                 "name": "self.intf.getCellAt",
                 "type": "MemberExpression",
                 "value": "self.getCellAt",
@@ -69846,7 +69846,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030021",
+                "id": "astnode100030023",
                 "name": "self.intf.isCellVisible",
                 "type": "MemberExpression",
                 "value": "self.isCellVisible",
@@ -69874,7 +69874,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030031",
+                "id": "astnode100030033",
                 "name": "self.intf.isRowVisible",
                 "type": "MemberExpression",
                 "value": "self.isRowVisible",
@@ -69902,7 +69902,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030041",
+                "id": "astnode100030043",
                 "name": "self.intf.isColumnVisible",
                 "type": "MemberExpression",
                 "value": "self.isColumnVisible",
@@ -69930,7 +69930,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030051",
+                "id": "astnode100030053",
                 "name": "self.intf.order",
                 "type": "MemberExpression",
                 "value": "self.order",
@@ -69958,7 +69958,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030061",
+                "id": "astnode100030063",
                 "name": "self.intf.draw",
                 "type": "MemberExpression",
                 "value": "self.draw",
@@ -69986,7 +69986,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030071",
+                "id": "astnode100030073",
                 "name": "self.intf.isComponent",
                 "type": "MemberExpression",
                 "value": "self.isComponent",
@@ -70014,7 +70014,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030081",
+                "id": "astnode100030083",
                 "name": "self.intf.selectArea",
                 "type": "MemberExpression",
                 "value": "self.selectArea",
@@ -70042,7 +70042,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030091",
+                "id": "astnode100030093",
                 "name": "self.intf.clipElement",
                 "type": "MemberExpression",
                 "value": "self.clipElement",
@@ -70070,7 +70070,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030101",
+                "id": "astnode100030103",
                 "name": "self.intf.getSchemaFromData",
                 "type": "MemberExpression",
                 "value": "self.getSchemaFromData",
@@ -70098,7 +70098,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030111",
+                "id": "astnode100030113",
                 "name": "self.intf.setFilter",
                 "type": "MemberExpression",
                 "value": "self.setFilter",
@@ -70126,7 +70126,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030121",
+                "id": "astnode100030123",
                 "name": "self.intf.selectRow",
                 "type": "MemberExpression",
                 "value": "self.selectRow",
@@ -70154,7 +70154,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030131",
+                "id": "astnode100030133",
                 "name": "self.intf.parentGrid",
                 "type": "MemberExpression",
                 "value": "self.parentGrid",
@@ -70182,7 +70182,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030141",
+                "id": "astnode100030143",
                 "name": "self.intf.toggleTree",
                 "type": "MemberExpression",
                 "value": "self.toggleTree",
@@ -70210,7 +70210,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030151",
+                "id": "astnode100030153",
                 "name": "self.intf.expandTree",
                 "type": "MemberExpression",
                 "value": "self.expandTree",
@@ -70238,7 +70238,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030161",
+                "id": "astnode100030163",
                 "name": "self.intf.collapseTree",
                 "type": "MemberExpression",
                 "value": "self.collapseTree",
@@ -70266,7 +70266,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030171",
+                "id": "astnode100030173",
                 "name": "self.intf.canvas",
                 "type": "MemberExpression",
                 "value": "self.canvas",
@@ -70294,7 +70294,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030181",
+                "id": "astnode100030183",
                 "name": "self.intf.context",
                 "type": "MemberExpression",
                 "value": "self.ctx",
@@ -70322,7 +70322,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030191",
+                "id": "astnode100030193",
                 "name": "self.intf.insertRow",
                 "type": "MemberExpression",
                 "value": "self.insertRow",
@@ -70350,7 +70350,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030201",
+                "id": "astnode100030203",
                 "name": "self.intf.deleteRow",
                 "type": "MemberExpression",
                 "value": "self.deleteRow",
@@ -70378,7 +70378,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030211",
+                "id": "astnode100030213",
                 "name": "self.intf.addRow",
                 "type": "MemberExpression",
                 "value": "self.addRow",
@@ -70406,7 +70406,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030221",
+                "id": "astnode100030223",
                 "name": "self.intf.insertColumn",
                 "type": "MemberExpression",
                 "value": "self.insertColumn",
@@ -70434,7 +70434,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030231",
+                "id": "astnode100030233",
                 "name": "self.intf.deleteColumn",
                 "type": "MemberExpression",
                 "value": "self.deleteColumn",
@@ -70462,7 +70462,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030241",
+                "id": "astnode100030243",
                 "name": "self.intf.addColumn",
                 "type": "MemberExpression",
                 "value": "self.addColumn",
@@ -70490,7 +70490,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030251",
+                "id": "astnode100030253",
                 "name": "self.intf.getClippingRect",
                 "type": "MemberExpression",
                 "value": "self.getClippingRect",
@@ -70518,7 +70518,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030261",
+                "id": "astnode100030263",
                 "name": "self.intf.setRowHeight",
                 "type": "MemberExpression",
                 "value": "self.setRowHeight",
@@ -70546,7 +70546,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030271",
+                "id": "astnode100030273",
                 "name": "self.intf.setColumnWidth",
                 "type": "MemberExpression",
                 "value": "self.setColumnWidth",
@@ -70574,7 +70574,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030281",
+                "id": "astnode100030283",
                 "name": "self.intf.resetColumnWidths",
                 "type": "MemberExpression",
                 "value": "self.resetColumnWidths",
@@ -70602,7 +70602,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030291",
+                "id": "astnode100030293",
                 "name": "self.intf.resetRowHeights",
                 "type": "MemberExpression",
                 "value": "self.resetRowHeights",
@@ -70630,7 +70630,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030301",
+                "id": "astnode100030303",
                 "name": "self.intf.resize",
                 "type": "MemberExpression",
                 "value": "self.resize",
@@ -70658,7 +70658,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030311",
+                "id": "astnode100030313",
                 "name": "self.intf.selectColumn",
                 "type": "MemberExpression",
                 "value": "self.selectColumn",
@@ -70686,7 +70686,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030321",
+                "id": "astnode100030323",
                 "name": "self.intf.selectRow",
                 "type": "MemberExpression",
                 "value": "self.selectRow",
@@ -70714,7 +70714,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030331",
+                "id": "astnode100030333",
                 "name": "self.intf.selectAll",
                 "type": "MemberExpression",
                 "value": "self.selectAll",
@@ -70742,7 +70742,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030341",
+                "id": "astnode100030343",
                 "name": "self.intf.selectNone",
                 "type": "MemberExpression",
                 "value": "self.selectNone",
@@ -70770,7 +70770,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030351",
+                "id": "astnode100030353",
                 "name": "self.intf.drawChildGrids",
                 "type": "MemberExpression",
                 "value": "self.drawChildGrids",
@@ -70798,7 +70798,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030361",
+                "id": "astnode100030363",
                 "name": "self.intf.assertPxColor",
                 "type": "MemberExpression",
                 "value": "self.assertPxColor",
@@ -70826,7 +70826,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030371",
+                "id": "astnode100030373",
                 "name": "self.intf.clearPxColorAssertions",
                 "type": "MemberExpression",
                 "value": "self.clearPxColorAssertions",
@@ -70854,7 +70854,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030381",
+                "id": "astnode100030383",
                 "name": "self.intf.integerToAlpha",
                 "type": "MemberExpression",
                 "value": "self.integerToAlpha",
@@ -70882,7 +70882,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030391",
+                "id": "astnode100030393",
                 "name": "self.intf.copy",
                 "type": "MemberExpression",
                 "value": "self.copy",
@@ -70910,7 +70910,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030401",
+                "id": "astnode100030403",
                 "name": "self.intf.paste",
                 "type": "MemberExpression",
                 "value": "self.paste",
@@ -70938,7 +70938,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030411",
+                "id": "astnode100030413",
                 "name": "self.intf.setStyleProperty",
                 "type": "MemberExpression",
                 "value": "self.setStyleProperty",
@@ -70966,7 +70966,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030430",
+                "id": "astnode100030432",
                 "name": "get",
                 "type": "FunctionExpression"
             },
@@ -70994,7 +70994,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030435",
+                "id": "astnode100030437",
                 "name": "styles",
                 "type": "CallExpression",
                 "value": ""
@@ -71020,7 +71020,7 @@ window.reflection = [
             "columnno": 78,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030449",
+                "id": "astnode100030451",
                 "name": "a[undefined]",
                 "type": "MemberExpression",
                 "value": "i[1]",
@@ -71047,7 +71047,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030461",
+                "id": "astnode100030463",
                 "name": "attributes",
                 "type": "CallExpression",
                 "value": ""
@@ -71073,7 +71073,7 @@ window.reflection = [
             "columnno": 86,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030475",
+                "id": "astnode100030477",
                 "name": "a[undefined]",
                 "type": "MemberExpression",
                 "value": "i[1]",
@@ -71100,7 +71100,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030488",
+                "id": "astnode100030490",
                 "name": "self.styleKeys",
                 "type": "CallExpression",
                 "value": "",
@@ -71128,7 +71128,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030546",
+                "id": "astnode100030548",
                 "name": "self.DOMStyles",
                 "type": "CallExpression",
                 "value": "",
@@ -71156,7 +71156,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030579",
+                "id": "astnode100030581",
                 "name": "publicStyleKeyIntf[undefined]",
                 "type": "Identifier",
                 "funcscope": "self.init",
@@ -71185,7 +71185,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030592",
+                "id": "astnode100030594",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -71210,7 +71210,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030601",
+                "id": "astnode100030603",
                 "name": "set",
                 "type": "FunctionExpression"
             },
@@ -71238,7 +71238,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030611",
+                "id": "astnode100030613",
                 "name": "self.appliedInlineStyles[undefined]",
                 "type": "Identifier",
                 "value": "value",
@@ -71266,7 +71266,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030635",
+                "id": "astnode100030637",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -71291,7 +71291,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030652",
+                "id": "astnode100030654",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -71316,7 +71316,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030669",
+                "id": "astnode100030671",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -71341,7 +71341,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030686",
+                "id": "astnode100030688",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -71366,7 +71366,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030691",
+                "id": "astnode100030693",
                 "name": "set",
                 "type": "FunctionExpression"
             },
@@ -71394,7 +71394,7 @@ window.reflection = [
             "columnno": 56,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030730",
+                "id": "astnode100030732",
                 "name": "name",
                 "type": "Literal",
                 "value": "style"
@@ -71420,7 +71420,7 @@ window.reflection = [
             "columnno": 71,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030732",
+                "id": "astnode100030734",
                 "name": "value",
                 "type": "Identifier",
                 "value": "valueObject"
@@ -71446,7 +71446,7 @@ window.reflection = [
             "columnno": 61,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030744",
+                "id": "astnode100030746",
                 "name": "value",
                 "type": "ObjectExpression",
                 "value": "{}"
@@ -71472,7 +71472,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030772",
+                "id": "astnode100030774",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -71497,7 +71497,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030781",
+                "id": "astnode100030783",
                 "name": "set",
                 "type": "FunctionExpression"
             },
@@ -71525,7 +71525,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030786",
+                "id": "astnode100030788",
                 "name": "self.attributes[undefined]",
                 "type": "Identifier",
                 "value": "value",
@@ -71553,7 +71553,7 @@ window.reflection = [
             "columnno": 64,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030816",
+                "id": "astnode100030818",
                 "name": "name",
                 "type": "Identifier",
                 "value": "key"
@@ -71579,7 +71579,7 @@ window.reflection = [
             "columnno": 75,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030818",
+                "id": "astnode100030820",
                 "name": "value",
                 "type": "MemberExpression",
                 "value": "value[undefined]"
@@ -71605,7 +71605,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030823",
+                "id": "astnode100030825",
                 "name": "self.filters.string",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -71644,7 +71644,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030861",
+                "id": "astnode100030863",
                 "name": "value",
                 "type": "CallExpression",
                 "funcscope": "self.filters.string",
@@ -71673,7 +71673,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030867",
+                "id": "astnode100030869",
                 "name": "filterRegExp"
             }
         },
@@ -71699,7 +71699,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030869",
+                "id": "astnode100030871",
                 "name": "regEnd",
                 "type": "Literal",
                 "value": {}
@@ -71727,7 +71727,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030872",
+                "id": "astnode100030874",
                 "name": "pattern",
                 "type": "CallExpression",
                 "value": ""
@@ -71755,7 +71755,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030879",
+                "id": "astnode100030881",
                 "name": "flags",
                 "type": "ConditionalExpression",
                 "value": ""
@@ -71783,7 +71783,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030891",
+                "id": "astnode100030893",
                 "name": "flagLength",
                 "type": "MemberExpression",
                 "value": "flags.length"
@@ -71811,7 +71811,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030897",
+                "id": "astnode100030899",
                 "name": "self.invalidFilterRegEx",
                 "type": "Identifier",
                 "value": "undefined",
@@ -71839,7 +71839,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030917",
+                "id": "astnode100030919",
                 "name": "filterRegExp",
                 "type": "NewExpression",
                 "funcscope": "self.filters.string",
@@ -71868,7 +71868,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030936",
+                "id": "astnode100030938",
                 "name": "self.invalidFilterRegEx",
                 "type": "Identifier",
                 "value": "e",
@@ -71896,7 +71896,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100030972",
+                "id": "astnode100030974",
                 "name": "self.filters.number",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -71926,7 +71926,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031052",
+                "id": "astnode100031054",
                 "name": "self.intf.data",
                 "type": "MemberExpression",
                 "value": "self.args.data",
@@ -71954,7 +71954,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031086",
+                "id": "astnode100031088",
                 "name": "self.intf.dataType",
                 "type": "Literal",
                 "value": "application/json+x-canvas-datagrid",
@@ -71982,7 +71982,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031094",
+                "id": "astnode100031096",
                 "name": "self.intf.data",
                 "type": "LogicalExpression",
                 "value": "",
@@ -72010,7 +72010,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031119",
+                "id": "astnode100031121",
                 "name": "self.intf.schema",
                 "type": "MemberExpression",
                 "value": "self.args.schema",
@@ -72038,7 +72038,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031159",
+                "id": "astnode100031161",
                 "name": "self.initialized",
                 "type": "Literal",
                 "value": true,
@@ -72084,7 +72084,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031167",
+                "id": "astnode100031169",
                 "name": "self.intf.blur",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -72116,7 +72116,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031177",
+                "id": "astnode100031179",
                 "name": "self.hasFocus",
                 "type": "Literal",
                 "value": false,
@@ -72162,7 +72162,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031183",
+                "id": "astnode100031185",
                 "name": "self.intf.focus",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -72192,7 +72192,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031192",
+                "id": "astnode100031194",
                 "name": "self.hasFocus",
                 "type": "Literal",
                 "value": true,
@@ -72220,7 +72220,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031223",
+                "id": "astnode100031225",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -72245,7 +72245,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031243",
+                "id": "astnode100031245",
                 "name": "set",
                 "type": "FunctionExpression"
             },
@@ -72274,7 +72274,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031253",
+                "id": "astnode100031255",
                 "name": "self.shadowRoot.height",
                 "type": "Identifier",
                 "value": "value",
@@ -72302,7 +72302,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031262",
+                "id": "astnode100031264",
                 "name": "self.parentNode.height",
                 "type": "Identifier",
                 "value": "value",
@@ -72330,7 +72330,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031285",
+                "id": "astnode100031287",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -72355,7 +72355,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031305",
+                "id": "astnode100031307",
                 "name": "set",
                 "type": "FunctionExpression"
             },
@@ -72384,7 +72384,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031315",
+                "id": "astnode100031317",
                 "name": "self.shadowRoot.width",
                 "type": "Identifier",
                 "value": "value",
@@ -72412,7 +72412,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031324",
+                "id": "astnode100031326",
                 "name": "self.parentNode.width",
                 "type": "Identifier",
                 "value": "value",
@@ -72440,7 +72440,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031347",
+                "id": "astnode100031349",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -72465,7 +72465,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031354",
+                "id": "astnode100031356",
                 "name": "set",
                 "type": "FunctionExpression"
             },
@@ -72493,7 +72493,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031369",
+                "id": "astnode100031371",
                 "name": "self.parentNode",
                 "type": "Identifier",
                 "value": "value",
@@ -72521,7 +72521,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031384",
+                "id": "astnode100031386",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -72546,7 +72546,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031401",
+                "id": "astnode100031403",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -72571,7 +72571,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031418",
+                "id": "astnode100031420",
                 "name": "get",
                 "type": "FunctionExpression"
             },
@@ -72599,7 +72599,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031451",
+                "id": "astnode100031453",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -72624,7 +72624,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031466",
+                "id": "astnode100031468",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -72649,7 +72649,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031475",
+                "id": "astnode100031477",
                 "name": "set",
                 "type": "FunctionExpression"
             },
@@ -72679,7 +72679,7 @@ window.reflection = [
             "columnno": 40,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031485",
+                "id": "astnode100031487",
                 "name": "value",
                 "type": "Literal",
                 "funcscope": "set",
@@ -72708,7 +72708,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031496",
+                "id": "astnode100031498",
                 "name": "self.parentNodeStyle.cursor",
                 "type": "Identifier",
                 "value": "value",
@@ -72736,7 +72736,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031504",
+                "id": "astnode100031506",
                 "name": "self.currentCursor",
                 "type": "Identifier",
                 "value": "value",
@@ -72764,7 +72764,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031519",
+                "id": "astnode100031521",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -72789,7 +72789,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031526",
+                "id": "astnode100031528",
                 "name": "set",
                 "type": "FunctionExpression"
             },
@@ -72818,7 +72818,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031536",
+                "id": "astnode100031538",
                 "name": "value",
                 "type": "Literal",
                 "funcscope": "set",
@@ -72847,7 +72847,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031540",
+                "id": "astnode100031542",
                 "name": "self.orderDirection",
                 "type": "Identifier",
                 "value": "value",
@@ -72875,7 +72875,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031566",
+                "id": "astnode100031568",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -72900,7 +72900,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031573",
+                "id": "astnode100031575",
                 "name": "set",
                 "type": "FunctionExpression"
             },
@@ -72929,7 +72929,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031602",
+                "id": "astnode100031604",
                 "name": "self.orderBy",
                 "type": "Identifier",
                 "value": "value",
@@ -72957,7 +72957,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031633",
+                "id": "astnode100031635",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -72982,7 +72982,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031652",
+                "id": "astnode100031654",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -73007,7 +73007,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031671",
+                "id": "astnode100031673",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -73032,7 +73032,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031690",
+                "id": "astnode100031692",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -73057,7 +73057,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031709",
+                "id": "astnode100031711",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -73082,7 +73082,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031718",
+                "id": "astnode100031720",
                 "name": "set",
                 "type": "FunctionExpression"
             },
@@ -73110,7 +73110,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031723",
+                "id": "astnode100031725",
                 "name": "self.scrollBox.scrollTop",
                 "type": "Identifier",
                 "value": "value",
@@ -73138,7 +73138,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031740",
+                "id": "astnode100031742",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -73163,7 +73163,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031749",
+                "id": "astnode100031751",
                 "name": "set",
                 "type": "FunctionExpression"
             },
@@ -73191,7 +73191,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031754",
+                "id": "astnode100031756",
                 "name": "self.scrollBox.scrollLeft",
                 "type": "Identifier",
                 "value": "value",
@@ -73219,7 +73219,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031771",
+                "id": "astnode100031773",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -73244,7 +73244,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031788",
+                "id": "astnode100031790",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -73269,7 +73269,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031805",
+                "id": "astnode100031807",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -73294,7 +73294,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031822",
+                "id": "astnode100031824",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -73319,7 +73319,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031839",
+                "id": "astnode100031841",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -73344,7 +73344,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031856",
+                "id": "astnode100031858",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -73369,7 +73369,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031873",
+                "id": "astnode100031875",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -73394,7 +73394,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031890",
+                "id": "astnode100031892",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -73419,7 +73419,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031907",
+                "id": "astnode100031909",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -73444,7 +73444,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031924",
+                "id": "astnode100031926",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -73469,7 +73469,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031932",
+                "id": "astnode100031934",
                 "name": "self.intf.formatters",
                 "type": "MemberExpression",
                 "value": "self.formatters",
@@ -73497,7 +73497,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031951",
+                "id": "astnode100031953",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -73522,7 +73522,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031958",
+                "id": "astnode100031960",
                 "name": "set",
                 "type": "FunctionExpression"
             },
@@ -73550,7 +73550,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100031977",
+                "id": "astnode100031979",
                 "name": "self.dataType",
                 "type": "Identifier",
                 "value": "value",
@@ -73578,7 +73578,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032004",
+                "id": "astnode100032006",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -73603,7 +73603,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032013",
+                "id": "astnode100032015",
                 "name": "set",
                 "type": "FunctionExpression"
             },
@@ -73632,7 +73632,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032018",
+                "id": "astnode100032020",
                 "name": "self.events[undefined]",
                 "type": "ArrayExpression",
                 "value": "[]",
@@ -73660,7 +73660,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032026",
+                "id": "astnode100032028",
                 "name": "self.componentL1Events[undefined]",
                 "type": "Identifier",
                 "value": "value",
@@ -73688,7 +73688,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032055",
+                "id": "astnode100032057",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -73713,7 +73713,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032062",
+                "id": "astnode100032064",
                 "name": "set",
                 "type": "FunctionExpression"
             },
@@ -73741,7 +73741,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032089",
+                "id": "astnode100032091",
                 "name": "self.frozenRow",
                 "type": "Identifier",
                 "value": "val",
@@ -73769,7 +73769,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032104",
+                "id": "astnode100032106",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -73794,7 +73794,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032111",
+                "id": "astnode100032113",
                 "name": "set",
                 "type": "FunctionExpression"
             },
@@ -73822,7 +73822,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032139",
+                "id": "astnode100032141",
                 "name": "self.frozenColumn",
                 "type": "Identifier",
                 "value": "val",
@@ -73850,7 +73850,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032154",
+                "id": "astnode100032156",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -73875,7 +73875,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032159",
+                "id": "astnode100032161",
                 "name": "top",
                 "type": "MemberExpression",
                 "value": "self.scrollIndexTop"
@@ -73901,7 +73901,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032163",
+                "id": "astnode100032165",
                 "name": "right",
                 "type": "MemberExpression",
                 "value": "self.scrollIndexRight"
@@ -73927,7 +73927,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032167",
+                "id": "astnode100032169",
                 "name": "bottom",
                 "type": "MemberExpression",
                 "value": "self.scrollIndexBottom"
@@ -73953,7 +73953,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032171",
+                "id": "astnode100032173",
                 "name": "left",
                 "type": "MemberExpression",
                 "value": "self.scrollIndexLeft"
@@ -73979,7 +73979,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032185",
+                "id": "astnode100032187",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -74004,7 +74004,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032190",
+                "id": "astnode100032192",
                 "name": "top",
                 "type": "MemberExpression",
                 "value": "self.scrollPixelTop"
@@ -74030,7 +74030,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032194",
+                "id": "astnode100032196",
                 "name": "right",
                 "type": "MemberExpression",
                 "value": "self.scrollPixelRight"
@@ -74056,7 +74056,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032198",
+                "id": "astnode100032200",
                 "name": "bottom",
                 "type": "MemberExpression",
                 "value": "self.scrollPixelBottom"
@@ -74082,7 +74082,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032202",
+                "id": "astnode100032204",
                 "name": "left",
                 "type": "MemberExpression",
                 "value": "self.scrollPixelLeft"
@@ -74108,7 +74108,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032216",
+                "id": "astnode100032218",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -74133,7 +74133,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032225",
+                "id": "astnode100032227",
                 "name": "set",
                 "type": "FunctionExpression"
             },
@@ -74161,7 +74161,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032262",
+                "id": "astnode100032264",
                 "name": "self.orders.rows",
                 "type": "Identifier",
                 "value": "val",
@@ -74189,7 +74189,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032279",
+                "id": "astnode100032281",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -74214,7 +74214,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032288",
+                "id": "astnode100032290",
                 "name": "set",
                 "type": "FunctionExpression"
             },
@@ -74242,7 +74242,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032321",
+                "id": "astnode100032323",
                 "name": "self.orders.columns",
                 "type": "Identifier",
                 "value": "val",
@@ -74270,7 +74270,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032338",
+                "id": "astnode100032340",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -74295,7 +74295,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032356",
+                "id": "astnode100032358",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -74320,7 +74320,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032375",
+                "id": "astnode100032377",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -74345,7 +74345,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032393",
+                "id": "astnode100032395",
                 "name": "get",
                 "type": "FunctionExpression"
             },
@@ -74373,7 +74373,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032420",
+                "id": "astnode100032422",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -74398,7 +74398,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032427",
+                "id": "astnode100032429",
                 "name": "set",
                 "type": "FunctionExpression",
                 "value": "setTreeGridAttributes"
@@ -74427,7 +74427,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032433",
+                "id": "astnode100032435",
                 "name": "self.treeGridAttributes",
                 "type": "Identifier",
                 "value": "value",
@@ -74455,7 +74455,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032448",
+                "id": "astnode100032450",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -74480,7 +74480,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032455",
+                "id": "astnode100032457",
                 "name": "set",
                 "type": "FunctionExpression",
                 "value": "setCellGridAttributes"
@@ -74509,7 +74509,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032461",
+                "id": "astnode100032463",
                 "name": "self.cellGridAttributes",
                 "type": "Identifier",
                 "value": "value",
@@ -74537,7 +74537,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032476",
+                "id": "astnode100032478",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -74562,7 +74562,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032493",
+                "id": "astnode100032495",
                 "name": "get",
                 "type": "FunctionExpression",
                 "value": "schemaGetter"
@@ -74588,7 +74588,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032502",
+                "id": "astnode100032504",
                 "name": "set",
                 "type": "FunctionExpression",
                 "value": "schemaSetter"
@@ -74619,7 +74619,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032513",
+                "id": "astnode100032515",
                 "name": "self.schema",
                 "type": "Identifier",
                 "value": "undefined",
@@ -74647,7 +74647,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032519",
+                "id": "astnode100032521",
                 "name": "self.tempSchema",
                 "type": "Identifier",
                 "value": "undefined",
@@ -74675,7 +74675,7 @@ window.reflection = [
             "columnno": 57,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032531",
+                "id": "astnode100032533",
                 "name": "schema",
                 "type": "Identifier",
                 "value": "undefined"
@@ -74701,7 +74701,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032567",
+                "id": "astnode100032569",
                 "name": "self.schema",
                 "type": "CallExpression",
                 "value": "",
@@ -74729,7 +74729,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032581",
+                "id": "astnode100032583",
                 "name": "column.width",
                 "type": "LogicalExpression",
                 "value": "",
@@ -74757,7 +74757,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032595",
+                "id": "astnode100032597",
                 "name": "column.filter",
                 "type": "LogicalExpression",
                 "value": "",
@@ -74785,7 +74785,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032611",
+                "id": "astnode100032613",
                 "name": "column.type",
                 "type": "LogicalExpression",
                 "value": "",
@@ -74813,7 +74813,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032621",
+                "id": "astnode100032623",
                 "name": "column.index",
                 "type": "Identifier",
                 "value": "index",
@@ -74841,7 +74841,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032627",
+                "id": "astnode100032629",
                 "name": "column.columnIndex",
                 "type": "Identifier",
                 "value": "index",
@@ -74869,7 +74869,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032633",
+                "id": "astnode100032635",
                 "name": "column.rowIndex",
                 "type": "UnaryExpression",
                 "value": -1,
@@ -74897,7 +74897,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032642",
+                "id": "astnode100032644",
                 "name": "self.tempSchema",
                 "type": "Identifier",
                 "value": "undefined",
@@ -74925,7 +74925,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032706",
+                "id": "astnode100032708",
                 "name": "column.hidden",
                 "type": "UnaryExpression",
                 "value": "!self.storedSettings.visibility[undefined]",
@@ -74953,7 +74953,7 @@ window.reflection = [
             "columnno": 53,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032733",
+                "id": "astnode100032735",
                 "name": "schema",
                 "type": "MemberExpression",
                 "value": "self.schema"
@@ -74997,7 +74997,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032738",
+                "id": "astnode100032740",
                 "name": "self.intf.getTypes",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -75024,7 +75024,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032755",
+                "id": "astnode100032757",
                 "name": "self.parseInnerHtml",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -75056,7 +75056,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032777",
+                "id": "astnode100032779",
                 "name": "data",
                 "type": "CallExpression",
                 "funcscope": "self.parseInnerHtml",
@@ -75085,7 +75085,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032804",
+                "id": "astnode100032806",
                 "name": "self.parsers['application/json+x-canvas-datagrid']",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -75118,7 +75118,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032836",
+                "id": "astnode100032838",
                 "name": "self.parsers['application/x-canvas-datagrid']",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -75148,7 +75148,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032851",
+                "id": "astnode100032853",
                 "name": "self.intf.parsers",
                 "type": "MemberExpression",
                 "value": "self.parsers",
@@ -75176,7 +75176,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032861",
+                "id": "astnode100032863",
                 "name": "self.etl",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -75209,7 +75209,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032909",
+                "id": "astnode100032911",
                 "name": "self.schema",
                 "type": "Identifier",
                 "value": "schema",
@@ -75237,7 +75237,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032922",
+                "id": "astnode100032924",
                 "name": "self.schema",
                 "type": "CallExpression",
                 "value": "",
@@ -75265,7 +75265,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032938",
+                "id": "astnode100032940",
                 "name": "self.tempSchema",
                 "type": "CallExpression",
                 "value": "",
@@ -75293,7 +75293,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032959",
+                "id": "astnode100032961",
                 "name": "self.originalData",
                 "type": "Identifier",
                 "value": "data",
@@ -75321,7 +75321,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032986",
+                "id": "astnode100032988",
                 "name": "self.tempSchema",
                 "type": "ArrayExpression",
                 "value": "[\"{\\\"name\\\":\\\"\\\"}\"]",
@@ -75349,7 +75349,7 @@ window.reflection = [
             "columnno": 40,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100032992",
+                "id": "astnode100032994",
                 "name": "name",
                 "type": "Literal",
                 "value": ""
@@ -75375,7 +75375,7 @@ window.reflection = [
             "columnno": 57,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033029",
+                "id": "astnode100033031",
                 "name": "schema",
                 "type": "MemberExpression",
                 "value": "self.tempSchema"
@@ -75401,7 +75401,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033046",
+                "id": "astnode100033048",
                 "name": "get",
                 "type": "FunctionExpression",
                 "value": "dataGetter"
@@ -75427,7 +75427,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033054",
+                "id": "astnode100033056",
                 "name": "set",
                 "type": "FunctionExpression",
                 "value": "dataSetter"
@@ -75456,7 +75456,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033068",
+                "id": "astnode100033070",
                 "name": "self.changes",
                 "type": "ArrayExpression",
                 "value": "[]",
@@ -75484,7 +75484,7 @@ window.reflection = [
             "columnno": 55,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033128",
+                "id": "astnode100033130",
                 "name": "data",
                 "type": "MemberExpression",
                 "value": "self.data"
@@ -75510,7 +75510,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033139",
+                "id": "astnode100033141",
                 "name": "self.initScrollBox",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -75552,7 +75552,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033146",
+                "id": "astnode100033148",
                 "name": "sHeight",
                 "type": "Literal",
                 "value": 0
@@ -75580,7 +75580,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033149",
+                "id": "astnode100033151",
                 "name": "sWidth",
                 "type": "Literal",
                 "value": 0
@@ -75608,7 +75608,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033152",
+                "id": "astnode100033154",
                 "name": "scrollTop",
                 "type": "Literal",
                 "value": 0
@@ -75636,7 +75636,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033155",
+                "id": "astnode100033157",
                 "name": "scrollLeft",
                 "type": "Literal",
                 "value": 0
@@ -75664,7 +75664,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033158",
+                "id": "astnode100033160",
                 "name": "scrollHeight",
                 "type": "Literal",
                 "value": 0
@@ -75692,7 +75692,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033161",
+                "id": "astnode100033163",
                 "name": "scrollWidth",
                 "type": "Literal",
                 "value": 0
@@ -75720,7 +75720,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033164",
+                "id": "astnode100033166",
                 "name": "scrollBoxHeight",
                 "type": "Literal",
                 "value": 20
@@ -75748,7 +75748,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033167",
+                "id": "astnode100033169",
                 "name": "scrollBoxWidth",
                 "type": "Literal",
                 "value": 20
@@ -75776,7 +75776,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033170",
+                "id": "astnode100033172",
                 "name": "setScrollTop",
                 "type": "FunctionDeclaration",
                 "paramnames": [
@@ -75811,7 +75811,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033190",
+                "id": "astnode100033192",
                 "name": "value",
                 "type": "Literal",
                 "funcscope": "self.initScrollBox~setScrollTop",
@@ -75840,7 +75840,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033199",
+                "id": "astnode100033201",
                 "name": "value",
                 "type": "Identifier",
                 "funcscope": "self.initScrollBox~setScrollTop",
@@ -75869,7 +75869,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033208",
+                "id": "astnode100033210",
                 "name": "value",
                 "type": "Literal",
                 "funcscope": "self.initScrollBox~setScrollTop",
@@ -75898,7 +75898,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033212",
+                "id": "astnode100033214",
                 "name": "scrollTop",
                 "type": "Identifier",
                 "funcscope": "self.initScrollBox~setScrollTop",
@@ -75927,7 +75927,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033224",
+                "id": "astnode100033226",
                 "name": "setScrollLeft",
                 "type": "FunctionDeclaration",
                 "paramnames": [
@@ -75962,7 +75962,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033244",
+                "id": "astnode100033246",
                 "name": "value",
                 "type": "Literal",
                 "funcscope": "self.initScrollBox~setScrollLeft",
@@ -75991,7 +75991,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033253",
+                "id": "astnode100033255",
                 "name": "value",
                 "type": "Identifier",
                 "funcscope": "self.initScrollBox~setScrollLeft",
@@ -76020,7 +76020,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033262",
+                "id": "astnode100033264",
                 "name": "value",
                 "type": "Literal",
                 "funcscope": "self.initScrollBox~setScrollLeft",
@@ -76049,7 +76049,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033266",
+                "id": "astnode100033268",
                 "name": "scrollLeft",
                 "type": "Identifier",
                 "funcscope": "self.initScrollBox~setScrollLeft",
@@ -76078,7 +76078,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033279",
+                "id": "astnode100033281",
                 "name": "self.scrollBox.toString",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -76105,7 +76105,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033346",
+                "id": "astnode100033348",
                 "name": "self.scrollBox.scrollTo",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -76136,7 +76136,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033377",
+                "id": "astnode100033379",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -76161,7 +76161,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033382",
+                "id": "astnode100033384",
                 "name": "set",
                 "type": "FunctionExpression"
             },
@@ -76189,7 +76189,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033387",
+                "id": "astnode100033389",
                 "name": "scrollBoxHeight",
                 "type": "Identifier",
                 "funcscope": "set",
@@ -76218,7 +76218,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033400",
+                "id": "astnode100033402",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -76243,7 +76243,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033405",
+                "id": "astnode100033407",
                 "name": "set",
                 "type": "FunctionExpression"
             },
@@ -76271,7 +76271,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033410",
+                "id": "astnode100033412",
                 "name": "scrollBoxWidth",
                 "type": "Identifier",
                 "funcscope": "set",
@@ -76300,7 +76300,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033423",
+                "id": "astnode100033425",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -76325,7 +76325,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033428",
+                "id": "astnode100033430",
                 "name": "set",
                 "type": "FunctionExpression"
             },
@@ -76353,7 +76353,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033433",
+                "id": "astnode100033435",
                 "name": "sHeight",
                 "type": "Identifier",
                 "funcscope": "set",
@@ -76382,7 +76382,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033446",
+                "id": "astnode100033448",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -76407,7 +76407,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033451",
+                "id": "astnode100033453",
                 "name": "set",
                 "type": "FunctionExpression"
             },
@@ -76435,7 +76435,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033456",
+                "id": "astnode100033458",
                 "name": "sWidth",
                 "type": "Identifier",
                 "funcscope": "set",
@@ -76464,7 +76464,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033469",
+                "id": "astnode100033471",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -76489,7 +76489,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033474",
+                "id": "astnode100033476",
                 "name": "set",
                 "type": "Identifier",
                 "value": "setScrollTop"
@@ -76515,7 +76515,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033486",
+                "id": "astnode100033488",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -76540,7 +76540,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033491",
+                "id": "astnode100033493",
                 "name": "set",
                 "type": "Identifier",
                 "value": "setScrollLeft"
@@ -76566,7 +76566,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033503",
+                "id": "astnode100033505",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -76591,7 +76591,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033508",
+                "id": "astnode100033510",
                 "name": "set",
                 "type": "FunctionExpression"
             },
@@ -76620,7 +76620,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033518",
+                "id": "astnode100033520",
                 "name": "scrollTop",
                 "type": "CallExpression",
                 "funcscope": "set",
@@ -76649,7 +76649,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033527",
+                "id": "astnode100033529",
                 "name": "scrollHeight",
                 "type": "Identifier",
                 "funcscope": "set",
@@ -76678,7 +76678,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033540",
+                "id": "astnode100033542",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -76703,7 +76703,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033545",
+                "id": "astnode100033547",
                 "name": "set",
                 "type": "FunctionExpression"
             },
@@ -76732,7 +76732,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033555",
+                "id": "astnode100033557",
                 "name": "scrollLeft",
                 "type": "CallExpression",
                 "funcscope": "set",
@@ -76761,7 +76761,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033564",
+                "id": "astnode100033566",
                 "name": "scrollWidth",
                 "type": "Identifier",
                 "funcscope": "set",
@@ -76790,7 +76790,7 @@ window.reflection = [
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033590",
+                "id": "astnode100033592",
                 "name": "component",
                 "type": "CallExpression",
                 "funcscope": "<anonymous>",
@@ -76819,7 +76819,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033595",
+                "id": "astnode100033597",
                 "name": "modules",
                 "type": "CallExpression",
                 "value": ""
@@ -76847,7 +76847,7 @@ window.reflection = [
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033606",
+                "id": "astnode100033608",
                 "name": "Grid",
                 "type": "FunctionDeclaration",
                 "paramnames": [
@@ -76893,7 +76893,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033611",
+                "id": "astnode100033613",
                 "name": "args",
                 "type": "LogicalExpression",
                 "funcscope": "<anonymous>~Grid",
@@ -76922,7 +76922,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033617",
+                "id": "astnode100033619",
                 "name": "self",
                 "type": "ObjectExpression",
                 "value": "{}"
@@ -76950,7 +76950,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033621",
+                "id": "astnode100033623",
                 "name": "self.isComponent",
                 "type": "BinaryExpression",
                 "funcscope": "<anonymous>~Grid",
@@ -76979,7 +76979,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033631",
+                "id": "astnode100033633",
                 "name": "self.isChildGrid",
                 "type": "LogicalExpression",
                 "funcscope": "<anonymous>~Grid",
@@ -77008,7 +77008,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033654",
+                "id": "astnode100033656",
                 "name": "self.intf",
                 "type": "ObjectExpression",
                 "funcscope": "<anonymous>~Grid",
@@ -77037,7 +77037,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033661",
+                "id": "astnode100033663",
                 "name": "self.intf",
                 "type": "ConditionalExpression",
                 "funcscope": "<anonymous>~Grid",
@@ -77066,7 +77066,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033678",
+                "id": "astnode100033680",
                 "name": "self.args",
                 "type": "Identifier",
                 "funcscope": "<anonymous>~Grid",
@@ -77095,7 +77095,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033684",
+                "id": "astnode100033686",
                 "name": "self.intf.args",
                 "type": "Identifier",
                 "funcscope": "<anonymous>~Grid",
@@ -77124,7 +77124,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033692",
+                "id": "astnode100033694",
                 "name": "self.applyComponentStyle",
                 "type": "MemberExpression",
                 "funcscope": "<anonymous>~Grid",
@@ -77153,7 +77153,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033700",
+                "id": "astnode100033702",
                 "name": "self.hyphenateProperty",
                 "type": "MemberExpression",
                 "funcscope": "<anonymous>~Grid",
@@ -77182,7 +77182,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033708",
+                "id": "astnode100033710",
                 "name": "self.dehyphenateProperty",
                 "type": "MemberExpression",
                 "funcscope": "<anonymous>~Grid",
@@ -77211,7 +77211,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033716",
+                "id": "astnode100033718",
                 "name": "self.createGrid",
                 "type": "FunctionExpression",
                 "funcscope": "<anonymous>~Grid",
@@ -77245,7 +77245,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033725",
+                "id": "astnode100033727",
                 "name": "args.component",
                 "type": "Literal",
                 "funcscope": "<anonymous>~Grid",
@@ -77274,7 +77274,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033752",
+                "id": "astnode100033754",
                 "name": "self.shadowRoot",
                 "type": "MemberExpression",
                 "funcscope": "<anonymous>~Grid",
@@ -77303,7 +77303,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033762",
+                "id": "astnode100033764",
                 "name": "self.parentNode",
                 "type": "MemberExpression",
                 "funcscope": "<anonymous>~Grid",
@@ -77332,7 +77332,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033771",
+                "id": "astnode100033773",
                 "name": "self.shadowRoot",
                 "type": "CallExpression",
                 "funcscope": "<anonymous>~Grid",
@@ -77361,7 +77361,7 @@ window.reflection = [
             "columnno": 54,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033782",
+                "id": "astnode100033784",
                 "name": "mode",
                 "type": "Literal",
                 "value": "open"
@@ -77387,7 +77387,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033785",
+                "id": "astnode100033787",
                 "name": "self.parentNode",
                 "type": "MemberExpression",
                 "funcscope": "<anonymous>~Grid",
@@ -77416,7 +77416,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033807",
+                "id": "astnode100033809",
                 "name": "Grid.prototype",
                 "type": "CallExpression",
                 "funcscope": "<anonymous>",
@@ -77445,7 +77445,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033826",
+                "id": "astnode100033828",
                 "name": "Grid.observedAttributes",
                 "type": "CallExpression",
                 "funcscope": "<anonymous>",
@@ -77474,7 +77474,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033835",
+                "id": "astnode100033837",
                 "name": "Grid.prototype.disconnectedCallback",
                 "type": "MemberExpression",
                 "funcscope": "<anonymous>",
@@ -77503,7 +77503,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033845",
+                "id": "astnode100033847",
                 "name": "Grid.prototype.attributeChangedCallback",
                 "type": "MemberExpression",
                 "funcscope": "<anonymous>",
@@ -77532,7 +77532,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033855",
+                "id": "astnode100033857",
                 "name": "Grid.prototype.connectedCallback",
                 "type": "MemberExpression",
                 "funcscope": "<anonymous>",
@@ -77561,7 +77561,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033865",
+                "id": "astnode100033867",
                 "name": "Grid.prototype.adoptedCallback",
                 "type": "MemberExpression",
                 "funcscope": "<anonymous>",
@@ -77590,7 +77590,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033897",
+                "id": "astnode100033899",
                 "name": "window.canvasDatagrid",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -77619,7 +77619,7 @@ window.reflection = [
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033909",
+                "id": "astnode100033911",
                 "name": "module.exports",
                 "type": "FunctionExpression",
                 "value": "grid",
@@ -77657,7 +77657,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033918",
+                "id": "astnode100033920",
                 "name": "args",
                 "type": "LogicalExpression",
                 "funcscope": "module.exports",
@@ -77686,7 +77686,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033924",
+                "id": "astnode100033926",
                 "name": "i"
             }
         },
@@ -77712,7 +77712,7 @@ window.reflection = [
             "columnno": 15,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033926",
+                "id": "astnode100033928",
                 "name": "tKeys",
                 "type": "ArrayExpression",
                 "value": "[\"style\",\"formatters\",\"sorters\",\"filters\",\"treeGridAttributes\",\"cellGridAttributes\",\"data\",\"schema\"]"
@@ -77740,7 +77740,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100033943",
+                "id": "astnode100033945",
                 "name": "i",
                 "type": "CallExpression",
                 "funcscope": "module.exports",
@@ -77769,7 +77769,7 @@ window.reflection = [
             "columnno": 36,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034046",
+                "id": "astnode100034048",
                 "name": "i[undefined][undefined]",
                 "type": "MemberExpression",
                 "funcscope": "module.exports",
@@ -77798,7 +77798,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034059",
+                "id": "astnode100034061",
                 "name": "i[undefined]",
                 "type": "MemberExpression",
                 "funcscope": "module.exports",
@@ -77827,7 +77827,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034068",
+                "id": "astnode100034070",
                 "name": "i.attributes[undefined]",
                 "type": "MemberExpression",
                 "funcscope": "module.exports",
@@ -77856,7 +77856,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034083",
+                "id": "astnode100034085",
                 "name": "i.data",
                 "type": "MemberExpression",
                 "funcscope": "module.exports",
@@ -77885,7 +77885,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034106",
+                "id": "astnode100034108",
                 "name": "args.component",
                 "type": "Literal",
                 "funcscope": "module.exports",
@@ -77914,7 +77914,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034112",
+                "id": "astnode100034114",
                 "name": "i",
                 "type": "NewExpression",
                 "funcscope": "module.exports",
@@ -77972,7 +77972,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034157",
+                "id": "astnode100034159",
                 "name": "self.integerToAlpha",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -78008,7 +78008,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034165",
+                "id": "astnode100034167",
                 "name": "ordA",
                 "type": "CallExpression",
                 "value": ""
@@ -78036,7 +78036,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034172",
+                "id": "astnode100034174",
                 "name": "ordZ",
                 "type": "CallExpression",
                 "value": ""
@@ -78064,7 +78064,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034179",
+                "id": "astnode100034181",
                 "name": "len",
                 "type": "BinaryExpression",
                 "value": ""
@@ -78092,7 +78092,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034186",
+                "id": "astnode100034188",
                 "name": "s",
                 "type": "Literal",
                 "value": ""
@@ -78120,7 +78120,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034195",
+                "id": "astnode100034197",
                 "name": "s",
                 "type": "BinaryExpression",
                 "funcscope": "self.integerToAlpha",
@@ -78149,7 +78149,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034209",
+                "id": "astnode100034211",
                 "name": "n",
                 "type": "BinaryExpression",
                 "funcscope": "self.integerToAlpha",
@@ -78219,7 +78219,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034223",
+                "id": "astnode100034225",
                 "name": "self.insertColumn",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -78254,7 +78254,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034232",
+                "id": "astnode100034234",
                 "name": "s",
                 "type": "CallExpression",
                 "value": ""
@@ -78282,7 +78282,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034282",
+                "id": "astnode100034284",
                 "name": "self.intf.schema",
                 "type": "Identifier",
                 "value": "s",
@@ -78342,7 +78342,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034290",
+                "id": "astnode100034292",
                 "name": "self.deleteColumn",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -78376,7 +78376,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034298",
+                "id": "astnode100034300",
                 "name": "s",
                 "type": "CallExpression",
                 "value": ""
@@ -78404,7 +78404,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034331",
+                "id": "astnode100034333",
                 "name": "self.intf.schema",
                 "type": "Identifier",
                 "value": "s",
@@ -78464,7 +78464,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034339",
+                "id": "astnode100034341",
                 "name": "self.addColumn",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -78498,7 +78498,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034347",
+                "id": "astnode100034349",
                 "name": "s",
                 "type": "CallExpression",
                 "value": ""
@@ -78526,7 +78526,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034384",
+                "id": "astnode100034386",
                 "name": "self.intf.schema",
                 "type": "Identifier",
                 "value": "s",
@@ -78583,7 +78583,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034392",
+                "id": "astnode100034394",
                 "name": "self.deleteRow",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -78650,7 +78650,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034420",
+                "id": "astnode100034422",
                 "name": "self.insertRow",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -78712,7 +78712,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034494",
+                "id": "astnode100034496",
                 "name": "self.addRow",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -78782,7 +78782,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034558",
+                "id": "astnode100034560",
                 "name": "self.setRowHeight",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -78815,7 +78815,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034567",
+                "id": "astnode100034569",
                 "name": "self.sizes.rows[undefined]",
                 "type": "Identifier",
                 "value": "height",
@@ -78881,7 +78881,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034583",
+                "id": "astnode100034585",
                 "name": "self.setColumnWidth",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -78914,7 +78914,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034592",
+                "id": "astnode100034594",
                 "name": "self.sizes.columns[undefined]",
                 "type": "Identifier",
                 "value": "width",
@@ -78963,7 +78963,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034608",
+                "id": "astnode100034610",
                 "name": "self.resetColumnWidths",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -78993,7 +78993,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034615",
+                "id": "astnode100034617",
                 "name": "self.sizes.columns",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -79042,7 +79042,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034629",
+                "id": "astnode100034631",
                 "name": "self.resetRowHeights",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -79072,7 +79072,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034636",
+                "id": "astnode100034638",
                 "name": "self.sizes.rows",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -79138,7 +79138,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034650",
+                "id": "astnode100034652",
                 "name": "self.setFilter",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -79172,7 +79172,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034668",
+                "id": "astnode100034670",
                 "name": "self.columnFilters",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -79200,7 +79200,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034693",
+                "id": "astnode100034695",
                 "name": "self.columnFilters[undefined]",
                 "type": "Identifier",
                 "value": "value",
@@ -79257,7 +79257,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034706",
+                "id": "astnode100034708",
                 "name": "self.findRowScrollTop",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -79315,7 +79315,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034737",
+                "id": "astnode100034739",
                 "name": "self.findColumnScrollLeft",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -79347,7 +79347,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034745",
+                "id": "astnode100034747",
                 "name": "i",
                 "type": "CallExpression",
                 "value": ""
@@ -79435,7 +79435,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034791",
+                "id": "astnode100034793",
                 "name": "self.gotoCell",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -79479,7 +79479,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034802",
+                "id": "astnode100034804",
                 "name": "targetX",
                 "type": "ConditionalExpression",
                 "value": ""
@@ -79507,7 +79507,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034814",
+                "id": "astnode100034816",
                 "name": "targetY",
                 "type": "ConditionalExpression",
                 "value": ""
@@ -79535,7 +79535,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034826",
+                "id": "astnode100034828",
                 "name": "cell"
             }
         },
@@ -79561,7 +79561,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034828",
+                "id": "astnode100034830",
                 "name": "sbw",
                 "type": "BinaryExpression",
                 "value": ""
@@ -79589,7 +79589,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034848",
+                "id": "astnode100034850",
                 "name": "sbh",
                 "type": "BinaryExpression",
                 "value": ""
@@ -79617,7 +79617,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034869",
+                "id": "astnode100034871",
                 "name": "offsetX",
                 "type": "ConditionalExpression",
                 "funcscope": "self.gotoCell",
@@ -79646,7 +79646,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034878",
+                "id": "astnode100034880",
                 "name": "offsetY",
                 "type": "ConditionalExpression",
                 "funcscope": "self.gotoCell",
@@ -79675,7 +79675,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034887",
+                "id": "astnode100034889",
                 "name": "targetX",
                 "type": "BinaryExpression",
                 "funcscope": "self.gotoCell",
@@ -79704,7 +79704,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034893",
+                "id": "astnode100034895",
                 "name": "targetY",
                 "type": "BinaryExpression",
                 "funcscope": "self.gotoCell",
@@ -79733,7 +79733,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034922",
+                "id": "astnode100034924",
                 "name": "cell",
                 "type": "CallExpression",
                 "funcscope": "<anonymous>",
@@ -79762,7 +79762,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034936",
+                "id": "astnode100034938",
                 "name": "targetX",
                 "type": "BinaryExpression",
                 "funcscope": "<anonymous>",
@@ -79791,7 +79791,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034944",
+                "id": "astnode100034946",
                 "name": "targetY",
                 "type": "BinaryExpression",
                 "funcscope": "<anonymous>",
@@ -79820,7 +79820,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034966",
+                "id": "astnode100034968",
                 "name": "self.scrollBox.scrollLeft",
                 "type": "Identifier",
                 "value": "targetX",
@@ -79848,7 +79848,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034979",
+                "id": "astnode100034981",
                 "name": "self.scrollBox.scrollTop",
                 "type": "Identifier",
                 "value": "targetY",
@@ -79905,7 +79905,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100034987",
+                "id": "astnode100034989",
                 "name": "self.gotoRow",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -79994,7 +79994,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035002",
+                "id": "astnode100035004",
                 "name": "self.scrollIntoView",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -80067,7 +80067,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035093",
+                "id": "astnode100035095",
                 "name": "self.setActiveCell",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -80102,7 +80102,7 @@ window.reflection = [
             "columnno": 25,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035107",
+                "id": "astnode100035109",
                 "name": "x",
                 "type": "Literal",
                 "funcscope": "self.setActiveCell",
@@ -80131,7 +80131,7 @@ window.reflection = [
             "columnno": 25,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035116",
+                "id": "astnode100035118",
                 "name": "y",
                 "type": "Literal",
                 "funcscope": "self.setActiveCell",
@@ -80160,7 +80160,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035120",
+                "id": "astnode100035122",
                 "name": "self.activeCell",
                 "type": "ObjectExpression",
                 "value": "{\"rowIndex\":\"\",\"columnIndex\":\"\"}",
@@ -80188,7 +80188,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035125",
+                "id": "astnode100035127",
                 "name": "rowIndex",
                 "type": "Identifier",
                 "value": "y"
@@ -80215,7 +80215,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035127",
+                "id": "astnode100035129",
                 "name": "columnIndex",
                 "type": "Identifier",
                 "value": "x"
@@ -80271,7 +80271,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035130",
+                "id": "astnode100035132",
                 "name": "self.selectNone",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -80303,7 +80303,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035138",
+                "id": "astnode100035140",
                 "name": "self.selections",
                 "type": "ArrayExpression",
                 "value": "[]",
@@ -80331,7 +80331,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035150",
+                "id": "astnode100035152",
                 "name": "selectedData",
                 "type": "CallExpression",
                 "value": ""
@@ -80357,7 +80357,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035155",
+                "id": "astnode100035157",
                 "name": "selections",
                 "type": "MemberExpression",
                 "value": "self.selections"
@@ -80383,7 +80383,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035159",
+                "id": "astnode100035161",
                 "name": "selectionBounds",
                 "type": "MemberExpression",
                 "value": "self.selectionBounds"
@@ -80438,7 +80438,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035173",
+                "id": "astnode100035175",
                 "name": "self.selectAll",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -80467,7 +80467,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035186",
+                "id": "astnode100035188",
                 "name": "top",
                 "type": "Literal",
                 "value": 0
@@ -80493,7 +80493,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035188",
+                "id": "astnode100035190",
                 "name": "left",
                 "type": "UnaryExpression",
                 "value": -1
@@ -80519,7 +80519,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035191",
+                "id": "astnode100035193",
                 "name": "right",
                 "type": "BinaryExpression",
                 "value": ""
@@ -80545,7 +80545,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035200",
+                "id": "astnode100035202",
                 "name": "bottom",
                 "type": "BinaryExpression",
                 "value": ""
@@ -80600,7 +80600,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035218",
+                "id": "astnode100035220",
                 "name": "self.isColumnSelected",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -80633,7 +80633,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035226",
+                "id": "astnode100035228",
                 "name": "colIsSelected",
                 "type": "Literal",
                 "value": true
@@ -80661,7 +80661,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035268",
+                "id": "astnode100035270",
                 "name": "colIsSelected",
                 "type": "Literal",
                 "funcscope": "<anonymous>",
@@ -80728,7 +80728,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035274",
+                "id": "astnode100035276",
                 "name": "self.forEachSelectedCell",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -80764,7 +80764,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035283",
+                "id": "astnode100035285",
                 "name": "d",
                 "type": "ArrayExpression",
                 "value": "[]"
@@ -80792,7 +80792,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035286",
+                "id": "astnode100035288",
                 "name": "s",
                 "type": "ConditionalExpression",
                 "value": ""
@@ -80820,7 +80820,7 @@ window.reflection = [
             "columnno": 86,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035298",
+                "id": "astnode100035300",
                 "name": "l",
                 "type": "MemberExpression",
                 "value": "self.data.length"
@@ -80848,7 +80848,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035330",
+                "id": "astnode100035332",
                 "name": "d[undefined]",
                 "type": "Literal",
                 "funcscope": "self.forEachSelectedCell",
@@ -80877,7 +80877,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035337",
+                "id": "astnode100035339",
                 "name": "d[undefined]",
                 "type": "ObjectExpression",
                 "funcscope": "self.forEachSelectedCell",
@@ -80962,7 +80962,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035375",
+                "id": "astnode100035377",
                 "name": "self.selectColumn",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -81004,7 +81004,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035386",
+                "id": "astnode100035388",
                 "name": "s"
             }
         },
@@ -81030,7 +81030,7 @@ window.reflection = [
             "columnno": 19,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035388",
+                "id": "astnode100035390",
                 "name": "e"
             }
         },
@@ -81056,7 +81056,7 @@ window.reflection = [
             "columnno": 22,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035390",
+                "id": "astnode100035392",
                 "name": "x"
             }
         },
@@ -81082,7 +81082,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035392",
+                "id": "astnode100035394",
                 "name": "addCol",
                 "type": "FunctionDeclaration",
                 "paramnames": [
@@ -81115,7 +81115,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035408",
+                "id": "astnode100035410",
                 "name": "self.selections[undefined]",
                 "type": "LogicalExpression",
                 "value": "",
@@ -81143,7 +81143,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035445",
+                "id": "astnode100035447",
                 "name": "removeCol",
                 "type": "FunctionDeclaration",
                 "paramnames": [
@@ -81176,7 +81176,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035461",
+                "id": "astnode100035463",
                 "name": "self.selections[undefined]",
                 "type": "LogicalExpression",
                 "value": "",
@@ -81204,7 +81204,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035518",
+                "id": "astnode100035520",
                 "name": "s",
                 "type": "CallExpression",
                 "funcscope": "self.selectColumn",
@@ -81233,7 +81233,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035531",
+                "id": "astnode100035533",
                 "name": "e",
                 "type": "CallExpression",
                 "funcscope": "self.selectColumn",
@@ -81262,7 +81262,7 @@ window.reflection = [
             "columnno": 21,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035544",
+                "id": "astnode100035546",
                 "name": "x",
                 "type": "Identifier",
                 "funcscope": "self.selectColumn",
@@ -81291,7 +81291,7 @@ window.reflection = [
             "columnno": 35,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035550",
+                "id": "astnode100035552",
                 "name": "x",
                 "type": "Literal",
                 "funcscope": "self.selectColumn",
@@ -81320,7 +81320,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035566",
+                "id": "astnode100035568",
                 "name": "self.selections",
                 "type": "ArrayExpression",
                 "value": "[]",
@@ -81348,7 +81348,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035572",
+                "id": "astnode100035574",
                 "name": "self.activeCell.columnIndex",
                 "type": "Identifier",
                 "value": "columnIndex",
@@ -81376,7 +81376,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035580",
+                "id": "astnode100035582",
                 "name": "self.activeCell.rowIndex",
                 "type": "MemberExpression",
                 "value": "self.scrollIndexTop",
@@ -81404,7 +81404,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035618",
+                "id": "astnode100035620",
                 "name": "selectedData",
                 "type": "CallExpression",
                 "value": ""
@@ -81430,7 +81430,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035623",
+                "id": "astnode100035625",
                 "name": "selections",
                 "type": "MemberExpression",
                 "value": "self.selections"
@@ -81456,7 +81456,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035627",
+                "id": "astnode100035629",
                 "name": "selectionBounds",
                 "type": "CallExpression",
                 "value": ""
@@ -81538,7 +81538,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035633",
+                "id": "astnode100035635",
                 "name": "self.selectRow",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -81579,7 +81579,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035644",
+                "id": "astnode100035646",
                 "name": "x"
             }
         },
@@ -81605,7 +81605,7 @@ window.reflection = [
             "columnno": 19,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035646",
+                "id": "astnode100035648",
                 "name": "st"
             }
         },
@@ -81631,7 +81631,7 @@ window.reflection = [
             "columnno": 23,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035648",
+                "id": "astnode100035650",
                 "name": "en"
             }
         },
@@ -81657,7 +81657,7 @@ window.reflection = [
             "columnno": 27,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035650",
+                "id": "astnode100035652",
                 "name": "s",
                 "type": "CallExpression",
                 "value": ""
@@ -81685,7 +81685,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035656",
+                "id": "astnode100035658",
                 "name": "de",
                 "type": "FunctionDeclaration",
                 "paramnames": []
@@ -81713,7 +81713,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035670",
+                "id": "astnode100035672",
                 "name": "selectedData",
                 "type": "CallExpression",
                 "value": ""
@@ -81739,7 +81739,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035675",
+                "id": "astnode100035677",
                 "name": "selections",
                 "type": "MemberExpression",
                 "value": "self.selections"
@@ -81765,7 +81765,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035679",
+                "id": "astnode100035681",
                 "name": "selectionBounds",
                 "type": "MemberExpression",
                 "value": "self.selectionBounds"
@@ -81791,7 +81791,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035683",
+                "id": "astnode100035685",
                 "name": "addRow",
                 "type": "FunctionDeclaration",
                 "paramnames": [
@@ -81825,7 +81825,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035688",
+                "id": "astnode100035690",
                 "name": "self.selections[undefined]",
                 "type": "ArrayExpression",
                 "value": "[]",
@@ -81853,7 +81853,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035773",
+                "id": "astnode100035775",
                 "name": "self.selections[undefined]",
                 "type": "ArrayExpression",
                 "value": "[]",
@@ -81881,7 +81881,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035814",
+                "id": "astnode100035816",
                 "name": "st",
                 "type": "CallExpression",
                 "funcscope": "self.selectRow",
@@ -81910,7 +81910,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035827",
+                "id": "astnode100035829",
                 "name": "en",
                 "type": "CallExpression",
                 "funcscope": "self.selectRow",
@@ -81939,7 +81939,7 @@ window.reflection = [
             "columnno": 25,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035840",
+                "id": "astnode100035842",
                 "name": "x",
                 "type": "Identifier",
                 "funcscope": "self.selectRow",
@@ -81968,7 +81968,7 @@ window.reflection = [
             "columnno": 42,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035846",
+                "id": "astnode100035848",
                 "name": "x",
                 "type": "Literal",
                 "funcscope": "self.selectRow",
@@ -82026,7 +82026,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035863",
+                "id": "astnode100035865",
                 "name": "self.collapseTree",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -82055,7 +82055,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035877",
+                "id": "astnode100035879",
                 "name": "childGrid",
                 "type": "MemberExpression",
                 "value": "self.childGrids[undefined]"
@@ -82081,7 +82081,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035883",
+                "id": "astnode100035885",
                 "name": "data",
                 "type": "MemberExpression",
                 "value": "self.data[undefined]"
@@ -82107,7 +82107,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035889",
+                "id": "astnode100035891",
                 "name": "rowIndex",
                 "type": "Identifier",
                 "value": "rowIndex"
@@ -82133,7 +82133,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035939",
+                "id": "astnode100035941",
                 "name": "cellHeight",
                 "type": "MemberExpression",
                 "value": "self.style.cellHeight"
@@ -82188,7 +82188,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035958",
+                "id": "astnode100035960",
                 "name": "self.expandTree",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -82232,7 +82232,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035966",
+                "id": "astnode100035968",
                 "name": "trArgs",
                 "type": "LogicalExpression",
                 "value": ""
@@ -82260,7 +82260,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035975",
+                "id": "astnode100035977",
                 "name": "columnHeaderCellHeight",
                 "type": "CallExpression",
                 "value": ""
@@ -82288,7 +82288,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035981",
+                "id": "astnode100035983",
                 "name": "rowHeaderCellWidth",
                 "type": "LogicalExpression",
                 "value": ""
@@ -82316,7 +82316,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100035996",
+                "id": "astnode100035998",
                 "name": "h",
                 "type": "LogicalExpression",
                 "value": ""
@@ -82344,7 +82344,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036011",
+                "id": "astnode100036013",
                 "name": "treeGrid"
             }
         },
@@ -82370,7 +82370,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036022",
+                "id": "astnode100036024",
                 "name": "trArgs.debug",
                 "type": "MemberExpression",
                 "funcscope": "self.expandTree",
@@ -82399,7 +82399,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036032",
+                "id": "astnode100036034",
                 "name": "trArgs.name",
                 "type": "ConditionalExpression",
                 "funcscope": "self.expandTree",
@@ -82428,7 +82428,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036053",
+                "id": "astnode100036055",
                 "name": "trArgs.style",
                 "type": "LogicalExpression",
                 "funcscope": "self.expandTree",
@@ -82457,7 +82457,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036065",
+                "id": "astnode100036067",
                 "name": "trArgs.parentNode",
                 "type": "ObjectExpression",
                 "funcscope": "self.expandTree",
@@ -82486,7 +82486,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036070",
+                "id": "astnode100036072",
                 "name": "parentGrid",
                 "type": "MemberExpression",
                 "value": "self.intf"
@@ -82513,7 +82513,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036074",
+                "id": "astnode100036076",
                 "name": "nodeType",
                 "type": "Literal",
                 "value": "canvas-datagrid-tree"
@@ -82540,7 +82540,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036076",
+                "id": "astnode100036078",
                 "name": "offsetHeight",
                 "type": "Identifier",
                 "value": "h"
@@ -82567,7 +82567,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036078",
+                "id": "astnode100036080",
                 "name": "offsetWidth",
                 "type": "BinaryExpression",
                 "value": ""
@@ -82594,7 +82594,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036084",
+                "id": "astnode100036086",
                 "name": "header",
                 "type": "ObjectExpression",
                 "value": "{\"width\":\"\"}"
@@ -82621,7 +82621,7 @@ window.reflection = [
             "columnno": 30,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036086",
+                "id": "astnode100036088",
                 "name": "width",
                 "type": "BinaryExpression",
                 "value": ""
@@ -82648,7 +82648,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036092",
+                "id": "astnode100036094",
                 "name": "offsetLeft",
                 "type": "Identifier",
                 "value": "rowHeaderCellWidth"
@@ -82675,7 +82675,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036094",
+                "id": "astnode100036096",
                 "name": "offsetTop",
                 "type": "Identifier",
                 "value": "columnHeaderCellHeight"
@@ -82702,7 +82702,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036096",
+                "id": "astnode100036098",
                 "name": "offsetParent",
                 "type": "MemberExpression",
                 "value": "self.intf.parentNode"
@@ -82729,7 +82729,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036102",
+                "id": "astnode100036104",
                 "name": "parentNode",
                 "type": "MemberExpression",
                 "value": "self.intf.parentNode"
@@ -82756,7 +82756,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036108",
+                "id": "astnode100036110",
                 "name": "style",
                 "type": "Literal",
                 "value": "tree"
@@ -82783,7 +82783,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036110",
+                "id": "astnode100036112",
                 "name": "data",
                 "type": "MemberExpression",
                 "value": "self.data[undefined]"
@@ -82810,7 +82810,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036117",
+                "id": "astnode100036119",
                 "name": "treeGrid",
                 "type": "CallExpression",
                 "funcscope": "self.expandTree",
@@ -82839,7 +82839,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036125",
+                "id": "astnode100036127",
                 "name": "self.childGrids[undefined]",
                 "type": "Identifier",
                 "value": "treeGrid",
@@ -82867,7 +82867,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036133",
+                "id": "astnode100036135",
                 "name": "treeGrid",
                 "type": "MemberExpression",
                 "funcscope": "self.expandTree",
@@ -82896,7 +82896,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036141",
+                "id": "astnode100036143",
                 "name": "treeGrid.visible",
                 "type": "Literal",
                 "funcscope": "self.expandTree",
@@ -82925,7 +82925,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036153",
+                "id": "astnode100036155",
                 "name": "treeGrid",
                 "type": "Identifier",
                 "value": "treeGrid"
@@ -82951,7 +82951,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036155",
+                "id": "astnode100036157",
                 "name": "data",
                 "type": "MemberExpression",
                 "value": "self.data[undefined]"
@@ -82977,7 +82977,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036161",
+                "id": "astnode100036163",
                 "name": "rowIndex",
                 "type": "Identifier",
                 "value": "rowIndex"
@@ -83003,7 +83003,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036164",
+                "id": "astnode100036166",
                 "name": "self.openChildren[undefined]",
                 "type": "Identifier",
                 "value": "treeGrid",
@@ -83031,7 +83031,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036172",
+                "id": "astnode100036174",
                 "name": "self.sizes.trees[undefined]",
                 "type": "Identifier",
                 "value": "h",
@@ -83059,7 +83059,7 @@ window.reflection = [
             "columnno": 45,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036188",
+                "id": "astnode100036190",
                 "name": "height",
                 "type": "MemberExpression",
                 "value": "self.style.cellHeight"
@@ -83114,7 +83114,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036201",
+                "id": "astnode100036203",
                 "name": "self.toggleTree",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -83146,7 +83146,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036209",
+                "id": "astnode100036211",
                 "name": "i",
                 "type": "MemberExpression",
                 "value": "self.openChildren[undefined]"
@@ -83216,7 +83216,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036232",
+                "id": "astnode100036234",
                 "name": "self.getHeaderByName",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -83249,7 +83249,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036240",
+                "id": "astnode100036242",
                 "name": "x"
             }
         },
@@ -83275,7 +83275,7 @@ window.reflection = [
             "columnno": 19,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036242",
+                "id": "astnode100036244",
                 "name": "i",
                 "type": "CallExpression",
                 "value": ""
@@ -83303,7 +83303,7 @@ window.reflection = [
             "columnno": 17,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036249",
+                "id": "astnode100036251",
                 "name": "x",
                 "type": "Literal",
                 "funcscope": "self.getHeaderByName",
@@ -83332,7 +83332,7 @@ window.reflection = [
             "columnno": 38,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036257",
+                "id": "astnode100036259",
                 "name": "x",
                 "type": "Literal",
                 "funcscope": "self.getHeaderByName",
@@ -83390,7 +83390,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036275",
+                "id": "astnode100036277",
                 "name": "self.fitColumnToValues",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -83423,7 +83423,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036291",
+                "id": "astnode100036293",
                 "name": "self.sizes.columns[undefined]",
                 "type": "CallExpression",
                 "value": "",
@@ -83506,7 +83506,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036341",
+                "id": "astnode100036343",
                 "name": "self.isCellVisible",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -83541,7 +83541,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036381",
+                "id": "astnode100036383",
                 "name": "x"
             }
         },
@@ -83567,7 +83567,7 @@ window.reflection = [
             "columnno": 19,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036383",
+                "id": "astnode100036385",
                 "name": "l",
                 "type": "MemberExpression",
                 "value": "self.visibleCells.length"
@@ -83595,7 +83595,7 @@ window.reflection = [
             "columnno": 17,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036391",
+                "id": "astnode100036393",
                 "name": "x",
                 "type": "Literal",
                 "funcscope": "self.isCellVisible",
@@ -83624,7 +83624,7 @@ window.reflection = [
             "columnno": 31,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036397",
+                "id": "astnode100036399",
                 "name": "x",
                 "type": "Literal",
                 "funcscope": "self.isCellVisible",
@@ -83711,7 +83711,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036431",
+                "id": "astnode100036433",
                 "name": "self.order",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -83750,7 +83750,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036442",
+                "id": "astnode100036444",
                 "name": "f"
             }
         },
@@ -83776,7 +83776,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036444",
+                "id": "astnode100036446",
                 "name": "c",
                 "type": "CallExpression",
                 "value": ""
@@ -83804,7 +83804,7 @@ window.reflection = [
             "columnno": 56,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036469",
+                "id": "astnode100036471",
                 "name": "name",
                 "type": "Identifier",
                 "value": "columnName"
@@ -83830,7 +83830,7 @@ window.reflection = [
             "columnno": 74,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036471",
+                "id": "astnode100036473",
                 "name": "direction",
                 "type": "Identifier",
                 "value": "direction"
@@ -83856,7 +83856,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036476",
+                "id": "astnode100036478",
                 "name": "self.orderBy",
                 "type": "Identifier",
                 "value": "columnName",
@@ -83884,7 +83884,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036482",
+                "id": "astnode100036484",
                 "name": "self.orderDirection",
                 "type": "Identifier",
                 "value": "direction",
@@ -83912,7 +83912,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036514",
+                "id": "astnode100036516",
                 "name": "f",
                 "type": "LogicalExpression",
                 "funcscope": "self.order",
@@ -83941,7 +83941,7 @@ window.reflection = [
             "columnno": 46,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036590",
+                "id": "astnode100036592",
                 "name": "name",
                 "type": "Identifier",
                 "value": "columnName"
@@ -83967,7 +83967,7 @@ window.reflection = [
             "columnno": 64,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036592",
+                "id": "astnode100036594",
                 "name": "direction",
                 "type": "Identifier",
                 "value": "direction"
@@ -83993,7 +83993,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036610",
+                "id": "astnode100036612",
                 "name": "self.isInGrid",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -84060,7 +84060,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036651",
+                "id": "astnode100036653",
                 "name": "self.moveSelection",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -84095,7 +84095,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036660",
+                "id": "astnode100036662",
                 "name": "sel",
                 "type": "ArrayExpression",
                 "value": "[]"
@@ -84123,7 +84123,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036675",
+                "id": "astnode100036677",
                 "name": "sel[undefined]",
                 "type": "ArrayExpression",
                 "funcscope": "self.moveSelection",
@@ -84152,7 +84152,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036703",
+                "id": "astnode100036705",
                 "name": "self.selections",
                 "type": "Identifier",
                 "value": "sel",
@@ -84227,7 +84227,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036709",
+                "id": "astnode100036711",
                 "name": "self.moveTo",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -84268,7 +84268,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036719",
+                "id": "astnode100036721",
                 "name": "d",
                 "type": "CallExpression",
                 "value": ""
@@ -84296,7 +84296,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036725",
+                "id": "astnode100036727",
                 "name": "s",
                 "type": "CallExpression",
                 "value": ""
@@ -84324,7 +84324,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036731",
+                "id": "astnode100036733",
                 "name": "l",
                 "type": "MemberExpression",
                 "value": "sel.length"
@@ -84352,7 +84352,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036736",
+                "id": "astnode100036738",
                 "name": "xi"
             }
         },
@@ -84378,7 +84378,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036738",
+                "id": "astnode100036740",
                 "name": "maxRowLength",
                 "type": "UnaryExpression",
                 "value": "-Infinity"
@@ -84406,7 +84406,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036742",
+                "id": "astnode100036744",
                 "name": "minXi",
                 "type": "Identifier",
                 "value": "Infinity"
@@ -84434,7 +84434,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036745",
+                "id": "astnode100036747",
                 "name": "yi",
                 "type": "BinaryExpression",
                 "value": ""
@@ -84462,7 +84462,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036774",
+                "id": "astnode100036776",
                 "name": "minXi",
                 "type": "CallExpression",
                 "funcscope": "<anonymous>",
@@ -84491,7 +84491,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036787",
+                "id": "astnode100036789",
                 "name": "maxRowLength",
                 "type": "CallExpression",
                 "funcscope": "<anonymous>",
@@ -84520,7 +84520,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036806",
+                "id": "astnode100036808",
                 "name": "colIndex",
                 "type": "CallExpression",
                 "funcscope": "<anonymous>",
@@ -84549,7 +84549,7 @@ window.reflection = [
             "columnno": 45,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036829",
+                "id": "astnode100036831",
                 "name": "self.data[undefined]",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -84577,7 +84577,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036837",
+                "id": "astnode100036839",
                 "name": "self.data[undefined][undefined]",
                 "type": "Literal",
                 "value": null,
@@ -84605,7 +84605,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036860",
+                "id": "astnode100036862",
                 "name": "lastSourceIndex"
             }
         },
@@ -84631,7 +84631,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036863",
+                "id": "astnode100036865",
                 "name": "yi",
                 "type": "Literal",
                 "funcscope": "<anonymous>",
@@ -84660,7 +84660,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036867",
+                "id": "astnode100036869",
                 "name": "xi",
                 "type": "CallExpression",
                 "funcscope": "<anonymous>",
@@ -84689,7 +84689,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036884",
+                "id": "astnode100036886",
                 "name": "colIndex",
                 "type": "CallExpression",
                 "funcscope": "<anonymous>",
@@ -84718,7 +84718,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036897",
+                "id": "astnode100036899",
                 "name": "xi",
                 "type": "BinaryExpression",
                 "funcscope": "<anonymous>",
@@ -84747,7 +84747,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036903",
+                "id": "astnode100036905",
                 "name": "lastSourceIndex",
                 "type": "Identifier",
                 "funcscope": "<anonymous>",
@@ -84776,7 +84776,7 @@ window.reflection = [
             "columnno": 42,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036946",
+                "id": "astnode100036948",
                 "name": "self.data[undefined]",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -84804,7 +84804,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036954",
+                "id": "astnode100036956",
                 "name": "self.data[undefined][undefined]",
                 "type": "MemberExpression",
                 "value": "d[undefined][undefined]",
@@ -84871,7 +84871,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100036976",
+                "id": "astnode100036978",
                 "name": "self.isColumnVisible",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -84942,7 +84942,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037004",
+                "id": "astnode100037006",
                 "name": "self.isRowVisible",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -85022,7 +85022,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037032",
+                "id": "astnode100037034",
                 "name": "self.getVisibleCellByIndex",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -85103,7 +85103,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037065",
+                "id": "astnode100037067",
                 "name": "self.getCellAt",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -85158,7 +85158,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037074",
+                "id": "astnode100037076",
                 "name": "getBorder",
                 "type": "FunctionDeclaration",
                 "paramnames": [
@@ -85188,7 +85188,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037226",
+                "id": "astnode100037228",
                 "name": "border"
             }
         },
@@ -85214,7 +85214,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037228",
+                "id": "astnode100037230",
                 "name": "tsz",
                 "type": "ConditionalExpression",
                 "value": ""
@@ -85242,7 +85242,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037238",
+                "id": "astnode100037240",
                 "name": "moveMode",
                 "type": "BinaryExpression",
                 "value": ""
@@ -85270,7 +85270,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037247",
+                "id": "astnode100037249",
                 "name": "i"
             }
         },
@@ -85296,7 +85296,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037249",
+                "id": "astnode100037251",
                 "name": "l",
                 "type": "MemberExpression",
                 "value": "self.visibleCells.length"
@@ -85324,7 +85324,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037256",
+                "id": "astnode100037258",
                 "name": "moveBorder"
             }
         },
@@ -85350,7 +85350,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037258",
+                "id": "astnode100037260",
                 "name": "xBorderBehavior",
                 "type": "ConditionalExpression",
                 "value": ""
@@ -85378,7 +85378,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037266",
+                "id": "astnode100037268",
                 "name": "yBorderBehavior",
                 "type": "ConditionalExpression",
                 "value": ""
@@ -85406,7 +85406,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037274",
+                "id": "astnode100037276",
                 "name": "cell"
             }
         },
@@ -85432,7 +85432,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037276",
+                "id": "astnode100037278",
                 "name": "entitiy"
             }
         },
@@ -85458,7 +85458,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037293",
+                "id": "astnode100037295",
                 "name": "self.hasFocus",
                 "type": "Literal",
                 "value": true,
@@ -85486,7 +85486,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037321",
+                "id": "astnode100037323",
                 "name": "self.hasFocus",
                 "type": "Literal",
                 "value": false,
@@ -85514,7 +85514,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037328",
+                "id": "astnode100037330",
                 "name": "dragContext",
                 "type": "Literal",
                 "value": "inherit"
@@ -85540,7 +85540,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037330",
+                "id": "astnode100037332",
                 "name": "context",
                 "type": "Literal",
                 "value": "inherit"
@@ -85566,7 +85566,7 @@ window.reflection = [
             "columnno": 17,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037333",
+                "id": "astnode100037335",
                 "name": "i",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -85595,7 +85595,7 @@ window.reflection = [
             "columnno": 31,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037339",
+                "id": "astnode100037341",
                 "name": "i",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -85624,7 +85624,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037344",
+                "id": "astnode100037346",
                 "name": "cell",
                 "type": "MemberExpression",
                 "funcscope": "self.getCellAt",
@@ -85653,7 +85653,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037352",
+                "id": "astnode100037354",
                 "name": "entitiy",
                 "type": "ObjectExpression",
                 "funcscope": "self.getCellAt",
@@ -85682,7 +85682,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037355",
+                "id": "astnode100037357",
                 "name": "x",
                 "type": "MemberExpression",
                 "value": "cell.x"
@@ -85709,7 +85709,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037359",
+                "id": "astnode100037361",
                 "name": "y",
                 "type": "MemberExpression",
                 "value": "cell.y"
@@ -85736,7 +85736,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037363",
+                "id": "astnode100037365",
                 "name": "height",
                 "type": "MemberExpression",
                 "value": "cell.height"
@@ -85763,7 +85763,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037367",
+                "id": "astnode100037369",
                 "name": "width",
                 "type": "MemberExpression",
                 "value": "cell.width"
@@ -85790,7 +85790,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037383",
+                "id": "astnode100037385",
                 "name": "entitiy.x",
                 "type": "Identifier",
                 "funcscope": "self.getCellAt",
@@ -85819,7 +85819,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037389",
+                "id": "astnode100037391",
                 "name": "entitiy.y",
                 "type": "Identifier",
                 "funcscope": "self.getCellAt",
@@ -85848,7 +85848,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037395",
+                "id": "astnode100037397",
                 "name": "entitiy.height",
                 "type": "Identifier",
                 "funcscope": "self.getCellAt",
@@ -85877,7 +85877,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037401",
+                "id": "astnode100037403",
                 "name": "entitiy.width",
                 "type": "Identifier",
                 "funcscope": "self.getCellAt",
@@ -85906,7 +85906,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037473",
+                "id": "astnode100037475",
                 "name": "cell.dragContext",
                 "type": "MemberExpression",
                 "funcscope": "self.getCellAt",
@@ -85935,7 +85935,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037481",
+                "id": "astnode100037483",
                 "name": "cell.context",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -85964,7 +85964,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037498",
+                "id": "astnode100037500",
                 "name": "cell.dragContext",
                 "type": "MemberExpression",
                 "funcscope": "self.getCellAt",
@@ -85993,7 +85993,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037506",
+                "id": "astnode100037508",
                 "name": "cell.context",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86022,7 +86022,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037523",
+                "id": "astnode100037525",
                 "name": "cell.dragContext",
                 "type": "MemberExpression",
                 "funcscope": "self.getCellAt",
@@ -86051,7 +86051,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037531",
+                "id": "astnode100037533",
                 "name": "cell.context",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86080,7 +86080,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037548",
+                "id": "astnode100037550",
                 "name": "cell.dragContext",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86109,7 +86109,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037554",
+                "id": "astnode100037556",
                 "name": "cell.context",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86138,7 +86138,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037560",
+                "id": "astnode100037562",
                 "name": "cell.isScrollBar",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86167,7 +86167,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037566",
+                "id": "astnode100037568",
                 "name": "cell.isVerticalScrollBar",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86196,7 +86196,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037591",
+                "id": "astnode100037593",
                 "name": "cell.dragContext",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86225,7 +86225,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037597",
+                "id": "astnode100037599",
                 "name": "cell.context",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86254,7 +86254,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037616",
+                "id": "astnode100037618",
                 "name": "cell.dragContext",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86283,7 +86283,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037622",
+                "id": "astnode100037624",
                 "name": "cell.context",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86312,7 +86312,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037628",
+                "id": "astnode100037630",
                 "name": "self.cursor",
                 "type": "Literal",
                 "value": "default",
@@ -86340,7 +86340,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037645",
+                "id": "astnode100037647",
                 "name": "cell.dragContext",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86369,7 +86369,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037651",
+                "id": "astnode100037653",
                 "name": "cell.context",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86398,7 +86398,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037657",
+                "id": "astnode100037659",
                 "name": "cell.isScrollBar",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86427,7 +86427,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037663",
+                "id": "astnode100037665",
                 "name": "cell.isHorizontalScrollBar",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86456,7 +86456,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037688",
+                "id": "astnode100037690",
                 "name": "cell.dragContext",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86485,7 +86485,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037694",
+                "id": "astnode100037696",
                 "name": "cell.context",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86514,7 +86514,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037713",
+                "id": "astnode100037715",
                 "name": "cell.dragContext",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86543,7 +86543,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037719",
+                "id": "astnode100037721",
                 "name": "cell.context",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86572,7 +86572,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037725",
+                "id": "astnode100037727",
                 "name": "self.cursor",
                 "type": "Literal",
                 "value": "default",
@@ -86600,7 +86600,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037733",
+                "id": "astnode100037735",
                 "name": "border",
                 "type": "CallExpression",
                 "funcscope": "self.getCellAt",
@@ -86629,7 +86629,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037739",
+                "id": "astnode100037741",
                 "name": "moveBorder",
                 "type": "LogicalExpression",
                 "funcscope": "self.getCellAt",
@@ -86658,7 +86658,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037841",
+                "id": "astnode100037843",
                 "name": "cell.context",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86687,7 +86687,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037847",
+                "id": "astnode100037849",
                 "name": "cell.dragContext",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86716,7 +86716,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037867",
+                "id": "astnode100037869",
                 "name": "cell.context",
                 "type": "Identifier",
                 "funcscope": "self.getCellAt",
@@ -86745,7 +86745,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037873",
+                "id": "astnode100037875",
                 "name": "cell.dragContext",
                 "type": "BinaryExpression",
                 "funcscope": "self.getCellAt",
@@ -86774,7 +86774,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037955",
+                "id": "astnode100037957",
                 "name": "cell.context",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86803,7 +86803,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037961",
+                "id": "astnode100037963",
                 "name": "cell.dragContext",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86832,7 +86832,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037981",
+                "id": "astnode100037983",
                 "name": "cell.context",
                 "type": "Identifier",
                 "funcscope": "self.getCellAt",
@@ -86861,7 +86861,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100037987",
+                "id": "astnode100037989",
                 "name": "cell.dragContext",
                 "type": "BinaryExpression",
                 "funcscope": "self.getCellAt",
@@ -86890,7 +86890,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038004",
+                "id": "astnode100038006",
                 "name": "cell.context",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86919,7 +86919,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038010",
+                "id": "astnode100038012",
                 "name": "cell.dragContext",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86948,7 +86948,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038051",
+                "id": "astnode100038053",
                 "name": "cell.dragContext",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -86977,7 +86977,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038057",
+                "id": "astnode100038059",
                 "name": "cell.context",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -87006,7 +87006,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038064",
+                "id": "astnode100038066",
                 "name": "cell.context",
                 "type": "MemberExpression",
                 "funcscope": "self.getCellAt",
@@ -87035,7 +87035,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038072",
+                "id": "astnode100038074",
                 "name": "cell.dragContext",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -87064,7 +87064,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038085",
+                "id": "astnode100038087",
                 "name": "self.hasFocus",
                 "type": "Literal",
                 "value": false,
@@ -87092,7 +87092,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038091",
+                "id": "astnode100038093",
                 "name": "cell.dragContext",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -87121,7 +87121,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038097",
+                "id": "astnode100038099",
                 "name": "cell.context",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -87150,7 +87150,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038112",
+                "id": "astnode100038114",
                 "name": "self.hasFocus",
                 "type": "Literal",
                 "value": false,
@@ -87178,7 +87178,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038118",
+                "id": "astnode100038120",
                 "name": "cell.dragContext",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -87207,7 +87207,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038124",
+                "id": "astnode100038126",
                 "name": "cell.context",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -87236,7 +87236,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038132",
+                "id": "astnode100038134",
                 "name": "cell.dragContext",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -87265,7 +87265,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038138",
+                "id": "astnode100038140",
                 "name": "cell.context",
                 "type": "Literal",
                 "funcscope": "self.getCellAt",
@@ -87294,7 +87294,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038146",
+                "id": "astnode100038148",
                 "name": "self.hasFocus",
                 "type": "Literal",
                 "value": true,
@@ -87322,7 +87322,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038152",
+                "id": "astnode100038154",
                 "name": "self.cursor",
                 "type": "Literal",
                 "value": "default",
@@ -87350,7 +87350,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038159",
+                "id": "astnode100038161",
                 "name": "dragContext",
                 "type": "Literal",
                 "value": "background"
@@ -87376,7 +87376,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038161",
+                "id": "astnode100038163",
                 "name": "context",
                 "type": "Literal",
                 "value": "background"
@@ -87402,7 +87402,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038163",
+                "id": "astnode100038165",
                 "name": "style",
                 "type": "Literal",
                 "value": "background"
@@ -87428,7 +87428,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038165",
+                "id": "astnode100038167",
                 "name": "isBackground",
                 "type": "Literal",
                 "value": true
@@ -87482,7 +87482,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038168",
+                "id": "astnode100038170",
                 "name": "self.getSelectionBounds",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -87514,7 +87514,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038175",
+                "id": "astnode100038177",
                 "name": "low",
                 "type": "ObjectExpression",
                 "value": "{\"x\":\"\",\"y\":\"\"}"
@@ -87542,7 +87542,7 @@ window.reflection = [
             "columnno": 23,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038178",
+                "id": "astnode100038180",
                 "name": "x",
                 "type": "Identifier",
                 "value": "Infinity"
@@ -87569,7 +87569,7 @@ window.reflection = [
             "columnno": 36,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038180",
+                "id": "astnode100038182",
                 "name": "y",
                 "type": "Identifier",
                 "value": "Infinity"
@@ -87596,7 +87596,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038182",
+                "id": "astnode100038184",
                 "name": "high",
                 "type": "ObjectExpression",
                 "value": "{\"x\":\"\",\"y\":\"\"}"
@@ -87624,7 +87624,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038185",
+                "id": "astnode100038187",
                 "name": "x",
                 "type": "UnaryExpression",
                 "value": "-Infinity"
@@ -87651,7 +87651,7 @@ window.reflection = [
             "columnno": 38,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038188",
+                "id": "astnode100038190",
                 "name": "y",
                 "type": "UnaryExpression",
                 "value": "-Infinity"
@@ -87678,7 +87678,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038203",
+                "id": "astnode100038205",
                 "name": "maxCol"
             }
         },
@@ -87704,7 +87704,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038205",
+                "id": "astnode100038207",
                 "name": "minCol"
             }
         },
@@ -87730,7 +87730,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038208",
+                "id": "astnode100038210",
                 "name": "low.y",
                 "type": "ConditionalExpression",
                 "funcscope": "self.getSelectionBounds",
@@ -87759,7 +87759,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038223",
+                "id": "astnode100038225",
                 "name": "high.y",
                 "type": "ConditionalExpression",
                 "funcscope": "self.getSelectionBounds",
@@ -87788,7 +87788,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038238",
+                "id": "astnode100038240",
                 "name": "maxCol",
                 "type": "CallExpression",
                 "funcscope": "<anonymous>",
@@ -87817,7 +87817,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038249",
+                "id": "astnode100038251",
                 "name": "minCol",
                 "type": "CallExpression",
                 "funcscope": "<anonymous>",
@@ -87846,7 +87846,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038260",
+                "id": "astnode100038262",
                 "name": "low.x",
                 "type": "ConditionalExpression",
                 "funcscope": "self.getSelectionBounds",
@@ -87875,7 +87875,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038275",
+                "id": "astnode100038277",
                 "name": "high.x",
                 "type": "ConditionalExpression",
                 "funcscope": "self.getSelectionBounds",
@@ -87904,7 +87904,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038291",
+                "id": "astnode100038293",
                 "name": "top",
                 "type": "MemberExpression",
                 "value": "low.y"
@@ -87930,7 +87930,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038295",
+                "id": "astnode100038297",
                 "name": "left",
                 "type": "MemberExpression",
                 "value": "low.x"
@@ -87956,7 +87956,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038299",
+                "id": "astnode100038301",
                 "name": "bottom",
                 "type": "MemberExpression",
                 "value": "high.y"
@@ -87982,7 +87982,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038303",
+                "id": "astnode100038305",
                 "name": "right",
                 "type": "MemberExpression",
                 "value": "high.x"
@@ -88039,7 +88039,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038308",
+                "id": "astnode100038310",
                 "name": "self.getSchemaFromData",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -88072,7 +88072,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038316",
+                "id": "astnode100038318",
                 "name": "d",
                 "type": "LogicalExpression",
                 "funcscope": "self.getSchemaFromData",
@@ -88101,7 +88101,7 @@ window.reflection = [
             "columnno": 40,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038335",
+                "id": "astnode100038337",
                 "name": "\" \"",
                 "type": "Literal",
                 "value": ""
@@ -88127,7 +88127,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038344",
+                "id": "astnode100038346",
                 "name": "type",
                 "type": "CallExpression",
                 "value": ""
@@ -88155,7 +88155,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038352",
+                "id": "astnode100038354",
                 "name": "i",
                 "type": "ObjectExpression",
                 "value": "{\"name\":\"\",\"title\":\"\",\"index\":\"\",\"columnIndex\":\"\",\"type\":\"\",\"filter\":\"\"}"
@@ -88183,7 +88183,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038355",
+                "id": "astnode100038357",
                 "name": "name",
                 "type": "Identifier",
                 "value": "key"
@@ -88210,7 +88210,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038357",
+                "id": "astnode100038359",
                 "name": "title",
                 "type": "ConditionalExpression",
                 "value": ""
@@ -88237,7 +88237,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038374",
+                "id": "astnode100038376",
                 "name": "index",
                 "type": "Identifier",
                 "value": "index"
@@ -88264,7 +88264,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038376",
+                "id": "astnode100038378",
                 "name": "columnIndex",
                 "type": "Identifier",
                 "value": "index"
@@ -88291,7 +88291,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038378",
+                "id": "astnode100038380",
                 "name": "type",
                 "type": "Identifier",
                 "value": "type"
@@ -88318,7 +88318,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038380",
+                "id": "astnode100038382",
                 "name": "filter",
                 "type": "CallExpression",
                 "value": ""
@@ -88345,7 +88345,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038410",
+                "id": "astnode100038412",
                 "name": "i.hidden",
                 "type": "UnaryExpression",
                 "funcscope": "<anonymous>",
@@ -88392,7 +88392,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038427",
+                "id": "astnode100038429",
                 "name": "self.clearChangeLog",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -88422,7 +88422,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038434",
+                "id": "astnode100038436",
                 "name": "self.changes",
                 "type": "ArrayExpression",
                 "value": "[]",
@@ -88479,7 +88479,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038440",
+                "id": "astnode100038442",
                 "name": "self.selectArea",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -88519,7 +88519,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038449",
+                "id": "astnode100038451",
                 "name": "self.selectionBounds",
                 "type": "LogicalExpression",
                 "value": "",
@@ -88547,7 +88547,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038459",
+                "id": "astnode100038461",
                 "name": "ev"
             }
         },
@@ -88573,7 +88573,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038461",
+                "id": "astnode100038463",
                 "name": "x"
             }
         },
@@ -88599,7 +88599,7 @@ window.reflection = [
             "columnno": 23,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038463",
+                "id": "astnode100038465",
                 "name": "y"
             }
         },
@@ -88625,7 +88625,7 @@ window.reflection = [
             "columnno": 26,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038465",
+                "id": "astnode100038467",
                 "name": "s",
                 "type": "CallExpression",
                 "value": ""
@@ -88653,7 +88653,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038476",
+                "id": "astnode100038478",
                 "name": "self.selections",
                 "type": "ArrayExpression",
                 "value": "[]",
@@ -88681,7 +88681,7 @@ window.reflection = [
             "columnno": 17,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038527",
+                "id": "astnode100038529",
                 "name": "x",
                 "type": "MemberExpression",
                 "funcscope": "self.selectArea",
@@ -88710,7 +88710,7 @@ window.reflection = [
             "columnno": 81,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038541",
+                "id": "astnode100038543",
                 "name": "x",
                 "type": "Literal",
                 "funcscope": "self.selectArea",
@@ -88739,7 +88739,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038546",
+                "id": "astnode100038548",
                 "name": "self.selections[undefined]",
                 "type": "ArrayExpression",
                 "value": "[]",
@@ -88767,7 +88767,7 @@ window.reflection = [
             "columnno": 21,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038554",
+                "id": "astnode100038556",
                 "name": "y",
                 "type": "MemberExpression",
                 "funcscope": "self.selectArea",
@@ -88796,7 +88796,7 @@ window.reflection = [
             "columnno": 85,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038568",
+                "id": "astnode100038570",
                 "name": "y",
                 "type": "Literal",
                 "funcscope": "self.selectArea",
@@ -88825,7 +88825,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038597",
+                "id": "astnode100038599",
                 "name": "ev",
                 "type": "ObjectExpression",
                 "funcscope": "self.selectArea",
@@ -88854,7 +88854,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038600",
+                "id": "astnode100038602",
                 "name": "selections",
                 "type": "MemberExpression",
                 "value": "self.selections"
@@ -88881,7 +88881,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038604",
+                "id": "astnode100038606",
                 "name": "selectionBounds",
                 "type": "MemberExpression",
                 "value": "self.selectionBounds"
@@ -88908,7 +88908,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038616",
+                "id": "astnode100038618",
                 "name": "get",
                 "type": "FunctionExpression"
             }
@@ -88972,7 +88972,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038632",
+                "id": "astnode100038634",
                 "name": "self.findColumnMaxTextLength",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -89007,7 +89007,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038640",
+                "id": "astnode100038642",
                 "name": "m",
                 "type": "UnaryExpression",
                 "value": "-Infinity"
@@ -89035,7 +89035,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038650",
+                "id": "astnode100038652",
                 "name": "self.ctx.font",
                 "type": "MemberExpression",
                 "value": "self.style.rowHeaderCellFont",
@@ -89063,7 +89063,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038737",
+                "id": "astnode100038739",
                 "name": "formatter",
                 "type": "Literal",
                 "value": null
@@ -89091,7 +89091,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038760",
+                "id": "astnode100038762",
                 "name": "self.ctx.font",
                 "type": "MemberExpression",
                 "value": "self.style.columnHeaderCellFont",
@@ -89119,7 +89119,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038772",
+                "id": "astnode100038774",
                 "name": "t",
                 "type": "BinaryExpression",
                 "value": ""
@@ -89147,7 +89147,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038802",
+                "id": "astnode100038804",
                 "name": "m",
                 "type": "ConditionalExpression",
                 "funcscope": "<anonymous>",
@@ -89176,7 +89176,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038811",
+                "id": "astnode100038813",
                 "name": "formatter",
                 "type": "MemberExpression",
                 "funcscope": "<anonymous>",
@@ -89205,7 +89205,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038831",
+                "id": "astnode100038833",
                 "name": "text",
                 "type": "MemberExpression",
                 "value": "row[undefined]"
@@ -89233,7 +89233,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038840",
+                "id": "astnode100038842",
                 "name": "text",
                 "type": "CallExpression",
                 "funcscope": "<anonymous>",
@@ -89262,7 +89262,7 @@ window.reflection = [
             "columnno": 38,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038845",
+                "id": "astnode100038847",
                 "name": "cell",
                 "type": "ObjectExpression",
                 "value": "{\"value\":\"\"}"
@@ -89288,7 +89288,7 @@ window.reflection = [
             "columnno": 44,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038847",
+                "id": "astnode100038849",
                 "name": "value",
                 "type": "Identifier",
                 "value": "text"
@@ -89315,7 +89315,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038850",
+                "id": "astnode100038852",
                 "name": "self.ctx.font",
                 "type": "MemberExpression",
                 "value": "self.style.cellFont",
@@ -89343,7 +89343,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038862",
+                "id": "astnode100038864",
                 "name": "t",
                 "type": "BinaryExpression",
                 "value": ""
@@ -89371,7 +89371,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038892",
+                "id": "astnode100038894",
                 "name": "m",
                 "type": "ConditionalExpression",
                 "funcscope": "<anonymous>",
@@ -89418,7 +89418,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038903",
+                "id": "astnode100038905",
                 "name": "self.getHeaderWidth",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -89477,7 +89477,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038938",
+                "id": "astnode100038940",
                 "name": "self.getRowHeight",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -89535,7 +89535,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038964",
+                "id": "astnode100038966",
                 "name": "self.getColummnWidth",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -89564,7 +89564,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100038999",
+                "id": "astnode100039001",
                 "name": "self.formatters.string",
                 "type": "FunctionExpression",
                 "value": "cellFormatterString",
@@ -89594,7 +89594,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039025",
+                "id": "astnode100039027",
                 "name": "self.formatters.rowHeaderCell",
                 "type": "MemberExpression",
                 "value": "self.formatters.string",
@@ -89622,7 +89622,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039037",
+                "id": "astnode100039039",
                 "name": "self.formatters.headerCell",
                 "type": "MemberExpression",
                 "value": "self.formatters.string",
@@ -89650,7 +89650,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039049",
+                "id": "astnode100039051",
                 "name": "self.formatters.number",
                 "type": "MemberExpression",
                 "value": "self.formatters.string",
@@ -89678,7 +89678,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039061",
+                "id": "astnode100039063",
                 "name": "self.formatters.int",
                 "type": "MemberExpression",
                 "value": "self.formatters.string",
@@ -89706,7 +89706,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039073",
+                "id": "astnode100039075",
                 "name": "self.formatters.html",
                 "type": "MemberExpression",
                 "value": "self.formatters.string",
@@ -89734,7 +89734,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039085",
+                "id": "astnode100039087",
                 "name": "self.sorters.string",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -89768,7 +89768,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039096",
+                "id": "astnode100039098",
                 "name": "asc",
                 "type": "BinaryExpression",
                 "value": ""
@@ -89796,7 +89796,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039180",
+                "id": "astnode100039182",
                 "name": "self.sorters.number",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -89830,7 +89830,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039191",
+                "id": "astnode100039193",
                 "name": "asc",
                 "type": "BinaryExpression",
                 "value": ""
@@ -89858,7 +89858,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039221",
+                "id": "astnode100039223",
                 "name": "self.sorters.date",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -89892,7 +89892,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039232",
+                "id": "astnode100039234",
                 "name": "asc",
                 "type": "BinaryExpression",
                 "value": ""
@@ -89920,7 +89920,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039296",
+                "id": "astnode100039298",
                 "name": "touchTimerMs",
                 "type": "Literal",
                 "value": 50
@@ -89948,7 +89948,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039299",
+                "id": "astnode100039301",
                 "name": "debounceTouchMove"
             }
         },
@@ -89974,7 +89974,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039301",
+                "id": "astnode100039303",
                 "name": "touchMoving"
             }
         },
@@ -90000,7 +90000,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039303",
+                "id": "astnode100039305",
                 "name": "touchScrollTimeout"
             }
         },
@@ -90026,7 +90026,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039306",
+                "id": "astnode100039308",
                 "name": "self.scrollAnimation",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -90054,7 +90054,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039312",
+                "id": "astnode100039314",
                 "name": "self.touchDelta",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -90082,7 +90082,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039318",
+                "id": "astnode100039320",
                 "name": "self.touchAnimateTo",
                 "type": "ObjectExpression",
                 "value": "{}",
@@ -90110,7 +90110,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039324",
+                "id": "astnode100039326",
                 "name": "self.animationFrames",
                 "type": "Literal",
                 "value": 0,
@@ -90138,7 +90138,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039330",
+                "id": "astnode100039332",
                 "name": "self.getTouchPos",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -90175,7 +90175,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039339",
+                "id": "astnode100039341",
                 "name": "t",
                 "type": "ConditionalExpression",
                 "value": ""
@@ -90203,7 +90203,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039353",
+                "id": "astnode100039355",
                 "name": "rect",
                 "type": "CallExpression",
                 "value": ""
@@ -90231,7 +90231,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039361",
+                "id": "astnode100039363",
                 "name": "pos"
             }
         },
@@ -90257,7 +90257,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039369",
+                "id": "astnode100039371",
                 "name": "pos",
                 "type": "ObjectExpression",
                 "funcscope": "self.getTouchPos",
@@ -90286,7 +90286,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039372",
+                "id": "astnode100039374",
                 "name": "x",
                 "type": "BinaryExpression",
                 "value": ""
@@ -90313,7 +90313,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039380",
+                "id": "astnode100039382",
                 "name": "y",
                 "type": "BinaryExpression",
                 "value": ""
@@ -90340,7 +90340,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039394",
+                "id": "astnode100039396",
                 "name": "pos.x",
                 "type": "MemberExpression",
                 "funcscope": "self.getTouchPos",
@@ -90369,7 +90369,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039402",
+                "id": "astnode100039404",
                 "name": "pos.y",
                 "type": "MemberExpression",
                 "funcscope": "self.getTouchPos",
@@ -90398,7 +90398,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039411",
+                "id": "astnode100039413",
                 "name": "x",
                 "type": "MemberExpression",
                 "value": "pos.x"
@@ -90424,7 +90424,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039415",
+                "id": "astnode100039417",
                 "name": "y",
                 "type": "MemberExpression",
                 "value": "pos.y"
@@ -90450,7 +90450,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039419",
+                "id": "astnode100039421",
                 "name": "rect",
                 "type": "Identifier",
                 "value": "rect"
@@ -90476,7 +90476,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039422",
+                "id": "astnode100039424",
                 "name": "self.easingFunctions",
                 "type": "ObjectExpression",
                 "value": "{\"linear\":\"\",\"easeInQuad\":\"\",\"easeOutQuad\":\"\",\"easeInOutQuad\":\"\",\"easeInCubic\":\"\",\"easeOutCubic\":\"\",\"easeInOutCubic\":\"\",\"easeInQuart\":\"\",\"easeOutQuart\":\"\",\"easeInOutQuart\":\"\",\"easeInQuint\":\"\",\"easeOutQuint\":\"\",\"easeInOutQuint\":\"\"}",
@@ -90504,7 +90504,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039427",
+                "id": "astnode100039429",
                 "name": "linear",
                 "type": "FunctionExpression"
             }
@@ -90530,7 +90530,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039433",
+                "id": "astnode100039435",
                 "name": "easeInQuad",
                 "type": "FunctionExpression"
             }
@@ -90556,7 +90556,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039441",
+                "id": "astnode100039443",
                 "name": "easeOutQuad",
                 "type": "FunctionExpression"
             }
@@ -90582,7 +90582,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039451",
+                "id": "astnode100039453",
                 "name": "easeInOutQuad",
                 "type": "FunctionExpression"
             }
@@ -90608,7 +90608,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039475",
+                "id": "astnode100039477",
                 "name": "easeInCubic",
                 "type": "FunctionExpression"
             }
@@ -90634,7 +90634,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039485",
+                "id": "astnode100039487",
                 "name": "easeOutCubic",
                 "type": "FunctionExpression"
             }
@@ -90660,7 +90660,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039498",
+                "id": "astnode100039500",
                 "name": "easeInOutCubic",
                 "type": "FunctionExpression"
             }
@@ -90686,7 +90686,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039531",
+                "id": "astnode100039533",
                 "name": "easeInQuart",
                 "type": "FunctionExpression"
             }
@@ -90712,7 +90712,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039543",
+                "id": "astnode100039545",
                 "name": "easeOutQuart",
                 "type": "FunctionExpression"
             }
@@ -90738,7 +90738,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039558",
+                "id": "astnode100039560",
                 "name": "easeInOutQuart",
                 "type": "FunctionExpression"
             }
@@ -90764,7 +90764,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039588",
+                "id": "astnode100039590",
                 "name": "easeInQuint",
                 "type": "FunctionExpression"
             }
@@ -90790,7 +90790,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039602",
+                "id": "astnode100039604",
                 "name": "easeOutQuint",
                 "type": "FunctionExpression"
             }
@@ -90816,7 +90816,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039619",
+                "id": "astnode100039621",
                 "name": "easeInOutQuint",
                 "type": "FunctionExpression"
             }
@@ -90842,7 +90842,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039654",
+                "id": "astnode100039656",
                 "name": "self.easing",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -90874,7 +90874,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039683",
+                "id": "astnode100039685",
                 "name": "self.calculatePPSTimed",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -90906,7 +90906,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039690",
+                "id": "astnode100039692",
                 "name": "self.xPPST",
                 "type": "UnaryExpression",
                 "value": "-",
@@ -90934,7 +90934,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039719",
+                "id": "astnode100039721",
                 "name": "self.yPPST",
                 "type": "UnaryExpression",
                 "value": "-",
@@ -90962,7 +90962,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039748",
+                "id": "astnode100039750",
                 "name": "self.touchSigmaTimed",
                 "type": "ObjectExpression",
                 "value": "{\"x\":\"\",\"y\":\"\",\"t\":\"\"}",
@@ -90990,7 +90990,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039753",
+                "id": "astnode100039755",
                 "name": "x",
                 "type": "MemberExpression",
                 "value": "self.touchDelta.x"
@@ -91017,7 +91017,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039759",
+                "id": "astnode100039761",
                 "name": "y",
                 "type": "MemberExpression",
                 "value": "self.touchDelta.y"
@@ -91044,7 +91044,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039765",
+                "id": "astnode100039767",
                 "name": "t",
                 "type": "CallExpression",
                 "value": ""
@@ -91071,7 +91071,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039771",
+                "id": "astnode100039773",
                 "name": "self.calculatePPS",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -91103,7 +91103,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039778",
+                "id": "astnode100039780",
                 "name": "self.xPPS",
                 "type": "UnaryExpression",
                 "value": "-",
@@ -91131,7 +91131,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039807",
+                "id": "astnode100039809",
                 "name": "self.yPPS",
                 "type": "UnaryExpression",
                 "value": "-",
@@ -91159,7 +91159,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039836",
+                "id": "astnode100039838",
                 "name": "self.touchSigma",
                 "type": "ObjectExpression",
                 "value": "{\"x\":\"\",\"y\":\"\",\"t\":\"\"}",
@@ -91187,7 +91187,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039841",
+                "id": "astnode100039843",
                 "name": "x",
                 "type": "MemberExpression",
                 "value": "self.touchDelta.x"
@@ -91214,7 +91214,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039847",
+                "id": "astnode100039849",
                 "name": "y",
                 "type": "MemberExpression",
                 "value": "self.touchDelta.y"
@@ -91241,7 +91241,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039853",
+                "id": "astnode100039855",
                 "name": "t",
                 "type": "CallExpression",
                 "value": ""
@@ -91268,7 +91268,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039859",
+                "id": "astnode100039861",
                 "name": "self.touchEndAnimation",
                 "type": "FunctionExpression",
                 "paramnames": []
@@ -91303,7 +91303,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039885",
+                "id": "astnode100039887",
                 "name": "n",
                 "type": "CallExpression",
                 "value": ""
@@ -91331,7 +91331,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039891",
+                "id": "astnode100039893",
                 "name": "d",
                 "type": "MemberExpression",
                 "value": "self.attributes.touchReleaseAnimationDurationMs"
@@ -91359,7 +91359,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039898",
+                "id": "astnode100039900",
                 "name": "t"
             }
         },
@@ -91385,7 +91385,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039901",
+                "id": "astnode100039903",
                 "name": "t",
                 "type": "BinaryExpression",
                 "funcscope": "self.touchEndAnimation",
@@ -91414,7 +91414,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039911",
+                "id": "astnode100039913",
                 "name": "self.animationFrames",
                 "type": "Literal",
                 "value": 1,
@@ -91442,7 +91442,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039917",
+                "id": "astnode100039919",
                 "name": "self.scrollAnimation.x",
                 "type": "CallExpression",
                 "value": "",
@@ -91470,7 +91470,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100039940",
+                "id": "astnode100039942",
                 "name": "self.scrollAnimation.y",
                 "type": "CallExpression",
                 "value": "",
@@ -91498,7 +91498,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040020",
+                "id": "astnode100040022",
                 "name": "self.touchEditCell",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -91527,7 +91527,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040039",
+                "id": "astnode100040041",
                 "name": "self.touchCell",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -91559,7 +91559,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040056",
+                "id": "astnode100040058",
                 "name": "i"
             }
         },
@@ -91585,7 +91585,7 @@ window.reflection = [
             "columnno": 23,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040058",
+                "id": "astnode100040060",
                 "name": "pos",
                 "type": "CallExpression",
                 "value": ""
@@ -91613,7 +91613,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040093",
+                "id": "astnode100040095",
                 "name": "i",
                 "type": "CallExpression",
                 "funcscope": "<anonymous>",
@@ -91642,7 +91642,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040159",
+                "id": "astnode100040161",
                 "name": "self.touchingCell",
                 "type": "Identifier",
                 "value": "i",
@@ -91670,7 +91670,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040170",
+                "id": "astnode100040172",
                 "name": "top",
                 "type": "MemberExpression",
                 "value": "i.rowIndex"
@@ -91696,7 +91696,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040174",
+                "id": "astnode100040176",
                 "name": "bottom",
                 "type": "MemberExpression",
                 "value": "i.rowIndex"
@@ -91722,7 +91722,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040178",
+                "id": "astnode100040180",
                 "name": "left",
                 "type": "MemberExpression",
                 "value": "i.columnIndex"
@@ -91748,7 +91748,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040182",
+                "id": "astnode100040184",
                 "name": "right",
                 "type": "MemberExpression",
                 "value": "i.columnIndex"
@@ -91774,7 +91774,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040193",
+                "id": "astnode100040195",
                 "name": "self.touchstart",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -91820,7 +91820,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040208",
+                "id": "astnode100040210",
                 "name": "self.touchStart",
                 "type": "CallExpression",
                 "value": "",
@@ -91848,7 +91848,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040218",
+                "id": "astnode100040220",
                 "name": "self.startingCell",
                 "type": "CallExpression",
                 "value": "",
@@ -91876,7 +91876,7 @@ window.reflection = [
             "columnno": 50,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040244",
+                "id": "astnode100040246",
                 "name": "NativeEvent",
                 "type": "Identifier",
                 "value": "e"
@@ -91902,7 +91902,7 @@ window.reflection = [
             "columnno": 66,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040246",
+                "id": "astnode100040248",
                 "name": "cell",
                 "type": "MemberExpression",
                 "value": "self.startingCell"
@@ -91928,7 +91928,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040270",
+                "id": "astnode100040272",
                 "name": "self.touchStartEvent",
                 "type": "Identifier",
                 "value": "e",
@@ -91956,7 +91956,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040276",
+                "id": "astnode100040278",
                 "name": "self.stopAnimation",
                 "type": "Literal",
                 "value": true,
@@ -91984,7 +91984,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040282",
+                "id": "astnode100040284",
                 "name": "self.animationFrames",
                 "type": "Literal",
                 "value": 0,
@@ -92012,7 +92012,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040319",
+                "id": "astnode100040321",
                 "name": "self.touchLength",
                 "type": "Literal",
                 "value": 1,
@@ -92040,7 +92040,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040325",
+                "id": "astnode100040327",
                 "name": "self.touchStart",
                 "type": "LogicalExpression",
                 "value": "",
@@ -92068,7 +92068,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040337",
+                "id": "astnode100040339",
                 "name": "self.touchScrollStart",
                 "type": "ObjectExpression",
                 "value": "{\"x\":\"\",\"y\":\"\",\"t\":\"\"}",
@@ -92096,7 +92096,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040342",
+                "id": "astnode100040344",
                 "name": "x",
                 "type": "MemberExpression",
                 "value": "self.scrollBox.scrollLeft"
@@ -92123,7 +92123,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040348",
+                "id": "astnode100040350",
                 "name": "y",
                 "type": "MemberExpression",
                 "value": "self.scrollBox.scrollTop"
@@ -92150,7 +92150,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040354",
+                "id": "astnode100040356",
                 "name": "t",
                 "type": "CallExpression",
                 "value": ""
@@ -92177,7 +92177,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040360",
+                "id": "astnode100040362",
                 "name": "self.touchDelta",
                 "type": "ObjectExpression",
                 "value": "{\"x\":0,\"y\":0,\"scrollLeft\":\"\",\"scrollTop\":\"\",\"t\":\"\"}",
@@ -92205,7 +92205,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040365",
+                "id": "astnode100040367",
                 "name": "x",
                 "type": "Literal",
                 "value": 0
@@ -92232,7 +92232,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040367",
+                "id": "astnode100040369",
                 "name": "y",
                 "type": "Literal",
                 "value": 0
@@ -92259,7 +92259,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040369",
+                "id": "astnode100040371",
                 "name": "scrollLeft",
                 "type": "MemberExpression",
                 "value": "self.scrollBox.scrollLeft"
@@ -92286,7 +92286,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040375",
+                "id": "astnode100040377",
                 "name": "scrollTop",
                 "type": "MemberExpression",
                 "value": "self.scrollBox.scrollTop"
@@ -92313,7 +92313,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040381",
+                "id": "astnode100040383",
                 "name": "t",
                 "type": "MemberExpression",
                 "value": "self.touchScrollStart.t"
@@ -92340,7 +92340,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040388",
+                "id": "astnode100040390",
                 "name": "self.touchSigma",
                 "type": "ObjectExpression",
                 "value": "{\"x\":\"\",\"y\":\"\",\"t\":\"\"}",
@@ -92368,7 +92368,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040393",
+                "id": "astnode100040395",
                 "name": "x",
                 "type": "MemberExpression",
                 "value": "self.touchDelta.x"
@@ -92395,7 +92395,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040399",
+                "id": "astnode100040401",
                 "name": "y",
                 "type": "MemberExpression",
                 "value": "self.touchDelta.y"
@@ -92422,7 +92422,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040405",
+                "id": "astnode100040407",
                 "name": "t",
                 "type": "MemberExpression",
                 "value": "self.touchDelta.t"
@@ -92449,7 +92449,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040412",
+                "id": "astnode100040414",
                 "name": "self.touchSigmaTimed",
                 "type": "ObjectExpression",
                 "value": "{\"x\":\"\",\"y\":\"\",\"t\":\"\"}",
@@ -92477,7 +92477,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040417",
+                "id": "astnode100040419",
                 "name": "x",
                 "type": "MemberExpression",
                 "value": "self.touchDelta.x"
@@ -92504,7 +92504,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040423",
+                "id": "astnode100040425",
                 "name": "y",
                 "type": "MemberExpression",
                 "value": "self.touchDelta.y"
@@ -92531,7 +92531,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040429",
+                "id": "astnode100040431",
                 "name": "t",
                 "type": "MemberExpression",
                 "value": "self.touchDelta.t"
@@ -92558,7 +92558,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040436",
+                "id": "astnode100040438",
                 "name": "self.touchContextTimeout",
                 "type": "CallExpression",
                 "value": "",
@@ -92586,7 +92586,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040459",
+                "id": "astnode100040461",
                 "name": "self.calculatePPSTimer",
                 "type": "CallExpression",
                 "value": "",
@@ -92614,7 +92614,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040496",
+                "id": "astnode100040498",
                 "name": "self.hasFocus",
                 "type": "Literal",
                 "value": false,
@@ -92642,7 +92642,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040503",
+                "id": "astnode100040505",
                 "name": "self.hasFocus",
                 "type": "Literal",
                 "value": true,
@@ -92670,7 +92670,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040528",
+                "id": "astnode100040530",
                 "name": "top",
                 "type": "MemberExpression",
                 "value": "self.startingCell.rowIndex"
@@ -92696,7 +92696,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040534",
+                "id": "astnode100040536",
                 "name": "bottom",
                 "type": "MemberExpression",
                 "value": "self.startingCell.rowIndex"
@@ -92722,7 +92722,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040540",
+                "id": "astnode100040542",
                 "name": "left",
                 "type": "Literal",
                 "value": 0
@@ -92748,7 +92748,7 @@ window.reflection = [
             "columnno": 28,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040542",
+                "id": "astnode100040544",
                 "name": "right",
                 "type": "BinaryExpression",
                 "value": ""
@@ -92774,7 +92774,7 @@ window.reflection = [
             "columnno": 32,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040587",
+                "id": "astnode100040589",
                 "name": "self.orderDirection",
                 "type": "ConditionalExpression",
                 "value": "",
@@ -92802,7 +92802,7 @@ window.reflection = [
             "columnno": 32,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040601",
+                "id": "astnode100040603",
                 "name": "self.orderDirection",
                 "type": "Literal",
                 "value": "asc",
@@ -92830,7 +92830,7 @@ window.reflection = [
             "columnno": 32,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040636",
+                "id": "astnode100040638",
                 "name": "top",
                 "type": "Literal",
                 "value": 0
@@ -92856,7 +92856,7 @@ window.reflection = [
             "columnno": 32,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040638",
+                "id": "astnode100040640",
                 "name": "bottom",
                 "type": "BinaryExpression",
                 "value": ""
@@ -92882,7 +92882,7 @@ window.reflection = [
             "columnno": 32,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040646",
+                "id": "astnode100040648",
                 "name": "left",
                 "type": "MemberExpression",
                 "value": "self.startingCell.columnIndex"
@@ -92908,7 +92908,7 @@ window.reflection = [
             "columnno": 32,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040652",
+                "id": "astnode100040654",
                 "name": "right",
                 "type": "MemberExpression",
                 "value": "self.startingCell.columnIndex"
@@ -92934,7 +92934,7 @@ window.reflection = [
             "columnno": 73,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040689",
+                "id": "astnode100040691",
                 "name": "passive",
                 "type": "Literal",
                 "value": false
@@ -92960,7 +92960,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040722",
+                "id": "astnode100040724",
                 "name": "self.touchSelect",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -92998,7 +92998,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040745",
+                "id": "astnode100040747",
                 "name": "self.touchSelecting",
                 "type": "Literal",
                 "value": true,
@@ -93026,7 +93026,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040751",
+                "id": "astnode100040753",
                 "name": "bounds",
                 "type": "CallExpression",
                 "value": ""
@@ -93054,7 +93054,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040779",
+                "id": "astnode100040781",
                 "name": "bounds.bottom",
                 "type": "MemberExpression",
                 "funcscope": "self.touchSelect",
@@ -93083,7 +93083,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040787",
+                "id": "astnode100040789",
                 "name": "bounds.left",
                 "type": "MemberExpression",
                 "funcscope": "self.touchSelect",
@@ -93112,7 +93112,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040816",
+                "id": "astnode100040818",
                 "name": "bounds.top",
                 "type": "MemberExpression",
                 "funcscope": "self.touchSelect",
@@ -93141,7 +93141,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040824",
+                "id": "astnode100040826",
                 "name": "bounds.left",
                 "type": "MemberExpression",
                 "funcscope": "self.touchSelect",
@@ -93170,7 +93170,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040853",
+                "id": "astnode100040855",
                 "name": "bounds.top",
                 "type": "MemberExpression",
                 "funcscope": "self.touchSelect",
@@ -93199,7 +93199,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040861",
+                "id": "astnode100040863",
                 "name": "bounds.right",
                 "type": "MemberExpression",
                 "funcscope": "self.touchSelect",
@@ -93228,7 +93228,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040890",
+                "id": "astnode100040892",
                 "name": "bounds.bottom",
                 "type": "MemberExpression",
                 "funcscope": "self.touchSelect",
@@ -93257,7 +93257,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040898",
+                "id": "astnode100040900",
                 "name": "bounds.right",
                 "type": "MemberExpression",
                 "funcscope": "self.touchSelect",
@@ -93286,7 +93286,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040922",
+                "id": "astnode100040924",
                 "name": "bounds.left",
                 "type": "Literal",
                 "funcscope": "self.touchSelect",
@@ -93315,7 +93315,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040928",
+                "id": "astnode100040930",
                 "name": "bounds.right",
                 "type": "BinaryExpression",
                 "funcscope": "self.touchSelect",
@@ -93344,7 +93344,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040942",
+                "id": "astnode100040944",
                 "name": "bounds.left",
                 "type": "CallExpression",
                 "funcscope": "self.touchSelect",
@@ -93373,7 +93373,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040966",
+                "id": "astnode100040968",
                 "name": "touchMove",
                 "type": "FunctionDeclaration",
                 "paramnames": [
@@ -93430,7 +93430,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040971",
+                "id": "astnode100040973",
                 "name": "ch"
             }
         },
@@ -93456,7 +93456,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040973",
+                "id": "astnode100040975",
                 "name": "rw"
             }
         },
@@ -93482,7 +93482,7 @@ window.reflection = [
             "columnno": 24,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040975",
+                "id": "astnode100040977",
                 "name": "rScrollZone"
             }
         },
@@ -93508,7 +93508,7 @@ window.reflection = [
             "columnno": 37,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040977",
+                "id": "astnode100040979",
                 "name": "lScrollZone"
             }
         },
@@ -93534,7 +93534,7 @@ window.reflection = [
             "columnno": 50,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040979",
+                "id": "astnode100040981",
                 "name": "bScrollZone"
             }
         },
@@ -93560,7 +93560,7 @@ window.reflection = [
             "columnno": 63,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040981",
+                "id": "astnode100040983",
                 "name": "tScrollZone"
             }
         },
@@ -93586,7 +93586,7 @@ window.reflection = [
             "columnno": 76,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040983",
+                "id": "astnode100040985",
                 "name": "sbw"
             }
         },
@@ -93612,7 +93612,7 @@ window.reflection = [
             "columnno": 81,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040985",
+                "id": "astnode100040987",
                 "name": "t1"
             }
         },
@@ -93638,7 +93638,7 @@ window.reflection = [
             "columnno": 85,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040987",
+                "id": "astnode100040989",
                 "name": "t2"
             }
         },
@@ -93664,7 +93664,7 @@ window.reflection = [
             "columnno": 55,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040996",
+                "id": "astnode100040998",
                 "name": "NativeEvent",
                 "type": "Identifier",
                 "value": "e"
@@ -93690,7 +93690,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041012",
+                "id": "astnode100041014",
                 "name": "self.touchPosition",
                 "type": "CallExpression",
                 "value": "",
@@ -93718,7 +93718,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041029",
+                "id": "astnode100041031",
                 "name": "self.touchPosition1",
                 "type": "CallExpression",
                 "value": "",
@@ -93746,7 +93746,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041090",
+                "id": "astnode100041092",
                 "name": "t1",
                 "type": "MemberExpression",
                 "funcscope": "<anonymous>~touchMove",
@@ -93775,7 +93775,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041098",
+                "id": "astnode100041100",
                 "name": "t2",
                 "type": "MemberExpression",
                 "funcscope": "<anonymous>~touchMove",
@@ -93804,7 +93804,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041112",
+                "id": "astnode100041114",
                 "name": "self.zoomDeltaStart",
                 "type": "CallExpression",
                 "value": "",
@@ -93832,7 +93832,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041124",
+                "id": "astnode100041126",
                 "name": "self.startScale",
                 "type": "MemberExpression",
                 "value": "self.scale",
@@ -93860,7 +93860,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041132",
+                "id": "astnode100041134",
                 "name": "self.touchLength",
                 "type": "Literal",
                 "value": 2,
@@ -93888,7 +93888,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041138",
+                "id": "astnode100041140",
                 "name": "self.scaleDelta",
                 "type": "BinaryExpression",
                 "value": "",
@@ -93916,7 +93916,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041154",
+                "id": "astnode100041156",
                 "name": "self.scale",
                 "type": "BinaryExpression",
                 "value": "",
@@ -93944,7 +93944,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041172",
+                "id": "astnode100041174",
                 "name": "self.scale",
                 "type": "CallExpression",
                 "value": "",
@@ -93972,7 +93972,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041198",
+                "id": "astnode100041200",
                 "name": "self.zoomAltered",
                 "type": "Literal",
                 "value": true,
@@ -94000,7 +94000,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041222",
+                "id": "astnode100041224",
                 "name": "self.touchLength",
                 "type": "Literal",
                 "value": 1,
@@ -94028,7 +94028,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041228",
+                "id": "astnode100041230",
                 "name": "self.touchPosition",
                 "type": "LogicalExpression",
                 "value": "",
@@ -94056,7 +94056,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041240",
+                "id": "astnode100041242",
                 "name": "ch",
                 "type": "CallExpression",
                 "funcscope": "<anonymous>~touchMove",
@@ -94085,7 +94085,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041247",
+                "id": "astnode100041249",
                 "name": "rw",
                 "type": "CallExpression",
                 "funcscope": "<anonymous>~touchMove",
@@ -94114,7 +94114,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041254",
+                "id": "astnode100041256",
                 "name": "rScrollZone",
                 "type": "BinaryExpression",
                 "funcscope": "<anonymous>~touchMove",
@@ -94143,7 +94143,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041278",
+                "id": "astnode100041280",
                 "name": "lScrollZone",
                 "type": "BinaryExpression",
                 "funcscope": "<anonymous>~touchMove",
@@ -94172,7 +94172,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041294",
+                "id": "astnode100041296",
                 "name": "bScrollZone",
                 "type": "BinaryExpression",
                 "funcscope": "<anonymous>~touchMove",
@@ -94201,7 +94201,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041318",
+                "id": "astnode100041320",
                 "name": "tScrollZone",
                 "type": "BinaryExpression",
                 "funcscope": "<anonymous>~touchMove",
@@ -94230,7 +94230,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041334",
+                "id": "astnode100041336",
                 "name": "sbw",
                 "type": "MemberExpression",
                 "funcscope": "<anonymous>~touchMove",
@@ -94259,7 +94259,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041341",
+                "id": "astnode100041343",
                 "name": "touchScroll",
                 "type": "FunctionDeclaration",
                 "paramnames": []
@@ -94292,7 +94292,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041345",
+                "id": "astnode100041347",
                 "name": "x",
                 "type": "MemberExpression",
                 "value": "self.scrollBox.scrollLeft"
@@ -94320,7 +94320,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041352",
+                "id": "astnode100041354",
                 "name": "y",
                 "type": "MemberExpression",
                 "value": "self.scrollBox.scrollTop"
@@ -94348,7 +94348,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041360",
+                "id": "astnode100041362",
                 "name": "x",
                 "type": "ConditionalExpression",
                 "funcscope": "<anonymous>~touchMove~touchScroll",
@@ -94377,7 +94377,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041371",
+                "id": "astnode100041373",
                 "name": "y",
                 "type": "ConditionalExpression",
                 "funcscope": "<anonymous>~touchMove~touchScroll",
@@ -94406,7 +94406,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041382",
+                "id": "astnode100041384",
                 "name": "y",
                 "type": "ConditionalExpression",
                 "funcscope": "<anonymous>~touchMove~touchScroll",
@@ -94435,7 +94435,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041393",
+                "id": "astnode100041395",
                 "name": "x",
                 "type": "ConditionalExpression",
                 "funcscope": "<anonymous>~touchMove~touchScroll",
@@ -94464,7 +94464,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041413",
+                "id": "astnode100041415",
                 "name": "touchScrollTimeout",
                 "type": "CallExpression",
                 "funcscope": "<anonymous>~touchMove~touchScroll",
@@ -94493,7 +94493,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041429",
+                "id": "astnode100041431",
                 "name": "self.touchDelta",
                 "type": "ObjectExpression",
                 "value": "{\"x\":\"\",\"y\":\"\",\"scrollLeft\":\"\",\"scrollTop\":\"\",\"t\":\"\"}",
@@ -94521,7 +94521,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041434",
+                "id": "astnode100041436",
                 "name": "x",
                 "type": "BinaryExpression",
                 "value": ""
@@ -94548,7 +94548,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041446",
+                "id": "astnode100041448",
                 "name": "y",
                 "type": "BinaryExpression",
                 "value": ""
@@ -94575,7 +94575,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041458",
+                "id": "astnode100041460",
                 "name": "scrollLeft",
                 "type": "MemberExpression",
                 "value": "self.scrollBox.scrollLeft"
@@ -94602,7 +94602,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041464",
+                "id": "astnode100041466",
                 "name": "scrollTop",
                 "type": "MemberExpression",
                 "value": "self.scrollBox.scrollTop"
@@ -94629,7 +94629,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041470",
+                "id": "astnode100041472",
                 "name": "t",
                 "type": "CallExpression",
                 "value": ""
@@ -94656,7 +94656,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041476",
+                "id": "astnode100041478",
                 "name": "self.currentCell",
                 "type": "CallExpression",
                 "value": "",
@@ -94684,7 +94684,7 @@ window.reflection = [
             "columnno": 45,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041501",
+                "id": "astnode100041503",
                 "name": "NativeEvent",
                 "type": "Identifier",
                 "value": "e"
@@ -94710,7 +94710,7 @@ window.reflection = [
             "columnno": 61,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041503",
+                "id": "astnode100041505",
                 "name": "cell",
                 "type": "MemberExpression",
                 "value": "self.currentCell"
@@ -94736,7 +94736,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041513",
+                "id": "astnode100041515",
                 "name": "self.touchDuration",
                 "type": "BinaryExpression",
                 "value": "",
@@ -94764,7 +94764,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041528",
+                "id": "astnode100041530",
                 "name": "self.stopAnimation",
                 "type": "Literal",
                 "value": true,
@@ -94792,7 +94792,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041534",
+                "id": "astnode100041536",
                 "name": "self.animationFrames",
                 "type": "Literal",
                 "value": 0,
@@ -94820,7 +94820,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041567",
+                "id": "astnode100041569",
                 "name": "self.scrollBox.scrollTop",
                 "type": "BinaryExpression",
                 "value": "",
@@ -94848,7 +94848,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041611",
+                "id": "astnode100041613",
                 "name": "self.scrollBox.scrollLeft",
                 "type": "BinaryExpression",
                 "value": "",
@@ -94876,7 +94876,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041699",
+                "id": "astnode100041701",
                 "name": "self.touchmove",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -94908,7 +94908,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041716",
+                "id": "astnode100041718",
                 "name": "touchMoving",
                 "type": "Literal",
                 "funcscope": "<anonymous>",
@@ -94937,7 +94937,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041724",
+                "id": "astnode100041726",
                 "name": "touchMoving",
                 "type": "Literal",
                 "funcscope": "<anonymous>",
@@ -94966,7 +94966,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041728",
+                "id": "astnode100041730",
                 "name": "self.touchEndEvents",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -94999,7 +94999,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041736",
+                "id": "astnode100041738",
                 "name": "self.zoomDeltaStart",
                 "type": "Identifier",
                 "value": "undefined",
@@ -95027,7 +95027,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041742",
+                "id": "astnode100041744",
                 "name": "self.touchSelecting",
                 "type": "Literal",
                 "value": false,
@@ -95055,7 +95055,7 @@ window.reflection = [
             "columnno": 76,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041782",
+                "id": "astnode100041784",
                 "name": "passive",
                 "type": "Literal",
                 "value": false
@@ -95081,7 +95081,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041809",
+                "id": "astnode100041811",
                 "name": "self.touchend",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -95124,7 +95124,7 @@ window.reflection = [
             "columnno": 48,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041823",
+                "id": "astnode100041825",
                 "name": "NativeEvent",
                 "type": "Identifier",
                 "value": "e"
@@ -95150,7 +95150,7 @@ window.reflection = [
             "columnno": 64,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041825",
+                "id": "astnode100041827",
                 "name": "cell",
                 "type": "MemberExpression",
                 "value": "self.currentCell"
@@ -95176,7 +95176,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041832",
+                "id": "astnode100041834",
                 "name": "self.zoomDeltaStart",
                 "type": "Identifier",
                 "value": "undefined",
@@ -95204,7 +95204,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041845",
+                "id": "astnode100041847",
                 "name": "self.touchPosition",
                 "type": "Identifier",
                 "value": "undefined",
@@ -95232,7 +95232,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041858",
+                "id": "astnode100041860",
                 "name": "self.touchPosition1",
                 "type": "Identifier",
                 "value": "undefined",
@@ -95260,7 +95260,7 @@ window.reflection = [
             "columnno": 20,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041878",
+                "id": "astnode100041880",
                 "name": "self.zoomAltered",
                 "type": "Literal",
                 "value": false,
@@ -95288,7 +95288,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041885",
+                "id": "astnode100041887",
                 "name": "dz",
                 "type": "BinaryExpression",
                 "value": ""
@@ -95316,7 +95316,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041920",
+                "id": "astnode100041922",
                 "name": "self.xPPS",
                 "type": "Literal",
                 "value": 0,
@@ -95344,7 +95344,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041933",
+                "id": "astnode100041935",
                 "name": "self.yPPS",
                 "type": "Literal",
                 "value": 0,
@@ -95372,7 +95372,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041946",
+                "id": "astnode100041948",
                 "name": "self.xPPST",
                 "type": "Literal",
                 "value": 0,
@@ -95400,7 +95400,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041959",
+                "id": "astnode100041961",
                 "name": "self.yPPST",
                 "type": "Literal",
                 "value": 0,
@@ -95428,7 +95428,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041965",
+                "id": "astnode100041967",
                 "name": "self.touchAnimateTo.x",
                 "type": "BinaryExpression",
                 "value": "",
@@ -95456,7 +95456,7 @@ window.reflection = [
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041981",
+                "id": "astnode100041983",
                 "name": "self.touchAnimateTo.y",
                 "type": "BinaryExpression",
                 "value": "",
@@ -95484,7 +95484,7 @@ window.reflection = [
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042068",
+                "id": "astnode100042070",
                 "name": "self.stopAnimation",
                 "type": "Literal",
                 "value": false,
@@ -95512,7 +95512,7 @@ window.reflection = [
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042085",
+                "id": "astnode100042087",
                 "name": "self.touchcancel",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -95541,7 +95541,7 @@ window.reflection = [
             "columnno": 51,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042099",
+                "id": "astnode100042101",
                 "name": "NativeEvent",
                 "type": "Identifier",
                 "value": "e"
@@ -95567,7 +95567,7 @@ window.reflection = [
             "columnno": 67,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042101",
+                "id": "astnode100042103",
                 "name": "cell",
                 "type": "MemberExpression",
                 "value": "self.currentCell"

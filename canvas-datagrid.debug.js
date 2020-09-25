@@ -4922,8 +4922,7 @@ var isPrintableKeyEvent = __webpack_require__(/*! is-printable-key-event */ "./n
         });
       }
 
-      var rows = parseData(pasteValue, mimeType);
-      var selections = []; // Special case: if rows.length = 1, we paste this value in each
+      var rows = parseData(pasteValue, mimeType); // Special case: if rows.length = 1, we paste this value in each
       // selected cell. This mimics Excel's paste functionality, and works
       // as a poor-man's fill-down.
 
@@ -4933,6 +4932,8 @@ var isPrintableKeyEvent = __webpack_require__(/*! is-printable-key-event */ "./n
           data[rowIndex][colName] = cellData;
         });
       } else {
+        var selections = [];
+
         for (var rowIndex = 0; rowIndex < rows.length; rowIndex++) {
           // Rows may have been moved by user, so get the actual row index
           // (instead of the row index at which the row is rendered):
@@ -4964,12 +4965,13 @@ var isPrintableKeyEvent = __webpack_require__(/*! is-printable-key-event */ "./n
 
           self.data[realRowIndex] = newRowData;
         }
-      }
 
-      self.selections = selections; // selections is a sparse array, so we condense:
+        self.selections = selections;
+      } // selections is a sparse array, so we condense:
+
 
       var affectedCells = [];
-      selections.forEach(function (row, rowIndex) {
+      self.selections.forEach(function (row, rowIndex) {
         if (rowIndex === undefined) return;
         row.forEach(function (columnIndex) {
           affectedCells.push([rowIndex, columnIndex]);
