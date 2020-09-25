@@ -239,6 +239,11 @@
         }
         if (cond) { return new Error(msg); }
     }
+    // This is a temporary assert, until we migrate
+    // testing libraries 
+    function doAssert(assertion, message) {
+        if (!assertion) throw new Error(message);
+    }
     describe('canvas-datagrid', function () {
         after(function (done) {
             // git rid of lingering artifacts from the run
@@ -1655,8 +1660,17 @@
 
                     grid.focus();
                     grid.setActiveCell(0, 0);
+                    grid.selectArea({ top: 0, left: 0, bottom: 0, right: 0 });
 
                     grid.addEventListener('afterpaste', function (event) {
+                        try {
+                            doAssert(!!event.cells, "event has cells property");
+                            doAssert(event.cells.length === 1, "one row has been pasted ");
+                            doAssert(event.cells[0][0] === 0, "pasted column == 0");
+                        } catch (error) {
+                            done(error);
+                        }
+
                         done();
                     });
 
