@@ -2804,6 +2804,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
 
                 if (wrap && cell.text && cell.text.height > rowHeight) {
                   self.sizes.rows[isHeader ? -1 : rowIndex] = cell.text.height;
+                  checkScrollHeight = true;
                 }
               }
             }
@@ -5010,6 +5011,10 @@ var isPrintableKeyEvent = __webpack_require__(/*! is-printable-key-event */ "./n
     };
 
     self.paste = function (event) {
+      if (!self.attributes.editable) {
+        return;
+      }
+
       var defaultPrevented = self.dispatchEvent('beforepaste', {
         NativeEvent: event
       });
