@@ -53,7 +53,7 @@
   "homepage": "https://canvas-datagrid.js.org/",
   "husky": {
     "hooks": {
-      "pre-commit": "npm run format && npm run lint"
+      "pre-commit": "lint-staged"
     }
   },
   "devDependencies": {
