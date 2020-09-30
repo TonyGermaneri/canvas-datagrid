@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack",
     "build-docs": "rm -rf docs; npm run build; jsdoc -c ./jsdoc.conf.js; cp dist/canvas-datagrid.* docs/; cp -r tutorials/* images docs/",
+    "format": "prettier lib/**/*.js --write",
     "test": "npm run build; karma start",
     "watch": "webpack --watch"
   },
@@ -64,6 +65,7 @@
     "karma-mocha": "^2.0.1",
     "marked": "^0.3.6",
     "mocha": "^3.5.3",
+    "prettier": "^2.1.2",
     "should": "^11.2.1",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
