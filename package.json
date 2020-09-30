@@ -7,6 +7,7 @@
     "build": "webpack",
     "build-docs": "rm -rf docs; npm run build; jsdoc -c ./jsdoc.conf.js; cp dist/canvas-datagrid.* docs/; cp -r tutorials/* images docs/",
     "format": "prettier lib/**/*.js --write",
+    "lint": "eslint lib",
     "test": "npm run build; karma start",
     "watch": "webpack --watch"
   },
@@ -55,6 +56,7 @@
     "@babel/preset-env": "^7.11.5",
     "babel-loader": "^8.1.0",
     "chai": "^4.2.0",
+    "eslint": "^7.10.0",
     "istanbul": "^0.4.5",
     "jsdoc": "^3.4.3",
     "karma": "^5.0.5",

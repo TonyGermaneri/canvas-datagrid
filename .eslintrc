@@ -1,0 +1,17 @@
+{
+  "root": true,
+  "extends": ["eslint:recommended"],
+  "parserOptions": {
+    "ecmaVersion": "2017",
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "rules": {
+    // These should be turned on after a clean-up:
+    "no-unused-vars": 0,
+    "no-redeclare": 0
+  }
+}
