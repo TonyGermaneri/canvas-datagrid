@@ -73,6 +73,7 @@
     "karma-coverage": "^2.0.2",
     "karma-coverage-istanbul-reporter": "^3.0.2",
     "karma-mocha": "^2.0.1",
+    "lint-staged": "^10.4.0",
     "marked": "^0.3.6",
     "mocha": "^3.5.3",
     "prettier": "^2.1.2",
