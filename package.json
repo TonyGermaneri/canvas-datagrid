@@ -90,7 +90,6 @@
 	"dependencies": {
 		"is-printable-key-event": "1.0.0"
 	},
-	"type": "module",
 	"exports": {
 		"development": {
 			"module": "./dist/canvas-datagrid.module.js",
