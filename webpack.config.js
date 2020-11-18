@@ -28,13 +28,14 @@ const productionModuleConfig = {
 	plugins: [
 		new webpack.ProvidePlugin({
 			'window.canvasDatagrid':[path.resolve(path.join(__dirname, 'esFill.js')),'exports','canvasDatagrid'],
+			'window.customElements.define':[path.resolve(path.join(__dirname, 'esFill.js')),'exports','define'],
 			'window.customElements':[path.resolve(path.join(__dirname, 'esFill.js')),'exports','customElements']
 		}),
 	],
 	devtool: 'source-map',
 	module: {
 	  rules: [
-		{ test: /\.js$/, exclude: /node_modules/, use: [{
+		/* { test: /\.js$/, exclude: /node_modules/,type: 'javascript/esm', use: [{
 			loader:"babel-loader",
 			options: {
 				presets: [['@babel/preset-env',{
@@ -48,14 +49,13 @@ const productionModuleConfig = {
 					}
 				}]]
 			}
-		}]}
+		}]} */
 	  ]
 	},
 	experiments: {outputModule: true},
 	target: 'es6',
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		libraryExport: 'default',
 		filename: 'canvas-datagrid.module.js',
 		sourceMapFilename: 'canvas-datagrid.module.map'
 	}

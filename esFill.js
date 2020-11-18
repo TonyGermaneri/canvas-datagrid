@@ -1,10 +1,8 @@
 const exports = {
 	canvasDatagrid: true,
 	customElements: false,
+	define: function(){return {}}
 }
-Object.defineProperties(exports.customElements,'define',{
-	value: () => {}
-})
 export {
 	exports
 }
