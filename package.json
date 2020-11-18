@@ -3,6 +3,7 @@
 	"version": "0.24.4",
 	"description": "Canvas based data grid web component.  Capable of displaying millions of contiguous hierarchical rows and columns without paging or loading, on a single canvas element.",
 	"main": "./dist/canvas-datagrid.js",
+	"module": "./dist/canvas-datagrid.module.js",
 	"scripts": {
 		"build": "webpack && rollup -c",
 		"build-docs": "rm -rf docs; npm run build; jsdoc -c ./jsdoc.conf.js; cp dist/canvas-datagrid.* docs/; cp -r tutorials/* images docs/",
@@ -88,5 +89,25 @@
 	},
 	"dependencies": {
 		"is-printable-key-event": "1.0.0"
+	},
+	"type": "module",
+	"exports": {
+		"development": {
+			"module": "./dist/canvas-datagrid.module.js",
+			"import": "./dist/canvas-datagrid.module.js",
+			"script": "./dist/canvas-datagrid.debug.js",
+			"require": "./dist/canvas-datagrid.debug.js"
+		},
+		"production": {
+			"module": "./dist/canvas-datagrid.module.js",
+			"import": "./dist/canvas-datagrid.module.js",
+			"script": "./dist/canvas-datagrid.js",
+			"require": "./dist/canvas-datagrid.js"
+		},
+		"module": "./dist/canvas-datagrid.module.js",
+		"import": "./dist/canvas-datagrid.module.js",
+		"script": "./dist/canvas-datagrid.js",
+		"require": "./dist/canvas-datagrid.js",
+		"default": "./dist/canvas-datagrid.js"
 	}
 }
