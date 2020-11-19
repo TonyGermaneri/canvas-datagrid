@@ -95,7 +95,7 @@
     "module": "./dist/canvas-datagrid.module.js",
     "deno": "./dist/canvas-datagrid.module.js",
     "node": {
-      "import": "./lib/main.js",
+      "import": "./lib/main.js"
     },
     "import": "./dist/canvas-datagrid.module.js",
     "development": {
