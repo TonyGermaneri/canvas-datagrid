@@ -14,6 +14,7 @@
   },
   "files": [
     "dist/*",
+    "lib/*",
     "LICENSE",
     "README.md",
     "CHANGELOG.md"
@@ -91,20 +92,16 @@
     "is-printable-key-event": "1.0.0"
   },
   "exports": {
+    "module": "./dist/canvas-datagrid.module.js",
+    "deno": "./dist/canvas-datagrid.module.js",
+    "node": {
+      "import": "./lib/main.js",
+    },
+    "import": "./dist/canvas-datagrid.module.js",
     "development": {
-      "module": "./dist/canvas-datagrid.module.js",
-      "import": "./dist/canvas-datagrid.module.js",
       "script": "./dist/canvas-datagrid.debug.js",
       "require": "./dist/canvas-datagrid.debug.js"
     },
-    "production": {
-      "module": "./dist/canvas-datagrid.module.js",
-      "import": "./dist/canvas-datagrid.module.js",
-      "script": "./dist/canvas-datagrid.js",
-      "require": "./dist/canvas-datagrid.js"
-    },
-    "module": "./dist/canvas-datagrid.module.js",
-    "import": "./dist/canvas-datagrid.module.js",
     "script": "./dist/canvas-datagrid.js",
     "require": "./dist/canvas-datagrid.js",
     "default": "./dist/canvas-datagrid.js"
