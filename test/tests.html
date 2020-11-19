@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Mocha Tests</title>
-        <link href="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
         <style>
             #coverage {
                 font: 20px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -37,11 +37,12 @@
         <a id="coverage" href="https://tonygermaneri.github.io/canvas-datagrid/build/report/lcov-report/index.html">Latest Coverage Report</a>
         <div id="mocha"></div>
         <div id="grid"><div></div></div>
-        <script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
+        <script src="https://unpkg.com/chai/chai.js"></script>
+    	<script src="https://unpkg.com/mocha/mocha.js"></script>
         <script>
-            mocha.setup('bdd');
+			mocha.setup('bdd');
         </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/async/2.5.0/async.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/async/3.2.0/async.js"></script>
         <script src="base/dist/canvas-datagrid.debug.js"></script>
         <!-- <script src="../build/canvas-datagrid.instrument.js"></script> -->
         <script src="base/test/tests.js"></script>
@@ -102,9 +103,9 @@
         %SCRIPTS%
         <!-- Since %SCRIPTS% might include modules, the `loaded()` call needs to be in a module too.
         This ensures all the tests will have been declared before karma tries to run them. -->
-        <script type="module">
+        <!-- <script type="module">
             window.__karma__.loaded();
-        </script>
+        </script> -->
         <script nomodule>
             window.__karma__.loaded();
         </script>

@@ -1,5 +1,4 @@
-const path = require('path');
-
+const mocha = require('mocha')
 module.exports = function(config) {
   config.set({
 
@@ -74,6 +73,6 @@ module.exports = function(config) {
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity
+	concurrency: Infinity,
   })
 }

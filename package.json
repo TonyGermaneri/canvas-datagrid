@@ -5,12 +5,14 @@
 	"main": "./dist/canvas-datagrid.js",
 	"module": "./dist/canvas-datagrid.module.js",
 	"scripts": {
-		"build": "webpack && rollup -c",
+		"build": "rollup --config",
 		"build-docs": "rm -rf docs; npm run build; jsdoc -c ./jsdoc.conf.js; cp dist/canvas-datagrid.* docs/; cp -r tutorials/* images docs/",
 		"format": "prettier lib/**/*.js --write",
 		"lint": "eslint lib",
-		"test": "npm run build; karma start",
-		"watch": "webpack --watch"
+		"pretest": "npm run build",
+		"test": "karma start",
+		"debug-test": "karma start --log-level debug --browsers Chrome --no-single-run --no-fail-on-failing-test-suite",
+		"watch": "rollup --watch"
 	},
 	"files": [
 		"dist/*",
@@ -79,13 +81,11 @@
 		"karma-coverage-istanbul-reporter": "^3.0.2",
 		"karma-mocha": "^2.0.1",
 		"lint-staged": "^10.4.0",
-		"marked": "^0.3.6",
-		"mocha": "^3.5.3",
+		"marked": "^1.2.4",
+		"mocha": "^8.2.1",
 		"prettier": "^2.1.2",
 		"rollup": "^2.33.3",
-		"should": "^11.2.1",
-		"webpack": "^4.44.1",
-		"webpack-cli": "^3.3.12"
+		"should": "^13.2.3"
 	},
 	"dependencies": {
 		"is-printable-key-event": "1.0.0"
