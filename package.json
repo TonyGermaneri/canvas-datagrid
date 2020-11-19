@@ -3,8 +3,9 @@
   "version": "0.24.4",
   "description": "Canvas based data grid web component.  Capable of displaying millions of contiguous hierarchical rows and columns without paging or loading, on a single canvas element.",
   "main": "./dist/canvas-datagrid.js",
+  "module": "./dist/canvas-datagrid.module.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack && rollup -c",
     "build-docs": "rm -rf docs; npm run build; jsdoc -c ./jsdoc.conf.js; cp dist/canvas-datagrid.* docs/; cp -r tutorials/* images docs/",
     "format": "prettier lib/**/*.js --write",
     "lint": "eslint lib",
@@ -13,6 +14,7 @@
   },
   "files": [
     "dist/*",
+    "lib/*",
     "LICENSE",
     "README.md",
     "CHANGELOG.md"
@@ -59,6 +61,10 @@
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
+    "@rollup/plugin-commonjs": "^16.0.0",
+    "@rollup/plugin-node-resolve": "^10.0.0",
+    "@rollup/plugin-replace": "^2.3.4",
+    "@rollup/plugin-strip": "^2.0.0",
     "babel-loader": "^8.1.0",
     "chai": "^4.2.0",
     "eslint": "^7.10.0",
@@ -77,11 +83,27 @@
     "marked": "^0.3.6",
     "mocha": "^3.5.3",
     "prettier": "^2.1.2",
+    "rollup": "^2.33.3",
     "should": "^11.2.1",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
     "is-printable-key-event": "1.0.0"
+  },
+  "exports": {
+    "module": "./dist/canvas-datagrid.module.js",
+    "deno": "./dist/canvas-datagrid.module.js",
+    "node": {
+      "import": "./lib/main.js"
+    },
+    "import": "./dist/canvas-datagrid.module.js",
+    "development": {
+      "script": "./dist/canvas-datagrid.debug.js",
+      "require": "./dist/canvas-datagrid.debug.js"
+    },
+    "script": "./dist/canvas-datagrid.js",
+    "require": "./dist/canvas-datagrid.js",
+    "default": "./dist/canvas-datagrid.js"
   }
 }
