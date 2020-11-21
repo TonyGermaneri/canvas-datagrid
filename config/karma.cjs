@@ -3,7 +3,7 @@ module.exports = function (config) {
     browserNoActivityTimeout: 180000,
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: '../',
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
@@ -90,8 +90,6 @@ module.exports = function (config) {
     concurrency: Infinity,
 
     client: {
-      runInParent: true,
-      useIframe: true,
       mocha: {
         global: ['canvasDatagrid'],
         timeout: 20000,

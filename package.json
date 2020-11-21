@@ -4,15 +4,16 @@
 	"description": "Canvas based data grid web component.  Capable of displaying millions of contiguous hierarchical rows and columns without paging or loading, on a single canvas element.",
 	"main": "./dist/canvas-datagrid.js",
 	"module": "./dist/canvas-datagrid.module.js",
+	"unpkg": "dist/canvas-datagrid.module.js",
 	"scripts": {
-		"build": "rollup --config",
-		"build-docs": "rm -rf docs; npm run build; jsdoc -c ./jsdoc.conf.js; cp dist/canvas-datagrid.* docs/; cp -r tutorials/* images docs/",
+		"build": "rollup -c config/rollup.js",
+		"build-docs": "rm -rf docs && npm run build && jsdoc -c ./config/jsdoc.json && cp dist/canvas-datagrid.* docs/ && cp -r tutorials/* images docs/",
 		"format": "prettier lib/**/*.js --write",
 		"lint": "eslint lib",
 		"pretest": "npm run build",
-		"test": "karma start karma.conf.cjs",
-		"debugTest": "karma start --log-level debug --no-fail-on-failing-test-suite --browsers Chrome karma.conf.cjs",
-		"watch": "rollup --watch"
+		"test": "karma start config/karma.cjs",
+		"debugTest": "karma start --log-level debug --no-fail-on-failing-test-suite --browsers Chrome config/karma.cjs",
+		"watch": "rollup --watch -c config/rollup.js"
 	},
 	"files": [
 		"dist/*",
@@ -100,5 +101,8 @@
 		"script": "./dist/canvas-datagrid.js",
 		"require": "./dist/canvas-datagrid.js",
 		"default": "./dist/canvas-datagrid.js"
+	},
+	"eslintConfig": {
+		"extends": "./config/.eslintrc"
 	}
 }
