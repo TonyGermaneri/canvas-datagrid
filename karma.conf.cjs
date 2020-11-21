@@ -7,13 +7,27 @@ module.exports = function (config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'chai'],
+    frameworks: ['mocha'],
 
     // list of files / patterns to load in the browser
     files: [
+      {
+        pattern: 'dist/*.map',
+        watched: false,
+        included: false,
+        served: true,
+        nocache: false,
+      },
+      {
+        pattern: 'node_modules/mocha/*.map',
+        watched: false,
+        included: false,
+        served: true,
+        nocache: false,
+      },
       { pattern: 'test/tests.js', included: true, served: true },
       {
-        pattern: 'dist/canvas-datagrid.debug.js',
+        pattern: 'dist/canvas-datagrid.js',
         type: 'js',
         included: true,
         served: true,
@@ -74,5 +88,14 @@ module.exports = function (config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity,
+
+    client: {
+      runInParent: true,
+      useIframe: true,
+      mocha: {
+        global: ['canvasDatagrid'],
+        timeout: 20000,
+      },
+    },
   });
 };

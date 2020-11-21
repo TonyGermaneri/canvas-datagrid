@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<title>Mocha Tests</title>
 	<link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
+	<meta name="viewport" content="width=device-width">
 	<style>
 		#coverage {
 			font: 20px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -30,14 +31,9 @@
         before body, Angular Scenario test framework fails to find the body and crashes and burns in
         an epic manner. -->
 	<script src="context.js"></script>
-	<script src="https://unpkg.com/chai/chai.js"></script>
-	<script src="https://unpkg.com/mocha/mocha.js"></script>
 	<script type="text/javascript">
-			Object.defineProperty(window,'mocha',{
-				value: mocha
-			})
-            // Configure our Karma and set up bindings
-            %CLIENT_CONFIG%
+			// Configure our Karma and set up bindings
+			%CLIENT_CONFIG%
 			window.__karma__.setupContext(window);
 
             // All served files with the latest timestamps
@@ -49,17 +45,6 @@
 	<div id="grid">
 		<div></div>
 	</div>
-	<script>
-		mocha.setup('bdd');
-	</script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/async/3.2.0/async.js"></script>
-	<script src="base/dist/canvas-datagrid.debug.js"></script>
-	<!-- <script src="../build/canvas-datagrid.instrument.js"></script> -->
-	<script src="base/test/tests.js"></script>
-	<script>
-		mocha.run();
-	</script>
-	<meta name="viewport" content="width=device-width">
 	<style>
 		html,
 		body {
@@ -121,11 +106,17 @@
 	<!-- Dynamically replaced with <script> tags -->
 	%SCRIPTS%
 	<!-- Since %SCRIPTS% might include modules, the `loaded()` call needs to be in a module too.
-        This ensures all the tests will have been declared before karma tries to run them. -->
-	<script type="module">
-		window.__karma__.loaded();
+		This ensures all the tests will have been declared before karma tries to run them. -->
+	<script>
+		mocha.setup('bdd');
+		window.onload = () => {
+			mocha.run();
+		};
 	</script>
 	<script nomodule>
+		window.__karma__.loaded();
+	</script>
+	<script type="module">
 		window.__karma__.loaded();
 	</script>
 </body>

@@ -73,7 +73,12 @@
   // Reset test environment
   function cleanup(done) {
     var m = document.getElementById('mocha');
-    m.scrollTop = m.scrollHeight;
+    
+    if (Object.prototype.hasOwnProperty.call(m,'scrollHeight')) {
+        m.scrollTop = m.scrollHeight;
+    } else {
+        m.scrollTop = 0;
+    }
     if (this.currentTest && this.currentTest.grid) {
       this.currentTest.grid.disposeContextMenu();
     }

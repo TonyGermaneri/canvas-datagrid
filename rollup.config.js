@@ -18,6 +18,8 @@ const babelInput = {
         corejs: 3,
         useBuiltIns: 'entry',
         modules: false,
+        spec: true,
+        targets: '> 0.25%, not dead',
       },
     ],
   ],
@@ -28,20 +30,25 @@ export default [
     input,
     plugins: [
       clear({ targets: ['dist'] }),
-      nodeResolve(),
       replace({
-        defines: {
-          NO_GLOBAL: false,
-        },
-        match: /lib(\/|\\)main/,
-        replace: '',
+        patterns: [
+          {
+            match: /lib(\/|\\)main/,
+            test: /(\/\/ #NO_GLOBAL)(.|\r|\n)*\1/,
+            /* export default function canvasDatagrid (args) {
+                return new Grid(args);
+              }; */
+            replace: ``,
+          },
+        ],
       }),
+      nodeResolve(),
       commonjs(),
       babel(babelInput),
     ],
     output: {
       file: `dist/${fileName}.module.js`,
-      plugins: [terser()],
+      /* plugins: [terser()], */
       sourcemap: true,
     },
   },

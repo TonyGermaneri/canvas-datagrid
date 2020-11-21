@@ -10,9 +10,8 @@
 		"format": "prettier lib/**/*.js --write",
 		"lint": "eslint lib",
 		"pretest": "npm run build",
-		"test": "karma start",
-		"tryTest": "karma start karma.conf.cjs",
-		"debugTest": "karma start --log-level debug --browsers Chrome --no-single-run --no-fail-on-failing-test-suite",
+		"test": "karma start karma.conf.cjs",
+		"debugTest": "karma start --log-level debug --no-fail-on-failing-test-suite --browsers Chrome karma.conf.cjs",
 		"watch": "rollup --watch"
 	},
 	"files": [
@@ -67,7 +66,6 @@
 		"@rollup/plugin-commonjs": "^16.0.0",
 		"@rollup/plugin-node-resolve": "^10.0.0",
 		"babel-loader": "^8.1.0",
-		"chai": "^4.2.0",
 		"core-js": "^3.7.0",
 		"eslint": "^7.10.0",
 		"eslint-config-prettier": "^6.12.0",
@@ -76,7 +74,6 @@
 		"istanbul": "^0.4.5",
 		"jsdoc": "^3.4.3",
 		"karma": "^5.0.5",
-		"karma-chai": "^0.1.0",
 		"karma-chrome-launcher": "^3.1.0",
 		"karma-coverage": "^2.0.2",
 		"karma-coverage-istanbul-reporter": "^3.0.2",
