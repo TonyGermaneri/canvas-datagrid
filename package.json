@@ -17,6 +17,7 @@
 	},
 	"files": [
 		"dist/*",
+		"lib/*",
 		"LICENSE",
 		"README.md",
 		"CHANGELOG.md"
