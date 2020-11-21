@@ -48,7 +48,7 @@ export default [
     ],
     output: {
       file: `dist/${fileName}.module.js`,
-      /* plugins: [terser()], */
+      plugins: [terser()],
       sourcemap: true,
     },
   },
