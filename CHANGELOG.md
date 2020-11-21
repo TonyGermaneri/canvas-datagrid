@@ -1,10 +1,27 @@
 CHANGELOG.md
 
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## 0.25.1 - 2020-11-19
+
+### Added
+
+- Build and export ES module version (josh-hemphill, #316, #317)
+- Added linting (ndrsn)
+
+### Changed
+
+- Reformatted codebase with prettier, added `.prettierc` (ndrsn)
+- Moved from AMD to ES6 modules (ndrsn, #310)
+
+### Removed
+
+- Got rid unused files `bower.json`, `build.txt`
 
 ## 0.24.4 - 2020-09-29
 
@@ -89,6 +106,7 @@ This release is of no substance, it was merely to get the CI system
 to publish to NPM.
 
 ### Changed
+
 - Bump version from 0.22.13 to 0.22.15 in package.json in order to release NPM
 
 ## 0.22.14 - 2020-07-25
@@ -97,9 +115,11 @@ This release includes a bunch of changes and bugfixes collected of the span
 of a year, since version 0.22.12.
 
 ### Changed
+
 - Improvements to filtering data (jswolf19)
 
 ### Fixed
+
 - Resolve flickering cells (amjha)
 - Add singleSelectionMode setting (jtsymon)
 - Resolve Safari isColumnVisible bug (cthurston)
