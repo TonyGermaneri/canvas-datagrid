@@ -28,7 +28,7 @@ export default {
   plugins: [
     clear({ targets: ['dist'] }),
     replace({
-      'window.EXCLUDE_GLOBAL': JSON.stringify(true),
+      'window.EXCLUDE_GLOBAL': 'true',
     }),
     nodeResolve(),
     commonjs(),
