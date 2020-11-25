@@ -2,7 +2,7 @@ import { babel } from '@rollup/plugin-babel';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 import commonjs from '@rollup/plugin-commonjs';
-import replace from 'rollup-plugin-re';
+import replace from '@rollup/plugin-replace';
 import clear from 'rollup-plugin-clear';
 
 const input = 'lib/main.js';
@@ -28,16 +28,7 @@ export default {
   plugins: [
     clear({ targets: ['dist'] }),
     replace({
-      patterns: [
-        {
-          match: /lib(\/|\\)main/,
-          test: /(\/\/ #NO_GLOBAL)(.|\r|\n)*\1/,
-          /* export default function canvasDatagrid (args) {
-				  return new Grid(args);
-				}; */
-          replace: ``,
-        },
-      ],
+      'window.EXCLUDE_GLOBAL': true,
     }),
     nodeResolve(),
     commonjs(),
