@@ -26,7 +26,7 @@ const developmentConfig = {
   
   mode: 'development',
   devtool: 'source-map',
-  
+
   output: {
     path: path.resolve(__dirname, 'dist'),
     library: 'canvasDatagrid',
