@@ -290,7 +290,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }
 
     if (/^on/.test(attrName)) {
-      intf.addEventListener('on' + attrName, Function(newVal));
+      intf.addEventListener('on' + attrName, Function('e', newVal));
     }
 
     return;
