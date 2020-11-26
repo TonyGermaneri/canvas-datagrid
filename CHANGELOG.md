@@ -7,6 +7,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.25.2 - 2020-11-26
+
+### Changed
+
+- Fixes faulty ES module build (josh-hemphill, #318)
+- Replaces eval call with function constructor (josh-hemphill, #322, #311)
+
+### Removed
+
+- Got rid unused test files (josh-hemphill, #323)
+
 ## 0.25.1 - 2020-11-19
 
 ### Added
