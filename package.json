@@ -84,7 +84,6 @@
     "rollup": "^2.33.3",
     "rollup-plugin-clear": "^2.0.7",
     "rollup-plugin-terser": "^7.0.2",
-    "should": "^11.2.1",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   },
