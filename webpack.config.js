@@ -77,4 +77,4 @@ const developmentConfig = {
   },
 };
 
-module.exports = [productionConfig, developmentConfig, productionModuleConfig];
+module.exports = [productionConfig, developmentConfig];
