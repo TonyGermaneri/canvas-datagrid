@@ -290,9 +290,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }
 
     if (/^on/.test(attrName)) {
-      intf.addEventListener('on' + attrName, function (e) {
-        eval(newVal);
-      });
+      intf.addEventListener('on' + attrName, Function(newVal));
     }
 
     return;
@@ -6811,7 +6809,8 @@ if (window.customElements) {
 } // export global
 
 
-if (window && !window.canvasDatagrid && !window.require) {
+if (window && !window.canvasDatagrid && !window.require && // Present to exclude global declarations from ES Module bundles
+!window.EXCLUDE_GLOBAL) {
   window.canvasDatagrid = function (args) {
     return new Grid(args);
   };
