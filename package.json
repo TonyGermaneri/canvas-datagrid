@@ -79,7 +79,7 @@
     "karma-mocha": "^2.0.1",
     "lint-staged": "^10.5.2",
     "marked": "^1.2.5",
-    "mocha": "^3.5.3",
+    "mocha": "^8.2.1",
     "prettier": "^2.2.0",
     "rollup": "^2.33.3",
     "rollup-plugin-clear": "^2.0.7",
