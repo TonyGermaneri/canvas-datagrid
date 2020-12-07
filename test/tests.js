@@ -2345,6 +2345,24 @@
                         });
                     }, 100);
                 });
+                it('Should dispatch a `selectionchanged` event on esc', function (done) {
+                    var grid = g({
+                        test: this.test,
+                        data: smallData()
+                    });
+                    grid.focus();
+                    grid.addEventListener('selectionchanged', function (event) {
+                        try {
+                            doAssert(event.selections.length === 0, "selection is empty");
+                        } catch (error) {
+                            done(error);
+                        }
+
+                        done();
+                    });
+                    de(grid.controlInput, 'keydown', {key: "Escape"});
+                });
+
                 it('Should select a row', function (done) {
                     var grid = g({
                         test: this.test,
