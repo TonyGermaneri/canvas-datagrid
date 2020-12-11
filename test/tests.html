@@ -1,112 +1,124 @@
 <!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Mocha Tests</title>
-        <link href="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.css" rel="stylesheet" />
-        <style>
-            #coverage {
-                font: 20px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
-                position: fixed;
-                right: 70px;
-                top: 0;
-            }
-            .grid-container {
-                overflow: hidden;
-            }
-            canvas-datagrid {
-                --cdg-height: 100%;
-                --cdg-width: 100%;
-            }
-        </style>
-    </head>
-    <body>
-        <!-- The scripts need to be in the body DOM element, as some test running frameworks need the body
+
+<head>
+    <meta charset="utf-8">
+    <title>Mocha Tests</title>
+    <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
+    <meta name="viewport" content="width=device-width">
+    <style>
+        #coverage {
+            font: 20px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+            position: fixed;
+            right: 70px;
+            top: 0;
+        }
+
+        .grid-container {
+            overflow: hidden;
+        }
+
+        canvas-datagrid {
+            --cdg-height: 100%;
+            --cdg-width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- The scripts need to be in the body DOM element, as some test running frameworks need the body
         to have already been created so they can insert their magic into it. For example, if loaded
         before body, Angular Scenario test framework fails to find the body and crashes and burns in
         an epic manner. -->
-        <script src="context.js"></script>
-        <script type="text/javascript">
+    <script src="context.js"></script>
+    <script type="text/javascript">
             // Configure our Karma and set up bindings
             %CLIENT_CONFIG%
             window.__karma__.setupContext(window);
 
             // All served files with the latest timestamps
             %MAPPINGS%
-        </script>
-        <a id="coverage" href="https://tonygermaneri.github.io/canvas-datagrid/build/report/lcov-report/index.html">Latest Coverage Report</a>
-        <div id="mocha"></div>
-        <div id="grid"><div></div></div>
-        <script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
-        <script>
-            mocha.setup('bdd');
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/async/2.5.0/async.js"></script>
-        <script src="base/dist/canvas-datagrid.debug.js"></script>
-        <!-- <script src="../build/canvas-datagrid.instrument.js"></script> -->
-        <script src="base/test/tests.js"></script>
-        <script>
-            mocha.run();
-        </script>
-        <meta name="viewport" content="width=device-width">
-        <style>
-            html, body {
-                height: 100%;
-                min-height: 100%;
-                background: #CCC;
-            }
-            #mocha, #grid {
-                width: 40%;
-                display: inline-block;
-                vertical-align: top;
-                border: solid 1px #DDD;
-                background: #EEE;
-                box-shadow: 5px 5px 12px #777;
-                padding: 15px;
-                height: 80%;
-                overflow-y: auto;
-            }
-            #grid {
-                margin-top: 60px;
-                width: 420px;
-            }
-            .grid-test-title {
-                font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
-                padding: 3px;
-                background: lightgray;
-            }
-            .test-container {
-                border: solid 1px #AAA;
-                width: 400px;
-                margin-bottom: 30px;
-                padding: 3px;
-                background: #BBB;
-                box-shadow: 5px 5px 12px #888;
-            }
-            .grid-container {
-                height: 120px;
-                width: 400px;
-                display: inline-block;
-                background: black;
-            }
-            .grid-test-failed {
-                background: darkred;
-                color: white;
-            }
-            .grid-test-passed {
-                background: green;
-                color: white;
-            }
-        </style>
-        <!-- Dynamically replaced with <script> tags -->
-        %SCRIPTS%
-        <!-- Since %SCRIPTS% might include modules, the `loaded()` call needs to be in a module too.
+    </script>
+    <a id="coverage" href="https://tonygermaneri.github.io/canvas-datagrid/build/report/lcov-report/index.html">Latest
+        Coverage Report</a>
+    <div id="mocha"></div>
+    <div id="grid">
+        <div></div>
+    </div>
+    <style>
+        html,
+        body {
+            height: 100%;
+            min-height: 100%;
+            background: #CCC;
+        }
+
+        #mocha,
+        #grid {
+            width: 40%;
+            display: inline-block;
+            vertical-align: top;
+            border: solid 1px #DDD;
+            background: #EEE;
+            box-shadow: 5px 5px 12px #777;
+            padding: 15px;
+            height: 80%;
+            overflow-y: auto;
+        }
+
+        #grid {
+            margin-top: 60px;
+            width: 420px;
+        }
+
+        .grid-test-title {
+            font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+            padding: 3px;
+            background: lightgray;
+        }
+
+        .test-container {
+            border: solid 1px #AAA;
+            width: 400px;
+            margin-bottom: 30px;
+            padding: 3px;
+            background: #BBB;
+            box-shadow: 5px 5px 12px #888;
+        }
+
+        .grid-container {
+            height: 120px;
+            width: 400px;
+            display: inline-block;
+            background: black;
+        }
+
+        .grid-test-failed {
+            background: darkred;
+            color: white;
+        }
+
+        .grid-test-passed {
+            background: green;
+            color: white;
+        }
+    </style>
+    <!-- Dynamically replaced with <script> tags -->
+    %SCRIPTS%
+    <!-- Since %SCRIPTS% might include modules, the `loaded()` call needs to be in a module too.
         This ensures all the tests will have been declared before karma tries to run them. -->
-        <script type="module">
-            window.__karma__.loaded();
-        </script>
-        <script nomodule>
-            window.__karma__.loaded();
-        </script>
-    </body>
+    <script>
+        mocha.setup('bdd');
+        window.onload = () => {
+            mocha.run();
+        };
+    </script>
+    <script nomodule>
+        window.__karma__.loaded();
+    </script>
+    <script type="module">
+        window.__karma__.loaded();
+    </script>
+</body>
+
 </html>
