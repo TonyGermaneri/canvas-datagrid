@@ -42,7 +42,7 @@ export default function () {
     );
     done(
       assertIf(
-        grid.schema[1].name !== 'f' || grid.data[0].f !== 'g',
+        grid.schema[1].name !== 'f' || grid.viewData[0].f !== 'g',
         'Expected to see a specific column here, it is not here.',
       ),
     );
@@ -64,7 +64,7 @@ export default function () {
     );
     done(
       assertIf(
-        grid.schema[1].name !== 'f' || grid.data[0].f !== 'g',
+        grid.schema[1].name !== 'f' || grid.viewData[0].f !== 'g',
         'Expected to see a specific column here, it is not here.',
       ),
     );
@@ -265,7 +265,7 @@ export default function () {
     grid.deleteColumn(0);
     done(
       assertIf(
-        Object.keys(grid.data[0])[0] === n || grid.schema[0].name === n,
+        Object.keys(grid.viewData[0])[0] === n || grid.schema[0].name === n,
         'Expected to see column 0 deleted, but it appears to still be there.',
       ),
     );
@@ -284,7 +284,7 @@ export default function () {
     l = grid.schema.length - 1;
     done(
       assertIf(
-        grid.schema[l].name !== 'f' || grid.data[0].f !== 'g',
+        grid.schema[l].name !== 'f' || grid.viewData[0].f !== 'g',
         'Expected to see a specific column here, it is not here.',
       ),
     );
@@ -297,10 +297,10 @@ export default function () {
         schema: [{ name: 'd' }, { name: 'e', defaultValue: 10 }],
       });
     grid.addRow({ d: '1' });
-    l = grid.data.length - 1;
+    l = grid.viewData.length - 1;
     done(
       assertIf(
-        grid.data[l].d !== '1' || grid.data[l].e !== 10,
+        grid.viewData[l].d !== '1' || grid.viewData[l].e !== 10,
         'Expected to see a specific row here, it is not here.',
       ),
     );
@@ -317,7 +317,7 @@ export default function () {
     grid.insertRow({ d: '6' }, 1);
     done(
       assertIf(
-        grid.data[2].d !== '3' || grid.data[1].e !== 10,
+        grid.viewData[2].d !== '3' || grid.viewData[1].e !== 10,
         'Expected to see a specific row here, it is not here.',
       ),
     );
@@ -345,7 +345,7 @@ export default function () {
     grid.deleteRow(1);
     done(
       assertIf(
-        grid.data.length !== 1 || grid.data[0].d !== '1',
+        grid.viewData.length !== 1 || grid.viewData[0].d !== '1',
         'Expected to see only 1 row, expected row 1 to contain a specific value.',
       ),
     );

@@ -12,7 +12,7 @@ export default function () {
     ];
     done(
       assertIf(
-        grid.data[2].c !== 9,
+        grid.viewData[2].c !== 9,
         'Expected grid to be able to import and export this format',
       ),
     );
@@ -58,7 +58,7 @@ export default function () {
     grid.data = [['a', 'b', 'c'], ['1', '2'], ['q']];
     done(
       assertIf(
-        grid.data[0][0] !== 'a',
+        grid.viewData[0][0] !== 'a',
         'Expected grid to be able to import and export this format',
       ),
     );
