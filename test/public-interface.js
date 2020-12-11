@@ -163,6 +163,24 @@ export default function () {
       ),
     );
   });
+  it('Property `boundData` should be equal to original source data', function () {
+    const data = smallData();
+    const grid = g({
+      test: this.test,
+      data,
+    });
+
+    assert.deepStrictEqual(grid.boundData, data);
+
+    grid.setFilter('col1', 'foo');
+    grid.order('col1', 'desc');
+
+    assert.deepStrictEqual(
+      grid.boundData,
+      data,
+      'filtering/sorting does not affect boundData',
+    );
+  });
   it('Get offsetLeft of the parent node', function (done) {
     var grid = g({
       test: this.test,
