@@ -163,6 +163,37 @@ export default function () {
       ),
     );
   });
+  it('Property `viewData` should be deeply equal to source data, if not filtered', function () {
+    const data = smallData();
+    const grid = g({
+      test: this.test,
+      data,
+    });
+
+    assert.deepEqual(grid.viewData, data);
+  });
+  it('Property `viewData` should be equal to filtered data', function () {
+    const data = smallData();
+    const grid = g({
+      test: this.test,
+      data,
+    });
+    grid.setFilter('col1', 'foo');
+
+    assert.notDeepEqual(grid.viewData, data);
+    assert.deepEqual(grid.viewData, grid.data);
+  });
+  it('Property `viewData` should be equal to sorted data', function () {
+    const data = smallData();
+    const grid = g({
+      test: this.test,
+      data,
+    });
+    grid.order('col1', 'asc');
+
+    assert.notDeepEqual(grid.viewData, data);
+    assert.deepEqual(grid.viewData, grid.data);
+  });
   it('Property `boundData` should be equal to original source data', function () {
     const data = smallData();
     const grid = g({
