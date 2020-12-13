@@ -180,8 +180,9 @@ export default function () {
     });
     grid.setFilter('col1', 'foo');
 
-    assert.notDeepEqual(grid.viewData, data);
-    assert.deepEqual(grid.viewData, grid.data);
+    const matchingRows = data.filter((row) => row.col1 === 'foo');
+
+    assert.deepEqual(grid.viewData, matchingRows);
   });
   it('Property `viewData` should be equal to sorted data', function () {
     const data = smallData();
@@ -191,8 +192,9 @@ export default function () {
     });
     grid.order('col1', 'asc');
 
-    assert.notDeepEqual(grid.viewData, data);
-    assert.deepEqual(grid.viewData, grid.data);
+    const sortedRows = [data[1], data[2], data[0]];
+
+    assert.deepEqual(grid.viewData, sortedRows);
   });
   it('Property `boundData` should be equal to original source data', function () {
     const data = smallData();
