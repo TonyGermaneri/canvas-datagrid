@@ -11,7 +11,12 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
-      { pattern: 'test/tests.js', included: true, served: true },
+      {
+        pattern: 'test/*.js',
+        type: 'module',
+        included: true,
+        served: true,
+      },
       {
         pattern: 'dist/canvas-datagrid.debug.js',
         included: true,
@@ -30,7 +35,7 @@ module.exports = function (config) {
 
     failOnFailingTestSuite: true,
 
-    customContextFile: 'test/tests.html',
+    customContextFile: 'test/index.html',
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
