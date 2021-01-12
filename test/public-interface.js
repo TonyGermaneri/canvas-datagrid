@@ -163,6 +163,72 @@ export default function () {
       ),
     );
   });
+  it("Current cell's viewRowIndex and viewColumnIndex are equal to rowIndex and columnIndex, when not filtering", function (done) {
+    var grid = g({
+      test: this.test,
+      data: [
+        { d: '123456', e: 'foo bar', f: 'abc def' },
+        { d: '123456', e: 'foo bar', f: 'abc def' },
+        { d: '123456', e: 'foo bar', f: 'selected' }, // <-- active cell
+        { d: '123456', e: 'foo bar', f: 'abc def' },
+      ],
+    });
+
+    grid.setActiveCell(2, 2);
+
+    try {
+      assert.equal(grid.activeCell.rowIndex, 2, 'rowIndex = 2');
+      assert.equal(grid.activeCell.columnIndex, 2, 'columnIndex = 2');
+      assert.equal(
+        grid.activeCell.viewRowIndex,
+        grid.activeCell.rowIndex,
+        'viewRowIndex equal to rowIndex',
+      );
+      assert.equal(
+        grid.activeCell.viewColumnIndex,
+        grid.activeCell.columnIndex,
+        'viewColumnIndex equal to columnIndex',
+      );
+    } catch (error) {
+      return done(error);
+    }
+
+    done();
+  });
+  it("Current cell's viewRowIndex and viewColumnIndex are NOT equal to rowIndex and columnIndex, when filtering", function (done) {
+    var grid = g({
+      test: this.test,
+      data: [
+        { d: '123456', e: 'foo bar', f: 'abc def' },
+        { d: '123456', e: 'foo bar', f: 'abc def' },
+        { d: '123456', e: 'foo bar', f: 'selected' },
+        { d: '123456', e: 'foo bar', f: 'abc def' },
+      ],
+    });
+
+    grid.setActiveCell(2, 2);
+    grid.setFilter('f', 'selected');
+
+    try {
+      assert.equal(
+        grid.activeCell.rowIndex,
+        2,
+        'rowIndex is position in originalData',
+      );
+      assert.equal(grid.activeCell.columnIndex, 2, 'columnIndex unchanged');
+      assert.equal(
+        grid.activeCell.viewRowIndex,
+        0,
+        'viewRowIndex is position in viewData',
+      );
+      assert.equal(grid.activeCell.viewColumnIndex, 1, 'viewColumnIndex = 1');
+    } catch (error) {
+      return done(error);
+    }
+
+    done();
+  });
+
   it('Property `viewData` should be deeply equal to source data, if not filtered', function () {
     const data = smallData();
     const grid = g({
