@@ -163,70 +163,97 @@ export default function () {
       ),
     );
   });
-  it("Current cell's viewRowIndex and viewColumnIndex are equal to rowIndex and columnIndex, when not filtering", function (done) {
-    var grid = g({
-      test: this.test,
-      data: [
-        { d: '123456', e: 'foo bar', f: 'abc def' },
-        { d: '123456', e: 'foo bar', f: 'abc def' },
-        { d: '123456', e: 'foo bar', f: 'selected' }, // <-- active cell
-        { d: '123456', e: 'foo bar', f: 'abc def' },
-      ],
+  describe.only('improvements', function () {
+    it("Current cell's viewRowIndex and viewColumnIndex are equal to rowIndex and columnIndex, when not filtering", function (done) {
+      const grid = g({
+        test: this.test,
+        schema: [
+          {
+            name: 'd',
+          },
+          {
+            name: 'e',
+          },
+          {
+            name: 'f',
+          },
+        ],
+        data: [
+          { d: '123456 0x0', e: 'foo bar 0x1', f: 'abc def' },
+          { d: '123456 1x0', e: 'foo bar 1x1', f: 'abc def' },
+          { d: '123456 2x0', e: 'foo bar 2x1', f: 'abc def' },
+          { d: '123456 3x0', e: 'foo bar 3x1', f: 'abc def' },
+        ],
+      });
+
+      const cell = grid.getVisibleCellByIndex(1, 1);
+
+      try {
+        assert.equal(cell.value, 'foo bar 1x1');
+        assert.equal(cell.rowIndex, 1, 'rowIndex = 1');
+        assert.equal(cell.columnIndex, 1, 'columnIndex = 1');
+        assert.equal(
+          cell.viewRowIndex,
+          cell.boundRowIndex,
+          'viewRowIndex == boundRowIndex',
+        );
+        assert.equal(
+          cell.viewColumnIndex,
+          cell.boundColumnIndex,
+          'viewColumnIndex == boundColumnIndex',
+        );
+      } catch (error) {
+        return done(error);
+      }
+
+      done();
     });
+    it("Current cell's viewRowIndex != rowIndex, when filtering", function (done) {
+      var grid = g({
+        test: this.test,
+        schema: [
+          {
+            name: 'd',
+          },
+          {
+            name: 'e',
+          },
+          {
+            name: 'f',
+          },
+        ],
+        data: [
+          { d: '123456', e: 'foo bar', f: 'abc def' },
+          { d: '123456', e: 'selected', f: 'abc def' }, // <-- cell
+          { d: '123456', e: 'foo bar', f: 'abc def' },
+          { d: '123456', e: 'foo bar', f: 'abc def' },
+        ],
+      });
 
-    grid.setActiveCell(2, 2);
+      grid.setFilter('e', 'selected');
 
-    try {
-      assert.equal(grid.activeCell.rowIndex, 2, 'rowIndex = 2');
-      assert.equal(grid.activeCell.columnIndex, 2, 'columnIndex = 2');
-      assert.equal(
-        grid.activeCell.viewRowIndex,
-        grid.activeCell.rowIndex,
-        'viewRowIndex equal to rowIndex',
-      );
-      assert.equal(
-        grid.activeCell.viewColumnIndex,
-        grid.activeCell.columnIndex,
-        'viewColumnIndex equal to columnIndex',
-      );
-    } catch (error) {
-      return done(error);
-    }
+      const cell = grid.getVisibleCellByIndex(1, 0);
 
-    done();
-  });
-  it("Current cell's viewRowIndex and viewColumnIndex are NOT equal to rowIndex and columnIndex, when filtering", function (done) {
-    var grid = g({
-      test: this.test,
-      data: [
-        { d: '123456', e: 'foo bar', f: 'abc def' },
-        { d: '123456', e: 'foo bar', f: 'abc def' },
-        { d: '123456', e: 'foo bar', f: 'selected' },
-        { d: '123456', e: 'foo bar', f: 'abc def' },
-      ],
+      try {
+        assert.equal(cell.value, 'selected');
+        assert.equal(
+          cell.boundRowIndex,
+          1,
+          'rowIndex = 1 -> position in originalData',
+        );
+        assert.equal(cell.boundColumnIndex, 1, 'columnIndex unchanged');
+        assert.equal(
+          cell.viewRowIndex,
+          0,
+          'viewRowIndex = 0 -> position in viewData (filtered)',
+        );
+        assert.equal(cell.viewColumnIndex, 1, 'viewColumnIndex = 1');
+      } catch (error) {
+        return done(error);
+      }
+
+      done();
     });
-
-    grid.setActiveCell(2, 2);
-    grid.setFilter('f', 'selected');
-
-    try {
-      assert.equal(
-        grid.activeCell.rowIndex,
-        2,
-        'rowIndex is position in originalData',
-      );
-      assert.equal(grid.activeCell.columnIndex, 2, 'columnIndex unchanged');
-      assert.equal(
-        grid.activeCell.viewRowIndex,
-        0,
-        'viewRowIndex is position in viewData',
-      );
-      assert.equal(grid.activeCell.viewColumnIndex, 1, 'viewColumnIndex = 1');
-    } catch (error) {
-      return done(error);
-    }
-
-    done();
   });
 
   it('Property `viewData` should be deeply equal to source data, if not filtered', function () {
