@@ -163,7 +163,7 @@ export default function () {
       ),
     );
   });
-  describe.only('improvements', function () {
+  describe('improvements', function () {
     it("Current cell's viewRowIndex and viewColumnIndex are equal to rowIndex and columnIndex, when not filtering", function (done) {
       const grid = g({
         test: this.test,
