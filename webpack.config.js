@@ -24,7 +24,10 @@ const developmentConfig = {
   mode: 'development',
   devtool: 'source-map',
   devServer: {
-    contentBase: './dist',
+    contentBase: [
+      path.join(__dirname, 'dist'),
+      path.join(__dirname, 'tutorials'),
+    ],
   },
 
   output: {
