@@ -4,7 +4,7 @@ on:
   push:
     # Sequence of patterns matched against refs/tags
     tags:
-    - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
   build:
@@ -65,7 +65,7 @@ jobs:
           draft: false
           prerelease: false
       - name: Upload Release Asset
-        id: upload-release-asset 
+        id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -73,7 +73,7 @@ jobs:
           # This pulls from the CREATE RELEASE step above, referencing its ID
           # to get its outputs object, which include a `upload_url`. See this
           # blog post for more info:
-          # https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          # https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./${{ github.event.repository.name }}.zip
           asset_name: ${{ github.event.repository.name }}.zip
@@ -102,8 +102,10 @@ jobs:
         run: npm ci
       - name: Build debug version
         run: npm run build
+      - name: Build types
+        run: npm run build:types
       - name: Build documentation
-        run: npm run build-docs
+        run: npm run build:docs
       # Required for hosting at js.org
       - name: Ensure CNAME is part of gh-pages
         run: echo "canvas-datagrid.js.org" > docs/CNAME

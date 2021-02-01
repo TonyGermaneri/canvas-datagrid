@@ -4,34 +4,36 @@ on: workflow_dispatch
 
 jobs:
   publish-documentation:
-      name: Publish documentation
-      runs-on: ubuntu-latest
+    name: Publish documentation
+    runs-on: ubuntu-latest
 
-      strategy:
-        matrix:
-          node-version: [14.x]
+    strategy:
+      matrix:
+        node-version: [14.x]
 
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v2
-        - name: Install Node
-          uses: actions/setup-node@v1
-          with:
-            node-version: '14.x'
-        - name: Install dependencies
-          run: npm ci
-        - name: Build debug version
-          run: npm run build
-        - name: Build documentation
-          run: npm run build-docs
-        # Required for hosting at js.org
-        - name: Ensure CNAME is part of gh-pages
-          run: echo "canvas-datagrid.js.org" > docs/CNAME
-        # This will make documentation available at
-        # https://<username>.github.io/canvas-datagrid/
-        - name: Publish documentation to GitHub pages
-          uses: peaceiris/actions-gh-pages@v3.7.0-8
-          with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            exclude_assets: '.gitignore,.github,node_modules'
-            publish_dir: ./docs/
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build debug version
+        run: npm run build
+      - name: Build types
+        run: npm run build:types
+      - name: Build documentation
+        run: npm run build:docs
+      # Required for hosting at js.org
+      - name: Ensure CNAME is part of gh-pages
+        run: echo "canvas-datagrid.js.org" > docs/CNAME
+      # This will make documentation available at
+      # https://<username>.github.io/canvas-datagrid/
+      - name: Publish documentation to GitHub pages
+        uses: peaceiris/actions-gh-pages@v3.7.0-8
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          exclude_assets: '.gitignore,.github,node_modules'
+          publish_dir: ./docs/

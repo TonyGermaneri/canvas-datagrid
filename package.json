@@ -6,14 +6,14 @@
   "module": "./dist/canvas-datagrid.module.js",
   "scripts": {
     "build": "rollup -c && webpack",
-    "build-docs": "jsdoc -c ./jsdoc.conf.js && cp dist/canvas-datagrid.* docs/ && cp -r tutorials/* images docs/",
+    "build:docs": "jsdoc -c ./jsdoc.conf.js && cp dist/canvas-datagrid.* docs/ && cp -r tutorials/* images docs/",
     "format": "prettier lib/**/*.js --write",
     "lint": "eslint lib",
     "test": "npm run build && karma start",
     "test:watch": "karma start --no-single-run",
     "watch": "webpack --watch",
-    "gen-types": "jsdoc -c ./jsdoc.ts.conf.js && mv dist/types.d.ts dist/canvas-datagrid.d.ts",
-    "prebuild-docs": "rm -rf docs && npm run build",
+    "build:types": "jsdoc -c ./jsdoc.ts.conf.js && mv dist/types.d.ts dist/canvas-datagrid.d.ts",
+    "prebuild:docs": "rm -rf docs && npm run build",
     "start": "webpack serve --open"
   },
   "files": [
