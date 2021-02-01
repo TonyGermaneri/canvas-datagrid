@@ -26,6 +26,8 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Generate types based on JSDoc
+        run: npm run build:types
       - name: Test
         run: npm test
       - name: Upload build artifacts

@@ -12,10 +12,11 @@
     "test": "npm run build && karma start",
     "test:watch": "karma start --no-single-run",
     "watch": "webpack --watch",
-    "build:types": "jsdoc -c ./jsdoc.ts.conf.js && mv dist/types.d.ts dist/canvas-datagrid.d.ts",
+    "build:types": "jsdoc -c ./jsdoc.ts.conf.js",
     "prebuild:docs": "rm -rf docs && npm run build",
     "start": "webpack serve --open"
   },
+  "types": "./dist/types.d.ts",
   "files": [
     "dist/*",
     "lib/*",
