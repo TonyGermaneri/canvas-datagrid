@@ -659,7 +659,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       var count = 0;
       var items = {};
       var blanksItem = [];
-      self.data.forEach(function (row) {
+      self.viewData.forEach(function (row) {
         var cellValue = row[e.cell.header.name] == null ? row[e.cell.header.name] : String(row[e.cell.header.name]).trim();
         var value = self.blankValues.includes(cellValue) ? self.attributes.blanksText : cellValue;
 
@@ -1238,13 +1238,13 @@ __webpack_require__.r(__webpack_exports__);
       self.changes[y][cell.header.name] = self.input.value;
 
       if (!cell.data) {
-        self.data[cell.rowIndex] = {};
-        cell.data = self.data[cell.rowIndex];
+        self.originalData[cell.boundRowIndex] = {};
+        cell.data = self.originalData[cell.boundRowIndex];
       }
 
       cell.data[cell.header.name] = self.input.value;
 
-      if (y === self.data.length) {
+      if (y === self.viewData.length) {
         if (self.dispatchEvent('newrow', {
           value: self.input.value,
           defaultValue: cell.value,
@@ -1420,7 +1420,7 @@ __webpack_require__.r(__webpack_exports__);
       } else if (e.key === 'Enter') {
         self.endEdit(); // Move to cell in next or previous row
 
-        var nextRowIndex = e.shiftKey ? Math.max(0, ny - 1) : Math.min(ny + 1, self.data.length - 1);
+        var nextRowIndex = e.shiftKey ? Math.max(0, ny - 1) : Math.min(ny + 1, self.viewData.length - 1);
 
         if (nextRowIndex !== ny) {
           self.scrollIntoView(nx, nextRowIndex);
@@ -1435,7 +1435,7 @@ __webpack_require__.r(__webpack_exports__);
             break;
 
           case 'ArrowDown':
-            ny = Math.min(ny + 1, self.data.length - 1);
+            ny = Math.min(ny + 1, self.viewData.length - 1);
             break;
 
           case 'ArrowLeft':
@@ -1475,10 +1475,10 @@ __webpack_require__.r(__webpack_exports__);
         }
 
         if (ny < 0) {
-          ny = self.data.length - 1;
+          ny = self.viewData.length - 1;
         }
 
-        if (ny > self.data.length - 1) {
+        if (ny > self.viewData.length - 1) {
           ny = 0;
         }
 
@@ -2340,17 +2340,17 @@ __webpack_require__.r(__webpack_exports__);
         c,
         h,
         w,
-        s,
-        r,
-        rd,
+        schema,
+        rowIndex,
+        rowData,
         aCell,
-        data = self.data || [],
+        viewData = self.viewData || [],
         bc = self.style.gridBorderCollapse === 'collapse',
         selectionBorders = [],
         moveBorders = [],
         selectionHandles = [],
         rowHeaders = [],
-        l = data.length,
+        l = viewData.length,
         u = self.currentCell || {},
         columnHeaderCellHeight = self.getColumnHeaderCellHeight(),
         rowHeaderCellWidth = self.getRowHeaderCellWidth(),
@@ -2359,7 +2359,7 @@ __webpack_require__.r(__webpack_exports__);
     p = performance.now();
     self.visibleRowHeights = []; // if data length has changed, there is no way to know
 
-    if (data.length > self.orders.rows.length) {
+    if (viewData.length > self.orders.rows.length) {
       self.createRowOrders();
     }
 
@@ -2476,7 +2476,7 @@ __webpack_require__.r(__webpack_exports__);
           cell[propPrefix + 'Border'] += 'l';
         }
 
-        if (!self.selections[cell.rowIndex + -offsetPoint.y] || cell.columnIndex === s.length || self.selections[cell.rowIndex + -offsetPoint.y].indexOf(cell.columnIndex + 1 + -offsetPoint.x) === -1) {
+        if (!self.selections[cell.rowIndex + -offsetPoint.y] || cell.columnIndex === schema.length || self.selections[cell.rowIndex + -offsetPoint.y].indexOf(cell.columnIndex + 1 + -offsetPoint.x) === -1) {
           drawArray.push([cell, 'r']);
           cell[propPrefix + 'BorderRight'] = true;
           cell[propPrefix + 'Border'] += 'r';
@@ -2484,7 +2484,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
 
-    function drawCell(d, rowOrderIndex, rowIndex) {
+    function drawCell(rowData, rowOrderIndex, rowIndex) {
       return function drawEach(header, headerIndex, columnOrderIndex) {
         if (header.hidden) {
           return 0;
@@ -2502,7 +2502,7 @@ __webpack_require__.r(__webpack_exports__);
             hovered = self.hovers.rowIndex === rowOrderIndex && self.hovers.columnIndex === columnOrderIndex,
             active = self.activeCell.rowIndex === rowOrderIndex && self.activeCell.columnIndex === columnOrderIndex,
             isColumnHeaderCellCap = cellStyle === 'columnHeaderCellCap',
-            rawValue = d ? d[header.name] : undefined,
+            rawValue = rowData ? rowData[header.name] : undefined,
             isGrid = header.type === 'canvas-datagrid',
             activeHeader = (self.orders.rows[self.activeCell.rowIndex] === rowOrderIndex || self.orders.columns[self.activeCell.columnIndex] === headerIndex) && (columnOrderIndex === -1 || rowOrderIndex === -1) ? isRowHeader ? 'activeRowHeaderCell' : 'activeColumnHeaderCell' : false,
             val,
@@ -2512,7 +2512,7 @@ __webpack_require__.r(__webpack_exports__);
             cellWidth = self.sizes.columns[headerIndex] || header.width,
             ev = {
           value: rawValue,
-          row: d,
+          row: rowData,
           header: header
         };
 
@@ -2581,7 +2581,7 @@ __webpack_require__.r(__webpack_exports__);
           offsetHeight: cellHeight,
           parentNode: self.intf.parentNode,
           offsetParent: self.intf.parentNode,
-          data: d,
+          data: rowData,
           isCorner: isCorner,
           isHeader: isHeader,
           isColumnHeader: isColumnHeader,
@@ -2591,6 +2591,10 @@ __webpack_require__.r(__webpack_exports__);
           header: header,
           columnIndex: columnOrderIndex,
           rowIndex: rowOrderIndex,
+          viewRowIndex: rowOrderIndex,
+          viewColumnIndex: columnOrderIndex,
+          boundRowIndex: self.getBoundRowIndexFromViewRowIndex(rowOrderIndex),
+          boundColumnIndex: columnOrderIndex,
           sortColumnIndex: headerIndex,
           sortRowIndex: rowIndex,
           isGrid: isGrid,
@@ -2779,31 +2783,33 @@ __webpack_require__.r(__webpack_exports__);
       };
     }
 
-    function drawRowHeader(rowData, index, rowOrderIndex) {
-      var a, i;
-
+    function drawRowHeader(rowData, rowIndex, rowOrderIndex) {
       if (self.attributes.showRowHeaders) {
-        x = 0;
-        i = index + 1;
-        rowHeaderCell = {
-          rowHeaderCell: i
+        x = 0; // When filtering we'd like to display the actual row numbers,
+        // as it is in the unfiltered data, instead of simply the viewed
+        // row index + 1:
+
+        var filteredRowNumber = self.getBoundRowIndexFromViewRowIndex(rowIndex) + 1;
+        var rowHeaderValue = self.hasActiveFilters() ? filteredRowNumber : rowIndex + 1;
+        var _rowHeaderCell = {
+          rowHeaderCell: rowHeaderValue
         };
-        a = {
+        var headerDescription = {
           name: 'rowHeaderCell',
           width: self.sizes.columns[-1] || self.style.rowHeaderCellWidth,
           style: 'rowHeaderCell',
           type: 'string',
-          data: i,
+          data: rowHeaderValue,
           index: -1
         };
-        rowOpen = self.openChildren[index];
-        drawCell(rowHeaderCell, index, rowOrderIndex)(a, -1, -1);
+        rowOpen = self.openChildren[rowIndex];
+        drawCell(_rowHeaderCell, rowOrderIndex, rowIndex)(headerDescription, -1, -1);
       }
     }
 
     function drawHeaders() {
       var d,
-          g = s.length,
+          g = schema.length,
           i,
           o,
           columnHeaderCell,
@@ -2815,7 +2821,7 @@ __webpack_require__.r(__webpack_exports__);
 
         for (o = start; o < end; o += 1) {
           i = self.orders.columns[o];
-          header = s[i];
+          header = schema[i];
 
           if (!header.hidden) {
             d = {
@@ -2883,7 +2889,7 @@ __webpack_require__.r(__webpack_exports__);
             isColumnHeaderCell: true,
             isColumnHeaderCellCap: true,
             type: 'string',
-            index: s.length
+            index: schema.length
           };
           drawCell({
             endCap: ''
@@ -2908,21 +2914,21 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
 
-    function drawRow(r, d) {
-      var i,
+    function drawRow(rowOrderIndex, rowIndex) {
+      var headerIndex,
           treeHeight,
           rowSansTreeHeight,
-          o,
-          g = s.length;
+          columnOrderIndex,
+          g = schema.length;
 
       if (y - cellHeight * 2 > h) {
         return false;
       }
 
-      rd = data[r];
-      rowOpen = self.openChildren[r];
-      rowSansTreeHeight = (self.sizes.rows[r] || self.style.cellHeight) * self.scale;
-      treeHeight = (rowOpen ? self.sizes.trees[r] : 0) * self.scale;
+      rowData = viewData[rowOrderIndex];
+      rowOpen = self.openChildren[rowOrderIndex];
+      rowSansTreeHeight = (self.sizes.rows[rowOrderIndex] || self.style.cellHeight) * self.scale;
+      treeHeight = (rowOpen ? self.sizes.trees[rowOrderIndex] : 0) * self.scale;
       rowHeight = rowSansTreeHeight + treeHeight;
 
       if (y < -rowHeight) {
@@ -2935,12 +2941,12 @@ __webpack_require__.r(__webpack_exports__);
 
       cellHeight = rowHeight; //draw normal columns
 
-      for (o = self.scrollIndexLeft; o < g; o += 1) {
-        i = self.orders.columns[o];
-        x += drawCell(rd, r, d)(s[i], i, o);
+      for (columnOrderIndex = self.scrollIndexLeft; columnOrderIndex < g; columnOrderIndex += 1) {
+        headerIndex = self.orders.columns[columnOrderIndex];
+        x += drawCell(rowData, rowOrderIndex, rowIndex)(schema[headerIndex], headerIndex, columnOrderIndex);
 
         if (x > self.width) {
-          self.scrollIndexRight = o;
+          self.scrollIndexRight = columnOrderIndex;
           self.scrollPixelRight = x;
           break;
         }
@@ -2953,9 +2959,9 @@ __webpack_require__.r(__webpack_exports__);
         x += rowHeaderCellWidth;
       }
 
-      for (o = 0; o < self.frozenColumn; o += 1) {
-        i = self.orders.columns[o];
-        x += drawCell(rd, r, d)(s[i], i, o);
+      for (columnOrderIndex = 0; columnOrderIndex < self.frozenColumn; columnOrderIndex += 1) {
+        headerIndex = self.orders.columns[columnOrderIndex];
+        x += drawCell(rowData, rowOrderIndex, rowIndex)(schema[headerIndex], headerIndex, columnOrderIndex);
 
         if (x > self.width) {
           break;
@@ -2967,9 +2973,9 @@ __webpack_require__.r(__webpack_exports__);
       cellHeight = rowHeight;
       x = -self.scrollBox.scrollLeft + self.scrollPixelLeft + self.style.cellBorderWidth; // don't draw a tree for the new row
 
-      treeGrid = self.childGrids[r];
+      treeGrid = self.childGrids[rowOrderIndex];
 
-      if (r !== data.length && rowOpen) {
+      if (rowOrderIndex !== viewData.length && rowOpen) {
         treeGrid.visible = true;
         treeGrid.parentNode = {
           offsetTop: y + rowSansTreeHeight + self.canvasOffsetTop,
@@ -2982,10 +2988,10 @@ __webpack_require__.r(__webpack_exports__);
           nodeType: 'canvas-datagrid-tree',
           scrollTop: self.scrollBox.scrollTop,
           scrollLeft: self.scrollBox.scrollLeft,
-          rowIndex: r
+          rowIndex: rowOrderIndex
         };
         self.visibleCells.unshift({
-          rowIndex: r,
+          rowIndex: rowOrderIndex,
           columnIndex: 0,
           y: treeGrid.parentNode.offsetTop,
           x: treeGrid.parentNode.offsetLeft,
@@ -2997,18 +3003,18 @@ __webpack_require__.r(__webpack_exports__);
         treeGrid.draw();
       } else if (treeGrid) {
         treeGrid.parentNode.offsetHeight = 0;
-        delete self.sizes.trees[r];
+        delete self.sizes.trees[rowOrderIndex];
       }
 
-      rowHeaders.push([rd, r, d, y, rowHeight]);
-      self.visibleRowHeights[r] = rowHeight;
+      rowHeaders.push([rowData, rowOrderIndex, rowIndex, y, rowHeight]);
+      self.visibleRowHeights[rowOrderIndex] = rowHeight;
       y += cellHeight + (bc ? 0 : self.style.cellBorderWidth);
       return true;
     }
 
     function initDraw() {
       self.visibleRows = [];
-      s = self.getSchema();
+      schema = self.getSchema();
       self.visibleCells = [];
       self.canvasOffsetTop = self.isChildGrid ? self.parentNode.offsetTop : 0.5;
       self.canvasOffsetLeft = self.isChildGrid ? self.parentNode.offsetLeft : -0.5;
@@ -3024,15 +3030,15 @@ __webpack_require__.r(__webpack_exports__);
     }
 
     function drawFrozenRows() {
-      var n,
-          ln = Math.min(data.length, self.frozenRow);
+      var rowOrderIndex,
+          ln = Math.min(viewData.length, self.frozenRow);
       x = -self.scrollBox.scrollLeft + self.scrollPixelLeft + self.style.cellBorderWidth;
       y = columnHeaderCellHeight;
 
-      for (r = 0; r < ln; r += 1) {
-        n = self.orders.rows[r];
+      for (rowIndex = 0; rowIndex < ln; rowIndex += 1) {
+        rowOrderIndex = self.orders.rows[rowIndex];
 
-        if (!drawRow(n, r)) {
+        if (!drawRow(rowOrderIndex, rowIndex)) {
           break;
         }
       }
@@ -3054,22 +3060,22 @@ __webpack_require__.r(__webpack_exports__);
         self.ctx.clip();
       }
 
-      var o,
-          n,
-          i,
-          g = s.length;
+      var columnOrderIndex,
+          rowOrderIndex,
+          headerIndex,
+          g = schema.length;
       x = -self.scrollBox.scrollLeft + self.scrollPixelLeft + self.style.cellBorderWidth;
 
       if (!self.attributes.snapToRow) {
         y += -self.scrollBox.scrollTop + self.scrollPixelTop + self.style.cellBorderWidth;
       }
 
-      for (r = self.frozenRow + self.scrollIndexTop; r < l; r += 1) {
-        n = self.orders.rows[r];
-        self.scrollIndexBottom = r;
+      for (rowIndex = self.frozenRow + self.scrollIndexTop; rowIndex < l; rowIndex += 1) {
+        rowOrderIndex = self.orders.rows[rowIndex];
+        self.scrollIndexBottom = rowIndex;
         self.scrollPixelBottom = y;
 
-        if (!drawRow(n, r)) {
+        if (!drawRow(rowOrderIndex, rowIndex)) {
           break;
         }
       }
@@ -3082,16 +3088,16 @@ __webpack_require__.r(__webpack_exports__);
         rowHeight = cellHeight = self.style.cellHeight;
         rowOpen = false;
 
-        for (o = self.scrollIndexLeft; o < g; o += 1) {
-          i = self.orders.columns[o];
-          x += drawCell(self.newRow, data.length, data.length)(s[i], i, o);
+        for (columnOrderIndex = self.scrollIndexLeft; columnOrderIndex < g; columnOrderIndex += 1) {
+          headerIndex = self.orders.columns[columnOrderIndex];
+          x += drawCell(self.newRow, viewData.length, viewData.length)(schema[headerIndex], headerIndex, columnOrderIndex);
 
           if (x > self.width + self.scrollBox.scrollLeft) {
             break;
           }
         }
 
-        rowHeaders.push([self.newRow, data.length, data.length, y, rowHeight]);
+        rowHeaders.push([self.newRow, viewData.length, viewData.length, y, rowHeight]);
       }
 
       self.ctx.restore();
@@ -3158,7 +3164,7 @@ __webpack_require__.r(__webpack_exports__);
         self.ctx.lineWidth = self.style.reorderMarkerIndexBorderWidth;
         self.ctx.strokeStyle = self.style.reorderMarkerIndexBorderColor;
 
-        if (self.currentCell.sortColumnIndex !== self.reorderObject.sortColumnIndex && self.currentCell.sortColumnIndex > -1 && self.currentCell.sortColumnIndex < s.length) {
+        if (self.currentCell.sortColumnIndex !== self.reorderObject.sortColumnIndex && self.currentCell.sortColumnIndex > -1 && self.currentCell.sortColumnIndex < schema.length) {
           addBorderLine(m, self.reorderTarget.columnIndex > self.reorderObject.columnIndex ? 'r' : 'l');
         }
       }
@@ -3623,7 +3629,7 @@ __webpack_require__.r(__webpack_exports__);
         dataHeight = 0,
         dataWidth = 0,
         dims,
-        l = (self.data || []).length,
+        l = (self.viewData || []).length,
         columnHeaderCellHeight = self.getColumnHeaderCellHeight(),
         rowHeaderCellWidth = self.getRowHeaderCellWidth(),
         ch = self.style.cellHeight,
@@ -3658,7 +3664,7 @@ __webpack_require__.r(__webpack_exports__);
         } else if (['auto', undefined].indexOf(self.style[dim]) == -1 && ['auto', undefined].indexOf(self.appliedInlineStyles[dim]) == -1) {
           self.parentNodeStyle[dim] = self.style[dim];
 
-          if (self.isComponet) {
+          if (self.isComponent) {
             self.canvas.style[dim] = self.style[dim];
           }
         }
@@ -3820,7 +3826,7 @@ __webpack_require__.r(__webpack_exports__);
 
   self.scroll = function (dontDraw) {
     var s = self.getSchema(),
-        l = (self.data || []).length,
+        l = (self.viewData || []).length,
         ch = self.style.cellHeight; // go too far in leaps, then get focused
 
     self.scrollIndexTop = Math.floor(l * (self.scrollBox.scrollTop / self.scrollBox.scrollHeight) - 100);
@@ -3835,7 +3841,7 @@ __webpack_require__.r(__webpack_exports__);
     self.scrollIndexLeft = self.frozenColumn;
     self.scrollPixelLeft = 0;
 
-    while (self.scrollPixelTop < self.scrollBox.scrollTop && self.scrollIndexTop < self.data.length) {
+    while (self.scrollPixelTop < self.scrollBox.scrollTop && self.scrollIndexTop < self.viewData.length) {
       // start on index +1 since index 0 was used in "go too far" section above
       self.scrollIndexTop += 1;
       self.scrollPixelTop = self.scrollCache.y[self.scrollIndexTop];
@@ -3851,9 +3857,9 @@ __webpack_require__.r(__webpack_exports__);
       self.scrollPixelLeft -= self.getColummnWidth(self.orders.columns[self.scrollIndexLeft]);
     }
 
-    if ((self.data || []).length > 0) {
+    if ((self.viewData || []).length > 0) {
       self.scrollIndexTop = Math.max(self.scrollIndexTop - 1, 0);
-      self.scrollPixelTop = Math.max(self.scrollPixelTop - (self.data[self.scrollIndexTop] ? (self.sizes.rows[self.scrollIndexTop] || ch) + (self.sizes.trees[self.scrollIndexTop] || 0) : ch) * self.scale, 0);
+      self.scrollPixelTop = Math.max(self.scrollPixelTop - (self.viewData[self.scrollIndexTop] ? (self.sizes.rows[self.scrollIndexTop] || ch) + (self.sizes.trees[self.scrollIndexTop] || 0) : ch) * self.scale, 0);
     }
 
     self.ellipsisCache = {};
@@ -4310,7 +4316,7 @@ __webpack_require__.r(__webpack_exports__);
     document.body.removeEventListener('mousemove', self.dragReorder, false);
     document.body.removeEventListener('mouseup', self.stopDragReorder, false);
 
-    if (self.reorderObject && self.reorderTarget && (self.dragMode === 'column-reorder' && self.reorderTarget.sortColumnIndex > -1 && self.reorderTarget.sortColumnIndex < self.getSchema().length || self.dragMode === 'row-reorder' && self.reorderTarget.rowIndex > -1 && self.reorderTarget.rowIndex < self.data.length) && self.reorderObject[i] !== self.reorderTarget[i] && !self.dispatchEvent('reorder', {
+    if (self.reorderObject && self.reorderTarget && (self.dragMode === 'column-reorder' && self.reorderTarget.sortColumnIndex > -1 && self.reorderTarget.sortColumnIndex < self.getSchema().length || self.dragMode === 'row-reorder' && self.reorderTarget.rowIndex > -1 && self.reorderTarget.rowIndex < self.viewData.length) && self.reorderObject[i] !== self.reorderTarget[i] && !self.dispatchEvent('reorder', {
       NativeEvent: e,
       source: self.reorderObject,
       target: self.reorderTarget,
@@ -4634,7 +4640,7 @@ __webpack_require__.r(__webpack_exports__);
         x = self.activeCell.columnIndex,
         y = self.activeCell.rowIndex,
         ctrl = e.ctrlKey || e.metaKey,
-        last = self.data.length - 1,
+        last = self.viewData.length - 1,
         s = self.getSchema(),
         cols = s.length - 1;
     var defaultPrevented = self.dispatchEvent('keydown', {
@@ -4684,7 +4690,7 @@ __webpack_require__.r(__webpack_exports__);
     } else if (e.key === 'Home' || ctrl && e.key === 'ArrowUp') {
       y = 0;
     } else if (e.key === 'End' || ctrl && e.key === 'ArrowDown') {
-      y = self.data.length - 1;
+      y = self.viewData.length - 1;
     } else if (ctrl && e.key === 'ArrowRight') {
       x = adjacentCells.last;
     } else if (ctrl && e.key === 'ArrowLeft') {
@@ -4896,7 +4902,7 @@ __webpack_require__.r(__webpack_exports__);
         // (instead of the row index at which the row is rendered):
         var realRowIndex = self.orders.rows[startRowIndex + rowIndex];
         var cells = rows[rowIndex];
-        var existingRowData = self.data[realRowIndex];
+        var existingRowData = self.viewData[realRowIndex];
         var newRowData = Object.assign({}, existingRowData);
         selections[realRowIndex] = [];
 
@@ -4920,7 +4926,7 @@ __webpack_require__.r(__webpack_exports__);
           newRowData[columnName] = cellData;
         }
 
-        self.data[realRowIndex] = newRowData;
+        self.originalData[realRowIndex] = newRowData;
       }
 
       self.selections = selections;
@@ -4936,7 +4942,10 @@ __webpack_require__.r(__webpack_exports__);
     });
     self.dispatchEvent('afterpaste', {
       cells: affectedCells
-    });
+    }); // Because originalData has been updated, we must refresh
+    // viewData to ensure the new cell values are rendered
+
+    self.refresh();
     return rows.length;
   };
 
@@ -5029,7 +5038,6 @@ __webpack_require__.r(__webpack_exports__);
 
     var t,
         d,
-        data = self.data || [],
         tableRows = [],
         textRows = [],
         outputHeaders = {},
@@ -5171,6 +5179,20 @@ __webpack_require__.r(__webpack_exports__);
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 /* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(self, ctor) {
   self.scale = 1;
   self.orders = {
@@ -5206,8 +5228,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       });
     },
     sort: function sort() {
+      console.warn('grid.orderings.sort has been deprecated. Please use grid.refresh().');
       self.orderings.columns.forEach(function (col) {
-        self.data.sort(col.sortFunction(col.orderBy, col.orderDirection));
+        self.viewData.sort(col.sortFunction(col.orderBy, col.orderDirection));
       });
     }
   };
@@ -5258,48 +5281,57 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   };
 
   self.getSelectedData = function (expandToRow) {
-    var d = [],
-        s = self.getSchema(),
-        l = self.data.length;
+    var selectedData = [];
+    var schema = self.getSchema();
+    var viewDataLength = self.viewData.length;
 
-    if (l === 0) {
+    if (viewDataLength === 0) {
       return [];
-    }
+    } // self.selections is a sparse array, so `viewRowIndex` here
+    // will equal the row index as where it's rendered,
+    // not as where it is in the original data array.
 
-    self.selections.forEach(function (row, index) {
+
+    self.selections.forEach(function (row, viewRowIndex) {
       if (!row) {
         return;
       }
 
-      if (index === l) {
+      if (viewRowIndex === viewDataLength) {
         return;
       }
 
       if (row.length === 0) {
-        d[index] = null;
+        selectedData[viewRowIndex] = null;
         return;
       }
 
-      d[index] = {};
+      selectedData[viewRowIndex] = {};
       row.forEach(function (col) {
-        var orderedIndex;
-
-        if (col === -1 || !s[col]) {
+        if (col === -1 || !schema[col]) {
           return;
         }
 
-        orderedIndex = self.orders.columns[col];
+        var orderedIndex = self.orders.columns[col];
 
-        if (!expandToRow && s[orderedIndex].hidden) {
+        if (!expandToRow && schema[orderedIndex].hidden) {
           return;
         }
 
-        if (self.data[index]) {
-          d[index][s[orderedIndex].name] = self.data[index][s[orderedIndex].name];
+        if (self.viewData[viewRowIndex]) {
+          selectedData[viewRowIndex][schema[orderedIndex].name] = self.viewData[viewRowIndex][schema[orderedIndex].name];
         }
       });
     });
-    return d;
+    return selectedData;
+  };
+
+  self.getBoundRowIndexFromViewRowIndex = function (viewRowIndex) {
+    if (self.boundRowIndexMap && self.boundRowIndexMap.has(viewRowIndex)) {
+      return self.boundRowIndexMap.get(viewRowIndex);
+    }
+
+    return undefined;
   };
 
   self.getColumnHeaderCellHeight = function () {
@@ -5363,7 +5395,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   };
 
   self.createRowOrders = function () {
-    self.orders.rows = fillArray(0, self.data.length - 1);
+    self.orders.rows = fillArray(0, self.originalData.length - 1);
   };
 
   self.getVisibleSchema = function () {
@@ -5411,27 +5443,103 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     return f;
   };
 
-  self.applyFilter = function () {
-    self.refreshFromOrigialData();
-    Object.keys(self.columnFilters).forEach(function (filter) {
-      var header = self.getHeaderByName(filter);
-
-      if (!header) {
-        return;
-      }
-
-      self.currentFilter = header.filter || self.filter(header.type || 'string');
-      self.data = self.data.filter(function (row) {
-        return self.currentFilter(row[filter], self.columnFilters[filter]);
-      });
-    });
-    self.resize();
-    self.draw(true);
+  self.hasActiveFilters = function () {
+    return self.columnFilters && Object.keys(self.columnFilters).length > 0;
   };
 
-  self.applyDataTransforms = function () {
-    self.applyFilter();
-    self.orderings.sort();
+  self.getFilteredAndSortedViewData = function (originalData) {
+    // We make a copy of originalData here in order be able to
+    // filter and sort rows without modifying the original array.
+    // Each row is turned into a (row, rowIndex) tuple
+    // so that when we apply filters, we can refer back to the
+    // row's original row number in originalData. This becomes
+    // useful when emitting cell events.
+    var newViewData = originalData.map(function (row, originalRowIndex) {
+      return [row, originalRowIndex];
+    }); // Apply filtering
+
+    var _loop = function _loop() {
+      var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+          headerName = _Object$entries$_i[0],
+          filterText = _Object$entries$_i[1];
+
+      var header = self.getHeaderByName(headerName);
+
+      if (!header) {
+        return "continue";
+      }
+
+      var currentFilterFunction = header.filter || self.filter(header.type || 'string');
+      newViewData = newViewData.filter(function (_ref) {
+        var _ref2 = _slicedToArray(_ref, 1),
+            row = _ref2[0];
+
+        var cellValue = row[headerName];
+        var shouldIncludeRow = currentFilterFunction(cellValue, filterText);
+        return shouldIncludeRow;
+      });
+    };
+
+    for (var _i = 0, _Object$entries = Object.entries(self.columnFilters); _i < _Object$entries.length; _i++) {
+      var _ret = _loop();
+
+      if (_ret === "continue") continue;
+    } // Apply sorting
+
+
+    var _iterator = _createForOfIteratorHelper(self.orderings.columns),
+        _step;
+
+    try {
+      var _loop2 = function _loop2() {
+        var column = _step.value;
+        var sortFn = column.sortFunction(column.orderBy, column.orderDirection);
+        newViewData.sort(function (_ref7, _ref8) {
+          var _ref9 = _slicedToArray(_ref7, 1),
+              rowA = _ref9[0];
+
+          var _ref10 = _slicedToArray(_ref8, 1),
+              rowB = _ref10[0];
+
+          return sortFn(rowA, rowB);
+        });
+      };
+
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        _loop2();
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+
+    return {
+      viewData: newViewData.map(function (_ref3) {
+        var _ref4 = _slicedToArray(_ref3, 1),
+            row = _ref4[0];
+
+        return row;
+      }),
+      boundRowIndexMap: new Map(newViewData.map(function (_ref5, viewRowIndex) {
+        var _ref6 = _slicedToArray(_ref5, 2),
+            _row = _ref6[0],
+            originalRowIndex = _ref6[1];
+
+        return [viewRowIndex, originalRowIndex];
+      }))
+    };
+  };
+
+  self.refresh = function () {
+    var _self$getFilteredAndS = self.getFilteredAndSortedViewData(self.originalData),
+        viewData = _self$getFilteredAndS.viewData,
+        boundRowIndexMap = _self$getFilteredAndS.boundRowIndexMap;
+
+    self.viewData = viewData;
+    self.boundRowIndexMap = boundRowIndexMap;
+    self.resize();
+    self.draw(true);
   };
 
   self.getBestGuessDataType = function (columnName, data) {
@@ -5493,12 +5601,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     if (setTimer && !ctrl && self.currentCell && self.currentCell.columnIndex !== -1) {
       self.scrollTimer = setTimeout(self.mousemove, self.attributes.scrollRepeatRate, e);
     }
-  };
-
-  self.refreshFromOrigialData = function () {
-    self.data = self.originalData.filter(function (row) {
-      return true;
-    });
   };
 
   self.validateColumn = function (c, s) {
@@ -5575,7 +5677,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     self.reloadStoredValues();
 
     if (self.storedSettings && _typeof(self.storedSettings.orders) === 'object' && self.storedSettings.orders !== null) {
-      if (self.storedSettings.orders.rows.length >= (self.data || []).length) {
+      if (self.storedSettings.orders.rows.length >= (self.viewData || []).length) {
         self.orders.rows = self.storedSettings.orders.rows;
       }
 
@@ -5784,6 +5886,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     self.intf.isColumnVisible = self.isColumnVisible;
     self.intf.order = self.order;
     self.intf.draw = self.draw;
+    self.intf.refresh = self.refresh;
     self.intf.isComponent = self.isComponent;
     self.intf.selectArea = self.selectArea;
     self.intf.clipElement = self.clipElement;
@@ -5870,6 +5973,18 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     Object.defineProperty(self.intf, 'hasFocus', {
       get: function get() {
         return self.hasFocus;
+      }
+    });
+    /**
+     * Indicates whether grid has filters active
+     * @memberof canvasDatagrid
+     * @name hasActiveFilters
+     * @returns {boolean} When true, grid data is being filtered
+     */
+
+    Object.defineProperty(self.intf, 'hasActiveFilters', {
+      get: function get() {
+        return self.hasActiveFilters();
       }
     });
     Object.defineProperty(self.intf, 'style', {
@@ -6302,7 +6417,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         throw new TypeError('Value must be an array.');
       }
 
-      if (!self.data || val.length < self.data.length) {
+      if (!self.originalData || val.length < self.originalData.length) {
         throw new RangeError('Array length must be equal to or greater than number of rows.');
       }
 
@@ -6463,6 +6578,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }
 
     self.intf.parsers[self.dataType](data, function (data, schema) {
+      // set the unfiltered/sorted data array
+      self.originalData = data;
+      self.viewData = Array.from(self.originalData);
+
       if (Array.isArray(schema)) {
         self.schema = schema;
       } // Issue #89 - allow schema to be auto-created every time data is set
@@ -6478,14 +6597,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
       if (self.getSchema()) {
         self.createColumnOrders();
-      } // set the unfiltered/sorted data array
+      } // apply filter, sort, etc to incoming dataset, set viewData:
 
 
-      self.originalData = data; // apply filter, sort, etc to incoming dataset
+      self.refresh(); // empty data was set
 
-      self.applyDataTransforms(); // empty data was set
-
-      if (!self.schema && (self.data || []).length === 0) {
+      if (!self.schema && (self.originalData || []).length === 0) {
         self.tempSchema = [{
           name: ''
         }];
@@ -6504,16 +6621,26 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     });
   };
 
+  Object.defineProperty(self.intf, 'viewData', {
+    get: function get() {
+      return self.viewData;
+    }
+  });
+  Object.defineProperty(self.intf, 'boundData', {
+    get: function get() {
+      return self.originalData;
+    }
+  });
   Object.defineProperty(self.intf, 'data', {
     get: function dataGetter() {
-      return self.data;
+      return self.originalData;
     },
     set: function dataSetter(value) {
       self.etl(value, function () {
         self.changes = [];
         self.createNewRowData();
 
-        if (self.attributes.autoResizeColumns && self.data.length > 0 && self.storedSettings === undefined) {
+        if (self.attributes.autoResizeColumns && self.originalData.length > 0 && self.storedSettings === undefined) {
           self.autosize();
         } // set the header column to fit the numbers in it
 
@@ -6522,7 +6649,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         self.createRowOrders();
         self.tryLoadStoredSettings();
         self.dispatchEvent('datachanged', {
-          data: self.data
+          data: self.originalData
         });
         self.resize(true);
       });
@@ -6904,10 +7031,11 @@ __webpack_require__.r(__webpack_exports__);
 
     self.validateColumn(c, s);
     s.splice(index, 0, c);
-    self.data.forEach(function (row) {
+    self.originalData.forEach(function (row) {
       self.applyDefaultValue(row, c);
     });
     self.intf.schema = s;
+    self.refresh();
   };
   /**
    * Deletes a column from the schema at the specified index.
@@ -6920,13 +7048,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
   self.deleteColumn = function (index) {
-    var s = self.getSchema(); // remove data matching this column name from data
+    var schema = self.getSchema(); // remove data matching this column name from data
 
-    self.data.forEach(function (row) {
-      delete row[s[index].name];
+    self.originalData.forEach(function (row) {
+      delete row[schema[index].name];
     });
-    s.splice(index, 1);
-    self.intf.schema = s;
+    schema.splice(index, 1);
+    self.intf.schema = schema;
+    self.refresh();
   };
   /**
    * Adds a new column into the schema.
@@ -6942,10 +7071,11 @@ __webpack_require__.r(__webpack_exports__);
     var s = self.getSchema();
     self.validateColumn(c, s);
     s.push(c);
-    self.data.forEach(function (row) {
+    self.originalData.forEach(function (row) {
       self.applyDefaultValue(row, c);
     });
     self.intf.schema = s;
+    self.refresh();
   };
   /**
    * Deletes a row from the dataset at the specified index.
@@ -6981,7 +7111,8 @@ __webpack_require__.r(__webpack_exports__);
       if (d[c.name] === undefined) {
         self.applyDefaultValue(self.originalData[index], c);
       }
-    });
+    }); // setFilter calls .refresh(), so we need not call it again:
+
     self.setFilter();
     self.resize(true);
   };
@@ -7000,7 +7131,8 @@ __webpack_require__.r(__webpack_exports__);
       if (d[c.name] === undefined) {
         self.applyDefaultValue(self.originalData[self.originalData.length - 1], c);
       }
-    });
+    }); // setFilter calls .refresh(), so we need not call it again:
+
     self.setFilter();
     self.resize(true);
   };
@@ -7077,7 +7209,7 @@ __webpack_require__.r(__webpack_exports__);
       self.columnFilters[column] = value;
     }
 
-    self.applyDataTransforms();
+    self.refresh();
   };
   /**
    * Returns the number of pixels to scroll down to line up with row rowIndex.
@@ -7090,7 +7222,7 @@ __webpack_require__.r(__webpack_exports__);
 
   self.findRowScrollTop = function (rowIndex) {
     if (self.scrollCache.y[rowIndex] === undefined) {
-      throw new RangeError('Row index out of range.');
+      throw new RangeError("Row index ".concat(rowIndex, " out of range: ").concat(self.scrollCache.y.length, "."));
     }
 
     return self.scrollCache.y[rowIndex];
@@ -7248,7 +7380,7 @@ __webpack_require__.r(__webpack_exports__);
       top: 0,
       left: -1,
       right: self.getSchema().length - 1,
-      bottom: self.data.length - 1
+      bottom: self.viewData.length - 1
     });
 
     if (dontDraw) {
@@ -7268,7 +7400,7 @@ __webpack_require__.r(__webpack_exports__);
 
   self.isColumnSelected = function (columnIndex) {
     var colIsSelected = true;
-    self.data.forEach(function (row, rowIndex) {
+    self.viewData.forEach(function (row, rowIndex) {
       if (!self.selections[rowIndex] || self.selections[rowIndex].indexOf(self.orders.columns[columnIndex]) === -1) {
         colIsSelected = false;
       }
@@ -7288,7 +7420,7 @@ __webpack_require__.r(__webpack_exports__);
   self.forEachSelectedCell = function (fn, expandToRow) {
     var d = [],
         s = expandToRow ? self.getSchema() : self.getVisibleSchema(),
-        l = self.data.length;
+        l = self.viewData.length;
     self.selections.forEach(function (row, index) {
       if (index === l) {
         return;
@@ -7305,7 +7437,7 @@ __webpack_require__.r(__webpack_exports__);
           return;
         }
 
-        fn(self.data, index, s[col].name);
+        fn(self.viewData, index, s[col].name);
       });
     });
   };
@@ -7325,7 +7457,7 @@ __webpack_require__.r(__webpack_exports__);
     var s, e, x;
 
     function addCol(i) {
-      self.data.forEach(function (row, rowIndex) {
+      self.viewData.forEach(function (row, rowIndex) {
         self.selections[rowIndex] = self.selections[rowIndex] || [];
 
         if (self.selections[rowIndex].indexOf(i) === -1) {
@@ -7335,7 +7467,7 @@ __webpack_require__.r(__webpack_exports__);
     }
 
     function removeCol(i) {
-      self.data.forEach(function (row, rowIndex) {
+      self.viewData.forEach(function (row, rowIndex) {
         self.selections[rowIndex] = self.selections[rowIndex] || [];
 
         if (self.selections[rowIndex].indexOf(i) !== -1) {
@@ -7458,7 +7590,7 @@ __webpack_require__.r(__webpack_exports__);
   self.collapseTree = function (rowIndex) {
     self.dispatchEvent('collapsetree', {
       childGrid: self.childGrids[rowIndex],
-      data: self.data[rowIndex],
+      data: self.viewData[rowIndex],
       rowIndex: rowIndex
     });
     self.openChildren[rowIndex].blur();
@@ -7505,7 +7637,7 @@ __webpack_require__.r(__webpack_exports__);
         offsetParent: self.intf.parentNode,
         parentNode: self.intf.parentNode,
         style: 'tree',
-        data: self.data[rowIndex]
+        data: self.viewData[rowIndex]
       };
       treeGrid = self.createGrid(trArgs);
       self.childGrids[rowIndex] = treeGrid;
@@ -7515,7 +7647,7 @@ __webpack_require__.r(__webpack_exports__);
     treeGrid.visible = true;
     self.dispatchEvent('expandtree', {
       treeGrid: treeGrid,
-      data: self.data[rowIndex],
+      data: self.viewData[rowIndex],
       rowIndex: rowIndex
     });
     self.openChildren[rowIndex] = treeGrid;
@@ -7645,7 +7777,7 @@ __webpack_require__.r(__webpack_exports__);
     self.orderBy = columnName;
     self.orderDirection = direction;
 
-    if (!self.data || self.data.length === 0) {
+    if (!self.viewData || self.viewData.length === 0) {
       return;
     }
 
@@ -7660,12 +7792,11 @@ __webpack_require__.r(__webpack_exports__);
     }
 
     self.orderings.add(columnName, direction, typeof f === 'function' ? f : self.sorters.string);
-    self.orderings.sort();
+    self.refresh();
     self.dispatchEvent('sortcolumn', {
       name: columnName,
       direction: direction
     });
-    self.draw(true);
 
     if (dontSetStorageData) {
       return;
@@ -7713,15 +7844,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
   self.moveTo = function (sel, x, y) {
-    var d = self.getSelectedData(),
-        s = self.getVisibleSchema(),
-        l = sel.length,
+    var selectedData = self.getSelectedData(),
+        visibleSchema = self.getVisibleSchema(),
+        selectionLength = sel.length,
         xi,
         maxRowLength = -Infinity,
         minXi = Infinity,
         yi = y - 1;
-    sel.forEach(function (row, index) {
-      if (index === l) {
+    sel.forEach(function (row, rowIndex) {
+      if (rowIndex === selectionLength) {
         return;
       }
 
@@ -7735,15 +7866,17 @@ __webpack_require__.r(__webpack_exports__);
         // intentional redef of colIndex
         colIndex = self.getVisibleColumnIndexOf(colIndex);
 
-        if (!s[colIndex]) {
+        if (!visibleSchema[colIndex]) {
           return;
-        }
+        } // TODO:
 
-        if (!self.data[index]) {
-          self.data[index] = {};
-        }
 
-        self.data[index][s[colIndex].name] = null;
+        if (!self.data[rowIndex]) {
+          self.data[rowIndex] = {};
+        } // TODO:
+
+
+        self.data[rowIndex][visibleSchema[colIndex].name] = null;
       });
     });
     sel.forEach(function (row, index) {
@@ -7761,15 +7894,18 @@ __webpack_require__.r(__webpack_exports__);
 
         lastSourceIndex = colIndex;
 
-        if (colIndex === -1 || !s[xi] || !s[colIndex] || self.data.length - 1 < yi || yi < 0) {
+        if (colIndex === -1 || !visibleSchema[xi] || !visibleSchema[colIndex] || // TODO:
+        self.data.length - 1 < yi || yi < 0) {
           return;
-        }
+        } // TODO:
+
 
         if (!self.data[yi]) {
           self.data[yi] = {};
-        }
+        } // TODO:
 
-        self.data[yi][s[xi].name] = d[index][s[colIndex].name];
+
+        self.data[yi][visibleSchema[xi].name] = selectedData[index][visibleSchema[colIndex].name];
       });
     });
   };
@@ -8074,7 +8210,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
   self.getSchemaFromData = function (d) {
-    d = d || self.data;
+    d = d || self.originalData;
     return Object.keys(d[0] || {
       ' ': ''
     }).map(function mapEachSchemaColumn(key, index) {
@@ -8128,7 +8264,7 @@ __webpack_require__.r(__webpack_exports__);
       self.selections = [];
     }
 
-    if (self.selectionBounds.top < -1 || self.selectionBounds.bottom > self.data.length || self.selectionBounds.left < -1 || self.selectionBounds.right > s.length) {
+    if (self.selectionBounds.top < -1 || self.selectionBounds.bottom > self.viewData.length || self.selectionBounds.left < -1 || self.selectionBounds.right > s.length) {
       throw new Error('Impossible selection area');
     }
 
@@ -8168,7 +8304,7 @@ __webpack_require__.r(__webpack_exports__);
 
     if (name === 'cornerCell') {
       self.ctx.font = self.style.rowHeaderCellFont;
-      return self.ctx.measureText((self.data.length + (self.attributes.showNewRow ? 1 : 0)).toString()).width + self.style.autosizePadding + self.style.autosizeHeaderCellPadding + self.style.rowHeaderCellPaddingRight + self.style.rowHeaderCellPaddingLeft + (self.attributes.tree ? self.style.treeArrowWidth + self.style.treeArrowMarginLeft + self.style.treeArrowMarginRight : 0);
+      return self.ctx.measureText((self.viewData.length + (self.attributes.showNewRow ? 1 : 0)).toString()).width + self.style.autosizePadding + self.style.autosizeHeaderCellPadding + self.style.rowHeaderCellPaddingRight + self.style.rowHeaderCellPaddingLeft + (self.attributes.tree ? self.style.treeArrowWidth + self.style.treeArrowMarginLeft + self.style.treeArrowMarginRight : 0);
     }
 
     var formatter = null;
@@ -8182,7 +8318,7 @@ __webpack_require__.r(__webpack_exports__);
       m = t > m ? t : m;
       formatter = self.formatters[col.type];
     });
-    self.data.forEach(function (row) {
+    self.viewData.forEach(function (row) {
       var text = row[name];
 
       if (formatter) {
@@ -8563,7 +8699,7 @@ __webpack_require__.r(__webpack_exports__);
           if (self.attributes.columnHeaderClickBehavior === 'select') {
             self.selectArea({
               top: 0,
-              bottom: self.data.length - 1,
+              bottom: self.viewData.length - 1,
               left: self.startingCell.columnIndex,
               right: self.startingCell.columnIndex
             });
