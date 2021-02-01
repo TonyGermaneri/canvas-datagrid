@@ -9,7 +9,7 @@ export default function () {
     grid.setFilter('d', 'edfg');
     done(
       assertIf(
-        grid.data.length === 0 && grid.data[0].d === 'edfg',
+        grid.viewData.length === 0 && grid.viewData[0].d === 'edfg',
         'Expected filter to remove all but 1 row.',
       ),
     );
@@ -27,7 +27,7 @@ export default function () {
       ],
     });
     grid.setFilter('d', '(Blanks)');
-    var filteredValuesOnly = grid.data.map((obj) => obj.d);
+    var filteredValuesOnly = grid.viewData.map((obj) => obj.d);
     var onlyBlanks =
       filteredValuesOnly.length === 4 &&
       filteredValuesOnly.every((item) =>
@@ -42,7 +42,7 @@ export default function () {
       schema: [{ name: 'd', type: 'number' }],
     });
     grid.setFilter('d', '(Blanks)');
-    var filteredValuesOnly = grid.data.map((obj) => obj.d);
+    var filteredValuesOnly = grid.viewData.map((obj) => obj.d);
     var onlyBlanks =
       filteredValuesOnly.length === 3 &&
       filteredValuesOnly.every((item) => [undefined, null, ''].includes(item));
@@ -61,7 +61,7 @@ export default function () {
     grid.setFilter();
     done(
       assertIf(
-        grid.data.length !== 2,
+        grid.viewData.length !== 2,
         'Expected to see all the records return.',
       ),
     );
@@ -77,7 +77,9 @@ export default function () {
     grid.setFilter('d', 'edfg');
     grid.setFilter('e', 'asdfg');
     grid.setFilter('e', '');
-    done(assertIf(grid.data.length !== 1, 'Expected to see 1 of the records.'));
+    done(
+      assertIf(grid.viewData.length !== 1, 'Expected to see 1 of the records.'),
+    );
   });
   it('Should remove a specific filter by passing undefined', function (done) {
     var grid = g({
@@ -90,7 +92,9 @@ export default function () {
     grid.setFilter('d', 'edfg');
     grid.setFilter('e', 'asdfg');
     grid.setFilter('e');
-    done(assertIf(grid.data.length !== 1, 'Expected to see 1 of the records.'));
+    done(
+      assertIf(grid.viewData.length !== 1, 'Expected to see 1 of the records.'),
+    );
   });
   it('Should use RegExp as a filter', function (done) {
     var grid = g({
@@ -100,7 +104,7 @@ export default function () {
     grid.setFilter('d', '/\\w/');
     done(
       assertIf(
-        grid.data.length === 0 && grid.data[0].d === 'edfg',
+        grid.viewData.length === 0 && grid.viewData[0].d === 'edfg',
         'Expected to see a row after a RegExp value.',
       ),
     );
@@ -120,7 +124,9 @@ export default function () {
     });
     grid.setFilter('d', 'a');
     grid.setFilter('x', 'a');
-    done(assertIf(grid.data.length !== 1, 'Expected to see only 1 record.'));
+    done(
+      assertIf(grid.viewData.length !== 1, 'Expected to see only 1 record.'),
+    );
   });
   it('Should apply correct type filtering method when column filter not set', function (done) {
     var grid = g({
@@ -135,7 +141,9 @@ export default function () {
     });
     delete grid.schema[0].filter;
     grid.setFilter('num', '1');
-    done(assertIf(grid.data.length !== 1, 'Expected to see only 1 record.'));
+    done(
+      assertIf(grid.viewData.length !== 1, 'Expected to see only 1 record.'),
+    );
   });
   it('Should apply filter to new data when data is set', function (done) {
     var grid = g({
@@ -144,7 +152,9 @@ export default function () {
     });
     grid.setFilter('d', 'a');
     grid.data = [{ d: 'gfde' }, { d: 'dcba' }];
-    done(assertIf(grid.data.length !== 1, 'Expected to see only 1 record.'));
+    done(
+      assertIf(grid.viewData.length !== 1, 'Expected to see only 1 record.'),
+    );
   });
   it('Should retain filters of columns not in new data when data is set', function (done) {
     var grid = g({
@@ -156,6 +166,8 @@ export default function () {
     grid.data = [{ x: 'aaaa' }, { x: 'aaaa' }];
     grid.data = [{ d: 'gfde' }, { d: 'dcba' }];
 
-    done(assertIf(grid.data.length !== 1, 'Expected to see only 1 record.'));
+    done(
+      assertIf(grid.viewData.length !== 1, 'Expected to see only 1 record.'),
+    );
   });
 }

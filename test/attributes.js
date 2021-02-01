@@ -170,7 +170,7 @@ export default function () {
       data: [{ a: 'a' }],
     });
     grid.style.cellBackgroundColor = c.y;
-    assertIf(grid.data.length !== 1, 'Expected there to be exactly 1 row.');
+    assertIf(grid.viewData.length !== 1, 'Expected there to be exactly 1 row.');
     assertPxColor(grid, 60, 60, c.y, done);
   });
   it('Should insert data into the new row', function (done) {
@@ -191,7 +191,10 @@ export default function () {
         return done(err);
       }
       done(
-        assertIf(grid.data.length !== 2, 'expected there to be exactly 3 row.'),
+        assertIf(
+          grid.viewData.length !== 2,
+          'expected there to be exactly 3 row.',
+        ),
       );
     });
   });
@@ -240,7 +243,7 @@ export default function () {
           setTimeout(function () {
             done(
               assertIf(
-                grid.data[0].col1 !== 'bar',
+                grid.viewData[0].col1 !== 'bar',
                 'Expected data to be ordered when new grid is created',
               ),
             );
@@ -394,7 +397,7 @@ export default function () {
           setTimeout(function () {
             done(
               assertIf(
-                grid.data[0].col1 !== 'foo',
+                grid.viewData[0].col1 !== 'foo',
                 'Expected data to be ordered when new grid is created',
               ),
             );
@@ -571,7 +574,9 @@ export default function () {
     marker(grid, 60, 12);
     mousemove(grid.canvas, 60, 12);
     click(grid.canvas, 60, 12);
-    done(assertIf(grid.data[0].col1 !== 'bar', 'Expected data to be sorted.'));
+    done(
+      assertIf(grid.viewData[0].col1 !== 'bar', 'Expected data to be sorted.'),
+    );
   });
   it('Clicking a header cell with columnHeaderClickBehavior set to select should select the column', function (done) {
     var grid = g({

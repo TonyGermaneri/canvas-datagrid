@@ -28,7 +28,7 @@ export default function () {
         e.items[4].contextItemContainer.dispatchEvent(new Event('click'));
         done(
           assertIf(
-            grid.data[0].col1 !== 'bar',
+            grid.viewData[0].col1 !== 'bar',
             'Expected the content to be reordered asc.',
           ),
         );
@@ -229,7 +229,7 @@ export default function () {
 
           if (key === 'Enter') {
             err = assertIf(
-              grid.data[0].col1 !== 'baz',
+              grid.viewData[0].col1 !== 'baz',
               'Expected key combination to filter for baz',
             );
           }
@@ -259,7 +259,7 @@ export default function () {
 
           if (key === 'Enter') {
             err = assertIf(
-              grid.data[0].col1 !== 'bar',
+              grid.viewData[0].col1 !== 'bar',
               'Expected key combination to filter for bar',
             );
           }
@@ -287,7 +287,7 @@ export default function () {
           i.dispatchEvent(ev);
           if (key === 'Tab') {
             err = assertIf(
-              grid.data[0].col1 !== 'foo',
+              grid.viewData[0].col1 !== 'foo',
               'Expected key combination to filter for bar',
             );
           }
@@ -315,7 +315,7 @@ export default function () {
           i.dispatchEvent(ev);
           if (key === 'esc') {
             err = assertIf(
-              grid.data[0].col1 !== 'foo',
+              grid.viewData[0].col1 !== 'foo',
               'Expected key combination to filter for bar',
             );
           }

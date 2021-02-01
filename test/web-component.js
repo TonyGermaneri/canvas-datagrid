@@ -10,7 +10,10 @@ export default function () {
       component: true,
     });
     grid.style.activeCellBackgroundColor = c.b;
-    assertIf(grid.data.length !== 3, 'Expected to see data in the interface.');
+    assertIf(
+      grid.viewData.length !== 3,
+      'Expected to see data in the interface.',
+    );
     assertPxColor(grid, 80, 32, c.b, done);
   });
   it('Should create a web component and set a hyphenated style', function (done) {
@@ -20,7 +23,10 @@ export default function () {
       component: true,
     });
     grid.style['active-cell-background-color'] = c.b;
-    assertIf(grid.data.length !== 3, 'Expected to see data in the interface.');
+    assertIf(
+      grid.viewData.length !== 3,
+      'Expected to see data in the interface.',
+    );
     assertPxColor(grid, 80, 32, c.b, done);
   });
   it('Should create a web component and set a hyphenated style with a custom prefix', function (done) {
@@ -30,7 +36,10 @@ export default function () {
       component: true,
     });
     grid.style['--cdg-active-cell-background-color'] = c.b;
-    assertIf(grid.data.length !== 3, 'Expected to see data in the interface.');
+    assertIf(
+      grid.viewData.length !== 3,
+      'Expected to see data in the interface.',
+    );
     assertPxColor(grid, 80, 32, c.b, done);
   });
   it('Should create a web component and set a schema', function (done) {
@@ -41,7 +50,10 @@ export default function () {
     });
     grid.style.gridBackgroundColor = c.b;
     grid.schema = [{ name: 'a', width: 30 }];
-    assertIf(grid.data.length !== 1, 'Expected to see data in the interface.');
+    assertIf(
+      grid.viewData.length !== 1,
+      'Expected to see data in the interface.',
+    );
     assertPxColor(grid, 80, 32, c.b, done);
   });
 }

@@ -16,7 +16,10 @@ export default function () {
     });
     grid.order('a', 'desc');
     done(
-      assertIf(grid.data[0].a !== 'd', 'expected to see sort by string desc'),
+      assertIf(
+        grid.viewData[0].a !== 'd',
+        'expected to see sort by string desc',
+      ),
     );
   });
   it('Should sort numbers', function (done) {
@@ -26,7 +29,9 @@ export default function () {
       schema: [{ name: 'a', type: 'number' }],
     });
     grid.order('a', 'desc');
-    done(assertIf(grid.data[0].a !== 5, 'expected to see sort by number desc'));
+    done(
+      assertIf(grid.viewData[0].a !== 5, 'expected to see sort by number desc'),
+    );
   });
   it('Should sort date', function (done) {
     var grid = g({
@@ -47,7 +52,7 @@ export default function () {
     grid.order('a', 'desc');
     done(
       assertIf(
-        grid.data[0].a !== 1503307136397,
+        grid.viewData[0].a !== 1503307136397,
         'expected to see sort by date desc',
       ),
     );
@@ -94,7 +99,10 @@ export default function () {
     });
     grid.order('a', 'desc');
     done(
-      assertIf(grid.data[0].a !== '2', 'expected to see sort by string desc'),
+      assertIf(
+        grid.viewData[0].a !== '2',
+        'expected to see sort by string desc',
+      ),
     );
   });
   it('Should preserve current sort order, effectively allowing sort on multiple columns', function (done) {
@@ -114,7 +122,7 @@ export default function () {
     grid.order('b', 'asc');
     done(
       assertIf(
-        grid.data[0].a !== 'b',
+        grid.viewData[0].a !== 'b',
         'expected to see sort by a desc then b asc',
       ),
     );
@@ -149,12 +157,14 @@ export default function () {
           e.direction,
         ) ||
         assertIf(
-          grid.data[0].a !== 'a',
+          grid.viewData[0].a !== 'a',
           'expected data to not be sorted in event',
         );
     });
     grid.order('a', 'desc');
-    done(err || assertIf(grid.data[0].a !== 'c', 'expected data to be sorted'));
+    done(
+      err || assertIf(grid.viewData[0].a !== 'c', 'expected data to be sorted'),
+    );
   });
   it('Should not sort when beforesortcolumn prevents default', function (done) {
     var grid = g({
@@ -166,7 +176,9 @@ export default function () {
       e.preventDefault();
     });
     grid.order('a', 'desc');
-    done(assertIf(grid.data[0].a !== 'a', 'expected no change in sort order'));
+    done(
+      assertIf(grid.viewData[0].a !== 'a', 'expected no change in sort order'),
+    );
   });
   it('Should raise sortcolumn event after sort', function (done) {
     var grid = g({
@@ -182,7 +194,7 @@ export default function () {
             'direction should be "desc" but was "%s"',
             e.direction,
           ) ||
-          assertIf(grid.data[0].a !== 'c', 'expected data to be sorted'),
+          assertIf(grid.viewData[0].a !== 'c', 'expected data to be sorted'),
       );
     });
     grid.order('a', 'desc');
@@ -239,7 +251,10 @@ export default function () {
     });
     grid.order('a', 'desc');
     done(
-      assertIf(grid.data[0].a !== 'cd', 'expected schema sorter to be used'),
+      assertIf(
+        grid.viewData[0].a !== 'cd',
+        'expected schema sorter to be used',
+      ),
     );
   });
   it('Should reapply current sort after data set', function (done) {
@@ -264,7 +279,7 @@ export default function () {
     ];
     done(
       assertIf(
-        grid.data[0].a !== 'b',
+        grid.viewData[0].a !== 'b',
         'expected to see sort by a desc then b asc',
       ),
     );
@@ -286,7 +301,7 @@ export default function () {
     grid.setFilter('b', 'a');
     done(
       assertIf(
-        grid.data[0].a !== 'b',
+        grid.viewData[0].a !== 'b',
         'expected to see sort by a desc then b asc',
       ),
     );

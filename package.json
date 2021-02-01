@@ -10,9 +10,11 @@
     "format": "prettier lib/**/*.js --write",
     "lint": "eslint lib",
     "test": "npm run build && karma start",
+    "test:watch": "karma start --no-single-run",
     "watch": "webpack --watch",
     "gen-types": "jsdoc -c ./jsdoc.ts.conf.js && mv dist/types.d.ts dist/canvas-datagrid.d.ts",
-    "prebuild-docs": "rm -rf docs && npm run build"
+    "prebuild-docs": "rm -rf docs && npm run build",
+    "start": "webpack serve --open"
   },
   "files": [
     "dist/*",
@@ -68,6 +70,7 @@
     "@rollup/plugin-node-resolve": "^10.0.0",
     "@rollup/plugin-replace": "^2.3.4",
     "babel-loader": "^8.2.1",
+    "chai": "^4.2.0",
     "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
@@ -75,6 +78,7 @@
     "istanbul": "^0.4.5",
     "jsdoc": "^3.6.6",
     "karma": "^5.2.3",
+    "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^3.1.0",
     "karma-coverage": "^2.0.2",
     "karma-coverage-istanbul-reporter": "^3.0.2",
@@ -88,7 +92,8 @@
     "rollup-plugin-terser": "^7.0.2",
     "tsd-jsdoc": "^2.5.0",
     "webpack": "^5.6.0",
-    "webpack-cli": "^4.2.0"
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.1"
   },
   "dependencies": {
     "is-printable-key-event": "1.0.0"
