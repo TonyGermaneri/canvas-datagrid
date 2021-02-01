@@ -1,17 +1,26 @@
 {
   "root": true,
-  "extends": ["eslint:recommended", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "prettier"
+  ],
   "parserOptions": {
     "ecmaVersion": "2017",
     "sourceType": "module"
   },
-  "plugins": ["prettier"],
+  "plugins": [
+    "prettier"
+  ],
   "env": {
     "browser": true,
     "es6": true
   },
   "rules": {
     "prettier/prettier": 2, // 2 -> error
+    "indent": [
+      "warn",
+      2
+    ],
     // These should be turned on after a clean-up:
     "no-unused-vars": 0,
     "no-redeclare": 0
