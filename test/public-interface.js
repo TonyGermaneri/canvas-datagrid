@@ -42,7 +42,7 @@ export default function () {
     );
     done(
       assertIf(
-        grid.schema[1].name !== 'f' || grid.data[0].f !== 'g',
+        grid.schema[1].name !== 'f' || grid.viewData[0].f !== 'g',
         'Expected to see a specific column here, it is not here.',
       ),
     );
@@ -64,7 +64,7 @@ export default function () {
     );
     done(
       assertIf(
-        grid.schema[1].name !== 'f' || grid.data[0].f !== 'g',
+        grid.schema[1].name !== 'f' || grid.viewData[0].f !== 'g',
         'Expected to see a specific column here, it is not here.',
       ),
     );
@@ -163,6 +163,150 @@ export default function () {
       ),
     );
   });
+  describe('improvements', function () {
+    it("Current cell's viewRowIndex and viewColumnIndex are equal to rowIndex and columnIndex, when not filtering", function (done) {
+      const grid = g({
+        test: this.test,
+        schema: [
+          {
+            name: 'd',
+          },
+          {
+            name: 'e',
+          },
+          {
+            name: 'f',
+          },
+        ],
+        data: [
+          { d: '123456 0x0', e: 'foo bar 0x1', f: 'abc def' },
+          { d: '123456 1x0', e: 'foo bar 1x1', f: 'abc def' },
+          { d: '123456 2x0', e: 'foo bar 2x1', f: 'abc def' },
+          { d: '123456 3x0', e: 'foo bar 3x1', f: 'abc def' },
+        ],
+      });
+
+      const cell = grid.getVisibleCellByIndex(1, 1);
+
+      try {
+        assert.equal(cell.value, 'foo bar 1x1');
+        assert.equal(cell.rowIndex, 1, 'rowIndex = 1');
+        assert.equal(cell.columnIndex, 1, 'columnIndex = 1');
+        assert.equal(
+          cell.viewRowIndex,
+          cell.boundRowIndex,
+          'viewRowIndex == boundRowIndex',
+        );
+        assert.equal(
+          cell.viewColumnIndex,
+          cell.boundColumnIndex,
+          'viewColumnIndex == boundColumnIndex',
+        );
+      } catch (error) {
+        return done(error);
+      }
+
+      done();
+    });
+    it("Current cell's viewRowIndex != rowIndex, when filtering", function (done) {
+      var grid = g({
+        test: this.test,
+        schema: [
+          {
+            name: 'd',
+          },
+          {
+            name: 'e',
+          },
+          {
+            name: 'f',
+          },
+        ],
+        data: [
+          { d: '123456', e: 'foo bar', f: 'abc def' },
+          { d: '123456', e: 'selected', f: 'abc def' }, // <-- cell
+          { d: '123456', e: 'foo bar', f: 'abc def' },
+          { d: '123456', e: 'foo bar', f: 'abc def' },
+        ],
+      });
+
+      grid.setFilter('e', 'selected');
+
+      const cell = grid.getVisibleCellByIndex(1, 0);
+
+      try {
+        assert.equal(cell.value, 'selected');
+        assert.equal(
+          cell.boundRowIndex,
+          1,
+          'rowIndex = 1 -> position in originalData',
+        );
+        assert.equal(cell.boundColumnIndex, 1, 'columnIndex unchanged');
+        assert.equal(
+          cell.viewRowIndex,
+          0,
+          'viewRowIndex = 0 -> position in viewData (filtered)',
+        );
+        assert.equal(cell.viewColumnIndex, 1, 'viewColumnIndex = 1');
+      } catch (error) {
+        return done(error);
+      }
+
+      done();
+    });
+  });
+
+  it('Property `viewData` should be deeply equal to source data, if not filtered', function () {
+    const data = smallData();
+    const grid = g({
+      test: this.test,
+      data,
+    });
+
+    assert.deepEqual(grid.viewData, data);
+  });
+  it('Property `viewData` should be equal to filtered data', function () {
+    const data = smallData();
+    const grid = g({
+      test: this.test,
+      data,
+    });
+    grid.setFilter('col1', 'foo');
+
+    const matchingRows = data.filter((row) => row.col1 === 'foo');
+
+    assert.deepEqual(grid.viewData, matchingRows);
+  });
+  it('Property `viewData` should be equal to sorted data', function () {
+    const data = smallData();
+    const grid = g({
+      test: this.test,
+      data,
+    });
+    grid.order('col1', 'asc');
+
+    const sortedRows = [data[1], data[2], data[0]];
+
+    assert.deepEqual(grid.viewData, sortedRows);
+  });
+  it('Property `boundData` should be equal to original source data', function () {
+    const data = smallData();
+    const grid = g({
+      test: this.test,
+      data,
+    });
+
+    assert.deepStrictEqual(grid.boundData, data);
+
+    grid.setFilter('col1', 'foo');
+    grid.order('col1', 'desc');
+
+    assert.deepStrictEqual(
+      grid.boundData,
+      data,
+      'filtering/sorting does not affect boundData',
+    );
+  });
   it('Get offsetLeft of the parent node', function (done) {
     var grid = g({
       test: this.test,
@@ -216,7 +360,7 @@ export default function () {
     grid.deleteColumn(0);
     done(
       assertIf(
-        Object.keys(grid.data[0])[0] === n || grid.schema[0].name === n,
+        Object.keys(grid.viewData[0])[0] === n || grid.schema[0].name === n,
         'Expected to see column 0 deleted, but it appears to still be there.',
       ),
     );
@@ -235,7 +379,7 @@ export default function () {
     l = grid.schema.length - 1;
     done(
       assertIf(
-        grid.schema[l].name !== 'f' || grid.data[0].f !== 'g',
+        grid.schema[l].name !== 'f' || grid.viewData[0].f !== 'g',
         'Expected to see a specific column here, it is not here.',
       ),
     );
@@ -248,10 +392,10 @@ export default function () {
         schema: [{ name: 'd' }, { name: 'e', defaultValue: 10 }],
       });
     grid.addRow({ d: '1' });
-    l = grid.data.length - 1;
+    l = grid.viewData.length - 1;
     done(
       assertIf(
-        grid.data[l].d !== '1' || grid.data[l].e !== 10,
+        grid.viewData[l].d !== '1' || grid.viewData[l].e !== 10,
         'Expected to see a specific row here, it is not here.',
       ),
     );
@@ -268,7 +412,7 @@ export default function () {
     grid.insertRow({ d: '6' }, 1);
     done(
       assertIf(
-        grid.data[2].d !== '3' || grid.data[1].e !== 10,
+        grid.viewData[2].d !== '3' || grid.viewData[1].e !== 10,
         'Expected to see a specific row here, it is not here.',
       ),
     );
@@ -296,7 +440,7 @@ export default function () {
     grid.deleteRow(1);
     done(
       assertIf(
-        grid.data.length !== 1 || grid.data[0].d !== '1',
+        grid.viewData.length !== 1 || grid.viewData[0].d !== '1',
         'Expected to see only 1 row, expected row 1 to contain a specific value.',
       ),
     );

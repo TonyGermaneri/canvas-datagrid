@@ -24,7 +24,10 @@ export default function () {
       data: smallData(),
     });
     grid.style.activeCellBackgroundColor = c.b;
-    assertIf(grid.data.length !== 3, 'Expected to see data in the interface.');
+    assertIf(
+      grid.viewData.length !== 3,
+      'Expected to see data in the interface.',
+    );
     assertPxColor(grid, 80, 32, c.b, done);
   });
 }

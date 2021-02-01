@@ -44,7 +44,9 @@ export default function () {
     ev.key = 'Enter';
     grid.input.value = 'blah';
     grid.addEventListener('endedit', function () {
-      done(assertIf(grid.data[0].d !== 'blah', 'Expected value to be in data'));
+      done(
+        assertIf(grid.viewData[0].d !== 'blah', 'Expected value to be in data'),
+      );
     });
     grid.input.dispatchEvent(ev);
   });
@@ -60,7 +62,9 @@ export default function () {
     grid.input.value = 'blah';
     grid.addEventListener('beforeendedit', function (e) {
       e.abort();
-      done(assertIf(grid.data[0].d === 'blah', 'Expected value to be in data'));
+      done(
+        assertIf(grid.viewData[0].d === 'blah', 'Expected value to be in data'),
+      );
     });
     grid.input.dispatchEvent(ev);
   });
@@ -185,7 +189,7 @@ export default function () {
     });
 
     setTimeout(function () {
-      var cellData = grid.data[0]['Column A'];
+      var cellData = grid.viewData[0]['Column A'];
       done(
         assertIf(
           cellData !== 'Paste buffer value',
@@ -220,7 +224,7 @@ export default function () {
     });
 
     setTimeout(function () {
-      var cellData = grid.data[0]['Column A'];
+      var cellData = grid.viewData[0]['Column A'];
       done(
         assertIf(
           cellData !== 'Paste buffer value',
@@ -255,7 +259,7 @@ export default function () {
     });
 
     setTimeout(function () {
-      var cellData = grid.data[0]['Column A'];
+      var cellData = grid.viewData[0]['Column A'];
       done(
         assertIf(
           cellData !== 'Paste buffer value',
