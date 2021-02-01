@@ -7,6 +7,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.3.0 - 2021-02-01
+
+### Added
+
+- Adds TypeScript type definitions (josh-hemphill, #333)
+
+### Changed
+
+- Make distinction between original data and view data (ndrsn, #334)
+- Fixes typo and possible bug (voderl, #339)
+- Split up tests into separate files (ndrsn)
+
 ## 0.25.4 - 2020-11-26
 
 ### Changed
