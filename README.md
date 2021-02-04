@@ -8,7 +8,7 @@
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/TonyGermaneri/canvas-datagrid)
 
-- Works with Firefox, IE11, Edge, Safari and Chrome.
+- Works with Firefox, Edge, Safari and Chrome.
 - Native support for touch devices (phones and tablets).
 - Rich [documentation](https://canvas-datagrid.js.org/), [tutorials](https://canvas-datagrid.js.org/#tutorials), and [slack support](https://canvas-datagrid.slack.com/).
 - Single canvas element, drawn in immediate mode, data size does not impact performance.

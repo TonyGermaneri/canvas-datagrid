@@ -39,7 +39,8 @@
     "component"
   ],
   "browserslist": [
-    "defaults"
+    "defaults",
+    "not IE 11"
   ],
   "author": "Tony Germaneri <Tony.Germaneri@gmail.com>",
   "contributors": [
