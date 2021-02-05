@@ -6,6 +6,7 @@
   "module": "./dist/canvas-datagrid.module.js",
   "scripts": {
     "build": "rollup -c && webpack",
+    "postbuild": "npm run build:types",
     "build:docs": "jsdoc -c ./jsdoc.conf.js && cp dist/canvas-datagrid.* docs/ && cp -r tutorials/* images docs/",
     "format": "prettier lib/**/*.js --write",
     "lint": "eslint lib",

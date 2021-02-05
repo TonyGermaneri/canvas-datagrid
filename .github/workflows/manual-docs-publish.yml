@@ -22,8 +22,6 @@ jobs:
         run: npm ci
       - name: Build debug version
         run: npm run build
-      - name: Build types
-        run: npm run build:types
       - name: Build documentation
         run: npm run build:docs
       # Required for hosting at js.org
