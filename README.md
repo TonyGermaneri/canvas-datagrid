@@ -150,7 +150,7 @@ To build documentation:
 
 To build types:
 
-    npm run build:docs
+    npm run build:types
 
 To run tests. Note: Headless tests will mostly fail due to lack of headless canvas pixel detection support. Use VM testing or your browser.
 
