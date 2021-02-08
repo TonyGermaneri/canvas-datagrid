@@ -2807,7 +2807,7 @@ __webpack_require__.r(__webpack_exports__);
         // row index + 1. If rowIndex > viewData.length, it's a new row
         // added to the end, and we want to render that new row's number
 
-        var filteredRowNumber = rowIndex < self.viewData.length ? self.getBoundRowIndexFromViewRowIndex(rowIndex) + 1 : self.originalData.length + 1;
+        var filteredRowNumber = self.viewData && rowIndex < self.viewData.length ? self.getBoundRowIndexFromViewRowIndex(rowIndex) + 1 : self.originalData ? self.originalData.length + 1 : rowOrderIndex + 1;
         var rowHeaderValue = self.hasActiveFilters() ? filteredRowNumber : rowIndex + 1;
         var _rowHeaderCell = {
           rowHeaderCell: rowHeaderValue
