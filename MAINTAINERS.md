@@ -1,6 +1,6 @@
 # Instructions for maintainers
 
-## Releasing  a new version
+## Releasing a new version
 
 To release a new version of canvas-datagrid, I've found that this order of steps works well:
 
@@ -23,10 +23,18 @@ To release a new version of canvas-datagrid, I've found that this order of steps
 +  "version": "1.0.0",
 ```
 
+2.a. Update package-lock.json to account for new version number:
+
+```
+$ npm i --package-lock-only
+```
+
 3. Commit `package.json` and `CHANGELOG.md` and any other files. (Although, really, to be releasing you should generally only commit _these_ files)
+
 ```
 $ git commit -m "Release v1.0.0"
 ```
+
 4. Tag this commit with the new version number, as in `package.json`. So if you're releasing a 1.0.0:
 
 ```
