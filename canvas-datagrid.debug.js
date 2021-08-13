@@ -1763,6 +1763,18 @@ __webpack_require__.r(__webpack_exports__);
 /*globals XMLSerializer: false, define: true, Blob: false, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
 
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 /* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(self) {
   var perfCounters = [],
       cachedImagesDrawn = false,
@@ -2129,10 +2141,11 @@ __webpack_require__.r(__webpack_exports__);
 
     for (x = 0; x < words.length; x += 1) {
       word = words[x];
-      var measure = self.ctx.measureText(word + splitChar);
+      var curSplitChar = word[word.length - 1] === '-' ? '' : splitChar;
+      var measure = self.ctx.measureText(word + curSplitChar);
 
       if (line.width + measure.width + elWidth < cell.paddedWidth) {
-        line.value += word + splitChar;
+        line.value += word + curSplitChar;
         line.width += measure.width;
         continue;
       } // if there is a hyphenated word that is too long
@@ -2142,14 +2155,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
       if (/\w-\w/.test(word) && cell.paddedWidth < measure.width) {
-        words.splice(x, 1, word.split('-')[0] + '-', word.split('-')[1]);
+        var arr = word.split('-');
+        arr = arr.map(function (item, index) {
+          return index === arr.length - 1 ? item : item + '-';
+        });
+        words.splice.apply(words, [x, 1].concat(_toConsumableArray(arr)));
         x -= 1;
         continue;
       }
 
       line = {
         width: measure.width,
-        value: word + splitChar
+        value: word + curSplitChar
       };
 
       if (x === 0) {
