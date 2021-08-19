@@ -491,17 +491,19 @@ export default function () {
       mousedown(grid.canvas, 10, 29);
       mousemove(grid.canvas, 10, 90, grid.canvas);
       mousemove(document.body, 10, 90, grid.canvas);
-      assertPxColor(grid, 10, 98, c.b, function (err) {
-        if (err) {
-          return done(err);
-        }
-        assertPxColor(grid, 10, 86, c.fu, function (err) {
+      setTimeout(function () {
+        assertPxColor(grid, 10, 98, c.b, function (err) {
           if (err) {
             return done(err);
           }
-          assertPxColor(grid, 30, 91, c.y, done);
+          assertPxColor(grid, 10, 86, c.fu, function (err) {
+            if (err) {
+              return done(err);
+            }
+            assertPxColor(grid, 30, 91, c.y, done);
+          });
         });
-      });
+      }, 10);
       grid.draw();
     }, 10);
   });
