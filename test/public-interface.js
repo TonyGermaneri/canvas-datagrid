@@ -153,9 +153,9 @@ export default function () {
       test: this.test,
       data: [{ d: '123456', e: '123456' }],
     });
-    mousemove(grid.canvas, 45, 37);
+    mousemove(document.body, 45, 37, grid.canvas);
     mousedown(grid.canvas, 45, 37);
-    mouseup(grid.canvas, 45, 37);
+    mouseup(document.body, 45, 37, grid.canvas);
     done(
       assertIf(
         grid.currentCell.rowIndex !== 0,
