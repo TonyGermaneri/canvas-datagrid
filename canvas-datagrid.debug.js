@@ -4967,7 +4967,12 @@ __webpack_require__.r(__webpack_exports__);
           newRowData[columnName] = cellData;
         }
 
-        self.originalData[realRowIndex] = newRowData;
+        self.originalData[self.boundRowIndexMap.get(realRowIndex)] = newRowData; // Update view date here to avoid a full refresh of `viewData`.
+        // To stay in line with Excel and Google Sheet behaviour,
+        // don't perform a full refresh (and filter/sort results)
+        // as this would make any pasted values disappear and/or suddenly change position.
+
+        self.viewData[realRowIndex] = newRowData;
       }
 
       self.selections = selections;
@@ -4978,15 +4983,12 @@ __webpack_require__.r(__webpack_exports__);
     self.selections.forEach(function (row, rowIndex) {
       if (rowIndex === undefined) return;
       row.forEach(function (columnIndex) {
-        affectedCells.push([rowIndex, columnIndex]);
+        affectedCells.push([rowIndex, columnIndex, self.getVisibleCellByIndex(columnIndex, rowIndex)]);
       });
     });
     self.dispatchEvent('afterpaste', {
       cells: affectedCells
-    }); // Because originalData has been updated, we must refresh
-    // viewData to ensure the new cell values are rendered
-
-    self.refresh();
+    });
     return rows.length;
   };
 
