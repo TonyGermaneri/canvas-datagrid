@@ -7,6 +7,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.3.7 - 2021-08-30
+
+### Fixed
+
+- Fix paste in filter mode (mdebrauw, #370)
+
+## 0.3.6 - 2021-08-16
+
+Same as previous release but bumped version to get package to publish to NPM.
+
+## 0.3.5 - 2021-08-13
+
+### Fixed
+
+- Fix missing text where value has multiple '-' (faimaklg, #363)
+
 ## 0.3.4 - 2021-03-11
 
 ### Added
