@@ -23,9 +23,8 @@ export default function () {
       }
     });
     grid.focus();
-    mousemove(grid.canvas, 94, 10);
+    mousemove(document.body, 94, 10, grid.canvas);
     mousedown(grid.canvas, 94, 10);
-    mousemove(grid.canvas, 190, 10, grid.canvas);
     mousemove(document.body, 190, 10, grid.canvas);
     mouseup(document.body, 190, 10, grid.canvas);
     setTimeout(function () {
@@ -49,9 +48,8 @@ export default function () {
     });
     setTimeout(function () {
       grid.focus();
-      mousemove(grid.canvas, 94, 36);
+      mousemove(document.body, 94, 36, grid.canvas);
       mousedown(grid.canvas, 94, 36);
-      mousemove(grid.canvas, 190, 36, grid.canvas);
       mousemove(document.body, 190, 36, grid.canvas);
       mouseup(document.body, 190, 36, grid.canvas);
       assertPxColor(grid, 110, 36, c.b, done);
@@ -72,9 +70,8 @@ export default function () {
     });
     setTimeout(function () {
       grid.focus();
-      mousemove(grid.canvas, 10, 48);
+      mousemove(document.body, 10, 48, grid.canvas);
       mousedown(grid.canvas, 10, 48);
-      mousemove(grid.canvas, 10, 100, grid.canvas);
       mousemove(document.body, 10, 100, grid.canvas);
       mouseup(document.body, 10, 100, grid.canvas);
       assertPxColor(grid, 10, 90, c.b, done);
@@ -97,9 +94,8 @@ export default function () {
     });
     setTimeout(function () {
       grid.focus();
-      mousemove(grid.canvas, 40, 48);
+      mousemove(document.body, 40, 48, grid.canvas);
       mousedown(grid.canvas, 40, 48);
-      mousemove(grid.canvas, 40, 100, grid.canvas);
       mousemove(document.body, 40, 100, grid.canvas);
       mouseup(document.body, 40, 100, grid.canvas);
       assertPxColor(grid, 10, 90, c.b, done);
