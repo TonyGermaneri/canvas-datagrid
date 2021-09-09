@@ -1016,7 +1016,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(self) {
   self.defaults = {
-    attributes: [['allowColumnReordering', true], ['allowColumnResize', true], ['allowColumnResizeFromCell', false], ['allowFreezingRows', false], ['allowFreezingColumns', false], ['allowMovingSelection', true], ['allowRowHeaderResize', true], ['allowRowReordering', false], ['allowRowResize', true], ['allowRowResizeFromCell', false], ['allowSorting', true], ['autoGenerateSchema', false], ['autoResizeColumns', false], ['autoResizeRows', false], ['blanksText', '(Blanks)'], ['borderDragBehavior', 'none'], ['borderResizeZone', 10], ['clearSettingsOptionText', 'Clear saved settings'], ['columnHeaderClickBehavior', 'sort'], ['columnSelectorHiddenText', '&nbsp;&nbsp;&nbsp;'], ['columnSelectorText', 'Add/Remove columns'], ['columnSelectorVisibleText', "\u2713"], ['contextHoverScrollAmount', 2], ['contextHoverScrollRateMs', 5], ['copyHeadersOnSelectAll', true], ['copyText', 'Copy'], ['debug', false], ['editable', true], ['ellipsisText', '...'], ['filterOptionText', 'Filter %s'], ['filterTextPrefix', '(filtered) '], ['globalRowResize', false], ['hideColumnText', 'Hide %s'], ['hoverMode', 'cell'], ['maxAutoCompleteItems', 200], ['multiLine', false], ['name', ''], ['pageUpDownOverlap', 1], ['pasteText', 'Paste'], ['persistantSelectionMode', false], ['removeFilterOptionText', 'Remove filter on %s'], ['reorderDeadZone', 3], ['resizeScrollZone', 20], ['rowGrabZoneSize', 5], ['saveAppearance', true], ['scrollAnimationPPSThreshold', 0.75], ['scrollPointerLock', false], ['scrollRepeatRate', 75], ['selectionFollowsActiveCell', false], ['selectionHandleBehavior', 'none'], ['selectionMode', 'cell'], ['selectionScrollIncrement', 20], ['selectionScrollZone', 20], ['showClearSettingsOption', true], ['showColumnHeaders', true], ['showColumnSelector', true], ['showCopy', false], ['showFilter', true], ['showNewRow', false], ['showOrderByOption', true], ['showOrderByOptionTextAsc', 'Order by %s ascending'], ['showOrderByOptionTextDesc', 'Order by %s descending'], ['showPaste', false], ['showPerformance', false], ['showRowHeaders', true], ['showRowNumbers', true], ['showRowNumberGaps', true], ['singleSelectionMode', false], ['snapToRow', false], ['touchContextMenuTimeMs', 800], ['touchDeadZone', 3], ['touchEasingMethod', 'easeOutQuad'], ['touchReleaseAcceleration', 1000], ['touchReleaseAnimationDurationMs', 2000], ['touchScrollZone', 20], ['touchSelectHandleZone', 20], ['touchZoomSensitivity', 0.005], ['touchZoomMin', 0.5], ['touchZoomMax', 1.75], ['maxPixelRatio', 2], ['tree', false], ['treeHorizontalScroll', false]],
+    attributes: [['allowColumnReordering', true], ['allowColumnResize', true], ['allowColumnResizeFromCell', false], ['allowFreezingRows', false], ['allowFreezingColumns', false], ['allowMovingSelection', true], ['allowRowHeaderResize', true], ['allowRowReordering', false], ['allowRowResize', true], ['allowRowResizeFromCell', false], ['allowSorting', true], ['autoGenerateSchema', false], ['autoResizeColumns', false], ['autoResizeRows', false], ['autoScrollOnMousemove', false], ['autoScrollMargin', 5], ['blanksText', '(Blanks)'], ['borderDragBehavior', 'none'], ['borderResizeZone', 10], ['clearSettingsOptionText', 'Clear saved settings'], ['columnHeaderClickBehavior', 'sort'], ['columnSelectorHiddenText', '&nbsp;&nbsp;&nbsp;'], ['columnSelectorText', 'Add/Remove columns'], ['columnSelectorVisibleText', "\u2713"], ['contextHoverScrollAmount', 2], ['contextHoverScrollRateMs', 5], ['copyHeadersOnSelectAll', true], ['copyText', 'Copy'], ['debug', false], ['editable', true], ['ellipsisText', '...'], ['filterOptionText', 'Filter %s'], ['filterTextPrefix', '(filtered) '], ['globalRowResize', false], ['hideColumnText', 'Hide %s'], ['hoverMode', 'cell'], ['maxAutoCompleteItems', 200], ['multiLine', false], ['name', ''], ['pageUpDownOverlap', 1], ['pasteText', 'Paste'], ['persistantSelectionMode', false], ['removeFilterOptionText', 'Remove filter on %s'], ['reorderDeadZone', 3], ['resizeScrollZone', 20], ['rowGrabZoneSize', 5], ['saveAppearance', true], ['scrollAnimationPPSThreshold', 0.75], ['scrollPointerLock', false], ['scrollRepeatRate', 75], ['selectionFollowsActiveCell', false], ['selectionHandleBehavior', 'none'], ['selectionMode', 'cell'], ['selectionScrollIncrement', 20], ['selectionScrollZone', 20], ['showClearSettingsOption', true], ['showColumnHeaders', true], ['showColumnSelector', true], ['showCopy', false], ['showFilter', true], ['showNewRow', false], ['showOrderByOption', true], ['showOrderByOptionTextAsc', 'Order by %s ascending'], ['showOrderByOptionTextDesc', 'Order by %s descending'], ['showPaste', false], ['showPerformance', false], ['showRowHeaders', true], ['showRowNumbers', true], ['showRowNumberGaps', true], ['singleSelectionMode', false], ['snapToRow', false], ['touchContextMenuTimeMs', 800], ['touchDeadZone', 3], ['touchEasingMethod', 'easeOutQuad'], ['touchReleaseAcceleration', 1000], ['touchReleaseAnimationDurationMs', 2000], ['touchScrollZone', 20], ['touchSelectHandleZone', 20], ['touchZoomSensitivity', 0.005], ['touchZoomMin', 0.5], ['touchZoomMax', 1.75], ['maxPixelRatio', 2], ['tree', false], ['treeHorizontalScroll', false]],
     styles: [['activeCellBackgroundColor', 'rgba(255, 255, 255, 1)'], ['activeCellBorderColor', 'rgba(110, 168, 255, 1)'], ['activeCellBorderWidth', 1], ['activeCellColor', 'rgba(0, 0, 0, 1)'], ['activeCellFont', '16px sans-serif'], ['activeCellHoverBackgroundColor', 'rgba(255, 255, 255, 1)'], ['activeCellHorizontalAlignment', 'left'], ['activeCellHoverColor', 'rgba(0, 0, 0, 1)'], ['activeCellOverlayBorderColor', 'rgba(66, 133, 244, 1)'], ['activeCellOverlayBorderWidth', 1], ['activeCellPaddingBottom', 5], ['activeCellPaddingLeft', 5], ['activeCellPaddingRight', 5], ['activeCellPaddingTop', 5], ['activeCellSelectedBackgroundColor', 'rgba(236, 243, 255, 1)'], ['activeCellSelectedColor', 'rgba(0, 0, 0, 1)'], ['activeCellVerticalAlignment', 'center'], ['activeColumnHeaderCellBackgroundColor', 'rgba(225, 225, 225, 1)'], ['activeColumnHeaderCellColor', 'rgba(0, 0, 0, 1)'], ['activeRowHeaderCellBackgroundColor', 'rgba(225, 225, 225, 1)'], ['activeRowHeaderCellColor', 'rgba(0, 0, 0, 1)'], ['autocompleteBottomMargin', 60], ['autosizeHeaderCellPadding', 8], ['autosizePadding', 5], ['cellAutoResizePadding', 13], ['cellBackgroundColor', 'rgba(255, 255, 255, 1)'], ['cellBorderColor', 'rgba(195, 199, 202, 1)'], ['cellBorderWidth', 1], ['cellColor', 'rgba(0, 0, 0, 1)'], ['cellFont', '16px sans-serif'], ['cellGridHeight', 250], ['cellHeight', 24], ['cellHeightWithChildGrid', 150], ['cellHorizontalAlignment', 'left'], ['cellHoverBackgroundColor', 'rgba(255, 255, 255, 1)'], ['cellHoverColor', 'rgba(0, 0, 0, 1)'], ['cellPaddingBottom', 5], ['cellPaddingLeft', 5], ['cellPaddingRight', 5], ['cellPaddingTop', 5], ['cellSelectedBackgroundColor', 'rgba(236, 243, 255, 1)'], ['cellSelectedColor', 'rgba(0, 0, 0, 1)'], ['cellVerticalAlignment', 'center'], ['cellWidth', 250], ['cellWidthWithChildGrid', 250], ['cellWhiteSpace', 'nowrap'], ['cellLineHeight', 1], ['cellLineSpacing', 3], ['childContextMenuArrowColor', 'rgba(43, 48, 43, 1)'], ['childContextMenuArrowHTML', '&#x25BA;'], ['childContextMenuMarginLeft', -11], ['childContextMenuMarginTop', -6], ['columnHeaderCellBackgroundColor', 'rgba(240, 240, 240, 1)'], ['columnHeaderCellBorderColor', 'rgba(172, 172, 172, 1)'], ['columnHeaderCellBorderWidth', 1], ['columnHeaderCellCapBackgroundColor', 'rgba(240, 240, 240, 1)'], ['columnHeaderCellCapBorderColor', 'rgba(172, 172, 172, 1)'], ['columnHeaderCellCapBorderWidth', 1], ['columnHeaderCellColor', 'rgba(50, 50, 50, 1)'], ['columnHeaderCellFont', '16px sans-serif'], ['columnHeaderCellHeight', 25], ['columnHeaderCellHorizontalAlignment', 'left'], ['columnHeaderCellHoverBackgroundColor', 'rgba(235, 235, 235, 1)'], ['columnHeaderCellHoverColor', 'rgba(0, 0, 0, 1)'], ['columnHeaderCellPaddingBottom', 5], ['columnHeaderCellPaddingLeft', 5], ['columnHeaderCellPaddingRight', 5], ['columnHeaderCellPaddingTop', 5], ['columnHeaderCellVerticalAlignment', 'center'], ['columnHeaderOrderByArrowBorderColor', 'rgba(195, 199, 202, 1)'], ['columnHeaderOrderByArrowBorderWidth', 1], ['columnHeaderOrderByArrowColor', 'rgba(155, 155, 155, 1)'], ['columnHeaderOrderByArrowHeight', 8], ['columnHeaderOrderByArrowMarginLeft', 0], ['columnHeaderOrderByArrowMarginRight', 5], ['columnHeaderOrderByArrowMarginTop', 6], ['columnHeaderOrderByArrowWidth', 13], ['contextFilterButtonBorder', 'solid 1px rgba(158, 163, 169, 1)'], ['contextFilterButtonBorderRadius', '3px'], ['contextFilterButtonHTML', '&#x25BC;'], ['contextFilterInputBackground', 'rgba(255,255,255,1)'], ['contextFilterInputBorder', 'solid 1px rgba(158, 163, 169, 1)'], ['contextFilterInputBorderRadius', '0'], ['contextFilterInputColor', 'rgba(0,0,0,1)'], ['contextFilterInputFontFamily', 'sans-serif'], ['contextFilterInputFontSize', '14px'], ['contextFilterInvalidRegExpBackground', 'rgba(180, 6, 1, 1)'], ['contextFilterInvalidRegExpColor', 'rgba(255, 255, 255, 1)'], ['contextMenuArrowColor', 'rgba(43, 48, 43, 1)'], ['contextMenuArrowDownHTML', '&#x25BC;'], ['contextMenuArrowUpHTML', '&#x25B2;'], ['contextMenuBackground', 'rgba(240, 240, 240, 1)'], ['contextMenuBorder', 'solid 1px rgba(158, 163, 169, 1)'], ['contextMenuBorderRadius', '3px'], ['contextMenuChildArrowFontSize', '12px'], ['contextMenuColor', 'rgba(43, 48, 43, 1)'], ['contextMenuCursor', 'default'], ['contextMenuFilterButtonFontFamily', 'sans-serif'], ['contextMenuFilterButtonFontSize', '10px'], ['contextMenuFilterInvalidExpresion', 'rgba(237, 155, 156, 1)'], ['contextMenuFontFamily', 'sans-serif'], ['contextMenuFontSize', '16px'], ['contextMenuHoverBackground', 'rgba(182, 205, 250, 1)'], ['contextMenuHoverColor', 'rgba(43, 48, 153, 1)'], ['contextMenuItemBorderRadius', '3px'], ['contextMenuItemMargin', '2px'], ['contextMenuLabelDisplay', 'inline-block'], ['contextMenuLabelMargin', '0 3px 0 0'], ['contextMenuLabelMaxWidth', '700px'], ['contextMenuLabelMinWidth', '75px'], ['contextMenuMarginLeft', 3], ['contextMenuMarginTop', -3], ['contextMenuOpacity', '0.98'], ['contextMenuPadding', '2px'], ['contextMenuWindowMargin', 30], ['contextMenuZIndex', 10000], ['cornerCellBackgroundColor', 'rgba(240, 240, 240, 1)'], ['cornerCellBorderColor', 'rgba(202, 202, 202, 1)'], ['debugBackgroundColor', 'rgba(0, 0, 0, .0)'], ['debugColor', 'rgba(255, 15, 24, 1)'], ['debugEntitiesColor', 'rgba(76, 231, 239, 1.00)'], ['debugFont', '11px sans-serif'], ['debugPerfChartBackground', 'rgba(29, 25, 26, 1.00)'], ['debugPerfChartTextColor', 'rgba(255, 255, 255, 0.8)'], ['debugPerformanceColor', 'rgba(252, 255, 37, 1.00)'], ['debugScrollHeightColor', 'rgba(248, 33, 103, 1.00)'], ['debugScrollWidthColor', 'rgba(66, 255, 27, 1.00)'], ['debugTouchPPSXColor', 'rgba(246, 102, 24, 1.00)'], ['debugTouchPPSYColor', 'rgba(186, 0, 255, 1.00)'], ['display', 'inline-block'], ['editCellBackgroundColor', 'white'], ['editCellBorder', 'solid 1px rgba(110, 168, 255, 1)'], ['editCellBoxShadow', '0 2px 5px rgba(0,0,0,0.4)'], ['editCellColor', 'black'], ['editCellFontFamily', 'sans-serif'], ['editCellFontSize', '16px'], ['editCellPaddingLeft', 4], ['editCellZIndex', 10000], ['frozenMarkerHoverColor', 'rgba(236, 243, 255, 1)'], ['frozenMarkerHoverBorderColor', 'rgba(110, 168, 255, 1)'], ['frozenMarkerActiveColor', 'rgba(236, 243, 255, 1)'], ['frozenMarkerActiveBorderColor', 'rgba(110, 168, 255, 1)'], ['frozenMarkerColor', 'rgba(222, 222, 222, 1)'], ['frozenMarkerBorderColor', 'rgba(168, 168, 168, 1)'], ['frozenMarkerBorderWidth', 1], ['frozenMarkerWidth', 2], ['gridBackgroundColor', 'rgba(240, 240, 240, 1)'], ['gridBorderCollapse', 'collapse'], ['gridBorderColor', 'rgba(202, 202, 202, 1)'], ['gridBorderWidth', 1], ['height', 'auto'], ['maxHeight', 'inherit'], ['maxWidth', 'inherit'], ['minColumnWidth', 45], ['minHeight', 'inherit'], ['minRowHeight', 24], ['minWidth', 'inherit'], ['mobileContextMenuMargin', 10], ['mobileEditInputHeight', 30], ['mobileEditFontFamily', 'sans-serif'], ['mobileEditFontSize', '16px'], ['moveOverlayBorderWidth', 1], ['moveOverlayBorderColor', 'rgba(66, 133, 244, 1)'], ['moveOverlayBorderSegments', '12, 7'], ['name', 'default'], ['overflowY', 'auto'], ['overflowX', 'auto'], ['reorderMarkerBackgroundColor', 'rgba(0, 0, 0, 0.1)'], ['reorderMarkerBorderColor', 'rgba(0, 0, 0, 0.2)'], ['reorderMarkerBorderWidth', 1.25], ['reorderMarkerIndexBorderColor', 'rgba(66, 133, 244, 1)'], ['reorderMarkerIndexBorderWidth', 2.75], ['rowHeaderCellBackgroundColor', 'rgba(240, 240, 240, 1)'], ['rowHeaderCellBorderColor', 'rgba(200, 200, 200, 1)'], ['rowHeaderCellBorderWidth', 1], ['rowHeaderCellColor', 'rgba(50, 50, 50, 1)'], ['rowHeaderCellFont', '16px sans-serif'], ['rowHeaderCellHeight', 25], ['rowHeaderCellHorizontalAlignment', 'left'], ['rowHeaderCellHoverBackgroundColor', 'rgba(235, 235, 235, 1)'], ['rowHeaderCellHoverColor', 'rgba(0, 0, 0, 1)'], ['rowHeaderCellPaddingBottom', 5], ['rowHeaderCellPaddingLeft', 5], ['rowHeaderCellPaddingRight', 5], ['rowHeaderCellPaddingTop', 5], ['rowHeaderCellRowNumberGapHeight', 5], ['rowHeaderCellRowNumberGapColor', 'rgba(50, 50, 50, 1)'], ['rowHeaderCellSelectedBackgroundColor', 'rgba(217, 217, 217, 1)'], ['rowHeaderCellSelectedColor', 'rgba(50, 50, 50, 1)'], ['rowHeaderCellVerticalAlignment', 'center'], ['rowHeaderCellWidth', 57], ['scrollBarActiveColor', 'rgba(125, 125, 125, 1)'], ['scrollBarBackgroundColor', 'rgba(240, 240, 240, 1)'], ['scrollBarBorderColor', 'rgba(202, 202, 202, 1)'], ['scrollBarBorderWidth', 0.5], ['scrollBarBoxBorderRadius', 4.125], ['scrollBarBoxColor', 'rgba(192, 192, 192, 1)'], ['scrollBarBoxMargin', 2], ['scrollBarBoxMinSize', 15], ['scrollBarBoxWidth', 8], ['scrollBarCornerBackgroundColor', 'rgba(240, 240, 240, 1)'], ['scrollBarCornerBorderColor', 'rgba(202, 202, 202, 1)'], ['scrollBarWidth', 11], ['selectionHandleBorderColor', 'rgba(255, 255, 255, 1)'], ['selectionHandleBorderWidth', 1.5], ['selectionHandleColor', 'rgba(66, 133, 244, 1)'], ['selectionHandleSize', 8], ['selectionHandleType', 'square'], ['selectionOverlayBorderColor', 'rgba(66, 133, 244, 1)'], ['selectionOverlayBorderWidth', 1], ['treeArrowBorderColor', 'rgba(195, 199, 202, 1)'], ['treeArrowBorderWidth', 1], ['treeArrowClickRadius', 5], ['treeArrowColor', 'rgba(155, 155, 155, 1)'], ['treeArrowHeight', 8], ['treeArrowMarginLeft', 0], ['treeArrowMarginRight', 5], ['treeArrowMarginTop', 6], ['treeArrowWidth', 13], ['treeGridHeight', 250], ['width', 'auto']]
   };
 }
@@ -1728,7 +1728,7 @@ __webpack_require__.r(__webpack_exports__);
     self.eventParent.addEventListener('mousedown', self.mousedown, false);
     self.eventParent.addEventListener('dblclick', self.dblclick, false);
     self.eventParent.addEventListener('click', self.click, false);
-    self.eventParent.addEventListener('mousemove', self.mousemove);
+    document.body.addEventListener('mousemove', self.mousemove);
     self[self.isChildGrid ? 'parentGrid' : 'eventParent'].addEventListener('wheel', self.scrollWheel, false);
     self.canvas.addEventListener('contextmenu', self.contextmenuEvent, false);
     self.controlInput.addEventListener('copy', self.copy);
@@ -3962,14 +3962,9 @@ __webpack_require__.r(__webpack_exports__);
     }
 
     self.currentCell = cell;
-
-    if (!self.hasFocus) {
-      return;
-    }
-
     self.hovers = {};
 
-    if (!self.draggingItem && cell && self.scrollModes.indexOf(cell.context) === -1) {
+    if (!self.draggingItem && cell) {
       self.dragItem = cell;
       self.dragMode = cell.dragContext;
       self.cursor = cell.context;
@@ -3982,7 +3977,7 @@ __webpack_require__.r(__webpack_exports__);
         };
       }
 
-      if ((self.selecting || self.reorderObject) && cell.context === 'cell') {
+      if (self.selecting || self.reorderObject) {
         delta = {
           x: Math.abs(self.dragStart.x - x),
           y: Math.abs(self.dragStart.y - y)
@@ -4051,7 +4046,13 @@ __webpack_require__.r(__webpack_exports__);
           }
         }
 
-        self.autoScrollZone(e, x, y, ctrl);
+        if (self.attributes.autoScrollOnMousemove) {
+          var movedVertically = delta.y > self.attributes.autoScrollMargin;
+          var movedHorizontally = delta.x > self.attributes.autoScrollMargin;
+          if (movedVertically && !movedHorizontally) self.autoScrollZone(e, -1, y, ctrl);else if (movedHorizontally && !movedVertically) self.autoScrollZone(e, x, -1, ctrl);else if (movedHorizontally && movedVertically) self.autoScrollZone(e, x, y, ctrl);
+        } else {
+          self.autoScrollZone(e, x, y, ctrl);
+        }
       }
     }
 
@@ -4890,10 +4891,10 @@ __webpack_require__.r(__webpack_exports__);
   };
 
   self.pasteData = function (pasteValue, mimeType, startRowIndex, startColIndex) {
-    var schema = self.getVisibleSchema();
+    var schema = self.getSchema();
 
     var isSupportedHtmlTable = function isSupportedHtmlTable(htmlString) {
-      return /(?:^(<meta[^>]+>)?<table>)|(?:<!--StartFragment-->\s*<table>)/.test(htmlString);
+      return /(?:^(<meta[^>]+>)?<table.*?>)|(?:<!--StartFragment-->\s*<table.*?>)/.test(htmlString);
     }; // TODO: support pasting tables from Excel
 
 
@@ -4906,78 +4907,89 @@ __webpack_require__.r(__webpack_exports__);
     function parseData(data, mimeType) {
       // TODO: use DOMParser
       if (mimeType === 'text/html') {
-        // strip table beginning and ending off, then split at rows
-        var cleanedHtmlData = data.substring(data.indexOf('<table><tr>') + 11, data.indexOf('</tr></table>')).split('</tr><tr>').filter( // ditch any headers on the table
-        function (row) {
-          return !/^<th>|^<thead>/.test(row);
-        }).map( // split row into individual cells
-        function (row) {
-          return row.match(/<td>[^<]+/g).map(function (match) {
-            return match.replace(/^<td>/, '');
+        var doc = new DOMParser().parseFromString(data, 'text/html');
+        var trs = doc.querySelectorAll('table tr');
+        var _rows = [];
+        trs.forEach(function (tr) {
+          var row = [];
+          tr.childNodes.forEach(function (td) {
+            if (td.nodeName === '#text') return;
+            var col = {
+              // style: {}, // keep style if need
+              value: []
+            };
+            td.childNodes.forEach(function (ele) {
+              col.value.push({
+                // style: {}, // keep style if need
+                value: ele.nodeType === 1 ? ele.innerText : ele.data
+              });
+            });
+            row.push(col);
           });
+
+          _rows.push(row);
         });
-        return cleanedHtmlData;
+        return _rows;
       } // Default data format is string, so split on new line,
       // and then enclose in an array (a row with one cell):
 
 
-      return data.split('\n').map(function (value) {
-        return [value];
+      return data.split('\n').map(function (item) {
+        return item.split('\t').map(function (value) {
+          return {
+            value: [{
+              value: value
+            }]
+          };
+        });
       });
     }
 
-    var rows = parseData(pasteValue, mimeType); // Special case: if rows.length = 1, we paste this value in each
-    // selected cell. This mimics Excel's paste functionality, and works
+    var rows = parseData(pasteValue, mimeType); // selected cell. This mimics Excel's paste functionality, and works
     // as a poor-man's fill-down.
 
-    if (rows.length === 1) {
-      var cellData = rows[0][0];
-      self.forEachSelectedCell(function (data, rowIndex, colName) {
-        data[rowIndex][colName] = cellData;
-      });
-    } else {
-      var selections = [];
+    var selections = [];
 
-      for (var rowIndex = 0; rowIndex < rows.length; rowIndex++) {
-        // Rows may have been moved by user, so get the actual row index
-        // (instead of the row index at which the row is rendered):
-        var realRowIndex = self.orders.rows[startRowIndex + rowIndex];
-        var cells = rows[rowIndex];
-        var existingRowData = self.viewData[realRowIndex];
-        var newRowData = Object.assign({}, existingRowData);
-        selections[realRowIndex] = [];
+    for (var rowIndex = 0; rowIndex < rows.length; rowIndex++) {
+      // Rows may have been moved by user, so get the actual row index
+      // (instead of the row index at which the row is rendered):
+      var realRowIndex = self.orders.rows[startRowIndex + rowIndex];
+      var cells = rows[rowIndex];
+      var existingRowData = self.viewData[realRowIndex];
+      var newRowData = Object.assign({}, existingRowData);
+      selections[realRowIndex] = [];
 
-        for (var colIndex = 0; colIndex < cells.length; colIndex++) {
-          var column = schema[startColIndex + colIndex];
+      for (var colIndex = 0; colIndex < cells.length; colIndex++) {
+        var column = schema[startColIndex + colIndex];
 
-          if (!column) {
-            console.warn('Paste data exceeded grid bounds. Skipping.');
-            continue;
-          }
-
-          var columnName = column.name;
-          var cellData = cells[colIndex];
-
-          if (cellData === undefined || cellData === null) {
-            newRowData[columnName] = existingRowData[columnName];
-            continue;
-          }
-
-          selections[realRowIndex].push(startColIndex + colIndex);
-          newRowData[columnName] = cellData;
+        if (!column) {
+          console.warn('Paste data exceeded grid bounds. Skipping.');
+          continue;
         }
 
-        self.originalData[self.boundRowIndexMap.get(realRowIndex)] = newRowData; // Update view date here to avoid a full refresh of `viewData`.
-        // To stay in line with Excel and Google Sheet behaviour,
-        // don't perform a full refresh (and filter/sort results)
-        // as this would make any pasted values disappear and/or suddenly change position.
+        var columnName = column.name;
+        var cellData = cells[colIndex].value.map(function (item) {
+          return item.value;
+        }).join('');
 
-        self.viewData[realRowIndex] = newRowData;
+        if (cellData === undefined || cellData === null) {
+          newRowData[columnName] = existingRowData[columnName];
+          continue;
+        }
+
+        selections[realRowIndex].push(startColIndex + colIndex);
+        newRowData[columnName] = cellData;
       }
 
-      self.selections = selections;
-    } // selections is a sparse array, so we condense:
+      self.originalData[self.boundRowIndexMap.get(realRowIndex)] = newRowData; // Update view date here to avoid a full refresh of `viewData`.
+      // To stay in line with Excel and Google Sheet behaviour,
+      // don't perform a full refresh (and filter/sort results)
+      // as this would make any pasted values disappear and/or suddenly change position.
 
+      self.viewData[realRowIndex] = newRowData;
+    }
+
+    self.selections = selections; // selections is a sparse array, so we condense:
 
     var affectedCells = [];
     self.selections.forEach(function (row, rowIndex) {
@@ -5051,12 +5063,24 @@ __webpack_require__.r(__webpack_exports__);
       return;
     }
 
-    var itemToPaste = pasteableItems[0]; // itemToPaste is cleared once accessed (getData or getAsString),
+    var itemToPaste = pasteableItems[0];
+    var startCell = [];
+
+    for (var rowIndex = 0, len = self.selections.length; rowIndex < len; rowIndex++) {
+      var row = self.selections[rowIndex];
+
+      if (row) {
+        if (row[0] === undefined) return;
+        startCell = [rowIndex, row[0] < 0 ? row[1] : row[0]];
+        break;
+      }
+    } // itemToPaste is cleared once accessed (getData or getAsString),
     // so we need to store the type here, before reading its value:
+
 
     var pasteType = itemToPaste.type;
     itemToPaste.getAsString(function (pasteValue) {
-      self.pasteData(pasteValue, pasteType, self.activeCell.rowIndex, self.getVisibleColumnIndexOf(self.activeCell.columnIndex));
+      self.pasteData(pasteValue, pasteType, startCell[0], startCell[1]);
       self.draw();
     });
   };
@@ -5079,118 +5103,73 @@ __webpack_require__.r(__webpack_exports__);
       return;
     }
 
-    var t,
-        d,
-        tableRows = [],
+    var t = '',
+        d = '',
         textRows = [],
-        outputHeaders = {},
-        outputHeaderKeys,
         sData = self.getSelectedData(),
-        s = self.getSchema();
+        s = self.getSchema(),
+        sSorted = [],
+        firstRowKeys,
+        isNeat = true; // Selected like [[0, 1], [0, 1]] of [[0, 3]] is neat; Selected like [[0, 1], [1, 2]] is untidy
 
     function htmlSafe(v) {
       return v.replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }
 
-    function fCopyCell(v) {
-      v = v === null || v === undefined ? '' : v;
-      return '<td>' + (typeof v === 'string' ? htmlSafe(v) : v) + '</td>';
-    }
-
-    function addHeaders(headers, useHtml) {
-      if (!s.length || headers.length < 2) {
-        return '';
-      }
-
-      var h = [];
-
-      if (useHtml) {
-        h.push('<tr>');
-      }
-
-      s.forEach(function (column, columnIndex) {
-        // intentional redefinition of column
-        column = s[self.orders.columns[columnIndex]];
-
-        if (!column.hidden && headers.indexOf(column.name) !== -1) {
-          var ev = {
-            NativeEvent: e,
-            column: column
-          };
-
-          if (self.dispatchEvent('copyonschema', ev)) {
-            column = ev.column;
-          }
-
-          var hVal = column.name || column.title || '';
-
-          if (useHtml) {
-            h.push('<th>' + htmlSafe(hVal) + '</th>');
-          } else {
-            h.push('"' + hVal.replace(/"/g, '""') + '"');
-          }
-        }
-      });
-      h.push(useHtml ? '</tr>' : '\n');
-      return h.join(useHtml ? '' : ',');
-    }
-
-    function addCellValue(val, trRow, textRow, column) {
-      // escape strings
-      if (val !== null && val !== false && val !== undefined && val.replace) {
-        trRow.push(fCopyCell(val));
-        textRow.push('"' + val.replace(/"/g, '""') + '"');
-        return;
-      }
-
-      if (val !== undefined) {
-        textRow.push(val);
-        trRow.push(fCopyCell(val));
-        return;
-      } // issue #66
-
-
-      textRow.push('');
-      trRow.push('<td>&nbsp;</td>');
-    }
+    s.forEach(function (column, columnIndex) {
+      sSorted.push(s[self.orders.columns[columnIndex]]);
+    });
 
     if (sData.length > 0) {
       sData.forEach(function (row) {
+        if (!row) return;
         var rowKeys = Object.keys(row);
-
-        if (row) {
-          var trRow = [],
-              textRow = [],
-              sSorted = []; // HACK: https://github.com/TonyGermaneri/canvas-datagrid/issues/181
-          // I can't use sort here or O(1), so hacks
-
-          s.forEach(function (column, columnIndex) {
-            sSorted.push(s[self.orders.columns[columnIndex]]);
-          });
-          sSorted.forEach(function (column, columnIndex) {
-            if (rowKeys.indexOf(column.name) !== -1) {
-              outputHeaders[column.name] = true; // escape strings
-
-              addCellValue(row[column.name], trRow, textRow, column);
+        var textRow = [];
+        if (!firstRowKeys) firstRowKeys = Object.keys(row);
+        if (isNeat && rowKeys.length !== firstRowKeys.length) isNeat = false;
+        sSorted.forEach(function (column, columnIndex) {
+          if (rowKeys.indexOf(column.name) < 0) {
+            if (firstRowKeys.indexOf(column.name) < 0) {
+              return;
+            } else if (isNeat) {
+              isNeat = false;
             }
-          });
-          tableRows.push(trRow.join(''));
-          textRows.push(textRow.join(','));
-        }
-      });
-      outputHeaderKeys = Object.keys(outputHeaders);
-      t = addHeaders(outputHeaderKeys) + textRows.join('\n');
-      d = '<table>' + addHeaders(outputHeaderKeys, true) + '<tr>' + tableRows.join('</tr><tr>') + '</tr></table>';
+          }
 
-      if (outputHeaderKeys.length === 1) {
-        // if there was only one cell selected, remove the quotes from the string
-        t = t.substring(1, t.length - 1);
+          textRow.push(row[column.name] || '');
+        });
+        textRows.push(textRow);
+      });
+
+      if (isNeat) {
+        t = textRows.map(function (row) {
+          return row.join('\t');
+        }).join('\n');
+        /**
+         * The html content copied by Excel has not header
+         */
+
+        d += '<table>';
+        d += textRows.map(function (row) {
+          return '<tr>' + row.map(function (value) {
+            return '<td>' + htmlSafe(value) + '</td>';
+          }).join('') + '</tr>';
+        }).join('');
+        d += '</table>';
+      } else {
+        t = textRows.map(function (row) {
+          return row.join('');
+        }).join('');
+        d = t;
       }
 
-      e.clipboardData.setData('text/html', d);
-      e.clipboardData.setData('text/plain', t);
-      e.clipboardData.setData('text/csv', t);
-      e.clipboardData.setData('application/json', JSON.stringify(sData));
+      if (t) {
+        e.clipboardData.setData('text/html', d);
+        e.clipboardData.setData('text/plain', t);
+        e.clipboardData.setData('text/csv', t);
+        e.clipboardData.setData('application/json', JSON.stringify(sData));
+      }
+
       e.preventDefault();
     }
   };
@@ -5617,8 +5596,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         rowHeaderCellWidth = self.getRowHeaderCellWidth(),
         columnHeaderCellHeight = self.getColumnHeaderCellHeight();
 
-    if (y !== -1) {
-      if (x > self.width - self.attributes.selectionScrollZone && x < self.width) {
+    if (x !== -1) {
+      if (x > self.width - self.attributes.selectionScrollZone) {
         self.scrollBox.scrollLeft += self.attributes.selectionScrollIncrement;
         setTimer = true;
       }
@@ -5630,7 +5609,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     }
 
     if (y !== -1) {
-      if (y > self.height - self.attributes.selectionScrollZone && y < self.height) {
+      if (y > self.height - self.attributes.selectionScrollZone) {
         self.scrollBox.scrollTop += self.attributes.selectionScrollIncrement;
         setTimer = true;
       }
