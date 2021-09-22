@@ -4948,48 +4948,58 @@ __webpack_require__.r(__webpack_exports__);
     var rows = parseData(pasteValue, mimeType); // selected cell. This mimics Excel's paste functionality, and works
     // as a poor-man's fill-down.
 
-    var selections = [];
+    if (rows.length === 1) {
+      var cellData = rows[0][0].value.map(function (item) {
+        return item.value;
+      }).join();
+      self.forEachSelectedCell(function (data, rowIndex, colName) {
+        data[rowIndex][colName] = cellData;
+      });
+    } else {
+      var selections = [];
 
-    for (var rowIndex = 0; rowIndex < rows.length; rowIndex++) {
-      // Rows may have been moved by user, so get the actual row index
-      // (instead of the row index at which the row is rendered):
-      var realRowIndex = self.orders.rows[startRowIndex + rowIndex];
-      var cells = rows[rowIndex];
-      var existingRowData = self.viewData[realRowIndex];
-      var newRowData = Object.assign({}, existingRowData);
-      selections[realRowIndex] = [];
+      for (var rowIndex = 0; rowIndex < rows.length; rowIndex++) {
+        // Rows may have been moved by user, so get the actual row index
+        // (instead of the row index at which the row is rendered):
+        var realRowIndex = self.orders.rows[startRowIndex + rowIndex];
+        var cells = rows[rowIndex];
+        var existingRowData = self.viewData[realRowIndex];
+        var newRowData = Object.assign({}, existingRowData);
+        selections[realRowIndex] = [];
 
-      for (var colIndex = 0; colIndex < cells.length; colIndex++) {
-        var column = schema[startColIndex + colIndex];
+        for (var colIndex = 0; colIndex < cells.length; colIndex++) {
+          var column = schema[startColIndex + colIndex];
 
-        if (!column) {
-          console.warn('Paste data exceeded grid bounds. Skipping.');
-          continue;
+          if (!column) {
+            console.warn('Paste data exceeded grid bounds. Skipping.');
+            continue;
+          }
+
+          var columnName = column.name;
+          var cellData = cells[colIndex].value.map(function (item) {
+            return item.value;
+          }).join('');
+
+          if (cellData === undefined || cellData === null) {
+            newRowData[columnName] = existingRowData[columnName];
+            continue;
+          }
+
+          selections[realRowIndex].push(startColIndex + colIndex);
+          newRowData[columnName] = cellData;
         }
 
-        var columnName = column.name;
-        var cellData = cells[colIndex].value.map(function (item) {
-          return item.value;
-        }).join('');
+        self.originalData[self.boundRowIndexMap.get(realRowIndex)] = newRowData; // Update view date here to avoid a full refresh of `viewData`.
+        // To stay in line with Excel and Google Sheet behaviour,
+        // don't perform a full refresh (and filter/sort results)
+        // as this would make any pasted values disappear and/or suddenly change position.
 
-        if (cellData === undefined || cellData === null) {
-          newRowData[columnName] = existingRowData[columnName];
-          continue;
-        }
-
-        selections[realRowIndex].push(startColIndex + colIndex);
-        newRowData[columnName] = cellData;
+        self.viewData[realRowIndex] = newRowData;
       }
 
-      self.originalData[self.boundRowIndexMap.get(realRowIndex)] = newRowData; // Update view date here to avoid a full refresh of `viewData`.
-      // To stay in line with Excel and Google Sheet behaviour,
-      // don't perform a full refresh (and filter/sort results)
-      // as this would make any pasted values disappear and/or suddenly change position.
+      self.selections = selections;
+    } // selections is a sparse array, so we condense:
 
-      self.viewData[realRowIndex] = newRowData;
-    }
-
-    self.selections = selections; // selections is a sparse array, so we condense:
 
     var affectedCells = [];
     self.selections.forEach(function (row, rowIndex) {
