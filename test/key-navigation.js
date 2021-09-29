@@ -195,6 +195,114 @@ export default function () {
       ),
     );
   });
+  it('shrink selection when pressing Shift and Arrow-up ', function (done) {
+    var grid = g({
+      test: this.test,
+      data: smallData(),
+    });
+
+    grid.focus();
+    grid.selectArea({
+      top: 1,
+      left: 1,
+      bottom: 2,
+      right: 2,
+    });
+
+    grid.setActiveCell(2, 2); // set to lower right corner of selection
+
+    var ev = new Event('keydown');
+    ev.shiftKey = true;
+    ev.key = 'ArrowUp';
+    grid.controlInput.dispatchEvent(ev);
+
+    var ev = new Event('keydown');
+    ev.shiftKey = true;
+    ev.key = 'ArrowLeft';
+    grid.controlInput.dispatchEvent(ev);
+
+    done(
+      assertIf(
+        grid.selectionBounds.top !== 1 ||
+          grid.selectionBounds.left !== 1 ||
+          grid.selectionBounds.bottom !== 1 ||
+          grid.selectionBounds.right !== 1,
+        'Expected the selection to shrink by a row and column.',
+      ),
+    );
+  });
+  it('shrink selection to top/left corner when pressing Shift and Arrow-up/left ', function (done) {
+    var grid = g({
+      test: this.test,
+      data: smallData(),
+    });
+
+    grid.focus();
+    grid.selectArea({
+      top: 0,
+      left: 0,
+      bottom: 1,
+      right: 1,
+    });
+
+    grid.setActiveCell(1, 1); // set to lower right corner of selection
+
+    var ev = new Event('keydown');
+    ev.shiftKey = true;
+    ev.key = 'ArrowUp';
+    grid.controlInput.dispatchEvent(ev);
+
+    var ev = new Event('keydown');
+    ev.shiftKey = true;
+    ev.key = 'ArrowLeft';
+    grid.controlInput.dispatchEvent(ev);
+
+    done(
+      assertIf(
+        grid.selectionBounds.top !== 0 ||
+          grid.selectionBounds.left !== 0 ||
+          grid.selectionBounds.bottom !== 0 ||
+          grid.selectionBounds.right !== 0,
+        'Expected the selection to shrink to 1 cell.',
+      ),
+    );
+  });
+  it('shrink selection to bottom/right corner when pressing Shift and Arrow-down/right', function (done) {
+    var grid = g({
+      test: this.test,
+      data: smallData(),
+    });
+
+    grid.focus();
+    grid.selectArea({
+      top: 1,
+      left: 1,
+      bottom: 2,
+      right: 2,
+    });
+
+    grid.setActiveCell(1, 1); // set to upper left corner of selection
+
+    var ev = new Event('keydown');
+    ev.shiftKey = true;
+    ev.key = 'ArrowDown';
+    grid.controlInput.dispatchEvent(ev);
+
+    var ev = new Event('keydown');
+    ev.shiftKey = true;
+    ev.key = 'ArrowRight';
+    grid.controlInput.dispatchEvent(ev);
+
+    done(
+      assertIf(
+        grid.selectionBounds.top !== 2 ||
+          grid.selectionBounds.left !== 2 ||
+          grid.selectionBounds.bottom !== 2 ||
+          grid.selectionBounds.right !== 2,
+        'Expected the selection to shrink to 1 cell.',
+      ),
+    );
+  });
   it('Shift tab should behave like left arrow', function (done) {
     var ev,
       grid = g({
