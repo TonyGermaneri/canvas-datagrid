@@ -8678,40 +8678,6 @@ __webpack_require__.r(__webpack_exports__);
     self.beginEditAt(cell.columnIndex, cell.rowIndex);
   };
 
-  self.touchCell = function (e) {
-    return function () {
-      clearInterval(self.calculatePPSTimer);
-      var i,
-          pos = self.getTouchPos(e);
-
-      if (Math.abs(self.touchDelta.x) + Math.abs(self.touchDelta.y) < self.attributes.touchDeadZone) {
-        i = self.getCellAt(pos.x, pos.y);
-
-        if (!i) {
-          return;
-        }
-
-        if (self.touchingCell && self.touchingCell.rowIndex === i.rowIndex && self.touchingCell.columnIndex === i.columnIndex) {
-          self.touchEditCell(i);
-          return;
-        }
-
-        if (self.input && self.input.editCell) {
-          self.endEdit();
-        }
-
-        self.touchingCell = i;
-        self.selectArea({
-          top: i.rowIndex,
-          bottom: i.rowIndex,
-          left: i.columnIndex,
-          right: i.columnIndex
-        });
-        self.draw(true);
-      }
-    };
-  };
-
   self.touchstart = function (e) {
     if (e.changedTouches[0]) {
       self.touchStart = self.getTouchPos(e);
@@ -8732,7 +8698,6 @@ __webpack_require__.r(__webpack_exports__);
     self.stopAnimation = true;
     self.animationFrames = 0;
     self.stopPropagation(e);
-    e.preventDefault();
 
     if (e.touches.length === 1 && e.changedTouches[0] && !self.zoomAltered) {
       self.touchLength = 1;
@@ -9033,9 +8998,7 @@ __webpack_require__.r(__webpack_exports__);
     self.touchAnimateTo.y = self.yPPS * self.attributes.touchReleaseAcceleration;
     self.calculatePPSTimed();
 
-    if (dz && !self.contextMenu) {
-      self.touchCell(self.touchStartEvent)();
-    } else if (self.animationFrames === 0 && (Math.abs(self.xPPST) > self.attributes.scrollAnimationPPSThreshold || Math.abs(self.yPPST) > self.attributes.scrollAnimationPPSThreshold) && !/-scroll-/.test(self.startingCell.style) && !dz) {
+    if (!dz && self.animationFrames === 0 && (Math.abs(self.xPPST) > self.attributes.scrollAnimationPPSThreshold || Math.abs(self.yPPST) > self.attributes.scrollAnimationPPSThreshold) && !/-scroll-/.test(self.startingCell.style) && !dz) {
       self.stopAnimation = false;
       self.touchEndAnimation();
     }

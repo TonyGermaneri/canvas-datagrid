@@ -91744,7 +91744,7 @@ window.reflection = [
         "meta": {
             "range": [
                 196,
-                16205
+                15190
             ],
             "filename": "touch.js",
             "lineno": 5,
@@ -91775,7 +91775,6 @@ window.reflection = [
                 "self.calculatePPS": "self.calculatePPS",
                 "self.touchEndAnimation": "self.touchEndAnimation",
                 "self.touchEditCell": "self.touchEditCell",
-                "self.touchCell": "self.touchCell",
                 "self.touchstart": "self.touchstart",
                 "self.touchSelect": "self.touchSelect",
                 "touchMove": "module.exports~touchMove",
@@ -93406,7 +93405,7 @@ window.reflection = [
         "meta": {
             "range": [
                 4032,
-                4944
+                7414
             ],
             "filename": "touch.js",
             "lineno": 147,
@@ -93414,253 +93413,6 @@ window.reflection = [
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
                 "id": "astnode100040723",
-                "name": "self.touchCell",
-                "type": "FunctionExpression",
-                "paramnames": [
-                    "e"
-                ]
-            },
-            "vars": {
-                "": null
-            }
-        },
-        "undocumented": true,
-        "name": "touchCell",
-        "longname": "self.touchCell",
-        "kind": "function",
-        "memberof": "self",
-        "scope": "static",
-        "___id": "T000002R003057",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                4144,
-                4145
-            ],
-            "filename": "touch.js",
-            "lineno": 150,
-            "columnno": 10,
-            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100040740",
-                "name": "i"
-            }
-        },
-        "undocumented": true,
-        "name": "i",
-        "longname": "<anonymous>~i",
-        "kind": "member",
-        "memberof": "<anonymous>",
-        "scope": "inner",
-        "params": [],
-        "___id": "T000002R003058",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                4155,
-                4180
-            ],
-            "filename": "touch.js",
-            "lineno": 151,
-            "columnno": 8,
-            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100040742",
-                "name": "pos",
-                "type": "CallExpression",
-                "value": ""
-            }
-        },
-        "undocumented": true,
-        "name": "pos",
-        "longname": "<anonymous>~pos",
-        "kind": "member",
-        "memberof": "<anonymous>",
-        "scope": "inner",
-        "params": [],
-        "___id": "T000002R003059",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                4317,
-                4349
-            ],
-            "filename": "touch.js",
-            "lineno": 156,
-            "columnno": 8,
-            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100040777",
-                "name": "i",
-                "type": "CallExpression",
-                "funcscope": "<anonymous>",
-                "value": "",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "i",
-        "longname": "<anonymous>~i",
-        "kind": "member",
-        "memberof": "<anonymous>",
-        "scope": "inner",
-        "___id": "T000002R003060",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                4720,
-                4741
-            ],
-            "filename": "touch.js",
-            "lineno": 171,
-            "columnno": 8,
-            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100040843",
-                "name": "self.touchingCell",
-                "type": "Identifier",
-                "value": "i",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "touchingCell",
-        "longname": "self.touchingCell",
-        "kind": "member",
-        "memberof": "self",
-        "scope": "static",
-        "___id": "T000002R003061",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                4779,
-                4794
-            ],
-            "filename": "touch.js",
-            "lineno": 173,
-            "columnno": 10,
-            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100040854",
-                "name": "top",
-                "type": "MemberExpression",
-                "value": "i.rowIndex"
-            }
-        },
-        "undocumented": true,
-        "name": "top",
-        "longname": "top",
-        "kind": "member",
-        "scope": "global",
-        "___id": "T000002R003062",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                4806,
-                4824
-            ],
-            "filename": "touch.js",
-            "lineno": 174,
-            "columnno": 10,
-            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100040858",
-                "name": "bottom",
-                "type": "MemberExpression",
-                "value": "i.rowIndex"
-            }
-        },
-        "undocumented": true,
-        "name": "bottom",
-        "longname": "bottom",
-        "kind": "member",
-        "scope": "global",
-        "___id": "T000002R003063",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                4836,
-                4855
-            ],
-            "filename": "touch.js",
-            "lineno": 175,
-            "columnno": 10,
-            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100040862",
-                "name": "left",
-                "type": "MemberExpression",
-                "value": "i.columnIndex"
-            }
-        },
-        "undocumented": true,
-        "name": "left",
-        "longname": "left",
-        "kind": "member",
-        "scope": "global",
-        "___id": "T000002R003064",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                4867,
-                4887
-            ],
-            "filename": "touch.js",
-            "lineno": 176,
-            "columnno": 10,
-            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100040866",
-                "name": "right",
-                "type": "MemberExpression",
-                "value": "i.columnIndex"
-            }
-        },
-        "undocumented": true,
-        "name": "right",
-        "longname": "right",
-        "kind": "member",
-        "scope": "global",
-        "___id": "T000002R003065",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                4948,
-                8354
-            ],
-            "filename": "touch.js",
-            "lineno": 182,
-            "columnno": 2,
-            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100040877",
                 "name": "self.touchstart",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -93691,22 +93443,22 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003066",
+        "___id": "T000002R003057",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                5018,
-                5055
+                4102,
+                4139
             ],
             "filename": "touch.js",
-            "lineno": 184,
+            "lineno": 149,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040892",
+                "id": "astnode100040738",
                 "name": "self.touchStart",
                 "type": "CallExpression",
                 "value": "",
@@ -93719,22 +93471,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003067",
+        "___id": "T000002R003058",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                5063,
-                5174
+                4147,
+                4258
             ],
             "filename": "touch.js",
-            "lineno": 185,
+            "lineno": 150,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040902",
+                "id": "astnode100040748",
                 "name": "self.startingCell",
                 "type": "CallExpression",
                 "value": "",
@@ -93747,22 +93499,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003068",
+        "___id": "T000002R003059",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                5240,
-                5254
+                4324,
+                4338
             ],
             "filename": "touch.js",
-            "lineno": 193,
+            "lineno": 158,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040928",
+                "id": "astnode100040774",
                 "name": "NativeEvent",
                 "type": "Identifier",
                 "value": "e"
@@ -93773,22 +93525,22 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R003069",
+        "___id": "T000002R003060",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                5264,
-                5287
+                4348,
+                4371
             ],
             "filename": "touch.js",
-            "lineno": 194,
+            "lineno": 159,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040930",
+                "id": "astnode100040776",
                 "name": "cell",
                 "type": "MemberExpression",
                 "value": "self.startingCell"
@@ -93799,22 +93551,22 @@ window.reflection = [
         "longname": "cell",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R003070",
+        "___id": "T000002R003061",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                5448,
-                5472
+                4532,
+                4556
             ],
             "filename": "touch.js",
-            "lineno": 202,
+            "lineno": 167,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040954",
+                "id": "astnode100040800",
                 "name": "self.touchStartEvent",
                 "type": "Identifier",
                 "value": "e",
@@ -93827,22 +93579,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003071",
+        "___id": "T000002R003062",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                5478,
-                5503
+                4562,
+                4587
             ],
             "filename": "touch.js",
-            "lineno": 203,
+            "lineno": 168,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040960",
+                "id": "astnode100040806",
                 "name": "self.stopAnimation",
                 "type": "Literal",
                 "value": true,
@@ -93855,22 +93607,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003072",
+        "___id": "T000002R003063",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                5509,
-                5533
+                4593,
+                4617
             ],
             "filename": "touch.js",
-            "lineno": 204,
+            "lineno": 169,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100040966",
+                "id": "astnode100040812",
                 "name": "self.animationFrames",
                 "type": "Literal",
                 "value": 0,
@@ -93883,22 +93635,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003073",
+        "___id": "T000002R003064",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                5672,
-                5692
+                4732,
+                4752
             ],
             "filename": "touch.js",
-            "lineno": 208,
+            "lineno": 172,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041003",
+                "id": "astnode100040844",
                 "name": "self.touchLength",
                 "type": "Literal",
                 "value": 1,
@@ -93911,22 +93663,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003074",
+        "___id": "T000002R003065",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                5700,
-                5753
+                4760,
+                4813
             ],
             "filename": "touch.js",
-            "lineno": 209,
+            "lineno": 173,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041009",
+                "id": "astnode100040850",
                 "name": "self.touchStart",
                 "type": "LogicalExpression",
                 "value": "",
@@ -93939,22 +93691,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003075",
+        "___id": "T000002R003066",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                5761,
-                5899
+                4821,
+                4959
             ],
             "filename": "touch.js",
-            "lineno": 210,
+            "lineno": 174,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041021",
+                "id": "astnode100040862",
                 "name": "self.touchScrollStart",
                 "type": "ObjectExpression",
                 "value": "{\"x\":\"\",\"y\":\"\",\"t\":\"\"}",
@@ -93967,22 +93719,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003076",
+        "___id": "T000002R003067",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                5795,
-                5823
+                4855,
+                4883
             ],
             "filename": "touch.js",
-            "lineno": 211,
+            "lineno": 175,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041026",
+                "id": "astnode100040867",
                 "name": "x",
                 "type": "MemberExpression",
                 "value": "self.scrollBox.scrollLeft"
@@ -93994,22 +93746,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchScrollStart",
         "scope": "static",
-        "___id": "T000002R003077",
+        "___id": "T000002R003068",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                5833,
-                5860
+                4893,
+                4920
             ],
             "filename": "touch.js",
-            "lineno": 212,
+            "lineno": 176,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041032",
+                "id": "astnode100040873",
                 "name": "y",
                 "type": "MemberExpression",
                 "value": "self.scrollBox.scrollTop"
@@ -94021,22 +93773,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchScrollStart",
         "scope": "static",
-        "___id": "T000002R003078",
+        "___id": "T000002R003069",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                5870,
-                5890
+                4930,
+                4950
             ],
             "filename": "touch.js",
-            "lineno": 213,
+            "lineno": 177,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041038",
+                "id": "astnode100040879",
                 "name": "t",
                 "type": "CallExpression",
                 "value": ""
@@ -94048,22 +93800,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchScrollStart",
         "scope": "static",
-        "___id": "T000002R003079",
+        "___id": "T000002R003070",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                5907,
-                6090
+                4967,
+                5150
             ],
             "filename": "touch.js",
-            "lineno": 215,
+            "lineno": 179,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041044",
+                "id": "astnode100040885",
                 "name": "self.touchDelta",
                 "type": "ObjectExpression",
                 "value": "{\"x\":0,\"y\":0,\"scrollLeft\":\"\",\"scrollTop\":\"\",\"t\":\"\"}",
@@ -94076,22 +93828,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003080",
+        "___id": "T000002R003071",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                5935,
-                5939
+                4995,
+                4999
             ],
             "filename": "touch.js",
-            "lineno": 216,
+            "lineno": 180,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041049",
+                "id": "astnode100040890",
                 "name": "x",
                 "type": "Literal",
                 "value": 0
@@ -94103,22 +93855,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R003081",
+        "___id": "T000002R003072",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                5949,
-                5953
+                5009,
+                5013
             ],
             "filename": "touch.js",
-            "lineno": 217,
+            "lineno": 181,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041051",
+                "id": "astnode100040892",
                 "name": "y",
                 "type": "Literal",
                 "value": 0
@@ -94130,22 +93882,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R003082",
+        "___id": "T000002R003073",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                5963,
-                6000
+                5023,
+                5060
             ],
             "filename": "touch.js",
-            "lineno": 218,
+            "lineno": 182,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041053",
+                "id": "astnode100040894",
                 "name": "scrollLeft",
                 "type": "MemberExpression",
                 "value": "self.scrollBox.scrollLeft"
@@ -94157,22 +93909,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R003083",
+        "___id": "T000002R003074",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6010,
-                6045
+                5070,
+                5105
             ],
             "filename": "touch.js",
-            "lineno": 219,
+            "lineno": 183,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041059",
+                "id": "astnode100040900",
                 "name": "scrollTop",
                 "type": "MemberExpression",
                 "value": "self.scrollBox.scrollTop"
@@ -94184,22 +93936,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R003084",
+        "___id": "T000002R003075",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6055,
-                6081
+                5115,
+                5141
             ],
             "filename": "touch.js",
-            "lineno": 220,
+            "lineno": 184,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041065",
+                "id": "astnode100040906",
                 "name": "t",
                 "type": "MemberExpression",
                 "value": "self.touchScrollStart.t"
@@ -94211,22 +93963,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R003085",
+        "___id": "T000002R003076",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6098,
-                6215
+                5158,
+                5275
             ],
             "filename": "touch.js",
-            "lineno": 222,
+            "lineno": 186,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041072",
+                "id": "astnode100040913",
                 "name": "self.touchSigma",
                 "type": "ObjectExpression",
                 "value": "{\"x\":\"\",\"y\":\"\",\"t\":\"\"}",
@@ -94239,22 +93991,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003086",
+        "___id": "T000002R003077",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6126,
-                6146
+                5186,
+                5206
             ],
             "filename": "touch.js",
-            "lineno": 223,
+            "lineno": 187,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041077",
+                "id": "astnode100040918",
                 "name": "x",
                 "type": "MemberExpression",
                 "value": "self.touchDelta.x"
@@ -94266,22 +94018,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSigma",
         "scope": "static",
-        "___id": "T000002R003087",
+        "___id": "T000002R003078",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6156,
-                6176
+                5216,
+                5236
             ],
             "filename": "touch.js",
-            "lineno": 224,
+            "lineno": 188,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041083",
+                "id": "astnode100040924",
                 "name": "y",
                 "type": "MemberExpression",
                 "value": "self.touchDelta.y"
@@ -94293,22 +94045,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSigma",
         "scope": "static",
-        "___id": "T000002R003088",
+        "___id": "T000002R003079",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6186,
-                6206
+                5246,
+                5266
             ],
             "filename": "touch.js",
-            "lineno": 225,
+            "lineno": 189,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041089",
+                "id": "astnode100040930",
                 "name": "t",
                 "type": "MemberExpression",
                 "value": "self.touchDelta.t"
@@ -94320,22 +94072,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSigma",
         "scope": "static",
-        "___id": "T000002R003089",
+        "___id": "T000002R003080",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6223,
-                6345
+                5283,
+                5405
             ],
             "filename": "touch.js",
-            "lineno": 227,
+            "lineno": 191,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041096",
+                "id": "astnode100040937",
                 "name": "self.touchSigmaTimed",
                 "type": "ObjectExpression",
                 "value": "{\"x\":\"\",\"y\":\"\",\"t\":\"\"}",
@@ -94348,22 +94100,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003090",
+        "___id": "T000002R003081",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6256,
-                6276
+                5316,
+                5336
             ],
             "filename": "touch.js",
-            "lineno": 228,
+            "lineno": 192,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041101",
+                "id": "astnode100040942",
                 "name": "x",
                 "type": "MemberExpression",
                 "value": "self.touchDelta.x"
@@ -94375,22 +94127,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSigmaTimed",
         "scope": "static",
-        "___id": "T000002R003091",
+        "___id": "T000002R003082",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6286,
-                6306
+                5346,
+                5366
             ],
             "filename": "touch.js",
-            "lineno": 229,
+            "lineno": 193,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041107",
+                "id": "astnode100040948",
                 "name": "y",
                 "type": "MemberExpression",
                 "value": "self.touchDelta.y"
@@ -94402,22 +94154,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSigmaTimed",
         "scope": "static",
-        "___id": "T000002R003092",
+        "___id": "T000002R003083",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6316,
-                6336
+                5376,
+                5396
             ],
             "filename": "touch.js",
-            "lineno": 230,
+            "lineno": 194,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041113",
+                "id": "astnode100040954",
                 "name": "t",
                 "type": "MemberExpression",
                 "value": "self.touchDelta.t"
@@ -94429,22 +94181,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSigmaTimed",
         "scope": "static",
-        "___id": "T000002R003093",
+        "___id": "T000002R003084",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6353,
-                6504
+                5413,
+                5564
             ],
             "filename": "touch.js",
-            "lineno": 232,
+            "lineno": 196,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041120",
+                "id": "astnode100040961",
                 "name": "self.touchContextTimeout",
                 "type": "CallExpression",
                 "value": "",
@@ -94457,22 +94209,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003094",
+        "___id": "T000002R003085",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6512,
-                6611
+                5572,
+                5671
             ],
             "filename": "touch.js",
-            "lineno": 235,
+            "lineno": 199,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041143",
+                "id": "astnode100040984",
                 "name": "self.calculatePPSTimer",
                 "type": "CallExpression",
                 "value": "",
@@ -94485,22 +94237,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003095",
+        "___id": "T000002R003086",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6781,
-                6802
+                5841,
+                5862
             ],
             "filename": "touch.js",
-            "lineno": 244,
+            "lineno": 208,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041180",
+                "id": "astnode100041021",
                 "name": "self.hasFocus",
                 "type": "Literal",
                 "value": false,
@@ -94513,22 +94265,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003096",
+        "___id": "T000002R003087",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6834,
-                6854
+                5894,
+                5914
             ],
             "filename": "touch.js",
-            "lineno": 247,
+            "lineno": 211,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041187",
+                "id": "astnode100041028",
                 "name": "self.hasFocus",
                 "type": "Literal",
                 "value": true,
@@ -94541,22 +94293,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003097",
+        "___id": "T000002R003088",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                6981,
-                7012
+                6041,
+                6072
             ],
             "filename": "touch.js",
-            "lineno": 251,
+            "lineno": 215,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041212",
+                "id": "astnode100041053",
                 "name": "top",
                 "type": "MemberExpression",
                 "value": "self.startingCell.rowIndex"
@@ -94567,22 +94319,22 @@ window.reflection = [
         "longname": "top",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R003098",
+        "___id": "T000002R003089",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                7026,
-                7060
+                6086,
+                6120
             ],
             "filename": "touch.js",
-            "lineno": 252,
+            "lineno": 216,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041218",
+                "id": "astnode100041059",
                 "name": "bottom",
                 "type": "MemberExpression",
                 "value": "self.startingCell.rowIndex"
@@ -94593,22 +94345,22 @@ window.reflection = [
         "longname": "bottom",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R003099",
+        "___id": "T000002R003090",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                7074,
-                7081
+                6134,
+                6141
             ],
             "filename": "touch.js",
-            "lineno": 253,
+            "lineno": 217,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041224",
+                "id": "astnode100041065",
                 "name": "left",
                 "type": "Literal",
                 "value": 0
@@ -94619,22 +94371,22 @@ window.reflection = [
         "longname": "left",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R003100",
+        "___id": "T000002R003091",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                7095,
-                7136
+                6155,
+                6196
             ],
             "filename": "touch.js",
-            "lineno": 254,
+            "lineno": 218,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041226",
+                "id": "astnode100041067",
                 "name": "right",
                 "type": "BinaryExpression",
                 "value": ""
@@ -94645,22 +94397,22 @@ window.reflection = [
         "longname": "right",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R003101",
+        "___id": "T000002R003092",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                7384,
-                7468
+                6444,
+                6528
             ],
             "filename": "touch.js",
-            "lineno": 260,
+            "lineno": 224,
             "columnno": 14,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041271",
+                "id": "astnode100041112",
                 "name": "self.orderDirection",
                 "type": "ConditionalExpression",
                 "value": "",
@@ -94673,22 +94425,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003102",
+        "___id": "T000002R003093",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                7505,
-                7532
+                6565,
+                6592
             ],
             "filename": "touch.js",
-            "lineno": 263,
+            "lineno": 227,
             "columnno": 14,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041285",
+                "id": "astnode100041126",
                 "name": "self.orderDirection",
                 "type": "Literal",
                 "value": "asc",
@@ -94701,22 +94453,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003103",
+        "___id": "T000002R003094",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                7752,
-                7758
+                6812,
+                6818
             ],
             "filename": "touch.js",
-            "lineno": 269,
+            "lineno": 233,
             "columnno": 14,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041320",
+                "id": "astnode100041161",
                 "name": "top",
                 "type": "Literal",
                 "value": 0
@@ -94727,22 +94479,22 @@ window.reflection = [
         "longname": "top",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R003104",
+        "___id": "T000002R003095",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                7774,
-                7806
+                6834,
+                6866
             ],
             "filename": "touch.js",
-            "lineno": 270,
+            "lineno": 234,
             "columnno": 14,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041322",
+                "id": "astnode100041163",
                 "name": "bottom",
                 "type": "BinaryExpression",
                 "value": ""
@@ -94753,22 +94505,22 @@ window.reflection = [
         "longname": "bottom",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R003105",
+        "___id": "T000002R003096",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                7822,
-                7857
+                6882,
+                6917
             ],
             "filename": "touch.js",
-            "lineno": 271,
+            "lineno": 235,
             "columnno": 14,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041330",
+                "id": "astnode100041171",
                 "name": "left",
                 "type": "MemberExpression",
                 "value": "self.startingCell.columnIndex"
@@ -94779,22 +94531,22 @@ window.reflection = [
         "longname": "left",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R003106",
+        "___id": "T000002R003097",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                7873,
-                7909
+                6933,
+                6969
             ],
             "filename": "touch.js",
-            "lineno": 272,
+            "lineno": 236,
             "columnno": 14,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041336",
+                "id": "astnode100041177",
                 "name": "right",
                 "type": "MemberExpression",
                 "value": "self.startingCell.columnIndex"
@@ -94805,22 +94557,22 @@ window.reflection = [
         "longname": "right",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R003107",
+        "___id": "T000002R003098",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                8160,
-                8174
+                7220,
+                7234
             ],
             "filename": "touch.js",
-            "lineno": 285,
+            "lineno": 249,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041373",
+                "id": "astnode100041214",
                 "name": "passive",
                 "type": "Literal",
                 "value": false
@@ -94831,22 +94583,22 @@ window.reflection = [
         "longname": "passive",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R003108",
+        "___id": "T000002R003099",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                8358,
-                9725
+                7418,
+                8785
             ],
             "filename": "touch.js",
-            "lineno": 291,
+            "lineno": 255,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041406",
+                "id": "astnode100041247",
                 "name": "self.touchSelect",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -94869,22 +94621,22 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003109",
+        "___id": "T000002R003100",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                8504,
-                8530
+                7564,
+                7590
             ],
             "filename": "touch.js",
-            "lineno": 295,
+            "lineno": 259,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041429",
+                "id": "astnode100041270",
                 "name": "self.touchSelecting",
                 "type": "Literal",
                 "value": true,
@@ -94897,22 +94649,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003110",
+        "___id": "T000002R003101",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                8540,
-                8574
+                7600,
+                7634
             ],
             "filename": "touch.js",
-            "lineno": 296,
+            "lineno": 260,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041435",
+                "id": "astnode100041276",
                 "name": "bounds",
                 "type": "CallExpression",
                 "value": ""
@@ -94925,22 +94677,22 @@ window.reflection = [
         "memberof": "self.touchSelect",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R003111",
+        "___id": "T000002R003102",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                8721,
-                8750
+                7781,
+                7810
             ],
             "filename": "touch.js",
-            "lineno": 302,
+            "lineno": 266,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041463",
+                "id": "astnode100041304",
                 "name": "bounds.bottom",
                 "type": "MemberExpression",
                 "funcscope": "self.touchSelect",
@@ -94954,6 +94706,267 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchSelect~bounds",
         "scope": "static",
+        "___id": "T000002R003103",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                7818,
+                7848
+            ],
+            "filename": "touch.js",
+            "lineno": 267,
+            "columnno": 6,
+            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100041312",
+                "name": "bounds.left",
+                "type": "MemberExpression",
+                "funcscope": "self.touchSelect",
+                "value": "cell.columnIndex",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "left",
+        "longname": "self.touchSelect~bounds.left",
+        "kind": "member",
+        "memberof": "self.touchSelect~bounds",
+        "scope": "static",
+        "___id": "T000002R003104",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                8005,
+                8031
+            ],
+            "filename": "touch.js",
+            "lineno": 273,
+            "columnno": 6,
+            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100041341",
+                "name": "bounds.top",
+                "type": "MemberExpression",
+                "funcscope": "self.touchSelect",
+                "value": "cell.rowIndex",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "top",
+        "longname": "self.touchSelect~bounds.top",
+        "kind": "member",
+        "memberof": "self.touchSelect~bounds",
+        "scope": "static",
+        "___id": "T000002R003105",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                8039,
+                8069
+            ],
+            "filename": "touch.js",
+            "lineno": 274,
+            "columnno": 6,
+            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100041349",
+                "name": "bounds.left",
+                "type": "MemberExpression",
+                "funcscope": "self.touchSelect",
+                "value": "cell.columnIndex",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "left",
+        "longname": "self.touchSelect~bounds.left",
+        "kind": "member",
+        "memberof": "self.touchSelect~bounds",
+        "scope": "static",
+        "___id": "T000002R003106",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                8225,
+                8251
+            ],
+            "filename": "touch.js",
+            "lineno": 280,
+            "columnno": 6,
+            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100041378",
+                "name": "bounds.top",
+                "type": "MemberExpression",
+                "funcscope": "self.touchSelect",
+                "value": "cell.rowIndex",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "top",
+        "longname": "self.touchSelect~bounds.top",
+        "kind": "member",
+        "memberof": "self.touchSelect~bounds",
+        "scope": "static",
+        "___id": "T000002R003107",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                8259,
+                8290
+            ],
+            "filename": "touch.js",
+            "lineno": 281,
+            "columnno": 6,
+            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100041386",
+                "name": "bounds.right",
+                "type": "MemberExpression",
+                "funcscope": "self.touchSelect",
+                "value": "cell.columnIndex",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "right",
+        "longname": "self.touchSelect~bounds.right",
+        "kind": "member",
+        "memberof": "self.touchSelect~bounds",
+        "scope": "static",
+        "___id": "T000002R003108",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                8443,
+                8472
+            ],
+            "filename": "touch.js",
+            "lineno": 287,
+            "columnno": 6,
+            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100041415",
+                "name": "bounds.bottom",
+                "type": "MemberExpression",
+                "funcscope": "self.touchSelect",
+                "value": "cell.rowIndex",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "bottom",
+        "longname": "self.touchSelect~bounds.bottom",
+        "kind": "member",
+        "memberof": "self.touchSelect~bounds",
+        "scope": "static",
+        "___id": "T000002R003109",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                8480,
+                8511
+            ],
+            "filename": "touch.js",
+            "lineno": 288,
+            "columnno": 6,
+            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100041423",
+                "name": "bounds.right",
+                "type": "MemberExpression",
+                "funcscope": "self.touchSelect",
+                "value": "cell.columnIndex",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "right",
+        "longname": "self.touchSelect~bounds.right",
+        "kind": "member",
+        "memberof": "self.touchSelect~bounds",
+        "scope": "static",
+        "___id": "T000002R003110",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                8600,
+                8615
+            ],
+            "filename": "touch.js",
+            "lineno": 291,
+            "columnno": 6,
+            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100041447",
+                "name": "bounds.left",
+                "type": "Literal",
+                "funcscope": "self.touchSelect",
+                "value": 0,
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "left",
+        "longname": "self.touchSelect~bounds.left",
+        "kind": "member",
+        "memberof": "self.touchSelect~bounds",
+        "scope": "static",
+        "___id": "T000002R003111",
+        "___s": true
+    },
+    {
+        "comment": "",
+        "meta": {
+            "range": [
+                8623,
+                8665
+            ],
+            "filename": "touch.js",
+            "lineno": 292,
+            "columnno": 6,
+            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
+            "code": {
+                "id": "astnode100041453",
+                "name": "bounds.right",
+                "type": "BinaryExpression",
+                "funcscope": "self.touchSelect",
+                "value": "",
+                "paramnames": []
+            }
+        },
+        "undocumented": true,
+        "name": "right",
+        "longname": "self.touchSelect~bounds.right",
+        "kind": "member",
+        "memberof": "self.touchSelect~bounds",
+        "scope": "static",
         "___id": "T000002R003112",
         "___s": true
     },
@@ -94961,19 +94974,19 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                8758,
-                8788
+                8686,
+                8724
             ],
             "filename": "touch.js",
-            "lineno": 303,
+            "lineno": 294,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041471",
+                "id": "astnode100041467",
                 "name": "bounds.left",
-                "type": "MemberExpression",
+                "type": "CallExpression",
                 "funcscope": "self.touchSelect",
-                "value": "cell.columnIndex",
+                "value": "",
                 "paramnames": []
             }
         },
@@ -94990,276 +95003,15 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                8945,
-                8971
+                8789,
+                12851
             ],
             "filename": "touch.js",
-            "lineno": 309,
-            "columnno": 6,
-            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100041500",
-                "name": "bounds.top",
-                "type": "MemberExpression",
-                "funcscope": "self.touchSelect",
-                "value": "cell.rowIndex",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "top",
-        "longname": "self.touchSelect~bounds.top",
-        "kind": "member",
-        "memberof": "self.touchSelect~bounds",
-        "scope": "static",
-        "___id": "T000002R003114",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                8979,
-                9009
-            ],
-            "filename": "touch.js",
-            "lineno": 310,
-            "columnno": 6,
-            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100041508",
-                "name": "bounds.left",
-                "type": "MemberExpression",
-                "funcscope": "self.touchSelect",
-                "value": "cell.columnIndex",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "left",
-        "longname": "self.touchSelect~bounds.left",
-        "kind": "member",
-        "memberof": "self.touchSelect~bounds",
-        "scope": "static",
-        "___id": "T000002R003115",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                9165,
-                9191
-            ],
-            "filename": "touch.js",
-            "lineno": 316,
-            "columnno": 6,
-            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100041537",
-                "name": "bounds.top",
-                "type": "MemberExpression",
-                "funcscope": "self.touchSelect",
-                "value": "cell.rowIndex",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "top",
-        "longname": "self.touchSelect~bounds.top",
-        "kind": "member",
-        "memberof": "self.touchSelect~bounds",
-        "scope": "static",
-        "___id": "T000002R003116",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                9199,
-                9230
-            ],
-            "filename": "touch.js",
-            "lineno": 317,
-            "columnno": 6,
-            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100041545",
-                "name": "bounds.right",
-                "type": "MemberExpression",
-                "funcscope": "self.touchSelect",
-                "value": "cell.columnIndex",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "right",
-        "longname": "self.touchSelect~bounds.right",
-        "kind": "member",
-        "memberof": "self.touchSelect~bounds",
-        "scope": "static",
-        "___id": "T000002R003117",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                9383,
-                9412
-            ],
-            "filename": "touch.js",
-            "lineno": 323,
-            "columnno": 6,
-            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100041574",
-                "name": "bounds.bottom",
-                "type": "MemberExpression",
-                "funcscope": "self.touchSelect",
-                "value": "cell.rowIndex",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "bottom",
-        "longname": "self.touchSelect~bounds.bottom",
-        "kind": "member",
-        "memberof": "self.touchSelect~bounds",
-        "scope": "static",
-        "___id": "T000002R003118",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                9420,
-                9451
-            ],
-            "filename": "touch.js",
-            "lineno": 324,
-            "columnno": 6,
-            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100041582",
-                "name": "bounds.right",
-                "type": "MemberExpression",
-                "funcscope": "self.touchSelect",
-                "value": "cell.columnIndex",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "right",
-        "longname": "self.touchSelect~bounds.right",
-        "kind": "member",
-        "memberof": "self.touchSelect~bounds",
-        "scope": "static",
-        "___id": "T000002R003119",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                9540,
-                9555
-            ],
-            "filename": "touch.js",
-            "lineno": 327,
-            "columnno": 6,
-            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100041606",
-                "name": "bounds.left",
-                "type": "Literal",
-                "funcscope": "self.touchSelect",
-                "value": 0,
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "left",
-        "longname": "self.touchSelect~bounds.left",
-        "kind": "member",
-        "memberof": "self.touchSelect~bounds",
-        "scope": "static",
-        "___id": "T000002R003120",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                9563,
-                9605
-            ],
-            "filename": "touch.js",
-            "lineno": 328,
-            "columnno": 6,
-            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100041612",
-                "name": "bounds.right",
-                "type": "BinaryExpression",
-                "funcscope": "self.touchSelect",
-                "value": "",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "right",
-        "longname": "self.touchSelect~bounds.right",
-        "kind": "member",
-        "memberof": "self.touchSelect~bounds",
-        "scope": "static",
-        "___id": "T000002R003121",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                9626,
-                9664
-            ],
-            "filename": "touch.js",
-            "lineno": 330,
-            "columnno": 6,
-            "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
-            "code": {
-                "id": "astnode100041626",
-                "name": "bounds.left",
-                "type": "CallExpression",
-                "funcscope": "self.touchSelect",
-                "value": "",
-                "paramnames": []
-            }
-        },
-        "undocumented": true,
-        "name": "left",
-        "longname": "self.touchSelect~bounds.left",
-        "kind": "member",
-        "memberof": "self.touchSelect~bounds",
-        "scope": "static",
-        "___id": "T000002R003122",
-        "___s": true
-    },
-    {
-        "comment": "",
-        "meta": {
-            "range": [
-                9729,
-                13791
-            ],
-            "filename": "touch.js",
-            "lineno": 335,
+            "lineno": 299,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041650",
+                "id": "astnode100041491",
                 "name": "touchMove",
                 "type": "FunctionDeclaration",
                 "paramnames": [
@@ -95301,22 +95053,22 @@ window.reflection = [
         "memberof": "module.exports",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R003123",
+        "___id": "T000002R003114",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9761,
-                9763
+                8821,
+                8823
             ],
             "filename": "touch.js",
-            "lineno": 336,
+            "lineno": 300,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041655",
+                "id": "astnode100041496",
                 "name": "ch"
             }
         },
@@ -95327,22 +95079,22 @@ window.reflection = [
         "memberof": "module.exports~touchMove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R003124",
+        "___id": "T000002R003115",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9765,
-                9767
+                8825,
+                8827
             ],
             "filename": "touch.js",
-            "lineno": 336,
+            "lineno": 300,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041657",
+                "id": "astnode100041498",
                 "name": "rw"
             }
         },
@@ -95353,22 +95105,22 @@ window.reflection = [
         "memberof": "module.exports~touchMove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R003125",
+        "___id": "T000002R003116",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9769,
-                9780
+                8829,
+                8840
             ],
             "filename": "touch.js",
-            "lineno": 336,
+            "lineno": 300,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041659",
+                "id": "astnode100041500",
                 "name": "rScrollZone"
             }
         },
@@ -95379,22 +95131,22 @@ window.reflection = [
         "memberof": "module.exports~touchMove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R003126",
+        "___id": "T000002R003117",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9782,
-                9793
+                8842,
+                8853
             ],
             "filename": "touch.js",
-            "lineno": 336,
+            "lineno": 300,
             "columnno": 29,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041661",
+                "id": "astnode100041502",
                 "name": "lScrollZone"
             }
         },
@@ -95405,22 +95157,22 @@ window.reflection = [
         "memberof": "module.exports~touchMove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R003127",
+        "___id": "T000002R003118",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9795,
-                9806
+                8855,
+                8866
             ],
             "filename": "touch.js",
-            "lineno": 336,
+            "lineno": 300,
             "columnno": 42,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041663",
+                "id": "astnode100041504",
                 "name": "bScrollZone"
             }
         },
@@ -95431,22 +95183,22 @@ window.reflection = [
         "memberof": "module.exports~touchMove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R003128",
+        "___id": "T000002R003119",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9808,
-                9819
+                8868,
+                8879
             ],
             "filename": "touch.js",
-            "lineno": 336,
+            "lineno": 300,
             "columnno": 55,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041665",
+                "id": "astnode100041506",
                 "name": "tScrollZone"
             }
         },
@@ -95457,22 +95209,22 @@ window.reflection = [
         "memberof": "module.exports~touchMove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R003129",
+        "___id": "T000002R003120",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9821,
-                9824
+                8881,
+                8884
             ],
             "filename": "touch.js",
-            "lineno": 336,
+            "lineno": 300,
             "columnno": 68,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041667",
+                "id": "astnode100041508",
                 "name": "sbw"
             }
         },
@@ -95483,22 +95235,22 @@ window.reflection = [
         "memberof": "module.exports~touchMove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R003130",
+        "___id": "T000002R003121",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9826,
-                9828
+                8886,
+                8888
             ],
             "filename": "touch.js",
-            "lineno": 336,
+            "lineno": 300,
             "columnno": 73,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041669",
+                "id": "astnode100041510",
                 "name": "t1"
             }
         },
@@ -95509,22 +95261,22 @@ window.reflection = [
         "memberof": "module.exports~touchMove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R003131",
+        "___id": "T000002R003122",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9830,
-                9832
+                8890,
+                8892
             ],
             "filename": "touch.js",
-            "lineno": 336,
+            "lineno": 300,
             "columnno": 77,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041671",
+                "id": "astnode100041512",
                 "name": "t2"
             }
         },
@@ -95535,22 +95287,22 @@ window.reflection = [
         "memberof": "module.exports~touchMove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R003132",
+        "___id": "T000002R003123",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9882,
-                9896
+                8942,
+                8956
             ],
             "filename": "touch.js",
-            "lineno": 337,
+            "lineno": 301,
             "columnno": 48,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041680",
+                "id": "astnode100041521",
                 "name": "NativeEvent",
                 "type": "Identifier",
                 "value": "e"
@@ -95561,22 +95313,22 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R003133",
+        "___id": "T000002R003124",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                9998,
-                10038
+                9058,
+                9098
             ],
             "filename": "touch.js",
-            "lineno": 342,
+            "lineno": 306,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041696",
+                "id": "astnode100041537",
                 "name": "self.touchPosition",
                 "type": "CallExpression",
                 "value": "",
@@ -95589,22 +95341,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003134",
+        "___id": "T000002R003125",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                10083,
-                10127
+                9143,
+                9187
             ],
             "filename": "touch.js",
-            "lineno": 345,
+            "lineno": 309,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041713",
+                "id": "astnode100041554",
                 "name": "self.touchPosition1",
                 "type": "CallExpression",
                 "value": "",
@@ -95617,22 +95369,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003135",
+        "___id": "T000002R003126",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                10391,
-                10416
+                9451,
+                9476
             ],
             "filename": "touch.js",
-            "lineno": 354,
+            "lineno": 318,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041774",
+                "id": "astnode100041615",
                 "name": "t1",
                 "type": "MemberExpression",
                 "funcscope": "module.exports~touchMove",
@@ -95646,22 +95398,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "module.exports~touchMove",
         "scope": "inner",
-        "___id": "T000002R003136",
+        "___id": "T000002R003127",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                10424,
-                10450
+                9484,
+                9510
             ],
             "filename": "touch.js",
-            "lineno": 355,
+            "lineno": 319,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041782",
+                "id": "astnode100041623",
                 "name": "t2",
                 "type": "MemberExpression",
                 "funcscope": "module.exports~touchMove",
@@ -95675,22 +95427,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "module.exports~touchMove",
         "scope": "inner",
-        "___id": "T000002R003137",
+        "___id": "T000002R003128",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                10494,
-                10533
+                9554,
+                9593
             ],
             "filename": "touch.js",
-            "lineno": 357,
+            "lineno": 321,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041796",
+                "id": "astnode100041637",
                 "name": "self.zoomDeltaStart",
                 "type": "CallExpression",
                 "value": "",
@@ -95703,22 +95455,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003138",
+        "___id": "T000002R003129",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                10543,
-                10571
+                9603,
+                9631
             ],
             "filename": "touch.js",
-            "lineno": 358,
+            "lineno": 322,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041808",
+                "id": "astnode100041649",
                 "name": "self.startScale",
                 "type": "MemberExpression",
                 "value": "self.scale",
@@ -95731,22 +95483,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003139",
+        "___id": "T000002R003130",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                10587,
-                10607
+                9647,
+                9667
             ],
             "filename": "touch.js",
-            "lineno": 360,
+            "lineno": 324,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041816",
+                "id": "astnode100041657",
                 "name": "self.touchLength",
                 "type": "Literal",
                 "value": 2,
@@ -95759,22 +95511,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003140",
+        "___id": "T000002R003131",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                10615,
-                10672
+                9675,
+                9732
             ],
             "filename": "touch.js",
-            "lineno": 361,
+            "lineno": 325,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041822",
+                "id": "astnode100041663",
                 "name": "self.scaleDelta",
                 "type": "BinaryExpression",
                 "value": "",
@@ -95787,22 +95539,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003141",
+        "___id": "T000002R003132",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                10680,
-                10781
+                9740,
+                9841
             ],
             "filename": "touch.js",
-            "lineno": 362,
+            "lineno": 326,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041838",
+                "id": "astnode100041679",
                 "name": "self.scale",
                 "type": "BinaryExpression",
                 "value": "",
@@ -95815,22 +95567,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003142",
+        "___id": "T000002R003133",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                10789,
-                10917
+                9849,
+                9977
             ],
             "filename": "touch.js",
-            "lineno": 365,
+            "lineno": 329,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041856",
+                "id": "astnode100041697",
                 "name": "self.scale",
                 "type": "CallExpression",
                 "value": "",
@@ -95843,22 +95595,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003143",
+        "___id": "T000002R003134",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                10925,
-                10948
+                9985,
+                10008
             ],
             "filename": "touch.js",
-            "lineno": 369,
+            "lineno": 333,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041882",
+                "id": "astnode100041723",
                 "name": "self.zoomAltered",
                 "type": "Literal",
                 "value": true,
@@ -95871,22 +95623,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003144",
+        "___id": "T000002R003135",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11078,
-                11098
+                10138,
+                10158
             ],
             "filename": "touch.js",
-            "lineno": 377,
+            "lineno": 341,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041906",
+                "id": "astnode100041747",
                 "name": "self.touchLength",
                 "type": "Literal",
                 "value": 1,
@@ -95899,22 +95651,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003145",
+        "___id": "T000002R003136",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11104,
-                11166
+                10164,
+                10226
             ],
             "filename": "touch.js",
-            "lineno": 378,
+            "lineno": 342,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041912",
+                "id": "astnode100041753",
                 "name": "self.touchPosition",
                 "type": "LogicalExpression",
                 "value": "",
@@ -95927,22 +95679,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003146",
+        "___id": "T000002R003137",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11172,
-                11209
+                10232,
+                10269
             ],
             "filename": "touch.js",
-            "lineno": 379,
+            "lineno": 343,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041924",
+                "id": "astnode100041765",
                 "name": "ch",
                 "type": "CallExpression",
                 "funcscope": "module.exports~touchMove",
@@ -95956,22 +95708,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "module.exports~touchMove",
         "scope": "inner",
-        "___id": "T000002R003147",
+        "___id": "T000002R003138",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11215,
-                11248
+                10275,
+                10308
             ],
             "filename": "touch.js",
-            "lineno": 380,
+            "lineno": 344,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041931",
+                "id": "astnode100041772",
                 "name": "rw",
                 "type": "CallExpression",
                 "funcscope": "module.exports~touchMove",
@@ -95985,22 +95737,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "module.exports~touchMove",
         "scope": "inner",
-        "___id": "T000002R003148",
+        "___id": "T000002R003139",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11254,
-                11379
+                10314,
+                10439
             ],
             "filename": "touch.js",
-            "lineno": 381,
+            "lineno": 345,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041938",
+                "id": "astnode100041779",
                 "name": "rScrollZone",
                 "type": "BinaryExpression",
                 "funcscope": "module.exports~touchMove",
@@ -96014,22 +95766,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "module.exports~touchMove",
         "scope": "inner",
-        "___id": "T000002R003149",
+        "___id": "T000002R003140",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11385,
-                11468
+                10445,
+                10528
             ],
             "filename": "touch.js",
-            "lineno": 384,
+            "lineno": 348,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041962",
+                "id": "astnode100041803",
                 "name": "lScrollZone",
                 "type": "BinaryExpression",
                 "funcscope": "module.exports~touchMove",
@@ -96043,22 +95795,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "module.exports~touchMove",
         "scope": "inner",
-        "___id": "T000002R003150",
+        "___id": "T000002R003141",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11474,
-                11600
+                10534,
+                10660
             ],
             "filename": "touch.js",
-            "lineno": 386,
+            "lineno": 350,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100041978",
+                "id": "astnode100041819",
                 "name": "bScrollZone",
                 "type": "BinaryExpression",
                 "funcscope": "module.exports~touchMove",
@@ -96072,22 +95824,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "module.exports~touchMove",
         "scope": "inner",
-        "___id": "T000002R003151",
+        "___id": "T000002R003142",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11606,
-                11689
+                10666,
+                10749
             ],
             "filename": "touch.js",
-            "lineno": 389,
+            "lineno": 353,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042002",
+                "id": "astnode100041843",
                 "name": "tScrollZone",
                 "type": "BinaryExpression",
                 "funcscope": "module.exports~touchMove",
@@ -96101,22 +95853,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "module.exports~touchMove",
         "scope": "inner",
-        "___id": "T000002R003152",
+        "___id": "T000002R003143",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11695,
-                11726
+                10755,
+                10786
             ],
             "filename": "touch.js",
-            "lineno": 391,
+            "lineno": 355,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042018",
+                "id": "astnode100041859",
                 "name": "sbw",
                 "type": "MemberExpression",
                 "funcscope": "module.exports~touchMove",
@@ -96130,22 +95882,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "module.exports~touchMove",
         "scope": "inner",
-        "___id": "T000002R003153",
+        "___id": "T000002R003144",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11732,
-                12273
+                10792,
+                11333
             ],
             "filename": "touch.js",
-            "lineno": 392,
+            "lineno": 356,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042025",
+                "id": "astnode100041866",
                 "name": "touchScroll",
                 "type": "FunctionDeclaration",
                 "paramnames": []
@@ -96163,22 +95915,22 @@ window.reflection = [
         "memberof": "module.exports~touchMove",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R003154",
+        "___id": "T000002R003145",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11767,
-                11796
+                10827,
+                10856
             ],
             "filename": "touch.js",
-            "lineno": 393,
+            "lineno": 357,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042029",
+                "id": "astnode100041870",
                 "name": "x",
                 "type": "MemberExpression",
                 "value": "self.scrollBox.scrollLeft"
@@ -96191,22 +95943,22 @@ window.reflection = [
         "memberof": "module.exports~touchMove~touchScroll",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R003155",
+        "___id": "T000002R003146",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11806,
-                11834
+                10866,
+                10894
             ],
             "filename": "touch.js",
-            "lineno": 394,
+            "lineno": 358,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042036",
+                "id": "astnode100041877",
                 "name": "y",
                 "type": "MemberExpression",
                 "value": "self.scrollBox.scrollTop"
@@ -96219,22 +95971,22 @@ window.reflection = [
         "memberof": "module.exports~touchMove~touchScroll",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R003156",
+        "___id": "T000002R003147",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11842,
-                11905
+                10902,
+                10965
             ],
             "filename": "touch.js",
-            "lineno": 395,
+            "lineno": 359,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042044",
+                "id": "astnode100041885",
                 "name": "x",
                 "type": "ConditionalExpression",
                 "funcscope": "module.exports~touchMove~touchScroll",
@@ -96248,22 +96000,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "module.exports~touchMove~touchScroll",
         "scope": "inner",
-        "___id": "T000002R003157",
+        "___id": "T000002R003148",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11913,
-                11976
+                10973,
+                11036
             ],
             "filename": "touch.js",
-            "lineno": 396,
+            "lineno": 360,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042055",
+                "id": "astnode100041896",
                 "name": "y",
                 "type": "ConditionalExpression",
                 "funcscope": "module.exports~touchMove~touchScroll",
@@ -96277,22 +96029,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "module.exports~touchMove~touchScroll",
         "scope": "inner",
-        "___id": "T000002R003158",
+        "___id": "T000002R003149",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                11984,
-                12047
+                11044,
+                11107
             ],
             "filename": "touch.js",
-            "lineno": 397,
+            "lineno": 361,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042066",
+                "id": "astnode100041907",
                 "name": "y",
                 "type": "ConditionalExpression",
                 "funcscope": "module.exports~touchMove~touchScroll",
@@ -96306,22 +96058,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "module.exports~touchMove~touchScroll",
         "scope": "inner",
-        "___id": "T000002R003159",
+        "___id": "T000002R003150",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12055,
-                12118
+                11115,
+                11178
             ],
             "filename": "touch.js",
-            "lineno": 398,
+            "lineno": 362,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042077",
+                "id": "astnode100041918",
                 "name": "x",
                 "type": "ConditionalExpression",
                 "funcscope": "module.exports~touchMove~touchScroll",
@@ -96335,22 +96087,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "module.exports~touchMove~touchScroll",
         "scope": "inner",
-        "___id": "T000002R003160",
+        "___id": "T000002R003151",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12163,
-                12266
+                11223,
+                11326
             ],
             "filename": "touch.js",
-            "lineno": 400,
+            "lineno": 364,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042097",
+                "id": "astnode100041938",
                 "name": "touchScrollTimeout",
                 "type": "CallExpression",
                 "funcscope": "module.exports~touchMove~touchScroll",
@@ -96364,22 +96116,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "module.exports~touchMove~touchScroll",
         "scope": "inner",
-        "___id": "T000002R003161",
+        "___id": "T000002R003152",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12303,
-                12546
+                11363,
+                11606
             ],
             "filename": "touch.js",
-            "lineno": 406,
+            "lineno": 370,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042113",
+                "id": "astnode100041954",
                 "name": "self.touchDelta",
                 "type": "ObjectExpression",
                 "value": "{\"x\":\"\",\"y\":\"\",\"scrollLeft\":\"\",\"scrollTop\":\"\",\"t\":\"\"}",
@@ -96392,22 +96144,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003162",
+        "___id": "T000002R003153",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12329,
-                12372
+                11389,
+                11432
             ],
             "filename": "touch.js",
-            "lineno": 407,
+            "lineno": 371,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042118",
+                "id": "astnode100041959",
                 "name": "x",
                 "type": "BinaryExpression",
                 "value": ""
@@ -96419,22 +96171,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R003163",
+        "___id": "T000002R003154",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12380,
-                12423
+                11440,
+                11483
             ],
             "filename": "touch.js",
-            "lineno": 408,
+            "lineno": 372,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042130",
+                "id": "astnode100041971",
                 "name": "y",
                 "type": "BinaryExpression",
                 "value": ""
@@ -96446,22 +96198,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R003164",
+        "___id": "T000002R003155",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12431,
-                12468
+                11491,
+                11528
             ],
             "filename": "touch.js",
-            "lineno": 409,
+            "lineno": 373,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042142",
+                "id": "astnode100041983",
                 "name": "scrollLeft",
                 "type": "MemberExpression",
                 "value": "self.scrollBox.scrollLeft"
@@ -96473,22 +96225,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R003165",
+        "___id": "T000002R003156",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12476,
-                12511
+                11536,
+                11571
             ],
             "filename": "touch.js",
-            "lineno": 410,
+            "lineno": 374,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042148",
+                "id": "astnode100041989",
                 "name": "scrollTop",
                 "type": "MemberExpression",
                 "value": "self.scrollBox.scrollTop"
@@ -96500,22 +96252,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R003166",
+        "___id": "T000002R003157",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12519,
-                12539
+                11579,
+                11599
             ],
             "filename": "touch.js",
-            "lineno": 411,
+            "lineno": 375,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042154",
+                "id": "astnode100041995",
                 "name": "t",
                 "type": "CallExpression",
                 "value": ""
@@ -96527,22 +96279,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchDelta",
         "scope": "static",
-        "___id": "T000002R003167",
+        "___id": "T000002R003158",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12552,
-                12648
+                11612,
+                11708
             ],
             "filename": "touch.js",
-            "lineno": 413,
+            "lineno": 377,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042160",
+                "id": "astnode100042001",
                 "name": "self.currentCell",
                 "type": "CallExpression",
                 "value": "",
@@ -96555,22 +96307,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003168",
+        "___id": "T000002R003159",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12688,
-                12702
+                11748,
+                11762
             ],
             "filename": "touch.js",
-            "lineno": 417,
+            "lineno": 381,
             "columnno": 38,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042185",
+                "id": "astnode100042026",
                 "name": "NativeEvent",
                 "type": "Identifier",
                 "value": "e"
@@ -96581,22 +96333,22 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R003169",
+        "___id": "T000002R003160",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12704,
-                12726
+                11764,
+                11786
             ],
             "filename": "touch.js",
-            "lineno": 417,
+            "lineno": 381,
             "columnno": 54,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042187",
+                "id": "astnode100042028",
                 "name": "cell",
                 "type": "MemberExpression",
                 "value": "self.currentCell"
@@ -96607,22 +96359,22 @@ window.reflection = [
         "longname": "cell",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R003170",
+        "___id": "T000002R003161",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12760,
-                12824
+                11820,
+                11884
             ],
             "filename": "touch.js",
-            "lineno": 419,
+            "lineno": 383,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042197",
+                "id": "astnode100042038",
                 "name": "self.touchDuration",
                 "type": "BinaryExpression",
                 "value": "",
@@ -96635,22 +96387,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003171",
+        "___id": "T000002R003162",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12830,
-                12855
+                11890,
+                11915
             ],
             "filename": "touch.js",
-            "lineno": 420,
+            "lineno": 384,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042212",
+                "id": "astnode100042053",
                 "name": "self.stopAnimation",
                 "type": "Literal",
                 "value": true,
@@ -96663,22 +96415,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003172",
+        "___id": "T000002R003163",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                12861,
-                12885
+                11921,
+                11945
             ],
             "filename": "touch.js",
-            "lineno": 421,
+            "lineno": 385,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042218",
+                "id": "astnode100042059",
                 "name": "self.animationFrames",
                 "type": "Literal",
                 "value": 0,
@@ -96691,22 +96443,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003173",
+        "___id": "T000002R003164",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13091,
-                13246
+                12151,
+                12306
             ],
             "filename": "touch.js",
-            "lineno": 429,
+            "lineno": 393,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042251",
+                "id": "astnode100042092",
                 "name": "self.scrollBox.scrollTop",
                 "type": "BinaryExpression",
                 "value": "",
@@ -96719,22 +96471,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R003174",
+        "___id": "T000002R003165",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13336,
-                13480
+                12396,
+                12540
             ],
             "filename": "touch.js",
-            "lineno": 436,
+            "lineno": 400,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042295",
+                "id": "astnode100042136",
                 "name": "self.scrollBox.scrollLeft",
                 "type": "BinaryExpression",
                 "value": "",
@@ -96747,22 +96499,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.scrollBox",
         "scope": "static",
-        "___id": "T000002R003175",
+        "___id": "T000002R003166",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13794,
-                13993
+                12854,
+                13053
             ],
             "filename": "touch.js",
-            "lineno": 450,
+            "lineno": 414,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042382",
+                "id": "astnode100042223",
                 "name": "self.touchmove",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -96779,22 +96531,22 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003176",
+        "___id": "T000002R003167",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13915,
-                13933
+                12975,
+                12993
             ],
             "filename": "touch.js",
-            "lineno": 455,
+            "lineno": 419,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042399",
+                "id": "astnode100042240",
                 "name": "touchMoving",
                 "type": "Literal",
                 "funcscope": "<anonymous>",
@@ -96808,22 +96560,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R003177",
+        "___id": "T000002R003168",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13961,
-                13980
+                13021,
+                13040
             ],
             "filename": "touch.js",
-            "lineno": 457,
+            "lineno": 421,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042407",
+                "id": "astnode100042248",
                 "name": "touchMoving",
                 "type": "Literal",
                 "funcscope": "<anonymous>",
@@ -96837,22 +96589,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "<anonymous>",
         "scope": "inner",
-        "___id": "T000002R003178",
+        "___id": "T000002R003169",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                13997,
-                14515
+                13057,
+                13575
             ],
             "filename": "touch.js",
-            "lineno": 460,
+            "lineno": 424,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042411",
+                "id": "astnode100042252",
                 "name": "self.touchEndEvents",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -96870,22 +96622,22 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003179",
+        "___id": "T000002R003170",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14038,
-                14069
+                13098,
+                13129
             ],
             "filename": "touch.js",
-            "lineno": 461,
+            "lineno": 425,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042419",
+                "id": "astnode100042260",
                 "name": "self.zoomDeltaStart",
                 "type": "Identifier",
                 "value": "undefined",
@@ -96898,22 +96650,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003180",
+        "___id": "T000002R003171",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14075,
-                14102
+                13135,
+                13162
             ],
             "filename": "touch.js",
-            "lineno": 462,
+            "lineno": 426,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042425",
+                "id": "astnode100042266",
                 "name": "self.touchSelecting",
                 "type": "Literal",
                 "value": false,
@@ -96926,22 +96678,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003181",
+        "___id": "T000002R003172",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14336,
-                14350
+                13396,
+                13410
             ],
             "filename": "touch.js",
-            "lineno": 468,
+            "lineno": 432,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042465",
+                "id": "astnode100042306",
                 "name": "passive",
                 "type": "Literal",
                 "value": false
@@ -96952,22 +96704,22 @@ window.reflection = [
         "longname": "passive",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R003182",
+        "___id": "T000002R003173",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14519,
-                15989
+                13579,
+                14974
             ],
             "filename": "touch.js",
-            "lineno": 473,
+            "lineno": 437,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042492",
+                "id": "astnode100042333",
                 "name": "self.touchend",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -96995,22 +96747,22 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003183",
+        "___id": "T000002R003174",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14598,
-                14612
+                13658,
+                13672
             ],
             "filename": "touch.js",
-            "lineno": 475,
+            "lineno": 439,
             "columnno": 39,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042506",
+                "id": "astnode100042347",
                 "name": "NativeEvent",
                 "type": "Identifier",
                 "value": "e"
@@ -97021,22 +96773,22 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R003184",
+        "___id": "T000002R003175",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14614,
-                14636
+                13674,
+                13696
             ],
             "filename": "touch.js",
-            "lineno": 475,
+            "lineno": 439,
             "columnno": 55,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042508",
+                "id": "astnode100042349",
                 "name": "cell",
                 "type": "MemberExpression",
                 "value": "self.currentCell"
@@ -97047,22 +96799,22 @@ window.reflection = [
         "longname": "cell",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R003185",
+        "___id": "T000002R003176",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14672,
-                14703
+                13732,
+                13763
             ],
             "filename": "touch.js",
-            "lineno": 479,
+            "lineno": 443,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042515",
+                "id": "astnode100042356",
                 "name": "self.zoomDeltaStart",
                 "type": "Identifier",
                 "value": "undefined",
@@ -97075,22 +96827,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003186",
+        "___id": "T000002R003177",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14742,
-                14772
+                13802,
+                13832
             ],
             "filename": "touch.js",
-            "lineno": 481,
+            "lineno": 445,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042528",
+                "id": "astnode100042369",
                 "name": "self.touchPosition",
                 "type": "Identifier",
                 "value": "undefined",
@@ -97103,22 +96855,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003187",
+        "___id": "T000002R003178",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14817,
-                14848
+                13877,
+                13908
             ],
             "filename": "touch.js",
-            "lineno": 484,
+            "lineno": 448,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042541",
+                "id": "astnode100042382",
                 "name": "self.touchPosition1",
                 "type": "Identifier",
                 "value": "undefined",
@@ -97131,22 +96883,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003188",
+        "___id": "T000002R003179",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14928,
-                14952
+                13988,
+                14012
             ],
             "filename": "touch.js",
-            "lineno": 488,
+            "lineno": 452,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042561",
+                "id": "astnode100042402",
                 "name": "self.zoomAltered",
                 "type": "Literal",
                 "value": false,
@@ -97159,22 +96911,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003189",
+        "___id": "T000002R003180",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                14990,
-                15096
+                14050,
+                14156
             ],
             "filename": "touch.js",
-            "lineno": 492,
+            "lineno": 456,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042568",
+                "id": "astnode100042409",
                 "name": "dz",
                 "type": "BinaryExpression",
                 "value": ""
@@ -97187,22 +96939,22 @@ window.reflection = [
         "memberof": "self.touchend",
         "scope": "inner",
         "params": [],
-        "___id": "T000002R003190",
+        "___id": "T000002R003181",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15132,
-                15145
+                14192,
+                14205
             ],
             "filename": "touch.js",
-            "lineno": 496,
+            "lineno": 460,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042603",
+                "id": "astnode100042444",
                 "name": "self.xPPS",
                 "type": "Literal",
                 "value": 0,
@@ -97215,22 +96967,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003191",
+        "___id": "T000002R003182",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15187,
-                15200
+                14247,
+                14260
             ],
             "filename": "touch.js",
-            "lineno": 499,
+            "lineno": 463,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042616",
+                "id": "astnode100042457",
                 "name": "self.yPPS",
                 "type": "Literal",
                 "value": 0,
@@ -97243,22 +96995,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003192",
+        "___id": "T000002R003183",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15243,
-                15257
+                14303,
+                14317
             ],
             "filename": "touch.js",
-            "lineno": 502,
+            "lineno": 466,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042629",
+                "id": "astnode100042470",
                 "name": "self.xPPST",
                 "type": "Literal",
                 "value": 0,
@@ -97271,22 +97023,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003193",
+        "___id": "T000002R003184",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15300,
-                15314
+                14360,
+                14374
             ],
             "filename": "touch.js",
-            "lineno": 505,
+            "lineno": 469,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042642",
+                "id": "astnode100042483",
                 "name": "self.yPPST",
                 "type": "Literal",
                 "value": 0,
@@ -97299,22 +97051,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003194",
+        "___id": "T000002R003185",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15326,
-                15408
+                14386,
+                14468
             ],
             "filename": "touch.js",
-            "lineno": 507,
+            "lineno": 471,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042648",
+                "id": "astnode100042489",
                 "name": "self.touchAnimateTo.x",
                 "type": "BinaryExpression",
                 "value": "",
@@ -97327,22 +97079,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchAnimateTo",
         "scope": "static",
-        "___id": "T000002R003195",
+        "___id": "T000002R003186",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15414,
-                15496
+                14474,
+                14556
             ],
             "filename": "touch.js",
-            "lineno": 509,
+            "lineno": 473,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042664",
+                "id": "astnode100042505",
                 "name": "self.touchAnimateTo.y",
                 "type": "BinaryExpression",
                 "value": "",
@@ -97355,22 +97107,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self.touchAnimateTo",
         "scope": "static",
-        "___id": "T000002R003196",
+        "___id": "T000002R003187",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15892,
-                15918
+                14877,
+                14903
             ],
             "filename": "touch.js",
-            "lineno": 521,
+            "lineno": 484,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042751",
+                "id": "astnode100042578",
                 "name": "self.stopAnimation",
                 "type": "Literal",
                 "value": false,
@@ -97383,22 +97135,22 @@ window.reflection = [
         "kind": "member",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003197",
+        "___id": "T000002R003188",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                15993,
-                16202
+                14978,
+                15187
             ],
             "filename": "touch.js",
-            "lineno": 526,
+            "lineno": 489,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042768",
+                "id": "astnode100042595",
                 "name": "self.touchcancel",
                 "type": "FunctionExpression",
                 "paramnames": [
@@ -97412,22 +97164,22 @@ window.reflection = [
         "kind": "function",
         "memberof": "self",
         "scope": "static",
-        "___id": "T000002R003198",
+        "___id": "T000002R003189",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16086,
-                16100
+                15071,
+                15085
             ],
             "filename": "touch.js",
-            "lineno": 529,
+            "lineno": 492,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042782",
+                "id": "astnode100042609",
                 "name": "NativeEvent",
                 "type": "Identifier",
                 "value": "e"
@@ -97438,22 +97190,22 @@ window.reflection = [
         "longname": "NativeEvent",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R003199",
+        "___id": "T000002R003190",
         "___s": true
     },
     {
         "comment": "",
         "meta": {
             "range": [
-                16110,
-                16132
+                15095,
+                15117
             ],
             "filename": "touch.js",
-            "lineno": 530,
+            "lineno": 493,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
-                "id": "astnode100042784",
+                "id": "astnode100042611",
                 "name": "cell",
                 "type": "MemberExpression",
                 "value": "self.currentCell"
@@ -97464,7 +97216,7 @@ window.reflection = [
         "longname": "cell",
         "kind": "member",
         "scope": "global",
-        "___id": "T000002R003200",
+        "___id": "T000002R003191",
         "___s": true
     },
     {
@@ -97483,7 +97235,7 @@ window.reflection = [
             "/home/runner/work/canvas-datagrid/canvas-datagrid/lib/publicMethods.js",
             "/home/runner/work/canvas-datagrid/canvas-datagrid/lib/touch.js"
         ],
-        "___id": "T000002R003201",
+        "___id": "T000002R003192",
         "___s": true
     }
 ];window.files = {
