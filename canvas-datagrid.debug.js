@@ -3537,6 +3537,12 @@ __webpack_require__.r(__webpack_exports__);
 /*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
 
 
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 
 /* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(self) {
   var wheeling;
@@ -4679,8 +4685,8 @@ __webpack_require__.r(__webpack_exports__);
     var i,
         ev,
         adjacentCells = self.getAdjacentCells(),
-        x = self.activeCell.columnIndex,
-        y = self.activeCell.rowIndex,
+        x = Math.max(self.activeCell.columnIndex, 0),
+        y = Math.max(self.activeCell.rowIndex, 0),
         ctrl = e.ctrlKey || e.metaKey,
         last = self.viewData.length - 1,
         s = self.getSchema(),
@@ -4762,11 +4768,75 @@ __webpack_require__.r(__webpack_exports__);
     // Arrows
 
 
-    var isArrowKey = ['ArrowLeft', 'ArrowUp', 'ArrowRight', 'ArrowDown'].includes(e.key);
+    var isArrowKey = ['ArrowLeft', 'ArrowUp', 'ArrowRight', 'ArrowDown'].includes(e.key); // Shrinking and expanding selection using shift and arrow keys
 
     if (e.shiftKey && isArrowKey) {
-      self.selections[Math.max(y, 0)] = self.selections[Math.max(y, 0)] || [];
-      self.selections[Math.max(y, 0)].push(x);
+      var firstSelectedRowIndex = self.selections.findIndex(function (el) {
+        return !!el;
+      });
+      var firstSelectedRow = self.selections[firstSelectedRowIndex];
+      var firstSelectedColumnIndex = firstSelectedRow[0];
+      var lastSelectedColumn = firstSelectedRow[firstSelectedRow.length - 1];
+      var yAtTop = y === 0;
+      var yAtBottom = y === last;
+      var xAtLeft = x === 0;
+      var xAtRight = x === cols;
+
+      if (e.key === 'ArrowUp') {
+        if (y + 1 > firstSelectedRowIndex && !yAtTop) {
+          self.selections.pop();
+        } else if (y < firstSelectedRowIndex) {
+          self.selections[y] = self.selections[y] || [];
+          self.selections[y].push(x);
+        } else if (yAtTop && self.activeCell.rowIndex !== 0) {
+          self.selections.pop();
+        }
+      }
+
+      if (e.key === 'ArrowDown') {
+        if (y > firstSelectedRowIndex && y === self.selections.length) {
+          self.selections[y] = self.selections[y] || [];
+          self.selections[y].push(x);
+        } else if (y >= firstSelectedRowIndex && !yAtBottom) {
+          delete self.selections[y - 1];
+        } else if (yAtBottom && self.activeCell.rowIndex !== last) {
+          delete self.selections[y - 1];
+        }
+      }
+
+      var _iterator = _createForOfIteratorHelper(self.selections),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var selection = _step.value;
+
+          if (e.key === 'ArrowRight' && selection) {
+            if (x > lastSelectedColumn) {
+              selection.push(x);
+            } else if (x <= lastSelectedColumn && !xAtRight) {
+              selection.shift();
+            } else if (xAtRight && self.activeCell.columnIndex !== cols) {
+              selection.shift();
+            }
+          }
+
+          if (e.key === 'ArrowLeft' && selection) {
+            if (x < firstSelectedColumnIndex) {
+              selection.unshift(x);
+            } else if (x >= firstSelectedColumnIndex && !xAtLeft) {
+              selection.pop();
+            } else if (xAtLeft && self.activeCell.columnIndex !== 0) {
+              selection.pop();
+            }
+          }
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
       self.selectionBounds = self.getSelectionBounds();
       self.selectArea(undefined, ctrl);
       self.draw(true);
