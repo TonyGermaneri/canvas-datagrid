@@ -1,4 +1,4 @@
-import { g, assertIf } from './util.js';
+import { g, assertIf, doAssert  } from './util.js';
 
 export default function () {
   it('Should filter for given value', function (done) {
@@ -170,4 +170,31 @@ export default function () {
       assertIf(grid.viewData.length !== 1, 'Expected to see only 1 record.'),
     );
   });
+  it('filter ignores row on and above frozen row', function (done) {
+    var grid = g({
+      test: this.test,
+      data: [
+        { d: 'baz' },
+        { d: 'foo frozen row' },
+        { d: 'foo1' },
+        { d: 'foo2' },
+        { d: 'bar' },
+      ],
+      allowFreezingRows: true,
+      filterFrozenRows: false,
+      frozenRow: 1,
+    });
+    grid.frozenRow = 2;
+    grid.setFilter('d', 'bar');
+
+    done(
+      doAssert(
+        grid.viewData.length === 3 &&
+          grid.viewData[0].d === 'baz' &&
+          grid.viewData[1].d === 'foo frozen row' &&
+          grid.viewData[2].d === 'bar',
+        'Expected filter to filter ignore rows on and above frozen row.',
+      ),
+    );
+  });  
 }
