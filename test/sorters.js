@@ -1,4 +1,4 @@
-import { g, assertIf } from './util.js';
+import { g, assertIf, doAssert } from './util.js';
 
 export default function () {
   it('Should sort a string, should handle null and undefined', function (done) {
@@ -303,6 +303,26 @@ export default function () {
       assertIf(
         grid.viewData[0].a !== 'b',
         'expected to see sort by a desc then b asc',
+      ),
+    );
+  });
+  it('sorter ignores lines on and above frozen row', function (done) {
+    var grid = g({
+      test: this.test,
+      data: [{ a: 'a' }, { a: 'b' }, { a: 'c' }, { a: 'd' }, { a: 'e' }],
+      schema: [{ name: 'a', type: 'string' }],
+      allowFreezingRows: true,
+      sortFrozenRows: false,
+    });
+    grid.frozenRow = 2;
+    grid.order('a', 'desc');
+    done(
+      doAssert(
+        grid.viewData[0].a === 'a' &&
+        grid.viewData[1].a === 'b' &&
+        grid.viewData[2].a === 'e' &&
+        grid.viewData[3].a === 'd',
+        'Expected sorter to ignore rows on and above frozen row.',
       ),
     );
   });
