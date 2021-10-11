@@ -233,7 +233,7 @@ export default function () {
       );
     }, 10);
   });
-  it('Should paste a CF_HTML value from the clipboard into a cell', function (done) {
+  it('paste a CF_HTML table value from the clipboard into a cell', function (done) {
     var grid = g({
       test: this.test,
       data: [{ 'Column A': 'Original value' }],
@@ -251,6 +251,154 @@ export default function () {
             getAsString: function (callback) {
               callback(
                 '<html> <body> <!--StartFragment--><table><tr><td>Paste buffer value</td></tr></table><!--EndFragment--> </body> </html>',
+              );
+            },
+          },
+        ],
+      },
+    });
+
+    setTimeout(function () {
+      var cellData = grid.viewData[0]['Column A'];
+      done(
+        assertIf(
+          cellData !== 'Paste buffer value',
+          'Value has not been replaced with clipboard data: ' + cellData,
+        ),
+      );
+    }, 10);
+  });
+
+  it('paste a CF_HTML table with multiple cells from the clipboard', function (done) {
+    var grid = g({
+      test: this.test,
+      data: [
+        {
+          d: 'Text with, a comma 1',
+          e: 'Text that has no comma in in 1',
+        },
+        {
+          d: 'Text with, a comma 2',
+          e: 'Text that has no comma in in 2',
+        },
+      ],
+    });
+
+    grid.focus();
+    grid.setActiveCell(0, 0);
+    grid.selectArea({ top: 0, left: 0, bottom: 0, right: 0 });
+
+    grid.paste({
+      clipboardData: {
+        items: [
+          {
+            type: 'text/html',
+            getAsString: function (callback) {
+              callback(
+                `<html>
+                  <body>
+                      <table>
+                        <!--StartFragment-->
+                          <tr>
+                            <td>Paste buffer value</td>
+                            <td>Paste buffer value</td>
+                          </tr>
+                          <tr>
+                            <td>Paste buffer value</td>
+                            <td>Paste buffer value</td>
+                          </tr>
+                        <!--EndFragment-->
+                      </table>
+                    </body>
+                  </html>`,
+              );
+            },
+          },
+        ],
+      },
+    });
+
+    setTimeout(function () {
+      const cellData = [...new Set(grid.viewData
+        .map((row) => Object.values(row))
+        .flat())];
+      done(
+        doAssert(
+          cellData[0] === 'Paste buffer value' && cellData.length === 1,
+          'Value has not been replaced with clipboard data: ' + cellData,
+        ),
+      );
+    }, 10);
+  });
+  it('paste a CF_HTML table row / single cell value from the clipboard into a cell', function (done) {
+    var grid = g({
+      test: this.test,
+      data: [{ 'Column A': 'Original value' }],
+    });
+
+    grid.focus();
+    grid.setActiveCell(0, 0);
+    grid.selectArea({ top: 0, left: 0, bottom: 0, right: 0 });
+
+    grid.paste({
+      clipboardData: {
+        items: [
+          {
+            type: 'text/html',
+            getAsString: function (callback) {
+              callback(
+                `<html>
+                  <body>
+                    <table border=0 cellpadding=0 cellspacing=0 width=101 style='border-collapse: collapse;width:76pt'>
+                      <col width=101 style='mso-width-source:userset;mso-width-alt:3242;width:76pt'>
+                      <tr height=23 style='mso-height-source:userset;height:17.0pt'>
+                        <!--StartFragment-->
+                          <td height=23 class=xl65 width=101 style='height:17.0pt;width:76pt'>Paste buffer value</td>
+                        <!--EndFragment-->
+                      </tr>
+                  </table>
+                  </body>
+                </html>`,
+              );
+            },
+          },
+        ],
+      },
+    });
+
+    setTimeout(function () {
+      var cellData = grid.viewData[0]['Column A'];
+      done(
+        assertIf(
+          cellData !== 'Paste buffer value',
+          'Value has not been replaced with clipboard data: ' + cellData,
+        ),
+      );
+    }, 10);
+  });
+  it('paste a CF_HTML div value from the clipboard into a cell', function (done) {
+    var grid = g({
+      test: this.test,
+      data: [{ 'Column A': 'Original value' }],
+    });
+
+    grid.focus();
+    grid.setActiveCell(0, 0);
+    grid.selectArea({ top: 0, left: 0, bottom: 0, right: 0 });
+
+    grid.paste({
+      clipboardData: {
+        items: [
+          {
+            type: 'text/html',
+            getAsString: function (callback) {
+              callback(
+                `<meta charset='utf-8'>
+                  <div style="color: #d4d4d4;background-color: #1e1e1e;font-family: Menlo, Monaco, 'Courier New', monospace;font-weight: normal;font-size: 12px;line-height: 18px;white-space: pre;">
+                    <div>
+                    <span style="color: #4fc1ff;">Paste buffer value</span>
+                    </div>
+                  </div>`,
               );
             },
           },
