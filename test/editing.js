@@ -198,7 +198,7 @@ export default function () {
       );
     }, 10);
   });
-  it('Should paste an HTML value from the clipboard into a cell', function (done) {
+  it('Should paste an HTML table value from the clipboard into a cell', function (done) {
     var grid = g({
       test: this.test,
       data: [{ 'Column A': 'Original value' }],
@@ -233,7 +233,7 @@ export default function () {
       );
     }, 10);
   });
-  it('paste a CF_HTML table value from the clipboard into a cell', function (done) {
+  it('paste a Google Sheets table with table body from the clipboard into a cell', function (done) {
     var grid = g({
       test: this.test,
       data: [{ 'Column A': 'Original value' }],
@@ -250,7 +250,7 @@ export default function () {
             type: 'text/html',
             getAsString: function (callback) {
               callback(
-                '<html> <body> <!--StartFragment--><table><tr><td>Paste buffer value</td></tr></table><!--EndFragment--> </body> </html>',
+                `<meta charset='utf-8'><google-sheets-html-origin><style type="text/css"><!--td {border: 1px solid #ccc;}br {mso-data-placement:same-cell;}--></style><table xmlns="http://www.w3.org/1999/xhtml" cellspacing="0" cellpadding="0" dir="ltr" border="1" style="table-layout:fixed;font-size:10pt;font-family:arial,sans,sans-serif;width:0px;border-collapse:collapse;border:none"><colgroup><col width="181"/><col width="17"/><col width="85"/></colgroup><tbody><tr style="height:21px;"><td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;font-size:18pt;font-weight:bold;text-align:right;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:2022}">Paste buffer value</td><td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;" data-sheets-numberformat="{&quot;1&quot;:4,&quot;2&quot;:&quot;[$€]#,##0.00&quot;}"></td><td style="border-right:1px solid transparent;overflow:visible;padding:2px 0px 2px 0px;vertical-align:middle;font-size:18pt;font-weight:bold;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Cash flow forecast&quot;}"><div style="white-space:nowrap;overflow:hidden;position:relative;width:224px;left:3px;"><div style="float:left;">Paste buffer value</div></div></td></tr></tbody></table>`,
               );
             },
           },
@@ -269,7 +269,7 @@ export default function () {
     }, 10);
   });
 
-  it('paste a CF_HTML table with multiple cells from the clipboard', function (done) {
+  it('paste a Excel table with multiple rows from the clipboard', function (done) {
     var grid = g({
       test: this.test,
       data: [
@@ -299,6 +299,8 @@ export default function () {
                   <body>
                       <table>
                         <!--StartFragment-->
+                          <col width=412 style='mso-width-source:userset;mso-width-alt:13184;width:309pt'>
+                          <col width=340 style='mso-width-source:userset;mso-width-alt:10880;width:255pt'>
                           <tr>
                             <td>Paste buffer value</td>
                             <td>Paste buffer value</td>
@@ -319,9 +321,9 @@ export default function () {
     });
 
     setTimeout(function () {
-      const cellData = [...new Set(grid.viewData
-        .map((row) => Object.values(row))
-        .flat())];
+      const cellData = [
+        ...new Set(grid.viewData.map((row) => Object.values(row)).flat()),
+      ];
       done(
         doAssert(
           cellData[0] === 'Paste buffer value' && cellData.length === 1,
@@ -330,7 +332,7 @@ export default function () {
       );
     }, 10);
   });
-  it('paste a CF_HTML table row / single cell value from the clipboard into a cell', function (done) {
+  it('paste a Excel table single row / single cell value from the clipboard into a cell', function (done) {
     var grid = g({
       test: this.test,
       data: [{ 'Column A': 'Original value' }],
@@ -376,7 +378,7 @@ export default function () {
       );
     }, 10);
   });
-  it('paste a CF_HTML div value from the clipboard into a cell', function (done) {
+  it('paste a HTML div value from the clipboard into a cell', function (done) {
     var grid = g({
       test: this.test,
       data: [{ 'Column A': 'Original value' }],
