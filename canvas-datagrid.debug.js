@@ -1016,7 +1016,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(self) {
   self.defaults = {
-    attributes: [['allowColumnReordering', true], ['allowColumnResize', true], ['allowColumnResizeFromCell', false], ['allowFreezingRows', false], ['allowFreezingColumns', false], ['allowMovingSelection', true], ['allowRowHeaderResize', true], ['allowRowReordering', false], ['allowRowResize', true], ['allowRowResizeFromCell', false], ['allowSorting', true], ['autoGenerateSchema', false], ['autoResizeColumns', false], ['autoResizeRows', false], ['autoScrollOnMousemove', false], ['autoScrollMargin', 5], ['blanksText', '(Blanks)'], ['borderDragBehavior', 'none'], ['borderResizeZone', 10], ['clearSettingsOptionText', 'Clear saved settings'], ['columnHeaderClickBehavior', 'sort'], ['columnSelectorHiddenText', '&nbsp;&nbsp;&nbsp;'], ['columnSelectorText', 'Add/Remove columns'], ['columnSelectorVisibleText', "\u2713"], ['contextHoverScrollAmount', 2], ['contextHoverScrollRateMs', 5], ['copyHeadersOnSelectAll', true], ['copyText', 'Copy'], ['debug', false], ['editable', true], ['ellipsisText', '...'], ['filterOptionText', 'Filter %s'], ['filterTextPrefix', '(filtered) '], ['filterFrozenRows', true], ['globalRowResize', false], ['hideColumnText', 'Hide %s'], ['hoverMode', 'cell'], ['maxAutoCompleteItems', 200], ['multiLine', false], ['name', ''], ['pageUpDownOverlap', 1], ['pasteText', 'Paste'], ['persistantSelectionMode', false], ['removeFilterOptionText', 'Remove filter on %s'], ['reorderDeadZone', 3], ['resizeScrollZone', 20], ['rowGrabZoneSize', 5], ['saveAppearance', true], ['scrollAnimationPPSThreshold', 0.75], ['scrollPointerLock', false], ['scrollRepeatRate', 75], ['selectionFollowsActiveCell', false], ['selectionHandleBehavior', 'none'], ['selectionMode', 'cell'], ['selectionScrollIncrement', 20], ['selectionScrollZone', 20], ['showClearSettingsOption', true], ['showColumnHeaders', true], ['showColumnSelector', true], ['showCopy', false], ['showFilter', true], ['showNewRow', false], ['showOrderByOption', true], ['showOrderByOptionTextAsc', 'Order by %s ascending'], ['showOrderByOptionTextDesc', 'Order by %s descending'], ['showPaste', false], ['showPerformance', false], ['showRowHeaders', true], ['showRowNumbers', true], ['showRowNumberGaps', true], ['singleSelectionMode', false], ['snapToRow', false], ['sortFrozenRows', true], ['touchContextMenuTimeMs', 800], ['touchDeadZone', 3], ['touchEasingMethod', 'easeOutQuad'], ['touchReleaseAcceleration', 1000], ['touchReleaseAnimationDurationMs', 2000], ['touchScrollZone', 20], ['touchSelectHandleZone', 20], ['touchZoomSensitivity', 0.005], ['touchZoomMin', 0.5], ['touchZoomMax', 1.75], ['maxPixelRatio', 2], ['tree', false], ['treeHorizontalScroll', false]],
+    attributes: [['allowColumnReordering', true], ['allowColumnResize', true], ['allowColumnResizeFromCell', false], ['allowFreezingRows', false], ['allowFreezingColumns', false], ['allowMovingSelection', true], ['allowRowHeaderResize', true], ['allowRowReordering', false], ['allowRowResize', true], ['allowRowResizeFromCell', false], ['allowSorting', true], ['autoGenerateSchema', false], ['autoResizeColumns', false], ['autoResizeRows', false], ['autoScrollOnMousemove', false], ['autoScrollMargin', 5], ['blanksText', '(Blanks)'], ['borderDragBehavior', 'none'], ['borderResizeZone', 10], ['clearSettingsOptionText', 'Clear saved settings'], ['columnHeaderClickBehavior', 'sort'], ['columnSelectorHiddenText', '&nbsp;&nbsp;&nbsp;'], ['columnSelectorText', 'Add/Remove columns'], ['columnSelectorVisibleText', "\u2713"], ['contextHoverScrollAmount', 2], ['contextHoverScrollRateMs', 5], ['copyHeadersOnSelectAll', true], ['copyText', 'Copy'], ['debug', false], ['editable', true], ['ellipsisText', '...'], ['filterOptionText', 'Filter %s'], ['filterTextPrefix', '(filtered) '], ['filterFrozenRows', true], ['globalRowResize', false], ['hideColumnText', 'Hide %s'], ['hoverMode', 'cell'], ['keepFocusOnMouseOut', false], ['maxAutoCompleteItems', 200], ['multiLine', false], ['name', ''], ['pageUpDownOverlap', 1], ['pasteText', 'Paste'], ['persistantSelectionMode', false], ['removeFilterOptionText', 'Remove filter on %s'], ['reorderDeadZone', 3], ['resizeScrollZone', 20], ['rowGrabZoneSize', 5], ['saveAppearance', true], ['scrollAnimationPPSThreshold', 0.75], ['scrollPointerLock', false], ['scrollRepeatRate', 75], ['selectionFollowsActiveCell', false], ['selectionHandleBehavior', 'none'], ['selectionMode', 'cell'], ['selectionScrollIncrement', 20], ['selectionScrollZone', 20], ['showClearSettingsOption', true], ['showColumnHeaders', true], ['showColumnSelector', true], ['showCopy', false], ['showFilter', true], ['showNewRow', false], ['showOrderByOption', true], ['showOrderByOptionTextAsc', 'Order by %s ascending'], ['showOrderByOptionTextDesc', 'Order by %s descending'], ['showPaste', false], ['showPerformance', false], ['showRowHeaders', true], ['showRowNumbers', true], ['showRowNumberGaps', true], ['singleSelectionMode', false], ['snapToRow', false], ['sortFrozenRows', true], ['touchContextMenuTimeMs', 800], ['touchDeadZone', 3], ['touchEasingMethod', 'easeOutQuad'], ['touchReleaseAcceleration', 1000], ['touchReleaseAnimationDurationMs', 2000], ['touchScrollZone', 20], ['touchSelectHandleZone', 20], ['touchZoomSensitivity', 0.005], ['touchZoomMin', 0.5], ['touchZoomMax', 1.75], ['maxPixelRatio', 2], ['tree', false], ['treeHorizontalScroll', false]],
     styles: [['activeCellBackgroundColor', 'rgba(255, 255, 255, 1)'], ['activeCellBorderColor', 'rgba(110, 168, 255, 1)'], ['activeCellBorderWidth', 1], ['activeCellColor', 'rgba(0, 0, 0, 1)'], ['activeCellFont', '16px sans-serif'], ['activeCellHoverBackgroundColor', 'rgba(255, 255, 255, 1)'], ['activeCellHorizontalAlignment', 'left'], ['activeCellHoverColor', 'rgba(0, 0, 0, 1)'], ['activeCellOverlayBorderColor', 'rgba(66, 133, 244, 1)'], ['activeCellOverlayBorderWidth', 1], ['activeCellPaddingBottom', 5], ['activeCellPaddingLeft', 5], ['activeCellPaddingRight', 5], ['activeCellPaddingTop', 5], ['activeCellSelectedBackgroundColor', 'rgba(236, 243, 255, 1)'], ['activeCellSelectedColor', 'rgba(0, 0, 0, 1)'], ['activeCellVerticalAlignment', 'center'], ['activeColumnHeaderCellBackgroundColor', 'rgba(225, 225, 225, 1)'], ['activeColumnHeaderCellColor', 'rgba(0, 0, 0, 1)'], ['activeRowHeaderCellBackgroundColor', 'rgba(225, 225, 225, 1)'], ['activeRowHeaderCellColor', 'rgba(0, 0, 0, 1)'], ['autocompleteBottomMargin', 60], ['autosizeHeaderCellPadding', 8], ['autosizePadding', 5], ['cellAutoResizePadding', 13], ['cellBackgroundColor', 'rgba(255, 255, 255, 1)'], ['cellBorderColor', 'rgba(195, 199, 202, 1)'], ['cellBorderWidth', 1], ['cellColor', 'rgba(0, 0, 0, 1)'], ['cellFont', '16px sans-serif'], ['cellGridHeight', 250], ['cellHeight', 24], ['cellHeightWithChildGrid', 150], ['cellHorizontalAlignment', 'left'], ['cellHoverBackgroundColor', 'rgba(255, 255, 255, 1)'], ['cellHoverColor', 'rgba(0, 0, 0, 1)'], ['cellPaddingBottom', 5], ['cellPaddingLeft', 5], ['cellPaddingRight', 5], ['cellPaddingTop', 5], ['cellSelectedBackgroundColor', 'rgba(236, 243, 255, 1)'], ['cellSelectedColor', 'rgba(0, 0, 0, 1)'], ['cellVerticalAlignment', 'center'], ['cellWidth', 250], ['cellWidthWithChildGrid', 250], ['cellWhiteSpace', 'nowrap'], ['cellLineHeight', 1], ['cellLineSpacing', 3], ['childContextMenuArrowColor', 'rgba(43, 48, 43, 1)'], ['childContextMenuArrowHTML', '&#x25BA;'], ['childContextMenuMarginLeft', -11], ['childContextMenuMarginTop', -6], ['columnHeaderCellBackgroundColor', 'rgba(240, 240, 240, 1)'], ['columnHeaderCellBorderColor', 'rgba(172, 172, 172, 1)'], ['columnHeaderCellBorderWidth', 1], ['columnHeaderCellCapBackgroundColor', 'rgba(240, 240, 240, 1)'], ['columnHeaderCellCapBorderColor', 'rgba(172, 172, 172, 1)'], ['columnHeaderCellCapBorderWidth', 1], ['columnHeaderCellColor', 'rgba(50, 50, 50, 1)'], ['columnHeaderCellFont', '16px sans-serif'], ['columnHeaderCellHeight', 25], ['columnHeaderCellHorizontalAlignment', 'left'], ['columnHeaderCellHoverBackgroundColor', 'rgba(235, 235, 235, 1)'], ['columnHeaderCellHoverColor', 'rgba(0, 0, 0, 1)'], ['columnHeaderCellPaddingBottom', 5], ['columnHeaderCellPaddingLeft', 5], ['columnHeaderCellPaddingRight', 5], ['columnHeaderCellPaddingTop', 5], ['columnHeaderCellVerticalAlignment', 'center'], ['columnHeaderOrderByArrowBorderColor', 'rgba(195, 199, 202, 1)'], ['columnHeaderOrderByArrowBorderWidth', 1], ['columnHeaderOrderByArrowColor', 'rgba(155, 155, 155, 1)'], ['columnHeaderOrderByArrowHeight', 8], ['columnHeaderOrderByArrowMarginLeft', 0], ['columnHeaderOrderByArrowMarginRight', 5], ['columnHeaderOrderByArrowMarginTop', 6], ['columnHeaderOrderByArrowWidth', 13], ['contextFilterButtonBorder', 'solid 1px rgba(158, 163, 169, 1)'], ['contextFilterButtonBorderRadius', '3px'], ['contextFilterButtonHTML', '&#x25BC;'], ['contextFilterInputBackground', 'rgba(255,255,255,1)'], ['contextFilterInputBorder', 'solid 1px rgba(158, 163, 169, 1)'], ['contextFilterInputBorderRadius', '0'], ['contextFilterInputColor', 'rgba(0,0,0,1)'], ['contextFilterInputFontFamily', 'sans-serif'], ['contextFilterInputFontSize', '14px'], ['contextFilterInvalidRegExpBackground', 'rgba(180, 6, 1, 1)'], ['contextFilterInvalidRegExpColor', 'rgba(255, 255, 255, 1)'], ['contextMenuArrowColor', 'rgba(43, 48, 43, 1)'], ['contextMenuArrowDownHTML', '&#x25BC;'], ['contextMenuArrowUpHTML', '&#x25B2;'], ['contextMenuBackground', 'rgba(240, 240, 240, 1)'], ['contextMenuBorder', 'solid 1px rgba(158, 163, 169, 1)'], ['contextMenuBorderRadius', '3px'], ['contextMenuChildArrowFontSize', '12px'], ['contextMenuColor', 'rgba(43, 48, 43, 1)'], ['contextMenuCursor', 'default'], ['contextMenuFilterButtonFontFamily', 'sans-serif'], ['contextMenuFilterButtonFontSize', '10px'], ['contextMenuFilterInvalidExpresion', 'rgba(237, 155, 156, 1)'], ['contextMenuFontFamily', 'sans-serif'], ['contextMenuFontSize', '16px'], ['contextMenuHoverBackground', 'rgba(182, 205, 250, 1)'], ['contextMenuHoverColor', 'rgba(43, 48, 153, 1)'], ['contextMenuItemBorderRadius', '3px'], ['contextMenuItemMargin', '2px'], ['contextMenuLabelDisplay', 'inline-block'], ['contextMenuLabelMargin', '0 3px 0 0'], ['contextMenuLabelMaxWidth', '700px'], ['contextMenuLabelMinWidth', '75px'], ['contextMenuMarginLeft', 3], ['contextMenuMarginTop', -3], ['contextMenuOpacity', '0.98'], ['contextMenuPadding', '2px'], ['contextMenuWindowMargin', 30], ['contextMenuZIndex', 10000], ['cornerCellBackgroundColor', 'rgba(240, 240, 240, 1)'], ['cornerCellBorderColor', 'rgba(202, 202, 202, 1)'], ['debugBackgroundColor', 'rgba(0, 0, 0, .0)'], ['debugColor', 'rgba(255, 15, 24, 1)'], ['debugEntitiesColor', 'rgba(76, 231, 239, 1.00)'], ['debugFont', '11px sans-serif'], ['debugPerfChartBackground', 'rgba(29, 25, 26, 1.00)'], ['debugPerfChartTextColor', 'rgba(255, 255, 255, 0.8)'], ['debugPerformanceColor', 'rgba(252, 255, 37, 1.00)'], ['debugScrollHeightColor', 'rgba(248, 33, 103, 1.00)'], ['debugScrollWidthColor', 'rgba(66, 255, 27, 1.00)'], ['debugTouchPPSXColor', 'rgba(246, 102, 24, 1.00)'], ['debugTouchPPSYColor', 'rgba(186, 0, 255, 1.00)'], ['display', 'inline-block'], ['editCellBackgroundColor', 'white'], ['editCellBorder', 'solid 1px rgba(110, 168, 255, 1)'], ['editCellBoxShadow', '0 2px 5px rgba(0,0,0,0.4)'], ['editCellColor', 'black'], ['editCellFontFamily', 'sans-serif'], ['editCellFontSize', '16px'], ['editCellPaddingLeft', 4], ['editCellZIndex', 10000], ['frozenMarkerHoverColor', 'rgba(236, 243, 255, 1)'], ['frozenMarkerHoverBorderColor', 'rgba(110, 168, 255, 1)'], ['frozenMarkerActiveColor', 'rgba(236, 243, 255, 1)'], ['frozenMarkerActiveBorderColor', 'rgba(110, 168, 255, 1)'], ['frozenMarkerColor', 'rgba(222, 222, 222, 1)'], ['frozenMarkerBorderColor', 'rgba(168, 168, 168, 1)'], ['frozenMarkerBorderWidth', 1], ['frozenMarkerWidth', 2], ['gridBackgroundColor', 'rgba(240, 240, 240, 1)'], ['gridBorderCollapse', 'collapse'], ['gridBorderColor', 'rgba(202, 202, 202, 1)'], ['gridBorderWidth', 1], ['height', 'auto'], ['maxHeight', 'inherit'], ['maxWidth', 'inherit'], ['minColumnWidth', 45], ['minHeight', 'inherit'], ['minRowHeight', 24], ['minWidth', 'inherit'], ['mobileContextMenuMargin', 10], ['mobileEditInputHeight', 30], ['mobileEditFontFamily', 'sans-serif'], ['mobileEditFontSize', '16px'], ['moveOverlayBorderWidth', 1], ['moveOverlayBorderColor', 'rgba(66, 133, 244, 1)'], ['moveOverlayBorderSegments', '12, 7'], ['name', 'default'], ['overflowY', 'auto'], ['overflowX', 'auto'], ['reorderMarkerBackgroundColor', 'rgba(0, 0, 0, 0.1)'], ['reorderMarkerBorderColor', 'rgba(0, 0, 0, 0.2)'], ['reorderMarkerBorderWidth', 1.25], ['reorderMarkerIndexBorderColor', 'rgba(66, 133, 244, 1)'], ['reorderMarkerIndexBorderWidth', 2.75], ['rowHeaderCellBackgroundColor', 'rgba(240, 240, 240, 1)'], ['rowHeaderCellBorderColor', 'rgba(200, 200, 200, 1)'], ['rowHeaderCellBorderWidth', 1], ['rowHeaderCellColor', 'rgba(50, 50, 50, 1)'], ['rowHeaderCellFont', '16px sans-serif'], ['rowHeaderCellHeight', 25], ['rowHeaderCellHorizontalAlignment', 'left'], ['rowHeaderCellHoverBackgroundColor', 'rgba(235, 235, 235, 1)'], ['rowHeaderCellHoverColor', 'rgba(0, 0, 0, 1)'], ['rowHeaderCellPaddingBottom', 5], ['rowHeaderCellPaddingLeft', 5], ['rowHeaderCellPaddingRight', 5], ['rowHeaderCellPaddingTop', 5], ['rowHeaderCellRowNumberGapHeight', 5], ['rowHeaderCellRowNumberGapColor', 'rgba(50, 50, 50, 1)'], ['rowHeaderCellSelectedBackgroundColor', 'rgba(217, 217, 217, 1)'], ['rowHeaderCellSelectedColor', 'rgba(50, 50, 50, 1)'], ['rowHeaderCellVerticalAlignment', 'center'], ['rowHeaderCellWidth', 57], ['scrollBarActiveColor', 'rgba(125, 125, 125, 1)'], ['scrollBarBackgroundColor', 'rgba(240, 240, 240, 1)'], ['scrollBarBorderColor', 'rgba(202, 202, 202, 1)'], ['scrollBarBorderWidth', 0.5], ['scrollBarBoxBorderRadius', 4.125], ['scrollBarBoxColor', 'rgba(192, 192, 192, 1)'], ['scrollBarBoxMargin', 2], ['scrollBarBoxMinSize', 15], ['scrollBarBoxWidth', 8], ['scrollBarCornerBackgroundColor', 'rgba(240, 240, 240, 1)'], ['scrollBarCornerBorderColor', 'rgba(202, 202, 202, 1)'], ['scrollBarWidth', 11], ['selectionHandleBorderColor', 'rgba(255, 255, 255, 1)'], ['selectionHandleBorderWidth', 1.5], ['selectionHandleColor', 'rgba(66, 133, 244, 1)'], ['selectionHandleSize', 8], ['selectionHandleType', 'square'], ['selectionOverlayBorderColor', 'rgba(66, 133, 244, 1)'], ['selectionOverlayBorderWidth', 1], ['treeArrowBorderColor', 'rgba(195, 199, 202, 1)'], ['treeArrowBorderWidth', 1], ['treeArrowClickRadius', 5], ['treeArrowColor', 'rgba(155, 155, 155, 1)'], ['treeArrowHeight', 8], ['treeArrowMarginLeft', 0], ['treeArrowMarginRight', 5], ['treeArrowMarginTop', 6], ['treeArrowWidth', 13], ['treeGridHeight', 250], ['width', 'auto']]
   };
 }
@@ -2611,7 +2611,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           viewRowIndex: rowOrderIndex,
           viewColumnIndex: columnOrderIndex,
           boundRowIndex: self.getBoundRowIndexFromViewRowIndex(rowOrderIndex),
-          boundColumnIndex: columnOrderIndex,
+          boundColumnIndex: self.getBoundColumnIndexFromViewColumnIndex(columnOrderIndex),
           sortColumnIndex: headerIndex,
           sortRowIndex: rowIndex,
           isGrid: isGrid,
@@ -3515,10 +3515,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 /***/ }),
 
-/***/ "./lib/events.js":
-/*!***********************!*\
-  !*** ./lib/events.js ***!
-  \***********************/
+/***/ "./lib/events/index.js":
+/*!*****************************!*\
+  !*** ./lib/events/index.js ***!
+  \*****************************/
 /*! namespace exports */
 /*! export default [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
@@ -3532,6 +3532,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var is_printable_key_event__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! is-printable-key-event */ "./node_modules/is-printable-key-event/dist/index.js");
 /* harmony import */ var is_printable_key_event__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(is_printable_key_event__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util */ "./lib/events/util.js");
 /*jslint browser: true, unparam: true, todo: true, plusplus: true*/
 
 /*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
@@ -3542,6 +3543,7 @@ function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symb
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 
 
 /* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(self) {
@@ -4031,6 +4033,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
                 var event = {
                   selections: self.selections,
                   selectedData: self.getSelectedData(),
+                  selectedCells: self.getSelectedCells(),
                   selectionBounds: self.getSelectionBounds()
                 };
                 self.dispatchEvent('selectionchanged', event);
@@ -4089,7 +4092,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       ev = {
         selections: self.selections,
-        selectionBounds: self.getSelectionBounds()
+        selectionBounds: self.getSelectionBounds(),
+        selectedCells: self.getSelectedCells()
       };
       Object.defineProperty(ev, 'selectedData', {
         get: function get() {
@@ -4700,7 +4704,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       return;
     }
 
-    if (!self.hasFocus) {
+    if (!self.attributes.keepFocusOnMouseOut && !self.hasFocus) {
       return;
     } // If a user starts typing content, switch to "Enter" mode
 
@@ -4856,7 +4860,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         ev = {
           selectedData: self.getSelectedData(),
           selections: self.selections,
-          selectionBounds: self.getSelectionBounds()
+          selectionBounds: self.getSelectionBounds(),
+          selectedCells: self.getSelectedCells()
         };
         Object.defineProperty(ev, 'selectedData', {
           get: function get() {
@@ -4961,64 +4966,17 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   };
 
   self.pasteData = function (pasteValue, mimeType, startRowIndex, startColIndex) {
-    var schema = self.getSchema();
-
-    var isSupportedHtmlTable = function isSupportedHtmlTable(htmlString) {
-      return /(?:^(<meta[^>]+>)?<table.*?>)|(?:<!--StartFragment-->\s*<table.*?>)/.test(htmlString);
-    }; // TODO: support pasting tables from Excel
-
-
-    if (mimeType === 'text/html' && isSupportedHtmlTable(pasteValue) === false) {
+    if (mimeType === 'text/html' && !(0,_util__WEBPACK_IMPORTED_MODULE_1__.isSupportedHtml)(pasteValue)) {
       console.warn('Unrecognized HTML format. HTML must be a simple table, e.g.: <table><tr><td>data</td></tr></table>.');
       console.warn('Data with the mime type text/html not in this format will not be imported as row data.');
       return;
     }
 
-    function parseData(data, mimeType) {
-      // TODO: use DOMParser
-      if (mimeType === 'text/html') {
-        var doc = new DOMParser().parseFromString(data, 'text/html');
-        var trs = doc.querySelectorAll('table tr');
-        var _rows = [];
-        trs.forEach(function (tr) {
-          var row = [];
-          tr.childNodes.forEach(function (td) {
-            if (td.nodeName === '#text') return;
-            var col = {
-              // style: {}, // keep style if need
-              value: []
-            };
-            td.childNodes.forEach(function (ele) {
-              col.value.push({
-                // style: {}, // keep style if need
-                value: ele.nodeType === 1 ? ele.innerText : ele.data
-              });
-            });
-            row.push(col);
-          });
-
-          _rows.push(row);
-        });
-        return _rows;
-      } // Default data format is string, so split on new line,
-      // and then enclose in an array (a row with one cell):
-
-
-      return data.split('\n').map(function (item) {
-        return item.split('\t').map(function (value) {
-          return {
-            value: [{
-              value: value
-            }]
-          };
-        });
-      });
-    }
-
-    var rows = parseData(pasteValue, mimeType); // selected cell. This mimics Excel's paste functionality, and works
+    var schema = self.getSchema();
+    var rows = (0,_util__WEBPACK_IMPORTED_MODULE_1__.parseData)(pasteValue, mimeType); // selected cell. This mimics Excel's paste functionality, and works
     // as a poor-man's fill-down.
 
-    if (rows.length === 1) {
+    if (rows.length === 1 && rows[0].length === 1) {
       var cellData = rows[0][0].value.map(function (item) {
         return item.value;
       }).join();
@@ -5075,7 +5033,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     self.selections.forEach(function (row, rowIndex) {
       if (rowIndex === undefined) return;
       row.forEach(function (columnIndex) {
-        affectedCells.push([rowIndex, columnIndex, self.getVisibleCellByIndex(columnIndex, rowIndex)]);
+        affectedCells.push([rowIndex, columnIndex, self.getBoundRowIndexFromViewRowIndex(rowIndex), self.getBoundColumnIndexFromViewColumnIndex(columnIndex)]);
       });
     });
     self.dispatchEvent('afterpaste', {
@@ -5259,6 +5217,156 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 /***/ }),
 
+/***/ "./lib/events/util.js":
+/*!****************************!*\
+  !*** ./lib/events/util.js ***!
+  \****************************/
+/*! namespace exports */
+/*! export isSupportedHtml [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export parseData [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export parseHtmlTable [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export parseHtmlText [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export parseText [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export sanitizeElementData [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "isSupportedHtml": function() { return /* binding */ isSupportedHtml; },
+/* harmony export */   "sanitizeElementData": function() { return /* binding */ sanitizeElementData; },
+/* harmony export */   "parseData": function() { return /* binding */ parseData; },
+/* harmony export */   "parseHtmlTable": function() { return /* binding */ parseHtmlTable; },
+/* harmony export */   "parseHtmlText": function() { return /* binding */ parseHtmlText; },
+/* harmony export */   "parseText": function() { return /* binding */ parseText; }
+/* harmony export */ });
+
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+var isSupportedHtml = function isSupportedHtml(pasteValue) {
+  // We need to match new lines in the HTML, .* won't match new line characters.
+  // `s` regex modifier can't be used with `ecmaVersion === 2017`.
+  // As a workaround using [\s\S]*. Fix when we upgrade `ecmaVersion`.
+  var genericDiv = /(?:^(<meta[^>]*>)?[\s\S]*<div[^>]*>)/;
+  var genericSpan = /(?:^(<meta[^>]*>)?[\s\S]*<span[^>]*>)/;
+  var genericTable = /(?:^(<meta[^>]*>)?[\s\S]*<table[^>]*>)/; // Matches Google Sheets format clipboard data format too.
+
+  var excelTable = /(?:<!--StartFragment-->[\s\S]*<tr[^>]*>)/;
+  var excelTableRow = /(?:<!--StartFragment-->[\s\S]*<td[^>]*>)/;
+  return [genericDiv, genericTable, genericSpan, excelTable, excelTableRow].some(function (expression) {
+    return expression.test(pasteValue);
+  });
+}; // Explanation of nodeType here: https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType
+
+
+var IGNORE_NODETYPES = [8, 3]; // '#text' and '#comment'
+
+var isHtmlTable = function isHtmlTable(pasteValue) {
+  return /(?:<table[^>]*>)|(?:<tr[^]*>)/.test(pasteValue);
+};
+
+var sanitizeElementData = function sanitizeElementData(element) {
+  // It is not entirely clear if this check on nodeType is required.
+  var elementData = element.nodeType === 1 ? element.innerText : element.data;
+  return String(elementData).replace(/\s+/g, ' ').trim();
+};
+
+var parseHtmlText = function parseHtmlText(data) {
+  var doc = new DOMParser().parseFromString(data, 'text/html');
+  var element = doc.querySelector('div') || doc.querySelector('span');
+  var elementData = sanitizeElementData(element);
+  return elementData.split('\n').map(function (item) {
+    return item.split('\t').map(function (value) {
+      return {
+        value: [{
+          value: value
+        }]
+      };
+    });
+  });
+};
+
+var parseHtmlTable = function parseHtmlTable(data) {
+  var doc = new DOMParser().parseFromString(data, 'text/html');
+  var trs = doc.querySelectorAll('table tr');
+  var rows = [];
+
+  var _iterator = _createForOfIteratorHelper(trs),
+      _step;
+
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var tr = _step.value;
+      var row = [];
+
+      var _iterator2 = _createForOfIteratorHelper(tr.childNodes),
+          _step2;
+
+      try {
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var childNode = _step2.value;
+          if (IGNORE_NODETYPES.includes(childNode.nodeType)) continue;
+          var col = {
+            value: []
+          };
+          var value = sanitizeElementData(childNode);
+          if (value) col.value.push({
+            value: value
+          });
+          row.push(col);
+        }
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
+      }
+
+      rows.push(row);
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+
+  return rows;
+};
+
+var parseText = function parseText(data) {
+  return data.split('\n').map(function (item) {
+    return item.split('\t').map(function (value) {
+      return {
+        value: [{
+          value: value
+        }]
+      };
+    });
+  });
+};
+
+var parseData = function parseData(data, mimeType) {
+  if (mimeType === 'text/html' && isHtmlTable(data)) {
+    return parseHtmlTable(data);
+  } else if (mimeType === 'text/html') {
+    return parseHtmlText(data);
+  } // Default data format is string, so split on new line,
+  // and then enclose in an array (a row with one cell):
+
+
+  return parseText(data);
+};
+
+
+
+/***/ }),
+
 /***/ "./lib/intf.js":
 /*!*********************!*\
   !*** ./lib/intf.js ***!
@@ -5281,19 +5389,19 @@ __webpack_require__.r(__webpack_exports__);
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 /* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(self, ctor) {
   self.scale = 1;
@@ -5423,12 +5531,84 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     return selectedData;
   };
 
+  self.getSelectedCells = function (expandToRow) {
+    var selectedCells = [];
+    var schema = self.getSchema();
+    var viewDataLength = self.viewData.length;
+
+    if (viewDataLength === 0) {
+      return [];
+    }
+
+    var _iterator = _createForOfIteratorHelper(self.selections.entries()),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var _step$value = _slicedToArray(_step.value, 2),
+            viewRowIndex = _step$value[0],
+            row = _step$value[1];
+
+        if (!row || row.length === 0) continue;
+
+        var _iterator2 = _createForOfIteratorHelper(row.entries()),
+            _step2;
+
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var _step2$value = _slicedToArray(_step2.value, 2),
+                viewColumnIndex = _step2$value[1];
+
+            if (viewColumnIndex === -1 || !schema[viewColumnIndex]) {
+              continue;
+            }
+
+            var boundColumnIndex = self.getBoundColumnIndexFromViewColumnIndex(viewColumnIndex);
+
+            if (!expandToRow && schema[boundColumnIndex].hidden) {
+              continue;
+            }
+
+            if (self.viewData[viewRowIndex]) {
+              var header = schema[boundColumnIndex];
+              var value = self.viewData[viewRowIndex][header.name];
+              var boundRowIndex = self.getBoundRowIndexFromViewRowIndex(viewRowIndex);
+              var cell = {
+                value: value,
+                header: header,
+                boundRowIndex: boundRowIndex,
+                boundColumnIndex: boundColumnIndex,
+                viewRowIndex: viewRowIndex,
+                viewColumnIndex: viewColumnIndex
+              };
+              selectedCells.push(cell);
+            }
+          }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
+        }
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+
+    return selectedCells;
+  };
+
   self.getBoundRowIndexFromViewRowIndex = function (viewRowIndex) {
     if (self.boundRowIndexMap && self.boundRowIndexMap.has(viewRowIndex)) {
       return self.boundRowIndexMap.get(viewRowIndex);
     }
 
     return undefined;
+  };
+
+  self.getBoundColumnIndexFromViewColumnIndex = function (viewColumnIndex) {
+    return self.orders.columns[viewColumnIndex];
   };
 
   self.getColumnHeaderCellHeight = function () {
@@ -5561,7 +5741,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     }); // Apply filtering
 
     var _loop = function _loop() {
-      var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+      var _Object$entries$_i = _slicedToArray(_Object$entries[_i2], 2),
           headerName = _Object$entries$_i[0],
           filterText = _Object$entries$_i[1];
 
@@ -5582,19 +5762,19 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       });
     };
 
-    for (var _i = 0, _Object$entries = Object.entries(self.columnFilters); _i < _Object$entries.length; _i++) {
+    for (var _i2 = 0, _Object$entries = Object.entries(self.columnFilters); _i2 < _Object$entries.length; _i2++) {
       var _ret = _loop();
 
       if (_ret === "continue") continue;
     } // Apply sorting
 
 
-    var _iterator = _createForOfIteratorHelper(self.orderings.columns),
-        _step;
+    var _iterator3 = _createForOfIteratorHelper(self.orderings.columns),
+        _step3;
 
     try {
       var _loop2 = function _loop2() {
-        var column = _step.value;
+        var column = _step3.value;
         var sortFn = column.sortFunction(column.orderBy, column.orderDirection);
         newViewData.sort(function (_ref7, _ref8) {
           var _ref9 = _slicedToArray(_ref7, 1),
@@ -5609,13 +5789,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         });
       };
 
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
         _loop2();
       }
     } catch (err) {
-      _iterator.e(err);
+      _iterator3.e(err);
     } finally {
-      _iterator.f();
+      _iterator3.f();
     }
 
     return {
@@ -6913,7 +7093,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component */ "./lib/component.js");
 /* harmony import */ var _defaults__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./defaults */ "./lib/defaults.js");
 /* harmony import */ var _draw__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./draw */ "./lib/draw.js");
-/* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./events */ "./lib/events.js");
+/* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./events */ "./lib/events/index.js");
 /* harmony import */ var _touch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./touch */ "./lib/touch.js");
 /* harmony import */ var _intf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./intf */ "./lib/intf.js");
 /* harmony import */ var _contextMenu__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./contextMenu */ "./lib/contextMenu.js");
@@ -7454,7 +7634,8 @@ __webpack_require__.r(__webpack_exports__);
     self.dispatchEvent('selectionchanged', {
       selectedData: self.getSelectedData(),
       selections: self.selections,
-      selectionBounds: self.selectionBounds
+      selectionBounds: self.selectionBounds,
+      selectedCells: self.getSelectedCells()
     });
 
     if (dontDraw) {
@@ -7605,7 +7786,8 @@ __webpack_require__.r(__webpack_exports__);
     self.dispatchEvent('selectionchanged', {
       selectedData: self.getSelectedData(),
       selections: self.selections,
-      selectionBounds: self.getSelectionBounds()
+      selectionBounds: self.getSelectionBounds(),
+      selectedCells: self.getSelectedCells()
     });
   };
   /**
@@ -7634,7 +7816,8 @@ __webpack_require__.r(__webpack_exports__);
       self.dispatchEvent('selectionchanged', {
         selectedData: self.getSelectedData(),
         selections: self.selections,
-        selectionBounds: self.selectionBounds
+        selectionBounds: self.selectionBounds,
+        selectedCells: self.getSelectedCells()
       });
     }
 
@@ -8377,7 +8560,8 @@ __webpack_require__.r(__webpack_exports__);
 
     ev = {
       selections: self.selections,
-      selectionBounds: self.selectionBounds
+      selectionBounds: self.selectionBounds,
+      selectedCells: self.getSelectedCells()
     };
     Object.defineProperty(ev, 'selectedData', {
       get: function get() {
