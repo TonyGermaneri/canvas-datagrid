@@ -12,7 +12,13 @@ module.exports = function (config) {
     // list of files / patterns to load in the browser
     files: [
       {
-        pattern: 'test/*.js',
+        pattern: 'test/**/*.js',
+        type: 'module',
+        included: true,
+        served: true,
+      },
+      {
+        pattern: 'lib/events/util.js',
         type: 'module',
         included: true,
         served: true,

@@ -23,6 +23,8 @@ import contextMenuTests from './context-menu.js';
 import webComponentTests from './web-component.js';
 import scrollingTests from './scrolling.js';
 
+import unitTests from './unit/index.js';
+
 describe('canvas-datagrid', function () {
   after(function (done) {
     // git rid of lingering artifacts from the run
@@ -52,4 +54,5 @@ describe('canvas-datagrid', function () {
     describe('Filters', filtersTests);
     describe('Attributes', attributesTests);
   });
+  describe('Unit Tests', unitTests);
 });
