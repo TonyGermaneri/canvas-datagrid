@@ -467,4 +467,87 @@ export default function () {
       });
     }, 1);
   });
+  it('selecting an area emits event with selected cells', function (done) {
+    var grid = g({
+      test: this.test,
+      data: smallData(),
+    });
+
+    grid.addEventListener('selectionchanged', function (event) {
+      try {
+        doAssert(event.selectedCells.length === 2, '2 rows are selected');
+        doAssert(
+          event.selectedCells.map((r) => r.length).join(',') === '2,2',
+          'each row has 2 cells',
+        );
+        doAssert(
+          event.selectedCells[0][0].boundRowIndex ==
+            event.selectedCells[0][0].viewRowIndex,
+          'bound and view row index are identical',
+        );
+      } catch (error) {
+        done(error);
+      }
+
+      done();
+    });
+
+    setTimeout(function () {
+      grid.selectArea({ top: 1, left: 0, bottom: 2, right: 1 });
+    }, 1);
+  });
+  it('selecting an area emits different row indices for filtered data', function (done) {
+    var grid = g({
+      test: this.test,
+      data: smallData(),
+    });
+
+    grid.setFilter('col1', 'ba');
+    grid.addEventListener('selectionchanged', function (event) {
+      try {
+        doAssert(
+          event.selectedCells[0][0].boundRowIndex ==
+            event.selectedCells[0][0].viewRowIndex + 1,
+          'first view row is second bound data row',
+        );
+      } catch (error) {
+        done(error);
+      }
+
+      done();
+    });
+
+    setTimeout(function () {
+      grid.selectArea({ top: 0, left: 0, bottom: 1, right: 1 });
+    }, 1);
+  });
+  it('selecting an area emits different column indices for ordered columns', function (done) {
+    var grid = g({
+      test: this.test,
+      data: smallData(),
+    });
+
+    grid.columnOrder = [2, 1, 0];
+    grid.addEventListener('selectionchanged', function (event) {
+      try {
+        doAssert(
+          event.selectedCells[0][0].boundColumnIndex ==
+            event.selectedCells[0][0].viewColumnIndex + 2,
+          'first view column is third bound column',
+        );
+        doAssert(
+          event.selectedCells[0][0].header.name === 'col3',
+          'first column matches reordered column name',
+        );
+      } catch (error) {
+        done(error);
+      }
+
+      done();
+    });
+
+    setTimeout(function () {
+      grid.selectArea({ top: 0, left: 0, bottom: 1, right: 1 });
+    }, 1);
+  });
 }
