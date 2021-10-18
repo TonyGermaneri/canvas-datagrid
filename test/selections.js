@@ -493,7 +493,7 @@ export default function () {
     });
 
     setTimeout(function () {
-      grid.selectArea({ top: 0, left: 0, bottom: 1, right: 1 });
+      grid.selectArea({ top: 1, left: 0, bottom: 2, right: 1 });
     }, 1);
   });
   it('selecting an area emits different row indices for filtered data', function (done) {
