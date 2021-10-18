@@ -451,6 +451,7 @@ export default function () {
         doAssert(!!event.cells, 'event has cells property');
         doAssert(event.cells.length === 1, 'one row has been pasted ');
         doAssert(event.cells[0][0] === 0, 'pasted column == 0');
+        doAssert(event.cells[0][2] === 0, 'pasted bound column == 0');
       } catch (error) {
         done(error);
       }
