@@ -63,7 +63,6 @@ export default function () {
   it('parse mulitline plain text', function () {
     const result = parseText('First value\nSecond value');
 
-    console.log(JSON.stringify(result));
     chai.assert.deepStrictEqual(result, [
       [{ value: [{ value: 'First value' }] }],
       [{ value: [{ value: 'Second value' }] }],
