@@ -475,14 +475,10 @@ export default function () {
 
     grid.addEventListener('selectionchanged', function (event) {
       try {
-        doAssert(event.selectedCells.length === 2, '2 rows are selected');
+        doAssert(event.selectedCells.length === 4, '4 cells are selected');
         doAssert(
-          event.selectedCells.map((r) => r.length).join(',') === '2,2',
-          'each row has 2 cells',
-        );
-        doAssert(
-          event.selectedCells[0][0].boundRowIndex ==
-            event.selectedCells[0][0].viewRowIndex,
+          event.selectedCells[0].boundRowIndex ==
+            event.selectedCells[0].viewRowIndex,
           'bound and view row index are identical',
         );
       } catch (error) {
@@ -506,8 +502,8 @@ export default function () {
     grid.addEventListener('selectionchanged', function (event) {
       try {
         doAssert(
-          event.selectedCells[0][0].boundRowIndex ==
-            event.selectedCells[0][0].viewRowIndex + 1,
+          event.selectedCells[0].boundRowIndex ==
+            event.selectedCells[0].viewRowIndex + 1,
           'first view row is second bound data row',
         );
       } catch (error) {
@@ -531,12 +527,12 @@ export default function () {
     grid.addEventListener('selectionchanged', function (event) {
       try {
         doAssert(
-          event.selectedCells[0][0].boundColumnIndex ==
-            event.selectedCells[0][0].viewColumnIndex + 2,
+          event.selectedCells[0].boundColumnIndex ==
+            event.selectedCells[0].viewColumnIndex + 2,
           'first view column is third bound column',
         );
         doAssert(
-          event.selectedCells[0][0].header.name === 'col3',
+          event.selectedCells[0].header.name === 'col3',
           'first column matches reordered column name',
         );
       } catch (error) {
