@@ -526,4 +526,31 @@ export default function () {
     document.body.lastChild.dispatchEvent(ev);
     grid.endEdit();
   });
+  describe('cut', function () {
+    it('fires a cut event', function (done) {
+      var grid = g({
+        test: this.test,
+        data: [{ 'Column A': 'Original value' }],
+      });
+
+      grid.focus();
+      grid.setActiveCell(0, 0);
+      grid.selectArea({ top: 0, left: 0, bottom: 0, right: 0 });
+
+      grid.addEventListener('cut', function (event) {
+        try {
+          doAssert(!!event.cells, 'event has cells property');
+          doAssert(event.cells.length === 1, 'one row has been pasted ');
+          doAssert(event.cells[0][0] === 0, 'pasted column == 0');
+          doAssert(event.cells[0][2] === 0, 'pasted bound column == 0');
+        } catch (error) {
+          done(error);
+        }
+
+        done();
+      });
+
+      grid.cut({});
+    });
+  });
 }
