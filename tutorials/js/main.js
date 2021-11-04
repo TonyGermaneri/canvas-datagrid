@@ -285,7 +285,7 @@
                         js: '',
                         title: msg[0],
                         description: msg[1] || msg[0],
-                        resources: 'https://tonygermaneri.github.io/canvas-datagrid/dist/canvas-datagrid.js',
+                        resources: 'https://canvas-datagrid.js.org/canvas-datagrid.js',
                         dtd: 'html 5'
                     };
                 Object.keys(fiddleForm).forEach(function (k) {
