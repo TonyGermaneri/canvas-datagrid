@@ -3,7 +3,7 @@
 
 ## Introduction
 
-First of all, thank you so much for taking the time to contribute! 🎉👍🎈 The maintainers of this project have day jobs and other commitments, so we our time is limited and we really welcome any help we can get!
+First of all, thank you so much for taking the time to contribute! 🎉👍🎈 The maintainers of this project have day jobs and other commitments, so our time is limited and we really welcome any help we can get!
 
 ![cat-cute](https://user-images.githubusercontent.com/950979/141787558-3ffe531d-7eaf-4615-b8ed-7eaf58dce067.gif)
 
@@ -34,8 +34,15 @@ The best pull requests are made up of commits that are structured in such a way 
 
 #### Tests
 
-Pull requests with failing tests or without tests that cover the new or changed functionality will _not_ be reviewed. This sounds tough, and while we welcome your contribution, without proper tests it's very hard and/or time-consuming for maintainers to evaluate whether the changes do what they should. Often a simple test case or two is enough.
+Pull requests with failing tests or without tests that cover the new or changed functionality will _not_ be reviewed. This sounds tough, but while we welcome your contribution, without proper tests it's very hard and/or time-consuming for maintainers to evaluate whether the changes do what they should. Often a simple test case or two is enough.
 
+Run tests using:
+
+```
+npm test
+```
+
+Tests are located in `test/`. If you need help creating tests, please reach out to us on Slack.
 
 #### Create an online example
 
@@ -57,7 +64,18 @@ npm run lint
 
 While not perfect, these two commands will catch most of the common issues. Any other issues are described below. Note: this is a work in progress, so please don't feel bad if we make note of something not mentioned here.
 
+#### General background
+
+The codebase for this project has been around for a number of years and is in need of some refactoring and cleaning up. While now the code is annotated using JSDoc to describe types, we would like to migrate this project
+
 #### Comments
 
 - Do not leave commented out code. Either remove it, or refactor it. Old code hanging around in comments is nobody's idea of a good time, serves no purpose, and should be removed.
 - Comments should describe _why_ not _how_. The _how_ should be clear by the code itself. If it's not, the code needs to be reworked until it can be made clear. Good comments describe _why_ a certain piece of code is present.
+
+
+## Thank you!
+
+Thank you for reading — we appreciate it!
+
+![FD3h0wFVIAAGDmj](https://user-images.githubusercontent.com/950979/141791902-e71d67b8-3359-4503-aaf8-ca48255b48f7.jpg)
