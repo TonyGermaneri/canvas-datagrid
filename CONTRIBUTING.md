@@ -66,13 +66,17 @@ While not perfect, these two commands will catch most of the common issues. Any 
 
 #### General background
 
-The codebase for this project has been around for a number of years and is in need of some refactoring and cleaning up. While now the code is annotated using JSDoc to describe types, we would like to migrate this project
+The codebase for this project has been around for a number of years and is in need of some refactoring and cleaning up. While now the code is annotated using JSDoc to describe types, we would like to migrate this project to TypeScript and make use of its native type system for an improved developer experience and keeping documentation in sync. This is all to say, parts of the codebase need some work, so when making changes try to see if you can raise the general level of quality of the codebase.
 
 #### Comments
 
 - Do not leave commented out code. Either remove it, or refactor it. Old code hanging around in comments is nobody's idea of a good time, serves no purpose, and should be removed.
 - Comments should describe _why_ not _how_. The _how_ should be clear by the code itself. If it's not, the code needs to be reworked until it can be made clear. Good comments describe _why_ a certain piece of code is present.
 
+#### Assorted
+
+- Please use descriptive variable names as much as possible
+- Please use `const` and `let` over `var` (in that order)
 
 ## Thank you!
 
