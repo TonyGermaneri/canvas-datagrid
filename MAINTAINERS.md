@@ -14,32 +14,10 @@ To release a new version of canvas-datagrid, I've found that this order of steps
 - Big feature meriting 1.0.0 release (contributing-user-foo, #999)
 ```
 
-2. Update the version number in `package.json`
+2. Commit this file
 
-```diff
-{
-  "name": "canvas-datagrid",
--  "version": "0.9.9",
-+  "version": "1.0.0",
-```
+3. Run `npm version patch` or `npm version <version-number>`, but usually `patch` will suffice. This will update the package.json and package-lock.json files, commit them, and tag the commit with the new version number.
 
-2.a. Update package-lock.json to account for new version number:
+4. Push the commits with `git push`
 
-```
-$ npm i --package-lock-only
-```
-
-3. Commit `package.json` and `CHANGELOG.md` and any other files. (Although, really, to be releasing you should generally only commit _these_ files)
-
-```
-$ git commit -m "Release v1.0.0"
-```
-
-4. Tag this commit with the new version number, as in `package.json`. So if you're releasing a 1.0.0:
-
-```
-$ git tag -a v1.0.0 -m "Release v1.0.0"
-$ git push origin --tags
-```
-
-Once you've pushed the tagged commit, the GitHub Actions CI pipeline will take care of releasing it to NPM. To see how that works, refer to `.github/workflows/release.yml`
+5. Once you've pushed the tagged commit, the GitHub Actions CI pipeline will take care of releasing it to NPM. To see how that works, refer to `.github/workflows/release.yml`
