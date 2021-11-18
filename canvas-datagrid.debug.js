@@ -1892,15 +1892,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     y = y + mt;
 
     if (self.orderDirection === 'asc') {
-      self.ctx.moveTo(x, y);
-      self.ctx.lineTo(x + aw, y);
-      self.ctx.lineTo(x + aw * 0.5, y + ah);
-      self.ctx.moveTo(x, y);
-    } else {
       self.ctx.lineTo(x, y + ah);
       self.ctx.lineTo(x + aw, y + ah);
       self.ctx.lineTo(x + aw * 0.5, y);
       self.ctx.lineTo(x, y + ah);
+    } else {
+      self.ctx.moveTo(x, y);
+      self.ctx.lineTo(x + aw, y);
+      self.ctx.lineTo(x + aw * 0.5, y + ah);
+      self.ctx.moveTo(x, y);
     }
 
     self.ctx.stroke();
@@ -4365,6 +4365,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   self.stopDragReorder = function (e) {
     var oIndex,
         tIndex,
+        odata,
         cr = {
       'row-reorder': self.orders.rows,
       'column-reorder': self.orders.columns
@@ -4385,13 +4386,16 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       self.ignoreNextClick = true;
       oIndex = cr[self.dragMode].indexOf(self.reorderObject[i]);
       tIndex = cr[self.dragMode].indexOf(self.reorderTarget[i]);
-      cr[self.dragMode].splice(oIndex, 1);
-      cr[self.dragMode].splice(tIndex, 0, self.reorderObject[i]);
 
       if (self.dragMode === 'column-reorder') {
+        cr[self.dragMode].splice(oIndex, 1);
+        cr[self.dragMode].splice(tIndex, 0, self.reorderObject[i]);
         self.orders.columns = cr[self.dragMode];
       } else {
-        self.orders.rows = cr[self.dragMode];
+        // self.orders.rows = cr[self.dragMode];
+        odata = self.viewData[oIndex];
+        self.viewData[oIndex] = self.viewData[tIndex];
+        self.viewData[tIndex] = odata;
       }
 
       self.resize();
@@ -4617,6 +4621,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
     if (['row-reorder', 'column-reorder'].indexOf(self.dragMode) !== -1) {
       self.draggingItem = self.dragStartObject;
+
+      if (self.dragMode === 'column-reorder' && self.attributes.columnHeaderClickBehavior === 'select') {
+        self.selectColumn(self.currentCell.header.index, ctrl, e.shiftKey);
+        self.draw();
+      }
+
       document.body.addEventListener('mousemove', self.dragReorder, false);
       document.body.addEventListener('mouseup', self.stopDragReorder, false);
       return;
@@ -4625,9 +4635,16 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
   self.mouseup = function (e) {
     clearTimeout(self.scrollTimer);
+    var ctrl = e.ctrlKey || e.metaKey;
     self.cellBoundaryCrossed = true;
     self.rowBoundaryCrossed = true;
     self.columnBoundaryCrossed = true;
+
+    if (self.draggingItem) {
+      self.selectColumn(self.currentCell.header.index, ctrl, e.shiftKey);
+      self.draw();
+    }
+
     self.selecting = undefined;
     self.draggingItem = undefined;
     self.dragStartObject = undefined;
