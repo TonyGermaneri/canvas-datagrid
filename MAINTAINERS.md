@@ -18,6 +18,10 @@ To release a new version of canvas-datagrid, I've found that this order of steps
 
 3. Run `npm version patch` or `npm version <version-number>`, but usually `patch` will suffice. This will update the package.json and package-lock.json files, commit them, and tag the commit with the new version number.
 
-4. Push the commits with `git push`
+4. Push the commits and tags
 
-5. Once you've pushed the tagged commit, the GitHub Actions CI pipeline will take care of releasing it to NPM. To see how that works, refer to `.github/workflows/release.yml`
+```
+git push && git push --tags
+```
+
+5. Once you've pushed the tagged commit, the GitHub Actions CI pipeline will take care of releasing it to NPM. To see how that works, refer to `.github/workflows/release.yml````
