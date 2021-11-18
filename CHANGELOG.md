@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 0.3.14 - 2021-10-20
 
+### Fixed
+
+- Fix highlighting incorrect column after repositioning column (xianzhi3, #399)
+- Reverse sort order icon (faimaklg, #387)
+- Fix link in tutorials (slominskir, #386)
+
+## 0.3.14 - 2021-10-20
+
 ### Added
 
 - Emit affected cells in `cut` event (mdebrauw, #383)
