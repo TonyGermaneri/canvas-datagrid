@@ -2796,9 +2796,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
         self.ctx.restore(); // Gaps may occur in row numbers between consecutively rendered rows
         // when we are filtering. We draw attention to this by drawing a thick
-        // border overlapping the two consecutive row headers.
+        // border overlapping the two consecutive row headers. If sorting, visible
+        // row numbers stay the same (i.e. they don't correspond to the underlying
+        // data's row number), so we do not show row gaps in that case.
 
-        if (isRowHeader && self.attributes.showRowNumbers && self.attributes.showRowNumberGaps) {
+        var isSorting = self.orderings.columns && self.orderings.columns.length > 0;
+
+        if (isRowHeader && self.attributes.showRowNumbers && self.attributes.showRowNumberGaps && isSorting === false) {
           var previousRowNumber = self.getBoundRowIndexFromViewRowIndex(rowOrderIndex - 1);
           var hasRowGap = previousRowNumber !== undefined && cell.boundRowIndex > 0 && cell.boundRowIndex - previousRowNumber > 1;
 
@@ -8734,27 +8738,22 @@ __webpack_require__.r(__webpack_exports__);
   self.sorters.string = function (columnName, direction) {
     var asc = direction === 'asc';
     return function (a, b) {
-      if (a[columnName] === undefined || a[columnName] === null) {
-        return 1;
-      }
-
-      if (b[columnName] === undefined || b[columnName] === null) {
-        return 0;
-      }
+      var aValue = a[columnName] || '';
+      var bValue = b[columnName] || '';
 
       if (asc) {
-        if (!a[columnName].localeCompare) {
+        if (!aValue.localeCompare) {
           return 1;
         }
 
-        return a[columnName].localeCompare(b[columnName]);
+        return aValue.localeCompare(bValue);
       }
 
-      if (!b[columnName].localeCompare) {
+      if (!bValue.localeCompare) {
         return 1;
       }
 
-      return b[columnName].localeCompare(a[columnName]);
+      return bValue.localeCompare(aValue);
     };
   };
 
