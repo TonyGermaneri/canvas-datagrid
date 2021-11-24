@@ -7,6 +7,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.3.18 - 2021-11-18
+
+No changes; had to bump version number because race condition caused 0.3.16 to be published instead of 0.3.17.
+
+## 0.3.17 - 2021-11-18
+
+### Fixed
+
+- Do not render row gaps when sorting (ndrsn, #391)
+
+## 0.3.16 - 2021-11-18
+
+### Fixed
+
+- Fix string sort when value is null/undefined (faimaklg, #388)
+
+## 0.3.15 - 2021-11-18
+
+### Fixed
+
+- Fix highlighting incorrect column after repositioning column (xianzhi3, #399)
+- Reverse sort order icon (faimaklg, #387)
+- Fix link in tutorials (slominskir, #386)
+
 ## 0.3.14 - 2021-10-20
 
 ### Added
