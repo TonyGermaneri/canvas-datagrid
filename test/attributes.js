@@ -458,7 +458,7 @@ export default function () {
       grid.addEventListener('click', function (e) {
         done(
           assertIf(
-            e.cell.value === 'bar',
+            e.cell.value !== 'bar',
             'Expected to see the value from row 2 here.',
           ),
         );
