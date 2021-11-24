@@ -2386,8 +2386,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           m = self.style.scrollBarBoxMargin * 2;
       self.ctx.strokeStyle = self.style.scrollBarBorderColor;
       self.ctx.lineWidth = self.style.scrollBarBorderWidth;
-      en.horizontalBox.x = rowHeaderCellWidth + self.style.scrollBarBoxMargin + (en.horizontalBar.width - self.scrollBox.scrollBoxWidth) * (self.scrollBox.scrollLeft / self.scrollBox.scrollWidth);
-      en.verticalBox.y = columnHeaderCellHeight + self.style.scrollBarBoxMargin + (en.verticalBar.height - self.scrollBox.scrollBoxHeight) * (self.scrollBox.scrollTop / self.scrollBox.scrollHeight);
+
+      if (self.frozenColumn > 0) {
+        en.horizontalBox.x = rowHeaderCellWidth + self.style.scrollBarBoxMargin + self.scrollCache.x[self.frozenColumn - 1] + (en.horizontalBar.width - self.scrollCache.x[self.frozenColumn - 1] - self.scrollBox.scrollBoxWidth) * (self.scrollBox.scrollLeft / self.scrollBox.scrollWidth);
+      } else {
+        en.horizontalBox.x = rowHeaderCellWidth + self.style.scrollBarBoxMargin + (en.horizontalBar.width - self.scrollBox.scrollBoxWidth) * (self.scrollBox.scrollLeft / self.scrollBox.scrollWidth);
+      }
+
+      en.verticalBox.y = columnHeaderCellHeight + self.style.scrollBarBoxMargin + self.scrollCache.y[self.frozenRow] + (en.verticalBar.height - self.scrollBox.scrollBoxHeight - self.scrollCache.y[self.frozenRow]) * (self.scrollBox.scrollTop / self.scrollBox.scrollHeight);
 
       if (self.scrollBox.horizontalBarVisible) {
         self.ctx.fillStyle = self.style.scrollBarBackgroundColor;
@@ -3178,6 +3184,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       self.ctx.strokeStyle = self.style.reorderMarkerBorderColor;
 
       if (self.dragMode === 'row-reorder') {
+        for (var k = 0; k < self.selections.length; k++) {
+          if (!self.selections[k] || k == self.reorderObject.rowIndex) continue;
+          b.height += self.getRowHeight(k);
+        }
+
         b.width = w;
         b.x = 0;
         m.width = w;
@@ -3192,6 +3203,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           addBorderLine(m, self.reorderTarget.sortRowIndex > self.reorderObject.sortRowIndex ? 'b' : 't');
         }
       } else if (self.dragMode === 'column-reorder' && self.reorderObject) {
+        var selectedColumns = self.selections[0];
+
+        for (var k = 1; k < selectedColumns.length; k++) {
+          b.width += self.getColumnWidth(self.orders.columns[selectedColumns[k]]);
+        }
+
         b.height = h;
         b.y = 0;
         m.height = h;
@@ -3809,14 +3826,20 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     setScrollBoxSize();
     self.scrollBox.scrollWidth = dataWidth - self.scrollBox.width;
     self.scrollBox.scrollHeight = dataHeight - self.scrollBox.height;
-    self.scrollBox.widthBoxRatio = self.scrollBox.width / dataWidth;
+
+    if (self.frozenColumn > 0) {
+      self.scrollBox.widthBoxRatio = (self.scrollBox.width - self.scrollCache.x[self.frozenColumn - 1]) / dataWidth;
+    } else {
+      self.scrollBox.widthBoxRatio = self.scrollBox.width / dataWidth;
+    }
+
     self.scrollBox.scrollBoxWidth = self.scrollBox.width * self.scrollBox.widthBoxRatio - self.style.scrollBarWidth - b - d; // TODO: This heightBoxRatio number is terribly wrong.
     // They should be a result of the size of the grid/canvas?
     // it being off causes the scroll bar to "slide" under
     // the dragged mouse.
     // https://github.com/TonyGermaneri/canvas-datagrid/issues/97
 
-    self.scrollBox.heightBoxRatio = (self.scrollBox.height - columnHeaderCellHeight) / dataHeight;
+    self.scrollBox.heightBoxRatio = (self.scrollBox.height - columnHeaderCellHeight - self.scrollCache.y[self.frozenRow]) / dataHeight;
     self.scrollBox.scrollBoxHeight = self.scrollBox.height * self.scrollBox.heightBoxRatio - self.style.scrollBarWidth - b - d;
     self.scrollBox.scrollBoxWidth = Math.max(self.scrollBox.scrollBoxWidth, self.style.scrollBarBoxMinSize);
     self.scrollBox.scrollBoxHeight = Math.max(self.scrollBox.scrollBoxHeight, self.style.scrollBarBoxMinSize); // horizontal
@@ -3831,11 +3854,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     nb.height = self.style.scrollBarBoxWidth; // vertical
 
     v.x += self.width - self.style.scrollBarWidth - self.style.scrollBarBorderWidth - d;
-    v.y += columnHeaderCellHeight;
+    v.y += columnHeaderCellHeight + self.scrollCache.y[self.frozenRow];
     v.width = self.style.scrollBarWidth + self.style.scrollBarBorderWidth + d;
     v.height = self.height - columnHeaderCellHeight - self.style.scrollBarWidth - d - m; // vertical box
 
     vb.x = v.x + self.style.scrollBarBoxMargin;
+    vb.y += self.scrollCache.y[self.frozenRow];
     vb.width = self.style.scrollBarBoxWidth;
     vb.height = self.scrollBox.scrollBoxHeight; // corner
 
@@ -4064,6 +4088,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             }
           } else if (dragBounds.top !== -1) {
             self.selectArea(sBounds, true);
+            if (sBounds.left == -1 && sBounds.top !== sBounds.bottom) self.isMultiRowsSelected = true;
           }
         }
 
@@ -4159,12 +4184,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
           self.order(i.header.name, self.orderDirection);
           checkSelectionChange();
-          return;
-        }
-
-        if (self.attributes.columnHeaderClickBehavior === 'select') {
-          self.selectColumn(i.header.index, ctrl, e.shiftKey);
-          self.draw();
           return;
         }
       }
@@ -4346,6 +4365,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       return;
     }
 
+    if ((e.ctrlKey || e.metaKey || e.shiftKey) && self.reorderObject) {
+      if (self.dragMode === 'column-reorder' && !self.isMultiColumnsSelected(self.draggingItem.header.index)) {
+        self.selectColumn(self.draggingItem.header.index, false, false);
+      }
+    }
+
     if (self.dispatchEvent('reordering', {
       NativeEvent: e,
       source: self.dragStartObject,
@@ -4357,6 +4382,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
     if (Math.abs(x) > self.attributes.reorderDeadZone || Math.abs(y) > self.attributes.reorderDeadZone) {
       self.reorderObject = self.draggingItem;
+      if (self.isMultiRowsSelected) self.reorderObject = self.getVisibleCellByIndex(-1, self.activeCell.rowIndex);
       self.reorderTarget = self.currentCell;
       self.reorderObject.dragOffset = {
         x: x,
@@ -4369,7 +4395,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   self.stopDragReorder = function (e) {
     var oIndex,
         tIndex,
-        odata,
+        odata = [],
         cr = {
       'row-reorder': self.orders.rows,
       'column-reorder': self.orders.columns
@@ -4392,14 +4418,45 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       tIndex = cr[self.dragMode].indexOf(self.reorderTarget[i]);
 
       if (self.dragMode === 'column-reorder') {
-        cr[self.dragMode].splice(oIndex, 1);
-        cr[self.dragMode].splice(tIndex, 0, self.reorderObject[i]);
+        var sortColumnIndices = [];
+        var seletedColumnIndices = [];
+
+        if (self.selections[0]) {
+          self.selections[0].forEach(function (value) {
+            sortColumnIndices.push(self.orders.columns[value]);
+          });
+        }
+
+        var deleteCount = sortColumnIndices.length;
+        cr[self.dragMode].splice(oIndex, deleteCount);
+        if (tIndex > oIndex) tIndex = tIndex - (deleteCount - 1);
+
+        for (var i = 0; i < sortColumnIndices.length; i++) {
+          seletedColumnIndices.push(tIndex + i);
+          cr[self.dragMode].splice(tIndex + i, 0, sortColumnIndices[i]);
+        }
+
         self.orders.columns = cr[self.dragMode];
+        self.viewData.forEach(function (row, rowIndex) {
+          self.selections[rowIndex] = seletedColumnIndices;
+        });
       } else {
-        // self.orders.rows = cr[self.dragMode];
-        odata = self.viewData[oIndex];
-        self.viewData[oIndex] = self.viewData[tIndex];
-        self.viewData[tIndex] = odata;
+        var selectedRows = [];
+        self.selections.forEach(function (row, rowIndex) {
+          if (row) {
+            selectedRows.push(row);
+            odata.push(self.viewData[rowIndex]);
+          }
+        });
+        self.viewData.splice(oIndex, odata.length);
+        self.selections = [];
+        if (tIndex > oIndex) tIndex = tIndex - (odata.length - 1);
+        self.activeCell.rowIndex = tIndex;
+
+        for (var i = 0; i < odata.length; i++) {
+          self.viewData.splice(tIndex + i, 0, odata[i]);
+          self.selections[tIndex + i] = selectedRows[i];
+        }
       }
 
       self.resize();
@@ -4465,18 +4522,36 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       return;
     }
 
-    var pos = self.getLayerPos(e);
+    var pos = self.getLayerPos(e),
+        bm = self.style.gridBorderCollapse === 'collapse' ? 1 : 2,
+        columnHeaderCellBorder = self.style.columnHeaderCellBorderWidth * bm,
+        columnHeaderCellHeight = self.getColumnHeaderCellHeight(),
+        rowHeaderCellWidth = self.getRowHeaderCellWidth();
     self.ignoreNextClick = true;
     self.freezeMarkerPosition = pos;
 
     if (self.currentCell && self.currentCell.rowIndex !== undefined && self.dragMode === 'frozen-row-marker') {
       self.scrollBox.scrollTop = 0;
       self.frozenRow = self.currentCell.rowIndex + 1;
+      self.scrollBox.bar.v.y = columnHeaderCellHeight + columnHeaderCellBorder + self.scrollCache.y[self.frozenRow];
+      self.scrollBox.box.v.y = columnHeaderCellHeight + columnHeaderCellBorder + self.scrollCache.y[self.frozenRow];
+      var dataHeight = self.scrollCache.y[self.scrollCache.y.length - 1];
+      self.scrollBox.heightBoxRatio = (self.scrollBox.height - columnHeaderCellHeight - self.scrollCache.y[self.frozenRow]) / dataHeight;
+      self.scrollBox.scrollBoxHeight = self.scrollBox.height * self.scrollBox.heightBoxRatio - self.style.scrollBarWidth;
+      self.scrollBox.scrollBoxHeight = Math.max(self.scrollBox.scrollBoxHeight, self.style.scrollBarBoxMinSize);
+      self.scrollBox.box.v.height = self.scrollBox.scrollBoxHeight;
     }
 
     if (self.currentCell && self.currentCell.columnIndex !== undefined && self.dragMode === 'frozen-column-marker') {
       self.scrollBox.scrollLeft = 0;
       self.frozenColumn = self.currentCell.columnIndex + 1;
+      self.scrollBox.bar.h.x = rowHeaderCellWidth + self.scrollCache.x[self.frozenColumn - 1];
+      self.scrollBox.box.h.x = rowHeaderCellWidth + self.scrollCache.x[self.frozenColumn - 1];
+      var dataWidth = self.scrollCache.x[self.scrollCache.x.length - 1];
+      self.scrollBox.widthBoxRatio = (self.scrollBox.width - self.scrollCache.x[self.frozenColumn - 1]) / dataWidth;
+      self.scrollBox.scrollBoxWidth = self.scrollBox.width * self.scrollBox.widthBoxRatio - self.style.scrollBarWidth;
+      self.scrollBox.scrollBoxWidth = Math.max(self.scrollBox.scrollBoxWidth, self.style.scrollBarBoxMinSize);
+      self.scrollBox.box.h.width = self.scrollBox.scrollBoxWidth;
     }
 
     if (Math.abs(pos.x) > self.attributes.reorderDeadZone || Math.abs(pos.y) > self.attributes.reorderDeadZone) {
@@ -4535,7 +4610,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     self.dragAddToSelection = !self.dragStartObject.selected;
 
     if (!ctrl && !e.shiftKey && !/(vertical|horizontal)-scroll-(bar|box)/.test(self.dragStartObject.context) && self.currentCell && !self.currentCell.isColumnHeader && !move && !freeze && !resize) {
-      self.selections = [];
+      if (!(self.dragMode == 'row-reorder' && self.isMultiRowsSelected)) self.selections = [];
     }
 
     if (self.dragStartObject.isGrid) {
@@ -4626,9 +4701,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     if (['row-reorder', 'column-reorder'].indexOf(self.dragMode) !== -1) {
       self.draggingItem = self.dragStartObject;
 
-      if (self.dragMode === 'column-reorder' && self.attributes.columnHeaderClickBehavior === 'select') {
+      if (self.dragMode === 'column-reorder' && !self.isMultiColumnsSelected(self.currentCell.header.index)) {
         self.selectColumn(self.currentCell.header.index, ctrl, e.shiftKey);
-        self.draw();
+      } else if (self.dragMode === 'row-reorder' && !self.isMultiRowsSelected) {
+        self.selectRow(self.dragStartObject.rowIndex, ctrl, null);
       }
 
       document.body.addEventListener('mousemove', self.dragReorder, false);
@@ -4639,16 +4715,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
   self.mouseup = function (e) {
     clearTimeout(self.scrollTimer);
-    var ctrl = e.ctrlKey || e.metaKey;
     self.cellBoundaryCrossed = true;
     self.rowBoundaryCrossed = true;
     self.columnBoundaryCrossed = true;
-
-    if (self.draggingItem) {
-      self.selectColumn(self.currentCell.header.index, ctrl, e.shiftKey);
-      self.draw();
-    }
-
     self.selecting = undefined;
     self.draggingItem = undefined;
     self.dragStartObject = undefined;
@@ -5221,6 +5290,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         isNeat = true; // Selected like [[0, 1], [0, 1]] of [[0, 3]] is neat; Selected like [[0, 1], [1, 2]] is untidy
 
     function htmlSafe(v) {
+      if (typeof v === 'number') return v;
       return v.replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }
 
@@ -5236,8 +5306,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         if (!firstRowKeys) firstRowKeys = Object.keys(row);
         if (isNeat && rowKeys.length !== firstRowKeys.length) isNeat = false;
         sSorted.forEach(function (column, columnIndex) {
-          if (rowKeys.indexOf(column.name) < 0) {
-            if (firstRowKeys.indexOf(column.name) < 0) {
+          if (rowKeys.indexOf(String(column.name)) < 0) {
+            if (firstRowKeys.indexOf(String(column.name)) < 0) {
               return;
             } else if (isNeat) {
               isNeat = false;
@@ -7739,6 +7809,35 @@ __webpack_require__.r(__webpack_exports__);
     self.draw();
   };
   /**
+   * Returns true if indices of columns next to the selected columnIndex is selected on every row.
+   * @memberof canvasDatagrid
+   * @name isMultiColumnsSelected
+   * @method
+   * @param {number} columnIndex The column index to check.
+   */
+
+
+  self.isMultiColumnsSelected = function (columnIndex) {
+    var multiColIsSelected = true;
+    self.viewData.forEach(function (row, rowIndex) {
+      var columnIndices = self.selections[rowIndex];
+
+      if (!columnIndices || columnIndices.length <= 1 || columnIndices.indexOf(columnIndex) === -1) {
+        multiColIsSelected = false;
+      } else if (columnIndices.length > 1) {
+        if (columnIndices[0] != columnIndex) multiColIsSelected = false;else {
+          for (var i = 0; i < columnIndices.length - 1; i++) {
+            if (columnIndices[i] + 1 != columnIndices[i + 1]) {
+              multiColIsSelected = false;
+              break;
+            }
+          }
+        }
+      }
+    });
+    return multiColIsSelected;
+  };
+  /**
    * Returns true if the selected columnIndex is selected on every row.
    * @memberof canvasDatagrid
    * @name isColumnSelected
@@ -7750,7 +7849,7 @@ __webpack_require__.r(__webpack_exports__);
   self.isColumnSelected = function (columnIndex) {
     var colIsSelected = true;
     self.viewData.forEach(function (row, rowIndex) {
-      if (!self.selections[rowIndex] || self.selections[rowIndex].indexOf(self.orders.columns[columnIndex]) === -1) {
+      if (!self.selections[rowIndex] || self.selections[rowIndex].indexOf(columnIndex) === -1) {
         colIsSelected = false;
       }
     });
@@ -7878,6 +7977,7 @@ __webpack_require__.r(__webpack_exports__);
         st,
         en,
         s = self.getVisibleSchema();
+    self.isMultiRowsSelected = false;
 
     function de() {
       if (supressEvent) {
