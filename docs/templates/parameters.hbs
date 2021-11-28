@@ -1,0 +1,25 @@
+---
+title: Options
+---
+
+canvas-datagrid is highly configurable. This document describes all options you can pass to the constructor:
+
+```js
+const grid = canvasDatagrid({
+    data: myData,
+    // other options
+});
+```
+
+## All options
+
+{{#each data}}
+### {{name}}
+
+{{{description}}}
+
+|Type|Optional|Default|
+|---|---|---|
+|{{type.names}}|{{optional}}|` {{{defaultvalue}}} `
+
+{{/each}}

@@ -1,0 +1,24 @@
+---
+title: Properties
+---
+
+Once instantiated, canvas-datagrid exposes a number of properties.
+
+```js
+const grid = canvasDatagrid({ data });
+
+// Some user interaction occurs
+
+const activeCell = grid.activeCell;
+```
+
+## All options
+
+|Name|Type|Description|
+|---|---|---|
+{{#each data}}
+
+### {{name}} <span class="properties-object-type">{{type.names}}</span>
+
+{{{description}}}
+{{/each}}
