@@ -23,9 +23,6 @@ function allMarkdownSlugs(dirname) {
     .map((filename) => filename.replace(/\.md$/, ''));
 }
 
-console.log(allMarkdownSlugs('./docs/topics'));
-console.log(allMarkdownSlugs('./docs/reference'));
-
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   docs: [
@@ -48,7 +45,6 @@ const sidebars = {
     {
       type: 'category',
       label: 'Reference',
-      // sidebarCollapsed: false,
       items: [
         'reference/properties',
         'reference/parameters',
