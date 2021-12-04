@@ -11,6 +11,335 @@
 return /******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./lib/button.js":
+/*!***********************!*\
+  !*** ./lib/button.js ***!
+  \***********************/
+/*! namespace exports */
+/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* export default binding */ __WEBPACK_DEFAULT_EXPORT__; }
+/* harmony export */ });
+/*jslint browser: true, unparam: true, todo: true*/
+
+/*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false, Event: false*/
+
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(self) {
+  var zIndexTop;
+
+  function applyButtonMenuItemStyle(buttonMenuItemContainer) {
+    self.createInlineStyle(buttonMenuItemContainer, 'canvas-datagrid-button-menu-item' + (self.mobile ? '-mobile' : ''));
+    buttonMenuItemContainer.addEventListener('mouseover', function () {
+      self.createInlineStyle(buttonMenuItemContainer, 'canvas-datagrid-button-menu-item:hover');
+    });
+    buttonMenuItemContainer.addEventListener('mouseout', function () {
+      self.createInlineStyle(buttonMenuItemContainer, 'canvas-datagrid-button-menu-item');
+    });
+  }
+
+  function applyButtonStyle(button) {
+    self.createInlineStyle(button, 'canvas-datagrid-button-wrapper');
+    button.addEventListener('mouseover', function () {
+      if (!self.buttonMenu) {
+        self.createInlineStyle(button, 'canvas-datagrid-button-wrapper:hover');
+      }
+    });
+    button.addEventListener('mouseout', function () {
+      if (!self.buttonMenu) {
+        self.createInlineStyle(button, 'canvas-datagrid-button-wrapper');
+      }
+    });
+  }
+
+  function createButton(pos, items, imgSrc) {
+    var wrapper = document.createElement('div'),
+        buttonArrow = document.createElement('div'),
+        buttonIcon = document.createElement('div'),
+        intf = {};
+
+    if (!Array.isArray(items)) {
+      throw new Error('createButton expects an array.');
+    }
+
+    function init() {
+      var loc = {},
+          s = self.scrollOffset(self.canvas);
+
+      if (zIndexTop === undefined) {
+        zIndexTop = self.style.buttonZIndex;
+      }
+
+      applyButtonStyle(wrapper);
+      self.createInlineStyle(buttonIcon, 'canvas-datagrid-button-icon');
+      self.createInlineStyle(buttonArrow, 'canvas-datagrid-button-arrow');
+      loc.x = pos.left - s.left;
+      loc.y = pos.top - s.top;
+      loc.height = 0;
+      zIndexTop += 1;
+      wrapper.style.position = 'absolute';
+      wrapper.style.zIndex = zIndexTop;
+      wrapper.style.left = loc.x + 'px';
+      wrapper.style.top = loc.y + 'px';
+      wrapper.left = pos.left + self.scrollBox.scrollLeft;
+      wrapper.top = pos.top + self.scrollBox.scrollTop;
+      buttonArrow.innerHTML = self.style.buttonArrowDownHTML;
+
+      if (imgSrc) {
+        var img = document.createElement('img');
+        img.setAttribute('src', imgSrc);
+        img.style.maxWidth = '100%';
+        img.style.height = '100%';
+        buttonIcon.appendChild(img);
+      }
+
+      wrapper.appendChild(buttonIcon);
+      wrapper.appendChild(buttonArrow);
+      document.body.appendChild(wrapper);
+      wrapper.addEventListener('click', toggleButtonMenu);
+    }
+
+    intf.wrapper = wrapper;
+    intf.items = items;
+    init();
+
+    intf.dispose = function () {
+      if (wrapper.parentNode) {
+        wrapper.parentNode.removeChild(wrapper);
+      }
+    };
+
+    return intf;
+  }
+
+  function toggleButtonMenu() {
+    function createDisposeEvent() {
+      requestAnimationFrame(function () {
+        document.addEventListener('click', self.disposeButtonMenu);
+      });
+    }
+
+    if (self.buttonMenu) {
+      self.disposeButtonMenu();
+    } else {
+      var pos = {
+        left: self.button.wrapper.left - self.scrollBox.scrollLeft,
+        top: self.button.wrapper.top + self.button.wrapper.offsetHeight - self.scrollBox.scrollTop
+      };
+      self.buttonMenu = createButtonMenu(pos, self.button.items);
+      self.createInlineStyle(self.button.wrapper, 'canvas-datagrid-button-wrapper:active');
+      createDisposeEvent();
+    }
+  }
+
+  function createButtonMenu(pos, items) {
+    var buttonMenu = document.createElement('div'),
+        selectedIndex = -1,
+        intf = {},
+        rect;
+
+    function createItems() {
+      function addItem(item, menuItemContainer) {
+        function addContent(content) {
+          if (content === null) {
+            return;
+          }
+
+          if (_typeof(content) === 'object') {
+            menuItemContainer.appendChild(content);
+            return;
+          }
+
+          applyButtonMenuItemStyle(menuItemContainer);
+          menuItemContainer.innerHTML = content;
+          return;
+        }
+
+        addContent(item.title);
+        item.buttonMenuItemContainer = menuItemContainer;
+
+        if (item.click) {
+          menuItemContainer.addEventListener('click', function (ev) {
+            item.click.apply(self, [ev]);
+          });
+        }
+      }
+
+      var _iterator = _createForOfIteratorHelper(items),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var item = _step.value;
+          var buttonMenuItemContainer = document.createElement('div');
+          addItem(item, buttonMenuItemContainer);
+          buttonMenu.appendChild(buttonMenuItemContainer);
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+    }
+
+    function clickIndex(idx) {
+      items[idx].buttonMenuItemContainer.dispatchEvent(new Event('click'));
+    }
+
+    function init() {
+      var loc = {},
+          s = self.scrollOffset(self.canvas);
+
+      if (zIndexTop === undefined) {
+        zIndexTop = self.style.buttonZIndex;
+      }
+
+      createItems();
+      self.createInlineStyle(buttonMenu, 'canvas-datagrid-button-menu' + (self.mobile ? '-mobile' : ''));
+      loc.x = pos.left - s.left;
+      loc.y = pos.top - s.top;
+      loc.height = 0;
+      zIndexTop += 1;
+      buttonMenu.style.position = 'absolute';
+      buttonMenu.style.zIndex = zIndexTop;
+      buttonMenu.style.left = loc.x + 'px';
+      buttonMenu.style.top = loc.y + 'px';
+      document.body.appendChild(buttonMenu);
+      rect = buttonMenu.getBoundingClientRect();
+
+      if (rect.bottom > window.innerHeight) {
+        loc.y = self.button.wrapper.top - buttonMenu.offsetHeight - self.scrollBox.scrollTop;
+
+        if (loc.y < 0) {
+          loc.y = self.style.buttonMenuWindowMargin;
+        }
+
+        if (buttonMenu.offsetHeight > window.innerHeight - self.style.buttonMenuWindowMargin) {
+          buttonMenu.style.height = window.innerHeight - self.style.buttonMenuWindowMargin * 2 + 'px';
+        }
+      }
+
+      if (rect.right > window.innerWidth) {
+        loc.x -= rect.right - window.innerWidth + self.style.buttonMenuWindowMargin;
+      }
+
+      if (loc.x < 0) {
+        loc.x = self.style.buttonMenuWindowMargin;
+      }
+
+      if (loc.y < 0) {
+        loc.y = self.style.buttonMenuWindowMargin;
+      }
+
+      buttonMenu.style.left = loc.x + 'px';
+      buttonMenu.style.top = loc.y + 'px';
+    }
+
+    intf.buttonMenu = buttonMenu;
+    init();
+    intf.clickIndex = clickIndex;
+    intf.rect = rect;
+    intf.items = items;
+
+    intf.dispose = function () {
+      if (buttonMenu.parentNode) {
+        buttonMenu.parentNode.removeChild(buttonMenu);
+      }
+    };
+
+    Object.defineProperty(intf, 'selectedIndex', {
+      get: function get() {
+        return selectedIndex;
+      },
+      set: function set(value) {
+        if (typeof value !== 'number' || isNaN(value) || !isFinite(value)) {
+          throw new Error('Button menu selected index must be a sane number.');
+        }
+
+        selectedIndex = value;
+
+        if (selectedIndex > items.length - 1) {
+          selectedIndex = items.length - 1;
+        }
+
+        if (selectedIndex < 0) {
+          selectedIndex = 0;
+        }
+
+        items.forEach(function (item, index) {
+          if (index === selectedIndex) {
+            return self.createInlineStyle(item.buttonMenuItemContainer, 'canvas-datagrid-button-menu-item:hover');
+          }
+
+          self.createInlineStyle(item.buttonMenuItemContainer, 'canvas-datagrid-button-menu-item');
+        });
+      }
+    });
+    return intf;
+  }
+
+  self.disposeButtonMenu = function () {
+    if (self.buttonMenu) {
+      document.removeEventListener('click', self.disposeButtonMenu);
+      self.buttonMenu.dispose();
+      self.buttonMenu = undefined;
+      self.createInlineStyle(self.button.wrapper, 'canvas-datagrid-button-wrapper:hover');
+    }
+  };
+
+  self.disposeButton = function (e) {
+    if (e && e.keyCode !== 27) return;
+    document.removeEventListener('keydown', self.disposeButton);
+    zIndexTop = self.style.buttonZIndex;
+    self.disposeButtonMenu();
+
+    if (self.button) {
+      self.button.dispose();
+    }
+
+    self.button = undefined;
+  };
+
+  self.moveButtonPos = function () {
+    self.button.wrapper.style.left = self.button.wrapper.left - self.scrollBox.scrollLeft + 'px';
+    self.button.wrapper.style.top = self.button.wrapper.top - self.scrollBox.scrollTop + 'px';
+    self.disposeButtonMenu();
+  };
+
+  self.attachButton = function (pos, items, imgSrc) {
+    function createDisposeEvent() {
+      requestAnimationFrame(function () {
+        document.addEventListener('keydown', self.disposeButton);
+      });
+    }
+
+    if (self.button) {
+      self.disposeButton();
+    }
+
+    self.button = createButton(pos, items, imgSrc);
+    createDisposeEvent();
+  };
+
+  return;
+}
+
+/***/ }),
+
 /***/ "./lib/component.js":
 /*!**************************!*\
   !*** ./lib/component.js ***!
@@ -467,6 +796,38 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       }
     }
 
+    function fade(element) {
+      var opacity = 1;
+      var timer = setInterval(function () {
+        if (opacity <= 0.1) {
+          clearInterval(timer);
+          element.style.display = 'none';
+
+          if (element.parentNode) {
+            element.parentNode.removeChild(element);
+          }
+        }
+
+        element.style.opacity = opacity;
+        element.style.filter = 'alpha(opacity=' + opacity * 100 + ')';
+        opacity -= opacity * 0.1;
+      }, self.attributes.animationDurationHideContextMenu * 0.1);
+    }
+
+    function unfade(element) {
+      var opacity = 0.1;
+      element.style.display = 'block';
+      var timer = setInterval(function () {
+        if (opacity >= 1) {
+          clearInterval(timer);
+        }
+
+        element.style.opacity = opacity;
+        element.style.filter = 'alpha(opacity=' + opacity * 100 + ')';
+        opacity += opacity * 0.1;
+      }, self.attributes.animationDurationShowContextMenu * 0.1);
+    }
+
     function startHoverScroll(type) {
       return function t() {
         var a = self.attributes.contextHoverScrollAmount;
@@ -504,6 +865,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       loc.y = pos.top - s.top;
       loc.height = 0;
       zIndexTop += 1;
+      container.style.opacity = 0;
       container.style.position = 'absolute';
       upArrow.style.color = self.style.contextMenuArrowColor;
       downArrow.style.color = self.style.contextMenuArrowColor;
@@ -540,6 +902,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       container.appendChild(upArrow);
       document.body.appendChild(downArrow);
       document.body.appendChild(container);
+      unfade(container);
       rect = container.getBoundingClientRect(); // TODO: fix !(parentContextMenu && parentContextMenu.inputDropdown) state (autocomplete)
 
       if (rect.bottom > window.innerHeight) {
@@ -600,9 +963,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         c.dispose();
       });
       [downArrow, upArrow, container].forEach(function (el) {
-        if (el.parentNode) {
-          el.parentNode.removeChild(el);
-        }
+        fade(el);
       });
     };
 
@@ -923,7 +1284,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }
   };
 
-  self.disposeContextMenu = function () {
+  self.disposeContextMenu = function (event) {
     document.removeEventListener('click', self.disposeContextMenu);
     zIndexTop = self.style.contextMenuZIndex;
     self.disposeAutocomplete();
@@ -933,6 +1294,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }
 
     self.contextMenu = undefined;
+
+    if (event) {
+      self.canvas.focus();
+      self.mousedown(event);
+      self.mouseup(event);
+    }
   };
 
   self.contextmenuEvent = function (e, overridePos) {
@@ -940,10 +1307,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       return;
     }
 
-    function createDiposeEvent() {
+    function createDisposeEvent() {
       requestAnimationFrame(function () {
         document.addEventListener('click', self.disposeContextMenu);
-        document.removeEventListener('mouseup', createDiposeEvent);
+        document.removeEventListener('mouseup', createDisposeEvent);
       });
     }
 
@@ -960,7 +1327,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       addDefaultContextMenuItem(ev);
     }
 
-    if (self.dispatchEvent('contextmenu', ev)) {
+    if (e.type !== 'mousedown' && self.dispatchEvent('contextmenu', ev)) {
       return;
     }
 
@@ -983,8 +1350,18 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         contextPosition.width = self.width - self.style.mobileContextMenuMargin * 2 + 'px';
       }
 
+      if (e.type == 'mousedown') {
+        contextPosition.top += self.style.filterButtonMenuOffsetTop;
+      }
+
       self.contextMenu = createContextMenu(ev, contextPosition, items);
-      document.addEventListener('mouseup', createDiposeEvent);
+
+      if (e.type == 'mousedown') {
+        document.addEventListener('mouseup', createDisposeEvent);
+      } else {
+        createDisposeEvent();
+      }
+
       e.preventDefault();
     }
   };
@@ -1016,8 +1393,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(self) {
   self.defaults = {
-    attributes: [['allowColumnReordering', true], ['allowColumnResize', true], ['allowColumnResizeFromCell', false], ['allowFreezingRows', false], ['allowFreezingColumns', false], ['allowMovingSelection', true], ['allowRowHeaderResize', true], ['allowRowReordering', false], ['allowRowResize', true], ['allowRowResizeFromCell', false], ['allowSorting', true], ['autoGenerateSchema', false], ['autoResizeColumns', false], ['autoResizeRows', false], ['autoScrollOnMousemove', false], ['autoScrollMargin', 5], ['blanksText', '(Blanks)'], ['borderDragBehavior', 'none'], ['borderResizeZone', 10], ['clearSettingsOptionText', 'Clear saved settings'], ['columnHeaderClickBehavior', 'sort'], ['columnSelectorHiddenText', '&nbsp;&nbsp;&nbsp;'], ['columnSelectorText', 'Add/Remove columns'], ['columnSelectorVisibleText', "\u2713"], ['contextHoverScrollAmount', 2], ['contextHoverScrollRateMs', 5], ['copyHeadersOnSelectAll', true], ['copyText', 'Copy'], ['debug', false], ['editable', true], ['ellipsisText', '...'], ['filterOptionText', 'Filter %s'], ['filterTextPrefix', '(filtered) '], ['filterFrozenRows', true], ['globalRowResize', false], ['hideColumnText', 'Hide %s'], ['hoverMode', 'cell'], ['keepFocusOnMouseOut', false], ['maxAutoCompleteItems', 200], ['multiLine', false], ['name', ''], ['pageUpDownOverlap', 1], ['pasteText', 'Paste'], ['persistantSelectionMode', false], ['removeFilterOptionText', 'Remove filter on %s'], ['reorderDeadZone', 3], ['resizeScrollZone', 20], ['rowGrabZoneSize', 5], ['saveAppearance', true], ['scrollAnimationPPSThreshold', 0.75], ['scrollPointerLock', false], ['scrollRepeatRate', 75], ['selectionFollowsActiveCell', false], ['selectionHandleBehavior', 'none'], ['selectionMode', 'cell'], ['selectionScrollIncrement', 20], ['selectionScrollZone', 20], ['showClearSettingsOption', true], ['showColumnHeaders', true], ['showColumnSelector', true], ['showCopy', false], ['showFilter', true], ['showNewRow', false], ['showOrderByOption', true], ['showOrderByOptionTextAsc', 'Order by %s ascending'], ['showOrderByOptionTextDesc', 'Order by %s descending'], ['showPaste', false], ['showPerformance', false], ['showRowHeaders', true], ['showRowNumbers', true], ['showRowNumberGaps', true], ['singleSelectionMode', false], ['snapToRow', false], ['sortFrozenRows', true], ['touchContextMenuTimeMs', 800], ['touchDeadZone', 3], ['touchEasingMethod', 'easeOutQuad'], ['touchReleaseAcceleration', 1000], ['touchReleaseAnimationDurationMs', 2000], ['touchScrollZone', 20], ['touchSelectHandleZone', 20], ['touchZoomSensitivity', 0.005], ['touchZoomMin', 0.5], ['touchZoomMax', 1.75], ['maxPixelRatio', 2], ['tree', false], ['treeHorizontalScroll', false]],
-    styles: [['activeCellBackgroundColor', 'rgba(255, 255, 255, 1)'], ['activeCellBorderColor', 'rgba(110, 168, 255, 1)'], ['activeCellBorderWidth', 1], ['activeCellColor', 'rgba(0, 0, 0, 1)'], ['activeCellFont', '16px sans-serif'], ['activeCellHoverBackgroundColor', 'rgba(255, 255, 255, 1)'], ['activeCellHorizontalAlignment', 'left'], ['activeCellHoverColor', 'rgba(0, 0, 0, 1)'], ['activeCellOverlayBorderColor', 'rgba(66, 133, 244, 1)'], ['activeCellOverlayBorderWidth', 1], ['activeCellPaddingBottom', 5], ['activeCellPaddingLeft', 5], ['activeCellPaddingRight', 5], ['activeCellPaddingTop', 5], ['activeCellSelectedBackgroundColor', 'rgba(236, 243, 255, 1)'], ['activeCellSelectedColor', 'rgba(0, 0, 0, 1)'], ['activeCellVerticalAlignment', 'center'], ['activeColumnHeaderCellBackgroundColor', 'rgba(225, 225, 225, 1)'], ['activeColumnHeaderCellColor', 'rgba(0, 0, 0, 1)'], ['activeRowHeaderCellBackgroundColor', 'rgba(225, 225, 225, 1)'], ['activeRowHeaderCellColor', 'rgba(0, 0, 0, 1)'], ['autocompleteBottomMargin', 60], ['autosizeHeaderCellPadding', 8], ['autosizePadding', 5], ['cellAutoResizePadding', 13], ['cellBackgroundColor', 'rgba(255, 255, 255, 1)'], ['cellBorderColor', 'rgba(195, 199, 202, 1)'], ['cellBorderWidth', 1], ['cellColor', 'rgba(0, 0, 0, 1)'], ['cellFont', '16px sans-serif'], ['cellGridHeight', 250], ['cellHeight', 24], ['cellHeightWithChildGrid', 150], ['cellHorizontalAlignment', 'left'], ['cellHoverBackgroundColor', 'rgba(255, 255, 255, 1)'], ['cellHoverColor', 'rgba(0, 0, 0, 1)'], ['cellPaddingBottom', 5], ['cellPaddingLeft', 5], ['cellPaddingRight', 5], ['cellPaddingTop', 5], ['cellSelectedBackgroundColor', 'rgba(236, 243, 255, 1)'], ['cellSelectedColor', 'rgba(0, 0, 0, 1)'], ['cellVerticalAlignment', 'center'], ['cellWidth', 250], ['cellWidthWithChildGrid', 250], ['cellWhiteSpace', 'nowrap'], ['cellLineHeight', 1], ['cellLineSpacing', 3], ['childContextMenuArrowColor', 'rgba(43, 48, 43, 1)'], ['childContextMenuArrowHTML', '&#x25BA;'], ['childContextMenuMarginLeft', -11], ['childContextMenuMarginTop', -6], ['columnHeaderCellBackgroundColor', 'rgba(240, 240, 240, 1)'], ['columnHeaderCellBorderColor', 'rgba(172, 172, 172, 1)'], ['columnHeaderCellBorderWidth', 1], ['columnHeaderCellCapBackgroundColor', 'rgba(240, 240, 240, 1)'], ['columnHeaderCellCapBorderColor', 'rgba(172, 172, 172, 1)'], ['columnHeaderCellCapBorderWidth', 1], ['columnHeaderCellColor', 'rgba(50, 50, 50, 1)'], ['columnHeaderCellFont', '16px sans-serif'], ['columnHeaderCellHeight', 25], ['columnHeaderCellHorizontalAlignment', 'left'], ['columnHeaderCellHoverBackgroundColor', 'rgba(235, 235, 235, 1)'], ['columnHeaderCellHoverColor', 'rgba(0, 0, 0, 1)'], ['columnHeaderCellPaddingBottom', 5], ['columnHeaderCellPaddingLeft', 5], ['columnHeaderCellPaddingRight', 5], ['columnHeaderCellPaddingTop', 5], ['columnHeaderCellVerticalAlignment', 'center'], ['columnHeaderOrderByArrowBorderColor', 'rgba(195, 199, 202, 1)'], ['columnHeaderOrderByArrowBorderWidth', 1], ['columnHeaderOrderByArrowColor', 'rgba(155, 155, 155, 1)'], ['columnHeaderOrderByArrowHeight', 8], ['columnHeaderOrderByArrowMarginLeft', 0], ['columnHeaderOrderByArrowMarginRight', 5], ['columnHeaderOrderByArrowMarginTop', 6], ['columnHeaderOrderByArrowWidth', 13], ['contextFilterButtonBorder', 'solid 1px rgba(158, 163, 169, 1)'], ['contextFilterButtonBorderRadius', '3px'], ['contextFilterButtonHTML', '&#x25BC;'], ['contextFilterInputBackground', 'rgba(255,255,255,1)'], ['contextFilterInputBorder', 'solid 1px rgba(158, 163, 169, 1)'], ['contextFilterInputBorderRadius', '0'], ['contextFilterInputColor', 'rgba(0,0,0,1)'], ['contextFilterInputFontFamily', 'sans-serif'], ['contextFilterInputFontSize', '14px'], ['contextFilterInvalidRegExpBackground', 'rgba(180, 6, 1, 1)'], ['contextFilterInvalidRegExpColor', 'rgba(255, 255, 255, 1)'], ['contextMenuArrowColor', 'rgba(43, 48, 43, 1)'], ['contextMenuArrowDownHTML', '&#x25BC;'], ['contextMenuArrowUpHTML', '&#x25B2;'], ['contextMenuBackground', 'rgba(240, 240, 240, 1)'], ['contextMenuBorder', 'solid 1px rgba(158, 163, 169, 1)'], ['contextMenuBorderRadius', '3px'], ['contextMenuChildArrowFontSize', '12px'], ['contextMenuColor', 'rgba(43, 48, 43, 1)'], ['contextMenuCursor', 'default'], ['contextMenuFilterButtonFontFamily', 'sans-serif'], ['contextMenuFilterButtonFontSize', '10px'], ['contextMenuFilterInvalidExpresion', 'rgba(237, 155, 156, 1)'], ['contextMenuFontFamily', 'sans-serif'], ['contextMenuFontSize', '16px'], ['contextMenuHoverBackground', 'rgba(182, 205, 250, 1)'], ['contextMenuHoverColor', 'rgba(43, 48, 153, 1)'], ['contextMenuItemBorderRadius', '3px'], ['contextMenuItemMargin', '2px'], ['contextMenuLabelDisplay', 'inline-block'], ['contextMenuLabelMargin', '0 3px 0 0'], ['contextMenuLabelMaxWidth', '700px'], ['contextMenuLabelMinWidth', '75px'], ['contextMenuMarginLeft', 3], ['contextMenuMarginTop', -3], ['contextMenuOpacity', '0.98'], ['contextMenuPadding', '2px'], ['contextMenuWindowMargin', 30], ['contextMenuZIndex', 10000], ['cornerCellBackgroundColor', 'rgba(240, 240, 240, 1)'], ['cornerCellBorderColor', 'rgba(202, 202, 202, 1)'], ['debugBackgroundColor', 'rgba(0, 0, 0, .0)'], ['debugColor', 'rgba(255, 15, 24, 1)'], ['debugEntitiesColor', 'rgba(76, 231, 239, 1.00)'], ['debugFont', '11px sans-serif'], ['debugPerfChartBackground', 'rgba(29, 25, 26, 1.00)'], ['debugPerfChartTextColor', 'rgba(255, 255, 255, 0.8)'], ['debugPerformanceColor', 'rgba(252, 255, 37, 1.00)'], ['debugScrollHeightColor', 'rgba(248, 33, 103, 1.00)'], ['debugScrollWidthColor', 'rgba(66, 255, 27, 1.00)'], ['debugTouchPPSXColor', 'rgba(246, 102, 24, 1.00)'], ['debugTouchPPSYColor', 'rgba(186, 0, 255, 1.00)'], ['display', 'inline-block'], ['editCellBackgroundColor', 'white'], ['editCellBorder', 'solid 1px rgba(110, 168, 255, 1)'], ['editCellBoxShadow', '0 2px 5px rgba(0,0,0,0.4)'], ['editCellColor', 'black'], ['editCellFontFamily', 'sans-serif'], ['editCellFontSize', '16px'], ['editCellPaddingLeft', 4], ['editCellZIndex', 10000], ['frozenMarkerHoverColor', 'rgba(236, 243, 255, 1)'], ['frozenMarkerHoverBorderColor', 'rgba(110, 168, 255, 1)'], ['frozenMarkerActiveColor', 'rgba(236, 243, 255, 1)'], ['frozenMarkerActiveBorderColor', 'rgba(110, 168, 255, 1)'], ['frozenMarkerColor', 'rgba(222, 222, 222, 1)'], ['frozenMarkerBorderColor', 'rgba(168, 168, 168, 1)'], ['frozenMarkerBorderWidth', 1], ['frozenMarkerWidth', 2], ['gridBackgroundColor', 'rgba(240, 240, 240, 1)'], ['gridBorderCollapse', 'collapse'], ['gridBorderColor', 'rgba(202, 202, 202, 1)'], ['gridBorderWidth', 1], ['height', 'auto'], ['maxHeight', 'inherit'], ['maxWidth', 'inherit'], ['minColumnWidth', 45], ['minHeight', 'inherit'], ['minRowHeight', 24], ['minWidth', 'inherit'], ['mobileContextMenuMargin', 10], ['mobileEditInputHeight', 30], ['mobileEditFontFamily', 'sans-serif'], ['mobileEditFontSize', '16px'], ['moveOverlayBorderWidth', 1], ['moveOverlayBorderColor', 'rgba(66, 133, 244, 1)'], ['moveOverlayBorderSegments', '12, 7'], ['name', 'default'], ['overflowY', 'auto'], ['overflowX', 'auto'], ['reorderMarkerBackgroundColor', 'rgba(0, 0, 0, 0.1)'], ['reorderMarkerBorderColor', 'rgba(0, 0, 0, 0.2)'], ['reorderMarkerBorderWidth', 1.25], ['reorderMarkerIndexBorderColor', 'rgba(66, 133, 244, 1)'], ['reorderMarkerIndexBorderWidth', 2.75], ['rowHeaderCellBackgroundColor', 'rgba(240, 240, 240, 1)'], ['rowHeaderCellBorderColor', 'rgba(200, 200, 200, 1)'], ['rowHeaderCellBorderWidth', 1], ['rowHeaderCellColor', 'rgba(50, 50, 50, 1)'], ['rowHeaderCellFont', '16px sans-serif'], ['rowHeaderCellHeight', 25], ['rowHeaderCellHorizontalAlignment', 'left'], ['rowHeaderCellHoverBackgroundColor', 'rgba(235, 235, 235, 1)'], ['rowHeaderCellHoverColor', 'rgba(0, 0, 0, 1)'], ['rowHeaderCellPaddingBottom', 5], ['rowHeaderCellPaddingLeft', 5], ['rowHeaderCellPaddingRight', 5], ['rowHeaderCellPaddingTop', 5], ['rowHeaderCellRowNumberGapHeight', 5], ['rowHeaderCellRowNumberGapColor', 'rgba(50, 50, 50, 1)'], ['rowHeaderCellSelectedBackgroundColor', 'rgba(217, 217, 217, 1)'], ['rowHeaderCellSelectedColor', 'rgba(50, 50, 50, 1)'], ['rowHeaderCellVerticalAlignment', 'center'], ['rowHeaderCellWidth', 57], ['scrollBarActiveColor', 'rgba(125, 125, 125, 1)'], ['scrollBarBackgroundColor', 'rgba(240, 240, 240, 1)'], ['scrollBarBorderColor', 'rgba(202, 202, 202, 1)'], ['scrollBarBorderWidth', 0.5], ['scrollBarBoxBorderRadius', 4.125], ['scrollBarBoxColor', 'rgba(192, 192, 192, 1)'], ['scrollBarBoxMargin', 2], ['scrollBarBoxMinSize', 15], ['scrollBarBoxWidth', 8], ['scrollBarCornerBackgroundColor', 'rgba(240, 240, 240, 1)'], ['scrollBarCornerBorderColor', 'rgba(202, 202, 202, 1)'], ['scrollBarWidth', 11], ['selectionHandleBorderColor', 'rgba(255, 255, 255, 1)'], ['selectionHandleBorderWidth', 1.5], ['selectionHandleColor', 'rgba(66, 133, 244, 1)'], ['selectionHandleSize', 8], ['selectionHandleType', 'square'], ['selectionOverlayBorderColor', 'rgba(66, 133, 244, 1)'], ['selectionOverlayBorderWidth', 1], ['treeArrowBorderColor', 'rgba(195, 199, 202, 1)'], ['treeArrowBorderWidth', 1], ['treeArrowClickRadius', 5], ['treeArrowColor', 'rgba(155, 155, 155, 1)'], ['treeArrowHeight', 8], ['treeArrowMarginLeft', 0], ['treeArrowMarginRight', 5], ['treeArrowMarginTop', 6], ['treeArrowWidth', 13], ['treeGridHeight', 250], ['width', 'auto']]
+    attributes: [['allowColumnReordering', true], ['allowColumnResize', true], ['allowColumnResizeFromCell', false], ['allowFreezingRows', false], ['allowFreezingColumns', false], ['allowMovingSelection', true], ['allowRowHeaderResize', true], ['allowRowReordering', false], ['allowRowResize', true], ['allowRowResizeFromCell', false], ['allowSorting', true], ['animationDurationShowContextMenu', 50], ['animationDurationHideContextMenu', 50], ['autoGenerateSchema', false], ['autoResizeColumns', false], ['autoResizeRows', false], ['autoScrollOnMousemove', false], ['autoScrollMargin', 5], ['blanksText', '(Blanks)'], ['borderDragBehavior', 'none'], ['borderResizeZone', 10], ['clearSettingsOptionText', 'Clear saved settings'], ['columnHeaderClickBehavior', 'sort'], ['columnSelectorHiddenText', '&nbsp;&nbsp;&nbsp;'], ['columnSelectorText', 'Add/Remove columns'], ['columnSelectorVisibleText', "\u2713"], ['contextHoverScrollAmount', 2], ['contextHoverScrollRateMs', 5], ['copyHeadersOnSelectAll', true], ['copyText', 'Copy'], ['debug', false], ['editable', true], ['ellipsisText', '...'], ['filterOptionText', 'Filter %s'], ['filterTextPrefix', '(filtered) '], ['filterFrozenRows', true], ['globalRowResize', false], ['hideColumnText', 'Hide %s'], ['hoverMode', 'cell'], ['keepFocusOnMouseOut', false], ['maxAutoCompleteItems', 200], ['multiLine', false], ['name', ''], ['pageUpDownOverlap', 1], ['pasteText', 'Paste'], ['persistantSelectionMode', false], ['removeFilterOptionText', 'Remove filter on %s'], ['reorderDeadZone', 3], ['resizeScrollZone', 20], ['rowGrabZoneSize', 5], ['saveAppearance', true], ['scrollAnimationPPSThreshold', 0.75], ['scrollPointerLock', false], ['scrollRepeatRate', 75], ['selectionFollowsActiveCell', false], ['selectionHandleBehavior', 'none'], ['selectionMode', 'cell'], ['selectionScrollIncrement', 20], ['selectionScrollZone', 20], ['showClearSettingsOption', true], ['showColumnHeaders', true], ['showColumnSelector', true], ['showCopy', false], ['showFilter', true], ['showFilterInCell', false], ['showNewRow', false], ['showOrderByOption', true], ['showOrderByOptionTextAsc', 'Order by %s ascending'], ['showOrderByOptionTextDesc', 'Order by %s descending'], ['showPaste', false], ['showPerformance', false], ['showRowHeaders', true], ['showRowNumbers', true], ['showRowNumberGaps', true], ['singleSelectionMode', false], ['snapToRow', false], ['sortFrozenRows', true], ['touchContextMenuTimeMs', 800], ['touchDeadZone', 3], ['touchEasingMethod', 'easeOutQuad'], ['touchReleaseAcceleration', 1000], ['touchReleaseAnimationDurationMs', 2000], ['touchScrollZone', 20], ['touchSelectHandleZone', 20], ['touchZoomSensitivity', 0.005], ['touchZoomMin', 0.5], ['touchZoomMax', 1.75], ['maxPixelRatio', 2], ['tree', false], ['treeHorizontalScroll', false]],
+    styles: [['activeCellBackgroundColor', 'rgba(255, 255, 255, 1)'], ['activeCellBorderColor', 'rgba(110, 168, 255, 1)'], ['activeCellBorderWidth', 1], ['activeCellColor', 'rgba(0, 0, 0, 1)'], ['activeCellFont', '16px sans-serif'], ['activeCellHoverBackgroundColor', 'rgba(255, 255, 255, 1)'], ['activeCellHorizontalAlignment', 'left'], ['activeCellHoverColor', 'rgba(0, 0, 0, 1)'], ['activeCellOverlayBorderColor', 'rgba(66, 133, 244, 1)'], ['activeCellOverlayBorderWidth', 1], ['activeCellPaddingBottom', 5], ['activeCellPaddingLeft', 5], ['activeCellPaddingRight', 5], ['activeCellPaddingTop', 5], ['activeCellSelectedBackgroundColor', 'rgba(236, 243, 255, 1)'], ['activeCellSelectedColor', 'rgba(0, 0, 0, 1)'], ['activeCellVerticalAlignment', 'center'], ['activeColumnHeaderCellBackgroundColor', 'rgba(225, 225, 225, 1)'], ['activeColumnHeaderCellColor', 'rgba(0, 0, 0, 1)'], ['activeRowHeaderCellBackgroundColor', 'rgba(225, 225, 225, 1)'], ['activeRowHeaderCellColor', 'rgba(0, 0, 0, 1)'], ['autocompleteBottomMargin', 60], ['autosizeHeaderCellPadding', 8], ['autosizePadding', 5], ['buttonActiveBackgroundColor', 'rgba(255, 255, 255, 1)'], ['buttonActiveBorderColor', 'rgba(110, 168, 255, 1)'], ['buttonArrowColor', 'rgba(50, 50, 50, 1)'], ['buttonArrowDownHTML', '&#x25BC;'], ['buttonZIndex', 10000], ['buttonBackgroundColor', 'rgba(255, 255, 255, 1)'], ['buttonBorderColor', 'rgba(172, 172, 172, 1)'], ['buttonHoverBackgroundColor', 'rgba(240, 240, 240, 1)'], ['buttonMenuWindowMargin', 30], ['buttonPadding', '3px'], ['cellAutoResizePadding', 13], ['cellBackgroundColor', 'rgba(255, 255, 255, 1)'], ['cellBorderColor', 'rgba(195, 199, 202, 1)'], ['cellBorderWidth', 1], ['cellColor', 'rgba(0, 0, 0, 1)'], ['cellFont', '16px sans-serif'], ['cellGridHeight', 250], ['cellHeight', 24], ['cellHeightWithChildGrid', 150], ['cellHorizontalAlignment', 'left'], ['cellHoverBackgroundColor', 'rgba(255, 255, 255, 1)'], ['cellHoverColor', 'rgba(0, 0, 0, 1)'], ['cellPaddingBottom', 5], ['cellPaddingLeft', 5], ['cellPaddingRight', 5], ['cellPaddingTop', 5], ['cellSelectedBackgroundColor', 'rgba(236, 243, 255, 1)'], ['cellSelectedColor', 'rgba(0, 0, 0, 1)'], ['cellVerticalAlignment', 'center'], ['cellWidth', 250], ['cellWidthWithChildGrid', 250], ['cellWhiteSpace', 'nowrap'], ['cellLineHeight', 1], ['cellLineSpacing', 3], ['childContextMenuArrowColor', 'rgba(43, 48, 43, 1)'], ['childContextMenuArrowHTML', '&#x25BA;'], ['childContextMenuMarginLeft', -11], ['childContextMenuMarginTop', -6], ['columnHeaderCellBackgroundColor', 'rgba(240, 240, 240, 1)'], ['columnHeaderCellBorderColor', 'rgba(172, 172, 172, 1)'], ['columnHeaderCellBorderWidth', 1], ['columnHeaderCellCapBackgroundColor', 'rgba(240, 240, 240, 1)'], ['columnHeaderCellCapBorderColor', 'rgba(172, 172, 172, 1)'], ['columnHeaderCellCapBorderWidth', 1], ['columnHeaderCellColor', 'rgba(50, 50, 50, 1)'], ['columnHeaderCellFont', '16px sans-serif'], ['columnHeaderCellHeight', 25], ['columnHeaderCellHorizontalAlignment', 'left'], ['columnHeaderCellHoverBackgroundColor', 'rgba(235, 235, 235, 1)'], ['columnHeaderCellHoverColor', 'rgba(0, 0, 0, 1)'], ['columnHeaderCellPaddingBottom', 5], ['columnHeaderCellPaddingLeft', 5], ['columnHeaderCellPaddingRight', 5], ['columnHeaderCellPaddingTop', 5], ['columnHeaderCellVerticalAlignment', 'center'], ['columnHeaderOrderByArrowBorderColor', 'rgba(195, 199, 202, 1)'], ['columnHeaderOrderByArrowBorderWidth', 1], ['columnHeaderOrderByArrowColor', 'rgba(155, 155, 155, 1)'], ['columnHeaderOrderByArrowHeight', 8], ['columnHeaderOrderByArrowMarginLeft', 0], ['columnHeaderOrderByArrowMarginRight', 5], ['columnHeaderOrderByArrowMarginTop', 6], ['columnHeaderOrderByArrowWidth', 13], ['contextFilterButtonBorder', 'solid 1px rgba(158, 163, 169, 1)'], ['contextFilterButtonBorderRadius', '3px'], ['contextFilterButtonHTML', '&#x25BC;'], ['contextFilterInputBackground', 'rgba(255,255,255,1)'], ['contextFilterInputBorder', 'solid 1px rgba(158, 163, 169, 1)'], ['contextFilterInputBorderRadius', '0'], ['contextFilterInputColor', 'rgba(0,0,0,1)'], ['contextFilterInputFontFamily', 'sans-serif'], ['contextFilterInputFontSize', '14px'], ['contextFilterInvalidRegExpBackground', 'rgba(180, 6, 1, 1)'], ['contextFilterInvalidRegExpColor', 'rgba(255, 255, 255, 1)'], ['contextMenuArrowColor', 'rgba(43, 48, 43, 1)'], ['contextMenuArrowDownHTML', '&#x25BC;'], ['contextMenuArrowUpHTML', '&#x25B2;'], ['contextMenuBackground', 'rgba(240, 240, 240, 1)'], ['contextMenuBorder', 'solid 1px rgba(158, 163, 169, 1)'], ['contextMenuBorderRadius', '3px'], ['contextMenuChildArrowFontSize', '12px'], ['contextMenuColor', 'rgba(43, 48, 43, 1)'], ['contextMenuCursor', 'default'], ['contextMenuFilterButtonFontFamily', 'sans-serif'], ['contextMenuFilterButtonFontSize', '10px'], ['contextMenuFilterInvalidExpresion', 'rgba(237, 155, 156, 1)'], ['contextMenuFontFamily', 'sans-serif'], ['contextMenuFontSize', '16px'], ['contextMenuHoverBackground', 'rgba(182, 205, 250, 1)'], ['contextMenuHoverColor', 'rgba(43, 48, 153, 1)'], ['contextMenuItemBorderRadius', '3px'], ['contextMenuItemMargin', '2px'], ['contextMenuLabelDisplay', 'inline-block'], ['contextMenuLabelMargin', '0 3px 0 0'], ['contextMenuLabelMaxWidth', '700px'], ['contextMenuLabelMinWidth', '75px'], ['contextMenuMarginLeft', 3], ['contextMenuMarginTop', -3], ['contextMenuOpacity', '0.98'], ['contextMenuPadding', '2px'], ['contextMenuWindowMargin', 30], ['contextMenuZIndex', 10000], ['cornerCellBackgroundColor', 'rgba(240, 240, 240, 1)'], ['cornerCellBorderColor', 'rgba(202, 202, 202, 1)'], ['debugBackgroundColor', 'rgba(0, 0, 0, .0)'], ['debugColor', 'rgba(255, 15, 24, 1)'], ['debugEntitiesColor', 'rgba(76, 231, 239, 1.00)'], ['debugFont', '11px sans-serif'], ['debugPerfChartBackground', 'rgba(29, 25, 26, 1.00)'], ['debugPerfChartTextColor', 'rgba(255, 255, 255, 0.8)'], ['debugPerformanceColor', 'rgba(252, 255, 37, 1.00)'], ['debugScrollHeightColor', 'rgba(248, 33, 103, 1.00)'], ['debugScrollWidthColor', 'rgba(66, 255, 27, 1.00)'], ['debugTouchPPSXColor', 'rgba(246, 102, 24, 1.00)'], ['debugTouchPPSYColor', 'rgba(186, 0, 255, 1.00)'], ['display', 'inline-block'], ['editCellBackgroundColor', 'white'], ['editCellBorder', 'solid 1px rgba(110, 168, 255, 1)'], ['editCellBoxShadow', '0 2px 5px rgba(0,0,0,0.4)'], ['editCellColor', 'black'], ['editCellFontFamily', 'sans-serif'], ['editCellFontSize', '16px'], ['editCellPaddingLeft', 4], ['editCellZIndex', 10000], ['filterButtonActiveBackgroundColor', 'rgba(225, 225, 225, 1)'], ['filterButtonArrowBorderColor', 'rgba(195, 199, 202, 1)'], ['filterButtonArrowBorderWidth', 1], ['filterButtonArrowClickRadius', 5], ['filterButtonArrowColor', 'rgba(50, 50, 50, 1)'], ['filterButtonArrowHeight', 5], ['filterButtonArrowWidth', 8], ['filterButtonBackgroundColor', 'rgba(240, 240, 240, 1)'], ['filterButtonBorderColor', 'rgba(172, 172, 172, 1)'], ['filterButtonBorderRadius', 3], ['filterButtonHeight', 20], ['filterButtonHoverBackgroundColor', 'rgba(235, 235, 235, 1)'], ['filterButtonMenuOffsetTop', 10], ['filterButtonWidth', 20], ['frozenMarkerHoverColor', 'rgba(236, 243, 255, 1)'], ['frozenMarkerHoverBorderColor', 'rgba(110, 168, 255, 1)'], ['frozenMarkerActiveColor', 'rgba(236, 243, 255, 1)'], ['frozenMarkerActiveBorderColor', 'rgba(110, 168, 255, 1)'], ['frozenMarkerColor', 'rgba(222, 222, 222, 1)'], ['frozenMarkerBorderColor', 'rgba(168, 168, 168, 1)'], ['frozenMarkerBorderWidth', 1], ['frozenMarkerWidth', 2], ['gridBackgroundColor', 'rgba(240, 240, 240, 1)'], ['gridBorderCollapse', 'collapse'], ['gridBorderColor', 'rgba(202, 202, 202, 1)'], ['gridBorderWidth', 1], ['height', 'auto'], ['maxHeight', 'inherit'], ['maxWidth', 'inherit'], ['minColumnWidth', 45], ['minHeight', 'inherit'], ['minRowHeight', 24], ['minWidth', 'inherit'], ['mobileContextMenuMargin', 10], ['mobileEditInputHeight', 30], ['mobileEditFontFamily', 'sans-serif'], ['mobileEditFontSize', '16px'], ['moveOverlayBorderWidth', 1], ['moveOverlayBorderColor', 'rgba(66, 133, 244, 1)'], ['moveOverlayBorderSegments', '12, 7'], ['name', 'default'], ['overflowY', 'auto'], ['overflowX', 'auto'], ['reorderMarkerBackgroundColor', 'rgba(0, 0, 0, 0.1)'], ['reorderMarkerBorderColor', 'rgba(0, 0, 0, 0.2)'], ['reorderMarkerBorderWidth', 1.25], ['reorderMarkerIndexBorderColor', 'rgba(66, 133, 244, 1)'], ['reorderMarkerIndexBorderWidth', 2.75], ['rowHeaderCellBackgroundColor', 'rgba(240, 240, 240, 1)'], ['rowHeaderCellBorderColor', 'rgba(200, 200, 200, 1)'], ['rowHeaderCellBorderWidth', 1], ['rowHeaderCellColor', 'rgba(50, 50, 50, 1)'], ['rowHeaderCellFont', '16px sans-serif'], ['rowHeaderCellHeight', 25], ['rowHeaderCellHorizontalAlignment', 'left'], ['rowHeaderCellHoverBackgroundColor', 'rgba(235, 235, 235, 1)'], ['rowHeaderCellHoverColor', 'rgba(0, 0, 0, 1)'], ['rowHeaderCellPaddingBottom', 5], ['rowHeaderCellPaddingLeft', 5], ['rowHeaderCellPaddingRight', 5], ['rowHeaderCellPaddingTop', 5], ['rowHeaderCellRowNumberGapHeight', 5], ['rowHeaderCellRowNumberGapColor', 'rgba(50, 50, 50, 1)'], ['rowHeaderCellSelectedBackgroundColor', 'rgba(217, 217, 217, 1)'], ['rowHeaderCellSelectedColor', 'rgba(50, 50, 50, 1)'], ['rowHeaderCellVerticalAlignment', 'center'], ['rowHeaderCellWidth', 57], ['scrollBarActiveColor', 'rgba(125, 125, 125, 1)'], ['scrollBarBackgroundColor', 'rgba(240, 240, 240, 1)'], ['scrollBarBorderColor', 'rgba(202, 202, 202, 1)'], ['scrollBarBorderWidth', 0.5], ['scrollBarBoxBorderRadius', 4.125], ['scrollBarBoxColor', 'rgba(192, 192, 192, 1)'], ['scrollBarBoxMargin', 2], ['scrollBarBoxMinSize', 15], ['scrollBarBoxWidth', 8], ['scrollBarCornerBackgroundColor', 'rgba(240, 240, 240, 1)'], ['scrollBarCornerBorderColor', 'rgba(202, 202, 202, 1)'], ['scrollBarWidth', 11], ['selectionHandleBorderColor', 'rgba(255, 255, 255, 1)'], ['selectionHandleBorderWidth', 1.5], ['selectionHandleColor', 'rgba(66, 133, 244, 1)'], ['selectionHandleSize', 8], ['selectionHandleType', 'square'], ['selectionOverlayBorderColor', 'rgba(66, 133, 244, 1)'], ['selectionOverlayBorderWidth', 1], ['treeArrowBorderColor', 'rgba(195, 199, 202, 1)'], ['treeArrowBorderWidth', 1], ['treeArrowClickRadius', 5], ['treeArrowColor', 'rgba(155, 155, 155, 1)'], ['treeArrowHeight', 8], ['treeArrowMarginLeft', 0], ['treeArrowMarginRight', 5], ['treeArrowMarginTop', 6], ['treeArrowWidth', 13], ['treeGridHeight', 250], ['width', 'auto']]
   };
 }
 
@@ -1494,6 +1871,96 @@ __webpack_require__.r(__webpack_exports__);
 
   self.createInlineStyle = function (el, className) {
     var css = {
+      'canvas-datagrid-button-wrapper': {
+        display: 'inline-block',
+        padding: self.style.buttonPadding,
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: self.style.buttonBorderColor,
+        cursor: 'pointer',
+        background: self.style.buttonBackgroundColor,
+        userSelect: 'none'
+      },
+      'canvas-datagrid-button-wrapper:hover': {
+        borderColor: self.style.buttonBorderColor,
+        background: self.style.buttonHoverBackgroundColor
+      },
+      'canvas-datagrid-button-wrapper:active': {
+        borderColor: self.style.buttonActiveBorderColor,
+        background: self.style.buttonActiveBackgroundColor
+      },
+      'canvas-datagrid-button-icon': {
+        width: '18px',
+        height: '18px',
+        display: 'inline-block',
+        verticalAlign: 'middle'
+      },
+      'canvas-datagrid-button-arrow': {
+        display: 'inline-block',
+        color: self.style.buttonArrowColor,
+        fontSize: '9px'
+      },
+      'canvas-datagrid-button-menu-item-mobile': {
+        lineHeight: 'normal',
+        fontWeight: 'normal',
+        fontFamily: self.style.contextMenuFontFamily,
+        fontSize: self.style.contextMenuFontSize,
+        color: 'inherit',
+        background: 'inherit',
+        margin: self.style.contextMenuItemMargin,
+        borderRadius: self.style.contextMenuItemBorderRadius,
+        verticalAlign: 'middle'
+      },
+      'canvas-datagrid-button-menu-item': {
+        lineHeight: 'normal',
+        fontWeight: 'normal',
+        fontFamily: self.style.contextMenuFontFamily,
+        fontSize: self.style.contextMenuFontSize,
+        color: 'inherit',
+        background: 'inherit',
+        margin: self.style.contextMenuItemMargin,
+        borderRadius: self.style.contextMenuItemBorderRadius,
+        verticalAlign: 'middle'
+      },
+      'canvas-datagrid-button-menu-item:hover': {
+        background: self.style.contextMenuHoverBackground,
+        color: self.style.contextMenuHoverColor
+      },
+      'canvas-datagrid-button-menu-label': {
+        margin: self.style.contextMenuLabelMargin,
+        display: self.style.contextMenuLabelDisplay,
+        minWidth: self.style.contextMenuLabelMinWidth,
+        maxWidth: self.style.contextMenuLabelMaxWidth
+      },
+      'canvas-datagrid-button-menu-mobile': {
+        lineHeight: 'normal',
+        fontWeight: 'normal',
+        fontFamily: self.style.contextMenuFontFamily,
+        fontSize: self.style.contextMenuFontSize,
+        background: self.style.contextMenuBackground,
+        color: self.style.contextMenuColor,
+        border: self.style.contextMenuBorder,
+        padding: self.style.contextMenuPadding,
+        borderRadius: self.style.contextMenuBorderRadius,
+        opacity: self.style.contextMenuOpacity,
+        overflow: 'hidden',
+        whiteSpace: 'nowrap'
+      },
+      'canvas-datagrid-button-menu': {
+        lineHeight: 'normal',
+        fontWeight: 'normal',
+        fontFamily: self.style.contextMenuFontFamily,
+        fontSize: self.style.contextMenuFontSize,
+        background: self.style.contextMenuBackground,
+        color: self.style.contextMenuColor,
+        border: self.style.contextMenuBorder,
+        padding: self.style.contextMenuPadding,
+        borderRadius: self.style.contextMenuBorderRadius,
+        opacity: self.style.contextMenuOpacity,
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+        cursor: self.style.contextMenuCursor
+      },
       'canvas-datagrid-context-menu-filter-input': {
         height: '19px',
         verticalAlign: 'bottom',
@@ -1937,6 +2404,27 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     self.ctx.stroke();
     self.ctx.fill();
     return ml + aw + mr;
+  }
+
+  function drawFilterButtonArrow(x, y) {
+    var mt = (self.style.filterButtonHeight - self.style.filterButtonArrowHeight) / 2 * self.scale,
+        ml = (self.style.filterButtonWidth - self.style.filterButtonArrowWidth) / 2 * self.scale,
+        aw = self.style.filterButtonArrowWidth * self.scale,
+        ah = self.style.filterButtonArrowHeight * self.scale;
+    x += self.canvasOffsetLeft;
+    y += self.canvasOffsetTop;
+    self.ctx.fillStyle = self.style.filterButtonArrowColor;
+    self.ctx.strokeStyle = self.style.filterButtonArrowBorderColor;
+    self.ctx.beginPath();
+    x = x + ml;
+    y = y + mt;
+    self.ctx.moveTo(x, y);
+    self.ctx.lineTo(x + aw, y);
+    self.ctx.lineTo(x + aw * 0.5, y + ah);
+    self.ctx.moveTo(x, y);
+    self.ctx.stroke();
+    self.ctx.fill();
+    return ml + aw;
   }
 
   function radiusRect(x, y, w, h, radius) {
@@ -2520,9 +3008,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             isCorner = /cornerCell/.test(cellStyle),
             isRowHeader = 'rowHeaderCell' === cellStyle,
             isColumnHeader = 'columnHeaderCell' === cellStyle,
+            isFilterable = self.filterable.rows.includes(rowIndex) && self.filterable.columns.includes(headerIndex),
             wrap = self.style.cellWhiteSpace !== 'nowrap',
             selected = self.selections[rowOrderIndex] && self.selections[rowOrderIndex].indexOf(columnOrderIndex) !== -1,
             hovered = self.hovers.rowIndex === rowOrderIndex && (self.attributes.hoverMode === 'row' || self.hovers.columnIndex === columnOrderIndex),
+            openedFilter = self.selectedFilterButton.rowIndex == rowIndex && self.selectedFilterButton.columnIndex == headerIndex,
             active = self.activeCell.rowIndex === rowOrderIndex && self.activeCell.columnIndex === columnOrderIndex,
             isColumnHeaderCellCap = cellStyle === 'columnHeaderCellCap',
             rawValue = rowData ? rowData[header.name] : undefined,
@@ -2610,6 +3100,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           isColumnHeader: isColumnHeader,
           isColumnHeaderCellCap: isColumnHeaderCellCap,
           isRowHeader: isRowHeader,
+          isFilterable: isFilterable,
+          openedFilter: openedFilter,
           rowOpen: rowOpen,
           header: header,
           columnIndex: columnOrderIndex,
@@ -2800,11 +3292,16 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           createBorderOverlayArray(cell, moveBorders, 'move', self.moveOffset);
         }
 
-        self.ctx.restore(); // Gaps may occur in row numbers between consecutively rendered rows
+        self.ctx.restore();
+
+        if (isFilterable) {
+          drawFilterButton(cell);
+        } // Gaps may occur in row numbers between consecutively rendered rows
         // when we are filtering. We draw attention to this by drawing a thick
         // border overlapping the two consecutive row headers. If sorting, visible
         // row numbers stay the same (i.e. they don't correspond to the underlying
         // data's row number), so we do not show row gaps in that case.
+
 
         var isSorting = self.orderings.columns && self.orderings.columns.length > 0;
 
@@ -2825,6 +3322,33 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         x += cell.width + (bc ? 0 : self.style.cellBorderWidth);
         return cell.width;
       };
+    }
+
+    function drawFilterButton(cell, ev) {
+      var posX = cell.x + cell.width - self.style.filterButtonWidth - 1;
+      var posY = cell.y + cell.height - self.style.filterButtonHeight - 2;
+
+      if (self.dispatchEvent('beforerenderfilterbutton', ev)) {
+        return;
+      }
+
+      self.ctx.save();
+      self.ctx.strokeStyle = self.style.filterButtonBorderColor;
+      self.ctx.fillStyle = self.style.filterButtonBackgroundColor;
+
+      if (cell.openedFilter) {
+        self.ctx.fillStyle = self.style.filterButtonActiveBackgroundColor;
+      } else if (cell.hovered && self.hovers.onFilterButton) {
+        self.ctx.fillStyle = self.style.filterButtonHoverBackgroundColor;
+      }
+
+      radiusRect(posX, posY, self.style.filterButtonWidth, self.style.filterButtonHeight, self.style.filterButtonBorderRadius);
+      self.ctx.stroke();
+      self.ctx.fill();
+      drawFilterButtonArrow(posX, posY);
+      self.ctx.clip();
+      self.dispatchEvent('afterrenderfilterbutton', ev);
+      self.ctx.restore();
     }
 
     function drawRowHeader(rowData, rowIndex, rowOrderIndex) {
@@ -4017,8 +4541,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         self.cursor = 'default';
         self.hovers = {
           rowIndex: cell.rowIndex,
-          columnIndex: cell.columnIndex
+          columnIndex: cell.columnIndex,
+          onFilterButton: false
         };
+
+        if (cell.isFilterable && x > cell.x + cell.width - self.style.filterButtonWidth && x < cell.x + cell.width && y > cell.y + cell.height - self.style.filterButtonHeight && y < cell.y + cell.height) {
+          self.hovers.onFilterButton = true;
+          self.draw();
+        }
       }
 
       if (self.selecting || self.reorderObject) {
@@ -4057,36 +4587,73 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           if ((self.attributes.selectionMode === 'row' || self.dragStartObject.columnIndex === -1) && self.rowBoundaryCrossed) {
             self.selectRow(cell.rowIndex, ctrl, null, true);
           } else if (self.attributes.selectionMode !== 'row') {
-            if (!self.dragAddToSelection && cell.rowIndex !== undefined) {
-              if (self.selections[cell.rowIndex] && self.selections[cell.rowIndex].indexOf(cell.columnIndex) !== -1) {
-                self.selections[cell.rowIndex].splice(self.selections[cell.rowIndex].indexOf(cell.columnIndex), 1);
-              }
-            } else {
-              self.selections[cell.rowIndex] = self.selections[cell.rowIndex] || [];
-
-              if (self.selections[cell.rowIndex].indexOf(cell.columnIndex) === -1) {
-                self.selections[cell.rowIndex].push(cell.columnIndex);
-                var event = {
-                  selections: self.selections,
-                  selectedData: self.getSelectedData(),
-                  selectedCells: self.getSelectedCells(),
-                  selectionBounds: self.getSelectionBounds()
+            if (cell.hovered && self.hovers.onFilterButton) {
+              if (cell.openedFilter) {
+                cell.openedFilter = false;
+                self.selectedFilterButton = {
+                  columnIndex: -1,
+                  rowIndex: -1
                 };
-                self.dispatchEvent('selectionchanged', event);
+              } else {
+                self.selectedFilterButton.rowIndex = cell.rowIndex;
+                self.selectedFilterButton.columnIndex = cell.columnIndex;
+                self.contextmenuEvent(e, {
+                  x: cell.x + cell.width - self.style.filterButtonWidth,
+                  y: cell.y + cell.height,
+                  rect: {
+                    left: 0,
+                    top: 0
+                  }
+                });
+              }
+
+              self.draw();
+              return;
+            } else {
+              self.selectedFilterButton = {
+                columnIndex: -1,
+                rowIndex: -1
+              };
+              if (self.hovers.onFilterButton) return;
+
+              if (!self.dragAddToSelection && cell.rowIndex !== undefined) {
+                if (self.selections[cell.rowIndex] && self.selections[cell.rowIndex].indexOf(cell.columnIndex) !== -1) {
+                  self.selections[cell.rowIndex].splice(self.selections[cell.rowIndex].indexOf(cell.columnIndex), 1);
+                }
+              } else {
+                self.selections[cell.rowIndex] = self.selections[cell.rowIndex] || [];
+
+                if (self.selections[cell.rowIndex].indexOf(cell.columnIndex) === -1) {
+                  self.selections[cell.rowIndex].push(cell.columnIndex);
+                  var event = {
+                    selections: self.selections,
+                    selectedData: self.getSelectedData(),
+                    selectedCells: self.getSelectedCells(),
+                    selectionBounds: self.getSelectionBounds()
+                  };
+                  self.dispatchEvent('selectionchanged', event);
+                }
               }
             }
           }
         }
 
         if ((!self.selectionBounds || dragBounds.top !== self.selectionBounds.top || dragBounds.left !== self.selectionBounds.left || dragBounds.bottom !== self.selectionBounds.bottom || dragBounds.right !== self.selectionBounds.right) && !ctrl) {
-          self.selections = [];
+          if (!(cell.hovered && self.hovers.onFilterButton)) {
+            self.selections = [];
+          }
+
+          if (dragBounds.top === -1) {
+            dragBounds.top = 0;
+          }
+
           sBounds = dragBounds;
 
           if (self.attributes.selectionMode === 'row') {
             for (i = sBounds.top; i <= sBounds.bottom; i += 1) {
               self.selectRow(i, true, null, true);
             }
-          } else if (dragBounds.top !== -1) {
+          } else {
             self.selectArea(sBounds, true);
             if (sBounds.left == -1 && sBounds.top !== sBounds.bottom) self.isMultiRowsSelected = true;
           }
@@ -4163,7 +4730,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }
 
     if (['rowHeaderCell', 'columnHeaderCell'].indexOf(self.currentCell.style) === -1 && !ctrl) {
-      self.setActiveCell(i.columnIndex, i.rowIndex);
+      if (!self.hovers.onFilterButton) {
+        self.setActiveCell(i.columnIndex, i.rowIndex);
+      }
     }
 
     if (self.currentCell.context === 'cell') {
@@ -4610,7 +5179,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     self.dragAddToSelection = !self.dragStartObject.selected;
 
     if (!ctrl && !e.shiftKey && !/(vertical|horizontal)-scroll-(bar|box)/.test(self.dragStartObject.context) && self.currentCell && !self.currentCell.isColumnHeader && !move && !freeze && !resize) {
-      if (!(self.dragMode == 'row-reorder' && self.isMultiRowsSelected)) self.selections = [];
+      if (!(self.dragMode == 'row-reorder' && self.isMultiRowsSelected) && !(self.currentCell.hovered && self.hovers.onFilterButton)) {
+        self.selections = [];
+      }
     }
 
     if (self.dragStartObject.isGrid) {
@@ -5015,7 +5586,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       self.fitColumnToValues(self.currentCell.header.name);
     } else if (self.currentCell.context === 'ew-resize' && self.currentCell.style === 'cornerCell') {
       self.autosize();
-    } else if (['cell', 'activeCell'].indexOf(self.currentCell.style) !== -1) {
+    } else if (['cell', 'activeCell'].includes(self.currentCell.style) && !self.hovers.onFilterButton) {
       self.beginEditAt(self.currentCell.columnIndex, self.currentCell.rowIndex);
     }
   };
@@ -5602,6 +6173,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     trees: {}
   };
   self.selections = [];
+  self.filterable = {
+    rows: [],
+    columns: []
+  };
+  self.selectedFilterButton = {
+    columnIndex: -1,
+    rowIndex: -1
+  };
   self.hovers = {};
   self.attributes = {};
   self.style = {};
@@ -5619,7 +6198,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   self.openChildren = {};
   self.scrollModes = ['vertical-scroll-box', 'vertical-scroll-top', 'vertical-scroll-bottom', 'horizontal-scroll-box', 'horizontal-scroll-right', 'horizontal-scroll-left'];
   self.componentL1Events = {};
-  self.eventNames = ['afterdraw', 'afterrendercell', 'attributechanged', 'beforebeginedit', 'beforecreatecellgrid', 'beforedraw', 'beforeendedit', 'beforerendercell', 'beforerendercellgrid', 'beginedit', 'cellmouseout', 'cellmouseover', 'click', 'collapsetree', 'contextmenu', 'copy', 'datachanged', 'dblclick', 'endedit', 'expandtree', 'formatcellvalue', 'keydown', 'keypress', 'keyup', 'mousedown', 'mousemove', 'mouseup', 'newrow', 'ordercolumn', 'rendercell', 'rendercellgrid', 'renderorderbyarrow', 'rendertext', 'rendertreearrow', 'reorder', 'reordering', 'resize', 'resizecolumn', 'resizerow', 'schemachanged', 'scroll', 'selectionchanged', 'stylechanged', 'touchcancel', 'touchend', 'touchmove', 'touchstart', 'wheel'];
+  self.eventNames = ['afterdraw', 'afterrendercell', 'afterrenderfilterbutton', 'attributechanged', 'beforebeginedit', 'beforecreatecellgrid', 'beforedraw', 'beforeendedit', 'beforerendercell', 'beforerendercellgrid', 'beforerenderfilterbutton', 'beginedit', 'cellmouseout', 'cellmouseover', 'click', 'collapsetree', 'contextmenu', 'copy', 'datachanged', 'dblclick', 'endedit', 'expandtree', 'formatcellvalue', 'keydown', 'keypress', 'keyup', 'mousedown', 'mousemove', 'mouseup', 'newrow', 'ordercolumn', 'rendercell', 'rendercellgrid', 'renderorderbyarrow', 'rendertext', 'rendertreearrow', 'reorder', 'reordering', 'resize', 'resizecolumn', 'resizerow', 'schemachanged', 'scroll', 'selectionchanged', 'stylechanged', 'touchcancel', 'touchend', 'touchmove', 'touchstart', 'wheel'];
   self.mouse = {
     x: 0,
     y: 0
@@ -6298,6 +6877,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     self.intf.clearChangeLog = self.clearChangeLog;
     self.intf.gotoCell = self.gotoCell;
     self.intf.gotoRow = self.gotoRow;
+    self.intf.addButton = self.addButton;
     self.intf.getHeaderByName = self.getHeaderByName;
     self.intf.findColumnScrollLeft = self.findColumnScrollLeft;
     self.intf.findRowScrollTop = self.findRowScrollTop;
@@ -7106,6 +7686,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       if (!preventScrollEvent) {
         self.scroll();
       }
+
+      if (self.button) {
+        self.moveButtonPos();
+      }
     }
 
     function setScrollLeft(value, preventScrollEvent) {
@@ -7129,6 +7713,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       if (!preventScrollEvent) {
         self.scroll();
+      }
+
+      if (self.button) {
+        self.moveButtonPos();
       }
     }
 
@@ -7238,8 +7826,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _touch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./touch */ "./lib/touch.js");
 /* harmony import */ var _intf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./intf */ "./lib/intf.js");
 /* harmony import */ var _contextMenu__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./contextMenu */ "./lib/contextMenu.js");
-/* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dom */ "./lib/dom.js");
-/* harmony import */ var _publicMethods__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./publicMethods */ "./lib/publicMethods.js");
+/* harmony import */ var _button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./button */ "./lib/button.js");
+/* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dom */ "./lib/dom.js");
+/* harmony import */ var _publicMethods__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./publicMethods */ "./lib/publicMethods.js");
 /*jslint browser: true, unparam: true, todo: true, evil: true*/
 
 /*globals Reflect: false, HTMLElement: true, define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
@@ -7256,8 +7845,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 
 
+
 var webComponent = (0,_component__WEBPACK_IMPORTED_MODULE_0__.default)();
-var modules = [_defaults__WEBPACK_IMPORTED_MODULE_1__.default, _draw__WEBPACK_IMPORTED_MODULE_2__.default, _events__WEBPACK_IMPORTED_MODULE_3__.default, _touch__WEBPACK_IMPORTED_MODULE_4__.default, _intf__WEBPACK_IMPORTED_MODULE_5__.default, _contextMenu__WEBPACK_IMPORTED_MODULE_6__.default, _dom__WEBPACK_IMPORTED_MODULE_7__.default, _publicMethods__WEBPACK_IMPORTED_MODULE_8__.default];
+var modules = [_defaults__WEBPACK_IMPORTED_MODULE_1__.default, _draw__WEBPACK_IMPORTED_MODULE_2__.default, _events__WEBPACK_IMPORTED_MODULE_3__.default, _touch__WEBPACK_IMPORTED_MODULE_4__.default, _intf__WEBPACK_IMPORTED_MODULE_5__.default, _contextMenu__WEBPACK_IMPORTED_MODULE_6__.default, _button__WEBPACK_IMPORTED_MODULE_7__.default, _dom__WEBPACK_IMPORTED_MODULE_8__.default, _publicMethods__WEBPACK_IMPORTED_MODULE_9__.default];
 
 function Grid(args) {
   args = args || {};
@@ -7625,6 +8215,20 @@ __webpack_require__.r(__webpack_exports__);
       delete self.columnFilters[column];
     } else {
       self.columnFilters[column] = value;
+
+      if (self.attributes.showFilterInCell) {
+        self.filterable.rows.push(0);
+        self.orders.columns.forEach(function (value, index) {
+          self.filterable.columns.push(index);
+        });
+      }
+    }
+
+    if (!Object.keys(self.columnFilters).length) {
+      self.filterable = {
+        rows: [],
+        columns: []
+      };
     }
 
     self.refresh();
@@ -7717,6 +8321,28 @@ __webpack_require__.r(__webpack_exports__);
 
   self.gotoRow = function (y) {
     self.gotoCell(0, y);
+  };
+  /**
+   * Add a button into the cell.
+   * @memberof canvasDatagrid
+   * @name addButton
+   * @method
+   * @param {number} columnIndex The column index of the cell to to add a button.
+   * @param {number} rowIndex The row index of the cell to to add a button.
+   * @param {object} offset Offset how far go away from cell.
+   * @param {object} items a list of items to add into button menu.
+   * @param {string} imgSrc icon path to add into button.
+   */
+
+
+  self.addButton = function (columnIndex, rowIndex, offset, items, imgSrc) {
+    var cells = self.visibleCells.filter(function (c) {
+      return c.sortColumnIndex === columnIndex && c.sortRowIndex === rowIndex;
+    });
+    self.attachButton({
+      top: cells[0].y + cells[0].height + offset.y,
+      left: cells[0].x + cells[0].width + offset.x
+    }, items, imgSrc);
   };
   /**
    * Scrolls the cell at cell x, row y into view if it is not already.
