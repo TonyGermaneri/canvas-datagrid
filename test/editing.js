@@ -553,4 +553,24 @@ export default function () {
       grid.cut({});
     });
   });
+  it('Clearing selection fires `selectioncleared` event', function (done) {
+    var grid = g({
+      test: this.test,
+      data: [{ 'Column A': 'Original value' }],
+    });
+
+    grid.focus();
+    grid.selectArea({ top: 0, left: 0, bottom: 0, right: 0 });
+
+    grid.addEventListener('selectioncleared', function (event) {
+      event.preventDefault();
+      doAssert(
+        event.cells[0].length == 4,
+        'first affected cell is [rowIndex, columnIndex, boundRowIndex, boundColumnIndex] tuple',
+      );
+      done();
+    });
+
+    grid.clearSelection();
+  });
 }
