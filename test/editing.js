@@ -553,7 +553,7 @@ export default function () {
       grid.cut({});
     });
   });
-  it('Clearing selection fires `selectioncleared` event', function (done) {
+  it('Clearing selection fires `afterdelete` event', function (done) {
     var grid = g({
       test: this.test,
       data: [{ 'Column A': 'Original value' }],
@@ -562,7 +562,7 @@ export default function () {
     grid.focus();
     grid.selectArea({ top: 0, left: 0, bottom: 0, right: 0 });
 
-    grid.addEventListener('selectioncleared', function (event) {
+    grid.addEventListener('afterdelete', function (event) {
       event.preventDefault();
       doAssert(
         event.cells[0].length == 4,
@@ -571,6 +571,6 @@ export default function () {
       done();
     });
 
-    grid.clearSelection();
+    grid.deleteSelectedData();
   });
 }
