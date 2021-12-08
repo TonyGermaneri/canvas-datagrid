@@ -1,4 +1,4 @@
-import { makeData, g, smallData, assertIf } from './util.js';
+import { makeData, g, smallData, assertIf, doAssert } from './util.js';
 
 export default function () {
   it('Arrow down should move active cell down one', function (done) {
@@ -409,6 +409,35 @@ export default function () {
       assertIf(
         grid.activeCell.rowIndex !== 0,
         'Expected the active cell to move.',
+      ),
+    );
+  });
+  it('Selection is cleared when backspace is pressed', function (done) {
+    const data = smallData();
+    var grid = g({
+      test: this.test,
+      data,
+    });
+
+    grid.focus();
+    grid.selectArea({
+      top: 0,
+      left: 0,
+      bottom: 1,
+      right: 1,
+    });
+
+    var ev = new Event('keydown');
+    ev.key = 'Backspace';
+
+    grid.controlInput.dispatchEvent(ev);
+    done(
+      doAssert(
+        grid.data[0].col1 === null &&
+          grid.data[0].col2 === null &&
+          grid.data[1].col1 === null &&
+          grid.data[1].col2 === null,
+        'Expected cells to be cleared.',
       ),
     );
   });
