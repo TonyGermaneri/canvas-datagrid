@@ -7,6 +7,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.3.21 - 2021-12-08
+
+### Added
+
+- Add `afterdelete` event and `deleteSelectedData()` public method (mdebrauw, #446)
+
+### Fixed
+
+- Remove mousemove at body when dispose (faimaklg, #449)
+- Fire event when resizing column by double clicking column border (mdebrauw, #447)
+- Fix filter button active/hover states, remove inline grid button after menu item click (xianzhi3, #445)
+
 ## 0.3.20 - 2021-12-04
 
 ### Added
