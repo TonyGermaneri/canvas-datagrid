@@ -175,6 +175,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         if (item.click) {
           menuItemContainer.addEventListener('click', function (ev) {
             item.click.apply(self, [ev]);
+            self.disposeButton();
           });
         }
       }
@@ -4545,7 +4546,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           onFilterButton: false
         };
 
-        if (cell.isFilterable && x > cell.x + cell.width - self.style.filterButtonWidth && x < cell.x + cell.width && y > cell.y + cell.height - self.style.filterButtonHeight && y < cell.y + cell.height) {
+        if (cell.isFilterable && x > cell.x + cell.width + self.canvasOffsetLeft - self.style.filterButtonWidth && x < cell.x + cell.width + self.canvasOffsetLeft && y > cell.y + cell.height + self.canvasOffsetTop - self.style.filterButtonHeight && y < cell.y + cell.height + self.canvasOffsetTop) {
           self.hovers.onFilterButton = true;
           self.draw();
         }
@@ -5394,6 +5395,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       self.selectNone();
     } else if (ctrl && e.key === 'a') {
       self.selectAll();
+    } else if (['Backspace', 'Delete'].includes(e.key)) {
+      self.deleteSelectedData();
     } else if (e.key === 'ArrowDown') {
       y += 1;
     } else if (e.key === 'ArrowUp') {
@@ -5838,6 +5841,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     })) {
       return;
     }
+
+    requestAnimationFrame(function () {
+      return self.draw();
+    });
   };
 
   self.copy = function (e) {
@@ -6318,6 +6325,51 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     return selectedCells;
   };
 
+  self.clearSelectedCells = function () {
+    var schema = self.getSchema();
+    var affectedCells = [];
+
+    var _iterator3 = _createForOfIteratorHelper(self.selections.entries()),
+        _step3;
+
+    try {
+      for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+        var _step3$value = _slicedToArray(_step3.value, 2),
+            rowIndex = _step3$value[0],
+            row = _step3$value[1];
+
+        // If no cells are selected for a particular rowIndex the selections array will contain an empty element for that rowIndex.
+        if (!row) continue;
+        var boundRowIndex = self.getBoundRowIndexFromViewRowIndex(rowIndex);
+
+        var _iterator4 = _createForOfIteratorHelper(row),
+            _step4;
+
+        try {
+          for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+            var columnIndex = _step4.value;
+            // If the whole row is selected the columnIndex for the rowHeader is -1.
+            if (columnIndex < 0) continue;
+            var boundColumnIndex = self.getBoundColumnIndexFromViewColumnIndex(columnIndex);
+            var columnName = schema[boundColumnIndex].name;
+            self.viewData[boundRowIndex][columnName] = null;
+            affectedCells.push([rowIndex, columnIndex, boundRowIndex, boundColumnIndex]);
+          }
+        } catch (err) {
+          _iterator4.e(err);
+        } finally {
+          _iterator4.f();
+        }
+      }
+    } catch (err) {
+      _iterator3.e(err);
+    } finally {
+      _iterator3.f();
+    }
+
+    return affectedCells;
+  };
+
   self.getBoundRowIndexFromViewRowIndex = function (viewRowIndex) {
     if (self.boundRowIndexMap && self.boundRowIndexMap.has(viewRowIndex)) {
       return self.boundRowIndexMap.get(viewRowIndex);
@@ -6488,12 +6540,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     } // Apply sorting
 
 
-    var _iterator3 = _createForOfIteratorHelper(self.orderings.columns),
-        _step3;
+    var _iterator5 = _createForOfIteratorHelper(self.orderings.columns),
+        _step5;
 
     try {
       var _loop2 = function _loop2() {
-        var column = _step3.value;
+        var column = _step5.value;
         var sortFn = column.sortFunction(column.orderBy, column.orderDirection);
         newViewData.sort(function (_ref7, _ref8) {
           var _ref9 = _slicedToArray(_ref7, 1),
@@ -6508,13 +6560,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         });
       };
 
-      for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+      for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
         _loop2();
       }
     } catch (err) {
-      _iterator3.e(err);
+      _iterator5.e(err);
     } finally {
-      _iterator3.f();
+      _iterator5.f();
     }
 
     return {
@@ -6668,6 +6720,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     self.controlInput.removeEventListener('keypress', self.keypress, false);
     self.controlInput.removeEventListener('keyup', self.keyup, false);
     self.controlInput.removeEventListener('keydown', self.keydown, false);
+    document.body.removeEventListener('mousemove', self.mousemove);
     window.removeEventListener('resize', self.resize);
 
     if (self.observer && self.observer.disconnect) {
@@ -6844,6 +6897,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     };
     Object.keys(self.style).forEach(self.parseStyleValue);
     self.intf.moveSelection = self.moveSelection;
+    self.intf.deleteSelectedData = self.deleteSelectedData;
     self.intf.moveTo = self.moveTo;
     self.intf.addEventListener = self.addEventListener;
     self.intf.removeEventListener = self.removeEventListener;
@@ -8788,7 +8842,14 @@ __webpack_require__.r(__webpack_exports__);
       return;
     }
 
-    self.sizes.columns[name === 'cornerCell' ? -1 : self.getHeaderByName(name).index] = Math.max(self.findColumnMaxTextLength(name), self.style.minColumnWidth);
+    var columnIndex = name === 'cornerCell' ? -1 : self.getHeaderByName(name).index;
+    var newSize = Math.max(self.findColumnMaxTextLength(name), self.style.minColumnWidth);
+    self.sizes.columns[columnIndex] = newSize;
+    self.dispatchEvent('resizecolumn', {
+      x: newSize,
+      y: self.resizingStartingHeight,
+      draggingItem: self.currentCell
+    });
 
     if (!internal) {
       self.resize();
@@ -8908,6 +8969,29 @@ __webpack_require__.r(__webpack_exports__);
       });
     });
     self.selections = sel;
+  };
+  /**
+   * Deletes currently selected data.
+   * @memberof canvasDatagrid
+   * @name deleteSelectedData
+   * @method
+   * @param {boolean} dontDraw Suppress the draw method after the selection change.
+   */
+
+
+  self.deleteSelectedData = function (dontDraw) {
+    var affectedCells = self.clearSelectedCells();
+    self.dispatchEvent('afterdelete', {
+      cells: affectedCells
+    });
+
+    if (dontDraw) {
+      return;
+    }
+
+    requestAnimationFrame(function () {
+      return self.draw();
+    });
   };
   /**
    * Moves data in the provided selection to another position in the grid.  Moving data off the edge of the schema (columns/x) will truncate data.
