@@ -6,6 +6,8 @@ import {
   g,
   smallData,
   c,
+  doAssert,
+  dblclick,
 } from './util.js';
 
 export default function () {
@@ -30,6 +32,23 @@ export default function () {
     setTimeout(function () {
       assertPxColor(grid, 100, 36, c.b, done);
     }, 10);
+  });
+  it('Resize a column by double clicking a column header.', function (done) {
+    var grid = g({
+      test: this.test,
+      data: smallData(),
+      style: {
+        cellWidth: 50,
+      },
+    });
+
+    grid.addEventListener('resizecolumn', function (e) {
+      doAssert(e.x === grid.sizes.columns[0], 'x matches width of column 0');
+      done();
+    });
+    grid.focus();
+    mousemove(document.body, 94, 10, grid.canvas);
+    dblclick(grid.canvas, 94, 10);
   });
   it('Resize a column from a cell.', function (done) {
     var grid = g({

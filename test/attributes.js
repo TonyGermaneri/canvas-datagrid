@@ -458,7 +458,7 @@ export default function () {
       grid.addEventListener('click', function (e) {
         done(
           assertIf(
-            e.cell.value === 'bar',
+            e.cell.value !== 'bar',
             'Expected to see the value from row 2 here.',
           ),
         );
@@ -583,8 +583,9 @@ export default function () {
       columnHeaderClickBehavior: 'select',
     });
     marker(grid, 60, 12);
-    mousemove(grid.canvas, 60, 12);
-    click(grid.canvas, 60, 12);
+    mousemove(document.body, 60, 12, grid.canvas);
+    mousedown(grid.canvas, 60, 12);
+    mouseup(document.body, 60, 12, grid.canvas);
     done(
       assertIf(
         grid.selectedRows.length !== 3 ||
@@ -603,10 +604,12 @@ export default function () {
       },
     });
     marker(grid, 60, 12);
-    mousemove(grid.canvas, 60, 12);
-    click(grid.canvas, 60, 12);
-    mousemove(grid.canvas, 175, 12);
-    click(grid.canvas, 175, 12, null, { ctrlKey: true });
+    mousemove(document.body, 60, 12, grid.canvas);
+    mousedown(grid.canvas, 60, 12);
+    mouseup(document.body, 60, 12, grid.canvas);
+    mousemove(document.body, 175, 12, grid.canvas);
+    mousedown(grid.canvas, 175, 12, null, { ctrlKey: true });
+    mouseup(document.body, 175, 12);
     done(
       assertIf(
         grid.selectedRows.length !== 3 ||
