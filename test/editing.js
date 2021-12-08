@@ -9,6 +9,16 @@ import {
   assertIf,
 } from './util.js';
 
+const fakeClipboardEvent = {
+  clipboardData: {
+    data: {},
+    setData: function (mime, data) {
+      this.data[mime] = data;
+    },
+  },
+  preventDefault: () => null, // noop so the call in addCellValue doesn't cause an error
+};
+
 export default function () {
   it('Begin editing, end editing', function (done) {
     var ev,
@@ -128,42 +138,52 @@ export default function () {
     );
     grid.endEdit();
   });
-  it.skip('Should copy a value onto the simulated clipboard.', function (done) {
-    var once,
-      grid = g({
-        test: this.test,
-        data: [
-          {
-            d: 'Text with, a comma 1',
-            e: 'Text that has no comma in in 1',
-          },
-          {
-            d: 'Text with, a comma 2',
-            e: 'Text that has no comma in in 2',
-          },
-        ],
-      });
+  it('Copied data put on simulated clipboard', function (done) {
+    const data = [
+      {
+        d: 'Text with, a comma 1',
+        e: 'Text that has no comma in in 1',
+      },
+      {
+        d: 'Text with, a comma 2',
+        e: 'Text that has no comma in in 2',
+      },
+    ];
+
+    const grid = g({
+      test: this.test,
+      data,
+    });
+
     grid.selectAll();
     grid.focus();
-    setTimeout(function () {
-      grid.copy({
-        clipboardData: {
-          setData: function (mime, data) {
-            if (once) {
-              return;
-            }
-            once = true;
-            done(
-              assertIf(
-                mime !== 'text/html' || data.indexOf('Text with') === -1,
-                'Expected data from the grid to be placed into the fake clipboard.',
-              ),
-            );
-          },
-        },
-        preventDefault: () => null, // noop so the call in addCellValue doesn't cause an error
-      });
-    }, 1);
+
+    const textResult = `Text with, a comma 1\tText that has no comma in in 1\nText with, a comma 2\tText that has no comma in in 2`;
+    const htmlResult =
+      '<table><tr><td>Text with, a comma 1</td><td>Text that has no comma in in 1</td></tr><tr><td>Text with, a comma 2</td><td>Text that has no comma in in 2</td></tr></table>';
+    const jsonResult = JSON.stringify(data);
+
+    grid.copy(new Object(fakeClipboardEvent));
+    const { clipboardData } = fakeClipboardEvent;
+
+    doAssert(
+      clipboardData.data['text/plain'] === textResult,
+      'Expected plain text to be copied',
+    );
+    doAssert(
+      clipboardData.data['text/html'] === htmlResult,
+      'Expected html to be copied',
+    );
+    doAssert(
+      clipboardData.data['text/csv'] === textResult,
+      'Expected csv text to be copied',
+    );
+    doAssert(
+      clipboardData.data['application/json'] === jsonResult,
+      'Expected json to be copied',
+    );
+
+    done();
   });
   it('Should paste a value from the clipboard into a cell', function (done) {
     var grid = g({
@@ -527,7 +547,7 @@ export default function () {
     grid.endEdit();
   });
   describe('cut', function () {
-    it('fires a cut event', function (done) {
+    it('fires a aftercut event with affected cells', function (done) {
       var grid = g({
         test: this.test,
         data: [{ 'Column A': 'Original value' }],
@@ -537,7 +557,7 @@ export default function () {
       grid.setActiveCell(0, 0);
       grid.selectArea({ top: 0, left: 0, bottom: 0, right: 0 });
 
-      grid.addEventListener('cut', function (event) {
+      grid.addEventListener('aftercut', function (event) {
         try {
           doAssert(!!event.cells, 'event has cells property');
           doAssert(event.cells.length === 1, 'one row has been pasted ');
@@ -550,7 +570,7 @@ export default function () {
         done();
       });
 
-      grid.cut({});
+      grid.cut(fakeClipboardEvent);
     });
   });
   it('Clearing selection fires `afterdelete` event', function (done) {
