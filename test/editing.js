@@ -138,52 +138,108 @@ export default function () {
     );
     grid.endEdit();
   });
-  it('Copied data put on simulated clipboard', function (done) {
-    const data = [
-      {
-        d: 'Text with, a comma 1',
-        e: 'Text that has no comma in in 1',
-      },
-      {
-        d: 'Text with, a comma 2',
-        e: 'Text that has no comma in in 2',
-      },
-    ];
+  describe('copy', function () {
+    it('neatly selected data onto simulated clipboard', function (done) {
+      const data = [
+        {
+          d: 'Text with, a comma 1',
+          e: 'Text that has no comma in in 1',
+        },
+        {
+          d: 'Text with, a comma 2',
+          e: 'Text that has no comma in in 2',
+        },
+      ];
 
-    const grid = g({
-      test: this.test,
-      data,
+      const grid = g({
+        test: this.test,
+        data,
+      });
+
+      grid.selectAll();
+      grid.focus();
+
+      const textResult = `Text with, a comma 1\tText that has no comma in in 1\nText with, a comma 2\tText that has no comma in in 2`;
+      const htmlResult =
+        '<table><tr><td>Text with, a comma 1</td><td>Text that has no comma in in 1</td></tr><tr><td>Text with, a comma 2</td><td>Text that has no comma in in 2</td></tr></table>';
+      const jsonResult = JSON.stringify(data);
+
+      grid.copy(new Object(fakeClipboardEvent));
+      const { clipboardData } = fakeClipboardEvent;
+
+      doAssert(
+        clipboardData.data['text/plain'] === textResult,
+        'Expected plain text to be copied',
+      );
+      doAssert(
+        clipboardData.data['text/html'] === htmlResult,
+        'Expected html to be copied',
+      );
+      doAssert(
+        clipboardData.data['text/csv'] === textResult,
+        'Expected csv text to be copied',
+      );
+      doAssert(
+        clipboardData.data['application/json'] === jsonResult,
+        'Expected json to be copied',
+      );
+
+      done();
     });
+    it('untidy selected data onto simulated clipboard', function (done) {
+      const data = [
+        {
+          d: 'Text with, a comma 1',
+          e: 'Text that has no comma in in 1',
+        },
+        {
+          d: 'Text with, a comma 2',
+          e: 'Text that has no comma in in 2',
+        },
+      ];
 
-    grid.selectAll();
-    grid.focus();
+      const grid = g({
+        test: this.test,
+        data,
+      });
 
-    const textResult = `Text with, a comma 1\tText that has no comma in in 1\nText with, a comma 2\tText that has no comma in in 2`;
-    const htmlResult =
-      '<table><tr><td>Text with, a comma 1</td><td>Text that has no comma in in 1</td></tr><tr><td>Text with, a comma 2</td><td>Text that has no comma in in 2</td></tr></table>';
-    const jsonResult = JSON.stringify(data);
+      grid.selectArea({ top: 0, left: 0, bottom: 0, right: 0 });
+      grid.selectArea({ top: 1, left: 1, bottom: 1, right: 1 }, true); // ctrl = true, adds to previous selection
+      grid.focus();
 
-    grid.copy(new Object(fakeClipboardEvent));
-    const { clipboardData } = fakeClipboardEvent;
+      const textResult = `Text with, a comma 1Text that has no comma in in 2`;
+      const htmlResult = textResult;
+      const jsonResult = JSON.stringify([
+        {
+          d: 'Text with, a comma 1',
+        },
+        {
+          e: 'Text that has no comma in in 2',
+        },
+      ]);
 
-    doAssert(
-      clipboardData.data['text/plain'] === textResult,
-      'Expected plain text to be copied',
-    );
-    doAssert(
-      clipboardData.data['text/html'] === htmlResult,
-      'Expected html to be copied',
-    );
-    doAssert(
-      clipboardData.data['text/csv'] === textResult,
-      'Expected csv text to be copied',
-    );
-    doAssert(
-      clipboardData.data['application/json'] === jsonResult,
-      'Expected json to be copied',
-    );
+      grid.copy(new Object(fakeClipboardEvent));
+      const { clipboardData } = fakeClipboardEvent;
 
-    done();
+      doAssert(
+        clipboardData.data['text/plain'] === textResult,
+        'Expected plain text to be copied',
+      );
+      doAssert(
+        clipboardData.data['text/html'] === htmlResult,
+        'Expected html to be copied',
+      );
+      doAssert(
+        clipboardData.data['text/csv'] === textResult,
+        'Expected csv text to be copied',
+      );
+      doAssert(
+        clipboardData.data['application/json'] === jsonResult,
+        'Expected json to be copied',
+      );
+
+      done();
+    });
   });
   it('Should paste a value from the clipboard into a cell', function (done) {
     var grid = g({
@@ -288,7 +344,6 @@ export default function () {
       );
     }, 10);
   });
-
   it('paste a Excel table with multiple rows from the clipboard', function (done) {
     var grid = g({
       test: this.test,
