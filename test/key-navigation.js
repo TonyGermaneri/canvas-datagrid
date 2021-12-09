@@ -433,10 +433,10 @@ export default function () {
     grid.controlInput.dispatchEvent(ev);
     done(
       doAssert(
-        grid.data[0].col1 === null &&
-          grid.data[0].col2 === null &&
-          grid.data[1].col1 === null &&
-          grid.data[1].col2 === null,
+        grid.data[0].col1 === '' &&
+          grid.data[0].col2 === '' &&
+          grid.data[1].col1 === '' &&
+          grid.data[1].col2 === '',
         'Expected cells to be cleared.',
       ),
     );
