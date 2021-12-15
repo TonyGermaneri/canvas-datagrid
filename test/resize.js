@@ -33,7 +33,7 @@ export default function () {
       assertPxColor(grid, 100, 36, c.b, done);
     }, 10);
   });
-  it('Resizes all selected columns.', function () {
+  it('Resizes selected columns.', function () {
     var grid = g({
       test: this.test,
       data: smallData(),
@@ -87,6 +87,32 @@ export default function () {
     grid.focus();
     mousemove(document.body, 94, 10, grid.canvas);
     dblclick(grid.canvas, 94, 10);
+  });
+  it('Resize selected columns by double clicking a column header.', function () {
+    var grid = g({
+      test: this.test,
+      data: smallData(),
+      style: {
+        cellWidth: 50,
+      },
+    });
+
+    grid.selectColumn(0);
+    grid.selectColumn(1, true);
+
+    chai.assert.deepStrictEqual(Object.keys(grid.sizes.columns),
+      ['-1'],
+      'No column widths set',
+    );
+
+    mousemove(document.body, 94, 10, grid.canvas);
+    dblclick(grid.canvas, 94, 10);
+
+    chai.assert.deepStrictEqual(Object.keys(grid.sizes.columns), [
+      '0',
+      '1',
+      '-1',
+    ]);
   });
   it('Resize a column from a cell.', function (done) {
     var grid = g({
