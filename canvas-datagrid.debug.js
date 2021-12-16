@@ -4084,15 +4084,7 @@ __webpack_require__.r(__webpack_exports__);
 /*globals define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
 
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
@@ -4834,7 +4826,21 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     self.ellipsisCache = {};
   };
 
-  self.stopDragResize = function () {
+  self.stopDragResize = function (event) {
+    var pos = self.getLayerPos(event);
+
+    if (self.dragMode === 'ew-resize') {
+      var hasMoved = !!(pos.x - self.dragStart.x); // Check that dragItem is selected or part of selection.
+
+      var dragItemIsSelected = self.isColumnSelected(self.dragItem.columnIndex);
+
+      if (hasMoved && dragItemIsSelected) {
+        var width = Math.max(self.resizingStartingWidth + pos.x - self.dragStart.x, self.style.minColumnWidth); // If the column is selected, resize it to width plus any other selected columns.
+
+        self.fitSelectedColumns(width);
+      }
+    }
+
     self.resize();
     document.body.removeEventListener('mousemove', self.dragResizeColumn, false);
     document.body.removeEventListener('mouseup', self.stopDragResize, false);
@@ -5586,7 +5592,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }
 
     if (self.currentCell.context === 'ew-resize' && self.currentCell.style === 'columnHeaderCell') {
-      self.fitColumnToValues(self.currentCell.header.name);
+      // Check that double-clicked cell is selected or part of selection.
+      var currentCellIsSelected = self.isColumnSelected(self.currentCell.columnIndex);
+
+      if (currentCellIsSelected) {
+        // There might be more
+        self.fitSelectedColumns();
+      } else {
+        self.fitColumnToValues(self.currentCell.header.name);
+      }
     } else if (self.currentCell.context === 'ew-resize' && self.currentCell.style === 'cornerCell') {
       self.autosize();
     } else if (['cell', 'activeCell'].includes(self.currentCell.style) && !self.hovers.onFilterButton) {
@@ -5796,52 +5810,22 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   };
 
   self.cut = function (e) {
-    self.copy(e);
-    var schema = self.getSchema();
-    var affectedCells = [];
-
-    var _iterator2 = _createForOfIteratorHelper(self.selections.entries()),
-        _step2;
-
-    try {
-      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-        var _step2$value = _slicedToArray(_step2.value, 2),
-            rowIndex = _step2$value[0],
-            row = _step2$value[1];
-
-        if (!row) continue;
-        var boundRowIndex = self.getBoundRowIndexFromViewRowIndex(rowIndex);
-
-        var _iterator3 = _createForOfIteratorHelper(row),
-            _step3;
-
-        try {
-          for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-            var columnIndex = _step3.value;
-            var boundColumnIndex = self.getBoundColumnIndexFromViewColumnIndex(columnIndex);
-            var colName = schema[boundColumnIndex].name;
-            self.viewData[rowIndex][colName] = '';
-            affectedCells.push([rowIndex, columnIndex, boundRowIndex, boundColumnIndex]);
-          }
-        } catch (err) {
-          _iterator3.e(err);
-        } finally {
-          _iterator3.f();
-        }
-      }
-    } catch (err) {
-      _iterator2.e(err);
-    } finally {
-      _iterator2.f();
-    }
-
     if (self.dispatchEvent('cut', {
-      NativeEvent: e,
-      cells: affectedCells
+      NativeEvent: e
     })) {
+      return;
+    } // Expecting instance of `ClipboardEvent` with `clipboardData` attribute
+
+
+    if (!self.hasFocus || !e.clipboardData) {
       return;
     }
 
+    self.copySelectedCellsToClipboard(e.clipboardData);
+    var affectedCells = self.clearSelectedCells();
+    self.dispatchEvent('aftercut', {
+      cells: affectedCells
+    });
     requestAnimationFrame(function () {
       return self.draw();
     });
@@ -5852,82 +5836,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       NativeEvent: e
     })) {
       return;
-    }
+    } // Expecting instance of `ClipboardEvent` with `clipboardData` attribute
+
 
     if (!self.hasFocus || !e.clipboardData) {
       return;
     }
 
-    var t = '',
-        d = '',
-        textRows = [],
-        sData = self.getSelectedData(),
-        s = self.getSchema(),
-        sSorted = [],
-        firstRowKeys,
-        isNeat = true; // Selected like [[0, 1], [0, 1]] of [[0, 3]] is neat; Selected like [[0, 1], [1, 2]] is untidy
-
-    function htmlSafe(v) {
-      if (typeof v === 'number') return v;
-      return v.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    }
-
-    s.forEach(function (column, columnIndex) {
-      sSorted.push(s[self.orders.columns[columnIndex]]);
-    });
-
-    if (sData.length > 0) {
-      sData.forEach(function (row) {
-        if (!row) return;
-        var rowKeys = Object.keys(row);
-        var textRow = [];
-        if (!firstRowKeys) firstRowKeys = Object.keys(row);
-        if (isNeat && rowKeys.length !== firstRowKeys.length) isNeat = false;
-        sSorted.forEach(function (column, columnIndex) {
-          if (rowKeys.indexOf(String(column.name)) < 0) {
-            if (firstRowKeys.indexOf(String(column.name)) < 0) {
-              return;
-            } else if (isNeat) {
-              isNeat = false;
-            }
-          }
-
-          textRow.push(row[column.name] || '');
-        });
-        textRows.push(textRow);
-      });
-
-      if (isNeat) {
-        t = textRows.map(function (row) {
-          return row.join('\t');
-        }).join('\n');
-        /**
-         * The html content copied by Excel has not header
-         */
-
-        d += '<table>';
-        d += textRows.map(function (row) {
-          return '<tr>' + row.map(function (value) {
-            return '<td>' + htmlSafe(value) + '</td>';
-          }).join('') + '</tr>';
-        }).join('');
-        d += '</table>';
-      } else {
-        t = textRows.map(function (row) {
-          return row.join('');
-        }).join('');
-        d = t;
-      }
-
-      if (t) {
-        e.clipboardData.setData('text/html', d);
-        e.clipboardData.setData('text/plain', t);
-        e.clipboardData.setData('text/csv', t);
-        e.clipboardData.setData('application/json', JSON.stringify(sData));
-      }
-
-      e.preventDefault();
-    }
+    self.copySelectedCellsToClipboard(e.clipboardData);
+    e.preventDefault();
   };
 
   return;
@@ -5940,6 +5857,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   !*** ./lib/events/util.js ***!
   \****************************/
 /*! namespace exports */
+/*! export createHTMLString [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export createTextString [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export htmlSafe [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export isSupportedHtml [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export parseData [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export parseHtmlTable [provided] [no usage info] [missing usage info prevents renaming] */
@@ -5953,12 +5873,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "createTextString": function() { return /* binding */ createTextString; },
+/* harmony export */   "createHTMLString": function() { return /* binding */ createHTMLString; },
 /* harmony export */   "isSupportedHtml": function() { return /* binding */ isSupportedHtml; },
-/* harmony export */   "sanitizeElementData": function() { return /* binding */ sanitizeElementData; },
+/* harmony export */   "htmlSafe": function() { return /* binding */ htmlSafe; },
 /* harmony export */   "parseData": function() { return /* binding */ parseData; },
 /* harmony export */   "parseHtmlTable": function() { return /* binding */ parseHtmlTable; },
 /* harmony export */   "parseHtmlText": function() { return /* binding */ parseHtmlText; },
-/* harmony export */   "parseText": function() { return /* binding */ parseText; }
+/* harmony export */   "parseText": function() { return /* binding */ parseText; },
+/* harmony export */   "sanitizeElementData": function() { return /* binding */ sanitizeElementData; }
 /* harmony export */ });
 
 
@@ -6081,6 +6004,36 @@ var parseData = function parseData(data, mimeType) {
   return parseText(data);
 };
 
+var htmlSafe = function htmlSafe(value) {
+  if (typeof value === 'number') return value;
+  return value.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+};
+
+var createTextString = function createTextString(selectedData, isNeat) {
+  // Selected like [[0, 1], [0, 1]] of [[0, 3]] is neat; Selected like [[0, 1], [1, 2]] is untidy.
+  // If not isNeat we just return a simple string of concatenated values.
+  if (!isNeat) return selectedData.map(function (row) {
+    return Object.values(row).join('');
+  }).join(''); // If isNeat, we can create tab separated mutti-line text.
+
+  return selectedData.map(function (row) {
+    return Object.values(row).join('\t');
+  }).join('\n');
+};
+
+var createHTMLString = function createHTMLString(selectedData, isNeat) {
+  if (!isNeat) return createTextString(selectedData, isNeat); // If isNeat, we can create a HTML table with the selected data.
+
+  var htmlString = '<table>';
+  htmlString += selectedData.map(function (row) {
+    return '<tr>' + Object.values(row).map(function (value) {
+      return '<td>' + htmlSafe(value) + '</td>';
+    }).join('') + '</tr>';
+  }).join('');
+  htmlString += '</table>';
+  return htmlString;
+};
+
 
 
 /***/ }),
@@ -6092,7 +6045,7 @@ var parseData = function parseData(data, mimeType) {
 /*! namespace exports */
 /*! export default [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6100,6 +6053,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function() { return /* export default binding */ __WEBPACK_DEFAULT_EXPORT__; }
 /* harmony export */ });
+/* harmony import */ var _events_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./events/util */ "./lib/events/util.js");
 /*jslint browser: true, unparam: true, todo: true*/
 
 /*globals HTMLElement: false, Reflect: false, define: true, MutationObserver: false, requestAnimationFrame: false, performance: false, btoa: false*/
@@ -6120,6 +6074,7 @@ function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symb
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 
 /* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(self, ctor) {
   self.scale = 1;
@@ -6325,9 +6280,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     return selectedCells;
   };
 
-  self.clearSelectedCells = function () {
+  self.copySelectedCellsToClipboard = function (clipboardData) {
+    var selectedData = [];
     var schema = self.getSchema();
-    var affectedCells = [];
+    var firstRowAsString;
+    var isNeat = true; // Selected like [[0, 1], [0, 1]] of [[0, 3]] is neat; Selected like [[0, 1], [1, 2]] is untidy
 
     var _iterator3 = _createForOfIteratorHelper(self.selections.entries()),
         _step3;
@@ -6339,7 +6296,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             row = _step3$value[1];
 
         // If no cells are selected for a particular rowIndex the selections array will contain an empty element for that rowIndex.
-        if (!row) continue;
+        if (!row) continue; // Convert to string for easy comparison to the first row.
+
+        var rowAsString = row.join(',').toString();
+        var rowDict = {};
+        if (!firstRowAsString) firstRowAsString = row.join(',').toString();
+        if (isNeat && rowAsString !== firstRowAsString) isNeat = false;
         var boundRowIndex = self.getBoundRowIndexFromViewRowIndex(rowIndex);
 
         var _iterator4 = _createForOfIteratorHelper(row),
@@ -6352,19 +6314,83 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             if (columnIndex < 0) continue;
             var boundColumnIndex = self.getBoundColumnIndexFromViewColumnIndex(columnIndex);
             var columnName = schema[boundColumnIndex].name;
-            self.viewData[boundRowIndex][columnName] = null;
-            affectedCells.push([rowIndex, columnIndex, boundRowIndex, boundColumnIndex]);
+            var value = self.originalData[boundRowIndex][columnName];
+            rowDict[columnName] = value;
           }
         } catch (err) {
           _iterator4.e(err);
         } finally {
           _iterator4.f();
         }
+
+        selectedData.push(rowDict);
       }
     } catch (err) {
       _iterator3.e(err);
     } finally {
       _iterator3.f();
+    }
+
+    if (selectedData.length > 0) {
+      var textString = (0,_events_util__WEBPACK_IMPORTED_MODULE_0__.createTextString)(selectedData, isNeat);
+      var htmlString = (0,_events_util__WEBPACK_IMPORTED_MODULE_0__.createHTMLString)(selectedData, isNeat);
+      var copiedData = {
+        'text/plain': textString,
+        'text/html': htmlString,
+        'text/csv': textString,
+        'application/json': JSON.stringify(selectedData)
+      };
+
+      for (var _i2 = 0, _Object$entries = Object.entries(copiedData); _i2 < _Object$entries.length; _i2++) {
+        var _Object$entries$_i = _slicedToArray(_Object$entries[_i2], 2),
+            mimeType = _Object$entries$_i[0],
+            data = _Object$entries$_i[1];
+
+        clipboardData.setData(mimeType, data);
+      }
+    }
+  };
+
+  self.clearSelectedCells = function () {
+    var schema = self.getSchema();
+    var affectedCells = [];
+
+    var _iterator5 = _createForOfIteratorHelper(self.selections.entries()),
+        _step5;
+
+    try {
+      for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+        var _step5$value = _slicedToArray(_step5.value, 2),
+            rowIndex = _step5$value[0],
+            row = _step5$value[1];
+
+        // If no cells are selected for a particular rowIndex the selections array will contain an empty element for that rowIndex.
+        if (!row) continue;
+        var boundRowIndex = self.getBoundRowIndexFromViewRowIndex(rowIndex);
+
+        var _iterator6 = _createForOfIteratorHelper(row),
+            _step6;
+
+        try {
+          for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+            var columnIndex = _step6.value;
+            // If the whole row is selected the columnIndex for the rowHeader is -1.
+            if (columnIndex < 0) continue;
+            var boundColumnIndex = self.getBoundColumnIndexFromViewColumnIndex(columnIndex);
+            var columnName = schema[boundColumnIndex].name;
+            self.viewData[boundRowIndex][columnName] = '';
+            affectedCells.push([rowIndex, columnIndex, boundRowIndex, boundColumnIndex]);
+          }
+        } catch (err) {
+          _iterator6.e(err);
+        } finally {
+          _iterator6.f();
+        }
+      }
+    } catch (err) {
+      _iterator5.e(err);
+    } finally {
+      _iterator5.f();
     }
 
     return affectedCells;
@@ -6446,6 +6472,39 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     self.orders.rows = fillArray(0, self.originalData.length - 1);
   };
 
+  self.fitSelectedColumns = function (width) {
+    var selectedColumns = self.selections[0];
+    var schema = self.getSchema();
+
+    var _iterator7 = _createForOfIteratorHelper(selectedColumns),
+        _step7;
+
+    try {
+      for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+        var selectedColumn = _step7.value;
+
+        // Make sure the column is not the row header and that the whole column has in fact been selected.
+        if (selectedColumn >= 0 && self.isColumnSelected(selectedColumn)) {
+          if (isNaN(width)) {
+            var column = schema[self.orders.columns[selectedColumn]];
+            self.fitColumnToValues(column.name);
+          } else {
+            self.sizes.columns[selectedColumn] = width;
+            self.dispatchEvent('resizecolumn', {
+              x: width,
+              y: self.resizingStartingHeight,
+              draggingItem: self.currentCell
+            });
+          }
+        }
+      }
+    } catch (err) {
+      _iterator7.e(err);
+    } finally {
+      _iterator7.f();
+    }
+  };
+
   self.getVisibleSchema = function () {
     return self.getSchema().filter(function (col) {
       return !col.hidden;
@@ -6512,9 +6571,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }); // Apply filtering
 
     var _loop = function _loop() {
-      var _Object$entries$_i = _slicedToArray(_Object$entries[_i2], 2),
-          headerName = _Object$entries$_i[0],
-          filterText = _Object$entries$_i[1];
+      var _Object$entries2$_i = _slicedToArray(_Object$entries2[_i3], 2),
+          headerName = _Object$entries2$_i[0],
+          filterText = _Object$entries2$_i[1];
 
       var header = self.getHeaderByName(headerName);
 
@@ -6533,19 +6592,19 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       });
     };
 
-    for (var _i2 = 0, _Object$entries = Object.entries(self.columnFilters); _i2 < _Object$entries.length; _i2++) {
+    for (var _i3 = 0, _Object$entries2 = Object.entries(self.columnFilters); _i3 < _Object$entries2.length; _i3++) {
       var _ret = _loop();
 
       if (_ret === "continue") continue;
     } // Apply sorting
 
 
-    var _iterator5 = _createForOfIteratorHelper(self.orderings.columns),
-        _step5;
+    var _iterator8 = _createForOfIteratorHelper(self.orderings.columns),
+        _step8;
 
     try {
       var _loop2 = function _loop2() {
-        var column = _step5.value;
+        var column = _step8.value;
         var sortFn = column.sortFunction(column.orderBy, column.orderDirection);
         newViewData.sort(function (_ref7, _ref8) {
           var _ref9 = _slicedToArray(_ref7, 1),
@@ -6560,13 +6619,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         });
       };
 
-      for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+      for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
         _loop2();
       }
     } catch (err) {
-      _iterator5.e(err);
+      _iterator8.e(err);
     } finally {
-      _iterator5.f();
+      _iterator8.f();
     }
 
     return {
