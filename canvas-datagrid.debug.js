@@ -4826,18 +4826,30 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     self.ellipsisCache = {};
   };
 
-  self.stopDragResize = function (event) {
-    var pos = self.getLayerPos(event);
+  self.stopDragResize = function (e) {
+    var pos = self.getLayerPos(e);
+    var hasMoved = !!(pos.x - self.dragStart.x);
+    var width = self.resizingStartingWidth + pos.x - self.dragStart.x;
 
     if (self.dragMode === 'ew-resize') {
-      var hasMoved = !!(pos.x - self.dragStart.x); // Check that dragItem is selected or part of selection.
-
+      var selectedColumns = self.selections[0];
       var dragItemIsSelected = self.isColumnSelected(self.dragItem.columnIndex);
 
-      if (hasMoved && dragItemIsSelected) {
-        var width = Math.max(self.resizingStartingWidth + pos.x - self.dragStart.x, self.style.minColumnWidth); // If the column is selected, resize it to width plus any other selected columns.
+      if (dragItemIsSelected) {
+        var _iterator = _createForOfIteratorHelper(selectedColumns),
+            _step;
 
-        self.fitSelectedColumns(width);
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var selectedColumnIndex = _step.value;
+            var boundColumnIndex = self.getBoundColumnIndexFromViewColumnIndex(selectedColumnIndex);
+            if (hasMoved && dragItemIsSelected && self.isColumnSelected(selectedColumnIndex)) self.sizes.columns[boundColumnIndex] = width;
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
       }
     }
 
@@ -5486,12 +5498,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }
       }
 
-      var _iterator = _createForOfIteratorHelper(self.selections),
-          _step;
+      var _iterator2 = _createForOfIteratorHelper(self.selections),
+          _step2;
 
       try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var selection = _step.value;
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var selection = _step2.value;
 
           if (e.key === 'ArrowRight' && selection) {
             if (x > lastSelectedColumn) {
@@ -5514,9 +5526,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           }
         }
       } catch (err) {
-        _iterator.e(err);
+        _iterator2.e(err);
       } finally {
-        _iterator.f();
+        _iterator2.f();
       }
 
       self.selectionBounds = self.getSelectionBounds();
@@ -6472,7 +6484,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     self.orders.rows = fillArray(0, self.originalData.length - 1);
   };
 
-  self.fitSelectedColumns = function (width) {
+  self.fitSelectedColumns = function () {
     var selectedColumns = self.selections[0];
     var schema = self.getSchema();
 
@@ -6485,17 +6497,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
         // Make sure the column is not the row header and that the whole column has in fact been selected.
         if (selectedColumn >= 0 && self.isColumnSelected(selectedColumn)) {
-          if (isNaN(width)) {
-            var column = schema[self.orders.columns[selectedColumn]];
-            self.fitColumnToValues(column.name);
-          } else {
-            self.sizes.columns[selectedColumn] = width;
-            self.dispatchEvent('resizecolumn', {
-              x: width,
-              y: self.resizingStartingHeight,
-              draggingItem: self.currentCell
-            });
-          }
+          var column = schema[self.orders.columns[selectedColumn]];
+          self.fitColumnToValues(column.name);
         }
       }
     } catch (err) {
