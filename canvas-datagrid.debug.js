@@ -4826,30 +4826,18 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     self.ellipsisCache = {};
   };
 
-  self.stopDragResize = function (e) {
-    var pos = self.getLayerPos(e);
-    var hasMoved = !!(pos.x - self.dragStart.x);
-    var width = self.resizingStartingWidth + pos.x - self.dragStart.x;
+  self.stopDragResize = function (event) {
+    var pos = self.getLayerPos(event);
 
     if (self.dragMode === 'ew-resize') {
-      var selectedColumns = self.selections[0];
+      var hasMoved = !!(pos.x - self.dragStart.x); // Check that dragItem is selected or part of selection.
+
       var dragItemIsSelected = self.isColumnSelected(self.dragItem.columnIndex);
 
-      if (dragItemIsSelected) {
-        var _iterator = _createForOfIteratorHelper(selectedColumns),
-            _step;
+      if (hasMoved && dragItemIsSelected) {
+        var width = Math.max(self.resizingStartingWidth + pos.x - self.dragStart.x, self.style.minColumnWidth); // If the column is selected, resize it to width plus any other selected columns.
 
-        try {
-          for (_iterator.s(); !(_step = _iterator.n()).done;) {
-            var selectedColumnIndex = _step.value;
-            var boundColumnIndex = self.getBoundColumnIndexFromViewColumnIndex(selectedColumnIndex);
-            if (hasMoved && dragItemIsSelected && self.isColumnSelected(selectedColumnIndex)) self.sizes.columns[boundColumnIndex] = width;
-          }
-        } catch (err) {
-          _iterator.e(err);
-        } finally {
-          _iterator.f();
-        }
+        self.fitSelectedColumns(width);
       }
     }
 
@@ -5498,12 +5486,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }
       }
 
-      var _iterator2 = _createForOfIteratorHelper(self.selections),
-          _step2;
+      var _iterator = _createForOfIteratorHelper(self.selections),
+          _step;
 
       try {
-        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-          var selection = _step2.value;
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var selection = _step.value;
 
           if (e.key === 'ArrowRight' && selection) {
             if (x > lastSelectedColumn) {
@@ -5526,9 +5514,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           }
         }
       } catch (err) {
-        _iterator2.e(err);
+        _iterator.e(err);
       } finally {
-        _iterator2.f();
+        _iterator.f();
       }
 
       self.selectionBounds = self.getSelectionBounds();
@@ -5821,19 +5809,19 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     });
   };
 
-  self.cut = function (e) {
+  self.cut = function (event) {
     if (self.dispatchEvent('cut', {
-      NativeEvent: e
+      NativeEvent: event
     })) {
       return;
     } // Expecting instance of `ClipboardEvent` with `clipboardData` attribute
 
 
-    if (!self.hasFocus || !e.clipboardData) {
+    if (!self.hasFocus || !event.clipboardData) {
       return;
     }
 
-    self.copySelectedCellsToClipboard(e.clipboardData);
+    self.copySelectedCellsToClipboard(event.clipboardData);
     var affectedCells = self.clearSelectedCells();
     self.dispatchEvent('aftercut', {
       cells: affectedCells
@@ -5841,22 +5829,23 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     requestAnimationFrame(function () {
       return self.draw();
     });
+    event.preventDefault();
   };
 
-  self.copy = function (e) {
+  self.copy = function (event) {
     if (self.dispatchEvent('copy', {
-      NativeEvent: e
+      NativeEvent: event
     })) {
       return;
     } // Expecting instance of `ClipboardEvent` with `clipboardData` attribute
 
 
-    if (!self.hasFocus || !e.clipboardData) {
+    if (!self.hasFocus || !event.clipboardData) {
       return;
     }
 
-    self.copySelectedCellsToClipboard(e.clipboardData);
-    e.preventDefault();
+    self.copySelectedCellsToClipboard(event.clipboardData);
+    event.preventDefault();
   };
 
   return;
@@ -6484,7 +6473,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     self.orders.rows = fillArray(0, self.originalData.length - 1);
   };
 
-  self.fitSelectedColumns = function () {
+  self.fitSelectedColumns = function (width) {
     var selectedColumns = self.selections[0];
     var schema = self.getSchema();
 
@@ -6497,8 +6486,17 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
         // Make sure the column is not the row header and that the whole column has in fact been selected.
         if (selectedColumn >= 0 && self.isColumnSelected(selectedColumn)) {
-          var column = schema[self.orders.columns[selectedColumn]];
-          self.fitColumnToValues(column.name);
+          if (isNaN(width)) {
+            var column = schema[self.orders.columns[selectedColumn]];
+            self.fitColumnToValues(column.name);
+          } else {
+            self.sizes.columns[selectedColumn] = width;
+            self.dispatchEvent('resizecolumn', {
+              x: width,
+              y: self.resizingStartingHeight,
+              draggingItem: self.currentCell
+            });
+          }
         }
       }
     } catch (err) {
