@@ -2,7 +2,7 @@ import { click, assertPxColor, g, dataForGrouping, c } from './util.js';
 
 export default function () {
   const assert = chai.assert;
-  it('Arguments for groupColumns should be existing column names.', async function () {
+  it('Arguments for groupColumns should be existing column names.', function (done) {
     const grid = g({
       test: this.test,
       data: dataForGrouping(),
@@ -10,8 +10,9 @@ export default function () {
     assert.throws(() => {
       grid.groupColumns('col0', 'col1');
     }, /No such column name/);
+    done();
   });
-  it('Arguments for groupRows should be existing row indexes.', async function () {
+  it('Arguments for groupRows should be existing row indexes.', function (done) {
     const grid = g({
       test: this.test,
       data: dataForGrouping(),
@@ -19,6 +20,7 @@ export default function () {
     assert.throws(() => {
       grid.groupRows(-1, 5);
     }, /No such row/);
+    done();
   });
 
   it('Should draw group area and trigger event. (columns)', async function () {
@@ -121,7 +123,7 @@ export default function () {
     );
   });
 
-  it('Click group lines/indicators to toggle group state. (columns)', async function () {
+  it('Click group lines/indicators to toggle group state. (columns)', function (done) {
     const grid = g({
       test: this.test,
       data: dataForGrouping(),
@@ -171,9 +173,10 @@ export default function () {
       cellsLength,
       'visible cells after expand all',
     );
+    done();
   });
 
-  it('Click group lines/indicators to toggle group state. (rows)', async function () {
+  it('Click group lines/indicators to toggle group state. (rows)', function (done) {
     const grid = g({
       test: this.test,
       data: dataForGrouping(),
@@ -205,7 +208,51 @@ export default function () {
       cellsLength,
       'visible cells after expand all',
     );
-    // debugger
+    done();
+  });
+
+  it('Groups can be toggled by public methods.', function (done) {
+    const grid = g({
+      test: this.test,
+      data: dataForGrouping(),
+    });
+
+    let cells;
+    let cellsLength = getVisibleCells(grid).length;
+
+    grid.groupRows(1, 2);
+    grid.groupRows(1, 3);
+    cells = getVisibleCells(grid);
+    assert.deepEqual(cells.length, cellsLength);
+
+    grid.toggleGroupRows(0, 4);
+    cells = getVisibleCells(grid);
+    assert.deepEqual(cells.length, cellsLength);
+
+    grid.toggleGroupRows(1, 3);
+    cells = getVisibleCells(grid);
+    for (let i = 0; i < cells.length; i++)
+      assert.deepEqual(cells[i].rowIndex, 0);
+
+    grid.toggleGroupRows(1, 3);
+    cells = getVisibleCells(grid);
+    assert.deepEqual(cells.length, cellsLength);
+
+    grid.groupColumns('name', 'sex');
+    cells = getVisibleCells(grid);
+    assert.deepEqual(cells.length, cellsLength);
+
+    grid.toggleGroupColumns('name', 'sex');
+    cells = getVisibleCells(grid);
+    for (let i = 0; i < cells.length; i++) {
+      const headerName = cells[i].header.name;
+      assert.deepEqual(headerName, 'weight');
+    }
+
+    grid.toggleGroupColumns('name', 'sex');
+    cells = getVisibleCells(grid);
+    assert.deepEqual(cells.length, cellsLength);
+    done();
   });
 
   function getVisibleCells(grid) {
