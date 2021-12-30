@@ -30,6 +30,15 @@ export var smallData = function () {
   ];
 };
 
+export const dataForGrouping = function () {
+  return [
+    { name: 'Mike', age: 40, sex: 'M', weight: 80 },
+    { name: 'Janet', age: 20, sex: 'F', weight: 50 },
+    { name: 'Wali', age: 30, sex: 'F', weight: 60 },
+    { name: 'John', age: 50, sex: 'M', weight: 77 },
+  ];
+};
+
 // Get color `c` of rgb vector `v`
 //  Note: See c = {...} above for color options
 export function getC(v) {
@@ -103,14 +112,15 @@ export function marker(grid, x, y) {
 }
 
 export function assertPxColorFn(grid, x, y, expected) {
-  var d, match, e;
+  var d, d2, match, e;
   x = x * window.devicePixelRatio;
   y = y * window.devicePixelRatio;
   return function (callback) {
     function f() {
       d = grid.ctx.getImageData(x, y, 1, 1).data;
+      d2 = 'rgba(' + [d['0'], d['1'], d['2'], '1'].join(', ') + ')';
       d = 'rgb(' + [d['0'], d['1'], d['2']].join(', ') + ')';
-      match = d === expected;
+      match = d === expected || d2 === expected;
       if (expected !== undefined) {
         e = new Error(
           'Expected color ' + getC(expected) + ' but got color ' + getC(d),
