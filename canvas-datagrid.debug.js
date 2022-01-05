@@ -1538,12 +1538,19 @@ __webpack_require__.r(__webpack_exports__);
         s = e,
         h,
         w;
+    var calculatedTree = false;
 
     while (e.offsetParent && e.nodeName !== 'CANVAS-DATAGRID') {
-      x += e.offsetLeft;
-      y += e.offsetTop;
-      h = e.offsetHeight;
-      w = e.offsetWidth;
+      var isTree = e.nodeType === 'canvas-datagrid-tree';
+
+      if (!isTree || !calculatedTree) {
+        x += e.offsetLeft;
+        y += e.offsetTop;
+        h = e.offsetHeight;
+        w = e.offsetWidth;
+      }
+
+      if (isTree) calculatedTree = true;
       e = e.offsetParent;
     }
 
@@ -4959,6 +4966,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     if (Math.abs(x) > self.attributes.reorderDeadZone || Math.abs(y) > self.attributes.reorderDeadZone) {
       self.reorderObject = self.draggingItem;
       if (self.isMultiRowsSelected) self.reorderObject = self.getVisibleCellByIndex(-1, self.activeCell.rowIndex);
+      if (!self.reorderObject) return;
       self.reorderTarget = self.currentCell;
       self.reorderObject.dragOffset = {
         x: x,
@@ -6006,7 +6014,7 @@ var parseData = function parseData(data, mimeType) {
 };
 
 var htmlSafe = function htmlSafe(value) {
-  if (typeof value === 'number') return value;
+  if (typeof value !== 'string') return value;
   return value.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 };
 
@@ -8471,9 +8479,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
   self.scrollIntoView = function (x, y, offsetX, offsetY) {
-    if (self.visibleCells.filter(function (cell) {
+    var matched = self.visibleCells.filter(function (cell) {
       return (cell.rowIndex === y || y === undefined) && (cell.columnIndex === x || x === undefined) && cell.x > 0 && cell.y > 0 && cell.x + cell.width < self.width && cell.y + cell.height < self.height;
-    }).length === 0) {
+    });
+
+    if (matched.length === 1 && x !== undefined && y !== undefined) {
+      // goto specific cell and its part be hidden by header
+      if (matched[0].x < self.getRowHeaderCellWidth() || matched[0].y < self.getColumnHeaderCellHeight()) matched.length = 0;
+    }
+
+    if (matched.length === 0) {
       self.gotoCell(x, y, offsetX, offsetY);
     }
   };
