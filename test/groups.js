@@ -1,4 +1,11 @@
-import { click, assertPxColor, g, dataForGrouping, c } from './util.js';
+import {
+  click,
+  assertPxColorFn,
+  g,
+  dataForGrouping,
+  c,
+  savePartOfCanvasToString,
+} from './util.js';
 
 export default function () {
   const assert = chai.assert;
@@ -260,12 +267,31 @@ export default function () {
       (it) => it.style === 'cell' || it.style === 'activeCell',
     );
   }
-  function assertColor(grid, x, y, color) {
+  function assertColor(grid, x, y, color, debugContext = false) {
     return new Promise((resolve, reject) => {
-      assertPxColor(grid, x, y, color, (err) => {
-        if (err) return reject(err);
-        return resolve();
+      assertPxColorFn(
+        grid,
+        x,
+        y,
+        color,
+        false,
+      )((err) => {
+        if (err) {
+          printContext();
+          return reject(err);
+        }
+        if (debugContext) printContext();
+        return setTimeout(resolve, 30);
       });
     });
+    function printContext() {
+      x--;
+      y--;
+      const w = 51;
+      const h = 51;
+      const dpr = ` DPR=${window.devicePixelRatio}`;
+      console.error(`Color context at [${[x, y, w, h].join(', ')}]${dpr}`);
+      console.error(savePartOfCanvasToString(grid, x, y, w, h));
+    }
   }
 }
