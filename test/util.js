@@ -111,7 +111,25 @@ export function marker(grid, x, y) {
   });
 }
 
-export function assertPxColorFn(grid, x, y, expected) {
+/**
+ * Convert part image of the grid to string to debug
+ */
+export function savePartOfCanvasToString(grid, x, y, w, h) {
+  const tmpCanvas = document.createElement('canvas');
+  const dpr = window.devicePixelRatio;
+  const sw = 100 * dpr;
+  const sh = 100 * dpr;
+  x = x * dpr;
+  y = y * dpr;
+  if (x < 0) x = 0;
+  if (y < 0) y = 0;
+  tmpCanvas.width = w;
+  tmpCanvas.height = h;
+  tmpCanvas.getContext('2d').drawImage(grid.canvas, x, y, sw, sh, 0, 0, w, h);
+  return tmpCanvas.toDataURL('image/png');
+}
+
+export function assertPxColorFn(grid, x, y, expected, drawMarker = true) {
   var d, d2, match, e;
   x = x * window.devicePixelRatio;
   y = y * window.devicePixelRatio;
@@ -129,7 +147,7 @@ export function assertPxColorFn(grid, x, y, expected) {
           console.error(e);
         }
         if (callback) {
-          marker(grid, x, y);
+          if (drawMarker) marker(grid, x, y);
           return callback(expected && !match ? e : undefined);
         }
       }
