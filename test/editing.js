@@ -240,6 +240,36 @@ export default function () {
 
       done();
     });
+    it('null value is not cast to `null`', function () {
+      const data = [
+        {
+          d: null,
+        },
+      ];
+
+      const grid = g({
+        test: this.test,
+        data,
+      });
+
+      grid.selectAll();
+      grid.focus();
+
+      const textResult = ``;
+      const htmlResult = '<table><tr><td></td></tr></table>';
+
+      grid.copy(new Object(fakeClipboardEvent));
+      const { clipboardData } = fakeClipboardEvent;
+
+      doAssert(
+        clipboardData.data['text/plain'] === textResult,
+        'Expected plain text to be copied',
+      );
+      doAssert(
+        clipboardData.data['text/html'] === htmlResult,
+        'Expected html text to be copied',
+      );
+    });
   });
   it('Should paste a value from the clipboard into a cell', function (done) {
     var grid = g({
