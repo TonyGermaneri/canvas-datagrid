@@ -106795,7 +106795,7 @@ window.reflection = [
         "meta": {
             "range": [
                 180,
-                59022
+                59135
             ],
             "filename": "publicMethods.js",
             "lineno": 5,
@@ -118296,7 +118296,7 @@ window.reflection = [
         "___s": true
     },
     {
-        "comment": "/**\n   * @memberof canvasDatagrid\n   * @name getColumnGroupAt\n   * @method\n   * @param {number} x Number of pixels from the left.\n   * @param {number} y Number of pixels from the top.\n   */",
+        "comment": "/**\n   * Get a column group at grid pixel coordinate x and y.\n   * @memberof canvasDatagrid\n   * @name getColumnGroupAt\n   * @method\n   * @param {number} x Number of pixels from the left.\n   * @param {number} y Number of pixels from the top.\n   */",
         "meta": {
             "filename": "publicMethods.js",
             "lineno": 1339,
@@ -118304,6 +118304,7 @@ window.reflection = [
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {}
         },
+        "description": "Get a column group at grid pixel coordinate x and y.",
         "memberof": "canvasDatagrid",
         "name": "getColumnGroupAt",
         "kind": "function",
@@ -118336,11 +118337,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42063,
-                42470
+                42121,
+                42528
             ],
             "filename": "publicMethods.js",
-            "lineno": 1346,
+            "lineno": 1347,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -118372,11 +118373,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42115,
-                42150
+                42173,
+                42208
             ],
             "filename": "publicMethods.js",
-            "lineno": 1347,
+            "lineno": 1348,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -118400,11 +118401,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42191,
-                42230
+                42249,
+                42288
             ],
             "filename": "publicMethods.js",
-            "lineno": 1349,
+            "lineno": 1350,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -118428,11 +118429,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42273,
-                42278
+                42331,
+                42336
             ],
             "filename": "publicMethods.js",
-            "lineno": 1351,
+            "lineno": 1352,
             "columnno": 13,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -118456,11 +118457,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42330,
-                42355
+                42388,
+                42413
             ],
             "filename": "publicMethods.js",
-            "lineno": 1352,
+            "lineno": 1353,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -118481,14 +118482,15 @@ window.reflection = [
         "___s": true
     },
     {
-        "comment": "/**\n   * @memberof canvasDatagrid\n   * @name getRowGroupAt\n   * @method\n   * @param {number} x Number of pixels from the left.\n   * @param {number} y Number of pixels from the top.\n   */",
+        "comment": "/**\n   * Get a row group at grid pixel coordinate x and y.\n   * @memberof canvasDatagrid\n   * @name getRowGroupAt\n   * @method\n   * @param {number} x Number of pixels from the left.\n   * @param {number} y Number of pixels from the top.\n   */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 1357,
+            "lineno": 1358,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {}
         },
+        "description": "Get a row group at grid pixel coordinate x and y.",
         "memberof": "canvasDatagrid",
         "name": "getRowGroupAt",
         "kind": "function",
@@ -118521,11 +118523,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42663,
-                43060
+                42776,
+                43173
             ],
             "filename": "publicMethods.js",
-            "lineno": 1364,
+            "lineno": 1366,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -118557,11 +118559,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42712,
-                42744
+                42825,
+                42857
             ],
             "filename": "publicMethods.js",
-            "lineno": 1365,
+            "lineno": 1367,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -118585,11 +118587,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42785,
-                42820
+                42898,
+                42933
             ],
             "filename": "publicMethods.js",
-            "lineno": 1367,
+            "lineno": 1369,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -118613,11 +118615,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42863,
-                42868
+                42976,
+                42981
             ],
             "filename": "publicMethods.js",
-            "lineno": 1369,
+            "lineno": 1371,
             "columnno": 13,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -118641,11 +118643,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                42920,
-                42945
+                43033,
+                43058
             ],
             "filename": "publicMethods.js",
-            "lineno": 1370,
+            "lineno": 1372,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -118669,7 +118671,7 @@ window.reflection = [
         "comment": "/**\n   * Gets the cell at grid pixel coordinate x and y.  Author's note.  This function ties drawing and events together.  This is a very complex function and is core to the component.\n   * @memberof canvasDatagrid\n   * @name getCellAt\n   * @method\n   * @returns {cell} cell at the selected location.\n   * @param {number} x Number of pixels from the left.\n   * @param {number} y Number of pixels from the top.\n   */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 1375,
+            "lineno": 1377,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {}
@@ -118717,11 +118719,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43482,
-                51131
+                43595,
+                51244
             ],
             "filename": "publicMethods.js",
-            "lineno": 1384,
+            "lineno": 1386,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -118774,11 +118776,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                43542,
-                44375
+                43655,
+                44488
             ],
             "filename": "publicMethods.js",
-            "lineno": 1385,
+            "lineno": 1387,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -118804,11 +118806,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44430,
-                44462
+                44543,
+                44575
             ],
             "filename": "publicMethods.js",
-            "lineno": 1416,
+            "lineno": 1418,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -118833,11 +118835,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44468,
-                44504
+                44581,
+                44617
             ],
             "filename": "publicMethods.js",
-            "lineno": 1417,
+            "lineno": 1419,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -118862,11 +118864,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44514,
-                44520
+                44627,
+                44633
             ],
             "filename": "publicMethods.js",
-            "lineno": 1418,
+            "lineno": 1420,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -118888,11 +118890,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44528,
-                44591
+                44641,
+                44704
             ],
             "filename": "publicMethods.js",
-            "lineno": 1419,
+            "lineno": 1421,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -118916,11 +118918,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44599,
-                44655
+                44712,
+                44768
             ],
             "filename": "publicMethods.js",
-            "lineno": 1420,
+            "lineno": 1422,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -118944,11 +118946,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44663,
-                44664
+                44776,
+                44777
             ],
             "filename": "publicMethods.js",
-            "lineno": 1421,
+            "lineno": 1423,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -118970,11 +118972,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44672,
-                44700
+                44785,
+                44813
             ],
             "filename": "publicMethods.js",
-            "lineno": 1422,
+            "lineno": 1424,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -118998,11 +119000,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44708,
-                44718
+                44821,
+                44831
             ],
             "filename": "publicMethods.js",
-            "lineno": 1423,
+            "lineno": 1425,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119024,11 +119026,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44726,
-                44784
+                44839,
+                44897
             ],
             "filename": "publicMethods.js",
-            "lineno": 1424,
+            "lineno": 1426,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119052,11 +119054,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44792,
-                44850
+                44905,
+                44963
             ],
             "filename": "publicMethods.js",
-            "lineno": 1425,
+            "lineno": 1427,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119080,11 +119082,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44858,
-                44862
+                44971,
+                44975
             ],
             "filename": "publicMethods.js",
-            "lineno": 1426,
+            "lineno": 1428,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119106,11 +119108,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44870,
-                44877
+                44983,
+                44990
             ],
             "filename": "publicMethods.js",
-            "lineno": 1427,
+            "lineno": 1429,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119132,11 +119134,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                44962,
-                44982
+                45075,
+                45095
             ],
             "filename": "publicMethods.js",
-            "lineno": 1431,
+            "lineno": 1433,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119160,11 +119162,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45056,
-                45077
+                45169,
+                45190
             ],
             "filename": "publicMethods.js",
-            "lineno": 1433,
+            "lineno": 1435,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119188,11 +119190,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45102,
-                45124
+                45215,
+                45237
             ],
             "filename": "publicMethods.js",
-            "lineno": 1435,
+            "lineno": 1437,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119214,11 +119216,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45134,
-                45152
+                45247,
+                45265
             ],
             "filename": "publicMethods.js",
-            "lineno": 1436,
+            "lineno": 1438,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119240,11 +119242,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45178,
-                45183
+                45291,
+                45296
             ],
             "filename": "publicMethods.js",
-            "lineno": 1439,
+            "lineno": 1441,
             "columnno": 9,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119269,11 +119271,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45192,
-                45198
+                45305,
+                45311
             ],
             "filename": "publicMethods.js",
-            "lineno": 1439,
+            "lineno": 1441,
             "columnno": 23,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119298,11 +119300,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45208,
-                45235
+                45321,
+                45348
             ],
             "filename": "publicMethods.js",
-            "lineno": 1440,
+            "lineno": 1442,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119327,11 +119329,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45322,
-                45435
+                45435,
+                45548
             ],
             "filename": "publicMethods.js",
-            "lineno": 1442,
+            "lineno": 1444,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119356,11 +119358,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45342,
-                45351
+                45455,
+                45464
             ],
             "filename": "publicMethods.js",
-            "lineno": 1443,
+            "lineno": 1445,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119383,11 +119385,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45361,
-                45370
+                45474,
+                45483
             ],
             "filename": "publicMethods.js",
-            "lineno": 1444,
+            "lineno": 1446,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119410,11 +119412,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45380,
-                45399
+                45493,
+                45512
             ],
             "filename": "publicMethods.js",
-            "lineno": 1445,
+            "lineno": 1447,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119437,11 +119439,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45409,
-                45426
+                45522,
+                45539
             ],
             "filename": "publicMethods.js",
-            "lineno": 1446,
+            "lineno": 1448,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119464,11 +119466,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45554,
-                45570
+                45667,
+                45683
             ],
             "filename": "publicMethods.js",
-            "lineno": 1452,
+            "lineno": 1454,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119493,11 +119495,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45580,
-                45596
+                45693,
+                45709
             ],
             "filename": "publicMethods.js",
-            "lineno": 1453,
+            "lineno": 1455,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119522,11 +119524,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45606,
-                45627
+                45719,
+                45740
             ],
             "filename": "publicMethods.js",
-            "lineno": 1454,
+            "lineno": 1456,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119551,11 +119553,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45637,
-                45657
+                45750,
+                45770
             ],
             "filename": "publicMethods.js",
-            "lineno": 1455,
+            "lineno": 1457,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119580,11 +119582,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                45996,
-                46025
+                46109,
+                46138
             ],
             "filename": "publicMethods.js",
-            "lineno": 1464,
+            "lineno": 1466,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119609,11 +119611,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46037,
-                46064
+                46150,
+                46177
             ],
             "filename": "publicMethods.js",
-            "lineno": 1465,
+            "lineno": 1467,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119638,11 +119640,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46164,
-                46193
+                46277,
+                46306
             ],
             "filename": "publicMethods.js",
-            "lineno": 1469,
+            "lineno": 1471,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119667,11 +119669,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46205,
-                46232
+                46318,
+                46345
             ],
             "filename": "publicMethods.js",
-            "lineno": 1470,
+            "lineno": 1472,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119696,11 +119698,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46329,
-                46358
+                46442,
+                46471
             ],
             "filename": "publicMethods.js",
-            "lineno": 1474,
+            "lineno": 1476,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119725,11 +119727,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46370,
-                46396
+                46483,
+                46509
             ],
             "filename": "publicMethods.js",
-            "lineno": 1475,
+            "lineno": 1477,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119754,11 +119756,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46501,
-                46541
+                46614,
+                46654
             ],
             "filename": "publicMethods.js",
-            "lineno": 1479,
+            "lineno": 1481,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119783,11 +119785,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46553,
-                46589
+                46666,
+                46702
             ],
             "filename": "publicMethods.js",
-            "lineno": 1480,
+            "lineno": 1482,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119812,11 +119814,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46601,
-                46624
+                46714,
+                46737
             ],
             "filename": "publicMethods.js",
-            "lineno": 1481,
+            "lineno": 1483,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119841,11 +119843,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46636,
-                46667
+                46749,
+                46780
             ],
             "filename": "publicMethods.js",
-            "lineno": 1482,
+            "lineno": 1484,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119870,11 +119872,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46758,
-                46801
+                46871,
+                46914
             ],
             "filename": "publicMethods.js",
-            "lineno": 1484,
+            "lineno": 1486,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119899,11 +119901,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46815,
-                46854
+                46928,
+                46967
             ],
             "filename": "publicMethods.js",
-            "lineno": 1485,
+            "lineno": 1487,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119928,11 +119930,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46919,
-                46959
+                47032,
+                47072
             ],
             "filename": "publicMethods.js",
-            "lineno": 1487,
+            "lineno": 1489,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119957,11 +119959,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                46973,
-                47009
+                47086,
+                47122
             ],
             "filename": "publicMethods.js",
-            "lineno": 1488,
+            "lineno": 1490,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -119986,11 +119988,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47033,
-                47056
+                47146,
+                47169
             ],
             "filename": "publicMethods.js",
-            "lineno": 1490,
+            "lineno": 1492,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120014,11 +120016,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47163,
-                47205
+                47276,
+                47318
             ],
             "filename": "publicMethods.js",
-            "lineno": 1494,
+            "lineno": 1496,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120043,11 +120045,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47217,
-                47255
+                47330,
+                47368
             ],
             "filename": "publicMethods.js",
-            "lineno": 1495,
+            "lineno": 1497,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120072,11 +120074,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47267,
-                47290
+                47380,
+                47403
             ],
             "filename": "publicMethods.js",
-            "lineno": 1496,
+            "lineno": 1498,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120101,11 +120103,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47302,
-                47335
+                47415,
+                47448
             ],
             "filename": "publicMethods.js",
-            "lineno": 1497,
+            "lineno": 1499,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120130,11 +120132,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47425,
-                47469
+                47538,
+                47582
             ],
             "filename": "publicMethods.js",
-            "lineno": 1499,
+            "lineno": 1501,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120159,11 +120161,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47483,
-                47523
+                47596,
+                47636
             ],
             "filename": "publicMethods.js",
-            "lineno": 1500,
+            "lineno": 1502,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120188,11 +120190,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47588,
-                47631
+                47701,
+                47744
             ],
             "filename": "publicMethods.js",
-            "lineno": 1502,
+            "lineno": 1504,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120217,11 +120219,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47645,
-                47684
+                47758,
+                47797
             ],
             "filename": "publicMethods.js",
-            "lineno": 1503,
+            "lineno": 1505,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120246,11 +120248,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47708,
-                47731
+                47821,
+                47844
             ],
             "filename": "publicMethods.js",
-            "lineno": 1505,
+            "lineno": 1507,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120274,11 +120276,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47774,
-                47801
+                47887,
+                47914
             ],
             "filename": "publicMethods.js",
-            "lineno": 1508,
+            "lineno": 1510,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120303,11 +120305,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                47926,
-                48048
+                48039,
+                48161
             ],
             "filename": "publicMethods.js",
-            "lineno": 1510,
+            "lineno": 1512,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120332,11 +120334,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48685,
-                48711
+                48798,
+                48824
             ],
             "filename": "publicMethods.js",
-            "lineno": 1530,
+            "lineno": 1532,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120361,11 +120363,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48725,
-                48755
+                48838,
+                48868
             ],
             "filename": "publicMethods.js",
-            "lineno": 1531,
+            "lineno": 1533,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120390,11 +120392,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48877,
-                48907
+                48990,
+                49020
             ],
             "filename": "publicMethods.js",
-            "lineno": 1535,
+            "lineno": 1537,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120419,11 +120421,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                48921,
-                48956
+                49034,
+                49069
             ],
             "filename": "publicMethods.js",
-            "lineno": 1536,
+            "lineno": 1538,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120448,11 +120450,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                49537,
-                49563
+                49650,
+                49676
             ],
             "filename": "publicMethods.js",
-            "lineno": 1555,
+            "lineno": 1557,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120477,11 +120479,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                49577,
-                49607
+                49690,
+                49720
             ],
             "filename": "publicMethods.js",
-            "lineno": 1556,
+            "lineno": 1558,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120506,11 +120508,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                49726,
-                49756
+                49839,
+                49869
             ],
             "filename": "publicMethods.js",
-            "lineno": 1560,
+            "lineno": 1562,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120535,11 +120537,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                49770,
-                49805
+                49883,
+                49918
             ],
             "filename": "publicMethods.js",
-            "lineno": 1561,
+            "lineno": 1563,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120564,11 +120566,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                49913,
-                49934
+                50026,
+                50047
             ],
             "filename": "publicMethods.js",
-            "lineno": 1566,
+            "lineno": 1568,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120593,11 +120595,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                49946,
-                49981
+                50059,
+                50094
             ],
             "filename": "publicMethods.js",
-            "lineno": 1567,
+            "lineno": 1569,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120622,11 +120624,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                50270,
-                50295
+                50383,
+                50408
             ],
             "filename": "publicMethods.js",
-            "lineno": 1577,
+            "lineno": 1579,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120651,11 +120653,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                50309,
-                50330
+                50422,
+                50443
             ],
             "filename": "publicMethods.js",
-            "lineno": 1578,
+            "lineno": 1580,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120680,11 +120682,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                50363,
-                50393
+                50476,
+                50506
             ],
             "filename": "publicMethods.js",
-            "lineno": 1580,
+            "lineno": 1582,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120709,11 +120711,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                50407,
-                50439
+                50520,
+                50552
             ],
             "filename": "publicMethods.js",
-            "lineno": 1581,
+            "lineno": 1583,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120738,11 +120740,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                50523,
-                50544
+                50636,
+                50657
             ],
             "filename": "publicMethods.js",
-            "lineno": 1586,
+            "lineno": 1588,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120766,11 +120768,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                50556,
-                50586
+                50669,
+                50699
             ],
             "filename": "publicMethods.js",
-            "lineno": 1587,
+            "lineno": 1589,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120795,11 +120797,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                50598,
-                50624
+                50711,
+                50737
             ],
             "filename": "publicMethods.js",
-            "lineno": 1588,
+            "lineno": 1590,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120824,11 +120826,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                50711,
-                50732
+                50824,
+                50845
             ],
             "filename": "publicMethods.js",
-            "lineno": 1592,
+            "lineno": 1594,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120852,11 +120854,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                50744,
-                50769
+                50857,
+                50882
             ],
             "filename": "publicMethods.js",
-            "lineno": 1593,
+            "lineno": 1595,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120881,11 +120883,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                50781,
-                50802
+                50894,
+                50915
             ],
             "filename": "publicMethods.js",
-            "lineno": 1594,
+            "lineno": 1596,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120910,11 +120912,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                50845,
-                50870
+                50958,
+                50983
             ],
             "filename": "publicMethods.js",
-            "lineno": 1597,
+            "lineno": 1599,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120939,11 +120941,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                50880,
-                50901
+                50993,
+                51014
             ],
             "filename": "publicMethods.js",
-            "lineno": 1598,
+            "lineno": 1600,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120968,11 +120970,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                50942,
-                50962
+                51055,
+                51075
             ],
             "filename": "publicMethods.js",
-            "lineno": 1602,
+            "lineno": 1604,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -120996,11 +120998,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                50968,
-                50991
+                51081,
+                51104
             ],
             "filename": "publicMethods.js",
-            "lineno": 1603,
+            "lineno": 1605,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121024,11 +121026,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51012,
-                51037
+                51125,
+                51150
             ],
             "filename": "publicMethods.js",
-            "lineno": 1605,
+            "lineno": 1607,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121050,11 +121052,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51045,
-                51066
+                51158,
+                51179
             ],
             "filename": "publicMethods.js",
-            "lineno": 1606,
+            "lineno": 1608,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121076,11 +121078,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51074,
-                51093
+                51187,
+                51206
             ],
             "filename": "publicMethods.js",
-            "lineno": 1607,
+            "lineno": 1609,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121102,11 +121104,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51101,
-                51119
+                51214,
+                51232
             ],
             "filename": "publicMethods.js",
-            "lineno": 1608,
+            "lineno": 1610,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121128,7 +121130,7 @@ window.reflection = [
         "comment": "/**\n   * Gets the bounds of current selection.\n   * @returns {rect} selection.\n   * @memberof canvasDatagrid\n   * @name getSelectionBounds\n   * @method\n   */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 1611,
+            "lineno": 1613,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {}
@@ -121156,11 +121158,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51295,
-                51902
+                51408,
+                52015
             ],
             "filename": "publicMethods.js",
-            "lineno": 1618,
+            "lineno": 1620,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121188,11 +121190,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51343,
-                51377
+                51456,
+                51490
             ],
             "filename": "publicMethods.js",
-            "lineno": 1619,
+            "lineno": 1621,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121216,11 +121218,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51351,
-                51362
+                51464,
+                51475
             ],
             "filename": "publicMethods.js",
-            "lineno": 1619,
+            "lineno": 1621,
             "columnno": 16,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121243,11 +121245,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51364,
-                51375
+                51477,
+                51488
             ],
             "filename": "publicMethods.js",
-            "lineno": 1619,
+            "lineno": 1621,
             "columnno": 29,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121270,11 +121272,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51385,
-                51422
+                51498,
+                51535
             ],
             "filename": "publicMethods.js",
-            "lineno": 1620,
+            "lineno": 1622,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121298,11 +121300,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51394,
-                51406
+                51507,
+                51519
             ],
             "filename": "publicMethods.js",
-            "lineno": 1620,
+            "lineno": 1622,
             "columnno": 15,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121325,11 +121327,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51408,
-                51420
+                51521,
+                51533
             ],
             "filename": "publicMethods.js",
-            "lineno": 1620,
+            "lineno": 1622,
             "columnno": 29,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121352,11 +121354,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51489,
-                51495
+                51602,
+                51608
             ],
             "filename": "publicMethods.js",
-            "lineno": 1622,
+            "lineno": 1624,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121378,11 +121380,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51497,
-                51503
+                51610,
+                51616
             ],
             "filename": "publicMethods.js",
-            "lineno": 1622,
+            "lineno": 1624,
             "columnno": 18,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121404,11 +121406,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51511,
-                51554
+                51624,
+                51667
             ],
             "filename": "publicMethods.js",
-            "lineno": 1623,
+            "lineno": 1625,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121433,11 +121435,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51562,
-                51608
+                51675,
+                51721
             ],
             "filename": "publicMethods.js",
-            "lineno": 1624,
+            "lineno": 1626,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121462,11 +121464,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51616,
-                51650
+                51729,
+                51763
             ],
             "filename": "publicMethods.js",
-            "lineno": 1625,
+            "lineno": 1627,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121491,11 +121493,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51658,
-                51692
+                51771,
+                51805
             ],
             "filename": "publicMethods.js",
-            "lineno": 1626,
+            "lineno": 1628,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121520,11 +121522,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51700,
-                51739
+                51813,
+                51852
             ],
             "filename": "publicMethods.js",
-            "lineno": 1627,
+            "lineno": 1629,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121549,11 +121551,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51747,
-                51789
+                51860,
+                51902
             ],
             "filename": "publicMethods.js",
-            "lineno": 1628,
+            "lineno": 1630,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121578,11 +121580,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51818,
-                51828
+                51931,
+                51941
             ],
             "filename": "publicMethods.js",
-            "lineno": 1631,
+            "lineno": 1633,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121604,11 +121606,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51836,
-                51847
+                51949,
+                51960
             ],
             "filename": "publicMethods.js",
-            "lineno": 1632,
+            "lineno": 1634,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121630,11 +121632,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51855,
-                51869
+                51968,
+                51982
             ],
             "filename": "publicMethods.js",
-            "lineno": 1633,
+            "lineno": 1635,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121656,11 +121658,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                51877,
-                51890
+                51990,
+                52003
             ],
             "filename": "publicMethods.js",
-            "lineno": 1634,
+            "lineno": 1636,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121682,7 +121684,7 @@ window.reflection = [
         "comment": "/**\n   * Returns an auto generated schema based on data structure.\n   * @memberof canvasDatagrid\n   * @name getSchemaFromData\n   * @method\n   * @tutorial schema\n   * @returns {schema} schema A schema based on the first item in the data array.\n   */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 1637,
+            "lineno": 1639,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {}
@@ -121713,11 +121715,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                52157,
-                52914
+                52270,
+                53027
             ],
             "filename": "publicMethods.js",
-            "lineno": 1645,
+            "lineno": 1647,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121746,11 +121748,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                52201,
-                52227
+                52314,
+                52340
             ],
             "filename": "publicMethods.js",
-            "lineno": 1646,
+            "lineno": 1648,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121775,11 +121777,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                52262,
-                52269
+                52375,
+                52382
             ],
             "filename": "publicMethods.js",
-            "lineno": 1647,
+            "lineno": 1649,
             "columnno": 33,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121801,11 +121803,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                52349,
-                52389
+                52462,
+                52502
             ],
             "filename": "publicMethods.js",
-            "lineno": 1651,
+            "lineno": 1653,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121829,11 +121831,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                52399,
-                52662
+                52512,
+                52775
             ],
             "filename": "publicMethods.js",
-            "lineno": 1652,
+            "lineno": 1654,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121857,11 +121859,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                52415,
-                52424
+                52528,
+                52537
             ],
             "filename": "publicMethods.js",
-            "lineno": 1653,
+            "lineno": 1655,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121884,11 +121886,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                52436,
-                52538
+                52549,
+                52651
             ],
             "filename": "publicMethods.js",
-            "lineno": 1654,
+            "lineno": 1656,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121911,11 +121913,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                52550,
-                52562
+                52663,
+                52675
             ],
             "filename": "publicMethods.js",
-            "lineno": 1657,
+            "lineno": 1659,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121938,11 +121940,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                52574,
-                52592
+                52687,
+                52705
             ],
             "filename": "publicMethods.js",
-            "lineno": 1658,
+            "lineno": 1660,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121965,11 +121967,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                52604,
-                52614
+                52717,
+                52727
             ],
             "filename": "publicMethods.js",
-            "lineno": 1659,
+            "lineno": 1661,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -121992,11 +121994,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                52626,
-                52651
+                52739,
+                52764
             ],
             "filename": "publicMethods.js",
-            "lineno": 1660,
+            "lineno": 1662,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122019,11 +122021,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                52827,
-                52877
+                52940,
+                52990
             ],
             "filename": "publicMethods.js",
-            "lineno": 1667,
+            "lineno": 1669,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122048,7 +122050,7 @@ window.reflection = [
         "comment": "/**\n   * Clears the change log grid.changes that keeps track of changes to the data set.\n   * This does not undo changes or alter data it is simply a convince array to keep\n   * track of changes made to the data since last this method was called.\n   * @memberof canvasDatagrid\n   * @name clearChangeLog\n   * @method\n   */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 1672,
+            "lineno": 1674,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {}
@@ -122066,11 +122068,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                53242,
-                53304
+                53355,
+                53417
             ],
             "filename": "publicMethods.js",
-            "lineno": 1680,
+            "lineno": 1682,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122096,11 +122098,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                53282,
-                53299
+                53395,
+                53412
             ],
             "filename": "publicMethods.js",
-            "lineno": 1681,
+            "lineno": 1683,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122124,7 +122126,7 @@ window.reflection = [
         "comment": "/**\n   * Selects an area of the grid.\n   * @memberof canvasDatagrid\n   * @name selectArea\n   * @method\n   * @param {rect} bounds A rect object representing the selected values.\n   */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 1683,
+            "lineno": 1685,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {}
@@ -122153,11 +122155,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                53493,
-                54656
+                53606,
+                54769
             ],
             "filename": "publicMethods.js",
-            "lineno": 1690,
+            "lineno": 1692,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122193,11 +122195,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                53541,
-                53594
+                53654,
+                53707
             ],
             "filename": "publicMethods.js",
-            "lineno": 1691,
+            "lineno": 1693,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122221,11 +122223,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                53604,
-                53606
+                53717,
+                53719
             ],
             "filename": "publicMethods.js",
-            "lineno": 1692,
+            "lineno": 1694,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122247,11 +122249,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                53614,
-                53615
+                53727,
+                53728
             ],
             "filename": "publicMethods.js",
-            "lineno": 1693,
+            "lineno": 1695,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122273,11 +122275,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                53623,
-                53624
+                53736,
+                53737
             ],
             "filename": "publicMethods.js",
-            "lineno": 1694,
+            "lineno": 1696,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122299,11 +122301,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                53632,
-                53652
+                53745,
+                53765
             ],
             "filename": "publicMethods.js",
-            "lineno": 1695,
+            "lineno": 1697,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122327,11 +122329,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                53677,
-                53697
+                53790,
+                53810
             ],
             "filename": "publicMethods.js",
-            "lineno": 1697,
+            "lineno": 1699,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122355,11 +122357,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                53979,
-                54007
+                54092,
+                54120
             ],
             "filename": "publicMethods.js",
-            "lineno": 1708,
+            "lineno": 1710,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122384,11 +122386,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                54055,
-                54061
+                54168,
+                54174
             ],
             "filename": "publicMethods.js",
-            "lineno": 1710,
+            "lineno": 1712,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122413,11 +122415,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                54076,
-                54099
+                54189,
+                54212
             ],
             "filename": "publicMethods.js",
-            "lineno": 1712,
+            "lineno": 1714,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122441,11 +122443,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                54121,
-                54150
+                54234,
+                54263
             ],
             "filename": "publicMethods.js",
-            "lineno": 1714,
+            "lineno": 1716,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122470,11 +122472,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                54201,
-                54207
+                54314,
+                54320
             ],
             "filename": "publicMethods.js",
-            "lineno": 1716,
+            "lineno": 1718,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122499,11 +122501,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                54336,
-                54474
+                54449,
+                54587
             ],
             "filename": "publicMethods.js",
-            "lineno": 1723,
+            "lineno": 1725,
             "columnno": 4,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122528,11 +122530,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                54349,
-                54376
+                54462,
+                54489
             ],
             "filename": "publicMethods.js",
-            "lineno": 1724,
+            "lineno": 1726,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122555,11 +122557,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                54384,
-                54421
+                54497,
+                54534
             ],
             "filename": "publicMethods.js",
-            "lineno": 1725,
+            "lineno": 1727,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122582,11 +122584,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                54429,
-                54467
+                54542,
+                54580
             ],
             "filename": "publicMethods.js",
-            "lineno": 1726,
+            "lineno": 1728,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122609,11 +122611,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                54530,
-                54595
+                54643,
+                54708
             ],
             "filename": "publicMethods.js",
-            "lineno": 1729,
+            "lineno": 1731,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122634,7 +122636,7 @@ window.reflection = [
         "comment": "/**\n   * Returns the maximum text width for a given column by column name.\n   * @memberof canvasDatagrid\n   * @name findColumnMaxTextLength\n   * @method\n   * @returns {number} The number of pixels wide the maximum width value in the selected column.\n   * @param {string} name The name of the column to calculate the value's width of.\n   */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 1735,
+            "lineno": 1737,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {}
@@ -122673,11 +122675,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                55002,
-                56538
+                55115,
+                56651
             ],
             "filename": "publicMethods.js",
-            "lineno": 1743,
+            "lineno": 1745,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122708,11 +122710,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                55059,
-                55072
+                55172,
+                55185
             ],
             "filename": "publicMethods.js",
-            "lineno": 1744,
+            "lineno": 1746,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122736,11 +122738,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                55113,
-                55157
+                55226,
+                55270
             ],
             "filename": "publicMethods.js",
-            "lineno": 1746,
+            "lineno": 1748,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122764,11 +122766,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                55704,
-                55720
+                55817,
+                55833
             ],
             "filename": "publicMethods.js",
-            "lineno": 1764,
+            "lineno": 1766,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122792,11 +122794,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                55829,
-                55876
+                55942,
+                55989
             ],
             "filename": "publicMethods.js",
-            "lineno": 1769,
+            "lineno": 1771,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122820,11 +122822,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                55888,
-                56036
+                56001,
+                56149
             ],
             "filename": "publicMethods.js",
-            "lineno": 1770,
+            "lineno": 1772,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122848,11 +122850,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56044,
-                56061
+                56157,
+                56174
             ],
             "filename": "publicMethods.js",
-            "lineno": 1774,
+            "lineno": 1776,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122877,11 +122879,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56069,
-                56106
+                56182,
+                56219
             ],
             "filename": "publicMethods.js",
-            "lineno": 1775,
+            "lineno": 1777,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122906,11 +122908,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56169,
-                56185
+                56282,
+                56298
             ],
             "filename": "publicMethods.js",
-            "lineno": 1778,
+            "lineno": 1780,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122934,11 +122936,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56218,
-                56261
+                56331,
+                56374
             ],
             "filename": "publicMethods.js",
-            "lineno": 1780,
+            "lineno": 1782,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122963,11 +122965,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56237,
-                56258
+                56350,
+                56371
             ],
             "filename": "publicMethods.js",
-            "lineno": 1780,
+            "lineno": 1782,
             "columnno": 27,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -122989,11 +122991,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56245,
-                56256
+                56358,
+                56369
             ],
             "filename": "publicMethods.js",
-            "lineno": 1780,
+            "lineno": 1782,
             "columnno": 35,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -123016,11 +123018,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56277,
-                56312
+                56390,
+                56425
             ],
             "filename": "publicMethods.js",
-            "lineno": 1782,
+            "lineno": 1784,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -123044,11 +123046,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56324,
-                56486
+                56437,
+                56599
             ],
             "filename": "publicMethods.js",
-            "lineno": 1783,
+            "lineno": 1785,
             "columnno": 10,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -123072,11 +123074,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56494,
-                56511
+                56607,
+                56624
             ],
             "filename": "publicMethods.js",
-            "lineno": 1788,
+            "lineno": 1790,
             "columnno": 6,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -123101,7 +123103,7 @@ window.reflection = [
         "comment": "/**\n   * Gets the total width of all header columns.\n   * @memberof canvasDatagrid\n   * @name getHeaderWidth\n   * @method\n   */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 1792,
+            "lineno": 1794,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {}
@@ -123119,11 +123121,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                56672,
-                56864
+                56785,
+                56977
             ],
             "filename": "publicMethods.js",
-            "lineno": 1798,
+            "lineno": 1800,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -123149,7 +123151,7 @@ window.reflection = [
         "comment": "/**\n   * Gets the height of a row by index.\n   * @memberof canvasDatagrid\n   * @name getRowHeight\n   * @method\n   * @param {number} rowIndex The row index to lookup.\n   */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 1803,
+            "lineno": 1805,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {}
@@ -123178,11 +123180,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                57042,
-                57165
+                57155,
+                57278
             ],
             "filename": "publicMethods.js",
-            "lineno": 1810,
+            "lineno": 1812,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -123207,7 +123209,7 @@ window.reflection = [
         "comment": "/**\n   * Gets the width of a column by index.\n   * @memberof canvasDatagrid\n   * @name getColumnWidth\n   * @method\n   * @param {number} columnIndex The column index to lookup.\n   */",
         "meta": {
             "filename": "publicMethods.js",
-            "lineno": 1813,
+            "lineno": 1815,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {}
@@ -123236,11 +123238,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                57353,
-                57555
+                57466,
+                57668
             ],
             "filename": "publicMethods.js",
-            "lineno": 1820,
+            "lineno": 1822,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -123265,11 +123267,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                57559,
-                57680
+                57672,
+                57793
             ],
             "filename": "publicMethods.js",
-            "lineno": 1827,
+            "lineno": 1829,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -123295,11 +123297,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                57684,
-                57738
+                57797,
+                57851
             ],
             "filename": "publicMethods.js",
-            "lineno": 1830,
+            "lineno": 1832,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -123323,11 +123325,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                57742,
-                57793
+                57855,
+                57906
             ],
             "filename": "publicMethods.js",
-            "lineno": 1831,
+            "lineno": 1833,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -123351,11 +123353,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                57797,
-                57844
+                57910,
+                57957
             ],
             "filename": "publicMethods.js",
-            "lineno": 1832,
+            "lineno": 1834,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -123379,11 +123381,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                57848,
-                57892
+                57961,
+                58005
             ],
             "filename": "publicMethods.js",
-            "lineno": 1833,
+            "lineno": 1835,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -123407,11 +123409,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                57896,
-                57941
+                58009,
+                58054
             ],
             "filename": "publicMethods.js",
-            "lineno": 1834,
+            "lineno": 1836,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -123435,11 +123437,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                57945,
-                58401
+                58058,
+                58514
             ],
             "filename": "publicMethods.js",
-            "lineno": 1835,
+            "lineno": 1837,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -123469,11 +123471,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                58010,
-                58035
+                58123,
+                58148
             ],
             "filename": "publicMethods.js",
-            "lineno": 1836,
+            "lineno": 1838,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -123497,11 +123499,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                58078,
-                58106
+                58191,
+                58219
             ],
             "filename": "publicMethods.js",
-            "lineno": 1838,
+            "lineno": 1840,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -123525,11 +123527,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                58120,
-                58148
+                58233,
+                58261
             ],
             "filename": "publicMethods.js",
-            "lineno": 1839,
+            "lineno": 1841,
             "columnno": 12,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -123553,11 +123555,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                58405,
-                58651
+                58518,
+                58764
             ],
             "filename": "publicMethods.js",
-            "lineno": 1852,
+            "lineno": 1854,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -123587,11 +123589,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                58470,
-                58495
+                58583,
+                58608
             ],
             "filename": "publicMethods.js",
-            "lineno": 1853,
+            "lineno": 1855,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -123615,11 +123617,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                58655,
-                59019
+                58768,
+                59132
             ],
             "filename": "publicMethods.js",
-            "lineno": 1861,
+            "lineno": 1863,
             "columnno": 2,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {
@@ -123649,11 +123651,11 @@ window.reflection = [
         "comment": "",
         "meta": {
             "range": [
-                58718,
-                58743
+                58831,
+                58856
             ],
             "filename": "publicMethods.js",
-            "lineno": 1862,
+            "lineno": 1864,
             "columnno": 8,
             "path": "/home/runner/work/canvas-datagrid/canvas-datagrid/lib",
             "code": {

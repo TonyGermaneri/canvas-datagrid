@@ -11250,6 +11250,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     })[0];
   };
   /**
+   * Get a column group at grid pixel coordinate x and y.
    * @memberof canvasDatagrid
    * @name getColumnGroupAt
    * @method
@@ -11271,6 +11272,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }
   };
   /**
+   * Get a row group at grid pixel coordinate x and y.
    * @memberof canvasDatagrid
    * @name getRowGroupAt
    * @method
