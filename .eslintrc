@@ -13,13 +13,24 @@
   ],
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "mocha": true
+  },
+  "globals": {
+    "chai": true,
+    "assert": true,
+    "canvasDatagrid": true
   },
   "rules": {
     "prettier/prettier": 2, // 2 -> error
     "indent": [
       "warn",
-      2
+      2,
+      {
+        "flatTernaryExpressions": true,
+        "offsetTernaryExpressions": true,
+        "SwitchCase": 1
+      }
     ],
     // These should be turned on after a clean-up:
     "no-unused-vars": 0,
