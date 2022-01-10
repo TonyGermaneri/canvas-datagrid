@@ -18,6 +18,7 @@ import sortersTests from './sorters.js';
 import selectionsTests from './selections.js';
 import filtersTests from './filters.js';
 import attributesTests from './attributes.js';
+import groupsTests from './groups.js';
 import publicInterfaceTests from './public-interface.js';
 import contextMenuTests from './context-menu.js';
 import webComponentTests from './web-component.js';
@@ -53,6 +54,7 @@ describe('canvas-datagrid', function () {
     describe('Selections', selectionsTests);
     describe('Filters', filtersTests);
     describe('Attributes', attributesTests);
+    describe('Groups', groupsTests);
   });
   describe('Unit Tests', unitTests);
 });

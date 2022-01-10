@@ -30,6 +30,15 @@ export var smallData = function () {
   ];
 };
 
+export const dataForGrouping = function () {
+  return [
+    { name: 'Mike', age: 40, sex: 'M', weight: 80 },
+    { name: 'Janet', age: 20, sex: 'F', weight: 50 },
+    { name: 'Wali', age: 30, sex: 'F', weight: 60 },
+    { name: 'John', age: 50, sex: 'M', weight: 77 },
+  ];
+};
+
 // Get color `c` of rgb vector `v`
 //  Note: See c = {...} above for color options
 export function getC(v) {
@@ -102,15 +111,34 @@ export function marker(grid, x, y) {
   });
 }
 
-export function assertPxColorFn(grid, x, y, expected) {
-  var d, match, e;
+/**
+ * Convert part image of the grid to string to debug
+ */
+export function savePartOfCanvasToString(grid, x, y, w, h) {
+  const tmpCanvas = document.createElement('canvas');
+  const dpr = window.devicePixelRatio;
+  const sw = 100 * dpr;
+  const sh = 100 * dpr;
+  x = x * dpr;
+  y = y * dpr;
+  if (x < 0) x = 0;
+  if (y < 0) y = 0;
+  tmpCanvas.width = w;
+  tmpCanvas.height = h;
+  tmpCanvas.getContext('2d').drawImage(grid.canvas, x, y, sw, sh, 0, 0, w, h);
+  return tmpCanvas.toDataURL('image/png');
+}
+
+export function assertPxColorFn(grid, x, y, expected, drawMarker = true) {
+  var d, d2, match, e;
   x = x * window.devicePixelRatio;
   y = y * window.devicePixelRatio;
   return function (callback) {
     function f() {
       d = grid.ctx.getImageData(x, y, 1, 1).data;
+      d2 = 'rgba(' + [d['0'], d['1'], d['2'], '1'].join(', ') + ')';
       d = 'rgb(' + [d['0'], d['1'], d['2']].join(', ') + ')';
-      match = d === expected;
+      match = d === expected || d2 === expected;
       if (expected !== undefined) {
         e = new Error(
           'Expected color ' + getC(expected) + ' but got color ' + getC(d),
@@ -119,7 +147,7 @@ export function assertPxColorFn(grid, x, y, expected) {
           console.error(e);
         }
         if (callback) {
-          marker(grid, x, y);
+          if (drawMarker) marker(grid, x, y);
           return callback(expected && !match ? e : undefined);
         }
       }
