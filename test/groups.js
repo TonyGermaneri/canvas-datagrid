@@ -139,33 +139,34 @@ export default function () {
     let x, y;
     const cc = grid.visibleCells.find((it) => it.style === 'cornerCell');
     const ccw = cc.width;
-    const cch = cc.height;
 
-    let cells;
-    let cellsLength = grid.visibleCells.length;
+    const rowHeight = 25;
+    const halfRowHeight = rowHeight * 0.5;
 
     grid.groupColumns('name', 'sex');
     grid.groupColumns('name', 'weight');
 
+    let cells;
+    let cellsCount = grid.visibleCells.length;
+
     x = ccw + 1;
-    y = 12;
+    y = halfRowHeight;
     // collapse all
     click(grid.canvas, x, y);
     cells = getVisibleCells(grid);
     assert.deepEqual(cells.length, 0);
 
     // expand all
-    x -= 12;
     click(grid.canvas, x, y);
     assert.deepEqual(
       grid.visibleCells.length,
-      cellsLength,
+      cellsCount,
       'visible cells after expand all',
     );
 
     // collapse column name to column sex;
-    x += 12;
-    y = 25 + 12;
+    x = ccw;
+    y = rowHeight + halfRowHeight;
     click(grid.canvas, x, y);
     cells = grid.visibleCells.filter((it) => it.style === 'cell');
     // only column weight
@@ -177,7 +178,7 @@ export default function () {
     click(grid.canvas, x, y);
     assert.deepEqual(
       grid.visibleCells.length,
-      cellsLength,
+      cellsCount,
       'visible cells after expand all',
     );
     done();
@@ -191,7 +192,6 @@ export default function () {
 
     let x, y;
     const cc = grid.visibleCells.find((it) => it.style === 'cornerCell');
-    const ccw = cc.width;
     const cch = cc.height;
 
     let cells;
@@ -208,7 +208,7 @@ export default function () {
     assert.deepEqual(cells.length, 2);
 
     // expand
-    x -= 12;
+    y -= 2; // because collapsed the last row, so need move 2px up
     click(grid.canvas, x, y);
     assert.deepEqual(
       grid.visibleCells.length,
