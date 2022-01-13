@@ -344,15 +344,16 @@ export default function () {
       data: makeData(3, 3, function (y, x) {
         return x + ':' + y;
       }),
+      allowRowReordering: true,
       style: {
         cellWidth: 50,
       },
     });
     setTimeout(function () {
       grid.focus();
-      marker(grid, 67, 10);
-      mousemove(document.body, 67, 10, grid.canvas);
-      mousedown(grid.canvas, 67, 10);
+      marker(grid, 87, 10);
+      mousemove(document.body, 87, 10, grid.canvas);
+      mousedown(grid.canvas, 87, 10);
       mousemove(document.body, 140, 10, grid.canvas);
       mouseup(document.body, 140, 10, grid.canvas);
       grid.draw();
