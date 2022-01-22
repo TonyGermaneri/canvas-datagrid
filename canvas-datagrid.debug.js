@@ -5432,6 +5432,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   self.mousemove = function (e, overridePos) {
     if (self.contextMenu || self.input) {
       return;
+    } // Cancel dragging action if user ventures outside grid
+
+
+    if (self.draggingItem && e.which === 0) {
+      self.stopFreezeMove(e);
+      self.mouseup(e);
+      return;
     }
 
     self.mouse = overridePos || self.getLayerPos(e);
@@ -7462,7 +7469,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             if (columnIndex < 0) continue;
             var boundColumnIndex = self.getBoundColumnIndexFromViewColumnIndex(columnIndex);
             var columnName = schema[boundColumnIndex].name;
-            self.viewData[boundRowIndex][columnName] = '';
+            self.originalData[boundRowIndex][columnName] = '';
             affectedCells.push([rowIndex, columnIndex, boundRowIndex, boundColumnIndex]);
           }
         } catch (err) {
