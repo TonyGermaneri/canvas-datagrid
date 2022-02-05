@@ -89,6 +89,34 @@ export function cleanup(done) {
   done();
 }
 
+/**
+ * Find the cell from the grid by text
+ */
+export function findCell(grid, text) {
+  return grid.visibleCells.find(
+    (it) =>
+      (it.style === 'cell' || it.style === 'activeCell') &&
+      it.formattedValue === text,
+  );
+}
+
+export function shouldContainCell(grid, text) {
+  const cell = findCell(grid, text);
+  doAssert(cell, `the grid should contain cell with text "${text}"`);
+}
+
+export function shouldNotContainCell(grid, text) {
+  const cell = findCell(grid, text);
+  doAssert(!cell, `the grid should not contain cell with text "${text}"`);
+}
+
+/**
+ * Delay implemented by Promise
+ */
+export function delay(ms = 0) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 // Draws a 'crosshairs' marker at coordinates (x,y).
 // The marker includes:
 //  - A 1px vertical line at x
