@@ -3,22 +3,18 @@ import {
   assertPxColorFn,
   g,
   mousemove,
-  mousedown,
-  mouseup,
+  shouldContainCell,
+  shouldNotContainCell,
+  delay,
   c,
+  makeData,
+  itoa,
   savePartOfCanvasToString,
 } from './util.js';
 
 export default function () {
-  const assert = chai.assert;
-  const getData = () => [
-    { A: 'Lorem', B: 'ipsum', C: 'dolor', D: 'sit', E: 'amet' },
-    { A: 'consectetur', B: 'adipiscing', C: 'elit', D: 'Vivamus', E: 'sit' },
-    { A: 'amet', B: 'ex', C: 'quis', D: 'metus', E: 'cursus' },
-    { A: 'tincidunt', B: 'Curabitur', C: 'vitae', D: 'elit', E: 'nisi' },
-    { A: 'Praesent', B: 'ultrices', C: 'tortor', D: 'id', E: 'purus' },
-    { A: 'porta', B: 'pharetra', C: 'Ut', D: 'pretium', E: 'magna' },
-  ];
+  const getData = () =>
+    makeData(10, 10, (y, x) => [itoa(x).toUpperCase(), y + 1].join(''));
   const cellHeight = 25;
   const cellHalfHeight = 12;
   const rowHeaderWidth = 45;
@@ -33,24 +29,26 @@ export default function () {
 
   it('Should contain methods to hide columns', async function () {
     const grid = g({ test: this.test, data: getData() });
-    shouldContainCell(grid, 'Lorem');
+    shouldContainCell(grid, 'A1');
 
     grid.hideColumns(0, 1);
     await delay(15);
-    shouldNotContainCell(grid, 'Lorem');
-    shouldContainCell(grid, 'dolor');
+    shouldNotContainCell(grid, 'A1');
+    shouldNotContainCell(grid, 'B1');
+    shouldContainCell(grid, 'C1');
   });
 
   it('Should contain methods to hide rows', async function () {
     const grid = g({ test: this.test, data: getData() });
-    shouldContainCell(grid, 'Lorem');
+    shouldContainCell(grid, 'A1');
 
     grid.hideRows(0, 2);
     await delay(15);
-    shouldNotContainCell(grid, 'Lorem');
-    shouldNotContainCell(grid, 'dolor');
+    shouldNotContainCell(grid, 'A1');
+    shouldNotContainCell(grid, 'A2');
+    shouldNotContainCell(grid, 'A3');
 
-    shouldContainCell(grid, 'tincidunt');
+    shouldContainCell(grid, 'A4');
   });
 
   it('Should not show unhide indicators by default', async function () {
@@ -93,7 +91,7 @@ export default function () {
     await delay(15);
 
     await assertColor(grid, rowHeaderWidth + 6, cellHalfHeight, c.white); // on column header
-    await assertColor(grid, rowHeaderWidth - 8, cellHeight + 8, c.y); // on row header
+    await assertColor(grid, rowHeaderWidth - 9, cellHeight + 7, c.y); // on row header
   });
 
   it('Should display unhide indicators in active mode when the cursor hovers', async function () {
@@ -117,8 +115,8 @@ export default function () {
     await assertColor(grid, x - 6, y, c.r);
     await assertColor(grid, x + 6, y, c.r);
 
-    x = rowHeaderWidth - 8;
-    y = cellHeight + 8;
+    x = rowHeaderWidth - 9;
+    y = cellHeight + 7;
     mousemove(document.body, x, y, grid.canvas);
     await assertColor(grid, x, y, c.y);
     await assertColor(grid, x, y - 6, c.r);
@@ -141,33 +139,15 @@ export default function () {
     x = rowHeaderWidth + 6;
     y = cellHalfHeight;
     click(grid.canvas, x, y);
-    shouldContainCell(grid, 'tincidunt');
-    shouldNotContainCell(grid, 'Lorem');
+    shouldNotContainCell(grid, 'A1');
+    shouldContainCell(grid, 'A4');
 
     x = rowHeaderWidth - 8;
     y = cellHeight + 8;
     click(grid.canvas, x, y);
-    shouldContainCell(grid, 'Lorem');
+    shouldContainCell(grid, 'A1');
   });
 
-  function shouldContainCell(grid, text) {
-    const cell = findCell(grid, text);
-    assert.ok(cell, `the grid should contain cell with text "${text}"`);
-  }
-  function shouldNotContainCell(grid, text) {
-    const cell = findCell(grid, text);
-    assert.ok(!cell, `the grid should not contain cell with text "${text}"`);
-  }
-  function findCell(grid, text) {
-    return grid.visibleCells.find(
-      (it) =>
-        (it.style === 'cell' || it.style === 'activeCell') &&
-        it.formattedValue === text,
-    );
-  }
-  function delay(ms = 0) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
   function assertColor(grid, x, y, color, debugContext = false) {
     return new Promise((resolve, reject) => {
       assertPxColorFn(
