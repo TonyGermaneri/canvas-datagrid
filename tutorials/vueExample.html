@@ -6,17 +6,30 @@
     </head>
     <body>
         <div id="app">
-            <!-- to get canvas-datagrid working in vue make sure you use the .prop attribute suffix -->
-            <canvas-datagrid v-bind.prop="grid"></canvas-datagrid>
-            <h2>Value of row 1 col 1: {{grid.data[0].col1}}</h2>
+          <!-- to get canvas-datagrid working in vue make sure you use the .prop attribute suffix -->
+          <canvas-datagrid v-bind.prop="grid"></canvas-datagrid>
+          <div>Value of row 1 col 1: {{grid.data[0].col1}}</div>
         </div>
+
+        <h1>Vue usage</h1>
         <ul>
-            <li>Canvas-datagrid is event based like any DOM element so it works with Vue's reactivity natively.</li>
-            <li>Make sure you use the `prop` suffix on properties that require non string values.  e.g.: `v-bind.prop="myData"`</li>
-            <li>You'll need to add `Vue.config.ignoredElements = ['canvas-datagrid'];` to suppress warnings about unknown tags in Vue.</li>
-            <li>If you're getting errors about JSON parsing you might be inadvertently passing values in between the `canvas-datagrid` tag.  The grid will interpret this as JSON, invalid JSON will throw an error.</li>
-            <li>If you pass data in as innerHTML (between the open and close tag) it will lose reactivity as it is string data.</li>
-        </li>
+          <li>In main.js:
+            <pre>import 'canvas-datagrid';
+                Vue.config.ignoredElements = ['canvas-datagrid']; <span style="color: green">// Suppresses warnings about unknown tags in Vue.</span></pre>
+            </li>
+            <li>In your component:</li>
+            <ul>
+                <li>Add <code>&lt;canvas-datagrid/></code> to your template and pass props as follows: <code>&lt;canvas-datagrid :data.prop="rows"/></code>.</li>
+            </ul>
+            <li>Notes:
+                <ul>
+                  <li>Canvas-datagrid is event based like any DOM element so it works with Vue's reactivity natively.</li>
+                  <li>Make sure you use the <code>.prop</code> suffix on properties that require non string values. e.g.: <code>v-bind.prop="myData"</code></li>
+                  <li>If you're getting errors about JSON parsing you might be inadvertently passing values in between the tag: <code>&lt;canvas-datagrid>...&lt;/canvas-datagrid></code> tag.<br/>The grid will interpret this as JSON, invalid JSON will throw an error.</li>
+                  <li>If you pass data in as innerHTML (between the open and close tag) it will lose reactivity as it is string data.</li>
+              </ul>
+          </li>
+        </ul>
         <script src="./canvas-datagrid.debug.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script type="text/javascript" src="./vueExample.js"></script>
