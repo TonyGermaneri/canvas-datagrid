@@ -375,9 +375,9 @@ export default function () {
     grid.style.cellBackgroundColor = c.fu;
     setTimeout(function () {
       grid.focus();
-      mousemove(document.body, 67, 30, grid.canvas);
+      mousemove(window, 67, 30, grid.canvas);
       mousedown(grid.canvas, 67, 30);
-      mousemove(document.body, 320, 65, grid.canvas);
+      mousemove(window, 320, 65, grid.canvas);
       mouseup(document.body, 320, 65, grid.canvas);
       mouseup(grid.canvas, 320, 65, grid.canvas);
       click(grid.canvas, 320, 65);
@@ -416,9 +416,9 @@ export default function () {
     setTimeout(function () {
       var p = bb(grid.canvas);
       grid.focus();
-      mousemove(document.body, 67, 30, grid.canvas);
+      mousemove(window, 67, 30, grid.canvas);
       mousedown(grid.canvas, 67, 30);
-      mousemove(document.body, 320, 65, grid.canvas);
+      mousemove(window, 320, 65, grid.canvas);
       mouseup(document.body, 320, 65, grid.canvas);
       mouseup(grid.canvas, 320, 65, grid.canvas);
       click(grid.canvas, 320, 65);

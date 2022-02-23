@@ -20,10 +20,10 @@ export default function () {
       },
     });
 
-    mousemove(document.body, 45, 37, grid.canvas);
+    mousemove(window, 45, 37, grid.canvas);
     mousedown(grid.canvas, 45, 37);
     mouseup(grid.canvas, 45, 37);
-    mousemove(document.body, 45, 37, grid.canvas);
+    mousemove(window, 45, 37, grid.canvas);
     setTimeout(function () {
       assertPxColor(grid, 80, 37, c.b, done);
     }, 1);

@@ -15,10 +15,10 @@ export default function () {
       showFilter: false,
     });
     const dnd = (x1, y1, x2, y2) => {
-      mousemove(document.body, x1, y1, grid.canvas);
+      mousemove(window, x1, y1, grid.canvas);
       mousedown(grid.canvas, x1, y1);
-      mousemove(document.body, x2, y2, grid.canvas);
-      mouseup(document.body, x2, y2, grid.canvas);
+      mousemove(window, x2, y2, grid.canvas);
+      mouseup(window, x2, y2, grid.canvas);
     };
     let contextMenuItems = [];
     grid.addEventListener('contextmenu', function (e) {

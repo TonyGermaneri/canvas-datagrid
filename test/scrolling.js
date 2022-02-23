@@ -19,11 +19,11 @@ export default function () {
       grid.focus();
       mousedown(grid.canvas, 53, 113);
       marker(grid, 53, 113);
-      mousemove(document, 50, 113, grid.canvas);
+      mousemove(window, 50, 113, grid.canvas);
       setTimeout(function () {
         // simulate very slow movement of humans
         marker(grid, 100, 113);
-        mousemove(document, 100, 113, grid.canvas);
+        mousemove(window, 100, 113, grid.canvas);
         mouseup(document, 100, 113, grid.canvas);
         done(
           assertIf(

@@ -142,14 +142,14 @@ export default function () {
 
     x = rowHeaderWidth + 6;
     y = cellHalfHeight;
-    mousemove(document.body, x, y, grid.canvas);
+    mousemove(window, x, y, grid.canvas);
     await assertColor(grid, x, y, c.y);
     await assertColor(grid, x - 6, y, c.r);
     await assertColor(grid, x + 6, y, c.r);
 
     x = rowHeaderWidth - 9;
     y = cellHeight + 7;
-    mousemove(document.body, x, y, grid.canvas);
+    mousemove(window, x, y, grid.canvas);
     await assertColor(grid, x, y, c.y);
     await assertColor(grid, x, y - 6, c.r);
     await assertColor(grid, x, y + 6, c.r);
