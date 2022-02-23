@@ -18,7 +18,7 @@ module.exports = function (config) {
         served: true,
       },
       {
-        pattern: 'lib/events/util.js',
+        pattern: 'lib/**/util.js',
         type: 'module',
         included: true,
         served: true,
