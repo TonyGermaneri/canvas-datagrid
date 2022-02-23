@@ -1755,7 +1755,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     function createDisposeEvent() {
       requestAnimationFrame(function () {
         document.addEventListener('click', self.disposeContextMenu);
-        document.removeEventListener('mouseup', createDisposeEvent);
+        window.removeEventListener('mouseup', createDisposeEvent);
       });
     }
 
@@ -1803,7 +1803,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       self.contextMenu = createContextMenu(ev, contextPosition, items);
 
       if (e.type == 'mousedown') {
-        document.addEventListener('mouseup', createDisposeEvent);
+        window.addEventListener('mouseup', createDisposeEvent);
       } else {
         createDisposeEvent();
       }
@@ -1842,7 +1842,7 @@ __webpack_require__.r(__webpack_exports__);
     attributes: [['allowColumnReordering', true], ['allowColumnResize', true], ['allowColumnResizeFromCell', false], ['allowFreezingRows', false], ['allowFreezingColumns', false], ['allowMovingSelection', true], ['allowRowHeaderResize', true], ['allowRowReordering', false], ['allowRowResize', true], ['allowRowResizeFromCell', false], ['allowSorting', true], ['allowGroupingRows', true], ['allowGroupingColumns', true], ['animationDurationShowContextMenu', 50], ['animationDurationHideContextMenu', 50], ['autoGenerateSchema', false], ['autoResizeColumns', false], ['autoResizeRows', false], ['autoScrollOnMousemove', false], ['autoScrollMargin', 5], ['blanksText', '(Blanks)'], ['borderDragBehavior', 'none'], ['borderResizeZone', 10], ['clearSettingsOptionText', 'Clear saved settings'], ['columnHeaderClickBehavior', 'sort'], ['columnSelectorHiddenText', '&nbsp;&nbsp;&nbsp;'], ['columnSelectorText', 'Add/Remove columns'], ['columnSelectorVisibleText', "\u2713"], ['contextHoverScrollAmount', 2], ['contextHoverScrollRateMs', 5], ['copyHeadersOnSelectAll', true], ['copyText', 'Copy'], ['debug', false], ['editable', true], ['ellipsisText', '...'], ['filterOptionText', 'Filter %s'], ['filterTextPrefix', '(filtered) '], ['filterFrozenRows', true], ['globalRowResize', false], ['hideColumnText', 'Hide %s'], ['showUnhideColumnsIndicator', false], ['showUnhideRowsIndicator', false], ['showHideRow', 'Hide row %s'], ['showHideRows', 'Hide rows %s'], ['hoverMode', 'cell'], ['keepFocusOnMouseOut', false], ['maxAutoCompleteItems', 200], ['multiLine', false], ['name', ''], ['pageUpDownOverlap', 1], ['pasteText', 'Paste'], ['persistantSelectionMode', false], ['removeFilterOptionText', 'Remove filter on %s'], ['reorderDeadZone', 3], ['resizeScrollZone', 20], ['rowGrabZoneSize', 5], ['columnGrabZoneSize', 30], ['saveAppearance', true], ['scrollAnimationPPSThreshold', 0.75], ['scrollPointerLock', false], ['scrollRepeatRate', 75], ['selectionFollowsActiveCell', false], ['selectionHandleBehavior', 'none'], ['selectionMode', 'cell'], ['selectionScrollIncrement', 20], ['selectionScrollZone', 20], ['showClearSettingsOption', true], ['showColumnHeaders', true], ['showColumnSelector', true], ['showCopy', false], ['showFilter', true], ['showFilterInCell', false], ['showNewRow', false], ['showOrderByOption', true], ['showOrderByOptionTextAsc', 'Order by %s ascending'], ['showOrderByOptionTextDesc', 'Order by %s descending'], //#region grouping
     ['showGroupColumns', 'Group columns %s'], ['showGroupRows', 'Group rows %s'], ['showRemoveGroupColumns', 'Remove group %s'], ['showRemoveGroupRows', 'Remove group %s'], ['showRemoveAllGroupColumns', 'Remove all column groups'], ['showRemoveAllGroupRows', 'Remove all row groups'], ['showExpandAllGroupColumns', 'Expand all column groups'], ['showExpandAllGroupRows', 'Expand all row groups'], ['showCollapseAllGroupColumns', 'Collapse all column groups'], ['showCollapseAllGroupRows', 'Collapse all row groups'], ['columnGroupIndicatorPosition', 'right'], ['rowGroupIndicatorPosition', 'bottom'], //#endregion grouping
     ['showPaste', false], ['showPerformance', false], ['showRowHeaders', true], ['showRowNumbers', true], ['showRowNumberGaps', true], ['singleSelectionMode', false], ['snapToRow', false], ['sortFrozenRows', true], ['touchContextMenuTimeMs', 800], ['touchDeadZone', 3], ['touchEasingMethod', 'easeOutQuad'], ['touchReleaseAcceleration', 1000], ['touchReleaseAnimationDurationMs', 2000], ['touchScrollZone', 20], ['touchSelectHandleZone', 20], ['touchZoomSensitivity', 0.005], ['touchZoomMin', 0.5], ['touchZoomMax', 1.75], ['maxPixelRatio', 2], ['tree', false], ['treeHorizontalScroll', false], ['rowTree', []], ['rowTreeColIndex', 0], ['columnTree', []], ['columnTreeRowStartIndex', 0], ['columnTreeRowEndIndex', 0]],
-    styles: [['activeCellBackgroundColor', 'rgba(255, 255, 255, 1)'], ['activeCellBorderColor', 'rgba(110, 168, 255, 1)'], ['activeCellBorderWidth', 1], ['activeCellColor', 'rgba(0, 0, 0, 1)'], ['activeCellFont', '16px sans-serif'], ['activeCellHoverBackgroundColor', 'rgba(255, 255, 255, 1)'], ['activeCellHorizontalAlignment', 'left'], ['activeCellHoverColor', 'rgba(0, 0, 0, 1)'], ['activeCellOverlayBorderColor', 'rgba(66, 133, 244, 1)'], ['activeCellOverlayBorderWidth', 1], ['activeCellPaddingBottom', 5], ['activeCellPaddingLeft', 5], ['activeCellPaddingRight', 5], ['activeCellPaddingTop', 5], ['activeCellSelectedBackgroundColor', 'rgba(236, 243, 255, 1)'], ['activeCellSelectedColor', 'rgba(0, 0, 0, 1)'], ['activeCellVerticalAlignment', 'center'], ['activeColumnHeaderCellBackgroundColor', 'rgba(225, 225, 225, 1)'], ['activeColumnHeaderCellColor', 'rgba(0, 0, 0, 1)'], ['activeRowHeaderCellBackgroundColor', 'rgba(225, 225, 225, 1)'], ['activeRowHeaderCellColor', 'rgba(0, 0, 0, 1)'], ['autocompleteBottomMargin', 60], ['autosizeHeaderCellPadding', 8], ['autosizePadding', 5], ['buttonActiveBackgroundColor', 'rgba(255, 255, 255, 1)'], ['buttonActiveBorderColor', 'rgba(110, 168, 255, 1)'], ['buttonArrowColor', 'rgba(50, 50, 50, 1)'], ['buttonArrowDownHTML', '&#x25BC;'], ['buttonZIndex', 10000], ['buttonBackgroundColor', 'rgba(255, 255, 255, 1)'], ['buttonBorderColor', 'rgba(172, 172, 172, 1)'], ['buttonHoverBackgroundColor', 'rgba(240, 240, 240, 1)'], ['buttonMenuWindowMargin', 30], ['buttonPadding', '3px'], ['cellAutoResizePadding', 13], ['cellBackgroundColor', 'rgba(255, 255, 255, 1)'], ['cellBorderColor', 'rgba(195, 199, 202, 1)'], ['cellBorderWidth', 1], ['cellColor', 'rgba(0, 0, 0, 1)'], ['cellFont', '16px sans-serif'], ['cellGridHeight', 250], ['cellHeight', 24], ['cellHeightWithChildGrid', 150], ['cellHorizontalAlignment', 'left'], ['cellHoverBackgroundColor', 'rgba(255, 255, 255, 1)'], ['cellHoverColor', 'rgba(0, 0, 0, 1)'], ['cellPaddingBottom', 5], ['cellPaddingLeft', 5], ['cellPaddingRight', 5], ['cellPaddingTop', 5], ['cellSelectedBackgroundColor', 'rgba(236, 243, 255, 1)'], ['cellSelectedColor', 'rgba(0, 0, 0, 1)'], ['cellTreeIconBorderColor', 'rgba(162, 174, 207, 1)'], ['cellTreeIconFillColor', 'rgba(240, 240, 240, 1)'], ['cellTreeIconHoverFillColor', 'rgba(198, 217, 233, 1)'], ['cellTreeIconLineColor', 'rgba(43, 53, 81, 1)'], ['cellTreeIconLineWidth', 1.5], ['cellTreeIconMarginLeft', 0], ['cellTreeIconMarginRight', 5], ['cellTreeIconMarginTop', 6], ['cellTreeIconWidth', 13], ['cellVerticalAlignment', 'center'], ['cellWidth', 250], ['cellWidthWithChildGrid', 250], ['cellWhiteSpace', 'nowrap'], ['cellLineHeight', 1], ['cellLineSpacing', 3], ['childContextMenuArrowColor', 'rgba(43, 48, 43, 1)'], ['childContextMenuArrowHTML', '&#x25BA;'], ['childContextMenuMarginLeft', -11], ['childContextMenuMarginTop', -6], ['columnGroupRowHeight', 25], ['columnHeaderCellBackgroundColor', 'rgba(240, 240, 240, 1)'], ['columnHeaderCellBorderColor', 'rgba(172, 172, 172, 1)'], ['columnHeaderCellBorderWidth', 1], ['columnHeaderCellCapBackgroundColor', 'rgba(240, 240, 240, 1)'], ['columnHeaderCellCapBorderColor', 'rgba(172, 172, 172, 1)'], ['columnHeaderCellCapBorderWidth', 1], ['columnHeaderCellColor', 'rgba(50, 50, 50, 1)'], ['columnHeaderCellFont', '16px sans-serif'], ['columnHeaderCellHeight', 25], ['columnHeaderCellHorizontalAlignment', 'left'], ['columnHeaderCellHoverBackgroundColor', 'rgba(235, 235, 235, 1)'], ['columnHeaderCellHoverColor', 'rgba(0, 0, 0, 1)'], ['columnHeaderCellPaddingBottom', 5], ['columnHeaderCellPaddingLeft', 5], ['columnHeaderCellPaddingRight', 5], ['columnHeaderCellPaddingTop', 5], ['columnHeaderCellVerticalAlignment', 'center'], ['columnHeaderOrderByArrowBorderColor', 'rgba(195, 199, 202, 1)'], ['columnHeaderOrderByArrowBorderWidth', 1], ['columnHeaderOrderByArrowColor', 'rgba(155, 155, 155, 1)'], ['columnHeaderOrderByArrowHeight', 8], ['columnHeaderOrderByArrowMarginLeft', 0], ['columnHeaderOrderByArrowMarginRight', 5], ['columnHeaderOrderByArrowMarginTop', 6], ['columnHeaderOrderByArrowWidth', 13], ['contextFilterButtonBorder', 'solid 1px rgba(158, 163, 169, 1)'], ['contextFilterButtonBorderRadius', '3px'], ['contextFilterButtonHTML', '&#x25BC;'], ['contextFilterInputBackground', 'rgba(255,255,255,1)'], ['contextFilterInputBorder', 'solid 1px rgba(158, 163, 169, 1)'], ['contextFilterInputBorderRadius', '0'], ['contextFilterInputColor', 'rgba(0,0,0,1)'], ['contextFilterInputFontFamily', 'sans-serif'], ['contextFilterInputFontSize', '14px'], ['contextFilterInvalidRegExpBackground', 'rgba(180, 6, 1, 1)'], ['contextFilterInvalidRegExpColor', 'rgba(255, 255, 255, 1)'], ['contextMenuArrowColor', 'rgba(43, 48, 43, 1)'], ['contextMenuArrowDownHTML', '&#x25BC;'], ['contextMenuArrowUpHTML', '&#x25B2;'], ['contextMenuBackground', 'rgba(240, 240, 240, 1)'], ['contextMenuBorder', 'solid 1px rgba(158, 163, 169, 1)'], ['contextMenuBorderRadius', '3px'], ['contextMenuChildArrowFontSize', '12px'], ['contextMenuColor', 'rgba(43, 48, 43, 1)'], ['contextMenuCursor', 'default'], ['contextMenuFilterButtonFontFamily', 'sans-serif'], ['contextMenuFilterButtonFontSize', '10px'], ['contextMenuFilterInvalidExpresion', 'rgba(237, 155, 156, 1)'], ['contextMenuFontFamily', 'sans-serif'], ['contextMenuFontSize', '16px'], ['contextMenuHoverBackground', 'rgba(182, 205, 250, 1)'], ['contextMenuHoverColor', 'rgba(43, 48, 153, 1)'], ['contextMenuItemBorderRadius', '3px'], ['contextMenuItemMargin', '2px'], ['contextMenuLabelDisplay', 'inline-block'], ['contextMenuLabelMargin', '0 3px 0 0'], ['contextMenuLabelMaxWidth', '700px'], ['contextMenuLabelMinWidth', '75px'], ['contextMenuMarginLeft', 3], ['contextMenuMarginTop', -3], ['contextMenuOpacity', '0.98'], ['contextMenuPadding', '2px'], ['contextMenuWindowMargin', 30], ['contextMenuZIndex', 10000], ['cornerCellBackgroundColor', 'rgba(240, 240, 240, 1)'], ['cornerCellBorderColor', 'rgba(202, 202, 202, 1)'], ['debugBackgroundColor', 'rgba(0, 0, 0, .0)'], ['debugColor', 'rgba(255, 15, 24, 1)'], ['debugEntitiesColor', 'rgba(76, 231, 239, 1.00)'], ['debugFont', '11px sans-serif'], ['debugPerfChartBackground', 'rgba(29, 25, 26, 1.00)'], ['debugPerfChartTextColor', 'rgba(255, 255, 255, 0.8)'], ['debugPerformanceColor', 'rgba(252, 255, 37, 1.00)'], ['debugScrollHeightColor', 'rgba(248, 33, 103, 1.00)'], ['debugScrollWidthColor', 'rgba(66, 255, 27, 1.00)'], ['debugTouchPPSXColor', 'rgba(246, 102, 24, 1.00)'], ['debugTouchPPSYColor', 'rgba(186, 0, 255, 1.00)'], ['display', 'inline-block'], ['editCellBackgroundColor', 'white'], ['editCellBorder', 'solid 1px rgba(110, 168, 255, 1)'], ['editCellBoxShadow', '0 2px 5px rgba(0,0,0,0.4)'], ['editCellColor', 'black'], ['editCellFontFamily', 'sans-serif'], ['editCellFontSize', '16px'], ['editCellPaddingLeft', 4], ['editCellZIndex', 10000], ['filterButtonActiveBackgroundColor', 'rgba(225, 225, 225, 1)'], ['filterButtonArrowBorderColor', 'rgba(195, 199, 202, 1)'], ['filterButtonArrowBorderWidth', 1], ['filterButtonArrowClickRadius', 5], ['filterButtonArrowColor', 'rgba(50, 50, 50, 1)'], ['filterButtonArrowHeight', 5], ['filterButtonArrowWidth', 8], ['filterButtonBackgroundColor', 'rgba(240, 240, 240, 1)'], ['filterButtonBorderColor', 'rgba(172, 172, 172, 1)'], ['filterButtonBorderRadius', 3], ['filterButtonHeight', 20], ['filterButtonHoverBackgroundColor', 'rgba(235, 235, 235, 1)'], ['filterButtonMenuOffsetTop', 10], ['filterButtonWidth', 20], ['frozenMarkerHoverColor', 'rgba(236, 243, 255, 1)'], ['frozenMarkerHoverBorderColor', 'rgba(110, 168, 255, 1)'], ['frozenMarkerActiveColor', 'rgba(236, 243, 255, 1)'], ['frozenMarkerActiveBorderColor', 'rgba(110, 168, 255, 1)'], ['frozenMarkerColor', 'rgba(222, 222, 222, 1)'], ['frozenMarkerBorderColor', 'rgba(168, 168, 168, 1)'], ['frozenMarkerBorderWidth', 1], ['frozenMarkerWidth', 2], ['groupingAreaBackgroundColor', 'rgba(240, 240, 240, 1)'], ['gridBackgroundColor', 'rgba(240, 240, 240, 1)'], ['gridBorderCollapse', 'collapse'], ['gridBorderColor', 'rgba(202, 202, 202, 1)'], ['gridBorderWidth', 1], ['groupIndicatorColor', 'rgba(155, 155, 155, 1)'], ['groupIndicatorBackgroundColor', 'rgba(255, 255, 255, 1)'], ['height', 'auto'], ['maxHeight', 'inherit'], ['maxWidth', 'inherit'], ['minColumnWidth', 45], ['minHeight', 'inherit'], ['minRowHeight', 24], ['minWidth', 'inherit'], ['mobileContextMenuMargin', 10], ['mobileEditInputHeight', 30], ['mobileEditFontFamily', 'sans-serif'], ['mobileEditFontSize', '16px'], ['moveOverlayBorderWidth', 1], ['moveOverlayBorderColor', 'rgba(66, 133, 244, 1)'], ['moveOverlayBorderSegments', '12, 7'], ['name', 'default'], ['overflowY', 'auto'], ['overflowX', 'auto'], ['reorderMarkerBackgroundColor', 'rgba(0, 0, 0, 0.1)'], ['reorderMarkerBorderColor', 'rgba(0, 0, 0, 0.2)'], ['reorderMarkerBorderWidth', 1.25], ['reorderMarkerIndexBorderColor', 'rgba(66, 133, 244, 1)'], ['reorderMarkerIndexBorderWidth', 2.75], ['rowGroupColumnWidth', 25], ['rowHeaderCellBackgroundColor', 'rgba(240, 240, 240, 1)'], ['rowHeaderCellBorderColor', 'rgba(200, 200, 200, 1)'], ['rowHeaderCellBorderWidth', 1], ['rowHeaderCellColor', 'rgba(50, 50, 50, 1)'], ['rowHeaderCellFont', '16px sans-serif'], ['rowHeaderCellHeight', 25], ['rowHeaderCellHorizontalAlignment', 'left'], ['rowHeaderCellHoverBackgroundColor', 'rgba(235, 235, 235, 1)'], ['rowHeaderCellHoverColor', 'rgba(0, 0, 0, 1)'], ['rowHeaderCellPaddingBottom', 5], ['rowHeaderCellPaddingLeft', 5], ['rowHeaderCellPaddingRight', 5], ['rowHeaderCellPaddingTop', 5], ['rowHeaderCellRowNumberGapHeight', 5], ['rowHeaderCellRowNumberGapColor', 'rgba(50, 50, 50, 1)'], ['rowHeaderCellSelectedBackgroundColor', 'rgba(217, 217, 217, 1)'], ['rowHeaderCellSelectedColor', 'rgba(50, 50, 50, 1)'], ['rowHeaderCellVerticalAlignment', 'center'], ['rowHeaderCellWidth', 57], ['scrollBarActiveColor', 'rgba(125, 125, 125, 1)'], ['scrollBarBackgroundColor', 'rgba(240, 240, 240, 1)'], ['scrollBarBorderColor', 'rgba(202, 202, 202, 1)'], ['scrollBarBorderWidth', 0.5], ['scrollBarBoxBorderRadius', 4.125], ['scrollBarBoxColor', 'rgba(192, 192, 192, 1)'], ['scrollBarBoxMargin', 2], ['scrollBarBoxMinSize', 15], ['scrollBarBoxWidth', 8], ['scrollBarCornerBackgroundColor', 'rgba(240, 240, 240, 1)'], ['scrollBarCornerBorderColor', 'rgba(202, 202, 202, 1)'], ['scrollBarWidth', 11], ['selectionHandleBorderColor', 'rgba(255, 255, 255, 1)'], ['selectionHandleBorderWidth', 1.5], ['selectionHandleColor', 'rgba(66, 133, 244, 1)'], ['selectionHandleSize', 8], ['selectionHandleType', 'square'], ['selectionOverlayBorderColor', 'rgba(66, 133, 244, 1)'], ['selectionOverlayBorderWidth', 1], ['treeArrowBorderColor', 'rgba(195, 199, 202, 1)'], ['treeArrowBorderWidth', 1], ['treeArrowClickRadius', 5], ['treeArrowColor', 'rgba(155, 155, 155, 1)'], ['treeArrowHeight', 8], ['treeArrowMarginLeft', 0], ['treeArrowMarginRight', 5], ['treeArrowMarginTop', 6], ['treeArrowWidth', 13], ['treeGridHeight', 250], ['unhideIndicatorColor', 'rgba(0, 0, 0, 1)'], ['unhideIndicatorBackgroundColor', 'rgba(255, 255, 255, 1)'], ['unhideIndicatorBorderColor', 'rgba(174, 193, 232, 1)'], ['unhideIndicatorSize', 16], ['width', 'auto']]
+    styles: [['activeCellBackgroundColor', 'rgba(255, 255, 255, 1)'], ['activeCellBorderColor', 'rgba(110, 168, 255, 1)'], ['activeCellBorderWidth', 1], ['activeCellColor', 'rgba(0, 0, 0, 1)'], ['activeCellFont', '16px sans-serif'], ['activeCellHoverBackgroundColor', 'rgba(255, 255, 255, 1)'], ['activeCellHorizontalAlignment', 'left'], ['activeCellHoverColor', 'rgba(0, 0, 0, 1)'], ['activeCellOverlayBorderColor', 'rgba(66, 133, 244, 1)'], ['activeCellOverlayBorderWidth', 1], ['activeCellPaddingBottom', 5], ['activeCellPaddingLeft', 5], ['activeCellPaddingRight', 5], ['activeCellPaddingTop', 5], ['activeCellSelectedBackgroundColor', 'rgba(236, 243, 255, 1)'], ['activeCellSelectedColor', 'rgba(0, 0, 0, 1)'], ['activeCellVerticalAlignment', 'center'], ['activeColumnHeaderCellBackgroundColor', 'rgba(225, 225, 225, 1)'], ['activeColumnHeaderCellColor', 'rgba(0, 0, 0, 1)'], ['activeRowHeaderCellBackgroundColor', 'rgba(225, 225, 225, 1)'], ['activeRowHeaderCellColor', 'rgba(0, 0, 0, 1)'], ['autocompleteBottomMargin', 60], ['autosizeHeaderCellPadding', 8], ['autosizePadding', 5], ['buttonActiveBackgroundColor', 'rgba(255, 255, 255, 1)'], ['buttonActiveBorderColor', 'rgba(110, 168, 255, 1)'], ['buttonArrowColor', 'rgba(50, 50, 50, 1)'], ['buttonArrowDownHTML', '&#x25BC;'], ['buttonZIndex', 10000], ['buttonBackgroundColor', 'rgba(255, 255, 255, 1)'], ['buttonBorderColor', 'rgba(172, 172, 172, 1)'], ['buttonHoverBackgroundColor', 'rgba(240, 240, 240, 1)'], ['buttonMenuWindowMargin', 30], ['buttonPadding', '3px'], ['cellAutoResizePadding', 13], ['cellBackgroundColor', 'rgba(255, 255, 255, 1)'], ['cellBorderColor', 'rgba(195, 199, 202, 1)'], ['cellBorderWidth', 1], ['cellColor', 'rgba(0, 0, 0, 1)'], ['cellFont', '16px sans-serif'], ['cellGridHeight', 250], ['cellHeight', 24], ['cellHeightWithChildGrid', 150], ['cellHorizontalAlignment', 'left'], ['cellHoverBackgroundColor', 'rgba(255, 255, 255, 1)'], ['cellHoverColor', 'rgba(0, 0, 0, 1)'], ['cellPaddingBottom', 5], ['cellPaddingLeft', 5], ['cellPaddingRight', 5], ['cellPaddingTop', 5], ['cellSelectedBackgroundColor', 'rgba(236, 243, 255, 1)'], ['cellSelectedColor', 'rgba(0, 0, 0, 1)'], ['cellTreeIconBorderColor', 'rgba(162, 174, 207, 1)'], ['cellTreeIconFillColor', 'rgba(240, 240, 240, 1)'], ['cellTreeIconHoverFillColor', 'rgba(198, 217, 233, 1)'], ['cellTreeIconLineColor', 'rgba(43, 53, 81, 1)'], ['cellTreeIconLineWidth', 1.5], ['cellTreeIconMarginLeft', 0], ['cellTreeIconMarginRight', 5], ['cellTreeIconMarginTop', 6], ['cellTreeIconWidth', 13], ['cellVerticalAlignment', 'center'], ['cellWidth', 250], ['cellWidthWithChildGrid', 250], ['cellWhiteSpace', 'nowrap'], ['cellLineHeight', 1], ['cellLineSpacing', 3], ['childContextMenuArrowColor', 'rgba(43, 48, 43, 1)'], ['childContextMenuArrowHTML', '&#x25BA;'], ['childContextMenuMarginLeft', -11], ['childContextMenuMarginTop', -6], ['columnGroupRowHeight', 25], ['columnHeaderCellBackgroundColor', 'rgba(240, 240, 240, 1)'], ['columnHeaderCellBorderColor', 'rgba(172, 172, 172, 1)'], ['columnHeaderCellBorderWidth', 1], ['columnHeaderCellCapBackgroundColor', 'rgba(240, 240, 240, 1)'], ['columnHeaderCellCapBorderColor', 'rgba(172, 172, 172, 1)'], ['columnHeaderCellCapBorderWidth', 1], ['columnHeaderCellColor', 'rgba(50, 50, 50, 1)'], ['columnHeaderCellFont', '16px sans-serif'], ['columnHeaderCellHeight', 25], ['columnHeaderCellHorizontalAlignment', 'left'], ['columnHeaderCellHoverBackgroundColor', 'rgba(235, 235, 235, 1)'], ['columnHeaderCellHoverColor', 'rgba(0, 0, 0, 1)'], ['columnHeaderCellPaddingBottom', 5], ['columnHeaderCellPaddingLeft', 5], ['columnHeaderCellPaddingRight', 5], ['columnHeaderCellPaddingTop', 5], ['columnHeaderCellVerticalAlignment', 'center'], ['columnHeaderOrderByArrowBorderColor', 'rgba(195, 199, 202, 1)'], ['columnHeaderOrderByArrowBorderWidth', 1], ['columnHeaderOrderByArrowColor', 'rgba(155, 155, 155, 1)'], ['columnHeaderOrderByArrowHeight', 8], ['columnHeaderOrderByArrowMarginLeft', 0], ['columnHeaderOrderByArrowMarginRight', 5], ['columnHeaderOrderByArrowMarginTop', 6], ['columnHeaderOrderByArrowWidth', 13], ['contextFilterButtonBorder', 'solid 1px rgba(158, 163, 169, 1)'], ['contextFilterButtonBorderRadius', '3px'], ['contextFilterButtonHTML', '&#x25BC;'], ['contextFilterInputBackground', 'rgba(255,255,255,1)'], ['contextFilterInputBorder', 'solid 1px rgba(158, 163, 169, 1)'], ['contextFilterInputBorderRadius', '0'], ['contextFilterInputColor', 'rgba(0,0,0,1)'], ['contextFilterInputFontFamily', 'sans-serif'], ['contextFilterInputFontSize', '14px'], ['contextFilterInvalidRegExpBackground', 'rgba(180, 6, 1, 1)'], ['contextFilterInvalidRegExpColor', 'rgba(255, 255, 255, 1)'], ['contextMenuArrowColor', 'rgba(43, 48, 43, 1)'], ['contextMenuArrowDownHTML', '&#x25BC;'], ['contextMenuArrowUpHTML', '&#x25B2;'], ['contextMenuBackground', 'rgba(240, 240, 240, 1)'], ['contextMenuBorder', 'solid 1px rgba(158, 163, 169, 1)'], ['contextMenuBorderRadius', '3px'], ['contextMenuChildArrowFontSize', '12px'], ['contextMenuColor', 'rgba(43, 48, 43, 1)'], ['contextMenuCursor', 'default'], ['contextMenuFilterButtonFontFamily', 'sans-serif'], ['contextMenuFilterButtonFontSize', '10px'], ['contextMenuFilterInvalidExpresion', 'rgba(237, 155, 156, 1)'], ['contextMenuFontFamily', 'sans-serif'], ['contextMenuFontSize', '16px'], ['contextMenuHoverBackground', 'rgba(182, 205, 250, 1)'], ['contextMenuHoverColor', 'rgba(43, 48, 153, 1)'], ['contextMenuItemBorderRadius', '3px'], ['contextMenuItemMargin', '2px'], ['contextMenuLabelDisplay', 'inline-block'], ['contextMenuLabelMargin', '0 3px 0 0'], ['contextMenuLabelMaxWidth', '700px'], ['contextMenuLabelMinWidth', '75px'], ['contextMenuMarginLeft', 3], ['contextMenuMarginTop', -3], ['contextMenuOpacity', '0.98'], ['contextMenuPadding', '2px'], ['contextMenuWindowMargin', 30], ['contextMenuZIndex', 10000], ['cornerCellBackgroundColor', 'rgba(240, 240, 240, 1)'], ['cornerCellBorderColor', 'rgba(202, 202, 202, 1)'], ['debugBackgroundColor', 'rgba(0, 0, 0, .0)'], ['debugColor', 'rgba(255, 15, 24, 1)'], ['debugEntitiesColor', 'rgba(76, 231, 239, 1.00)'], ['debugFont', '11px sans-serif'], ['debugPerfChartBackground', 'rgba(29, 25, 26, 1.00)'], ['debugPerfChartTextColor', 'rgba(255, 255, 255, 0.8)'], ['debugPerformanceColor', 'rgba(252, 255, 37, 1.00)'], ['debugScrollHeightColor', 'rgba(248, 33, 103, 1.00)'], ['debugScrollWidthColor', 'rgba(66, 255, 27, 1.00)'], ['debugTouchPPSXColor', 'rgba(246, 102, 24, 1.00)'], ['debugTouchPPSYColor', 'rgba(186, 0, 255, 1.00)'], ['display', 'inline-block'], ['editCellBackgroundColor', 'white'], ['editCellBorder', 'solid 1px rgba(110, 168, 255, 1)'], ['editCellBoxShadow', '0 2px 5px rgba(0,0,0,0.4)'], ['editCellColor', 'black'], ['editCellFontFamily', 'sans-serif'], ['editCellFontSize', '16px'], ['editCellPaddingLeft', 4], ['editCellZIndex', 10000], ['filterButtonActiveBackgroundColor', 'rgba(225, 225, 225, 1)'], ['filterButtonArrowBorderColor', 'rgba(195, 199, 202, 1)'], ['filterButtonArrowBorderWidth', 1], ['filterButtonArrowClickRadius', 5], ['filterButtonArrowColor', 'rgba(50, 50, 50, 1)'], ['filterButtonArrowHeight', 5], ['filterButtonArrowWidth', 8], ['filterButtonBackgroundColor', 'rgba(240, 240, 240, 1)'], ['filterButtonBorderColor', 'rgba(172, 172, 172, 1)'], ['filterButtonBorderRadius', 3], ['filterButtonHeight', 20], ['filterButtonHoverBackgroundColor', 'rgba(235, 235, 235, 1)'], ['filterButtonMenuOffsetTop', 10], ['filterButtonWidth', 20], ['frozenMarkerHoverColor', 'rgba(165, 198, 254, 1)'], ['frozenMarkerHoverBorderColor', 'rgba(165, 198, 254, 1)'], ['frozenMarkerActiveColor', 'rgba(165, 198, 254, 0.2)'], ['frozenMarkerActiveBorderColor', 'rgba(165, 198, 254, 0.5)'], ['frozenMarkerActiveHeaderColor', 'rgba(165, 198, 254, 1)'], ['frozenMarkerColor', 'rgba(221, 221, 221, 1)'], ['frozenMarkerBorderColor', 'rgba(221, 221, 221, 1)'], ['frozenMarkerBorderWidth', 1], ['frozenMarkerHeaderColor', 'rgba(188, 188, 188, 1)'], ['frozenMarkerWidth', 4], ['groupingAreaBackgroundColor', 'rgba(240, 240, 240, 1)'], ['gridBackgroundColor', 'rgba(240, 240, 240, 1)'], ['gridBorderCollapse', 'collapse'], ['gridBorderColor', 'rgba(202, 202, 202, 1)'], ['gridBorderWidth', 1], ['groupIndicatorColor', 'rgba(155, 155, 155, 1)'], ['groupIndicatorBackgroundColor', 'rgba(255, 255, 255, 1)'], ['height', 'auto'], ['maxHeight', 'inherit'], ['maxWidth', 'inherit'], ['minColumnWidth', 45], ['minHeight', 'inherit'], ['minRowHeight', 24], ['minWidth', 'inherit'], ['mobileContextMenuMargin', 10], ['mobileEditInputHeight', 30], ['mobileEditFontFamily', 'sans-serif'], ['mobileEditFontSize', '16px'], ['moveOverlayBorderWidth', 1], ['moveOverlayBorderColor', 'rgba(66, 133, 244, 1)'], ['moveOverlayBorderSegments', '12, 7'], ['name', 'default'], ['overflowY', 'auto'], ['overflowX', 'auto'], ['reorderMarkerBackgroundColor', 'rgba(0, 0, 0, 0.1)'], ['reorderMarkerBorderColor', 'rgba(0, 0, 0, 0.2)'], ['reorderMarkerBorderWidth', 1.25], ['reorderMarkerIndexBorderColor', 'rgba(66, 133, 244, 1)'], ['reorderMarkerIndexBorderWidth', 2.75], ['rowGroupColumnWidth', 25], ['rowHeaderCellBackgroundColor', 'rgba(240, 240, 240, 1)'], ['rowHeaderCellBorderColor', 'rgba(200, 200, 200, 1)'], ['rowHeaderCellBorderWidth', 1], ['rowHeaderCellColor', 'rgba(50, 50, 50, 1)'], ['rowHeaderCellFont', '16px sans-serif'], ['rowHeaderCellHeight', 25], ['rowHeaderCellHorizontalAlignment', 'left'], ['rowHeaderCellHoverBackgroundColor', 'rgba(235, 235, 235, 1)'], ['rowHeaderCellHoverColor', 'rgba(0, 0, 0, 1)'], ['rowHeaderCellPaddingBottom', 5], ['rowHeaderCellPaddingLeft', 5], ['rowHeaderCellPaddingRight', 5], ['rowHeaderCellPaddingTop', 5], ['rowHeaderCellRowNumberGapHeight', 5], ['rowHeaderCellRowNumberGapColor', 'rgba(50, 50, 50, 1)'], ['rowHeaderCellSelectedBackgroundColor', 'rgba(217, 217, 217, 1)'], ['rowHeaderCellSelectedColor', 'rgba(50, 50, 50, 1)'], ['rowHeaderCellVerticalAlignment', 'center'], ['rowHeaderCellWidth', 57], ['scrollBarActiveColor', 'rgba(125, 125, 125, 1)'], ['scrollBarBackgroundColor', 'rgba(240, 240, 240, 1)'], ['scrollBarBorderColor', 'rgba(202, 202, 202, 1)'], ['scrollBarBorderWidth', 0.5], ['scrollBarBoxBorderRadius', 4.125], ['scrollBarBoxColor', 'rgba(192, 192, 192, 1)'], ['scrollBarBoxMargin', 2], ['scrollBarBoxMinSize', 15], ['scrollBarBoxWidth', 8], ['scrollBarCornerBackgroundColor', 'rgba(240, 240, 240, 1)'], ['scrollBarCornerBorderColor', 'rgba(202, 202, 202, 1)'], ['scrollBarWidth', 11], ['selectionHandleBorderColor', 'rgba(255, 255, 255, 1)'], ['selectionHandleBorderWidth', 1.5], ['selectionHandleColor', 'rgba(66, 133, 244, 1)'], ['selectionHandleSize', 8], ['selectionHandleType', 'square'], ['selectionOverlayBorderColor', 'rgba(66, 133, 244, 1)'], ['selectionOverlayBorderWidth', 1], ['treeArrowBorderColor', 'rgba(195, 199, 202, 1)'], ['treeArrowBorderWidth', 1], ['treeArrowClickRadius', 5], ['treeArrowColor', 'rgba(155, 155, 155, 1)'], ['treeArrowHeight', 8], ['treeArrowMarginLeft', 0], ['treeArrowMarginRight', 5], ['treeArrowMarginTop', 6], ['treeArrowWidth', 13], ['treeGridHeight', 250], ['unhideIndicatorColor', 'rgba(0, 0, 0, 1)'], ['unhideIndicatorBackgroundColor', 'rgba(255, 255, 255, 1)'], ['unhideIndicatorBorderColor', 'rgba(174, 193, 232, 1)'], ['unhideIndicatorSize', 16], ['width', 'auto']]
   };
 }
 
@@ -2246,6 +2246,16 @@ __webpack_require__.r(__webpack_exports__);
     var cellValueIsEmpty = [null, undefined].indexOf(cell.value) !== -1;
     var shouldClearCellValue = cellValueIsEmpty || inEnterMode;
     self.input.value = shouldClearCellValue ? '' : cell.value;
+    var width = Math.round(self.input.value.length * parseInt(self.style.editCellFontSize, 10) * 0.7 * self.scale);
+
+    if (width + self.style.cellPaddingLeft < cell.width) {
+      width = cell.width - self.style.cellPaddingLeft;
+    } else if (width > self.width - cell.x - self.style.scrollBarWidth) {
+      width = self.width - cell.x - self.style.scrollBarWidth;
+      self.input.style.height = 'auto';
+    }
+
+    self.input.style.width = width + 'px';
     self.input.focus();
     self.input.addEventListener('click', self.stopPropagation);
     self.input.addEventListener('dblclick', self.stopPropagation);
@@ -2329,6 +2339,17 @@ __webpack_require__.r(__webpack_exports__);
 
         self.scrollIntoView(nx, ny);
         self.beginEditAt(nx, ny, e);
+      } else {
+        var _width = Math.round(self.input.value.length * parseInt(self.style.editCellFontSize, 10) * 0.7 * self.scale);
+
+        if (_width + self.style.cellPaddingLeft < cell.width) {
+          _width = cell.width - self.style.cellPaddingLeft;
+        } else if (_width > self.width - cell.x - self.style.scrollBarWidth) {
+          _width = self.width - cell.x - self.style.scrollBarWidth;
+          self.input.style.height = 'auto';
+        }
+
+        self.input.style.width = _width + 'px';
       }
     });
     self.dispatchEvent('beginedit', {
@@ -2659,11 +2680,11 @@ __webpack_require__.r(__webpack_exports__);
     });
     self.eventParent.addEventListener('scroll', self.resize, false);
     self.eventParent.addEventListener('touchstart', self.touchstart, false);
-    self.eventParent.addEventListener('mouseup', self.mouseup, false);
     self.eventParent.addEventListener('mousedown', self.mousedown, false);
     self.eventParent.addEventListener('dblclick', self.dblclick, false);
     self.eventParent.addEventListener('click', self.click, false);
-    document.body.addEventListener('mousemove', self.mousemove);
+    window.addEventListener('mouseup', self.mouseup, false);
+    window.addEventListener('mousemove', self.mousemove);
     self[self.isChildGrid ? 'parentGrid' : 'eventParent'].addEventListener('wheel', self.scrollWheel, false);
     self.canvas.addEventListener('contextmenu', self.contextmenuEvent, false);
     self.controlInput.addEventListener('copy', self.copy);
@@ -3702,7 +3723,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             isColumnHeaderCellCap = cellStyle === 'columnHeaderCellCap',
             rawValue = rowData ? rowData[header.name] : undefined,
             isGrid = header.type === 'canvas-datagrid',
-            activeHeader = (self.orders.rows[self.activeCell.rowIndex] === rowOrderIndex || self.orders.columns[self.activeCell.columnIndex] === headerIndex) && (columnOrderIndex === -1 || rowOrderIndex === -1) ? isRowHeader ? 'activeRowHeaderCell' : 'activeColumnHeaderCell' : false,
+            activeHeader = (self.orders.rows[self.activeCell.rowIndex] === rowOrderIndex || self.selectedRows.indexOf(rowOrderIndex) >= 0 || self.orders.columns[self.activeCell.columnIndex] === headerIndex || self.selectedColumns.indexOf(headerIndex) >= 0) && (columnOrderIndex === -1 || rowOrderIndex === -1) ? isRowHeader ? 'activeRowHeaderCell' : 'activeColumnHeaderCell' : false,
             val,
             f = self.formatters[header.type || 'string'],
             orderByArrowSize = 0,
@@ -4413,7 +4434,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       } //draw frozen columns
 
 
-      x = 0;
+      x = 1;
 
       if (self.attributes.showRowHeaders) {
         x += rowHeaderCellWidth;
@@ -4949,7 +4970,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       if (self.attributes.allowFreezingRows) {
         // HACK great, another stupid magic number.
         // Background will appear as a 0.5px artifact behind the row freeze bar without this hack
-        y += self.style.frozenMarkerBorderWidth + self.style.frozenMarkerWidth - 0.4999999999;
+        if (y > columnHeaderCellHeight) y += self.style.frozenMarkerWidth;
+        y += self.style.frozenMarkerBorderWidth - 0.4999999999;
       }
 
       self.lastFrozenRowPixel = y;
@@ -5060,14 +5082,16 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         self.ctx.lineWidth = self.style.reorderMarkerIndexBorderWidth;
         self.ctx.strokeStyle = self.style.reorderMarkerIndexBorderColor;
 
-        if (self.currentCell.rowIndex !== self.reorderObject.rowIndex && self.currentCell.rowIndex > -1 && self.currentCell.rowIndex < l) {
+        if (self.selectedRows.indexOf(self.reorderTarget.sortRowIndex) === -1 && self.currentCell.rowIndex !== self.reorderObject.rowIndex && self.currentCell.rowIndex > -1 && self.currentCell.rowIndex < l) {
           addBorderLine(m, self.reorderTarget.sortRowIndex > self.reorderObject.sortRowIndex ? 'b' : 't');
         }
       } else if (self.dragMode === 'column-reorder' && self.reorderObject) {
         var selectedColumns = self.selections[0];
 
-        for (var k = 1; k < selectedColumns.length; k++) {
-          b.width += self.getColumnWidth(self.orders.columns[selectedColumns[k]]);
+        if (selectedColumns) {
+          for (var k = 1; k < selectedColumns.length; k++) {
+            b.width += self.getColumnWidth(self.orders.columns[selectedColumns[k]]);
+          }
         }
 
         b.height = h;
@@ -5081,7 +5105,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         self.ctx.lineWidth = self.style.reorderMarkerIndexBorderWidth;
         self.ctx.strokeStyle = self.style.reorderMarkerIndexBorderColor;
 
-        if (self.currentCell.sortColumnIndex !== self.reorderObject.sortColumnIndex && self.currentCell.sortColumnIndex > -1 && self.currentCell.sortColumnIndex < schema.length) {
+        if (self.selectedColumns.indexOf(self.reorderTarget.sortColumnIndex) === -1 && self.currentCell.sortColumnIndex !== self.reorderObject.sortColumnIndex && self.reorderTarget.columnIndex !== self.reorderObject.columnIndex && self.currentCell.sortColumnIndex > -1 && self.currentCell.sortColumnIndex < schema.length) {
           addBorderLine(m, self.reorderTarget.columnIndex > self.reorderObject.columnIndex ? 'r' : 'l');
         }
       }
@@ -5175,40 +5199,67 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }
 
     function drawFrozenMarkers() {
-      if (self.dragStartObject !== undefined) return;
       var my = self.lastFrozenRowPixel - self.style.frozenMarkerWidth,
-          mx = self.lastFrozenColumnPixel - self.style.frozenMarkerBorderWidth,
+          mx = self.lastFrozenColumnPixel - self.style.frozenMarkerWidth,
           xHover = self.currentCell && self.currentCell.style === 'frozen-row-marker',
           yHover = self.currentCell && self.currentCell.style === 'frozen-column-marker';
+      var rowHeaderCellWidth = self.getRowHeaderCellWidth();
       self.ctx.lineWidth = self.style.frozenMarkerBorderWidth;
 
       if (self.attributes.allowFreezingColumns) {
-        self.ctx.fillStyle = yHover ? self.style.frozenMarkerHoverColor : self.style.frozenMarkerColor;
-        self.ctx.strokeStyle = yHover ? self.style.frozenMarkerHoverBorderColor : self.style.frozenMarkerBorderColor;
-        fillRect(mx, 0, self.style.frozenMarkerWidth, self.height);
-        strokeRect(mx, 0, self.style.frozenMarkerWidth, self.height);
-        self.visibleCells.unshift({
-          x: mx,
-          y: 0,
-          height: self.height,
-          width: self.style.frozenMarkerWidth + self.style.frozenMarkerBorderWidth,
-          style: 'frozen-column-marker'
-        });
+        if (!self.freezeMarkerPosition || self.freezeMarkerPosition && self.dragMode === 'frozen-row-marker') {
+          if (mx > self.style.rowHeaderCellWidth) {
+            self.ctx.fillStyle = self.style.frozenMarkerColor;
+            self.ctx.strokeStyle = self.style.frozenMarkerBorderColor;
+            fillRect(mx, 0, self.style.frozenMarkerWidth, self.height);
+            strokeRect(mx, 0, self.style.frozenMarkerWidth, self.height);
+          }
+
+          self.ctx.fillStyle = yHover ? self.style.frozenMarkerHoverColor : self.style.frozenMarkerHeaderColor;
+          self.ctx.strokeStyle = yHover ? self.style.frozenMarkerHoverBorderColor : self.style.frozenMarkerHeaderColor;
+          fillRect(mx, 0, self.style.frozenMarkerWidth, self.style.columnHeaderCellHeight);
+          strokeRect(mx, 0, self.style.frozenMarkerWidth, self.style.columnHeaderCellHeight);
+        }
+
+        if (!self.dragStartObject || self.dragStartObject && self.dragStartObject.style !== 'rowHeaderCell') {
+          self.visibleCells.unshift({
+            x: mx,
+            y: 0,
+            height: self.height,
+            width: self.style.frozenMarkerWidth,
+            // + self.style.frozenMarkerBorderWidth,
+            style: 'frozen-column-marker'
+          });
+        }
       }
 
       if (self.attributes.allowFreezingRows) {
-        self.ctx.fillStyle = xHover ? self.style.frozenMarkerHoverColor : self.style.frozenMarkerColor;
-        self.ctx.strokeStyle = xHover ? self.style.frozenMarkerHoverBorderColor : self.style.frozenMarkerBorderColor;
-        fillRect(0, my, self.width, self.style.frozenMarkerWidth);
-        strokeRect(0, my, self.width, self.style.frozenMarkerWidth);
+        if (!self.freezeMarkerPosition || self.freezeMarkerPosition && self.dragMode === 'frozen-column-marker') {
+          if (my > rowHeaderCellWidth) {
+            self.ctx.fillStyle = self.style.frozenMarkerColor;
+            self.ctx.strokeStyle = self.style.frozenMarkerBorderColor;
+            fillRect(0, my, self.width, self.style.frozenMarkerWidth);
+            strokeRect(0, my, self.width, self.style.frozenMarkerWidth);
+          }
+
+          self.ctx.fillStyle = xHover ? self.style.frozenMarkerHoverColor : self.style.frozenMarkerHeaderColor;
+          self.ctx.strokeStyle = xHover ? self.style.frozenMarkerHoverBorderColor : self.style.frozenMarkerHeaderColor;
+          fillRect(0, my, rowHeaderCellWidth, self.style.frozenMarkerWidth);
+          strokeRect(0, my, rowHeaderCellWidth, self.style.frozenMarkerWidth);
+        }
+
         var height = self.style.frozenMarkerWidth + self.style.frozenMarkerBorderWidth;
-        self.visibleCells.unshift({
-          x: 0,
-          y: my,
-          height: height,
-          width: self.width,
-          style: 'frozen-row-marker'
-        });
+
+        if (!self.dragStartObject || self.dragStartObject && self.dragStartObject.style !== 'columnHeaderCell') {
+          self.visibleCells.unshift({
+            x: 0,
+            y: my,
+            height: height,
+            width: self.width,
+            style: 'frozen-row-marker'
+          });
+        }
+
         rowGroupsFrozenInfo = {
           y: my,
           h: height
@@ -5220,11 +5271,59 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         self.ctx.strokeStyle = self.style.frozenMarkerActiveBorderColor;
 
         if (self.dragMode === 'frozen-column-marker') {
-          fillRect(self.freezeMarkerPosition.x, 0, self.style.frozenMarkerWidth, self.height);
-          strokeRect(self.freezeMarkerPosition.x, 0, self.style.frozenMarkerWidth, self.height);
+          var posX = self.freezeMarkerPosition.x;
+          var nearCell = self.getCellAt(posX, 0);
+          if (self.freezeMarkerPosition.isGrab) posX = mx;
+
+          if (posX > rowHeaderCellWidth) {
+            var _x = nearCell.x - self.style.frozenMarkerWidth - self.style.frozenMarkerBorderWidth;
+
+            if (posX > _x + nearCell.width / 2) _x = _x + nearCell.width;
+            self.ctx.fillStyle = self.style.frozenMarkerColor;
+            self.ctx.strokeStyle = self.style.frozenMarkerBorderColor;
+            fillRect(_x, 0, self.style.frozenMarkerWidth, self.height);
+            strokeRect(_x, 0, self.style.frozenMarkerWidth, self.height);
+            self.ctx.fillStyle = self.style.frozenMarkerHeaderColor;
+            self.ctx.strokeStyle = self.style.frozenMarkerHeaderColor;
+            fillRect(_x, 0, self.style.frozenMarkerWidth, self.style.columnHeaderCellHeight);
+            strokeRect(_x, 0, self.style.frozenMarkerWidth, self.style.columnHeaderCellHeight);
+          }
+
+          self.ctx.fillStyle = self.style.frozenMarkerActiveHeaderColor;
+          self.ctx.strokeStyle = self.style.frozenMarkerActiveBorderColor;
+          fillRect(posX, 0, self.style.frozenMarkerWidth, self.style.columnHeaderCellHeight);
+          strokeRect(posX, 0, self.style.frozenMarkerWidth, self.style.columnHeaderCellHeight);
+          self.ctx.fillStyle = self.style.frozenMarkerActiveColor;
+          fillRect(posX, 0, self.style.frozenMarkerWidth, self.height);
+          strokeRect(posX, 0, self.style.frozenMarkerWidth, self.height);
         } else {
-          fillRect(0, self.freezeMarkerPosition.y, self.width, self.style.frozenMarkerWidth);
-          strokeRect(0, self.freezeMarkerPosition.y, self.width, self.style.frozenMarkerWidth);
+          var posY = self.freezeMarkerPosition.y;
+
+          var _nearCell = self.getCellAt(0, posY);
+
+          if (self.freezeMarkerPosition.isGrab) posY = my;
+
+          if (posY > self.style.columnHeaderCellHeight) {
+            var _y = _nearCell.y - self.style.frozenMarkerWidth - self.style.frozenMarkerBorderWidth;
+
+            if (posY > _y + _nearCell.height / 2) _y = _y + _nearCell.height;
+            self.ctx.fillStyle = self.style.frozenMarkerColor;
+            self.ctx.strokeStyle = self.style.frozenMarkerBorderColor;
+            fillRect(0, _y, self.width, self.style.frozenMarkerWidth);
+            strokeRect(0, _y, self.width, self.style.frozenMarkerWidth);
+            self.ctx.fillStyle = self.style.frozenMarkerHeaderColor;
+            self.ctx.strokeStyle = self.style.frozenMarkerHeaderColor;
+            fillRect(0, _y, rowHeaderCellWidth, self.style.frozenMarkerWidth);
+            strokeRect(0, _y, rowHeaderCellWidth, self.style.frozenMarkerWidth);
+          }
+
+          self.ctx.fillStyle = self.style.frozenMarkerActiveHeaderColor;
+          self.ctx.strokeStyle = self.style.frozenMarkerActiveBorderColor;
+          fillRect(0, posY, rowHeaderCellWidth, self.style.frozenMarkerWidth);
+          strokeRect(0, posY, rowHeaderCellWidth, self.style.frozenMarkerWidth);
+          self.ctx.fillStyle = self.style.frozenMarkerActiveColor;
+          fillRect(0, posY, self.width, self.style.frozenMarkerWidth);
+          strokeRect(0, posY, self.width, self.style.frozenMarkerWidth);
         }
       }
     }
@@ -5771,9 +5870,17 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     self.page = Math.max(1, self.visibleRows.length - 3 - self.attributes.pageUpDownOverlap); // set canvas drawing related items
 
     if (!self.isChildGrid) {
-      self.canvas.width = self.width * ratio;
-      self.canvas.height = self.height * ratio;
-      self.ctx.scale(ratio, ratio);
+      var newWidth = self.width * ratio;
+      var newHeight = self.height * ratio; // We need to check is settings size to canvas necessary,
+      // because settings the canvas'size will cause the canvas and its state be cleared
+      // even if the size is the same.
+      // Notes: Please don't call `self.resize()` without a subsequent call to `self.draw()`
+
+      if (self.canvas.width !== newWidth || self.canvas.height !== newHeight) {
+        self.canvas.width = newWidth;
+        self.canvas.height = newHeight;
+        self.ctx.scale(ratio, ratio);
+      }
     } // resize any open dom elements (input/textarea)
 
 
@@ -5983,6 +6090,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           dragBounds.top = -1;
           dragBounds.bottom = self.viewData.length - 1;
           if (dragBounds.left < 0) dragBounds.left = 0;
+          if (dragBounds.left != dragBounds.right) self.isMultiColumnsSelected = true;else self.isMultiRowsSelected = false;
         }
 
         if (self.dragStartObject.rowIndex !== cell.rowIndex || self.dragStartObject.columnIndex !== cell.columnIndex) {
@@ -6065,6 +6173,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         if ((!self.selectionBounds || dragBounds.top !== self.selectionBounds.top || dragBounds.left !== self.selectionBounds.left || dragBounds.bottom !== self.selectionBounds.bottom || dragBounds.right !== self.selectionBounds.right) && !ctrl) {
           if (!(cell.hovered && self.hovers.onFilterButton)) {
             self.selections = [];
+            self.selectedRows = [];
+            self.selectedColumns = [];
           }
 
           if (dragBounds.top === -1) {
@@ -6079,7 +6189,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             }
           } else {
             self.selectArea(sBounds, true);
-            if (sBounds.left == -1 && sBounds.top !== sBounds.bottom) self.isMultiRowsSelected = true;
+            self.activeCell.rowIndex = sBounds.top;
+            self.activeCell.columnIndex = sBounds.left;
+
+            if (sBounds.left == -1 && sBounds.top !== sBounds.bottom) {
+              self.activeCell.columnIndex = 0;
+              self.isMultiRowsSelected = true;
+              self.isMultiColumnsSelected = false;
+            }
           }
         }
 
@@ -6302,8 +6419,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }
 
     self.resize();
-    document.body.removeEventListener('mousemove', self.dragResizeColumn, false);
-    document.body.removeEventListener('mouseup', self.stopDragResize, false);
+    window.removeEventListener('mousemove', self.dragResizeColumn, false);
+    window.removeEventListener('mouseup', self.stopDragResize, false);
     self.setStorageData();
     self.draw(true);
     self.ignoreNextClick = true;
@@ -6380,7 +6497,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       document.exitPointerLock();
     }
 
-    document.removeEventListener('mousemove', self.scrollGrid, false);
+    window.removeEventListener('mousemove', self.scrollGrid, false);
   };
 
   self.dragReorder = function (e) {
@@ -6402,7 +6519,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }
 
     if ((e.ctrlKey || e.metaKey || e.shiftKey) && self.reorderObject) {
-      if (self.dragMode === 'column-reorder' && !self.isMultiColumnsSelected(self.draggingItem.header.index)) {
+      if (self.dragMode === 'column-reorder' && !self.isMultiColumnsSelected) {
         self.selectColumn(self.draggingItem.header.index, false, false);
       }
     }
@@ -6419,6 +6536,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     if (Math.abs(x) > self.attributes.reorderDeadZone || Math.abs(y) > self.attributes.reorderDeadZone) {
       self.reorderObject = self.draggingItem;
       if (self.isMultiRowsSelected) self.reorderObject = self.getVisibleCellByIndex(-1, self.activeCell.rowIndex);
+      if (self.isMultiColumnsSelected) self.reorderObject = self.getVisibleCellByIndex(self.activeCell.columnIndex, -1);
       if (!self.reorderObject) return;
       self.reorderTarget = self.currentCell;
       self.reorderObject.dragOffset = {
@@ -6441,8 +6559,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       'row-reorder': 'rowIndex',
       'column-reorder': 'sortColumnIndex'
     }[self.dragMode];
-    document.body.removeEventListener('mousemove', self.dragReorder, false);
-    document.body.removeEventListener('mouseup', self.stopDragReorder, false);
+    window.removeEventListener('mousemove', self.dragReorder, false);
+    window.removeEventListener('mouseup', self.stopDragReorder, false);
 
     if (self.reorderObject && self.reorderTarget && (self.dragMode === 'column-reorder' && self.reorderTarget.sortColumnIndex > -1 && self.reorderTarget.sortColumnIndex < self.getSchema().length || self.dragMode === 'row-reorder' && self.reorderTarget.rowIndex > -1 && self.reorderTarget.rowIndex < self.viewData.length) && self.reorderObject[i] !== self.reorderTarget[i] && !self.dispatchEvent('reorder', {
       NativeEvent: e,
@@ -6456,27 +6574,34 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       if (self.dragMode === 'column-reorder') {
         var sortColumnIndices = [];
-        var seletedColumnIndices = [];
+        var selectedColumnIndices = [];
 
         if (self.selections[0]) {
+          oIndex = self.selections[0][0];
           self.selections[0].forEach(function (value) {
             sortColumnIndices.push(self.orders.columns[value]);
           });
         }
 
         var deleteCount = sortColumnIndices.length;
-        cr[self.dragMode].splice(oIndex, deleteCount);
-        if (tIndex > oIndex) tIndex = tIndex - (deleteCount - 1);
 
-        for (var i = 0; i < sortColumnIndices.length; i++) {
-          seletedColumnIndices.push(tIndex + i);
-          cr[self.dragMode].splice(tIndex + i, 0, sortColumnIndices[i]);
+        if (tIndex < oIndex || tIndex > oIndex && Math.abs(tIndex - oIndex) >= deleteCount) {
+          cr[self.dragMode].splice(oIndex, deleteCount);
+          if (tIndex > oIndex) tIndex = tIndex - (deleteCount - 1);
+          self.selectedColumns = [];
+
+          for (var i = 0; i < sortColumnIndices.length; i++) {
+            if (i === 0) self.activeCell.columnIndex = tIndex;
+            selectedColumnIndices.push(tIndex + i);
+            self.selectedColumns.push(sortColumnIndices[i]);
+            cr[self.dragMode].splice(tIndex + i, 0, sortColumnIndices[i]);
+          }
+
+          self.orders.columns = cr[self.dragMode];
+          self.viewData.forEach(function (row, rowIndex) {
+            self.selections[rowIndex] = selectedColumnIndices;
+          });
         }
-
-        self.orders.columns = cr[self.dragMode];
-        self.viewData.forEach(function (row, rowIndex) {
-          self.selections[rowIndex] = seletedColumnIndices;
-        });
       } else {
         var selectedRows = [];
         self.selections.forEach(function (row, rowIndex) {
@@ -6485,14 +6610,19 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             odata.push(self.viewData[rowIndex]);
           }
         });
-        self.viewData.splice(oIndex, odata.length);
-        self.selections = [];
-        if (tIndex > oIndex) tIndex = tIndex - (odata.length - 1);
-        self.activeCell.rowIndex = tIndex;
 
-        for (var i = 0; i < odata.length; i++) {
-          self.viewData.splice(tIndex + i, 0, odata[i]);
-          self.selections[tIndex + i] = selectedRows[i];
+        if (tIndex < oIndex || tIndex > oIndex && Math.abs(tIndex - oIndex) >= odata.length) {
+          self.viewData.splice(oIndex, odata.length);
+          self.selections = [];
+          self.selectedRows = [];
+          if (tIndex > oIndex) tIndex = tIndex - (odata.length - 1);
+          self.activeCell.rowIndex = tIndex;
+
+          for (var i = 0; i < odata.length; i++) {
+            self.viewData.splice(tIndex + i, 0, odata[i]);
+            self.selections[tIndex + i] = selectedRows[i];
+            self.selectedRows.push(tIndex + i);
+          }
         }
       }
 
@@ -6527,8 +6657,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   };
 
   self.stopDragMove = function (e) {
-    document.body.removeEventListener('mousemove', self.dragMove, false);
-    document.body.removeEventListener('mouseup', self.stopDragMove, false);
+    window.removeEventListener('mousemove', self.dragMove, false);
+    window.removeEventListener('mouseup', self.stopDragMove, false);
     var b = self.getSelectionBounds();
 
     if (self.dispatchEvent('endmove', {
@@ -6559,13 +6689,25 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       return;
     }
 
+    var pos = self.getLayerPos(e);
+    self.ignoreNextClick = true;
+    self.freezeMarkerPosition = pos;
+    pos.x -= self.getRowGroupAreaWidth();
+    pos.y -= self.getColumnGroupAreaHeight();
+
+    if (Math.abs(pos.x) > self.attributes.reorderDeadZone || Math.abs(pos.y) > self.attributes.reorderDeadZone) {
+      setTimeout(function () {
+        self.autoScrollZone(e, pos.x, pos.y, false);
+      }, 1);
+    }
+  };
+
+  self.stopFreezeMove = function (e) {
     var pos = self.getLayerPos(e),
         bm = self.style.gridBorderCollapse === 'collapse' ? 1 : 2,
         columnHeaderCellBorder = self.style.columnHeaderCellBorderWidth * bm,
         columnHeaderCellHeight = self.getColumnHeaderCellHeight(),
         rowHeaderCellWidth = self.getRowHeaderCellWidth();
-    self.ignoreNextClick = true;
-    self.freezeMarkerPosition = pos;
     pos.x -= self.getRowGroupAreaWidth();
     pos.y -= self.getColumnGroupAreaHeight();
 
@@ -6584,11 +6726,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     if (self.currentCell && self.currentCell.columnIndex !== undefined && self.dragMode === 'frozen-column-marker') {
       var dataWidth = self.refreshScrollCacheX();
       self.scrollBox.scrollLeft = 0;
-      self.frozenColumn = self.currentCell.columnIndex + 1;
-      self.scrollBox.bar.h.x = rowHeaderCellWidth + self.scrollCache.x[self.frozenColumn - 1];
-      self.scrollBox.box.h.x = rowHeaderCellWidth + self.scrollCache.x[self.frozenColumn - 1]; // var dataWidth = self.scrollCache.x[self.scrollCache.x.length - 1];
-
-      self.scrollBox.widthBoxRatio = (self.scrollBox.width - self.scrollCache.x[self.frozenColumn - 1]) / dataWidth;
+      var x = self.currentCell.x - self.style.frozenMarkerWidth - self.style.frozenMarkerBorderWidth;
+      if (pos.x > x + self.currentCell.width / 2) self.frozenColumn = self.currentCell.columnIndex + 1;else if (self.currentCell.columnIndex >= 0) self.frozenColumn = self.currentCell.columnIndex;
+      self.scrollBox.bar.h.x = rowHeaderCellWidth + self.scrollCache.x[self.frozenColumn];
+      self.scrollBox.widthBoxRatio = (self.scrollBox.width - self.scrollCache.x[self.frozenColumn]) / dataWidth;
       self.scrollBox.scrollBoxWidth = self.scrollBox.width * self.scrollBox.widthBoxRatio - self.style.scrollBarWidth;
       self.scrollBox.scrollBoxWidth = Math.max(self.scrollBox.scrollBoxWidth, self.style.scrollBarBoxMinSize);
       self.scrollBox.box.h.width = self.scrollBox.scrollBoxWidth;
@@ -6599,11 +6740,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         self.autoScrollZone(e, pos.x, pos.y, false);
       }, 1);
     }
-  };
 
-  self.stopFreezeMove = function (e) {
-    document.body.removeEventListener('mousemove', self.freezeMove, false);
-    document.body.removeEventListener('mouseup', self.stopFreezeMove, false);
+    window.removeEventListener('mousemove', self.freezeMove, false);
+    window.removeEventListener('mouseup', self.stopFreezeMove, false);
     self.freezeMarkerPosition = undefined;
 
     if (self.dispatchEvent('endfreezemove', {
@@ -6617,6 +6756,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }
 
     self.draw(true);
+    self.resize();
   };
 
   self.mousedown = function (e, overridePos) {
@@ -6653,6 +6793,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     if (!ctrl && !e.shiftKey && !/(vertical|horizontal)-scroll-(bar|box)/.test(self.dragStartObject.context) && self.currentCell && !self.currentCell.isColumnHeader && !move && !freeze && !resize) {
       if (!(self.dragMode == 'row-reorder' && self.isMultiRowsSelected) && !(self.currentCell.hovered && self.hovers.onFilterButton)) {
         self.selections = [];
+        self.selectedRows = [];
+        self.selectedColumns = [];
       }
     }
 
@@ -6673,8 +6815,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         self.canvas.requestPointerLock();
       }
 
-      document.addEventListener('mousemove', self.scrollGrid, false);
-      document.addEventListener('mouseup', self.stopScrollGrid, false);
+      window.addEventListener('mousemove', self.scrollGrid, false);
+      window.addEventListener('mouseup', self.stopScrollGrid, false);
       self.ignoreNextClick = true;
       return;
     }
@@ -6686,7 +6828,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         self.selectRow(self.dragStartObject.rowIndex, ctrl, null);
       } else if ((self.attributes.selectionMode === 'column' || self.dragStartObject.rowIndex === -1) && self.dragStartObject.columnIndex > -1) {
         self.selectColumn(self.currentCell.header.index, ctrl, e.shiftKey);
-      } else if (self.attributes.selectionMode !== 'row') {
+        return;
+      }
+
+      if (self.attributes.selectionMode !== 'row') {
         self.mousemove(e);
       }
 
@@ -6705,8 +6850,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         return;
       }
 
-      document.body.addEventListener('mousemove', self.dragMove, false);
-      document.body.addEventListener('mouseup', self.stopDragMove, false);
+      window.addEventListener('mousemove', self.dragMove, false);
+      window.addEventListener('mouseup', self.stopDragMove, false);
       return self.mousemove(e);
     }
 
@@ -6723,8 +6868,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         return;
       }
 
-      document.body.addEventListener('mousemove', self.freezeMove, false);
-      document.body.addEventListener('mouseup', self.stopFreezeMove, false);
+      self.freezeMarkerPosition = self.getLayerPos(e);
+      self.freezeMarkerPosition.isGrab = true;
+      window.addEventListener('mousemove', self.freezeMove, false);
+      window.addEventListener('mouseup', self.stopFreezeMove, false);
       return self.mousemove(e);
     }
 
@@ -6738,22 +6885,22 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }
 
       self.resizingStartingWidth = self.sizes.columns[self.draggingItem.header.style === 'rowHeaderCell' ? 'cornerCell' : self.draggingItem.sortColumnIndex] || self.draggingItem.width;
-      document.body.addEventListener('mousemove', self.dragResizeColumn, false);
-      document.body.addEventListener('mouseup', self.stopDragResize, false);
+      window.addEventListener('mousemove', self.dragResizeColumn, false);
+      window.addEventListener('mouseup', self.stopDragResize, false);
       return;
     }
 
     if (['row-reorder', 'column-reorder'].indexOf(self.dragMode) !== -1) {
       self.draggingItem = self.dragStartObject;
 
-      if (self.dragMode === 'column-reorder' && !self.isMultiColumnsSelected(self.currentCell.header.index)) {
+      if (self.dragMode === 'column-reorder' && !self.isMultiColumnsSelected) {
         self.selectColumn(self.currentCell.header.index, ctrl, e.shiftKey);
       } else if (self.dragMode === 'row-reorder' && !self.isMultiRowsSelected) {
         self.selectRow(self.dragStartObject.rowIndex, ctrl, null);
       }
 
-      document.body.addEventListener('mousemove', self.dragReorder, false);
-      document.body.addEventListener('mouseup', self.stopDragReorder, false);
+      window.addEventListener('mousemove', self.dragReorder, false);
+      window.addEventListener('mouseup', self.stopDragReorder, false);
       return;
     }
   };
@@ -6998,6 +7145,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       if (!e.shiftKey && self.attributes.selectionFollowsActiveCell) {
         if (!ctrl) {
           self.selections = [];
+          self.selectedRows = [];
+          self.selectedColumns = [];
         }
 
         self.selections[y] = self.selections[y] || [];
@@ -7143,6 +7292,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       });
     } else {
       var selections = [];
+      self.selectedRows = [];
+      self.selectedColumns = [];
 
       for (var rowIndex = 0; rowIndex < rows.length; rowIndex++) {
         // Rows may have been moved by user, so get the actual row index
@@ -7152,6 +7303,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         var existingRowData = self.viewData[realRowIndex];
         var newRowData = Object.assign({}, existingRowData);
         selections[realRowIndex] = [];
+        self.selectedRows.push(realRowIndex);
 
         for (var colIndex = 0; colIndex < cells.length; colIndex++) {
           var column = schema[startColIndex + colIndex];
@@ -7173,6 +7325,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
           selections[realRowIndex].push(startColIndex + colIndex);
           newRowData[columnName] = cellData;
+          if (self.selectedColumns.indexOf(startColIndex + colIndex) === -1) self.selectedColumns.push(startColIndex + colIndex);
         }
 
         self.originalData[self.boundRowIndexMap.get(realRowIndex)] = newRowData; // Update view date here to avoid a full refresh of `viewData`.
@@ -7730,6 +7883,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     trees: {}
   };
   self.selections = [];
+  self.selectedRows = [];
+  self.selectedColumns = [];
   self.filterable = {
     rows: [],
     columns: []
@@ -7789,7 +7944,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   self.groupedRows = [];
   self.scrollModes = ['vertical-scroll-box', 'vertical-scroll-top', 'vertical-scroll-bottom', 'horizontal-scroll-box', 'horizontal-scroll-right', 'horizontal-scroll-left'];
   self.componentL1Events = {};
-  self.eventNames = ['afterdraw', 'afterrendercell', 'afterrenderfilterbutton', 'aftercreategroup', 'attributechanged', 'beforebeginedit', 'beforecreatecellgrid', 'beforedraw', 'beforeendedit', 'beforerendercell', 'beforerendercellgrid', 'beforerenderfilterbutton', 'beginedit', 'cellmouseout', 'cellmouseover', 'click', 'collapsetree', 'contextmenu', 'copy', 'datachanged', 'dblclick', 'endedit', 'expandtree', 'formatcellvalue', 'keydown', 'keypress', 'keyup', 'mousedown', 'mousemove', 'mouseup', 'newrow', 'ordercolumn', 'rendercell', 'rendercellgrid', 'renderorderbyarrow', 'rendertext', 'rendertreearrow', 'reorder', 'reordering', 'resize', 'resizecolumn', 'resizerow', 'schemachanged', 'scroll', 'selectionchanged', 'stylechanged', 'touchcancel', 'touchend', 'touchmove', 'touchstart', 'wheel'];
+  self.eventNames = ['afterdraw', 'afterrendercell', 'afterrenderfilterbutton', 'aftercreategroup', 'attributechanged', 'beforebeginedit', 'beforecreatecellgrid', 'beforedraw', 'beforeendedit', 'beforerendercell', 'beforerendercellgrid', 'beforerenderfilterbutton', 'beginedit', 'cellmouseout', 'cellmouseover', 'click', 'collapsetree', 'columnhide', 'columnunhide', 'contextmenu', 'copy', 'datachanged', 'dblclick', 'endedit', 'expandtree', 'formatcellvalue', 'keydown', 'keypress', 'keyup', 'mousedown', 'mousemove', 'mouseup', 'newrow', 'ordercolumn', 'rendercell', 'rendercellgrid', 'renderorderbyarrow', 'rendertext', 'rendertreearrow', 'reorder', 'reordering', 'resize', 'resizecolumn', 'resizerow', 'schemachanged', 'scroll', 'selectionchanged', 'stylechanged', 'touchcancel', 'touchend', 'touchmove', 'touchstart', 'wheel'];
   self.mouse = {
     x: 0,
     y: 0
@@ -8007,7 +8162,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             if (columnIndex < 0) continue;
             var boundColumnIndex = self.getBoundColumnIndexFromViewColumnIndex(columnIndex);
             var columnName = schema[boundColumnIndex].name;
-            self.originalData[boundRowIndex][columnName] = '';
+            self.viewData[boundRowIndex][columnName] = '';
             affectedCells.push([rowIndex, columnIndex, boundRowIndex, boundColumnIndex]);
           }
         } catch (err) {
@@ -8653,7 +8808,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       document.body.removeChild(self.controlInput);
     }
 
-    self.eventParent.removeEventListener('mouseup', self.mouseup, false);
     self.eventParent.removeEventListener('mousedown', self.mousedown, false);
     self.eventParent.removeEventListener('dblclick', self.dblclick, false);
     self.eventParent.removeEventListener('click', self.click, false);
@@ -8667,7 +8821,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     self.controlInput.removeEventListener('keypress', self.keypress, false);
     self.controlInput.removeEventListener('keyup', self.keyup, false);
     self.controlInput.removeEventListener('keydown', self.keydown, false);
-    document.body.removeEventListener('mousemove', self.mousemove);
+    window.removeEventListener('mouseup', self.mouseup, false);
+    window.removeEventListener('mousemove', self.mousemove);
     window.removeEventListener('resize', self.resize);
 
     if (self.observer && self.observer.disconnect) {
@@ -9022,19 +9177,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     };
   };
 
-  self.unhideColumns = function (orderIndex0, orderIndex1) {
-    var orders = self.orders.columns;
-    var schema = self.getSchema();
-
-    for (var i = orderIndex0; i <= orderIndex1; i++) {
-      var columnIndex = orders[i];
-      var s = schema[columnIndex];
-      if (s && s.hidden) s.hidden = false;
-    }
-
-    self.refresh();
-  };
-
   self.getDomRoot = function () {
     return self.shadowRoot ? self.shadowRoot.host : self.parentNode;
   };
@@ -9275,6 +9417,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     self.intf.paste = self.paste;
     self.intf.setStyleProperty = self.setStyleProperty;
     self.intf.hideColumns = self.hideColumns;
+    self.intf.unhideColumns = self.unhideColumns;
     self.intf.hideRows = self.hideRows;
     self.intf.unhideRows = self.unhideRows;
     Object.defineProperty(self.intf, 'defaults', {
@@ -10800,6 +10943,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
   self.setActiveCell = function (x, y) {
+    if (typeof x === 'undefined') return;
+
     if (x < 0) {
       x = 0;
     }
@@ -10824,6 +10969,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
   self.selectNone = function (dontDraw) {
     self.selections = [];
+    self.selectedRows = [];
+    self.selectedColumns = [];
     self.dispatchEvent('selectionchanged', {
       selectedData: self.getSelectedData(),
       selections: self.selections,
@@ -10861,35 +11008,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     self.draw();
   };
   /**
-   * Returns true if indices of columns next to the selected columnIndex is selected on every row.
-   * @memberof canvasDatagrid
-   * @name isMultiColumnsSelected
-   * @method
-   * @param {number} columnIndex The column index to check.
-   */
-
-
-  self.isMultiColumnsSelected = function (columnIndex) {
-    var multiColIsSelected = true;
-    self.viewData.forEach(function (row, rowIndex) {
-      var columnIndices = self.selections[rowIndex];
-
-      if (!columnIndices || columnIndices.length <= 1 || columnIndices.indexOf(columnIndex) === -1) {
-        multiColIsSelected = false;
-      } else if (columnIndices.length > 1) {
-        if (columnIndices[0] != columnIndex) multiColIsSelected = false;else {
-          for (var i = 0; i < columnIndices.length - 1; i++) {
-            if (columnIndices[i] + 1 != columnIndices[i + 1]) {
-              multiColIsSelected = false;
-              break;
-            }
-          }
-        }
-      }
-    });
-    return multiColIsSelected;
-  };
-  /**
    * Returns true if the selected columnIndex is selected on every row.
    * @memberof canvasDatagrid
    * @name isColumnSelected
@@ -10906,6 +11024,26 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }
     });
     return colIsSelected;
+  };
+  /**
+   * Returns true if the selected rowIndex is selected on every column.
+   * @memberof canvasDatagrid
+   * @name isRowSelected
+   * @method
+   * @param {number} rowIndex The row index to check.
+   */
+
+
+  self.isRowSelected = function (rowIndex) {
+    if (!self.selections[rowIndex]) return false;
+    var rowIsSelected = true;
+    var schema = self.getVisibleSchema();
+    schema.forEach(function (col, index) {
+      if (!self.selections[rowIndex] || self.selections[rowIndex].indexOf(index) === -1) {
+        rowIsSelected = false;
+      }
+    });
+    return rowIsSelected;
   };
   /**
    * Runs the defined method on each selected cell.
@@ -10955,6 +11093,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
   self.selectColumn = function (columnIndex, ctrl, shift, supressEvent) {
     var s, e, x;
+    self.isMultiRowsSelected = false;
+    self.isMultiColumnsSelected = false;
 
     function addCol(i) {
       self.viewData.forEach(function (row, rowIndex) {
@@ -10986,19 +11126,25 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       for (x = s; e > x; x += 1) {
         addCol(x);
+        if (self.selectedColumns.indexOf(x) === -1) self.selectedColumns.push(x);
       }
+
+      if (s != e) self.isMultiColumnsSelected = true;
     }
 
     if (!ctrl && !shift) {
       self.selections = [];
+      self.selectedColumns = [];
       self.activeCell.columnIndex = columnIndex;
       self.activeCell.rowIndex = self.scrollIndexTop;
     }
 
     if (ctrl && self.isColumnSelected(columnIndex)) {
       removeCol(columnIndex);
+      self.selectedColumns.splice(columnIndex, 1);
     } else {
       addCol(columnIndex);
+      self.selectedColumns.push(columnIndex);
     }
 
     if (supressEvent) {
@@ -11049,6 +11195,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       self.selections[ri].push(-1);
       s.forEach(function (col, index) {
         self.selections[ri].push(self.orders.columns.indexOf(col.index));
+        if (col.index !== -1 && self.selectedColumns.indexOf(self.orders.columns.indexOf(col.index)) === -1) self.selectedColumns.push(self.orders.columns.indexOf(col.index));
       });
     }
 
@@ -11073,9 +11220,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
         for (x = st; en >= x; x += 1) {
           addRow(x);
+          self.selectedRows.push(x);
         }
       } else {
         addRow(rowIndex);
+        self.selectedRows = [];
+        self.selectedRows.push(rowIndex);
       }
     }
 
@@ -11203,6 +11353,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
    * Hide column/columns
    * @memberof canvasDatagrid
    * @name hideColumns
+   * @method
    * @param {number} beginColumnOrderIndex
    * @param {number} [endColumnOrderIndex]
    */
@@ -11211,29 +11362,65 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   self.hideColumns = function (beginColumnOrderIndex, endColumnOrderIndex) {
     var schema = self.getSchema();
     var orders = self.orders.columns;
-    var count = 0;
+    var hiddenColumns = [];
     if (typeof endColumnOrderIndex !== 'number') endColumnOrderIndex = beginColumnOrderIndex;
 
     for (var orderIndex = beginColumnOrderIndex; orderIndex <= endColumnOrderIndex; orderIndex++) {
       var columnIndex = orders[orderIndex];
 
       if (columnIndex >= 0 && !schema[columnIndex].hidden) {
-        count++;
+        hiddenColumns.push(columnIndex);
         schema[columnIndex].hidden = true;
+        self.dispatchEvent('columnhide', {
+          columnIndex: columnIndex
+        });
       }
     }
 
-    if (count > 0) {
+    if (hiddenColumns.length > 0) {
       self.setStorageData();
       setTimeout(function () {
         self.resize(true);
       }, 10);
     }
+
+    self.dispatchEvent('hidecolumns', {
+      hiddenColumns: hiddenColumns
+    });
+  };
+  /**
+   * Unihde column/columns
+   * @memberof canvasDatagrid
+   * @name unhideColumns
+   * @method
+   * @param {number} beginColumnOrderIndex
+   * @param {number} [endColumnOrderIndex]
+   */
+
+
+  self.unhideColumns = function (beginColumnOrderIndex, endColumnOrderIndex) {
+    var orders = self.orders.columns;
+    var schema = self.getSchema();
+
+    for (var i = beginColumnOrderIndex; i <= endColumnOrderIndex; i++) {
+      var columnIndex = orders[i];
+      var s = schema[columnIndex];
+
+      if (s && s.hidden) {
+        s.hidden = false;
+        self.dispatchEvent('columnunhide', {
+          columnIndex: columnIndex
+        });
+      }
+    }
+
+    self.refresh();
   };
   /**
    * Hide rows
    * @memberof canvasDatagrid
    * @name hideRows
+   * @method
    * @param {number} beginRowIndex
    * @param {number} endRowIndex
    */
@@ -11246,6 +11433,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
    * Unhide rows
    * @memberof canvasDatagrid
    * @name unhideRows
+   * @method
    * @param {number} beginRowIndex
    * @param {number} endRowIndex
    */
@@ -11375,6 +11563,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   /**
    * Add grouping
    * @param {'columns'|'rows'} groupFor
+   * @method
    * @param {number} from
    * @param {number} to
    */
@@ -11466,6 +11655,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   /**
    * Remove grouping
    * @param {Array<Array<{from:number,to:number,collapsed:boolean}>>} allGroups
+   * @method
    * @param {number} from
    * @param {number} to
    */
@@ -11701,10 +11891,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
   self.moveSelection = function (offsetX, offsetY) {
     var sel = [];
+    self.selectedRows = [];
+    self.selectedColumns = [];
     self.selections.forEach(function (row, rowIndex) {
       sel[rowIndex + offsetY] = [];
+      self.selectedRows.push(rowIndex + offsetY);
       row.forEach(function (colIndex) {
         sel[rowIndex + offsetY].push(colIndex + offsetX);
+        if (self.selectedColumns.indexOf(colIndex + offsetX) === -1) self.selectedColumns.push(colIndex + offsetX);
       });
     });
     self.selections = sel;
@@ -12016,6 +12210,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
     x -= self.getRowGroupAreaWidth();
     y -= self.getColumnGroupAreaHeight();
+
+    if (self.dragStartObject !== undefined) {
+      if (x <= 0) x = 1;
+      if (x >= self.width) x = self.width - 1;
+      if (y <= 0) y = 1;
+      if (y >= self.height) y = self.height - 1;
+    }
+
     var border,
         tsz = useTouchScrollZones ? self.attributes.touchScrollZone : 0,
         moveMode = self.attributes.borderDragBehavior === 'move',
@@ -12060,14 +12262,16 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       if (entitiy.x - self.style.cellBorderWidth < x && entitiy.x + entitiy.width + self.style.cellBorderWidth > x && entitiy.y - self.style.cellBorderWidth < y && entitiy.y + entitiy.height + self.style.cellBorderWidth > y) {
         if (/frozen-row-marker/.test(cell.style)) {
+          if (self.dragMode === 'frozen-column-marker') continue;
           cell.dragContext = cell.style;
-          cell.context = 'row-resize';
+          cell.context = 'grab';
           return cell;
         }
 
         if (/frozen-column-marker/.test(cell.style)) {
+          if (self.dragMode === 'frozen-row-marker') continue;
           cell.dragContext = cell.style;
-          cell.context = 'col-resize';
+          cell.context = 'grab';
           return cell;
         }
 
@@ -12146,7 +12350,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }
 
         if (cell.style === 'columnHeaderCell') {
-          if (cell.x + cell.width - self.attributes.columnGrabZoneSize - self.style.cellBorderWidth > x || !self.attributes.allowRowReordering) {
+          if (!self.isColumnSelected(cell.columnIndex) && cell.x + cell.width - self.attributes.columnGrabZoneSize - self.style.cellBorderWidth > x || !self.attributes.allowRowReordering) {
             cell.dragContext = 'cell';
             cell.context = 'cell';
           } else {
@@ -12158,7 +12362,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }
 
         if (cell.style === 'rowHeaderCell') {
-          if (self.attributes.rowGrabZoneSize + (cell.y - self.style.cellBorderWidth) < y || !self.attributes.allowRowReordering) {
+          if (!self.isRowSelected(cell.rowIndex) && self.attributes.rowGrabZoneSize + (cell.y - self.style.cellBorderWidth) < y || !self.attributes.allowRowReordering) {
             cell.dragContext = 'cell';
             cell.context = 'cell';
           } else {
@@ -12295,6 +12499,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
     if (!ctrl) {
       self.selections = [];
+      self.selectedRows = [];
+      self.selectedColumns = [];
     }
 
     if (self.selectionBounds.top < -1 || self.selectionBounds.bottom > self.viewData.length || self.selectionBounds.left < -1 || self.selectionBounds.right > s.length) {
@@ -12303,10 +12509,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
     for (x = self.selectionBounds.top; x <= self.selectionBounds.bottom; x += 1) {
       self.selections[x] = [];
+      self.selectedRows.push(x);
 
       for (y = self.selectionBounds.left; y <= self.selectionBounds.right; y += 1) {
         if (self.selections[x].indexOf(y) === -1) {
           self.selections[x].push(y);
+        }
+
+        if (y !== -1 && self.selectedColumns.indexOf(y) === -1) {
+          self.selectedColumns.push(y);
         }
       }
     }
