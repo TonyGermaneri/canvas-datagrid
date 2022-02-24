@@ -11354,8 +11354,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
    * @memberof canvasDatagrid
    * @name hideColumns
    * @method
-   * @param {number} beginColumnOrderIndex
-   * @param {number} [endColumnOrderIndex]
+   * @param {number} beginColumnOrderIndex The begin column order index
+   * @param {number} [endColumnOrderIndex] The end column order index
    */
 
 
@@ -11393,8 +11393,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
    * @memberof canvasDatagrid
    * @name unhideColumns
    * @method
-   * @param {number} beginColumnOrderIndex
-   * @param {number} [endColumnOrderIndex]
+   * @param {number} beginColumnOrderIndex The begin column order index
+   * @param {number} [endColumnOrderIndex] The end column order index
    */
 
 
@@ -11421,8 +11421,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
    * @memberof canvasDatagrid
    * @name hideRows
    * @method
-   * @param {number} beginRowIndex
-   * @param {number} endRowIndex
+   * @param {number} beginRowIndex The begin row index
+   * @param {number} endRowIndex The end row index
    */
 
 
@@ -11434,8 +11434,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
    * @memberof canvasDatagrid
    * @name unhideRows
    * @method
-   * @param {number} beginRowIndex
-   * @param {number} endRowIndex
+   * @param {number} beginRowIndex The begin row index
+   * @param {number} endRowIndex The end row index
    */
 
 
