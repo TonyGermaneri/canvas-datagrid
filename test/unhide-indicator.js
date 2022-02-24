@@ -10,6 +10,7 @@ import {
   makeData,
   itoa,
   savePartOfCanvasToString,
+  doAssert,
 } from './util.js';
 
 export default function () {
@@ -26,6 +27,37 @@ export default function () {
     grid.style.activeRowHeaderCellBackgroundColor = c.white;
     grid.style.activeColumnHeaderCellBackgroundColor = c.white;
   };
+
+  describe('hide/unhide column', () => {
+    it('fires columnhide event', function (done) {
+      const grid = g({ test: this.test, data: getData() });
+      grid.addEventListener('columnhide', function (event) {
+        try {
+          doAssert(event.columnIndex === 0, 'columnIndex is 0');
+        } catch (error) {
+          done(error);
+        }
+
+        done();
+      });
+      grid.hideColumns(0, 1);
+    });
+
+    it('fires columnunhide event', function (done) {
+      const grid = g({ test: this.test, data: getData() });
+      grid.addEventListener('columnunhide', function (event) {
+        try {
+          doAssert(event.columnIndex === 0, 'columnIndex is 0');
+        } catch (error) {
+          done(error);
+        }
+
+        done();
+      });
+      grid.hideColumns(0, 1);
+      grid.unhideColumns(0, 1);
+    });
+  });
 
   it('Should contain methods to hide columns', async function () {
     const grid = g({ test: this.test, data: getData() });
@@ -110,14 +142,14 @@ export default function () {
 
     x = rowHeaderWidth + 6;
     y = cellHalfHeight;
-    mousemove(document.body, x, y, grid.canvas);
+    mousemove(window, x, y, grid.canvas);
     await assertColor(grid, x, y, c.y);
     await assertColor(grid, x - 6, y, c.r);
     await assertColor(grid, x + 6, y, c.r);
 
     x = rowHeaderWidth - 9;
     y = cellHeight + 7;
-    mousemove(document.body, x, y, grid.canvas);
+    mousemove(window, x, y, grid.canvas);
     await assertColor(grid, x, y, c.y);
     await assertColor(grid, x, y - 6, c.r);
     await assertColor(grid, x, y + 6, c.r);

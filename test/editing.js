@@ -124,7 +124,7 @@ export default function () {
       test: this.test,
       data: [{ d: '' }],
     });
-    mousemove(document.body, 65, 37, grid.canvas);
+    mousemove(window, 65, 37, grid.canvas);
     mousedown(grid.canvas, 65, 37);
     mouseup(grid.canvas, 65, 37);
     mousedown(grid.canvas, 65, 37);

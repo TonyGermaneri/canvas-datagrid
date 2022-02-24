@@ -153,7 +153,7 @@ export default function () {
       test: this.test,
       data: [{ d: '123456', e: '123456' }],
     });
-    mousemove(document.body, 45, 37, grid.canvas);
+    mousemove(window, 45, 37, grid.canvas);
     mousedown(grid.canvas, 45, 37);
     mouseup(document.body, 45, 37, grid.canvas);
     done(

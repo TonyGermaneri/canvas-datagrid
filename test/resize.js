@@ -25,9 +25,9 @@ export default function () {
       }
     });
     grid.focus();
-    mousemove(document.body, 94, 10, grid.canvas);
+    mousemove(window, 94, 10, grid.canvas);
     mousedown(grid.canvas, 94, 10);
-    mousemove(document.body, 190, 10, grid.canvas);
+    mousemove(window, 190, 10, grid.canvas);
     mouseup(document.body, 190, 10, grid.canvas);
     setTimeout(function () {
       assertPxColor(grid, 100, 36, c.b, done);
@@ -51,20 +51,20 @@ export default function () {
       'No column widths set',
     );
 
-    mousemove(document.body, 94, 10, grid.canvas);
+    mousemove(window, 94, 10, grid.canvas);
     mousedown(grid.canvas, 94, 10);
-    mousemove(document.body, 190, 10, grid.canvas);
-    mouseup(document.body, 190, 10, grid.canvas);
+    mousemove(window, 190, 10, grid.canvas);
+    mouseup(window, 190, 10, grid.canvas);
 
     doAssert(
       grid.sizes.columns[0] === grid.sizes.columns[1],
       'Columns have same width',
     );
 
-    mousemove(document.body, 190, 10, grid.canvas);
+    mousemove(window, 190, 10, grid.canvas);
     mousedown(grid.canvas, 190, 10);
-    mousemove(document.body, 94, 10, grid.canvas);
-    mouseup(document.body, 94, 10, grid.canvas);
+    mousemove(window, 94, 10, grid.canvas);
+    mouseup(window, 94, 10, grid.canvas);
 
     doAssert(
       grid.sizes.columns[0] === 50 && grid.sizes.columns[1] === 50,
@@ -85,7 +85,7 @@ export default function () {
       done();
     });
     grid.focus();
-    mousemove(document.body, 94, 10, grid.canvas);
+    mousemove(window, 94, 10, grid.canvas);
     dblclick(grid.canvas, 94, 10);
   });
   it('Resize selected columns by double clicking a column header.', function () {
@@ -105,7 +105,7 @@ export default function () {
       'No column widths set',
     );
 
-    mousemove(document.body, 94, 10, grid.canvas);
+    mousemove(window, 94, 10, grid.canvas);
     dblclick(grid.canvas, 94, 10);
 
     chai.assert.deepStrictEqual(Object.keys(grid.sizes.columns), [
@@ -131,10 +131,10 @@ export default function () {
     });
     setTimeout(function () {
       grid.focus();
-      mousemove(document.body, 94, 36, grid.canvas);
+      mousemove(window, 94, 36, grid.canvas);
       mousedown(grid.canvas, 94, 36);
-      mousemove(document.body, 190, 36, grid.canvas);
-      mouseup(document.body, 190, 36, grid.canvas);
+      mousemove(window, 190, 36, grid.canvas);
+      mouseup(window, 190, 36, grid.canvas);
       assertPxColor(grid, 110, 36, c.b, done);
     }, 1);
   });
@@ -153,10 +153,10 @@ export default function () {
     });
     setTimeout(function () {
       grid.focus();
-      mousemove(document.body, 10, 48, grid.canvas);
+      mousemove(window, 10, 48, grid.canvas);
       mousedown(grid.canvas, 10, 48);
-      mousemove(document.body, 10, 100, grid.canvas);
-      mouseup(document.body, 10, 100, grid.canvas);
+      mousemove(window, 10, 100, grid.canvas);
+      mouseup(window, 10, 100, grid.canvas);
       assertPxColor(grid, 10, 90, c.b, done);
     }, 1);
   });
@@ -177,10 +177,10 @@ export default function () {
     });
     setTimeout(function () {
       grid.focus();
-      mousemove(document.body, 40, 48, grid.canvas);
+      mousemove(window, 40, 48, grid.canvas);
       mousedown(grid.canvas, 40, 48);
-      mousemove(document.body, 40, 100, grid.canvas);
-      mouseup(document.body, 40, 100, grid.canvas);
+      mousemove(window, 40, 100, grid.canvas);
+      mouseup(window, 40, 100, grid.canvas);
       assertPxColor(grid, 10, 90, c.b, done);
     }, 1);
   });

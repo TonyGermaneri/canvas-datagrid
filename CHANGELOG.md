@@ -7,6 +7,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.4.4 - 2022-02-23
+
+## Added
+
+- Introduce frozen style markers (like Google Sheets) (xianzhi3, hangxingliu, #483)
+- Dispatch column hide/unhide events (mdebrauw, #491)
+- Allow cell editor overflow with long content (xianzhi3, #492)
+
+## Fixed
+
+- Fix bug that cleared the canvas under a certain unusual refresh flow (hangxingliu, #494)
+
 ## 0.4.3 - 2022-02-16
 
 ## Added
