@@ -35,6 +35,7 @@
         return a.name.localeCompare(b.name);
     }
     function formatDocString(str) {
+        if(typeof str !== 'string') str = '';
         str = str.replace(/\{@link +http([^\}]+)\}/ig, 'http$1');
         str = str.replace(/\{@link ([^\}]+)\}/ig, '<a href="#$1">$1</a>');
         str = str.replace(/`([^`}]+)`/ig, '<span class="inline-code">$1</span>');
