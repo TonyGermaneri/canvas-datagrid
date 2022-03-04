@@ -523,6 +523,131 @@ export default function () {
       );
     }, 10);
   });
+  it('paste data and fill it down/over', function (done) {
+    const grid = g({
+      test: this.test,
+      data: [
+        {
+          field1: 'Value 1',
+          field2: 'Value 2',
+          field3: 'Value 3',
+        },
+        {},
+        {},
+      ],
+    });
+
+    grid.focus();
+    grid.selectRow(0, false, false, false);
+    grid.selectRow(2, false, true, false);
+
+    grid.paste({
+      clipboardData: {
+        items: [
+          {
+            type: 'text/plain',
+            getAsString: function (callback) {
+              callback('New value');
+            },
+          },
+        ],
+      },
+    });
+
+    setTimeout(function () {
+      try {
+        doAssert(grid.viewData.length == 3, 'Should have 3 rows exactly');
+        doAssert(Object.keys(grid.viewData[0]).length == 3, 'Should have 3 columns exactly');
+
+        for (let i = 0; i < grid.viewData.length; i++) {
+          for (const columnKey in grid.viewData[i]) {
+            const currentValue = grid.viewData[i][columnKey];
+            doAssert(
+              currentValue === 'New value',
+              'Value for "' + columnKey + '" should be "New value", but got ' + currentValue
+            );
+          }
+        }
+
+        done();
+      } catch (error) {
+        done(error);
+      }
+    }, 10);
+  });
+  it('paste data with a custom fill down/over function', function (done) {
+    const grid = g({
+      test: this.test,
+      data: [
+        {
+          field1: 'Value 1',
+          field2: 'Value 2',
+          field3: 'Value 3',
+        },
+        {},
+      ],
+      fillCellCallback: function (args) {
+        let counter = 0;
+
+        if (args.fillingColumnPosition > -1)
+          counter = args.fillingColumnPosition + 1;
+        if (args.fillingRowPosition > -1)
+          counter += args.fillingRowPosition + 1;
+        return args.newCellData + ' ' + counter;
+      },
+    });
+
+    grid.focus();
+    grid.selectRow(0, false, false, false);
+    grid.selectRow(1, false, true, false);
+
+    grid.paste({
+      clipboardData: {
+        items: [
+          {
+            type: 'text/plain',
+            getAsString: function (callback) {
+              callback('New value');
+            },
+          },
+        ],
+      },
+    });
+    setTimeout(function () {
+      try {
+        doAssert(grid.viewData.length == 2, 'Should have 2 rows exactly');
+        doAssert(Object.keys(grid.viewData[0]).length == 3, 'Should have 3 columns exactly');
+
+        const expectedResult = [
+          {
+            field1: 'New value',
+            field2: 'New value 1',
+            field3: 'New value 2',
+          },
+          {
+            field1: 'New value 1',
+            field2: 'New value 2',
+            field3: 'New value 3',
+          },
+        ];
+
+        for (let i = 0; i < grid.viewData.length; i++) {
+          for (const columnKey in grid.viewData[i]) {
+            const expectedValue = expectedResult[i][columnKey];
+            const currentValue = grid.viewData[i][columnKey];
+            doAssert(
+              currentValue === expectedValue,
+              `Value for "${columnKey}" should be "${expectedValue}", but got "${currentValue}"`
+            );
+          }
+        }
+
+        done();
+      } catch (error) {
+        done(error);
+      }
+    }, 10);
+  });
   it('Should fire a beforepaste event', function (done) {
     var grid = g({
       test: this.test,
