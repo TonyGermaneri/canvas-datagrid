@@ -20,3 +20,10 @@ type RangeDescriptor = {
 type SelectionDescriptor = {
   type: number;
 } & RangeDescriptor;
+
+type RectangleObject = {
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+};
