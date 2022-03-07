@@ -27,3 +27,7 @@ type RectangleObject = {
   left: number;
   right: number;
 };
+
+type ClipboardInterface = {
+  setData: (mimeType: string, data: any) => any;
+}
