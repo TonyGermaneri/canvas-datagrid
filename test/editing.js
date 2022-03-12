@@ -7,6 +7,7 @@ import {
   g,
   smallData,
   assertIf,
+  handlemove,
 } from './util.js';
 
 const fakeClipboardEvent = {
@@ -802,5 +803,53 @@ export default function () {
     });
 
     grid.deleteSelectedData();
+  });
+  it('Moving handle on desktop fills the overlay region with selection data', function (done) {
+    const grid = g({
+      test: this.test,
+      data: [
+        { field1: 'value1' },
+        { field1: 'value2' },
+        { field1: 'value3' },
+      ],
+      fillCellCallback: function (args) {
+        return args.newCellData + ' ' +
+          (args.fillingRowPosition + 1).toString();
+      },
+      selectionHandleBehavior: 'single',
+    });
+    let handled = false;
+
+    grid.addEventListener('afterdraw', function (ev) {
+      if (handled) return;
+      handled = true;
+      handlemove(grid, 0, 30);
+
+      try {
+        const expectedResult = [
+          { field1: 'value1' },
+          { field1: 'value1 1' },
+          { field1: 'value1 2' },
+        ];
+
+        for (let i = 0; i < grid.viewData.length; i++) {
+          for (const columnKey in grid.viewData[i]) {
+            const expectedValue = expectedResult[i][columnKey];
+            const currentValue = grid.viewData[i][columnKey];
+            doAssert(
+              currentValue === expectedValue,
+              `Value for "${columnKey}" should be "${expectedValue}", but got "${currentValue}"`
+            );
+          }
+        }
+
+        done();
+      } catch (error) {
+        done(error);
+      }
+    });
+
+    grid.focus();
+    grid.selectArea({ top: 0, left: 0, bottom: 0, right: 0 });
   });
 }
