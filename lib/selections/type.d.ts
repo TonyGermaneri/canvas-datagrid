@@ -21,6 +21,11 @@ type SelectionDescriptor = {
   type: number;
 } & RangeDescriptor;
 
+type ContextForSelectionAction = {
+  rows?: number;
+  columns?: number;
+};
+
 type RectangleObject = {
   top: number;
   bottom: number;
@@ -30,4 +35,4 @@ type RectangleObject = {
 
 type ClipboardInterface = {
   setData: (mimeType: string, data: any) => any;
-}
+};
