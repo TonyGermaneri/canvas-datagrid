@@ -250,6 +250,19 @@ export function touchmove(el, x, y, bbEl) {
     changedTouches: [{ x: 0, y: 0 }],
   });
 }
+export function handlemove(grid, dx, dy) {
+  const handle = grid.visibleCells.find((cell) => cell.style === 'selection-handle-br');
+
+  handle.x += handle.width / 2;
+  handle.y += handle.height / 2;
+  dx += handle.x;
+  dy += handle.y;
+
+  mousemove(window, handle.x, handle.y, grid.canvas);
+  mousedown(grid.canvas, handle.x, handle.y);
+  mousemove(window, dx, dy, grid.canvas);
+  mouseup(window, dx, dy, grid.canvas);
+}
 export function click(el, x, y, bbEl, ev) {
   var p = bb(bbEl || el);
   ev = ev || {};
