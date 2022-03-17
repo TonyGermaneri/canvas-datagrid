@@ -145,15 +145,15 @@ export function marker(grid, x, y) {
 export function savePartOfCanvasToString(grid, x, y, w, h) {
   const tmpCanvas = document.createElement('canvas');
   const dpr = window.devicePixelRatio;
-  const sw = 100 * dpr;
-  const sh = 100 * dpr;
+  const dw = 200 * dpr;
+  const dh = 200 * h / w * dpr;
   x = x * dpr;
   y = y * dpr;
   if (x < 0) x = 0;
   if (y < 0) y = 0;
-  tmpCanvas.width = w;
-  tmpCanvas.height = h;
-  tmpCanvas.getContext('2d').drawImage(grid.canvas, x, y, sw, sh, 0, 0, w, h);
+  tmpCanvas.width = dw;
+  tmpCanvas.height = dh;
+  tmpCanvas.getContext('2d').drawImage(grid.canvas, x, y, w, h, 0, 0, dw, dh);
   return tmpCanvas.toDataURL('image/png');
 }
 
