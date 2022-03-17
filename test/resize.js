@@ -71,6 +71,41 @@ export default function () {
       'Columns have been set back to original width',
     );
   });
+  it('Resizes selected rows.', function () {
+    var grid = g({
+      test: this.test,
+      data: smallData(),
+      style: {
+        cellHeight: 25,
+      },
+    });
+    grid.focus();
+    grid.selectRow(0);
+    grid.selectRow(1, true);
+
+    const rowSizes = Object.keys(grid.sizes.rows);
+    doAssert(rowSizes.length === 0, 'No row heights set');
+
+    mousemove(window, 10, 50, grid.canvas);
+    mousedown(grid.canvas, 10, 50);
+    mousemove(window, 10, 60, grid.canvas);
+    mouseup(window, 10, 60, grid.canvas);
+
+    doAssert(
+      grid.sizes.rows[0] === grid.sizes.rows[1],
+      'Rows have same height',
+    );
+
+    mousemove(window, 10, 60, grid.canvas);
+    mousedown(grid.canvas, 10, 60);
+    mousemove(window, 10, 50, grid.canvas);
+    mouseup(window, 10, 50, grid.canvas);
+
+    doAssert(
+      grid.sizes.rows[0] === 25 && grid.sizes.rows[1] === 25,
+      'Rows have been set back to original height',
+    );
+  });
   it('Resize a column by double clicking a column header.', function (done) {
     var grid = g({
       test: this.test,
