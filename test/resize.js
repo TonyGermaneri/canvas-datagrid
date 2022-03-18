@@ -106,6 +106,55 @@ export default function () {
       'Rows have been set back to original height',
     );
   });
+  it('Resizes row and column after the handle is dropped.', function () {
+    var grid = g({
+      test: this.test,
+      data: smallData(),
+      resizeAfterDragged: true,
+      style: {
+        cellHeight: 25,
+        cellWidth: 50,
+      },
+    });
+    grid.focus();
+
+    const rowSizes = Object.keys(grid.sizes.rows);
+    doAssert(rowSizes.length === 0, 'No row heights set');
+
+    mousemove(window, 10, 50, grid.canvas);
+    mousedown(grid.canvas, 10, 50);
+    mousemove(window, 10, 60, grid.canvas);
+    mouseup(window, 10, 60, grid.canvas);
+
+    doAssert(grid.sizes.rows[0] === 35, 'The row height should be 35');
+
+    mousemove(window, 10, 60, grid.canvas);
+    mousedown(grid.canvas, 10, 60);
+    mousemove(window, 10, 50, grid.canvas);
+    mouseup(window, 10, 50, grid.canvas);
+
+    doAssert(
+      grid.sizes.rows[0] === 25,
+      'The row height have been set back to the original',
+    );
+
+    mousemove(window, 94, 10, grid.canvas);
+    mousedown(grid.canvas, 94, 10);
+    mousemove(window, 190, 10, grid.canvas);
+    mouseup(window, 190, 10, grid.canvas);
+
+    doAssert(grid.sizes.columns[0] === 146, 'The column width should be 146');
+
+    mousemove(window, 190, 10, grid.canvas);
+    mousedown(grid.canvas, 190, 10);
+    mousemove(window, 94, 10, grid.canvas);
+    mouseup(window, 94, 10, grid.canvas);
+
+    doAssert(
+      grid.sizes.columns[0] === 50,
+      'The column height have been set back to the original',
+    );
+  });
   it('Resize a column by double clicking a column header.', function (done) {
     var grid = g({
       test: this.test,
