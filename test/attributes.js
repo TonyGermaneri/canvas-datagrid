@@ -270,7 +270,7 @@ export default function () {
     );
   });
   it('Selection should NOT follow active cell with selectionFollowsActiveCell false', function (done) {
-    var grid = g({
+    const grid = g({
       test: this.test,
       selectionFollowsActiveCell: false,
       data: [{ a: 'a' }, { a: 'b' }],
@@ -280,12 +280,13 @@ export default function () {
     // select cell 0:0
     click(grid.canvas, 60, 37);
     keydown(grid.controlInput, 'ArrowDown');
-    done(
-      assertIf(
-        grid.selectedRows.length === 0,
-        'Expected selection to not follow active cell',
-      ),
-    );
+    // The previous test in here is not accurate
+    //     grid.selectedRows.length === 0
+    // Because this condition is always true
+    // It is `[null]` if the `selectionFollowsActiveCell` is false,
+    // Otherwise, it is `[undefined, {...}]`
+    assertIf(grid.selectedRows[1], 'Expected selection to not follow active cell');
+    done();
   });
   it('Should use a textarea to edit when multiLine is true', function (done) {
     var grid = g({
@@ -542,8 +543,8 @@ export default function () {
   });
   it('Clicking the corner cell will select all.', function (done) {
     var d = makeData(10, 10, function (x) {
-        return x;
-      }),
+      return x;
+    }),
       grid = g({
         test: this.test,
         data: d,
@@ -590,7 +591,7 @@ export default function () {
     done(
       assertIf(
         grid.selectedRows.length !== 3 ||
-          grid.selectedCells[0].col2 !== undefined,
+        grid.selectedCells[0].col2 !== undefined,
         'Expected every row to be selected.',
       ),
     );
@@ -614,8 +615,8 @@ export default function () {
     done(
       assertIf(
         grid.selectedRows.length !== 3 ||
-          grid.selectedCells[0].col2 !== undefined ||
-          grid.selectedCells[0].col3 !== 'a',
+        grid.selectedCells[0].col2 !== undefined ||
+        grid.selectedCells[0].col3 !== 'a',
         'Expected every row to be selected and column 2 to not be selected.',
       ),
     );
@@ -639,8 +640,8 @@ export default function () {
     done(
       assertIf(
         grid.selectedRows.length !== 3 ||
-          grid.selectedCells[0].c !== '2:0' ||
-          grid.selectedCells[0].b !== '1:0',
+        grid.selectedCells[0].c !== '2:0' ||
+        grid.selectedCells[0].b !== '1:0',
         'Expected everything to be selected.',
       ),
     );

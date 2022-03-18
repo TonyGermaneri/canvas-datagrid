@@ -113,8 +113,8 @@ export default function () {
     done(
       assertIf(
         grid.input.childNodes[0].innerHTML === 'A' &&
-          grid.input.childNodes.length === 3 &&
-          grid.input.tagName !== 'SELECT',
+        grid.input.childNodes.length === 3 &&
+        grid.input.tagName !== 'SELECT',
         'Expected an input to have appeared',
       ),
     );
@@ -799,6 +799,7 @@ export default function () {
         event.cells[0].length == 4,
         'first affected cell is [rowIndex, columnIndex, boundRowIndex, boundColumnIndex] tuple',
       );
+      chai.assert.deepStrictEqual(event.cells[0], [0, 0, 0, 0]);
       done();
     });
 

@@ -1,9 +1,11 @@
-import { mouseup, mousedown, mousemove, contextmenu, g } from './util.js';
+import { mouseup, mousedown, mousemove, contextmenu, g, marker, click, dblclick } from './util.js';
 
 export default function () {
   it('Hide columns by context menu item after reordering', async function () {
+    const baseWidth = 60;
+    const halfBaseWidth = baseWidth * 0.5;
     const data = [{ c1: 'c1', c2: 'c2', c3: 'c3', c4: 'c4', c5: 'c5' }];
-    const schema = Object.keys(data[0]).map((name) => ({ name, width: 50 }));
+    const schema = Object.keys(data[0]).map((name) => ({ name, width: baseWidth }));
     for (let i = 0; i < 3; i++) data.push(Object.assign({}, data[0]));
 
     const test = this.test;
@@ -14,6 +16,8 @@ export default function () {
       allowRowReordering: true,
       showFilter: false,
     });
+    const headerWidth = grid.sizes.columns[-1] || baseWidth;
+
     const dnd = (x1, y1, x2, y2) => {
       mousemove(window, x1, y1, grid.canvas);
       mousedown(grid.canvas, x1, y1);
@@ -27,10 +31,13 @@ export default function () {
 
     grid.focus();
     // c1, c2, c3, c4, c5 => c2, c1, c3, c4, c5
-    dnd(85, 15, 125, 15);
+    dnd(headerWidth + halfBaseWidth, 10, headerWidth + baseWidth + halfBaseWidth, 10);
     await delay();
 
-    contextmenu(grid.canvas, 85, 10);
+    grid.selectColumn(0);
+    grid.draw();
+    await delay();
+    contextmenu(grid.canvas, headerWidth + halfBaseWidth, 10);
     await delay();
 
     const hideColumnItem = contextMenuItems.find((it) =>
@@ -43,7 +50,7 @@ export default function () {
     const cells = getVisibleCells(grid);
     cells.forEach((it) => {
       if (it.header.name === 'c2')
-        throw new Error(`There are column c2 after hidding first column`);
+        throw new Error(`There is column c2 after hidding first column`);
     });
   });
 }

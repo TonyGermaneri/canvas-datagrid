@@ -187,7 +187,9 @@ export default function () {
         done(
           assertIf(
             grid.selectedRows.filter(function (row) {
-              return row[0] !== null;
+              // Each row is an object in here, so the following statement is invalid in previous test
+              //     return row[0] !== null;
+              return row && Object.keys(row).length > 0;
             }).length !== 2,
             'Expected data interface `selectedRows` 2 rows.  It does not.',
           ),
