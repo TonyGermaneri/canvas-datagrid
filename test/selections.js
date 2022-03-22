@@ -1,3 +1,4 @@
+import { SelectionType } from '../lib/selections/util.js';
 import {
   mouseup,
   mousedown,
@@ -147,11 +148,18 @@ export default function () {
   });
 
   it('Should select a row', function (done) {
-    var grid = g({
+    const grid = g({
       test: this.test,
       data: smallData(),
     });
     grid.selectRow(0);
+    chai.assert.deepStrictEqual(grid.selectionList.length, 1);
+    chai.assert.deepStrictEqual(grid.selectionList[0], {
+      type: SelectionType.Rows,
+      startRow: 0,
+      endRow: 0,
+    });
+
     grid.style.activeCellSelectedBackgroundColor = c.y;
     grid.style.cellSelectedBackgroundColor = c.y;
     grid.style.cellBackgroundColor = c.b;
@@ -173,12 +181,34 @@ export default function () {
     });
   });
   it('Should select a row, then add to the selection with control', function (done) {
-    var grid = g({
+    const grid = g({
       test: this.test,
       data: smallData(),
     });
     grid.selectRow(0);
+    chai.assert.deepStrictEqual(grid.selectionList.length, 1);
+    chai.assert.deepStrictEqual(grid.selectionList[0], {
+      type: SelectionType.Rows,
+      startRow: 0,
+      endRow: 0,
+    });
+
     grid.selectRow(2, true);
+    const orderedSelectionList = [...grid.selectionList].sort(
+      (a, b) => a.startRow - b.startRow,
+    );
+    chai.assert.deepStrictEqual(orderedSelectionList.length, 2);
+    chai.assert.deepStrictEqual(orderedSelectionList[0], {
+      type: SelectionType.Rows,
+      startRow: 0,
+      endRow: 0,
+    });
+    chai.assert.deepStrictEqual(orderedSelectionList[1], {
+      type: SelectionType.Rows,
+      startRow: 2,
+      endRow: 2,
+    });
+
     grid.style.activeCellSelectedBackgroundColor = c.y;
     grid.style.cellSelectedBackgroundColor = c.y;
     grid.style.cellBackgroundColor = c.b;
@@ -263,11 +293,18 @@ export default function () {
     });
   });
   it('Should select a column', function (done) {
-    var grid = g({
+    const grid = g({
       test: this.test,
       data: smallData(),
     });
     grid.selectColumn(0);
+    chai.assert.deepStrictEqual(grid.selectionList.length, 1);
+    chai.assert.deepStrictEqual(grid.selectionList[0], {
+      type: SelectionType.Columns,
+      startColumn: 0,
+      endColumn: 0,
+    });
+
     grid.style.activeCellSelectedBackgroundColor = c.y;
     grid.style.cellSelectedBackgroundColor = c.y;
     grid.style.cellBackgroundColor = c.b;
@@ -552,6 +589,62 @@ export default function () {
 
     setTimeout(function () {
       grid.selectArea({ top: 0, left: 0, bottom: 1, right: 1 });
+    }, 1);
+  });
+
+  it('selecting all cells in a column can only produce one selection descriptor in the list', function (done) {
+    const data = smallData();
+    const grid = g({
+      test: this.test,
+      data,
+    });
+
+    grid.addEventListener('selectionchanged', function (event) {
+      try {
+        chai.assert.deepStrictEqual(grid.selectionList[0], {
+          type: SelectionType.Columns,
+          startColumn: 0,
+          endColumn: 0,
+        });
+      } catch (error) {
+        return done(error);
+      }
+      done();
+    });
+
+    setTimeout(function () {
+      grid.selectArea({ top: 0, left: 0, bottom: data.length - 1, right: 0 });
+    }, 1);
+  });
+
+  it('selecting all cells in a row can only produce one selection descriptor in the list', function (done) {
+    const data = smallData();
+    const columns = Object.keys(data[0]).length;
+    const grid = g({
+      test: this.test,
+      data,
+    });
+
+    grid.addEventListener('selectionchanged', function (event) {
+      try {
+        chai.assert.deepStrictEqual(grid.selectionList[0], {
+          type: SelectionType.Rows,
+          startRow: 1,
+          endRow: 1,
+        });
+      } catch (error) {
+        return done(error);
+      }
+      done();
+    });
+
+    setTimeout(function () {
+      grid.selectArea({
+        top: 1,
+        left: 0,
+        bottom: 1,
+        right: columns - 1,
+      });
     }, 1);
   });
 }
