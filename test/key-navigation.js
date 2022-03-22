@@ -1,3 +1,4 @@
+import { SelectionType } from '../lib/selections/util.js';
 import { makeData, g, smallData, assertIf, doAssert } from './util.js';
 
 export default function () {
@@ -103,7 +104,7 @@ export default function () {
     );
   });
   it('Shift and Arrow right should add the selection right one', function (done) {
-    var grid = g({
+    const grid = g({
       test: this.test,
       data: smallData(),
     });
@@ -116,21 +117,51 @@ export default function () {
       right: 0,
     });
 
-    var ev = new Event('keydown');
+    let ev = new Event('keydown');
     ev.shiftKey = true;
     ev.key = 'ArrowRight';
 
     grid.controlInput.dispatchEvent(ev);
 
-    done(
-      assertIf(
-        grid.selectedRows.length !== 1 || grid.selections[0].col3 !== undefined,
-        'Expected the active cell to move.',
-      ),
-    );
+    //#region TODO: remove tests in this region in the version 1.x
+    try {
+      doAssert(
+        grid.selectedRows.length === 1,
+        'Expected only one row is selected',
+      );
+      doAssert(
+        grid.selections[0].indexOf(3) < 0 &&
+          grid.selections[0].indexOf(2) < 0 &&
+          grid.selections[0].indexOf(1) >= 0 &&
+          grid.selections[0].indexOf(0) >= 0,
+        'Expected only column 1 and column 2 are selected in first row',
+      );
+    } catch (error) {
+      return done(error);
+    }
+    //#endregion
+
+    try {
+      doAssert(
+        Array.isArray(grid.selectionList),
+        `grid.selectionList should be an array, but it is ${typeof grid.selectionList}`,
+      );
+      chai.assert.deepStrictEqual(grid.selectionList.length, 1);
+      chai.assert.deepStrictEqual(grid.selectionList[0], {
+        type: SelectionType.Cells,
+        startRow: 0,
+        endRow: 0,
+        startColumn: 0,
+        endColumn: 1,
+      });
+    } catch (error) {
+      return done(error);
+    }
+    done();
   });
+
   it('Shift and Arrow left should add the selection to the left one', function (done) {
-    var grid = g({
+    const grid = g({
       test: this.test,
       data: smallData(),
     });
@@ -143,7 +174,7 @@ export default function () {
       right: 1,
     });
 
-    var ev = new Event('keydown');
+    let ev = new Event('keydown');
     ev.shiftKey = true;
     ev.key = 'ArrowRight';
 
@@ -155,15 +186,44 @@ export default function () {
 
     grid.controlInput.dispatchEvent(ev);
 
-    done(
-      assertIf(
-        grid.selectedRows.length !== 1 || grid.selections[0].col3 !== undefined,
-        'Expected the active cell to move.',
-      ),
-    );
+    //#region TODO: remove tests in this region in the version 1.x
+    try {
+      doAssert(
+        grid.selectedRows.length === 1,
+        'Expected only one row is selected',
+      );
+      doAssert(
+        grid.selections[0].indexOf(3) < 0 &&
+          grid.selections[0].indexOf(2) < 0 &&
+          grid.selections[0].indexOf(1) >= 0 &&
+          grid.selections[0].indexOf(0) >= 0,
+        'Expected only column 1 and column 2 are selected in first row',
+      );
+    } catch (error) {
+      return done(error);
+    }
+    //#endregion
+
+    try {
+      doAssert(
+        Array.isArray(grid.selectionList),
+        `grid.selectionList should be an array, but it is ${typeof grid.selectionList}`,
+      );
+      chai.assert.deepStrictEqual(grid.selectionList.length, 1);
+      chai.assert.deepStrictEqual(grid.selectionList[0], {
+        type: SelectionType.Cells,
+        startRow: 0,
+        endRow: 0,
+        startColumn: 0,
+        endColumn: 1,
+      });
+    } catch (error) {
+      return done(error);
+    }
+    done();
   });
   it('Shift and Arrow up should add the selection up one', function (done) {
-    var grid = g({
+    const grid = g({
       test: this.test,
       data: smallData(),
     });
@@ -176,7 +236,7 @@ export default function () {
       right: 0,
     });
 
-    var ev = new Event('keydown');
+    let ev = new Event('keydown');
     ev.shiftKey = true;
     ev.key = 'ArrowDown';
 
@@ -188,15 +248,50 @@ export default function () {
 
     grid.controlInput.dispatchEvent(ev);
 
-    done(
-      assertIf(
-        grid.selectedRows.length !== 2 || grid.selections[0].col2 !== undefined,
-        'Expected the active cell to move.',
-      ),
+    // done(
+    assertIf(
+      grid.selectedRows.length !== 2 || grid.selections[0].col2 !== undefined,
+      'Expected the active cell to move.',
     );
+    // );
+    //#region TODO: remove tests in this region in the version 1.x
+    try {
+      doAssert(
+        grid.selectedRows.length === 2,
+        'Expected only two rows are selected',
+      );
+      doAssert(
+        grid.selections[0].indexOf(3) < 0 &&
+          grid.selections[1].indexOf(3) < 0 &&
+          grid.selections[0][0] === 0 &&
+          grid.selections[1][0] === 0,
+        'Expected only first cell in first two rows are selected',
+      );
+    } catch (error) {
+      return done(error);
+    }
+    //#endregion
+
+    try {
+      doAssert(
+        Array.isArray(grid.selectionList),
+        `grid.selectionList should be an array, but it is ${typeof grid.selectionList}`,
+      );
+      chai.assert.deepStrictEqual(grid.selectionList.length, 1);
+      chai.assert.deepStrictEqual(grid.selectionList[0], {
+        type: SelectionType.Cells,
+        startRow: 0,
+        endRow: 1,
+        startColumn: 0,
+        endColumn: 0,
+      });
+    } catch (error) {
+      return done(error);
+    }
+    done();
   });
   it('shrink selection when pressing Shift and Arrow-up ', function (done) {
-    var grid = g({
+    const grid = g({
       test: this.test,
       data: smallData(),
     });
@@ -211,16 +306,24 @@ export default function () {
 
     grid.setActiveCell(2, 2); // set to lower right corner of selection
 
-    var ev = new Event('keydown');
+    let ev = new Event('keydown');
     ev.shiftKey = true;
     ev.key = 'ArrowUp';
     grid.controlInput.dispatchEvent(ev);
 
-    var ev = new Event('keydown');
+    ev = new Event('keydown');
     ev.shiftKey = true;
     ev.key = 'ArrowLeft';
     grid.controlInput.dispatchEvent(ev);
 
+    chai.assert.deepStrictEqual(grid.selectionList.length, 1);
+    chai.assert.deepStrictEqual(grid.selectionList[0], {
+      type: SelectionType.Cells,
+      startRow: 1,
+      endRow: 1,
+      startColumn: 1,
+      endColumn: 1,
+    });
     done(
       assertIf(
         grid.selectionBounds.top !== 1 ||
@@ -232,7 +335,7 @@ export default function () {
     );
   });
   it('shrink selection to top/left corner when pressing Shift and Arrow-up/left ', function (done) {
-    var grid = g({
+    const grid = g({
       test: this.test,
       data: smallData(),
     });
@@ -247,16 +350,24 @@ export default function () {
 
     grid.setActiveCell(1, 1); // set to lower right corner of selection
 
-    var ev = new Event('keydown');
+    let ev = new Event('keydown');
     ev.shiftKey = true;
     ev.key = 'ArrowUp';
     grid.controlInput.dispatchEvent(ev);
 
-    var ev = new Event('keydown');
+    ev = new Event('keydown');
     ev.shiftKey = true;
     ev.key = 'ArrowLeft';
     grid.controlInput.dispatchEvent(ev);
 
+    chai.assert.deepStrictEqual(grid.selectionList.length, 1);
+    chai.assert.deepStrictEqual(grid.selectionList[0], {
+      type: SelectionType.Cells,
+      startRow: 0,
+      endRow: 0,
+      startColumn: 0,
+      endColumn: 0,
+    });
     done(
       assertIf(
         grid.selectionBounds.top !== 0 ||
@@ -268,7 +379,7 @@ export default function () {
     );
   });
   it('shrink selection to bottom/right corner when pressing Shift and Arrow-down/right', function (done) {
-    var grid = g({
+    const grid = g({
       test: this.test,
       data: smallData(),
     });
@@ -283,16 +394,24 @@ export default function () {
 
     grid.setActiveCell(1, 1); // set to upper left corner of selection
 
-    var ev = new Event('keydown');
+    let ev = new Event('keydown');
     ev.shiftKey = true;
     ev.key = 'ArrowDown';
     grid.controlInput.dispatchEvent(ev);
 
-    var ev = new Event('keydown');
+    ev = new Event('keydown');
     ev.shiftKey = true;
     ev.key = 'ArrowRight';
     grid.controlInput.dispatchEvent(ev);
 
+    chai.assert.deepStrictEqual(grid.selectionList.length, 1);
+    chai.assert.deepStrictEqual(grid.selectionList[0], {
+      type: SelectionType.Cells,
+      startRow: 2,
+      endRow: 2,
+      startColumn: 2,
+      endColumn: 2,
+    });
     done(
       assertIf(
         grid.selectionBounds.top !== 2 ||

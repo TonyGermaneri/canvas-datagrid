@@ -130,7 +130,13 @@ export default function () {
     grid.focus();
     grid.addEventListener('selectionchanged', function (event) {
       try {
+        // TODO: remove the following line in the version 1.x
         doAssert(event.selections.length === 0, 'selection is empty');
+        doAssert(
+          Array.isArray(event.selectionList),
+          'selectionList is not an array in the event context',
+        );
+        doAssert(event.selectionList.length === 0, 'selectionList is empty');
       } catch (error) {
         done(error);
       }
