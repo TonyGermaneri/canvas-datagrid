@@ -248,12 +248,6 @@ export default function () {
 
     grid.controlInput.dispatchEvent(ev);
 
-    // done(
-    assertIf(
-      grid.selectedRows.length !== 2 || grid.selections[0].col2 !== undefined,
-      'Expected the active cell to move.',
-    );
-    // );
     //#region TODO: remove tests in this region in the version 1.x
     try {
       doAssert(
