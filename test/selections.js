@@ -1,3 +1,4 @@
+import { SelectionType } from '../lib/selections/util.js';
 import {
   mouseup,
   mousedown,
@@ -130,7 +131,13 @@ export default function () {
     grid.focus();
     grid.addEventListener('selectionchanged', function (event) {
       try {
+        // TODO: remove the following line in the version 1.x
         doAssert(event.selections.length === 0, 'selection is empty');
+        doAssert(
+          Array.isArray(event.selectionList),
+          'selectionList is not an array in the event context',
+        );
+        doAssert(event.selectionList.length === 0, 'selectionList is empty');
       } catch (error) {
         done(error);
       }
@@ -141,11 +148,18 @@ export default function () {
   });
 
   it('Should select a row', function (done) {
-    var grid = g({
+    const grid = g({
       test: this.test,
       data: smallData(),
     });
     grid.selectRow(0);
+    chai.assert.deepStrictEqual(grid.selectionList.length, 1);
+    chai.assert.deepStrictEqual(grid.selectionList[0], {
+      type: SelectionType.Rows,
+      startRow: 0,
+      endRow: 0,
+    });
+
     grid.style.activeCellSelectedBackgroundColor = c.y;
     grid.style.cellSelectedBackgroundColor = c.y;
     grid.style.cellBackgroundColor = c.b;
@@ -167,12 +181,34 @@ export default function () {
     });
   });
   it('Should select a row, then add to the selection with control', function (done) {
-    var grid = g({
+    const grid = g({
       test: this.test,
       data: smallData(),
     });
     grid.selectRow(0);
+    chai.assert.deepStrictEqual(grid.selectionList.length, 1);
+    chai.assert.deepStrictEqual(grid.selectionList[0], {
+      type: SelectionType.Rows,
+      startRow: 0,
+      endRow: 0,
+    });
+
     grid.selectRow(2, true);
+    const orderedSelectionList = [...grid.selectionList].sort(
+      (a, b) => a.startRow - b.startRow,
+    );
+    chai.assert.deepStrictEqual(orderedSelectionList.length, 2);
+    chai.assert.deepStrictEqual(orderedSelectionList[0], {
+      type: SelectionType.Rows,
+      startRow: 0,
+      endRow: 0,
+    });
+    chai.assert.deepStrictEqual(orderedSelectionList[1], {
+      type: SelectionType.Rows,
+      startRow: 2,
+      endRow: 2,
+    });
+
     grid.style.activeCellSelectedBackgroundColor = c.y;
     grid.style.cellSelectedBackgroundColor = c.y;
     grid.style.cellBackgroundColor = c.b;
@@ -257,11 +293,18 @@ export default function () {
     });
   });
   it('Should select a column', function (done) {
-    var grid = g({
+    const grid = g({
       test: this.test,
       data: smallData(),
     });
     grid.selectColumn(0);
+    chai.assert.deepStrictEqual(grid.selectionList.length, 1);
+    chai.assert.deepStrictEqual(grid.selectionList[0], {
+      type: SelectionType.Columns,
+      startColumn: 0,
+      endColumn: 0,
+    });
+
     grid.style.activeCellSelectedBackgroundColor = c.y;
     grid.style.cellSelectedBackgroundColor = c.y;
     grid.style.cellBackgroundColor = c.b;
@@ -469,83 +512,187 @@ export default function () {
       });
     }, 1);
   });
-  it('selecting an area emits event with selected cells', function (done) {
-    var grid = g({
+  it('selecting an area emits event with selected cells', async function () {
+    const grid = g({
       test: this.test,
       data: smallData(),
     });
 
-    grid.addEventListener('selectionchanged', function (event) {
-      try {
-        doAssert(event.selectedCells.length === 4, '4 cells are selected');
-        doAssert(
-          event.selectedCells[0].boundRowIndex ==
-            event.selectedCells[0].viewRowIndex,
-          'bound and view row index are identical',
-        );
-      } catch (error) {
-        done(error);
-      }
-
-      done();
+    const event = await selectAreaAndWaitEvent(grid, {
+      top: 1,
+      left: 0,
+      bottom: 2,
+      right: 1,
     });
-
-    setTimeout(function () {
-      grid.selectArea({ top: 1, left: 0, bottom: 2, right: 1 });
-    }, 1);
+    doAssert(event.selectedCells.length === 4, '4 cells are selected');
+    doAssert(
+      event.selectedCells[0].boundRowIndex ==
+        event.selectedCells[0].viewRowIndex,
+      'bound and view row index are identical',
+    );
   });
-  it('selecting an area emits different row indices for filtered data', function (done) {
-    var grid = g({
+  it('selecting an area emits different row indices for filtered data', async function () {
+    const grid = g({
       test: this.test,
       data: smallData(),
     });
 
     grid.setFilter('col1', 'ba');
-    grid.addEventListener('selectionchanged', function (event) {
-      try {
-        doAssert(
-          event.selectedCells[0].boundRowIndex ==
-            event.selectedCells[0].viewRowIndex + 1,
-          'first view row is second bound data row',
-        );
-      } catch (error) {
-        done(error);
-      }
-
-      done();
+    const event = await selectAreaAndWaitEvent(grid, {
+      top: 0,
+      left: 0,
+      bottom: 1,
+      right: 1,
     });
-
-    setTimeout(function () {
-      grid.selectArea({ top: 0, left: 0, bottom: 1, right: 1 });
-    }, 1);
+    doAssert(
+      event.selectedCells[0].boundRowIndex ==
+        event.selectedCells[0].viewRowIndex + 1,
+      'first view row is second bound data row',
+    );
   });
-  it('selecting an area emits different column indices for ordered columns', function (done) {
-    var grid = g({
+  it('selecting an area emits different column indices for ordered columns', async function () {
+    const grid = g({
       test: this.test,
       data: smallData(),
     });
 
     grid.columnOrder = [2, 1, 0];
-    grid.addEventListener('selectionchanged', function (event) {
-      try {
-        doAssert(
-          event.selectedCells[0].boundColumnIndex ==
-            event.selectedCells[0].viewColumnIndex + 2,
-          'first view column is third bound column',
-        );
-        doAssert(
-          event.selectedCells[0].header.name === 'col3',
-          'first column matches reordered column name',
-        );
-      } catch (error) {
-        done(error);
-      }
+    const event = await selectAreaAndWaitEvent(grid, {
+      top: 0,
+      left: 0,
+      bottom: 1,
+      right: 1,
+    });
+    doAssert(
+      event.selectedCells[0].boundColumnIndex ==
+        event.selectedCells[0].viewColumnIndex + 2,
+      'first view column is third bound column',
+    );
+    doAssert(
+      event.selectedCells[0].header.name === 'col3',
+      'first column matches reordered column name',
+    );
+  });
 
-      done();
+  it('selecting all cells in a column can only produce one selection descriptor in the list', async function () {
+    const data = smallData();
+    const grid = g({
+      test: this.test,
+      data,
     });
 
-    setTimeout(function () {
-      grid.selectArea({ top: 0, left: 0, bottom: 1, right: 1 });
-    }, 1);
+    await selectAreaAndWaitEvent(grid, {
+      top: 0,
+      left: 0,
+      bottom: data.length - 1,
+      right: 0,
+    });
+    chai.assert.deepStrictEqual(grid.selectionList[0], {
+      type: SelectionType.Columns,
+      startColumn: 0,
+      endColumn: 0,
+    });
   });
+
+  it('selecting all cells in a row can only produce one selection descriptor in the list', async function () {
+    const data = smallData();
+    const columns = Object.keys(data[0]).length;
+    const grid = g({
+      test: this.test,
+      data,
+    });
+
+    await selectAreaAndWaitEvent(grid, {
+      top: 1,
+      left: 0,
+      bottom: 1,
+      right: columns - 1,
+    });
+    chai.assert.deepStrictEqual(grid.selectionList[0], {
+      type: SelectionType.Rows,
+      startRow: 1,
+      endRow: 1,
+    });
+  });
+
+  it('Contiguous selections can be merged to one descriptor in the list', async function () {
+    const data = smallData();
+    // const columns = Object.keys(data[0]).length;
+    // const rows = data.length;
+    const grid = g({
+      test: this.test,
+      data,
+    });
+
+    // □ □  => ▧ □
+    // □ □     □ □
+    let event = await selectAreaAndWaitEvent(grid, {
+      top: 0,
+      left: 0,
+      bottom: 0,
+      right: 0,
+    });
+    chai.assert.deepStrictEqual(event.selectionList.length, 1);
+    chai.assert.deepStrictEqual(event.selectionList[0], {
+      type: SelectionType.Cells,
+      startRow: 0,
+      endRow: 0,
+      startColumn: 0,
+      endColumn: 0,
+    });
+
+    // ▧ □  => ▧ ▧
+    // □ □     □ ▧
+    event = await selectAreaAndWaitEvent(
+      grid,
+      {
+        top: 0,
+        left: 1,
+        bottom: 1,
+        right: 1,
+      },
+      true,
+    );
+    chai.assert.deepStrictEqual(event.selectionList.length, 2);
+
+    // ▧ ▧  => ▧ ▧
+    // □ ▧     ▧ ▧
+    event = await selectAreaAndWaitEvent(
+      grid,
+      {
+        top: 1,
+        left: 0,
+        bottom: 1,
+        right: 0,
+      },
+      true,
+    );
+    chai.assert.deepStrictEqual(event.selectionList.length, 1);
+    chai.assert.deepStrictEqual(event.selectionList[0], {
+      type: SelectionType.Cells,
+      startRow: 0,
+      endRow: 1,
+      startColumn: 0,
+      endColumn: 1,
+    });
+  });
+
+  function selectAreaAndWaitEvent(grid, area, ctrl) {
+    setTimeout(grid.selectArea.bind(grid, area, ctrl), 1);
+    return listenSelectionChangedEvent(grid);
+  }
+  function listenSelectionChangedEvent(grid) {
+    return Promise.race([
+      new Promise((resolve) => {
+        const listener = function (event) {
+          grid.removeEventListener(listener);
+          resolve(event);
+        };
+        grid.addEventListener('selectionchanged', listener);
+      }),
+      new Promise((resolve, reject) =>
+        setTimeout(reject, 500, new Error('no selectionchanged event')),
+      ),
+    ]);
+  }
 }
