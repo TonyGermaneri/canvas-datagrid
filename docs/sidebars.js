@@ -54,6 +54,7 @@ const sidebars = {
         'reference/styling',
       ],
     },
+    'examples',
   ],
 };
 
