@@ -16,14 +16,14 @@ A grid is created and data is set in one command. Data can be an array of object
 import data from '/data.json';
 import canvasDatagrid from 'canvas-datagrid';
 
-// TODO: figure out cleaner boilerplate
-const parentNode = document.createElement('div');
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
 const grid = canvasDatagrid({
-  parentNode,
+  parentNode: gridElement,
   data,
 });
-const currentDiv = document.getElementById('div1');
-document.body.insertBefore(parentNode, currentDiv);
+
+app.append(gridElement);
 ```
 
 ```json data.json
