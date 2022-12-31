@@ -1,0 +1,36 @@
+---
+title: Use a textarea to edit cells instead of an input.
+---
+
+import siteConfig from '/docusaurus.config.js';
+
+# Use a textarea to edit cells instead of an input
+
+<SandpackEditor>
+
+```ts
+import data from '/data.json';
+import canvasDatagrid from 'canvas-datagrid';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+  data,
+  multiLine: true,
+});
+
+grid.style.cellHeight = 80;
+
+app.append(gridElement);
+```
+
+```json data.json
+[
+  { "col1": "foo\nbar", "col2": 0, "col3": "a" },
+  { "col1": "bar\nfoo\nbar", "col2": 1, "col3": "b" },
+  { "col1": "baz\nfoo\nbar", "col2": 2, "col3": "c" }
+]
+```
+
+</SandpackEditor>
