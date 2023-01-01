@@ -1,0 +1,75 @@
+---
+title: Get data via XHR function
+---
+
+import siteConfig from '/docusaurus.config.js';
+
+# Get data via XHR function
+
+Fetch data from data.gov and parse the JSON.
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+import parseOpenData from '/open-data';
+
+const xhr = new XMLHttpRequest();
+const app = document.getElementById('app');
+const grid = canvasDatagrid({
+  parentNode: app,
+});
+
+grid.style.height = '300px';
+grid.style.width = '100%';
+
+xhr.addEventListener('progress', function (event) {
+  grid.data = [
+    {
+      status:
+        'Loading data: ' +
+        event.loaded +
+        ' of ' +
+        (event.total || 'unknown') +
+        ' bytes...',
+    },
+  ];
+});
+
+xhr.addEventListener('load', function (event) {
+  grid.data = [{ status: 'Loading data ' + event.loaded + '...' }];
+  const openData = parseOpenData(JSON.parse(this.responseText));
+
+  grid.schema = openData.schema;
+  grid.data = openData.data;
+});
+
+xhr.open(
+  'GET',
+  'https://data.cityofchicago.org/api/views/xzkq-xp2w/rows.json?accessType=DOWNLOAD',
+);
+
+xhr.send();
+```
+
+```ts open-data.ts
+export default function (openData) {
+  const schema = openData.meta.view.columns;
+  const data = openData.data.map(function (row) {
+    var r = {};
+
+    schema.forEach(function (column, index) {
+      r[column.name] = row[index];
+    });
+
+    return r;
+  });
+
+  return {
+    data: data,
+    schema: schema,
+  };
+}
+```
+
+</SandpackEditor>
