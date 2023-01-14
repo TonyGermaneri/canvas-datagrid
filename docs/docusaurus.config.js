@@ -51,7 +51,7 @@ const config = {
             type: 'doc',
             docId: 'intro',
             position: 'right',
-            label: 'Docs',
+            label: 'Introduction',
           },
           {
             to: 'getting-started',
@@ -73,6 +73,23 @@ const config = {
       footer: {
         style: 'dark',
         links: [
+          {
+            title: 'Docs',
+            items: [
+              {
+                label: 'Introduction',
+                to: 'intro',
+              },
+              {
+                to: 'getting-started',
+                label: 'Getting started',
+              },
+              {
+                to: 'examples',
+                label: 'Examples',
+              },
+            ],
+          },
           {
             title: 'Community',
             items: [
@@ -96,7 +113,6 @@ const config = {
               {
                 href: 'https://canvas-datagrid.js.org/',
                 label: 'js.org',
-                position: 'right',
               },
             ],
           },
