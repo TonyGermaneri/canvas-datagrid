@@ -13,9 +13,13 @@ export const createFileMap = (
       }
       const { props } = codeSnippet.props.children;
       
-      const filename = props.metastring ? props.metastring : 'src/index.ts';
-
-      result[filename] = { code: props.children as string };
+      /*
+      If no metastring is provided src/index.ts overrides the file in the vanilla-ts template structure.
+      If we want to support other templates file paths for these file paths need to be added here.
+      */
+      const filepath = props.metastring ? `/${props.metastring}` : '/src/index.ts';
+      
+      result[filepath] = props.children;
       
       return result;
     },

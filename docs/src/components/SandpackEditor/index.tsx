@@ -13,7 +13,6 @@ import canvasDatagridPackage from "../../../../package.json"
 const version = canvasDatagridPackage.version;
 
 export default ({
-  template = "vanilla-ts",
   children,
   dependencies = {},
 }: {
@@ -24,7 +23,11 @@ export default ({
   
   return (
     <SandpackProvider
-      template={template}
+      /* 
+      Currently we only support this this template. We might want to add react or vue
+      templates at a later stage. 
+      */
+      template="vanilla-ts" 
       files={{...createFileMap(children),
       }}
       customSetup={{
