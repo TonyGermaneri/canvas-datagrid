@@ -12,10 +12,10 @@ export const createFileMap = (
         return result;
       }
       const { props } = codeSnippet.props.children;
-
+      
       const filename = props.metastring ? props.metastring : 'src/index.ts';
 
-      result[filename] = props.children as string;
+      result[filename] = { code: props.children as string };
       
       return result;
     },
