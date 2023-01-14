@@ -1,7 +1,56 @@
 ---
-title: TODO
+title: Add 10,000 random rows
 ---
 
 import siteConfig from '/docusaurus.config.js';
 
-;
+Because why not?
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+import createData from '/create-data';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+});
+
+app.append(gridElement);
+
+grid.style.height = '300px';
+grid.style.width = '100%';
+grid.data = createData();
+```
+
+```ts create-data.ts
+export default function () {
+  const data = [];
+  const words =
+    'Elend, eam, animal omittam an, has in, explicari principes. Elit, causae eleifend mea cu. No sed adipisci accusata, ei mea everti melius periculis. Ei quot audire pericula mea, qui ubique offendit no. Sint mazim mandamus duo ei. Sumo maiestatis id has, at animal reprehendunt definitionem cum, mei ne adhuc theophrastus.';
+  const wordsSplitBySpace = words.split(' ').map(function (i) {
+    return i.trim();
+  });
+  const wordsSplitByComma = words.split(',').map(function (i) {
+    return i.trim();
+  });
+
+  for (const x = 0; x < 10000; x += 1) {
+    const row = {};
+    for (const idx = 0; idx < wordsSplitByComma.length; idx += 1) {
+      row[wordsSplitByComma[idx]] =
+        wordsSplitBySpace[
+          Math.floor(Math.random() * 1000) % (wordsSplitBySpace.length - 1)
+        ];
+    }
+
+    data.push(row);
+  }
+
+  return data;
+}
+```
+
+</SandpackEditor>

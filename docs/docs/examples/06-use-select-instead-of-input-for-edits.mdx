@@ -4,15 +4,13 @@ title: Use select instead of input for edits
 
 import siteConfig from '/docusaurus.config.js';
 
-# Use select instead of input for edits
-
 When a column in the schema includes an `enum` property, a drop down menu will appear instead of the normal input or textarea.
 
 <SandpackEditor>
 
 ```ts
-import canvasDatagrid from 'canvas-datagrid';
 import data from '/data.json';
+import canvasDatagrid from 'canvas-datagrid';
 
 const app = document.getElementById('app');
 const gridElement = document.createElement('div');

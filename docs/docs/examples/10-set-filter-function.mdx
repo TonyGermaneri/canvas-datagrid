@@ -1,7 +1,46 @@
 ---
-title: TODO
+title: Set filter function
 ---
 
 import siteConfig from '/docusaurus.config.js';
 
-;
+By default, the filter is a RegExp string, you can alter this per data type by adding a function to the object <i>grid.filters.&lt;type&gt;</i>.
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+import data from '/data.json';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+  data,
+  schema: [
+    { name: 'id', type: 'number' },
+    { name: 'offendit', type: 'string' },
+  ],
+});
+
+app.append(gridElement);
+
+grid.filters.number = function (value, filterFor) {
+  if (!filterFor) {
+    return true;
+  }
+
+  return value === filterFor;
+};
+grid.setFilter('id', 1);
+```
+
+```json data.json
+[
+  { "id": 0, "offendit": "foo" },
+  { "id": 1, "offendit": "bar" },
+  { "id": 2, "offendit": "baz" }
+]
+```
+
+</SandpackEditor>

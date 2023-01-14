@@ -1,7 +1,57 @@
 ---
-title: TODO
+title: Multiple filters
 ---
 
 import siteConfig from '/docusaurus.config.js';
 
-;
+Create filters on more than one column at a time.
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+import createData from '/create-data';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+});
+
+app.append(gridElement);
+
+grid.data = createData();
+grid.setFilter('quick', '/the/i');
+grid.setFilter('brown', 'quick');
+```
+
+```ts create-data.ts
+export default function () {
+  const data = [];
+  const words = [
+    'The',
+    'quick',
+    'brown',
+    'fox',
+    'jumps',
+    'over',
+    'the',
+    'lazy',
+    'dog',
+  ];
+
+  for (const x = 0; x < 1000; x += 1) {
+    const row = {};
+    for (const idx = 0; idx < words.length; idx += 1) {
+      row[words[idx]] =
+        words[Math.floor(Math.random() * 1000) % (words.length - 1)];
+    }
+
+    data.push(row);
+  }
+
+  return data;
+}
+```
+
+</SandpackEditor>

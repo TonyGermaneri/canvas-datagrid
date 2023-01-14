@@ -1,7 +1,34 @@
 ---
-title: TODO
+title: Toggle debug data
 ---
 
 import siteConfig from '/docusaurus.config.js';
 
-;
+Show fun debugging information. What are all these numbers? File a bug ticket to find out!
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+import data from '/data.json';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+  data,
+  debug: true,
+});
+
+app.append(gridElement);
+```
+
+```json data.json
+[
+  { "col1": "foo", "col2": 0, "col3": "a" },
+  { "col1": "bar", "col2": 1, "col3": "b" },
+  { "col1": "baz", "col2": 2, "col3": "c" }
+]
+```
+
+</SandpackEditor>

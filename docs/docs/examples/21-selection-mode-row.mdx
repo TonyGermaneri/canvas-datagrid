@@ -1,7 +1,34 @@
 ---
-title: TODO
+title: Selection Mode Row
 ---
 
 import siteConfig from '/docusaurus.config.js';
 
-;
+Prevents the selection of individual cells forcing the row to become selected.
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+import data from '/data.json';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+  data,
+  selectionMode: 'row',
+});
+
+app.append(gridElement);
+```
+
+```json data.json
+[
+  { "col1": "foo", "col2": 0, "col3": "a" },
+  { "col1": "bar", "col2": 1, "col3": "b" },
+  { "col1": "baz", "col2": 2, "col3": "c" }
+]
+```
+
+</SandpackEditor>

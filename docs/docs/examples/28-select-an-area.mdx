@@ -1,7 +1,47 @@
 ---
-title: TODO
+title: Select an area
 ---
 
 import siteConfig from '/docusaurus.config.js';
 
-;
+Select an area of the grid using a [`rect`](/reference/classes#rect) object.
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+import data from '/data.json';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+  data,
+});
+
+app.append(gridElement);
+
+grid.selectArea({
+  top: 2,
+  bottom: 6,
+  left: 1,
+  right: 2,
+});
+grid.draw();
+```
+
+```json data.json
+[
+  { "col1": "foo", "col2": 0, "col3": "a", "col4": "z" },
+  { "col1": "bar", "col2": 1, "col3": "b", "col4": "x" },
+  { "col1": "baz", "col2": 2, "col3": "c", "col4": "w" },
+  { "col1": "foo", "col2": 0, "col3": "a", "col4": "u" },
+  { "col1": "bar", "col2": 1, "col3": "b", "col4": "l" },
+  { "col1": "baz", "col2": 2, "col3": "c", "col4": "e" },
+  { "col1": "foo", "col2": 0, "col3": "a", "col4": "c" },
+  { "col1": "bar", "col2": 1, "col3": "b", "col4": "n" },
+  { "col1": "baz", "col2": 2, "col3": "c", "col4": "b" }
+]
+```
+
+</SandpackEditor>

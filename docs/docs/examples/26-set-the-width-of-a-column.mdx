@@ -1,7 +1,36 @@
 ---
-title: TODO
+title: Set the width of a column
 ---
 
 import siteConfig from '/docusaurus.config.js';
 
-;
+Set the width of a column
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+import data from '/data.json';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+  data,
+});
+
+app.append(gridElement);
+
+grid.setColumnWidth(0, 60);
+grid.setColumnWidth(1, 200);
+```
+
+```json data.json
+[
+  { "col1": "foo", "col2": 0, "col3": "a" },
+  { "col1": "bar", "col2": 1, "col3": "b" },
+  { "col1": "baz", "col2": 2, "col3": "c" }
+]
+```
+
+</SandpackEditor>

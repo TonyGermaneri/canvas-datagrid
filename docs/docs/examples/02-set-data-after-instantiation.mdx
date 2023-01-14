@@ -4,8 +4,6 @@ title: Set data after instantiation
 
 import siteConfig from '/docusaurus.config.js';
 
-# Set data after instantiation
-
 A grid is created, then data is set afterwards. You can set data using `grid.data = data;` at anytime. Data can be an array of objects, an array of arrays or a mixed array of objects, arrays and primitives.
 
 <SandpackEditor>
@@ -20,9 +18,9 @@ const grid = canvasDatagrid({
   parentNode: gridElement,
 });
 
-grid.data = data;
-
 app.append(gridElement);
+
+grid.data = data;
 ```
 
 ```json data.json

@@ -1,7 +1,40 @@
 ---
-title: TODO
+title: Validate input
 ---
 
 import siteConfig from '/docusaurus.config.js';
 
-;
+In this example, by using the `beforeendedit` event you can prevent digits from being entered.
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+import data from '/data.json';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+  data,
+});
+
+grid.addEventListener('beforeendedit', function (event) {
+  if (/\d+/.test(event.newValue)) {
+    alert('NO DIGITS!');
+    event.preventDefault();
+  }
+});
+
+app.append(gridElement);
+```
+
+```json data.json
+[
+  { "col1": "foo", "col2": 0, "col3": "a" },
+  { "col1": "bar", "col2": 1, "col3": "b" },
+  { "col1": "baz", "col2": 2, "col3": "c" }
+]
+```
+
+</SandpackEditor>

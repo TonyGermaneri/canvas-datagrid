@@ -1,7 +1,50 @@
 ---
-title: TODO
+title: Open a tree
 ---
 
 import siteConfig from '/docusaurus.config.js';
 
-;
+Open a tree grid on a specific row. Use the [`expandtree`](/reference/events#expantree) event to control the data and settings of the tree grid.
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+import createData from '/create-data';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+});
+
+app.append(gridElement);
+
+grid.style.height = '300px';
+grid.style.width = '100%';
+grid.data = createData();
+
+grid.addEventListener('expandtree', function expandTree(e) {
+  e.treeGrid.data = createData();
+  // prevent repeated executions of this example code from blowing things up
+  e.treeGrid.removeEventListener('expandtree', expandTree);
+});
+grid.expandTree(2);
+```
+
+```ts create-data.ts
+export default function () {
+  var x,
+    y,
+    d = [];
+  for (x = 0; x < 2000; x += 1) {
+    d[x] = {};
+    for (y = 0; y < 20; y += 1) {
+      d[x][y] = y * x;
+    }
+  }
+  return d;
+}
+```
+
+</SandpackEditor>

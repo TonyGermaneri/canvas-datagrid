@@ -1,7 +1,68 @@
 ---
-title: TODO
+title: Create complex context menu
 ---
 
 import siteConfig from '/docusaurus.config.js';
 
-;
+If you set the value of title to a HTML element reference, you can add complex functionality to the context menu. To prevent the context menu from closing call `e.stopPropagation` on the object clicked on.
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+import data from '/data.json';
+
+const app = document.getElementById('app');
+const content = document.createElement('div');
+const upButton = document.createElement('button');
+const downButton = document.createElement('button');
+const gridElement = document.createElement('div');
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+  data,
+});
+
+app.append(gridElement);
+
+grid.style.height = '250px';
+content.appendChild(upButton);
+content.appendChild(downButton);
+upButton.innerHTML = 'Scroll Up';
+downButton.innerHTML = 'Scroll Down';
+upButton.addEventListener('click', function (e) {
+  grid.scrollTop -= 10;
+  e.stopPropagation();
+});
+downButton.addEventListener('click', function (e) {
+  grid.scrollTop += 10;
+  e.stopPropagation();
+});
+content.addEventListener('click', function (e) {
+  e.stopPropagation();
+});
+grid.addEventListener('contextmenu', function (e) {
+  e.items.splice(0, e.items.length);
+  e.items.push({
+    title: content,
+  });
+});
+```
+
+```json data.json
+[
+  { "col1": "foo", "col2": 0, "col3": "a" },
+  { "col1": "bar", "col2": 1, "col3": "b" },
+  { "col1": "baz", "col2": 2, "col3": "c" },
+  { "col1": "foo", "col2": 0, "col3": "a" },
+  { "col1": "bar", "col2": 1, "col3": "b" },
+  { "col1": "baz", "col2": 2, "col3": "c" },
+  { "col1": "foo", "col2": 0, "col3": "a" },
+  { "col1": "bar", "col2": 1, "col3": "b" },
+  { "col1": "baz", "col2": 2, "col3": "c" },
+  { "col1": "foo", "col2": 0, "col3": "a" },
+  { "col1": "bar", "col2": 1, "col3": "b" },
+  { "col1": "baz", "col2": 2, "col3": "c" }
+]
+```
+
+</SandpackEditor>

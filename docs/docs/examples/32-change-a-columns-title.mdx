@@ -1,7 +1,37 @@
 ---
-title: TODO
+title: Change a columns's title
 ---
 
 import siteConfig from '/docusaurus.config.js';
 
-;
+Change a columns's title
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+import data from '/data.json';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+  data,
+  showNewRow: true,
+});
+
+app.append(gridElement);
+
+grid.schema[0].title = 'foo';
+grid.draw();
+```
+
+```json data.json
+[
+  { "col1": "foo", "col2": 0, "col3": "a" },
+  { "col1": "bar", "col2": 1, "col3": "b" },
+  { "col1": "baz", "col2": 2, "col3": "c" }
+]
+```
+
+</SandpackEditor>

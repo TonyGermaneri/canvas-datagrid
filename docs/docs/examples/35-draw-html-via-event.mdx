@@ -1,7 +1,46 @@
 ---
-title: TODO
+title: Draw HTML via event
 ---
 
 import siteConfig from '/docusaurus.config.js';
 
-;
+This draws HTML into an SVG object, takes a picture of it and caches it into the grid, then draws it into the cell. In other words, it works, but it's slow.
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+import data from '/data.json';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+  data,
+});
+
+app.append(gridElement);
+
+grid.addEventListener('afterrendercell', function (e) {
+  if (e.cell.columnIndex === 1 && e.cell.rowIndex > -1) {
+    e.cell.innerHTML =
+      '<div style="display: inline-block; color: dodgerblue; font-size: 2em;">' +
+      e.cell.value +
+      '</div>' +
+      '<div style="display: inline-block; margin: -20px -20px; filter: blur(5px); font-size: 2em;">' +
+      e.cell.value +
+      '</div>';
+  }
+});
+grid.draw();
+```
+
+```json data.json
+[
+  { "col1": "foo", "col2": 0, "col3": "a" },
+  { "col1": "bar", "col2": 1, "col3": "b" },
+  { "col1": "baz", "col2": 2, "col3": "c" }
+]
+```
+
+</SandpackEditor>

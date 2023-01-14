@@ -1,7 +1,43 @@
 ---
-title: TODO
+title: Draw HTML via data type
 ---
 
 import siteConfig from '/docusaurus.config.js';
 
-;
+This draws HTML into an SVG object, takes a picture of it and caches it into the grid, then draws it into the cell. In other words, it works, but it\'s slow.
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+import data from '/data.json';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+  data,
+});
+
+app.append(gridElement);
+
+grid.schema = [
+  { name: 'id', type: 'number' },
+  { name: 'offendit', type: 'html' },
+];
+grid.data = [
+  { id: 0, offendit: 'number' },
+  { id: 0, offendit: 'number' },
+];
+grid.draw();
+```
+
+```json data.json
+[
+  { "col1": "foo", "col2": 0, "col3": "a" },
+  { "col1": "bar", "col2": 1, "col3": "b" },
+  { "col1": "baz", "col2": 2, "col3": "c" }
+]
+```
+
+</SandpackEditor>
