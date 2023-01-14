@@ -6,8 +6,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'canvas-datagrid',
-  tagline: 'Documentation',
+  title: 'Canvas Datagrid',
+  tagline:
+    'Canvas based data grid web component. Capable of displaying millions of contiguous hierarchical rows and columns without paging or loading, on a single canvas element.',
   url: 'https://canvas-datagrid.js.org',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -49,13 +50,17 @@ const config = {
           {
             type: 'doc',
             docId: 'intro',
-            position: 'left',
+            position: 'right',
             label: 'Docs',
           },
-          // {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://www.npmjs.com/package/canvas-datagrid',
-            label: 'npm',
+            to: 'getting-started',
+            label: 'Getting started',
+            position: 'right',
+          },
+          {
+            to: 'examples',
+            label: 'Examples',
             position: 'right',
           },
           {

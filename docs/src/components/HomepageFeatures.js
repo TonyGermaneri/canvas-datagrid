@@ -4,38 +4,48 @@ import styles from './HomepageFeatures.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'High Performance',
+    Svg: require('../../static/img/high-performance.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Canvas Datagrid is built on top of the HTML5 canvas element, this allows
+        for extremely fast rendering of large datasets. Canvas Datagrid is ideal
+        for displaying and manipulating large sets of data, such as financial or
+        scientific data. The library utilizes various performance optimization
+        techniques such as virtual rendering, to ensure smooth scrolling and
+        responsive user interactions.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Customizable',
+    Svg: require('../../static/img/customizable.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Canvas Datagrid provides a wide range of customization options, allowing
+        you to easily adjust the look and feel of the grid to match your
+        application's design. This includes options to change the color scheme,
+        font, and cell sizes, as well as advanced customization options such as
+        custom cell renderers and editors.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
+    title: 'Interactive',
+    Svg: require('../../static/img/interactive.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Canvas Datagrid provides a wide range of interactive features that allow
+        users to easily navigate, sort and filter the data as well as the
+        ability to select and edit cells. Additionally, the library also
+        provides support for keyboard shortcuts, making it easy for users to
+        perform common actions quickly and efficiently.
       </>
     ),
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({ Svg, title, description }) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
