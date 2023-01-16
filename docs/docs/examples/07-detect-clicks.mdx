@@ -1,0 +1,38 @@
+---
+title: Detect clicks
+---
+
+import siteConfig from '/docusaurus.config.js';
+
+Detect which cell was clicked using the `click` event.
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+import data from '/data.json';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+  data,
+});
+
+grid.addEventListener('click', function (e) {
+  if (!e.cell) return;
+  grid.data[0][grid.schema[0].name] = 'Clicked on ' + e.cell.value;
+};
+
+app.append(gridElement);
+```
+
+```json data.json
+[
+  { "col1": "foo\nbar", "col2": 0, "col3": "a" },
+  { "col1": "bar\nfoo\nbar", "col2": 1, "col3": "b" },
+  { "col1": "baz\nfoo\nbar", "col2": 2, "col3": "c" }
+]
+```
+
+</SandpackEditor>

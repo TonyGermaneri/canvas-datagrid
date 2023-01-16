@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [16.x]
 
     steps:
       - name: Checkout
@@ -17,16 +17,19 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v1
         with:
-          node-version: '14.x'
+          node-version: '16.x'
       - name: Install dependencies
         run: npm ci
       - name: Build debug version
         run: npm run build
       - name: Build documentation
-        run: npm run build:docs
+        run: |
+          cd docs
+          npm ci
+          npm run build
       # Required for hosting at js.org
       - name: Ensure CNAME is part of gh-pages
-        run: echo "canvas-datagrid.js.org" > docs/CNAME
+        run: echo "canvas-datagrid.js.org" > docs/build/CNAME
       # This will make documentation available at
       # https://<username>.github.io/canvas-datagrid/
       - name: Publish documentation to GitHub pages
@@ -34,4 +37,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           exclude_assets: '.gitignore,.github,node_modules'
-          publish_dir: ./docs/
+          publish_dir: ./docs/build

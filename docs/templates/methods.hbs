@@ -1,0 +1,16 @@
+---
+title: Methods
+---
+
+{{#each data}}
+### {{name}}
+
+{{{description}}}
+
+|Name|Type|Optional|Default|Description|
+|---|---|---|---|---|
+{{#each params}}
+|{{name}}|{{type.names}}|{{optiona}}|{{defaultValue}}|{{{description}}}|
+{{/each}}
+
+{{/each}}

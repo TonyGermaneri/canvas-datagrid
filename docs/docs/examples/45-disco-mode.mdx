@@ -1,0 +1,72 @@
+---
+title: Disco Mode
+---
+
+import siteConfig from '/docusaurus.config.js';
+
+This is silly. There is no way to stop it.
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+import createData from '/create-data';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+  data: createData(),
+});
+
+app.append(gridElement);
+
+grid.style.height = '300px';
+grid.style.width = '100%';
+
+function getRandomColor() {
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  // rgb(235, 33, 177)
+  return (
+    'rgb(' +
+    getRandomInt(0, 255) +
+    ', ' +
+    getRandomInt(25, 244) +
+    ', ' +
+    getRandomInt(0, 127) +
+    ')'
+  );
+}
+grid.addEventListener('rendercell', function (e) {
+  e.ctx.fillStyle = getRandomColor();
+  e.ctx.strokeStyle = getRandomColor();
+});
+
+setInterval(grid.draw, 500);
+grid.draw();
+```
+
+```ts create-data.ts
+export default function () {
+  const data = [];
+
+  for (const x = 0; x < 100; x += 1) {
+    const row = {};
+
+    for (const y = 0; y < 20; y += 1) {
+      row[y] = y * x;
+    }
+
+    data.push(row);
+  }
+
+  return data;
+}
+```
+
+</SandpackEditor>

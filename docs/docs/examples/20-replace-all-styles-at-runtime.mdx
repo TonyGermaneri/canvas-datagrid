@@ -1,0 +1,38 @@
+---
+title: Replace all styles at runtime
+---
+
+import siteConfig from '/docusaurus.config.js';
+
+Replace the entire style object at runtime.
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+import data from '/data.json';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+  data,
+});
+
+grid.style = {
+  cellBackgroundColor: 'darkred',
+  cellColor: 'goldenrod',
+};
+
+app.append(gridElement);
+```
+
+```json data.json
+[
+  { "col1": "foo", "col2": 0, "col3": "a" },
+  { "col1": "bar", "col2": 1, "col3": "b" },
+  { "col1": "baz", "col2": 2, "col3": "c" }
+]
+```
+
+</SandpackEditor>

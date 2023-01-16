@@ -1,0 +1,39 @@
+---
+title: Canvas fill styles
+---
+
+import siteConfig from '/docusaurus.config.js';
+
+An example of using complex fill styles on the canvas.
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+import data from '/data.json';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+  data,
+});
+const gradient = grid.ctx.createLinearGradient(0, 0, 1300, 1300);
+
+gradient.addColorStop(0, 'dodgerblue');
+gradient.addColorStop(1, 'chartreuse');
+grid.style.cellBackgroundColor = gradient;
+grid.style.gridBackgroundColor = gradient;
+
+app.append(gridElement);
+```
+
+```json data.json
+[
+  { "col1": "foo", "col2": 0, "col3": "a" },
+  { "col1": "bar", "col2": 1, "col3": "b" },
+  { "col1": "baz", "col2": 2, "col3": "c" }
+]
+```
+
+</SandpackEditor>

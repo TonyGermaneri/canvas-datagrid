@@ -1,0 +1,16 @@
+---
+title: Classes
+---
+
+{{#each data}}
+### {{name}}
+
+{{{description}}}
+
+#### Properties
+
+|Name|Type|Description|
+|---|---|---|
+{{#each properties}}|{{name}}|{{type.names}}|{{{description}}}|
+{{/each}}
+{{/each}}

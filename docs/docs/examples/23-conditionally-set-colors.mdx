@@ -1,0 +1,41 @@
+---
+title: Conditionally set colors
+---
+
+import siteConfig from '/docusaurus.config.js';
+
+Change styles during the `rendercell` event.
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+import data from '/data.json';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+  data,
+});
+
+grid.addEventListener('rendercell', function (e) {
+  if (e.cell.header.name === 'Ei' && /omittam/.test(e.cell.value)) {
+    e.ctx.fillStyle = '#AEEDCF';
+  }
+});
+
+app.append(gridElement);
+```
+
+```json data.json
+[
+  { "Ei": "principes", "melius": "causae" },
+  { "Ei": "omittam", "melius": "audire" },
+  { "Ei": "mea", "melius": "quot" },
+  { "Ei": "pericula", "melius": "offendit" }
+]
+```
+
+</SandpackEditor>
+  

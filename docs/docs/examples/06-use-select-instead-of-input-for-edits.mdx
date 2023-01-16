@@ -1,0 +1,49 @@
+---
+title: Use select instead of input for edits
+---
+
+import siteConfig from '/docusaurus.config.js';
+
+When a column in the schema includes an `enum` property, a drop down menu will appear instead of the normal input or textarea.
+
+<SandpackEditor>
+
+```ts
+import data from '/data.json';
+import canvasDatagrid from 'canvas-datagrid';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+  data,
+  schema: [
+    {
+      name: 'col1',
+      enum: [
+        ['foo', 'Foo'],
+        ['bar', 'Bar'],
+        ['baz', 'Baz'],
+      ],
+    },
+    {
+      name: 'col2',
+    },
+    {
+      name: 'col3',
+    },
+  ],
+});
+
+app.append(gridElement);
+```
+
+```json data.json
+[
+  { "col1": "foo", "col2": 0, "col3": "a" },
+  { "col1": "bar", "col2": 1, "col3": "b" },
+  { "col1": "baz", "col2": 2, "col3": "c" }
+]
+```
+
+</SandpackEditor>

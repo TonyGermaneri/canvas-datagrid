@@ -1,0 +1,50 @@
+---
+title: Simple context menu
+---
+
+import siteConfig from '/docusaurus.config.js';
+
+NB: This example seems to be broken, calling `selectArea` is not selecting cells.
+
+Add your own items to the context menu.
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+import data from '/data.json';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+  data,
+});
+
+grid.addEventListener('contextmenu', function (e) {
+  e.items.push({
+    title: 'Select all',
+    click: function (ev) {
+      grid.selectArea({
+        top: 0,
+        bottom: 2,
+        left: 0,
+        right: 2,
+      });
+      grid.draw();
+    },
+  });
+});
+
+app.append(gridElement);
+```
+
+```json data.json
+[
+  { "col1": "foo", "col2": 0, "col3": "a" },
+  { "col1": "bar", "col2": 1, "col3": "b" },
+  { "col1": "baz", "col2": 2, "col3": "c" }
+]
+```
+
+</SandpackEditor>

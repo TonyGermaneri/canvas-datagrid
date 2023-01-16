@@ -1,0 +1,39 @@
+---
+title: Events
+---
+
+This document describes all events emitted by canvas-datagrid. Use the sidebar to the right to quickly find the event you're looking for.
+
+Listening for events can be done by registering a listener:
+
+```js
+const grid = canvasDatagrid();
+
+function renderTextHandler(e) {
+    // your code here; 'e' is the event object
+}
+
+grid.addEventListener('rendertext', renderTextHandler);
+```
+
+Don't forget to stop listening when you destroy the grid:
+
+```js
+grid.removeEventListener('rendertext', renderTextHandler);
+```
+
+
+## All events
+
+{{#each data}}
+### {{this.name}}
+
+{{{this.description}}}
+
+|Property name|Type|Description|
+|---|---|---|
+{{#each this.params}}
+|{{name}}|{{type.names}}|{{{description}}}|
+{{/each}}
+
+{{/each}}

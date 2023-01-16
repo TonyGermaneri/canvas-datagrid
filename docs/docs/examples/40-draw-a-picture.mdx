@@ -1,0 +1,83 @@
+---
+title: Draw a picture
+---
+
+import siteConfig from '/docusaurus.config.js';
+
+Draw a picture into a cell. First hook into `rendertext` to show the text "No Image" text if there is no image. Then hook into `afterrendercell` to actually create an image element, hook into the image load event and draw the image once it\'s loaded.'
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+const imgs = {};
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+});
+
+app.append(gridElement);
+// stop the cell from rendering text
+grid.addEventListener('rendertext', function (e) {
+  if (e.cell.rowIndex > -1) {
+    if (e.cell.header.name === 'image') {
+      e.cell.formattedValue = e.cell.value ? '' : 'No Image';
+    }
+  }
+});
+// after the cell is rendered, draw on top of it
+grid.addEventListener('afterrendercell', function (e) {
+  var i,
+    contextGrid = this;
+  if (e.cell.header.name === 'image' && e.cell.value && e.cell.rowIndex > -1) {
+    // if we haven't already made an image for this, do it now
+    if (!imgs[e.cell.value]) {
+      // create a new image object and store it in the imgs object
+      i = imgs[e.cell.value] = new Image();
+      // get the image path from the cell's value
+      i.src = e.cell.value;
+      // when the image finally loads
+      // call draw() again to run the else path
+      i.onload = function (parentNode) {
+        contextGrid.draw();
+      };
+      return;
+    }
+    // if we have an image already, draw it.
+    i = imgs[e.cell.value];
+    if (i.width !== 0) {
+      i.targetHeight = e.cell.height;
+      i.targetWidth = e.cell.height * (i.width / i.height);
+      e.ctx.drawImage(i, e.cell.x, e.cell.y, i.targetWidth, i.targetHeight);
+    }
+  }
+});
+// add some images
+grid.data = [
+  {
+    image: 'https://picsum.photos/seed/canvas/200',
+    melius: 'causae',
+  },
+  {
+    image: 'https://picsum.photos/seed/datagrid/200',
+    melius: 'omittam',
+  },
+  {
+    image: 'https://picsum.photos/seed/great/200',
+    melius: 'explicari',
+  },
+  {
+    image: '',
+    melius: 'principes',
+  },
+];
+// set the column widths and row heights
+grid.setColumnWidth(0, 300);
+grid.data.forEach(function (d, index) {
+  grid.setRowHeight(index, 200);
+});
+```
+
+</SandpackEditor>
