@@ -6,7 +6,7 @@ title: Introduction
 
 # canvas-datagrid
 
-![](https://canvas-datagrid.js.org/images/datagrid1.png)
+![](/img/datagrid1.png)
 
 canvas-datagrid is an HTML Canvas-based grid for spreadsheet-like display of data, like Excel or Google Sheets. Some features:
 
