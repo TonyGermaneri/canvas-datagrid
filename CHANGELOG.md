@@ -7,6 +7,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.4.6 - 2023-04-03
+
+## Added
+
+- Add class name to allow targeting context menu by CSS (ilyaem, #526)
+
+## Changed
+
+- Add more tests for properties `selections` and `selectionList` (hangxingliu, #505)
+- Improve row/column resizing (velitasali, #502)
+- Re-implement(Optimize) select function (hangxingliu, #498)
+
+## Fixed
+
+- Fix sorting on header click (romanstetsyk, #550)
+- Fix activeColumnHeaderCell docs (HitomiTenshi, #513)
+- Fix some small bugs (hangxingliu, #504)
+
 ## 0.4.5 - 2022-03-16
 
 ## Added
