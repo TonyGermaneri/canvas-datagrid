@@ -439,7 +439,7 @@ export default function () {
     }, 10);
   });
 
-  it('paste a 2x3 table into 2x2 grid should add a new column, if allowGridSizeChangeOnPaste === true', function (done) {
+  it('paste a 2x3 table into 2x2 grid should add a new column, if allowGridExpandOnPaste === true', function (done) {
     var grid = g({
       test: this.test,
       data: [
@@ -447,7 +447,7 @@ export default function () {
         { a: 'c', b: 'd' },
       ],
       autoGenerateSchema: true,
-      allowGridSizeChangeOnPaste: true,
+      allowGridExpandOnPaste: true,
     });
 
     grid.focus();
@@ -489,7 +489,7 @@ export default function () {
     }, 10);
   });
 
-  it('paste a 3x2 table into 2x2 grid should add a new row, if allowGridSizeChangeOnPaste === true', function (done) {
+  it('paste a 3x2 table into 2x2 grid should add a new row, if allowGridExpandOnPaste === true', function (done) {
     var grid = g({
       test: this.test,
       data: [
@@ -497,7 +497,7 @@ export default function () {
         { a: 'c', b: 'd' },
       ],
       autoGenerateSchema: true,
-      allowGridSizeChangeOnPaste: true,
+      allowGridExpandOnPaste: true,
     });
 
     grid.focus();
@@ -539,12 +539,12 @@ export default function () {
     }, 10);
   });
 
-  it('paste a 2x2 table into 1x1 grid should add a new row and a new column, if allowGridSizeChangeOnPaste === true', function (done) {
+  it('paste a 2x2 table into 1x1 grid should add a new row and a new column, if allowGridExpandOnPaste === true', function (done) {
     var grid = g({
       test: this.test,
       data: [{ a: 'a' }],
       autoGenerateSchema: true,
-      allowGridSizeChangeOnPaste: true,
+      allowGridExpandOnPaste: true,
     });
 
     grid.focus();
@@ -588,12 +588,12 @@ export default function () {
     }, 10);
   });
 
-  it('paste a 1x1 table into 1x1 grid should not add any new rows or columns, if allowGridSizeChangeOnPaste === true', function (done) {
+  it('paste a 1x1 table into 1x1 grid should not add any new rows or columns, if allowGridExpandOnPaste === true', function (done) {
     var grid = g({
       test: this.test,
       data: [{ a: 'a' }],
       autoGenerateSchema: true,
-      allowGridSizeChangeOnPaste: true,
+      allowGridExpandOnPaste: true,
     });
 
     grid.focus();
