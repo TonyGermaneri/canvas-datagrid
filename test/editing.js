@@ -439,7 +439,7 @@ export default function () {
     }, 10);
   });
 
-  it('paste a 2x3 table into 2x2 grid should add a new column, if allowGridExpandOnPaste === true', function (done) {
+  it('paste a 2x3 numeric table into 2x2 grid should add a new column of type "number", if allowGridExpandOnPaste === true', function (done) {
     var grid = g({
       test: this.test,
       data: [
@@ -481,6 +481,10 @@ export default function () {
         doAssert(
           cellData1 === '3' && cellData2 === '6',
           'Correct data was not added to the new column',
+        );
+        doAssert(
+          grid.schema.find((col) => col.name === colName).type === 'number',
+          'New column has incorrect type',
         );
         done();
       } catch (error) {
@@ -539,7 +543,7 @@ export default function () {
     }, 10);
   });
 
-  it('paste a 2x2 table into 1x1 grid should add a new row and a new column, if allowGridExpandOnPaste === true', function (done) {
+  it('paste a 2x2 table of text cells into 1x1 grid should add a new row and a new column of type "string", if allowGridExpandOnPaste === true', function (done) {
     var grid = g({
       test: this.test,
       data: [{ a: 'a' }],
@@ -557,7 +561,7 @@ export default function () {
           {
             type: 'text/plain',
             getAsString: function (callback) {
-              callback('1\t2\n3\t4');
+              callback('a\tb\nc\td');
             },
           },
         ],
@@ -578,8 +582,12 @@ export default function () {
           'New row or new column was not added to the grid',
         );
         doAssert(
-          cellData1 === '2' && cellData2 === '3' && cellData3 === '4',
+          cellData1 === 'b' && cellData2 === 'c' && cellData3 === 'd',
           'Correct data was not added to the new row',
+        );
+        doAssert(
+          grid.schema.find((col) => col.name === colName).type === 'string',
+          'New column has incorrect type',
         );
         done();
       } catch (error) {
