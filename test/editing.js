@@ -271,6 +271,59 @@ export default function () {
         'Expected html text to be copied',
       );
     });
+    it('only selected cells onto simulated clipboard', function (done) {
+      // Ensure padding of rows not in selection is removed before placing data on clipboard.
+      const data = [
+        {
+          d: 'Text with, a comma 1',
+          e: 'Text that has no comma in in 1',
+        },
+        {
+          d: 'Text with, a comma 2',
+          e: 'Text that has no comma in in 2',
+        },
+      ];
+
+      const grid = g({
+        test: this.test,
+        data,
+      });
+
+      grid.selectArea({ top: 1, left: 1, bottom: 1, right: 1 });
+      grid.focus();
+
+      const textResult = `Text that has no comma in in 2`;
+      const htmlResult =
+        '<table><tr><td>Text that has no comma in in 2</td></tr></table>';
+      const jsonResult = JSON.stringify([
+        {
+          e: 'Text that has no comma in in 2',
+        },
+      ]);
+
+      grid.copy(new Object(fakeClipboardEvent));
+      const { clipboardData } = fakeClipboardEvent;
+      console.log(textResult);
+      console.log(clipboardData.data);
+      doAssert(
+        clipboardData.data['text/plain'] === textResult,
+        'Expected plain text to be copied',
+      );
+      doAssert(
+        clipboardData.data['text/html'] === htmlResult,
+        'Expected html to be copied',
+      );
+      doAssert(
+        clipboardData.data['text/csv'] === textResult,
+        'Expected csv text to be copied',
+      );
+      doAssert(
+        clipboardData.data['application/json'] === jsonResult,
+        'Expected json to be copied',
+      );
+
+      done();
+    });
   });
   it('Should paste a value from the clipboard into a cell', function (done) {
     var grid = g({
