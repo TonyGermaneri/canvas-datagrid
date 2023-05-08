@@ -784,26 +784,54 @@ export default function () {
       grid.cut(fakeClipboardEvent);
     });
   });
-  it('Clearing selection fires `afterdelete` event', function (done) {
-    var grid = g({
-      test: this.test,
-      data: [{ 'Column A': 'Original value' }],
+  describe('clear', () => {
+    it('selection fires `afterdelete` event', function (done) {
+      var grid = g({
+        test: this.test,
+        data: [{ 'Column A': 'Original value' }],
+      });
+
+      grid.focus();
+      grid.selectArea({ top: 0, left: 0, bottom: 0, right: 0 });
+
+      grid.addEventListener('afterdelete', function (event) {
+        event.preventDefault();
+        doAssert(
+          event.cells[0].length == 4,
+          'first affected cell is [rowIndex, columnIndex, boundRowIndex, boundColumnIndex] tuple',
+        );
+        chai.assert.deepStrictEqual(event.cells[0], [0, 0, 0, 0]);
+        done();
+      });
+
+      grid.deleteSelectedData();
     });
 
-    grid.focus();
-    grid.selectArea({ top: 0, left: 0, bottom: 0, right: 0 });
+    it('selection on filtered view clears data', function () {
+      var grid = g({
+        test: this.test,
+        data: [
+          { 'Column A': 'Original value' },
+          { 'Column A': 'Foo bar' },
+          { 'Column A': 'Original value' },
+        ],
+      });
 
-    grid.addEventListener('afterdelete', function (event) {
-      event.preventDefault();
-      doAssert(
-        event.cells[0].length == 4,
-        'first affected cell is [rowIndex, columnIndex, boundRowIndex, boundColumnIndex] tuple',
+      grid.focus();
+      grid.setFilter('Column A', 'Original');
+      grid.selectArea({ top: 0, left: 0, bottom: 1, right: 1 });
+
+      grid.deleteSelectedData();
+      chai.assert.deepStrictEqual(
+        grid.viewData.map((c) => Object.values(c)).flat(),
+        ['', ''],
       );
-      chai.assert.deepStrictEqual(event.cells[0], [0, 0, 0, 0]);
-      done();
+      chai.assert.deepStrictEqual(
+        grid.data.map((c) => Object.values(c)).flat(),
+        ['', 'Foo bar', ''],
+        'Bound data has been updated',
+      );
     });
-
-    grid.deleteSelectedData();
   });
   it('Moving handle on desktop fills the overlay region with selection data', function (done) {
     const grid = g({
