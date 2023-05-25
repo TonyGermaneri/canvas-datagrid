@@ -79,7 +79,7 @@ jobs:
           asset_name: ${{ github.event.repository.name }}.zip
           asset_content_type: application/zip
       - name: Publish NPM Module
-        uses: JS-DevTools/npm-publish@v1
+        uses: JS-DevTools/npm-publish@v2
         with:
           token: ${{ secrets.NPM_DEPLOY_KEY }}
 

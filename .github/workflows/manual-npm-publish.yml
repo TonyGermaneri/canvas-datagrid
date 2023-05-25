@@ -24,7 +24,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Publish NPM Module
-        uses: JS-DevTools/npm-publish@v1
+        uses: JS-DevTools/npm-publish@v2
         with:
           check-version: false
           token: ${{ secrets.NPM_DEPLOY_KEY }}
