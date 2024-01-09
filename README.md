@@ -1,8 +1,8 @@
 # canvas-datagrid
 
-[Demo](https://canvas-datagrid.js.org/demo.html) - City of Chicago government employee list. Thanks to [data.gov](https://www.data.gov/).
+[Demo](https://canvas-datagrid.js.org/examples/create-new-grid)
 
-![canvas-datagrid](https://canvas-datagrid.js.org/images/datagrid1.png)
+![canvas-datagrid](https://canvas-datagrid.js.org/assets/images/datagrid1-a4d23a352c39919c40450d272a1cd4bd.png)
 
 [![NPM](https://img.shields.io/npm/v/canvas-datagrid.svg)](https://www.npmjs.com/package/canvas-datagrid)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
