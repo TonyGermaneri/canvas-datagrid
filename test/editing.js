@@ -113,8 +113,8 @@ export default function () {
     done(
       assertIf(
         grid.input.childNodes[0].innerHTML === 'A' &&
-        grid.input.childNodes.length === 3 &&
-        grid.input.tagName !== 'SELECT',
+          grid.input.childNodes.length === 3 &&
+          grid.input.tagName !== 'SELECT',
         'Expected an input to have appeared',
       ),
     );
@@ -491,6 +491,200 @@ export default function () {
       );
     }, 10);
   });
+
+  it('paste a 2x3 numeric table into 2x2 grid should add a new column of type "number", if allowGridExpandOnPaste === true', function (done) {
+    var grid = g({
+      test: this.test,
+      data: [
+        { a: 'a', b: 'b' },
+        { a: 'c', b: 'd' },
+      ],
+      autoGenerateSchema: true,
+      allowGridExpandOnPaste: true,
+    });
+
+    grid.focus();
+    grid.setActiveCell(0, 0);
+    grid.selectArea({ top: 0, left: 0, bottom: 0, right: 0 });
+
+    grid.paste({
+      clipboardData: {
+        items: [
+          {
+            type: 'text/plain',
+            getAsString: function (callback) {
+              callback('1\t2\t3\n4\t5\t6');
+            },
+          },
+        ],
+      },
+    });
+
+    setTimeout(function () {
+      const colName = Object.keys(grid.viewData[0])[2];
+      const cellData1 = grid.viewData[0][colName];
+      const cellData2 = grid.viewData[1][colName];
+
+      try {
+        doAssert(
+          grid.viewData.length === 2 &&
+            Object.keys(grid.viewData[0]).length === 3,
+          'New column was not added to the grid',
+        );
+        doAssert(
+          cellData1 === '3' && cellData2 === '6',
+          'Correct data was not added to the new column',
+        );
+        doAssert(
+          grid.schema.find((col) => col.name === colName).type === 'number',
+          'New column has incorrect type',
+        );
+        done();
+      } catch (error) {
+        done(error);
+      }
+    }, 10);
+  });
+
+  it('paste a 3x2 table into 2x2 grid should add a new row, if allowGridExpandOnPaste === true', function (done) {
+    var grid = g({
+      test: this.test,
+      data: [
+        { a: 'a', b: 'b' },
+        { a: 'c', b: 'd' },
+      ],
+      autoGenerateSchema: true,
+      allowGridExpandOnPaste: true,
+    });
+
+    grid.focus();
+    grid.setActiveCell(0, 0);
+    grid.selectArea({ top: 0, left: 0, bottom: 0, right: 0 });
+
+    grid.paste({
+      clipboardData: {
+        items: [
+          {
+            type: 'text/plain',
+            getAsString: function (callback) {
+              callback('1\t2\n3\t4\n5\t6');
+            },
+          },
+        ],
+      },
+    });
+
+    setTimeout(function () {
+      const lastRow = grid.viewData[2];
+      const cellData1 = lastRow['a'];
+      const cellData2 = lastRow['b'];
+
+      try {
+        doAssert(
+          grid.viewData.length === 3 &&
+            Object.keys(grid.viewData[0]).length === 2,
+          'New row was not added to the grid',
+        );
+        doAssert(
+          cellData1 === '5' && cellData2 === '6',
+          'Correct data was not added to the new row',
+        );
+        done();
+      } catch (error) {
+        done(error);
+      }
+    }, 10);
+  });
+
+  it('paste a 2x2 table of text cells into 1x1 grid should add a new row and a new column of type "string", if allowGridExpandOnPaste === true', function (done) {
+    var grid = g({
+      test: this.test,
+      data: [{ a: 'a' }],
+      autoGenerateSchema: true,
+      allowGridExpandOnPaste: true,
+    });
+
+    grid.focus();
+    grid.setActiveCell(0, 0);
+    grid.selectArea({ top: 0, left: 0, bottom: 0, right: 0 });
+
+    grid.paste({
+      clipboardData: {
+        items: [
+          {
+            type: 'text/plain',
+            getAsString: function (callback) {
+              callback('a\tb\nc\td');
+            },
+          },
+        ],
+      },
+    });
+
+    setTimeout(function () {
+      const [firstRow, lastRow] = grid.viewData;
+      const colName = Object.keys(firstRow)[1];
+      const cellData1 = firstRow[colName];
+      const cellData2 = lastRow['a'];
+      const cellData3 = lastRow[colName];
+
+      try {
+        doAssert(
+          grid.viewData.length === 2 &&
+            Object.keys(grid.viewData[0]).length === 2,
+          'New row or new column was not added to the grid',
+        );
+        doAssert(
+          cellData1 === 'b' && cellData2 === 'c' && cellData3 === 'd',
+          'Correct data was not added to the new row',
+        );
+        doAssert(
+          grid.schema.find((col) => col.name === colName).type === 'string',
+          'New column has incorrect type',
+        );
+        done();
+      } catch (error) {
+        done(error);
+      }
+    }, 10);
+  });
+
+  it('paste a 1x1 table into 1x1 grid should not add any new rows or columns, if allowGridExpandOnPaste === true', function (done) {
+    var grid = g({
+      test: this.test,
+      data: [{ a: 'a' }],
+      autoGenerateSchema: true,
+      allowGridExpandOnPaste: true,
+    });
+
+    grid.focus();
+    grid.setActiveCell(0, 0);
+    grid.selectArea({ top: 0, left: 0, bottom: 0, right: 0 });
+
+    grid.paste({
+      clipboardData: {
+        items: [
+          {
+            type: 'text/plain',
+            getAsString: function (callback) {
+              callback('1');
+            },
+          },
+        ],
+      },
+    });
+
+    setTimeout(function () {
+      done(
+        doAssert(
+          grid.viewData.length === 1 &&
+            Object.keys(grid.viewData[0]).length === 1,
+          'New row or new column was not added to the grid',
+        ),
+      );
+    }, 10);
+  });
+
   it('paste a Excel table single row / single cell value from the clipboard into a cell', function (done) {
     var grid = g({
       test: this.test,
@@ -611,14 +805,20 @@ export default function () {
     setTimeout(function () {
       try {
         doAssert(grid.viewData.length == 3, 'Should have 3 rows exactly');
-        doAssert(Object.keys(grid.viewData[0]).length == 3, 'Should have 3 columns exactly');
+        doAssert(
+          Object.keys(grid.viewData[0]).length == 3,
+          'Should have 3 columns exactly',
+        );
 
         for (let i = 0; i < grid.viewData.length; i++) {
           for (const columnKey in grid.viewData[i]) {
             const currentValue = grid.viewData[i][columnKey];
             doAssert(
               currentValue === 'New value',
-              'Value for "' + columnKey + '" should be "New value", but got ' + currentValue
+              'Value for "' +
+                columnKey +
+                '" should be "New value", but got ' +
+                currentValue,
             );
           }
         }
@@ -670,7 +870,10 @@ export default function () {
     setTimeout(function () {
       try {
         doAssert(grid.viewData.length == 2, 'Should have 2 rows exactly');
-        doAssert(Object.keys(grid.viewData[0]).length == 3, 'Should have 3 columns exactly');
+        doAssert(
+          Object.keys(grid.viewData[0]).length == 3,
+          'Should have 3 columns exactly',
+        );
 
         const expectedResult = [
           {
@@ -691,7 +894,7 @@ export default function () {
             const currentValue = grid.viewData[i][columnKey];
             doAssert(
               currentValue === expectedValue,
-              `Value for "${columnKey}" should be "${expectedValue}", but got "${currentValue}"`
+              `Value for "${columnKey}" should be "${expectedValue}", but got "${currentValue}"`,
             );
           }
         }
@@ -889,14 +1092,11 @@ export default function () {
   it('Moving handle on desktop fills the overlay region with selection data', function (done) {
     const grid = g({
       test: this.test,
-      data: [
-        { field1: 'value1' },
-        { field1: 'value2' },
-        { field1: 'value3' },
-      ],
+      data: [{ field1: 'value1' }, { field1: 'value2' }, { field1: 'value3' }],
       fillCellCallback: function (args) {
-        return args.newCellData + ' ' +
-          (args.fillingRowPosition + 1).toString();
+        return (
+          args.newCellData + ' ' + (args.fillingRowPosition + 1).toString()
+        );
       },
       selectionHandleBehavior: 'single',
     });
@@ -920,7 +1120,7 @@ export default function () {
             const currentValue = grid.viewData[i][columnKey];
             doAssert(
               currentValue === expectedValue,
-              `Value for "${columnKey}" should be "${expectedValue}", but got "${currentValue}"`
+              `Value for "${columnKey}" should be "${expectedValue}", but got "${currentValue}"`,
             );
           }
         }
