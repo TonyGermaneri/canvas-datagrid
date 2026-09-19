@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "noEmit": true,
+    "strict": true,
+    "target": "es2020",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": [
+      "es2020",
+      "dom"
+    ],
+    "types": [],
+    "baseUrl": ".",
+    "paths": {
+      "canvas-datagrid": [
+        "../../dist/types"
+      ]
+    },
+    "skipLibCheck": true
+  },
+  "files": [
+    "smoke.ts"
+  ]
+}
