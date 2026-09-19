@@ -21,8 +21,7 @@ export default function () {
       test: this.test,
       data: [
         {
-          col1:
-            'This is a very long value which we expect to be wrapped on multiple lines',
+          col1: 'This is a very long value which we expect to be wrapped on multiple lines',
         },
       ],
       style: {
@@ -40,8 +39,7 @@ export default function () {
       test: this.test,
       data: [
         {
-          col1:
-            'This is a very long value which we expect to be wrapped on multiple lines',
+          col1: 'This is a very long value which we expect to be wrapped on multiple lines',
         },
       ],
       style: {
@@ -73,8 +71,7 @@ export default function () {
       test: this.test,
       data: [
         {
-          col1:
-            'This is a very long row which we expect to be wrapped on multiple lines',
+          col1: 'This is a very long row which we expect to be wrapped on multiple lines',
         },
       ],
       style: {
@@ -285,7 +282,10 @@ export default function () {
     // Because this condition is always true
     // It is `[null]` if the `selectionFollowsActiveCell` is false,
     // Otherwise, it is `[undefined, {...}]`
-    assertIf(grid.selectedRows[1], 'Expected selection to not follow active cell');
+    assertIf(
+      grid.selectedRows[1],
+      'Expected selection to not follow active cell',
+    );
     done();
   });
   it('Should use a textarea to edit when multiLine is true', function (done) {
@@ -543,8 +543,8 @@ export default function () {
   });
   it('Clicking the corner cell will select all.', function (done) {
     var d = makeData(10, 10, function (x) {
-      return x;
-    }),
+        return x;
+      }),
       grid = g({
         test: this.test,
         data: d,
@@ -591,7 +591,7 @@ export default function () {
     done(
       assertIf(
         grid.selectedRows.length !== 3 ||
-        grid.selectedCells[0].col2 !== undefined,
+          grid.selectedCells[0].col2 !== undefined,
         'Expected every row to be selected.',
       ),
     );
@@ -608,15 +608,16 @@ export default function () {
     marker(grid, 60, 12);
     mousemove(window, 60, 12, grid.canvas);
     mousedown(grid.canvas, 60, 12);
-    mouseup(document.body, 60, 12, grid.canvas);
+    // synthetic events do not bubble, so release on window as a browser would
+    mouseup(window, 60, 12, grid.canvas);
     mousemove(window, 175, 12, grid.canvas);
     mousedown(grid.canvas, 175, 12, null, { ctrlKey: true });
-    mouseup(document.body, 175, 12);
+    mouseup(window, 175, 12, grid.canvas, { ctrlKey: true });
     done(
       assertIf(
         grid.selectedRows.length !== 3 ||
-        grid.selectedCells[0].col2 !== undefined ||
-        grid.selectedCells[0].col3 !== 'a',
+          grid.selectedCells[0].col2 !== undefined ||
+          grid.selectedCells[0].col3 !== 'a',
         'Expected every row to be selected and column 2 to not be selected.',
       ),
     );
@@ -640,8 +641,8 @@ export default function () {
     done(
       assertIf(
         grid.selectedRows.length !== 3 ||
-        grid.selectedCells[0].c !== '2:0' ||
-        grid.selectedCells[0].b !== '1:0',
+          grid.selectedCells[0].c !== '2:0' ||
+          grid.selectedCells[0].b !== '1:0',
         'Expected everything to be selected.',
       ),
     );

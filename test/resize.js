@@ -172,10 +172,10 @@ export default function () {
       'Rows have been set back to original height',
     );
   });
-  // Skipping: this test fails here, but when cannot reproduce in browser.
-  // Does not seem to affect behavior, but leaving this here until we either
-  // a) decide it's no longer a good test, b) find a better way to test, or
-  // c) get more reports of something being broken.
+  // Skipped since d2bcd2c (2023): the row part passes but the column width is
+  // not applied on drop when resizeAfterDragged is true (expects 146, stays
+  // 50). Tracked as a needs-repro item in the backlog plan; re-enable once
+  // resizeAfterDragged column resizing is fixed.
   it.skip('Resizes row and column after the handle is dropped.', function () {
     var grid = g({
       test: this.test,
@@ -254,7 +254,8 @@ export default function () {
     grid.selectColumn(0);
     grid.selectColumn(1, true);
 
-    chai.assert.deepStrictEqual(Object.keys(grid.sizes.columns),
+    chai.assert.deepStrictEqual(
+      Object.keys(grid.sizes.columns),
       ['-1'],
       'No column widths set',
     );

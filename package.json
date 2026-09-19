@@ -11,12 +11,13 @@
     "build:docs": "cd docs && npm run build",
     "format": "prettier lib/**/*.js --write",
     "lint": "eslint lib",
-    "test": "npm run build && npm run test:types && karma start",
+    "test": "npm run build && npm run test:types && npm run test:bundle && karma start",
     "test:watch": "karma start --no-single-run",
     "watch": "webpack --watch",
     "build:types": "jsdoc -c ./jsdoc.ts.conf.js && node ./scripts/finalize-types.js",
     "start": "webpack serve --open",
-    "test:types": "tsc -p ./test/types/tsconfig.json"
+    "test:types": "tsc -p ./test/types/tsconfig.json",
+    "test:bundle": "node ./scripts/check-no-eval.js"
   },
   "types": "./dist/types.d.ts",
   "files": [

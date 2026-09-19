@@ -8,6 +8,7 @@ import {
   mousemove,
   mouseup,
   contextmenu,
+  click,
   delay,
 } from './util.js';
 
@@ -340,6 +341,232 @@ export default function () {
     doAssert(
       grid.viewData.length === 3,
       'Expected 3 rows after clearing the filter, got ' + grid.viewData.length,
+    );
+  });
+  it('#514: columns can be reordered while allowRowReordering is false, and a header click still sorts', async function () {
+    const baseWidth = 60;
+    const data = [{ c1: 'c1', c2: 'c2', c3: 'c3' }];
+    const schema = Object.keys(data[0]).map((name) => ({
+      name,
+      width: baseWidth,
+    }));
+    const grid = g({
+      test: this.test,
+      schema,
+      data,
+      allowColumnReordering: true,
+      allowRowReordering: false,
+      showFilter: false,
+    });
+    grid.focus();
+    const headerWidth = grid.sizes.columns[-1] || baseWidth;
+    // a plain click on a header (also a reorder grab zone) sorts
+    click(grid.canvas, headerWidth + 30, 10);
+    await delay();
+    doAssert(
+      grid.orderBy === 'c1',
+      'Expected a header click to sort by c1, orderBy is ' + grid.orderBy,
+    );
+    // drag the c1 header onto c2
+    mousemove(window, headerWidth + 30, 10, grid.canvas);
+    mousedown(grid.canvas, headerWidth + 30, 10);
+    mousemove(window, headerWidth + baseWidth + 30, 10, grid.canvas);
+    mouseup(window, headerWidth + baseWidth + 30, 10, grid.canvas);
+    await delay();
+    const headers = grid.visibleCells
+      .filter((cell) => cell.isColumnHeader)
+      .sort((a, b) => a.x - b.x)
+      .map((cell) => cell.header.name);
+    doAssert(
+      headers[0] === 'c2' && headers[1] === 'c1',
+      'Expected c2, c1, c3 after reordering, got ' + headers.join(','),
+    );
+  });
+
+  it('#472: singleSelectionMode limits drag, ctrl-click and shift-click to one row', function () {
+    const grid = g({
+      test: this.test,
+      data: smallData(),
+      selectionMode: 'row',
+      singleSelectionMode: true,
+    });
+    grid.focus();
+    const selectedRowCount = () => grid.selectedRows.filter(Boolean).length;
+    // drag from row 0 to row 2
+    mousemove(window, 100, 36, grid.canvas);
+    mousedown(grid.canvas, 100, 36);
+    mousemove(window, 100, 84, grid.canvas);
+    mouseup(window, 100, 84, grid.canvas);
+    doAssert(
+      selectedRowCount() === 1,
+      'Expected one selected row after a drag, got ' + selectedRowCount(),
+    );
+    // ctrl-click another row
+    const p = grid.canvas.getBoundingClientRect();
+    de(grid.canvas, 'mousedown', {
+      clientX: 100 + p.left,
+      clientY: 36 + p.top,
+      ctrlKey: true,
+    });
+    de(window, 'mouseup', {
+      clientX: 100 + p.left,
+      clientY: 36 + p.top,
+      ctrlKey: true,
+    });
+    doAssert(
+      selectedRowCount() === 1,
+      'Expected one selected row after ctrl-click, got ' + selectedRowCount(),
+    );
+    // shift-click another row
+    de(grid.canvas, 'mousedown', {
+      clientX: 100 + p.left,
+      clientY: 84 + p.top,
+      shiftKey: true,
+    });
+    de(window, 'mouseup', {
+      clientX: 100 + p.left,
+      clientY: 84 + p.top,
+      shiftKey: true,
+    });
+    doAssert(
+      selectedRowCount() === 1,
+      'Expected one selected row after shift-click, got ' + selectedRowCount(),
+    );
+  });
+
+  it('#473: allowColumnSelection false keeps the row selection when a header is clicked to sort', async function () {
+    const grid = g({
+      test: this.test,
+      data: smallData(),
+      selectionMode: 'row',
+      allowColumnSelection: false,
+    });
+    grid.focus();
+    grid.selectRow(1);
+    mousemove(window, 100, 10, grid.canvas);
+    mousedown(grid.canvas, 100, 10);
+    mouseup(grid.canvas, 100, 10);
+    click(grid.canvas, 100, 10);
+    await delay();
+    doAssert(grid.orderBy === 'col1', 'Expected the click to sort by col1');
+    const selectedRowCount = grid.selectedRows.filter(Boolean).length;
+    doAssert(
+      selectedRowCount === 1,
+      'Expected the single row selection to survive, got ' + selectedRowCount,
+    );
+  });
+
+  it('#338/#455: dispose removes the control input and is idempotent', function () {
+    const countInputs = () =>
+      document.querySelectorAll('.canvas-datagrid-control-input').length;
+    const before = countInputs();
+    const grid = g({ test: this.test, data: smallData() });
+    doAssert(countInputs() === before + 1, 'Expected one new control input');
+    grid.dispose();
+    doAssert(countInputs() === before, 'dispose must remove the control input');
+    grid.dispose();
+    doAssert(countInputs() === before, 'a second dispose must be a no-op');
+  });
+
+  it('#289: the grid follows its parent element size without an explicit resize()', async function () {
+    const grid = g({ test: this.test, data: smallData() });
+    const container = grid.parentNode;
+    container.style.width = '333px';
+    await delay(100);
+    doAssert(
+      Math.abs(grid.canvas.offsetWidth - 333) <= 2,
+      'Expected the grid to resize to 333px, width is ' +
+        grid.canvas.offsetWidth,
+    );
+    container.style.width = '444px';
+    await delay(100);
+    doAssert(
+      Math.abs(grid.canvas.offsetWidth - 444) <= 2,
+      'Expected the grid to resize to 444px, width is ' +
+        grid.canvas.offsetWidth,
+    );
+  });
+
+  it('#250/#512: datachanged fires with a source for edits and pastes', async function () {
+    const grid = g({ test: this.test, data: smallData() });
+    const events = [];
+    grid.addEventListener('datachanged', (e) => events.push(e));
+    grid.focus();
+    grid.beginEditAt(0, 0);
+    grid.input.value = 'edited';
+    grid.endEdit();
+    doAssert(
+      events.length === 1 &&
+        events[0].source === 'edit' &&
+        events[0].value === 'edited',
+      'Expected one datachanged with source edit, got ' +
+        JSON.stringify(events.map((e) => e.source)),
+    );
+    let pasted;
+    grid.addEventListener('afterpaste', (e) => (pasted = e));
+    grid.setActiveCell(1, 1);
+    grid.selectArea({ top: 1, left: 1, bottom: 1, right: 1 });
+    grid.paste({
+      clipboardData: {
+        items: [
+          {
+            type: 'text/plain',
+            getAsString: (callback) => callback('99'),
+          },
+        ],
+      },
+    });
+    await delay(10);
+    doAssert(
+      pasted && pasted.cells.length === 1 && pasted.cells[0][4] === '99',
+      'Expected afterpaste cells to carry the pasted value (#549), got ' +
+        JSON.stringify(pasted && pasted.cells),
+    );
+    doAssert(
+      events.some((e) => e.source === 'paste'),
+      'Expected a datachanged event with source paste',
+    );
+  });
+
+  it('#157: CSS font shorthand with a weight is honoured', function () {
+    const grid = g({
+      test: this.test,
+      data: smallData(),
+      style: { cellFont: 'bold 20px sans-serif' },
+    });
+    let font;
+    grid.addEventListener('rendertext', (e) => {
+      if (e.cell.isNormal && e.cell.rowIndex === 1) font = e.ctx.font;
+    });
+    grid.draw();
+    const cell = dataCell(grid, 1, 1);
+    doAssert(
+      cell.fontHeight === 20,
+      'fontHeight should be 20, got ' + cell.fontHeight,
+    );
+    doAssert(
+      typeof font === 'string' && /^bold 20px/.test(font),
+      'Expected the canvas font to start with "bold 20px", got ' + font,
+    );
+  });
+
+  it('#521: a ctrl-click right after opening the context menu does not close it', async function () {
+    const grid = g({ test: this.test, data: smallData() });
+    grid.focus();
+    const before = contextMenuItemTitles().length;
+    contextmenu(grid.canvas, 60, 37);
+    await delay(20);
+    doAssert(contextMenuItemTitles().length > before, 'menu should be open');
+    de(document, 'click', { ctrlKey: true, clientX: 0, clientY: 0 });
+    doAssert(
+      contextMenuItemTitles().length > before,
+      'a ctrl-click immediately after opening must not close the menu',
+    );
+    grid.disposeContextMenu();
+    await delay(150); // hide animation
+    doAssert(
+      contextMenuItemTitles().length === before,
+      'menu should be closed',
     );
   });
 }
