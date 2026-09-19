@@ -26,6 +26,7 @@ import webComponentTests from './web-component.js';
 import scrollingTests from './scrolling.js';
 import unhideIndicatorTests from './unhide-indicator.js';
 import eventsTests from './events.js';
+import regressionTests from './regressions.js';
 
 import unitTests from './unit/index.js';
 
@@ -61,6 +62,7 @@ describe('canvas-datagrid', function () {
     describe('Unhide indicator', unhideIndicatorTests);
     describe('Reorder columns', reorderColumnsTests);
     describe('Events', eventsTests);
+    describe('Regressions', regressionTests);
   });
   describe('Unit Tests', unitTests);
 });
