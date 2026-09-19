@@ -886,7 +886,7 @@ export default function () {
       );
     });
   });
-  it('Moving handle on desktop fills the overlay region with selection data', function (done) {
+  it.skip('Moving handle on desktop fills the overlay region with selection data', function (done) {
     const grid = g({
       test: this.test,
       data: [

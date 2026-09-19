@@ -25,6 +25,7 @@ import contextMenuTests from './context-menu.js';
 import webComponentTests from './web-component.js';
 import scrollingTests from './scrolling.js';
 import unhideIndicatorTests from './unhide-indicator.js';
+import eventsTests from './events.js';
 
 import unitTests from './unit/index.js';
 
@@ -59,6 +60,7 @@ describe('canvas-datagrid', function () {
     describe('Groups', groupsTests);
     describe('Unhide indicator', unhideIndicatorTests);
     describe('Reorder columns', reorderColumnsTests);
+    describe('Events', eventsTests);
   });
   describe('Unit Tests', unitTests);
 });
