@@ -11,6 +11,72 @@ import {
 } from './util.js';
 
 export default function () {
+  it('Fills the last visible column and disables its outer resize edge.', function () {
+    var grid = g({
+      test: this.test,
+      data: smallData(),
+      fillLastColumn: true,
+      style: {
+        cellWidth: 50,
+      },
+    });
+    grid.draw();
+
+    const lastHeader = grid.visibleCells.find(
+      (cell) => cell.isColumnHeader && cell.columnIndex === 2,
+    );
+    doAssert(lastHeader.width > 50, 'Last column fills unused grid width');
+    const verticalScrollBarWidth =
+      grid.scrollHeight > 0
+        ? grid.style.scrollBarWidth + grid.style.scrollBarBorderWidth * 2
+        : 0;
+    doAssert(
+      Math.abs(
+        lastHeader.x +
+          lastHeader.width -
+          (grid.canvas.offsetWidth - verticalScrollBarWidth),
+      ) <= 2,
+      'Last column reaches the usable grid edge',
+    );
+    doAssert(grid.scrollWidth <= 0, 'Filled grid has no horizontal dead space');
+
+    mousemove(
+      window,
+      lastHeader.x + lastHeader.width - 1,
+      lastHeader.y + 5,
+      grid.canvas,
+    );
+    doAssert(grid.cursor !== 'ew-resize', 'Last column outer edge is fixed');
+  });
+
+  it('Does not shrink columns that already overflow the grid.', function () {
+    var grid = g({
+      test: this.test,
+      data: Array.from({ length: 3 }, function (_, rowIndex) {
+        return Array.from({ length: 8 }, function (_, columnIndex) {
+          return ['col' + columnIndex, rowIndex + ':' + columnIndex];
+        }).reduce(function (row, entry) {
+          row[entry[0]] = entry[1];
+          return row;
+        }, {});
+      }),
+      fillLastColumn: true,
+      style: {
+        cellWidth: 50,
+      },
+    });
+    grid.draw();
+
+    const lastHeader = grid.visibleCells.find(
+      (cell) => cell.isColumnHeader && cell.columnIndex === 7,
+    );
+    doAssert(
+      lastHeader.width === 50,
+      'Overflowing last column keeps its width',
+    );
+    doAssert(grid.scrollWidth > 0, 'Overflowing grid remains scrollable');
+  });
+
   it('Resize a column from a column header.', function (done) {
     var grid = g({
       test: this.test,
