@@ -79,11 +79,11 @@ jobs:
       # Trusted publishing needs npm 11.5.1 or newer; Node 22 ships npm 10.
       - name: Update npm for trusted publishing
         run: npm install -g npm@latest && npm --version
-      # --tag latest must be explicit: the registry still holds 0.25.x from the
-      # old numbering scheme, which sorts above 0.x releases, and npm refuses
-      # to move "latest" to a lower version implicitly.
-      - name: Publish NPM Module
-        run: npm publish --provenance --access public --tag latest
+      # Staged publish: the trusted publisher on npmjs.com is stage-only, so
+      # CI uploads the version and a maintainer approves it (npm stage approve
+      # <id>, or the package page on npmjs.com) before it becomes installable.
+      - name: Stage NPM release for approval
+        run: npm stage publish --provenance --access public --tag latest
 
   publish-documentation:
     name: Publish documentation
