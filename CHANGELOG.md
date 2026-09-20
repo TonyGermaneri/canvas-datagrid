@@ -7,6 +7,54 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Added
+
+- `activecellchanged` event (Tomasz Pędraszewski, #582)
+- `fillLastColumn` attribute: the last visible column fills the remaining grid width and its outer edge cannot be resized (Cauho, #589, fixes #474)
+- `allowGridExpandOnPaste` attribute: pasted data larger than the grid adds rows and columns (Roman Stetsyk, #553, fixes #552); the expansion happens in one pass
+- `allowColumnSelection` attribute: when false, header clicks sort without selecting the column (#473)
+- `maxCanvasSize` attribute: auto-sized grids stop growing at the browser canvas limit and scroll for the rest (#254)
+- `datachanged` fires for every data mutation with `e.source` (`edit`, `paste`, `cut`, `delete`, `fill`, `addrow`, ...); `afterpaste` cell tuples carry the pasted value (#250, #512, #549)
+- A `ResizeObserver` on the host and its parent keeps auto/percentage-sized grids in sync with layout changes without calling `resize()` (#289, #239)
+- `getColumnWidth` and `getRowHeight` are public (#448)
+- `dist/types.d.ts` is a real module with a default-exported factory, `canvasDatagrid` class/namespace and `CanvasDatagridArgs`; `npm test` type-checks it (#567)
+- CSS font shorthand support: weights/styles are kept, pt/em/rem/% sizes are converted (#157)
+- Docs: "Using with React/Vue/Angular", "Using with TypeScript", "Use a custom editor for a cell", "Load data on demand with fetch", "Sparkline charts", "Large arrays"; demo scripts moved into the docs (evanbenjamin, #570)
+
+### Changed
+
+- `resizerow` always carries `rowIndex`, `height`, `width`, `x`, `y`, `draggingItem`; `cellHeight` and `row` remain as aliases (#503)
+- `grid.changes` is keyed by the bound row index instead of the view row index (#418)
+- `singleSelectionMode` now also limits drag, shift and ctrl selection to one row/cell (#472)
+- Column reordering no longer requires `allowRowReordering`; the right part of each header is a reorder grab zone (`columnGrabZoneSize`) and a plain header click still sorts (#514)
+- A mouseup anywhere ends a selection drag, not only a mouseup over the canvas
+- `touchstart` is a passive listener (#328)
+- `treeHorizontalScroll` is documented as reserved/not implemented (#314)
+- CI runs on Node 20/22 with current GitHub Actions; the docs build works on Node 23+ (#574 build)
+
+### Fixed
+
+- Delete/Backspace, cut and the fill handle respect `editable: false` (#587, #458)
+- Deleting the edited row in `beforeendedit` no longer re-adds it (#583)
+- `treeGridAttributes` are applied to child grids (#444)
+- `fitColumnToValues()` without a name fits every column and unknown names no longer throw (#193)
+- Setting `columnOrder` redraws (#160)
+- `verticalAlignment: 'bottom'` is no longer one line too high (#530)
+- The number filter matches numeric cell values (#431)
+- `rendertext` handlers may supply lines without a width; right/center alignment no longer blanks the column (#460)
+- Assigning a new array to `e.items` in the `contextmenu` event replaces the menu (#263)
+- `scrollIndexRect` is initialised before the first draw (#226)
+- Touch handlers tolerate a missing starting cell (#554)
+- Copy with an active cell but no selection no longer throws (#566)
+- The string sorter coerces values so numbers and blanks sort consistently (#256)
+- The enum editor opens its picker immediately where supported (#230)
+- The web component's MutationObserver is disconnected on dispose/disconnect and never stacked; dispose is idempotent and removes every listener (#237, #338, #455)
+- No `eval` in the bundles; the grid works under a CSP without `unsafe-eval` (#311)
+- The context menu survives the click macOS Safari sends after a ctrl-click (#521)
+- Docs: `{@link}` tags render as links (#574); broken demo links (#540, #562, #563, #568); the format-data example no longer throws on invalid dates (#576); the rendertext example uses `formattext` (#262)
+
 ## 0.4.7 - 2023-05-22
 
 - Ensure only cells from selection get copied onto clipboard (mdebrauw, #556)
