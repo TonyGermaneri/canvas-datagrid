@@ -108,7 +108,7 @@ Do not create the grid with `canvasDatagrid()` *and* place a `<canvas-datagrid>`
 
 ## Using with TypeScript
 
-Type declarations ship in the package (`dist/types.d.ts`; a proper module since 0.5.0):
+Type declarations ship in the package (`dist/types.d.ts`; a proper module since 0.26.0):
 
 ```ts
 import canvasDatagrid, {

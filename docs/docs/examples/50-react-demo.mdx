@@ -74,5 +74,5 @@ const [rows, setRows] = useState([{ foo: 1, bar: 2 }]);
 Notes:
 
 - Do not pass the data as a JSX attribute on `<canvas-datagrid>`; React stringifies attributes. Use the property API as above.
-- The named type imports need canvas-datagrid 0.5.0 or later, where `dist/types.d.ts` became a module. With 0.4.7 add `declare module 'canvas-datagrid';` to a `.d.ts` file in your project.
+- The named type imports need canvas-datagrid 0.26.0 or later, where `dist/types.d.ts` became a module. With 0.4.7 add `declare module 'canvas-datagrid';` to a `.d.ts` file in your project.
 - `attributes` (behaviour flags such as `editable`) are updated through `grid.attributes.x = value`; `style` through `grid.style.x = value`; data and schema through `grid.data` and `grid.schema`.
