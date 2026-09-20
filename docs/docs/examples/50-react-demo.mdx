@@ -1,78 +1,78 @@
 ---
-title: React Demo
+title: Using with React
 ---
 
-<SandpackEditor>
+canvas-datagrid is framework agnostic: create it once inside an effect, keep the instance in a ref, push new props into it, and dispose it when the component unmounts. Because the grid manages its own drawing, the wrapper never re-renders the grid element itself.
 
-```js
+```tsx
+import { useEffect, useRef } from 'react';
+import canvasDatagrid, {
+  type canvasDatagrid as CanvasDatagrid,
+  type CanvasDatagridArgs,
+} from 'canvas-datagrid';
 
-/*jslint browser: true, es6: true*/
-class CanvasDatagrid extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    updateAttributes(nextProps) {
-        Object.keys(this.props).forEach(key => {
-            if (!nextProps || this.props[key] !== nextProps[key]) {
-                if (this.grid.attributes[key] !== undefined) {
-                    this.grid.attributes[key] = nextProps ? nextProps[key] : this.props[key];
-                } else {
-                    this.grid[key] = nextProps ? nextProps[key] : this.props[key];
-                }
-            }
-        });
-    }
-    componentWillReceiveProps(nextProps) {
-        this.updateAttributes(nextProps);
-    }
-    shouldComponentUpdate() {
-        return false;
-    }
-    componentWillUnmount() {
-        this.grid.dispose();
-    }
-    componentDidMount() {
-        var args = {};
-        this.grid = ReactDOM.findDOMNode(this);
-        this.updateAttributes();
-    }
-    render() {
-        return React.createElement('canvas-datagrid', {});
-    }
+type Row = Record<string, unknown>;
+
+type Props = {
+  rows: Row[];
+  schema?: CanvasDatagridArgs['schema'];
+  editable?: boolean;
+  onEdit?: (row: Row) => void;
+};
+
+export function DataGrid({ rows, schema, editable = true, onEdit }: Props) {
+  const container = useRef<HTMLDivElement>(null);
+  const grid = useRef<CanvasDatagrid>();
+
+  // create once
+  useEffect(() => {
+    const instance = canvasDatagrid({
+      parentNode: container.current!,
+      data: rows,
+      schema,
+      editable,
+    });
+    instance.style.height = '100%';
+    instance.style.width = '100%';
+    grid.current = instance;
+    return () => instance.dispose();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // update, do not re-create
+  useEffect(() => {
+    if (grid.current) grid.current.data = rows;
+  }, [rows]);
+  useEffect(() => {
+    if (grid.current) grid.current.attributes.editable = editable;
+  }, [editable]);
+
+  // events
+  useEffect(() => {
+    const instance = grid.current;
+    if (!instance || !onEdit) return;
+    const handler = (e: any) => onEdit(e.cell.data);
+    instance.addEventListener('endedit', handler);
+    return () => instance.removeEventListener('endedit', handler);
+  }, [onEdit]);
+
+  return <div ref={container} style={{ height: 300 }} />;
 }
-class GenerateRandomDataButton extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { data: getRandomData() };
-    }
-    render() {
-        return React.createElement('div', {
-                style: {
-                    height: '300px'
-                }
-            },
-            React.createElement(CanvasDatagrid, {
-                data: this.state.data
-            }),
-            React.createElement('button', {
-                onClick: (e) => { this.setData(getRandomData()); }
-            }, 'Generate Random Data')
-        );
-    }
-    setData(data) {
-        this.setState({data});
-    }
-}
-function getRandomData() {
-    return [{
-        foo: Math.random(),
-        bar: Math.random(),
-        baz: Math.random()
-    }];
-}
-var grid = React.createElement(GenerateRandomDataButton, {});
-ReactDOM.render(grid, document.getElementById('root'));
-
-
 ```
-</SandpackEditor>
+
+Usage:
+
+```tsx
+const [rows, setRows] = useState([{ foo: 1, bar: 2 }]);
+
+<DataGrid rows={rows} onEdit={(row) => console.log('edited', row)} />
+<button onClick={() => setRows([{ foo: Math.random(), bar: Math.random() }])}>
+  Random data
+</button>
+```
+
+Notes:
+
+- Do not pass the data as a JSX attribute on `<canvas-datagrid>`; React stringifies attributes. Use the property API as above.
+- The named type imports need canvas-datagrid 0.4.8 or later, where `dist/types.d.ts` became a module. With 0.4.7 add `declare module 'canvas-datagrid';` to a `.d.ts` file in your project.
+- `attributes` (behaviour flags such as `editable`) are updated through `grid.attributes.x = value`; `style` through `grid.style.x = value`; data and schema through `grid.data` and `grid.schema`.

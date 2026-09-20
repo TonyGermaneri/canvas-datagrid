@@ -1,0 +1,112 @@
+---
+title: Use a custom editor for a cell
+---
+
+import siteConfig from '/docusaurus.config.js';
+
+The built-in editors are an `<input>`, a `<textarea>` (`multiLine: true`) and a `<select>` (schema `enum`). To use anything else, a date picker, a color picker, a code editor or your own web component, cancel the default editor in [`beforebeginedit`](/reference/events#beforebeginedit) with `e.preventDefault()`, mount your element over the cell, and write the result back into the row when it commits.
+
+`e.cell` gives you the cell rectangle (`x`, `y`, `width`, `height`, relative to the canvas), the row object (`data`) and the column (`header`). Writing to `e.cell.data[e.cell.header.name]` updates the underlying row regardless of sorting or filtering; call `grid.draw()` afterwards.
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+import data from '/data.json';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+gridElement.style.position = 'relative';
+gridElement.style.height = '200px';
+
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+  data,
+  schema: [
+    { name: 'name' },
+    { name: 'color' },
+    { name: 'due', type: 'date' },
+  ],
+});
+grid.style.height = '100%';
+grid.style.width = '100%';
+
+grid.formatters.date = (e) =>
+  e.cell.value ? new Date(e.cell.value).toLocaleDateString() : '';
+
+grid.addEventListener('rendercell', (e) => {
+  if (e.cell.isNormal && e.cell.header.name === 'color') {
+    e.ctx.fillStyle = e.cell.value;
+  }
+});
+
+let editor: HTMLInputElement | undefined;
+function closeEditor() {
+  editor?.remove();
+  editor = undefined;
+}
+
+grid.addEventListener('beforebeginedit', (e) => {
+  const column = e.cell.header.name;
+  if (column !== 'color' && column !== 'due') return; // default editor
+
+  e.preventDefault();
+  closeEditor();
+
+  const input = document.createElement('input');
+  input.type = column === 'color' ? 'color' : 'date';
+  input.value = e.cell.value ?? '';
+  const canvasRect = grid.canvas.getBoundingClientRect();
+  const hostRect = gridElement.getBoundingClientRect();
+  Object.assign(input.style, {
+    position: 'absolute',
+    left: canvasRect.left - hostRect.left + e.cell.x + 'px',
+    top: canvasRect.top - hostRect.top + e.cell.y + 'px',
+    width: e.cell.width + 'px',
+    height: e.cell.height + 'px',
+    boxSizing: 'border-box',
+  });
+
+  const commit = () => {
+    if (!editor) return;
+    e.cell.data[column] = input.value; // update the row
+    closeEditor();
+    grid.draw();
+  };
+  input.addEventListener('change', commit);
+  input.addEventListener('blur', commit);
+  input.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeEditor();
+    if (event.key === 'Enter') commit();
+  });
+
+  gridElement.append(input);
+  editor = input;
+  input.focus();
+  if (typeof (input as any).showPicker === 'function') {
+    try {
+      (input as any).showPicker();
+    } catch {
+      // needs a user gesture in some browsers
+    }
+  }
+});
+
+// close the editor when the grid scrolls or another cell is clicked
+grid.addEventListener('scroll', closeEditor);
+grid.addEventListener('click', closeEditor);
+
+app.append(gridElement);
+```
+
+```json data.json
+[
+  { "name": "Design review", "color": "#4CAF50", "due": "2026-10-01" },
+  { "name": "Release notes", "color": "#FF9800", "due": "2026-10-15" },
+  { "name": "Retrospective", "color": "#2196F3", "due": "" }
+]
+```
+
+</SandpackEditor>
+
+For a full custom web component follow the same pattern: create the element instead of the `<input>`, give it the current value, and listen for its commit event. Inline validation belongs in the component; only write to the row once the value is accepted.

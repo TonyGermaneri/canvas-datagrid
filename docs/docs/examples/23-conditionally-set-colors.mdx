@@ -1,10 +1,15 @@
 ---
-title: Conditionally set colors
+title: Conditionally set colors and fonts
 ---
 
 import siteConfig from '/docusaurus.config.js';
 
-Change styles during the `rendercell` event.
+Styles set on `grid.style` apply to every cell of a kind. To style individual cells, change the canvas context during the draw events:
+
+- [`rendercell`](/reference/events#rendercell) fires before a cell's background is filled: set `e.ctx.fillStyle` to change the background.
+- [`rendertext`](/reference/events#rendertext) fires before a cell's text is painted: set `e.ctx.fillStyle` for the text color and `e.ctx.font` for the font, per cell or per column.
+
+The decision can be based on anything you like. The example keeps a set of "flagged" rows so a background chosen by the user stays until it is un-flagged, which is how to give a group of cells a permanent color: double-click a row to toggle it.
 
 <SandpackEditor>
 
@@ -17,12 +22,41 @@ const gridElement = document.createElement('div');
 const grid = canvasDatagrid({
   parentNode: gridElement,
   data,
+  editable: false,
 });
 
+// rows flagged by the user, keyed by their index in grid.data
+const flagged = new Set<number>();
+
 grid.addEventListener('rendercell', function (e) {
+  if (!e.cell.isNormal) return;
   if (e.cell.header.name === 'Ei' && /omittam/.test(e.cell.value)) {
     e.ctx.fillStyle = '#AEEDCF';
   }
+  if (flagged.has(e.cell.boundRowIndex)) {
+    e.ctx.fillStyle = '#FFE8A3';
+  }
+});
+
+grid.addEventListener('rendertext', function (e) {
+  if (!e.cell.isNormal) return;
+  // a different font and color for one column
+  if (e.cell.header.name === 'melius') {
+    e.ctx.font = 'italic 16px serif';
+    e.ctx.fillStyle = '#7A1FA2';
+  }
+  // and a conditional text color
+  if (/quot/.test(e.cell.value)) {
+    e.ctx.fillStyle = '#B00020';
+  }
+});
+
+grid.addEventListener('dblclick', function (e) {
+  if (!e.cell.isNormal) return;
+  const row = e.cell.boundRowIndex;
+  if (flagged.has(row)) flagged.delete(row);
+  else flagged.add(row);
+  grid.draw();
 });
 
 app.append(gridElement);
@@ -38,4 +72,3 @@ app.append(gridElement);
 ```
 
 </SandpackEditor>
-  
