@@ -10,7 +10,7 @@
 
 - Works with Firefox, Edge, Safari and Chrome.
 - Native support for touch devices (phones and tablets).
-- Rich [documentation](https://canvas-datagrid.js.org/), [tutorials](https://canvas-datagrid.js.org/#tutorials), and [slack support](https://canvas-datagrid.slack.com/).
+- Rich [documentation](https://canvas-datagrid.js.org/), [examples](https://canvas-datagrid.js.org/examples), and [slack support](https://canvas-datagrid.slack.com/).
 - Single canvas element, drawn in immediate mode, data size does not impact performance.
 - Support for unlimited rows and columns without paging or loading.
 - Rich API of events, methods and properties using the familiar W3C DOM interface.
@@ -24,19 +24,15 @@
 
 [Documentation](https://canvas-datagrid.js.org/)
 
-[Tutorials](https://canvas-datagrid.js.org/#tutorials)
+[Examples](https://canvas-datagrid.js.org/examples)
 
 [Slack Support](https://canvas-datagrid.slack.com/) (message author for invite)
 
-[Style Builder](https://canvas-datagrid.js.org/styleBuilder.html)
+[Style reference](https://canvas-datagrid.js.org/reference/styling)
 
 [Download latest version (minified)](https://canvas-datagrid.js.org/canvas-datagrid.js)
 
-[Tests](https://canvas-datagrid.js.org/test/tests.html)
-
 [Source Code](https://github.com/TonyGermaneri/canvas-datagrid)
-
-[Latest Test Coverage](https://canvas-datagrid.js.org/build/report/lcov-report/index.html)
 
 ## Installation
 
@@ -62,7 +58,7 @@ A function will be added to the global scope of the web page called `canvasDatag
 
 ## Getting started
 
-Works [with webpack](https://canvas-datagrid.js.org/amdDemo.html), [without webpack](https://canvas-datagrid.js.org/demo.html) or as a [web component](https://canvas-datagrid.js.org/webcomponentDemo.html).
+Works [with a bundler](https://canvas-datagrid.js.org/examples/Webpack3-AMD), [without one](https://canvas-datagrid.js.org/getting-started#using-pure-javascript) or as a [web component](https://canvas-datagrid.js.org/getting-started#using-as-a-web-component).
 No matter how you load it, `canvasDatagrid` is declared in the global scope.
 
 Canvas-datagrid is a [Web Component](https://www.webcomponents.org/element/TonyGermaneri/canvas-datagrid) when
@@ -116,23 +112,32 @@ grid.data = [
 <canvas-datagrid :data.prop="[{"col1": "row 1 column 1"}]"></canvas-datagrid>
 ```
 
+See [Using with Vue](https://canvas-datagrid.js.org/examples/vue-demo) for a full component, and [Using with React](https://canvas-datagrid.js.org/examples/react-demo) for React.
+
+## Using TypeScript
+
+Type declarations are included. Import the factory and, when you need them, the instance and argument types:
+
+```ts
+import canvasDatagrid, {
+  type canvasDatagrid as CanvasDatagrid,
+  type CanvasDatagridArgs,
+} from 'canvas-datagrid';
+```
+
+The declarations are generated from JSDoc and are not strict-clean yet, so keep `skipLibCheck: true` in your `tsconfig.json`.
+
 ## More Demos
 
-- [Using Vue](https://canvas-datagrid.js.org/vueExample.html)
-
-- [Using Webpack3: AMD](https://canvas-datagrid.js.org/amdDemo.html)
-
-- [Using React](https://canvas-datagrid.js.org/reactExample.html)
-
-- [Web component example](https://canvas-datagrid.js.org/webcomponentDemo.html)
-
-- [Loading data with XHR](https://canvas-datagrid.js.org/demo.html)
-
-- [Sparkline example](https://canvas-datagrid.js.org/sparklineDemo.html)
-
-- [XHR data paging demo Jeopardy Questions API](https://canvas-datagrid.js.org/xhrPagingDemo.html)
-
-Note about XHR paging demo: Thanks to [jservice](http://jservice.io/) for the use of the free paging API. You must "load unsafe scripts" or relevant command to allow HTTPS (github) to make XHR requests to HTTP (Jeopardy Questions API). There is nothing unsafe about this.
+- [Using with React](https://canvas-datagrid.js.org/examples/react-demo)
+- [Using with Vue](https://canvas-datagrid.js.org/examples/vue-demo)
+- [Using with a bundler or module loader](https://canvas-datagrid.js.org/examples/Webpack3-AMD)
+- [Create a web component grid](https://canvas-datagrid.js.org/examples/create-a-web-component-grid)
+- [Load data on demand with fetch](https://canvas-datagrid.js.org/examples/xhr-demo)
+- [Sparkline charts in cells](https://canvas-datagrid.js.org/examples/sparkline)
+- [Large arrays](https://canvas-datagrid.js.org/examples/largeArrays)
+- [Use a custom editor for a cell](https://canvas-datagrid.js.org/examples/custom-cell-editor)
+- [All examples](https://canvas-datagrid.js.org/examples)
 
 ## Building & Testing
 

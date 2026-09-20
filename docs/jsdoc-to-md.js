@@ -24,7 +24,113 @@ const sortByProp = (prop) => (a, b) => a[prop].localeCompare(b[prop]);
 fsExtra.emptyDirSync(outputDir);
 
 /* parse jsdoc data */
+// jsdoc runs in a child process; preload the Node compatibility shim there.
+process.env.NODE_OPTIONS = [
+  process.env.NODE_OPTIONS || '',
+  `--require ${JSON.stringify(path.join(__dirname, 'jsdoc-node-compat.js'))}`,
+]
+  .join(' ')
+  .trim();
 const data = jsdocApi.explainSync({ files: inputFiles });
+
+/*
+ * Resolve JSDoc inline tags ({@link ...}, {@tutorial ...}) to markdown links
+ * that point at the generated reference pages, so they do not appear as
+ * literal `{@link canvasDatagrid.params}` text on the site (issue #574).
+ */
+const slug = (text) =>
+  String(text)
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-');
+
+const exampleSlugs = fs
+  .readdirSync(path.join(__dirname, 'docs', 'examples'))
+  .filter((f) => /\.mdx?$/.test(f))
+  .map((f) => f.replace(/^\d+-/, '').replace(/\.mdx?$/, ''));
+
+function findExample(name) {
+  const wanted = slug(name.replace(/^tutorial--/, '').replace(/\.$/, ''));
+  return exampleSlugs.find((s) => s === wanted || s.startsWith(wanted));
+}
+
+function resolveLinkTarget(target, anchors) {
+  let m;
+  if (target === 'canvasDatagrid.params' || target === 'canvasDatagrid.args') {
+    return '/reference/parameters';
+  }
+  if (target === 'canvasDatagrid.style') {
+    return '/reference/styling';
+  }
+  if ((m = /^canvasDatagrid#param:(\w+)$/.exec(target))) {
+    return `/reference/parameters#${slug(m[1])}`;
+  }
+  if ((m = /^canvasDatagrid\.attributes\.(\w+)$/.exec(target))) {
+    return `/reference/parameters#${slug(m[1])}`;
+  }
+  if ((m = /^canvasDatagrid#event:(\w+)$/.exec(target))) {
+    return `/reference/events#${slug(m[1])}`;
+  }
+  if ((m = /^canvasDatagrid#property:(\w+)$/.exec(target))) {
+    return anchors.properties[m[1]] || `/reference/properties#${slug(m[1])}`;
+  }
+  if ((m = /^canvasDatagrid\.style\.(\w+)$/.exec(target))) {
+    return `/reference/styling#${slug(m[1])}`;
+  }
+  if ((m = /^canvasDatagrid\.(\w+)(?:\.(\w+))?$/.exec(target))) {
+    const [, member] = m;
+    if (anchors.properties[member]) return anchors.properties[member];
+    if (anchors.classes[member]) return anchors.classes[member];
+    if (anchors.methods[member]) return anchors.methods[member];
+    if (anchors.events[member]) return anchors.events[member];
+    return null;
+  }
+  if (/^tutorial--/.test(target)) {
+    const example = findExample(target);
+    return example ? `/examples/${example}` : '/examples';
+  }
+  return null;
+}
+
+function resolveInlineTags(text, anchors) {
+  if (typeof text !== 'string') return text;
+  return text
+    .replace(/\{@link\s+([^}|\s]+)(?:\s*\|\s*([^}]+))?\}/g, (all, target, label) => {
+      const href = resolveLinkTarget(target, anchors);
+      const display =
+        label ||
+        target
+          .replace(/^canvasDatagrid#(?:property|param|event):/, '')
+          .replace(/^tutorial--/, '')
+          .replace(/-+/g, ' ');
+      return href ? `[${display}](${href})` : `\`${target}\``;
+    })
+    .replace(/\{@tutorial\s+([^}]+)\}/g, (all, name) => {
+      const example = findExample(name);
+      return example
+        ? `[${name}](/examples/${example})`
+        : `[${name}](/examples)`;
+    });
+}
+
+function transformInlineTags(node, anchors, seen = new Set()) {
+  if (!node || typeof node !== 'object' || seen.has(node)) return node;
+  seen.add(node);
+  if (Array.isArray(node)) {
+    node.forEach((item) => transformInlineTags(item, anchors, seen));
+    return node;
+  }
+  for (const key of Object.keys(node)) {
+    const value = node[key];
+    if (typeof value === 'string' && /description|classdesc|summary/.test(key)) {
+      node[key] = resolveInlineTags(value, anchors);
+    } else if (value && typeof value === 'object') {
+      transformInlineTags(value, anchors, seen);
+    }
+  }
+  return node;
+}
 
 function getEvents(jsdocData) {
   const events = jsdocData.filter(
@@ -98,6 +204,31 @@ const sections = {
   methods: { data: getMethods(data), template: 'methods.hbs' },
   styling: { data: getStyles(data), template: 'styling.hbs' },
 };
+
+// Anchor maps mirror the headings emitted by the templates:
+// properties.hbs uses "### name <span>type</span>", the others "### name".
+const anchors = {
+  properties: Object.fromEntries(
+    sections.properties.data.filter(Boolean).map((p) => [
+      p.name,
+      `/reference/properties#${slug(
+        `${p.name} ${p.type && p.type.names ? p.type.names.join(',') : ''}`,
+      )}`,
+    ]),
+  ),
+  classes: Object.fromEntries(
+    sections.classes.data.filter(Boolean).map((c) => [c.name, `/reference/classes#${slug(c.name)}`]),
+  ),
+  methods: Object.fromEntries(
+    sections.methods.data.filter(Boolean).map((m) => [m.name, `/reference/methods#${slug(m.name)}`]),
+  ),
+  events: Object.fromEntries(
+    sections.events.data.filter(Boolean).map((e) => [e.name, `/reference/events#${slug(e.name)}`]),
+  ),
+};
+Object.values(sections).forEach((section) =>
+  transformInlineTags(section.data, anchors),
+);
 
 for (const [sectionName, section] of Object.entries(sections)) {
   writeMarkdown({

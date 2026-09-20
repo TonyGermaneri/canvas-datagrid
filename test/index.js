@@ -25,6 +25,9 @@ import contextMenuTests from './context-menu.js';
 import webComponentTests from './web-component.js';
 import scrollingTests from './scrolling.js';
 import unhideIndicatorTests from './unhide-indicator.js';
+import eventsTests from './events.js';
+import regressionTests from './regressions.js';
+import needsReproTests from './needs-repro.js';
 
 import unitTests from './unit/index.js';
 
@@ -59,6 +62,9 @@ describe('canvas-datagrid', function () {
     describe('Groups', groupsTests);
     describe('Unhide indicator', unhideIndicatorTests);
     describe('Reorder columns', reorderColumnsTests);
+    describe('Events', eventsTests);
+    describe('Regressions', regressionTests);
+    describe('Needs repro (Phase 4)', needsReproTests);
   });
   describe('Unit Tests', unitTests);
 });

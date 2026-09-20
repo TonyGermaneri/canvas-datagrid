@@ -1,0 +1,42 @@
+---
+title: Large arrays
+---
+
+import siteConfig from '/docusaurus.config.js';
+
+The grid only draws the cells that are visible, so the size of the data set does not matter for rendering. This example binds a sparse array of one million rows and 26 columns. Rows that were never assigned are drawn empty and can be edited like any other row.
+
+Sorting and filtering do touch every row, so they are proportionally slower on very large arrays; `autoResizeColumns` scans the data as well and is off by default.
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+gridElement.style.height = '400px';
+
+// columns A - Z
+const schema = Array.from({ length: 26 }, (_, i) => ({
+  name: String.fromCharCode(65 + i),
+}));
+
+// a sparse array: only the length is set, rows are created on demand
+const data: Record<string, unknown>[] = [];
+data.length = 1_000_000;
+data[0] = { A: 'first row' };
+data[data.length - 1] = { A: 'last row' };
+
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+  schema,
+  data,
+});
+grid.style.height = '100%';
+grid.style.width = '100%';
+
+app.append(gridElement);
+```
+
+</SandpackEditor>

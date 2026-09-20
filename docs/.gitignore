@@ -19,3 +19,7 @@ docs/reference
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# copied from ../dist by copy-dist.js at build time
+/static/canvas-datagrid.*
+/static/types.d.ts

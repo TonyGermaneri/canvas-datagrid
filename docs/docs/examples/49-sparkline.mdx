@@ -1,0 +1,125 @@
+---
+title: Sparkline charts in cells
+---
+
+import siteConfig from '/docusaurus.config.js';
+
+Cells can contain anything you can draw on a canvas. Here every value in `col2` and `col3` is an array of numbers. By default the grid renders an array value as a nested grid, so `beforerendercell` turns that off, `rendertext` skips the text, and `afterrendercell` paints a sparkline into the cell rectangle with the 2D context the grid passes in.
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+gridElement.style.height = '400px';
+
+function randomSeries(size: number) {
+  return Array.from({ length: size }, () => Math.random());
+}
+
+const data = Array.from({ length: 30 }, () => ({
+  col1: '',
+  col2: randomSeries(40),
+  col3: randomSeries(40),
+}));
+
+function plotSparkline(cell: any, ctx: CanvasRenderingContext2D) {
+  const values: number[] = cell.value;
+  if (!values || !values.length) return;
+  const max = Math.max(...values);
+  const min = Math.min(...values);
+  const avg = values.reduce((a, b) => a + b, 0) / values.length;
+  const diff = values[values.length - 1] - values[0];
+  const step = cell.width / values.length;
+  const scale = cell.height / (max - max * 0.1);
+
+  ctx.save();
+  const background = ctx.createLinearGradient(
+    cell.x,
+    cell.y,
+    cell.x,
+    cell.y + cell.height,
+  );
+  background.addColorStop(0, '#0C4B73');
+  background.addColorStop(1, cell.selected || cell.active ? '#B3C3CC' : '#041724');
+  ctx.fillStyle = background;
+  ctx.fillRect(cell.x, cell.y, cell.width, cell.height);
+
+  ctx.beginPath();
+  ctx.moveTo(cell.x, cell.y + cell.height);
+  values.forEach((value, index) => {
+    const px = cell.x + step * (index + 1);
+    const py = cell.y + cell.height - value * scale;
+    ctx.lineTo(px, py);
+    if (value === min || value === max) {
+      ctx.fillStyle = value === max ? '#4CAF50' : '#E53935';
+      ctx.fillRect(px - 2, py - 2, 5, 5);
+    }
+  });
+  ctx.lineTo(cell.x + cell.width, cell.y + cell.height);
+  const fill = ctx.createLinearGradient(cell.x, cell.y, cell.x, cell.y + cell.height);
+  fill.addColorStop(0, '#0F5C8C');
+  fill.addColorStop(1, '#499ABA');
+  ctx.fillStyle = fill;
+  ctx.fill();
+  ctx.strokeStyle = '#0B466B';
+  ctx.stroke();
+
+  // average line
+  ctx.beginPath();
+  ctx.lineWidth = 1;
+  ctx.strokeStyle = diff >= 0 ? '#4CAF50' : '#E53935';
+  ctx.moveTo(cell.x, cell.y + cell.height - avg * scale);
+  ctx.lineTo(cell.x + cell.width, cell.y + cell.height - avg * scale);
+  ctx.stroke();
+  ctx.restore();
+
+  // write a summary into the first column of the same row
+  cell.data.col1 =
+    (diff > 0 ? '▲' : '▼') +
+    ' diff ' +
+    diff.toFixed(2) +
+    '  avg ' +
+    avg.toFixed(2);
+}
+
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+  data,
+  editable: false,
+  schema: [
+    { name: 'col1', width: 220 },
+    { name: 'col2', width: 260 },
+    { name: 'col3', width: 260 },
+  ],
+});
+grid.style.height = '100%';
+grid.style.width = '100%';
+grid.style.cellHeight = 48;
+
+grid.addEventListener('beforerendercell', function (e) {
+  // do not render the arrays as nested grids
+  if (/col2|col3/.test(e.header.name) && !e.cell.isHeader) {
+    e.cell.isGrid = false;
+  }
+});
+grid.addEventListener('rendertext', function (e) {
+  if (/col2|col3/.test(e.header.name) && !e.cell.isHeader) {
+    e.preventDefault();
+  }
+  if (e.cell.isNormal && typeof e.cell.value === 'string') {
+    e.ctx.fillStyle = /▲/.test(e.cell.value) ? '#2E7D32' : '#C62828';
+  }
+});
+grid.addEventListener('afterrendercell', function (e) {
+  if (/col2|col3/.test(e.header.name) && !e.cell.isHeader) {
+    plotSparkline(e.cell, e.ctx);
+  }
+});
+
+app.append(gridElement);
+```
+
+</SandpackEditor>

@@ -11,6 +11,72 @@ import {
 } from './util.js';
 
 export default function () {
+  it('Fills the last visible column and disables its outer resize edge.', function () {
+    var grid = g({
+      test: this.test,
+      data: smallData(),
+      fillLastColumn: true,
+      style: {
+        cellWidth: 50,
+      },
+    });
+    grid.draw();
+
+    const lastHeader = grid.visibleCells.find(
+      (cell) => cell.isColumnHeader && cell.columnIndex === 2,
+    );
+    doAssert(lastHeader.width > 50, 'Last column fills unused grid width');
+    const verticalScrollBarWidth =
+      grid.scrollHeight > 0
+        ? grid.style.scrollBarWidth + grid.style.scrollBarBorderWidth * 2
+        : 0;
+    doAssert(
+      Math.abs(
+        lastHeader.x +
+          lastHeader.width -
+          (grid.canvas.offsetWidth - verticalScrollBarWidth),
+      ) <= 2,
+      'Last column reaches the usable grid edge',
+    );
+    doAssert(grid.scrollWidth <= 0, 'Filled grid has no horizontal dead space');
+
+    mousemove(
+      window,
+      lastHeader.x + lastHeader.width - 1,
+      lastHeader.y + 5,
+      grid.canvas,
+    );
+    doAssert(grid.cursor !== 'ew-resize', 'Last column outer edge is fixed');
+  });
+
+  it('Does not shrink columns that already overflow the grid.', function () {
+    var grid = g({
+      test: this.test,
+      data: Array.from({ length: 3 }, function (_, rowIndex) {
+        return Array.from({ length: 8 }, function (_, columnIndex) {
+          return ['col' + columnIndex, rowIndex + ':' + columnIndex];
+        }).reduce(function (row, entry) {
+          row[entry[0]] = entry[1];
+          return row;
+        }, {});
+      }),
+      fillLastColumn: true,
+      style: {
+        cellWidth: 50,
+      },
+    });
+    grid.draw();
+
+    const lastHeader = grid.visibleCells.find(
+      (cell) => cell.isColumnHeader && cell.columnIndex === 7,
+    );
+    doAssert(
+      lastHeader.width === 50,
+      'Overflowing last column keeps its width',
+    );
+    doAssert(grid.scrollWidth > 0, 'Overflowing grid remains scrollable');
+  });
+
   it('Resize a column from a column header.', function (done) {
     var grid = g({
       test: this.test,
@@ -106,10 +172,10 @@ export default function () {
       'Rows have been set back to original height',
     );
   });
-  // Skipping: this test fails here, but when cannot reproduce in browser.
-  // Does not seem to affect behavior, but leaving this here until we either
-  // a) decide it's no longer a good test, b) find a better way to test, or
-  // c) get more reports of something being broken.
+  // Skipped since d2bcd2c (2023): the row part passes but the column width is
+  // not applied on drop when resizeAfterDragged is true (expects 146, stays
+  // 50). Tracked as a needs-repro item in the backlog plan; re-enable once
+  // resizeAfterDragged column resizing is fixed.
   it.skip('Resizes row and column after the handle is dropped.', function () {
     var grid = g({
       test: this.test,
@@ -188,7 +254,8 @@ export default function () {
     grid.selectColumn(0);
     grid.selectColumn(1, true);
 
-    chai.assert.deepStrictEqual(Object.keys(grid.sizes.columns),
+    chai.assert.deepStrictEqual(
+      Object.keys(grid.sizes.columns),
       ['-1'],
       'No column widths set',
     );

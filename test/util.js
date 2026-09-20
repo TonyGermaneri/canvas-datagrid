@@ -146,7 +146,7 @@ export function savePartOfCanvasToString(grid, x, y, w, h) {
   const tmpCanvas = document.createElement('canvas');
   const dpr = window.devicePixelRatio;
   const dw = 200 * dpr;
-  const dh = 200 * h / w * dpr;
+  const dh = ((200 * h) / w) * dpr;
   x = x * dpr;
   y = y * dpr;
   if (x < 0) x = 0;
@@ -206,17 +206,30 @@ export function keydown(el, key, args) {
 export function bb(el) {
   return el.getBoundingClientRect();
 }
-export function mouseup(el, x, y, bbEl) {
+// `ev` carries extra event properties such as { ctrlKey: true }.
+export function mouseup(el, x, y, bbEl, ev) {
   var p = bb(bbEl || el);
-  de(el, 'mouseup', { clientX: x + p.left, clientY: y + p.top });
+  de(
+    el,
+    'mouseup',
+    Object.assign({ clientX: x + p.left, clientY: y + p.top }, ev),
+  );
 }
-export function mousemove(el, x, y, bbEl) {
+export function mousemove(el, x, y, bbEl, ev) {
   var p = bb(bbEl || el);
-  de(el, 'mousemove', { clientX: x + p.left, clientY: y + p.top });
+  de(
+    el,
+    'mousemove',
+    Object.assign({ clientX: x + p.left, clientY: y + p.top }, ev),
+  );
 }
-export function mousedown(el, x, y, bbEl) {
+export function mousedown(el, x, y, bbEl, ev) {
   var p = bb(bbEl || el);
-  de(el, 'mousedown', { clientX: x + p.left, clientY: y + p.top });
+  de(
+    el,
+    'mousedown',
+    Object.assign({ clientX: x + p.left, clientY: y + p.top }, ev),
+  );
 }
 export function contextmenu(el, x, y, bbEl) {
   var p = bb(bbEl || el);
@@ -251,7 +264,9 @@ export function touchmove(el, x, y, bbEl) {
   });
 }
 export function handlemove(grid, dx, dy) {
-  const handle = grid.visibleCells.find((cell) => cell.style === 'selection-handle-br');
+  const handle = grid.visibleCells.find(
+    (cell) => cell.style === 'selection-handle-br',
+  );
 
   handle.x += handle.width / 2;
   handle.y += handle.height / 2;

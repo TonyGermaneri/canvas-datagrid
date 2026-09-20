@@ -1,0 +1,79 @@
+---
+title: Using with Vue
+---
+
+canvas-datagrid is a plain web component, so a Vue component only needs to create the grid once, hand it data, and dispose it on unmount. This is the recommended pattern for Vue 3 with `<script setup>` and TypeScript.
+
+```vue
+<script setup lang="ts">
+import { onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import canvasDatagrid, {
+  type canvasDatagrid as CanvasDatagrid,
+} from 'canvas-datagrid';
+
+const props = defineProps<{ rows: Record<string, unknown>[] }>();
+const emit = defineEmits<{ edited: [row: Record<string, unknown>] }>();
+
+const container = ref<HTMLDivElement | null>(null);
+let grid: CanvasDatagrid | undefined;
+
+onMounted(() => {
+  grid = canvasDatagrid({ parentNode: container.value!, data: props.rows });
+  grid.style.height = '100%';
+  grid.style.width = '100%';
+  grid.addEventListener('endedit', (e: any) => emit('edited', e.cell.data));
+});
+
+// push new data into the existing grid instead of re-creating it
+watch(
+  () => props.rows,
+  (rows) => {
+    if (grid) grid.data = rows;
+  },
+);
+
+onBeforeUnmount(() => grid?.dispose());
+</script>
+
+<template>
+  <div ref="container" style="height: 300px"></div>
+</template>
+```
+
+## Using the `<canvas-datagrid>` tag in a template
+
+You can also place the element directly in a template. Tell the Vue compiler that it is a custom element, and bind objects with the `.prop` modifier so they are set as properties rather than stringified attributes:
+
+```js
+// vite.config.js
+export default {
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag === 'canvas-datagrid',
+        },
+      },
+    }),
+  ],
+};
+```
+
+```vue
+<template>
+  <canvas-datagrid
+    :data.prop="rows"
+    :schema.prop="schema"
+    :editable.prop="false"
+    style="height: 300px; width: 100%"
+  ></canvas-datagrid>
+</template>
+```
+
+Import the library once (for example in `main.ts`) so the custom element is registered:
+
+```ts
+import 'canvas-datagrid';
+```
+
+Event listeners are added with `addEventListener` on the element reference (`ref`), exactly as in the script-setup example above; Vue's `@event` syntax does not apply because grid events are not DOM events.
