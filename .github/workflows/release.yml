@@ -15,7 +15,9 @@ on:
         type: string
 
 env:
-  RELEASE_REF: ${{ inputs.tag || github.ref_name }}
+  # The tag being released: the pushed tag, or the manual input with a
+  # missing "v" prefix added ("0.5.0" and "v0.5.0" both work).
+  RELEASE_REF: ${{ github.event_name == 'workflow_dispatch' && (startsWith(inputs.tag, 'v') && inputs.tag || format('v{0}', inputs.tag)) || github.ref_name }}
 
 jobs:
   build:
@@ -26,7 +28,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.tag || github.ref }}
+          ref: refs/tags/${{ env.RELEASE_REF }}
       - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
@@ -56,7 +58,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.tag || github.ref }}
+          ref: refs/tags/${{ env.RELEASE_REF }}
       - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
@@ -93,7 +95,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.tag || github.ref }}
+          ref: refs/tags/${{ env.RELEASE_REF }}
       - name: Install Node
         uses: actions/setup-node@v4
         with:
