@@ -17,7 +17,10 @@ run() {
 }
 
 close_with() { # issue comment
-  run gh issue close "$1" --repo "$REPO" --comment "$2" || true
+  # comment first: it also works on issues GitHub already auto-closed from
+  # the "Fixes #N" keywords in the commits and the pull request
+  run gh issue comment "$1" --repo "$REPO" --body "$2" || true
+  run gh issue close "$1" --repo "$REPO" || true
 }
 
 label() { # issue labels...
