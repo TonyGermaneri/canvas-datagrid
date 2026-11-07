@@ -1676,9 +1676,86 @@ __webpack_require__.r(__webpack_exports__);
     };
   };
   /**
-   * Watches the host element and its parent for size changes so a grid sized
-   * with auto/percentage dimensions follows layout changes (flex, splitters,
-   * tab switches) without an explicit `resize()` call (#289, #239).
+   * The element the grid sits in: the parent of the `canvas-datagrid` host
+   * element, or the host of the shadow tree the grid was placed in.
+   * @returns {HTMLElement|undefined}
+   */
+  self.getContainerElement = function () {
+    var host = self.intf && self.intf.nodeType === 1 ? self.intf : self.canvas,
+      container = host && host.parentNode;
+    if (container && container.nodeType === 11 && container.host) {
+      container = container.host;
+    }
+    return container && container.nodeType === 1 ? container : undefined;
+  };
+  /**
+   * Measures the room the container offers the grid in each dimension.
+   * A dimension is `undefined` when the container has no size of its own
+   * there, that is when it grows with the grid (an auto height block, a
+   * shrink-to-fit width); the caller then falls back to the content size.
+   *
+   * The probe makes the canvas one pixel larger than the container's client
+   * size and checks whether the container followed. When it did not, the
+   * overflow that the probe produced tells how much of the container is
+   * taken by padding and siblings. Everything is restored synchronously, so
+   * nothing is painted and no ResizeObserver notification results.
+   * @returns {{width: (number|undefined), height: (number|undefined)}}
+   */
+  self.measureContainerSpace = function () {
+    var space = {},
+      canvas = self.canvas,
+      container = self.getContainerElement(),
+      cache = self.containerSpaceCache,
+      canvasStyle,
+      saved;
+    if (!container || !canvas) {
+      return space;
+    }
+    if (cache && cache.container === container && cache.clientWidth === container.clientWidth && cache.clientHeight === container.clientHeight) {
+      return cache.space;
+    }
+    canvasStyle = canvas.style;
+    saved = {
+      width: canvasStyle.width,
+      height: canvasStyle.height
+    };
+    ['height', 'width'].forEach(function (dim) {
+      var client = dim === 'height' ? 'clientHeight' : 'clientWidth',
+        scroll = dim === 'height' ? 'scrollHeight' : 'scrollWidth',
+        before = container[client],
+        probe = before + 1,
+        after;
+      canvasStyle[dim] = probe + 'px';
+      after = container[client];
+      if (before === 0 || after > before) {
+        // nothing to measure (hidden or inline) or the container grew with
+        // the grid: it has no size of its own in this dimension
+        space[dim] = undefined;
+      } else {
+        // the container kept its size and the grid overflows it by at least
+        // one pixel; the overflow beyond that pixel is padding and siblings
+        space[dim] = Math.max(0, Math.min(after, 2 * after + 1 - container[scroll]));
+      }
+      canvasStyle[dim] = saved[dim];
+    });
+    // resize() may run several times in one frame (drags, style changes);
+    // the probe forces layout, so reuse the result while the container
+    // keeps its size
+    self.containerSpaceCache = {
+      container: container,
+      clientWidth: container.clientWidth,
+      clientHeight: container.clientHeight,
+      space: space
+    };
+    requestAnimationFrame(function () {
+      self.containerSpaceCache = undefined;
+    });
+    return space;
+  };
+  /**
+   * Watches the host element and its container for size changes so a grid
+   * sized with auto/percentage dimensions follows layout changes (flex,
+   * splitters, tab switches) without an explicit `resize()` call (#289, #239).
    * Falls back to the `window` resize listener when ResizeObserver is missing.
    */
   self.initResizeObserver = function () {
@@ -1720,7 +1797,7 @@ __webpack_require__.r(__webpack_exports__);
     self.resizeObserver.disconnect();
     self.observedSizes = new Map();
     var host = self.intf && self.intf.nodeType === 1 ? self.intf : self.canvas;
-    [host, host && host.parentNode].forEach(function (target) {
+    [host, self.getContainerElement()].forEach(function (target) {
       if (target && target.nodeType === 1) {
         self.resizeObserver.observe(target);
       }
@@ -3870,15 +3947,31 @@ __webpack_require__.r(__webpack_exports__);
           treeGrid.parentNode.columnGroupsAreaHeight += columnGroupsAreaHeight || 0;
           treeGrid.parentNode.rowGroupsAreaWidth += rowGroupsAreaWidth || 0;
         }
+        // Hit-test entry for the child grid's area. Like every other visible
+        // cell it is in this grid's own coordinates (the child's offsetTop and
+        // offsetLeft are canvas coordinates) and carries the real tree size:
+        // `treeGrid.height`/`width` are undefined on child grids, which made
+        // this entry unmatchable, so a pointer over a tree grid still counted
+        // as hovering the parent and the parent scrolled along with the tree.
         self.visibleCells.unshift({
           rowIndex: rowOrderIndex,
           columnIndex: 0,
-          y: treeGrid.parentNode.offsetTop,
-          x: treeGrid.parentNode.offsetLeft,
-          height: treeGrid.height,
-          width: treeGrid.width,
+          y: y + rowSansTreeHeight,
+          x: rowHeaderCellWidth - 1,
+          height: treeHeight,
+          width: treeGrid.parentNode.offsetWidth,
           style: 'tree-grid',
-          type: treeGrid.parentNode.nodeType
+          type: treeGrid.parentNode.nodeType,
+          data: rowData,
+          header: {},
+          isGrid: false,
+          isNormal: false,
+          isHeader: false,
+          isCorner: false,
+          isRowHeader: false,
+          isColumnHeader: false,
+          selected: false,
+          hovered: false
         });
         treeGrid.draw();
       } else if (treeGrid) {
@@ -4950,21 +5043,35 @@ __webpack_require__.r(__webpack_exports__);
       rowHeaderCellWidth = self.getRowHeaderCellWidth(),
       topGroupAreaHeight = self.getColumnGroupAreaHeight(),
       leftGroupAreaWidth = self.getRowGroupAreaWidth(),
-      ch = self.style.cellHeight;
-    // sets actual DOM canvas element
+      ch = self.style.cellHeight,
+      containerSpace = self.isChildGrid ? {} : self.measureContainerSpace();
+    function isAutoSize(value) {
+      return value === undefined || value === 'auto' || value === '';
+    }
     function checkScrollBoxVisibility() {
-      var capped = self.autoSizeCapped || {};
-      self.scrollBox.horizontalBarVisible = (self.style.width !== 'auto' || capped.width) && dataWidth > self.scrollBox.width && self.style.overflowX !== 'hidden' || self.style.overflowX === 'scroll';
+      // an auto-sized grid shows a scroll bar only when it could not grow to
+      // its content (container, viewport or canvas limit); a child grid is
+      // always bounded by the tree row or cell that holds it
+      var constrained = self.autoSizeConstrained || {};
+      self.scrollBox.horizontalBarVisible = (!isAutoSize(self.style.width) || constrained.width) && dataWidth > self.scrollBox.width && self.style.overflowX !== 'hidden' || self.style.overflowX === 'scroll';
       self.scrollBox.horizontalBoxVisible = dataWidth > self.scrollBox.width;
-      self.scrollBox.verticalBarVisible = (self.style.height !== 'auto' || capped.height) && dataHeight > self.scrollBox.height && self.style.overflowY !== 'hidden' || self.style.overflowY === 'scroll';
+      self.scrollBox.verticalBarVisible = (!isAutoSize(self.style.height) || constrained.height) && dataHeight > self.scrollBox.height && self.style.overflowY !== 'hidden' || self.style.overflowY === 'scroll';
       self.scrollBox.verticalBoxVisible = dataHeight > self.scrollBox.height;
     }
     function setScrollBoxSize() {
       self.scrollBox.width = self.width - rowHeaderCellWidth - leftGroupAreaWidth;
       self.scrollBox.height = self.height - columnHeaderCellHeight - topGroupAreaHeight;
     }
+    // sizes the DOM canvas element and reads back the size the grid got
     function setCanvasSize() {
       if (self.isChildGrid) {
+        // a child grid fills the tree row or cell that holds it
+        self.autoSizeConstrained = {
+          width: true,
+          height: true
+        };
+        self.width = self.parentNode.offsetWidth;
+        self.height = self.parentNode.offsetHeight;
         return;
       }
       dims = {
@@ -4972,31 +5079,39 @@ __webpack_require__.r(__webpack_exports__);
         height: columnHeaderCellHeight + topGroupAreaHeight + dataHeight + cellBorder + 1,
         width: dataWidth + rowHeaderCellWidth + cellBorder + leftGroupAreaWidth
       };
-      // Browsers refuse to paint canvases beyond roughly 16k px per side, so
-      // an auto-sized grid with enough rows went blank past that point
-      // (#254). Cap the element and let it scroll for the remainder.
       var maxCanvasSize = self.attributes.maxCanvasSize;
-      self.autoSizeCapped = {
+      self.autoSizeConstrained = {
         width: false,
         height: false
       };
       ['width', 'height'].forEach(function (dim) {
-        if (dims[dim] > maxCanvasSize) {
-          dims[dim] = maxCanvasSize;
-          self.autoSizeCapped[dim] = true;
-        }
-      });
-      ['width', 'height'].forEach(function (dim) {
+        var styleIsAuto = isAutoSize(self.style[dim]),
+          inlineIsAuto = isAutoSize(self.appliedInlineStyles[dim]),
+          size;
         //TODO: support inherit
-        if (['auto', undefined].indexOf(self.style[dim]) !== -1 && ['auto', undefined].indexOf(self.appliedInlineStyles[dim]) !== -1) {
-          self.parentNodeStyle[dim] = dims[dim] + 'px';
-        } else if (['auto', undefined].indexOf(self.style[dim]) == -1 && ['auto', undefined].indexOf(self.appliedInlineStyles[dim]) == -1) {
-          self.parentNodeStyle[dim] = self.style[dim];
-          if (self.isComponent) {
-            self.canvas.style[dim] = self.style[dim];
+        if (styleIsAuto && inlineIsAuto) {
+          // No explicit size: fill the container when it has a size of its
+          // own in this dimension, otherwise fit the content but never grow
+          // past the viewport. Browsers also refuse to paint canvases beyond
+          // roughly 16k px per side (#254), so cap the element there too and
+          // let the grid scroll for the remainder.
+          size = dims[dim];
+          if (containerSpace[dim] !== undefined) {
+            size = containerSpace[dim];
+          } else {
+            size = Math.min(size, dim === 'height' ? window.innerHeight : window.innerWidth);
           }
+          size = Math.max(0, Math.min(size, maxCanvasSize));
+          self.autoSizeConstrained[dim] = size < dims[dim];
+          self.parentNodeStyle[dim] = size + 'px';
+        } else if (!styleIsAuto && !inlineIsAuto) {
+          self.parentNodeStyle[dim] = self.style[dim];
         }
       });
+      self.width = self.canvas.offsetWidth;
+      self.height = self.canvas.offsetHeight;
+      self.canvasOffsetLeft = self.args.canvasOffsetLeft || 0;
+      self.canvasOffsetTop = self.args.canvasOffsetTop || 0;
     }
     self.autoLastColumnWidth = undefined;
     dataWidth = self.refreshScrollCacheX();
@@ -5017,15 +5132,6 @@ __webpack_require__.r(__webpack_exports__);
       dataHeight += self.style.cellHeight;
     }
     setCanvasSize();
-    if (self.isChildGrid) {
-      self.width = self.parentNode.offsetWidth;
-      self.height = self.parentNode.offsetHeight;
-    } else if (self.height !== self.canvas.offsetHeight || self.width !== self.canvas.offsetWidth) {
-      self.height = self.canvas.offsetHeight;
-      self.width = self.canvas.offsetWidth;
-      self.canvasOffsetLeft = self.args.canvasOffsetLeft || 0;
-      self.canvasOffsetTop = self.args.canvasOffsetTop || 0;
-    }
     /// calculate scroll bar dimensions
     // non-controversial
     self.scrollBox.top = columnHeaderCellHeight + topGroupAreaHeight + columnHeaderCellBorder;
@@ -5037,18 +5143,12 @@ __webpack_require__.r(__webpack_exports__);
     // if the scroll box is visible, make room for it by expanding the size of the element
     // if the other dimension is set to auto
     if (self.scrollBox.horizontalBarVisible) {
-      if (self.style.height === 'auto' && !self.isChildGrid) {
-        self.height += sbw;
-      }
       dataHeight += sbw;
       setCanvasSize();
       setScrollBoxSize();
       checkScrollBoxVisibility();
     }
     if (self.scrollBox.verticalBarVisible) {
-      if (self.style.width === 'auto' && !self.isChildGrid) {
-        self.width += sbw;
-      }
       dataWidth += sbw;
       setCanvasSize();
       setScrollBoxSize();
@@ -6288,17 +6388,42 @@ __webpack_require__.r(__webpack_exports__);
     var l,
       t,
       ev = e,
+      childEvent,
       deltaX = e.deltaX === undefined ? e.NativeEvent.deltaX : e.deltaX,
       deltaY = e.deltaY === undefined ? e.NativeEvent.deltaY : e.deltaY,
       deltaMode = e.deltaMode === undefined ? e.NativeEvent.deltaMode : e.deltaMode;
     if (e.NativeEvent) e = e.NativeEvent;
-    if (wheeling) {
-      ev.preventDefault(e);
+    if (self.disposed) {
       return;
     }
-    if (self.dispatchEvent('wheel', {
+    // A child grid receives the wheel through its parent's `wheel` grid
+    // event (`ev`), not from the DOM. Cancelling and marking that event tells
+    // every ancestor that the grid under the pointer owns this wheel, so only
+    // the hovered grid scrolls, even when it has nothing left to scroll.
+    function claim() {
+      if (ev !== e) {
+        ev.claimedByChildGrid = true;
+        ev.preventDefault();
+      }
+    }
+    if (wheeling) {
+      if (ev === e) {
+        e.preventDefault();
+      } else {
+        claim();
+      }
+      return;
+    }
+    if (self.hasFocus) {
+      claim();
+    }
+    childEvent = {
       NativeEvent: e
-    })) {
+    };
+    if (self.dispatchEvent('wheel', childEvent)) {
+      if (childEvent.claimedByChildGrid) {
+        claim();
+      }
       return;
     }
     self.touchHaltAnimation = true;
@@ -7620,7 +7745,8 @@ __webpack_require__.r(__webpack_exports__);
     self.eventParent.removeEventListener('dblclick', self.dblclick, false);
     self.eventParent.removeEventListener('click', self.click, false);
     self.eventParent.removeEventListener('mousemove', self.mousemove);
-    self.eventParent.removeEventListener('wheel', self.scrollWheel, false);
+    // child grids listen for the wheel on the parent grid's event, not the DOM
+    self[self.isChildGrid ? 'parentGrid' : 'eventParent'].removeEventListener('wheel', self.scrollWheel, false);
     self.canvas.removeEventListener('contextmenu', self.contextmenuEvent, false);
     self.canvas.removeEventListener('copy', self.copy);
     self.controlInput.removeEventListener('copy', self.copy);

@@ -149,7 +149,7 @@
  * @param [args.touchZoomMin = 0.5] - The minimum zoom scale.
  * @param [args.touchZoomMax = 1.75] - The maximum zoom scale.
  * @param [args.maxPixelRatio = 1.5] - The maximum pixel ratio for high DPI displays.  High DPI displays can cause sluggish performance, this caps resolution the grid is rendered at.  Standard resolution (e.g.: 1920x1080) have a pixel ratio of 1:1 while higher resolution displays can be higher (e.g.: Retina display 2:1).  Higher numbers are sharper (higher resolution) up to the max of your display (usually 2), lower numbers are lower resolution, down to 1.  It might be fun to set a value lower than 1, I've never done it.
- * @param [args.maxCanvasSize = 16384] - Largest width or height, in CSS pixels, an auto-sized grid (`style.width`/`style.height` set to `auto`) may grow to. Browsers cannot paint larger canvases. Past this size the grid stops growing and shows a scroll bar for the rest of the data.
+ * @param [args.maxCanvasSize = 16384] - Largest width or height, in CSS pixels, an auto-sized grid (`style.width`/`style.height` left at `auto`) may grow to. Browsers cannot paint larger canvases. Past this size the grid stops growing and shows a scroll bar for the rest of the data.
  * @param [args.fillCellCallback] - The callback function that is called when a cell is filled.
  * @param [args.style = {}] - Sets selected values in style.
  * @param [args.filters = {}] - Sets selected values in filters.  See {@link canvasDatagrid.filters}.
@@ -1343,7 +1343,7 @@ declare namespace canvasDatagrid {
      * @property [columnHeaderOrderByArrowWidth = 13] - Style of columnHeaderOrderByArrowWidth.
      * @property [rowHeaderCellWidth = 57] - Style of rowHeaderCellWidth.
      * @property [minColumnWidth = 45] - Style of minColumnWidth.
-     * @property [height = auto] - Style of height.
+     * @property [height = auto] - Height of the grid as a CSS value (`300px`, `100%`). With the default `auto` the grid fills its parent element when the parent has a height of its own; otherwise it grows to fit its rows, but never past the viewport height, and scrolls for the rest.
      * @property [minHeight = 24] - Style of minHeight.
      * @property [minRowHeight = 24] - Style of minRowHeight.
      * @property [name = default] - Style of name.
@@ -1413,7 +1413,7 @@ declare namespace canvasDatagrid {
      * @property [frozenMarkerWidth = 1] - Style of frozenMarkerWidth.
      * @property [overflowY = auto] - When set to hidden, vertical scroll bar will be hidden.  When set to auto vertical scroll bar will appear when data overflows the height.  When set to scroll the vertical scrollbar will always be visible.
      * @property [overflowX = auto] - When set to hidden, horizontal scroll bar will be hidden.  When set to auto horizontal scroll bar will appear when data overflows the width.  When set to scroll the horizontal scrollbar will always be visible.
-     * @property [width = auto] - Style of width.
+     * @property [width = auto] - Width of the grid as a CSS value (`800px`, `100%`). With the default `auto` the grid fills its parent element when the parent has a width of its own; otherwise it grows to fit its columns, but never past the viewport width, and scrolls for the rest.
      *
      *  ['', 'normal'],
      */
@@ -1979,7 +1979,7 @@ declare namespace canvasDatagrid {
         */
         minColumnWidth?: number;
         /**
-         * Style of height.
+         * Height of the grid as a CSS value (`300px`, `100%`). With the default `auto` the grid fills its parent element when the parent has a height of its own; otherwise it grows to fit its rows, but never past the viewport height, and scrolls for the rest.
         */
         height?: number | string;
         /**
@@ -2259,7 +2259,7 @@ declare namespace canvasDatagrid {
         */
         overflowX?: string;
         /**
-         * Style of width.
+         * Width of the grid as a CSS value (`800px`, `100%`). With the default `auto` the grid fills its parent element when the parent has a width of its own; otherwise it grows to fit its columns, but never past the viewport width, and scrolls for the rest.
         
          ['', 'normal'],
         */
