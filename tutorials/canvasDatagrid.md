@@ -19,15 +19,20 @@ With the exception of attaching to an existing canvas, the grid will attempt to 
 Setting Height and Width
 ------------------------
 
-Limiting the size of the canvas-datagrid element is the best way to improve performance.
-
 canvas-datagrid by default is set to `grid.style.height: auto` and `grid.style.width: auto`.
-This means the canvas-datagrid element expands to the height and width of the rows and columns contained within.
-If you have many rows or columns you will want to limit the height and width of the element by setting
-`grid.style.height` and `grid.style.width` to something besides `auto`.  Try `100%` or `300px`.
+In this mode the grid sizes itself to the element it is placed in:
 
-When set to a value other than auto a virtual scroll box will be drawn onto the canvas
-constraining the size and allowing the user to scroll around the columns and rows.
+* When the parent element has a size of its own in a dimension (a fixed height, a flex or grid
+  track, a `100vh` panel, the width of an ordinary block), the grid fills it, leaving room for
+  any other content in the parent. The grid follows the parent when it is resized.
+* When the parent has no size of its own (an element whose height comes from its content, a
+  shrink-to-fit width), the grid grows to fit its rows and columns, but never past the viewport.
+
+Whenever the grid is smaller than its data a virtual scroll box is drawn onto the canvas and the
+user can scroll around the columns and rows.
+
+To give the grid a fixed size instead, set `grid.style.height` and `grid.style.width` to any CSS
+value such as `300px` or `100%`, or style the `canvas-datagrid` element with CSS.
 
 Currently `max-width`, `max-height`, `min-width` and `min-height` are not supported and will do nothing, but support is planned.
 

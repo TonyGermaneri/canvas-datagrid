@@ -7,6 +7,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.27.0 - 2026-11-07
+
+### Changed
+
+- **Breaking:** the default `auto` width and height now size the grid to the
+  element it is placed in. When the parent has a size of its own in a
+  dimension (a fixed height, a flex or grid track, the width of a block), the
+  grid fills it, leaving room for the parent's other content, and follows the
+  parent when it is resized. When the parent has no size of its own (a
+  content-sized height, a shrink-to-fit width) the grid grows to fit its rows
+  and columns as before, but no further than the viewport, and scrolls for the
+  rest. Grids that previously relied on `auto` to grow to their content now
+  fill their container and show scroll bars when the data is larger; set
+  `style.width`/`style.height` explicitly to keep a fixed size.
+- Tree grids and cell grids show scroll bars when their data overflows them,
+  whatever the parent grid's `width`/`height` style is.
+
+### Fixed
+
+- The mouse wheel over a tree grid scrolled the parent grid as well, and with
+  nested tree grids every ancestor scrolled. Only the grid under the pointer
+  scrolls now, even when it has nothing left to scroll in that direction. The
+  pointer over a tree grid no longer counts as hovering the parent's row, and
+  collapsing a tree grid removes its wheel listener from the parent.
+
 ## 0.26.0 - 2026-09-19
 
 Version note: the project restarted its numbering at 0.3.0 in 2021 while the

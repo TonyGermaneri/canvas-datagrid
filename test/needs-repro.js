@@ -52,6 +52,9 @@ export default function () {
       data: makeData(5, 8),
       style: { cellWidth: 120 },
     });
+    // an auto height follows the rows only when the container has no height
+    // of its own; the test page gives every container a fixed height
+    grid.parentNode.style.height = 'auto';
     grid.style.width = '300px';
     grid.style.height = 'auto';
     await delay(50);

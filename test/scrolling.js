@@ -6,7 +6,17 @@ import {
   g,
   assertIf,
   marker,
+  delay,
+  doAssert,
 } from './util.js';
+
+function wheel(canvas, deltaY) {
+  var ev = new Event('wheel', { cancelable: true });
+  ev.deltaX = 0;
+  ev.deltaY = deltaY;
+  ev.deltaMode = 0;
+  canvas.dispatchEvent(ev);
+}
 
 export default function () {
   it('Scroll horizontally via box drag', function (done) {
@@ -253,5 +263,110 @@ export default function () {
         ),
       );
     }, 100);
+  });
+  it('Wheel over a tree grid scrolls only the tree grid', async function () {
+    var child;
+    var grid = g({ test: this.test, data: makeData(60, 5), tree: true });
+    grid.parentNode.style.height = '600px';
+    grid.addEventListener('expandtree', function (e) {
+      child = e.treeGrid;
+      child.data = makeData(60, 5);
+    });
+    grid.expandTree(0);
+    await delay(100);
+    var x = child.parentNode.offsetLeft + 100,
+      y = child.parentNode.offsetTop + 100;
+    mousemove(window, x, y, grid.canvas);
+    doAssert(
+      !grid.hasFocus && child.hasFocus,
+      'Expected only the tree grid to count as hovered',
+    );
+    wheel(grid.canvas, 40);
+    await delay(60);
+    doAssert(child.scrollTop > 0, 'Expected the tree grid to scroll');
+    doAssert(grid.scrollTop === 0, 'The parent must not scroll');
+    // a hovered tree grid with nothing left to scroll keeps the wheel too
+    child.data = makeData(2, 5);
+    await delay(60);
+    mousemove(window, x, y, grid.canvas);
+    wheel(grid.canvas, 40);
+    await delay(60);
+    doAssert(
+      grid.scrollTop === 0,
+      'The parent must not scroll when the hovered tree grid cannot',
+    );
+    // the parent still scrolls when it is the hovered grid
+    mousemove(
+      window,
+      100,
+      child.parentNode.offsetTop + child.parentNode.offsetHeight + 60,
+      grid.canvas,
+    );
+    wheel(grid.canvas, 40);
+    await delay(60);
+    doAssert(grid.scrollTop > 0, 'Expected the parent to scroll when hovered');
+  });
+  it('Wheel over a nested tree grid scrolls only the innermost grid', async function () {
+    var child, grandchild;
+    var grid = g({
+      test: this.test,
+      data: makeData(60, 5),
+      tree: true,
+      treeGridAttributes: { tree: true, style: { treeGridHeight: 200 } },
+    });
+    grid.parentNode.style.height = '800px';
+    grid.style.treeGridHeight = 500;
+    grid.addEventListener('expandtree', function (e) {
+      child = e.treeGrid;
+      child.data = makeData(60, 5);
+      child.addEventListener('expandtree', function (e2) {
+        grandchild = e2.treeGrid;
+        grandchild.data = makeData(60, 5);
+      });
+    });
+    grid.expandTree(0);
+    await delay(100);
+    child.expandTree(0);
+    await delay(100);
+    var x = grandchild.parentNode.offsetLeft + 100,
+      y = grandchild.parentNode.offsetTop + 100;
+    mousemove(window, x, y, grid.canvas);
+    wheel(grid.canvas, 40);
+    await delay(60);
+    doAssert(grandchild.scrollTop > 0, 'Expected the innermost grid to scroll');
+    doAssert(child.scrollTop === 0, 'The middle grid must not scroll');
+    doAssert(grid.scrollTop === 0, 'The outer grid must not scroll');
+    grandchild.data = makeData(2, 5);
+    await delay(60);
+    mousemove(window, x, y, grid.canvas);
+    wheel(grid.canvas, 40);
+    await delay(60);
+    doAssert(
+      child.scrollTop === 0 && grid.scrollTop === 0,
+      'No ancestor may scroll when the hovered grid cannot',
+    );
+  });
+  it('Collapsing a tree grid stops it from taking the wheel', async function () {
+    var child;
+    var grid = g({ test: this.test, data: makeData(60, 5), tree: true });
+    grid.parentNode.style.height = '600px';
+    grid.addEventListener('expandtree', function (e) {
+      child = e.treeGrid;
+      child.data = makeData(60, 5);
+    });
+    grid.expandTree(0);
+    await delay(100);
+    var x = child.parentNode.offsetLeft + 100,
+      y = child.parentNode.offsetTop + 100;
+    mousemove(window, x, y, grid.canvas);
+    grid.collapseTree(0);
+    await delay(60);
+    mousemove(window, x, y, grid.canvas);
+    wheel(grid.canvas, 40);
+    await delay(60);
+    doAssert(
+      grid.scrollTop > 0,
+      'Expected the parent to scroll where the tree grid used to be',
+    );
   });
 }
