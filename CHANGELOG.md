@@ -7,6 +7,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.27.1 - 2026-11-07
+
+### Fixed
+
+- The mouse wheel over a tree grid or cell grid that has reached the end of
+  its scroll range now scrolls the parent grid, and the wheel over a top-level
+  grid at the end of its range scrolls the page, the way nested scrolling
+  elements chain in HTML. 0.27.0 kept the wheel on the hovered grid even when
+  it had nothing left to scroll. The page no longer scrolls along while a tree
+  grid or cell grid is scrolling.
+- Documentation: cell grids are created only for columns whose schema `type`
+  is `canvas-datagrid`; an array value on its own does not create one. The
+  `data` property docs claimed it did, and the `cellGridAttributes` and
+  `header.type` docs did not mention the type. The `rendercellgrid` event
+  fires on every draw, not once per cell grid. The "Cell Grids" section now
+  has an example and there is a "Create a cell grid" tutorial.
+
 ## 0.27.0 - 2026-11-07
 
 ### Changed

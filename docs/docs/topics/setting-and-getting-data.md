@@ -6,6 +6,8 @@ Data is set according to the MIME type parser defined in grid.dataType. The defa
 
 This format expects an array of objects or an array of arrays that strictly conform to a schema (i.e.: they all have the same properties or lengths).
 
+Cell values can be any primitive type. A value that is itself an array is formatted as text unless the column's schema `type` is `canvas-datagrid`, which renders it as an inner grid, see [Cell grids](/topics/cell-grids).
+
 Example `application/x-canvas-datagrid`
 
 ```js

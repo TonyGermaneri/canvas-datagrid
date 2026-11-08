@@ -13,6 +13,8 @@ import {
   c,
   marker,
   click,
+  doAssert,
+  delay,
 } from './util.js';
 
 export default function () {
@@ -144,20 +146,50 @@ export default function () {
       assertPxColor(grid, 130, 60, c.b, done);
     }, 2);
   });
-  it.skip('Should render a cell grid.', function (done) {
+  it('Should render a cell grid in a column of type canvas-datagrid', async function () {
+    var inner = [{ b: 'c' }, { b: 'd' }];
     var grid = g({
       test: this.test,
       schema: [{ name: 'a', type: 'canvas-datagrid' }],
-      data: [{ a: [{ b: 'c' }] }],
+      data: [{ a: inner }],
       cellGridAttributes: {
         style: {
           activeCellBackgroundColor: c.b,
         },
       },
     });
-    setTimeout(function () {
-      assertPxColor(grid, 130, 60, c.b, done);
-    }, 30);
+    await delay(30);
+    var cell = grid.visibleCells.filter(function (cell) {
+      return cell.isGrid;
+    })[0];
+    doAssert(cell, 'Expected the cell to be a grid cell');
+    doAssert(
+      cell.type === 'canvas-datagrid-cell' && cell.grid,
+      'Expected the grid cell to hold the cell grid',
+    );
+    doAssert(grid.childGrids.length === 1, 'Expected one cell grid');
+    doAssert(
+      grid.childGrids[0].data === inner,
+      'Expected the cell value to be the data of the cell grid',
+    );
+    doAssert(
+      grid.childGrids[0].style.activeCellBackgroundColor === c.b,
+      'Expected cellGridAttributes to apply to the cell grid',
+    );
+  });
+  it('Should not render a cell grid for an array value without the canvas-datagrid type', async function () {
+    var grid = g({
+      test: this.test,
+      data: [{ a: [{ b: 'c' }], d: 'e' }],
+    });
+    await delay(30);
+    doAssert(
+      !grid.visibleCells.some(function (cell) {
+        return cell.isGrid;
+      }),
+      'Expected no grid cells',
+    );
+    doAssert(grid.childGrids.length === 0, 'Expected no cell grids');
   });
   it('Should display a new row', function (done) {
     var grid = g({

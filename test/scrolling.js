@@ -16,6 +16,7 @@ function wheel(canvas, deltaY) {
   ev.deltaY = deltaY;
   ev.deltaMode = 0;
   canvas.dispatchEvent(ev);
+  return ev;
 }
 
 export default function () {
@@ -265,7 +266,7 @@ export default function () {
     }, 100);
   });
   it('Wheel over a tree grid scrolls only the tree grid', async function () {
-    var child;
+    var child, ev;
     var grid = g({ test: this.test, data: makeData(60, 5), tree: true });
     grid.parentNode.style.height = '600px';
     grid.addEventListener('expandtree', function (e) {
@@ -281,21 +282,23 @@ export default function () {
       !grid.hasFocus && child.hasFocus,
       'Expected only the tree grid to count as hovered',
     );
-    wheel(grid.canvas, 40);
+    ev = wheel(grid.canvas, 40);
     await delay(60);
     doAssert(child.scrollTop > 0, 'Expected the tree grid to scroll');
     doAssert(grid.scrollTop === 0, 'The parent must not scroll');
-    // a hovered tree grid with nothing left to scroll keeps the wheel too
+    doAssert(ev.defaultPrevented, 'The page must not scroll either');
+    // a hovered tree grid with nothing to scroll passes the wheel on
     child.data = makeData(2, 5);
     await delay(60);
     mousemove(window, x, y, grid.canvas);
     wheel(grid.canvas, 40);
     await delay(60);
     doAssert(
-      grid.scrollTop === 0,
-      'The parent must not scroll when the hovered tree grid cannot',
+      grid.scrollTop > 0,
+      'Expected the parent to scroll when the hovered tree grid cannot',
     );
-    // the parent still scrolls when it is the hovered grid
+    // the parent scrolls when it is the hovered grid
+    grid.scrollTop = 0;
     mousemove(
       window,
       100,
@@ -305,6 +308,115 @@ export default function () {
     wheel(grid.canvas, 40);
     await delay(60);
     doAssert(grid.scrollTop > 0, 'Expected the parent to scroll when hovered');
+  });
+  it('Wheel over a tree grid at the end of its scroll range scrolls the parent grid', async function () {
+    var child, ev, parentTop;
+    var grid = g({ test: this.test, data: makeData(60, 5), tree: true });
+    grid.parentNode.style.height = '600px';
+    grid.addEventListener('expandtree', function (e) {
+      child = e.treeGrid;
+      child.data = makeData(60, 5);
+    });
+    grid.expandTree(0);
+    await delay(100);
+    var x = child.parentNode.offsetLeft + 100,
+      y = child.parentNode.offsetTop + 100;
+    mousemove(window, x, y, grid.canvas);
+    child.scrollTop = child.scrollHeight;
+    await delay(30);
+    doAssert(
+      child.scrollTop === child.scrollHeight && child.scrollHeight > 0,
+      'Expected the tree grid to start at its bottom',
+    );
+    // down: the tree grid is done, so the parent takes over, like nested
+    // scrolling elements in HTML
+    ev = wheel(grid.canvas, 40);
+    await delay(60);
+    doAssert(
+      grid.scrollTop > 0,
+      'Expected the parent to scroll once the tree grid reached its bottom',
+    );
+    doAssert(ev.defaultPrevented, 'The page must not scroll while a grid can');
+    // up: the tree grid can scroll again, so it goes first
+    parentTop = grid.scrollTop;
+    mousemove(window, x, y, grid.canvas);
+    ev = wheel(grid.canvas, -40);
+    await delay(60);
+    doAssert(
+      child.scrollTop < child.scrollHeight,
+      'Expected the tree grid to scroll back up',
+    );
+    doAssert(
+      grid.scrollTop === parentTop,
+      'The parent must not scroll while the tree grid can',
+    );
+    doAssert(ev.defaultPrevented, 'The page must not scroll either');
+  });
+  it('Wheel at the end of the scroll range of a top-level grid lets the page scroll', async function () {
+    var ev;
+    var grid = g({ test: this.test, data: makeData(60, 5) });
+    mousemove(window, 100, 100, grid.canvas);
+    ev = wheel(grid.canvas, -40);
+    await delay(60);
+    doAssert(
+      !ev.defaultPrevented,
+      'Expected the wheel to pass to the page at the top of the grid',
+    );
+    ev = wheel(grid.canvas, 40);
+    await delay(60);
+    doAssert(grid.scrollTop > 0, 'Expected the grid to scroll down');
+    doAssert(ev.defaultPrevented, 'Expected the grid to keep the wheel');
+    grid.scrollTop = grid.scrollHeight;
+    await delay(30);
+    ev = wheel(grid.canvas, 40);
+    await delay(60);
+    doAssert(
+      !ev.defaultPrevented,
+      'Expected the wheel to pass to the page at the bottom of the grid',
+    );
+  });
+  it('Wheel over a cell grid scrolls the cell grid, then the parent when it is done', async function () {
+    var child, ev, cell;
+    var grid = g({
+      test: this.test,
+      data: makeData(60, 2).map(function (row) {
+        row.inner = makeData(30, 2);
+        return row;
+      }),
+      // the cell grid column comes first so it is in view in the 400px
+      // wide test container
+      schema: [
+        { name: 'inner', type: 'canvas-datagrid' },
+        { name: 'a' },
+        { name: 'b' },
+      ],
+    });
+    grid.parentNode.style.height = '600px';
+    await delay(100);
+    child = grid.childGrids[0];
+    doAssert(child, 'Expected a cell grid for the canvas-datagrid column');
+    cell = child.parentNode;
+    var x = cell.offsetLeft + 50,
+      y = cell.offsetTop + 50;
+    mousemove(window, x, y, grid.canvas);
+    doAssert(
+      !grid.hasFocus && child.hasFocus,
+      'Expected only the cell grid to count as hovered',
+    );
+    ev = wheel(grid.canvas, 40);
+    await delay(60);
+    doAssert(child.scrollTop > 0, 'Expected the cell grid to scroll');
+    doAssert(grid.scrollTop === 0, 'The parent must not scroll');
+    doAssert(ev.defaultPrevented, 'The page must not scroll either');
+    child.scrollTop = child.scrollHeight;
+    await delay(30);
+    mousemove(window, x, y, grid.canvas);
+    wheel(grid.canvas, 40);
+    await delay(60);
+    doAssert(
+      grid.scrollTop > 0,
+      'Expected the parent to scroll once the cell grid reached its bottom',
+    );
   });
   it('Wheel over a nested tree grid scrolls only the innermost grid', async function () {
     var child, grandchild;
@@ -342,9 +454,10 @@ export default function () {
     wheel(grid.canvas, 40);
     await delay(60);
     doAssert(
-      child.scrollTop === 0 && grid.scrollTop === 0,
-      'No ancestor may scroll when the hovered grid cannot',
+      child.scrollTop > 0,
+      'Expected the nearest ancestor that can scroll to take the wheel',
     );
+    doAssert(grid.scrollTop === 0, 'The outer grid must not scroll');
   });
   it('Collapsing a tree grid stops it from taking the wheel', async function () {
     var child;

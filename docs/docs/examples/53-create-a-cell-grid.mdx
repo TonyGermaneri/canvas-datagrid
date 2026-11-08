@@ -1,0 +1,58 @@
+---
+title: Create a cell grid
+---
+
+import siteConfig from '/docusaurus.config.js';
+
+A column whose schema `type` is `canvas-datagrid` draws a grid inside each of its cells, with the value of the cell (an array of rows) as the data of that cell grid. The type must be set in the schema; an array value on its own is formatted as text. Use `cellGridAttributes` to configure every cell grid and `style.cellGridHeight` for the height of the rows that hold them.
+
+<SandpackEditor>
+
+```ts
+import canvasDatagrid from 'canvas-datagrid';
+import data from '/data.json';
+
+const app = document.getElementById('app');
+const gridElement = document.createElement('div');
+const grid = canvasDatagrid({
+  parentNode: gridElement,
+  // the type canvas-datagrid turns the cells of the orders column into grids
+  schema: [{ name: 'name' }, { name: 'orders', type: 'canvas-datagrid' }],
+  data,
+  // settings for every cell grid
+  cellGridAttributes: {
+    showRowHeaders: false,
+    style: {
+      cellHeight: 20,
+      columnHeaderCellHeight: 20,
+    },
+  },
+  style: {
+    height: '300px',
+    width: '100%',
+    // the height of the rows that hold cell grids
+    cellGridHeight: 100,
+  },
+});
+
+app.append(gridElement);
+```
+
+```json data.json
+[
+  {
+    "name": "Alice",
+    "orders": [
+      { "item": "Pen", "quantity": 2 },
+      { "item": "Notebook", "quantity": 1 },
+      { "item": "Ink", "quantity": 3 }
+    ]
+  },
+  {
+    "name": "Bob",
+    "orders": [{ "item": "Stapler", "quantity": 1 }]
+  }
+]
+```
+
+</SandpackEditor>

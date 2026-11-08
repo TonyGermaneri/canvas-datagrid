@@ -723,6 +723,46 @@ window.tutorials['Allow users to open trees|Allows users to open trees.  Use the
     }
     grid.addEventListener('expandtree', expandTree);
 };
+window.tutorials['Create a cell grid|A column whose schema <i>type</i> is <i>canvas-datagrid</i> draws a grid inside each of its cells, with the value of the cell (an array of rows) as the data of that cell grid.  The type must be set in the schema; an array value alone is formatted as text.  Use <i>cellGridAttributes</i> to configure every cell grid and <i>style.cellGridHeight</i> for the height of their rows.'] = function (parentNode) {
+    var grid = canvasDatagrid({
+        parentNode: parentNode,
+        schema: [
+            { name: 'name' },
+            { name: 'orders', type: 'canvas-datagrid' }
+        ],
+        data: [
+            {
+                name: 'Alice',
+                orders: [
+                    { item: 'Pen', quantity: 2 },
+                    { item: 'Notebook', quantity: 1 },
+                    { item: 'Ink', quantity: 3 }
+                ]
+            },
+            {
+                name: 'Bob',
+                orders: [
+                    { item: 'Stapler', quantity: 1 }
+                ]
+            }
+        ],
+        // settings for every cell grid
+        cellGridAttributes: {
+            showRowHeaders: false,
+            style: {
+                cellHeight: 20,
+                columnHeaderCellHeight: 20
+            }
+        },
+        style: {
+            height: '300px',
+            width: '100%',
+            // the height of the rows that hold cell grids
+            cellGridHeight: 100
+        }
+    });
+    // cell grids are created when their cell is first drawn and are listed in grid.childGrids
+};
 window.tutorials['Multiple filters|Create filters on more than one column at a time.'] = function (parentNode) {
     var grid = canvasDatagrid({
             parentNode: parentNode

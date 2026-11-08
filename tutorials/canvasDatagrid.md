@@ -94,7 +94,7 @@ Each header object can have the following properties:
 | Property | Description |
 |-----|------|
 | name | The name of the column.  This is used to match with data and is the only required property. |
-| type | The data type of this column |
+| type | The data type of this column.  Matches a formatter, sorter and filter by name.  The type `canvas-datagrid` is special: the cells of the column render inner grids, see [Cell Grids](#cell-grids). |
 | title | What will be displayed to the user.  If not present, name will be used. |
 | width | The default width in pixels of this column.|
 | hidden | When true the column will be hidden. |
@@ -386,9 +386,47 @@ Examples of how to use many of the event handlers to change default grid behavio
 Cell Grids
 ----------
 
-Cell grids are child instances of canvas-datagrid inside of a cell.  By setting the header or cell `type` to `canvas-datagrid` the value of the cell will be passed to the data property of the cell grid.
+Cell grids are child instances of canvas-datagrid inside of a cell.  A column renders cell grids when its schema `type` is `canvas-datagrid`; the value of each cell in that column, itself an array of rows, becomes the data of the cell grid.
 
-You can hook into the events `beforerendercellgrid` or `beforecreatecellgrid` to prevent the cell grid from being drawn by calling `e.preventDefault();`.  You can manipulate the parameters used to instantiate the cell grid by hooking into `beforecreatecellgrid` and manipluating `e.cellGridAttributes`.  Cells that are grid cells have the property `cell.isGrid` set to the value `true`.
+The type has to be set in the schema.  An array value on its own does not create a cell grid: a generated schema treats every column as `string` and the array is formatted as text.
+
+    var grid = canvasDatagrid({
+        parentNode: document.getElementById('grid'),
+        schema: [
+            { name: 'name' },
+            { name: 'orders', type: 'canvas-datagrid' }
+        ],
+        data: [
+            {
+                name: 'Alice',
+                orders: [
+                    { item: 'Pen', quantity: 2 },
+                    { item: 'Notebook', quantity: 1 }
+                ]
+            },
+            {
+                name: 'Bob',
+                orders: [
+                    { item: 'Stapler', quantity: 1 }
+                ]
+            }
+        ],
+        // settings for every cell grid; a style here is applied to each one
+        cellGridAttributes: {
+            showRowHeaders: false,
+            style: {
+                cellHeight: 20
+            }
+        },
+        style: {
+            // the height of the rows that hold cell grids
+            cellGridHeight: 80
+        }
+    });
+
+Cell grids are created the first time the cell is drawn and are listed in `grid.childGrids`.  They scroll on their own: the mouse wheel over a cell grid scrolls the cell grid, and once it reaches the end of its rows the wheel moves on to the parent grid, like nested scrolling elements in HTML.  Tree grids behave the same way.
+
+You can hook into the events `beforerendercellgrid` or `beforecreatecellgrid` to prevent the cell grid from being drawn by calling `e.preventDefault();`.  You can manipulate the parameters used to instantiate the cell grid by hooking into `beforecreatecellgrid` and manipulating `e.cellGridAttributes`.  Cells that are grid cells have the property `cell.isGrid` set to the value `true` and `cell.grid` set to the cell grid once it exists.  See the [Create a cell grid](#tutorial--Create-a-cell-grid) tutorial.
 
 Notes
 -----

@@ -33,6 +33,7 @@ const sidebars = {
       type: 'category',
       label: 'Topics',
       items: [
+        'topics/cell-grids',
         'topics/drawing-on-the-canvas',
         'topics/extending-the-visual-appearance',
         'topics/formatting-using-event-listeners',
