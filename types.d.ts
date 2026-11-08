@@ -20,7 +20,7 @@
  * @property sorters - Object that contains a list of sorting functions for sorting columns.   See {@tutorial sorters}.
  * @property filters - Object that contains a list of filters for filtering data.  The properties in this object match the `schema[].type` property.  For example, if the schema for a given column was of the type `date` the grid would look for a filter called `filters.date` if a filter cannot be found for a given data type a warning will be logged and the string/RegExp filter will be used.   See {@link canvasDatagrid.filters}.
  * @property hasActiveFilters - When true, grid data is being filtered.
- * @property data - This is how data is set in the grid.  Data must be an array of objects that conform to a schema.  Data values can be any primitive type.  However if a cell value is another data array, an inner grid will be rendered into the cell.  This "cell grid" is different than a "tree grid" (the sort you drill in with a row header arrow) and uses the `cellGridAttributes` attribute for properties and styling. See {@link canvasDatagrid.data}.
+ * @property data - This is how data is set in the grid.  Data must be an array of objects that conform to a schema.  Data values can be any primitive type.  A column whose schema `type` is `canvas-datagrid` renders an inner grid into each of its cells, with the cell's value, itself an array of rows, as that grid's data.  An array value on its own does not create an inner grid, the column type has to be set in the schema, otherwise the array is formatted as a string.  This "cell grid" is different than a "tree grid" (the sort you drill in with a row header arrow) and uses the `cellGridAttributes` attribute for properties and styling. See {@link tutorial--Create-a-cell-grid}.
  * @property schema - Schema is optional.  Schema is an array of {canvasDatagrid.header} objects.  If no schema is provided one will be generated from the data, in that case all data will be assumed to be string data. See {@link canvasDatagrid.schema}.
  * @property scrollHeight - The total number of pixels that can be scrolled down.
  * @property scrollWidth - The total number of pixels that can be scrolled to the left.
@@ -52,7 +52,7 @@
  * @param [args.name] - Optional value that will allow the saving of column height, row width, etc. to the browser's local store. This name should be unique to this grid.
  * @param [args.tree = false] - When true, an arrow will be drawn on each row that when clicked raises the See {@link canvasDatagrid#event:expandtree} event for that row and creates an inner grid.  See {@link tutorial--Allow-users-to-open-trees}.
  * @param [args.treeHorizontalScroll = false] - Reserved. Intended to make expanded child grids scroll horizontally with the parent columns; the option is accepted but not implemented yet (see issue #314), child grids always stay stationary.
- * @param [args.cellGridAttributes] - Attributes used for cell grids. These child grids are different than the tree grids. See the {@link canvasDatagrid.data} property for more information about cell grids.
+ * @param [args.cellGridAttributes] - Attributes used for cell grids, the inner grids drawn in the cells of a column whose schema `type` is `canvas-datagrid`. These child grids are different than the tree grids. See the {@link canvasDatagrid.data} property for more information about cell grids and {@link tutorial--Create-a-cell-grid}.
  * @param [args.treeGridAttributes] - Attributes used for tree grids. These child grids are different than the cell grids. See the {@link canvasDatagrid.data} property for more information about tree grids.
  * @param [args.showNewRow = true] - When true, a row will appear at the bottom of the data set. schema[].defaultValue will define a default value for each cell. defaultValue can be a string or a function. When a function is used, the arguments header and index will be passed to the function. The value returned by the function will be the value in the new cell.  See {@link canvasDatagrid.header.defaultValue}
  * @param [args.saveAppearance = true] - When true, and the attribute name is set, column and row sizes will be saved to the browser's localStore.
@@ -812,7 +812,7 @@ declare class canvasDatagrid {
     */
     hasActiveFilters: boolean;
     /**
-     * This is how data is set in the grid.  Data must be an array of objects that conform to a schema.  Data values can be any primitive type.  However if a cell value is another data array, an inner grid will be rendered into the cell.  This "cell grid" is different than a "tree grid" (the sort you drill in with a row header arrow) and uses the `cellGridAttributes` attribute for properties and styling. See {@link canvasDatagrid.data}.
+     * This is how data is set in the grid.  Data must be an array of objects that conform to a schema.  Data values can be any primitive type.  A column whose schema `type` is `canvas-datagrid` renders an inner grid into each of its cells, with the cell's value, itself an array of rows, as that grid's data.  An array value on its own does not create an inner grid, the column type has to be set in the schema, otherwise the array is formatted as a string.  This "cell grid" is different than a "tree grid" (the sort you drill in with a row header arrow) and uses the `cellGridAttributes` attribute for properties and styling. See {@link tutorial--Create-a-cell-grid}.
     */
     data: canvasDatagrid.data;
     /**
@@ -950,7 +950,7 @@ declare namespace canvasDatagrid {
     /**
      * A header that describes the data in a column.  The term header and column are used interchangeably in this documentation.  The {@link canvasDatagrid.schema} is an array of {@link canvasDatagrid.header}.
      * @property name - The name of the header.  This must match the property name of an object in the {@link canvasDatagrid.data} array.  This is the only required property of a {@link canvasDatagrid.header}.  This value will appear at the top of the column unless {@link canvasDatagrid.header.title} is defined.
-     * @property type - The data type of this header.  This value should match properties in {@link canvasDatagrid.formatters}, {@link canvasDatagrid.filters}, {@link canvasDatagrid.sorters} to take full advantage of formatting, sorting and filtering when not defining these properties within this header.
+     * @property type - The data type of this header.  This value should match properties in {@link canvasDatagrid.formatters}, {@link canvasDatagrid.filters}, {@link canvasDatagrid.sorters} to take full advantage of formatting, sorting and filtering when not defining these properties within this header.  The type `canvas-datagrid` is special: each cell in the column renders an inner grid, a "cell grid", with the cell's value (an array of rows) as its data.  See {@link tutorial--Create-a-cell-grid}.
      * @property title - The value that is actually displayed to the user at the top of the column.  If no value is present, {@link canvasDatagrid.header.name} will be used instead.
      * @property width - The mutable width of this column in pixels.  The user can override this value if {@link canvasDatagrid.attributes.allowColumnResizing} is set to `true`.
      * @property hidden - When true, the column will not be included in the visible schema.  This means selection, copy, and drawing functions will not display this column or values from this column.
@@ -965,7 +965,7 @@ declare namespace canvasDatagrid {
         */
         name: string;
         /**
-         * The data type of this header.  This value should match properties in {@link canvasDatagrid.formatters}, {@link canvasDatagrid.filters}, {@link canvasDatagrid.sorters} to take full advantage of formatting, sorting and filtering when not defining these properties within this header.
+         * The data type of this header.  This value should match properties in {@link canvasDatagrid.formatters}, {@link canvasDatagrid.filters}, {@link canvasDatagrid.sorters} to take full advantage of formatting, sorting and filtering when not defining these properties within this header.  The type `canvas-datagrid` is special: each cell in the column renders an inner grid, a "cell grid", with the cell's value (an array of rows) as its data.  See {@link tutorial--Create-a-cell-grid}.
         */
         type: string;
         /**

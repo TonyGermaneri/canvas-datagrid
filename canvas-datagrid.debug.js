@@ -6396,26 +6396,41 @@ __webpack_require__.r(__webpack_exports__);
     if (self.disposed) {
       return;
     }
+    //BUG Issue 42: https://github.com/TonyGermaneri/canvas-datagrid/issues/42
+    //https://stackoverflow.com/questions/20110224/what-is-the-height-of-a-line-in-a-wheel-event-deltamode-dom-delta-line
+    if (deltaMode === 1) {
+      // line mode = 17 pixels per line
+      deltaY = deltaY * 17;
+    }
     // A child grid receives the wheel through its parent's `wheel` grid
-    // event (`ev`), not from the DOM. Cancelling and marking that event tells
-    // every ancestor that the grid under the pointer owns this wheel, so only
-    // the hovered grid scrolls, even when it has nothing left to scroll.
+    // event (`ev`), not from the DOM. It leaves two marks on that event for
+    // its ancestors: `hovered` says the pointer is over this grid or one of
+    // its descendants, so the ancestor is not the hovered grid itself;
+    // `claim` says this grid consumed the wheel, so no ancestor scrolls and
+    // neither does the page. A hovered grid with nothing left to scroll in
+    // the wheel's direction only marks itself hovered, so the wheel moves on
+    // to the parent grid, and from the top-level grid to the page, the way
+    // nested scrolling elements chain in HTML.
+    function hovered() {
+      if (ev !== e) {
+        ev.hoveredChildGrid = true;
+      }
+    }
     function claim() {
+      e.preventDefault();
       if (ev !== e) {
         ev.claimedByChildGrid = true;
         ev.preventDefault();
       }
     }
-    if (wheeling) {
-      if (ev === e) {
-        e.preventDefault();
-      } else {
-        claim();
-      }
-      return;
+    function canScroll() {
+      var box = self.scrollBox;
+      return box.scrollTop < box.scrollHeight && deltaY > 0 || box.scrollLeft < box.scrollWidth && deltaX > 0 || box.scrollTop > 0 && deltaY < 0 || box.scrollLeft > 0 && deltaX < 0;
     }
-    if (self.hasFocus) {
+    if (wheeling) {
+      // still applying the previous wheel, this one belongs here too
       claim();
+      return;
     }
     childEvent = {
       NativeEvent: e
@@ -6427,23 +6442,20 @@ __webpack_require__.r(__webpack_exports__);
       return;
     }
     self.touchHaltAnimation = true;
+    if (!self.hasFocus && !childEvent.hoveredChildGrid) {
+      return;
+    }
+    hovered();
+    if (!canScroll()) {
+      return;
+    }
+    claim();
     l = self.scrollBox.scrollLeft;
     t = self.scrollBox.scrollTop;
-    if (self.hasFocus) {
-      //BUG Issue 42: https://github.com/TonyGermaneri/canvas-datagrid/issues/42
-      //https://stackoverflow.com/questions/20110224/what-is-the-height-of-a-line-in-a-wheel-event-deltamode-dom-delta-line
-      if (deltaMode === 1) {
-        // line mode = 17 pixels per line
-        deltaY = deltaY * 17;
-      }
-      if (self.scrollBox.scrollTop < self.scrollBox.scrollHeight && deltaY > 0 || self.scrollBox.scrollLeft < self.scrollBox.scrollWidth && deltaX > 0 || self.scrollBox.scrollTop > 0 && deltaY < 0 || self.scrollBox.scrollLeft > 0 && deltaX < 0) {
-        ev.preventDefault(e);
-      }
-      wheeling = setTimeout(function () {
-        wheeling = undefined;
-        self.scrollBox.scrollTo(deltaX + l, deltaY + t);
-      }, 1);
-    }
+    wheeling = setTimeout(function () {
+      wheeling = undefined;
+      self.scrollBox.scrollTo(deltaX + l, deltaY + t);
+    }, 1);
   };
   self.pasteData = function (pasteValue, mimeType, startRowIndex, startColIndex, minRowsLength = 0, minColumnsLength = 0) {
     if (mimeType === 'text/html' && !(0,_util__WEBPACK_IMPORTED_MODULE_1__.isSupportedHtml)(pasteValue)) {
