@@ -99,7 +99,7 @@
     "typescript": "^5.9.3",
     "webpack": "^5.6.0",
     "webpack-cli": "^4.2.0",
-    "webpack-dev-server": "^3.11.1"
+    "webpack-dev-server": "^6.0.0"
   },
   "dependencies": {
     "is-printable-key-event": "1.0.0"
