@@ -1,0 +1,19 @@
+{
+  // Resolves 'canvas-datagrid' by package self-reference through the real
+  // package.json "exports" map under Node's rules (#613). The package has no
+  // "type": "module", so smoke.ts is a CommonJS importer here (types.d.cts),
+  // smoke.mts is an ES module importer (types.d.mts), and smoke.cts checks
+  // `import = require()` against the `export =` shape.
+  "compilerOptions": {
+    "noEmit": true,
+    "strict": true,
+    "target": "es2020",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "esModuleInterop": true,
+    "lib": ["es2020", "dom"],
+    "types": [],
+    "skipLibCheck": true
+  },
+  "files": ["smoke.ts", "smoke.mts", "smoke.cts"]
+}

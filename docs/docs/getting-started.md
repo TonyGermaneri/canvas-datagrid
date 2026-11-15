@@ -108,7 +108,7 @@ Do not create the grid with `canvasDatagrid()` *and* place a `<canvas-datagrid>`
 
 ## Using with TypeScript
 
-Type declarations ship in the package (`dist/types.d.ts`; a proper module since 0.26.0):
+Type declarations ship in the package. ES module importers get `dist/types.d.mts` and CommonJS importers get `dist/types.d.cts`, through the `"types"` condition in package.json `"exports"`. `moduleResolution: node10` uses `dist/types.d.ts`.
 
 ```ts
 import canvasDatagrid, {
@@ -120,7 +120,9 @@ const args: CanvasDatagridArgs = { parentNode: document.body, data: [] };
 const grid: CanvasDatagrid = canvasDatagrid(args);
 ```
 
-The declarations are generated from the JSDoc comments and are not yet strict-clean, so keep `skipLibCheck: true` in `tsconfig.json` (the default in most templates). With 0.4.7 or older, add `declare module 'canvas-datagrid';` to a `.d.ts` file in your project.
+The declarations are generated from the JSDoc comments and are not yet strict-clean, so keep `skipLibCheck: true` in `tsconfig.json` (the default in most templates). In CommonJS code `require('canvas-datagrid')` returns the factory itself, so use `import canvasDatagrid = require('canvas-datagrid')`, or the default import with `esModuleInterop`.
+
+0.27.1 and older have no `"types"` condition, so `moduleResolution` `bundler`, `node16` and `nodenext` (and the TypeScript 7 default) report `TS7016` for `'canvas-datagrid'`. With those versions and `bundler` (or the TypeScript 7 default), map the module to the declarations in `compilerOptions`: `"paths": { "canvas-datagrid": ["./node_modules/canvas-datagrid/dist/types.d.ts"] }`. That mapping does not help under `node16`/`nodenext`, where the file counts as CommonJS; upgrade instead. With 0.4.7 or older, add `declare module 'canvas-datagrid';` to a `.d.ts` file in your project.
 
 ### More demos
 

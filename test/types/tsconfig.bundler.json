@@ -1,0 +1,16 @@
+{
+  // Resolves 'canvas-datagrid' by package self-reference through the real
+  // package.json "exports" map, the way a consumer's bundler setup does
+  // (#613). No "paths" here: a paths mapping would bypass "exports".
+  "compilerOptions": {
+    "noEmit": true,
+    "strict": true,
+    "target": "es2020",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "lib": ["es2020", "dom"],
+    "types": [],
+    "skipLibCheck": true
+  },
+  "files": ["smoke.ts"]
+}

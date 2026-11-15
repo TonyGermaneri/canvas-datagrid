@@ -125,6 +125,8 @@ import canvasDatagrid, {
 } from 'canvas-datagrid';
 ```
 
+The declarations work with every `moduleResolution` setting (`bundler`, `node16`, `nodenext`, `node10`). In CommonJS code `require('canvas-datagrid')` returns the factory itself, so use `import canvasDatagrid = require('canvas-datagrid')`, or the default import with `esModuleInterop`.
+
 The declarations are generated from JSDoc and are not strict-clean yet, so keep `skipLibCheck: true` in your `tsconfig.json`.
 
 ## More Demos

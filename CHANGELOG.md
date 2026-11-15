@@ -7,6 +7,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.27.2 - 2026-11-15
+
+### Fixed
+
+- TypeScript could not find the type declarations under any `moduleResolution`
+  that reads package.json `"exports"` (`bundler`, `node16`, `nodenext`, and
+  the TypeScript 7 default) and reported `TS7016`. Only `node10` worked
+  (#613). `"exports"` now starts with a `"types"` condition. ES module
+  importers get `dist/types.d.mts` (`export default`) and CommonJS importers
+  get `dist/types.d.cts` (`export =`, since `require('canvas-datagrid')`
+  returns the factory itself). `dist/types.d.ts` stays as it was for `node10`.
+  `npm run test:types` now also type-checks through the `"exports"` map under
+  `bundler` and `nodenext`.
+
 ## 0.27.1 - 2026-11-07
 
 ### Fixed
