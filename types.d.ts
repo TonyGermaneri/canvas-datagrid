@@ -2484,7 +2484,6 @@ declare function getSelectionBounds(selections: SelectionDescriptor[]): Rectangl
  */
 declare function shrinkOrExpandSelections(selections: SelectionDescriptor[], cell: any, keyEvent: any, context: any): boolean;
 
-
 // --- module exports (added by scripts/finalize-types.js) ---
 /**
  * Arguments accepted by the factory. Every option is optional; without
